@@ -277,7 +277,7 @@ fieldset {
 			&.light {
 				~ .input-icon {
 					svg {
-						* {
+						g {
 							stroke: rgba(white, .2);
 						}
 					}
@@ -285,7 +285,7 @@ fieldset {
 				&:hover {
 					~ .input-icon {
 						svg {
-							* {
+							g {
 								stroke: rgba(white, .4);
 							}
 						}
@@ -294,7 +294,7 @@ fieldset {
 				&:focus {
 					~ .input-icon {
 						svg {
-							* {
+							g {
 								stroke: white;
 							}
 						}
@@ -304,7 +304,7 @@ fieldset {
 			&.dark {
 				~ .input-icon {
 					svg {
-						* {
+						g {
 							stroke: rgba($slate, .2);
 						}
 					}
@@ -312,7 +312,7 @@ fieldset {
 				&:hover {
 					~ .input-icon {
 						svg {
-							* {
+							g {
 								stroke: rgba($slate, .4);
 							}
 						}
@@ -321,7 +321,7 @@ fieldset {
 				&:focus {
 					~ .input-icon {
 						svg {
-							* {
+							g {
 								stroke: $slate;
 							}
 						}
@@ -394,27 +394,6 @@ div.input-border {
 			font-weight: 400;
 			font-size: 16px;
 		}
-		&:focus {
-			&::selection {
-				background: white;
-				color: $slate;
-			}
-			&::-moz-selection {
-				background: white;
-				color: $slate;
-			}
-		}
-		&.light {
-			color: white;
-			@include placeholder {
-				color: rgba(white, .2);
-			}
-			&:focus {
-				@include placeholder {
-					color: white;
-				}
-			}
-		}
 		+ label:not(:empty) {
 			position: absolute;
 			top: 0;
@@ -429,14 +408,9 @@ div.input-border {
 				left: 0;
 				width: 100%;
 				height: 2px;
-				background: rgba(white, .2);
 				border-radius: 1000px;
 				transform-origin: left center;
 				transition: all 300ms ease-in-out;
-			}
-			&:before {
-				background: white;
-				transform: scaleX(0);
 			}
 			.input-icon {
 				width: 24px;
@@ -445,33 +419,36 @@ div.input-border {
 				z-index: 3;
 				top: 13px;
 				left: 13px;
+				g {
+					stroke: lighten($slate, 15%);
+				}
 				* {
 					stroke-width: 8px;
-					stroke: lighten($slate, 15%);
 				}
 				.template {
 					stroke-dasharray: 220.3;
 				}
 				.success-1 {
-					stroke-dasharray: 19.8;
-					opacity: 0;
+					stroke-dasharray: 19.9;
+					transition: stroke-dashoffset 125ms ease-out, stroke 125ms ease-out;
 				}
 				.success-2 {
-					stroke-dasharray: 50.2;
-					opacity: 0;
+					stroke-dasharray: 50.3;
+					transition: stroke-dashoffset 250ms cubic-bezier(.17,.67,.78,1.37), stroke 125ms ease-out;
 				}
 				.error-1, .error-2 {
-					stroke: $crimson;
 					stroke-dasharray: 39.6;
-					opacity: 0;
+					transition: stroke-dashoffset 175ms ease-out, stroke 125ms ease-out;
 				}
 				.email {
 					transform-origin: center center;
 					stroke-dasharray: 365.6;
+					transition: stroke-dashoffset 500ms ease-out, transform 250ms ease-out, stroke 125ms ease-out;
 				}
 				.name {
 					transform-origin: center center;
 					stroke-dasharray: 365.6;
+					transition: stroke-dashoffset 500ms ease-out, transform 250ms ease-out, stroke 125ms ease-out;
 				}
 				&.email-icon {
 					.name {
@@ -508,7 +485,6 @@ div.input-border {
 						width: calc(100% + 2px);
 						height: 2px;
 						border-radius: 1000px;
-						background: white;
 					}
 				}
 				span:last-child {
@@ -520,6 +496,7 @@ div.input-border {
 				}
 			}
 			a {
+				opacity: 0;
 				transition: all 150ms ease-in-out;
 				transform-origin: center center;
 				display: block;
@@ -530,36 +507,18 @@ div.input-border {
 				top: 13px;
 				right: 13px;
 				cursor: pointer;
-				opacity: 0.75;
 				svg {
 					transform-origin: center center;
-					transform: rotate(45deg);
+					transform: rotate(-45deg);
 					display: block;
 					width: 100%;
 					height: 100%;
 					* {
 						stroke-width: 8px;
 					}
-					circle {
-						stroke: white;
-						fill: white;
-					}
-					path {
-						stroke: $slate;
-					}
 				}
 				&:hover, &:focus {
 					opacity: 1!important;
-				}
-				&:active {
-					svg {
-						circle {
-							fill: rgba(white, .2);
-						}
-						path {
-							stroke: white;
-						}
-					}
 				}
 			}
 			> div {
@@ -569,7 +528,6 @@ div.input-border {
 				left: 0;
 				width: 100%;
 				height: 100%;
-				background: rgba(white, .2);
 				border-radius: 2px;
 				transform: rotateX(90deg);
 				transition: all 300ms linear;
@@ -589,7 +547,6 @@ div.input-border {
 						height: 100%;
 						opacity: 0;
 						transform: scaleX(0);
-						background: white;
 					}
 					&:nth-child(1) {
 						top: 0;
@@ -634,22 +591,118 @@ div.input-border {
 				}
 			}
 		}
-		&:focus {
+		&.light {
+			color: white;
+			@include placeholder {
+				color: rgba(white, .2);
+			}
 			+ label:not(:empty) {
+				&:before, &:after {
+					background: rgba(white, .2);
+				}
+				&:before {
+					transform: scaleX(0);
+				}
+				.input {
+					span {
+						&:after {
+							background: white;
+						}
+					}
+				}
+				a {
+					svg {
+						circle {
+							stroke: white;
+							fill: white;
+						}
+						path {
+							stroke: $slate;
+						}
+					}
+					&:active {
+						svg {
+							circle {
+								fill: rgba(white, .2);
+							}
+							path {
+								stroke: white;
+							}
+						}
+					}
+				}
+				> div {
+					background: rgba(white, .2);
+					> div {
+						div:nth-child(1), div:nth-child(2) {
+							background: white;
+						}
+					}
+				}
+			}
+			&:hover {
+				+ label:not(:empty) {
+					.input-icon {
+						g {
+							stroke: rgba(white, .5);
+						}
+					}
+				}
+			}
+			&:focus, &.focus {
+				@include placeholder {
+					color: white;
+				}
+				&::selection {
+					background: white;
+					color: $slate;
+				}
+				&::-moz-selection {
+					background: white;
+					color: $slate;
+				}
+				+ label:not(:empty) {
+					.input-icon {
+						g {
+							stroke: white;
+						}
+					}
+				}
+			}
+		}
+		&:hover {
+			+ label:not(:empty) {
+				&:before {
+					transform: none;
+				}
+				a {
+					opacity: 0.75;
+					svg {
+						transform: none;
+					}
+				}
+			}
+		}
+		&:focus, &.focus {
+			+ label:not(:empty) {
+				&:before {
+					transform: none;
+				}
 				.label {
 					transform: translateY(-36px);
 					font-size: 12px;
 				}
-				.input-icon {
-					* {
-						stroke: white;
+				a {
+					opacity: 0.75;
+					svg {
+						transform: none;
 					}
 				}
 				> div {
 					transform: rotateX(0);
 					opacity: 1;
 					> div {
-						div:nth-child(2), div:nth-child(2) {
+						div:nth-child(1) {
 							opacity: 1;
 							transform: scaleX(1);
 						}
