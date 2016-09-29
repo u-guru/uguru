@@ -5436,12 +5436,14 @@ a[class*="-container"]:hover .map-enter {
   right: 9px;
   font-size: 16px;
   padding: 6px 20px; }
-.projector-account .projector-splash-container {
+.projector-account .projector-splash-container, .projector-account .desktop, .projector-account .mobile {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%; }
+.projector-account .desktop {
+  display: none; }
 
 .projector-account-form {
   -ms-box-orient: horizontal;
@@ -5510,6 +5512,11 @@ a[class*="-container"]:hover .map-enter {
     font-size: 18px;
     padding: 10px 30px; } }
 @media screen and (min-width: 768px) {
+  .projector-account .desktop {
+    display: block; }
+  .projector-account .mobile {
+    display: none; }
+
   .projector-account-form .projector-account-btn {
     -ms-box-orient: horizontal;
     display: -webkit-box;
