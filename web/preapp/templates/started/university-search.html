@@ -7,7 +7,7 @@
 				<h1>Search Universities</h1>
 				<a class="projector-splash-next icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/right-circle.html'"></a>
 			</header>
-			<!-- <div class="absolute top-0 left-0 full-xy flex-center"
+			<div class="absolute top-0 left-0 full-xy flex-center"
 				init-default
 				when-search-school-complete="p:[z-index:-1:delay-500, opacity:1:0:500:easeOutSine]:delay-2000">
 				<svg class="echo-loader" width="300px" height="300px" viewBox="0 0 300 300"
@@ -34,11 +34,10 @@
                         </text>
                     </g>
                 </svg>
-			</div> -->
+			</div>
 			<div class="absolute top-0 left-0 full-xy"
 				init-with="p:[op:0, z-index:-1]"
-				when-search-school-complete="p:[z-index:1, opacity:0:1:500:easeInSine]:delay-2500"
-				on-init="s:[search-school-complete:public]">
+				when-search-school-complete="p:[z-index:1, opacity:0:1:500:easeInSine]:delay-2500">
 				<div class="map absolute top-0 left-0 full-xy z-index-1">
 					<div class="full-xy" style="background: #40484b url('http://legato.travel/wp-content/uploads/2015/02/world-map-background-dark.jpg') center center / cover; background-blend-mode: screen;"></div>
 				</div>
@@ -68,10 +67,10 @@
 							init-default
 							when-search-school-complete="s:[university-card-init:public]:delay-2000">
 							<li init-default
-								when-school-select="p:[transform:translateY(50px):translateY(-20px):200:easeInExpo:^:2+0:a]"
-								when-school-2-select="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]"
-								when-school-3-select="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]"
-								when-school-4-select="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]">
+								when-school-select="p:[transform:translateY(50px):translateY(-20px):200:easeInExpo:^:2+0:a] | send:[school-exit:public]:delay-250"
+								when-school-2-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]"
+								when-school-3-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]"
+								when-school-4-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]">
 								<div class="card-container"
 									init-with="p:[tro:center center]"
 									when-school-select="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-100px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
@@ -116,10 +115,10 @@
 								</div>
 							</li>
 							<li init-default
-								when-school-2-select="p:[transform:translateY(150px):translateY(-20px):200:easeInExpo:^:2+0:a]"
-								when-school-select="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]"
-								when-school-3-select="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]"
-								when-school-4-select="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]">
+								when-school-2-select="p:[transform:translateY(150px):translateY(-20px):200:easeInExpo:^:2+0:a] | send:[school-2-exit:public]:delay-250"
+								when-school-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]"
+								when-school-3-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]:delay-150"
+								when-school-4-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]:delay-150">
 								<div class="card-container"
 									init-with="p:[tro:center center]"
 									when-school-2-select="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-200px) rotate(-70deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
@@ -164,10 +163,10 @@
 								</div>
 							</li>
 							<li init-default
-								when-school-3-select="p:[transform:translateY(150px):translateY(-50px):200:easeInExpo:^:2+0:a]"
-								when-school-select="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]"
-								when-school-2-select="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]"
-								when-school-4-select="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]">
+								when-school-3-select="p:[transform:translateY(150px):translateY(-50px):200:easeInExpo:^:2+0:a] | send:[school-3-exit:public]:delay-250"
+								when-school-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]:delay-150"
+								when-school-2-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]:delay-150"
+								when-school-4-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]:delay-300">
 								<div class="card-container"
 									init-with="p:[tro:center center]"
 									when-school-3-select="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-300px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
@@ -211,10 +210,10 @@
 								</div>
 							</li>
 							<li init-default
-								when-school-4-select="p:[transform:translateY(100px):translateY(-50px):200:easeInExpo:^:2+0:a]"
-								when-school-select="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]"
-								when-school-2-select="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:500:easeOutQuad]"
-								when-school-3-select="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:700:easeOutQuad]">
+								when-school-4-select="p:[transform:translateY(100px):translateY(-50px):200:easeInExpo:^:2+0:a]| send:[school-4-exit:public]:delay-250"
+								when-school-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]:delay-300"
+								when-school-2-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]:delay-300"
+								when-school-3-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]:delay-300">
 								<div class="card-container"
 									init-with="p:[tro:center center]"
 									when-school-4-select="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-600px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
