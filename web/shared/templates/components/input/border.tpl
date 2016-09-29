@@ -418,7 +418,7 @@
 	<div class="p30xy radius-2 bg-slate full-x" style="max-width:460px">
 		<!--  ng-if='activeType === "light-search"' -->
 		<div class="input-border">
-			<input class="input-border light" type="email" required placeholder=""
+			<input class="input-border light" type="search" required placeholder=""
 				init-default
 				on-valid="s:[input-valid:public]"
 				on-invalid="s:[input-invalid:public]"
@@ -433,7 +433,7 @@
 				        <circle cx="42.5" cy="42.5" r="28.5"></circle>
 					</g>
 				</svg>
-				<span class="label">Border light</span>
+				<span class="label">Border light search</span>
 				<span class="input"
 					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div>
@@ -458,7 +458,7 @@
 		<div class="input-border"
 			init-default
 			when-input-invalid="p:[transform:translateY(0px):translateY(10px):100:linear:^:6:a]">
-			<input class="input-border dark" type="email" required placeholder=""
+			<input class="input-border dark" type="search" required placeholder=""
 				init-default
 				on-valid="s:[input-valid:public]"
 				on-invalid="s:[input-invalid:public]"
@@ -473,7 +473,7 @@
 				        <circle cx="42.5" cy="42.5" r="28.5"></circle>
 					</g>
 				</svg>
-				<span class="label">Border light</span>
+				<span class="label">Border dark search</span>
 				<span class="input"
 					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div>
@@ -498,7 +498,7 @@
 		<div class="input-border large"
 			init-default
 			when-input-invalid="p:[transform:translateY(0px):translateY(10px):100:linear:^:6:a]">
-			<input class="input-border light" type="email" required placeholder=""
+			<input class="input-border light" type="search" required placeholder=""
 				init-default
 				on-valid="s:[input-valid:public]"
 				on-invalid="s:[input-invalid:public]"
@@ -513,7 +513,7 @@
 				        <circle cx="42.5" cy="42.5" r="28.5"></circle>
 					</g>
 				</svg>
-				<span class="label">Border light</span>
+				<span class="label">Border light large search</span>
 				<span class="input"
 					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div>
@@ -534,11 +534,11 @@
 	</div>
 
 	<div class="p30xy radius-2 bg-white full-x" style="max-width:860px">
-		<!-- ng-if='activeType === "large-light-search"' -->
+		<!-- ng-if='activeType === "large-dark-search"' -->
 		<div class="input-border large"
 			init-default
 			when-input-invalid="p:[transform:translateY(0px):translateY(10px):100:linear:^:6:a]">
-			<input class="input-border dark" type="email" required placeholder=""
+			<input class="input-border dark" type="search" required placeholder=""
 				init-default
 				on-valid="s:[input-valid:public]"
 				on-invalid="s:[input-invalid:public]"
@@ -553,7 +553,7 @@
 				        <circle cx="42.5" cy="42.5" r="28.5"></circle>
 					</g>
 				</svg>
-				<span class="label">Border light</span>
+				<span class="label">Border dark large search</span>
 				<span class="input"
 					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div>
