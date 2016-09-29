@@ -506,7 +506,6 @@ div.input-border {
 				cursor: pointer;
 				svg {
 					transform-origin: center center;
-					transform: rotate(-45deg);
 					display: block;
 					width: 100%;
 					height: 100%;
@@ -654,7 +653,7 @@ div.input-border {
 					}
 				}
 			}
-			&:focus, &.focus {
+			&:focus {
 				@include placeholder {
 					color: white;
 				}
@@ -741,7 +740,7 @@ div.input-border {
 					}
 				}
 			}
-			&:focus, &.focus {
+			&:focus {
 				@include placeholder {
 					color: $slate;
 				}
@@ -775,7 +774,7 @@ div.input-border {
 				}
 			}
 		}
-		&:focus, &.focus {
+		&:focus {
 			+ label:not(:empty) {
 				&:before {
 					transform: none;
@@ -786,9 +785,6 @@ div.input-border {
 				}
 				a {
 					opacity: 0.75;
-					svg {
-						transform: none;
-					}
 				}
 				> div {
 					transform: rotateX(0);
@@ -798,6 +794,50 @@ div.input-border {
 							opacity: 1;
 							transform: scaleX(1);
 						}
+					}
+				}
+			}
+		}
+	}
+	&.large {
+		min-height: 70px;
+		max-width: 800px;
+		input.input-border {
+			font-size: 32px;
+			padding: 15px 0 15px 70px;
+			+ label:not(:empty) {
+				.input-icon {
+					width: 48px;
+					height: 48px;
+					top: 11px;
+					left: 11px;
+					* {
+						stroke-width: 5px;
+					}
+				}
+				> span {
+					font-size: 32px;
+					padding-left: 70px;
+					padding-right: 70px;
+				}
+				a {
+					width: 36px;
+					height: 36px;
+					top: 17px;
+					right: 17px;
+					svg {
+						* {
+							stroke-width: 6px;
+						}
+					}
+				}
+			}
+			&:focus {
+				+ label:not(:empty) {
+					.label {
+						opacity: 0;
+						transform: translateY(-36px);
+						font-size: 12px;
 					}
 				}
 			}

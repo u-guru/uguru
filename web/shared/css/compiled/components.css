@@ -2309,7 +2309,6 @@ div.input-border {
         cursor: pointer; }
         div.input-border input.input-border + label:not(:empty) a svg {
           transform-origin: center center;
-          transform: rotate(-45deg);
           display: block;
           width: 100%;
           height: 100%; }
@@ -2408,21 +2407,21 @@ div.input-border {
           background: white; }
       div.input-border input.input-border.light:hover + label:not(:empty) .input-icon g {
         stroke: rgba(255, 255, 255, 0.5); }
-      div.input-border input.input-border.light:focus::-webkit-input-placeholder, div.input-border input.input-border.light.focus::-webkit-input-placeholder {
+      div.input-border input.input-border.light:focus::-webkit-input-placeholder {
         color: white; }
-      div.input-border input.input-border.light:focus:-moz-placeholder, div.input-border input.input-border.light.focus:-moz-placeholder {
+      div.input-border input.input-border.light:focus:-moz-placeholder {
         color: white; }
-      div.input-border input.input-border.light:focus::-moz-placeholder, div.input-border input.input-border.light.focus::-moz-placeholder {
+      div.input-border input.input-border.light:focus::-moz-placeholder {
         color: white; }
-      div.input-border input.input-border.light:focus:-ms-input-placeholder, div.input-border input.input-border.light.focus:-ms-input-placeholder {
+      div.input-border input.input-border.light:focus:-ms-input-placeholder {
         color: white; }
-      div.input-border input.input-border.light:focus::selection, div.input-border input.input-border.light.focus::selection {
+      div.input-border input.input-border.light:focus::selection {
         background: white;
         color: #40484B; }
-      div.input-border input.input-border.light:focus::-moz-selection, div.input-border input.input-border.light.focus::-moz-selection {
+      div.input-border input.input-border.light:focus::-moz-selection {
         background: white;
         color: #40484B; }
-      div.input-border input.input-border.light:focus + label:not(:empty) .input-icon g, div.input-border input.input-border.light.focus + label:not(:empty) .input-icon g {
+      div.input-border input.input-border.light:focus + label:not(:empty) .input-icon g {
         stroke: white; }
     div.input-border input.input-border.dark {
       color: #40484B; }
@@ -2459,21 +2458,21 @@ div.input-border {
           background: #40484B; }
       div.input-border input.input-border.dark:hover + label:not(:empty) .input-icon g {
         stroke: #637074; }
-      div.input-border input.input-border.dark:focus::-webkit-input-placeholder, div.input-border input.input-border.dark.focus::-webkit-input-placeholder {
+      div.input-border input.input-border.dark:focus::-webkit-input-placeholder {
         color: #40484B; }
-      div.input-border input.input-border.dark:focus:-moz-placeholder, div.input-border input.input-border.dark.focus:-moz-placeholder {
+      div.input-border input.input-border.dark:focus:-moz-placeholder {
         color: #40484B; }
-      div.input-border input.input-border.dark:focus::-moz-placeholder, div.input-border input.input-border.dark.focus::-moz-placeholder {
+      div.input-border input.input-border.dark:focus::-moz-placeholder {
         color: #40484B; }
-      div.input-border input.input-border.dark:focus:-ms-input-placeholder, div.input-border input.input-border.dark.focus:-ms-input-placeholder {
+      div.input-border input.input-border.dark:focus:-ms-input-placeholder {
         color: #40484B; }
-      div.input-border input.input-border.dark:focus::selection, div.input-border input.input-border.dark.focus::selection {
+      div.input-border input.input-border.dark:focus::selection {
         background: #40484B;
         color: white; }
-      div.input-border input.input-border.dark:focus::-moz-selection, div.input-border input.input-border.dark.focus::-moz-selection {
+      div.input-border input.input-border.dark:focus::-moz-selection {
         background: #40484B;
         color: white; }
-      div.input-border input.input-border.dark:focus + label:not(:empty) .input-icon g, div.input-border input.input-border.dark.focus + label:not(:empty) .input-icon g {
+      div.input-border input.input-border.dark:focus + label:not(:empty) .input-icon g {
         stroke: #40484B; }
     div.input-border input.input-border:hover + label:not(:empty):before {
       transform: none; }
@@ -2481,21 +2480,47 @@ div.input-border {
       opacity: 0.75; }
       div.input-border input.input-border:hover + label:not(:empty) a svg {
         transform: none; }
-    div.input-border input.input-border:focus + label:not(:empty):before, div.input-border input.input-border.focus + label:not(:empty):before {
+    div.input-border input.input-border:focus + label:not(:empty):before {
       transform: none; }
-    div.input-border input.input-border:focus + label:not(:empty) .label, div.input-border input.input-border.focus + label:not(:empty) .label {
+    div.input-border input.input-border:focus + label:not(:empty) .label {
       transform: translateY(-36px);
       font-size: 12px; }
-    div.input-border input.input-border:focus + label:not(:empty) a, div.input-border input.input-border.focus + label:not(:empty) a {
+    div.input-border input.input-border:focus + label:not(:empty) a {
       opacity: 0.75; }
-      div.input-border input.input-border:focus + label:not(:empty) a svg, div.input-border input.input-border.focus + label:not(:empty) a svg {
-        transform: none; }
-    div.input-border input.input-border:focus + label:not(:empty) > div, div.input-border input.input-border.focus + label:not(:empty) > div {
+    div.input-border input.input-border:focus + label:not(:empty) > div {
       transform: rotateX(0);
       opacity: 1; }
-      div.input-border input.input-border:focus + label:not(:empty) > div > div div:nth-child(1), div.input-border input.input-border.focus + label:not(:empty) > div > div div:nth-child(1) {
+      div.input-border input.input-border:focus + label:not(:empty) > div > div div:nth-child(1) {
         opacity: 1;
         transform: scaleX(1); }
+  div.input-border.large {
+    min-height: 70px;
+    max-width: 800px; }
+    div.input-border.large input.input-border {
+      font-size: 32px;
+      padding: 15px 0 15px 70px; }
+      div.input-border.large input.input-border + label:not(:empty) .input-icon {
+        width: 48px;
+        height: 48px;
+        top: 11px;
+        left: 11px; }
+        div.input-border.large input.input-border + label:not(:empty) .input-icon * {
+          stroke-width: 5px; }
+      div.input-border.large input.input-border + label:not(:empty) > span {
+        font-size: 32px;
+        padding-left: 70px;
+        padding-right: 70px; }
+      div.input-border.large input.input-border + label:not(:empty) a {
+        width: 36px;
+        height: 36px;
+        top: 17px;
+        right: 17px; }
+        div.input-border.large input.input-border + label:not(:empty) a svg * {
+          stroke-width: 6px; }
+      div.input-border.large input.input-border:focus + label:not(:empty) .label {
+        opacity: 0;
+        transform: translateY(-36px);
+        font-size: 12px; }
 
 fieldset.search-bar {
   border-radius: 1000px;
