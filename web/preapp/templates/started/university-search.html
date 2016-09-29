@@ -67,13 +67,13 @@
 							init-default
 							when-search-school-complete="s:[university-card-init:public]:delay-2000">
 							<li init-default
-								when-school-select="p:[transform:translateY(50px):translateY(-20px):200:easeInExpo:^:2+0:a] | send:[school-exit:public]:delay-250"
+								when-school-select="p:[transform:translateY(150px):translateY(-20px):200:easeInExpo:^:2+0:a] | send:[school-exit:public]:delay-250"
 								when-school-2-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]"
 								when-school-3-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]"
 								when-school-4-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]">
 								<div class="card-container"
 									init-with="p:[tro:center center]"
-									when-school-select="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-100px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
+									when-school-select="p:[transform:translateX(0px) rotate(60deg) scale(1):translateX(-100px) rotate(0deg) scale(1.5):350:easeInOutExpo easeInExpo easeInBack]">
 									<div class="university-card mini"
 										init-with="p-op"
 										when-university-card-init="a:[scoop-enter:set:(dur:800ms#func:linear):in:delay-200]">
