@@ -49,7 +49,7 @@
 				<span class="label">Border light</span>
 				<span class="input"
 					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
-				<div>
+				<div class="borders">
 					<div>
 						<div init-default
 							when-input-valid="p:[bg:#43cb9d]:delay-500"
@@ -153,7 +153,7 @@
 				<span class="label">Border dark</span>
 				<span class="input"
 					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
-				<div>
+				<div class="borders">
 					<div>
 						<div init-default
 							when-input-valid="p:[bg:#43cb9d]:delay-500"
@@ -257,7 +257,7 @@
 				<span class="label">Large border light</span>
 				<span class="input"
 					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
-				<div>
+				<div class="borders">
 					<div>
 						<div init-default
 							when-input-valid="p:[bg:#43cb9d]:delay-500"
@@ -361,7 +361,7 @@
 				<span class="label">Large border light</span>
 				<span class="input"
 					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
-				<div>
+				<div class="borders">
 					<div>
 						<div init-default
 							when-input-valid="p:[bg:#43cb9d]:delay-500"
@@ -436,7 +436,7 @@
 				<span class="label">Border light search</span>
 				<span class="input"
 					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
-				<div>
+				<div class="borders">
 					<div><div></div><div></div></div>
 					<div><div></div><div></div></div>
 					<div><div></div><div></div></div>
@@ -476,7 +476,7 @@
 				<span class="label">Border dark search</span>
 				<span class="input"
 					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
-				<div>
+				<div class="borders">
 					<div><div></div><div></div></div>
 					<div><div></div><div></div></div>
 					<div><div></div><div></div></div>
@@ -516,7 +516,7 @@
 				<span class="label">Border light large search</span>
 				<span class="input"
 					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
-				<div>
+				<div class="borders">
 					<div><div></div><div></div></div>
 					<div><div></div><div></div></div>
 					<div><div></div><div></div></div>
@@ -556,7 +556,7 @@
 				<span class="label">Border dark large search</span>
 				<span class="input"
 					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
-				<div>
+				<div class="borders">
 					<div><div></div><div></div></div>
 					<div><div></div><div></div></div>
 					<div><div></div><div></div></div>

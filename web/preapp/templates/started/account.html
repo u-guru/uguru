@@ -18,110 +18,306 @@
 				<form class="projector-account-form">
 					<ul class="projector-account-input">
 						<li>
-							<div class="input-border">
-								<input class="input-border light" type="email" required placeholder=""
+							<div class="input-border"
+								init-default
+								when-input-invalid="p:[transform:translateY(0px):translateY(10px):100:linear:^:6:a]">
+								<input class="input-border light" type="text" required placeholder=""
 									init-default
-									on-focus="p:[opacity:0.5, color:pink]"
-									on-blur="p:[opacity:0.25]"
-									on-click="s:[input-clicked:public]"/>
+									on-valid="s:[input-valid:public]"
+									on-invalid="s:[input-invalid:public]"
+									on-focus="s:[input-focus:public]"
+									on-blur="s:[input-blur:public]"
+									on-mouse-enter="s:[input-hover:public]"
+									on-mouse-leave="s:[input-leave:public]"/>
 								<label>
 									<svg class="input-icon email-icon" viewBox="0 0 100 100">
-										<g fill="none" stroke-linecap="round" stroke-linejoin="round">
-											<path d="M63.9709069,63.9709069 C60.39544,67.5463738 55.4559785,69.757846 50,69.757846 C39.088043,69.757846 30.242154,60.911957 30.242154,50 C30.242154,39.088043 39.088043,30.242154 50,30.242154 C55.4732289,30.242154 60.4266694,32.4676325 64.00478,36.063048 C66.4130625,38.4829778 68.1983075,41.5235021 69.0996581,44.9237641 C69.5290494,46.5436031 69.757846,48.2450824 69.757846,50 C69.757846,53.9347216 69.2262746,59.3417259 73.4417381,62.5812267 C77.4282262,65.6447644 82.9286479,65.1002753 85.6110917,62.5812267 C88.2935356,60.0621781 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="email"></path>
-											<path d="M24.18272,71.5721092 C24.4439592,69.3159316 24.9647013,67.1463112 25.7181261,65.1010462 C26.4973699,62.9856927 27.5255171,61.0033636 28.7728947,59.1958778 C31.3054434,55.5261424 34.7416842,52.5771306 38.83328,50.6988292 C35.65568,47.7151492 33.65696,43.4911492 33.65696,38.7986692 C33.65696,29.7871492 40.98848,22.4556292 50,22.4556292 C59.01152,22.4556292 66.34304,29.7871492 66.34304,38.7986692 C66.34304,43.4911492 64.34432,47.7151492 61.16672,50.6988292 C63.2270545,51.6446532 65.2045108,52.7827477 66.8690034,54.2723156 C70.4316406,57.4605484 70.9115219,61.4646492 75.1875,63.7439461 C78.8737891,65.708911 83.2367172,64.6296883 85.6110917,62.5812267 C88.397258,60.177497 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="name"></path>
-											<path d="M47,61 L81.5,24.5" class="success-2"></path>
-											<path d="M32.5,47.5 L47,61" class="success-1"></path>
-											<path d="M36,36 L64,64" class="error-1"></path>
-											<path d="M64,36 L36,64" class="error-2"></path>
+										<g fill="none" stroke-linecap="round" stroke-linejoin="round"
+											init-default
+											when-input-valid="s:[input-valid-stroke:public]"
+											when-input-invalid="s:[input-invalid-stroke:public]"
+											when-input-valid-stroke="p:[s:#43cb9d]:delay-125"
+											when-input-invalid-stroke="p:[s:#d3242c]:delay-125">
+											<path d="M63.9709069,63.9709069 C60.39544,67.5463738 55.4559785,69.757846 50,69.757846 C39.088043,69.757846 30.242154,60.911957 30.242154,50 C30.242154,39.088043 39.088043,30.242154 50,30.242154 C55.4732289,30.242154 60.4266694,32.4676325 64.00478,36.063048 C66.4130625,38.4829778 68.1983075,41.5235021 69.0996581,44.9237641 C69.5290494,46.5436031 69.757846,48.2450824 69.757846,50 C69.757846,53.9347216 69.2262746,59.3417259 73.4417381,62.5812267 C77.4282262,65.6447644 82.9286479,65.1002753 85.6110917,62.5812267 C88.2935356,60.0621781 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="email"
+												init-default
+												when-input-valid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"
+												when-input-invalid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"></path>
+											<path d="M24.18272,71.5721092 C24.4439592,69.3159316 24.9647013,67.1463112 25.7181261,65.1010462 C26.4973699,62.9856927 27.5255171,61.0033636 28.7728947,59.1958778 C31.3054434,55.5261424 34.7416842,52.5771306 38.83328,50.6988292 C35.65568,47.7151492 33.65696,43.4911492 33.65696,38.7986692 C33.65696,29.7871492 40.98848,22.4556292 50,22.4556292 C59.01152,22.4556292 66.34304,29.7871492 66.34304,38.7986692 C66.34304,43.4911492 64.34432,47.7151492 61.16672,50.6988292 C63.2270545,51.6446532 65.2045108,52.7827477 66.8690034,54.2723156 C70.4316406,57.4605484 70.9115219,61.4646492 75.1875,63.7439461 C78.8737891,65.708911 83.2367172,64.6296883 85.6110917,62.5812267 C88.397258,60.177497 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="name"
+												init-default
+												when-input-valid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"
+												when-input-invalid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"></path>
+											<path d="M47,61 L81.5,24.5" class="success-2"
+												init-with="p:[op:0, sdo:50.3]"
+												when-input-valid="p:[op:1, sdo:4]:delay-375"
+												when-input-invalid="p:[op:0:delay-250, sdo:50.3]"></path>
+											<path d="M32.5,47.5 L47,61" class="success-1"
+												init-with="p:[op:0, sdo:19.9]"
+												when-input-valid="p:[op:1, sdo:0]:delay-250"
+												when-input-invalid="p:[op:0:delay-125, sdo:19.8]:delay-250"></path>
+											<path d="M36,36 L64,64" class="error-1"
+												init-with="p:[op:0, sdo:39.6]"
+												when-input-invalid="p:[op:1, sdo:0]:delay-250"
+												when-input-valid="p:[op:0:delay-175, sdo:39.6]"></path>
+											<path d="M64,36 L36,64" class="error-2"
+												init-with="p:[op:0, sdo:39.6]"
+												when-input-invalid="p:[op:1, sdo:0]:delay-375"
+												when-input-valid="p:[op:0:delay-175, sdo:39.6]:delay-250"></path>
 										</g>
 									</svg>
 									<span class="label">Your Name</span>
 									<span class="input"
 										init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
-									<div>
-										<div><div></div><div></div></div>
-										<div><div></div><div></div></div>
-										<div><div></div><div></div></div>
-										<div><div></div><div></div></div>
+									<div class="borders">
+										<div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d]:delay-500"
+												when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d, tr:none, op:1]"
+												when-input-invalid="p:[bg:#d3242c, tr:none, op:1]"></div>
+										</div>
+										<div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d]:delay-500"
+												when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d, tr:none, op:1]"
+												when-input-invalid="p:[bg:#d3242c, tr:none, op:1]"></div>
+										</div>
+										<div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d]:delay-500"
+												when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d, tr:none, op:1]"
+												when-input-invalid="p:[bg:#d3242c, tr:none, op:1]"></div>
+										</div>
+										<div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d]:delay-500"
+												when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d, tr:none, op:1]"
+												when-input-invalid="p:[bg:#d3242c, tr:none, op:1]"></div>
+										</div>
 									</div>
-									<a init-with="p-op">
+									<a>
 										<svg viewBox="0 0 100 100">
-											<g fill="none" stroke-linecap="round" stroke-linejoin="round">
-												<circle cx="50" cy="50" r="36"></circle>
-												<path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
-											</g>
+											<circle cx="50" cy="50" r="36"
+												init-default
+												when-input-valid="p:[s:#43cb9d, f:#43cb9d]:delay-500"
+												when-input-invalid="p:[s:#d3242c, f:#d3242c]:delay-500"></circle>
+											<path d="M62.7279221,37.2720779 L37.2720779,62.7279221"
+												init-default
+												when-input-valid="p:[s:white]:delay-500"
+												when-input-invalid="p:[s:white]:delay-500"></path>
+											<path d="M37.2720779,37.2720779 L62.7279221,62.7279221"
+												init-default
+												when-input-valid="p:[s:white]:delay-500"
+												when-input-invalid="p:[s:white]:delay-500"></path>
 										</svg>
 									</a>
 								</label>
 							</div>
 						</li>
 						<li>
-							<div class="input-border">
+							<div class="input-border"
+								init-default
+								when-input-invalid="p:[transform:translateY(0px):translateY(10px):100:linear:^:6:a]">
 								<input class="input-border light" type="email" required placeholder=""
 									init-default
-									on-click="s:[input-clicked:public]"/>
+									on-valid="s:[input-valid:public]"
+									on-invalid="s:[input-invalid:public]"
+									on-focus="s:[input-focus:public]"
+									on-blur="s:[input-blur:public]"
+									on-mouse-enter="s:[input-hover:public]"
+									on-mouse-leave="s:[input-leave:public]"/>
 								<label>
 									<svg class="input-icon email-icon" viewBox="0 0 100 100">
-										<g fill="none" stroke-linecap="round" stroke-linejoin="round">
-											<path d="M63.9709069,63.9709069 C60.39544,67.5463738 55.4559785,69.757846 50,69.757846 C39.088043,69.757846 30.242154,60.911957 30.242154,50 C30.242154,39.088043 39.088043,30.242154 50,30.242154 C55.4732289,30.242154 60.4266694,32.4676325 64.00478,36.063048 C66.4130625,38.4829778 68.1983075,41.5235021 69.0996581,44.9237641 C69.5290494,46.5436031 69.757846,48.2450824 69.757846,50 C69.757846,53.9347216 69.2262746,59.3417259 73.4417381,62.5812267 C77.4282262,65.6447644 82.9286479,65.1002753 85.6110917,62.5812267 C88.2935356,60.0621781 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="email"></path>
-											<path d="M24.18272,71.5721092 C24.4439592,69.3159316 24.9647013,67.1463112 25.7181261,65.1010462 C26.4973699,62.9856927 27.5255171,61.0033636 28.7728947,59.1958778 C31.3054434,55.5261424 34.7416842,52.5771306 38.83328,50.6988292 C35.65568,47.7151492 33.65696,43.4911492 33.65696,38.7986692 C33.65696,29.7871492 40.98848,22.4556292 50,22.4556292 C59.01152,22.4556292 66.34304,29.7871492 66.34304,38.7986692 C66.34304,43.4911492 64.34432,47.7151492 61.16672,50.6988292 C63.2270545,51.6446532 65.2045108,52.7827477 66.8690034,54.2723156 C70.4316406,57.4605484 70.9115219,61.4646492 75.1875,63.7439461 C78.8737891,65.708911 83.2367172,64.6296883 85.6110917,62.5812267 C88.397258,60.177497 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="name"></path>
-											<path d="M47,61 L81.5,24.5" class="success-2"></path>
-											<path d="M32.5,47.5 L47,61" class="success-1"></path>
-											<path d="M36,36 L64,64" class="error-1"></path>
-											<path d="M64,36 L36,64" class="error-2"></path>
+										<g fill="none" stroke-linecap="round" stroke-linejoin="round"
+											init-default
+											when-input-valid="s:[input-valid-stroke:public]"
+											when-input-invalid="s:[input-invalid-stroke:public]"
+											when-input-valid-stroke="p:[s:#43cb9d]:delay-125"
+											when-input-invalid-stroke="p:[s:#d3242c]:delay-125">
+											<path d="M63.9709069,63.9709069 C60.39544,67.5463738 55.4559785,69.757846 50,69.757846 C39.088043,69.757846 30.242154,60.911957 30.242154,50 C30.242154,39.088043 39.088043,30.242154 50,30.242154 C55.4732289,30.242154 60.4266694,32.4676325 64.00478,36.063048 C66.4130625,38.4829778 68.1983075,41.5235021 69.0996581,44.9237641 C69.5290494,46.5436031 69.757846,48.2450824 69.757846,50 C69.757846,53.9347216 69.2262746,59.3417259 73.4417381,62.5812267 C77.4282262,65.6447644 82.9286479,65.1002753 85.6110917,62.5812267 C88.2935356,60.0621781 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="email"
+												init-default
+												when-input-valid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"
+												when-input-invalid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"></path>
+											<path d="M24.18272,71.5721092 C24.4439592,69.3159316 24.9647013,67.1463112 25.7181261,65.1010462 C26.4973699,62.9856927 27.5255171,61.0033636 28.7728947,59.1958778 C31.3054434,55.5261424 34.7416842,52.5771306 38.83328,50.6988292 C35.65568,47.7151492 33.65696,43.4911492 33.65696,38.7986692 C33.65696,29.7871492 40.98848,22.4556292 50,22.4556292 C59.01152,22.4556292 66.34304,29.7871492 66.34304,38.7986692 C66.34304,43.4911492 64.34432,47.7151492 61.16672,50.6988292 C63.2270545,51.6446532 65.2045108,52.7827477 66.8690034,54.2723156 C70.4316406,57.4605484 70.9115219,61.4646492 75.1875,63.7439461 C78.8737891,65.708911 83.2367172,64.6296883 85.6110917,62.5812267 C88.397258,60.177497 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="name"
+												init-default
+												when-input-valid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"
+												when-input-invalid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"></path>
+											<path d="M47,61 L81.5,24.5" class="success-2"
+												init-with="p:[op:0, sdo:50.3]"
+												when-input-valid="p:[op:1, sdo:4]:delay-375"
+												when-input-invalid="p:[op:0:delay-250, sdo:50.3]"></path>
+											<path d="M32.5,47.5 L47,61" class="success-1"
+												init-with="p:[op:0, sdo:19.9]"
+												when-input-valid="p:[op:1, sdo:0]:delay-250"
+												when-input-invalid="p:[op:0:delay-125, sdo:19.8]:delay-250"></path>
+											<path d="M36,36 L64,64" class="error-1"
+												init-with="p:[op:0, sdo:39.6]"
+												when-input-invalid="p:[op:1, sdo:0]:delay-250"
+												when-input-valid="p:[op:0:delay-175, sdo:39.6]"></path>
+											<path d="M64,36 L36,64" class="error-2"
+												init-with="p:[op:0, sdo:39.6]"
+												when-input-invalid="p:[op:1, sdo:0]:delay-375"
+												when-input-valid="p:[op:0:delay-175, sdo:39.6]:delay-250"></path>
 										</g>
 									</svg>
 									<span class="label">Your Email</span>
 									<span class="input"
 										init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
-									<div>
-										<div><div></div><div></div></div>
-										<div><div></div><div></div></div>
-										<div><div></div><div></div></div>
-										<div><div></div><div></div></div>
+									<div class="borders">
+										<div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d]:delay-500"
+												when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d, tr:none, op:1]"
+												when-input-invalid="p:[bg:#d3242c, tr:none, op:1]"></div>
+										</div>
+										<div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d]:delay-500"
+												when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d, tr:none, op:1]"
+												when-input-invalid="p:[bg:#d3242c, tr:none, op:1]"></div>
+										</div>
+										<div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d]:delay-500"
+												when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d, tr:none, op:1]"
+												when-input-invalid="p:[bg:#d3242c, tr:none, op:1]"></div>
+										</div>
+										<div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d]:delay-500"
+												when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d, tr:none, op:1]"
+												when-input-invalid="p:[bg:#d3242c, tr:none, op:1]"></div>
+										</div>
 									</div>
-									<a init-with="p-op">
+									<a>
 										<svg viewBox="0 0 100 100">
-											<g fill="none" stroke-linecap="round" stroke-linejoin="round">
-												<circle cx="50" cy="50" r="36"></circle>
-												<path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
-											</g>
+											<circle cx="50" cy="50" r="36"
+												init-default
+												when-input-valid="p:[s:#43cb9d, f:#43cb9d]:delay-500"
+												when-input-invalid="p:[s:#d3242c, f:#d3242c]:delay-500"></circle>
+											<path d="M62.7279221,37.2720779 L37.2720779,62.7279221"
+												init-default
+												when-input-valid="p:[s:white]:delay-500"
+												when-input-invalid="p:[s:white]:delay-500"></path>
+											<path d="M37.2720779,37.2720779 L62.7279221,62.7279221"
+												init-default
+												when-input-valid="p:[s:white]:delay-500"
+												when-input-invalid="p:[s:white]:delay-500"></path>
 										</svg>
 									</a>
 								</label>
 							</div>
 						</li>
 						<li>
-							<div class="input-border">
-								<input class="input-border light" type="email" required placeholder=""
+							<div class="input-border"
+								init-default
+								when-input-invalid="p:[transform:translateY(0px):translateY(10px):100:linear:^:6:a]">
+								<input class="input-border light" type="password" required placeholder=""
 									init-default
-									on-click="s:[input-clicked:public]"/>
+									on-valid="s:[input-valid:public]"
+									on-invalid="s:[input-invalid:public]"
+									on-focus="s:[input-focus:public]"
+									on-blur="s:[input-blur:public]"
+									on-mouse-enter="s:[input-hover:public]"
+									on-mouse-leave="s:[input-leave:public]"/>
 								<label>
 									<svg class="input-icon email-icon" viewBox="0 0 100 100">
-										<g fill="none" stroke-linecap="round" stroke-linejoin="round">
-											<path d="M63.9709069,63.9709069 C60.39544,67.5463738 55.4559785,69.757846 50,69.757846 C39.088043,69.757846 30.242154,60.911957 30.242154,50 C30.242154,39.088043 39.088043,30.242154 50,30.242154 C55.4732289,30.242154 60.4266694,32.4676325 64.00478,36.063048 C66.4130625,38.4829778 68.1983075,41.5235021 69.0996581,44.9237641 C69.5290494,46.5436031 69.757846,48.2450824 69.757846,50 C69.757846,53.9347216 69.2262746,59.3417259 73.4417381,62.5812267 C77.4282262,65.6447644 82.9286479,65.1002753 85.6110917,62.5812267 C88.2935356,60.0621781 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="email"></path>
-											<path d="M24.18272,71.5721092 C24.4439592,69.3159316 24.9647013,67.1463112 25.7181261,65.1010462 C26.4973699,62.9856927 27.5255171,61.0033636 28.7728947,59.1958778 C31.3054434,55.5261424 34.7416842,52.5771306 38.83328,50.6988292 C35.65568,47.7151492 33.65696,43.4911492 33.65696,38.7986692 C33.65696,29.7871492 40.98848,22.4556292 50,22.4556292 C59.01152,22.4556292 66.34304,29.7871492 66.34304,38.7986692 C66.34304,43.4911492 64.34432,47.7151492 61.16672,50.6988292 C63.2270545,51.6446532 65.2045108,52.7827477 66.8690034,54.2723156 C70.4316406,57.4605484 70.9115219,61.4646492 75.1875,63.7439461 C78.8737891,65.708911 83.2367172,64.6296883 85.6110917,62.5812267 C88.397258,60.177497 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="name"></path>
-											<path d="M47,61 L81.5,24.5" class="success-2"></path>
-											<path d="M32.5,47.5 L47,61" class="success-1"></path>
-											<path d="M36,36 L64,64" class="error-1"></path>
-											<path d="M64,36 L36,64" class="error-2"></path>
+										<g fill="none" stroke-linecap="round" stroke-linejoin="round"
+											init-default
+											when-input-valid="s:[input-valid-stroke:public]"
+											when-input-invalid="s:[input-invalid-stroke:public]"
+											when-input-valid-stroke="p:[s:#43cb9d]:delay-125"
+											when-input-invalid-stroke="p:[s:#d3242c]:delay-125">
+											<path d="M63.9709069,63.9709069 C60.39544,67.5463738 55.4559785,69.757846 50,69.757846 C39.088043,69.757846 30.242154,60.911957 30.242154,50 C30.242154,39.088043 39.088043,30.242154 50,30.242154 C55.4732289,30.242154 60.4266694,32.4676325 64.00478,36.063048 C66.4130625,38.4829778 68.1983075,41.5235021 69.0996581,44.9237641 C69.5290494,46.5436031 69.757846,48.2450824 69.757846,50 C69.757846,53.9347216 69.2262746,59.3417259 73.4417381,62.5812267 C77.4282262,65.6447644 82.9286479,65.1002753 85.6110917,62.5812267 C88.2935356,60.0621781 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="email"
+												init-default
+												when-input-valid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"
+												when-input-invalid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"></path>
+											<path d="M24.18272,71.5721092 C24.4439592,69.3159316 24.9647013,67.1463112 25.7181261,65.1010462 C26.4973699,62.9856927 27.5255171,61.0033636 28.7728947,59.1958778 C31.3054434,55.5261424 34.7416842,52.5771306 38.83328,50.6988292 C35.65568,47.7151492 33.65696,43.4911492 33.65696,38.7986692 C33.65696,29.7871492 40.98848,22.4556292 50,22.4556292 C59.01152,22.4556292 66.34304,29.7871492 66.34304,38.7986692 C66.34304,43.4911492 64.34432,47.7151492 61.16672,50.6988292 C63.2270545,51.6446532 65.2045108,52.7827477 66.8690034,54.2723156 C70.4316406,57.4605484 70.9115219,61.4646492 75.1875,63.7439461 C78.8737891,65.708911 83.2367172,64.6296883 85.6110917,62.5812267 C88.397258,60.177497 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="name"
+												init-default
+												when-input-valid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"
+												when-input-invalid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"></path>
+											<path d="M47,61 L81.5,24.5" class="success-2"
+												init-with="p:[op:0, sdo:50.3]"
+												when-input-valid="p:[op:1, sdo:4]:delay-375"
+												when-input-invalid="p:[op:0:delay-250, sdo:50.3]"></path>
+											<path d="M32.5,47.5 L47,61" class="success-1"
+												init-with="p:[op:0, sdo:19.9]"
+												when-input-valid="p:[op:1, sdo:0]:delay-250"
+												when-input-invalid="p:[op:0:delay-125, sdo:19.8]:delay-250"></path>
+											<path d="M36,36 L64,64" class="error-1"
+												init-with="p:[op:0, sdo:39.6]"
+												when-input-invalid="p:[op:1, sdo:0]:delay-250"
+												when-input-valid="p:[op:0:delay-175, sdo:39.6]"></path>
+											<path d="M64,36 L36,64" class="error-2"
+												init-with="p:[op:0, sdo:39.6]"
+												when-input-invalid="p:[op:1, sdo:0]:delay-375"
+												when-input-valid="p:[op:0:delay-175, sdo:39.6]:delay-250"></path>
 										</g>
 									</svg>
 									<span class="label">Your Password</span>
 									<span class="input"
 										init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
-									<div>
-										<div><div></div><div></div></div>
-										<div><div></div><div></div></div>
-										<div><div></div><div></div></div>
-										<div><div></div><div></div></div>
+									<div class="borders">
+										<div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d]:delay-500"
+												when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d, tr:none, op:1]"
+												when-input-invalid="p:[bg:#d3242c, tr:none, op:1]"></div>
+										</div>
+										<div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d]:delay-500"
+												when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d, tr:none, op:1]"
+												when-input-invalid="p:[bg:#d3242c, tr:none, op:1]"></div>
+										</div>
+										<div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d]:delay-500"
+												when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d, tr:none, op:1]"
+												when-input-invalid="p:[bg:#d3242c, tr:none, op:1]"></div>
+										</div>
+										<div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d]:delay-500"
+												when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d, tr:none, op:1]"
+												when-input-invalid="p:[bg:#d3242c, tr:none, op:1]"></div>
+										</div>
 									</div>
-									<a init-with="p-op">
+									<a>
 										<svg viewBox="0 0 100 100">
-											<g fill="none" stroke-linecap="round" stroke-linejoin="round">
-												<circle cx="50" cy="50" r="36"></circle>
-												<path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
-											</g>
+											<circle cx="50" cy="50" r="36"
+												init-default
+												when-input-valid="p:[s:#43cb9d, f:#43cb9d]:delay-500"
+												when-input-invalid="p:[s:#d3242c, f:#d3242c]:delay-500"></circle>
+											<path d="M62.7279221,37.2720779 L37.2720779,62.7279221"
+												init-default
+												when-input-valid="p:[s:white]:delay-500"
+												when-input-invalid="p:[s:white]:delay-500"></path>
+											<path d="M37.2720779,37.2720779 L62.7279221,62.7279221"
+												init-default
+												when-input-valid="p:[s:white]:delay-500"
+												when-input-invalid="p:[s:white]:delay-500"></path>
 										</svg>
 									</a>
 								</label>
@@ -130,10 +326,14 @@
 					</ul>
 					<ul class="projector-account-btn">
 						<li>
-							<button class="btn-ghost-round">Sign Up</button>
+							<button class="btn-ghost-round"
+								init-default
+								on-click="s:[input-valid:public]">Sign Up</button>
 						</li>
 						<li>
-							<button class="btn-ghost-round fb">Login with Facebook</button>
+							<button class="btn-ghost-round fb"
+								init-default
+								on-click="s:[input-invalid:public]">Login with Facebook</button>
 						</li>
 					</ul>
 				</form>
@@ -154,84 +354,220 @@
 				<form class="projector-account-form">
 					<ul class="projector-account-input">
 						<li>
-							<div class="input-border">
+							<div class="input-border"
+								init-default
+								when-input-invalid="p:[transform:translateY(0px):translateY(10px):100:linear:^:6:a]">
 								<input class="input-border light" type="email" required placeholder=""
 									init-default
-									on-click="s:[input-clicked:public]"/>
+									on-valid="s:[input-valid:public]"
+									on-invalid="s:[input-invalid:public]"
+									on-focus="s:[input-focus:public]"
+									on-blur="s:[input-blur:public]"
+									on-mouse-enter="s:[input-hover:public]"
+									on-mouse-leave="s:[input-leave:public]"/>
 								<label>
 									<svg class="input-icon email-icon" viewBox="0 0 100 100">
-										<g fill="none" stroke-linecap="round" stroke-linejoin="round">
-											<path d="M63.9709069,63.9709069 C60.39544,67.5463738 55.4559785,69.757846 50,69.757846 C39.088043,69.757846 30.242154,60.911957 30.242154,50 C30.242154,39.088043 39.088043,30.242154 50,30.242154 C55.4732289,30.242154 60.4266694,32.4676325 64.00478,36.063048 C66.4130625,38.4829778 68.1983075,41.5235021 69.0996581,44.9237641 C69.5290494,46.5436031 69.757846,48.2450824 69.757846,50 C69.757846,53.9347216 69.2262746,59.3417259 73.4417381,62.5812267 C77.4282262,65.6447644 82.9286479,65.1002753 85.6110917,62.5812267 C88.2935356,60.0621781 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="email"></path>
-											<path d="M24.18272,71.5721092 C24.4439592,69.3159316 24.9647013,67.1463112 25.7181261,65.1010462 C26.4973699,62.9856927 27.5255171,61.0033636 28.7728947,59.1958778 C31.3054434,55.5261424 34.7416842,52.5771306 38.83328,50.6988292 C35.65568,47.7151492 33.65696,43.4911492 33.65696,38.7986692 C33.65696,29.7871492 40.98848,22.4556292 50,22.4556292 C59.01152,22.4556292 66.34304,29.7871492 66.34304,38.7986692 C66.34304,43.4911492 64.34432,47.7151492 61.16672,50.6988292 C63.2270545,51.6446532 65.2045108,52.7827477 66.8690034,54.2723156 C70.4316406,57.4605484 70.9115219,61.4646492 75.1875,63.7439461 C78.8737891,65.708911 83.2367172,64.6296883 85.6110917,62.5812267 C88.397258,60.177497 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="name"></path>
-											<path d="M47,61 L81.5,24.5" class="success-2"></path>
-											<path d="M32.5,47.5 L47,61" class="success-1"></path>
-											<path d="M36,36 L64,64" class="error-1"></path>
-											<path d="M64,36 L36,64" class="error-2"></path>
-										</g>
-									</svg>
-									<span class="label">Your Name</span>
-									<span class="input"
-										init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
-									<div>
-										<div><div></div><div></div></div>
-										<div><div></div><div></div></div>
-										<div><div></div><div></div></div>
-										<div><div></div><div></div></div>
-									</div>
-									<a init-with="p-op">
-										<svg viewBox="0 0 100 100">
-											<g fill="none" stroke-linecap="round" stroke-linejoin="round">
-												<circle cx="50" cy="50" r="36"></circle>
-												<path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
-											</g>
-										</svg>
-									</a>
-								</label>
-							</div>
-						</li>
-						<li>
-							<div class="input-border">
-								<input class="input-border light" type="email" required placeholder=""
-									init-default
-									on-click="s:[input-clicked:public]"/>
-								<label>
-									<svg class="input-icon email-icon" viewBox="0 0 100 100">
-										<g fill="none" stroke-linecap="round" stroke-linejoin="round">
-											<path d="M63.9709069,63.9709069 C60.39544,67.5463738 55.4559785,69.757846 50,69.757846 C39.088043,69.757846 30.242154,60.911957 30.242154,50 C30.242154,39.088043 39.088043,30.242154 50,30.242154 C55.4732289,30.242154 60.4266694,32.4676325 64.00478,36.063048 C66.4130625,38.4829778 68.1983075,41.5235021 69.0996581,44.9237641 C69.5290494,46.5436031 69.757846,48.2450824 69.757846,50 C69.757846,53.9347216 69.2262746,59.3417259 73.4417381,62.5812267 C77.4282262,65.6447644 82.9286479,65.1002753 85.6110917,62.5812267 C88.2935356,60.0621781 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="email"></path>
-											<path d="M24.18272,71.5721092 C24.4439592,69.3159316 24.9647013,67.1463112 25.7181261,65.1010462 C26.4973699,62.9856927 27.5255171,61.0033636 28.7728947,59.1958778 C31.3054434,55.5261424 34.7416842,52.5771306 38.83328,50.6988292 C35.65568,47.7151492 33.65696,43.4911492 33.65696,38.7986692 C33.65696,29.7871492 40.98848,22.4556292 50,22.4556292 C59.01152,22.4556292 66.34304,29.7871492 66.34304,38.7986692 C66.34304,43.4911492 64.34432,47.7151492 61.16672,50.6988292 C63.2270545,51.6446532 65.2045108,52.7827477 66.8690034,54.2723156 C70.4316406,57.4605484 70.9115219,61.4646492 75.1875,63.7439461 C78.8737891,65.708911 83.2367172,64.6296883 85.6110917,62.5812267 C88.397258,60.177497 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="name"></path>
-											<path d="M47,61 L81.5,24.5" class="success-2"></path>
-											<path d="M32.5,47.5 L47,61" class="success-1"></path>
-											<path d="M36,36 L64,64" class="error-1"></path>
-											<path d="M64,36 L36,64" class="error-2"></path>
+										<g fill="none" stroke-linecap="round" stroke-linejoin="round"
+											init-default
+											when-input-valid="s:[input-valid-stroke:public]"
+											when-input-invalid="s:[input-invalid-stroke:public]"
+											when-input-valid-stroke="p:[s:#43cb9d]:delay-125"
+											when-input-invalid-stroke="p:[s:#d3242c]:delay-125">
+											<path d="M63.9709069,63.9709069 C60.39544,67.5463738 55.4559785,69.757846 50,69.757846 C39.088043,69.757846 30.242154,60.911957 30.242154,50 C30.242154,39.088043 39.088043,30.242154 50,30.242154 C55.4732289,30.242154 60.4266694,32.4676325 64.00478,36.063048 C66.4130625,38.4829778 68.1983075,41.5235021 69.0996581,44.9237641 C69.5290494,46.5436031 69.757846,48.2450824 69.757846,50 C69.757846,53.9347216 69.2262746,59.3417259 73.4417381,62.5812267 C77.4282262,65.6447644 82.9286479,65.1002753 85.6110917,62.5812267 C88.2935356,60.0621781 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="email"
+												init-default
+												when-input-valid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"
+												when-input-invalid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"></path>
+											<path d="M24.18272,71.5721092 C24.4439592,69.3159316 24.9647013,67.1463112 25.7181261,65.1010462 C26.4973699,62.9856927 27.5255171,61.0033636 28.7728947,59.1958778 C31.3054434,55.5261424 34.7416842,52.5771306 38.83328,50.6988292 C35.65568,47.7151492 33.65696,43.4911492 33.65696,38.7986692 C33.65696,29.7871492 40.98848,22.4556292 50,22.4556292 C59.01152,22.4556292 66.34304,29.7871492 66.34304,38.7986692 C66.34304,43.4911492 64.34432,47.7151492 61.16672,50.6988292 C63.2270545,51.6446532 65.2045108,52.7827477 66.8690034,54.2723156 C70.4316406,57.4605484 70.9115219,61.4646492 75.1875,63.7439461 C78.8737891,65.708911 83.2367172,64.6296883 85.6110917,62.5812267 C88.397258,60.177497 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="name"
+												init-default
+												when-input-valid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"
+												when-input-invalid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"></path>
+											<path d="M47,61 L81.5,24.5" class="success-2"
+												init-with="p:[op:0, sdo:50.3]"
+												when-input-valid="p:[op:1, sdo:4]:delay-375"
+												when-input-invalid="p:[op:0:delay-250, sdo:50.3]"></path>
+											<path d="M32.5,47.5 L47,61" class="success-1"
+												init-with="p:[op:0, sdo:19.9]"
+												when-input-valid="p:[op:1, sdo:0]:delay-250"
+												when-input-invalid="p:[op:0:delay-125, sdo:19.8]:delay-250"></path>
+											<path d="M36,36 L64,64" class="error-1"
+												init-with="p:[op:0, sdo:39.6]"
+												when-input-invalid="p:[op:1, sdo:0]:delay-250"
+												when-input-valid="p:[op:0:delay-175, sdo:39.6]"></path>
+											<path d="M64,36 L36,64" class="error-2"
+												init-with="p:[op:0, sdo:39.6]"
+												when-input-invalid="p:[op:1, sdo:0]:delay-375"
+												when-input-valid="p:[op:0:delay-175, sdo:39.6]:delay-250"></path>
 										</g>
 									</svg>
 									<span class="label">Your Email</span>
 									<span class="input"
 										init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
-									<div>
-										<div><div></div><div></div></div>
-										<div><div></div><div></div></div>
-										<div><div></div><div></div></div>
-										<div><div></div><div></div></div>
+									<div class="borders">
+										<div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d]:delay-500"
+												when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d, tr:none, op:1]"
+												when-input-invalid="p:[bg:#d3242c, tr:none, op:1]"></div>
+										</div>
+										<div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d]:delay-500"
+												when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d, tr:none, op:1]"
+												when-input-invalid="p:[bg:#d3242c, tr:none, op:1]"></div>
+										</div>
+										<div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d]:delay-500"
+												when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d, tr:none, op:1]"
+												when-input-invalid="p:[bg:#d3242c, tr:none, op:1]"></div>
+										</div>
+										<div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d]:delay-500"
+												when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+											<div init-default
+												when-input-valid="p:[bg:#43cb9d, tr:none, op:1]"
+												when-input-invalid="p:[bg:#d3242c, tr:none, op:1]"></div>
+										</div>
 									</div>
-									<a init-with="p-op">
+									<a>
 										<svg viewBox="0 0 100 100">
-											<g fill="none" stroke-linecap="round" stroke-linejoin="round">
-												<circle cx="50" cy="50" r="36"></circle>
-												<path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
-											</g>
+											<circle cx="50" cy="50" r="36"
+												init-default
+												when-input-valid="p:[s:#43cb9d, f:#43cb9d]:delay-500"
+												when-input-invalid="p:[s:#d3242c, f:#d3242c]:delay-500"></circle>
+											<path d="M62.7279221,37.2720779 L37.2720779,62.7279221"
+												init-default
+												when-input-valid="p:[s:white]:delay-500"
+												when-input-invalid="p:[s:white]:delay-500"></path>
+											<path d="M37.2720779,37.2720779 L62.7279221,62.7279221"
+												init-default
+												when-input-valid="p:[s:white]:delay-500"
+												when-input-invalid="p:[s:white]:delay-500"></path>
 										</svg>
 									</a>
 								</label>
 							</div>
 						</li>
+							<li>
+								<div class="input-border"
+									init-default
+									when-input-invalid="p:[transform:translateY(0px):translateY(10px):100:linear:^:6:a]">
+									<input class="input-border light" type="password" required placeholder=""
+										init-default
+										on-valid="s:[input-valid:public]"
+										on-invalid="s:[input-invalid:public]"
+										on-focus="s:[input-focus:public]"
+										on-blur="s:[input-blur:public]"
+										on-mouse-enter="s:[input-hover:public]"
+										on-mouse-leave="s:[input-leave:public]"/>
+									<label>
+										<svg class="input-icon email-icon" viewBox="0 0 100 100">
+											<g fill="none" stroke-linecap="round" stroke-linejoin="round"
+												init-default
+												when-input-valid="s:[input-valid-stroke:public]"
+												when-input-invalid="s:[input-invalid-stroke:public]"
+												when-input-valid-stroke="p:[s:#43cb9d]:delay-125"
+												when-input-invalid-stroke="p:[s:#d3242c]:delay-125">
+												<path d="M63.9709069,63.9709069 C60.39544,67.5463738 55.4559785,69.757846 50,69.757846 C39.088043,69.757846 30.242154,60.911957 30.242154,50 C30.242154,39.088043 39.088043,30.242154 50,30.242154 C55.4732289,30.242154 60.4266694,32.4676325 64.00478,36.063048 C66.4130625,38.4829778 68.1983075,41.5235021 69.0996581,44.9237641 C69.5290494,46.5436031 69.757846,48.2450824 69.757846,50 C69.757846,53.9347216 69.2262746,59.3417259 73.4417381,62.5812267 C77.4282262,65.6447644 82.9286479,65.1002753 85.6110917,62.5812267 C88.2935356,60.0621781 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="email"
+													init-default
+													when-input-valid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"
+													when-input-invalid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"></path>
+												<path d="M24.18272,71.5721092 C24.4439592,69.3159316 24.9647013,67.1463112 25.7181261,65.1010462 C26.4973699,62.9856927 27.5255171,61.0033636 28.7728947,59.1958778 C31.3054434,55.5261424 34.7416842,52.5771306 38.83328,50.6988292 C35.65568,47.7151492 33.65696,43.4911492 33.65696,38.7986692 C33.65696,29.7871492 40.98848,22.4556292 50,22.4556292 C59.01152,22.4556292 66.34304,29.7871492 66.34304,38.7986692 C66.34304,43.4911492 64.34432,47.7151492 61.16672,50.6988292 C63.2270545,51.6446532 65.2045108,52.7827477 66.8690034,54.2723156 C70.4316406,57.4605484 70.9115219,61.4646492 75.1875,63.7439461 C78.8737891,65.708911 83.2367172,64.6296883 85.6110917,62.5812267 C88.397258,60.177497 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="name"
+													init-default
+													when-input-valid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"
+													when-input-invalid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"></path>
+												<path d="M47,61 L81.5,24.5" class="success-2"
+													init-with="p:[op:0, sdo:50.3]"
+													when-input-valid="p:[op:1, sdo:4]:delay-375"
+													when-input-invalid="p:[op:0:delay-250, sdo:50.3]"></path>
+												<path d="M32.5,47.5 L47,61" class="success-1"
+													init-with="p:[op:0, sdo:19.9]"
+													when-input-valid="p:[op:1, sdo:0]:delay-250"
+													when-input-invalid="p:[op:0:delay-125, sdo:19.8]:delay-250"></path>
+												<path d="M36,36 L64,64" class="error-1"
+													init-with="p:[op:0, sdo:39.6]"
+													when-input-invalid="p:[op:1, sdo:0]:delay-250"
+													when-input-valid="p:[op:0:delay-175, sdo:39.6]"></path>
+												<path d="M64,36 L36,64" class="error-2"
+													init-with="p:[op:0, sdo:39.6]"
+													when-input-invalid="p:[op:1, sdo:0]:delay-375"
+													when-input-valid="p:[op:0:delay-175, sdo:39.6]:delay-250"></path>
+											</g>
+										</svg>
+										<span class="label">Your Password</span>
+										<span class="input"
+											init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+										<div class="borders">
+											<div>
+												<div init-default
+													when-input-valid="p:[bg:#43cb9d]:delay-500"
+													when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+												<div init-default
+													when-input-valid="p:[bg:#43cb9d, tr:none, op:1]"
+													when-input-invalid="p:[bg:#d3242c, tr:none, op:1]"></div>
+											</div>
+											<div>
+												<div init-default
+													when-input-valid="p:[bg:#43cb9d]:delay-500"
+													when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+												<div init-default
+													when-input-valid="p:[bg:#43cb9d, tr:none, op:1]"
+													when-input-invalid="p:[bg:#d3242c, tr:none, op:1]"></div>
+											</div>
+											<div>
+												<div init-default
+													when-input-valid="p:[bg:#43cb9d]:delay-500"
+													when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+												<div init-default
+													when-input-valid="p:[bg:#43cb9d, tr:none, op:1]"
+													when-input-invalid="p:[bg:#d3242c, tr:none, op:1]"></div>
+											</div>
+											<div>
+												<div init-default
+													when-input-valid="p:[bg:#43cb9d]:delay-500"
+													when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+												<div init-default
+													when-input-valid="p:[bg:#43cb9d, tr:none, op:1]"
+													when-input-invalid="p:[bg:#d3242c, tr:none, op:1]"></div>
+											</div>
+										</div>
+										<a>
+											<svg viewBox="0 0 100 100">
+												<circle cx="50" cy="50" r="36"
+													init-default
+													when-input-valid="p:[s:#43cb9d, f:#43cb9d]:delay-500"
+													when-input-invalid="p:[s:#d3242c, f:#d3242c]:delay-500"></circle>
+												<path d="M62.7279221,37.2720779 L37.2720779,62.7279221"
+													init-default
+													when-input-valid="p:[s:white]:delay-500"
+													when-input-invalid="p:[s:white]:delay-500"></path>
+												<path d="M37.2720779,37.2720779 L62.7279221,62.7279221"
+													init-default
+													when-input-valid="p:[s:white]:delay-500"
+													when-input-invalid="p:[s:white]:delay-500"></path>
+											</svg>
+										</a>
+									</label>
+								</div>
+							</li>
 					</ul>
 					<ul class="projector-account-btn">
 						<li>
-							<button class="btn-ghost-round">Login</button>
+							<button class="btn-ghost-round"
+								init-default
+								on-click="s:[input-valid:public]">Login</button>
 						</li>
 						<li>
-							<button class="btn-ghost-round fb">Login with Facebook</button>
+							<button class="btn-ghost-round fb"
+								init-default
+								on-click="s:[input-invalid:public]">Login with Facebook</button>
 						</li>
 					</ul>
 				</form>
@@ -239,371 +575,3 @@
 		</div>
 		<div class="student-card-mobile" ng-include="root.base_url + 'preapp/templates/started/components/student-card-mobile.html'"></div>
 	</projector>
-
-
-    <projector class="projector-account" ng-if="false"
-		init-with="tr:[translateY:-200%] | p:[t:transform 250ms ease-in-out]"
-		on-init="tr:[translateY:0%]">
-        <!-- signup -->
-        <div class="projector-account-content projector-signup absolute top-0 left-0 full-xy"
-			init-default
-			when-proj-login-init="p:[op:0, z-index:-1]"
-			when-proj-signup-init="p:[op:1, z-index:10]">
-            <!-- ng-class:{'active':!page.account.loginMode && !page.account.forgotPassword} -->
-            <div class="projector-account-switch-desktop absolute top-0 right-0 p15xy">
-                <button class="btn-ghost bg-white"
-					init-default
-					on-click="s:[proj-login-init:public]">Login</button>
-                <!-- class-on-activate="tada:anim" ng-click='page.account.loginMode = true' -->
-            </div>
-            <div class="projector-account-inside full-xy">
-                <div class="student-card">
-                    <svg viewBox="0 0 240 150">
-                        <rect x="0" y="0" width="240" height="150" fill="none"></rect>
-                    </svg>
-                    <div class="school-id-inside">
-                        <div class="school-id-top" style="background: #003262;">
-                            <span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800');"></span>
-                        </div>
-                        <div class="school-id-bottom">
-                            <div>
-                                <h1 class='lettercase' style="color: #003262;">Gabrielle Wee</h1>
-                                <h2 style="color: #003262;">Cal Freshman</h2>
-                                <h2 style="color: #003262;">email@school.edu</h2>
-                            </div>
-                            <h3>
-                                <span style="color: #003262;">SELECTED COURSES</span>
-                                <span style="background: #003262;">9</span>
-                                <a>Edit</a>
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-                <form class="signup-form full-x">
-                    <ul class="p15-grid">
-                        <li>
-                            <fieldset class="large full-x">
-                				<input class="input-border light" type="text" placeholder="what's your name?"/>
-                                <!-- ng-focus="onSignupFormFocus('name', signupForm.name, signupForm)" ng-blur="updateUserIdCard('name', signupForm.full_name, signupForm)" ng-model='signupForm.full_name' autocomplete="off" ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && updateUserIdCard('name', signupForm.full_name, signupForm)" -->
-                				<label></label>
-                                <!-- <small class='form-error absolute txt-shamrock weight-400' ng-if='signupForm.focusedInput === "name" && signupForm.activateErrorMsg && signupForm.activateErrorMsg.length'>{{signupForm.activateErrorMsg}}</small>
-                                <a ng-if='!signupForm.activateErrorName && signupForm.focusedInput === "name"' class="active" ng-click='signupForm.full_name = "";'>
-                                    <svg class="clear" viewBox="0 0 100 100">
-                                        <circle cx="50" cy="50" r="36"></circle>
-                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
-                                    </svg>
-                                </a>
-                                <a class='active' ng-if='!signupForm.activateErrorName && signupForm.validateName'>
-                                    <svg class="verified" viewBox="0 0 100 100">
-                                        <circle cx="50" cy="50" r="36"></circle>
-                                        <path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
-                                    </svg>
-                                </a>
-                                <a ng-if='signupForm.activateErrorName' class='active' ng-click='signupForm.full_name = "";'>
-                                    <svg class="error" viewBox="0 0 100 100" >
-                                        <circle cx="50" cy="50" r="36"></circle>
-                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
-                                    </svg>
-                                </a>-->
-                			</fieldset>
-                        </li>
-                        <li>
-                            <fieldset class="large full-x">
-                                <!-- ng-class="{ 'active' : signupForm.activateEmail}" -->
-                				<input class="input-border light" type="email" placeholder="what's your email?"/>
-                                <!-- ng-focus="onSignupFormFocus('email', signupForm.email, signupForm)" ng-blur="updateUserIdCard('email', signupForm.email, signupForm)" placeholder="what's your email?" ng-model='signupForm.email' autocomplete="off" ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && updateUserIdCard('email', signupForm.email, signupForm)" -->
-                				<label></label>
-                                <!-- <small class='form-error absolute txt-shamrock weight-400' ng-if='signupForm.focusedInput === "email" && signupForm.activateErrorMsg && signupForm.activateErrorMsg.length'>{{signupForm.activateErrorMsg}}</small>
-                                <a ng-if='signupForm.focusedInput === "email"' class="active" ng-click='signupForm.email = "";'>
-                                    <svg class="clear" viewBox="0 0 100 100">
-                                        <circle cx="50" cy="50" r="36"></circle>
-                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
-                                    </svg>
-                                </a>
-                                <a ng-if='!signupForm.activateErrorEmail && signupForm.validateEmail' class='active'>
-                                    <svg class="verified" viewBox="0 0 100 100">
-                                        <circle cx="50" cy="50" r="36"></circle>
-                                        <path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
-                                    </svg>
-                                </a>
-                                <a ng-if='signupForm.activateErrorEmail' class='active' ng-click='signupForm.email = "";'>
-                                    <svg class="error" viewBox="0 0 100 100">
-                                        <circle cx="50" cy="50" r="36"></circle>
-                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
-                                    </svg>
-                                </a> -->
-                			</fieldset>
-                        </li>
-                        <li>
-                            <fieldset class="large full-x">
-                                <!-- ng-class="{'active': signupForm.activatePassword}" -->
-                				<input class="input-border light" type="password" placeholder="enter a password"/>
-                                <!-- ng-blur="updateUserIdCard('password', signupForm.password, signupForm)"  ng-focus="onSignupFormFocus('password', signupForm.password, signupForm)" placeholder="enter a password" autocomplete="off" ng-keyup="(($event.keyCode == 13 || $event.keyCode == 9) && signupOnEnter()) || (signupForm.password.length > 5 && updateUserIdCard('password', signupForm.password, signupForm))" ng-model='signupForm.password' -->
-                				<label></label>
-                                <!-- <small class='form-error absolute txt-shamrock weight-400' ng-if='signupForm.focusedInput === "password" && signupForm.activateErrorMsg && signupForm.activateErrorMsg.length'>{{signupForm.activateErrorMsg}}</small>
-                                <a class='active' ng-if='signupForm.focusedInput === "password"' ng-click='signupForm.password = "";'>
-                                    <svg class="clear" viewBox="0 0 100 100">
-                                        <circle cx="50" cy="50" r="36"></circle>
-                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
-                                    </svg>
-                                </a>
-                                <a ng-if='!signupForm.activateErrorPassword && signupForm.validatePassword' class='active'>
-                                    <svg class="verified" viewBox="0 0 100 100">
-                                        <circle cx="50" cy="50" r="36"></circle>
-                                        <path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
-                                    </svg>
-                                </a>
-                                <a ng-if='signupForm.activateErrorPassword' class='active' ng-click='signupForm.password = "";'>
-                                    <svg class="error" viewBox="0 0 100 100">
-                                        <circle cx="50" cy="50" r="36"></circle>
-                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
-                                    </svg>
-                                </a> -->
-                			</fieldset>
-                        </li>
-                    </ul>
-                </form>
-                <ul class="projector-account-buttons mobile full-x ugrid-2">
-                    <li class="full-x">
-                        <button class="bg-moxie txt-18">Continue with Email</button>
-                        <!-- ng-click='completeSignup()' -->
-                    </li>
-                    <li>
-                        <button class="bg-shamrock txt-18">Switch<br/>to Login</button>
-                        <!-- ng-click="switchToLogin()" -->
-                    </li>
-                    <li>
-                        <button class="bg-fb txt-18">Login with<br/>Facebook</button>
-                        <!-- ng-click='connectWithFacebook()' -->
-                    </li>
-                </ul>
-                <ul class='projector-account-buttons desktop p15-grid'>
-                    <!-- ng-class="{'visible animated bounceInUp': signupForm.validatePassword && signupForm.validateEmail && signupForm.validateName}" -->
-                    <li>
-                        <button class="btn-login-login btn-ghost bg-white">Continue with Email</button>
-                        <!-- ng-click='completeSignup()' -->
-                    </li>
-                    <li>
-                        <button class="btn-login-fb btn-ghost bg-white">Continue with Facebook</button>
-                        <!-- ng-click='connectWithFacebook()' -->
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- login -->
-        <div class="projector-account-content projector-login absolute top-0 left-0 full-xy"
-			init-with="p:[op:0, z-index:-1]"
-			when-proj-login-init="p:[op:1, z-index:10]"
-			when-proj-signup-init="p:[op:0, z-index:-1]">
-            <!-- ng-class:{'active':page.account.loginMode && !page.account.forgotPassword} -->
-            <div class="projector-account-switch-desktop absolute top-0 right-0 p15xy">
-                <button class="btn-splash-login btn-ghost bg-white"
-					init-default
-					on-click="s:[proj-signup-init:public]">Signup</button>
-                <!-- ng-click='switchToSignup()' -->
-            </div>
-            <div class="projector-account-inside full-xy">
-                <div class="student-card">
-                    <svg viewBox="0 0 240 150">
-                        <rect x="0" y="0" width="240" height="150" fill="none"></rect>
-                    </svg>
-                    <div class="school-id-inside">
-                        <div class="school-id-top" style="background: #003262;">
-                            <span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800');"></span>
-                        </div>
-                        <div class="school-id-bottom">
-                            <div>
-                                <h1 class='lettercase' style="color: #003262;">Gabrielle Wee</h1>
-                                <h2 style="color: #003262;">Cal Freshman</h2>
-                                <h2 style="color: #003262;">email@school.edu</h2>
-                            </div>
-                            <h3>
-                                <span style="color: #003262;">SELECTED COURSES</span>
-                                <span style="background: #003262;">9</span>
-                                <a>Edit</a>
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-                <form class="login-form full-x">
-                    <ul class="p15-grid">
-                        <li>
-                            <fieldset class="large full-x">
-                				<input class="input-border light" type="email" placeholder="what's your email?"/>
-                                <!-- ng-model='signupForm.email' autocomplete="off" -->
-                				<label></label>
-                                <!-- <a>
-                                    <svg class="clear" viewBox="0 0 100 100">
-                                        <circle cx="50" cy="50" r="36"></circle>
-                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
-                                    </svg>
-                                </a>
-                                <a>
-                                    <svg class="verified" viewBox="0 0 100 100">
-                                        <circle cx="50" cy="50" r="36"></circle>
-                                        <path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
-                                    </svg>
-                                </a>
-                                <a>
-                                    <svg class="error" viewBox="0 0 100 100">
-                                        <circle cx="50" cy="50" r="36"></circle>
-                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
-                                    </svg>
-                                </a> -->
-                			</fieldset>
-                        </li>
-                        <li>
-                            <fieldset class="large full-x">
-                				<input class="input-border light" type="password" placeholder="enter your secure password"/>
-                                <!-- ng-model="signupForm.password" ng-keyup="$event.keyCode == 13 && loginUser()" -->
-                				<label></label>
-                                <!-- <a>
-                                    <svg class="clear" viewBox="0 0 100 100">
-                                        <circle cx="50" cy="50" r="36"></circle>
-                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
-                                    </svg>
-                                </a>
-                                <a>
-                                    <svg class="verified" viewBox="0 0 100 100">
-                                        <circle cx="50" cy="50" r="36"></circle>
-                                        <path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
-                                    </svg>
-                                </a>
-                                <a>
-                                    <svg class="error" viewBox="0 0 100 100">
-                                        <circle cx="50" cy="50" r="36"></circle>
-                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
-                                    </svg>
-                                </a> -->
-                			</fieldset>
-                        </li>
-                    </ul>
-                </form>
-                <ul class="projector-account-buttons mobile full-x ugrid-2">
-                    <li>
-                        <button class="bg-moxie txt-18">Login</button>
-                        <!-- ng-click='loginUser()' -->
-                    </li>
-                    <li>
-                        <button class="bg-fb txt-18">Login with<br/>Facebook</button>
-                        <!-- ng-click='connectWithFacebook()' -->
-                    </li>
-                    <li>
-                        <button class="bg-shamrock txt-18">Switch<br/>to Login</button>
-                        <!-- ng-click="switchToLogin()" -->
-                    </li>
-                    <li>
-                        <button class="bg-taupe txt-18">Forgot your<br/>password?</button>
-                        <!-- ng-click="switchToForgotPassword()" -->
-                    </li>
-                </ul>
-                <ul class='projector-account-buttons desktop p15-grid'>
-                    <li>
-                        <button class="btn-login-login btn-ghost bg-white">Login</button>
-                        <!-- ng-click='loginUser()' -->
-                    </li>
-                    <li>
-                        <button class="btn-login-fb btn-ghost bg-white">Continue with Facebook</button>
-                        <!-- ng-click='connectWithFacebook()' -->
-                    </li>
-                    <li>
-                        <button class="btn-forgot-pw btn-ghost bg-white">Forgot your password?</button>
-                        <!-- ng-click="switchToForgotPassword();" -->
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- forgot password -->
-        <div class="projector-account-content projector-forgot absolute top-0 left-0 full-xy"
-			init-with="p:[op:0, z-index:-1]"
-			when-proj-login-init="p:[op:0, z-index:-1]"
-			when-proj-signup-init="p:[op:0, z-index:-1]">
-            <!-- ng-class:{'active':page.account.forgotPassword} -->
-            <ul class="projector-account-switch-desktop absolute top-0 right-0 flex p15-grid">
-                <li>
-                    <button class="btn-splash-login btn-ghost bg-white">Signup</button>
-                    <!-- ng-click='switchToSignup()' -->
-                </li>
-                <li>
-                    <button class="btn-splash-login btn-ghost bg-white">Login</button>
-                    <!-- ng-click='switchToLogin()' -->
-                </li>
-            </ul>
-            <div class="projector-account-inside full-xy">
-                <div class="student-card">
-                    <svg viewBox="0 0 240 150">
-                        <rect x="0" y="0" width="240" height="150" fill="none"></rect>
-                    </svg>
-                    <div class="school-id-inside">
-                        <div class="school-id-top" style="background: #003262;">
-                            <span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800');"></span>
-                        </div>
-                        <div class="school-id-bottom">
-                            <div>
-                                <h1 class='lettercase' style="color: #003262;">Gabrielle Wee</h1>
-                                <h2 style="color: #003262;">Cal Freshman</h2>
-                                <h2 style="color: #003262;">email@school.edu</h2>
-                            </div>
-                            <h3>
-                                <span style="color: #003262;">SELECTED COURSES</span>
-                                <span style="background: #003262;">9</span>
-                                <a>Edit</a>
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-                <form class="forgot-form full-x">
-                    <ul class="p15-grid">
-                        <li>
-                            <fieldset class="large full-x">
-                                <input class="input-border light" type="email" placeholder="what's your email?"/>
-                                <!-- ng-model='signupForm.email' autocomplete="off" -->
-                                <label></label>
-                                <!-- <a>
-                                    <svg class="clear" viewBox="0 0 100 100">
-                                        <circle cx="50" cy="50" r="36"></circle>
-                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
-                                    </svg>
-                                </a>
-                                <a>
-                                    <svg class="verified" viewBox="0 0 100 100">
-                                        <circle cx="50" cy="50" r="36"></circle>
-                                        <path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
-                                    </svg>
-                                </a>
-                                <a>
-                                    <svg class="error" viewBox="0 0 100 100">
-                                        <circle cx="50" cy="50" r="36"></circle>
-                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
-                                    </svg>
-                                </a> -->
-                            </fieldset>
-                        </li>
-                    </ul>
-                </form>
-                <ul class="projector-account-buttons mobile full-x ugrid-2">
-                    <li>
-                        <button class="bg-moxie txt-18">Submit</button>
-                        <!-- ng-click='attemptToResetPassword()' -->
-                    </li>
-                    <li>
-                        <button class="bg-taupe txt-18">Cancel</button>
-                        <!-- ng-click='switchToLogin()' -->
-                    </li>
-                </ul>
-                <ul class='projector-account-buttons desktop p15-grid'>
-                    <li>
-                        <button class="btn-login-login btn-ghost bg-white">Submit</button>
-                        <!-- ng-click='attemptToResetPassword()' -->
-                    </li>
-                    <li>
-                        <button class="btn-login-fb btn-ghost bg-white">Cancel</button>
-                        <!-- ng-click='switchToLogin()' -->
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </projector>
-</ion-view>

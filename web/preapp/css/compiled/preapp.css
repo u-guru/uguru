@@ -5483,9 +5483,34 @@ a[class*="-container"]:hover .map-enter {
   .projector-account-form .projector-account-input {
     width: 100%;
     max-width: 450px;
+    padding: 7.5px; }
+    .projector-account-form .projector-account-input li {
+      padding: 7.5px; }
+  .projector-account-form .projector-account-btn {
+    width: 100%;
+    max-width: 450px;
+    padding: 7.5px; }
+    .projector-account-form .projector-account-btn li {
+      padding: 7.5px;
+      text-align: center; }
+    .projector-account-form .projector-account-btn .btn-ghost-round.fb {
+      color: #768bb7;
+      border-color: #768bb7; }
+      .projector-account-form .projector-account-btn .btn-ghost-round.fb:hover, .projector-account-form .projector-account-btn .btn-ghost-round.fb:focus {
+        border-color: #3b5998;
+        background: #3b5998;
+        color: white; }
+      .projector-account-form .projector-account-btn .btn-ghost-round.fb:active {
+        border-color: #9daccc;
+        background: #9daccc;
+        color: #3e5172; }
+
+@media screen and (min-height: 480px) {
+  .projector-account-form .projector-account-input {
     padding: 0.5px 7.5px 2px; }
     .projector-account-form .projector-account-input li {
-      padding: 12.5px 7.5px; }
+      padding: 12.5px 7.5px; } }
+@media screen and (min-width: 768px) {
   .projector-account-form .projector-account-btn {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -5501,24 +5526,7 @@ a[class*="-container"]:hover .map-enter {
     -webkit-align-content: center;
     align-content: center;
     -webkit-justify-content: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 450px;
-    padding: 7.5px; }
-    .projector-account-form .projector-account-btn li {
-      padding: 7.5px; }
-    .projector-account-form .projector-account-btn .btn-ghost-round.fb {
-      color: #768bb7;
-      border-color: #768bb7; }
-      .projector-account-form .projector-account-btn .btn-ghost-round.fb:hover, .projector-account-form .projector-account-btn .btn-ghost-round.fb:focus {
-        border-color: #3b5998;
-        background: #3b5998;
-        color: white; }
-      .projector-account-form .projector-account-btn .btn-ghost-round.fb:active {
-        border-color: #9daccc;
-        background: #9daccc;
-        color: #3e5172; }
-
+    justify-content: center; } }
 .echo-loader * {
   transform-origin: center center; }
 .echo-loader .echo-loader-main {

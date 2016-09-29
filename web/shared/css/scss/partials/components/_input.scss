@@ -518,7 +518,7 @@ div.input-border {
 					opacity: 1!important;
 				}
 			}
-			> div {
+			.borders {
 				position: absolute;
 				z-index: 2;
 				top: 0;
@@ -636,7 +636,7 @@ div.input-border {
 						}
 					}
 				}
-				> div {
+				.borders {
 					background: rgba(white, .2);
 					> div {
 						div:nth-child(1), div:nth-child(2) {
@@ -723,7 +723,7 @@ div.input-border {
 						}
 					}
 				}
-				> div {
+				.borders {
 					background: rgba($slate, .2);
 					> div {
 						div:nth-child(1), div:nth-child(2) {
@@ -790,7 +790,7 @@ div.input-border {
 						transform: none;
 					}
 				}
-				> div {
+				.borders {
 					transform: rotateX(0);
 					opacity: 1;
 					> div {
@@ -804,6 +804,17 @@ div.input-border {
 		}
 	}
 	&.no-label {
+		input.input-border {
+			&:focus {
+				+ label:not(:empty) {
+					.label {
+						opacity: 0;
+					}
+				}
+			}
+		}
+	}
+	@media screen and (max-height: 480px) {
 		input.input-border {
 			&:focus {
 				+ label:not(:empty) {
