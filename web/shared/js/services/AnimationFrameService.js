@@ -202,7 +202,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       }
 
     function getPlayActiveAnimationsFunc(frame, exec_anim_func) {
-      var player = {rAF: frame, schedule:{upcoming:[], streams:[], status:{direction: 'f', iter:1, fps:60}, queued:[]}, tick:0, activeStreamIDs:[]};
+      var player = {rAF: frame, schedule:{upcoming:[], streams:[], streamCache:[], status:{direction: 'f', iter:1, fps:60}, queued:[]}, tick:0, activeStreamIDs:[]};
       player.pause = function(player) {
         return function() {
           player.rAF.cancel(player.rAF_id);
@@ -232,6 +232,28 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           player.rAF_id = player.rAF.request(player.animFunc);
         }
 
+
+      player.focusStream = function(_player, _stream) {
+        player.activeStreamID = _stream.id;
+
+        player.schedule.streams.forEach(function(stream, id) {
+          if (stream.id === player.activeStreamID)  {
+            player.schedule.streams[id].active = true;
+          } else {
+            player.schedule.streams[id].active = false;
+          }
+        })
+        console.log(player.schedule.streams)
+      }
+
+      player.unFocusStream = function(_player, stream) {
+        player.activeStreamID = null;
+        player.schedule.streams.forEach(function(stream, id) {
+          player.schedule.streams[id].active = false;
+        })
+        player.reset(player)
+      }
+
       player.scheduleStream = function(player, state_obj, offset, debug) {
         var streams = state_obj.events;
         player.tick = {start: 0, end:0, current:0};
@@ -243,13 +265,13 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         }
         var shallowCopyStreams = [];
         for (var i = 0; i < streams.length; i++) {
-          console.log(streams[i])
+
           var globalOffsetTicks = calculateStreamTickLength({duration: 0, offset:offset});
           var totalDurationAndDelayTicks = calculateStreamTickLength(streams[i]);
           var durationOnlyTicks = calculateStreamTickLength(streams[i], 0, 60, true);
           var delayOnlyTicks = calculateStreamTickLength({duration:0, offset:streams[i].offset})
 
-          var newStream = {applyProp:streams[i].applyAtT, childProps:streams[i].childProps, easing:streams[i].ease, duration:streams[i].duration, iter:streams[i].iter, name:streams[i].property || streams[i].name, direction: streams[i].direction, time: {total: streams[i].duration, elapsed: 0}, offset: streams[i].offset,  values:streams[i].values.splice(0,streams[i].values.length -1)}
+          var newStream = {applyProp:streams[i].applyAtT, active:true, childProps:streams[i].childProps, easing:streams[i].ease, duration:streams[i].duration, iter:streams[i].iter, name:streams[i].property || streams[i].name, direction: streams[i].direction, time: {total: streams[i].duration, elapsed: 0}, offset: streams[i].offset,  values:streams[i].values.splice(0,streams[i].values.length -1)}
           newStream.tick = initStreamTick(newStream);
 
           newStream.time.total = newStream.tick.duration.ms + newStream.offset;
@@ -612,10 +634,11 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           player.playerProps.iter.count.current = player.playerProps.iter.count.total + 1;
 
         }
-
+        player.activeStreamID = false;
         player.schedule.streams.forEach(function(stream, i) {
 
             stream.time.elapsed = 0;
+            stream.active = true;
 
             // set back to original
             // stream.tick.current = stream.tick.start;
@@ -651,7 +674,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
         schedule.streams.forEach(function(stream, i) {
 
-          if (stream.tick.current <= stream.tick.end) {
+          if (stream.tick.current <= stream.tick.end && stream.active) {
             if (stream.tick.current < stream.values.length && stream.tick.current >= 0) {
               stream.applyProp && stream.applyProp(stream.values[stream.tick.current]);
               player.debug && player.debug.propStreamValueUpdate[stream.name](stream.name, stream.values[stream.tick.current], stream.tick.current, stream.tick.cycleIndex)
