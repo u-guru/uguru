@@ -348,7 +348,10 @@
 					when-next-demo="p:[op:0, z-index:-1]">
 					<li init-with="p:[op:0, tro:center center]"
 						when-demo-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]"
-						when-hs-click="p:[tro:center bottom, transform:translateY(0px) scale(1):translateY(350px) scale(0):500:easeInOutBack easeInBack]">
+						when-hs-click="p:[tro:center bottom, transform:translateY(0px) translateX(0px) scale(1):translateY(350px) translateX(68px) scale(0):500:easeInOutBack easeInOutBack easeInBack]"
+						when-alumni-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-parent-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-professor-click="p:[opacity:1:0:400:easeOutSine]:delay-300">
 						<a class="demographic-tile high-school"
 							init-default
 							on-click="s:[hs-click:public, guru-below:public]">
@@ -376,7 +379,11 @@
 						</a>
 					</li>
 					<li class="card-container" init-with="p:[op:0, tro:center center]"
-						when-demo-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-100]">
+						when-demo-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-100]"
+						when-hs-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-parent-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-professor-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-alumni-click="p:[opacity:1:0:400:easeOutSine]:delay-300">
 						<a class="demographic-tile college"
 							init-default
 							on-click="s:[next-demo:public]">
@@ -407,7 +414,10 @@
 					</li>
 					<li init-with="p:[op:0, tro:center center]"
 						when-demo-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-200]"
-						when-alumni-click="p:[tro:center bottom, transform:translateY(0px) scale(1):translateY(250px) scale(0):500:easeInOutBack easeInBack]">
+						when-alumni-click="p:[tro:center bottom, transform:translateY(0px) translateX(0px) scale(1):translateY(250px) translateX(68px) scale(0):500:easeInOutBack easeInOutBack easeInBack]"
+						when-hs-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-parent-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-professor-click="p:[opacity:1:0:400:easeOutSine]:delay-300">
 						<a class="demographic-tile alumni"
 							init-default
 							on-click="s:[alumni-click:public, guru-below:public]">
@@ -438,7 +448,10 @@
 					</li>
 					<li init-with="p:[op:0, tro:center center]"
 						when-demo-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-300]"
-						when-parent-click="p:[tro:center bottom, transform:translateY(0px) scale(1):translateY(250px) scale(0):500:easeInOutBack easeInBack]">
+						when-parent-click="p:[tro:center bottom, transform:translateY(0px) translateX(0px) scale(1):translateY(250px) translateX(-68px) scale(0):500:easeInOutBack easeInOutBack easeInBack]"
+						when-hs-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-alumni-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-professor-click="p:[opacity:1:0:400:easeOutSine]:delay-300">
 						<a class="demographic-tile parent"
 							init-default
 							on-click="s:[parent-click:public, guru-below:public]">
@@ -469,7 +482,10 @@
 					</li>
 					<li init-with="p:[op:0, tro:center center]"
 						when-demo-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-400]"
-						when-professor-click="p:[tro:center bottom, transform:translateY(0px) scale(1):translateY(100px) scale(0):500:easeInOutBack easeInBack]">
+						when-professor-click="p:[tro:center bottom, transform:translateY(0px) scale(1):translateY(100px) scale(0):500:easeInOutBack easeInBack]"
+						when-hs-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-parent-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-alumni-click="p:[opacity:1:0:400:easeOutSine]:delay-300">
 						<a class="demographic-tile professor"
 							init-default
 							on-click="s:[professor-click:public, guru-below:public]">
@@ -504,7 +520,11 @@
 					when-next-demo="p:[op:1, z-index:10]">
 					<li init-with="p:[op:0, tro:center center]"
 						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]"
-						when-freshman-click="p:[tro:center bottom, transform:translateY(0px) scale(1):translateY(350px) scale(0):500:easeInOutBack easeInBack]">
+						when-freshman-click="p:[tro:center bottom, transform:translateY(0px) translateX(0px) scale(1):translateY(350px) translateX(68px) scale(0):500:easeInOutBack easeInOutBack easeInBack]"
+						when-sophomore-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-junior-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-senior-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-graduate-click="p:[opacity:1:0:400:easeOutSine]:delay-300">
 						<a class="demographic-tile freshman"
 							init-default
 							on-click="s:[freshman-click:public, guru-below:public]">
@@ -535,7 +555,11 @@
 					</li>
 					<li init-with="p:[op:0, tro:center center]"
 						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-100]"
-						when-sophomore-click="p:[tro:center bottom, transform:translateY(0px) scale(1):translateY(350px) scale(0):500:easeInOutBack easeInBack]">
+						when-sophomore-click="p:[tro:center bottom, transform:translateY(0px) translateX(0px) scale(1):translateY(350px) translateX(-68px) scale(0):500:easeInOutBack easeInOutBack easeInBack]"
+						when-freshman-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-junior-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-senior-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-graduate-click="p:[opacity:1:0:400:easeOutSine]:delay-300">
 						<a class="demographic-tile sophomore"
 							init-default
 							on-click="s:[sophomore-click:public, guru-below:public]">
@@ -566,7 +590,11 @@
 					</li>
 					<li init-with="p:[op:0, tro:center center]"
 						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-200]"
-						when-junior-click="p:[tro:center bottom, transform:translateY(0px) scale(1):translateY(250px) scale(0):500:easeInOutBack easeInBack]">
+						when-junior-click="p:[tro:center bottom, transform:translateY(0px) translateX(0px) scale(1):translateY(250px) translateX(68px) scale(0):500:easeInOutBack easeInOutBack easeInBack]"
+						when-freshman-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-sophomore-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-senior-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-graduate-click="p:[opacity:1:0:400:easeOutSine]:delay-300">
 						<a class="demographic-tile junior"
 							init-default
 							on-click="s:[junior-click:public, guru-below:public]">
@@ -597,7 +625,11 @@
 					</li>
 					<li init-with="p:[op:0, tro:center center]"
 						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-300]"
-						when-senior-click="p:[tro:center bottom, transform:translateY(0px) scale(1):translateY(250px) scale(0):500:easeInOutBack easeInBack]">
+						when-senior-click="p:[tro:center bottom, transform:translateY(0px) translateX(0px) scale(1):translateY(250px) translateX(-68px) scale(0):500:easeInOutBack easeInOutBack easeInBack]"
+						when-freshman-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-sophomore-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-junior-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-graduate-click="p:[opacity:1:0:400:easeOutSine]:delay-300">
 						<a class="demographic-tile senior"
 							init-default
 							on-click="s:[senior-click:public, guru-below:public]">
@@ -628,7 +660,11 @@
 					</li>
 					<li init-with="p:[op:0, tro:center center]"
 						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-400]"
-						when-graduate-click="p:[tro:center bottom, transform:translateY(0px) scale(1):translateY(100px) scale(0):500:easeInOutBack easeInBack]">
+						when-graduate-click="p:[tro:center bottom, transform:translateY(0px) scale(1):translateY(100px) scale(0):500:easeInOutBack easeInBack]"
+						when-freshman-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-sophomore-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-junior-click="p:[opacity:1:0:400:easeOutSine]:delay-300"
+						when-senior-click="p:[opacity:1:0:400:easeOutSine]:delay-300">
 						<a class="demographic-tile graduate"
 							init-default
 							on-click="s:[graduate-click:public, guru-below:public]">
