@@ -28,14 +28,6 @@
 			padding: 7.5px;
 		}
 	}
-	.btn-ghost-round {
-		&.skip {
-			opacity: 0.5;
-			&:hover, &:focus {
-				opacity: 1;
-			}
-		}
-	}
 	fieldset {
 		position: relative;
 		height: 64px;
