@@ -5,7 +5,7 @@
 		when-feature-tile-init="a:[bounceIn-subtle:set:(dur:1200ms#func:linear):in]"
 		on-mouse-enter="s:[icon-wiggle:public]">
 		<div class="feature-tile-icon">
-			<div class="feature-tile-type bg-lake" ng-include="root.base_url + 'shared/templates/components/svg/main/experience.html'"
+			<div class="feature-tile-type bg-lake" ng-include="root.base_url + 'shared/templates/components/svg/main/briefcase.html'"
 				init-with="p-op"
 				when-feature-tile-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-1250]"
 				when-icon-wiggle="a:[wiggle-subtle:set:(dur:1000ms#func:linear):in]"></div>

@@ -259,7 +259,7 @@
                 <a class="flex-center bg bg-moxie radius-2 svg-stroke-6 svg-36-24" ng-click='spec.toggleDocSearch = !spec.toggleDocSearch' ng-include="root.base_url + 'shared/templates/components/svg/main/search.html'"></a>
             </li>
             <li>
-                <a class="flex-center bg bg-moxie radius-2 svg-stroke-6 svg-36-24" ng-click='spec.toggleGoogleDoc = !spec.toggleGoogleDoc;' ng-include="root.base_url + 'shared/templates/components/svg/main/transcript.html'"></a>
+                <a class="flex-center bg bg-moxie radius-2 svg-stroke-6 svg-36-24" ng-click='spec.toggleGoogleDoc = !spec.toggleGoogleDoc;' ng-include="root.base_url + 'shared/templates/components/svg/main/document-lines.html'"></a>
             </li>
             <li>
                 <a class="flex-center bg bg-moxie radius-2 svg-stroke-6 svg-36-24" ng-click='spec.toggleAllToolsBar = !spec.toggleAllToolsBar;' ng-include="root.base_url + 'shared/templates/components/svg/main/star.html'"></a>
