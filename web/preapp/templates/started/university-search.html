@@ -66,31 +66,37 @@
 					init-with="p:[z-index:2]"
 					when-school-select="p:[z-index:100]">
 					<form>
-						<div class="input-border large"
+						<!-- id='request-search-input' name='request-search-input' autocomplete="off" fast-matcher fast-matcher-source="universities" fast-matcher-output="filtered_universities" fast-matcher-properties="short_name, full_name, tiny_name, variations"
+						ng-model="search_text.university" ng-focus='focusUniversitySearchInput' placeholder="search {{universities.length}} supported schools" -->
+						<div class="input-border large no-label"
 							init-default
-							when-input-invalid="p:[transform:translateY(0px):translateY(10px):100:linear:^:6:a]">
+							on-init="s:[input-border-enter:public]">
 							<input class="input-border light" type="search" required placeholder=""
 								init-default
-								on-valid="s:[input-valid:public]"
-								on-invalid="s:[input-invalid:public]"
 								on-focus="s:[input-focus:public]"
 								on-blur="s:[input-blur:public]"
 								on-mouse-enter="s:[input-hover:public]"
 								on-mouse-leave="s:[input-leave:public]"/>
-								<!-- id='request-search-input' name='request-search-input' autocomplete="off" fast-matcher fast-matcher-source="universities" fast-matcher-output="filtered_universities" fast-matcher-properties="short_name, full_name, tiny_name, variations"
-								ng-model="search_text.university" ng-focus='focusUniversitySearchInput' placeholder="search {{universities.length}} supported schools" -->
 							<label>
 								<svg class="input-icon" viewBox="0 0 100 100">
 									<g fill="none" stroke-linecap="round" stroke-linejoin="round">
-										<path d="M62.994485,62.994485 L85.6624699,85.6624699"></path>
-										<circle cx="42.5" cy="42.5" r="28.5"></circle>
+										<path d="M62.994485,62.994485 L85.6624699,85.6624699"
+											init-with="p:[sda:32.1, sdo:32.1]"
+											when-input-border-enter="p:[stroke-dashoffset:32.1:0:75:easeOutExpo]:delay-150"></path>
+								        <circle cx="42.5" cy="42.5" r="28.5"
+											init-with="p:[sda:179.1, sdo:179.1]"
+											when-input-border-enter="p:[stroke-dashoffset:179.1:0:250:easeInExpo]:delay-100"></circle>
 									</g>
 								</svg>
-								<span class="label">Search 300 schools</span>
+								<span class="label"
+									init-with="p:[op:0, tr:rotateX(90deg), tro:bottom center]"
+									when-input-border-enter="p:[opacity:0:1:250:easeOutExpo, transform:rotateX(90deg):rotateX(0deg):250:easeOutExpo]:delay-200">Search 300 schools</span>
 								<span class="input"
 									init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 								<div class="underline">
-									<div></div><div></div>
+									<div init-with="p:[tr:scaleX(0)]"
+										when-input-border-enter="p:[transform:scaleX(0):scaleX(1):250:easeOutExpo]"></div>
+									<div></div>
 								</div>
 								<div class="borders">
 									<div><div></div><div></div></div>
