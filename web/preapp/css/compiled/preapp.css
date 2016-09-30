@@ -5592,6 +5592,57 @@ a[class*="-container"]:hover .map-enter {
     padding: 7.5px; }
     .projector-school-search > ul > li {
       padding: 7.5px; }
+    .projector-school-search > ul.mobile {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap; }
+      .projector-school-search > ul.mobile > li {
+        display: none;
+        width: 50%;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center; }
+        .projector-school-search > ul.mobile > li:nth-child(1), .projector-school-search > ul.mobile > li:nth-child(2), .projector-school-search > ul.mobile > li:nth-child(3), .projector-school-search > ul.mobile > li:nth-child(4) {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex; }
+    .projector-school-search > ul.desktop, .projector-school-search > ul.large {
+      display: none;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap; }
 
 .projector-school-results {
   -ms-box-orient: horizontal;
@@ -5649,7 +5700,71 @@ a[class*="-container"]:hover .map-enter {
         top: 0;
         left: 0; }
 
+@media screen and (max-height: 540px) {
+  .projector-school-search .card-container {
+    width: 100%; }
+  .projector-school-search .university-card.short {
+    width: 100%;
+    border-radius: 2px; }
+    .projector-school-search .university-card.short > svg {
+      display: none; }
+    .projector-school-search .university-card.short .school-card-container {
+      position: static;
+      width: 100%;
+      height: 44px;
+      background: white; }
+      .projector-school-search .university-card.short .school-card-container .school-card-color {
+        width: 5px;
+        border-radius: 2px 0 0 2px; }
+        .projector-school-search .university-card.short .school-card-container .school-card-color .user-icon {
+          left: 10px;
+          top: 50%;
+          margin-top: -12px;
+          width: 24px;
+          height: 24px; }
+      .projector-school-search .university-card.short .school-card-container .school-card-info {
+        width: 100%;
+        padding-left: 34px;
+        padding-right: 15px; }
+        .projector-school-search .university-card.short .school-card-container .school-card-info h1 {
+          font-size: 14px; }
+        .projector-school-search .university-card.short .school-card-container .school-card-info h2 {
+          display: none; } }
+@media screen and (min-height: 540px) {
+  .projector-school-search > ul.mobile > li {
+    width: 100%; } }
+@media screen and (min-height: 660px) {
+  .projector-school-search > ul.mobile > li {
+    -ms-box-orient: horizontal !important;
+    display: -webkit-box !important;
+    display: -moz-box !important;
+    display: -ms-flexbox !important;
+    display: -moz-flex !important;
+    display: -webkit-flex !important;
+    display: flex !important; } }
+@media screen and (min-width: 385px) and (min-height: 650px) {
+  .projector-school-search > ul.large {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex; }
+  .projector-school-search > ul.mobile, .projector-school-search > ul.desktop {
+    display: none; } }
 @media screen and (min-width: 768px) {
+  .projector-school-search > ul.desktop {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex; }
+  .projector-school-search > ul.mobile, .projector-school-search > ul.large {
+    display: none; }
+
   .projector-school .projector-splash-header {
     position: absolute;
     top: 0;
