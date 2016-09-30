@@ -5148,7 +5148,12 @@ a[class*="-container"]:hover .map-enter {
   .projector-splash .projector-guru-body {
     display: block; }
   .projector-splash .student-card-mobile {
-    display: none; } }
+    display: none; }
+
+  .projector-mobile-header .projector-splash-header {
+    min-height: auto; }
+    .projector-mobile-header .projector-splash-header h1 {
+      display: none; } }
 .projector-access-heart {
   display: none;
   width: 100%;
@@ -5349,11 +5354,7 @@ a[class*="-container"]:hover .map-enter {
     display: -webkit-flex;
     display: flex; }
   .projector-access .mobile {
-    display: none; }
-  .projector-access .projector-splash-header {
-    min-height: auto; }
-    .projector-access .projector-splash-header h1 {
-      display: none; } }
+    display: none; } }
 .projector-demo {
   text-align: center; }
 
@@ -5566,6 +5567,14 @@ a[class*="-container"]:hover .map-enter {
 .echo-loader .echo-loader-main {
   transform: rotateY(180deg); }
 
+.projector-school .projector-splash-header {
+  z-index: 10;
+  position: relative; }
+  .projector-school .projector-splash-header h1 {
+    margin-top: 0 !important; }
+    .projector-school .projector-splash-header h1.desktop {
+      display: none; }
+
 .projector-school-container {
   position: relative; }
 
@@ -5584,6 +5593,74 @@ a[class*="-container"]:hover .map-enter {
     .projector-school-search > ul > li {
       padding: 7.5px; }
 
+.projector-school-results {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  padding: 7.5px; }
+  .projector-school-results li {
+    padding: 7.5px; }
+
+.projector-school-toggle {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px; }
+  .projector-school-toggle .projector-school-toggle-label {
+    margin-left: 15px;
+    position: relative; }
+    .projector-school-toggle .projector-school-toggle-label h3 {
+      font-size: 18px;
+      font-weight: 600; }
+      .projector-school-toggle .projector-school-toggle-label h3 + h3 {
+        margin-top: 0;
+        position: absolute;
+        top: 0;
+        left: 0; }
+
+@media screen and (min-width: 768px) {
+  .projector-school .projector-splash-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; }
+    .projector-school .projector-splash-header h1 {
+      padding-top: 10px; }
+      .projector-school .projector-splash-header h1.desktop {
+        display: block; }
+      .projector-school .projector-splash-header h1.mobile {
+        display: none; } }
 .projector-courses-search {
   width: 100%;
   max-width: 492px; }
@@ -5673,11 +5750,6 @@ a[class*="-container"]:hover .map-enter {
     display: -moz-flex !important;
     display: -webkit-flex !important;
     display: flex !important; } }
-@media screen and (min-width: 768px) {
-  .projector-courses .projector-splash-header {
-    min-height: auto; }
-    .projector-courses .projector-splash-header h1 {
-      display: none; } }
 @media screen and (min-width: 385px) and (min-height: 650px) {
   .projector-courses-search > ul.large {
     -ms-box-orient: horizontal;

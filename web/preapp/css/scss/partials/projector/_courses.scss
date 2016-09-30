@@ -81,17 +81,6 @@
 	}
 }
 
-@media screen and (min-width: 768px) {
-	.projector-courses {
-		.projector-splash-header {
-			min-height: auto;
-			h1 {
-				display: none;
-			}
-		}
-	}
-}
-
 @media screen and (min-width: 385px) and (min-height: 650px) {
 	.projector-courses-search {
 		> ul {
