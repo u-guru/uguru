@@ -345,14 +345,23 @@ angular.module('uguru.shared.directives')
       }
     }
 }])
-.directive("u", ["CompService", "$compile", function(CompService, $compile) {
+.directive("u", ["$compile", function($compile) {
       return {
           restrict: 'A',
           replace: true,
           transclude: true,
           priority:100,
           compile: function(element, attr, transclude) {
-              for (key in attr) {console.log(key, attr)}
+
+              this.shortcuts = {};
+              this.methods = ['prop', 'send'];
+              this.states = ['initWith', 'on-init'];
+
+              for (key in attr) {
+                if (key.substring(0, 4) === 'when') {
+
+                }
+              }
               return {
                   pre:
                   function (scope, lElem, lAttr) {

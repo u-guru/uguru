@@ -2,7 +2,6 @@
 
 .projector-splash {
 	.btn-ghost-round {
-		font-size: 18px;
 		letter-spacing: 0;
 	}
 	.projector-content {
@@ -43,11 +42,12 @@
 		}
 	}
 	.student-card-mobile {
+		@include flex;
+		@include flex-center;
 		position: absolute;
 		bottom: 0;
 		left: 0;
-		@include flex;
-		@include flex-center;
+		z-index: 100;
 		width: 100%;
 		padding: 15px;
 	}

@@ -3,22 +3,22 @@
 .projector-account {
 	header {
 		button {
-			@include flex;
-			@include flex-center-vertical;
 			position: absolute;
 			top: 9px;
 			right: 9px;
-			height: 42px;
 			font-size: 16px;
-			padding: 0 20px;
+			padding: 6px 20px;
 		}
 	}
-	.projector-splash-container {
+	.projector-splash-container, .desktop, .mobile {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
+	}
+	.desktop {
+		display: none;
 	}
 }
 
@@ -27,24 +27,32 @@
 	@include flex-wrap;
 	@include flex-center;
 	width: 100%;
+	max-width: 450px;
 	.projector-account-input {
+		margin-top: -15px;
 		width: 100%;
-		max-width: 450px;
-		padding: 0.5px 7.5px 2px;
-		li {
-			padding: 12.5px 7.5px;
-		}
-	}
-	.projector-account-btn {
-		@include flex;
-		@include flex-center;
-		width: 100%;
-		max-width: 450px;
 		padding: 7.5px;
 		li {
 			padding: 7.5px;
 		}
+		p {
+			font-size: 18px;
+			font-weight: 600;
+			margin: 0;
+			line-height: 1.2;
+		}
+	}
+	.projector-account-btn {
+		width: 100%;
+		padding: 7.5px;
+		margin-top: -15px;
+		li {
+			padding: 7.5px;
+			text-align: center;
+		}
 		.btn-ghost-round {
+			font-size: 16px;
+			padding: 6px 20px;
 			&.fb {
 				color: mix($facebook, white, 70%);
 				border-color: mix($facebook, white, 70%);
@@ -63,43 +71,46 @@
 	}
 }
 
-// .projector-account {
-// 	.projector-account-switch-desktop {
-// 		display: none;
-// 	}
-// 	.projector-account-content {
-// 		padding-top: 80px;
-// 	}
-// 	.projector-account-inside {
-// 		@include flex;
-// 		@include flex-wrap;
-// 		@include flex-center;
-// 		align-content: space-between;;
-// 	}
-// 	.projector-account-buttons {
-// 		&.mobile {
-// 			@include flex;
-// 		}
-// 		&.desktop {
-// 			display: none;
-// 			@include flex-wrap;
-// 			@include flex-center;
-// 		}
-// 	}
-// }
-//
-// @media screen and (min-width: 768px) {
-// 	.projector-account {
-// 		.projector-account-switch-desktop {
-// 			@include flex;
-// 		}
-// 		.projector-account-buttons {
-// 			&.mobile {
-// 				display: none;
-// 			}
-// 			&.desktop {
-// 				@include flex;
-// 			}
-// 		}
-// 	}
-// }
+@media screen and (min-height: 480px) {
+	.projector-account-form {
+		.projector-account-input {
+			margin-top: 0;
+			padding: 0.5px 7.5px 2px;
+			li {
+				padding: 12.5px 7.5px;
+			}
+		}
+		.projector-account-btn {
+			margin-top: 0;
+		}
+	}
+}
+
+@media screen and (min-height: 560px) and (min-width: 350px) {
+	.projector-account-form {
+		.projector-account-btn {
+			.btn-ghost-round {
+				font-size: 18px;
+				padding: 10px 30px;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.projector-account {
+		.desktop {
+			display: block;
+		}
+		.mobile {
+			display: none;
+		}
+	}
+	.projector-account-form {
+		.projector-account-btn {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+		}
+	}
+}

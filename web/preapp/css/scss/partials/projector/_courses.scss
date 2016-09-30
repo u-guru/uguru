@@ -1,72 +1,146 @@
 @import '../../../../../shared/css/scss/partials/mixin';
 
-.projector-courses {
-	.projector-courses-search {
-		max-width: 500px;
+.projector-courses-search {
+	width: 100%;
+	max-width: 492px;
+	> form {
+		padding: 0 15px;
+	}
+	> ul {
+		padding: 7.5px;
+		> li {
+			padding: 7.5px;
+		}
+		&.mobile {
+			@include flex;
+			@include flex-center;
+			@include flex-wrap;
+			> li {
+				display: none;
+				width: 50%;
+				@include flex-center;
+				&:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+					@include flex;
+				}
+			}
+		}
+		&.desktop, &.large {
+			display: none;
+			@include flex-center;
+			@include flex-wrap;
+		}
 	}
 }
 
-// .projector-courses {
-// 	padding-top: 50px;
-// 	.backpack {
-// 		position: absolute;
-// 		bottom: -15px;
-// 		right: -15px;
-// 		display: block;
-// 		width: 100px;
-// 		height: 100px;
-// 	}
-// 	form {
-// 		width: 100%;
-// 		padding: 0 15px;
-// 	}
-// 	ul {
-// 		@include listless;
-// 		@include flex;
-// 		@include flex-wrap;
-// 		padding: 7.5px;
-// 		width: 100%;
-// 		li {
-// 			padding: 7.5px;
-// 		}
-// 	}
-// 	.course-search {
-// 		@include flex-center;
-// 	}
-// 	.course-selected {
-// 		li {
-// 			a {
-// 				@include flex;
-// 				border: 2px solid white;
-// 				border-radius: 2px;
-// 				> span {
-// 					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-// 					@include flex;
-// 					@include flex-center;
-// 					padding: 5px 8px 5px 10px;
-// 					border-bottom-width: 5px;
-// 					border-bottom-style: solid;
-// 					font-size: 18px;
-// 					svg {
-// 						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-// 						@include prefix(transform, rotate(45deg), webkit moz ms o);
-// 						@include svg-stroke(white, 9);
-// 						display: block;
-// 						width: 18px;
-// 						height: 18px;
-// 						margin-left: 5px;
-// 					}
-// 				}
-// 				&:hover, &:active {
-// 					background: white;
-// 					> span {
-// 						color: $slate;
-// 						svg {
-// 							stroke: $slate;
-// 						}
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// }
+@media screen and (max-height: 540px) {
+	.projector-courses-search {
+		.course-card.short {
+			width: 100%;
+			> svg {
+				display: none;
+			}
+			.course-card-inside {
+				position: static;
+				width: 100%;
+				height: auto;
+				background: white;
+				padding-right: 47px;
+				h1 {
+					display: none;
+				}
+				h2 {
+					margin-bottom: 0;
+					font-size: 14px;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-height: 540px) {
+	.projector-courses-search {
+		> ul {
+			&.mobile {
+				> li {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-height: 660px) {
+	.projector-courses-search {
+		> ul {
+			&.mobile {
+				> li {
+					@include flex-important;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.projector-courses {
+		.projector-splash-header {
+			min-height: auto;
+			h1 {
+				display: none;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 385px) and (min-height: 650px) {
+	.projector-courses-search {
+		> ul {
+			&.large {
+				@include flex;
+			}
+			&.mobile, &.desktop {
+				display: none;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.projector-courses-search {
+		> ul {
+			&.desktop {
+				@include flex;
+			}
+			&.mobile, &.large {
+				display: none;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 768px) and (min-height: 900px) {
+	.projector-courses-search {
+		max-width: 780px;
+		.course-card {
+			&.mini {
+				> svg {
+					width: auto;
+					max-width: none;
+					height: auto;
+				}
+				.course-card-border {
+					height: 5px;
+				}
+				.course-card-inside {
+					h2 {
+						font-size: 14px;
+						margin-bottom: 5px;
+					}
+					h1 {
+						font-size: 24px;
+					}
+				}
+			}
+		}
+	}
+}

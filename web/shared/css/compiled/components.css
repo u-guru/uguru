@@ -1343,6 +1343,8 @@ button.disabled {
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase; }
+  .btn-ghost-round.opacity-50p:hover, .btn-ghost-round.opacity-50p:focus, .btn-ghost.opacity-50p:hover, .btn-ghost.opacity-50p:focus {
+    opacity: 1 !important; }
   .btn-ghost-round:hover, .btn-ghost-round:focus, .btn-ghost:hover, .btn-ghost:focus {
     background: white;
     color: #2B3234; }
@@ -2134,17 +2136,17 @@ fieldset.with-icon input {
   fieldset.with-icon input + label {
     width: calc(100% - 34px) !important;
     left: 34px !important; }
-  fieldset.with-icon input.light ~ .input-icon svg * {
+  fieldset.with-icon input.light ~ .input-icon svg g {
     stroke: rgba(255, 255, 255, 0.2); }
-  fieldset.with-icon input.light:hover ~ .input-icon svg * {
+  fieldset.with-icon input.light:hover ~ .input-icon svg g {
     stroke: rgba(255, 255, 255, 0.4); }
-  fieldset.with-icon input.light:focus ~ .input-icon svg * {
+  fieldset.with-icon input.light:focus ~ .input-icon svg g {
     stroke: white; }
-  fieldset.with-icon input.dark ~ .input-icon svg * {
+  fieldset.with-icon input.dark ~ .input-icon svg g {
     stroke: rgba(64, 72, 75, 0.2); }
-  fieldset.with-icon input.dark:hover ~ .input-icon svg * {
+  fieldset.with-icon input.dark:hover ~ .input-icon svg g {
     stroke: rgba(64, 72, 75, 0.4); }
-  fieldset.with-icon input.dark:focus ~ .input-icon svg * {
+  fieldset.with-icon input.dark:focus ~ .input-icon svg g {
     stroke: #40484B; }
 @media screen and (min-width: 768px) {
   fieldset.large {
@@ -2188,7 +2190,6 @@ div.input-border {
   font-size: 18px;
   font-weight: 400;
   width: 100%;
-  max-width: 400px;
   min-height: 50px; }
   div.input-border * {
     transition: all 150ms ease-in-out; }
@@ -2219,30 +2220,6 @@ div.input-border {
       transition: all 150ms ease-in-out;
       font-weight: 400;
       font-size: 16px; }
-    div.input-border input.input-border:focus::selection {
-      background: white;
-      color: #40484B; }
-    div.input-border input.input-border:focus::-moz-selection {
-      background: white;
-      color: #40484B; }
-    div.input-border input.input-border.light {
-      color: white; }
-      div.input-border input.input-border.light::-webkit-input-placeholder {
-        color: rgba(255, 255, 255, 0.2); }
-      div.input-border input.input-border.light:-moz-placeholder {
-        color: rgba(255, 255, 255, 0.2); }
-      div.input-border input.input-border.light::-moz-placeholder {
-        color: rgba(255, 255, 255, 0.2); }
-      div.input-border input.input-border.light:-ms-input-placeholder {
-        color: rgba(255, 255, 255, 0.2); }
-      div.input-border input.input-border.light:focus::-webkit-input-placeholder {
-        color: white; }
-      div.input-border input.input-border.light:focus:-moz-placeholder {
-        color: white; }
-      div.input-border input.input-border.light:focus::-moz-placeholder {
-        color: white; }
-      div.input-border input.input-border.light:focus:-ms-input-placeholder {
-        color: white; }
     div.input-border input.input-border + label:not(:empty) {
       position: absolute;
       top: 0;
@@ -2257,13 +2234,9 @@ div.input-border {
         left: 0;
         width: 100%;
         height: 2px;
-        background: rgba(255, 255, 255, 0.2);
         border-radius: 1000px;
         transform-origin: left center;
         transition: all 300ms ease-in-out; }
-      div.input-border input.input-border + label:not(:empty):before {
-        background: white;
-        transform: scaleX(0); }
       div.input-border input.input-border + label:not(:empty) .input-icon {
         width: 24px;
         height: 24px;
@@ -2272,26 +2245,26 @@ div.input-border {
         top: 13px;
         left: 13px; }
         div.input-border input.input-border + label:not(:empty) .input-icon * {
-          stroke-width: 8px;
-          stroke: #637074; }
+          stroke-width: 8px; }
         div.input-border input.input-border + label:not(:empty) .input-icon .template {
           stroke-dasharray: 220.3; }
         div.input-border input.input-border + label:not(:empty) .input-icon .success-1 {
-          stroke-dasharray: 19.8;
-          opacity: 0; }
+          stroke-dasharray: 19.9;
+          transition: stroke-dashoffset 125ms ease-out, stroke 125ms ease-out; }
         div.input-border input.input-border + label:not(:empty) .input-icon .success-2 {
-          stroke-dasharray: 50.2;
-          opacity: 0; }
+          stroke-dasharray: 50.3;
+          transition: stroke-dashoffset 250ms cubic-bezier(0.17, 0.67, 0.78, 1.37), stroke 125ms ease-out; }
         div.input-border input.input-border + label:not(:empty) .input-icon .error-1, div.input-border input.input-border + label:not(:empty) .input-icon .error-2 {
-          stroke: #d3242c;
           stroke-dasharray: 39.6;
-          opacity: 0; }
+          transition: stroke-dashoffset 175ms ease-out, stroke 125ms ease-out; }
         div.input-border input.input-border + label:not(:empty) .input-icon .email {
           transform-origin: center center;
-          stroke-dasharray: 365.6; }
+          stroke-dasharray: 365.6;
+          transition: stroke-dashoffset 500ms ease-out, transform 250ms ease-out, stroke 125ms ease-out; }
         div.input-border input.input-border + label:not(:empty) .input-icon .name {
           transform-origin: center center;
-          stroke-dasharray: 365.6; }
+          stroke-dasharray: 365.6;
+          transition: stroke-dashoffset 500ms ease-out, transform 250ms ease-out, stroke 125ms ease-out; }
         div.input-border input.input-border + label:not(:empty) .input-icon.email-icon .name {
           opacity: 0; }
         div.input-border input.input-border + label:not(:empty) .input-icon.name-icon .email {
@@ -2303,7 +2276,7 @@ div.input-border {
         font-size: 16px;
         transition: all 250ms ease-out 300ms;
         padding-left: 52px;
-        padding-right: 52px; }
+        padding-right: 15px; }
       div.input-border input.input-border + label:not(:empty) .input {
         z-index: 5;
         display: flex; }
@@ -2318,13 +2291,13 @@ div.input-border {
             left: -1px;
             width: calc(100% + 2px);
             height: 2px;
-            border-radius: 1000px;
-            background: white; }
+            border-radius: 1000px; }
         div.input-border input.input-border + label:not(:empty) .input span:last-child {
           margin-left: 2px; }
           div.input-border input.input-border + label:not(:empty) .input span:last-child:after {
             display: none !important; }
       div.input-border input.input-border + label:not(:empty) a {
+        opacity: 0;
         transition: all 150ms ease-in-out;
         transform-origin: center center;
         display: block;
@@ -2334,43 +2307,32 @@ div.input-border {
         z-index: 4;
         top: 13px;
         right: 13px;
-        cursor: pointer;
-        opacity: 0.75; }
+        cursor: pointer; }
         div.input-border input.input-border + label:not(:empty) a svg {
           transform-origin: center center;
-          transform: rotate(45deg);
+          transform: rotate(-45deg);
           display: block;
           width: 100%;
           height: 100%; }
           div.input-border input.input-border + label:not(:empty) a svg * {
             stroke-width: 8px; }
-          div.input-border input.input-border + label:not(:empty) a svg circle {
-            stroke: white;
-            fill: white; }
-          div.input-border input.input-border + label:not(:empty) a svg path {
-            stroke: #40484B; }
         div.input-border input.input-border + label:not(:empty) a:hover, div.input-border input.input-border + label:not(:empty) a:focus {
           opacity: 1 !important; }
-        div.input-border input.input-border + label:not(:empty) a:active svg circle {
-          fill: rgba(255, 255, 255, 0.2); }
-        div.input-border input.input-border + label:not(:empty) a:active svg path {
-          stroke: white; }
-      div.input-border input.input-border + label:not(:empty) > div {
+      div.input-border input.input-border + label:not(:empty) .borders {
         position: absolute;
         z-index: 2;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(255, 255, 255, 0.2);
         border-radius: 2px;
         transform: rotateX(90deg);
         transition: all 300ms linear;
         transform-origin: center bottom;
         opacity: 0; }
-        div.input-border input.input-border + label:not(:empty) > div > div, div.input-border input.input-border + label:not(:empty) > div > div div:nth-child(1), div.input-border input.input-border + label:not(:empty) > div > div div:nth-child(2) {
+        div.input-border input.input-border + label:not(:empty) .borders > div, div.input-border input.input-border + label:not(:empty) .borders > div div:nth-child(1), div.input-border input.input-border + label:not(:empty) .borders > div div:nth-child(2) {
           position: absolute; }
-        div.input-border input.input-border + label:not(:empty) > div > div div:nth-child(1), div.input-border input.input-border + label:not(:empty) > div > div div:nth-child(2) {
+        div.input-border input.input-border + label:not(:empty) .borders > div div:nth-child(1), div.input-border input.input-border + label:not(:empty) .borders > div div:nth-child(2) {
           border-radius: 1000px;
           content: "";
           display: block;
@@ -2379,52 +2341,206 @@ div.input-border {
           width: 100%;
           height: 100%;
           opacity: 0;
-          transform: scaleX(0);
-          background: white; }
-        div.input-border input.input-border + label:not(:empty) > div > div:nth-child(1) {
+          transform: scaleX(0); }
+        div.input-border input.input-border + label:not(:empty) .borders > div:nth-child(1) {
           top: 0;
           left: 0;
           width: 100%;
           height: 2px; }
-        div.input-border input.input-border + label:not(:empty) > div > div:nth-child(1) div:nth-child(1), div.input-border input.input-border + label:not(:empty) > div > div:nth-child(1) div:nth-child(2) {
+        div.input-border input.input-border + label:not(:empty) .borders > div:nth-child(1) div:nth-child(1), div.input-border input.input-border + label:not(:empty) .borders > div:nth-child(1) div:nth-child(2) {
           transform-origin: right center;
           transition: all 300ms ease-in-out 750ms; }
-        div.input-border input.input-border + label:not(:empty) > div > div:nth-child(2) {
+        div.input-border input.input-border + label:not(:empty) .borders > div:nth-child(2) {
           top: 0;
           right: 0;
           width: 2px;
           height: 100%; }
-        div.input-border input.input-border + label:not(:empty) > div > div:nth-child(2) div:nth-child(1), div.input-border input.input-border + label:not(:empty) > div > div:nth-child(2) div:nth-child(2) {
+        div.input-border input.input-border + label:not(:empty) .borders > div:nth-child(2) div:nth-child(1), div.input-border input.input-border + label:not(:empty) .borders > div:nth-child(2) div:nth-child(2) {
           transform-origin: center bottom;
           transition: all 100ms ease-in-out 650ms; }
-        div.input-border input.input-border + label:not(:empty) > div > div:nth-child(3) {
+        div.input-border input.input-border + label:not(:empty) .borders > div:nth-child(3) {
           bottom: 0;
           right: 0;
           width: 100%;
           height: 2px; }
-        div.input-border input.input-border + label:not(:empty) > div > div:nth-child(3) div:nth-child(1), div.input-border input.input-border + label:not(:empty) > div > div:nth-child(3) div:nth-child(2) {
+        div.input-border input.input-border + label:not(:empty) .borders > div:nth-child(3) div:nth-child(1), div.input-border input.input-border + label:not(:empty) .borders > div:nth-child(3) div:nth-child(2) {
           transform-origin: left center;
           transition: all 300ms ease-in-out 500ms; }
-        div.input-border input.input-border + label:not(:empty) > div > div:nth-child(4) {
+        div.input-border input.input-border + label:not(:empty) .borders > div:nth-child(4) {
           bottom: 0;
           left: 0;
           width: 2px;
           height: 100%; }
-        div.input-border input.input-border + label:not(:empty) > div > div:nth-child(4) div:nth-child(1), div.input-border input.input-border + label:not(:empty) > div > div:nth-child(4) div:nth-child(2) {
+        div.input-border input.input-border + label:not(:empty) .borders > div:nth-child(4) div:nth-child(1), div.input-border input.input-border + label:not(:empty) .borders > div:nth-child(4) div:nth-child(2) {
           transform-origin: center top;
           transition: all 100ms ease-in-out 400ms; }
+    div.input-border input.input-border.light {
+      color: white; }
+      div.input-border input.input-border.light::-webkit-input-placeholder {
+        color: rgba(255, 255, 255, 0.2); }
+      div.input-border input.input-border.light:-moz-placeholder {
+        color: rgba(255, 255, 255, 0.2); }
+      div.input-border input.input-border.light::-moz-placeholder {
+        color: rgba(255, 255, 255, 0.2); }
+      div.input-border input.input-border.light:-ms-input-placeholder {
+        color: rgba(255, 255, 255, 0.2); }
+      div.input-border input.input-border.light + label:not(:empty):before, div.input-border input.input-border.light + label:not(:empty):after {
+        background: rgba(255, 255, 255, 0.2); }
+      div.input-border input.input-border.light + label:not(:empty):before {
+        transform: scaleX(0); }
+      div.input-border input.input-border.light + label:not(:empty) .label {
+        color: white; }
+      div.input-border input.input-border.light + label:not(:empty) .input span:after {
+        background: white; }
+      div.input-border input.input-border.light + label:not(:empty) .input-icon g {
+        stroke: #637074; }
+      div.input-border input.input-border.light + label:not(:empty) a svg circle {
+        stroke: white;
+        fill: white; }
+      div.input-border input.input-border.light + label:not(:empty) a svg path {
+        stroke: #40484B; }
+      div.input-border input.input-border.light + label:not(:empty) a:active svg circle {
+        fill: rgba(255, 255, 255, 0.2); }
+      div.input-border input.input-border.light + label:not(:empty) a:active svg path {
+        stroke: white; }
+      div.input-border input.input-border.light + label:not(:empty) .borders {
+        background: rgba(255, 255, 255, 0.2); }
+        div.input-border input.input-border.light + label:not(:empty) .borders > div div:nth-child(1), div.input-border input.input-border.light + label:not(:empty) .borders > div div:nth-child(2) {
+          background: white; }
+      div.input-border input.input-border.light:hover + label:not(:empty) .input-icon g {
+        stroke: rgba(255, 255, 255, 0.5); }
+      div.input-border input.input-border.light:focus::-webkit-input-placeholder {
+        color: white; }
+      div.input-border input.input-border.light:focus:-moz-placeholder {
+        color: white; }
+      div.input-border input.input-border.light:focus::-moz-placeholder {
+        color: white; }
+      div.input-border input.input-border.light:focus:-ms-input-placeholder {
+        color: white; }
+      div.input-border input.input-border.light:focus::selection {
+        background: white;
+        color: #40484B; }
+      div.input-border input.input-border.light:focus::-moz-selection {
+        background: white;
+        color: #40484B; }
+      div.input-border input.input-border.light:focus + label:not(:empty) .input-icon g {
+        stroke: white; }
+    div.input-border input.input-border.dark {
+      color: #40484B; }
+      div.input-border input.input-border.dark::-webkit-input-placeholder {
+        color: rgba(64, 72, 75, 0.2); }
+      div.input-border input.input-border.dark:-moz-placeholder {
+        color: rgba(64, 72, 75, 0.2); }
+      div.input-border input.input-border.dark::-moz-placeholder {
+        color: rgba(64, 72, 75, 0.2); }
+      div.input-border input.input-border.dark:-ms-input-placeholder {
+        color: rgba(64, 72, 75, 0.2); }
+      div.input-border input.input-border.dark + label:not(:empty):before, div.input-border input.input-border.dark + label:not(:empty):after {
+        background: rgba(64, 72, 75, 0.2); }
+      div.input-border input.input-border.dark + label:not(:empty):before {
+        transform: scaleX(0); }
+      div.input-border input.input-border.dark + label:not(:empty) .label {
+        color: #40484B; }
+      div.input-border input.input-border.dark + label:not(:empty) .input span:after {
+        background: #40484B; }
+      div.input-border input.input-border.dark + label:not(:empty) .input-icon g {
+        stroke: #89969b; }
+      div.input-border input.input-border.dark + label:not(:empty) a svg circle {
+        stroke: #40484B;
+        fill: #40484B; }
+      div.input-border input.input-border.dark + label:not(:empty) a svg path {
+        stroke: white; }
+      div.input-border input.input-border.dark + label:not(:empty) a:active svg circle {
+        fill: rgba(64, 72, 75, 0.2); }
+      div.input-border input.input-border.dark + label:not(:empty) a:active svg path {
+        stroke: #40484B; }
+      div.input-border input.input-border.dark + label:not(:empty) .borders {
+        background: rgba(64, 72, 75, 0.2); }
+        div.input-border input.input-border.dark + label:not(:empty) .borders > div div:nth-child(1), div.input-border input.input-border.dark + label:not(:empty) .borders > div div:nth-child(2) {
+          background: #40484B; }
+      div.input-border input.input-border.dark:hover + label:not(:empty) .input-icon g {
+        stroke: #637074; }
+      div.input-border input.input-border.dark:focus::-webkit-input-placeholder {
+        color: #40484B; }
+      div.input-border input.input-border.dark:focus:-moz-placeholder {
+        color: #40484B; }
+      div.input-border input.input-border.dark:focus::-moz-placeholder {
+        color: #40484B; }
+      div.input-border input.input-border.dark:focus:-ms-input-placeholder {
+        color: #40484B; }
+      div.input-border input.input-border.dark:focus::selection {
+        background: #40484B;
+        color: white; }
+      div.input-border input.input-border.dark:focus::-moz-selection {
+        background: #40484B;
+        color: white; }
+      div.input-border input.input-border.dark:focus + label:not(:empty) .input-icon g {
+        stroke: #40484B; }
+    div.input-border input.input-border:hover + label:not(:empty):before {
+      transform: none; }
+    div.input-border input.input-border:hover + label:not(:empty) a {
+      opacity: 0.75; }
+      div.input-border input.input-border:hover + label:not(:empty) a svg {
+        transform: none; }
+    div.input-border input.input-border:focus + label:not(:empty):before {
+      transform: none; }
     div.input-border input.input-border:focus + label:not(:empty) .label {
       transform: translateY(-36px);
       font-size: 12px; }
-    div.input-border input.input-border:focus + label:not(:empty) .input-icon * {
-      stroke: white; }
-    div.input-border input.input-border:focus + label:not(:empty) > div {
+    div.input-border input.input-border:focus + label:not(:empty) a {
+      opacity: 0.75; }
+      div.input-border input.input-border:focus + label:not(:empty) a svg {
+        transform: none; }
+    div.input-border input.input-border:focus + label:not(:empty) .borders {
       transform: rotateX(0);
       opacity: 1; }
-      div.input-border input.input-border:focus + label:not(:empty) > div > div div:nth-child(2), div.input-border input.input-border:focus + label:not(:empty) > div > div div:nth-child(2) {
+      div.input-border input.input-border:focus + label:not(:empty) .borders > div div:nth-child(1) {
         opacity: 1;
         transform: scaleX(1); }
+  div.input-border.no-label input.input-border:focus + label:not(:empty) .label {
+    opacity: 0; }
+  @media screen and (min-width: 768px) {
+    div.input-border.large {
+      min-height: 70px;
+      max-width: 800px; }
+      div.input-border.large input.input-border {
+        font-size: 32px;
+        padding: 15px 0 15px 70px; }
+        div.input-border.large input.input-border + label:not(:empty) .input-icon {
+          width: 48px;
+          height: 48px;
+          top: 11px;
+          left: 11px; }
+          div.input-border.large input.input-border + label:not(:empty) .input-icon * {
+            stroke-width: 5px; }
+        div.input-border.large input.input-border + label:not(:empty) > span {
+          font-size: 32px;
+          padding-left: 70px;
+          padding-right: 15px; }
+        div.input-border.large input.input-border + label:not(:empty) a {
+          width: 36px;
+          height: 36px;
+          top: 17px;
+          right: 17px; }
+          div.input-border.large input.input-border + label:not(:empty) a svg * {
+            stroke-width: 6px; }
+        div.input-border.large input.input-border:focus + label:not(:empty) .label {
+          opacity: 0; } }
 
+@media screen and (max-height: 480px) {
+  div.input-border {
+    min-height: 35px; }
+    div.input-border input.input-border {
+      padding-top: 5px;
+      padding-bottom: 15px; }
+      div.input-border input.input-border + label:not(:empty) > span {
+        top: 5px; }
+      div.input-border input.input-border + label:not(:empty) .input-icon, div.input-border input.input-border + label:not(:empty) a {
+        top: 5px; }
+      div.input-border input.input-border + label:not(:empty) .borders {
+        display: none; }
+      div.input-border input.input-border:focus + label:not(:empty) .label {
+        opacity: 0; } }
 fieldset.search-bar {
   border-radius: 1000px;
   height: 48px;
@@ -3697,7 +3813,7 @@ fieldset.no-border * {
       height: 70px; }
     .demographic-tile > div div:not(.borders) h1 {
       font-size: 18px; } }
-  @media screen and (min-height: 730px), screen and (min-width: 600px) {
+  @media screen and (min-height: 730px), screen and (min-width: 700px) {
     .demographic-tile > svg {
       max-width: 150px;
       max-height: 150px; }
@@ -14867,15 +14983,17 @@ input[type=range] {
   perspective: 1000;
   width: 100%;
   height: 100%;
-  transform-style: preserve-3d;
-  padding: 15px; }
+  transform-style: preserve-3d; }
 
 .projector-slide {
   width: 100% !important;
-  height: 95%;
+  height: 100%;
   max-width: 750px; }
 
-@media screen and (orientation: landscape) {
+@media screen and (min-height: 560px) {
+  .projector-slider {
+    height: 95%; } }
+@media screen and (orientation: landscape) and (min-height: 560px) {
   .projector-slide {
     max-height: 500px; } }
 @media screen and (orientation: landscape) and (min-height: 750px) {
@@ -14893,7 +15011,26 @@ input[type=range] {
 .projector-slide {
   position: relative;
   transition: all 150ms ease-out; }
+  .projector-slide .projector-top, .projector-slide .projector-line, .projector-slide .projector-handle {
+    display: none; }
+  .projector-slide .projector-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 150ms ease-out;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.2;
+    background: rgba(64, 72, 75, 0.95); }
+
+@media screen and (min-height: 560px) {
+  .projector-container {
+    padding: 15px; }
+
   .projector-slide .projector-top {
+    display: block;
     position: absolute;
     top: .2%;
     left: .8%;
@@ -14919,83 +15056,27 @@ input[type=range] {
     .projector-slide .projector-top:after {
       right: -1%; }
   .projector-slide .projector-line {
+    display: block;
     position: absolute;
     left: 50%;
     margin-left: -1px;
     top: -196px;
     transition: all 150ms ease-out; }
   .projector-slide .projector-content {
-    position: absolute;
     top: 3.2%;
     left: 2%;
     width: 96%;
     height: 96.2%;
-    transition: all 150ms ease-out;
     border: 2px solid white;
     border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-    background: rgba(64, 72, 75, 0.95);
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 1.2; }
-    .projector-slide .projector-content .projector-guru {
-      position: absolute;
-      top: -75px;
-      left: 50%;
-      margin-left: -75px;
-      width: 150px;
-      height: 150px; }
-      .projector-slide .projector-content .projector-guru .user-icon {
-        position: absolute;
-        z-index: 1;
-        top: 50%;
-        left: 50%;
-        margin-top: -48px;
-        margin-left: -48px;
-        width: 96px;
-        height: 96px;
-        border-width: 3px; }
-      .projector-slide .projector-content .projector-guru .guru-head {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-align-content: center;
-        align-content: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        z-index: 2;
-        position: absolute;
-        left: 0;
-        top: 0; }
-        @media screen and (max-width: 320px) {
-          .projector-slide .projector-content .projector-guru .guru-head {
-            transform: scale(0.75); } }
-        .projector-slide .projector-content .projector-guru .guru-head .guru-head {
-          transform: rotate(-7deg);
-          transform-origin: center center; }
-      .projector-slide .projector-content .projector-guru .coach {
-        transition: all 150ms ease-in-out;
-        position: absolute;
-        top: -30px;
-        right: -90px; }
-        .projector-slide .projector-content .projector-guru .coach:not(.active) {
-          filter: alpha(opacity=0);
-          opacity: 0; }
+    border-bottom-right-radius: 2px; }
   .projector-slide .projector-handle {
+    display: block;
     transition: all 150ms ease-out;
     position: absolute;
     bottom: -20px;
     left: 50%;
-    margin-left: -30.5px; }
-
+    margin-left: -30.5px; } }
 .figure-image {
   position: relative;
   margin: 0;

@@ -171,6 +171,9 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 	animation-delay: 450ms!important;
 	transition-delay: 450ms!important;
 }
+.pointer {
+	cursor: pointer;
+}
 [translate-to-elem] {
 	transition: all 600ms cubic-bezier(.77,0,.05,1)!important;
 	transition: all 600ms cubic-bezier(.77,-0.22,.05,1.27)!important;
@@ -1707,9 +1710,11 @@ button, input, textarea {
 }
 [class*="-light"],
 .light {
-	font-weight: 200;
-	* {
+	&:not([class*="-light-"]) {
 		font-weight: 200;
+		* {
+			font-weight: 200;
+		}
 	}
 }
 [class*="book"] {

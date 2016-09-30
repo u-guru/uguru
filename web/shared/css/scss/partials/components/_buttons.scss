@@ -820,6 +820,11 @@ button.disabled {
 	font-weight: 600;
 	letter-spacing: 1px;
 	text-transform: uppercase;
+	&.opacity-50p {
+		&:hover, &:focus {
+			opacity: 1!important;
+		}
+	}
 	&:hover, &:focus {
 		background: white;
 		color: $charcoal;
