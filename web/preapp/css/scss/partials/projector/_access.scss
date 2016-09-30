@@ -197,3 +197,24 @@
 		}
 	}
 }
+
+@media screen and (min-width: 768px) and (min-height: 900px) {
+	.projector-access-heart {
+		height: 155px;
+		svg {
+			* {
+				stroke-width: 2px;
+			}
+		}
+	}
+	.projector-access-content {
+		max-width: 780px;
+		fieldset {
+			max-width: 500px;
+			height: 84px;
+			input {
+				height: 84px;
+			}
+		}
+	}
+}

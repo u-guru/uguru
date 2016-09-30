@@ -223,3 +223,43 @@
 		}
 	}
 }
+
+@media screen and (min-width: 768px) and (min-height: 900px) {
+	.projector-school-search {
+		max-width: 780px;
+		.university-card {
+			&.mini {
+				> svg {
+					width: auto;
+					max-width: none;
+					height: auto;
+				}
+				.school-card-inside {
+					.school-card-top {
+						.school-card-icon {
+							position: absolute;
+							left: 50%;
+							margin-left: -32px;
+							z-index: 5;
+							bottom: -32px;
+							width: 64px;
+							height: 64px;
+							border: 3px solid $campus;
+						}
+					}
+					.school-card-main {
+						.school-card-info {
+							padding-top: 15px;
+						}
+						h1 {
+							font-size: 24px;
+						}
+						h2 {
+							font-size: 16px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
