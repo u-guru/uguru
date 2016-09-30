@@ -5355,6 +5355,19 @@ a[class*="-container"]:hover .map-enter {
     display: flex; }
   .projector-access .mobile {
     display: none; } }
+@media screen and (min-width: 768px) and (min-height: 900px) {
+  .projector-access-heart {
+    height: 155px; }
+    .projector-access-heart svg * {
+      stroke-width: 2px; }
+
+  .projector-access-content {
+    max-width: 780px; }
+    .projector-access-content fieldset {
+      max-width: 500px;
+      height: 84px; }
+      .projector-access-content fieldset input {
+        height: 84px; } }
 .projector-demo {
   text-align: center; }
 
@@ -5537,6 +5550,35 @@ a[class*="-container"]:hover .map-enter {
     align-content: center;
     -webkit-justify-content: center;
     justify-content: center; } }
+@media screen and (min-width: 768px) and (min-height: 900px) {
+  .projector-account-form {
+    max-width: 730px; }
+    .projector-account-form div.input-border {
+      min-height: 70px;
+      max-width: 800px; }
+      .projector-account-form div.input-border input.input-border {
+        font-size: 32px;
+        padding: 15px 0 15px 70px; }
+        .projector-account-form div.input-border input.input-border + label:not(:empty) .input-icon {
+          width: 48px;
+          height: 48px;
+          top: 11px;
+          left: 11px; }
+          .projector-account-form div.input-border input.input-border + label:not(:empty) .input-icon * {
+            stroke-width: 5px; }
+        .projector-account-form div.input-border input.input-border + label:not(:empty) > span {
+          font-size: 32px;
+          padding-left: 70px;
+          padding-right: 15px; }
+        .projector-account-form div.input-border input.input-border + label:not(:empty) a {
+          width: 36px;
+          height: 36px;
+          top: 17px;
+          right: 17px; }
+          .projector-account-form div.input-border input.input-border + label:not(:empty) a svg * {
+            stroke-width: 6px; }
+        .projector-account-form div.input-border input.input-border:focus + label:not(:empty) .label {
+          opacity: 0 !important; } }
 .echo-loader-container, .projector-school-map {
   position: absolute;
   top: 0;
@@ -5776,6 +5818,28 @@ a[class*="-container"]:hover .map-enter {
         display: block; }
       .projector-school .projector-splash-header h1.mobile {
         display: none; } }
+@media screen and (min-width: 768px) and (min-height: 900px) {
+  .projector-school-search {
+    max-width: 780px; }
+    .projector-school-search .university-card.mini > svg {
+      width: auto;
+      max-width: none;
+      height: auto; }
+    .projector-school-search .university-card.mini .school-card-inside .school-card-top .school-card-icon {
+      position: absolute;
+      left: 50%;
+      margin-left: -32px;
+      z-index: 5;
+      bottom: -32px;
+      width: 64px;
+      height: 64px;
+      border: 3px solid #8A9EA3; }
+    .projector-school-search .university-card.mini .school-card-inside .school-card-main .school-card-info {
+      padding-top: 15px; }
+    .projector-school-search .university-card.mini .school-card-inside .school-card-main h1 {
+      font-size: 24px; }
+    .projector-school-search .university-card.mini .school-card-inside .school-card-main h2 {
+      font-size: 16px; } }
 .projector-courses-search {
   width: 100%;
   max-width: 492px; }

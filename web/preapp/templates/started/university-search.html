@@ -119,15 +119,18 @@
 					<ul class="projector-school-results desktop"
 						init-default
 						when-search-school-complete="s:[university-card-init:public]:delay-2000">
-						<li init-default
-							when-school-select="p:[transform:translateY(150px):translateY(-20px):200:easeInExpo:^:2+0:a] | s:[school-exit:public]:delay-250"
-							when-school-exit="p:[tro:center center, transform:translateY(150px) scale(1):translateY(-100px) scale(0.7):500:easeInOutBack easeInOutBack]:delay-250"
+						<li init-with="p:[tro:center center]"
+							when-school-select="p:[transform:translateY(0px):translateY(-100px):200:easeInExpo:^:2+0:a] | s:[school-exit:public]:delay-250"
+							when-school-exit="s:[course-convert:public]"
+							when-course-convert="p:[transform:rotateY(0deg) translateY(-100px):rotateY(360deg) translateY(-100px):450:easeInOutCirc easeInOutCirc] | s:[student-convert:public]:delay-450"
+							when-student-convert="p:[op:0]"
 							when-school-2-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]"
 							when-school-3-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]"
 							when-school-4-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]">
 							<div class="card-container relative"
 								init-with="p:[tro:center center]"
-								when-school-select="p:[transform:translateX(0px) rotate(60deg) scale(1):translateX(-175px) rotate(0deg) scale(1.5):350:easeInOutExpo easeInExpo easeInBack]">
+								when-school-select="p:[transform:translateX(0px) rotate(60deg):translateX(-110px) rotate(0deg):350:easeInOutExpo easeInBack]"
+								when-school-exit="p:[transform:translateX(-110px):translateX(-135px):500:easeInOutExpo]:delay-250">
 								<div class="university-card mini"
 									init-with="p-op"
 									when-university-card-init="a:[scoop-enter:set:(dur:800ms#func:linear):in:delay-200]">
