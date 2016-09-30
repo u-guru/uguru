@@ -415,7 +415,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     }
 
     function initCustomStateWatcher(scope, element, type, args, attr_value) {
-
+      if (element[0].hasAttribute('u')) return;
       if (!(type in scope.root.public.customStates)) {
               scope.root.public.customStates[type] = {};
       }
@@ -478,6 +478,9 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     }
 
     function parseArgs(string_args, state_name, elem) {
+      if (elem[0].hasAttribute('u')) {
+        return;
+      }
       if (window.location.href.indexOf('/admin/api/animations/prop/') > -1 && !elem[0].hasAttribute('player-control')) {
         return {};
       }

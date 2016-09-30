@@ -12,6 +12,7 @@
 
 	<!-- chart line -->
     <div class='absolute full-xy bottom-0'>
+
         <svg ng-if='chartReady && chart.vb'
 			ng-attr-view_Box='{{[chart.vb.x1,chart.vb.y1,chart.vb.x2, chart.vb.y2].join(" ")}}'
 			ng-attr-width="{{chart.html.width.replace('px', '')}}" ng-attr-height="{{chart.height}}">

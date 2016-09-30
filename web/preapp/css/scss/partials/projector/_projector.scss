@@ -92,4 +92,12 @@
 			display: none;
 		}
 	}
+	.projector-mobile-header {
+		.projector-splash-header {
+			min-height: auto;
+			h1 {
+				display: none;
+			}
+		}
+	}
 }
