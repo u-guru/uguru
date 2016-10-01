@@ -3,11 +3,11 @@
     "description": "A collection of all custom items to be used within Uguru",
     "base_url": "admin/spec/api",
     "sections":{
-        "properties": {
-            "all": ["name", "start", "end", "easing options", "delay", "iterations", "direction", "special", "player", "import/export"],
+        "animations": {
+            "all": ["property", "special"],
             "sections": {
                 "special":{
-                    "all": ["reverse", "at t=X"]
+                    "all": ["draw"]
                 }
             }
         },
@@ -44,7 +44,11 @@
                             }
                     }
                 },
-                "item": {},
+                "item": {
+                    "complete": true,
+                    "demos": "api/components/item",
+                    "types": ["svg", "div", "span"]
+                },
                 "tooltip": {},
                 "modal": {},
                 "grid": {},

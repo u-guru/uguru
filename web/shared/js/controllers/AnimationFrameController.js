@@ -11,8 +11,8 @@ angular.module('uguru.shared.controllers')
   '$compile',
   'AnimationFrameService',
   'RootService',
-  'ElementService',
-  function($scope, $state, $timeout, $stateParams, UtilitiesService, $compile, AnimationFrameService, RootService, ElementService) {
+  'AdminElementService',
+  function($scope, $state, $timeout, $stateParams, UtilitiesService, $compile, AnimationFrameService, RootService, AdminElementService) {
     var afc = this;
 
     afc.service = AnimationFrameService;
@@ -38,7 +38,7 @@ angular.module('uguru.shared.controllers')
         afc.element.dom = getDomElementWithBounds(animContainer, $stateParams)
 
 
-        afc.element.dom = ElementService.formatElement(afc.element.dom, 'player', $scope.root.window);
+        afc.element.dom = AdminElementService.formatElement(afc.element.dom, 'player', $scope.root.window);
 
         var domRef = afc.element.dom
         animContainer.innerHTML = '';
@@ -70,7 +70,7 @@ angular.module('uguru.shared.controllers')
 
 
     function addBlindToElem(elem) {
-      ElementService.createBlind(elem);
+      AdminElementService.createBlind(elem);
 
       // animContainer.appendChild()
     }
@@ -86,11 +86,11 @@ angular.module('uguru.shared.controllers')
 
 
       var hasBounds = true;
-      var isSvg = ElementService.isSVGElement(element.nodeName.toLowerCase());
+      var isSvg = AdminElementService.isSVGElement(element.nodeName.toLowerCase());
       console.log(element)
       if (isSvg) {
-        element = ElementService.getSVGParent(element)
-        element = ElementService.scaleSvgCSS(element, _window, true, true);
+        element = AdminElementService.getSVGParent(element)
+        element = AdminElementService.scaleSvgCSS(element, _window, true, true);
       }
 
 
@@ -115,10 +115,10 @@ angular.module('uguru.shared.controllers')
 
 
 
-              var isSvg = ElementService.isSVGElement(afc.element.dom.nodeName.toLowerCase());
+              var isSvg = AdminElementService.isSVGElement(afc.element.dom.nodeName.toLowerCase());
               if (isSvg) {
                 // console.log(clonedElem.paren)
-                clonedElem = ElementService.getSVGParent(afc.element.dom);
+                clonedElem = AdminElementService.getSVGParent(afc.element.dom);
                 var clonedElem = clonedElem.cloneNode(true);
               }
               cloneElemContainer.appendChild(clonedElem);

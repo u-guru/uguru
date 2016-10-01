@@ -288,6 +288,7 @@ angular.module('uguru.shared.directives')
           for (key in listenerArgs) {
             var type = listenerArgs[key].type
             var _attr = listenerArgs[key].attr;
+
             DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
           }
           var switchName = attr.switch && attr.switch.split(':')[0];
@@ -345,41 +346,63 @@ angular.module('uguru.shared.directives')
       }
     }
 }])
-.directive("u", ["$compile", function($compile) {
+.directive("uClass", ["$compile", "ElementService", function($compile, ElementService) {
+      return {
+          restrict: 'E',
+          replace: true,
+          priority:1,
+          compile: function(element, attr, transclude) {
+            attr.prefix && attr.prefix.length && ElementService.addShortcuts(attr.prefix, element[0].childNodes, attr);
+            // return {
+            //       pre:
+            //         function (scope, lElem, lAttr) {
+            //           attr.prefix && attr.prefix.length && ElementService.addShortcuts(attr.prefix, lElem[0].childNodes, attr);
+            //         }
+            // }
+          }
+        }
+}])
+.directive("u", ["$compile", "ElementService", function($compile, ElementService) {
       return {
           restrict: 'A',
           replace: true,
           transclude: true,
           priority:100,
           compile: function(element, attr, transclude) {
-
-              this.shortcuts = {};
-              this.methods = ['prop', 'send'];
-              this.states = ['initWith', 'on-init'];
-
-              for (key in attr) {
-                if (key.substring(0, 4) === 'when') {
-
-                }
+              this.states = ElementService.renderElementStates(element, attr);
+              var states = this.states;
+              if (this.states.init) {
+                this.states.init.forEach(function(state, i) {
+                  state.exec(element);
+                })
               }
+
+
               return {
-                  pre:
-                  function (scope, lElem, lAttr) {
-
-
-                      scope.$watch(function() {
-                        return element.attr('class');
-                      }, function(new_classes) {
-
-                        if (new_classes && new_classes.indexOf('init') > -1) {
-
-                          transclude(scope, function(clone, innerScope) {
-                              $compile(clone)(innerScope)
-                              lElem.append(clone)
-                          })
-
-                        }
+                  pre: function (scope, lElem, lAttr) {
+                    if (states.on) {
+                      states.on.forEach(function(state, i) {
+                        state.exec(element, scope);
                       })
+                    }
+                    if (states.when) {
+                      states.when.forEach(function(state, i) {
+                        state.exec(element, scope);
+                      })
+                    }
+                      // scope.$watch(function() {
+                      //   return element.attr('class');
+                      // }, function(new_classes) {
+
+                      //   if (new_classes && new_classes.indexOf('init') > -1) {
+
+                      //     transclude(scope, function(clone, innerScope) {
+                      //         $compile(clone)(innerScope)
+                      //         lElem.append(clone)
+                      //     })
+
+                      //   }
+                      // })
 
                   },
                   post: angular.noop
@@ -641,22 +664,22 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
-.directive('u', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
-  return {
-    restrict: 'A',
-    link: function(scope, element, attr, controller) {
-          var listenerArgs = DirectiveService.detectExternalStates(attr);
-          if ('switch' in attr) {
-            console.log('initializing', attr.switch)
-          }
-          for (key in listenerArgs) {
-            var type = listenerArgs[key].type
-            var _attr = listenerArgs[key].attr;
-            DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
-          }
-    }
-  }
-}])
+// .directive('u', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+//   return {
+//     restrict: 'A',
+//     link: function(scope, element, attr, controller) {
+//           var listenerArgs = DirectiveService.detectExternalStates(attr);
+//           if ('switch' in attr) {
+//             console.log('initializing', attr.switch)
+//           }
+//           for (key in listenerArgs) {
+//             var type = listenerArgs[key].type
+//             var _attr = listenerArgs[key].attr;
+//             DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
+//           }
+//     }
+//   }
+// }])
 
 .directive('onEnter', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
   return {
