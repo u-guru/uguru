@@ -291,7 +291,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         player.schedule.streams.push.apply(player.schedule.streams, shallowCopyStreams);
 
 
-
+        console.log(player.schedule.streams)
         if (debug) {
 
           enablePlayerDebugMode(player, state_obj, debug)
@@ -678,7 +678,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
           if (stream.tick.current <= stream.tick.end && stream.active) {
 
-            if (stream.tick.current < stream.values.length && stream.tick.current >= 0) {
+            if (stream.tick.current <= stream.values.length && stream.tick.current > 0) {
 
               stream.applyProp && stream.applyProp(stream.values[stream.tick.current]);
               player.debug && player.debug.propStreamValueUpdate[stream.name](stream.name, stream.values[stream.tick.current], stream.tick.current, stream.tick.cycleIndex)
@@ -933,7 +933,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
         kf = debug && debug.kf || 60
         str = str && UtilitiesService.replaceAll(str, ', ', ',') || '';
-
+        var cbArr = [];
         if (debug && debug.stateName) {
           var stateNameStr = elem.getAttribute(stateName);
           var stateNameStr = stateNameStr.split('[')[1].split('|')[0].split(']')[0].trim()
@@ -947,7 +947,17 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           })
         } else {
           var stateNameStr = str
+          var strSplit = str.split(':');
+          strSplit.forEach(function(str, i) {
+            var arrDecimals = getArrayOfDecimals(str);
+            if (arrDecimals.length === 4) {
+              strSplit[i] = "cb-" + cbArr.length;
+              cbArr.push(arrDecimals)
+            }
+          })
+          str = strSplit.join(":");
           var stateNameStrSplit = str.split(',');
+
         }
 
 
@@ -961,6 +971,11 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         var timeline = {events:[], props:{}, stateName: stateName};
         for (var i = 0; i < stateArgs.length; i++) {
           var iAnim = stateArgs[i];
+          cbArr.forEach(function(cb_vals, i) {
+            if (iAnim.indexOf('cb-' + i) > -1) {
+              iAnim = iAnim.replace('cb-' + i, cbArr[i].join("|"));
+            }
+          })
 
 
           // iAnim = iAnim && filterParentheticals(iAnim)
@@ -978,7 +993,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           // } else {
             iAnim = iAnim && filterParentheticals(iAnim)
             iAnim = iAnim && replaceShortcutSyntax(iAnim);
-
+            console.log(iAnim)
             var iPropObj = initPropObj(iAnim);
 
             // condenseStartEndValues(iPropObj)
@@ -993,7 +1008,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               duration: iPropObj.duration
             }
             var offset = iPropObj.delay;
-
+            console.log(iPropObj.property)
             var values = TweenService.preComputeValues(iPropObj.property, iPropObj.duration, iPropObj.start, iPropObj.end, iPropObj.easingFunc, {cache:[]}, kf).cache;
 
             if (!(iPropObj.property in timeline.props)) {
@@ -1481,7 +1496,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
     */
 
     function initPropObj(str) {
-
+      console.log(str)
       var strArgs = str.split(':');
       var strArgLength = strArgs.length;
       if (strArgLength < 8) {
