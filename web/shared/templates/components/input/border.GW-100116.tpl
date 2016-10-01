@@ -118,7 +118,7 @@
 		</div>
 	</div>
 
-	<div class="p30xy radius-2 bg-white full-x" style="max-width:460px">
+	<div class="p30xy radius-2 bg-white full-x" style="max-width:460px" ng-if="false">
 		<!--  ng-if='activeType === "dark"' -->
 		<div class="input-border"
 			init-default
@@ -232,7 +232,7 @@
 		</div>
 	</div>
 
-	<div class="p30xy radius-2 bg-slate full-x" style="max-width:860px">
+	<div class="p30xy radius-2 bg-slate full-x" style="max-width:860px" ng-if="false">
 		<!-- ng-if='activeType === "large-light"' -->
 		<div class="input-border large"
 			init-default
@@ -346,7 +346,7 @@
 		</div>
 	</div>
 
-	<div class="p30xy radius-2 bg-white full-x" style="max-width:860px">
+	<div class="p30xy radius-2 bg-white full-x" style="max-width:860px" ng-if="false">
 		<!-- ng-if='activeType === "large-dark"' -->
 		<div class="input-border large"
 			init-default
@@ -460,7 +460,7 @@
 		</div>
 	</div>
 
-	<div class="p30xy radius-2 bg-slate full-x" style="max-width:460px">
+	<div class="p30xy radius-2 bg-slate full-x" style="max-width:460px" ng-if="false">
 		<!--  ng-if='activeType === "light-search"' -->
 		<div class="input-border"
 			init-default
@@ -511,7 +511,7 @@
 		</div>
 	</div>
 
-	<div class="p30xy radius-2 bg-white full-x" style="max-width:460px">
+	<div class="p30xy radius-2 bg-white full-x" style="max-width:460px" ng-if="false">
 		<!--  ng-if='activeType === "dark-search"' -->
 		<div class="input-border"
 			init-default
@@ -563,7 +563,7 @@
 		</div>
 	</div>
 
-	<div class="p30xy radius-2 bg-slate full-x" style="max-width:860px">
+	<div class="p30xy radius-2 bg-slate full-x" style="max-width:860px" ng-if="false">
 		<!-- ng-if='activeType === "large-light-search"' -->
 		<div class="input-border large"
 			init-default
@@ -612,7 +612,7 @@
 		</div>
 	</div>
 
-	<div class="p30xy radius-2 bg-white full-x" style="max-width:860px">
+	<div class="p30xy radius-2 bg-white full-x" style="max-width:860px" ng-if="false">
 		<!-- ng-if='activeType === "large-dark-search"' -->
 		<div class="input-border large"
 			init-default
