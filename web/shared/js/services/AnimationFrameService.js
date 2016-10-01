@@ -221,8 +221,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
           player.active = true;
 
-
-
           //starting
           if (player.tick.current === player.tick.start) {
             // player.applyArgs(player.schedule.streams, player.debug);
@@ -256,13 +254,16 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
       player.scheduleStream = function(player, state_obj, offset, debug) {
         var streams = state_obj.events;
+
         player.tick = {start: 0, end:0, current:0};
-        if (debug && state_obj.playerProps) {
+
+        // if (debug && state_obj.playerProps) {
 
 
           player.playerProps = state_obj.playerProps
           player.playerProps.iter.count.current = player.playerProps.iter.count.current + 0;
-        }
+        // }
+        console.log(state_obj.events)
         var shallowCopyStreams = [];
         for (var i = 0; i < streams.length; i++) {
 
@@ -277,7 +278,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           newStream.time.total = newStream.tick.duration.ms + newStream.offset;
 
           newStream.tick.init(newStream);
-          console.log(newStream.tick)
           shallowCopyStreams.push(newStream);
           player.playerProps.duration = Math.max(Math.round(newStream.time.total), player.playerProps.duration)
 
@@ -289,7 +289,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         player.schedule.streams.push.apply(player.schedule.streams, shallowCopyStreams);
 
 
-
+        console.log(player.schedule.streams)
         if (debug) {
 
           enablePlayerDebugMode(player, state_obj, debug)
@@ -930,7 +930,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         kf = debug && debug.kf || 60
         str = str && UtilitiesService.replaceAll(str, ', ', ',') || '';
 
-        if (debug.stateName) {
+        if (debug && debug.stateName) {
           var stateNameStr = elem.getAttribute(stateName);
           var stateNameStr = stateNameStr.split('[')[1].split('|')[0].split(']')[0].trim()
           var stateNameStrSplit = [];
@@ -974,7 +974,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           // } else {
             iAnim = iAnim && filterParentheticals(iAnim)
             iAnim = iAnim && replaceShortcutSyntax(iAnim);
-
+            console.log(iAnim)
 
             var iPropObj = initPropObj(iAnim);
 
@@ -1014,6 +1014,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               applyAtT: getApplyPropertyFunc(elem, iPropObj.property)
             }
 
+
+
             if (debug) {
 
               if (result.name === 'transform' && result.values[0].indexOf('matrix3d') === -1) {
@@ -1033,6 +1035,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             timeline.events.push(result);
           // }
         }
+
         debug &&scaleTimelineValuesForPlot(player, timeline.props, null,  debug);
         normalizeStateDurationAndDelay(timeline);
         if (debug) {
@@ -1040,7 +1043,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           timeline.debug = true;
           timeline.id = cache.states.length;
         }
-
         return timeline;
 
 

@@ -373,6 +373,7 @@ angular.module('uguru.shared.directives')
               var states = this.states;
               if (this.states.init) {
                 this.states.init.forEach(function(state, i) {
+                  console.log(state)
                   state.exec(element);
                 })
               }
@@ -396,10 +397,10 @@ angular.module('uguru.shared.directives')
 
                       //   if (new_classes && new_classes.indexOf('init') > -1) {
 
-                      //     transclude(scope, function(clone, innerScope) {
-                      //         $compile(clone)(innerScope)
-                      //         lElem.append(clone)
-                      //     })
+                          transclude(scope, function(clone, innerScope) {
+                              $compile(clone)(innerScope)
+                              lElem.append(clone)
+                          })
 
                       //   }
                       // })
