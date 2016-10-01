@@ -8,8 +8,8 @@
 		</u-class>
 		<!--  ng-if='activeType === "light"' -->
 		<div u
-			init-with="prop:[opacity:.5]"
-			on-init="anim:[bounceIn-rotate-subtle-small:1000:bouncePast:0:i:f]"
+			init-with="prop:[opacity:.5, to-center]"
+			on-init="a:[translateX:0px:60px:1000:easeOutBounce:0:3:f,rotate:0deg:60deg:1000:easeOutBounce:0:3:f,scaleX:1:0:1000:easeOutCirc:0:3:f,scaleY:1:0:1000:easeOutCirc:0:3:f]"
 			style='height:200px; width:200px;'
 			class='bg-cerise absolute'
 			>
