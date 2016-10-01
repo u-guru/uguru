@@ -122,15 +122,14 @@
 						<li init-with="p:[tro:center center]"
 							when-school-select="p:[transform:translateY(0px):translateY(-100px):200:easeInExpo:^:2+0:a] | s:[school-exit:public]:delay-250"
 							when-school-exit="s:[course-convert:public]"
-							when-course-convert="p:[transform:rotateY(0deg) translateY(-100px):rotateY(360deg) translateY(-100px):450:easeInOutCirc easeInOutCirc] | s:[student-convert:public]:delay-450"
 							when-student-convert="p:[op:0]"
+							when-course-convert="p:[transform:rotateY(0deg) translateY(-100px):rotateY(360deg) translateY(-100px):450:easeInOutCirc easeInOutCirc] | s:[student-convert:public]:delay-450"
 							when-school-2-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]"
 							when-school-3-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]"
 							when-school-4-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]">
 							<div class="card-container relative"
 								init-with="p:[tro:center center]"
-								when-school-select="p:[transform:translateX(0px) rotate(60deg):translateX(-110px) rotate(0deg):350:easeInOutExpo easeInBack]"
-								when-school-exit="p:[transform:translateX(-110px):translateX(-135px):500:easeInOutExpo]:delay-250">
+								when-school-select="p:[transform:translateX(0px) rotate(60deg):translateX(-200px) rotate(0deg):350:easeInOutExpo easeInBack]">
 								<div class="university-card mini"
 									init-with="p-op"
 									when-university-card-init="a:[scoop-enter:set:(dur:800ms#func:linear):in:delay-200]">
