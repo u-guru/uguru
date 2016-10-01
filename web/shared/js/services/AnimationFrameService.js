@@ -291,7 +291,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         player.schedule.streams.push.apply(player.schedule.streams, shallowCopyStreams);
 
 
-
+        console.log(player.schedule.streams)
         if (debug) {
 
           enablePlayerDebugMode(player, state_obj, debug)
@@ -678,7 +678,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
           if (stream.tick.current <= stream.tick.end && stream.active) {
 
-            if (stream.tick.current < stream.values.length && stream.tick.current >= 0) {
+            if (stream.tick.current <= stream.values.length && stream.tick.current > 0) {
 
               stream.applyProp && stream.applyProp(stream.values[stream.tick.current]);
               player.debug && player.debug.propStreamValueUpdate[stream.name](stream.name, stream.values[stream.tick.current], stream.tick.current, stream.tick.cycleIndex)
