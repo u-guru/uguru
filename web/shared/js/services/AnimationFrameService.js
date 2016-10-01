@@ -121,7 +121,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           return function(stream) {
 
             tick.direction.current = getTickDirection(tick.cycleIndex, tick.direction);
-            console.log(tick.cycleIndex, tick.direction.current)
             tick.direction.current === 'r' && stream.values.reverse();
           }
         }
@@ -190,7 +189,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
         function decrementCycleFunc(stream, tick) {
           return function() {
-
             if (tick.cycleIndex > -1 && tick.cycleIndex < tick.cycle.repeats || tick.infinite) {
               tick.cycleIndex -= 1;
               tick.current = tick.end -1;
@@ -214,6 +212,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           if (!player.animFunc) {
             player.animFunc = exec_anim_func(player, player.rAF);
           }
+
           if (player.needsReset) {
             player.needsReset = false;
             player.reset(player);
@@ -223,10 +222,12 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
           //starting
           if (player.tick.current === player.tick.start) {
+
             // player.applyArgs(player.schedule.streams, player.debug);
             player.time = {start: window.performance.now(), delta: window.performance.now()};
 
           }
+
           player.rAF_id = player.rAF.request(player.animFunc);
         }
 
@@ -263,7 +264,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           player.playerProps = state_obj.playerProps
           player.playerProps.iter.count.current = player.playerProps.iter.count.current + 0;
         // }
-        console.log(state_obj.events)
+
         var shallowCopyStreams = [];
         for (var i = 0; i < streams.length; i++) {
 
@@ -278,6 +279,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           newStream.time.total = newStream.tick.duration.ms + newStream.offset;
 
           newStream.tick.init(newStream);
+          newStream.easing = streams[i].easing;
           shallowCopyStreams.push(newStream);
           player.playerProps.duration = Math.max(Math.round(newStream.time.total), player.playerProps.duration)
 
@@ -289,7 +291,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         player.schedule.streams.push.apply(player.schedule.streams, shallowCopyStreams);
 
 
-        console.log(player.schedule.streams)
+
         if (debug) {
 
           enablePlayerDebugMode(player, state_obj, debug)
@@ -675,7 +677,9 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         schedule.streams.forEach(function(stream, i) {
 
           if (stream.tick.current <= stream.tick.end && stream.active) {
+
             if (stream.tick.current < stream.values.length && stream.tick.current >= 0) {
+
               stream.applyProp && stream.applyProp(stream.values[stream.tick.current]);
               player.debug && player.debug.propStreamValueUpdate[stream.name](stream.name, stream.values[stream.tick.current], stream.tick.current, stream.tick.cycleIndex)
               // console.log(stream.tick.current, stream.values[stream.tick.current])
@@ -974,7 +978,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           // } else {
             iAnim = iAnim && filterParentheticals(iAnim)
             iAnim = iAnim && replaceShortcutSyntax(iAnim);
-            console.log(iAnim)
 
             var iPropObj = initPropObj(iAnim);
 
@@ -1050,6 +1053,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
       function getApplyPropertyFunc(elem, prop, debug) {
         return function(value) {
+          console.log(prop, value)
           elem.style[prop] = value;
         }
       }
@@ -1345,14 +1349,12 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             resultTransformDict.delay.push(splitArgs[5]);
             resultTransformDict.iter.push(splitArgs[6]);
             resultTransformDict.direction.push(splitArgs[7]);
-            console.log(splitArgs)
           })
 
           single_transform_str = formatTransformStrFromTransformProps(resultTransformDict);
 
           state_args_final.unshift(single_transform_str);
         }
-        console.log(state_args_final)
         return state_args_final
       }
 
