@@ -10,7 +10,7 @@
 		<div u
 			init-with="prop:[opacity:.5]"
 
-			on-init-debug="anim:[translateX:0px:200px:1000:easeOutBack:0:5:f, rotate:0deg:100deg:1000:easeOutBack:0:5:f]"
+			on-init="anim:[translateX:0px:200px:1000:easeOutBack:0:5:f, rotate:0deg:100deg:1000:easeOutBack:0:5:f]"
 			style='height:200px; width:200px;'
 			class='bg-cerise absolute'
 			>
