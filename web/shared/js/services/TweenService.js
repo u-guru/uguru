@@ -100,12 +100,11 @@ function TweenService() {
         var endDict = {};
         endDict[property] = end;
         var t = new Tweenable();
-
+        console.log(property, duration, start);
         if (ease.indexOf('|') > -1) {
             var easeSplit = ease.split('|');
             if (ease && ease.length && easeSplit.length === 4) {
                 easeSplit.forEach(function(val, i) {easeSplit[i] = parseFloat(val)});
-                console.log(easeSplit)
                 Tweenable.setBezierFunction('cb-function', easeSplit[0], easeSplit[1], easeSplit[2], easeSplit[3]);
                 ease = 'cb-function'
             }
@@ -115,7 +114,6 @@ function TweenService() {
             var easeSplit = ease.split(',');
             if (ease && ease.length && easeSplit.length === 4) {
                 easeSplit.forEach(function(val, i) {easeSplit[i] = parseFloat(val)});
-                console.log(easeSplit)
                 Tweenable.setBezierFunction('cb-function', easeSplit[0], easeSplit[1], easeSplit[2], easeSplit[3]);
                 ease = 'cb-function'
             }

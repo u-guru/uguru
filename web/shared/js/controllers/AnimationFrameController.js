@@ -23,7 +23,6 @@ angular.module('uguru.shared.controllers')
 
     afc.params.template = afc.element.objUrl;
     afc.params.defaults = {kf: getKFFromParams($stateParams), startAt:$stateParams.startAt && $stateParams.startAt.replace('p', '%'), autoPlay:$stateParams.autoPlay === 'true',  toolbar:{}, hidePlot: $stateParams.hidePlot === "true", stateName: $stateParams.state};
-    console.log(afc.params.defaults)
     afc.params.formatted = 'p:[' + afc.params.raw + ']';
     afc.getDebugFormat = AnimationFrameService.getDebugFormat;
 
