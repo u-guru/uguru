@@ -1,13 +1,14 @@
 <ion-view class="flex-center">
 	<projector class="projector-account projector-splash">
-		<div class="projector-guru-body" ng-include="root.base_url + 'preapp/templates/started/components/tour-guru.html'"
+		<!-- <div class="projector-guru-body" ng-include="root.base_url + 'preapp/templates/started/components/tour-guru.html'"
 			init-default
-			on-init="s:[card-flip:public]"></div>
+			on-init="s:[card-flip:public]"></div> -->
 
 		<!-- desktop -->
 		<div class="desktop">
 			<div class="projector-splash-container"
 				init-default
+				on-init="s:[card-flip:public]"
 				when-login-enter="p:[op:0, z-index:-1]"
 				when-signup-enter="p:[op:1, z-index:10]"
 				when-forgot-pw="p:[op:0, z-index:-1]">

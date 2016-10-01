@@ -3,47 +3,20 @@
 // projector slide
 .projector-container {
 	@include flex;
-	@include flex-center;
+	justify-content: center;
 	-webkit-perspective: 1000;
 	perspective: 1000;
 	width: 100%;
 	height: 100%;
 	transform-style: preserve-3d;
+	&.projector-center {
+		@include flex-center;
+	}
 }
 .projector-slide {
 	width: 100%!important;
 	height: 100%;
 	max-width: 750px;
-}
-@media screen and (min-height: 560px) {
-	.projector-slider {
-		height: 95%;
-	}
-}
-@media screen and (orientation:landscape) and (min-height: 560px) {
-	.projector-slide {
-		max-height: 500px;
-	}
-}
-@media screen and (orientation:landscape) and (min-height: 750px) {
-	.projector-slide {
-		max-height: 600px;
-	}
-}
-@media screen and (orientation:landscape) and (min-height: 900px) {
-	.projector-slide {
-		max-height: 720px;
-	}
-}
-@media screen and (min-height: 750px) {
-	.projector-slide {
-		max-width: 900px;
-	}
-}
-@media screen and (min-height: 900px) {
-	.projector-slide {
-		max-width: 1080px;
-	}
 }
 
 .projector-slide {
@@ -71,6 +44,7 @@
 		padding: 15px;
 	}
 	.projector-slide {
+		height: 95%;
 		.projector-top {
 			display: block;
 			position: absolute;
@@ -126,6 +100,37 @@
 			left: 50%;
 			margin-left: -30.5px;
 		}
+	}
+}
+
+@media screen and (orientation:landscape) and (min-height: 560px) {
+	.projector-container {
+		&:not(.projector-center) {
+			padding-top: 50px;
+		}
+	}
+	.projector-slide {
+		max-height: 500px;
+	}
+}
+@media screen and (orientation:landscape) and (min-height: 750px) {
+	.projector-slide {
+		max-height: 600px;
+	}
+}
+@media screen and (orientation:landscape) and (min-height: 900px) {
+	.projector-slide {
+		max-height: 720px;
+	}
+}
+@media screen and (min-height: 750px) {
+	.projector-slide {
+		max-width: 900px;
+	}
+}
+@media screen and (min-height: 900px) {
+	.projector-slide {
+		max-width: 1080px;
 	}
 }
 

@@ -354,6 +354,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/dev/splash/projector',
     templateUrl: 'preapp/templates/started/getting-started.html'
   })
+  .state('root.dev-splash-onboarding', {
+    url:'/dev/splash/onboarding',
+    templateUrl: 'preapp/templates/started/onboarding.html'
+  })
   .state('root.dev-splash-access', {
     url:'/dev/splash/access',
     templateUrl: 'preapp/templates/started/access.html'

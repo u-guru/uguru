@@ -12969,7 +12969,7 @@ progress, div[class*="progress"] {
           font-size: 28px;
           font-weight: 600;
           color: #69B3A5; }
-        .numerical-bar ul li div svg {
+        .numerical-bar ul li div > svg {
           display: block;
           position: absolute;
           z-index: 1;
@@ -12977,7 +12977,7 @@ progress, div[class*="progress"] {
           left: 0;
           width: 100%;
           height: 100%; }
-          .numerical-bar ul li div svg circle, .numerical-bar ul li div svg path {
+          .numerical-bar ul li div > svg circle, .numerical-bar ul li div > svg path {
             fill: white;
             stroke-width: 5px;
             stroke: #69B3A5; }
@@ -14979,43 +14979,27 @@ input[type=range] {
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
   justify-content: center;
   -webkit-perspective: 1000;
   perspective: 1000;
   width: 100%;
   height: 100%;
   transform-style: preserve-3d; }
+  .projector-container.projector-center {
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center; }
 
 .projector-slide {
   width: 100% !important;
   height: 100%;
   max-width: 750px; }
 
-@media screen and (min-height: 560px) {
-  .projector-slider {
-    height: 95%; } }
-@media screen and (orientation: landscape) and (min-height: 560px) {
-  .projector-slide {
-    max-height: 500px; } }
-@media screen and (orientation: landscape) and (min-height: 750px) {
-  .projector-slide {
-    max-height: 600px; } }
-@media screen and (orientation: landscape) and (min-height: 900px) {
-  .projector-slide {
-    max-height: 720px; } }
-@media screen and (min-height: 750px) {
-  .projector-slide {
-    max-width: 900px; } }
-@media screen and (min-height: 900px) {
-  .projector-slide {
-    max-width: 1080px; } }
 .projector-slide {
   position: relative;
   transition: all 150ms ease-out; }
@@ -15037,54 +15021,74 @@ input[type=range] {
   .projector-container {
     padding: 15px; }
 
-  .projector-slide .projector-top {
-    display: block;
-    position: absolute;
-    top: .2%;
-    left: .8%;
-    width: 98.4%;
-    height: 3.3%;
-    border: 2px solid white;
-    background: rgba(64, 72, 75, 0.95);
-    transition: all 150ms ease-out; }
-    .projector-slide .projector-top:before, .projector-slide .projector-top:after {
-      content: "";
+  .projector-slide {
+    height: 95%; }
+    .projector-slide .projector-top {
       display: block;
       position: absolute;
+      top: .2%;
+      left: .8%;
+      width: 98.4%;
+      height: 3.3%;
       border: 2px solid white;
-      border-radius: 2px;
-      top: -20%;
-      width: 1%;
-      min-width: 9px;
-      height: 140%;
-      background: #40484B;
+      background: rgba(64, 72, 75, 0.95);
       transition: all 150ms ease-out; }
-    .projector-slide .projector-top:before {
-      left: -1%; }
-    .projector-slide .projector-top:after {
-      right: -1%; }
-  .projector-slide .projector-line {
-    display: block;
-    position: absolute;
-    left: 50%;
-    margin-left: -1px;
-    top: -196px;
-    transition: all 150ms ease-out; }
-  .projector-slide .projector-content {
-    top: 3.2%;
-    left: 2%;
-    width: 96%;
-    height: 96.2%;
-    border: 2px solid white;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px; }
-  .projector-slide .projector-handle {
-    display: block;
-    transition: all 150ms ease-out;
-    position: absolute;
-    bottom: -20px;
-    left: 50%;
-    margin-left: -30.5px; } }
+      .projector-slide .projector-top:before, .projector-slide .projector-top:after {
+        content: "";
+        display: block;
+        position: absolute;
+        border: 2px solid white;
+        border-radius: 2px;
+        top: -20%;
+        width: 1%;
+        min-width: 9px;
+        height: 140%;
+        background: #40484B;
+        transition: all 150ms ease-out; }
+      .projector-slide .projector-top:before {
+        left: -1%; }
+      .projector-slide .projector-top:after {
+        right: -1%; }
+    .projector-slide .projector-line {
+      display: block;
+      position: absolute;
+      left: 50%;
+      margin-left: -1px;
+      top: -196px;
+      transition: all 150ms ease-out; }
+    .projector-slide .projector-content {
+      top: 3.2%;
+      left: 2%;
+      width: 96%;
+      height: 96.2%;
+      border: 2px solid white;
+      border-bottom-left-radius: 2px;
+      border-bottom-right-radius: 2px; }
+    .projector-slide .projector-handle {
+      display: block;
+      transition: all 150ms ease-out;
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      margin-left: -30.5px; } }
+@media screen and (orientation: landscape) and (min-height: 560px) {
+  .projector-container:not(.projector-center) {
+    padding-top: 50px; }
+
+  .projector-slide {
+    max-height: 500px; } }
+@media screen and (orientation: landscape) and (min-height: 750px) {
+  .projector-slide {
+    max-height: 600px; } }
+@media screen and (orientation: landscape) and (min-height: 900px) {
+  .projector-slide {
+    max-height: 720px; } }
+@media screen and (min-height: 750px) {
+  .projector-slide {
+    max-width: 900px; } }
+@media screen and (min-height: 900px) {
+  .projector-slide {
+    max-width: 1080px; } }
 .figure-image {
   position: relative;
   margin: 0;
