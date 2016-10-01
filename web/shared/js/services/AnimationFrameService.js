@@ -1053,7 +1053,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
       function getApplyPropertyFunc(elem, prop, debug) {
         return function(value) {
-          console.log(prop, value)
           elem.style[prop] = value;
         }
       }
