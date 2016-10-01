@@ -61,6 +61,7 @@ angular.module('uguru.shared.controllers')
 
         afc.element.dom = domRef;
 
+        console.log(stateName, afc.params.raw, afc.element.dom, JSON.stringify(afc.params.defaults))
         afc.stateObj = afc.service.init.state(stateName, afc.params.raw, afc.element.dom, afc.params.defaults);
         afc.player = AnimationFrameService.getPlayer();
         afc.player = afc.player.scheduleStream(afc.player, afc.stateObj, afc.stateObj.offset, afc.params.defaults);

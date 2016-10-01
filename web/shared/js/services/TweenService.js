@@ -100,7 +100,6 @@ function TweenService() {
         var endDict = {};
         endDict[property] = end;
         var t = new Tweenable();
-        console.log(property, duration, start);
         if (ease.indexOf('|') > -1) {
             var easeSplit = ease.split('|');
             if (ease && ease.length && easeSplit.length === 4) {
