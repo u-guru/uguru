@@ -4,11 +4,12 @@ angular.module('uguru.shared.services')
     '$state',
     'UtilitiesService',
     'DirectiveService',
+    'AnimationFrameService',
     ElementService
         ]);
 
-function ElementService($timeout, $state, UtilitiesService, DirectiveService) {
-      var rShortcuts = {special: getSpecialShortcuts()};
+function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService) {
+      var rShortcuts = {special: getSpecialShortcuts(), propValues: {}, props: {}, values:{}};
       var stateTypes = ['on', 'when', 'init'];
       var onStateMappings = {
         'init': 'ready'
@@ -24,19 +25,20 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService) {
       function addShortcuts(prefix, shortcuts, attr) {
 
         var shortCutArr = [];
-
         shortcuts.forEach(function(child, i) {
-
           child.nodeName !== '#text' && parseShortcut(prefix, child.attributes);
+
         });
+
       }
 
       function parseShortcut(prefix, attr) {
         var terms =['replace', 'with']
-        var resultDict = {};
+        // var resultDict = {};
         if (! (prefix in rShortcuts)) {
           rShortcuts[prefix] = {};
         }
+
         resultDict = rShortcuts[prefix];
 
         if (!prefix || !prefix.length) prefix = 'root';
@@ -51,13 +53,27 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService) {
           }
           if (terms.indexOf(iAttr.name) === -1 && withIndices.length) {
             if (iAttr.value.length) {
-              resultDict[attr[i-2].name] = iAttr.value;
+              switch (iAttr.name) {
+                case ("prop-value"):
+                  resultDict[attr[i-2].name] = iAttr.value;
+                  rShortcuts.propValues[attr[i-2].name] = iAttr.value;
+                  break;
+                case ("props"):
+                  resultDict[attr[i-2].name]  = iAttr.value;
+                  rShortcuts.props[attr[i-2].name] = iAttr.value;
+                  break;
+                case ("values"):
+                  resultDict[attr[i-2].name]  = iAttr.value;
+                  rShortcuts.values[attr[i-2].name] = iAttr.value;
+                  break;
+              }
 
             } else {
               resultDict[iAttr.name] = attr[i-2].name;
             }
           }
         }
+
       }
 
       function renderElementStates(element, attr) {
@@ -68,7 +84,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService) {
           if (!(stateObj.type in states)) states[stateObj.type] = [];
           states[stateObj.type].push(stateObj);
         }
-        console.log(states)
         return states
       }
 
@@ -88,71 +103,97 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService) {
       }
 
       function getStateFunc(type, name, actions) {
-
+        var context = {name: name, type: type}
 
           if (type === 'init' && name == 'with') {
             return function(element) {
+
+
               applyPropsToElement(element, actions.prop);
             }
           }
           if (type === 'on') {
             return function(element, scope) {
-              applyOnToElement(scope, element, name, actions);
+
+              applyOnToElement(scope, element, actions, context);
             }
           }
           if (type === 'when') {
+
             return function(element, scope) {
-              registerAnimationListeners(scope, element, name, actions);
+              $timeout(function() {
+                registerAnimationListeners(scope, element, actions, context);
+              })
             }
           }
       }
 
 
 
-      function registerAnimationListeners(scope, element, name, actions) {
+      function registerAnimationListeners(scope, element, actions, context) {
+        var name = context.name
         var baseName = 'when-' + name;
         for (key in actions) {
           var listenFor = baseName;
           var scopeName = 'root.public.customStates.when.' + UtilitiesService.camelCase(listenFor);
-          console.log(scopeName)
-          $timeout(function() {
-            scope.$watch(scopeName, function(old, _new) {
-              applySendAnimProp(scope, element, actions)
+          // $timeout(function() {
+
+            scope.$parent.$watch(scopeName, function(_old, _new) {
+              applySendAnimProp(scope, element, actions, context)
+              // if (_new && _new !== _old) {
+              //   console.log('oh shit')
+
+              // } else if (!_old || !_new) {
+              //   console.log('registering', baseName, actions)
+              // }
             })
-          })
+
 
         }
       }
 
-      function applyOnToElement(scope, element, name, actions) {
+      function applyOnToElement(scope, element, actions, context) {
+        var name = context.name;
         if (name === 'init') {
+
           element.ready(function(e) {
-            applySendAnimProp(scope, element, actions);
+
+            applySendAnimProp(scope, element, actions, context);
           })
         } else {
           element.on(name,function(e) {
-              if (actions.prop) {
-                applyPropsToElement(element, actions.prop);
-              };
-              if (actions.send) {
-                console.log('should be sending..', actions);
-              }
-            })
+              applySendAnimProp(scope, element, actions, context)
+          })
         }
       }
 
-      function applySendAnimProp(scope, element, actions) {
+      function applySendAnimProp(scope, element, actions, context) {
+
         if (actions.prop) {
+
             applyPropsToElement(element, actions.prop);
           };
           if (actions.anim) {
-            console.log('should be animating..', actions);
-            applySendArgsAndCallback(element, scope, actions.anim);
+            console.log('applying anim args')
+            applyAnimArgs(element, scope, actions.anim, context);
           }
           if (actions.send) {
             applySendArgsAndCallback(element, scope, actions.send);
-            console.log('should be sending..', actions.send);
           }
+      }
+
+      function applyAnimArgs(element, scope, animations, context) {
+
+        var state = AnimationFrameService.init.state(null, animations, element[0]);
+        console.log(state)
+        if (!player) {
+          player = AnimationFrameService.getPlayer();
+        }
+        state.name = context.type + '-' + context.name;
+        player = player.scheduleStream(player, state, 0);
+        console.log(player.schedule.streams)
+        player.play()
+        // player.play();
       }
 
       function applySendArgsAndCallback(element, scope, messages) {
@@ -163,16 +204,55 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService) {
         })
       }
 
-      function applyAnimArgs(element, scope) {
+      function checkShortcuts(str, arg) {
 
+        if (arg in rShortcuts && str in rShortcuts[arg]) {
+          return rShortcuts[arg][str]
+        }
+        return str;
       }
+
+      function parsePropertiesWithShortcuts(elem, properties) {
+
+          var elemProps = properties.split(',');
+          var shortcuts = {special:Object.keys(rShortcuts.special), propValues:Object.keys(rShortcuts.propValues), props: Object.keys(rShortcuts.props), values: Object.keys(rShortcuts.values)};
+          var propObjArr = [];
+          elemProps.forEach(function(kv, kv_index) {
+            shortcuts.special.forEach(function(special, i) {
+              if (kv.indexOf(special) > -1) {
+                kv = rShortcuts.special[special](elem, kv);
+              }
+            })
+
+            var propValueShortcutIndex = shortcuts.propValues.indexOf(kv);
+            if (propValueShortcutIndex > -1) {
+              kv = rShortcuts.propValues[shortcuts.propValues[propValueShortcutIndex]]
+            }
+
+            var kvSplit = kv.split(':');
+            var key = kvSplit[0];
+            var value = kvSplit[1];
+            if (key in rShortcuts.props) {
+              key = rShortcuts.props[key];
+            }
+            if (value in rShortcuts.values) {
+              value = rShortcuts.values[value]
+            }
+            propObjArr.push({key: key, value:value});
+          })
+
+          return propObjArr
+      }
+
 
       function applyPropsToElement(elem, properties) {
 
-        var elemProps = properties.split(',');
-        elemProps.forEach(function(kv, i) {
-          var kvSplit = kv.split(':');
-          elem.css(kvSplit[0], kvSplit[1]);
+
+        properties = parsePropertiesWithShortcuts(elem, properties);
+
+        properties.forEach(function(kv, i) {
+
+          elem.css(kv.key, kv.value);
         })
       }
 
@@ -182,9 +262,8 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService) {
 
         state_args = getStateArgsFromValue(state_args, arg_value);
         argDict[state_type] = configureNameFromArgs(state_type, state_args)
-          var shortCutDict = getShortcutDict(elem, arg_value);
-
-          argDict.actions = getArgActions(state_args, arg_value, shortCutDict);
+          // var shortCutDict = getShortcutDict(elem, arg_value);
+        argDict.actions = getArgActions(state_args, arg_value);
         return argDict;
       }
 
@@ -214,9 +293,9 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService) {
           }
           if (param_value.indexOf('a:[') > -1 || param_value.indexOf('anim:[') > -1) {
             state_args.push('anim');
+
           }
         })
-
         return state_args
       }
 
@@ -224,11 +303,8 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService) {
         var actionDict = {};
         var detectAndAddStrArgValues = detectAndAddStrArgValues(state_args);
         state_args.forEach(function(arg, i) {
-          for (key in shortcuts) {
-            full_value = UtilitiesService.replaceAll(full_value, key, shortcuts[key])
-            full_value = UtilitiesService.replaceAll(full_value, ': ', ':');
-            full_value = UtilitiesService.replaceAll(full_value, ', ', ',');
-          }
+          full_value = UtilitiesService.replaceAll(full_value, ': ', ':');
+          full_value = UtilitiesService.replaceAll(full_value, ', ', ',');
           actionDict[arg] = extractRelevantValueFromArg(arg, full_value);
         })
         return actionDict
@@ -278,24 +354,32 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService) {
 
       function getShortcutDict(elem, str) {
         var matchDict = {};
+        var parsedParams = [];
         for (key in rShortcuts) {
+
           sortedShortcuts = Object.keys(rShortcuts[key]).sort();;
+          // full shortcuts
           sortedShortcuts.forEach(function(shortcut,i) {
             var strParams = str.split(',');
             strParams.forEach(function(param, i) {
+
+              if (parsedParams.indexOf(param) > -1) return;
+
               var shortIndex = param.indexOf(shortcut);
 
               if (key === 'special' && shortIndex > -1) {
                 var response = rShortcuts[key][shortcut](elem, param);
                 matchDict[shortcut + param.split(shortcut)[1]] = response;
+                parsedParams.push(param)
               }
               else if (key !== 'special' && shortIndex > -1) {
                 matchDict[shortcut] = rShortcuts[key][shortcut];
+                parsedParams.push(param)
               }
             });
-
           })
         }
+
         return matchDict
       }
 }

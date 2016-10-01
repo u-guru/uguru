@@ -420,7 +420,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
               scope.root.public.customStates[type] = {};
       }
       var watchState = 'root.public.customStates.' + type + '.' + args.camel;
-      console.log(watchState)
       scope.$watch(watchState, function(new_value, old_value) {
 
         if (new_value) {
