@@ -383,7 +383,11 @@ angular.module('uguru.shared.directives')
 
                       if (states.on) {
                         states.on.forEach(function(state, i) {
+                          if (state.actions.debug) {
+                            ElementService.launchExternalWindow(state.actions.debug, element);
+                          }
                           state.exec(lElem, scope);
+
                         })
                       }
                       if (states.when) {
@@ -392,9 +396,8 @@ angular.module('uguru.shared.directives')
                         })
                       }
                       transclude(scope, function(clone, innerScope) {
-
-                              $compile(clone)(scope)
-                              lElem.append(clone)
+                              $compile(clone)(scope);
+                              lElem.append(clone);
                       });
 
                   },

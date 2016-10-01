@@ -5,10 +5,11 @@ angular.module('uguru.shared.services')
     'UtilitiesService',
     'DirectiveService',
     'AnimationFrameService',
+    '$window',
     ElementService
         ]);
 
-function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService) {
+function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window) {
       var rShortcuts = {special: getSpecialShortcuts(), propValues: {}, props: {}, values:{}};
       var stateTypes = ['on', 'when', 'init'];
       var onStateMappings = {
@@ -19,7 +20,23 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       return {
         renderElementStates: renderElementStates,
         getShortcutDict: getShortcutDict,
-        addShortcuts: addShortcuts
+        addShortcuts: addShortcuts,
+        launchExternalWindow: launchExternalWindow
+      }
+
+      function launchExternalWindow(params, element) {
+        var anim_string = params.split('[')[1].split(']')[0];
+        var base_url = '/#/admin/api/animations/prop/';
+        var anim_strings = [];
+        anim_string.split(',').forEach(function(a, i) {
+          anim_strings.push(a.split(':')[0] + ':' + a.split(':').splice(1).join(","))
+        });
+        base_url = base_url + anim_strings.join('+');
+
+        var elemNodeName = element[0].nodeName.toLowerCase();
+        base_url += '?template=shared:components.svg.logo.guru-head.html&autoPlay=true&select=svg'
+        $window.open(base_url, '_blank');
+
       }
 
       function addShortcuts(prefix, shortcuts, attr) {
@@ -96,6 +113,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         state.name = parsedArgs[state.type];
         state.actions = parsedArgs.actions;
         state.exec = getStateFunc(state.type, state.name, parsedArgs.actions);
+
         return state;
       }
 

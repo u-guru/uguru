@@ -9,15 +9,10 @@
 		<!--  ng-if='activeType === "light"' -->
 		<div u
 			init-with="prop:[opacity:0.9, to-center]"
-			on-init="a:[translateX:0px:60px:1000:easeOutBounce:0:3:f,rotate:0deg:60deg:1000:easeOutBounce:0:3:f,background-color:#8bc5cd:#ffaca4:2000:easeInOutSine:0:i:a"
+			on-init="a:[translateX:0px:60px:1000:easeOutBounce:0:3:f,rotate:0deg:60deg:1000:easeOutBounce:0:3:f,scaleX:1:0:1000:easeOutCirc:0:3:f,scaleY:1:0:1000:easeOutCirc:0:3:f]"
 			style='height:200px; width:200px;'
 			class='bg-cerise absolute'>
-		</div>
-		<div u
-			init-with="prop:[opacity:0.5, to-center]"
-			on-init="a:[translateX:0px:600px:5000:easeOutBounce:0:3:f,translateZ:0px:100px:5000:easeOutBounce:0:3:f,rotateX:0deg:360deg:5000:easeOutBounce:0:3:f,background-color:#8bc5cd:#ffaca4:2000:easeInOutSine:0:i:a"
-			style='height:200px; width:200px;'
-			class='bg-cerise absolute'>
+			<!-- on-init-debug="anim:[translateX:0px:200px:1000:easeOutBack:0:5:f, rotate:0deg:100deg:1000:easeOutBack:0:5:f]" -->
 		</div>
 		<div class="input-border" ng-if='false'
 			u
