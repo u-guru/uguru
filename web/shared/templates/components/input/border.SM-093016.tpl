@@ -11,9 +11,9 @@
 			init-with="prop:[opacity:.5, to-center]"
 			on-init="a:[translateX:0px:60px:1000:easeOutBounce:0:3:f,rotate:0deg:60deg:1000:easeOutBounce:0:3:f,scaleX:1:0:1000:easeOutCirc:0:3:f,scaleY:1:0:1000:easeOutCirc:0:3:f]"
 			style='height:200px; width:200px;'
-			class='bg-cerise absolute'
-			>
+			class='bg-cerise absolute'>
 		</div>
+		<!-- on-init="a:[translateX:0px:60px:1000:easeOutBounce:0:3:f,rotate:0deg:60deg:1000:easeOutBounce:0:3:f,scale:1:0:1000:easeOutCirc:0:3:f]" -->
 		<div class="input-border" ng-if='false'
 			u
 			when-input-invalid="a:[translateY:0:100px:1000:linear:0:1:a]">
