@@ -362,7 +362,7 @@ angular.module('uguru.shared.directives')
           }
         }
 }])
-.directive("u", ["$compile", "ElementService", function($compile, ElementService) {
+.directive("u", ["$compile", "ElementService", "$timeout", function($compile, ElementService, $timeout) {
       return {
           restrict: 'A',
           replace: true,
@@ -373,7 +373,6 @@ angular.module('uguru.shared.directives')
               var states = this.states;
               if (this.states.init) {
                 this.states.init.forEach(function(state, i) {
-                  console.log(state)
                   state.exec(element);
                 })
               }
@@ -381,29 +380,22 @@ angular.module('uguru.shared.directives')
 
               return {
                   pre: function (scope, lElem, lAttr) {
-                    if (states.on) {
-                      states.on.forEach(function(state, i) {
-                        state.exec(element, scope);
-                      })
-                    }
-                    if (states.when) {
-                      states.when.forEach(function(state, i) {
-                        state.exec(element, scope);
-                      })
-                    }
-                      // scope.$watch(function() {
-                      //   return element.attr('class');
-                      // }, function(new_classes) {
 
-                      //   if (new_classes && new_classes.indexOf('init') > -1) {
+                      if (states.on) {
+                        states.on.forEach(function(state, i) {
+                          state.exec(lElem, scope);
+                        })
+                      }
+                      if (states.when) {
+                        states.when.forEach(function(state, i) {
+                          state.exec(lElem, scope);
+                        })
+                      }
+                      transclude(scope, function(clone, innerScope) {
 
-                          transclude(scope, function(clone, innerScope) {
-                              $compile(clone)(innerScope)
+                              $compile(clone)(scope)
                               lElem.append(clone)
-                          })
-
-                      //   }
-                      // })
+                      });
 
                   },
                   post: angular.noop

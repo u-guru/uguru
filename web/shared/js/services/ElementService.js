@@ -84,6 +84,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (!(stateObj.type in states)) states[stateObj.type] = [];
           states[stateObj.type].push(stateObj);
         }
+
         return states
       }
 
@@ -174,7 +175,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             applyPropsToElement(element, actions.prop);
           };
           if (actions.anim) {
-            console.log('applying anim args')
+
             applyAnimArgs(element, scope, actions.anim, context);
           }
           if (actions.send) {
@@ -183,16 +184,17 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function applyAnimArgs(element, scope, animations, context) {
+        var stateName = context.type + '-' + context.name;
+        var defaults = {"kf":60,"autoPlay":false,"toolbar":{},"hidePlot":false}
+        var state = AnimationFrameService.init.state('', animations, element[0], defaults);
 
-        var state = AnimationFrameService.init.state(null, animations, element[0]);
-        console.log(state)
         if (!player) {
           player = AnimationFrameService.getPlayer();
         }
-        state.name = context.type + '-' + context.name;
-        player = player.scheduleStream(player, state, 0);
-        console.log(player.schedule.streams)
-        player.play()
+
+        player.scheduleStream(player, state, state.offset, null);
+
+        player.play();
         // player.play();
       }
 
