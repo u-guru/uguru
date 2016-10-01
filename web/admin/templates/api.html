@@ -14,8 +14,8 @@
                 <h4 class='txt-24 uppercase weight-700 txt-azure txt-center full-x p10y border-2-bottom border-slate'> {{key}} </h4>
                 <div class='relative'>
                     <ul class='txt-24 full-y uppercase weight-500 txt-azure flex-wrap flex-vertical-center'>
-                        <li ng-repeat='item in value.all' class='full-x flex-stretch'>
-                            {{item}}
+                        <li ng-repeat='comp in value.all' class='full-x flex-stretch' ngif='comp in value[key] && value[key][comp].complete'>
+                            {{ comp}}
                         </li>
                     </ul>
                 </div>
