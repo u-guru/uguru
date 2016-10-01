@@ -9,7 +9,7 @@
 		<!--  ng-if='activeType === "light"' -->
 		<div u
 			init-with="prop:[opacity:.5]"
-			on-init="anim:[bounceIn-rotate-subtle-small:1000:bouncePast:0:i:f]"
+			on-init="anim:[rotate:0deg:100deg:1000:easeOutBack:0:1:a]"
 			style='height:200px; width:200px;'
 			class='bg-cerise absolute'
 			>
