@@ -63,6 +63,10 @@
 				<span class="label">Border light</span>
 				<span class="input"
 					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+				<div class="underline">
+					<div></div>
+					<div></div>
+				</div>
 				<div class="borders">
 					<div>
 						<div init-default
