@@ -5028,6 +5028,41 @@ a[class*="-container"]:hover .map-enter {
   #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-20 {
     animation: hiw-cloud-fall 4000 ms linear 3000 ms 2, hiw-cloud-fall-end 4000 ms ease-out 3200 ms forwards; }
 
+.onboarding-projector {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+.onboarding-tracker {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px; }
+  .onboarding-tracker > div {
+    margin: 0 auto;
+    max-width: 750px; }
+    @media screen and (min-height: 750px) {
+      .onboarding-tracker > div {
+        max-width: 900px; } }
+    @media screen and (min-height: 900px) {
+      .onboarding-tracker > div {
+        max-width: 1080px; } }
+  .onboarding-tracker .numerical-bar {
+    margin: 0 auto;
+    max-width: 96%; }
+    .onboarding-tracker .numerical-bar > ul > li > div span {
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: 10px; }
+      .onboarding-tracker .numerical-bar > ul > li > div span svg {
+        display: block;
+        width: 100%;
+        height: 100%; }
+
 .projector-splash .btn-ghost-round {
   letter-spacing: 0; }
 .projector-splash .projector-content {
@@ -5114,12 +5149,55 @@ a[class*="-container"]:hover .map-enter {
   width: 100%;
   padding: 15px; }
 
-.projector-guru-body {
+.projector-guru-body-container {
   display: none;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+  @media screen and (orientation: landscape) and (min-height: 560px) {
+    .projector-guru-body-container {
+      padding-top: 50px; } }
+  @media screen and (min-width: 768px) {
+    .projector-guru-body-container {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex; } }
+  .projector-guru-body-container > div {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 750px; }
+    @media screen and (min-height: 560px) {
+      .projector-guru-body-container > div {
+        height: 95%; } }
+    @media screen and (orientation: landscape) and (min-height: 560px) {
+      .projector-guru-body-container > div {
+        max-height: 500px; } }
+    @media screen and (orientation: landscape) and (min-height: 750px) {
+      .projector-guru-body-container > div {
+        max-height: 600px; } }
+    @media screen and (orientation: landscape) and (min-height: 900px) {
+      .projector-guru-body-container > div {
+        max-height: 720px; } }
+    @media screen and (min-height: 750px) {
+      .projector-guru-body-container > div {
+        max-width: 900px; } }
+    @media screen and (min-height: 900px) {
+      .projector-guru-body-container > div {
+        max-width: 1080px; } }
+
+.projector-guru-body {
   position: absolute;
   top: 50%;
   margin-top: -200px;
-  left: -145px;
+  left: -127px;
   z-index: 100;
   width: 300px;
   height: 450px; }
@@ -5145,8 +5223,6 @@ a[class*="-container"]:hover .map-enter {
     justify-content: center; }
   .projector-splash .projector-splash-header h1 {
     font-size: 48px; }
-  .projector-splash .projector-guru-body {
-    display: block; }
   .projector-splash .student-card-mobile {
     display: none; }
 

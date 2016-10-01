@@ -1,11 +1,12 @@
 <ion-view class="flex-center">
 	<projector class="projector-access projector-splash projector-mobile-header">
-		<div class="projector-guru-body" ng-include="root.base_url + 'preapp/templates/started/components/tour-guru.html'"
+		<!-- <div class="projector-guru-body" ng-include="root.base_url + 'preapp/templates/started/components/tour-guru.html'"
 			init-default
-			on-init="s:[card-flip:public]"></div>
+			on-init="s:[card-flip:public]"></div> -->
+
 		<div class="projector-splash-container"
 			init-default
-			on-init="s:[promo-header:public]:delay-250"
+			on-init="s:[promo-header:public:delay-250, card-flip:public]"
 			when-promo-header="s:[promo-input-enter:public]:delay-500">
 			<header class="projector-splash-header">
 				<a class="projector-splash-back icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/left-circle.html'"></a>

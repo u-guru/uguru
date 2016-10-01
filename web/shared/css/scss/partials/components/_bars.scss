@@ -1093,7 +1093,7 @@ progress, div[class*="progress"] {
 					font-weight: 600;
 					color: $shamrock;
 				}
-				svg {
+				> svg {
 					display: block;
 					position: absolute;
 					z-index: 1;
