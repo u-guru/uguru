@@ -54,12 +54,14 @@
 							when-input-valid="p:[op:0:delay-175, sdo:39.6]:delay-250"></path>
 					</g>
 				</svg>
-				<span class="label"
-					init-with="p:[op:0, tr:rotateX(90deg), tro:bottom center]"
-					when-input-border-enter="p:[opacity:0:1:250:easeOutExpo, transform:rotateX(90deg):rotateX(0deg):250:easeOutExpo]:delay-200">Border light</span>
+				<span class="label" style="transform-origin:bottom center" u
+					init-with="p:[rotateX:90deg]"
+					on-init="a:[rotateX:90deg:0deg:2500:easeOutExpo:0:1:f]">Border light</span>
 				<span class="input"
 					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
-				<div class="underline">
+				<div class="underline" u
+					init-with="p:[translateY:100px]"
+					when-input-border-enter="a:[translateY:100px:0px:2500:easeOutExpo:0:1:f]">
 					<div u init-with="p:[scaleX:0]"
 						when-input-border-enter="a:[scaleX:0:1:250:easeOutExpo:0:1:f]"></div>
 					<div></div>
