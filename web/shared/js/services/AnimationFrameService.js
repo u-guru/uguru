@@ -242,7 +242,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             player.schedule.streams[id].active = false;
           }
         })
-        console.log(player.schedule.streams)
       }
 
       player.unFocusStream = function(_player, stream) {
@@ -250,7 +249,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         player.schedule.streams.forEach(function(stream, id) {
           player.schedule.streams[id].active = false;
         })
-        player.reset(player)
+        // player.reset(player)
       }
 
       player.scheduleStream = function(player, state_obj, offset, debug) {
