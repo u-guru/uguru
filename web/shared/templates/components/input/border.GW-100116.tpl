@@ -120,7 +120,7 @@
 		</div>
 	</div>
 
-	<div class="p30xy radius-2 bg-white full-x" style="max-width:460px" ng-if="false">
+	<div class="p30xy radius-2 bg-white full-x" style="max-width:460px">
 		<!--  ng-if='activeType === "dark"' -->
 		<div class="input-border"
 			init-default
@@ -134,7 +134,8 @@
 				on-blur="s:[input-blur:public]"
 				on-mouse-enter="s:[input-hover:public]"
 				on-mouse-leave="s:[input-leave:public]"/>
-			<label>
+			<label u init-with="p:[opacity:0]"
+				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f]">
 				<svg class="input-icon email-icon" viewBox="0 0 100 100">
 					<g fill="none" stroke-linecap="round" stroke-linejoin="round"
 						init-default
