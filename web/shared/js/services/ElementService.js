@@ -143,14 +143,14 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             }
           }
           if (type === 'when') {
-
+            console.log('registering')
             return function(element, scope) {
               $timeout(function() {
                 if (name.indexOf('-debug') > -1) {
                   name = name.replace('-debug', '');
                 }
                 actions.debug = true;
-
+                console.log(actions)
                 registerAnimationListeners(scope, element, actions, context);
               })
             }
@@ -165,10 +165,16 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         for (key in actions) {
           var listenFor = baseName;
           var scopeName = 'root.public.customStates.when.' + UtilitiesService.camelCase(listenFor);
-          // $timeout(function() {
-
-            scope.$parent.$watch(scopeName, function(_old, _new) {
-              applySendAnimProp(scope, element, actions, context)
+            if (!('when' in scope.$parent.root.public.customStates)) {
+              scope.$parent.root.public.customStates['when'] = {};
+            scope.$parent.root.public.customStates['when'][UtilitiesService.camelCase(listenFor)] = false;
+            console.log(scopeName)
+            scope.$watch(scopeName, function(_new, _old) {
+              console.log(_new, _old)
+              if (_new && _old === false) {
+                console.log(actions)
+                applySendAnimProp(scope, element, actions, context)
+              }
               // if (_new && _new !== _old) {
               //   console.log('oh shit')
 
@@ -180,6 +186,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
         }
       }
+    }
 
       function applyOnToElement(scope, element, actions, context) {
         var name = context.name;
@@ -190,7 +197,9 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             applySendAnimProp(scope, element, actions, context);
           })
         } else {
+
           element.on(name,function(e) {
+            // delete actions['send']
               applySendAnimProp(scope, element, actions, context)
           })
         }
@@ -206,6 +215,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
             applyAnimArgs(element, scope, actions.anim, context);
           }
+
           if (actions.send) {
             applySendArgsAndCallback(element, scope, actions.send);
           }
@@ -236,10 +246,31 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function applySendArgsAndCallback(element, scope, messages) {
+
         messages.split(',').forEach(function(msg, i) {
-          var iMsg = msg.split(':')[0];
-          var _attr = {dashed: iMsg, camel: UtilitiesService.camelCase(iMsg)};
-          // DirectiveService.initCustomStateWatcher(scope, element,  'when', _attr, attr[_attr.camel]);
+          var msgSplit = msg.split(':')
+          var iMsg = msgSplit[0];
+          var msgScope = msgSplit[1];
+          var msgDelay = parseInt(msgSplit[2].replace('delay-', ''));
+          console.log('sending msg', iMsg, msgDelay)
+          var _attr = {dashed: iMsg, camel: UtilitiesService.camelCase('when-' + iMsg)};
+
+          if (msgDelay) {
+            $timeout(function() {
+              scope.$parent.root.public.customStates.when[_attr.camel] = true;
+
+              $timeout(function() {
+                scope.$parent.root.public.customStates.when[_attr.camel] = false;
+              }, 100)
+            }, msgDelay)
+            return
+          }
+          scope.$parent.root.public.customStates.when[_attr.camel] = true;
+          $timeout(function() {scope.$apply()});
+          $timeout(function() {
+            scope.$parent.root.public.customStates.when[_attr.camel] = false;
+          }, 100)
+          // DirectiveService.initCustomStateWatcher(scope, element,  'when', _attr, _attr[_attr.camel]);
         })
       }
 
