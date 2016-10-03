@@ -910,15 +910,40 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         var formattedArgs = checkAndParseTransform(firstArgs[0], firstArgs[1], firstArgs[2]);
         var formattedArgs = checkAndParseShortcuts(formattedArgs[0], formattedArgs[1], formattedArgs[2]);
         var result = formattedArgs.join(':') + ':' + strSplit.join(':');
-
+        console.log(result)
         return result;
 
         function checkAndParseTransform(prop, start, end) {
           if (start.indexOf('matrix3d') > -1) {
             start = decomposeMatrixStr(start);
+            start = start.split(' ').filter(function(tr_arg, i) {return tr_arg.length} ).join(" ");
           }
           if (end.indexOf('matrix3d') > -1) {
             end = decomposeMatrixStr(end);
+            end = end.split(' ').filter(function(tr_arg, i) {return tr_arg.length} ).join(" ");
+          }
+          if (start.split(' ').length !== end.split(' ').length) {
+            var endSplit = end.split(' ');
+            var newEnd = [];
+            start.split(' ').slice().forEach(function(tr_arg, i) {
+              var origStart = tr_arg;
+              var tr_arg = (tr_arg + "").split('(')[0];
+
+              if (end.indexOf(tr_arg) === -1) {
+                var tr_arg_units = (origStart).split('(')[1];
+                if (tr_arg_units.indexOf('px') > -1) {
+                  tr_arg_units = 'px';
+                }
+                else if (tr_arg_units.indexOf('%') > -1) {
+                  tr_arg_units = '%';
+                }
+                else if (tr_arg_units.indexOf('deg') > -1) {
+                  tr_arg_units = 'deg';
+                }
+                end = endSplit.slice(0, i).join(" ") + tr_arg.split('(')[0] + '(0' + tr_arg_units + ') ' +  endSplit.slice(i, endSplit.length).join(' ');
+
+              }
+            })
           }
           return animUrlShortcuts.func.transform(prop,start,end);
         }
@@ -1314,6 +1339,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             }
           })
           uniquePropStreams.forEach(function(stream, i) {
+
             state_args.push(stream)
           })
         }
