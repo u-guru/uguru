@@ -438,26 +438,6 @@ angular.module('uguru.shared.directives.base.components')
         }
       };
     }])
-    // .directive('text', [function () {
-    //   return {
-    //     restrict: 'AE',
-    //     priority: 0,
-    //     compile: function(elem, attr) {
-    //       !('fill' in attr) && attr.$set('fill', 'white');
-    //       !('x' in attr) && attr.$set('x', '50%');
-    //       !('y' in attr) && attr.$set('y', '50%');
-    //       !('fontSize' in attr) && attr.$set('font-size', '33%');
-    //       !('textAnchor' in attr) && attr.$set('text-anchor', 'middle');
-    //       return function postLink(scope, elem, attr) {
-    //         var gRect = elem.parent()[0].getBoundingClientRect();
-    //         var gWidth = gRect.width;
-    //         var gHeight = gRect.height;
-    //         console.log(elem);
-
-    //       }
-    //     }
-    //   };
-    // }])
     .directive("bar", ["RootService", "$timeout", function(RootService, $timeout) {
         return {
             templateUrl: RootService.getBaseUrl() + 'shared/templates/components/base/grid/bar.tpl',

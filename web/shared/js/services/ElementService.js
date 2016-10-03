@@ -25,7 +25,11 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function launchExternalWindow(params, element) {
-        var anim_string = params.split('[')[1].split(']')[0];
+        var anim_string = params;
+        if (anim_string.indexOf('[') > -1) {
+          anim_string = params.split('[')[1].split(']')[0];
+        }
+
         var base_url = '/#/admin/api/animations/prop/';
         var anim_strings = [];
         anim_string.split(',').forEach(function(a, i) {
@@ -114,6 +118,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         state.actions = parsedArgs.actions;
         state.exec = getStateFunc(state.type, state.name, parsedArgs.actions);
 
+
         return state;
       }
 
@@ -141,6 +146,11 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
             return function(element, scope) {
               $timeout(function() {
+                if (name.indexOf('-debug') > -1) {
+                  name = name.replace('-debug', '');
+                }
+                actions.debug = true;
+
                 registerAnimationListeners(scope, element, actions, context);
               })
             }
@@ -210,9 +220,18 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           player = AnimationFrameService.getPlayer();
         }
 
-        player.scheduleStream(player, state, state.offset, null);
+        // player.scheduleStream(player, state, state.offset, null);
 
-        player.play();
+        // player.play();
+        // if (!player) {
+        //   player = AnimationFrameService.getPlayer();
+        // }
+
+        //TODO, inject global offset here
+        player.scheduleStream(player, state, 0)
+        if (!player.active) {
+          player.play();
+        }
         // player.play();
       }
 
