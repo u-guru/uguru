@@ -43,7 +43,9 @@ angular.module('uguru.shared.directives.base.components')
                         scope.chart.focusedPoints = [];
                         scope.chart.showDetails = false;
                         scope.chart.lastPointHovered = null;
+                        scope.chart.lastPointEntered = null;
                         scope.chart.lastPointHoveredIndex = 0;
+
                         scope.chart.onMousePointEnter = function(index, point, $event) {
                             console.log('entering...', point, $event);
                             scope.chart.lastPointHovered = point;
@@ -54,11 +56,20 @@ angular.module('uguru.shared.directives.base.components')
                         // }
 
                         scope.chart.onMousePointDown = function(point, $event) {
-
+                            scope.chart.lastPointEntered = point;
+                            $timeout(function() {
+                                scope.$apply();
+                            })
                         }
 
                         scope.chart.onMousePointUp = function(point, $event) {
                             console.log('unpressing...', point, $event);
+                        }
+                        scope.chart.onClick = function(stream, $event) {
+
+                            var percent = $event.layerX / elem[0].getBoundingClientRect().width;
+                            console.log(percent)
+                            scope.player.jump(scope.player, percent, 1);
                         }
                         scope.chart.onMouseEnter = function(stream, $event) {
 

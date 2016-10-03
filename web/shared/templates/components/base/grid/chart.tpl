@@ -1,4 +1,4 @@
-<div class='absolute full-xy top-0 left-0' style='width:{{stream.html.width}}'  ng-mouseenter="chart.onMouseEnter(stream, $event)" ng-mouseleave="chart.onMouseLeave(stream, $event)">
+<div class='absolute full-xy top-0 left-0' style='width:{{stream.html.width * stream.iter.count.total}}' ng-mouseover="chart.onMousePointDown(stream, $event)"  ng-mouseenter="chart.onMouseEnter(stream, $event)" ng-mouseleave="chart.onMouseLeave(stream, $event)">
 
     <!-- point information -->
     <div class='absolute bottom-0 left-0 full-x flex-center' ng-if='chart.showDetails'>
@@ -16,14 +16,10 @@
         <svg ng-if='chartReady && chart.vb'
 			ng-attr-view_Box='{{[chart.vb.x1,chart.vb.y1,chart.vb.x2, chart.vb.y2].join(" ")}}'
 			ng-attr-width="{{chart.html.width.replace('px', '')}}" ng-attr-height="{{chart.height}}">
-            <path stroke="white" stroke-linecap="round" stroke-width="5" stroke-linejoin="round" fill="none"
+            <path stroke="gray" stroke-linecap="round" stroke-width="5" stroke-linejoin="round" fill="none"
 				ng-attr-d="{{chart.path.path}}"></path>
-            <circle id='main-circle-{{stream.id}}' class='{{stream.name}}-plot-ball'
-				r="10" cx="0"
-				cy="{{chart.path.points[1][0].y}}"
-				fill="#F04F54"></circle>
-            <circle class='{{stream.name}}-plot-ball'
-				r="5" fill="white"
+            <circle class='{{stream.name}}-plot-ball z-index-1000'
+				r="5" fill="gray"
 				ng-if='chart.mouseEntered && $index > 0'
 				ng-repeat='point in chart.path.points'
 				ng-mouseleave="chart.onMousePointLeave(point, $event)"
@@ -31,6 +27,12 @@
 				on-release="chart.onMousePointUp(point, $event)"
 				ng-mouseenter="chart.onMousePointEnter($index, point, $event)"
 				ng-attr-cx="{{point[0].x}}" ng-attr-cy="{{point[0].y}}"></circle>
+				<circle id='main-circle-{{stream.id}}' class='{{stream.name}}-plot-ball'
+				r="10" cx="0"
+				cy="{{chart.path.points[1][0].y}}"
+				fill="#F04F54"></circle>
+			<line x1="{{chart.lastPointEntered[0].x}}" stroke-width="10" stroke="white" x2="{{chart.lastPointEntered[0].x}}" y1="{{chart.vb.y1}}" y2="{{chart.vb.y2}}" />
+			<line y1="{{chart.lastPointEntered[0].y}}" stroke-width="10" stroke="white" y2="{{chart.lastPointEntered[0].y}}" x1="{{chart.vb.x1}}" x2="{{chart.vb.x2}}" />
         </svg>
     </div>
 
