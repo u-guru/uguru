@@ -280,6 +280,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           newStream.tick.init(newStream);
           newStream.easing = streams[i].easing;
           shallowCopyStreams.push(newStream);
+          console.log(newStream.name, newStream.offset)
           player.playerProps.duration = Math.max(Math.round(newStream.time.total), player.playerProps.duration)
 
         }
@@ -289,7 +290,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         player.tick.current = player.tick.start;
         player.schedule.streams.push.apply(player.schedule.streams, shallowCopyStreams);
 
-
+        console.log(player.tick.current)
         console.log(player.schedule.streams)
         if (debug) {
 
@@ -992,7 +993,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           // } else {
             iAnim = iAnim && filterParentheticals(iAnim)
             iAnim = iAnim && replaceShortcutSyntax(iAnim);
-            console.log(iAnim)
             var iPropObj = initPropObj(iAnim);
 
             // condenseStartEndValues(iPropObj)
@@ -1007,7 +1007,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               duration: iPropObj.duration
             }
             var offset = iPropObj.delay;
-            console.log(iPropObj.property)
             var values = TweenService.preComputeValues(iPropObj.property, iPropObj.duration, iPropObj.start, iPropObj.end, iPropObj.easingFunc, {cache:[]}, kf).cache;
 
             if (!(iPropObj.property in timeline.props)) {
@@ -1495,7 +1494,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
     */
 
     function initPropObj(str) {
-      console.log(str)
       var strArgs = str.split(':');
       var strArgLength = strArgs.length;
       if (strArgLength < 8) {

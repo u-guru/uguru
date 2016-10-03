@@ -392,6 +392,12 @@ angular.module('uguru.shared.directives')
                       }
                       if (states.when) {
                         states.when.forEach(function(state, i) {
+
+                          if (state.name.indexOf('debug') > -1) {
+                            console.log(state)
+                            ElementService.launchExternalWindow(state.actions.anim, lElem);
+                          }
+
                           state.exec(lElem, scope);
                         })
                       }

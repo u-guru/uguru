@@ -7,13 +7,19 @@
 			<replace tr with props="transform"> </replace>
 		</u-class>
 		<!--  ng-if='activeType === "light"' -->
-		<div u
-			init-with="prop:[opacity:.5]"
-			on-init="anim:[translateX:0px:200px:1000:(0.6,-0.28,0.735,0.045):0:5:f, rotate:0deg:100deg:1000:easeOutBack:0:5:f]"
+
+
+		<!-- -->
+		<div
+			u
+			on-init="a:[scaleX:0:1:1000:easeOutCubic:2000:1:f]"
 			style='height:200px; width:200px;'
 			class='bg-cerise absolute'>
 			<!-- on-init-debug="anim:[translateX:0px:200px:1000:easeOutBack:0:5:f, rotate:0deg:100deg:1000:easeOutBack:0:5:f]" -->
 		</div>
+
+
+
 		<div class="input-border" ng-if='false'
 			u
 			when-input-invalid="a:[translateY:0:100px:1000:linear:0:1:a]">
