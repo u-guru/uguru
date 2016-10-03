@@ -20,15 +20,21 @@
 				<!-- desktop -->
 				<div class="desktop">
 					<div class="projector-access-heart" ng-include="root.base_url + 'shared/templates/components/svg/other/message-heart.html'"
+						u init-with="p:[opacity:0, transform-origin:center bottom, transform:rotate(-60deg) translateY(30px)]"
+						when-promo-header="a:[rotate:-60deg:0deg:500:easeOutExpo:250:1:f, translateY:30px:15px:500:bouncePast:250:1:f] | p:[opacity:1]"
+						when-promo-input-form="p:[translateY:15px:0px:250:easeOutSine:0:1:f]"></div>
+					<!-- <div class="projector-access-heart" ng-include="root.base_url + 'shared/templates/components/svg/other/message-heart.html'"
 						init-with="p:[op:0, tro:center bottom, tr:rotate(-60deg) translateY(30px)]"
 						when-promo-header="p:[opacity:1, transform:rotate(-60deg) translateY(30px):rotate(0deg) translateY(15px):500:easeOutExpo bouncePast]:delay-250"
-						when-promo-input-form="p:[transform:translateY(15px):translateY(0px):250:easeOutSine]"></div>
+						when-promo-input-form="p:[transform:translateY(15px):translateY(0px):250:easeOutSine]"></div> -->
 					<fieldset init-with="p:[op:0, tro:center bottom, tr:rotateX(90deg)]"
 						when-promo-input-enter="p:[op:1, transform:rotateX(90deg):rotateX(0deg):450:easeOutBounce] | s:[promo-input-form:public:delay-450]">
 						<input type="text" placeholder="Promo Code"/>
 						<div>
-							<span init-with="p:[tr:scaleX(0)]"
-								when-promo-input-form="p:[transform:scaleX(0):scaleX(1):200:easeInOutCubic]"></span>
+							<span u init-with="p:[transform:scaleX(0)]"
+								when-promo-input-form="a:[scaleX:0:1:200:easeInOutCubic:0:1:f]"></span>
+							<!-- <span init-with="p:[tr:scaleX(0)]"
+								when-promo-input-form="p:[transform:scaleX(0):scaleX(1):200:easeInOutCubic]"></span> -->
 							<span init-with="p:[tr:scaleY(0)]"
 								when-promo-input-form="p:[transform:scaleY(0):scaleY(1):150:easeInOutCubic]:delay-200"></span>
 							<span init-with="p:[tr:scaleX(0)]"
