@@ -16,7 +16,7 @@
     </div>
     <div style='height:20%; width:20%;' class='bg-smoke txt-charcoal flex-wrap-center txt-1 p15-grid' u init-with="prop:[background-color:#69B3A5]" on-click="a:[width:0%:12.5%:150:easeOutSine:0:1:f, background-color:#69B3A5:#99CEFA:150:easeOutSine:0:1:f]">
         <span class='text-center flex-wrap'>
-            background-color:#69B3A5:#99CEFA:150:easeOutSine
+            prop:[background-color:#69B3A5]" on-click="a:[width:0%:12.5%:150:easeOutSine:0:1:f, background-color:#69B3A5:#99CEFA:150:easeOutSine:0:1:f]
         </span>
     </div>
 
