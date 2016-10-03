@@ -94,7 +94,7 @@ function TweenService() {
 
         duration = parseInt(duration)
         result_arr.cache = [];
-        var iterations = (duration/1000 * 59);//fps
+        var iterations = (duration/1000 * 60);//fps
         var startDict = {};
         startDict[property] = start;
         var endDict = {};
