@@ -13,7 +13,7 @@
 			<a class="projector-splash-next icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/right-circle.html'"></a>
 		</header>
 
-		<div class="echo-loader-container"
+		<!-- <div class="echo-loader-container"
 			init-with="p:[z-index:2]"
 			when-search-school-complete="p:[z-index:-1:delay-500, opacity:1:0:500:easeOutSine]:delay-2000">
 			<svg class="echo-loader" width="300px" height="300px" viewBox="0 0 300 300"
@@ -50,10 +50,11 @@
 					</text>
 				</g>
 			</svg>
-		</div>
+		</div> -->
 
 		<div class="projector-school-map">
-			<div style="background: #40484b url('http://legato.travel/wp-content/uploads/2015/02/world-map-background-dark.jpg') center center / cover; background-blend-mode: screen;"></div>
+			<div style="background: #40484b url('http://legato.travel/wp-content/uploads/2015/02/world-map-background-dark.jpg') center center / cover; background-blend-mode: screen;"
+			on-init="s:[search-school-complete:public]"></div>
 		</div>
 
 		<div class="projector-school-container"
@@ -129,8 +130,11 @@
 							init-with="p:[tro:center center]"
 							when-school-select="p:[transform:translateX(0px) rotate(60deg):translateX(-200px) rotate(0deg):350:easeInOutExpo easeInBack]">
 							<div class="university-card mini"
-								init-with="p-op"
-								when-university-card-init="a:[scoop-enter:set:(dur:800ms#func:linear):in:delay-200]">
+								u init-with="p:[opacity:0]"
+								on-init="a:[scoop-enter:800:linear:200:1:f]">
+								<!-- <div class="university-card mini"
+									init-with="p-op"
+									when-university-card-init="a:[scoop-enter:set:(dur:800ms#func:linear):in:delay-200]"> -->
 								<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 									<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 								</svg>
