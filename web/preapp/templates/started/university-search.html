@@ -130,7 +130,7 @@
 							init-with="p:[tro:center center]"
 							when-school-select="p:[transform:translateX(0px) rotate(60deg):translateX(-200px) rotate(0deg):350:easeInOutExpo easeInBack]">
 							<div class="university-card mini"
-								u init-with="p:[opacity:0]"
+								init-with="p:[opacity:0]"
 								on-init="a:[scoop-enter:800:linear:200:1:f]">
 								<!-- <div class="university-card mini"
 									init-with="p-op"
@@ -181,8 +181,10 @@
 							init-with="p:[tro:center center]"
 							when-school-2-select="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-200px) rotate(-70deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
 							<div class="university-card mini"
-								init-with="p-op"
-								when-university-card-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]">
+								init-with="p:[opacity:0]"
+								when-university-card-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0,0.2,0.3,1)):in:delay-450]">
+									<!-- u init-with="p:[opacity:0]"
+									on-init="a:[scoop-enter:800:(0,0.2,0.3,1):450:1:f]" -->
 								<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 									<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 								</svg>
