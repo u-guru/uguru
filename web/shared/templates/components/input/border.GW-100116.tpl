@@ -136,7 +136,7 @@
 				on-mouse-enter="s:[input-hover:public]"
 				on-mouse-leave="s:[input-leave:public]"/>
 			<label u init-with="p:[opacity:0]"
-				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f]">
+				on-init="a:[opacity:0.0:1.0:1000:linear:0:1:f]">
 				<svg class="input-icon email-icon" viewBox="0 0 100 100">
 					<g fill="none" stroke-linecap="round" stroke-linejoin="round"
 						init-default

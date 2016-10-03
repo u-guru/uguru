@@ -94,7 +94,7 @@ function TweenService() {
 
         duration = parseInt(duration)
         result_arr.cache = [];
-        var iterations = (duration/1000 * 59);//fps
+        var iterations = (duration/1000 * 60);//fps
         var startDict = {};
         startDict[property] = start;
         var endDict = {};
@@ -143,6 +143,9 @@ function TweenService() {
         result_arr.cache.push(t.get()[property]);
         result_arr.cache.push(null)
         t.dispose();
+        if (property === 'opacity') {
+            console.log(result_arr.cache)
+        }
         return result_arr
         // t.dispose();
     }

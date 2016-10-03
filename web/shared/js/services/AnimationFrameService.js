@@ -267,13 +267,15 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
         var shallowCopyStreams = [];
         for (var i = 0; i < streams.length; i++) {
-
+          if (streams[i].name === 'opacity') {
+            console.log(streams[i].values)
+          }
           var globalOffsetTicks = calculateStreamTickLength({duration: 0, offset:offset});
           var totalDurationAndDelayTicks = calculateStreamTickLength(streams[i]);
           var durationOnlyTicks = calculateStreamTickLength(streams[i], 0, 60, true);
           var delayOnlyTicks = calculateStreamTickLength({duration:0, offset:streams[i].offset})
 
-          var newStream = {applyProp:streams[i].applyAtT, active:true, childProps:streams[i].childProps, easing:streams[i].ease, duration:streams[i].duration, iter:streams[i].iter, name:streams[i].property || streams[i].name, direction: streams[i].direction, time: {total: streams[i].duration, elapsed: 0}, offset: streams[i].offset,  values:streams[i].values.splice(0,streams[i].values.length -1)}
+          var newStream = {applyProp:streams[i].applyAtT, active:true, childProps:streams[i].childProps, easing:streams[i].ease, duration:streams[i].duration, iter:streams[i].iter, name:streams[i].property || streams[i].name, direction: streams[i].direction, time: {total: streams[i].duration, elapsed: 0}, offset: streams[i].offset,  values:streams[i].values.splice(0,streams[i].values.length)}
           newStream.tick = initStreamTick(newStream);
 
           newStream.time.total = newStream.tick.duration.ms + newStream.offset;
@@ -679,7 +681,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
           if (stream.tick.current <= stream.tick.end && stream.active) {
 
-            if (stream.tick.current <= stream.values.length && stream.tick.current > 0) {
+            if (stream.tick.current <= stream.values.length && stream.tick.current >= 0) {
 
               stream.applyProp && stream.applyProp(stream.values[stream.tick.current]);
               player.debug && player.debug.propStreamValueUpdate[stream.name](stream.name, stream.values[stream.tick.current], stream.tick.current, stream.tick.cycleIndex)
@@ -1038,6 +1040,9 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             var offset = iPropObj.delay;
             var values = TweenService.preComputeValues(iPropObj.property, iPropObj.duration, iPropObj.start, iPropObj.end, iPropObj.easingFunc, {cache:[]}, kf).cache;
 
+            if (values.indexOf(iPropObj.end) === -1) {
+              console.log(iPropObj.end)
+            }
             if (!(iPropObj.property in timeline.props)) {
               timeline.props[iPropObj.property] = [];
               if (iPropObj.property === 'transform') {
