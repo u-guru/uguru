@@ -59,11 +59,10 @@
 							<div>
 								<div class="borders"
 									init-default
-									when-demo-card-enter="s:[college-border:public]:delay-2500">
-										<div u
-											init-with="prop:[scaleX:0, transform-origin:center center]"
-											when-college-border="anim:[scaleX:0:1:800:easeOutExpo:0:1:f]"></div>
-											<!-- Not animating -->
+									when-demo-card-enter="s:[college-border:public]:delay-100">
+									<!-- when-demo-card-enter="s:[college-border:public]:delay-100"> -->
+										<div u init-with="p:[transform:scaleX(0), transform-origin:center center]"
+											when-college-border="a:[scaleX:0:1:800:easeOutExpo:0:1:f]"></div>
 										<div u
 											init-with="prop:[scaleY:0, transform-origin:center center]"
 											when-college-border="anim:[scaleY:0:1:1000:easeOutCubic:0:1:f]"></div>
