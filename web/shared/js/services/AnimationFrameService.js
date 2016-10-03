@@ -260,6 +260,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         // if (debug && state_obj.playerProps) {
 
 
+
           player.playerProps = state_obj.playerProps
           player.playerProps.iter.count.current = player.playerProps.iter.count.current + 0;
         // }
@@ -280,7 +281,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           newStream.tick.init(newStream);
           newStream.easing = streams[i].easing;
           shallowCopyStreams.push(newStream);
-          console.log(newStream.name, newStream.offset)
+
           player.playerProps.duration = Math.max(Math.round(newStream.time.total), player.playerProps.duration)
 
         }
@@ -962,8 +963,11 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
 
 
+
         var stateArgs = filterTransformAndShortcutStr(stateNameStrSplit);
+        console.log(stateArgs)
         stateArgs = splitCustomAnimationsIntoStreams(stateArgs);
+
 
 
 
@@ -1286,6 +1290,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           customArgs.forEach(function(c_anim_dict, index) {
             var genDuration = c_anim_dict.args[0];
             var genDelay = c_anim_dict.args[2];
+
             for (prop in c_anim_dict.propDict) {
               var propStreams = c_anim_dict.propDict[prop];
               if (propStreams.length) {
@@ -1300,7 +1305,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                   var endVal = _prop.value;
                   deltaPercent = deltaPercent/100;
                   genArgsCopy[0] = deltaPercent*duration;
-                  genArgsCopy[2] = delay - genArgsCopy[0];
+                  genArgsCopy[2] = delay - genArgsCopy[0] + genDelay;
+
                   uniquePropStreams.push(_prop.prop + ':' + startVal + ':' + endVal + ':' + genArgsCopy.join(":"));
                   // console.log(c_anim_dict.args[0], deltaPercent, _prop)
                 })
