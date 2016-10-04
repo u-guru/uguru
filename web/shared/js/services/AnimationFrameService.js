@@ -1040,9 +1040,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             var offset = iPropObj.delay;
             var values = TweenService.preComputeValues(iPropObj.property, iPropObj.duration, iPropObj.start, iPropObj.end, iPropObj.easingFunc, {cache:[]}, kf).cache;
 
-            if (values.indexOf(iPropObj.end) === -1) {
-              console.log(iPropObj.end)
-            }
+
             if (!(iPropObj.property in timeline.props)) {
               timeline.props[iPropObj.property] = [];
               if (iPropObj.property === 'transform') {
