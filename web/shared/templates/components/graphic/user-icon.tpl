@@ -1,4 +1,11 @@
-<div class="perspective-container full-xy flex-center p15xy" types='24, 32, 36, 48, 64, 72, 84, 96, 128, default' default-type="default">
+<div class="perspective-container full-xy flex-center p15xy">
+	<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=256);"
+	 	u init-with="p:[opacity:0]"
+		on-init="a:[icon-rotate-enter:1000:linear:0:1:f]"
+		on-exit="a:[icon-rotate-exit:1000:linear:0:1:f]"></span>
+</div>
+
+<!-- <div class="perspective-container full-xy flex-center p15xy" types='24, 32, 36, 48, 64, 72, 84, 96, 128, default' default-type="default">
 	<span class="user-icon-24" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=48);" ng-if='activeType === "24"'
 		init-with="p-op"
 		on-init="a:[icon-rotate-enter:set:(dur:1000ms#func:linear):in]"
@@ -48,4 +55,4 @@
 		init-with="p-op"
 		on-init="a:[icon-rotate-enter:set:(dur:1000ms#func:linear):in]"
 		on-exit="a:[icon-rotate-exit:set:(dur:1000ms#func:linear):out]"></span>
-</div>
+</div> -->
