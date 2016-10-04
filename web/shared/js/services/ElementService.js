@@ -254,7 +254,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           var msgDelay = 0;
           if (msgSplit.length > 2) {
             msgDelay = parseInt(msgSplit[2].replace('delay-', ''));
-            console.log(msgDelay)
           }
           var _attr = {dashed: iMsg, camel: UtilitiesService.camelCase('when-' + iMsg)};
 

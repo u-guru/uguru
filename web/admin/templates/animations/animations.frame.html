@@ -52,7 +52,7 @@
                     <span class='chip bg-auburn-50p' ng-if='afc.player.debug.propArr[0].show'> hide </span>
                     <span class='chip bg-azure-50p' ng-if='!afc.player.debug.propArr[0].show'> show </span>
                 </li>
-				<li ng-repeat='prop_dict in afc.player.debug.propArr' ng-click='prop_dict.show = !prop_dict.show' on-hold="afc.player.togglePropStreams(afc.player, prop_dict.name)">
+				<li ng-repeat='prop_dict in afc.player.debug.propArr' on-hold="prop_dict.showValuesOnly = !prop_dict.showValuesOnly;" ng-click='prop_dict.show = !prop_dict.show' on-hold="afc.player.togglePropStreams(afc.player, prop_dict.name)">
 					<span class='chip bg-campus'>
 						{{prop_dict.name}} ({{prop_dict.streams.length}})
 					</span>
@@ -64,6 +64,7 @@
 
 	<!-- KEYFRAMES -->
 	<div class='absolute left-0 z-index-9 full-x bg-charcoal-20p z-index-100' style='top: 62px'>
+
         <div class='relative z-index-100 flex-start full-x overflow-x no-scrollbar border-1-bottom height-150' style='border-color:rgba(255,255,255,.2)' ng-if='prop_dict.show' ng-repeat='prop_dict in afc.player.debug.propArr'>
             <div class='absolute top-0 left-0 z-index-100 p05xy'>
                 <div class="bg-slate radius-2" ng-click='prop_dict.show = !prop_dict.show'>
@@ -76,7 +77,8 @@
             <div class='full-xy relative overflow-auto'>
                 <ul class='full-y flex-vertical-center p05xy absolute overflow-auto'>
                     <li class='full-y p05xy border-2-right border-slate border-solid flex-wrap-center relative txt-1'  style='width:{{stream.plot.html.width}}!important;' ng-repeat='stream in prop_dict.streams track by $index'>
-                        <chart c-data="stream" player='afc.player'></chart>
+                        <chart c-data="stream" player='afc.player' ></chart>
+
                     </li>
                 </ul>
                 <!-- <ul class='full-y flex-vertical-center p15-grid absolute overflow-auto' style='left:150px;' ng-if='false'>
