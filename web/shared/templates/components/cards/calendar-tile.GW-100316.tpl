@@ -7,7 +7,7 @@
 		<div></div><div></div>
 		<h1 u init-with="p:[opacity:0]"
 			on-enter="a:[bounceIn-subtle:800:linear:250:1:f]">February 11</h1>
-		<h21 u init-with="p:[opacity:0]"
+		<h2 u init-with="p:[opacity:0]"
 			on-enter="a:[bounceIn-subtle:800:linear:350:1:f]">4pm-6am</h2>
 	</div>
 </div>
