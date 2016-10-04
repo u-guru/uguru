@@ -251,8 +251,10 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           var msgSplit = msg.split(':')
           var iMsg = msgSplit[0];
           var msgScope = msgSplit[1];
-          var msgDelay = parseInt(msgSplit[2].replace('delay-', ''));
-          console.log('sending msg', iMsg, msgDelay)
+          var msgDelay = 0;
+          if (msgSplit.length > 2) {
+            var msgDelay = parseInt(msgSplit[2].replace('delay-', ''));
+          }
           var _attr = {dashed: iMsg, camel: UtilitiesService.camelCase('when-' + iMsg)};
 
           if (msgDelay) {
@@ -264,9 +266,12 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               }, 100)
             }, msgDelay)
             return
+          } else {
+            $timeout(function() {scope.$parent.root.public.customStates.when[_attr.camel] = true; scope.$apply()});
+
           }
-          scope.$parent.root.public.customStates.when[_attr.camel] = true;
-          $timeout(function() {scope.$apply()});
+
+
           $timeout(function() {
             scope.$parent.root.public.customStates.when[_attr.camel] = false;
           }, 100)

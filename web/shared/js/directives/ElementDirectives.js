@@ -372,6 +372,7 @@ angular.module('uguru.shared.directives')
               this.states = ElementService.renderElementStates(element, attr);
               var states = this.states;
               if (this.states.init) {
+                console.log(this.states.init)
                 this.states.init.forEach(function(state, i) {
                   state.exec(element);
                 })
