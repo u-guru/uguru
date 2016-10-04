@@ -281,7 +281,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           var totalDurationAndDelayTicks = calculateStreamTickLength(streams[i]);
           var durationOnlyTicks = calculateStreamTickLength(streams[i], 0, 60, true);
           var delayOnlyTicks = calculateStreamTickLength({duration:0, offset:streams[i].offset})
-
+          console.log(streams[i].offset)
 
           values = streams[i].values.splice(0,streams[i].values.length)
 
@@ -701,7 +701,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
         schedule.streams.forEach(function(stream, i) {
 
-
           if (stream.tick.current <= stream.tick.end && stream.active) {
 
             if (stream.tick.current <= stream.values.length && stream.tick.current >= 0) {
@@ -714,7 +713,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             stream.time.elapsed += time_delta;
           }
 
-          if (stream.tick.current > stream.tick.end) {
+          if (stream.tick.current >= stream.tick.end) {
 
             if (tick_delta > 0) {
               stream.tick.cycle.increment();
@@ -1017,7 +1016,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
         var stateArgs = filterTransformAndShortcutStr(stateNameStrSplit);
         stateArgs = splitCustomAnimationsIntoStreams(stateArgs);
-
+        console.log(stateArgs)
 
 
 
@@ -1363,7 +1362,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                   deltaPercent = deltaPercent/100;
                   genArgsCopy[0] = deltaPercent*duration;
                   genArgsCopy[2] = delay - genArgsCopy[0] + genDelay;
-
+                  genArgsCopy[0] = deltaPercent*duration + genArgsCopy[2];
+                  console.log(genArgsCopy[0], genArgsCopy[2])
 
                   uniquePropStreams.push(_prop.prop + ':' + startVal + ':' + endVal + ':' + genArgsCopy.join(":"));
                   // console.log(c_anim_dict.args[0], deltaPercent, _prop)
