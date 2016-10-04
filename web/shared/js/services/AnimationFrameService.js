@@ -701,6 +701,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
         schedule.streams.forEach(function(stream, i) {
 
+
           if (stream.tick.current <= stream.tick.end && stream.active) {
 
             if (stream.tick.current <= stream.values.length && stream.tick.current >= 0) {
@@ -713,7 +714,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             stream.time.elapsed += time_delta;
           }
 
-          if (stream.tick.current < stream.tick.end) {
+          if (stream.tick.current > stream.tick.end) {
 
             if (tick_delta > 0) {
               stream.tick.cycle.increment();
@@ -896,7 +897,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             return results.join(" ");
           }
         }
-        console.log(results)
         if (results.length) return results.join(" ")
         return str;
       }
@@ -1048,15 +1048,15 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             iAnim = iAnim && filterParentheticals(iAnim)
             iAnim = iAnim && replaceShortcutSyntax(iAnim);
             var iPropObj = initPropObj(iAnim);
-
-            // if (iAnim.split(':')[0] === 'transform') {
-            //     condenseStartEndValues(iPropObj);
-            // }
+            // console.log(iPropObj)
+            if (iAnim.split(':')[0] === 'transform') {
+                condenseStartEndValues(iPropObj);
+            }
             //
             // console.log(iPropObj.property, iPropObj.start, iPropObj.end)
-            // if (iPropObj.start === iPropObj.end) {
-            //   continue;
-            // }
+            if (iPropObj.start === iPropObj.end) {
+              continue;
+            }
 
             timeline.playerProps = {
               direction: iPropObj.direction,
@@ -1065,7 +1065,10 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             }
             var offset = iPropObj.delay;
             var values = TweenService.preComputeValues(iPropObj.property, iPropObj.duration, iPropObj.start, iPropObj.end, iPropObj.easingFunc, {cache:[]}, kf).cache;
-
+            if (!values[values.length - 1]) {
+              values.unshift();
+              values = values.splice(0, values.length)
+            }
 
             if (!(iPropObj.property in timeline.props)) {
               timeline.props[iPropObj.property] = [];
