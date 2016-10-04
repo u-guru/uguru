@@ -168,8 +168,8 @@
 					<div></div><div></div><div></div>
 					<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
 						u init-with="p:[opacity:0]"
-						when-photo-cardlet-init="a:[pf-photo-enter:750ms:easeInOutSine:500:1:f]"
-						when-photo-cardlet-exit="a:[pf-photo-enter:750ms:easeInOutSine:0:1:r]">&nbsp;</div>
+						when-photo-cardlet-init="a:[pf-photo-enter:750:easeInOutSine:500:1:f]"
+						when-photo-cardlet-exit="a:[pf-photo-enter:750:easeInOutSine:0:1:r]">&nbsp;</div>
 					<div class="pf-cardlet-overlay"></div>
 				</div>
 			</div>
@@ -222,7 +222,7 @@
 			<div class="pf-cardlet-back-container">
 				<div class="pf-cardlet-back"
 					u init-with="p:[opacity:0, transform-origin:center center]"
-					when-tech-cardlet-back="a:[bounceIn-subtle:1000ms:linear:550:1:f"></div>
+					when-tech-cardlet-back="a:[bounceIn-subtle:1000:linear:550:1:f"></div>
 			</div>
 			<div class="pf-cardlet-bottom-container">
 				<div class="pf-cardlet-bottom">
@@ -239,11 +239,11 @@
 					<h1>When to Replace Your Phone</h1>
 					<div>
 						<div u init-with="p:[opacity:0]"
-							when-tech-cardlet-init="a:[bounceIn-subtle:1000ms:easeOutSine:1500:1:f]"></div>
+							when-tech-cardlet-init="a:[bounceIn-subtle:1000:easeOutSine:1500:1:f]"></div>
 						<h2 u init-with="p:[opacity:0]"
-							when-tech-cardlet-init="a:[shake-opacity:450ms:easeInOutSine:1600:1:f]">03/28/2016</h2>
+							when-tech-cardlet-init="a:[shake-opacity:450:easeInOutSine:1600:1:f]">03/28/2016</h2>
 						<div u init-with="p:[opacity:0]"
-							when-tech-cardlet-init="a:[bounceIn-subtle:1000ms:easeOutSine:1500:1:f]"></div>
+							when-tech-cardlet-init="a:[bounceIn-subtle:1000:easeOutSine:1500:1:f]"></div>
 					</div>
 				</div>
 			</div>
@@ -285,7 +285,7 @@
 			<div class="pf-cardlet-bottom-container">
 				<div class="pf-cardlet-bottom">
 					<h1 u init-with="p:[opacity:0]"
-						when-household-cardlet-init="a:[bounceInUp-subtle:1000ms:linear:500:1:f]">How to Make Your Plants Live Longer</h1>
+						when-household-cardlet-init="a:[bounceInUp-subtle:1000:linear:500:1:f]">How to Make Your Plants Live Longer</h1>
 					<div>
 						<div class="pf-cardlet-border"
 							u init-with="p:[scale:0, transform-origin:right bottom]"
