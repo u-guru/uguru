@@ -14,9 +14,8 @@
 			u
 			on-init="a:[scaleX:0:1:1000:easeOutCubic:2000:1:f]"
 			style='height:200px; width:200px;'
-			class='bg-cerise absolute'
-
-			>
+			class='bg-cerise absolute'>
+			<!-- on-init-debug="anim:[translateX:0px:200px:1000:easeOutBack:0:5:f, rotate:0deg:100deg:1000:easeOutBack:0:5:f]" -->
 		</div>
 
 
