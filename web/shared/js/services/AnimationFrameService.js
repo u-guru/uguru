@@ -721,7 +721,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               stream.tick.cycle.decrement();
             }
           }
-
           if (stream.time.elapsed > stream.time.total) {
             return;
           }
@@ -826,6 +825,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       function decomposeMatrixStr(str) {
         var dMatrix = dynamics.initMatrixFromTransform(str);
         var args = ['rotate', 'translate', 'scale', 'skew'];
+        var defaults = [['0deg'], ['0px', '0%'], '', 'deg' ];
         var results = [];
         results.push(parseTranslate(dMatrix.translate))
         results.push(parseScale(dMatrix.scale));
@@ -843,6 +843,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             }
           })
           if (results.length) {
+            console.log(results)
             return results.join(" ");
           }
         }
@@ -895,6 +896,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             return results.join(" ");
           }
         }
+        console.log(results)
         if (results.length) return results.join(" ")
         return str;
       }
@@ -905,7 +907,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         if (prop.property === 'transform') {
           var startSplit = prop.start.trim().split(' ')
           var endSplit = prop.end.trim().split(' ')
-
+          console.log(startSplit, endSplit)
           startSplit.forEach(function(start_arg, i) {
             if (startSplit[i] === endSplit[i]) {
 
@@ -920,6 +922,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           if (count && (startSplit.length && endSplit.length)) {
             prop.start = startSplit.join(" ").trim();
             prop.end = endSplit.join(" ").trim();
+
           }
 
         }
@@ -1046,7 +1049,10 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             iAnim = iAnim && replaceShortcutSyntax(iAnim);
             var iPropObj = initPropObj(iAnim);
 
-            // condenseStartEndValues(iPropObj)
+            // if (iAnim.split(':')[0] === 'transform') {
+            //     condenseStartEndValues(iPropObj);
+            // }
+            //
             // console.log(iPropObj.property, iPropObj.start, iPropObj.end)
             // if (iPropObj.start === iPropObj.end) {
             //   continue;
@@ -1355,6 +1361,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                   genArgsCopy[0] = deltaPercent*duration;
                   genArgsCopy[2] = delay - genArgsCopy[0] + genDelay;
 
+
                   uniquePropStreams.push(_prop.prop + ':' + startVal + ':' + endVal + ':' + genArgsCopy.join(":"));
                   // console.log(c_anim_dict.args[0], deltaPercent, _prop)
                 })
@@ -1535,6 +1542,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           // var values =
 
         }
+
+
 
 
     function checkAndReplaceShortcuts(str, type) {

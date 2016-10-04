@@ -13,9 +13,9 @@
 		</div>
 		<div class="album-art" u
 			init-with="p:[opacity:0]"
-			on-init="send:[album-tile-init:self]:delay-500"
-			when-album-tile-init="p:[opacity:1]|a:[translateX:0%:100%:1000:linear:0:1:f]">
-			<!-- bounceIn-subtle:1000:easeOutSine:0:1:f -->
+			on-init="send:[album-tile-init:self]"
+			when-album-tile-init="a:[opacity:0:1:1000:linear:0:1:f,shake-opacity:1000:linear:0:1:f]">
+			<!-- -->
 			<svg class="square" viewBox="0 0 100 100">
 				<rect x="0" y="0" width="100" height="100" fill="none"></rect>
 			</svg>
