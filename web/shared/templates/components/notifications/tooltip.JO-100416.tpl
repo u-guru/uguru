@@ -1,4 +1,4 @@
-<!-- <div class="perspective-container full-xy flex-center">
+<div class="perspective-container full-xy flex-center">
 	<div class="tooltip tooltip-top"
 		u init-with="p:[transform-origin:center top, opacity:0]"
 		on-init="a:[bounceIn-subtle:1000:easeOutSine:0:1:f]">
@@ -10,10 +10,10 @@
 		on-init="a:[bounceIn-subtle:1000:easeOutSine:0:1:f]">
 		<div>This is a tip.</div>
 	</div>
-</div> -->
+</div>
 
 
-<div class="perspective-container full-xy flex-center" types='top, bottom, left, right, line-top, line-bottom, line-left, line-right' default-type="line-right" reference="http://codepen.io/teamuguru/pen/0962d66493f8814b2a2f2ed830548022?editors=1100">
+<!-- <div class="perspective-container full-xy flex-center" types='top, bottom, left, right, line-top, line-bottom, line-left, line-right' default-type="line-right" reference="http://codepen.io/teamuguru/pen/0962d66493f8814b2a2f2ed830548022?editors=1100">
 	<div class="tooltip tooltip-top" ng-if='activeType === "top"'
 		u init-with="p:[transform-origin:center top, opacity:0]"
 		on-init="a:[bounceIn-subtle:1000:easeOutSine:0:1:f]">
@@ -207,4 +207,4 @@
 				when-right-complete="p:[opacity:1:0:500:easeOutSine:100, transform:translateX(0px)translateX(10px):600:easeOutExpo]:delay-650">Okay</button>
 		</div>
 	</div>
-</div>
+</div> -->
