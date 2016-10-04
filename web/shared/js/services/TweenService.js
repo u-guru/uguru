@@ -143,9 +143,7 @@ function TweenService() {
         result_arr.cache.push(t.get()[property]);
         result_arr.cache.push(null)
         t.dispose();
-        if (property === 'opacity') {
-            console.log(result_arr.cache)
-        }
+        // console.log(result_arr.cache)
         return result_arr
         // t.dispose();
     }
