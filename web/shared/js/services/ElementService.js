@@ -143,14 +143,12 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             }
           }
           if (type === 'when') {
-            console.log('registering')
             return function(element, scope) {
               $timeout(function() {
                 if (name.indexOf('-debug') > -1) {
                   name = name.replace('-debug', '');
                 }
                 actions.debug = true;
-                console.log(actions)
                 registerAnimationListeners(scope, element, actions, context);
               })
             }
@@ -227,9 +225,10 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         var state = AnimationFrameService.init.state('', animations, element[0], defaults);
 
         if (!player) {
+
           player = AnimationFrameService.getPlayer();
         }
-
+        console.log(player)
         // player.scheduleStream(player, state, state.offset, null);
 
         // player.play();
@@ -238,9 +237,10 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         // }
 
         //TODO, inject global offset here
-        player.scheduleStream(player, state, 0)
+        player = player.scheduleStream(player, state, 0);
+
         if (!player.active) {
-          player.play();
+          player.play(player);
         }
         // player.play();
       }

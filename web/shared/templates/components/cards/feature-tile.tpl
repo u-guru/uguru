@@ -6,9 +6,9 @@
 		on-mouse-enter="s:[icon-wiggle:public]">
 		<div class="feature-tile-icon">
 			<div class="feature-tile-type bg-lake" ng-include="root.base_url + 'shared/templates/components/svg/main/briefcase.html'"
-				u init-with="p:[opacity:0]"
-				on-init="a:[bounceIn-subtle:1000:linear:250:1:f]"
-				on-mouse-enter="a:[wiggle-subtle:1000:linear:0:1:f]"></div>
+				init-with="p-op"
+				when-feature-tile-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-1250]"
+				when-icon-wiggle="a:[wiggle-subtle:set:(dur:1000ms#func:linear):in]"></div>
 			<div class="feature-tile-thumb">
 				<svg class="bg-white" viewBox="0 0 120 100"
 					init-with="p-op"
