@@ -1,5 +1,5 @@
 <div class="perspective-container full-xy flex-wrap-center" types='default, ghost-round, ghost-square, split' default-type="default" reference="http://codepen.io/teamuguru/pen/6018db762fec392ead23dceab1584aab?editors=1100">
-	<button class="btn-default bg-moxie radius-2 p30x" u
+	<button class="btn-default bg-moxie radius-2 p30x"  u
 		init-with="p:[margin-top:-100px]"
 		on-init="a:[margin-top:-100px:0px:500:easeOutSine:0:1:f]">
 		<span></span>
