@@ -1,7 +1,9 @@
 <div class="perspective-container full-xy flex-center p15xy">
+	<!-- on-init="s:[album-tile-init]"
+		Hey this may not be best practice because
+	-->
 	<a class="album-tile"
-		init-default
-		on-init="s:[album-tile-init]"
+		u
 		on-mouse-enter="s:[album-tile-mouse-enter]"
 		on-mouse-leave="s:[album-tile-mouse-leave]"
 		on-click="s:[album-tile-click]">
@@ -11,7 +13,9 @@
 		</div>
 		<div class="album-art" u
 			init-with="p:[opacity:0]"
-			when-album-tile-init="a:[bounceIn-subtle:1000:easeOutSine:0:1:f]">
+			on-init="send:[album-tile-init:self]:delay-500"
+			when-album-tile-init="p:[opacity:1]|a:[translateX:0%:100%:1000:linear:0:1:f]">
+			<!-- bounceIn-subtle:1000:easeOutSine:0:1:f -->
 			<svg class="square" viewBox="0 0 100 100">
 				<rect x="0" y="0" width="100" height="100" fill="none"></rect>
 			</svg>
@@ -24,8 +28,10 @@
 		<div class="album-caption">
 			<!-- @samir The opacity and the transform isn't working together. If I take opacity out, the transform animation works. -->
 			<h1 u init-with="p:[background:#020c39, opacity:0, transform-origin:top center, rotateX:90deg]"
+				on-init="send:[album-tile-init:self]"
 				when-album-tile-init="a:[opacity:0:1:250:easeInOutSine:150:1:f, rotateX:90deg:0deg:250:easeOutQuint:150:1:f]">Midnight<br/>Cramming</h1>
 			<h2 u init-with="p:[background:#020c39, opacity:0, transform-origin:top center, rotateX:90deg]"
+				on-init="send:[album-tile-init:self]"
 				when-album-tile-init="a:[opacity:0:1:250:easeInOutSine:300:1:f, rotateX:90deg:0deg:250:easeOutQuint:300:1:f]">Intense EDM</h2>
 		</div>
 	</a>
