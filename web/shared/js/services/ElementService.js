@@ -238,7 +238,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
         //TODO, inject global offset here
         player = player.scheduleStream(player, state, 0);
-
+        console.log(player.schedule.streams)
         if (!player.active) {
           player.play(player);
         }
@@ -268,7 +268,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             return
           } else {
             $timeout(function() {scope.$parent.root.public.customStates.when[_attr.camel] = true; scope.$apply()});
-
           }
 
 
