@@ -2,15 +2,18 @@
 	on-init="s:[pricing-enter:public]"
 	when-register-btn="s:[product-enter:public]:delay-200">
     <g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-		<!-- <g class="bg-shelf" u
-			init-with="p:[opacity:0.3, translateY:300px]"
-			when-pricing-enter="a:[translateY:300px:0px:500:easeOutBack:250:1:r]"> -->
 		<g class="bg-shelf"
-			init-with="p:[opacity:0.3, tr:translateY(300px)]"
+			init-with="p:[opacity:0.3, transform:translateY(300px)]"
 			when-pricing-enter="p:[transform:translateY(300px):translateY(0px):500:easeOutBack]:delay-250">
+		<!-- <g class="bg-shelf"
+			u init-with="p:[opacity:0.3, transform:translateY(300px)]"
+			on-init="a:[translateY:300px:0px:500:easeOutBack:250:1:f]"> -->
 			<g class="bg-products"
+				u init-with="p:[tro:center bottom]"
+				on-init="a:[bounceInUp-subtle:1000:linear:0:1:f]">
+			<!-- <g class="bg-products"
 				init-with="p:[tro:center bottom]"
-				when-pricing-enter="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in]">
+				when-pricing-enter="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in]"> -->
 		        <rect stroke="#2BB3B8" stroke-width="2" fill="#135255" x="1131" y="172" width="41" height="52"></rect>
 		        <polygon stroke="#FFFFFF" stroke-width="2" fill="#9A5BC5" points="1131 195 1172 180 1172 202 1131 217"></polygon>
 		        <rect stroke="#2BB3B8" stroke-width="2" fill="#135255" x="1081" y="172" width="41" height="52"></rect>
