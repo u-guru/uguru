@@ -9,7 +9,7 @@
             a:[slideInUp-subtle:1000:linear:2000:1:f]
         </span>
     </div>
-    <div style='height:20%; width:20%;' class='bg-cerise txt-charcoal flex-wrap-center txt-1 p15-grid' u init-with="prop:[transform:scaleX(0)]" on-init="a:[scaleX:0:1:2500:easeOutExpo:0:1:f]" on-click="a:[rotateX:180deg:0deg:2500:easeOutExpo:0:1:f]">
+    <div style='height:20%; width:20%;' class='bg-cerise txt-charcoal flex-wrap-center txt-1 p15-grid' u  on-init="a:[shake-opacity:1000:linear:0:1:f]">
         <span class='text-center flex-wrap'>
             a:[rotateX:180deg:0deg:2500:easeOutExpo:0:1:f]
         </span>
