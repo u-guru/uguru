@@ -56,13 +56,14 @@
 					</g>
 				</svg>
 				<span class="label" style="transform-origin:bottom center" u
-					init-with="p:[rotateX:90deg]"
-					on-init="a:[rotateX:90deg:0deg:2500:easeOutExpo:0:1:f]">Border light</span>
+					init-with="p:[transform:rotateX(90deg)]"
+					on-init="a:[rotateX:90deg:0deg:1000:easeOutExpo:0:1:f]">Border light</span>
 				<span class="input"
 					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div class="underline" u
-					init-with="p:[translateY:100px]"
-					when-input-border-enter="a:[translateY:100px:0px:2500:easeOutExpo:0:1:f]">
+					init-with="p:[transform:translateY(100px)]"
+					on-init="a:[translateY:100px:0px:2500:easeOutExpo:0:1:f]"
+					when-input-border-enter="a:[translateY:100px:0px:1000:easeOutExpo:0:1:f]">
 					<div u init-with="p:[scaleX:0]"
 						when-input-border-enter="a:[scaleX:0:1:250:easeOutExpo:0:1:f]"></div>
 					<div></div>
