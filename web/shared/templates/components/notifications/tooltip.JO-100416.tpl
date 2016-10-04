@@ -81,45 +81,45 @@
 	</div>
 
 	<div class="tooltip-line tooltip-bot" ng-if='activeType === "line-bottom"'>
-		<span uinit-with="p:[transform:scale(0)]"
+		<span u init-with="p:[transform:scale(0)]"
 				on-init="a:[scale:0:1:150:easeOutSine:0:1:f]"
 				when-bot-complete="a:[scale:1:0:150:easeOutSine:750:1:f]"></span>
-		<div init-with="p:[background:rgba(255#255#255#0)]"
+		<div u init-with="p:[background:rgba(255#255#255#0)]"
 		 		on-init="a:[background:rgba(255#255#255#0):rgba(255#255#255#0.9):500:easeOutSine:450:1:f]"
 				when-bot-complete="a:[background:rgba(255#255#255#0.9):rgba(255#255#255#0):500:easeOutSine:450:1:f">
-			<div init-with="p:[transform:scaleX(0)]"
-				on-init="p:[transform:scaleX(0):scaleX(1):250:easeInOutSine]:delay-750"
-				when-bot-complete="p:[tr:scaleX(1):scaleX(0):250:easeInOutSine]"></div>
-			<div init-with="p:[transform:scaleX(0)]"
-				on-init="p:[transform:scaleX(0):scaleX(1):250:easeInOutSine]:delay-750"
-				when-bot-complete="p:[tr:scaleX(1):scaleX(0):250:easeInOutSine]"></div>
-			<div init-with="p:[transform:scaleY(0)]"
-				on-init="p:[transform:scaleY(0):scaleY(1):125:easeInSine]:delay-570"
-				when-bot-complete="p:[transform:scaleY(1):scaleY(0):125:easeOutSine]:delay-450"></div>
-			<div init-with="p:[transform:scaleY(0)]"
-				on-init="p:[transform:scaleY(0):scaleY(1):100:easeOutSine]:delay-450"
-				when-bot-complete="p:[transform:scaleY(1):scaleY(0):100:easeInSine]:delay-375"></div>
-			<div init-with="p:[transform:scaleX(0)]"
-				on-init="p:[transform:scaleX(0):scaleX(1):250:easeInOutSine]:delay-250"
-				when-bot-complete="p:[tr:scaleX(1):scaleX(0):250:easeInOutSine]:delay-570"></div>
-			<div init-with="p:[transform:scaleX(0)]"
-				on-init="p:[transform:scaleX(0):scaleX(1):250:easeInOutSine]:delay-250"
-				when-bot-complete="p:[tr:scaleX(1):scaleX(0):250:easeInOutSine]:delay-570"></div>
-			<div init-with="p:[transform:scaleY(0)]"
-				on-init="p:[transform:scaleY(0):scaleY(1):100:easeOutSine]:delay-450"
-				when-bot-complete="p:[transform:scaleY(1):scaleY(0):100:easeInSine]:delay-375"></div>
-			<div init-with="p:[transform:scaleY(0)]"
-				on-init="p:[transform:scaleY(0):scaleY(1):125:easeInSine]:delay-570"
-				when-bot-complete="p:[transform:scaleY(1):scaleY(0):125:easeOutSine]:delay-450"></div>
-			<span init-with="p:[op:0, tr:translateY(10px)]"
-			on-init="p:[opacity:0:1:1000:easeOutExpo, transform:translateY(10px):translateY(0px):1000:easeOutExpo]:delay-650"
-				when-bot-complete="p:[opacity:1:0:500:easeInOutExp,transform:translateY(0px):translateY(10px):500:easeInOutExpo]:delay-650"
+			<div u init-with="p:[transform:scaleX(0)]"
+				on-init="a:[scaleX:0:1:250:easeInOutSine:750:1:f]"
+				when-bot-complete="a:[scaleX:1:0:250:easeInOutSine:0:1:f]"></div>
+			<div u init-with="p:[transform:scaleX(0)]"
+				on-init="p:[scaleX:0:1:250:easeInOutSine:750:1:f]"
+				when-bot-complete="a:[scaleX:1:0:250:easeInOutSine:0:1:f]"></div>
+			<div u init-with="p:[transform:scaleY(0)]"
+				on-init="a:[scaleY:0:1:125:easeInSine:570:1:f]"
+				when-bot-complete="a:[scaleY:1:0:125:easeOutSine:450:1:f]"></div>
+			<div u init-with="p:[transform:scaleY(0)]"
+				on-init="a:[scaleY:0:1:100:easeOutSine:450:1:f]"
+				when-bot-complete="a:[scaleY:1:0:100:easeInSine:375:1:f]"></div>
+			<div u init-with="p:[transform:scaleX(0)]"
+				on-init="a:[scaleX:0:1:250:easeInOutSine:250:1:f]"
+				when-bot-complete="a:[scaleX:1:0:250:easeInOutSine:570:1:f]"></div>
+			<div u init-with="p:[transform:scaleX(0)]"
+				on-init="a:[scaleX:0:1:250:easeInOutSine:250:1:f]"
+				when-bot-complete="a:[scaleX:1:0:250:easeInOutSine:570:1:f]"></div>
+			<div u init-with="p:[transform:scaleY(0)]"
+				on-init="a:[scaleY:0:1:100:easeOutSine:450:1:f]"
+				when-bot-complete="a:[scaleY:1:0:100:easeInSine:375:1:f]"></div>
+			<div u init-with="p:[transform:scaleY(0)]"
+				on-init="a:[scaleY:0:1:125:easeInSine:570:1:f]"
+				when-bot-complete="a:[scaleY:1:0:125:easeOutSine:450:1:f]"></div>
+			<span u init-with="p:[opacity:0, transform:translateY(10px)]"
+				on-init="a:[opacity:0:1:1000:easeOutExpo:650:1:f, translateY:10px:0px:1000:easeOutExpo:650:1:f]"
+				when-bot-complete="p:[opacity:1:0:500:easeInOutExp:650:1:f, translateY:0px:10px:500:easeInOutExpo:650:1:f]"
 				>This is a tip with a button.</span>
 			<button class="bg-moxie"
-				init-with="p:[op:0, tr:translateY(10px)]"
-				on-init="p:[opacity:0:1:500:easeOutSine:100, transform:translateY(10px):translateY(0px):600:easeOutExpo]:delay-450"
+				u init-with="p:[opacity:0, transform:translateY(10px)]"
+				on-init="a:[opacity:0:1:500:easeOutSine:550:1:f, translateY:10px:0px:600:easeOutExpo:450:1:f]"
 				on-click="s:[bot-complete:public]"
-				when-bot-complete="p:[opacity:1:0:500:easeOutSine:100, transform:translateY(0px):translateY(10px):600:easeInOutExpo]:delay-450">Okay</button>
+				when-bot-complete="p:[opacity:1:0:500:easeOutSine:550:1:f, translateY:0px:10px:600:easeInOutExpo:450:1:f]">Okay</button>
 				<!-- Note: Still too snappy -->
 		</div>
 	</div>
