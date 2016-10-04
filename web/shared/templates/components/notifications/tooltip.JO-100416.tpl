@@ -81,12 +81,12 @@
 	</div>
 
 	<div class="tooltip-line tooltip-bot" ng-if='activeType === "line-bottom"'>
-		<span init-with="p:[tr:scale(0)]"
+		<span uinit-with="p:[transform:scale(0)]"
 				on-init="a:[scale:0:1:150:easeOutSine:0:1:f]"
-				when-bot-complete="p:[transform:scale(1):scale(0):150:easeOutSine]:delay-750"></span>
+				when-bot-complete="a:[scale:1:0:150:easeOutSine:750:1:f]"></span>
 		<div init-with="p:[background:rgba(255#255#255#0)]"
-		 		on-init="p:[background:rgba(255#255#255#0):rgba(255#255#255#0.9):500:easeOutSine]:delay-450"
-				when-bot-complete="p:[background:rgba(255#255#255#0.9):rgba(255#255#255#0):500:easeOutSine]:delay-450">
+		 		on-init="a:[background:rgba(255#255#255#0):rgba(255#255#255#0.9):500:easeOutSine:450:1:f]"
+				when-bot-complete="a:[background:rgba(255#255#255#0.9):rgba(255#255#255#0):500:easeOutSine:450:1:f">
 			<div init-with="p:[transform:scaleX(0)]"
 				on-init="p:[transform:scaleX(0):scaleX(1):250:easeInOutSine]:delay-750"
 				when-bot-complete="p:[tr:scaleX(1):scaleX(0):250:easeInOutSine]"></div>
@@ -125,7 +125,7 @@
 	</div>
 
 	<div class="tooltip-line tooltip-left" ng-if='activeType === "line-left"'>
-		<span init-with="p:[tr:scale(0)]"
+		<span init-with="p:[transform:scale(0)]"
 				on-init="a:[scale:0:1:150:easeOutSine:0:1:f]"
 				when-left-complete="p:[transform:scale(1):scale(0):450:easeInOutSine]:delay-750"></span>
 		<div init-with="p:[background:rgba(255#255#255#0)]"
@@ -168,7 +168,7 @@
 	</div>
 
 	<div class="tooltip-line tooltip-right" ng-if='activeType === "line-right"'>
-		<span init-with="p:[tr:scale(0)]"
+		<span init-with="p:[transform:scale(0)]"
 				on-init="a:[scale:0:1:150:easeOutSine:0:1:f]"
 				when-right-complete="p:[transform:scale(1):scale(0):450:easeInOutSine]:delay-750"></span>
 		<div init-with="p:[background:rgba(255#255#255#0)]"
