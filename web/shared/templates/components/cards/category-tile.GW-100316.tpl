@@ -99,12 +99,12 @@
 			<h1 u init-with="p:[opacity:0]"
 				when-category-tile-init="a:[opacity:0:1:1000:easeOutSine:200:1:f]">Household</h1>
 			<div class="category-tile-border"
-				init-with="p:[tro:center center, tr:scaleX(0)]"
-				when-category-tile-init="p:[transform:scaleX(0):scaleX(1):450:easeOutSine]:delay-750"></div>
+				u init-with="p:[transform-origin:center center, scaleX:0]"
+				when-category-tile-init="a:[scaleX:0:1:450:easeOutSine:750:1:f]"></div>
 		</div>
 		<div class="category-tile-price"
-			init-with="p:[op:0,tro:center center]"
-			when-category-tile-init="a:[scaleInX-subtle:set:(dur:1000ms#func:linear):in:delay-650]"><div>$25/hr AVG</div></div>
+			u init-with="p:[opacity:0, transform-origin:center center]"
+			when-category-tile-init="a:[scaleInX-subtle:1000:linear:650:1:f]"><div>$25/hr AVG</div></div>
 	</div>
 
 	<div ng-if='activeType === "photo-price-crimson"' class="category-tile bg-household with-price price-crimson" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
@@ -128,12 +128,12 @@
 			<h1 u init-with="p:[opacity:0]"
 				when-category-tile-init="a:[opacity:0:1:1000:easeOutSine:200:1:f]">Household</h1>
 			<div class="category-tile-border"
-				init-with="p:[tro:center center, tr:scaleX(0)]"
-				when-category-tile-init="p:[transform:scaleX(0):scaleX(1):450:easeOutSine]:delay-750"></div>
+				u init-with="p:[transform-origin:center center, scaleX:0]"
+				when-category-tile-init="a:[scaleX:0:1:450:easeOutSine:750:1:f]"></div>
 		</div>
 		<div class="category-tile-price"
-			init-with="p:[op:0,tro:center center]"
-			when-category-tile-init="a:[scaleInX-subtle:set:(dur:1000ms#func:linear):in:delay-650]"><div>$25/hr AVG</div></div>
+			u init-with="p:[opacity:0, transform-origin:center center]"
+			when-category-tile-init="a:[scaleInX-subtle:1000:linear:650:1:f]"><div>$25/hr AVG</div></div>
 	</div>
 
 	<a ng-if='activeType === "link-color"' class="category-tile bg-household no-photo"
@@ -157,8 +157,8 @@
 			<h1 u init-with="p:[opacity:0]"
 				when-category-tile-init="a:[opacity:0:1:1000:easeOutSine:200:1:f]">Household</h1>
 			<div class="category-tile-border"
-				init-with="p:[tro:center center, tr:scaleX(0)]"
-				when-category-tile-init="p:[transform:scaleX(0):scaleX(1):450:easeOutSine]:delay-200"></div>
+				u init-with="p:[transform-origin:center center, scaleX:0]"
+				when-category-tile-init="a:[scaleX:0:1:450:easeOutSine:200:1:f]"></div>
 		</div>
 	</a>
 
@@ -183,8 +183,8 @@
 			<h1 u init-with="p:[opacity:0]"
 				when-category-tile-init="a:[opacity:0:1:1000:easeOutSine:200:1:f]">Household</h1>
 			<div class="category-tile-border"
-				init-with="p:[tro:center center, tr:scaleX(0)]"
-				when-category-tile-init="p:[transform:scaleX(0):scaleX(1):450:easeOutSine]:delay-200"></div>
+				u init-with="p:[transform-origin:center center, scaleX:0]"
+				when-category-tile-init="a:[scaleX:0:1:450:easeOutSine:200:1:f]"></div>
 		</div>
 		<span class="category-tile-count">6</span>
 	</a>
@@ -211,8 +211,8 @@
 			<h1 u init-with="p:[opacity:0]"
 				when-category-tile-init="a:[opacity:0:1:1000:easeOutSine:200:1:f]">Household</h1>
 			<div class="category-tile-border"
-				init-with="p:[tro:center center, tr:scaleX(0)]"
-				when-category-tile-init="p:[transform:scaleX(0):scaleX(1):450:easeOutSine]:delay-200"></div>
+				u init-with="p:[transform-origin:center center, scaleX:0]"
+				when-category-tile-init="a:[scaleX:0:1:450:easeOutSine:200:1:f]"></div>
 		</div>
 		<span class="category-tile-count">
 			<svg viewBox="0 0 100 100">
