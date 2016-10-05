@@ -398,7 +398,7 @@ angular.module('uguru.shared.directives')
 
                             ElementService.launchExternalWindow(state.actions.anim, element);
                           }
-
+                          console.log('registering', state.name)
                           state.exec(lElem, scope);
                         })
                       }
