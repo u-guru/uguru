@@ -286,9 +286,12 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
 
           var newStream = {applyProp:streams[i].applyAtT, active:true, childProps:streams[i].childProps, easing:streams[i].ease, duration:streams[i].duration, iter:streams[i].iter, name:streams[i].property || streams[i].name, direction: streams[i].direction, time: {total: streams[i].duration, elapsed: 0}, offset: streams[i].offset, values:values}
+
           newStream.tick = initStreamTick(newStream);
 
+
           newStream.time.total = newStream.tick.duration.ms + newStream.offset;
+
 
           newStream.tick.init(newStream);
           newStream.easing = streams[i].easing;
@@ -707,7 +710,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             if (stream.tick.current < stream.values.length && stream.tick.current >= 0) {
 
               stream.applyProp && stream.applyProp(stream.values[stream.tick.current]);
-              console.log(stream.name, stream.values[stream.tick.current])
+              console.log(stream.name, stream.values[stream.tick.current], stream.tick.current, stream.values.length, stream.duration)
               player.debug && player.debug.propStreamValueUpdate[stream.name](stream.name, stream.values[stream.tick.current], stream.tick.current, stream.tick.cycleIndex)
             }
             stream.tick.current += tick_delta;
@@ -715,7 +718,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             stream.time.elapsed += time_delta;
           }
 
-          if (stream.tick.current < stream.tick.end) {
+          else if (stream.tick.current < stream.tick.end) {
 
             if (tick_delta > 0) {
               stream.tick.cycle.increment();
@@ -887,7 +890,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         function parseScale(arr) {
           var values = ['X', 'Y', 'Z'];
           var results = [];
-          console.log(arr)
           arr.forEach(function(val, i) {
             if (val || (val + "").length) {
               // if (values[i] === 'Z' && val === 1) return;
@@ -924,7 +926,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             prop.end = endSplit.join(" ").trim();
           }
         }
-        console.log(prop, prop.start, prop.end)
 
       }
 
@@ -1046,7 +1047,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             iAnim = iAnim && filterParentheticals(iAnim)
             iAnim = iAnim && replaceShortcutSyntax(iAnim);
             var iPropObj = initPropObj(iAnim);
-            // console.log(iPropObj)
+
             if (iAnim.split(':')[0] === 'transform') {
                 condenseStartEndValues(iPropObj);
             }
@@ -1361,7 +1362,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                   deltaPercent = deltaPercent/100;
                   genArgsCopy[0] = deltaPercent*duration;
                   genArgsCopy[2] = delay - genArgsCopy[0] + genDelay;
-                  genArgsCopy[0] = deltaPercent*duration + genArgsCopy[2];
+                  console.log(genArgsCopy[0], genArgsCopy[2])
+                  // genArgsCopy[0] = deltaPercent*duration + genArgsCopy[2];
 
                   uniquePropStreams.push(_prop.prop + ':' + startVal + ':' + endVal + ':' + genArgsCopy.join(":"));
                   // console.log(c_anim_dict.args[0], deltaPercent, _prop)

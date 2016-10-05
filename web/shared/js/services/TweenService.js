@@ -142,6 +142,7 @@ function TweenService() {
         t.stop(true);
         result_arr.cache.push(t.get()[property]);
         result_arr.cache.push(null)
+        console.log(duration, result_arr.cache.length, duration/result_arr.cache.length)
         t.dispose();
         // console.log(result_arr.cache)
         return result_arr
@@ -185,11 +186,13 @@ function TweenService() {
             tweenable.resume();
             // console.log(tweenable.get());
         }
+
         // console.log(kf_arr);
         // kf_arr.forEach(function(kf, i) {kf_arr[i].percentage = i * (100/(intervals + 2))})
         // kf_arr.forEach(function(kf, i) {console.log(kf.percentage, kf[Object.keys(start_dict)[0]])})
         kf_arr.forEach(function(kf, i) {kf_arr[i].percentage = i/(kf_arr.length - 1) * 100})
-        // console.log(kf_arr[0], kf_arr[kf_arr.length - 1])
+
+        console.log(kf_arr[0], kf_arr[kf_arr.length - 1])
         return kf_arr;
 
     }
