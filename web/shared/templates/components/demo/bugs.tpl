@@ -88,7 +88,7 @@
 			<div class="bg-auburn flex-center width-128 height-128 radius-2"
 				u init-with="p:[scaleX:0, transform-origin:center top]"
 				on-init="a:[scaleX:0:1:1000:easeOutSine:0:2:a]">
-				<h1 class="txt-14 semibold txt-center">Iteration count doesn't work for custom transforms</h1>
+				<h1 class="txt-14 semibold txt-center">Iteration count (2) doesn't work for custom transforms</h1>
 			</div>
 		</li>
 
@@ -96,7 +96,7 @@
 			<div class="bg-auburn p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
 				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]:delay-2500">
-				<h1 class="txt-14 semibold txt-center">external delays don't work</h1>
+				<h1 class="txt-14 semibold txt-center">external delays don't work<br/>:delay-2500</h1>
 			</div>
 		</li>
 
@@ -106,7 +106,8 @@
 				on-init="a:[bounceInDown-subtle:1000:linear:0:1:f] | t:[on-enter:children]">
 				<!-- s:[on-enter:children] -->
 				<h1 class="txt-14 semibold txt-center full-x">trigger or alt send doesn't work</h1>
-				<h1 class="txt-18 semibold txt-center full-x absolute bottom-0 left-0 p10xy" u init-with="p:[opacity:0]"
+				<h1 class="txt-18 black txt-center full-x absolute bottom-0 left-0 p10xy"
+					u init-with="p:[opacity:0]"
 					on-enter="a:[bounceIn-subtle:800:linear:250:1:f]">works</h1>
 			</div>
 		</li>
@@ -116,55 +117,57 @@
 				u init-with="p:[transform-origin:center center]"
 				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]:delay-2500">
 				<h1 class="txt-14 semibold txt-center">stagger-children doesn't work</h1>
-				<ul class="pf-rating rating-stars absolute bottom-0 left-0" data-rating="4" data-half="true">
-					<stagger-children on-enter="[rating]:600:easeOutCirc">
-						<li rating class="rating"
-							u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
-							on-init="t-enter"
-							on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
-							<svg viewBox="0 0 100 100">
-								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-							</svg>
-						</li>
-						<li rating class="rating"
-							u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
-							on-init="t-enter"
-							on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
-							<svg viewBox="0 0 100 100">
-								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-							</svg>
-						</li>
-						<li rating class="rating"
-							u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
-							on-init="t-enter"
-							on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
-							<svg viewBox="0 0 100 100">
-								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-							</svg>
-						</li>
-						<li rating class="rating"
-							u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
-							on-init="t-enter"
-							on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
-							<svg viewBox="0 0 100 100">
-								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-							</svg>
-						</li>
-						<li rating class="rating"
-							u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
-							on-init="t-enter"
-							on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
-							<svg viewBox="0 0 100 100">
-								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-							</svg>
-						</li>
-					</stagger-children>
-				</ul>
+				<div class="absolute bottom-0 left-0 flex-center full-x">
+					<ul class="pf-rating rating-stars" data-rating="4" data-half="true">
+						<stagger-children on-enter="[rating]:600:easeOutCirc">
+							<li rating class="rating"
+								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
+								on-init="t-enter"
+								on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+							<li rating class="rating"
+								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
+								on-init="t-enter"
+								on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+							<li rating class="rating"
+								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
+								on-init="t-enter"
+								on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+							<li rating class="rating"
+								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
+								on-init="t-enter"
+								on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+							<li rating class="rating"
+								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
+								on-init="t-enter"
+								on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+						</stagger-children>
+					</ul>
+				</div>
 			</div>
 		</li>
 
