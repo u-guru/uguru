@@ -37,7 +37,7 @@
 				<svg class="fill-moxie absolute top-0 left-0 width-128 height-128" viewBox="0 0 128 128">
 					<rect x="2" y="2" width="124" height="124" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" rx="2"
 						u init-with="p:[stroke:#F6C64E, transform-origin:center center, stroke-dasharray:115.47, stroke-dashoffset:38.49]"
-						on-init="a:[stroke:#F6C64E:#55A4B7:450:easeOutSine:250:1:f, stroke-dashoffset:38.49:0:450:easeOutSine:250:1:f]"></rect>
+						on-init="a:[stroke:#F6C64E:#FFFFFF:450:easeOutSine:250:1:f, stroke-dashoffset:38.49:0:450:easeOutSine:250:1:f]"></rect>
 				</svg>
 				<h1 class="relative z-index-2 txt-14 semibold txt-center">stroke-dashoffset</h1>
 			</div>
