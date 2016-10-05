@@ -67,8 +67,8 @@
 
 		<li>
 			<a class="bg bg-auburn p10xy flex-center width-128 height-128 radius-2"
-				u init-with="p:[transform-origin:center center]"
-				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]">
+				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]"
+				u init-with="p:[transform-origin:center center]">
 				<h1 class="txt-14 semibold txt-center">end points are wrong<br/>rotate(-0.0195deg)</h1>
 			</a>
 		</li>
@@ -84,25 +84,13 @@
 		</li>
 
 		<li>
-			<!-- Tried scaleY, translateY, and rotate -->
 			<div class="bg-auburn flex-center width-128 height-128 radius-2"
 				u init-with="p:[scaleX:0, transform-origin:center top]"
 				on-init="a:[scaleX:0:1:1000:easeOutSine:0:2:a]">
 				<h1 class="txt-14 semibold txt-center">Iteration count doesn't work for custom transforms</h1>
 			</div>
 		</li>
-<<<<<<< HEAD
 		<!-- Tried scaleY, translateY, and rotate but didn't work -->
 
-=======
-
-		<li>
-			<div class="bg-auburn p10xy flex-center width-128 height-128 radius-2"
-				u init-with="p:[transform-origin:center center]"
-				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]:delay-2500">
-				<h1 class="txt-14 semibold txt-center">external delays don't work</h1>
-			</div>
-		</li>
->>>>>>> 707cefe6d60bd6749fbb5be2a5077a6be2cf0791
 	</ul>
 </div>
