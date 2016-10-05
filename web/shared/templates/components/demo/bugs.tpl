@@ -69,5 +69,14 @@
 			</a>
 		</li>
 
+		<li class="perspective-container">
+			<a class="bg bg-moxie flex-center width-128 height-128 radius-2"
+				u init-with="p:[transform-origin:center center]"
+				on-mouseenter="a:[scaleX:1:1.5:1000:easeOutElastic:0:1:f]"
+				on-mouseleave="a:[scaleX:1.5:1:1000:easeOutElastic:0:1:f]">
+				<h1 class="txt-14 semibold txt-center">on-mouseenter + scaleX</h1>
+			</a>
+		</li>
+
 	</ul>
 </div>
