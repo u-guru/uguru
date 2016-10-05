@@ -148,7 +148,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                 if (name.indexOf('-debug') > -1) {
                   name = name.replace('-debug', '');
                 }
-                actions.debug = true;
                 registerAnimationListeners(scope, element, actions, context);
               })
             }
@@ -159,6 +158,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
       function registerAnimationListeners(scope, element, actions, context) {
         var name = context.name
+        console.log(name)
         var baseName = 'when-' + name;
         for (key in actions) {
           var listenFor = baseName;
@@ -166,11 +166,11 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             if (!('when' in scope.$parent.root.public.customStates)) {
               scope.$parent.root.public.customStates['when'] = {};
             scope.$parent.root.public.customStates['when'][UtilitiesService.camelCase(listenFor)] = false;
-            console.log(scopeName)
-            scope.$watch(scopeName, function(_new, _old) {
-              console.log(_new, _old)
+            console.log('registering', UtilitiesService.camelCase(listenFor))
+            scope.$parent.$watch(scopeName, function(_new, _old) {
+              console.log(_new, _old);
               if (_new && _old === false) {
-                console.log(actions)
+                console.log(_new, _old)
                 applySendAnimProp(scope, element, actions, context)
               }
               // if (_new && _new !== _old) {
@@ -249,23 +249,24 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
         messages.split(',').forEach(function(msg, i) {
           var msgSplit = msg.split(':')
-          var iMsg = msgSplit[0];
-          var msgScope = msgSplit[1];
+          var iMsg = msgSplit[0].trim();
+          var msgScope = msgSplit[1].trim();
           var msgDelay = 0;
           if (msgSplit.length > 2) {
             msgDelay = parseInt(msgSplit[2].replace('delay-', ''));
           }
+          console.log(iMsg)
           var _attr = {dashed: iMsg, camel: UtilitiesService.camelCase('when-' + iMsg)};
-
+          _attr.camel = _attr.camel.replace(' ', '-')
           if (msgDelay) {
             $timeout(function() {
               scope.$parent.root.public.customStates.when[_attr.camel] = true;
 
               $timeout(function() {
                 scope.$parent.root.public.customStates.when[_attr.camel] = false;
-              }, 100)
+              })
+              console.log(msgDelay, _attr.camel, scope.$parent.root.public.customStates)
             }, msgDelay)
-            return
           } else {
             $timeout(function() {scope.$parent.root.public.customStates.when[_attr.camel] = true; scope.$apply()});
           }
