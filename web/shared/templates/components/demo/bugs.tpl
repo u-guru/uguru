@@ -13,25 +13,9 @@
 		<li>
 			<div class="bg-moxie p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[opacity:0, transform-origin:center center]"
-<<<<<<< HEAD
-				on-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
-				on-click="a:[bounceIn-subtle:1000:linear:0:1:f]"
-				>
-				<h1 class="txt-14 semibold txt-center">Custom transforms no longer work<br/>separate opacity</h1>
-			</div>
-		</li>
-
-		<li>
-			<div class="bg-auburn flex-center width-128 height-128 radius-2"
-				u
-				on-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
-				on-click="a:[bounceIn-subtle:1000:linear:0:1:f]">
-				<h1 class="txt-14 semibold txt-center">custom transforms no longer work</h1>
-=======
 				on-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
 				on-click="a:[bounceIn-subtle:1000:linear:0:1:f]">
 				<h1 class="txt-14 semibold txt-center lowercase">custom transforms work</h1>
->>>>>>> cc82d3c847164aeccac61c445e7dcf282ecc122d
 			</div>
 		</li>
 
