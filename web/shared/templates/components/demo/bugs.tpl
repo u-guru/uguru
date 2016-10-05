@@ -48,16 +48,24 @@
 				u init-with="p:[opacity:0, rotate:40deg, transform-origin:center top]"
 				on-init="s:[demo-1-state:self]"
 				when-demo-1-state="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]">
-				<h1 class="txt-14 semibold txt-center">when states</h1>
+				<h1 class="txt-14 semibold txt-center">when states working</h1>
 			</div>
 		</li>
 
 		<li class="perspective-container">
-			<a class="bg-auburn flex-center width-128 height-128 radius-2 translateZ-hover"
+			<a class="bg bg-moxie flex-center width-128 height-128 radius-2 translateZ-hover"
 				u init-with="p:[opacity:0, rotate:40deg, transform-origin:center top]"
-				on-init="s:[demo-1-state:self]"
-				when-demo-1-state="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]">
-				<h1 class="txt-14 semibold txt-center">CSS hovers</h1>
+				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]">
+				<h1 class="txt-14 semibold txt-center">CSS hovers working with !important</h1>
+			</a>
+		</li>
+
+		<li class="perspective-container">
+			<a class="bg bg-auburn flex-center width-128 height-128 radius-2"
+				u init-with="p:[transform-origin:center center]"
+				on-mouseenter="a:[scale:1:1.5:1000:easeOutElastic:0:1:f]"
+				on-mouseleave="a:[scale:1.5:1:1000:easeOutElastic:0:1:f]">
+				<h1 class="txt-14 semibold txt-center">on-mouseenter + scale</h1>
 			</a>
 		</li>
 
