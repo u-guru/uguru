@@ -79,6 +79,7 @@
 		</li>
 
 		<li>
+			<!-- Tried scaleY, translateY, and rotate -->
 			<div class="bg-auburn flex-center width-128 height-128 radius-2"
 				u init-with="p:[scaleX:0, transform-origin:center top]"
 				on-init="a:[scaleX:0:1:1000:easeOutSine:0:2:a]">
