@@ -5,15 +5,15 @@
 			<div class="bg-moxie p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[scaleY:0, transform-origin:center top]"
 				on-init="a:[scaleY:0:1:1000:(.8,.1,1,.05):0:1:f]"
-				on-click="a:[scaleY:0:1:1000:(.8,.1,1,.05):0:1:f]"
-				>
+				on-click="a:[scaleY:0:1:1000:(.8,.1,1,.05):0:1:f]">
 				<h1 class="txt-14 semibold txt-center">scaleY<br/>cubic-bezier</h1>
 			</div>
 		</li>
 
 		<li>
-			<div class="bg-auburn p10xy flex-center width-128 height-128 radius-2"
+			<div class="bg-moxie p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[opacity:0, transform-origin:center center]"
+<<<<<<< HEAD
 				on-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
 				on-click="a:[bounceIn-subtle:1000:linear:0:1:f]"
 				>
@@ -27,12 +27,16 @@
 				on-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
 				on-click="a:[bounceIn-subtle:1000:linear:0:1:f]">
 				<h1 class="txt-14 semibold txt-center">custom transforms no longer work</h1>
+=======
+				on-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
+				on-click="a:[bounceIn-subtle:1000:linear:0:1:f]">
+				<h1 class="txt-14 semibold txt-center lowercase">custom transforms work</h1>
+>>>>>>> cc82d3c847164aeccac61c445e7dcf282ecc122d
 			</div>
 		</li>
 
-
-			<div class="bg-auburn p10xy flex-center width-128 height-128 radius-2"
-
+		<li>
+			<div class="bg-moxie p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[opacity:0, transform-origin:center center]"
 				on-init="a:[slideInDown-subtle:1000:linear:0:1:f]">
 				<h1 class="txt-14 semibold txt-center lowercase">slideInDown-subtle<br/>opacity</h1>
@@ -79,11 +83,9 @@
 
 		<li>
 			<a class="bg bg-auburn p10xy flex-center width-128 height-128 radius-2"
-				u init-with="p:[transform-origin:center center]"
-				on-click="a:[scaleX:1:1.5:1000:easeOutElastic:0:1:f, scaleY:1:1.5:1000:easeOutElastic:0:1:f]"
-				on-mouseenter="a:[scaleX:1:1.5:1000:easeOutElastic:0:1:f, scaleY:1:1.5:1000:easeOutElastic:0:1:f]"
-				on-mouseleave="a:[scaleX:1.5:1:1000:easeOutElastic:0:1:f, scaleY:1.5:1:1000:easeOutElastic:0:1:f]">
-				<h1 class="txt-14 semibold txt-center">on-mouseenter + scale</h1>
+				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]"
+				u init-with="p:[transform-origin:center center]">
+				<h1 class="txt-14 semibold txt-center">end points are wrong<br/>rotate(-0.0195deg)</h1>
 			</a>
 		</li>
 
