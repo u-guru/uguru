@@ -4,7 +4,7 @@
 			<div class="bg-moxie p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[scaleY:0, transform-origin:center top]"
 				on-init="a:[scaleY:0:1:1000:(.8,.1,1,.05):0:1:f]">
-				<h1 class="txt-14 semibold txt-center">scaleY<br/>cubic-bezier</h1>
+				<h1 class="txt-14 semibold txt-center lowercase">scaleY<br/>cubic-bezier</h1>
 			</div>
 		</li>
 
@@ -12,7 +12,7 @@
 			<div class="bg-auburn p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[opacity:0, transform-origin:center center]"
 				on-init="a:[bounceIn-subtle-o:1000:linear:0:1:f, opacity:0:1:800:linear:0:1:f]">
-				<h1 class="txt-14 semibold txt-center">custom transforms no longer work</h1>
+				<h1 class="txt-14 semibold txt-center lowercase">custom transforms no longer work</h1>
 			</div>
 		</li>
 
@@ -20,7 +20,7 @@
 			<div class="bg-auburn p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[opacity:0, transform-origin:center center]"
 				on-init="a:[slideInDown-subtle:1000:linear:0:1:f]">
-				<h1 class="txt-14 semibold txt-center">slideInDown-subtle<br/>opacity</h1>
+				<h1 class="txt-14 semibold txt-center lowercase">slideInDown-subtle<br/>opacity</h1>
 			</div>
 		</li> -->
 
@@ -28,7 +28,7 @@
 			<div class="bg-moxie p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
 				on-init="a:[translateX:-100px:0px:350:easeInOutExpo:0:1:f, rotate:-60deg:0deg:350:easeInExpo:0:1:f, scaleX:0:1:350:easeInBack:0:1:f, scaleY:0:1:350:easeInBack:0:1:f]">
-				<h1 class="txt-14 semibold txt-center">transform property animations</h1>
+				<h1 class="txt-14 semibold txt-center lowercase">transform property animations</h1>
 			</div>
 		</li>
 
@@ -77,6 +77,16 @@
 				<h1 class="txt-14 semibold txt-center">on-mouseenter + scaleX</h1>
 			</a>
 		</li>
+
+		<li>
+			<!-- Tried scaleY, translateY, and rotate -->
+			<div class="bg-auburn flex-center width-128 height-128 radius-2"
+				u init-with="p:[scaleX:0, transform-origin:center top]"
+				on-init="a:[scaleX:0:1:1000:easeOutSine:0:2:a]">
+				<h1 class="txt-14 semibold txt-center">Iteration count doesn't work for custom transforms</h1>
+			</div>
+		</li>
+
 
 	</ul>
 </div>
