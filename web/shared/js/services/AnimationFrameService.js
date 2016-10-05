@@ -696,6 +696,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           }
       }
 
+
+      //dont touch
       function applyTickDeltaToStreams(player, schedule, time_delta, tick_delta, scale_delta) {
 
         schedule.streams.forEach(function(stream, i) {
@@ -705,6 +707,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             if (stream.tick.current < stream.values.length && stream.tick.current >= 0) {
 
               stream.applyProp && stream.applyProp(stream.values[stream.tick.current]);
+              console.log(stream.name, stream.values[stream.tick.current])
               player.debug && player.debug.propStreamValueUpdate[stream.name](stream.name, stream.values[stream.tick.current], stream.tick.current, stream.tick.cycleIndex)
             }
             stream.tick.current += tick_delta;
@@ -712,7 +715,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             stream.time.elapsed += time_delta;
           }
 
-          if (stream.tick.current >= stream.tick.end) {
+          if (stream.tick.current < stream.tick.end) {
 
             if (tick_delta > 0) {
               stream.tick.cycle.increment();
@@ -1044,9 +1047,9 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             iAnim = iAnim && replaceShortcutSyntax(iAnim);
             var iPropObj = initPropObj(iAnim);
             // console.log(iPropObj)
-            // if (iAnim.split(':')[0] === 'transform') {
-            //     condenseStartEndValues(iPropObj);
-            // }
+            if (iAnim.split(':')[0] === 'transform') {
+                condenseStartEndValues(iPropObj);
+            }
             //
             // console.log(iPropObj.property, iPropObj.start, iPropObj.end)
             if (iPropObj.start === iPropObj.end) {
