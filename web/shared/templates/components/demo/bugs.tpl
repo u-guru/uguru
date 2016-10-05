@@ -60,7 +60,7 @@
 			</a>
 		</li>
 
-		<li class="perspective-container">
+		<li>
 			<a class="bg bg-auburn flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
 				on-mouseenter="a:[scale:1:1.5:1000:easeOutElastic:0:1:f]"
@@ -69,7 +69,7 @@
 			</a>
 		</li>
 
-		<li class="perspective-container">
+		<li>
 			<a class="bg bg-moxie flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
 				on-mouseenter="a:[scaleX:1:1.5:1000:easeOutElastic:0:1:f]"
