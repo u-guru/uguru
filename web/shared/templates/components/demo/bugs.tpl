@@ -66,20 +66,20 @@
 		</li>
 
 		<li>
-			<a class="bg bg-auburn p10xy flex-center width-128 height-128 radius-2"
-				u init-with="p:[transform-origin:center center]"
-				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]">
-				<h1 class="txt-14 semibold txt-center">end points are wrong<br/>rotate(-0.0195deg)</h1>
-			</a>
-		</li>
-
-		<li>
 			<a class="bg bg-moxie p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
 				on-click="a:[scaleX:1:1.5:1000:easeOutElastic:0:1:f, scaleY:1:1.5:1000:easeOutElastic:0:1:f]"
 				on-mouseenter="a:[scaleX:1:1.5:1000:easeOutElastic:0:1:f]"
 				on-mouseleave="a:[scaleX:1.5:1:1000:easeOutElastic:0:1:f]">
 				<h1 class="txt-14 semibold txt-center">on-mouseenter + scaleX</h1>
+			</a>
+		</li>
+
+		<li>
+			<a class="bg bg-auburn p10xy flex-center width-128 height-128 radius-2"
+				u init-with="p:[transform-origin:center center]"
+				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]">
+				<h1 class="txt-14 semibold txt-center">end points are wrong<br/>rotate(-0.0195deg)</h1>
 			</a>
 		</li>
 
