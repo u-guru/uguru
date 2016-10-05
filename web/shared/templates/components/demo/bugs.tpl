@@ -47,41 +47,39 @@
 		</li>
 
 		<li>
-			<div class="bg-auburn p10xy flex-center width-128 height-128 radius-2"
+			<div class="bg-moxie p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[opacity:0, rotate:40deg, transform-origin:center top]"
 				on-init="s:[demo-1-state:self]"
 				on-click="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]"
 				when-demo-1-state="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]">
-				<h1 class="txt-14 semibold txt-center">when states working<br/>rotate(-0.0195deg)</h1>
+				<h1 class="txt-14 semibold txt-center">when states working</h1>
 			</div>
 		</li>
 
 		<li class="perspective-container">
-			<a class="bg bg-auburn p10xy flex-center width-128 height-128 radius-2 translateZ-hover"
+			<a class="bg bg-moxie p10xy flex-center width-128 height-128 radius-2 translateZ-hover"
 				u init-with="p:[opacity:0, rotate:40deg, transform-origin:center top]"
 				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]"
 				on-click="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]">
-				<h1 class="txt-14 semibold txt-center">CSS hovers working with !important<br/>rotate(-0.0195deg)</h1>
+				<h1 class="txt-14 semibold txt-center">CSS hovers working with !important</h1>
 			</a>
 		</li>
 
 		<li>
 			<a class="bg bg-auburn p10xy flex-center width-128 height-128 radius-2"
-				u init-with="p:[transform-origin:center center]"
-				on-click="a:[scaleX:1:1.5:1000:easeOutElastic:0:1:f, scaleY:1:1.5:1000:easeOutElastic:0:1:f]"
-				on-mouseenter="a:[scaleX:1:1.5:1000:easeOutElastic:0:1:f, scaleY:1:1.5:1000:easeOutElastic:0:1:f]"
-				on-mouseleave="a:[scaleX:1.5:1:1000:easeOutElastic:0:1:f, scaleY:1.5:1:1000:easeOutElastic:0:1:f]">
-				<h1 class="txt-14 semibold txt-center">on-mouseenter + scale<br/>scaleX(0.9998) scaleY(0.9998)</h1>
+				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]"
+				u init-with="p:[transform-origin:center center]">
+				<h1 class="txt-14 semibold txt-center">end points are wrong<br/>rotate(-0.0195deg)</h1>
 			</a>
 		</li>
 
 		<li>
-			<a class="bg bg-auburn p10xy flex-center width-128 height-128 radius-2"
+			<a class="bg bg-moxie p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
 				on-click="a:[scaleX:1:1.5:1000:easeOutElastic:0:1:f, scaleY:1:1.5:1000:easeOutElastic:0:1:f]"
 				on-mouseenter="a:[scaleX:1:1.5:1000:easeOutElastic:0:1:f]"
 				on-mouseleave="a:[scaleX:1.5:1:1000:easeOutElastic:0:1:f]">
-				<h1 class="txt-14 semibold txt-center">on-mouseenter + scaleX<br/>scaleX(0.9998)</h1>
+				<h1 class="txt-14 semibold txt-center">on-mouseenter + scaleX</h1>
 			</a>
 		</li>
 
