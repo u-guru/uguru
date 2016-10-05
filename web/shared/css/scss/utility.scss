@@ -234,6 +234,17 @@ button, input, textarea {
 .preserve-3d {
 	transform-style: preserve-3d;
 }
+.translateZ-hover {
+	transition: all 150ms ease-in;
+	&:hover, &:focus {
+		transform: translateZ(20px)!important;
+		transition: all 600ms cubic-bezier(.6,0,.1,2);
+	}
+	&:active {
+		transform: translateZ(-20px)!important;
+		transition: all 150ms ease-in;
+	}
+}
 
 /* ---------- LAYOUTS */
 .lyt-1-3-header {

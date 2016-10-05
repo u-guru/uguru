@@ -710,7 +710,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             if (stream.tick.current < stream.values.length && stream.tick.current >= 0) {
 
               stream.applyProp && stream.applyProp(stream.values[stream.tick.current]);
-              console.log(stream.name, stream.values[stream.tick.current])
+              console.log(stream.name, stream.values[stream.tick.current], stream.tick.current, stream.values.length, stream.duration)
               player.debug && player.debug.propStreamValueUpdate[stream.name](stream.name, stream.values[stream.tick.current], stream.tick.current, stream.tick.cycleIndex)
             }
             stream.tick.current += tick_delta;
@@ -890,7 +890,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         function parseScale(arr) {
           var values = ['X', 'Y', 'Z'];
           var results = [];
-          console.log(arr)
           arr.forEach(function(val, i) {
             if (val || (val + "").length) {
               // if (values[i] === 'Z' && val === 1) return;
@@ -927,7 +926,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             prop.end = endSplit.join(" ").trim();
           }
         }
-        console.log(prop, prop.start, prop.end)
 
       }
 
@@ -1066,7 +1064,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             }
             var offset = iPropObj.delay;
             var values = TweenService.preComputeValues(iPropObj.property, iPropObj.duration, iPropObj.start, iPropObj.end, iPropObj.easingFunc, {cache:[]}, kf).cache;
-            console.log(values)
             // if (!values[values.length - 1]) {
             //   values.unshift();
             //   values = values.splice(0, values.length)

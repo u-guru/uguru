@@ -158,7 +158,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
       function registerAnimationListeners(scope, element, actions, context) {
         var name = context.name
-        console.log(name)
         var baseName = 'when-' + name;
         for (key in actions) {
           var listenFor = baseName;
@@ -166,11 +165,8 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             if (!('when' in scope.$parent.root.public.customStates)) {
               scope.$parent.root.public.customStates['when'] = {};
             scope.$parent.root.public.customStates['when'][UtilitiesService.camelCase(listenFor)] = false;
-            console.log('registering', UtilitiesService.camelCase(listenFor))
             scope.$parent.$watch(scopeName, function(_new, _old) {
-              console.log(_new, _old);
               if (_new && _old === false) {
-                console.log(_new, _old)
                 applySendAnimProp(scope, element, actions, context)
               }
               // if (_new && _new !== _old) {
@@ -228,7 +224,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
           player = AnimationFrameService.getPlayer();
         }
-        console.log(player)
         // player.scheduleStream(player, state, state.offset, null);
 
         // player.play();
@@ -238,7 +233,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
         //TODO, inject global offset here
         player = player.scheduleStream(player, state, 0);
-        console.log(player.schedule.streams)
         if (!player.active) {
           player.play(player);
         }
@@ -255,7 +249,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (msgSplit.length > 2) {
             msgDelay = parseInt(msgSplit[2].replace('delay-', ''));
           }
-          console.log(iMsg)
           var _attr = {dashed: iMsg, camel: UtilitiesService.camelCase('when-' + iMsg)};
           _attr.camel = _attr.camel.replace(' ', '-')
           if (msgDelay) {
