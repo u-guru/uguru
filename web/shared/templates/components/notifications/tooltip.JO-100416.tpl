@@ -10,6 +10,49 @@
 		on-init="a:[bounceIn-subtle:1000:easeOutSine:0:1:f]">
 		<div>This is a tip.</div>
 	</div>
+
+	<div class="tooltip-line tooltip-top">
+		<span u init-with="p:[transform:scaleX(0) scaleY(0)]"
+			on-init="a:[scaleX:0:1:150:easeOutSine:0:1:f, scaleY:0:1:150:easeOutSine:0:1:f]"
+			when-top-complete="a:[scaleX:1:0:450:easeInOutQuad:750:1:f, scaleY:1:0:450:easeInOutQuad:750:1:f]"></span>
+			<!-- Would be better with scale -->
+		<div u init-with="p:[background:rgba(255#255#255#0)]"
+		 	on-init="a:[background:rgba(255#255#255#0):rgba(255#255#255#0.9):500:easeOutSine:450:1:f]"
+			when-top-complete="a:[background:rgba(255#255#255#0.9):rgba(255#255#255#0):500:easeInOutQuad:450:1:f]">
+			<div u init-with="p:[transform:scaleX(0)]"
+				on-init="a:[scaleX:0:1:450:easeInOutQuad:250:1:f]"
+				when-top-complete="a:[scaleX:1:0:450:easeInOutQuad:750:1:f]"></div>
+			<div u init-with="p:[transform:scaleX(0)]"
+				on-init="a:[scaleX:0:1:250:easeInOutQuad:250:1:f]"
+				when-top-complete="a:[scaleX:1:0:250:easeInOutQuad:750:1:f]"></div>
+			<div u init-with="p:[transform:scaleY(0)]"
+				on-init="a:[scaleY:0:1:100:easeInOutQuad:450:1:f]"
+				when-top-complete="a:[scaleY:1:0:100:easeInOutQuad:570:1:f]"></div>
+			<div u init-with="p:[transform:scaleY(0)]"
+				on-init="a:[scaleY:0:1:125:easeInQuad:570:1:f]"
+				when-top-complete="a:[scaleY:1:0:125:easeInQuad:450:1:f]"></div>
+			<div u init-with="p:[transform:scaleX(0)]"
+				on-init="a:[scaleX:0:1:250:easeInOutQuad:750:1:f]"
+				when-top-complete="a:[scaleX:1:0:250:easeInOutQuad:0:1:f]"></div>
+			<div u init-with="p:[transform:scaleX(0)]"
+				on-init="a:[scaleX:0:1:250:easeInQuad:750:1:f]"
+				when-top-complete="a:[scaleX:1:0:250:easeInQuad:0:1:f]"></div>
+			<div u init-with="p:[transform:scaleY(0)]"
+				on-init="a:[scaleY:0:1:125:easeInQuad:750:1:f]"
+				when-top-complete="a:[scaleY:1:0:125:easeInQuad:450:1:f]"></div>
+			<div u init-with="p:[transform:scaleY(0)]"
+				on-init="a:[scaleY:0:1:100:easeOutQuad:450:1:f]"
+				when-top-complete="a:[scaleY:1:0:100:easeOutQuad:570:1:f]"></div>
+			<span u init-with="p:[opacity:0, transform:translateY(-10%)]"
+				on-init="a:[opacity:0:1:500:easeInOutQuad:0:1:f, translateY:-10%:0%:500:easeInOutQuad:450:1:f]"
+				when-top-complete="a:[opacity:1:0:500:easeInOutQuad:100:1:f, translateY:0%:-10%:500:easeInOutQuad:450:1:f]">This is a tip with a button.</span>
+			<button class="bg-moxie"
+				u init-with="p:[opacity:0, transform:translateY(-10px)]"
+				on-init="a:[opacity:0:1:500:easeOutSine:100:1:f, translateY:-10px:0px:600:easeOutExpo:650:1:f]"
+				on-click="s:[top-complete:public]"
+				when-top-complete="a:[opacity:1:0:500:easeOutSine:100:1:f, translateY:0px:-10px:600:easeOutExpo:250:1:f]">Okay</button>
+		</div>
+	</div>
 </div>
 
 
