@@ -12,7 +12,7 @@
 		<li>
 			<div class="bg-auburn flex-center width-128 height-128 radius-2"
 				u init-with="p:[opacity:0, transform-origin:center center]"
-				on-init="a:[bounceIn-subtle-o:1000:linear:0:1:f, opacity:0:1:800:linear:0:1:f]">
+				on-init-debug="a:[bounceIn-subtle-o:1000:linear:0:1:f, opacity:0:1:800:linear:0:1:f]">
 				<h1 class="txt-14 semibold txt-center">Custom transforms no longer work<br/>separate opacity</h1>
 			</div>
 		</li>
