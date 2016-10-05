@@ -67,8 +67,8 @@
 
 		<li>
 			<a class="bg bg-auburn p10xy flex-center width-128 height-128 radius-2"
-				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]"
-				u init-with="p:[transform-origin:center center]">
+				u init-with="p:[transform-origin:center center]"
+				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]">
 				<h1 class="txt-14 semibold txt-center">end points are wrong<br/>rotate(-0.0195deg)</h1>
 			</a>
 		</li>
@@ -92,6 +92,12 @@
 			</div>
 		</li>
 
-
+		<li>
+			<div class="bg-auburn p10xy flex-center width-128 height-128 radius-2"
+				u init-with="p:[transform-origin:center center]"
+				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]:delay-2500">
+				<h1 class="txt-14 semibold txt-center">external delays don't work</h1>
+			</div>
+		</li>
 	</ul>
 </div>
