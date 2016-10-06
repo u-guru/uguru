@@ -145,6 +145,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             }
           }
           if (type === 'when') {
+
             return function(element, scope) {
               $timeout(function() {
                 if (name.indexOf('-debug') > -1) {
@@ -163,27 +164,29 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         var baseName = 'when-' + name;
         for (key in actions) {
           var listenFor = baseName;
-          var scopeName = 'root.public.customStates.when.' + UtilitiesService.camelCase(listenFor);
-            if (!('when' in scope.$parent.root.public.customStates)) {
-              scope.$parent.root.public.customStates['when'] = {};
-            scope.$parent.root.public.customStates['when'][UtilitiesService.camelCase(listenFor)] = false;
-
-            scope.$parent.$watch(scopeName, function(_new, _old) {
-              if (_new && _old === false) {
-                applySendAnimProp(scope, element, actions, context)
+          var scopeNameSplit=  UtilitiesService.camelCase(listenFor).split(':');
+          var scopeName = 'root.public.customStates.when.' + scopeNameSplit[0];
+          var scopeTitle = UtilitiesService.camelCase(listenFor);
+          var scopeTitle = scopeTitle.split(':')[0]
+          var scopeTitle = scopeTitle.split(':')[0];
+            if (!('when' in scope.root.public.customStates)) {
+              scope.root.public.customStates['when'] = {};
+              scope.root.public.customStates['when'][scopeTitle] = false;
+            }
+            var hasDelay = parseFloat(scopeNameSplit[1])
+            scope.$watch(scopeName, function(_new, _old) {
+              if (hasDelay) {
+                $timeout(function() {
+                  applySendAnimProp(scope, element, actions, context)
+                }, hasDelay)
+              } else {
+                if (_new && _old === false) {
+                  applySendAnimProp(scope, element, actions, context)
+                }
               }
-              // if (_new && _new !== _old) {
-              //   console.log('oh shit')
-
-              // } else if (!_old || !_new) {
-              //   console.log('registering', baseName, actions)
-              // }
             })
-
-
         }
       }
-    }
 
       function applyOnToElement(scope, element, actions, context) {
         var name = context.name;
@@ -234,10 +237,9 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
                 embeddedAnimDelayArr.push(anim_str)
               })
-              // $timeout(function() {
-
+              $timeout(function() {
                 applyAnimArgs(element, scope, actions.anim, context);
-              // }, actions.delays.anim)
+              }, actions.delays.anim)
             } else {
               applyAnimArgs(element, scope, actions.anim, context);
             }
@@ -246,7 +248,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (actions.send) {
 
             if ('send' in actions.delays) {
-
+              console.log(actions.delays, actions.delays.send)
               $timeout(function() {
                 applySendArgsAndCallback(element, scope, actions.send);
               }, actions.delays.send)
@@ -310,27 +312,30 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           var msgScope = msgSplit[1].trim();
           var msgDelay = 0;
 
+
           if (msgSplit.length > 2) {
             msgDelay = parseInt(msgSplit[2].replace('delay-', ''));
           }
+
           var _attr = {dashed: iMsg, camel: UtilitiesService.camelCase('when-' + iMsg)};
           _attr.camel = _attr.camel.replace(' ', '-')
           if (msgDelay) {
             $timeout(function() {
-              scope.$parent.root.public.customStates.when[_attr.camel] = true;
+              console.log()
+              scope.root.public.customStates.when[_attr.camel] = true;
 
               $timeout(function() {
-                scope.$parent.root.public.customStates.when[_attr.camel] = false;
+                scope.root.public.customStates.when[_attr.camel] = false;
               })
-              console.log(msgDelay, _attr.camel, scope.$parent.root.public.customStates)
             }, msgDelay)
           } else {
-            $timeout(function() {scope.$parent.root.public.customStates.when[_attr.camel] = true; scope.$apply()});
+            console.log(_attr.camel)
+            $timeout(function() {scope.root.public.customStates.when[_attr.camel] = true; scope.$apply()});
           }
 
 
           $timeout(function() {
-            scope.$parent.root.public.customStates.when[_attr.camel] = false;
+            scope.root.public.customStates.when[_attr.camel] = false;
           }, 100)
           // DirectiveService.initCustomStateWatcher(scope, element,  'when', _attr, _attr[_attr.camel]);
         })
@@ -458,6 +463,8 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         // var detectAndAddStrArgValues = detectAndAddStrArgValues(state_args);
         var joinedSends = [];
 
+
+        //trigger
         full_value.split('|').forEach(function(stream) {
           if (stream.indexOf('t:[') > -1 || stream.indexOf('trigger:[') > -1) {
             param_value = stream.trim();
@@ -481,11 +488,14 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           }
         })
 
+        //
         state_args.forEach(function(arg, i) {
 
           var delay = arg.split(':')[1] || 0;
           var arg = arg.split(':')[0];
-          var delay = parseFloat(delay);
+
+          var delay = delay && parseFloat(delay.replace(':delay-', ''));
+
           full_value = UtilitiesService.replaceAll(full_value, ': ', ':');
           full_value = UtilitiesService.replaceAll(full_value, ', ', ',');
           if (arg in actionDict) {
@@ -499,6 +509,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (delay) {
             delayDict[arg] = delay;
           }
+
         })
 
         actionDict.delays = delayDict;
