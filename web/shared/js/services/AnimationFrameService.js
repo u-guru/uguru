@@ -298,7 +298,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
 
           newStream.tick.init(newStream);
-          console.log(newStream.tick)
           newStream.easing = streams[i].easing;
           shallowCopyStreams.push(newStream);
 
@@ -719,7 +718,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
               stream.applyProp && stream.applyProp(stream.values[stream.tick.current]);
               player.debug && player.debug.propStreamValueUpdate[stream.name](stream.name, stream.values[stream.tick.current], stream.tick.current, stream.tick.cycleIndex)
-              console.log('applying', stream.name, stream.tick, stream.tick.current, stream.offset, stream.tick.end, stream.values[stream.tick.current]);
             }
             stream.tick.current += tick_delta;
 
@@ -1028,7 +1026,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
         var stateArgs = filterTransformAndShortcutStr(stateNameStrSplit);
         stateArgs = splitCustomAnimationsIntoStreams(stateArgs);
-        console.log(stateArgs)
 
 
         var resultState = {duration: 0};
@@ -1374,7 +1371,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                   genArgsCopy[0] = deltaPercent*duration  + genDelay;
                   genArgsCopy[2] = delay - genArgsCopy[0]
                   genArgsCopy[0] = deltaPercent*duration + genArgsCopy[2];
-                  console.log(_prop.prop + ':' + startVal + ':' + endVal + ':' + genArgsCopy.join(":"))
                   uniquePropStreams.push(_prop.prop + ':' + startVal + ':' + endVal + ':' + genArgsCopy.join(":"));
                   // console.log(c_anim_dict.args[0], deltaPercent, _prop)
                 })
