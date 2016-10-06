@@ -142,7 +142,6 @@ function TweenService() {
         t.stop(true);
         result_arr.cache.push(t.get()[property]);
         result_arr.cache.push(null)
-        console.log(duration, result_arr.cache.length, duration/result_arr.cache.length)
         t.dispose();
         // console.log(result_arr.cache)
         return result_arr
