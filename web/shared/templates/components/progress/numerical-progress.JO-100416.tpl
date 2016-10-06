@@ -1,6 +1,6 @@
 <div class="perspective-container full-xy flex-center p15xy">
 	<div class="numerical-bar"
-		init-default
+		u
 		on-init="s:[progress-init:public]">
 		<div class="progress bg-slate txt-shamrock"
 			u init-with="p:[transform-origin:left center, transform:scaleX(1), opacity:1]"
