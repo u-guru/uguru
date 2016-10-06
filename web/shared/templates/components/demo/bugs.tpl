@@ -83,13 +83,13 @@
 			</a>
 		</li>
 
-		 <!-- <li>
-			<div class="bg-auburn flex-center width-128 height-128 radius-2"
+		 <li>
+			<div class="bg-gold flex-center width-128 height-128 radius-2"
 				u init-with="p:[scaleX:0, transform-origin:center top]"
-				on-init="a:[rotateScaleTranslateSkewDemo:1000:linear:0:4:a]">
+				on-init="a:[scaleIn-bounceUp:1500:bouncePast:0:i:f]">
 				<h1 class="txt-14 semibold txt-center">Iteration count (2) doesn't work for custom transforms</h1>
 			</div>
-		</li> -->
+		</li>
 
 		<li>
 			<div class="bg-auburn

@@ -143,6 +143,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
 
           tick.duration = {ms: (tick.cycle.c_duration * tick.cycle.repeats)}
+
           tick.duration.cycles = calcTickLength(tick.duration.ms)
           tick.direction = stream.direction;
           tick.offset = stream.offset;
@@ -156,7 +157,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
             if (tick.cycleIndex < tick.cycle.repeats || tick.infinite) {
               tick.cycleIndex += 1;
-              tick.current = 0;
+
+              tick.current = tick.start;
               tick.direction.current = getTickDirection(tick.cycleIndex, tick.direction);
               ['ar', 'a'].indexOf(tick.direction.value) > -1 && stream.values.reverse()
             }
@@ -723,9 +725,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
             stream.time.elapsed += time_delta;
           }
-
           if (stream.tick.current > stream.tick.end && stream.tick.cycle.repeats > (stream.tick.cycleIndex + 1)) {
-            console.log(stream.tick)
+
             if (tick_delta > 0) {
               stream.tick.cycle.increment();
             } else {
@@ -1025,6 +1026,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
 
         var stateArgs = filterTransformAndShortcutStr(stateNameStrSplit);
+
         stateArgs = splitCustomAnimationsIntoStreams(stateArgs);
 
 
@@ -1032,6 +1034,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         var timeline = {events:[], props:{}, stateName: stateName};
         for (var i = 0; i < stateArgs.length; i++) {
           var iAnim = stateArgs[i];
+
           cbArr.forEach(function(cb_vals, i) {
             if (iAnim.indexOf('cb-' + i) > -1) {
               iAnim = iAnim.replace('cb-' + i, cbArr[i].join("|"));
@@ -1052,8 +1055,10 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
 
           // } else {
-            iAnim = iAnim && filterParentheticals(iAnim)
+            iAnim = iAnim && filterParentheticals(iAnim);
+
             iAnim = iAnim && replaceShortcutSyntax(iAnim);
+
             var iPropObj = initPropObj(iAnim);
 
             if (iAnim.split(':')[0] === 'transform') {
@@ -1362,6 +1367,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                 propStreams.forEach(function(_prop, stream_index) {
                   if (stream_index === 0 || stream_index === propStreams.length) return;
                   var genArgsCopy = c_anim_dict.args.slice();
+                  // console.log(genArgsCopy);
                   var duration = genArgsCopy[0]
                   var deltaPercent = (propStreams[stream_index].percent - propStreams[stream_index - 1].percent)
                   var delay = (_prop.percent/100.0) * genDuration;
@@ -1370,7 +1376,11 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                   deltaPercent = deltaPercent/100;
                   genArgsCopy[0] = deltaPercent*duration  + genDelay;
                   genArgsCopy[2] = delay - genArgsCopy[0]
-                  genArgsCopy[0] = deltaPercent*duration + genArgsCopy[2];
+                  if ((genArgsCopy[2] + genArgsCopy[0]) < duration) {
+                    genArgsCopy[3] = genArgsCopy[3] + '+' + (duration - genArgsCopy[2] - genArgsCopy[0]).toFixed(4);
+                    // console.log(genArgsCopy)
+                  }
+                  // console.log(_prop.prop + ':' + startVal + ':' + endVal + ':' + genArgsCopy.join(":"));
                   uniquePropStreams.push(_prop.prop + ':' + startVal + ':' + endVal + ':' + genArgsCopy.join(":"));
                   // console.log(c_anim_dict.args[0], deltaPercent, _prop)
                 })
@@ -1438,6 +1448,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
           state_args_final.unshift(single_transform_str);
         }
+
         return state_args_final
       }
 
