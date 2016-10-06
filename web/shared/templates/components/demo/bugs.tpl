@@ -48,7 +48,7 @@
 
 		<li>
 			<div class="bg-moxie p10xy flex-center width-128 height-128 radius-2"
-				u init-with="p:[opacity:0, rotate:40deg, transform-origin:center top]"
+				u init-with="p:[opacity:1, rotate:40deg, transform-origin:center top]"
 				on-init="s:[demo-1-state:self]"
 				on-click="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]|s:[demo-1-state:self]"
 				when-demo-1-state="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]">
@@ -78,7 +78,7 @@
 		<li>
 			<a class="bg bg-gold p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
-				on-init="a:[opacity:0:1:1000:easeOutSine:0:4:ar, scaleX:0:1:1000:bouncePast:0:4:ar, rotate:40deg:0deg:1000:easeOutSine:0:4:f]">
+				on-init="a:[opacity:0:1:1000:easeOutSine:200:8:ar, scaleY:0:1:1000:bouncePast:0:10:f, rotate:180deg:0deg:1000:easeOutSine:0:10:ar]">
 				<h1 class="txt-14 semibold txt-center">end points are wrong<br/>rotate(-0.0195deg)</h1>
 			</a>
 		</li> -->
@@ -99,7 +99,6 @@
 				<h1 class="txt-14 semibold txt-center">external delays don't work<br/>:delay-2500</h1>
 			</div>
 		</li>
-
 
 		<li>
 			<div class="relative bg-auburn p10xy flex-center width-128 height-128 radius-2"
