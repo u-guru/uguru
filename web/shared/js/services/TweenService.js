@@ -92,7 +92,7 @@ function TweenService() {
 
     function preComputeValues(property, duration, start, end, ease, result_arr) {
 
-        duration = parseInt(duration)
+        duration = parseFloat(duration)
         result_arr.cache = [];
         var iterations = (duration/1000 * 60);//fps
         var startDict = {};
@@ -136,13 +136,21 @@ function TweenService() {
         }).seek(0).pause()
         for (var i = 0; i < iterations; i++) {
             var seekValue = duration/iterations * i;
-            // t.seek();
-            result_arr.cache.push(t.seek(seekValue).resume().pause().get()[property])
+            var value = t.seek(seekValue).resume().pause().get()[property]
+
+            result_arr.cache.push(value);
         }
         t.stop(true);
         result_arr.cache.push(t.get()[property]);
+        // if (result_arr.cache[result_arr.cache.length - 2] !== end[property]) {
+        //     console.log(property[end])
+        //     result_arr.cache.push(end[property]);
+        //     console.log(result_arr.cache)
+        // }
+        console.log(start, end)
         result_arr.cache.push(null)
         t.dispose();
+
         // console.log(result_arr.cache)
         return result_arr
         // t.dispose();
