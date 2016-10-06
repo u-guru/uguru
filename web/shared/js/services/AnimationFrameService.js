@@ -87,7 +87,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
     function executeActiveStreams(player, frame) {
       return function(time) {
-        if (player.tick.current > -1 && player.active) {
+        if (player.tick.current > -2 && player.active) {
           player.schedule.lastTimeDelta = time - player.time.delta;
           player.stepForward(player.schedule);
           player.time.delta = time;
@@ -98,6 +98,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           // player.debug.status.update(player.tick.current);
           // player.active = false;
         } else {
+          console.log('player pausing')
           player.pause();
         }
       }
@@ -142,6 +143,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
 
           tick.duration = {ms: (tick.cycle.c_duration * tick.cycle.repeats)}
+
           tick.duration.cycles = calcTickLength(tick.duration.ms)
           tick.direction = stream.direction;
           tick.offset = stream.offset;
@@ -155,7 +157,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
             if (tick.cycleIndex < tick.cycle.repeats || tick.infinite) {
               tick.cycleIndex += 1;
-              tick.current = 0;
+
+              tick.current = tick.start;
               tick.direction.current = getTickDirection(tick.cycleIndex, tick.direction);
               ['ar', 'a'].indexOf(tick.direction.value) > -1 && stream.values.reverse()
             }
@@ -282,7 +285,10 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           var durationOnlyTicks = calculateStreamTickLength(streams[i], 0, 60, true);
           var delayOnlyTicks = calculateStreamTickLength({duration:0, offset:streams[i].offset})
 
-          values = streams[i].values.slice(0,streams[i].values.length)
+          values = streams[i].values
+          if (values[values.length - 1] === null) {
+            values = values.slice(0, values.length - 1);
+          }
 
 
           var newStream = {applyProp:streams[i].applyAtT, active:true, childProps:streams[i].childProps, easing:streams[i].ease, duration:streams[i].duration, iter:streams[i].iter, name:streams[i].property || streams[i].name, direction: streams[i].direction, time: {total: streams[i].duration, elapsed: 0}, offset: streams[i].offset, values:values}
@@ -298,19 +304,22 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           shallowCopyStreams.push(newStream);
 
           // var maxStreamDuration =   Math.max(Math.round(newStream.time.total), player.playerProps.duration);
-          var currentMax = Math.max(Math.round(newStream.time.total), currentMax);
+          var currentMax = Math.max(Math.ceil(newStream.time.total), currentMax);
         }
 
         if (!player.playerProps.duration && currentMax) {
           player.playerProps.duration = currentMax;
         }
 
-        var allStreamsTickDurationTicks = Math.round(calcTickLength(currentMax));
+        var allStreamsTickDurationTicks = Math.ceil(calcTickLength(currentMax) * 61/60.0);
+
         if (allStreamsTickDurationTicks > player.tick.current)  {
           player.tick.start = player.tick.current + allStreamsTickDurationTicks;
+
           player.tick.current = allStreamsTickDurationTicks;
         }
 
+        // player.tick.current =  Math.ceil(player.tick.current * 1.016);
         // if (!player.tick.start) {
 
         //   state_obj.duration = player.playerProps.duration;
@@ -704,10 +713,10 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       function applyTickDeltaToStreams(player, schedule, time_delta, tick_delta, scale_delta) {
 
         schedule.streams.forEach(function(stream, i) {
-
+          if (!stream.active) return;
           if (stream.tick.current <= stream.tick.end && stream.active) {
 
-            if (stream.tick.current < stream.values.length && stream.tick.current >= 0) {
+            if (stream.tick.current <= stream.values.length && stream.tick.current >= 0) {
 
               stream.applyProp && stream.applyProp(stream.values[stream.tick.current]);
               player.debug && player.debug.propStreamValueUpdate[stream.name](stream.name, stream.values[stream.tick.current], stream.tick.current, stream.tick.cycleIndex)
@@ -716,8 +725,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
             stream.time.elapsed += time_delta;
           }
-
-          else if (stream.tick.current < stream.tick.end) {
+          if (stream.tick.current > stream.tick.end && stream.tick.cycle.repeats > (stream.tick.cycleIndex + 1)) {
 
             if (tick_delta > 0) {
               stream.tick.cycle.increment();
@@ -725,9 +733,11 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               stream.tick.cycle.decrement();
             }
           }
-          if (stream.time.elapsed > stream.time.total) {
-            return;
-          }
+          // if (stream.time.elapsed > stream.time.total) {
+          //   stream.active = false;
+          //   console.log('time lapsed')
+          //   return;
+          // }
 
         })
 
@@ -738,7 +748,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         if (player.debug) {
           player.debug.elemPlayer.update(player.tick, schedule.lastTimeDelta);
         }
-        if (player.tick.current === 0) {
+        if (player.tick.current < 0) {
+          console.log('pausing player')
             player.active = false;
             if (player.debug) {
               var elem = document.querySelector('#pause-element')
@@ -1015,14 +1026,15 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
 
         var stateArgs = filterTransformAndShortcutStr(stateNameStrSplit);
-        stateArgs = splitCustomAnimationsIntoStreams(stateArgs);
 
+        stateArgs = splitCustomAnimationsIntoStreams(stateArgs);
 
 
         var resultState = {duration: 0};
         var timeline = {events:[], props:{}, stateName: stateName};
         for (var i = 0; i < stateArgs.length; i++) {
           var iAnim = stateArgs[i];
+
           cbArr.forEach(function(cb_vals, i) {
             if (iAnim.indexOf('cb-' + i) > -1) {
               iAnim = iAnim.replace('cb-' + i, cbArr[i].join("|"));
@@ -1043,8 +1055,10 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
 
           // } else {
-            iAnim = iAnim && filterParentheticals(iAnim)
+            iAnim = iAnim && filterParentheticals(iAnim);
+
             iAnim = iAnim && replaceShortcutSyntax(iAnim);
+
             var iPropObj = initPropObj(iAnim);
 
             if (iAnim.split(':')[0] === 'transform') {
@@ -1353,16 +1367,20 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                 propStreams.forEach(function(_prop, stream_index) {
                   if (stream_index === 0 || stream_index === propStreams.length) return;
                   var genArgsCopy = c_anim_dict.args.slice();
+                  // console.log(genArgsCopy);
                   var duration = genArgsCopy[0]
                   var deltaPercent = (propStreams[stream_index].percent - propStreams[stream_index - 1].percent)
                   var delay = (_prop.percent/100.0) * genDuration;
                   var startVal = propStreams[stream_index - 1].value;
                   var endVal = _prop.value;
                   deltaPercent = deltaPercent/100;
-                  genArgsCopy[0] = deltaPercent*duration;
-                  genArgsCopy[2] = delay - genArgsCopy[0] + genDelay;
-                  // genArgsCopy[0] = deltaPercent*duration + genArgsCopy[2];
-
+                  genArgsCopy[0] = deltaPercent*duration  + genDelay;
+                  genArgsCopy[2] = delay - genArgsCopy[0]
+                  if ((genArgsCopy[2] + genArgsCopy[0]) < duration) {
+                    genArgsCopy[3] = genArgsCopy[3] + '+' + (duration - genArgsCopy[2] - genArgsCopy[0]).toFixed(4);
+                    // console.log(genArgsCopy)
+                  }
+                  // console.log(_prop.prop + ':' + startVal + ':' + endVal + ':' + genArgsCopy.join(":"));
                   uniquePropStreams.push(_prop.prop + ':' + startVal + ':' + endVal + ':' + genArgsCopy.join(":"));
                   // console.log(c_anim_dict.args[0], deltaPercent, _prop)
                 })
@@ -1430,6 +1448,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
           state_args_final.unshift(single_transform_str);
         }
+
         return state_args_final
       }
 

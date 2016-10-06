@@ -50,7 +50,7 @@
 			<div class="bg-moxie p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[opacity:0, rotate:40deg, transform-origin:center top]"
 				on-init="s:[demo-1-state:self]"
-				on-click="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]"
+				on-click="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]|s:[demo-1-state:self]"
 				when-demo-1-state="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]">
 				<h1 class="txt-14 semibold txt-center">when states working</h1>
 			</div>
@@ -73,20 +73,20 @@
 				on-mouseleave="a:[scaleX:1.5:1:1000:easeOutElastic:0:1:f]">
 				<h1 class="txt-14 semibold txt-center">on-mouseenter + scaleX</h1>
 			</a>
-		</li>s
+		</li>
 
 		<li>
-			<a class="bg bg-auburn p10xy flex-center width-128 height-128 radius-2"
+			<a class="bg bg-gold p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
-				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]">
+				on-init="a:[opacity:0:1:1000:easeOutSine:0:4:ar, scaleX:0:1:1000:bouncePast:0:4:ar, rotate:40deg:0deg:1000:easeOutSine:0:4:f]">
 				<h1 class="txt-14 semibold txt-center">end points are wrong<br/>rotate(-0.0195deg)</h1>
 			</a>
 		</li>
 
-		<li>
-			<div class="bg-auburn flex-center width-128 height-128 radius-2"
-				u init-with="p:[scaleX:0, transform-origin:center top]"
-				on-init="a:[scaleX:0:1:1000:easeOutSine:0:2:a]">
+		 <li class="perspective-container">
+			<div class="bg-gold flex-center width-128 height-128 radius-2"
+				u init-with="p:[translateZ:0px, transform-origin:center top]"
+				on-init="a:[translateZ:0px:200px:1500:easeOutBounce:0:i:a]">
 				<h1 class="txt-14 semibold txt-center">Iteration count (2) doesn't work for custom transforms</h1>
 			</div>
 		</li>
@@ -94,23 +94,14 @@
 
 
 		<li>
-			<div class="bg-gold p10xy flex-center width-128 height-128 radius-2"
+			<div class="bg-auburn
+			 p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
-				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:1500:1:f]:delay-1000">
+				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]:delay-2500">
 				<h1 class="txt-14 semibold txt-center">external delays don't work<br/>:delay-2500</h1>
 			</div>
 		</li>
 
-		<!-- <li>
-			<div class="relative bg-auburn p10xy flex-center-wrap width-128 height-128 radius-2"
-				u init-with="p:[opacity:0]"
-				on-init="a:[bounceInDown-subtle:1000:linear:0:1:f] | t:[on-enter:children] | send:[on-enter:children]">
-				<h1 class="txt-14 semibold txt-center full-x">trigger or alt send doesn't work</h1>
-				<h1 class="txt-18 black txt-center full-x absolute bottom-0 left-0 p10xy"
-					u init-with="p:[opacity:0]"
-					on-enter="a:[bounceIn-subtle:800:linear:250:1:f]">works</h1>
-			</div>
-		</li> -->
 
 		<li>
 			<div class="relative bg-auburn p10xy flex-center width-128 height-128 radius-2"
@@ -119,11 +110,10 @@
 				<h1 class="txt-14 semibold txt-center">stagger-children doesn't work [+trigger][+shortcuts]</h1>
 				<div class="absolute bottom-0 left-0 flex-center full-x">
 					<ul class="pf-rating rating-stars" data-rating="4" data-half="true">
-						<stagger-children on-init="[rating]:600:easeOutCirc">
+						<stagger-children on-init="[rating]:5000:easeOutCirc">
 							<li rating class="rating"
 								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
-								on-init="t-enter"
-								on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
+								on-init="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -131,8 +121,7 @@
 							</li>
 							<li rating class="rating"
 								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
-								on-init="t-enter"
-								on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
+								on-init="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -140,8 +129,7 @@
 							</li>
 							<li rating class="rating"
 								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
-								on-init="t-enter"
-								on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
+								on-init="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">>
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -149,8 +137,7 @@
 							</li>
 							<li rating class="rating"
 								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
-								on-init="t-enter"
-								on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
+								on-init="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -158,8 +145,7 @@
 							</li>
 							<li rating class="rating"
 								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
-								on-init="t-enter"
-								on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
+								on-init="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -171,12 +157,13 @@
 			</div>
 		</li>
 
-		<li>
-			<div class="relative bg-auburn p10xy flex-center width-128 height-128 radius-2">
+		<!-- <li>
+			<div class="relative bg-gold p10xy flex-center width-128 height-128 radius-2">
 				<h1 class="txt-14 semibold txt-center">layered when states on same element as on-init don't work</h1>
 				<a class="category-tile bg-household absolute top-0 left-0 full-xy" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
 					u init-with="p:[opacity:0]"
-					on-init="s:[category-tile-init:public:delay-100] | a:[bounceIn-subtle:1000:easeTo:0:1:f]"
+					on-init="s:[category-tile-init:public:delay-100]"
+					when-category-tile-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
 					on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]">
 					<svg width="128px" height="128px" viewBox="0 0 150 150">
 						<rect x="0" y="0" width="128" height="128" fill="none"></rect>
@@ -200,7 +187,7 @@
 					<span class="category-tile-count">6</span>
 				</a>
 			</div>
-		</li>
+		</li> -->
 
 		<li>
 			<a class="bg bg-gold p10xy flex-center width-128 height-128 radius-2"
@@ -208,6 +195,14 @@
 				on-mouseenter="a:[scale:1:1.5:1000:easeOutElastic:0:1:f]"
 				on-mouseleave="a:[scale:1.5:1:1000:easeOutElastic:0:1:f]">
 				<h1 class="txt-14 semibold txt-center">scale doesn't work</h1>
+			</a>
+		</li>
+		<li>
+			<a class="bg bg-auburn p10xy flex-center width-128 height-128 radius-2"
+				u init-with="p:[transform-origin:center center]"
+				on-mouseenter="a:[scale:1:1.5:1000:easeOutElastic:0:1:f]"
+				on-mouseleave="a:[scale:1.5:1:1000:easeOutElastic:0:1:f]">
+				<h1 class="txt-14 semibold txt-center">types</h1>
 			</a>
 		</li>
 	</ul>

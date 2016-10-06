@@ -11,6 +11,7 @@ angular.module('uguru.shared.services')
 
 function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window) {
       var rShortcuts = {special: getSpecialShortcuts(), propValues: {}, props: {}, values:{}};
+      var stateShortcuts = {};
       var stateTypes = ['on', 'when', 'init'];
       var onStateMappings = {
         'init': 'ready'
@@ -160,9 +161,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       function registerAnimationListeners(scope, element, actions, context) {
         var name = context.name
         var baseName = 'when-' + name;
-        if (context.type === 'on' && context.name === 'init') {
-          console.log(actions)
-        }
         for (key in actions) {
           var listenFor = baseName;
           var scopeName = 'root.public.customStates.when.' + UtilitiesService.camelCase(listenFor);
