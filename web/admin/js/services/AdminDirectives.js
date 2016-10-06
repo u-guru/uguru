@@ -164,7 +164,6 @@ angular.module('uguru.admin')
             replace: false,
 
             link: function(scope, element, attr) {
-                console.log(scope.types, 'yo')
                 scope.types = UtilitiesService.replaceAll(attr.types, ', ', ',').split(',');
                 scope.activateType = function(type) {
                     var onExitElems = element[0].querySelectorAll('[on-exit][ng-if]');
