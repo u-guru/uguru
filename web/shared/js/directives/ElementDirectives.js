@@ -372,7 +372,6 @@ angular.module('uguru.shared.directives')
               this.states = ElementService.renderElementStates(element, attr);
               var states = this.states;
               if (this.states.init) {
-                console.log(this.states.init)
                 this.states.init.forEach(function(state, i) {
                   state.exec(element);
                 })
@@ -388,7 +387,6 @@ angular.module('uguru.shared.directives')
                             ElementService.launchExternalWindow(state.actions.debug, element);
                           }
                           state.exec(lElem, scope);
-
                         })
                       }
                       if (states.when) {
@@ -398,7 +396,6 @@ angular.module('uguru.shared.directives')
 
                             ElementService.launchExternalWindow(state.actions.anim, element);
                           }
-                          console.log('registering', state.name)
                           state.exec(lElem, scope);
                         })
                       }
@@ -689,7 +686,6 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
     link: {
       pre: function(scope, element, attr) {
-        console.log(element[0])
         scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
         var elemArgs = DirectiveService.parseArgs(attr.onEnter, 'on-enter', element);
         var supportedCommands = DirectiveService.supportedCommands;

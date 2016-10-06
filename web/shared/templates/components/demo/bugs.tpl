@@ -73,6 +73,14 @@
 				on-mouseleave="a:[scaleX:1.5:1:1000:easeOutElastic:0:1:f]">
 				<h1 class="txt-14 semibold txt-center">on-mouseenter + scaleX</h1>
 			</a>
+		</li>s
+
+		<li>
+			<a class="bg bg-auburn p10xy flex-center width-128 height-128 radius-2"
+				u init-with="p:[transform-origin:center center]"
+				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]">
+				<h1 class="txt-14 semibold txt-center">end points are wrong<br/>rotate(-0.0195deg)</h1>
+			</a>
 		</li>
 
 		<li>
@@ -93,33 +101,32 @@
 		</li>
 
 		<li>
-			<div class="bg-auburn p10xy flex-center width-128 height-128 radius-2"
+			<div class="bg-gold p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
-				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]:delay-2500">
+				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:1500:1:f]:delay-1000">
 				<h1 class="txt-14 semibold txt-center">external delays don't work<br/>:delay-2500</h1>
 			</div>
 		</li>
 
-		<li>
+		<!-- <li>
 			<div class="relative bg-auburn p10xy flex-center-wrap width-128 height-128 radius-2"
 				u init-with="p:[opacity:0]"
-				on-init="a:[bounceInDown-subtle:1000:linear:0:1:f] | t:[on-enter:children]">
-				<!-- s:[on-enter:children] -->
+				on-init="a:[bounceInDown-subtle:1000:linear:0:1:f] | t:[on-enter:children] | send:[on-enter:children]">
 				<h1 class="txt-14 semibold txt-center full-x">trigger or alt send doesn't work</h1>
 				<h1 class="txt-18 black txt-center full-x absolute bottom-0 left-0 p10xy"
 					u init-with="p:[opacity:0]"
 					on-enter="a:[bounceIn-subtle:800:linear:250:1:f]">works</h1>
 			</div>
-		</li>
+		</li> -->
 
 		<li>
 			<div class="relative bg-auburn p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
 				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]:delay-2500">
-				<h1 class="txt-14 semibold txt-center">stagger-children doesn't work</h1>
+				<h1 class="txt-14 semibold txt-center">stagger-children doesn't work [+trigger][+shortcuts]</h1>
 				<div class="absolute bottom-0 left-0 flex-center full-x">
 					<ul class="pf-rating rating-stars" data-rating="4" data-half="true">
-						<stagger-children on-enter="[rating]:600:easeOutCirc">
+						<stagger-children on-init="[rating]:600:easeOutCirc">
 							<li rating class="rating"
 								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
 								on-init="t-enter"
@@ -176,8 +183,7 @@
 				<h1 class="txt-14 semibold txt-center">layered when states on same element as on-init don't work</h1>
 				<a class="category-tile bg-household absolute top-0 left-0 full-xy" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
 					u init-with="p:[opacity:0]"
-					on-init="s:[category-tile-init:public]"
-					when-category-tile-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
+					on-init="s:[category-tile-init:public:delay-100] | a:[bounceIn-subtle:1000:easeTo:0:1:f]"
 					on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]">
 					<svg width="128px" height="128px" viewBox="0 0 150 150">
 						<rect x="0" y="0" width="128" height="128" fill="none"></rect>
@@ -204,7 +210,7 @@
 		</li>
 
 		<li>
-			<a class="bg bg-auburn p10xy flex-center width-128 height-128 radius-2"
+			<a class="bg bg-gold p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
 				on-mouseenter="a:[scale:1:1.5:1000:easeOutElastic:0:1:f]"
 				on-mouseleave="a:[scale:1.5:1:1000:easeOutElastic:0:1:f]">
