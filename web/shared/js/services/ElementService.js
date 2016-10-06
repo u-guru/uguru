@@ -11,6 +11,7 @@ angular.module('uguru.shared.services')
 
 function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window) {
       var rShortcuts = {special: getSpecialShortcuts(), propValues: {}, props: {}, values:{}};
+      var stateShortcuts = {};
       var stateTypes = ['on', 'when', 'init'];
       var onStateMappings = {
         'init': 'ready'
