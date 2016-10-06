@@ -681,38 +681,31 @@
 		<ul>
 			<li>
 				<button id="top" class="button"
-					init-default
-					on-click="s:[top-move:public]">top</button>
+					u on-click="s:[top-move:public]">top</button>
 			</li>
 			<li>
 				<button id="bottom" class="button"
-					init-default
-					on-click="s:[bottom-move:public]">bottom</button>
+					u on-click="s:[bottom-move:public]">bottom</button>
 			</li>
 			<li>
 				<button id="face" class="button"
-					init-default
-					on-click="s:[face-move:public]">face</button>
+					u on-click="s:[face-move:public]">face</button>
 			</li>
 			<li>
 				<button id="hair" class="button"
-					init-default
-					on-click="s:[hair-move:public]">hair</button>
+					u on-click="s:[hair-move:public]">hair</button>
 			</li>
 			<li>
 				<button id="glasses" class="button"
-					init-default
-					on-click="s:[glasses-move:public]">glasses</button>
+					u on-click="s:[glasses-move:public]">glasses</button>
 			</li>
 			<li>
 				<button id="left-prop" class="button"
-					init-default
-					on-click="s:[left-prop-move:public]">left-prop</button>
+					u on-click="s:[left-prop-move:public]">left-prop</button>
 			</li>
 			<li>
 				<button id="right-prop" class="button"
-					init-default
-					on-click="s:[right-prop-move:public]">right-prop</button>
+					u on-click="s:[right-prop-move:public]">right-prop</button>
 			</li>
 		</ul>
 	</div>
