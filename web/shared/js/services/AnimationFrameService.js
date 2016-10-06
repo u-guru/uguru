@@ -710,7 +710,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             if (stream.tick.current < stream.values.length && stream.tick.current >= 0) {
 
               stream.applyProp && stream.applyProp(stream.values[stream.tick.current]);
-              console.log(stream.name, stream.values[stream.tick.current], stream.tick.current, stream.values.length, stream.duration)
               player.debug && player.debug.propStreamValueUpdate[stream.name](stream.name, stream.values[stream.tick.current], stream.tick.current, stream.tick.cycleIndex)
             }
             stream.tick.current += tick_delta;
@@ -1362,7 +1361,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                   deltaPercent = deltaPercent/100;
                   genArgsCopy[0] = deltaPercent*duration;
                   genArgsCopy[2] = delay - genArgsCopy[0] + genDelay;
-                  console.log(genArgsCopy[0], genArgsCopy[2])
                   // genArgsCopy[0] = deltaPercent*duration + genArgsCopy[2];
 
                   uniquePropStreams.push(_prop.prop + ':' + startVal + ':' + endVal + ':' + genArgsCopy.join(":"));

@@ -105,20 +105,19 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (!(stateObj.type in states)) states[stateObj.type] = [];
           states[stateObj.type].push(stateObj);
         }
-
         return states
       }
 
       function renderState(elem, name, value, name_camel) {
         var state = {type: null, name: {camel: name_camel, dash:name}};
         state.type = detectStateType(name, name_camel);
+
         if (!isValidState(state.type)) return;
         var parsedArgs = getParsedArgsByType(elem, state.type, name.split('-').splice(1), value)
+
         state.name = parsedArgs[state.type];
         state.actions = parsedArgs.actions;
         state.exec = getStateFunc(state.type, state.name, parsedArgs.actions);
-
-
         return state;
       }
 
@@ -137,7 +136,9 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             }
           }
           if (type === 'on') {
+
             return function(element, scope) {
+
 
               applyOnToElement(scope, element, actions, context);
             }
@@ -159,12 +160,16 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       function registerAnimationListeners(scope, element, actions, context) {
         var name = context.name
         var baseName = 'when-' + name;
+        if (context.type === 'on' && context.name === 'init') {
+          console.log(actions)
+        }
         for (key in actions) {
           var listenFor = baseName;
           var scopeName = 'root.public.customStates.when.' + UtilitiesService.camelCase(listenFor);
             if (!('when' in scope.$parent.root.public.customStates)) {
               scope.$parent.root.public.customStates['when'] = {};
             scope.$parent.root.public.customStates['when'][UtilitiesService.camelCase(listenFor)] = false;
+
             scope.$parent.$watch(scopeName, function(_new, _old) {
               if (_new && _old === false) {
                 applySendAnimProp(scope, element, actions, context)
@@ -185,7 +190,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       function applyOnToElement(scope, element, actions, context) {
         var name = context.name;
         if (name === 'init') {
-
+          registerAnimationListeners(scope, element, actions, context)
           element.ready(function(e) {
 
             applySendAnimProp(scope, element, actions, context);
@@ -193,6 +198,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         } else {
 
           element.on(name,function(e) {
+
             // delete actions['send']
               applySendAnimProp(scope, element, actions, context)
           })
@@ -202,23 +208,82 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       function applySendAnimProp(scope, element, actions, context) {
 
         if (actions.prop) {
-
-            applyPropsToElement(element, actions.prop);
+          if ('prop' in actions.delays) {
+              $timeout(function() {
+                applyPropsToElement(element, actions.prop);
+              }, actions.delays.prop)
+            } else {
+              applyPropsToElement(element, actions.prop);
+            }
           };
           if (actions.anim) {
+            actions.anim = condenseAnimationsAndShortcuts(scope, actions.anim);
 
-            applyAnimArgs(element, scope, actions.anim, context);
+            if ('anim' in actions.delays) {
+              embeddedAnimDelayArr = [];
+              actions.anim.split('|').forEach(function(anim_str, i) {
+                var animStrSplit = anim_str.split(',');
+                var animArr = [];
+                animStrSplit.forEach(function(single_anim, j) {
+                  var singleAnimSplit = single_anim.split(':');
+                  if (singleAnimSplit.length < 7) {
+                    singleAnimSplit[2] = parseFloat(singleAnimSplit[2]) + actions.delays['anim'];
+                  } else {
+                    singleAnimSplit[5] = parseFloat(singleAnimSplit[5]) + actions.delays['anim'];
+                  }
+                  animArr.push(singleAnimSplit.join(':'));
+                })
+
+                embeddedAnimDelayArr.push(anim_str)
+              })
+              // $timeout(function() {
+
+                applyAnimArgs(element, scope, actions.anim, context);
+              // }, actions.delays.anim)
+            } else {
+              applyAnimArgs(element, scope, actions.anim, context);
+            }
           }
 
           if (actions.send) {
-            applySendArgsAndCallback(element, scope, actions.send);
+
+            if ('send' in actions.delays) {
+
+              $timeout(function() {
+                applySendArgsAndCallback(element, scope, actions.send);
+              }, actions.delays.send)
+            } else {
+              applySendArgsAndCallback(element, scope, actions.send);
+            }
           }
+      }
+
+      function condenseAnimationsAndShortcuts(scope, animations) {
+        var cAnimations = [];
+        var defaultAnimMappings = {'scale:': ['scaleX', 'scaleY']};
+        animations.split(',').forEach(function(anim, index) {
+          for (key in defaultAnimMappings) {
+            if (anim.indexOf(key) > -1) {
+              var mappingArr = [];
+              defaultAnimMappings[key].forEach(function(map1, index) {
+                cAnimations.push(anim.replace(key, map1 + ':'));
+              })
+            }
+          }
+        })
+        if (cAnimations.length) {
+          animations = cAnimations.join(",")
+        }
+        return animations
       }
 
       function applyAnimArgs(element, scope, animations, context) {
         var stateName = context.type + '-' + context.name;
         var defaults = {"kf":60,"autoPlay":false,"toolbar":{},"hidePlot":false}
+
         var state = AnimationFrameService.init.state('', animations, element[0], defaults);
+
+
 
         if (!player) {
 
@@ -246,6 +311,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           var iMsg = msgSplit[0].trim();
           var msgScope = msgSplit[1].trim();
           var msgDelay = 0;
+
           if (msgSplit.length > 2) {
             msgDelay = parseInt(msgSplit[2].replace('delay-', ''));
           }
@@ -329,38 +395,57 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
 
         state_args = getStateArgsFromValue(state_args, arg_value);
+
         argDict[state_type] = configureNameFromArgs(state_type, state_args)
+
           // var shortCutDict = getShortcutDict(elem, arg_value);
+
         argDict.actions = getArgActions(state_args, arg_value);
+
         return argDict;
       }
 
       function configureNameFromArgs(state_type, state_args) {
+
         if (state_type === 'when') {
           var nameArr = [];
           state_args.forEach(function(arg, i ) {
 
             if (['send', 'anim', 'prop'].indexOf(arg) === -1) {
+
               nameArr.push(arg);
             }
           })
           state_args.splice(0, nameArr.length);
           return nameArr.join('-').replace('prop', '').replace('anim', '').replace('send', '')
         }
+
+
         return state_args.splice(0,1)[0]
       }
 
       function getStateArgsFromValue(state_args, arg_value) {
-        UtilitiesService.replaceAll(arg_value, ' | ', '|');
+        //SHORTCUTS GO HERE for FULL anim/send/trigger states;
+        arg_value = UtilitiesService.replaceAll(arg_value, ' | ', '|');
+
         arg_value.split('|').forEach(function(param_value, i) {
-          if (param_value.indexOf('s:[') > -1 || param_value.indexOf('send:[') > -1) {
-            state_args.push('send');
+
+          var hasDelay = (param_value + '').split(']')[1];
+          var delay = '';
+          if (hasDelay) {
+            delay = ':' + parseFloat(hasDelay.replace(':delay-', '')).toFixed(4);
+          }
+          param_value = param_value.trim();
+
+          if (param_value.indexOf('s:[') > -1 || param_value.indexOf('send:[') > -1 || param_value.indexOf('trigger:[') > -1 || param_value.indexOf('t:[') > -1) {
+
+            state_args.push('send' + delay);
           }
           if (param_value.indexOf('p:[') > -1 || param_value.indexOf('prop:[') > -1) {
-            state_args.push('prop');
+            state_args.push('prop' + delay);
           }
           if (param_value.indexOf('a:[') > -1 || param_value.indexOf('anim:[') > -1) {
-            state_args.push('anim');
+            state_args.push('anim' + delay);
 
           }
         })
@@ -369,12 +454,56 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
       function getArgActions(state_args, full_value, shortcuts) {
         var actionDict = {};
-        var detectAndAddStrArgValues = detectAndAddStrArgValues(state_args);
+        var delayDict = {};
+        var state_args_base = [];
+        state_args.forEach(function(arg, i) {state_args_base.push(arg.split(':')[0].trim())});
+        // var detectAndAddStrArgValues = detectAndAddStrArgValues(state_args);
+        var joinedSends = [];
+
+        full_value.split('|').forEach(function(stream) {
+          if (stream.indexOf('t:[') > -1 || stream.indexOf('trigger:[') > -1) {
+            param_value = stream.trim();
+            var hasDelay = (param_value + '').split(']')[1];
+            var delay = '';
+            if (hasDelay) {
+              delay = ':' + parseFloat(hasDelay.replace(':delay-', '')).toFixed(4);
+            }
+            param_value = param_value.trim();
+
+            if (state_args_base.indexOf('send') === -1) {
+              full_value = full_value.replace('t:[', 'send:[').replace('trigger:[', 'send:[').trim();
+              state_args.push('send' + delay);
+            } else {
+              // var sendIndex = full_value.split('send:[');
+              // var sendIndexStream = sendIndex[1];
+              full_value = full_value.replace('t:[', 'send:[').replace('trigger:[', 'send:[').trim();
+
+              // state_args.push('send' + delay);
+            }
+          }
+        })
+
         state_args.forEach(function(arg, i) {
+
+          var delay = arg.split(':')[1] || 0;
+          var arg = arg.split(':')[0];
+          var delay = parseFloat(delay);
           full_value = UtilitiesService.replaceAll(full_value, ': ', ':');
           full_value = UtilitiesService.replaceAll(full_value, ', ', ',');
-          actionDict[arg] = extractRelevantValueFromArg(arg, full_value);
+          if (arg in actionDict) {
+            actionDict[arg] = actionDict[arg].trim() +  '|' + extractRelevantValueFromArg(arg, full_value).trim();
+          } else {
+            actionDict[arg] = extractRelevantValueFromArg(arg, full_value);
+          }
+          if (actionDict[arg]) {
+            actionDict[arg] = actionDict[arg].trim();
+          }
+          if (delay) {
+            delayDict[arg] = delay;
+          }
         })
+
+        actionDict.delays = delayDict;
         return actionDict
 
         function detectAndAddStrArgValues(state_args) {
@@ -382,6 +511,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         }
 
         function extractRelevantValueFromArg(arg, full_value) {
+
           arg = arg.trim();
           var returnValue = full_value;
           full_value.split('|').forEach(function(value, i) {
@@ -392,11 +522,8 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               returnValue = UtilitiesService.replaceAll(returnValue, ']', '');
             }
           })
-
           return returnValue
-          // return full_value.split(arg + ':[');
         }
-
       }
 
       function detectStateType(name, camel) {

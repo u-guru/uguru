@@ -98,7 +98,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         }
       }
       resultDict.selector = processSelectors(arg_arr.shift());
-      console.log('selector', resultDict.selector[0])
       // resultDict.selector =
       // there's a start and end
       resultDict.time = {};
@@ -134,9 +133,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           }
         }
         else if (options.easing && options.duration) {
-          console.log(time_dict)
           var resultArr = TweenService.preComputeValues('time', childCount * 16, {'time':0}, {'time': 1},time_dict.options.easing, {}).cache;
-          console.log(resultArr)
           //@jeselle un-comment the line below
           // resultArr = resultArr.slice(1)
 
@@ -147,7 +144,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
               time_dict.values.push(value);
             }
           })
-          console.log('get values', time_dict.options.duration, childCount);
         }
 
 
@@ -163,7 +159,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
     function processTime(arg1, arg_arr, result_dict, state_name) {
       var timeDict = {values:[], formattedValues:[]};
-      console.log(arg1, arg_arr)
       //
         if (arg1.indexOf('[') > -1) {
           time = UtilitiesService.removeAllOccurrancesArr(arg1, ['[', ']', ' '])
@@ -174,7 +169,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         if (arg_arr.length === 1) {
            result_dict.duration = arg1;
            var lastArg = arg_arr.shift();
-           console.log(lastArg)
            result_dict.easing = lastArg.replace('-', '').replace('+', '')
            if (TweenService.getAllEasing().indexOf(result_dict.easing) > -1) {
 
@@ -415,7 +409,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     }
 
     function initCustomStateWatcher(scope, element, type, args, attr_value) {
-      if (element[0].hasAttribute('u')) return;
+      if (element[0].hasAttribute('u') && !element[0].hasAttribute('stagger-children')) return;
       if (!(type in scope.root.public.customStates)) {
               scope.root.public.customStates[type] = {};
       }
@@ -478,9 +472,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     }
 
     function parseArgs(string_args, state_name, elem) {
-      if (elem[0].hasAttribute('u')) {
-        return;
-      }
       if (window.location.href.indexOf('/admin/api/animations/prop/') > -1 && !elem[0].hasAttribute('player-control')) {
         return {};
       }

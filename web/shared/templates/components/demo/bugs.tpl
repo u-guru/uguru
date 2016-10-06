@@ -4,50 +4,18 @@
 			<div class="bg-moxie flex-center width-128 height-128 radius-2"/>
 			<div class="bg-moxie p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[scaleY:0, transform-origin:center top]"
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 012d3ccbd1b9aa02e801cb1f40d499a9aa35dd82
 				on-init="a:[scaleY:0:1:1000:(.8,.1,1,.05):0:1:f]"
 				on-click="a:[scaleY:0:1:1000:(.8,.1,1,.05):0:1:f]">
 				<h1 class="txt-14 semibold txt-center">scaleY<br/>cubic-bezier</h1>
-<<<<<<< HEAD
-=======
-				on-init="a:[scaleY:0:1:1000:(.8,.1,1,.05):0:1:f]">
-				<h1 class="txt-14 semibold txt-center lowercase">scaleY<br/>cubic-bezier</h1>
->>>>>>> 4b9b7363f568cd0cc6204063ce71880b4c99436f
-=======
->>>>>>> 012d3ccbd1b9aa02e801cb1f40d499a9aa35dd82
 			</div>
 		</li>
 
 		<li>
 			<div class="bg-moxie p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[opacity:0, transform-origin:center center]"
-<<<<<<< HEAD
-<<<<<<< HEAD
-				on-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
-				on-click="a:[bounceIn-subtle:1000:linear:0:1:f]"
-				>
-				<h1 class="txt-14 semibold txt-center">Custom transforms no longer work<br/>separate opacity</h1>
-			</div>
-		</li>
-
-		<li>
-			<div class="bg-auburn flex-center width-128 height-128 radius-2"
-				u
-				on-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
-				on-click="a:[bounceIn-subtle:1000:linear:0:1:f]">
-				<h1 class="txt-14 semibold txt-center">custom transforms no longer work</h1>
-=======
-				on-init="a:[bounceIn-subtle-o:1000:linear:0:1:f, opacity:0:1:800:linear:0:1:f]">
-				<h1 class="txt-14 semibold txt-center lowercase">custom transforms no longer work</h1>
->>>>>>> 4b9b7363f568cd0cc6204063ce71880b4c99436f
-=======
 				on-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
 				on-click="a:[bounceIn-subtle:1000:linear:0:1:f]">
 				<h1 class="txt-14 semibold txt-center lowercase">custom transforms work</h1>
->>>>>>> 012d3ccbd1b9aa02e801cb1f40d499a9aa35dd82
 			</div>
 		</li>
 
@@ -98,6 +66,16 @@
 		</li>
 
 		<li>
+			<a class="bg bg-moxie p10xy flex-center width-128 height-128 radius-2"
+				u init-with="p:[transform-origin:center center]"
+				on-click="a:[scaleX:1:1.5:1000:easeOutElastic:0:1:f, scaleY:1:1.5:1000:easeOutElastic:0:1:f]"
+				on-mouseenter="a:[scaleX:1:1.5:1000:easeOutElastic:0:1:f]"
+				on-mouseleave="a:[scaleX:1.5:1:1000:easeOutElastic:0:1:f]">
+				<h1 class="txt-14 semibold txt-center">on-mouseenter + scaleX</h1>
+			</a>
+		</li>s
+
+		<li>
 			<a class="bg bg-auburn p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
 				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]">
@@ -106,97 +84,89 @@
 		</li>
 
 		<li>
-			<a class="bg bg-moxie p10xy flex-center width-128 height-128 radius-2"
-				u init-with="p:[transform-origin:center center]"
-				on-click="a:[scaleX:1:1.5:1000:easeOutElastic:0:1:f, scaleY:1:1.5:1000:easeOutElastic:0:1:f]"
-				on-mouseenter="a:[scaleX:1:1.5:1000:easeOutElastic:0:1:f]"
-				on-mouseleave="a:[scaleX:1.5:1:1000:easeOutElastic:0:1:f]">
-				<h1 class="txt-14 semibold txt-center">on-mouseenter + scaleX</h1>
-			</a>
-		</li>
-
-		<li>
 			<!-- Tried scaleY, translateY, and rotate -->
 			<div class="bg-auburn flex-center width-128 height-128 radius-2"
 				u init-with="p:[scaleX:0, transform-origin:center top]"
 				on-init="a:[scaleX:0:1:1000:easeOutSine:0:2:a]">
-				<h1 class="txt-14 semibold txt-center">Iteration count doesn't work for custom transforms</h1>
+				<h1 class="txt-14 semibold txt-center">Iteration count (2) doesn't work for custom transforms</h1>
 			</div>
 		</li>
 
 		<li>
-			<div class="bg-auburn p10xy flex-center width-128 height-128 radius-2"
+			<div class="bg-gold p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
-				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]:delay-2500">
-				<h1 class="txt-14 semibold txt-center">external delays don't work</h1>
+				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:1500:1:f]:delay-1000">
+				<h1 class="txt-14 semibold txt-center">external delays don't work<br/>:delay-2500</h1>
 			</div>
 		</li>
 
-		<li>
+		<!-- <li>
 			<div class="relative bg-auburn p10xy flex-center-wrap width-128 height-128 radius-2"
 				u init-with="p:[opacity:0]"
-				on-init="a:[bounceInDown-subtle:1000:linear:0:1:f] | t:[on-enter:children]">
-				<!-- s:[on-enter:children] -->
+				on-init="a:[bounceInDown-subtle:1000:linear:0:1:f] | t:[on-enter:children] | send:[on-enter:children]">
 				<h1 class="txt-14 semibold txt-center full-x">trigger or alt send doesn't work</h1>
-				<h1 class="txt-18 semibold txt-center full-x absolute bottom-0 left-0 p10xy" u init-with="p:[opacity:0]"
+				<h1 class="txt-18 black txt-center full-x absolute bottom-0 left-0 p10xy"
+					u init-with="p:[opacity:0]"
 					on-enter="a:[bounceIn-subtle:800:linear:250:1:f]">works</h1>
 			</div>
-		</li>
+		</li> -->
 
 		<li>
 			<div class="relative bg-auburn p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
 				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]:delay-2500">
-				<h1 class="txt-14 semibold txt-center">stagger-children doesn't work</h1>
-				<ul class="pf-rating rating-stars absolute bottom-0 left-0" data-rating="4" data-half="true">
-					<stagger-children on-enter="[rating]:600:easeOutCirc">
-						<li rating class="rating"
-							u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
-							on-init="t-enter"
-							on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
-							<svg viewBox="0 0 100 100">
-								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-							</svg>
-						</li>
-						<li rating class="rating"
-							u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
-							on-init="t-enter"
-							on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
-							<svg viewBox="0 0 100 100">
-								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-							</svg>
-						</li>
-						<li rating class="rating"
-							u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
-							on-init="t-enter"
-							on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
-							<svg viewBox="0 0 100 100">
-								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-							</svg>
-						</li>
-						<li rating class="rating"
-							u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
-							on-init="t-enter"
-							on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
-							<svg viewBox="0 0 100 100">
-								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-							</svg>
-						</li>
-						<li rating class="rating"
-							u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
-							on-init="t-enter"
-							on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
-							<svg viewBox="0 0 100 100">
-								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-							</svg>
-						</li>
-					</stagger-children>
-				</ul>
+				<h1 class="txt-14 semibold txt-center">stagger-children doesn't work [+trigger][+shortcuts]</h1>
+				<div class="absolute bottom-0 left-0 flex-center full-x">
+					<ul class="pf-rating rating-stars" data-rating="4" data-half="true">
+						<stagger-children on-init="[rating]:600:easeOutCirc">
+							<li rating class="rating"
+								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
+								on-init="t-enter"
+								on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+							<li rating class="rating"
+								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
+								on-init="t-enter"
+								on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+							<li rating class="rating"
+								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
+								on-init="t-enter"
+								on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+							<li rating class="rating"
+								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
+								on-init="t-enter"
+								on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+							<li rating class="rating"
+								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
+								on-init="t-enter"
+								on-enter="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+						</stagger-children>
+					</ul>
+				</div>
 			</div>
 		</li>
 
@@ -205,8 +175,7 @@
 				<h1 class="txt-14 semibold txt-center">layered when states on same element as on-init don't work</h1>
 				<a class="category-tile bg-household absolute top-0 left-0 full-xy" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
 					u init-with="p:[opacity:0]"
-					on-init="s:[category-tile-init:public]"
-					when-category-tile-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
+					on-init="s:[category-tile-init:public:delay-100] | a:[bounceIn-subtle:1000:easeTo:0:1:f]"
 					on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]">
 					<svg width="128px" height="128px" viewBox="0 0 150 150">
 						<rect x="0" y="0" width="128" height="128" fill="none"></rect>
@@ -233,7 +202,7 @@
 		</li>
 
 		<li>
-			<a class="bg bg-auburn p10xy flex-center width-128 height-128 radius-2"
+			<a class="bg bg-gold p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
 				on-mouseenter="a:[scale:1:1.5:1000:easeOutElastic:0:1:f]"
 				on-mouseleave="a:[scale:1.5:1:1000:easeOutElastic:0:1:f]">
