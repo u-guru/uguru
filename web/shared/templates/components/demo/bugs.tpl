@@ -48,7 +48,7 @@
 
 		<li>
 			<div class="bg-moxie p10xy flex-center width-128 height-128 radius-2"
-				u init-with="p:[opacity:0, rotate:40deg, transform-origin:center top]"
+				u init-with="p:[opacity:1, rotate:40deg, transform-origin:center top]"
 				on-init="s:[demo-1-state:self]"
 				on-click="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]|s:[demo-1-state:self]"
 				when-demo-1-state="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]">
@@ -99,7 +99,6 @@
 				<h1 class="txt-14 semibold txt-center">external delays don't work<br/>:delay-2500</h1>
 			</div>
 		</li>
-
 
 		<li>
 			<div class="relative bg-auburn p10xy flex-center width-128 height-128 radius-2"
@@ -155,7 +154,7 @@
 			</div>
 		</li>
 
-		<li>
+		<!-- <li>
 			<div class="relative bg-gold p10xy flex-center width-128 height-128 radius-2">
 				<h1 class="txt-14 semibold txt-center">layered when states on same element as on-init don't work</h1>
 				<a class="category-tile bg-household absolute top-0 left-0 full-xy" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
@@ -185,7 +184,7 @@
 					<span class="category-tile-count">6</span>
 				</a>
 			</div>
-		</li>
+		</li> -->
 
 		<li>
 			<a class="bg bg-gold p10xy flex-center width-128 height-128 radius-2"
