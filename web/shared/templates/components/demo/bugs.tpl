@@ -92,7 +92,7 @@
 		</li> -->
 
 		<li>
-			<div class="bg-gold
+			<div class="bg-moxie
 			 p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
 				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeInOutElastic:0:1:f]:delay-2500 | send:[show-header-elem:public]:delay-1000">
@@ -100,25 +100,22 @@
 			</div>
 		</li>
 		<li>
-			<div class="bg-gold
-			 p10xy flex-center width-128 height-128 radius-2"
-				u init-with="p:[transform-origin:center center]"
-
-				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeInOutElastic:0:1:f]:delay-2500 | send:[show-header-elem:public]:delay-1000">
+			<div class="bg-moxie p10xy flex-center width-128 height-128 radius-2"
+				u init-with="p:[op:0, tro:center center]"
+				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeInOutElastic:0:1:f] | s:[show-header-elem:public]:delay-1000">
 				<h1 class="txt-14 semibold txt-center">shortcuts</h1>
 			</div>
 		</li>
 		<li>
-			<div class="bg-auburn
-			 p10xy flex-center width-128 height-128 radius-2"
+			<div class="bg-auburn p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
-				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeInOutElastic:0:1:f]:delay-2500 | send:[show-header-elem:public]:delay-1000">
+				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeInOutElastic:0:1:f]:delay-200 | send:[show-header-elem:public]:delay-1000">
 				<h1 class="txt-14 semibold txt-center">triggers</h1>
 			</div>
 		</li>
 
 		<li>
-			<div class="relative bg-gold p10xy flex-center width-128 height-128 radius-2"
+			<div class="relative bg-auburn p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
 				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]:delay-2500">
 				<h1 class="txt-14 semibold txt-center">stagger-children doesn't work</h1>
@@ -129,7 +126,7 @@
 								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
 								on-init="s:[stars-come-out:public:delay-1000]"
 								when-stars-come-out="a:[opacity:0:1:200:easeOutSine:0:1:f, scaleX:0:1:500:easeOutBack:0:1:f, scaleY:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
-								<svg viewBox="0 0 100 100">
+								<svg class="fill-white" viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
@@ -138,7 +135,7 @@
 								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
 								on-init="s:[stars-come-out:public:delay-1000]"
 								when-stars-come-out="a:[opacity:0:1:200:easeOutSine:0:1:f, scaleX:0:1:500:easeOutBack:0:1:f, scaleY:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
-								<svg viewBox="0 0 100 100">
+								<svg class="fill-white" viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
@@ -147,7 +144,7 @@
 								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
 								on-init="s:[stars-come-out:public:delay-1000]"
 								when-stars-come-out="a:[opacity:0:1:200:easeOutSine:0:1:f, scaleX:0:1:500:easeOutBack:0:1:f, scaleY:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
-								<svg viewBox="0 0 100 100">
+								<svg class="fill-white" viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
@@ -156,7 +153,7 @@
 								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
 								on-init="s:[stars-come-out:public:delay-1000]"
 								when-stars-come-out="a:[opacity:0:1:200:easeOutSine:0:1:f, scaleX:0:1:500:easeOutBack:0:1:f, scaleY:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
-								<svg viewBox="0 0 100 100">
+								<svg class="fill-white" viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
@@ -165,7 +162,7 @@
 								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
 								on-init="s:[stars-come-out:public:delay-1000]"
 								when-stars-come-out="a:[opacity:0:1:200:easeOutSine:0:1:f, scaleX:0:1:500:easeOutBack:0:1:f, scaleY:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
-								<svg viewBox="0 0 100 100">
+								<svg class="fill-white" viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
@@ -176,13 +173,9 @@
 			</div>
 		</li>
 
-<<<<<<< HEAD
+
 		<!-- <li>
-			<div class="relative bg-gold p10xy flex-center width-128 height-128 radius-2">
-=======
-		<li>
 			<div class="relative bg-moxie p10xy flex-center width-128 height-128 radius-2">
->>>>>>> c81c9d5ad465ce51585c496902cb124294672aaa
 				<h1 class="txt-14 semibold txt-center">layered when states on same element as on-init don't work</h1>
 				<a class="category-tile bg-household absolute top-0 left-0 full-xy" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
 					u init-with="p:[opacity:0]"
