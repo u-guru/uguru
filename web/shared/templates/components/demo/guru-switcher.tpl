@@ -1,10 +1,9 @@
-<div class="guru-switch-container" reference="http://codepen.io/teamuguru/pen/d973fb967c17077224ca95123209333f">
+<div class="guru-switch-container" reference="http://codepen.io/teamuguru/pen/d973fb967c17077224ca95123209333f" ng-controller="AdminDemosController as demo">
 	<div class="guru-switch-slider">
 		<svg class="shadow" viewBox="0 0 300 300">
 			<ellipse fill="#2B3234" opacity="0.1" cx="150" cy="258.94" rx="54" ry="8.94"></ellipse>
 		</svg>
-		<div class="move hair back" data-move="0" data-index="1"
-			u when-hair-move="p:[transform:translateX(-600px)]">
+		<div class="move hair back" data-move="0" data-index="1">
 			<svg class="g1" viewBox="0 0 300 300"></svg>
 			<svg class="g2" viewBox="0 0 300 300">
 				<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -24,7 +23,7 @@
 			</svg>
 		</div>
 		<div class="move right-prop back" data-move="0" data-index="1"
-			u when-right-prop-move="p:[transform:translateX(-600px)]">
+			>
 			<svg class="g1" viewBox="0 0 300 300"></svg>
 			<svg class="g2" viewBox="0 0 300 300"></svg>
 			<svg class="g3" viewBox="0 0 300 300"></svg>
@@ -41,7 +40,7 @@
 			</svg>
 		</div>
 		<div class="move top back" data-move="0" data-index="1"
-			u when-top-move="p:[transform:translateX(-600px)]">
+			>
 			<svg class="g1" viewBox="0 0 300 300">
 				<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
 					<path d="M202.422702,165.99636 L204.697451,162.08393 C205.387152,160.897688 206.90726,160.486999 208.111328,161.177307 C209.30706,161.862835 209.712547,163.388343 209.027578,164.566448 L207.789404,166.696031 C210.932909,167.156252 213.111328,167.868347 213.111328,170.320971 C213.111328,175.177034 200.099669,174.040756 192.294365,169.110706 C179.734131,161.177307 172.90917,145.350269 171.525879,142.850675 L163.131836,139.013722 L168.150505,127.830002 C168.150505,127.830002 175.570552,132.759829 177.446404,136.445113 C181.265125,143.947344 184.908078,155.55425 190.644658,160.743548 C194.076172,164.204224 198.729655,165.426996 202.422702,165.99636 Z" stroke="#33534D" fill="#F9ECE5"></path>
@@ -84,7 +83,7 @@
 			<svg class="j5" viewBox="0 0 300 300"></svg>
 		</div>
 		<div class="move bottom" data-move="0" data-index="1"
-			u when-bottom-move="p:[transform:translateX(-600px)]">
+			>
 			<svg class="g1" viewBox="0 0 300 300">
 				<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
 					<path d="M151.368114,180.265197 C147.663105,180.265197 144.889077,180.421709 142.397224,180.65069 C135.935204,184.589284 101.495753,205.976537 107.268442,210.975388 C110.291864,213.593515 132.588396,212.897281 132.588396,212.897281 C134.228205,213.057915 135.571288,214.546426 135.571288,216.20738 L135.571288,216.959332 C135.571288,218.629854 134.235785,220.073096 132.588358,220.204272 C132.588358,220.204272 111.627373,222.361025 98.5692236,217.581212 C85.5110743,212.801399 126.477427,177.622378 126.477427,177.622378 C126.477427,177.622378 127.626463,174.729508 127.90918,173.2905 C127.937306,173.145375 129.516846,165.812378 129.516846,165.812378 C134.588358,165.812378 164.428712,164.411621 169.85437,165.149658 C169.85437,165.149658 171.514614,173.001041 171.584595,173.2905 C171.933692,174.734459 173.266841,177.622378 173.266841,177.622378 C173.266841,177.622378 216.488926,212.801399 203.430776,217.581212 C190.372627,222.361025 169.411642,220.204272 169.411642,220.204272 C167.764215,220.073096 166.428712,218.629854 166.428712,216.959332 L166.428712,216.20738 C166.428712,214.546426 167.76329,213.040659 169.407038,212.864929 C169.407038,212.864929 191.410989,213.850829 194.731558,210.975388 C200.53277,205.951838 166.4285,184.548044 160.339004,180.794315 C157.388169,180.488833 154.047476,180.265197 151.368114,180.265197 Z" stroke="#40484B" fill="#8A9EA3"></path>
@@ -182,7 +181,7 @@
 			</svg>
 		</div>
 		<div class="move right-prop mid" data-move="0" data-index="1"
-			u when-right-prop-move="p:[transform:translateX(-600px)]">
+			>
 			<svg class="g1" viewBox="0 0 300 300"></svg>
 			<svg class="g2" viewBox="0 0 300 300"></svg>
 			<svg class="g3" viewBox="0 0 300 300"></svg>
@@ -203,7 +202,7 @@
 			</svg>
 		</div>
 		<div class="move top mid" data-move="0" data-index="1"
-			u when-top-move="p:[transform:translateX(-600px)]">
+			>
 			<svg class="g1" viewBox="0 0 300 300"></svg>
 			<svg class="g2" viewBox="0 0 300 300">
 				<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -295,7 +294,7 @@
 			</svg>
 		</div>
 		<div class="move face" data-move="0" data-index="1"
-			u when-face-move="p:[transform:translateX(-600px)]">
+			>
 			<svg class="g1" viewBox="0 0 300 300">
 				<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
 					<path d="M103.618796,97.8229519 C101.823924,101.426555 104.214443,107.393761 107.799805,109.628418 C111.385166,111.863075 113.724121,107.984375 113.724121,107.984375 C120.591797,121.142578 127.716954,132.076715 152.534461,131.15378 C173.501953,130.374023 182.398438,118.168945 186.182899,99.6247537 C186.182899,99.6247537 189.756373,102.310323 192.020996,99.0678711 C194.285619,95.8254197 196.054694,91.5166455 194.259822,87.9130421 C192.46495,84.3094388 189.772642,83.4085374 186.182899,85.2103392 C187.226985,79.226731 184.901237,49.1726668 144.897461,51.9702148 C106.208984,54.6757813 107.224064,79.0364968 109.003411,94.2193483 C109.003411,94.2193483 105.413668,94.2193483 103.618796,97.8229519 Z" stroke="#33534D" fill="#F9EDE6"></path>
@@ -366,7 +365,7 @@
 			</svg>
 		</div>
 		<div class="move top front" data-move="0" data-index="1"
-			u when-top-move="p:[transform:translateX(-600px)]">
+			>
 			<svg class="g1" viewBox="0 0 300 300"></svg>
 			<svg class="g2" viewBox="0 0 300 300"></svg>
 			<svg class="g3" viewBox="0 0 300 300">
@@ -387,8 +386,7 @@
 			<svg class="j4" viewBox="0 0 300 300"></svg>
 			<svg class="j5" viewBox="0 0 300 300"></svg>
 		</div>
-		<div class="move hair mid" data-move="0" data-index="1"
-			u when-hair-move="p:[transform:translateX(-600px)]">
+		<div class="move hair mid" data-move="0" data-index="1">
 			<svg class="g1" viewBox="0 0 300 300">
 				<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
 					<path d="M156.265647,41.854318 C162.668821,34.9877545 162.497417,30.0794008 155.630854,23.6762268 C148.76429,17.2730528 138.007043,17.6487042 131.603869,24.5152676 C125.200695,31.381831 125.372098,36.2901848 132.238661,42.6933588" stroke="#33534D" fill="#69B3A5"></path>
@@ -444,7 +442,7 @@
 			<svg class="j5" viewBox="0 0 300 300"></svg>
 		</div>
 		<div class="move glasses" data-move="0" data-index="1"
-			u when-glasses-move="p:[transform:translateX(-600px)]">
+			>
 			<svg class="g1" viewBox="0 0 300 300">
 				<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
 					<circle stroke="#33534D" fill="#33534D" cx="130" cy="97" r="3"></circle>
@@ -513,8 +511,7 @@
 				</g>
 			</svg>
 		</div>
-		<div class="move hair front" data-move="0" data-index="1"
-			u when-hair-move="p:[transform:translateX(-600px)]">
+		<div class="move hair front" data-move="0" data-index="1">
 			<svg class="g1" viewBox="0 0 300 300"></svg>
 			<svg class="g2" viewBox="0 0 300 300"></svg>
 			<svg class="g3" viewBox="0 0 300 300"></svg>
@@ -532,7 +529,7 @@
 			</svg>
 		</div>
 		<div class="move left-prop" data-move="0" data-index="1"
-			u when-left-prop-move="p:[transform:translateX(-600px)]">
+			>
 			<svg class="g1" viewBox="0 0 300 300">
 				<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
 					<path d="M100.686906,176.855329 L103.618184,176.17859 C104.683928,175.932544 105.356469,174.854372 105.106935,173.773522 L103.311165,165.995185 C103.062238,164.916966 101.99052,164.238717 100.918772,164.486149 L75.5688139,170.338648 C74.5030707,170.584695 73.830529,171.662867 74.0800628,172.743716 L75.8758335,180.522054 C76.1247598,181.600272 77.1964782,182.278522 78.2682265,182.031089 L81.1995048,181.35435 L80.0766684,176.490811 C79.8271346,175.409962 80.5000387,174.331706 81.5646186,174.085928 L97.1724775,170.48257 C98.2437836,170.23524 99.3151434,170.913572 99.5640697,171.99179 L100.686906,176.855329 L100.686906,176.855329 Z" stroke="#514551" fill="#514551"></path>
@@ -639,7 +636,7 @@
 			</svg>
 		</div>
 		<div class="move right-prop" data-move="0" data-index="1"
-			u when-right-prop-move="p:[transform:translateX(-600px)]">
+			>
 			<svg class="g1" viewBox="0 0 300 300">
 				<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
 					<path d="M194.54752,154.119866 C194.577702,153.845035 194.819394,153.672391 195.090652,153.735016 L214.6962,158.261313 C214.965982,158.323597 215.111531,158.578025 215.015657,158.845308 L206.891964,181.49289 C206.798613,181.753137 206.51292,181.915623 206.228632,181.84999 L192.360657,178.648315 C192.08766,178.585289 191.890003,178.318831 191.921001,178.03657 L194.54752,154.119866 L194.54752,154.119866 Z" stroke="#60544E" fill="#A0938C"></path>
@@ -689,31 +686,31 @@
 		<ul>
 			<li>
 				<button id="top" class="button"
-					u on-click="s:[top-move:public]">top</button>
+					on-click="s:[top-move:public]">top</button>
 			</li>
 			<li>
 				<button id="bottom" class="button"
-					u on-click="s:[bottom-move:public]">bottom</button>
+					on-click="s:[bottom-move:public]">bottom</button>
 			</li>
 			<li>
 				<button id="face" class="button"
-					u on-click="s:[face-move:public]">face</button>
+					on-click="s:[face-move:public]">face</button>
 			</li>
 			<li>
 				<button id="hair" class="button"
-					u on-click="s:[hair-move:public]">hair</button>
+					on-click="s:[hair-move:public]">hair</button>
 			</li>
 			<li>
 				<button id="glasses" class="button"
-					u on-click="s:[glasses-move:public]">glasses</button>
+					on-click="s:[glasses-move:public]">glasses</button>
 			</li>
 			<li>
 				<button id="left-prop" class="button"
-					u on-click="s:[left-prop-move:public]">left-prop</button>
+					on-click="s:[left-prop-move:public]">left-prop</button>
 			</li>
 			<li>
 				<button id="right-prop" class="button"
-					u on-click="s:[right-prop-move:public]">right-prop</button>
+					on-click="s:[right-prop-move:public]">right-prop</button>
 			</li>
 		</ul>
 	</div>
@@ -740,4 +737,5 @@
 			});
 			});
 	</script> -->
+
 </div>

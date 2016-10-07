@@ -1,7 +1,5 @@
-<div class="perspective-container full-xy flex-center p15xy">
-
-	<!-- ng-if='activeType === "short"' -->
-	<div class="student-card short">
+<div class="perspective-container full-xy flex-center p15xy" types='flip, short' default-type="flip">
+	<div class="student-card short" ng-if='activeType === "short"'>
 		<svg width="240px" height="50px" viewBox="0 0 240 50">
 			<rect fill="none" x="0" y="0" width="240" height="50"></rect>
 		</svg>
@@ -48,8 +46,7 @@
 		</div>
 	</div>
 
-	<!-- ng-if='activeType === "flip"' -->
-	<div class="student-card"
+	<div class="student-card" ng-if='activeType === "flip"'
 		init-with="p-op"
 		on-init="s:[student-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]"
 		on-mouse-enter="s:[flip-enter:public]"
