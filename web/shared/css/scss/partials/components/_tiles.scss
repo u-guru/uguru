@@ -2296,9 +2296,10 @@
 			@include round;
 			width: 72px;
 			height: 72px;
+			padding: 6px;
 			svg {
 				* {
-					@include svg-stroke(white, 2);
+					@include svg-stroke(white, 3);
 				}
 			}
 		}
@@ -2356,6 +2357,30 @@
 			~ .category-tile-count {
 				@include opacity(1);
 				background: white;
+			}
+		}
+	}
+	&.mini {
+		> svg {
+			width: auto;
+			height: 90px;
+		}
+		.category-tile-inside {
+			.category-tile-border {
+				height: 3px;
+			}
+			.category-tile-icon {
+				width: 42px;
+				height: 42px;
+				padding: 4px;
+				svg {
+					* {
+						stroke-width: 4px;
+					}
+				}
+			}
+			h1 {
+				font-size: 14px;
 			}
 		}
 	}

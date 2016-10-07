@@ -1,0 +1,23 @@
+@import '../mixin';
+
+.chalkboard-skill-grid {
+	width: 100%;
+	max-width: 492px;
+	> ul {
+		//
+		@include flex;
+		@include flex-center;
+		@include flex-wrap;
+		//
+		padding: 7.5px;
+		> li {
+			padding: 7.5px;
+		}
+	}
+}
+
+@media screen and (min-width: 768px) and (min-height: 900px) {
+	.chalkboard-skill-grid {
+		max-width: 780px;
+	}
+}
