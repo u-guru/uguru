@@ -33,7 +33,9 @@ angular.module('uguru.shared.controllers', [])
     RootService.setInspectableElements(pushElemPlayer(root.inspector));
     RootService.getCustomEasingAnimations(root)();
     $timeout(function() {
+      RootService.animations = root.public;
       $scope.$apply();
+
       registerAnimationShortcuts();
 
     })
