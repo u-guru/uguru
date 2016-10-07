@@ -49,7 +49,7 @@ angular.module('uguru.shared.directives')
               var parent = lElem.parent();
 
 
-              parent[0].removeChild(lElem[0])
+              parent && parent.children().length && parent[0].removeChild(lElem[0])
                   transclude(lScope, function(clone, innerScope) {
 
                     var clonedChildrenWithAttr = [];

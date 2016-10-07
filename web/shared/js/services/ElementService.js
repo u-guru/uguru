@@ -6,11 +6,12 @@ angular.module('uguru.shared.services')
     'DirectiveService',
     'AnimationFrameService',
     '$window',
+    'RootService',
     ElementService
         ]);
 
-function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window) {
-      var rShortcuts = {special: getSpecialShortcuts(), propValues: {}, props: {}, values:{}};
+function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window, RootService) {
+      var rShortcuts = {special: getSpecialShortcuts(), animations:null, propValues: {}, props: {}, values:{}};
       var stateShortcuts = {};
       var stateTypes = ['on', 'when', 'init'];
       var onStateMappings = {
@@ -132,8 +133,15 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (type === 'init' && name == 'with') {
             return function(element) {
 
+              if (!rShortcuts.animations) {
+                var rAnimations = RootService.animations;
+                rShortcuts.cssPropValues = RootService.animations.customShortcuts.cssPropValues;
+                rShortcuts.cssProps = RootService.animations.customShortcuts.cssProps;
+                rShortcuts.cmds = RootService.animations.customShortcuts.cmds;
+                rShortcuts.args = RootService.animations.customShortcuts.args;
+              }
 
-              applyPropsToElement(element, actions.prop);
+              applyPropsToElement(element, actions.prop, rShortcuts);
             }
           }
           if (type === 'on') {
@@ -268,6 +276,8 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               defaultAnimMappings[key].forEach(function(map1, index) {
                 cAnimations.push(anim.replace(key, map1 + ':'));
               })
+            } else {
+              cAnimations.push(anim);
             }
           }
         })
@@ -307,6 +317,13 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       function applySendArgsAndCallback(element, scope, messages) {
 
         messages.split(',').forEach(function(msg, i) {
+          if (!rShortcuts.cmds) {
+            rShortcuts.cmds = RootService.animations.customShortcuts.cmds;;
+          }
+          if (msg in rShortcuts.cmds) {
+            msg = rShortcuts.cmds[msg];
+            console.log(msg)
+          }
           var msgSplit = msg.split(':')
           var iMsg = msgSplit[0].trim();
           var msgScope = msgSplit[1].trim();
@@ -382,12 +399,32 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
 
-      function applyPropsToElement(elem, properties) {
+      function applyPropsToElement(elem, properties, shortcuts) {
+
+        // properties.split(',').forEach(function() )
+        var propertyArr = [];
+        properties = UtilitiesService.replaceAll(properties, ', ', ',');
+        var propertySplit = properties.split(',');
+
+        properties.split(',').forEach(function(prop, i) {
+          var prop = prop.trim();
+
+          if (prop.toLowerCase() in rShortcuts.cssPropValues) {
+            prop = rShortcuts.props[prop] + "";
+          }
+          var iPropSplit = prop.split(':');
+          var propKey = iPropSplit[0].trim();
+          var propValue = iPropSplit[1].trim();
+          if (propKey.toLowerCase() in rShortcuts.cssProps) {
+            propKey = rShortcuts.cssProps[propKey];
+          }
+          propertyArr.push({key: propKey, value: propValue});
+        })
+
+        // properties = parsePropertiesWithShortcuts(elem, properties);
 
 
-        properties = parsePropertiesWithShortcuts(elem, properties);
-
-        properties.forEach(function(kv, i) {
+        propertyArr.forEach(function(kv, i) {
 
           elem.css(kv.key, kv.value);
         })
@@ -466,6 +503,13 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
         //trigger
         full_value.split('|').forEach(function(stream) {
+          if (!rShortcuts.cmds) {
+            rShortcuts.cmds = RootService.animations.customShortcuts.cmds;
+          }
+
+          if (stream && stream.length && stream in rShortcuts.cmds) {
+            stream = rShortcuts.cmds[stream];
+          }
           if (stream.indexOf('t:[') > -1 || stream.indexOf('trigger:[') > -1) {
             param_value = stream.trim();
             var hasDelay = (param_value + '').split(']')[1];

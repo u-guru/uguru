@@ -41,7 +41,8 @@ function RootService($timeout, $state) {
         getCustomEasingAnimations: getCustomEasingAnimations,
         getCustomAnimations: getCustomAnimations,
         getAnimShortcuts: getAnimShortcuts,
-        customShortcuts: customShortcuts
+        customShortcuts: customShortcuts,
+        animations: animations
     }
 
     function getAnimShortcuts(prop) {
