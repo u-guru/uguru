@@ -1,18 +1,16 @@
 <div class="full-xy flex-center p15xy">
 	<div class="faq-card" u
 		init-with="p:[opacity:0]"
-		on-init="s:[faq-item-init:public]"
-		when-faq-item-init="a:[slideInUp-subtle:1000:linear:0:1:f]">
+		on-init="a:[slideInUp-subtle:1000:linear:0:1:f]">
 		<dt>
 			<a class="bg bg-shamrock"
-				init-default
-				on-click="s:[faq-item-clicked:public]">
-				<h1 u init-with="p:[opacity:0]"
-					when-faq-item-init="p:[opacity:0:1:250:easeOutQuart:250:1:f]">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt?</h1>
-				<div u init-with="p:[opacity:0]"
-					when-faq-item-init="p:[opacity:0:1:250:easeOutQuart:500:1:f]">
-					<span u ng-include="root.base_url + 'shared/templates/components/svg/main/down.html'"
-						init-with="p:[transform-origin:center center]"
+				u on-click="s:[faq-item-clicked:public]">
+				<h1 u init-with="p:[op:0]"
+					on-init="p:[opacity:0:1:250:easeOutQuart:250:1:f]">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt?</h1>
+				<div u init-with="p:[op:0]"
+					on-init="p:[opacity:0:1:250:easeOutQuart:500:1:f]">
+					<span ng-include="root.base_url + 'shared/templates/components/svg/main/down.html'"
+						u init-with="p:[tro:center center]"
 						when-faq-item-clicked="p:[rotate:0deg:180deg:250:easeOutSine:0:1:f]"
 						when-faq-item-closed="p:[rotate:180deg:0deg:250:easeOutSine:0:1:f]"></span>
 				</div>

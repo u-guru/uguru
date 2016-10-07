@@ -1,5 +1,5 @@
 <div class="perspective-container full-xy flex-center-wrap p15xy" types="link-no-photo, photo, photo-price, photo-price-moxie, photo-price-crimson, link-color, link-square, check-square" default-type="link-square">
-	<a class="category-tile bg-household no-photo"
+	<a ng-if='activeType === "link-no-photo"' class="category-tile bg-household no-photo"
 		u init-with="p:[opacity:0]"
 		on-init="s:[category-tile-init:public]"
 		when-category-tile-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
@@ -23,7 +23,7 @@
 		</div>
 	</a>
 
-	<div class="category-tile bg-household" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
+	<div ng-if='activeType === "photo"' class="category-tile bg-household" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
 		u init-with="p:[opacity:0]"
 		on-init="s:[category-tile-init:public]"
 		when-category-tile-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
@@ -49,7 +49,7 @@
 		</div>
 	</div>
 
-	<div class="category-tile bg-household with-price" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
+	<div ng-if='activeType === "photo-price"' class="category-tile bg-household with-price" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
 		u init-with="p:[opacity:0]"
 		on-init="s:[category-tile-init:public]"
 		when-category-tile-init="a:[bounceIn-subtle:1000:linear:1:f]"
@@ -78,7 +78,7 @@
 			when-category-tile-init="a:[scaleInX-subtle:1000:linear:650:1:f]"><div>$25/hr AVG</div></div>
 	</div>
 
-	<div class="category-tile bg-household with-price price-moxie" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
+	<div ng-if='activeType === "photo-price-moxie"' class="category-tile bg-household with-price price-moxie" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
 		u init-with="p:[opacity:0]"
 		on-init="s:[category-tile-init:public]"
 		when-category-tile-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
@@ -107,7 +107,7 @@
 			when-category-tile-init="a:[scaleInX-subtle:1000:linear:650:1:f]"><div>$25/hr AVG</div></div>
 	</div>
 
-	<div class="category-tile bg-household with-price price-crimson" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
+	<div ng-if='activeType === "photo-price-crimson"' class="category-tile bg-household with-price price-crimson" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
 		u init-with="p:[opacity:0]"
 		on-init="s:[category-tile-init:public]"
 		when-category-tile-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
@@ -136,7 +136,7 @@
 			when-category-tile-init="a:[scaleInX-subtle:1000:linear:650:1:f]"><div>$25/hr AVG</div></div>
 	</div>
 
-	<a class="category-tile bg-household no-photo"
+	<a ng-if='activeType === "link-color"' class="category-tile bg-household no-photo"
 		u init-with="p:[opacity:0]"
 		on-init="s:[category-tile-init:public]"
 		when-category-tile-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
@@ -162,7 +162,7 @@
 		</div>
 	</a>
 
-	<a class="category-tile bg-household" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
+	<a ng-if='activeType === "link-square"' class="category-tile bg-household" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
 		u init-with="p:[opacity:0]"
 		on-init="s:[category-tile-init:public]"
 		when-category-tile-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
@@ -189,7 +189,7 @@
 		<span class="category-tile-count">6</span>
 	</a>
 
-	<div class="category-tile bg-household no-photo"
+	<div ng-if='activeType === "check-square"' class="category-tile bg-household no-photo"
 		u init-with="p:[opacity:0]"
 		on-init="s:[category-tile-init:public]"
 		when-category-tile-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
