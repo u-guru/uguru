@@ -1,4 +1,4 @@
-<div class="guru-switch-container">
+<div class="guru-switch-container" reference="http://codepen.io/teamuguru/pen/d973fb967c17077224ca95123209333f">
 	<div class="guru-switch-slider">
 		<svg class="shadow" viewBox="0 0 300 300">
 			<ellipse fill="#2B3234" opacity="0.1" cx="150" cy="258.94" rx="54" ry="8.94"></ellipse>
