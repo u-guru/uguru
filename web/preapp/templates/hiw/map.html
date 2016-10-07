@@ -40,20 +40,20 @@
 	</defs>
 	<rect class="regular-sky" fill="#B6E2F7" x="0" y="0" width="864" height="286"></rect>
 	<g class="night-sky-container"
-		init-with="p-op"
-		when-time-shift="a:[hiw-night-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
+		u init-with="p:[op:0]"
+		when-time-shift="a:[hiw-night-shift:12000:linear:1000:i:f]">
 		<rect class="regular-sky" fill="#B6E2F7" x="0" y="0" width="864" height="286"></rect>
 		<rect class="night-sky" fill="url(#night-sky-gradient)" x="0" y="0" width="864" height="286" opacity="0.25"></rect>
 	</g>
 	<g class="sunset-sky-container"
-		init-with="p-op"
-		when-time-shift="a:[hiw-sunset-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
+		u init-with="p:[op:0]"
+		when-time-shift="a:[hiw-sunset-shift:12000:linear:1000:i:f]">
 		<rect class="transition-sky" fill="#F4E3F6" x="0" y="0" width="864" height="286"></rect>
 		<rect class="sunset-sky" fill="url(#sunset-sky-gradient)" x="0" y="0" width="864" height="286" opacity="0.25"></rect>
 	</g>
 	<g class="sunrise-sky-container"
-		init-with="p-op"
-		when-time-shift="a:[hiw-sunrise-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
+		u init-with="p:[op:0]"
+		when-time-shift="a:[hiw-sunset-shift:12000:linear:1000:i:f]">
 		<rect class="transition-sky" fill="#F4E3F6" x="0" y="0" width="864" height="286"></rect>
 		<rect class="sunrise-sky" fill="url(#sunrise-sky-gradient)" x="0" y="0" width="864" height="286" opacity="0.25"></rect>
 	</g>
@@ -67,8 +67,8 @@
 	<rect class="clock-tower-base" fill="#D3B3A8" x="266" y="301" width="335" height="154"></rect>
 	<g class="map-clouds">
 		<g class="map-cloud-4"
-			init-with="p:[op:0, tro:center center]"
-			when-hiw-details-enter="a:[hiw-map-clouds:set:(dur:1000ms#func:linear):in:delay-1300]">
+			u init-with="p:[op:0, tro:center center]"
+			when-hiw-details-enter="a:[hiw-map-clouds:1000:linear:1300:1:f]">
 			<path d="M99.5452128,15.5 C106.646225,15.5 113.304433,16.4849036 119.041282,18.2061005 C127.5365,6.96154269 148.621505,-1 173.287234,-1 C197.485282,-1 218.237105,6.66249091 227.036443,17.5700591 C248.099947,17.8662579 265,26.8297126 265,37.84375 C265,49.0447751 247.521244,58.125 225.960106,58.125 C218.03714,58.125 158.327751,61.3369141 130.785842,61.3369141 C103.243933,61.3369141 64.1866024,56.0625 56.787234,56.0625 C43.0976227,56.0625 32,50.2972778 32,43.1855159 C32,36.0737539 43.0976227,30.3085317 56.787234,30.3085317 C58.5062551,30.3085317 60.1844053,30.3994385 61.8048433,30.5725029 C66.230662,21.8953893 81.4502845,15.5 99.5452128,15.5 Z" class="map-cloud-4-shape" stroke="#FBFBFB" stroke-width="2" fill="#FFFFFF"
 				init-with="p:[tr:translateY(2px)]"
 				when-hiw-enter="p:[transform:translateY(2px):translateY(-2px):1500:linear:^:200:a]:delay-1200"></path>
@@ -77,14 +77,14 @@
 				when-hiw-enter="p:[transform:translateY(2px):translateY(-2px):2000:linear:^:200:a]:delay-1200"></path>
 		</g>
 		<g class="map-cloud-3"
-			init-with="p:[op:0, tro:center center]"
-			when-hiw-details-enter="a:[hiw-map-clouds:set:(dur:1000ms#func:linear):in:delay-1100]">
+			u init-with="p:[op:0, tro:center center]"
+			when-hiw-details-enter="a:[hiw-map-clouds:1000:linear:1100:1:f]">
 			<path d="M347.566303,73.5 C350.359212,73.5 352.977961,73.9476834 355.234329,74.7300457 C358.575595,69.618883 366.868568,66 376.569881,66 C386.08725,66 394.249178,69.4829504 397.710058,74.440936 C405.994575,74.5755718 412.641558,78.6498694 412.641558,83.65625 C412.641558,88.747625 405.766964,92.875 397.286723,92.875 C394.17053,92.875 370.686146,94.3349609 359.853599,94.3349609 C349.021052,94.3349609 333.659358,91.9375 330.749102,91.9375 C325.364822,91.9375 321,89.3169445 321,86.0843254 C321,82.8517063 325.364822,80.2311508 330.749102,80.2311508 C331.425213,80.2311508 332.085248,80.272472 332.722585,80.3511377 C334.46331,76.4069951 340.449361,73.5 347.566303,73.5 Z" class="map-cloud-3-shape" stroke="#FBFBFB" stroke-width="2" fill="#FFFFFF"
-				init-with="p:[tr:translateY(2px)]"
-				when-hiw-enter="p:[transform:translateY(2px):translateY(-2px):1500:linear:^:200:a]:delay-700"></path>
+				u init-with="p:[translateY:2px]"
+				when-hiw-enter="a:[translateY:2px:-2px:1500:linear:700:i:a]"></path>
 			<path d="M339.994021,74.6971228 C342.228593,73.9351368 323.818335,87.7486566 339.994021,87.7486568 C346.36147,84.6758419 353.851143,74.2504463 355.234329,74.7300457 C356.694078,72.4970566 340.574845,88.7496349 366.820779,91.2008061 C384.513876,86.7202153 385.479742,72.6793824 397.710058,74.440936 C398.635491,74.4559756 379.12902,84.3359444 391.726688,89.2305916 C400.568,92.3174438 411.842499,87.0158125 410.453175,88.4021627 C407.767408,91.0821823 402.87579,92.875 397.286723,92.875 C394.17053,92.875 368.825819,95.7375494 357.993272,95.7375494 C347.160725,95.7375494 333.659358,91.9375 330.749102,91.9375 C325.364822,91.9375 321,89.3169445 321,86.0843254 C321,84.4793796 322.075916,83.0253056 323.818335,81.9679067 C325.585428,80.8955342 318.075269,88.7325445 326.381047,87.09375 C329.341004,82.9454955 329.138215,80.3511378 332.722585,80.3511377 C333.789836,77.9329558 336.452906,75.904638 339.994021,74.6971228 Z" class="map-cloud-3-detail" fill="#FBFBFB"
-				init-with="p:[tr:translateY(2px)]"
-				when-hiw-enter="p:[transform:translateY(2px):translateY(-2px):1500:linear:^:200:a]:delay-900"></path>
+				u init-with="p:[translateY:2px]"
+				when-hiw-enter="a:[translateY:2px:-2px:1500:linear:900:i:a]"></path>
 		</g>
 		<g class="map-cloud-2"
 			init-with="p:[op:0, tro:center center]"

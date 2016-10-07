@@ -110,7 +110,7 @@
 		<li>
 			<div class="bg-moxie p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[op:0, tro:center center]"
-				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeInOutElastic:0:1:f] | send:[show-header-elem:public]:delay-1000">
+				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeInOutElastic:0:1:f] | s:[show-header-elem:public]:delay-1000">
 				<h1 class="txt-14 semibold txt-center">shortcuts</h1>
 			</div>
 		</li>
@@ -180,6 +180,7 @@
 				</div>
 			</div>
 		</li>
+
 
 		<!-- <li>
 			<div class="relative bg-moxie p10xy flex-center width-128 height-128 radius-2">
