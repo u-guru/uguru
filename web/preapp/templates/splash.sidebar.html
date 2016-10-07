@@ -1,16 +1,11 @@
-<!-- <div ng-controller='SplashSidebarController as sidebar' class="splash-sidebar-container"
+<div ng-controller='SplashSidebarController as sidebar' class="splash-sidebar-container"
 	when-sidebar-init="t:[init:self]"
 	init-with="p-op"
 	on-init="p:[opacity:0:1:250:easeOutSine]"
 	when-sidebar-icon-clicked="p-o-1"
 	when-sidebar-close-clicked="p:[opacity:1:0:1000:easeOutSine]:delay-1000"
 	when-sidebar-col-close-clicked="p:[opacity:1:0:1000:easeOutSine]:delay-1000"
-	init-later> -->
-<div ng-controller='SplashSidebarController as sidebar' class="splash-sidebar-container"
-	init-with="p:[opacity:0]" u
-	on-init="a:[opacity:0:1:250:easeOutSine:0:1:f]"
-	when-sidebar-close-clicked="a:[opacity:1:0:1000:easeOutSine:1000:1:f]"
-	when-sidebar-col-close-clicked="a:[opacity:1:0:1000:easeOutSine:1000:1:f]">
+	init-later>
 	<!-- faq-link-clicked:public:delay-5000 -->
 	<div init-default on-init="s:[sidebar-icon-clicked:public]"></div>
 	<div class="splash-sidebar-bg"

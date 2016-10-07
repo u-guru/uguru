@@ -2,7 +2,7 @@
 	u on-init="s:[credit-tile-load:public]">
 	<div class="credit-tile bg-cobalt"
 		u init-with="p:[opacity:0.1]"
-		on-click="s:[credit-tile-load:self]"
+		on-mouse-leave="s:[credit-tile-load:self]"
 		when-credit-tile-load="a:[bounceIn-subtle:1000:linear:0:1:f]"
 		on-mouse-enter="s:[icon-wiggle:public]">
 		<ul>
