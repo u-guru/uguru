@@ -92,15 +92,14 @@
 		</li> -->
 
 		<li>
-			<div class="bg-gold
-			 p10xy flex-center width-128 height-128 radius-2"
+			<div class="bg-moxie p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
 				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeInOutElastic:0:1:f]:delay-2500 | send:[show-header-elem:public]:delay-1000">
 				<h1 class="txt-14 semibold txt-center">external delays don't work<br/>:delay-2500</h1>
 			</div>
 		</li>
 		<li>
-			<div class="bg-gold p10xy flex-center width-128 height-128 radius-2"
+			<div class="bg-moxie p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[op:0, tro:center center]"
 				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeInOutElastic:0:1:f] | send:[show-header-elem:public]:delay-1000">
 				<h1 class="txt-14 semibold txt-center">shortcuts</h1>
@@ -115,7 +114,7 @@
 		</li>
 
 		<li>
-			<div class="relative bg-moxie p10xy flex-center width-128 height-128 radius-2"
+			<div class="relative bg-auburn p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
 				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeOutElastic:0:1:f]:delay-2500">
 				<h1 class="txt-14 semibold txt-center">stagger-children doesn't work</h1>
@@ -208,7 +207,7 @@
 		<li>
 			<a class="bg bg-moxie p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
-				on-init="a:[scale:1:0.5:1000:easeOutElastic:0:1:f, rotate:45deg:-445deg:1000:bouncePast:0:2:ar]">
+				on-init="a:[scale:0.5:1:1000:easeOutElastic:0:1:f, rotate:-445deg:0deg:1000:bouncePast:0:2:ar]">
 				<h1 class="txt-14 semibold txt-center">scale doesn't work</h1>
 			</a>
 		</li>
