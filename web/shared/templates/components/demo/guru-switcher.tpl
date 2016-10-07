@@ -712,7 +712,7 @@
 
 	<!-- jQuery script to switch -->
 	<!-- <script>
-		$('.button').each(function(index, value) {
+		$('.button').each(function(index) {
 			var moveClass = $('.' + $(this).attr('id'));
 			var moving = moveClass.width();
 			$(this).click(function(){
@@ -730,6 +730,6 @@
 					}
 				}, 50);
 			});
-		});
+			});
 	</script> -->
 </div>
