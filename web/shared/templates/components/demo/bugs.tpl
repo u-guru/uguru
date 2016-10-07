@@ -1,6 +1,6 @@
 <div class="full-xy flex-center">
 	<ul class="flex-wrap-center p15-grid">
-		<!-- <li>
+		<li>
 			<div class="bg-moxie flex-center width-128 height-128 radius-2"/>
 			<div class="bg-moxie p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[scaleY:0, transform-origin:center top]"
@@ -81,15 +81,15 @@
 				on-init="a:[opacity:0:1:1000:easeOutSine:0:4:ar, scaleX:0:1:1000:bouncePast:0:4:ar, rotate:40deg:0deg:1000:easeOutSine:0:4:f]">
 				<h1 class="txt-14 semibold txt-center">end points are wrong<br/>rotate(-0.0195deg)</h1>
 			</a>
-		</li> -->
+		</li>
 
-		<!--  <li>
+		 <li>
 			<div class="bg-auburn flex-center width-128 height-128 radius-2"
 				u init-with="p:[scaleX:0, transform-origin:center top]"
 				on-init-debug="a:[scaleIn-bounceDown:1500:linear:0:5:f]">
 				<h1 class="txt-14 semibold txt-center">Iteration count (2) doesn't work for custom transforms</h1>
 			</div>
-		</li> -->
+		</li>
 
 		<li>
 			<div class="bg-gold
