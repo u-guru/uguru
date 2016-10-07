@@ -98,6 +98,15 @@
 				<h1 class="txt-14 semibold txt-center">external delays don't work<br/>:delay-2500</h1>
 			</div>
 		</li>
+
+		<li>
+			<div class="bg-moxie p10xy flex-center width-128 height-128 radius-2"
+				u init-with="p:[tro:left center]"
+				on-init="a:[hiw-hour-hand:12000:linear:0:i:f]:delay-2000">
+				<h1 class="txt-14 semibold txt-center">custom animation</h1>
+			</div>
+		</li>
+
 		<li>
 			<div class="bg-moxie p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[op:0, tro:center center]"

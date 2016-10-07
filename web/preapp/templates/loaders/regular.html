@@ -7,6 +7,8 @@
 		<div class="loader-portal-inside"
 			init-with="p:[tr:scale(0), tro:50% 90%]"
 			when-portal-open="p:[transform:scale(0):scale(1):250:easeInOutBack]:delay-100">
+			<!-- u init-with="p:[tro:50% 90%]"
+			when-portal-open="a:[scale:0:1:250:easeInOutBack:100:1:f]" -->
 			<div class="portal"
 				init-with="p:[tr:translateY(37%) translateZ(25px) rotateX(75deg)]"
 				when-portal-complete="p:[transform:translateY(37%) translateZ(25px) rotateX(75deg):translateY(-37.5%) translateZ(0px) rotateX(0deg):650:easeOutCirc easeOutCubic easeOutSine]:delay-2000 | s:[page-init:public:delay-1000, warp-start:public:delay-2000]">
