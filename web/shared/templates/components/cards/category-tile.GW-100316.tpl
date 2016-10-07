@@ -1,10 +1,12 @@
-<div class="perspective-container full-xy flex-center-wrap p15xy" types="link-no-photo, photo, photo-price, photo-price-moxie, photo-price-crimson, link-color, link-square, check-square" default-type="link-square">
-	<a ng-if='activeType === "link-no-photo"' class="category-tile bg-household no-photo"
-		u init-with="p:[opacity:0]"
-		on-init="s:[category-tile-init:public]"
+<div class="perspective-container full-xy flex-center-wrap p15xy" types="link-no-photo, photo, photo-price, photo-price-moxie, photo-price-crimson, link-color, link-square, check-square" default-type="link-square"
+	u on-init="s:[category-tile-init:public]">
+	<a class="category-tile bg-household no-photo"
+		u init-with="p:[opacity:0.1]"
+		on-click="s:[category-tile-init:self]"
 		when-category-tile-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
 		on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]">
-		<svg width="240px" height="150px" viewBox="0 0 240 150">
+		<!-- on-click="s:[category-tile-init:self]" -->
+		<svg width="240px" height="150px" viewBox="0 0 240 150">''
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 		</svg>
 		<div class="category-tile-inside">
