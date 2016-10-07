@@ -22,7 +22,7 @@
 		<li>
 			<div class="bg-moxie p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[opacity:0, transform-origin:center center]"
-				on-init="a:[slideInDown-subtle:1000:linear:0:1:f]">
+				on-init="a:[slideInDown-subtle:1000:bouncePast:0:1:f]">
 				<h1 class="txt-14 semibold txt-center lowercase">slideInDown-subtle<br/>opacity</h1>
 			</div>
 		</li>
@@ -86,7 +86,7 @@
 		 <li>
 			<div class="bg-auburn flex-center width-128 height-128 radius-2"
 				u init-with="p:[scaleX:0, transform-origin:center top]"
-				on-init-debug="a:[scaleIn-bounceDown:1500:linear:0:5:f]">
+				on-init="a:[scaleIn-bounceDown:1500:linear:0:5:f]">
 				<h1 class="txt-14 semibold txt-center">Iteration count (2) doesn't work for custom transforms</h1>
 			</div>
 		</li>
