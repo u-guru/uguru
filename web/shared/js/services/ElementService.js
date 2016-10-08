@@ -146,20 +146,20 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           }
           if (type === 'on') {
 
-            return function(element, scope) {
+            return function(element, scope, attr) {
 
 
-              applyOnToElement(scope, element, actions, context);
+              applyOnToElement(scope, element, attr, actions, context);
             }
           }
           if (type === 'when') {
 
-            return function(element, scope) {
+            return function(element, scope, attr) {
               $timeout(function() {
                 if (name.indexOf('-debug') > -1) {
                   name = name.replace('-debug', '');
                 }
-                registerAnimationListeners(scope, element, actions, context);
+                registerAnimationListeners(scope, element, attr, actions, context);
               })
             }
           }
@@ -167,13 +167,15 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
 
 
-      function registerAnimationListeners(scope, element, actions, context) {
+      function registerAnimationListeners(scope, element, attr, actions, context) {
         var name = context.name
         var baseName = 'when-' + name;
+        var classWatcher = [];
         for (key in actions) {
           var listenFor = baseName;
           var scopeNameSplit=  UtilitiesService.camelCase(listenFor).split(':');
           var scopeName = 'root.public.customStates.when.' + scopeNameSplit[0];
+          classWatcher.push(scopeNameSplit[0])
           var scopeTitle = UtilitiesService.camelCase(listenFor);
           var scopeTitle = scopeTitle.split(':')[0]
           var scopeTitle = scopeTitle.split(':')[0];
@@ -182,6 +184,11 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               scope.root.public.customStates['when'][scopeTitle] = false;
             }
             var hasDelay = parseFloat(scopeNameSplit[1])
+            attr.$observe('class', function(val){
+              val.split(' ').forEach(function(current_class, j) {
+                console.log('looking for', scopeNameSplit, '...inspecting', current_class);
+              })
+            });
             scope.$watch(scopeName, function(_new, _old) {
               if (hasDelay) {
                 $timeout(function() {
@@ -196,15 +203,16 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         }
       }
 
-      function applyOnToElement(scope, element, actions, context) {
+      function applyOnToElement(scope, element, attr, actions, context) {
         var name = context.name;
         if (name === 'init') {
-          registerAnimationListeners(scope, element, actions, context)
+          registerAnimationListeners(scope, element, attr, actions, context)
           element.ready(function(e) {
 
             applySendAnimProp(scope, element, actions, context);
           })
         } else {
+          registerAnimationListeners(scope, element, attr, actions, context)
 
           element.on(name,function(e) {
 
@@ -327,12 +335,21 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           var msgSplit = msg.split(':')
           var iMsg = msgSplit[0].trim();
           var msgScope = msgSplit[1].trim();
+
           var msgDelay = 0;
 
 
           if (msgSplit.length > 2) {
             msgDelay = parseInt(msgSplit[2].replace('delay-', ''));
           }
+
+          if (msgScope.trim() ==='self') {
+              if (!msgDelay) {
+                element[0].classList.add('when-' + msgScope)
+              }
+              return;
+          }
+
 
           var _attr = {dashed: iMsg, camel: UtilitiesService.camelCase('when-' + iMsg)};
           _attr.camel = _attr.camel.replace(' ', '-')
@@ -346,14 +363,18 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               })
             }, msgDelay)
           } else {
-            console.log(_attr.camel)
-            $timeout(function() {scope.root.public.customStates.when[_attr.camel] = true; scope.$apply()});
+            scope.root.public.customStates.when[_attr.camel] = true;
+            $timeout(function() {
+              // $timeout(function() {; scope.$apply()});
+            })
+            scope.root.public.customStates.when[_attr.camel] = false;
+            // console.log(_attr.camel)
           }
 
 
-          $timeout(function() {
-            scope.root.public.customStates.when[_attr.camel] = false;
-          }, 100)
+          // $timeout(function() {
+
+          // }, 100)
           // DirectiveService.initCustomStateWatcher(scope, element,  'when', _attr, _attr[_attr.camel]);
         })
       }
@@ -425,7 +446,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
 
         propertyArr.forEach(function(kv, i) {
-
           elem.css(kv.key, kv.value);
         })
       }

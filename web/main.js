@@ -456,28 +456,31 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     controller: function($scope, $timeout, $compile) {
       $timeout(function() {
         var elem = document.querySelector('[types]');
-        var elemDefaultType = elem.getAttribute('default-type');
-        $scope.types = JSON.parse(JSON.stringify((elem.getAttribute('types')))).split(', ');
-        var defaultTypeIndex = $scope.types.indexOf(elemDefaultType);
-        if (defaultTypeIndex) {
-          $scope.activeType = $scope.types[defaultTypeIndex];
-        }
-        $timeout(function() {
-          $compile(elem)($scope);
-        })
-        var div = document.createElement('div');
-        div.setAttribute('ng-include', '"' +  'admin/templates/types.tpl'  +'"');
-        elem.parentNode.appendChild(div);
-        $scope.activateType = function($event, type) {
-          $timeout(function() {
-            $scope.activeType = type;
-            $scope.$apply();
-            // $compile(angular.element(elem))($scope);
-          })
-        }
-        $compile(div)($scope);
-        $compile(elem)($scope);
 
+        if (elem) {
+          var elemDefaultType = elem.getAttribute('default-type');
+          $scope.types = JSON.parse(JSON.stringify((elem.getAttribute('types')))).split(', ');
+          var defaultTypeIndex = $scope.types.indexOf(elemDefaultType);
+          if (defaultTypeIndex) {
+            $scope.activeType = $scope.types[defaultTypeIndex];
+          }
+          $timeout(function() {
+            $compile(elem)($scope);
+          })
+          var div = document.createElement('div');
+          div.setAttribute('ng-include', '"' +  'admin/templates/types.tpl'  +'"');
+          elem.parentNode.appendChild(div);
+          $scope.activateType = function($event, type) {
+            $timeout(function() {
+              $scope.activeType = type;
+              $scope.$apply();
+              // $compile(angular.element(elem))($scope);
+            })
+          }
+          $compile(div)($scope);
+          $compile(elem)($scope);
+
+        }
       }, 100)
     }
   })
