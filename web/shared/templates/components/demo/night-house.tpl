@@ -1,31 +1,31 @@
 <div class="absolute top-0 left-0 full-xy flex-center perspective-container">
 		<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #092D4B;">
 		    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-		        <g class="blue-tree">
+		        <g class="blue-tree" u init-with="p-op">
 		            <rect class="b-canopy" fill="#AADFFF" x="221" y="364" width="43" height="86" rx="21.5"></rect>
 		            <path d="M241.5,499.514151 L241.5,397.485849 L241.5,499.514151 Z" class="b-tree-trunk-1" stroke="#0B3B5E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
 		            <path d="M241.46694,432.899271 L232.618869,424.0512 L241.46694,432.899271 Z" class="b-tree-trunk-2" stroke="#0B3B5E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
 		            <path d="M241.618869,412.899271 L250.46694,404.0512 L241.618869,412.899271 Z" class="b-tree-trunk-3" stroke="#0B3B5E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
 		        </g>
-		        <g class="purple-tree">
+		        <g class="purple-tree" u init-with="p-op">
 		            <rect class="p-tree-canopy" fill="#8163AC" x="538" y="364" width="43" height="86" rx="21.5"></rect>
 		            <polygon class="p-tree-trunk-1" stroke="#0B3B5E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" points="559.5 499.514151 559.5 397.485849"></polygon>
 		            <polygon class="p-tree-trunk-2" stroke="#0B3B5E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" points="559.53306 432.899271 568.381131 424.0512"></polygon>
 		            <polygon class="p-tree-trunk-3" stroke="#0B3B5E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" points="559.381131 412.899271 550.53306 404.0512"></polygon>
 		        </g>
-		        <g class="purple-bushes">
+		        <g class="purple-bushes" u init-with="p-op">
 		            <path d="M298.79867,504 C297.256668,481.09864 278.191583,463 254.899335,463 C231.607087,463 212.542002,481.09864 211,504 L298.79867,504 L298.79867,504 Z" class="prpl-bush-big" fill="#C3B6D6"></path>
 		            <path d="M202.404326,504 C201.76496,494.504314 193.859925,487 184.202163,487 C174.544402,487 166.639367,494.504314 166,504 L202.404326,504 L202.404326,504 Z" class="prpl-bush-solo" fill="#C3B6D6"></path>
 		            <path d="M265.404326,504 C264.754498,493.945744 256.720115,486 246.904326,486 C237.088538,486 229.054155,493.945744 228.404326,504 L265.404326,504 L265.404326,504 Z" class="prpl-bush-small" fill="#8163AC"></path>
 		            <path d="M321,504 C319.953054,487.801477 307.008771,475 291.194444,475 C275.380118,475 262.435835,487.801477 261.388889,504 L321,504 L321,504 Z" class="prpl-bush-medium" fill="#8163AC"></path>
 		        </g>
-		        <g class="blue-bushes">
+		        <g class="blue-bushes" u init-with="p-op">
 		            <path d="M501.20133,504 C502.743332,481.09864 521.808417,463 545.100665,463 C568.392913,463 587.457998,481.09864 589,504 L501.20133,504 L501.20133,504 L501.20133,504 Z" class="blue-bush-big" fill="#2E5573"></path>
 		            <path d="M597.595674,504 C598.23504,494.504314 606.140075,487 615.797837,487 C625.455598,487 633.360633,494.504314 634,504 L597.595674,504 L597.595674,504 L597.595674,504 Z" class="blue-bush-solo" fill="#2E5573"></path>
 		            <path d="M529.595674,504 C530.245502,493.945744 538.279885,486 548.095674,486 C557.911462,486 565.945845,493.945744 566.595674,504 L529.595674,504 L529.595674,504 L529.595674,504 Z" class="blue-bush-small" fill="#4E6D84"></path>
 		            <path d="M474,504 C475.046946,487.801477 487.991229,475 503.805556,475 C519.619882,475 532.564165,487.801477 533.611111,504 L474,504 L474,504 L474,504 Z" class="blue-bush-medium" fill="#4E6D84"></path>
 		        </g>
-		        <g class="sky">
+		        <g class="sky" u init-with="p-op">
 		            <circle class="star-1" fill="#FFFFFF" cx="255.5" cy="258.5" r="2.5"></circle>
 		            <circle class="star-2" fill="#FFFFFF" cx="272.5" cy="137.5" r="2.5"></circle>
 		            <circle class="star-3" fill="#C5E9FE" cx="462.5" cy="129.5" r="2.5"></circle>
@@ -44,8 +44,12 @@
 		            <path d="M378.756105,178 C378.262518,176.08228 378,174.071797 378,172 C378,158.745166 388.745166,148 402,148 C415.254834,148 426,158.745166 426,172 C426,174.071797 425.737482,176.08228 425.243895,178 L378.756105,178 L378.756105,178 Z" class="s-cloud-1" fill="#BCE5FF"></path>
 		            <path d="M418.024234,178 C417.360925,176.123326 417,174.103813 417,172 C417,162.058875 425.058875,154 435,154 C444.941125,154 453,162.058875 453,172 C453,174.103813 452.639075,176.123326 451.975766,178 L418.024234,178 L418.024234,178 Z" class="s-cloud-2" fill="#BCE5FF"></path>
 		        </g>
-		        <g class="house">
-		            <rect class="house-foundation" fill="#AADFFF" x="307" y="285" width="187" height="204"></rect>
+		        <g class="house"
+					u on-init="s:[build-house:public]:delay-500">
+		            <rect class="house-foundation" fill="#AADFFF" x="307" y="285" width="187" height="204"
+						u init-with="p:[tro:center bottom, transform:scaleY(0)]"
+						when-build-house="a:[scaleY:0:1:500:easeInOutBounce:0:1:f]"></rect>
+						<!-- when-mailbox-enter="a:[scaleY:0:1:500:easeInOutBounce:500:1:f] | s:[build-house:public]" -->
 		            <rect class="house-casing" fill="#FFFFFF" x="301" y="485" width="199" height="19"></rect>
 		            <rect class="roof-edge" fill="#FFFFFF" x="299" y="258" width="203" height="19"></rect>
 		            <rect class="roof-blue" fill="#AADFFF" x="299" y="258" width="203" height="12"></rect>
@@ -86,10 +90,17 @@
 		            <rect class="door-shade" fill="#FFFFFF" x="321" y="399" width="56" height="36"></rect>
 		            <rect class="door-shade-edge" fill="#8A70B3" x="321" y="435" width="56" height="9"></rect>
 		        </g>
-		        <g class="mailbox">
-		            <rect class="mbox-store" fill="#8C70B3" x="272" y="454" width="28" height="15" rx="2"></rect>
-		            <rect class="mbox-hatch" fill="#B5E3FE" x="272" y="454" width="12" height="15" rx="2"></rect>
-		            <rect class="mbox-stand" fill="#FFFFFF" x="283" y="473" width="6" height="31"></rect>
+		        <g class="mailbox" u on-init="s:[mailbox-enter:public]">
+		            <rect class="mbox-store" fill="#8C70B3" x="272" y="454" width="28" height="15" rx="2"
+						u init-with="p:[tro:left center, transform:scaleX(0)]"
+						when-mailbox-enter="a:[scaleX:0:1:500:easeOutBack:300:1:f]"></rect>
+		            <rect class="mbox-hatch" fill="#B5E3FE" x="272" y="454" width="12" height="15" rx="2"
+						u init-with="p:[tro:left center, transform:scaleX(0)]"
+						when-mailbox-enter="a:[scaleX:0:1:500:easeOutBack:200:1:f]"></rect>
+		            <rect class="mbox-stand" fill="#FFFFFF" x="283" y="473" width="6" height="31"
+						u init-with="p:[tro:center bottom, transform:scaleY(0)]"
+						when-mailbox-enter="a:[scaleY:0:1:500:easeOutBack:0:1:f]"
+						></rect>
 		        </g>
 		    </g>
 		</svg>
