@@ -161,32 +161,32 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 	height: initial;
 	line-height: initial;
 }
-.transition-150 {
-	transition: all 150ms ease-in-out;
-}
-.transition-150-linear {
-	transition: all 150ms linear;
-}
-.delay-450 {
-	animation-delay: 450ms!important;
-	transition-delay: 450ms!important;
-}
+// .transition-150 {
+// 	transition: all 150ms ease-in-out;
+// }
+// .transition-150-linear {
+// 	transition: all 150ms linear;
+// }
+// .delay-450 {
+// 	animation-delay: 450ms!important;
+// 	transition-delay: 450ms!important;
+// }
 .pointer {
 	cursor: pointer;
 }
-[translate-to-elem] {
-	transition: all 600ms cubic-bezier(.77,0,.05,1)!important;
-	transition: all 600ms cubic-bezier(.77,-0.22,.05,1.27)!important;
-}
+// [translate-to-elem] {
+// 	transition: all 600ms cubic-bezier(.77,0,.05,1)!important;
+// 	transition: all 600ms cubic-bezier(.77,-0.22,.05,1.27)!important;
+// }
 a, a:hover, a:active, a:visited {
 	color: white;
 	text-decoration:none;
 }
 a, button, *[ng-click], *[tabindex], input[type=checkbox] {
-	@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+	// @include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 	cursor: pointer;
 	svg * {
-		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		// @include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 	}
 }
 a[disabled], .noselect {
@@ -234,17 +234,17 @@ button, input, textarea {
 .preserve-3d {
 	transform-style: preserve-3d;
 }
-.translateZ-hover {
-	transition: all 150ms ease-in;
-	&:hover, &:focus {
-		transform: translateZ(20px)!important;
-		transition: all 600ms cubic-bezier(.6,0,.1,2);
-	}
-	&:active {
-		transform: translateZ(-20px)!important;
-		transition: all 150ms ease-in;
-	}
-}
+// .translateZ-hover {
+// 	transition: all 150ms ease-in;
+// 	&:hover, &:focus {
+// 		transform: translateZ(20px)!important;
+// 		transition: all 600ms cubic-bezier(.6,0,.1,2);
+// 	}
+// 	&:active {
+// 		transform: translateZ(-20px)!important;
+// 		transition: all 150ms ease-in;
+// 	}
+// }
 
 /* ---------- LAYOUTS */
 .lyt-1-3-header {
@@ -2740,46 +2740,16 @@ button, input, textarea {
 }
 
 /* ---------- SVG SPECIFIC */
-.close-icon {
-	svg {
-		@include prefix(transform, rotate(45deg), webkit moz ms o);
-	}
-}
-.urgent-icon {
-	svg {
-		@include prefix(transform, rotate(180deg), webkit moz ms o);
-	}
-}
-
-.link-burger {
-	display: block;
-	width: 42px;
-	height: 42px;
-	&.close {
-		svg {
-			@include prefix(transform, rotate(45deg), webkit moz ms o);
-		}
-	}
-	svg {
-		height: 100%;
-		width: 100%;
-		g, circle, path {
-			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-			@include svg-stroke(white, 4);
-		}
-	}
-	&:hover, &:focus {
-		background: none;
-		svg {
-			circle {
-				fill: white;
-			}
-			path {
-				stroke: $slate;
-			}
-		}
-	}
-}
+// .close-icon {
+// 	svg {
+// 		@include prefix(transform, rotate(45deg), webkit moz ms o);
+// 	}
+// }
+// .urgent-icon {
+// 	svg {
+// 		@include prefix(transform, rotate(180deg), webkit moz ms o);
+// 	}
+// }
 
 .link-logo {
 	display: block!important;

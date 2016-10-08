@@ -12,7 +12,7 @@
         </li>
 		<li init-with="p:[tro:center center]" style="background-image: url('https://snap-photos.s3.amazonaws.com/img-thumbs/960w/Z3VPU4IDKE.jpg')"
 			init-after="portal-academic-init"
-			on-init="a:[rotateScaleTranslateSkewDemo:1000:linear:0:1:f]">
+			on-init="a:[back-bp:1000:linear:0:1:f]">
 			<div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center width-128 height-128 radius-2">
                 <h1> init-after from loader </h1>
             </div>
