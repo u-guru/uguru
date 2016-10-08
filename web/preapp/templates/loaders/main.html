@@ -1,7 +1,7 @@
 <div class="loader-portal-outer">
     <div class="loader-portal states"
-		u on-init="s:[portal-open:public:delay-150, portal-academic-enter:public:delay-150]"
-		when-portal-academic-enter="p:[bg:#f8c3e1]">
+		u on-init="s:[portal-academic-enter:public]"
+		when-portal-academic-enter="p:[bg:#f8c3e1] | s:[portal-open:public]">
 		<!-- elem-states="[portal-academic, portal-baking, portal-photo, portal-tech, portal-household]"
 		on-activate="null:inject.loader-portal|on-loader-begin-enter, null:inject.guru-academic|on-loader-academic-enter"
 		on-portal-academic-enter="academic"
@@ -10,8 +10,8 @@
 		on-portal-tech-enter="tech"
 		on-portal-household-enter="household" -->
         <div class="loader-portal-inside"
-			u init-with="p:[tr:scale(0), tro:50% 90%]"
-			when-portal-open="a:[scale:0:1:250:easeInOutBack:100:1:f]">
+			u init-with="p:[tr:scaleX(0), tro:50% 90%]"
+			when-portal-open="a:[scaleX:0:1:250:easeInOutBack:100:1:f]">
 			<div class="portal"
 				u init-with="p:[tr:translateY(37%) translateZ(25px) rotateX(75deg)]">
 				<div>

@@ -49,50 +49,66 @@
 					<!-- u on-init="s:[build-house:public]:delay-500" -->
 		            <rect class="house-foundation" fill="#AADFFF" x="307" y="285" width="187" height="204"
 						u init-with="p:[tro:center bottom, transform:scaleY(0)]"
-						when-build-house="a:[scaleY:0:1:500:easeInOutBounce:500:1:f]"></rect>
+						when-build-house="a:[scaleY:0:1:500:easeInOutBounce:0:1:f]"></rect>
 						<!-- when-mailbox-enter="a:[scaleY:0:1:500:easeInOutBounce:0:1:f] | s:[build-house:public]:delay-500" -->
-		            <rect class="house-casing" fill="#FFFFFF" x="301" y="485" width="199" height="19"></rect>
+		            <rect class="house-casing" fill="#FFFFFF" x="301" y="485" width="199" height="19"
+						u init-with="p:[tro:center bottom, transform:scaleY(0)]"
+						when-build-house="a:[scaleY:0:1:500:easeInOutBounce:150:1:f]"></rect>
 		            <rect class="roof-edge" fill="#FFFFFF" x="299" y="258" width="203" height="19"></rect>
 		            <rect class="roof-blue" fill="#AADFFF" x="299" y="258" width="203" height="12"></rect>
 		            <rect class="roof-top" fill="#FFFFFF" x="296" y="258" width="209" height="7"></rect>
-		            <rect class="w5-shadow-btm" fill="#0B3B5E" x="434" y="477" width="40" height="5"></rect>
-		            <rect class="w5-ledge" fill="#8C70B3" x="432" y="467" width="44" height="10"></rect>
-		            <rect class="w5-blind" fill="#2E5573" x="435" y="407" width="38" height="60"></rect>
-		            <rect class="w5-shadow-top" fill="#0B3B5E" x="440" y="414" width="28" height="7"></rect>
-		            <rect class="w5-shadow-mid" fill="#0B3B5E" x="440" y="443" width="28" height="7"></rect>
-		            <path d="M435,407 L473,407 L473,467 L435,467 L435,407 L435,407 Z M441,414 L467,414 L467,438 L441,438 L441,414 L441,414 Z M441,443 L467,443 L467,467 L441,467 L441,443 L441,443 Z" class="w5-casing" fill="#FFFFFF"></path>
-		            <rect class="w4-shadow-btm" fill="#0B3B5E" x="381" y="477" width="40" height="5"></rect>
-		            <rect class="w4-ledge" fill="#8C70B3" x="379" y="467" width="44" height="10"></rect>
-		            <rect class="w4-blind" fill="#2E5573" x="382" y="407" width="38" height="60"></rect>
-		            <rect class="w4-shadow-top" fill="#0B3B5E" x="387" y="414" width="28" height="7"></rect>
-		            <rect class="w4-shadow-mid" fill="#0B3B5E" x="387" y="443" width="28" height="7"></rect>
-		            <path d="M382,407 L420,407 L420,467 L382,467 L382,407 L382,407 Z M388,414 L414,414 L414,438 L388,438 L388,414 L388,414 Z M388,443 L414,443 L414,467 L388,467 L388,443 L388,443 Z" class="w4-casing" fill="#FFFFFF"></path>
-		            <rect class="w3-shadow-btm" fill="#0B3B5E" x="434" y="376" width="40" height="5"></rect>
-		            <rect class="w3-ledge" fill="#8C70B3" x="432" y="366" width="44" height="10"></rect>
-		            <rect class="w3-blind" fill="#2E5573" x="435" y="306" width="38" height="60"></rect>
-		            <rect class="w3-shadow-top" fill="#0B3B5E" x="440" y="313" width="28" height="7"></rect>
-		            <rect class="w3-shadow-mid" fill="#0B3B5E" x="440" y="342" width="28" height="7"></rect>
-		            <path d="M435,306 L473,306 L473,366 L435,366 L435,306 L435,306 Z M441,313 L467,313 L467,337 L441,337 L441,313 L441,313 Z M441,342 L467,342 L467,366 L441,366 L441,342 L441,342 Z" class="w3-casing" fill="#FFFFFF"></path>
-		            <rect class="w2-shadow-btm" fill="#0B3B5E" x="381" y="376" width="40" height="5"></rect>
-		            <rect class="w2-ledge" fill="#8C70B3" x="379" y="366" width="44" height="10"></rect>
-		            <rect class="w2-blind" fill="#2E5573" x="382" y="306" width="38" height="60"></rect>
-		            <rect class="w2-shadow-top" fill="#0B3B5E" x="387" y="313" width="28" height="7"></rect>
-		            <rect class="w2-shadow-mid" fill="#0B3B5E" x="387" y="342" width="28" height="7"></rect>
-		            <path d="M382,306 L420,306 L420,366 L382,366 L382,306 L382,306 Z M388,313 L414,313 L414,337 L388,337 L388,313 L388,313 Z M388,342 L414,342 L414,366 L388,366 L388,342 L388,342 Z" class="w2-casing" fill="#FFFFFF"></path>
-		            <rect class="w-shadow-btm" fill="#0B3B5E" x="328" y="376" width="40" height="5"></rect>
-		            <rect class="w-ledge" fill="#8C70B3" x="326" y="366" width="44" height="10"></rect>
-		            <rect class="w-blind" fill="#2E5573" x="329" y="306" width="38" height="60"></rect>
-		            <rect class="w-shadow-top" fill="#0B3B5E" x="334" y="313" width="28" height="7"></rect>
-		            <rect class="w-shadow-mid" fill="#0B3B5E" x="334" y="342" width="28" height="7"></rect>
-		            <path d="M329,306 L367,306 L367,366 L329,366 L329,306 L329,306 Z M335,313 L361,313 L361,337 L335,337 L335,313 L335,313 Z M335,342 L361,342 L361,366 L335,366 L335,342 L335,342 Z" class="w-casing" fill="#FFFFFF"></path>
-		            <rect class="door-casing" fill="#FFFFFF" x="324" y="444" width="50" height="58"></rect>
-		            <rect class="door-light" fill="#FEF1AE" x="329" y="444" width="40" height="58"></rect>
-		            <path d="M329,444 L369,444 L369,502 L329,502 L329,444 L329,444 Z M337,444 L361,444 L361,450 L337,450 L337,444 L337,444 Z M337,457 L361,457 L361,477 L337,477 L337,457 L337,457 Z" class="door-front" fill="#2E5573"></path>
-		            <rect class="door-shade" fill="#FFFFFF" x="321" y="399" width="56" height="36"
-						u init-with="p:[op:0, tro:center top]"
-						when-build-house="a:[bounceIn-subtle:500:linear:0:1:f]:delay-500"></rect>
-						<!--on-init="a:[bounceIn-subtle:500:linear:0:1:f]:delay-500" -->
-		            <rect class="door-shade-edge" fill="#8A70B3" x="321" y="435" width="56" height="9"></rect>
+					<g>
+		            	<rect class="w5-shadow-btm" fill="#0B3B5E" x="434" y="477" width="40" height="5"></rect>
+			            <rect class="w5-ledge" fill="#8C70B3" x="432" y="467" width="44" height="10"></rect>
+			            <rect class="w5-blind" fill="#2E5573" x="435" y="407" width="38" height="60"></rect>
+			            <rect class="w5-shadow-top" fill="#0B3B5E" x="440" y="414" width="28" height="7"></rect>
+			            <rect class="w5-shadow-mid" fill="#0B3B5E" x="440" y="443" width="28" height="7"></rect>
+			            <path d="M435,407 L473,407 L473,467 L435,467 L435,407 L435,407 Z M441,414 L467,414 L467,438 L441,438 L441,414 L441,414 Z M441,443 L467,443 L467,467 L441,467 L441,443 L441,443 Z" class="w5-casing" fill="#FFFFFF"></path>
+					</g>
+					<g>
+			            <rect class="w4-shadow-btm" fill="#0B3B5E" x="381" y="477" width="40" height="5"></rect>
+			            <rect class="w4-ledge" fill="#8C70B3" x="379" y="467" width="44" height="10"></rect>
+			            <rect class="w4-blind" fill="#2E5573" x="382" y="407" width="38" height="60"></rect>
+			            <rect class="w4-shadow-top" fill="#0B3B5E" x="387" y="414" width="28" height="7"></rect>
+			            <rect class="w4-shadow-mid" fill="#0B3B5E" x="387" y="443" width="28" height="7"></rect>
+			            <path d="M382,407 L420,407 L420,467 L382,467 L382,407 L382,407 Z M388,414 L414,414 L414,438 L388,438 L388,414 L388,414 Z M388,443 L414,443 L414,467 L388,467 L388,443 L388,443 Z" class="w4-casing" fill="#FFFFFF"></path>
+					</g>
+					<g>
+			            <rect class="w3-shadow-btm" fill="#0B3B5E" x="434" y="376" width="40" height="5"></rect>
+			            <rect class="w3-ledge" fill="#8C70B3" x="432" y="366" width="44" height="10"></rect>
+			            <rect class="w3-blind" fill="#2E5573" x="435" y="306" width="38" height="60"></rect>
+			            <rect class="w3-shadow-top" fill="#0B3B5E" x="440" y="313" width="28" height="7"></rect>
+			            <rect class="w3-shadow-mid" fill="#0B3B5E" x="440" y="342" width="28" height="7"></rect>
+			            <path d="M435,306 L473,306 L473,366 L435,366 L435,306 L435,306 Z M441,313 L467,313 L467,337 L441,337 L441,313 L441,313 Z M441,342 L467,342 L467,366 L441,366 L441,342 L441,342 Z" class="w3-casing" fill="#FFFFFF"></path>
+					</g>
+					<g>
+			            <rect class="w2-shadow-btm" fill="#0B3B5E" x="381" y="376" width="40" height="5"></rect>
+			            <rect class="w2-ledge" fill="#8C70B3" x="379" y="366" width="44" height="10"></rect>
+			            <rect class="w2-blind" fill="#2E5573" x="382" y="306" width="38" height="60"></rect>
+			            <rect class="w2-shadow-top" fill="#0B3B5E" x="387" y="313" width="28" height="7"></rect>
+			            <rect class="w2-shadow-mid" fill="#0B3B5E" x="387" y="342" width="28" height="7"></rect>
+			            <path d="M382,306 L420,306 L420,366 L382,366 L382,306 L382,306 Z M388,313 L414,313 L414,337 L388,337 L388,313 L388,313 Z M388,342 L414,342 L414,366 L388,366 L388,342 L388,342 Z" class="w2-casing" fill="#FFFFFF"></path>
+					</g>
+					<g u init-with="p:[op:0, tro:20% 80%]"
+						when-build-house="a:[scoop-enter:1000:linear:0:1:f]">
+						<!-- when-build-house="a:[scoop-enter:1000:linear:0:1:f]:delay-400" -->
+			            <rect class="w-shadow-btm" fill="#0B3B5E" x="328" y="376" width="40" height="5"></rect>
+			            <rect class="w-ledge" fill="#8C70B3" x="326" y="366" width="44" height="10"></rect>
+			            <rect class="w-blind" fill="#2E5573" x="329" y="306" width="38" height="60"></rect>
+			            <rect class="w-shadow-top" fill="#0B3B5E" x="334" y="313" width="28" height="7"></rect>
+			            <rect class="w-shadow-mid" fill="#0B3B5E" x="334" y="342" width="28" height="7"></rect>
+			            <path d="M329,306 L367,306 L367,366 L329,366 L329,306 L329,306 Z M335,313 L361,313 L361,337 L335,337 L335,313 L335,313 Z M335,342 L361,342 L361,366 L335,366 L335,342 L335,342 Z" class="w-casing" fill="#FFFFFF"></path>
+					</g>
+					<g>
+			            <rect class="door-casing" fill="#FFFFFF" x="324" y="444" width="50" height="58"></rect>
+			            <rect class="door-light" fill="#FEF1AE" x="329" y="444" width="40" height="58"></rect>
+			            <path d="M329,444 L369,444 L369,502 L329,502 L329,444 L329,444 Z M337,444 L361,444 L361,450 L337,450 L337,444 L337,444 Z M337,457 L361,457 L361,477 L337,477 L337,457 L337,457 Z" class="door-front" fill="#2E5573"></path>
+			            <rect class="door-shade" fill="#FFFFFF" x="321" y="399" width="56" height="36"
+							u init-with="p:[op:0, tro:center top]"
+							when-build-house="a:[bounceIn-subtle:1000:linear:0:1:f]"></rect>
+							<!--on-init="a:[bounceIn-subtle:500:linear:0:1:f]:delay-500" -->
+			            <rect class="door-shade-edge" fill="#8A70B3" x="321" y="435" width="56" height="9"></rect>
+					</g>
 		        </g>
 		        <g class="mailbox" u on-init="s:[mailbox-enter:public]">
 		            <rect class="mbox-store" fill="#8C70B3" x="272" y="454" width="28" height="15" rx="2"
