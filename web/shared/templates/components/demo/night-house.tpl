@@ -48,7 +48,7 @@
 					<!-- u on-init="s:[build-house:public]:delay-500" -->
 		            <rect class="house-foundation" fill="#AADFFF" x="307" y="285" width="187" height="204"
 						u init-with="p:[tro:center bottom, transform:scaleY(0)]"
-						on-init="a:[scaleY:0:1:500:easeInOutBounce:500:1:f] | s:[build-house:public:delay-500]"></rect>
+						on-init="a:[scaleY:0:1:500:easeInOutBounce:500:1:f] | s:[build-house:public:delay-2500]"></rect>
 						<!-- when-mailbox-enter="a:[scaleY:0:1:500:easeInOutBounce:0:1:f] | s:[build-house:public]:delay-500" -->
 		            <rect class="house-casing" fill="#FFFFFF" x="301" y="485" width="199" height="19"
 						init-after="build-house"
@@ -91,7 +91,7 @@
 					</g>
 					<g init-after="build-house"
 						init-with="p:[op:0, tro:20% 80%]"
-						on-init="a:[scoop-enter:1000:linear:0:1:f]">
+						on-init="a:[scoop-enter:1000:linear:200:1:f]">
 						<!-- when-build-house="a:[scoop-enter:1000:linear:0:1:f]:delay-400" -->
 			            <rect class="w-shadow-btm" fill="#0B3B5E" x="328" y="376" width="40" height="5"></rect>
 			            <rect class="w-ledge" fill="#8C70B3" x="326" y="366" width="44" height="10"></rect>
@@ -106,7 +106,7 @@
 			            <path d="M329,444 L369,444 L369,502 L329,502 L329,444 L329,444 Z M337,444 L361,444 L361,450 L337,450 L337,444 L337,444 Z M337,457 L361,457 L361,477 L337,477 L337,457 L337,457 Z" class="door-front" fill="#2E5573"></path>
 			            <rect class="door-shade" fill="#FFFFFF" x="321" y="399" width="56" height="36"
 							u init-with="p:[op:0, tro:center top]"
-							when-build-house="a:[bounceIn-subtle:1000:linear:0:1:f]"></rect>
+							when-build-house="a:[bounceIn-subtle:1000:linear:200:1:f]"></rect>
 							<!--on-init="a:[bounceIn-subtle:500:linear:0:1:f]:delay-500" -->
 			            <rect class="door-shade-edge" fill="#8A70B3" x="321" y="435" width="56" height="9"></rect>
 					</g>
