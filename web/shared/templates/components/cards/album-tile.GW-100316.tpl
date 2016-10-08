@@ -18,10 +18,52 @@
 			<div style="background-image: url('https://snap-photos.s3.amazonaws.com/img-thumbs/960w/Z3VPU4IDKE.jpg')"></div>
 			<div class="overlay" style="background: #020c39;"
 				u init-with="p:[opacity:0]"
-				when-album-tile-enter="a:[opacity:0:0.95:150:easeInOutSine:0:1:f]">
+				when-album-tile-enter="a:[opacity:0:0.95:150:easeInOutSine:0:1:f]"
+				when-album-tile-leave="a:[opacity:0.95:0:150:easeInOutSine:0:1:f]">
+				<!-- ^ This is how I would prefer to write my code -->
+
+				<!-- EXAMPLE ONE -->
+				<!-- This overlay comes in correctly the first time, but doesn't exit on leave. Then when I hover for the second time, it leaves. After that, it doesn't enter properly but flickers in and out on leave. -->
+				<!-- init-with="p:[opacity:0]"
+				init-after="album-tile-enter"
+				on-init="p:[opacity:0]"
+				when-album-tile-enter="a:[opacity:0:0.95:150:easeInOutSine:0:1:f]"
+				when-album-tile-leave="a:[opacity:0.95:0:150:easeInOutSine:0:1:f]" -->
+
+				<!-- EXAMPLE TWO -->
+				<!-- This works correctly but doesn't allow for a leave animation -->
 				<!-- init-with="p:[opacity:0]"
 				init-after="album-tile-enter"
 				on-init="a:[opacity:0:0.95:150:easeInOutSine:0:1:f]" -->
+
+				<!-- EXAMPLE THREE -->
+				<!-- This has the same behavior as EXAMPLE ONE -->
+				<!-- init-with="p:[opacity:0]"
+				init-after="album-tile-enter"
+				on-init="a:[opacity:0:0.95:150:easeInOutSine:0:1:f]"
+				when-album-tile-leave="a:[opacity:0.95:0:150:easeInOutSine:0:1:f]" -->
+
+				<!-- ORIGINAL CSS -->
+				<!-- This CSS was originally meant for the hover. On hover, div.overlay faded in to 95% opacity; on leave, it faded out to 0% opacity.
+			 	On click/active, the "echo" fades in and grows in size. -->
+				<!-- &:hover, &:focus {
+					.album-art {
+						div.overlay {
+							opacity: 0.95;
+						}
+						svg.overlay {
+							opacity: 1;
+						}
+					}
+				}
+				&:active {
+					.album-echo {
+						opacity: 1;
+						width: calc(100% + 30px);
+						height: calc(100% + 30px);
+						transition: opacity 300ms ease-out, width 300ms ease-out, height 300ms ease-out;
+					}
+				} -->
 			</div>
 			<svg class="overlay" viewBox="0 0 100 100"
 				u init-with="p-op">

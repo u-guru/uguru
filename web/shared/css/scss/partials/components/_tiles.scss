@@ -5050,11 +5050,11 @@ a.category-tile {
 	// 		opacity: 1;
 	// 		width: calc(100% + 30px);
 	// 		height: calc(100% + 30px);
-	// 		// transition: opacity 300ms ease-out, width 300ms ease-out, height 300ms ease-out;
+	// 		transition: opacity 300ms ease-out, width 300ms ease-out, height 300ms ease-out;
 	// 	}
 	// }
 	.album-echo {
-		// opacity: 0;
+		opacity: 0;
 		@include center-xy;
 		width: 100%;
 		height: 100%;
