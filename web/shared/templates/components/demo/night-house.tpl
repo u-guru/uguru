@@ -45,11 +45,12 @@
 		            <path d="M418.024234,178 C417.360925,176.123326 417,174.103813 417,172 C417,162.058875 425.058875,154 435,154 C444.941125,154 453,162.058875 453,172 C453,174.103813 452.639075,176.123326 451.975766,178 L418.024234,178 L418.024234,178 Z" class="s-cloud-2" fill="#BCE5FF"></path>
 		        </g>
 		        <g class="house"
-					u on-init="s:[build-house:public]:delay-500">
+					u on-init="s:[build-house:public]">
+					<!-- u on-init="s:[build-house:public]:delay-500" -->
 		            <rect class="house-foundation" fill="#AADFFF" x="307" y="285" width="187" height="204"
 						u init-with="p:[tro:center bottom, transform:scaleY(0)]"
-						when-build-house="a:[scaleY:0:1:500:easeInOutBounce:0:1:f]"></rect>
-						<!-- when-mailbox-enter="a:[scaleY:0:1:500:easeInOutBounce:500:1:f] | s:[build-house:public]" -->
+						when-build-house="a:[scaleY:0:1:500:easeInOutBounce:500:1:f]"></rect>
+						<!-- when-mailbox-enter="a:[scaleY:0:1:500:easeInOutBounce:0:1:f] | s:[build-house:public]:delay-500" -->
 		            <rect class="house-casing" fill="#FFFFFF" x="301" y="485" width="199" height="19"></rect>
 		            <rect class="roof-edge" fill="#FFFFFF" x="299" y="258" width="203" height="19"></rect>
 		            <rect class="roof-blue" fill="#AADFFF" x="299" y="258" width="203" height="12"></rect>
@@ -87,7 +88,10 @@
 		            <rect class="door-casing" fill="#FFFFFF" x="324" y="444" width="50" height="58"></rect>
 		            <rect class="door-light" fill="#FEF1AE" x="329" y="444" width="40" height="58"></rect>
 		            <path d="M329,444 L369,444 L369,502 L329,502 L329,444 L329,444 Z M337,444 L361,444 L361,450 L337,450 L337,444 L337,444 Z M337,457 L361,457 L361,477 L337,477 L337,457 L337,457 Z" class="door-front" fill="#2E5573"></path>
-		            <rect class="door-shade" fill="#FFFFFF" x="321" y="399" width="56" height="36"></rect>
+		            <rect class="door-shade" fill="#FFFFFF" x="321" y="399" width="56" height="36"
+						u init-with="p:[op:0, tro:center top]"
+						on-init="a:[bounceIn-subtle:500:linear:0:1:f]:delay-500"></rect>
+						<!-- when-build-house="a:[bounceIn-subtle:500:linear:0:1:f]:delay-500" -->
 		            <rect class="door-shade-edge" fill="#8A70B3" x="321" y="435" width="56" height="9"></rect>
 		        </g>
 		        <g class="mailbox" u on-init="s:[mailbox-enter:public]">
