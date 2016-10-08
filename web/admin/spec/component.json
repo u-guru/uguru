@@ -435,7 +435,7 @@
                     "bugs": [
 						{
 							"bug": "@samir Switcher is not working for this page only: onexits are being triggered, key being the first type.",
-							"fixed": false
+							"fixed": true
 						},
 						{
 							"bug": "Convert on-inits to a single state",
@@ -1113,7 +1113,7 @@
 					"draw":  [
 						{
 							"element": "border",
-							"fixed": false
+							"fixed": true
 						}
 					],
 					"lettering": [

@@ -325,11 +325,26 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/dev/splash/about',
     templateUrl: 'preapp/templates/sidebar/about.html'
   })
+  .state('root.dev-guru-onboarding', {
+    url:'/dev/guru/onboarding',
+    templateUrl: 'shared/templates/onboarding/main.html'
+  })
+  .state('root.dev-guru-onboarding-courses', {
+    url:'/dev/guru/onboarding/courses',
+    templateUrl: 'shared/templates/onboarding/courses.html'
+  })
+  .state('root.dev-guru-onboarding-skills', {
+    url:'/dev/guru/onboarding/skills',
+    templateUrl: 'shared/templates/onboarding/skills.html'
+  })
+  .state('root.dev-guru-onboarding-info', {
+    url:'/dev/guru/onboarding/info',
+    templateUrl: 'shared/templates/onboarding/info.html'
+  })
   .state('root.dev-splash-powerups', {
     url:'/dev/splash/powerups',
     template: '<ion-view ng-controller="SplashController as splash"> <ion-content><div class="full-xy" ng-include="' + "'" + "preapp/templates/splash.nav.html" + "'" + '"></div><div class="full-xy" ng-include="' + "'" + "preapp/templates/splash.powerups.html" + "'" + '"></div></ion-content></ion-view>'
   })
-  //@gabrielle --
   .state('root.dev-splash-powerups-gpa', {
     url: '/dev/splash/powerups/gpa',
     template: '<div init-with="send:[gpa-triggered:public:delay-250]" ng-include src="root.base_url + ' + "'" + "preapp/templates/powerups/gpa.html'" + '"></div>'

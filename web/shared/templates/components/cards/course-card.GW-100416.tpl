@@ -1,6 +1,5 @@
-<div class="perspective-container full-xy flex-center p15xy" types='svg, default, link, overlay, checkbox, badge' default-type="checkbox">
-	<!-- ng-if='activeType === "checkbox-tiny"' -->
-	<div class="course-card tiny"
+<div class="perspective-container full-xy flex-center p15xy" types='svg, default, link, overlay, checkbox, checkbox-mini, checkbox-short, checkbox-tiny, badge' default-type="checkbox">
+	<div class="course-card tiny" ng-if='activeType === "checkbox-tiny"'
 		u init-with="p:[opacity:0]"
 		on-init="s:[course-card-init:public] | a:[scoop-enter:800:(0,0.2,0.3,1):0:1:f]">
 		<input type="checkbox" checked/>
@@ -22,8 +21,7 @@
 		</div>
 	</div>
 
-	<!-- ng-if='activeType === "checkbox-short"' -->
-	<div class="course-card short"
+	<div class="course-card short" ng-if='activeType === "checkbox-short"'
 		u init-with="p:[opacity:0]"
 		on-init="s:[course-card-init:public] | a:[scoop-enter:800:(0,0.2,0.3,1):0:1:f]">
 		<svg width="240px" height="50px" viewBox="0 0 240 50">
@@ -49,8 +47,7 @@
 		</div>
 	</div>
 
-	<!-- ng-if='activeType === "mini"' -->
-	<div class="course-card mini"
+	<div class="course-card mini" ng-if='activeType === "checkbox-mini"'
 		u init-with="p:[opacity:0]"
 		on-init="s:[course-card-init:public] | a:[scoop-enter:800:(0,0.2,0.3,1):0:1:f]">
 		<svg width="240px" height="150px" viewBox="0 0 240 150">
@@ -76,8 +73,7 @@
 		</div>
 	</div>
 
-	<!-- ng-if='activeType === "checkbox"' -->
-	<div class="course-card"
+	<div class="course-card" ng-if='activeType === "checkbox"'
 		u init-with="p:[opacity:0]"
 		on-init="s:[course-card-init:public] | a:[scoop-enter:800:(0,0.2,0.3,1):0:1:f]">
 		<svg width="240px" height="150px" viewBox="0 0 240 150">

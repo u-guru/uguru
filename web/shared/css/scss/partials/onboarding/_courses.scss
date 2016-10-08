@@ -1,0 +1,135 @@
+@import '../mixin';
+
+.chalkboard-onboarding-search {
+	width: 100%;
+	max-width: 492px;
+	> form {
+		padding: 0 15px;
+	}
+	> ul {
+		padding: 7.5px;
+		> li {
+			padding: 7.5px;
+		}
+		&.mobile {
+			@include flex;
+			@include flex-center;
+			@include flex-wrap;
+			> li {
+				display: none;
+				width: 50%;
+				@include flex-center;
+				&:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+					@include flex;
+				}
+			}
+		}
+		&.desktop, &.large {
+			display: none;
+			@include flex-center;
+			@include flex-wrap;
+		}
+	}
+}
+
+@media screen and (max-height: 540px) {
+	.chalkboard-onboarding-search {
+		.course-card.short {
+			width: 100%;
+			> svg {
+				display: none;
+			}
+			.course-card-inside {
+				position: static;
+				width: 100%;
+				height: auto;
+				background: white;
+				padding-right: 47px;
+				h1 {
+					display: none;
+				}
+				h2 {
+					margin-bottom: 0;
+					font-size: 14px;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-height: 540px) {
+	.chalkboard-onboarding-search {
+		> ul {
+			&.mobile {
+				> li {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-height: 660px) {
+	.chalkboard-onboarding-search {
+		> ul {
+			&.mobile {
+				> li {
+					@include flex-important;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 385px) and (min-height: 650px) {
+	.chalkboard-onboarding-search {
+		> ul {
+			&.large {
+				@include flex;
+			}
+			&.mobile, &.desktop {
+				display: none;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.chalkboard-onboarding-search {
+		> ul {
+			&.desktop {
+				@include flex;
+			}
+			&.mobile, &.large {
+				display: none;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 768px) and (min-height: 900px) {
+	.chalkboard-onboarding-search {
+		max-width: 780px;
+		.course-card {
+			&.mini {
+				> svg {
+					width: auto;
+					max-width: none;
+					height: auto;
+				}
+				.course-card-border {
+					height: 5px;
+				}
+				.course-card-inside {
+					h2 {
+						font-size: 14px;
+						margin-bottom: 5px;
+					}
+					h1 {
+						font-size: 24px;
+					}
+				}
+			}
+		}
+	}
+}

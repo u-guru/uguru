@@ -2,20 +2,16 @@
 	<!-- on-init="s:[album-tile-init]"
 		Hey this may not be best practice because
 	-->
-	<a class="album-tile"
-		u
-		on-mouse-enter="s:[album-tile-mouse-enter]"
-		on-mouse-leave="s:[album-tile-mouse-leave]"
-		on-click="s:[album-tile-click]">
-		<!-- @samir The opacity,the height,and width isn't working together.  -->
+	<a class="album-tile" u
+		on-mouse-enter="s:[album-tile-mouse-enter:public]"
+		on-mouse-leave="s:[album-tile-mouse-leave:public]"
+		on-click="s:[album-tile-click:public]">
 		<div class="album-echo">
 			<div style="background: #020c39;"></div>
 		</div>
 		<div class="album-art" u
-			init-with="p:[opacity:0]"
-			on-init="send:[album-tile-init:self]"
-			when-album-tile-init="a:[opacity:0:1:1000:linear:0:1:f, bounceIn-subtle-o:1000:linear:0:1:f]">
-			<!-- -->
+			init-with="p:[op:0]"
+			on-init="a:[bounceIn-subtle:1000:easeOutSine:0:1:f]">
 			<svg class="square" viewBox="0 0 100 100">
 				<rect x="0" y="0" width="100" height="100" fill="none"></rect>
 			</svg>
@@ -26,13 +22,10 @@
 			</svg>
 		</div>
 		<div class="album-caption">
-			<!-- @samir The opacity and the transform isn't working together. If I take opacity out, the transform animation works. -->
-			<h1 u init-with="p:[background:#020c39, opacity:0, transform-origin:top center, rotateX:90deg]"
-				on-init="send:[album-tile-init:self]"
-				when-album-tile-init="a:[opacity:0:1:250:easeInOutSine:150:1:f, rotateX:90deg:0deg:250:easeOutQuint:150:1:f]">Midnight<br/>Cramming</h1>
-			<h2 u init-with="p:[background:#020c39, opacity:0, transform-origin:top center, rotateX:90deg]"
-				on-init="send:[album-tile-init:self]"
-				when-album-tile-init="a:[opacity:0:1:250:easeInOutSine:300:1:f, rotateX:90deg:0deg:250:easeOutQuint:300:1:f]">Intense EDM</h2>
+			<h1 u init-with="p:[bg:#020c39, op:0, tro:top center, tr:rotateX(90deg)]"
+				on-init="a:[opacity:0:1:250:easeInOutSine:1150:1:f, rotateX:90deg:0deg:250:easeOutQuint:1150:1:f]">Midnight Cramming</h1>
+			<h2 u init-with="p:[bg:#020c39, op:0, tro:top center, tr:rotateX(90deg)]"
+				on-init="a:[opacity:0:0.3:250:easeInOutSine:1300:1:f, rotateX:90deg:0deg:250:easeOutQuint:1300:1:f]">Intense EDM</h2>
 		</div>
 	</a>
 </div>
