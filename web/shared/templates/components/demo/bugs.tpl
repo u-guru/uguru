@@ -1,6 +1,6 @@
 <div class="full-xy flex-center">
 	<ul class="flex-wrap-center p15-grid">
-		<li>
+	<!-- 	<li>
 			<div class="bg-moxie flex-center width-128 height-128 radius-2"/>
 			<div class="bg-moxie p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[scaleY:0, transform-origin:center top]"
@@ -76,17 +76,17 @@
 		</li>
 
 		<li>
-			<a class="bg bg-gold p10xy flex-center width-128 height-128 radius-2"
+			<a class="bg bg-moxie p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
-				on-init="a:[opacity:0:1:1000:easeOutSine:200:8:ar, scaleY:0:1:1000:bouncePast:0:10:f, rotate:180deg:0deg:1000:easeOutSine:0:10:ar]">
+				on-init="a:[opacity:0:1:1000:easeOutSine:200:1:ar, scaleY:0:1:1000:bouncePast:0:1:f, rotate:180deg:0deg:1000:easeOutSine:0:11:ar]">
 				<h1 class="txt-14 semibold txt-center">end points are wrong<br/>rotate(-0.0195deg)</h1>
 			</a>
 		</li>
 
 		 <li>
-			<div class="bg-auburn flex-center width-128 height-128 radius-2"
+			<div class="bg-moxie flex-center width-128 height-128 radius-2"
 				u init-with="p:[scaleX:0, transform-origin:center top]"
-				on-init="a:[scaleIn-bounceDown:1500:linear:0:5:f]">
+				on-init="a:[scaleIn-bounceDown:1500:linear:0:1:f]">
 				<h1 class="txt-14 semibold txt-center">Iteration count (2) doesn't work for custom transforms</h1>
 			</div>
 		</li>
@@ -114,6 +114,23 @@
 				<h1 class="txt-14 semibold txt-center">shortcuts</h1>
 			</div>
 		</li>
+
+
+		<li>
+			<a class="bg bg-moxie p10xy flex-center width-128 height-128 radius-2"
+				u init-with="p:[transform-origin:center center]"
+				on-init="a:[scale:0.5:1:1000:easeOutElastic:0:1:f, rotate:-445deg:0deg:1000:bouncePast:0:2:ar]">
+				<h1 class="txt-14 semibold txt-center">scale doesn't work</h1>
+			</a>
+		</li>
+		<li>
+			<a class="bg bg-moxie p10xy flex-center width-128 height-128 radius-2"
+				u init-with="p:[transform-origin:center center]"
+				on-mouseenter="a:[scale:1:1.5:1000:easeOutElastic:0:1:f]"
+				on-mouseleave="a:[scale:1.5:1:1000:easeOutElastic:0:1:f]">
+				<h1 class="txt-14 semibold txt-center">types</h1>
+			</a>
+		</li> -->
 		<li>
 			<div class="bg-auburn p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
@@ -121,7 +138,6 @@
 				<h1 class="txt-14 semibold txt-center">triggers</h1>
 			</div>
 		</li>
-
 		<li>
 			<div class="relative bg-auburn p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
@@ -175,12 +191,12 @@
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
 							</li>
+
 						</stagger-children>
 					</ul>
 				</div>
 			</div>
 		</li>
-
 
 		<!-- <li>
 			<div class="relative bg-moxie p10xy flex-center width-128 height-128 radius-2">
@@ -213,21 +229,19 @@
 				</a>
 			</div>
 		</li> -->
-
 		<li>
-			<a class="bg bg-moxie p10xy flex-center width-128 height-128 radius-2"
+			<div class="bg-auburn p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
-				on-init="a:[scale:0.5:1:1000:easeOutElastic:0:1:f, rotate:-445deg:0deg:1000:bouncePast:0:2:ar]">
-				<h1 class="txt-14 semibold txt-center">scale doesn't work</h1>
-			</a>
+				on-click="a:[icon-enter:1000:easeInSine:1250:1:f">
+				<h1 class="txt-14 semibold txt-center">Icon enter</h1>
+			</div>
 		</li>
 		<li>
-			<a class="bg bg-moxie p10xy flex-center width-128 height-128 radius-2"
+			<div class="bg-auburn p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
-				on-mouseenter="a:[scale:1:1.5:1000:easeOutElastic:0:1:f]"
-				on-mouseleave="a:[scale:1.5:1:1000:easeOutElastic:0:1:f]">
-				<h1 class="txt-14 semibold txt-center">types</h1>
-			</a>
+				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeInOutElastic:0:1:f]:delay-200 | send:[show-header-elem:public]:delay-1000">
+				<h1 class="txt-14 semibold txt-center">Verify Iterations</h1>
+			</div>
 		</li>
 	</ul>
 </div>

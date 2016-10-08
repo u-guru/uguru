@@ -10,6 +10,13 @@ angular.module('uguru.admin')
   'AnimationService',
   '$compile',
   function($scope, $state, $timeout, $interval, $localstorage, $window, AnimationService, $compile) {
+    var demo = this;
+    demo.showTextArgument = function($event) {
+      var strArgs = $event.target.getAttribute('on-click');
+      demo.lastSelectedText = strArgs;
+      console.log(demo.lastSelectedText)
+    }
+
     $timeout(function() {
 
       var buttons = document.querySelectorAll('.guru-switch-container .button');
