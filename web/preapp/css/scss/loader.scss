@@ -109,12 +109,12 @@
         > div:not(.mask) {
             width: 100%;
             height: 100%;
-            svg {
-                circle {
-                    stroke-dasharray: 1207;
-                    stroke-dashoffset: 1207;
-                }
-            }
+            // svg {
+            //     circle {
+            //         stroke-dasharray: 1207;
+            //         stroke-dashoffset: 1207;
+            //     }
+            // }
         }
     }
     .logo {

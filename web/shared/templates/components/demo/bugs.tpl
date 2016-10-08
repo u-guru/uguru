@@ -1,5 +1,17 @@
 <div class="full-xy flex-center">
 	<ul class="flex-wrap-center p15-grid">
+		<li>
+			<div class="relative width-128 height-128 flex-center"
+				u on-init="s:[portal-hover:public]">
+				<svg class="fill-moxie absolute top-0 left-0 width-128 height-128" viewBox="0 0 128 128">
+					<rect x="2" y="2" width="124" height="124" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" rx="2"
+						u init-with="p:[stroke-dasharray:1207, stroke-dashoffset:1207, stroke:#55A4B7]"
+						when-portal-hover="a:[l-progress-color:2000:linear:250:1:f, stroke-dashoffset:1207:0:2000:linear:250:1:f] | s:[portal-complete:public:delay-2000]"></rect>
+				</svg>
+				<h1 class="relative z-index-2 txt-14 semibold txt-center">stroke-dashoffset</h1>
+			</div>
+		</li>
+
 	<!-- 	<li>
 			<div class="bg-moxie flex-center width-128 height-128 radius-2"/>
 			<div class="bg-moxie p10xy flex-center width-128 height-128 radius-2"
