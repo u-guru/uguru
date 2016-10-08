@@ -2384,6 +2384,29 @@
 			}
 		}
 	}
+	&.short {
+		.category-tile-inside {
+			justify-content: flex-start;
+			text-align: left;
+			.category-tile-border {
+				top: 0;
+				left: 0;
+				width: 5px;
+				height: 100%;
+				border-radius: 2px 0 0 2px;
+			}
+			.category-tile-icon {
+				margin-left: 15px;
+				width: 40px;
+				height: 40px;
+			}
+			h1 {
+				margin-left: 10px;
+				width: auto;
+				font-size: 16px;
+			}
+		}
+	}
 	&.price-moxie {
 		.category-tile-price div, .category-tile-border {
 			background: $moxie!important;

@@ -13,6 +13,7 @@ angular.module('uguru.shared.services')
 function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window, RootService) {
       var rShortcuts = {special: getSpecialShortcuts(), animations:null, propValues: {}, props: {}, values:{}};
       var stateShortcuts = {};
+      var rAnimations;
       var stateTypes = ['on', 'when', 'init'];
       var onStateMappings = {
         'init': 'ready'
@@ -131,16 +132,18 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         var context = {name: name, type: type}
 
           if (type === 'init' && name == 'with') {
-            return function(element, scope, attr) {
-
+            return function(element, scope, attr, shortcuts) {
+              shortcuts = shortcuts || RootService.animations;
+              rShortcuts.animations = shortcuts;
               if (!rShortcuts.animations) {
-                var rAnimations = RootService.animations;
+                rAnimations = RootService.animations;
                 rShortcuts.cssPropValues = RootService.animations.customShortcuts.cssPropValues;
                 rShortcuts.cssProps = RootService.animations.customShortcuts.cssProps;
                 rShortcuts.cmds = RootService.animations.customShortcuts.cmds;
                 rShortcuts.args = RootService.animations.customShortcuts.args;
               }
-              applySendAnimProp(scope, element, attr, actions, context);
+              registerAnimationListeners(scope, element, attr, actions, context);
+              applySendAnimProp(scope, element, actions, context);
               // applyPropsToElement(element, actions.prop, rShortcuts);
             }
           }
@@ -184,19 +187,37 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               scope.root.public.customStates['when'][scopeTitle] = false;
             }
             var hasDelay = parseFloat(scopeNameSplit[1])
-
-            scope.$watch(scopeName, function(_new, _old) {
+            if (scope.root.public.customStates['when'][scopeTitle]) {
               if (hasDelay) {
-                $timeout(function() {
-                  applySendAnimProp(scope, element, actions, context)
-                }, hasDelay)
+                $timeout(function() {applySendAnimProp(scope, element, actions, context, registerWatchFunctionCallback)}, hasDelay);
               } else {
-                if (_new && _old === false) {
-                  applySendAnimProp(scope, element, actions, context)
-                }
+                applySendAnimProp(scope, element, actions, context, registerWatchFunctionCallback);
               }
-            })
+            } else {
+              registerWatchFunction(scopeName);
+            }
         }
+
+        function registerWatchFunctionCallback(scope_name) {
+          return function() {
+            return registerWatchFunction(scope_name);
+          }
+        }
+
+        function registerWatchFunction(scope_name) {
+          return scope.$watch(scopeName, function(_new, _old) {
+            if (hasDelay) {
+              $timeout(function() {
+                applySendAnimProp(scope, element, actions, context)
+              }, hasDelay)
+            } else {
+              if (_new && _old === false) {
+                applySendAnimProp(scope, element, actions, context)
+              }
+            }
+          })
+        }
+
       }
 
       function applyOnToElement(scope, element, attr, actions, context) {
@@ -218,7 +239,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         }
       }
 
-      function applySendAnimProp(scope, element, actions, context) {
+      function applySendAnimProp(scope, element, actions, context, cb) {
 
         if (actions.prop) {
           if ('prop' in actions.delays) {
@@ -267,6 +288,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               applySendArgsAndCallback(element, scope, actions.send);
             }
           }
+          cb && cb();
       }
 
       function condenseAnimationsAndShortcuts(scope, animations) {
@@ -368,15 +390,17 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               scope.root.public.customStates.when[_attr.camel] = true;
 
               $timeout(function() {
+                scope.$apply();
                 scope.root.public.customStates.when[_attr.camel] = false;
               })
             }, msgDelay)
           } else {
             scope.root.public.customStates.when[_attr.camel] = true;
             $timeout(function() {
-              // $timeout(function() {; scope.$apply()});
+              scope.$apply();
+              scope.root.public.customStates.when[_attr.camel] = false;
             })
-            scope.root.public.customStates.when[_attr.camel] = false;
+
             // console.log(_attr.camel)
           }
 
@@ -534,7 +558,13 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         //trigger
         full_value.split('|').forEach(function(stream) {
           if (!rShortcuts.cmds) {
-            rShortcuts.cmds = RootService.animations.customShortcuts.cmds;
+
+                var rAnimations = RootService.animations;
+                rShortcuts.cssPropValues = RootService.animations.customShortcuts.cssPropValues;
+                rShortcuts.cssProps = RootService.animations.customShortcuts.cssProps;
+                rShortcuts.cmds = RootService.animations.customShortcuts.cmds;
+                rShortcuts.args = RootService.animations.customShortcuts.args;
+
           }
 
           if (stream && stream.length && stream in rShortcuts.cmds) {

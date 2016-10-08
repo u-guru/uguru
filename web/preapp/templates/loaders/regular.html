@@ -1,22 +1,19 @@
 <div class="loader-portal-outer absolute top-0 left-0 full-xy perspective-container z-index-999">
 	<div class="loader-portal states"
-		init-default
-		on-init="s:[portal-open:public]"
+		u on-init="s:[portal-open:public]"
 		when-portal-open="s:[warp-objects-container-init:public, warp-objects-init:public:delay-500]"
 		when-transition-end="p-op">
 		<div class="loader-portal-inside"
-			init-with="p:[tr:scale(0), tro:50% 90%]"
-			when-portal-open="p:[transform:scale(0):scale(1):250:easeInOutBack]:delay-100">
-			<!-- u init-with="p:[tro:50% 90%]"
-			when-portal-open="a:[scale:0:1:250:easeInOutBack:100:1:f]" -->
+			u init-with="p:[tr:scale(0), tro:50% 90%]"
+			when-portal-open="a:[scale:0:1:250:easeInOutBack:100:1:f]">
 			<div class="portal"
-				init-with="p:[tr:translateY(37%) translateZ(25px) rotateX(75deg)]"
-				when-portal-complete="p:[transform:translateY(37%) translateZ(25px) rotateX(75deg):translateY(-37.5%) translateZ(0px) rotateX(0deg):650:easeOutCirc easeOutCubic easeOutSine]:delay-2000 | s:[page-init:public:delay-1000, warp-start:public:delay-2000]">
+				u init-with="p:[tr:translateY(37%) translateZ(25px) rotateX(75deg)]"
+				when-portal-complete="a:[translateY:37%:-37.5%:650:easeOutCirc:0:1:f, translateZ:25px:0px:650:easeOutCubic:0:1:f, rotateX:75deg:0deg:650:easeOutSine:0:1:f]:delay-2000 | s:[page-init:public:delay-1000, warp-start:public:delay-2000]">
 				<div>
 					<svg width="200px" height="200px" viewBox="0 0 400 400">
 						<circle cx="200" cy="200" r="192" stroke="#55A4B7" stroke-width="16" fill="#2B3234" stroke-linecap="round" stroke-linejoin="round"
-							init-default
-							when-portal-hover="p:[l-progress-color:0:1:2000:linear:0, stroke-dashoffset:1207:0:2000:linear:0]:delay-250 |  s:[portal-complete:public:delay-2000]">
+							u init-with="p:[stroke-dasharray:1207, stroke-dashoffset:1207, stroke:#55A4B7]"
+							when-portal-hover="a:[l-progress-color:2000:easeInSine:250:1:f, stroke-dashoffset:1207:0:2000:easeInSine:250:1:f] | s:[portal-complete:public:delay-2000]"></circle>
 							<!-- p:[l-progress:0:1:5000:linear:0]:delay-250 | p:[stroke-dashoffset:1207:0:2000:linear:0]:delay-250 -->
 					</svg>
 				</div>
@@ -41,7 +38,7 @@
 		</div>
 	</div>
 
-	<div class="portal-transition-container"
+	<!-- <div class="portal-transition-container"
 		when-warp-objects-container-init="t:[init:self]"
 		init-with="p-op"
 		on-init="p:[opacity:0:1:250:easeOutSine]"
@@ -72,10 +69,10 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </div>
 
-<div class="portal-page"
+<!-- <div class="portal-page"
 	when-page-init="t:[init:self]"
 	init-with="p-op"
 	on-init="p:[opacity:0:1:250:easeOutSine]"
@@ -87,4 +84,4 @@
 			init-with="p-op"
 			when-transition-start="p:[opacity:0:1:500:easeOutSine]"></div>
 	</div>
-</div>
+</div> -->
