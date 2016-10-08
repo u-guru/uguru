@@ -184,11 +184,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               scope.root.public.customStates['when'][scopeTitle] = false;
             }
             var hasDelay = parseFloat(scopeNameSplit[1])
-            attr.$observe('class', function(val){
-              val.split(' ').forEach(function(current_class, j) {
-                console.log('looking for', scopeNameSplit, '...inspecting', current_class);
-              })
-            });
+
             scope.$watch(scopeName, function(_new, _old) {
               if (hasDelay) {
                 $timeout(function() {
@@ -208,14 +204,14 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         if (name === 'init') {
           registerAnimationListeners(scope, element, attr, actions, context)
           element.ready(function(e) {
-
+            console.log(context)
             applySendAnimProp(scope, element, actions, context);
           })
         } else {
           registerAnimationListeners(scope, element, attr, actions, context)
 
           element.on(name,function(e) {
-
+            console.log('initializing', element, actions, context)
             // delete actions['send']
               applySendAnimProp(scope, element, actions, context)
           })

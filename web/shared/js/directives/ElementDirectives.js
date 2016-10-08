@@ -369,7 +369,12 @@ angular.module('uguru.shared.directives')
               var states = this.states;
               if (this.states.init) {
                 this.states.init.forEach(function(state, i) {
-                  state.exec(element);
+                  if (state.name === 'init' && state.type === 'on') {
+                    states.on.push(state);
+                  } else {
+                    state.exec(element);
+                  }
+
                 })
               }
 
