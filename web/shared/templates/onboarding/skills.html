@@ -5,7 +5,7 @@
 				<div class"chalkboard-onboarding-container">
 					<div class="chalkboard-onboarding-header">
 						<h1 u init-with="p:[scaleX:0]"
-							on-init="a:[scaleInX-subtle:1000:linear:0:1:f]">Choose Your Skills</h1>
+							on-init="a:[scaleInX-subtle:1000:linear:0:1:a]">Choose Your Skills</h1>
 							<!-- u init-with="p-op"
 								when-category-tile-init="a:[bounceIn-subtle:1000:linear:0:1:f] -->
 					</div>
@@ -44,7 +44,7 @@
 							<li class="perspective-container">
 								<a class="category-tile bg-baking" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');"
 									u init-with="p:[opacity:0, transform-origin:center center]"
-									on-init="a:[bounceInUp-subtle:1000:linear:750:1:f]">
+									on-click="a:[bounceInUp-subtle:1000:linear:750:1:f] | s:[category-tile-init:public]">
 									<svg width="240px" height="150px" viewBox="0 0 240 150">
 										<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 									</svg>

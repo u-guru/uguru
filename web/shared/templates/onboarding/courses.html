@@ -9,7 +9,7 @@
 					<div class="chalkboard-onboarding-search">
 						<form>
 							<div class="input-border large no-label"
-								u on-init="s:[input-border-enter:public]">
+								u on-click="s:[input-border-enter:public]">
 								<input class="input-border light" type="search" required placeholder=""
 									u on-focus="s:[input-focus:public]"
 									on-blur="s:[input-blur:public]"
@@ -59,7 +59,7 @@
 							<li class="perspective-container">
 								<div class="course-card mini"
 									u init-with="p:[op:0]"
-									on-init="s:[course-card-init:public] | a:[scoop-enter:800:(0,0.2,0.3,1):0:1:f]">
+									on-click="s:[course-card-init:public] | a:[scoop-enter:800:(0,0.2,0.3,1):0:1:f]">
 									<svg width="240px" height="150px" viewBox="0 0 240 150">
 										<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 									</svg>
@@ -87,14 +87,14 @@
 							<li class="perspective-container">
 								<div class="course-card mini"
 									u init-with="p:[op:0]"
-									on-init="a:[scoop-enter:800:(0,0.2,0.3,1):100:1:f]">
+									when-course-card-init="a:[scoop-enter:800:(0,0.2,0.3,1):100:1:f]">
 									<svg width="240px" height="150px" viewBox="0 0 240 150">
 										<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 									</svg>
 									<input type="checkbox" checked/>
 									<div class="course-card-inside"
 										u init-with="p:[op:0]"
-										on-init="a:[bounceInUp-subtle:1000:linear:250:1:f]">
+										when-course-card-init="a:[bounceInUp-subtle:1000:linear:250:1:f]">
 										<!-- u init-with="p:[op:0]"
 										when-course-card-init="a:[bounceInUp-subtle:1000:linear:150:1:f]" -->
 										<h2 style="color: #003262;">BIO 1A</h2>
@@ -102,7 +102,7 @@
 									</div>
 									<div class="course-card-border" style="background: #003262;"></div>
 									<div class="course-card-count-container" u init-with="p:[op:0, transform-origin:right top]"
-										on-init="a:[bounceInUp-subtle:1000:linear:350:1:f]">
+										when-course-card-init="a:[bounceInUp-subtle:1000:linear:350:1:f]">
 										<span class="course-card-count">
 											<span style="background: #003262;"></span>
 											<svg viewBox="0 0 100 100">
