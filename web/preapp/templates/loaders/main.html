@@ -1,6 +1,6 @@
 <div class="loader-portal-outer">
     <div class="loader-portal states"
-		u on-init="s:[portal-open:public, portal-academic-enter:public]"
+		u on-init="s:[portal-open:public:delay-150, portal-academic-enter:public:delay-150]"
 		when-portal-academic-enter="p:[bg:#f8c3e1]">
 		<!-- elem-states="[portal-academic, portal-baking, portal-photo, portal-tech, portal-household]"
 		on-activate="null:inject.loader-portal|on-loader-begin-enter, null:inject.guru-academic|on-loader-academic-enter"
@@ -27,12 +27,16 @@
 
             <div class="logo"
 				ng-include="'preapp/templates/loaders/props/logo.html'"
-				init-with="p:[tr:translateY(350px), tro:center center]"
-				when-portal-open="p:[transform:translateY(350px) scale(0.5):translateY(0px) scale(1):500:easeOutExpo easeInOutBack]:delay-500">
+				u init-with="p:[tr:translateY(350px), tro:center center]"
+				when-portal-open="a:[translateY:350px:0px:500:easeOutExpo:0:1:f, scale:0.5:1:500:easeInOutBack:0:1:f]:delay-500">
+				<!-- when-portal-open="p:[transform:translateY(350px) scale(0.5):translateY(0px) scale(1):500:easeOutExpo easeInOutBack]:delay-500" -->
 			</div>
 
             <div class="guru academic guru-academic"
-				ng-include="'preapp/templates/loaders/guru/academic.html'">
+				ng-include="'preapp/templates/loaders/guru/academic.html'"
+				u init-with="p:[tr:translateY(400px), tro:center top]"
+				when-portal-open="a:[translateY:400px:45px:500:easeOutBack:0:1:f, scale:0.8:1:500:easeOutBack:0:1:f]:delay-900">
+				<!-- when-portal-academic-enter="p:[transform:translateY(400px) scale(0.8):translateY(45px) scale(1):500:easeOutBack easeOutBack]:delay-900" -->
 			</div>
 
             <!-- <div class="guru-baking"
