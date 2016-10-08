@@ -7,7 +7,7 @@
 		<dt>
 			<a class="bg bg-shamrock"
 				init-default
-				on-click="s:[faq-item-clicked:public]">
+				on-init="s:[faq-item-clicked:public]">
 				<h1 init-with="p-op"
 					when-faq-item-init="p:[opacity:0:1:250:easeOutQuart]:delay-250">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt?</h1>
 				<div init-with="p-op"
