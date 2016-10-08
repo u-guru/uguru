@@ -90,8 +90,8 @@
 		            <path d="M329,444 L369,444 L369,502 L329,502 L329,444 L329,444 Z M337,444 L361,444 L361,450 L337,450 L337,444 L337,444 Z M337,457 L361,457 L361,477 L337,477 L337,457 L337,457 Z" class="door-front" fill="#2E5573"></path>
 		            <rect class="door-shade" fill="#FFFFFF" x="321" y="399" width="56" height="36"
 						u init-with="p:[op:0, tro:center top]"
-						on-init="a:[bounceIn-subtle:500:linear:0:1:f]:delay-500"></rect>
-						<!-- when-build-house="a:[bounceIn-subtle:500:linear:0:1:f]:delay-500" -->
+						when-build-house="a:[bounceIn-subtle:500:linear:0:1:f]:delay-500"></rect>
+						<!--on-init="a:[bounceIn-subtle:500:linear:0:1:f]:delay-500" -->
 		            <rect class="door-shade-edge" fill="#8A70B3" x="321" y="435" width="56" height="9"></rect>
 		        </g>
 		        <g class="mailbox" u on-init="s:[mailbox-enter:public]">
