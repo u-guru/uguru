@@ -135,6 +135,13 @@
 			<div class="bg-auburn p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
 				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeInOutElastic:0:1:f]:delay-200 | send:[show-header-elem:public]:delay-1000">
+				<h1 class="txt-14 semibold txt-center">bugs on init-with</h1>
+			</div>
+		</li>
+		<li>
+			<div class="bg-auburn p10xy flex-center width-128 height-128 radius-2"
+				u init-with="p:[transform-origin:center center]"
+				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeInOutElastic:0:1:f]:delay-200 | send:[show-header-elem:public]:delay-1000">
 				<h1 class="txt-14 semibold txt-center">triggers</h1>
 			</div>
 		</li>

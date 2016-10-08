@@ -42,7 +42,6 @@ angular.module('uguru.shared.directives')
 
           var stagDict = DirectiveService.processStaggerArgs(attr)
           // console.log('its compiling', attr.onEnter)
-          console.log(stagDict)
 
           return {
             pre: function preLink(lScope, lElem, lAttr) {
@@ -367,20 +366,20 @@ angular.module('uguru.shared.directives')
           compile: function(element, attr, transclude) {
               this.states = ElementService.renderElementStates(element, attr);
               var states = this.states;
-              if (this.states.init) {
-                this.states.init.forEach(function(state, i) {
-                  if (state.name === 'init' && state.type === 'on') {
-                    states.on.push(state);
-                  } else {
-                    state.exec(element);
-                  }
 
-                })
-              }
 
 
               return {
                   pre: function (scope, lElem, lAttr) {
+                    if (states.init) {
+                      states.init.forEach(function(state, i) {
+                        if (state.name === 'init' && state.type === 'on') {
+                          states.on.push(state);
+                        } else {
+                          state.exec(element, scope, lAttr, true)
+                        }
+                      })
+                    }
                     scope.whenStates = {};
                       if (states.on) {
                         states.on.forEach(function(state, i) {
