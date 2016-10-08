@@ -135,12 +135,18 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             return function(element, scope, attr, shortcuts) {
               shortcuts = shortcuts || RootService.animations;
               rShortcuts.animations = shortcuts;
-              if (!rShortcuts.animations) {
+              if (!rShortcuts.animations && rShortcuts.animations.customShortcuts) {
                 rAnimations = RootService.animations;
                 rShortcuts.cssPropValues = RootService.animations.customShortcuts.cssPropValues;
                 rShortcuts.cssProps = RootService.animations.customShortcuts.cssProps;
                 rShortcuts.cmds = RootService.animations.customShortcuts.cmds;
                 rShortcuts.args = RootService.animations.customShortcuts.args;
+              } else if (!rShortcuts.animations.customShortcuts) {
+                $timeout(function() {
+
+                  getStateFunc(type, name, actions);
+                  // scope.$apply();
+                });
               }
               registerAnimationListeners(scope, element, attr, actions, context);
               applySendAnimProp(scope, element, actions, context);
@@ -346,6 +352,9 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         else {
 
           if (!player.active) {
+            console.log('it should play again')
+            // player = player.scheduleStream(player, state, 0);
+            // player.active = true;
               player.play(player);
           }
 
@@ -374,19 +383,19 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             msgDelay = parseInt(msgSplit[2].replace('delay-', ''));
           }
 
-          if (msgScope.trim() ==='self') {
-              if (!msgDelay) {
-                element[0].classList.add('when-' + msgScope)
-              }
-              return;
-          }
+          // if (msgScope.trim() ==='self') {
+          //     if (!msgDelay) {
+
+          //       // element[0].classList.add('when-' + msgScope)
+          //     }
+          //     return;
+          // }
 
 
           var _attr = {dashed: iMsg, camel: UtilitiesService.camelCase('when-' + iMsg)};
           _attr.camel = _attr.camel.replace(' ', '-')
           if (msgDelay) {
             $timeout(function() {
-              console.log()
               scope.root.public.customStates.when[_attr.camel] = true;
 
               $timeout(function() {
@@ -467,7 +476,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             prop = rShortcuts.props[prop] + "";
           }
           var iPropSplit = prop.split(':');
-          console.log(iPropSplit)
+
           var propKey = iPropSplit[0].trim();
           var propValue = iPropSplit[1].trim();
           if (propKey.toLowerCase() in rShortcuts.cssProps) {
@@ -557,14 +566,19 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
         //trigger
         full_value.split('|').forEach(function(stream) {
-          if (!rShortcuts.cmds) {
+          if (!rShortcuts.cmds && !RootService.animations.customShortcuts) {
+            $timeout(function() {
+              getArgActions(state_args, full_value, shortcuts);
+            })
+            return;
+          }
 
-                var rAnimations = RootService.animations;
-                rShortcuts.cssPropValues = RootService.animations.customShortcuts.cssPropValues;
-                rShortcuts.cssProps = RootService.animations.customShortcuts.cssProps;
-                rShortcuts.cmds = RootService.animations.customShortcuts.cmds;
-                rShortcuts.args = RootService.animations.customShortcuts.args;
-
+          if (RootService.animations && RootService.animations.customShortcuts) {
+            rAnimations = RootService.animations;
+            rShortcuts.cssPropValues = RootService.animations.customShortcuts.cssPropValues;
+            rShortcuts.cssProps = RootService.animations.customShortcuts.cssProps;
+            rShortcuts.cmds = RootService.animations.customShortcuts.cmds;
+            rShortcuts.args = RootService.animations.customShortcuts.args;
           }
 
           if (stream && stream.length && stream in rShortcuts.cmds) {

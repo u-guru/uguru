@@ -23,6 +23,56 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
+.directive("initAfter", ["$compile", "UtilitiesService", function($compile, UtilitiesService) {
+      return {
+          restrict: 'A',
+          replace: true,
+          transclude: true,
+          priority:101,
+          compile: function(element, attr, transclude) {
+            var whenAttr = [];
+            if (attr.initAfter && attr.initAfter.length) {
+              attr.initAfter.split(',').forEach(function(_attr_name, i) {
+                whenAttr.push(UtilitiesService.camelCase('when-' + _attr_name.trim()))
+              })
+            }
+              return {
+                  pre:
+                  function prelink(scope, lElem, lAttr) {
+                    var lElemPointer = lElem;
+                    var whenAttrListeners = [];
+                    scope.transcludeComplete = false;
+                    transclude(scope, function(clone, innerScope) {
+                      whenAttr.forEach(function(attr_name, i) {
+                        var iListen = scope.$watch('root.public.customStates.when.' + attr_name, function(val, new_val) {
+                          console.log(lElem, whenAttr, val, new_val)
+                          if (val) {
+
+                            whenAttrListeners.forEach(function(i_listener, j) {
+                              console.log('clearing watchers');
+                              i_listener();
+                            })
+                            lElem[0].removeAttribute('init-after');
+                            lElem[0].setAttribute('u', '');
+                            $compile(lElem[0])(scope);
+
+
+
+                            lElem.append(clone);
+                            transcludeComplete = true;
+                          }
+                        });
+                        console.log('registering', iListen)
+                        whenAttrListeners.push(iListen);
+                      })
+                    })
+
+                  },
+                  post: angular.noop
+              }
+          }
+      }
+}])
 .directive('staggerChildren', ['UtilitiesService', 'DirectiveService', '$timeout', '$compile', function(UtilitiesService, DirectiveService, $timeout, $compile) {
   return {
     restrict: 'AE',
@@ -341,6 +391,7 @@ angular.module('uguru.shared.directives')
       }
     }
 }])
+
 .directive("uClass", ["$compile", "ElementService", function($compile, ElementService) {
       return {
           restrict: 'E',
@@ -373,6 +424,7 @@ angular.module('uguru.shared.directives')
                   pre: function (scope, lElem, lAttr) {
                     if (states.init) {
                       states.init.forEach(function(state, i) {
+                        console.log(state.name, state.type);
                         if (state.name === 'init' && state.type === 'on') {
                           states.on.push(state);
                         } else {
