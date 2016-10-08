@@ -57,7 +57,9 @@
 		            <rect class="roof-edge" fill="#FFFFFF" x="299" y="258" width="203" height="19"></rect>
 		            <rect class="roof-blue" fill="#AADFFF" x="299" y="258" width="203" height="12"></rect>
 		            <rect class="roof-top" fill="#FFFFFF" x="296" y="258" width="209" height="7"></rect>
-					<g>
+					<g init-after="w4"
+						init-with="p:[op:0, tro:20% 80%]"
+						on-init="a:[scoop-enter:1000:linear:0:1:f]">
 		            	<rect class="w5-shadow-btm" fill="#0B3B5E" x="434" y="477" width="40" height="5"></rect>
 			            <rect class="w5-ledge" fill="#8C70B3" x="432" y="467" width="44" height="10"></rect>
 			            <rect class="w5-blind" fill="#2E5573" x="435" y="407" width="38" height="60"></rect>
@@ -65,7 +67,9 @@
 			            <rect class="w5-shadow-mid" fill="#0B3B5E" x="440" y="443" width="28" height="7"></rect>
 			            <path d="M435,407 L473,407 L473,467 L435,467 L435,407 L435,407 Z M441,414 L467,414 L467,438 L441,438 L441,414 L441,414 Z M441,443 L467,443 L467,467 L441,467 L441,443 L441,443 Z" class="w5-casing" fill="#FFFFFF"></path>
 					</g>
-					<g>
+					<g init-after="w3"
+						init-with="p:[op:0, tro:20% 80%]"
+						on-init="a:[scoop-enter:1000:linear:0:1:f]| s:[w4:public:delay-1100]">
 			            <rect class="w4-shadow-btm" fill="#0B3B5E" x="381" y="477" width="40" height="5"></rect>
 			            <rect class="w4-ledge" fill="#8C70B3" x="379" y="467" width="44" height="10"></rect>
 			            <rect class="w4-blind" fill="#2E5573" x="382" y="407" width="38" height="60"></rect>
@@ -73,7 +77,9 @@
 			            <rect class="w4-shadow-mid" fill="#0B3B5E" x="387" y="443" width="28" height="7"></rect>
 			            <path d="M382,407 L420,407 L420,467 L382,467 L382,407 L382,407 Z M388,414 L414,414 L414,438 L388,438 L388,414 L388,414 Z M388,443 L414,443 L414,467 L388,467 L388,443 L388,443 Z" class="w4-casing" fill="#FFFFFF"></path>
 					</g>
-					<g>
+					<g init-after="w2"
+						init-with="p:[op:0, tro:20% 80%]"
+						on-init="a:[scoop-enter:1000:linear:0:1:f]| s:[w3:public:delay-1000]">
 			            <rect class="w3-shadow-btm" fill="#0B3B5E" x="434" y="376" width="40" height="5"></rect>
 			            <rect class="w3-ledge" fill="#8C70B3" x="432" y="366" width="44" height="10"></rect>
 			            <rect class="w3-blind" fill="#2E5573" x="435" y="306" width="38" height="60"></rect>
@@ -81,7 +87,9 @@
 			            <rect class="w3-shadow-mid" fill="#0B3B5E" x="440" y="342" width="28" height="7"></rect>
 			            <path d="M435,306 L473,306 L473,366 L435,366 L435,306 L435,306 Z M441,313 L467,313 L467,337 L441,337 L441,313 L441,313 Z M441,342 L467,342 L467,366 L441,366 L441,342 L441,342 Z" class="w3-casing" fill="#FFFFFF"></path>
 					</g>
-					<g>
+					<g init-after="w1"
+						init-with="p:[op:0, tro:20% 80%]"
+						on-init="a:[scoop-enter:1000:linear:0:1:f] | s:[w2:public:delay-900]">
 			            <rect class="w2-shadow-btm" fill="#0B3B5E" x="381" y="376" width="40" height="5"></rect>
 			            <rect class="w2-ledge" fill="#8C70B3" x="379" y="366" width="44" height="10"></rect>
 			            <rect class="w2-blind" fill="#2E5573" x="382" y="306" width="38" height="60"></rect>
@@ -91,7 +99,7 @@
 					</g>
 					<g init-after="build-house"
 						init-with="p:[op:0, tro:20% 80%]"
-						on-init="a:[scoop-enter:1000:linear:200:1:f]">
+						on-init="a:[scoop-enter:1000:linear:0:1:f] | s:[w1:public:delay-800]">
 						<!-- when-build-house="a:[scoop-enter:1000:linear:0:1:f]:delay-400" -->
 			            <rect class="w-shadow-btm" fill="#0B3B5E" x="328" y="376" width="40" height="5"></rect>
 			            <rect class="w-ledge" fill="#8C70B3" x="326" y="366" width="44" height="10"></rect>
@@ -100,7 +108,7 @@
 			            <rect class="w-shadow-mid" fill="#0B3B5E" x="334" y="342" width="28" height="7"></rect>
 			            <path d="M329,306 L367,306 L367,366 L329,366 L329,306 L329,306 Z M335,313 L361,313 L361,337 L335,337 L335,313 L335,313 Z M335,342 L361,342 L361,366 L335,366 L335,342 L335,342 Z" class="w-casing" fill="#FFFFFF"></path>
 					</g>
-					<g>
+					<g u init-with="p-op">
 			            <rect class="door-casing" fill="#FFFFFF" x="324" y="444" width="50" height="58"></rect>
 			            <rect class="door-light" fill="#FEF1AE" x="329" y="444" width="40" height="58"></rect>
 			            <path d="M329,444 L369,444 L369,502 L329,502 L329,444 L329,444 Z M337,444 L361,444 L361,450 L337,450 L337,444 L337,444 Z M337,457 L361,457 L361,477 L337,477 L337,457 L337,457 Z" class="door-front" fill="#2E5573"></path>
