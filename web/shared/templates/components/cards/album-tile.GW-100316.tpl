@@ -1,16 +1,15 @@
 <div class="perspective-container full-xy flex-center p15xy">
-	<!-- on-init="s:[album-tile-init]"
-		Hey this may not be best practice because
-	-->
 	<a class="album-tile" u
+		on-init="s:[album-tile-init:public:delay-0]"
 		on-mouse-enter="s:[album-tile-mouse-enter:public]"
 		on-mouse-leave="s:[album-tile-mouse-leave:public]"
 		on-click="s:[album-tile-click:public]">
 		<div class="album-echo">
 			<div style="background: #020c39;"></div>
 		</div>
-		<div class="album-art" u
+		<div class="album-art"
 			init-with="p:[op:0]"
+			init-after="album-tile-init"
 			on-init="a:[bounceIn-subtle:1000:easeOutSine:0:1:f]">
 			<svg class="square" viewBox="0 0 100 100">
 				<rect x="0" y="0" width="100" height="100" fill="none"></rect>
@@ -22,9 +21,11 @@
 			</svg>
 		</div>
 		<div class="album-caption">
-			<h1 u init-with="p:[bg:#020c39, op:0, tro:top center, tr:rotateX(90deg)]"
+			<h1 init-with="p:[bg:#020c39, op:0, tro:top center, tr:rotateX(90deg)]"
+				init-after="album-tile-init"
 				on-init="a:[opacity:0:1:250:easeInOutSine:1150:1:f, rotateX:90deg:0deg:250:easeOutQuint:1150:1:f]">Midnight Cramming</h1>
-			<h2 u init-with="p:[bg:#020c39, op:0, tro:top center, tr:rotateX(90deg)]"
+			<h2 init-with="p:[bg:#020c39, op:0, tro:top center, tr:rotateX(90deg)]"
+				init-after="album-tile-init"
 				on-init="a:[opacity:0:0.3:250:easeInOutSine:1300:1:f, rotateX:90deg:0deg:250:easeOutQuint:1300:1:f]">Intense EDM</h2>
 		</div>
 	</a>
