@@ -174,11 +174,12 @@
     opacity: 1; }
   100% {
     opacity: 1;
-    transfrom: scaleY(1); } }
+    transform: scaleY(1); } }
 /*  http://goo.gl/YRmPH6 */
 @keyframes back-bp {
   0% {
-    transform: matrix3d(0.5, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 1, 0, 0, 50, 0, 1); }
+    transform: matrix3d(0.5, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 1, 0, 0, 50, 0, 1);
+    opacity: 1; }
   3.4% {
     transform: matrix3d(0.658, 0, 0, 0, 0, 0.703, 0, 0, 0, 0, 1, 0, 0, 41.2, 0, 1); }
   4.3% {
@@ -244,7 +245,8 @@
   90.69% {
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0.002, 0, 1); }
   100% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 1; } }
 .off-center-guru {
   transform-origin: center center;
   animation: off-center-guru-all 3000ms linear forwards; }
