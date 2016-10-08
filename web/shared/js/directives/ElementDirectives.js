@@ -304,10 +304,6 @@ angular.module('uguru.shared.directives')
                 execInitWith(scope);
               }
             })
-
-
-
-
             return
           }
 
@@ -380,13 +376,13 @@ angular.module('uguru.shared.directives')
 
               return {
                   pre: function (scope, lElem, lAttr) {
-
+                    scope.whenStates = {};
                       if (states.on) {
                         states.on.forEach(function(state, i) {
                           if (state.actions.debug) {
                             ElementService.launchExternalWindow(state.actions.debug, element);
                           }
-                          state.exec(lElem, scope);
+                          state.exec(lElem, scope, lAttr);
                         })
                       }
                       if (states.when) {
@@ -396,7 +392,7 @@ angular.module('uguru.shared.directives')
 
                             ElementService.launchExternalWindow(state.actions.anim, element);
                           }
-                          state.exec(lElem, scope);
+                          state.exec(lElem, scope, lAttr);
                         })
                       }
                       transclude(scope, function(clone, innerScope) {
