@@ -44,16 +44,16 @@
 		            <path d="M378.756105,178 C378.262518,176.08228 378,174.071797 378,172 C378,158.745166 388.745166,148 402,148 C415.254834,148 426,158.745166 426,172 C426,174.071797 425.737482,176.08228 425.243895,178 L378.756105,178 L378.756105,178 Z" class="s-cloud-1" fill="#BCE5FF"></path>
 		            <path d="M418.024234,178 C417.360925,176.123326 417,174.103813 417,172 C417,162.058875 425.058875,154 435,154 C444.941125,154 453,162.058875 453,172 C453,174.103813 452.639075,176.123326 451.975766,178 L418.024234,178 L418.024234,178 Z" class="s-cloud-2" fill="#BCE5FF"></path>
 		        </g>
-		        <g class="house"
-					u on-init="s:[build-house:public]">
+		        <g class="house">
 					<!-- u on-init="s:[build-house:public]:delay-500" -->
 		            <rect class="house-foundation" fill="#AADFFF" x="307" y="285" width="187" height="204"
 						u init-with="p:[tro:center bottom, transform:scaleY(0)]"
-						when-build-house="a:[scaleY:0:1:500:easeInOutBounce:0:1:f]"></rect>
+						on-init="a:[scaleY:0:1:500:easeInOutBounce:500:1:f] | s:[build-house:public:delay-500]"></rect>
 						<!-- when-mailbox-enter="a:[scaleY:0:1:500:easeInOutBounce:0:1:f] | s:[build-house:public]:delay-500" -->
 		            <rect class="house-casing" fill="#FFFFFF" x="301" y="485" width="199" height="19"
-						u init-with="p:[tro:center bottom, transform:scaleY(0)]"
-						when-build-house="a:[scaleY:0:1:500:easeInOutBounce:150:1:f]"></rect>
+						init-after="build-house"
+						init-with="p:[tro:center bottom, transform:scaleY(0)]"
+						on-init="a:[scaleY:0:1:500:easeInOutBounce:150:1:f]"></rect>
 		            <rect class="roof-edge" fill="#FFFFFF" x="299" y="258" width="203" height="19"></rect>
 		            <rect class="roof-blue" fill="#AADFFF" x="299" y="258" width="203" height="12"></rect>
 		            <rect class="roof-top" fill="#FFFFFF" x="296" y="258" width="209" height="7"></rect>
@@ -89,8 +89,9 @@
 			            <rect class="w2-shadow-mid" fill="#0B3B5E" x="387" y="342" width="28" height="7"></rect>
 			            <path d="M382,306 L420,306 L420,366 L382,366 L382,306 L382,306 Z M388,313 L414,313 L414,337 L388,337 L388,313 L388,313 Z M388,342 L414,342 L414,366 L388,366 L388,342 L388,342 Z" class="w2-casing" fill="#FFFFFF"></path>
 					</g>
-					<g u init-with="p:[op:0, tro:20% 80%]"
-						when-build-house="a:[scoop-enter:1000:linear:0:1:f]">
+					<g init-after="build-house"
+						init-with="p:[op:0, tro:20% 80%]"
+						on-init="a:[scoop-enter:1000:linear:0:1:f]">
 						<!-- when-build-house="a:[scoop-enter:1000:linear:0:1:f]:delay-400" -->
 			            <rect class="w-shadow-btm" fill="#0B3B5E" x="328" y="376" width="40" height="5"></rect>
 			            <rect class="w-ledge" fill="#8C70B3" x="326" y="366" width="44" height="10"></rect>
