@@ -8,8 +8,8 @@
 			<a class="bg bg-shamrock"
 				init-default
 				on-init="s:[faq-item-clicked:public]">
-				<h1 init-with="p-op"
-					when-faq-item-init="p:[opacity:0:1:250:easeOutQuart]:delay-250">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt?</h1>
+				<h1 u init-with="p-op"
+					when-faq-item-init="a:[opacity:0:1:250:easeOutQuart:250:1:f]">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt?</h1>
 				<div init-with="p-op"
 					when-faq-item-init="p:[opacity:0:1:250:easeOutQuart:0:1:f]:delay-500">
 					<span ng-include="root.base_url + 'shared/templates/components/svg/main/down.html'"
