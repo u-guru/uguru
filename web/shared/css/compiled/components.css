@@ -18776,36 +18776,7 @@ input[type=range] {
       font-size: 24px; } }
 .chalkboard-skill-grid {
   width: 100%;
-  max-width: 492px; }
-  .chalkboard-skill-grid > ul {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-align-content: center;
-    align-content: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -ms-flex-flow: row wrap;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
-    padding: 7.5px; }
-    .chalkboard-skill-grid > ul > li {
-      padding: 7.5px; }
-
-@media screen and (min-width: 768px) and (min-height: 900px) {
-  .chalkboard-skill-grid {
-    max-width: 780px; } }
-.chalkboard-skill-grid {
-  width: 100%;
-  max-width: 492px; }
+  max-width: 780px; }
   .chalkboard-skill-grid > ul {
     -ms-box-orient: horizontal;
     display: -webkit-box;

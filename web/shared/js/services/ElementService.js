@@ -131,7 +131,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         var context = {name: name, type: type}
 
           if (type === 'init' && name == 'with') {
-            return function(element) {
+            return function(element, scope, attr) {
 
               if (!rShortcuts.animations) {
                 var rAnimations = RootService.animations;
@@ -140,8 +140,8 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                 rShortcuts.cmds = RootService.animations.customShortcuts.cmds;
                 rShortcuts.args = RootService.animations.customShortcuts.args;
               }
-
-              applyPropsToElement(element, actions.prop, rShortcuts);
+              applySendAnimProp(scope, element, attr, actions, context);
+              // applyPropsToElement(element, actions.prop, rShortcuts);
             }
           }
           if (type === 'on') {
@@ -184,11 +184,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               scope.root.public.customStates['when'][scopeTitle] = false;
             }
             var hasDelay = parseFloat(scopeNameSplit[1])
-            attr.$observe('class', function(val){
-              val.split(' ').forEach(function(current_class, j) {
-                console.log('looking for', scopeNameSplit, '...inspecting', current_class);
-              })
-            });
+
             scope.$watch(scopeName, function(_new, _old) {
               if (hasDelay) {
                 $timeout(function() {
@@ -207,15 +203,15 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         var name = context.name;
         if (name === 'init') {
           registerAnimationListeners(scope, element, attr, actions, context)
+          console.log('initializing', context.type, context.name, actions.send)
           element.ready(function(e) {
-
             applySendAnimProp(scope, element, actions, context);
           })
         } else {
           registerAnimationListeners(scope, element, attr, actions, context)
 
           element.on(name,function(e) {
-
+            console.log('initializing', element, actions, context)
             // delete actions['send']
               applySendAnimProp(scope, element, actions, context)
           })
@@ -264,7 +260,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (actions.send) {
 
             if ('send' in actions.delays) {
-              console.log(actions.delays, actions.delays.send)
               $timeout(function() {
                 applySendArgsAndCallback(element, scope, actions.send);
               }, actions.delays.send)
@@ -298,26 +293,37 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       function applyAnimArgs(element, scope, animations, context) {
         var stateName = context.type + '-' + context.name;
         var defaults = {"kf":60,"autoPlay":false,"toolbar":{},"hidePlot":false}
+        var animDelay = 0;
+        var animationSplitIndex = animations.indexOf(':delay-');
+        if (animationSplitIndex) {
+          animDelay = animations.split(':delay-')[1];
+          console.log(context, animDelay)
+          animDelay = parseInt(animDelay)
+          animations = animations.split(':delay-')[0];
+        }
+
 
         var state = AnimationFrameService.init.state('', animations, element[0], defaults);
-
 
 
         if (!player) {
 
           player = AnimationFrameService.getPlayer();
         }
-        // player.scheduleStream(player, state, state.offset, null);
 
-        // player.play();
-        // if (!player) {
-        //   player = AnimationFrameService.getPlayer();
-        // }
 
         //TODO, inject global offset here
-        player = player.scheduleStream(player, state, 0);
-        if (!player.active) {
-          player.play(player);
+        if (animDelay && animDelay>0) {
+          console.log('waiting for 500ms')
+          $timeout(function() {
+            player = player.scheduleStream(player, state, 0);
+            if (!player.active) {
+              player.play(player);
+            }
+         }, animDelay)
+        }
+        else if (!player.active) {
+              player.play(player);
         }
         // player.play();
       }
@@ -424,16 +430,17 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
         // properties.split(',').forEach(function() )
         var propertyArr = [];
+
         properties = UtilitiesService.replaceAll(properties, ', ', ',');
         var propertySplit = properties.split(',');
 
         properties.split(',').forEach(function(prop, i) {
           var prop = prop.trim();
-
           if (prop.toLowerCase() in rShortcuts.cssPropValues) {
             prop = rShortcuts.props[prop] + "";
           }
           var iPropSplit = prop.split(':');
+          console.log(iPropSplit)
           var propKey = iPropSplit[0].trim();
           var propValue = iPropSplit[1].trim();
           if (propKey.toLowerCase() in rShortcuts.cssProps) {

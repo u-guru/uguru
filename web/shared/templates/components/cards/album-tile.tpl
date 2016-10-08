@@ -5,7 +5,6 @@
 		on-mouse-enter="s:[album-tile-mouse-enter]"
 		on-mouse-leave="s:[album-tile-mouse-leave]"
 		on-click="s:[album-tile-click]">
-		<!-- @samir The opacity,the height,and width isn't working together.  -->
 		<div class="album-echo">
 			<div style="background: #020c39;"></div>
 		</div>
@@ -22,13 +21,12 @@
 			</svg>
 		</div>
 		<div class="album-caption">
-			<!-- @samir The opacity and the transform isn't working together. If I take opacity out, the transform animation works. -->
 			<h1 style="background: #020c39;"
-			init-with="p:[op:0, tro:top center, tr:rotateX(90deg) translateZ(0px)]"
-			when-album-tile-init="p:[opacity:0:1:250:easeInOutSine, transform:rotateX(90deg) translateZ(0px):rotateX(0deg) translateZ(0px):250:easeOutQuint easeOutQuint]:delay-150">Midnight<br/>Cramming</h1>
+				init-with="p:[op:0, tro:top center, tr:rotateX(90deg) translateZ(0px)]"
+				when-album-tile-init="p:[opacity:0:1:250:easeInOutSine, transform:rotateX(90deg) translateZ(0px):rotateX(0deg) translateZ(0px):250:easeOutQuint easeOutQuint]:delay-150">Midnight Cramming</h1>
 			<h2 style="background: #020c39;"
-			init-with="p:[op:0, tro:top center, tr:rotateX(-90deg) translateZ(0px)]"
-			when-album-tile-init="p:[opacity:0:0.3:250:easeInOutSine, transform:rotateX(-90deg) translateZ(0px):rotateX(0deg) translateZ(0px):250:easeOutQuint easeOutQuint]:delay-300">Intense EDM</h2>
+				init-with="p:[op:0, tro:top center, tr:rotateX(-90deg) translateZ(0px)]"
+				when-album-tile-init="p:[opacity:0:0.3:250:easeInOutSine, transform:rotateX(-90deg) translateZ(0px):rotateX(0deg) translateZ(0px):250:easeOutQuint easeOutQuint]:delay-300">Intense EDM</h2>
 		</div>
 	</a>
 </div>
