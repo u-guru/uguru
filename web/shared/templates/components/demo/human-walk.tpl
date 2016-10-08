@@ -1,41 +1,40 @@
 <div class="absolute top-0 left-0 full-xy flex-center perspective-container">
-	<div init-default
-		on-init="s:[walk-1:public]:delay-1000"
+	<div u on-init="s:[walk-1:public]:delay-1000"
 		when-walk-1="s:[walk-2:public]:delay-100"
 		when-walk-2="s:[walk-3:public]:delay-100"
 		when-walk-3="s:[walk-4:public]:delay-100">
 		<svg class="bg-slate-25p" width="1600px" height="800px" viewBox="0 0 400 200">
 		    <g fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke="#696269" fill="#C8BBC9">
 				<g class="left-arm" stroke="#40484B" fill="#757575"
-					init-with="p:[tro:13px 4px]"
-					when-walk-1="p:[transform:rotate(0deg) translateX(0px) translateY(0px):rotate(10deg) translateX(19px) translateY(-18px):100:linear]"
-					when-walk-2="p:[transform:rotate(10deg) translateX(19px) translateY(-18px):rotate(24deg) translateX(39px) translateY(-49px):100:linear]"
-					when-walk-3="p:[transform:rotate(24deg) translateX(39px) translateY(-49px):rotate(29deg) translateX(44px) translateY(-64px):100:linear]">
+					u init-with="p:[tro:13px 4px]"
+					when-walk-1="a:[rotate:0deg:10deg:100:linear:0:1:f. translateX:0px:19px:100:linear:0:1:f, translateY:0px:-18px:100:linear:0:1:f]"
+					when-walk-2="a:[rotate:10deg:24deg:100:linear:0:1:f, translateX:19px:39px:100:linear:0:1:f, translateY:-18px:-49px:100:linear:0:1:f]"
+					when-walk-3="a:[rotate:24deg:29deg:100:linear:0:1:f, translateX:39px:44px:100:linear:0:1:f, translateY:-49px:-64px:100:linear:0:1:f]">
 					<path d="M106.055235,59.9483772 C107.917412,59.606594 109.176521,57.8390507 108.878692,55.9586352 C108.576305,54.049437 106.78346,52.7468593 104.874262,53.0492466 C102.965064,53.3516339 101.662486,55.1444782 101.964874,57.0536765 C102.036433,57.5054828 102.19146,57.9233172 102.411745,58.293949 L90.8751606,81.9474533 C90.3882567,82.9457542 90.7990818,84.146069 91.7918623,84.6302804 C92.7915643,85.1178676 93.9838366,84.698411 94.4703368,83.7009379 L106.055235,59.9483772 L106.055235,59.9483772 Z" class="left-arm-top"></path>
-		            <g init-with="p:[tro:4px 4px]"
-					when-walk-1="p:[transform:rotate(0deg) translateX(0px) translateY(0px):rotate(27deg) translateX(26px) translateY(-50px):100:linear]"
-					when-walk-2="p:[transform:rotate(27deg) translateX(26px) translateY(-50px):rotate(28deg) translateX(26px) translateY(-50px):100:linear]"
-					when-walk-3="p:[transform:rotate(28deg) translateX(26px) translateY(-50px):rotate(36deg) translateX(29px) translateY(-67px):100:linear]">
+		            <g u init-with="p:[tro:4px 4px]"
+					when-walk-1="a:[rotate:0deg:27deg:100:linear:0:1:f, translateX:0px:26px:100:linear:0:1:f, translateY:0px:-50px:100:linear:0:1:f]"
+					when-walk-2="a:[rotate:27deg:28deg:100:linear:0:1:f]"
+					when-walk-3="a:[rotate:28deg:36deg:100:linear:0:1:f, translateX:26px:29px:100:linear:0:1:f, translateY:-50px:-67px:100:linear:0:1:f]">
 						<path d="M94.2071972,86.0714256 L116.359533,97.8500316 C117.340233,98.371479 118.554154,98.0027946 119.072718,97.0275176 C119.594898,96.0454412 119.217306,94.8392563 118.237419,94.3182412 L96.884669,82.9647825 C96.9201011,82.5513076 96.8820639,82.1244928 96.7608653,81.7018231 C96.2280592,79.8437075 94.2898342,78.7693319 92.4317186,79.302138 C90.573603,79.834944 89.4992274,81.773169 90.0320334,83.6312846 C90.5501361,85.4381232 92.3971593,86.5038815 94.2071972,86.0714256 L94.2071972,86.0714256 Z" class="left-arm-bottom"></path>
-			            <g init-with="p:[tro:center center]"
-							when-walk-2="p:[transform:rotate(0deg) translateX(0px) translateY(0px):rotate(35deg) translateX(-3px) translateY(2px):100:linear]">
+			            <g u init-with="p:[tro:center center]"
+							when-walk-2="a:[rotate:0deg:35deg:100:linear:0:1:f, translateX:0px:-3px:100:linear:0:1:f, translateY:0px:2px:100:linear:0:1:f]">
 							<path d="M119.488059,92.9784933 C122.449216,92.5944054 125.336307,93.3074588 125.63376,94.3447998 C125.987972,95.5800847 124.152989,98.0362518 120.702203,99.0257488 C117.251417,100.015246 115.18632,98.7956014 114.832108,97.5603165 C114.632236,96.863282 114.504911,95.9189559 115.051883,95.0505761 C115.080463,94.9877585 115.114558,94.9265706 115.15428,94.8676798 L117.508222,91.3778172 C117.900211,90.7966696 118.684662,90.6403369 119.269385,91.0347375 C119.85006,91.4264075 119.999067,92.2208928 119.611031,92.7961797 L119.488059,92.9784933 L119.488059,92.9784933 Z" class="left-hand"></path>
 						</g>
 					</g>
 				</g>
 	            <g>
 					<g class="left-leg" stroke="#40484B" fill="#757575"
-						init-with="p:[tro:5px 5px]"
-						when-walk-1="p:[transform:translateX(0px):translateX(13px):100:linear]"
-						when-walk-2="p:[transform:translateX(13px):translateX(27px):100:linear]"
-						when-walk-3="p:[transform:rotate(0deg) translateX(27px) translateY(0px):rotate(-11deg) translateX(14px) translateY(26px):100:linear]">
+						u init-with="p:[tro:5px 5px]"
+						when-walk-1="a:[translateX:0px:13px:100:linear:0:1:f]"
+						when-walk-2="a:[translateX:13px:27px:100:linear:0:1:f]"
+						when-walk-3="a:[rotate:0deg:-11deg:100:linear:0:1:f, translateX:27px:26px:100:linear:0:1:f, translateY:0px:26px:100:linear:0:1:f]">
 						<path d="M101.363464,101.7012 C102.749162,100.44023 103.365655,98.4487496 102.781524,96.5381415 C101.974162,93.8973788 99.1789041,92.4111141 96.5381415,93.2184762 C93.8973788,94.0258384 92.4111141,96.8210959 93.2184762,99.4618585 C93.8330988,101.472198 95.5997777,102.813465 97.5733235,102.983094 L108.137259,132.007267 C108.515914,133.047615 109.66528,133.587408 110.703236,133.209623 C111.748428,132.829204 112.275223,131.681014 111.896029,130.639186 L101.363464,101.7012 L101.363464,101.7012 Z" class="left-thigh"></path>
-			            <g init-with="p:[tro:28px 5px]"
-							when-walk-1="p:[transform:rotate(0deg) translateX(0px) translateY(0px):rotate(-17deg) translateX(-40px) translateY(18px):100:linear]"
-							when-walk-2="p:[transform:rotate(-17deg) translateX(-40px) translateY(18px):rotate(-50deg) translateX(-126px) translateY(18px):100:linear]">
+			            <g u init-with="p:[tro:28px 5px]"
+							when-walk-1="a:[rotate:0deg:-17deg:100:linear:0:1:f, translateX:0px:-40px:100:linear:0:1:f, translateY:0px:18px:100:linear:0:1:f]"
+							when-walk-2="a:[rotate:-17deg:-50deg:100:linear:0:1:f, translateX:-40px:-126px:100:linear:0:1:f]">
 							<path d="M108.755416,136.009186 C110.14348,136.601508 111.809287,136.379135 113.004616,135.302856 C114.646326,133.824654 114.778875,131.295465 113.300672,129.653755 C111.82247,128.012044 109.293281,127.879495 107.651571,129.357698 C106.647688,130.261598 106.208103,131.558479 106.356045,132.805121 L84.0838,150.840829 C83.2269962,151.534655 83.0912447,152.796788 83.7863728,153.6552 C84.4863472,154.519596 85.7416889,154.645335 86.6010815,153.949413 L108.755416,136.009186 L108.755416,136.009186 Z" class="left-calf"></path>
 				            <g init-with="p:[tro:11px 3px]"
-							when-walk-1="p:[transform:rotate(0deg) translateX(0px) translateY(0px):rotate(-10deg) translateX(-25px) translateY(9px):100:linear]">
+							when-walk-1="a:[rotate:0deg:-10deg:linear:0:1:f, translateX:0px:-25px:linear:0:1:f, translateY:0px:9px:100:linear:0:1:f]">
 								<path d="M81.2454985,153.235698 L74.4968007,154.178035 L81.8503761,162.345008 L85.2809892,160.191048 L84.6433898,156.622523 C85.5111868,156.647555 86.3896422,156.35174 87.0857472,155.724964 C88.5222436,154.431537 88.6382242,152.218497 87.344797,150.782 C86.0513698,149.345504 83.8383294,149.229523 82.401833,150.522951 C81.6047474,151.24065 81.2142404,152.241492 81.2454985,153.235698 L81.2454985,153.235698 Z" class="left-foot-back"></path>
 					            <g>
 									<path d="M84.1711376,164.922474 L89.3663334,170.692324 L90.8491759,169.357167 L86.8213729,162.726764 C87.0819889,161.774302 86.867386,160.713118 86.1575668,159.924784 C85.0489149,158.693501 83.1520232,158.594089 81.9207405,159.702741 C80.6894579,160.811393 80.590046,162.708285 81.6986979,163.939567 C82.3493206,164.662157 83.2714162,164.994926 84.1711376,164.922474 L84.1711376,164.922474 Z" class="left-foot-front"></path>
@@ -44,20 +43,20 @@
 						</g>
 					</g>
 		            <path d="M102.223536,59.0909728 C102.439489,57.7274976 103.710554,56.7957719 105.083775,57.0132686 L105.083775,57.0132686 C106.447488,57.2292596 107.377167,58.5144919 107.161978,59.8731452 L101.616843,94.8837458 C101.40089,96.247221 100.129825,97.1789467 98.7566046,96.96145 L98.7566046,96.96145 C97.3928915,96.745459 96.4632122,95.4602266 96.6784017,94.1015734 L102.223536,59.0909728 L102.223536,59.0909728 Z" class="torso"
-						init-default
-						when-walk-1="p:[transform:translateX(0px):translateX(12px):100:linear]"
-						when-walk-2="p:[transform:translateX(12px):translateX(27px):100:linear]"
-						when-walk-3="p:[transform:translateX(27px) translateY(0px):translateX(33px) translateY(4px):100:linear]"></path>
+						u init-with="p:[tro:center center]"
+						when-walk-1="a:[translateX:0px:12px:100:linear:0:1:f]"
+						when-walk-2="a:[translateX:12px:27px:100:linear:0:1:f]"
+						when-walk-3="a:[translateX:27px:33px:100:linear:0:1:f, translateY:0px:4px:100:linear:0:1:f]"></path>
 					<g class="right-leg"
-						init-with="p:[tro:50% 5px]"
-						when-walk-1="p:[transform:rotate(0deg) translateX(0px) translateY(0px):rotate(15deg) translateX(37px) translateY(-5px):100:linear]"
-						when-walk-2="p:[transform:rotate(15deg) translateX(37px) translateY(-5px):rotate(17deg) translateX(53px) translateY(-11px):100:linear]"
-						when-walk-3="p:[transform:rotate(17deg) translateX(53px) translateY(-11px):rotate(12deg) translateX(54px) translateY(-6px):100:linear]">
+						u init-with="p:[tro:50% 5px]"
+						when-walk-1="a:[rotate:0deg:15deg:100:linear:0:1:f, translateX:0px:37px:100:linear:0:1:f, translateY:0px:-5px:100:linear:0:1:f]"
+						when-walk-2="a:[rotate:15deg:17deg:100:linear:0:1:f, translateX:37px:53px:100:linear:0:1:f, translateY:-5px:-11px:100:linear:0:1:f]"
+						when-walk-3="a:[rotate:17deg:12deg100:linear:0:1:f, translateX:53px:54px100:linear:0:1:f, translateY:-11px:-6px:100:linear:0:1:f]">
 						<path d="M100.13437,102.522857 C101.828192,101.722124 103,99.9979072 103,98 C103,95.2385763 100.761424,93 98,93 C95.2385763,93 93,95.2385763 93,98 C93,100.102196 94.2973349,101.901383 96.1350516,102.640608 L97.751546,133.485158 C97.809488,134.590757 98.7508118,135.443005 99.8538675,135.385197 C100.964614,135.326985 101.804089,134.382985 101.746064,133.275815 L100.13437,102.522857 L100.13437,102.522857 Z" class="right-thigh"></path>
-			            <g init-with="p:[tro:9px 4px]"
-							when-walk-1="p:[transform:rotate(0deg) translateX(0px) translateY(0px):rotate(-2deg) translateX(-4px) translateY(4px):100:linear]"
-							when-walk-2="p:[transform:rotate(-2deg) translateX(-4px) translateY(4px):rotate(15deg) translateX(31px) translateY(-28px):100:linear]"
-							when-walk-3="p:[transform:rotate(15deg) translateX(31px) translateY(-28px):rotate(34deg) translateX(56px) translateY(-72px):100:linear]">
+			            <g u init-with="p:[tro:9px 4px]"
+							when-walk-1="a:[rotate:0deg:-2deg:100:linear:0:1:f, translateX:0px:-4px:100:linear:0:1:f, translateY:0px:4px:100:linear:0:1:f]"
+							when-walk-2="a:[rotate:-2deg:15deg:100:linear:0:1:f, translateX:-4px:31px:100:linear:0:1:f, translateY:4px:-28px:100:linear:0:1:f]"
+							when-walk-3="a:[rotate:15deg:34deg:100:linear:0:1:f, translateX:31px:56px:100:linear:0:1:f:100:linear:0:1:f, translateY:-28px:-72px:100:linear:0:1:f]">
 							<path d="M101.681636,137.630397 C103.050612,136.995205 104,135.608473 104,134 C104,131.790861 102.209139,130 100,130 C97.790861,130 96,131.790861 96,134 C96,135.350858 96.6696305,136.545316 97.6950585,137.269539 L96.195161,165.889287 C96.1374606,166.990277 96.9845729,167.935692 98.0876286,167.993501 C99.1983746,168.051712 100.131804,167.202947 100.189679,166.098631 L101.681636,137.630397 L101.681636,137.630397 Z" class="right-calf"></path>
 				            <g init-with="p:[tro:6px 3px]"
 								when-walk-1="p:[transform:rotate(0deg) translateX(0px) translateY(0px):rotate(3deg) translateX(9px) translateY(-6px):100:linear]"
