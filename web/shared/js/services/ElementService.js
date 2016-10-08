@@ -297,10 +297,10 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         var animationSplitIndex = animations.indexOf(':delay-');
         if (animationSplitIndex) {
           animDelay = animations.split(':delay-')[1];
-          console.log(context, animDelay)
           animDelay = parseInt(animDelay)
           animations = animations.split(':delay-')[0];
         }
+
 
 
         var state = AnimationFrameService.init.state('', animations, element[0], defaults);
@@ -311,19 +311,22 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           player = AnimationFrameService.getPlayer();
         }
 
-
+        player = player.scheduleStream(player, state, 0);
         //TODO, inject global offset here
         if (animDelay && animDelay>0) {
           console.log('waiting for 500ms')
           $timeout(function() {
-            player = player.scheduleStream(player, state, 0);
             if (!player.active) {
               player.play(player);
             }
          }, animDelay)
         }
-        else if (!player.active) {
+        else {
+
+          if (!player.active) {
               player.play(player);
+          }
+
         }
         // player.play();
       }
