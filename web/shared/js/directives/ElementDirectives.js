@@ -57,7 +57,6 @@ angular.module('uguru.shared.directives')
                             $compile(lElem[0])(scope);
 
 
-
                             lElem.append(clone);
                             transcludeComplete = true;
                           }
