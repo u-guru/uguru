@@ -1,7 +1,7 @@
 <div class="loader-portal-outer">
     <div class="loader-portal states"
-		u on-init="s:[portal-open:public:delay-150, portal-academic-enter:public:delay-150]"
-		when-portal-academic-enter="p:[bg:#f8c3e1]">
+		u on-init="s:[portal-academic-enter:public]"
+		when-portal-academic-enter="p:[bg:#f8c3e1] | s:[portal-open:public]">
 		<!-- elem-states="[portal-academic, portal-baking, portal-photo, portal-tech, portal-household]"
 		on-activate="null:inject.loader-portal|on-loader-begin-enter, null:inject.guru-academic|on-loader-academic-enter"
 		on-portal-academic-enter="academic"
