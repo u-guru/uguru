@@ -167,24 +167,24 @@
 					<!-- u on-init="s:[build-house:public]:delay-500" -->
 		            <rect class="house-foundation" fill="#AADFFF" x="307" y="285" width="187" height="204"
 						u init-with="p:[tro:center bottom, transform:scaleY(0)]"
-						on-init="a:[scaleY:0:1:500:easeInOutBounce:500:1:f] | s:[build-house:public:delay-500]"></rect>
+						on-init="a:[scaleY:0:1:1050:easeOutBounce:0:1:f] | s:[build-house:public:delay-500]"></rect>
 						<!-- when-mailbox-enter="a:[scaleY:0:1:500:easeInOutBounce:0:1:f] | s:[build-house:public]:delay-500" -->
 		            <rect class="house-casing" fill="#FFFFFF" x="301" y="485" width="199" height="19"
 						init-after="build-house"
 						init-with="p:[tro:center bottom, transform:scaleY(0)]"
-						on-init="a:[scaleY:0:1:500:easeInOutBounce:150:1:f]"></rect>
+						on-init="a:[scaleY:0:1:500:easeOutBounce:0:1:f]"></rect>
 		            <rect class="roof-edge" fill="#FFFFFF" x="299" y="258" width="203" height="19"
 						init-after="build-house"
 						init-with="p:[tro:center bottom, transform:scaleY(0)]"
-						on-init="a:[scaleY:0:1:750:easeInOutBounce:150:1:f]"></rect>
+						on-init="a:[scaleY:0:1:750:easeOutQuad:0:1:f]"></rect>
 		            <rect class="roof-blue" fill="#AADFFF" x="299" y="258" width="203" height="12"
 						init-after="build-house"
 						init-with="p:[tro:center bottom, transform:scaleY(0)]"
-						on-init="a:[scaleY:0:1:750:easeInOutBounce:200:1:f]"></rect>
+						on-init="a:[scaleY:0:1:750:easeOutQuad:0:1:f]"></rect>
 		            <rect class="roof-top" fill="#FFFFFF" x="296" y="258" width="209" height="7"
 						init-after="build-house"
 						init-with="p:[tro:center bottom, transform:scaleY(0)]"
-						on-init="a:[scaleY:0:1:750:easeInOutBounce:250:1:f]"></rect>
+						on-init="a:[scaleY:0:1:750:easeOutBounce:0:1:f]"></rect>
 					<g init-after="w4"
 						init-with="p:[op:0, tro:20% 80%]"
 						on-init="a:[scoop-enter:1000:linear:0:1:f]">
