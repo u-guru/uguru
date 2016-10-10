@@ -247,9 +247,13 @@
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0.002, 0, 1); }
   100% {
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+<<<<<<< HEAD
+    opacity: 1.0; } }
+=======
     opacity:1;
   }
   }
+>>>>>>> 4d12daef954a927fd875c806c8c236175dfe9901
 .off-center-guru {
   transform-origin: center center;
   animation: off-center-guru-all 3000ms linear forwards; }
@@ -1996,7 +2000,6 @@
   z-index: 999; }
 
 .loader-portal-container {
-  transition: all 300ms ease-in-out;
   overflow: hidden;
   background: #40484B;
   transform-style: preserve-3d; }
@@ -2529,16 +2532,12 @@
   border-radius: 50%;
   visibility: hidden;
   opacity: 0;
-  z-index: 1000;
-  -webkit-transition: opacity .15s, visibility 0s .15s;
-  transition: opacity .15s, visibility 0s .15s; }
+  z-index: 1000; }
 
 .pageload-loading.pageload-overlay::after,
 .pageload-loading.pageload-overlay::before {
   opacity: 1;
-  visibility: visible;
-  -webkit-transition: opacity .3s;
-  transition: opacity .3s; }
+  visibility: visible; }
 
 .loader-portal-outer {
   z-index: 100000; }
