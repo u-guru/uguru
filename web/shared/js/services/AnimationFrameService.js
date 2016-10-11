@@ -1030,6 +1030,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         stateArgs = splitCustomAnimationsIntoStreams(stateArgs);
 
 
+
         var resultState = {duration: 0};
         var timeline = {events:[], props:{}, stateName: stateName};
         for (var i = 0; i < stateArgs.length; i++) {
@@ -1375,7 +1376,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                   var endVal = _prop.value;
                   deltaPercent = deltaPercent/100;
                   genArgsCopy[0] = deltaPercent*duration  + genDelay;
-                  genArgsCopy[2] = delay - genArgsCopy[0]
+                  genArgsCopy[2] = delay - genArgsCopy[0];
+
                   if ((genArgsCopy[2] + genArgsCopy[0]) < duration) {
                     genArgsCopy[3] = genArgsCopy[3] + '+' + (duration - genArgsCopy[2] - genArgsCopy[0]).toFixed(4);
                     // console.log(genArgsCopy)
