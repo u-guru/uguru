@@ -379,3 +379,9 @@
   93.75% { transform: rotateY(-81deg); }
   100% { transform: rotateY(-80deg); }
 }
+
+@keyframes sky {
+	0% { background: #083355; }
+	50% { background: #FAE0DC; }
+	100% { background: #BBF2FE; }
+}
