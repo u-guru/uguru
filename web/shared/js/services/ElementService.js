@@ -472,11 +472,25 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
         properties = UtilitiesService.replaceAll(properties, ', ', ',');
         var propertySplit = properties.split(',');
-
+        if (!rShortcuts.cssPropValues && RootService.animations.customShortcuts) {
+          rShortcuts.cssPropValues = RootService.animations.customShortcuts.cssPropValues;
+          rShortcuts.cssProps = RootService.animations.customShortcuts.cssProps;
+          rShortcuts.cmds = RootService.animations.customShortcuts.cmds;
+          rShortcuts.args = RootService.animations.customShortcuts.args;
+        }
         properties.split(',').forEach(function(prop, i) {
+          if (!rShortcuts || !rShortcuts.cssPropValues) {
+
+          }
           var prop = prop.trim();
-          if (prop.toLowerCase() in rShortcuts.cssPropValues) {
+          if (rShortcuts && rShortcuts.cssPropValues && prop.toLowerCase() in rShortcuts.cssPropValues) {
             prop = rShortcuts.props[prop] + "";
+          }
+          if (!rShortcuts.cssPropValues) {
+            $timeout(function() {
+              applyPropsToElement(elem, properties, shortcuts);
+            })
+            return;
           }
           var iPropSplit = prop.split(':');
 
