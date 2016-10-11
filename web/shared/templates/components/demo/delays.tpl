@@ -11,7 +11,7 @@
             <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-with="p:[transform:scale(0)]"
                 init-after="init-all-scale"
-                on-init="a:[scale:0:1:2500:linear:0:1:f]">
+                on-init="a:[scale:0:1:500:linear:0:1:f]">
                 <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
                     Scale
                 </h1>
@@ -24,12 +24,12 @@
             <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-with="p:[transform:scale(0)]"
                 init-after="init-all-scale"
-                on-init="a:[scale:0:1:2500:linear:1000:1:f]">
+                on-init="a:[scale:0:1:500:linear:500:1:f]">
                 <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
                     Scale
                 </h1>
                 <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
-                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "int-1000"]'>{{arg}}</li>
+                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "int-500"]'>{{arg}}</li>
                 </ul>
             </div>
         </li>
@@ -37,12 +37,12 @@
             <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-with="p:[transform:scale(0)]"
                 init-after="init-all-scale"
-                on-init="a:[scale:0:1:2500:linear:0:1:f]:delay-1000">
+                on-init="a:[scale:0:1:500:linear:0:1:f]:delay-500">
                 <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
                     Scale
                 </h1>
                 <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
-                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "ext-1000"]'>{{arg}}</li>
+                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "ext-500"]'>{{arg}}</li>
                 </ul>
             </div>
         </li>
@@ -50,12 +50,12 @@
             <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-with="p:[transform:scale(0)]"
                 init-after="init-all-scale"
-                on-init="a:[scale:0:1:2500:linear:500:1:f]:delay-500">
+                on-init="a:[scale:0:1:500:linear:250:1:f]:delay-250">
                 <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
                     Scale
                 </h1>
                 <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
-                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "int-500, ext-500"]'>{{arg}}</li>
+                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "int-250, ext-250"]'>{{arg}}</li>
                 </ul>
             </div>
         </li>
@@ -63,12 +63,12 @@
             <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-with="p:[transform:scale(0)]"
                 init-after="init-all-scale"
-                on-init="a:[scale:0:1:2500:linear:250:1:f]:delay-750">
+                on-init="a:[scale:0:1:500:linear:100:1:f]:delay-400">
                 <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
                     Scale
                 </h1>
                 <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
-                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "int-250", "ext-750"]'>{{arg}}</li>
+                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "int-100", "ext-400"]'>{{arg}}</li>
                 </ul>
             </div>
         </li>
@@ -86,9 +86,9 @@
             <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-with="p:[transform:scaleX(0)]"
                 init-after="init-all-scale"
-                on-init="a:[bounceInX:2500:linear:0:1:f]">
+                on-init="a:[bounceIn-rotate-subtle:2500:linear:0:1:f]">
                 <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
-                    bounceInX
+                    bounceIn-rotate-subtle
                 </h1>
                 <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
                     <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "delay:0"]'>{{arg}}</li>
@@ -99,12 +99,12 @@
             <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-with="p:[transform:scale(0)]"
                 init-after="init-all-scale"
-                on-init="a:[bounceInX:2500:linear:1000:1:f]">
+                on-init="a:[bounceIn-rotate-subtle:2500:linear:300:1:f]">
                 <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
-                    bounceInX
+                    bounceIn-rotate-subtle
                 </h1>
                 <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
-                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "int-1000"]'>{{arg}}</li>
+                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "int-300"]'>{{arg}}</li>
                 </ul>
             </div>
         </li>
@@ -112,12 +112,13 @@
             <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-with="p:[transform:scale(0)]"
                 init-after="init-all-scale"
-                on-init="a:[bounceInX:2500:linear:0:1:f]:delay-1000">
+
+                on-init="a:[bounceIn-rotate-subtle:2500:linear:0:1:f]:delay-300">
                 <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
-                    bounceInX
+                    bounceIn-rotate-subtle
                 </h1>
                 <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
-                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "ext-1000"]'>{{arg}}</li>
+                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "ext-300"]'>{{arg}}</li>
                 </ul>
             </div>
         </li>
@@ -125,12 +126,13 @@
             <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-with="p:[transform:scale(0)]"
                 init-after="init-all-scale"
-                on-init="a:[bounceInX:2500:linear:500:1:f]:delay-500">
+
+                on-init="a:[bounceIn-rotate-subtle:2500:linear:150:1:f]:delay-150">
                 <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
-                    bounceInX
+                    bounceIn-rotate-subtle
                 </h1>
                 <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
-                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "int-500", "ext-500"]'>{{arg}}</li>
+                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "int-100", "ext-150"]'>{{arg}}</li>
                 </ul>
             </div>
         </li>
@@ -143,7 +145,7 @@
                     bounceInX
                 </h1>
                 <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
-                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "int-500", "ext-500"]'>{{arg}}</li>
+                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "int-125", "ext-175"]'>{{arg}}</li>
                 </ul>
             </div>
         </li>
