@@ -1,6 +1,6 @@
 <div class="absolute top-0 left-0 full-xy flex-center perspective-container">
-	<!-- <svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #BBF2FE;"
-		u on-init="a:[opacity:0:1:3000:easeInOutSine:0:1:f]:delay-4000">
+	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #BBF2FE;"
+		init-after="sky-shine" on-init="a:[opacity:0:1:3000:easeInOutSine:0:1:f]:delay-2500">
 		<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 			<g class="left-tree">
 				<rect class="l-canopy" fill="#B4CB5D" x="221" y="364" width="43" height="86" rx="21.5"></rect>
@@ -46,8 +46,9 @@
 			</g>
 			<g class="sky">
 				<circle class="sun" fill="#FECE67" cx="281" cy="171" r="44"
-					u init-with="p:[transform:translateY(-800px)]"
-					on-init="a:[translateY:-800px:0px:400:easeInOutBack:0:1:f]:delay-6000 | s:[day-sky:public]:delay-6000"></circle>
+					init-after="sky-shine"
+					init-with="p:[transform:translateY(-800px)]"
+					on-init="a:[translateY:-800px:0px:400:easeInOutBack:0:1:f]:delay-4000 | s:[day-sky:public]:delay-4000"></circle>
 				<path d="M432.821041,232 C432.284244,229.754184 432,227.410286 432,225 C432,208.431458 445.431458,195 462,195 C478.568542,195 492,208.431458 492,225 C492,227.410286 491.715756,229.754184 491.178959,232 L432.821041,232 L432.821041,232 L432.821041,232 Z" class="day-b-cloud-1" fill="#FFFFFF"></path>
 				<path d="M487.756105,232 C487.262518,230.08228 487,228.071797 487,226 C487,212.745166 497.745166,202 511,202 C524.254834,202 535,212.745166 535,226 C535,228.071797 534.737482,230.08228 534.243895,232 L487.756105,232 L487.756105,232 L487.756105,232 Z" class="day-b-cloud-2" fill="#FFFFFF"></path>
 				<path d="M527.024234,232 C526.360925,230.123326 526,228.103813 526,226 C526,216.058875 534.058875,208 544,208 C553.941125,208 562,216.058875 562,226 C562,228.103813 561.639075,230.123326 560.975766,232 L527.024234,232 L527.024234,232 L527.024234,232 Z" class="day-b-cloud-3" fill="#FFFFFF"></path>
@@ -188,11 +189,11 @@
 				<rect class="day-mbox-stand" fill="#FFFFFF" x="283" y="472" width="6" height="31"></rect>
 			</g>
 		</g>
-	</svg> -->
+	</svg>
 	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #092D4B;"
-		u on-init="a:[opacity:1:0:3000:easeInOutSine:0:1:f]:delay-4000">
+		init-after="sky-shine" init-with="p:[op:1]" on-init="a:[opacity:1:0:3000:easeInOutSine:0:1:f]:delay-2000">
 	    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
-			u on-init="a:[sky:3000:easeInOutSine:0:1:f]:delay-4000">
+			init-after="sky-shine" on-init="a:[sky:3000:easeInOutSine:0:1:f]:delay-2000">
 	        <g class="blue-tree">
 	            <rect class="b-canopy" fill="#AADFFF" x="221" y="364" width="43" height="86" rx="21.5"
 					init-after="canopy"
