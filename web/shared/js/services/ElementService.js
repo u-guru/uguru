@@ -247,7 +247,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function applySendAnimProp(scope, element, actions, context, cb) {
-        // console.log('activating', context);
+        console.log('activating', actions.anim)
         if (actions.prop) {
           if ('prop' in actions.delays) {
               $timeout(function() {
@@ -258,12 +258,12 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             }
           };
           if (actions.anim) {
-            actions.anim = condenseAnimationsAndShortcuts(scope, actions.anim);
-            console.log(actions.anim, actions.delays)
-            if ('anim' in actions.delays) {
-              embeddedAnimDelayArr = [];
-              actions.anim.split('|').forEach(function(anim_str, i) {
-                var animStrSplit = anim_str.split(',');
+            actions.anim = condenseAnimationsAndShortcuts(scope, actions.anim.replace(':delay-0', ''));
+            // embeddedAnimDelayArr = [];
+            if ('anim' in actions.delays && actions.delays.anim > 0) {
+
+              // actions.anim.split('|').forEach(function(anim_str, i) {
+                var animStrSplit = (actions.anim + "").split(',');
                 var animArr = [];
                 animStrSplit.forEach(function(single_anim, j) {
                   var singleAnimSplit = single_anim.split(':');
@@ -276,14 +276,14 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                   animArr.push(singleAnimSplit.join(':'));
                 })
 
-                embeddedAnimDelayArr.push(anim_str)
-              })
-              $timeout(function() {
-                applyAnimArgs(element, scope, actions.anim, context);
-              }, actions.delays.anim)
-            } else {
-              applyAnimArgs(element, scope, actions.anim, context);
+                // embeddedAnimDelayArr.push(animArr)
+              // })
+              // if (embeddedAnimDelayArr && embeddedAnimDelayArr.length) {
+              //   actions.anim = embeddedAnimDelayArr.join(",");
+              // }
             }
+
+            applyAnimArgs(element, scope, actions.anim, context);
           }
 
           if (actions.send) {
@@ -301,23 +301,36 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function condenseAnimationsAndShortcuts(scope, animations) {
+
         var cAnimations = [];
         var defaultAnimMappings = {'scale:': ['scaleX', 'scaleY']};
+        var extraDelay = '';
         animations.split(',').forEach(function(anim, index) {
+          extraDelay = anim.split(':delay-')[1] || '';
+          if (extraDelay) {
+            extraDelay = ':delay-' + extraDelay
+            anim = anim.replace(extraDelay, '');
+          }
+
           for (key in defaultAnimMappings) {
             if (anim.indexOf(key) > -1) {
               var mappingArr = [];
               defaultAnimMappings[key].forEach(function(map1, index) {
-                cAnimations.push(anim.replace(key, map1 + ':'));
+                cAnimations.push(anim.replace(key, map1 + ':') + extraDelay);
               })
             } else {
-              cAnimations.push(anim);
+              cAnimations.push(anim+extraDelay);
             }
           }
         })
+
         if (cAnimations.length) {
+
           animations = cAnimations.join(",")
         }
+        // if (cAnimations.indexOf('[') === -1) {
+        //   animations = '[' + animations + ']';
+        // }
         return animations
       }
 
@@ -326,15 +339,31 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         var stateName = context.type + '-' + context.name;
         var defaults = {"kf":60,"autoPlay":false,"toolbar":{},"hidePlot":false}
         var animDelay = 0;
-        var animationSplitIndex = animations.indexOf(':delay-');
-        if (animationSplitIndex) {
-          animDelay = animations.split(':delay-')[1];
-          animDelay = parseInt(animDelay)
-          animations = animations.split(':delay-')[0];
-        }
+        // var animationSplitIndex = animations.indexOf(':delay-');
+        var animArr = [];
+        //resolve delays
+        animations.split(',').forEach(function(animation, i) {
+          var finalAnim = animation;
+          finalAnimDelaySplit = finalAnim.split('delay-');
+          if (finalAnimDelaySplit.length > 1) {
+            var pureAnim = finalAnimDelaySplit[0];
+            var delayVal = parseInt(finalAnimDelaySplit[1]);
+            var pureAnimSplit = pureAnim.split(':').filter(function(arg) {return arg.length});
+            if (pureAnimSplit.length > 7) {
+              pureAnimSplit[5] = (parseInt(pureAnimSplit[5]) + delayVal) + "";
+              finalAnim = pureAnimSplit.join(":")
+            } else {
+              pureAnimSplit[3] = (parseInt(pureAnimSplit[3]) + delayVal) + "";
+              finalAnim = pureAnimSplit.join(":")
+            }
+          }
+          animArr.push(finalAnim);
+        })
 
-
-
+        animations = animArr.join(",");
+        // animations = '[' + animations + ']'
+        // console.log('pre condense', animations)
+        // animations = condenseAnimationsAndShortcuts(scope, animations);
         var state = AnimationFrameService.init.state('', animations, element[0], defaults);
 
 
@@ -343,26 +372,26 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           player = AnimationFrameService.getPlayer();
         }
 
-        player = player.scheduleStream(player, state, 0);
+        animDelay = animDelay || 0;
+        player.scheduleStream(player, state, animDelay);
         //TODO, inject global offset here
-        if (animDelay && animDelay>0) {
-          console.log('waiting for 500ms')
-          $timeout(function() {
-            if (!player.active) {
-              player.play(player);
-            }
-         }, animDelay)
-        }
-        else {
+        // if (animDelay && animDelay>0) {
+        //   $timeout(function() {
+        //     if (!player.active) {
+        //       player.play(player);
+        //     }
+        //  }, animDelay)
+        // }
+        // else {
 
           if (!player.active) {
-            console.log('it should play again')
+        //     console.log('it should play again')
             // player = player.scheduleStream(player, state, 0);
             // player.active = true;
               player.play(player);
           }
 
-        }
+        // }
         // player.play();
       }
 

@@ -307,17 +307,30 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           var currentMax = Math.max(Math.ceil(newStream.time.total), currentMax);
         }
 
+        var allStreamsTickDurationTicks = Math.ceil(calcTickLength(currentMax) * 61/60.0);
         if (!player.playerProps.duration && currentMax) {
           player.playerProps.duration = currentMax;
+          player.tick.start = allStreamsTickDurationTicks;
+          player.tick.current = player.tick.start;
         }
 
-        var allStreamsTickDurationTicks = Math.ceil(calcTickLength(currentMax) * 61/60.0);
 
-        if (allStreamsTickDurationTicks > player.tick.current)  {
-          player.tick.start = player.tick.current + allStreamsTickDurationTicks;
+        // if (allStreamsTickDurationTicks > player.tick.current)  {
+        //   player.tick.start = player.tick.current + allStreamsTickDurationTicks;
+        // }
 
-          player.tick.current = allStreamsTickDurationTicks;
+        var alreadyPassed = player.tick.start - player.tick.current;
+        var remaining = player.tick.start - alreadyPassed;
+        if (allStreamsTickDurationTicks > remaining) {
+          player.tick.current += allStreamsTickDurationTicks - remaining;
+          if (player.tick.current > player.tick.start) {
+            player.tick.start = player.tick.current;
+          }
         }
+        console.log('player.tick.total:' + player.tick.start*16.6)
+        console.log('already passed:'+alreadyPassed * 16.6, 'remaining:' + remaining * 16.6)
+
+
 
         // player.tick.current =  Math.ceil(player.tick.current * 1.016);
         // if (!player.tick.start) {
@@ -326,6 +339,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         //   player.tick.current = player.tick.start;
         // }
 
+        // )
         player.schedule.streams.push.apply(player.schedule.streams, shallowCopyStreams);
 
         if (debug) {
@@ -743,7 +757,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
 
 
-
+        // console.log(player.tick.current)
 
         if (player.debug) {
           player.debug.elemPlayer.update(player.tick, schedule.lastTimeDelta);
@@ -1375,14 +1389,16 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                   var startVal = propStreams[stream_index - 1].value;
                   var endVal = _prop.value;
                   deltaPercent = deltaPercent/100;
-                  genArgsCopy[0] = deltaPercent*duration  + genDelay;
-                  genArgsCopy[2] = delay - genArgsCopy[0];
+                  genArgsCopy[0] = (deltaPercent*duration) + "";
+                  genArgsCopy[2] = (delay + genDelay - genArgsCopy[0]) + "";
 
-                  if ((genArgsCopy[2] + genArgsCopy[0]) < duration) {
-                    genArgsCopy[3] = genArgsCopy[3] + '+' + (duration - genArgsCopy[2] - genArgsCopy[0]).toFixed(4);
+                  // if ((genArgsCopy[2] + genArgsCopy[0]) < duration) {
+                    genArgsCopy[3] = (genArgsCopy[3] + '+' + (duration - genArgsCopy[0])) + "";
                     // console.log(genArgsCopy)
-                  }
+                  // }
+
                   // console.log(_prop.prop + ':' + startVal + ':' + endVal + ':' + genArgsCopy.join(":"));
+                  console.log(_prop.prop, genArgsCopy,duration, genDelay)
                   uniquePropStreams.push(_prop.prop + ':' + startVal + ':' + endVal + ':' + genArgsCopy.join(":"));
                   // console.log(c_anim_dict.args[0], deltaPercent, _prop)
                 })
@@ -1411,7 +1427,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       }
 
       function filterTransformAndShortcutStr(state_args) {
-
+        console.log(state_args)
         var defaultTransformProps = ['translateX', 'translateY', 'translateZ', 'scaleX', 'scaleY', 'rotate', 'skewX', 'skewY', 'scaleZ', 'rotateX', 'rotateY', 'rotateZ', 'perspective', 'rotate3d'];
         var transform_state_arg = [];
         var state_args_final = [];
