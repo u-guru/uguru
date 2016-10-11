@@ -259,7 +259,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           };
           if (actions.anim) {
             actions.anim = condenseAnimationsAndShortcuts(scope, actions.anim);
-
+            console.log(actions.anim, actions.delays)
             if ('anim' in actions.delays) {
               embeddedAnimDelayArr = [];
               actions.anim.split('|').forEach(function(anim_str, i) {
@@ -267,6 +267,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                 var animArr = [];
                 animStrSplit.forEach(function(single_anim, j) {
                   var singleAnimSplit = single_anim.split(':');
+
                   if (singleAnimSplit.length < 7) {
                     singleAnimSplit[2] = parseFloat(singleAnimSplit[2]) + actions.delays['anim'];
                   } else {
@@ -321,6 +322,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function applyAnimArgs(element, scope, animations, context) {
+
         var stateName = context.type + '-' + context.name;
         var defaults = {"kf":60,"autoPlay":false,"toolbar":{},"hidePlot":false}
         var animDelay = 0;
