@@ -45,14 +45,20 @@ angular.module('uguru.shared.directives')
                     transclude(scope, function(clone, innerScope) {
                       whenAttr.forEach(function(attr_name, i) {
                         var iListen = scope.$watch('root.public.customStates.when.' + attr_name, function(val, new_val) {
-                          console.log(lElem, whenAttr, val, new_val)
+                          // console.log(lElem, whenAttr, val, new_val)
                           if (val) {
 
                             whenAttrListeners.forEach(function(i_listener, j) {
-                              console.log('clearing watchers');
                               i_listener();
                             })
+
                             lElem[0].removeAttribute('init-after');
+                            if (lAttr.ngIncludeAfter) {
+                              var src = lAttr.ngIncludeAfter;
+                              lElem[0].removeAttribute('ng-include-after');
+                              clone.attr('ng-include', src);
+                              // $compile(lElem[0])(scope);
+                            }
                             lElem[0].setAttribute('u', '');
                             $compile(lElem[0])(scope);
 
@@ -61,7 +67,6 @@ angular.module('uguru.shared.directives')
                             transcludeComplete = true;
                           }
                         });
-                        console.log('registering', iListen)
                         whenAttrListeners.push(iListen);
                       })
                     })
@@ -421,9 +426,10 @@ angular.module('uguru.shared.directives')
 
               return {
                   pre: function (scope, lElem, lAttr) {
+
                     if (states.init) {
                       states.init.forEach(function(state, i) {
-                        console.log(state.name, state.type);
+
                         if (state.name === 'init' && state.type === 'on') {
                           states.on.push(state);
                         } else {
