@@ -246,7 +246,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function applySendAnimProp(scope, element, actions, context, cb) {
-
+        console.log('activating', context);
         if (actions.prop) {
           if ('prop' in actions.delays) {
               $timeout(function() {
@@ -288,6 +288,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
             if ('send' in actions.delays) {
               $timeout(function() {
+                console.log('sending', element, scope, actions.send)
                 applySendArgsAndCallback(element, scope, actions.send);
               }, actions.delays.send)
             } else {
@@ -382,6 +383,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (msgSplit.length > 2) {
             msgDelay = parseInt(msgSplit[2].replace('delay-', ''));
           }
+          console.log('sending', iMsg)
 
           // if (msgScope.trim() ==='self') {
           //     if (!msgDelay) {
