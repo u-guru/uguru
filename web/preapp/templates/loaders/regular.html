@@ -12,8 +12,9 @@
 				<div>
 					<svg width="200px" height="200px" viewBox="0 0 400 400">
 						<circle cx="200" cy="200" r="192" stroke="#55A4B7" stroke-width="16" fill="#2B3234" stroke-linecap="round" stroke-linejoin="round"
-							u init-with="p:[stroke-diiasharray:1207, stroke-dashoffset:1207, stroke:#55A4B7]"
-							when-portal-hover="a:[l-progress-color:2000:easeInSine:250:1:f, stroke-dashoffset:1207:0:2000:easeInSine:250:1:f] | s:[portal-complete:public:delay-2000]"></circle>
+							init-with="p:[stroke-dasharray:1207, stroke-dashoffset:1207, stroke:#55A4B7]"
+							init-after="portal-hover"
+							on-init="a:[l-progress-color:2000:easeInSine:250:1:f, stroke-dashoffset:1207:0:2000:easeInSine:250:1:f] | s:[portal-complete:public:delay-2000]"></circle>
 							<!-- p:[l-progress:0:1:5000:linear:0]:delay-250 | p:[stroke-dashoffset:1207:0:2000:linear:0]:delay-250 -->
 					</svg>
 				</div>
@@ -29,11 +30,17 @@
 				init-with="p:[tr:translateY(400px), tro:center top]"
 				when-portal-open="p:[transform:translateY(400px) scale(0.8):translateY(45px) scale(1):500:easeOutBack easeOutBack]:delay-900"
 				when-portal-complete="p:[transform:translateY(0px):translateY(350px):200:easeInBack]:delay-900">
-				<div ng-include="'preapp/templates/loaders/props/guru.html'"
+				<!-- @gabrielle hover-->
+				<div ng-include-after="'preapp/templates/loaders/props/guru.html'"
+					init-with="p:[tro:center top]"
+					init-after="portal-open"
+					on-init="s:[portal-hover:public:delay-950,warp-vehicles-init:public]|a:[l-head-hover:800:(.88,.34,.05,.68):1000:3:f]">
+				</div>
+				<!-- <div ng-include="'preapp/templates/loaders/props/guru.html'"
 					init-with="p:[tro:center top]"
 					when-portal-open="s:[portal-hover:public:delay-950]"
 					when-portal-hover="a:[l-head-hover:set:(dur:800ms#func:cubic-bezier(.88#.34#.05#.68)#count:3):in]:delay-1000 | s:[warp-vehicles-init:public]">
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>

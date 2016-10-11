@@ -200,7 +200,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                 applySendAnimProp(scope, element, actions, context, registerWatchFunctionCallback);
               }
             } else {
-              registerWatchFunction(scopeName);
+              registerWatchFunction(scopeName, hasDelay);
             }
         }
 
@@ -210,8 +210,9 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           }
         }
 
-        function registerWatchFunction(scope_name) {
+        function registerWatchFunction(scope_name, hasDelay) {
           return scope.$watch(scopeName, function(_new, _old) {
+
             if (hasDelay) {
               $timeout(function() {
                 applySendAnimProp(scope, element, actions, context)
@@ -230,7 +231,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         var name = context.name;
         if (name === 'init') {
           registerAnimationListeners(scope, element, attr, actions, context)
-          console.log('initializing', context.type, context.name, actions.send)
+
           element.ready(function(e) {
             applySendAnimProp(scope, element, actions, context);
           })
@@ -246,7 +247,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function applySendAnimProp(scope, element, actions, context, cb) {
-
+        // console.log('activating', context);
         if (actions.prop) {
           if ('prop' in actions.delays) {
               $timeout(function() {
@@ -288,6 +289,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
             if ('send' in actions.delays) {
               $timeout(function() {
+                console.log('sending', element, scope, actions.send)
                 applySendArgsAndCallback(element, scope, actions.send);
               }, actions.delays.send)
             } else {
@@ -394,6 +396,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
           var _attr = {dashed: iMsg, camel: UtilitiesService.camelCase('when-' + iMsg)};
           _attr.camel = _attr.camel.replace(' ', '-')
+          console.log('sending', iMsg, 'with delay', msgDelay)
           if (msgDelay) {
             $timeout(function() {
               scope.root.public.customStates.when[_attr.camel] = true;
