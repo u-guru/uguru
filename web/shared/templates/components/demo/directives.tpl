@@ -5,9 +5,7 @@
                 u init-with="p:[transform-origin:center center]"
                 on-init="a:[fadeIn:250:linear:0:1:f]|s:[first-tile-parent-init:public:delay-0, portal-academic-init:public:delay-0]">
                 <!-- TODO AFTER: property animation transform-->
-                <h1 init-after="first-tile-parent-init" on-init="a:[scale:0:1:250:bouncePast:0:1:f]">
-                Init After
-                </h1>
+                <h1 init-after="first-tile-parent-init" on-init="a:[scale:0:1:250:bouncePast:0:1:f]">Init After</h1>
             </div>
         </li>
 		<li init-with="p:[tro:center center]" style="background-image: url('https://snap-photos.s3.amazonaws.com/img-thumbs/960w/Z3VPU4IDKE.jpg')"
