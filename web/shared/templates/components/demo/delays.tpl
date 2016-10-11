@@ -1,27 +1,152 @@
 <div class="full-xy flex-center">
-    <ul class="flex-wrap-center p15-grid">
-        <li>
-            <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center width-128 height-128 radius-2"
-                u init-with="p:[transform-origin:center center]"
-                on-init="a:[icon-enter:250:linear:0:1:f]">
-                <h1 class="txt-14 semibold txt-center">Property:delay:250 global value
+    <ul class="flex-wrap-center p15-grid" on-init="s:[init-all-scale:public]">
+        <li class='m20x full-x'>
+            <div class="bg-transparent border-dashed border-slate border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2">
+                <h1 class="txt-azure height-50p weight-900 opacity-50p semibold">
+                    Property delays
                 </h1>
-            </div>
         </li>
-        <li>
-            <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center width-128 height-128 radius-2"
-                u init-with="p:[transform-origin:center center]"
-                on-init="a:[icon-enter:250:linear:0:1:f]">
-                <h1 class="txt-14 semibold txt-center">Property:delay:250 global + local value
+        <li class='m20x'>
+            <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
+                init-with="p:[transform:scale(0)]"
+                init-after="init-all-scale"
+                on-init="a:[scale:0:1:2500:linear:0:1:f]">
+                <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
+                    Scale
                 </h1>
+                <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
+                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "delay-0"]'>{{arg}}</li>
+                </ul>
             </div>
         </li>
-        <li>
-            <div class="bg-auburn p10xy flex-center width-128 height-128 radius-2"
-                u init-with="p:[transform-origin:center center]"
-                on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeInOutElastic:0:1:f]:delay-200 | send:[show-header-elem:public]:delay-1000">
-                <h1 class="txt-14 semibold txt-center">Verify Iterations</h1>
+        <li class='m20xy'>
+            <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
+                init-with="p:[transform:scale(0)]"
+                init-after="init-all-scale"
+                on-init="a:[scale:0:1:2500:linear:1000:1:f]">
+                <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
+                    Scale
+                </h1>
+                <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
+                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "int-1000"]'>{{arg}}</li>
+                </ul>
             </div>
         </li>
+        <li class='m20x'>
+            <div class="bg-auburn border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
+                init-with="p:[transform:scale(0)]"
+                init-after="init-all-scale"
+                on-init="a:[scale:0:1:2500:linear:0:1:f]:delay-1000">
+                <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
+                    Scale
+                </h1>
+                <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
+                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "ext-1000"]'>{{arg}}</li>
+                </ul>
+            </div>
+        </li>
+        <li class='m20x'>
+            <div class="bg-auburn border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
+                init-with="p:[transform:scale(0)]"
+                init-after="init-all-scale"
+                on-init="a:[scale:0:1:2500:linear:500:1:f]:delay-500">
+                <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
+                    Scale
+                </h1>
+                <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
+                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "int-500, ext-500"]'>{{arg}}</li>
+                </ul>
+            </div>
+        </li>
+        <li class='m20x'>
+            <div class="bg-auburn border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
+                init-with="p:[transform:scale(0)]"
+                init-after="init-all-scale"
+                on-init="a:[scale:0:1:2500:linear:250:1:f]:delay-750">
+                <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
+                    Scale
+                </h1>
+                <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
+                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "int-250", "ext-750"]'>{{arg}}</li>
+                </ul>
+            </div>
+        </li>
+        <li class='full-x m20y'>
+            <hr class='absolute bg-white full-x'/>
+        </li>
+        <!-- predefined custom animation delays -->
+        <li class='m20x'>
+            <div class="bg-transparent border-dashed border-slate border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2">
+                <h1 class="txt-azure weight-900 opacity-50p semibold">
+                    Custom Anim delays
+                </h1>
+        </li>
+        <li class='m20x'>
+            <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
+                init-with="p:[transform:scaleX(0)]"
+                init-after="init-all-scale"
+                on-init="a:[shake-opacity:2500:easeTo:0:1:f]">
+                <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
+                    shake-opacity
+                </h1>
+                <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
+                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "delay:0"]'>{{arg}}</li>
+                </ul>
+            </div>
+        </li>
+        <li class='m20xy'>
+            <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
+                init-with="p:[transform:scale(0)]"
+                init-after="init-all-scale"
+                on-init="a:[shake-opacity:2500:linear:1000:1:f]">
+                <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
+                    shake-opacity
+                </h1>
+                <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
+                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "int-1000"]'>{{arg}}</li>
+                </ul>
+            </div>
+        </li>
+        <li class='m20xy'>
+            <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
+                init-with="p:[transform:scale(0)]"
+                init-after="init-all-scale"
+                on-init="a:[shake-opacity:2500:linear:0:1:f]:delay-1000">
+                <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
+                    shake-opacity
+                </h1>
+                <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
+                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "ext-1000"]'>{{arg}}</li>
+                </ul>
+            </div>
+        </li>
+        <li class='m20x'>
+            <div class="bg-auburn border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
+                init-with="p:[transform:scale(0)]"
+                init-after="init-all-scale"
+                on-init="a:[shake-opacity:0:1:2500:linear:500:1:f]:delay-500">
+                <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
+                    shake-opacity
+                </h1>
+                <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
+                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "int-500", "ext-500"]'>{{arg}}</li>
+                </ul>
+            </div>
+        </li>
+        <li class='m20x'>
+            <div class="bg-auburn border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
+                init-with="p:[transform:scale(0)]"
+                init-after="init-all-scale"
+                on-init="a:[shake-opacity:0:1:2500:linear:250:1:f]:delay-750">
+                <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
+                    shake-opacity
+                </h1>
+                <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
+                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "int-250", "ext-750"]'>{{arg}}</li>
+                </ul>
+            </div>
+        </li>
+
+
     </ul>
 </div>
