@@ -1,6 +1,6 @@
 <div class="absolute top-0 left-0 full-xy flex-center perspective-container">
-	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #BBF2FE;"
-		u on-init="a:[opacity:0:1:4000:easeInOutSine:0:1:f]:delay-5000">
+	<!-- <svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #BBF2FE;"
+		u on-init="a:[opacity:0:1:3000:easeInOutSine:0:1:f]:delay-4000">
 		<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 			<g class="left-tree">
 				<rect class="l-canopy" fill="#B4CB5D" x="221" y="364" width="43" height="86" rx="21.5"></rect>
@@ -45,23 +45,70 @@
 				<path d="M248.805664,430.794922 C248.805664,430.794922 253.556519,430.672017 256.170506,428.905234 C258.784493,427.13845 259.264987,424.117312 259.264987,424.117312" class="leaf-c-2" stroke="#63AC69" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
 			</g>
 			<g class="sky">
-				<circle class="sun" fill="#FECE67" cx="281" cy="171" r="44"></circle>
+				<circle class="sun" fill="#FECE67" cx="281" cy="171" r="44"
+					u init-with="p:[transform:translateY(-800px)]"
+					on-init="a:[translateY:-800px:0px:400:easeInOutBack:0:1:f]:delay-6000 | s:[day-sky:public]:delay-6000"></circle>
 				<path d="M432.821041,232 C432.284244,229.754184 432,227.410286 432,225 C432,208.431458 445.431458,195 462,195 C478.568542,195 492,208.431458 492,225 C492,227.410286 491.715756,229.754184 491.178959,232 L432.821041,232 L432.821041,232 L432.821041,232 Z" class="day-b-cloud-1" fill="#FFFFFF"></path>
 				<path d="M487.756105,232 C487.262518,230.08228 487,228.071797 487,226 C487,212.745166 497.745166,202 511,202 C524.254834,202 535,212.745166 535,226 C535,228.071797 534.737482,230.08228 534.243895,232 L487.756105,232 L487.756105,232 L487.756105,232 Z" class="day-b-cloud-2" fill="#FFFFFF"></path>
 				<path d="M527.024234,232 C526.360925,230.123326 526,228.103813 526,226 C526,216.058875 534.058875,208 544,208 C553.941125,208 562,216.058875 562,226 C562,228.103813 561.639075,230.123326 560.975766,232 L527.024234,232 L527.024234,232 L527.024234,232 Z" class="day-b-cloud-3" fill="#FFFFFF"></path>
 				<path d="M430.243895,178 C430.737482,176.08228 431,174.071797 431,172 C431,158.745166 420.254834,148 407,148 C393.745166,148 383,158.745166 383,172 C383,174.071797 383.262518,176.08228 383.756105,178 L430.243895,178 L430.243895,178 L430.243895,178 Z" class="day-s-cloud-1" fill="#FFFFFF"></path>
 				<path d="M390.975766,178 C391.639075,176.123326 392,174.103813 392,172 C392,162.058875 383.941125,154 374,154 C364.058875,154 356,162.058875 356,172 C356,174.103813 356.360925,176.123326 357.024234,178 L390.975766,178 L390.975766,178 L390.975766,178 Z" class="day-s-cloud-2" fill="#FFFFFF"></path>
 				<g class="birds">
-					<path d="M499.5,126 C499.5,126 505.438375,126.265969 511.75,131.5 C518.061625,136.734031 520,143 520,143" class="b-bird-left" stroke="#6E6144" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-					<path d="M541,126 C541,126 535.061625,126.265969 528.75,131.5 C522.438375,136.734031 520.5,143 520.5,143" class="b-bird-right" stroke="#6E6144" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-					<path d="M479.294118,158 C479.294118,158 483.136595,158.172098 487.220588,161.558824 C491.304581,164.945549 492.558824,169 492.558824,169" class="m-bird-left" stroke="#6E6144" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-					<path d="M506.558824,158 C506.558824,158 502.716346,158.172098 498.632353,161.558824 C494.54836,164.945549 493.294118,169 493.294118,169" class="m-bird-right" stroke="#6E6144" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-					<path d="M344.294118,218 C344.294118,218 346.963583,218.062581 349.800835,219.294118 C352.638087,220.525654 353.509441,222 353.509441,222" class="far-bird-left" stroke="#6E6144" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-					<path d="M363.509441,218 C363.509441,218 360.839975,218.062581 358.002723,219.294118 C355.165471,220.525654 354.294118,222 354.294118,222" class="far-bird-right" stroke="#6E6144" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-					<path d="M512.294118,178 C512.294118,178 514.963583,178.062581 517.800835,179.294118 C520.638087,180.525654 521.509441,182 521.509441,182" class="small-bird-left" stroke="#6E6144" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-					<path d="M530.509441,178 C530.509441,178 527.839975,178.062581 525.002723,179.294118 C522.165471,180.525654 521.294118,182 521.294118,182" class="small-bird-right" stroke="#6E6144" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-					<path d="M308.509441,236 C308.284677,236 309.156031,234.525654 311.993282,233.294118 C314.830534,232.062581 317.5,232 317.5,232" class="stour-bird-right" stroke="#6E6144" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-					<path d="M308.466318,236 C308.691082,236 307.819728,234.525654 304.982476,233.294118 C302.145224,232.062581 299.475759,232 299.475759,232" class="stout-bird-left" stroke="#6E6144" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+					<g class="b-bird" init-after="day-sky"
+						on-init="a:[translateY:-3px:3px:1000:linear:0:i:a]">
+						<path d="M499.5,126 C499.5,126 505.438375,126.265969 511.75,131.5 C518.061625,136.734031 520,143 520,143" class="b-bird-left" stroke="#6E6144" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
+							init-after="day-sky"
+							init-with="p:[transform:rotate(0deg), tro:right bottom]"
+							on-init="a:[rotate:15deg:-10deg:1000:easeInOutCirc:0:i:a]"></path>
+						<path d="M541,126 C541,126 535.061625,126.265969 528.75,131.5 C522.438375,136.734031 520.5,143 520.5,143" class="b-bird-right" stroke="#6E6144" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
+							init-after="day-sky"
+							init-with="p:[transform:rotate(0deg), tro:left bottom]"
+							on-init="a:[rotate:-15deg:10deg:1000:easeInOutCirc:0:i:a]"></path>
+					</g>
+					<g class="m-bird" init-after="day-sky"
+						on-init="a:[translateY:-3px:3px:1000:linear:100:200:a]">
+						<path d="M479.294118,158 C479.294118,158 483.136595,158.172098 487.220588,161.558824 C491.304581,164.945549 492.558824,169 492.558824,169" class="m-bird-left" stroke="#6E6144" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
+							init-after="day-sky"
+							init-with="p:[transform:rotate(0deg), tro:right bottom]"
+							on-init="a:[rotate:10deg:-10deg:1000:easeInOutCirc:100:200:a]"></path>
+						<path d="M506.558824,158 C506.558824,158 502.716346,158.172098 498.632353,161.558824 C494.54836,164.945549 493.294118,169 493.294118,169" class="m-bird-right" stroke="#6E6144" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
+							init-after="day-sky"
+							init-with="p:[transform:rotate(0deg), tro:left bottom]"
+							on-init="a:[rotate:-10deg:10deg:1000:easeInOutCirc:100:200:a]"></path>
+					</g>
+					<g class="m-bird" init-after="day-sky"
+						on-init="a:[translateY:-3px:3px:1000:linear:150:200:a]">
+						<path d="M344.294118,218 C344.294118,218 346.963583,218.062581 349.800835,219.294118 C352.638087,220.525654 353.509441,222 353.509441,222" class="far-bird-left" stroke="#6E6144" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+							init-after="day-sky"
+							init-with="p:[transform:rotate(0deg), tro:right bottom]"
+							on-init="a:[rotate:10deg:-10deg:1000:easeInOutCirc:150:200:a]"></path>
+						<path d="M363.509441,218 C363.509441,218 360.839975,218.062581 358.002723,219.294118 C355.165471,220.525654 354.294118,222 354.294118,222" class="far-bird-right" stroke="#6E6144" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+							init-after="day-sky"
+							init-with="p:[transform:rotate(0deg), tro:left bottom]"
+							on-init="a:[rotate:-10deg:10deg:1000:easeInOutCirc:150:200:a]"></path>
+					</g>
+					<g init-after="day-sky"
+						on-init="a:[translateY:-3px:3px:1000:linear:175:200:a]">
+						<path d="M512.294118,178 C512.294118,178 514.963583,178.062581 517.800835,179.294118 C520.638087,180.525654 521.509441,182 521.509441,182" class="small-bird-left" stroke="#6E6144" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+							init-after="day-sky"
+							init-with="p:[transform:rotate(0deg), tro:right bottom]"
+							on-init="a:[rotate:10deg:-10deg:1000:easeInOutCirc:175:200:a]"></path>
+						<path d="M530.509441,178 C530.509441,178 527.839975,178.062581 525.002723,179.294118 C522.165471,180.525654 521.294118,182 521.294118,182" class="small-bird-right" stroke="#6E6144" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+							init-after="day-sky"
+							init-with="p:[transform:rotate(0deg), tro:left bottom]"
+							on-init="a:[rotate:-10deg:10deg:1000:easeInOutCirc:175:200:a]"></path>
+					</g>
+					<g init-after="day-sky"
+						on-init="a:[translateY:-3px:3px:1000:linear:0:i:a]">
+						<path d="M308.509441,236 C308.284677,236 309.156031,234.525654 311.993282,233.294118 C314.830534,232.062581 317.5,232 317.5,232" class="stour-bird-right" stroke="#6E6144" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
+							init-after="day-sky"
+							init-with="p:[transform:rotate(0deg), tro:left bottom]"
+							on-init="a:[rotate:-10deg:10deg:1000:easeInOutCirc:0:i:a]"></path>
+						<path d="M308.466318,236 C308.691082,236 307.819728,234.525654 304.982476,233.294118 C302.145224,232.062581 299.475759,232 299.475759,232" class="stout-bird-left" stroke="#6E6144" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
+							init-after="day-sky"
+							init-with="p:[transform:rotate(0deg), tro:right bottom]"
+							on-init="a:[rotate:10deg:-10deg:1000:easeInOutCirc:0:i:a]"></path>
+					</g>
 				</g>
 			</g>
 			<g class="house">
@@ -141,11 +188,11 @@
 				<rect class="day-mbox-stand" fill="#FFFFFF" x="283" y="472" width="6" height="31"></rect>
 			</g>
 		</g>
-	</svg>
+	</svg> -->
 	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #092D4B;"
-		u on-init="a:[opacity:1:0:4000:easeInOutSine:0:1:f]:delay-5000">
+		u on-init="a:[opacity:1:0:3000:easeInOutSine:0:1:f]:delay-4000">
 	    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
-			u on-init="a:[sky:4000:easeInOutSine:0:1:f]:delay-5000">
+			u on-init="a:[sky:3000:easeInOutSine:0:1:f]:delay-4000">
 	        <g class="blue-tree">
 	            <rect class="b-canopy" fill="#AADFFF" x="221" y="364" width="43" height="86" rx="21.5"
 					init-after="canopy"
@@ -263,10 +310,12 @@
 					init-after="sky-shine"
 					init-with="p:[op:0, tro:center center]"
 					on-init="a:[scaleIn-subtle:900:easeInOutQuad:0:i:a]"></path>
-	            <path d="M560.15882,201.030391 C552.128267,209.626465 540.691661,215 528,215 C503.699471,215 484,195.300529 484,171 C484,146.699471 503.699471,127 528,127 C541.337224,127 553.288467,132.934088 561.357524,142.306058 C558.554356,141.45669 555.580511,141 552.5,141 C535.655315,141 522,154.655315 522,171.5 C522,188.344685 535.655315,202 552.5,202 C555.145091,202 557.711539,201.663289 560.15882,201.030391 L560.15882,201.030391 Z" class="moon" fill="#FFFFFF"
-					init-after="sky-shine"
+				<g init-after="sky-shine"
 					init-with="p:[tro:right top, opacity:0, transform:rotate(90deg)]"
-					on-init="a:[opacity:0:1:50:linear:0:1:f, rotate:90deg:0deg:500:easeOutQuart:0:1:f]"></path>
+					on-init="a:[opacity:0:1:50:linear:0:1:f, rotate:90deg:0deg:500:easeOutQuart:0:1:f]">
+		            <path d="M560.15882,201.030391 C552.128267,209.626465 540.691661,215 528,215 C503.699471,215 484,195.300529 484,171 C484,146.699471 503.699471,127 528,127 C541.337224,127 553.288467,132.934088 561.357524,142.306058 C558.554356,141.45669 555.580511,141 552.5,141 C535.655315,141 522,154.655315 522,171.5 C522,188.344685 535.655315,202 552.5,202 C555.145091,202 557.711539,201.663289 560.15882,201.030391 L560.15882,201.030391 Z" class="moon" fill="#FFFFFF"
+						u on-init="a:[translateY:0px:-800px:400:easeInOutBack:0:1:f]:delay-5000"></path>
+				</g>
 				<g init-after="sky-shine"
 					init-with="p:[transform:scale(0), tro:center bottom]"
 					on-init="a:[scale:0:1:200:easeOutSine:0:1:f]">
