@@ -33,7 +33,7 @@
             </div>
         </li>
         <li class='m20x'>
-            <div class="bg-auburn border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
+            <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-with="p:[transform:scale(0)]"
                 init-after="init-all-scale"
                 on-init="a:[scale:0:1:2500:linear:0:1:f]:delay-1000">
@@ -46,7 +46,7 @@
             </div>
         </li>
         <li class='m20x'>
-            <div class="bg-auburn border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
+            <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-with="p:[transform:scale(0)]"
                 init-after="init-all-scale"
                 on-init="a:[scale:0:1:2500:linear:500:1:f]:delay-500">
@@ -59,7 +59,7 @@
             </div>
         </li>
         <li class='m20x'>
-            <div class="bg-auburn border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
+            <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-with="p:[transform:scale(0)]"
                 init-after="init-all-scale"
                 on-init="a:[scale:0:1:2500:linear:250:1:f]:delay-750">
@@ -85,7 +85,7 @@
             <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-with="p:[transform:scaleX(0)]"
                 init-after="init-all-scale"
-                on-init="a:[shake-opacity:2500:easeTo:0:1:f]">
+                on-init="a:[shake-opacity:2500:linear:0:1:f]">
                 <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
                     shake-opacity
                 </h1>
@@ -120,11 +120,11 @@
                 </ul>
             </div>
         </li>
-        <li class='m20x'>
-            <div class="bg-auburn border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
+        <li class='m20xy'>
+            <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-with="p:[transform:scale(0)]"
                 init-after="init-all-scale"
-                on-init="a:[shake-opacity:0:1:2500:linear:500:1:f]:delay-500">
+                on-init="a:[shake-opacity:2500:linear:500:1:f]:delay-500">
                 <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
                     shake-opacity
                 </h1>
@@ -133,16 +133,16 @@
                 </ul>
             </div>
         </li>
-        <li class='m20x'>
-            <div class="bg-auburn border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
+        <li class='m20xy'>
+            <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-with="p:[transform:scale(0)]"
                 init-after="init-all-scale"
-                on-init="a:[shake-opacity:0:1:2500:linear:250:1:f]:delay-750">
+                on-init="a:[shake-opacity:2500:linear:250:1:f]:delay-750">
                 <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
                     shake-opacity
                 </h1>
                 <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
-                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "int-250", "ext-750"]'>{{arg}}</li>
+                    <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "int-500", "ext-500"]'>{{arg}}</li>
                 </ul>
             </div>
         </li>
