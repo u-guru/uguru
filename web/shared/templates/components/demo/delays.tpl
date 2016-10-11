@@ -5,6 +5,7 @@
                 <h1 class="txt-azure height-50p weight-900 opacity-50p semibold">
                     Property delays
                 </h1>
+			</div>
         </li>
         <li class='m20x'>
             <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
@@ -111,6 +112,7 @@
             <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-with="p:[transform:scale(0)]"
                 init-after="init-all-scale"
+
                 on-init="a:[bounceIn-rotate-subtle:2500:linear:0:1:f]:delay-300">
                 <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
                     bounceIn-rotate-subtle
@@ -124,6 +126,7 @@
             <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-with="p:[transform:scale(0)]"
                 init-after="init-all-scale"
+
                 on-init="a:[bounceIn-rotate-subtle:2500:linear:150:1:f]:delay-150">
                 <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
                     bounceIn-rotate-subtle
@@ -137,16 +140,14 @@
             <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-with="p:[transform:scale(0)]"
                 init-after="init-all-scale"
-                on-init="a:[bounceIn-rotate-subtle:2500:linear:125:1:f]:delay-175">
+                on-init="a:[bounceInX:2500:linear:250:1:f]:delay-750">
                 <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
-                    bounceIn-rotate-subtle
+                    bounceInX
                 </h1>
                 <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
                     <li class='m05y border-white weight-900 txt-1 uppercase border-1 p10x txt-white bg-transparent' ng-repeat='arg in ["2500ms", "int-125", "ext-175"]'>{{arg}}</li>
                 </ul>
             </div>
         </li>
-
-
     </ul>
 </div>
