@@ -52,8 +52,8 @@
 		<rect class="sunset-sky" fill="url(#sunset-sky-gradient)" x="0" y="0" width="864" height="286" opacity="0.25"></rect>
 	</g>
 	<g class="sunrise-sky-container"
-		u init-with="p:[op:0]"
-		when-time-shift="a:[hiw-sunset-shift:12000:linear:1000:i:f]">
+		init-with="p:[opacity:0]"
+		when-time-shift="a:[hiw-sunset-shift:(dur:12000ms#func:linear#aic:200:in]:delay-1000">
 		<rect class="transition-sky" fill="#F4E3F6" x="0" y="0" width="864" height="286"></rect>
 		<rect class="sunrise-sky" fill="url(#sunrise-sky-gradient)" x="0" y="0" width="864" height="286" opacity="0.25"></rect>
 	</g>

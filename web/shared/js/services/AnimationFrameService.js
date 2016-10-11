@@ -307,7 +307,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           var currentMax = Math.max(Math.ceil(newStream.time.total), currentMax);
         }
 
-        var allStreamsTickDurationTicks = Math.ceil(calcTickLength(currentMax) * 61/60.0);
+        var allStreamsTickDurationTicks = Math.ceil(calcTickLength(currentMax) * 62/60.0);
         if (!player.playerProps.duration && currentMax) {
           player.playerProps.duration = currentMax;
           player.tick.start = allStreamsTickDurationTicks;
