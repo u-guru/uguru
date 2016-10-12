@@ -1,5 +1,5 @@
 <div class="absolute top-0 left-0 full-xy flex-center perspective-container">
-	<!-- <svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #BBF2FE;"
+	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #BBF2FE;"
 		init-after="sky-shine" on-init="a:[opacity:0:1:3000:easeInOutSine:0:1:f]:delay-2500">
 		<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 			<g class="left-tree">
@@ -26,7 +26,10 @@
 				<path d="M529.595674,504 C530.245502,493.945744 538.279885,486 548.095674,486 C557.911462,486 565.945845,493.945744 566.595674,504 L529.595674,504 L529.595674,504 L529.595674,504 Z" class="lime-bush-small" fill="#93AA3C"></path>
 				<path d="M474,504 C475.046946,487.801477 487.991229,475 503.805556,475 C519.619882,475 532.564165,487.801477 533.611111,504 L474,504 L474,504 L474,504 Z" class="lime-bush-medium" fill="#93AA3C"></path>
 			</g>
-			<g class="leaves" init-with="p-op">
+			<g class="leaves"
+				init-after="leafing"
+				init-with="p-op"
+				on-init="a:[opacity:0:1:1000:linear:0:1:f]">
 				<path d="M576.083984,416.017578 L574.187448,419.796089 C573.127672,421.907502 570.448902,423.001567 568.229722,422.227902 C568.229722,422.227902 566.506449,421.689824 565.957136,421.343444 C565.011023,420.746855 562.317797,418.777724 562.317797,418.777724 L567.446445,414.770785 C569.308648,413.315872 572.355483,413.269454 574.257069,414.671034 L576.083984,416.017578 L576.083984,416.017578 Z" class="leaf-a-1" fill="#107959"></path>
 				<path d="M566.805664,418.794922 C566.805664,418.794922 571.556519,418.672017 574.170506,416.905234 C576.784493,415.13845 577.264987,412.117312 577.264987,412.117312" class="leaf-a-2" stroke="#C8D39F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
 				<path d="M539.916016,423.017578 L541.812552,426.796089 C542.872328,428.907502 545.551098,430.001567 547.770278,429.227902 C547.770278,429.227902 549.493551,428.689824 550.042864,428.343444 C550.988977,427.746855 553.682203,425.777724 553.682203,425.777724 L548.553555,421.770785 C546.691352,420.315872 543.644517,420.269454 541.742931,421.671034 L539.916016,423.017578 L539.916016,423.017578 Z" class="leaf-b-1" fill="#107959"></path>
@@ -96,7 +99,7 @@
 						<path d="M363.509441,218 C363.509441,218 360.839975,218.062581 358.002723,219.294118 C355.165471,220.525654 354.294118,222 354.294118,222" class="far-bird-right" stroke="#6E6144" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
 							init-after="flying"
 							init-with="p:[transform:rotate(0deg), tro:left bottom]"
-							on-init="a:[rotate:-10deg:10deg:1000:easeInOutCirc:150:i:a]"></path>
+							on-init="a:[rotate:-10deg:10deg:1000:easeInOutCirc:150:i:a] | s:[leafing:public]:delay-7000"></path>
 					</g>
 					<g init-after="flying"
 						on-init="a:[translateY:-3px:3px:1000:linear:175:200:a]">
@@ -199,11 +202,13 @@
 				<rect class="day-mbox-stand" fill="#FFFFFF" x="283" y="472" width="6" height="31"></rect>
 			</g>
 		</g>
-	</svg> -->
-	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #092D4B;">
-		<!-- init-after="sky-shine" init-with="p:[op:1]" on-init="a:[opacity:1:0:3000:easeInOutSine:0:1:f]:delay-2000" -->
-	    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-			<!-- init-after="sky-shine" on-init="a:[sky:3000:easeInOutSine:0:1:f]:delay-2000" -->
+	</svg>
+	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #092D4B;"
+		init-after="sky-shine" init-with="p:[op:1]" on-init="a:[opacity:1:0:3000:easeInOutSine:0:1:f]:delay-2000">
+
+	    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
+			init-after="sky-shine" on-init="a:[sky:3000:easeInOutSine:0:1:f]:delay-2000">
+
 	        <g class="blue-tree">
 	            <rect class="b-canopy" fill="#AADFFF" x="221" y="364" width="43" height="86" rx="21.5"
 					init-after="canopy"
@@ -304,7 +309,7 @@
 	            <path d="M328.839652,146.767195 C327.82364,146.343485 327.830745,145.653552 328.839652,145.232805 L332.923049,143.529896 C333.939061,143.106186 335.109149,141.931956 335.529896,140.923049 L337.232805,136.839652 C337.656515,135.82364 338.346448,135.830745 338.767195,136.839652 L340.470104,140.923049 C340.893814,141.939061 342.068044,143.109149 343.076951,143.529896 L347.160348,145.232805 C348.17636,145.656515 348.169255,146.346448 347.160348,146.767195 L343.076951,148.470104 C342.060939,148.893814 340.890851,150.068044 340.470104,151.076951 L338.767195,155.160348 C338.343485,156.17636 337.653552,156.169255 337.232805,155.160348 L335.529896,151.076951 C335.106186,150.060939 333.931956,148.890851 332.923049,148.470104 L328.839652,146.767195 Z" class="star-7" fill="#FFFFFF"
 					init-after="sky-shine"
 					init-with="p:[transform:scale(0) rotate(0deg), tro:center center]"
-					on-init="a:[scaleIn-subtle:2100:linear:0:i:a]"></path>
+					on-init="a:[scaleIn-subtle:2000:linear:0:i:a]"></path>
 	            <path d="M403.849736,117.2714 C402.828155,116.845368 402.823135,116.156726 403.849736,115.7286 L404.031615,115.652751 C405.053196,115.226718 406.224624,114.058216 406.652751,113.031615 L406.7286,112.849736 C407.154632,111.828155 407.843274,111.823135 408.2714,112.849736 L408.347249,113.031615 C408.773282,114.053196 409.941784,115.224624 410.968385,115.652751 L411.150264,115.7286 C412.171845,116.154632 412.176865,116.843274 411.150264,117.2714 L410.968385,117.347249 C409.946804,117.773282 408.775376,118.941784 408.347249,119.968385 L408.2714,120.150264 C407.845368,121.171845 407.156726,121.176865 406.7286,120.150264 L406.652751,119.968385 C406.226718,118.946804 405.058216,117.775376 404.031615,117.347249 L403.849736,117.2714 Z" class="star-8" fill="#FFFFFF"
 					init-after="sky-shine"
 					init-with="p:[op:0, tro:center center]"
