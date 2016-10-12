@@ -1,16 +1,16 @@
 <div class="absolute top-0 left-0 full-xy flex-center perspective-container">
 
 	<!-- WITH init-after -->
-	<div ng-if="true" u on-init="s:[walk-1:public:delay-1000]"
-		when-walk-1="s:[walk-2:public:delay-100]"
-		when-walk-2="s:[walk-3:public:delay-100]"
-		when-walk-3="s:[walk-4:public:delay-100]">
+	<div ng-if="false" u on-init="s:[walk-1:public]:delay-1000"
+		when-walk-1="s:[walk-2:public]:delay-100"
+		when-walk-2="s:[walk-3:public]:delay-100"
+		when-walk-3="s:[walk-4:public]:delay-100">
 		<svg class="bg-slate-25p" width="1600px" height="800px" viewBox="0 0 400 200">
 			<g fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke="#696269" fill="#C8BBC9">
 				<g class="left-arm" stroke="#40484B" fill="#757575"
 					init-with="p:[tro:13px 4px]"
 					init-after="walk-1"
-					on-init="a:[rotate:0deg:10deg:100:linear:0:1:f, translateX:0px:19px:100:linear:0:1:f, translateY:0px:-18px:100:linear:0:1:f]"
+					on-init="a:[rotate:0deg:10deg:100:linear:0:1:f. translateX:0px:19px:100:linear:0:1:f, translateY:0px:-18px:100:linear:0:1:f]"
 					when-walk-2="a:[rotate:10deg:24deg:100:linear:0:1:f, translateX:19px:39px:100:linear:0:1:f, translateY:-18px:-49px:100:linear:0:1:f]"
 					when-walk-3="a:[rotate:24deg:29deg:100:linear:0:1:f, translateX:39px:44px:100:linear:0:1:f, translateY:-49px:-64px:100:linear:0:1:f]">
 					<path d="M106.055235,59.9483772 C107.917412,59.606594 109.176521,57.8390507 108.878692,55.9586352 C108.576305,54.049437 106.78346,52.7468593 104.874262,53.0492466 C102.965064,53.3516339 101.662486,55.1444782 101.964874,57.0536765 C102.036433,57.5054828 102.19146,57.9233172 102.411745,58.293949 L90.8751606,81.9474533 C90.3882567,82.9457542 90.7990818,84.146069 91.7918623,84.6302804 C92.7915643,85.1178676 93.9838366,84.698411 94.4703368,83.7009379 L106.055235,59.9483772 L106.055235,59.9483772 Z" class="left-arm-top"></path>
@@ -216,7 +216,7 @@
 	</div>
 
 	<!-- old syntax -->
-	<div ng-if="false" init-default
+	<div ng-if="true" init-default
 		on-init="s:[walk-1:public]:delay-1000"
 		when-walk-1="s:[walk-2:public]:delay-100"
 		when-walk-2="s:[walk-3:public]:delay-100"
