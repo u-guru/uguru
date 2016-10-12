@@ -1,6 +1,6 @@
 <div class="absolute top-0 left-0 full-xy flex-center perspective-container">
 	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #BBF2FE;"
-		init-after="sky-shine" on-init="a:[opacity:0:1:3000:easeInOutSine:0:1:f]:delay-2500">
+		init-after="day-transition" on-init="a:[opacity:0:1:3000:easeInOutSine:0:1:f]:delay-2500">
 		<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 			<g class="left-tree">
 				<rect class="l-canopy" fill="#B4CB5D" x="221" y="364" width="43" height="86" rx="21.5"></rect>
@@ -49,7 +49,7 @@
 			</g>
 			<g class="sky">
 				<circle class="sun" fill="#FECE67" cx="281" cy="171" r="44"
-					init-after="sky-shine"
+					init-after="day-transition"
 					init-with="p:[transform:translateY(-800px)]"
 					on-init="a:[translateY:-800px:0px:400:easeInOutBack:0:1:f]:delay-4000 | s:[day-sky:public]:delay-4000"></circle>
 				<path d="M432.821041,232 C432.284244,229.754184 432,227.410286 432,225 C432,208.431458 445.431458,195 462,195 C478.568542,195 492,208.431458 492,225 C492,227.410286 491.715756,229.754184 491.178959,232 L432.821041,232 L432.821041,232 L432.821041,232 Z" class="day-b-cloud-1" fill="#FFFFFF"
@@ -204,11 +204,9 @@
 		</g>
 	</svg>
 	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #092D4B;"
-		init-after="sky-shine" init-with="p:[op:1]" on-init="a:[opacity:1:0:3000:easeInOutSine:0:1:f]:delay-2000">
+		u init-with="p:[op:1]" on-init="a:[opacity:1:0:3000:easeInOutSine:0:1:f]:delay-6000">
 
-	    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
-			init-after="sky-shine" on-init="a:[sky:3000:easeInOutSine:0:1:f]:delay-2000">
-
+	    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 	        <g class="blue-tree">
 	            <rect class="b-canopy" fill="#AADFFF" x="221" y="364" width="43" height="86" rx="21.5"
 					init-after="canopy"
@@ -338,7 +336,7 @@
 		            <path d="M376.178959,232 C376.715756,229.754184 377,227.410286 377,225 C377,208.431458 363.568542,195 347,195 C330.431458,195 317,208.431458 317,225 C317,227.410286 317.284244,229.754184 317.821041,232 L376.178959,232 L376.178959,232 Z" class="b-cloud-1" fill="#BCE5FF"
 						init-after="sky-shine"
 						init-with="p:[transform:translateY(0px), tro:center center]"
-						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a]"></path>
+						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a] | s:[day-transition:public]:delay-7000"></path>
 				</g>
 				<g init-after="sky-shine"
 					init-with="p:[transform:scale(0), tro:center bottom]"
@@ -374,11 +372,9 @@
 				</g>
 	        </g>
 	        <g class="house">
-				<!-- u on-init="s:[build-house:public]:delay-500" -->
 	            <rect class="house-foundation" fill="#AADFFF" x="307" y="285" width="187" height="204"
 					u init-with="p:[tro:center bottom, transform:scaleY(0)]"
 					on-init="a:[scaleY:0:1:1050:easeOutBounce:0:1:f] | s:[build-house:public:delay-500]"></rect>
-					<!-- when-mailbox-enter="a:[scaleY:0:1:500:easeInOutBounce:0:1:f] | s:[build-house:public]:delay-500" -->
 	            <rect class="house-casing" fill="#FFFFFF" x="301" y="485" width="199" height="19"
 					init-after="build-house"
 					init-with="p:[tro:center bottom, transform:scaleY(0)]"
