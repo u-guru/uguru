@@ -463,12 +463,15 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   //   templateUrl: 'admin/templates/components/index.tpl'
   // })
   .state('root.single-components', {
-    url: '/dev/components/:section/:name',
+    url: '/dev/components/:section/:name?{version}&{type}',
     templateProvider: function($stateParams) {
       // var mappings = {'tiles': 'tiles'};
-      return '<div ng-include="' + "'shared/templates/components/" + $stateParams.section + "/" + $stateParams.name + ".tpl'" + '"> </div>'
+
+      var name =  $stateParams.name + (($stateParams.version &&  "." + $stateParams.version) || '');
+      console.log(name)
+      return '<div ng-include="' + "'shared/templates/components/" + $stateParams.section + "/" + name + ".tpl'" + '"> </div>'
     },
-    controller: function($scope, $timeout, $compile) {
+    controller: function($scope, $timeout, $compile, UtilitiesService, $stateParams) {
       $timeout(function() {
         var elem = document.querySelector('[types]');
 
@@ -476,8 +479,8 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
           var elemDefaultType = elem.getAttribute('default-type');
           $scope.types = JSON.parse(JSON.stringify((elem.getAttribute('types')))).split(', ');
           var defaultTypeIndex = $scope.types.indexOf(elemDefaultType);
-          if (defaultTypeIndex) {
-            $scope.activeType = $scope.types[defaultTypeIndex];
+          if (defaultTypeIndex || $stateParams.type) {
+            $scope.activeType = $stateParams.type && $stateParams.type || $scope.types[defaultTypeIndex];
           }
           $timeout(function() {
             $compile(elem)($scope);

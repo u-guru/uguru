@@ -23,6 +23,19 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
+.directive("counter", ["$compile", "ElementService", "$timeout", function($compile, ElementService, $timeout) {
+  return {
+    restrict: 'A',
+    scope: false,
+    link: {
+       compile: function(element, attr, transclude) {
+        elem, name, value, name_camel;
+            this.states = ElementService.renderState(elem, name, value, name_camel);
+            var states = this.states;
+        }
+    }
+  }
+}])
 .directive("initAfter", ["$compile", "UtilitiesService", function($compile, UtilitiesService) {
       return {
           restrict: 'A',
@@ -423,7 +436,6 @@ angular.module('uguru.shared.directives')
               var states = this.states;
 
 
-
               return {
                   pre: function (scope, lElem, lAttr) {
 
@@ -501,136 +513,6 @@ angular.module('uguru.shared.directives')
       }
 }])
 
-// .directive('initLater', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
-//   return {
-//     restrict: 'A',
-//     priority: 999,
-//     terminal: true,
-//       link: {
-//         pre: function(scope, element, attr) {
-
-
-
-//           attr.$set('ngHide', true);
-//           attr.$set('initLater', null);
-//           $compile(element[0])(scope);
-
-
-//           scope.$watch(function() {
-//             return element.attr('class');
-//           }, function(new_classes, old_classes) {
-//             attr.$set('ngHide', false);
-//             new_classes = new_classes || '';
-//             if (new_classes.indexOf('init-later') > -1) {
-//               var elemArgs = DirectiveService.parseArgs(attr.initLater, 'init-later', element);
-//               var listenerArgs = DirectiveService.detectExternalStates(attr);
-
-//               var supportedCommands = DirectiveService.supportedCommands;
-//               for (key in elemArgs) {
-//                 if (supportedCommands.indexOf(key) > -1) {
-//                     DirectiveService.activateArg(key, elemArgs[key], scope, element);
-//                 }
-//               }
-
-//               for (key in listenerArgs) {
-//                 var type = listenerArgs[key].type
-//                 var _attr = listenerArgs[key].attr;
-//                 DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
-//               }
-//             }
-//           })
-//       }
-//     }
-//   }
-// }])
-// .directive('counter', ['$timeout', '$interval', function ($timeout, $interval) {
-//   return {
-//     restrict: 'A',
-//     link: function(scope, element, attr) {
-//       var counterMax = attr.counterMax;
-//       var counterMin = attr.counterMin || 0;
-//       var counterSuffix = attr.counterSuffix || '';
-//       var counterPrefix = attr.counterPrefix || '';
-//       var counterDuration = attr.counterDuration || '';
-//       if (attr.initOnClass && attr.initOnClass.indexOf('counter:') > -1 && counterMax) {
-//         var initOnClassArgs = attr.initOnClass.split(', ');
-//         var initCounterClassIndex = getClassArgIndex('counter', initOnClassArgs)
-//         var initCounterClassArr = initOnClassArgs[initCounterClassIndex].split(':')
-//         if (initCounterClassArr.length === 2) {
-//           initCounterClass = initCounterClassArr[1];
-//         }
-//         if (initCounterClass) {
-//           scope.$watch(function() {
-//             counterMax = attr.counterMax;
-//             var counterDuration = attr.counterDuration || '';
-//             return (element.attr('class') && element.attr('class').indexOf(initCounterClass) > -1) || "";
-//
-//           },function(elem_has_init_counter_class) {
-//             if (elem_has_init_counter_class) {
-//               $timeout(function() {
-//                 scope.$apply(function() {
-//                   element[0].classList.remove(elem_has_init_counter_class);
-//                 })
-//               });
-//               if (!element[0].id) {
-//                 var numCounterElems = document.querySelectorAll('[counter]').length + 1
-//                 element[0].id = 'counter-' + numCounterElems;
-//               }
-//               var counterArgs = {
-//                   useEasing : false,
-//                   useGrouping : false,
-//                   separator : ',',
-//                   decimal : '.',
-//                   prefix : counterPrefix ,
-//                   suffix : counterSuffix
-//               }
-//               var counterDelay = attr.counterDelay;
-//               var counterInfinite = attr.counterInfinite;
-//               var counterDuration = attr.counterDuration;
-//               if ('counterInfinite' in attr) {
-//                 var counterTimeBetween = attr.counterInfiniteInBtwn || 0;
-//                 if (counterDelay) {
-//                   $timeout(function() {
-//                     $interval(function() {
-//                       var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
-//                       countUpInstance.start();
-//                     }, parseInt(counterDuration) * 1000 + parseInt(counterTimeBetween) * 1000 + 1000)
-//                   }, parseInt(counterDelay))
-//                 } else {
-//                   $interval(function() {
-//                     var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
-//                     countUpInstance.start();
-//                   }, parseInt(counterDuration) * 1000 + parseInt(counterTimeBetween) * 1000);
-//                 }
-//
-//               } else {
-//                 if (counterDelay) {
-//                   $timeout(function() {
-//                     var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
-//                     countUpInstance.start();
-//                   }, parseInt(counterDelay))
-//                 } else {
-//                     var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
-//                     countUpInstance.start();
-//                 }
-//               }
-//             }
-//           })
-//         }
-//       }
-//
-//       function getClassArgIndex(arg_name, class_arr) {
-//         for (var i = 0; i < class_arr.length; i++) {
-//           var indexClass = class_arr[i];
-//           if (indexClass.indexOf(arg_name + ':') > -1) {
-//             return i;
-//           }
-//         }
-//       }
-//
-//     }
-//   }
-// }])
 .directive('desktop', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
   return {
     restrict: 'A',
