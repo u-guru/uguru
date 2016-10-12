@@ -8,15 +8,24 @@
             <hr class='full-x absolute left-0'>
         </li>
         <li class='flex-wrap-center full-x' style='height:90% !important'>
-            <div style='height:85% !important;' class="full-xy bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap radius-2"
+            <div style='height:85% !important;' class="full-xy border-solid border-smoke border-3 p10xy flex-center-wrap radius-2"
                 init-with="p:[transform:scale(0)]"
                 init-after="init-all-scale"
                 on-init="a:[scale:0:1:1000:easeOutCirc:0:1:{{direction}}]|send:[activate-child]:delay-1000">
-                <div init-after="activate-child" init-with="p:[opacity:0, transform:translateX(-1000%)]" on-init="p:[opacity:1]|a:[translateX:-1000%:0%:500:bouncePast:0:1:f]|send:[activate-child-2]:delay-500" class='height-128 width-128' >
+                <div class='height-128 width-128'
+					init-after="activate-child"
+					init-with="p:[opacity:0, transform:translateX(-1000%)]"
+					on-init="p:[opacity:1]|a:[translateX:-1000%:0%:500:bouncePast:0:1:f]">
                     Child #1
 					<div init-after="activate-child-2" init-with="p:[opacity:0, transform:translateX(-1000%)]" 		on-init="p:[opacity:1]|a:[translateX:-1000%:5%:500:bouncePast:0:1:f]" class='height-128 width-128' >
 	                    Child #2
 	                </div>
+                </div>
+				<div class='height-128 width-128'
+					init-after="activate-child-2"
+					init-with="p:[opacity:0, transform:translateX(-1000%)]"
+					on-init="p:[opacity:1]|a:[translateX:-1000%:5%:500:bouncePast:0:1:f]">
+                    Child #2
                 </div>
             </div>
         </li>

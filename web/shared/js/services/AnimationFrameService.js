@@ -160,9 +160,20 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
               tick.current = tick.start;
               tick.direction.current = getTickDirection(tick.cycleIndex, tick.direction);
-              ['ar', 'a'].indexOf(tick.direction.value) > -1 && stream.values.reverse()
+              ['ar', 'a'].indexOf(tick.direction.value) > -1 && reverseStreamValues(stream, tick)
             }
           }
+        }
+
+        function reverseStreamValues(stream, tick) {
+          // var tickStart = Math.ceil(calcTickLength(stream.offset) * -1);
+          // if (tick.start === tickStart) {
+          //   tick.start = Math.ceil(calcTickLength(tick.cycle.btwn) * -1);
+          // } else {
+          //   tick.start = tickStart;
+          // }
+          // tick.current = tick.start;
+          stream.values.reverse();
         }
 
         function getTickDirection(cycle_index, direction) {
