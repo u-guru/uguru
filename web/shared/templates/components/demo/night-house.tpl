@@ -106,7 +106,7 @@
 					on-init="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:a] | s:[flying:public]:delay-5000"></path>
 				<g class="birds">
 					<g class="b-bird" init-after="flying"
-						when-flying="a:[translateY:-3px:3px:1000:linear:0:i:a]">
+						on-init="a:[translateY:-3px:3px:1000:linear:0:i:a]">
 						<path d="M499.5,126 C499.5,126 505.438375,126.265969 511.75,131.5 C518.061625,136.734031 520,143 520,143" class="b-bird-left" stroke="#6E6144" stroke-width="4"
 							init-after="flying"
 							init-with="p:[transform:rotate(0deg), tro:right bottom]"
@@ -403,36 +403,36 @@
 					init-with="p:[transform:scale(0), tro:center bottom]"
 					on-init="a:[scale:0:1:200:easeOutSine:0:1:f]">
 		            <path d="M376.178959,232 C376.715756,229.754184 377,227.410286 377,225 C377,208.431458 363.568542,195 347,195 C330.431458,195 317,208.431458 317,225 C317,227.410286 317.284244,229.754184 317.821041,232 L376.178959,232 L376.178959,232 Z" class="b-cloud-1" fill="#BCE5FF"
-						u init-with="p:[transform:translateY(0px), tro:center center]"
-						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a]:delay-2500 | s:[day-transition:public]:delay-7000"></path>
+						init-after="sky-shine" init-with="p:[transform:translateY(0px), tro:center center]"
+						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a] | s:[day-transition:public]:delay-7000"></path>
 				</g>
 				<g init-after="sky-shine"
 					init-with="p:[transform:scale(0), tro:center bottom]"
 					on-init="a:[scale:0:1:200:easeOutSine:0:1:f]">
 		            <path d="M321.243895,232 C321.737482,230.08228 322,228.071797 322,226 C322,212.745166 311.254834,202 298,202 C284.745166,202 274,212.745166 274,226 C274,228.071797 274.262518,230.08228 274.756105,232 L321.243895,232 L321.243895,232 Z" class="b-cloud-2" fill="#BCE5FF"
-						u init-with="p:[transform:translateY(0px), tro:center center]"
-						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a]:delay-2500"></path>
+						init-after="sky-shine" init-with="p:[transform:translateY(0px), tro:center center]"
+						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a]"></path>
 				</g>
 				<g init-after="sky-shine"
 					init-with="p:[transform:scale(0), tro:center bottom]"
 					on-init="a:[scale:0:1:200:easeOutSine:0:1:f]">
 		            <path d="M281.975766,232 C282.639075,230.123326 283,228.103813 283,226 C283,216.058875 274.941125,208 265,208 C255.058875,208 247,216.058875 247,226 C247,228.103813 247.360925,230.123326 248.024234,232 L281.975766,232 L281.975766,232 Z" class="b-cloud-3" fill="#BCE5FF"
-						u init-with="p:[transform:translateY(0px), tro:center center]"
-						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a]:delay-2500"></path>
+						init-after="sky-shine" init-with="p:[transform:translateY(0px), tro:center center]"
+						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a]"></path>
 				</g>
 				<g init-after="sky-shine"
 					init-with="p:[transform:scale(0), tro:center bottom]"
 					on-init="a:[scale:0:1:200:easeOutSine:0:1:f]">
 		            <path d="M378.756105,178 C378.262518,176.08228 378,174.071797 378,172 C378,158.745166 388.745166,148 402,148 C415.254834,148 426,158.745166 426,172 C426,174.071797 425.737482,176.08228 425.243895,178 L378.756105,178 L378.756105,178 Z" class="s-cloud-1" fill="#BCE5FF"
-						u init-with="p:[transform:translateY(0px), tro:center center]"
-						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a]:delay-2500"></path>
+						init-after="sky-shine" init-with="p:[transform:translateY(0px), tro:center center]"
+						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a]"></path>
 				</g>
 				<g init-after="sky-shine"
 					init-with="p:[transform:scale(0), tro:center bottom]"
 					on-init="a:[scale:0:1:200:easeOutSine:0:1:f]">
 		            <path d="M418.024234,178 C417.360925,176.123326 417,174.103813 417,172 C417,162.058875 425.058875,154 435,154 C444.941125,154 453,162.058875 453,172 C453,174.103813 452.639075,176.123326 451.975766,178 L418.024234,178 L418.024234,178 Z" class="s-cloud-2" fill="#BCE5FF"
-						u init-with="p:[transform:translateY(0px), tro:center center]"
-						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a]:delay-2500"></path>
+						init-after="sky-shine" init-with="p:[transform:translateY(0px), tro:center center]"
+						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a]"></path>
 				</g>
 	        </g>
 	        <g class="house">
@@ -497,11 +497,15 @@
 					init-after="w1"
 					init-with="p:[op:0, tro:20% 80%]"
 					on-init="a:[scoop-enter:1000:linear:0:1:f] | s:[w2:public:delay-900]">
+					<g clip-path="url(#w2-clip)">
+						<rect class="w2-bg" fill="#FEF1AE" x="382" y="306" width="38" height="60"></rect>
+
+			            <rect class="w2-blind" fill="#2E5573" x="382" y="306" width="38" height="60"
+							init-after="w1"
+							on-init="a:[fill:#2E5573:#FEF1AE:3000:easeInOutSine:0:i:a]"></rect>
+					</g>
 		            <rect class="w2-shadow-btm" fill="#0B3B5E" x="381" y="376" width="40" height="5"></rect>
 		            <rect class="w2-ledge" fill="#8C70B3" x="379" y="366" width="44" height="10"></rect>
-		            <rect class="w2-blind" fill="#2E5573" x="382" y="306" width="38" height="60"
-						init-after="w1"
-						on-init="a:[fill:#2E5573:#FEF1AE:4000:easeInOutSine:0:i:a]"></rect>
 		            <rect class="w2-shadow-top" fill="#0B3B5E" x="387" y="313" width="28" height="7"></rect>
 		            <rect class="w2-shadow-mid" fill="#0B3B5E" x="387" y="342" width="28" height="7"></rect>
 		            <path d="M382,306 L420,306 L420,366 L382,366 L382,306 L382,306 Z M388,313 L414,313 L414,337 L388,337 L388,313 L388,313 Z M388,342 L414,342 L414,366 L388,366 L388,342 L388,342 Z" class="w2-casing" fill="#FFFFFF"></path>
