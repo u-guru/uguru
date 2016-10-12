@@ -1,6 +1,6 @@
 <div class="absolute top-0 left-0 full-xy flex-center perspective-container">
-	<!-- <svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #BBF2FE;"
-		u on-init="a:[opacity:0:1:3000:easeInOutSine:0:1:f]:delay-4000">
+	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #BBF2FE;"
+		init-after="sky-shine" on-init="a:[opacity:0:1:3000:easeInOutSine:0:1:f]:delay-2500">
 		<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 			<g class="left-tree">
 				<rect class="l-canopy" fill="#B4CB5D" x="221" y="364" width="43" height="86" rx="21.5"></rect>
@@ -26,7 +26,10 @@
 				<path d="M529.595674,504 C530.245502,493.945744 538.279885,486 548.095674,486 C557.911462,486 565.945845,493.945744 566.595674,504 L529.595674,504 L529.595674,504 L529.595674,504 Z" class="lime-bush-small" fill="#93AA3C"></path>
 				<path d="M474,504 C475.046946,487.801477 487.991229,475 503.805556,475 C519.619882,475 532.564165,487.801477 533.611111,504 L474,504 L474,504 L474,504 Z" class="lime-bush-medium" fill="#93AA3C"></path>
 			</g>
-			<g class="leaves" init-with="p-op">
+			<g class="leaves"
+				init-after="leafing"
+				init-with="p-op"
+				on-init="a:[opacity:0:1:1000:linear:0:1:f]">
 				<path d="M576.083984,416.017578 L574.187448,419.796089 C573.127672,421.907502 570.448902,423.001567 568.229722,422.227902 C568.229722,422.227902 566.506449,421.689824 565.957136,421.343444 C565.011023,420.746855 562.317797,418.777724 562.317797,418.777724 L567.446445,414.770785 C569.308648,413.315872 572.355483,413.269454 574.257069,414.671034 L576.083984,416.017578 L576.083984,416.017578 Z" class="leaf-a-1" fill="#107959"></path>
 				<path d="M566.805664,418.794922 C566.805664,418.794922 571.556519,418.672017 574.170506,416.905234 C576.784493,415.13845 577.264987,412.117312 577.264987,412.117312" class="leaf-a-2" stroke="#C8D39F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
 				<path d="M539.916016,423.017578 L541.812552,426.796089 C542.872328,428.907502 545.551098,430.001567 547.770278,429.227902 C547.770278,429.227902 549.493551,428.689824 550.042864,428.343444 C550.988977,427.746855 553.682203,425.777724 553.682203,425.777724 L548.553555,421.770785 C546.691352,420.315872 543.644517,420.269454 541.742931,421.671034 L539.916016,423.017578 L539.916016,423.017578 Z" class="leaf-b-1" fill="#107959"></path>
@@ -46,66 +49,77 @@
 			</g>
 			<g class="sky">
 				<circle class="sun" fill="#FECE67" cx="281" cy="171" r="44"
-					u init-with="p:[transform:translateY(-800px)]"
-					on-init="a:[translateY:-800px:0px:400:easeInOutBack:0:1:f]:delay-6000 | s:[day-sky:public]:delay-6000"></circle>
-				<path d="M432.821041,232 C432.284244,229.754184 432,227.410286 432,225 C432,208.431458 445.431458,195 462,195 C478.568542,195 492,208.431458 492,225 C492,227.410286 491.715756,229.754184 491.178959,232 L432.821041,232 L432.821041,232 L432.821041,232 Z" class="day-b-cloud-1" fill="#FFFFFF"></path>
-				<path d="M487.756105,232 C487.262518,230.08228 487,228.071797 487,226 C487,212.745166 497.745166,202 511,202 C524.254834,202 535,212.745166 535,226 C535,228.071797 534.737482,230.08228 534.243895,232 L487.756105,232 L487.756105,232 L487.756105,232 Z" class="day-b-cloud-2" fill="#FFFFFF"></path>
-				<path d="M527.024234,232 C526.360925,230.123326 526,228.103813 526,226 C526,216.058875 534.058875,208 544,208 C553.941125,208 562,216.058875 562,226 C562,228.103813 561.639075,230.123326 560.975766,232 L527.024234,232 L527.024234,232 L527.024234,232 Z" class="day-b-cloud-3" fill="#FFFFFF"></path>
-				<path d="M430.243895,178 C430.737482,176.08228 431,174.071797 431,172 C431,158.745166 420.254834,148 407,148 C393.745166,148 383,158.745166 383,172 C383,174.071797 383.262518,176.08228 383.756105,178 L430.243895,178 L430.243895,178 L430.243895,178 Z" class="day-s-cloud-1" fill="#FFFFFF"></path>
-				<path d="M390.975766,178 C391.639075,176.123326 392,174.103813 392,172 C392,162.058875 383.941125,154 374,154 C364.058875,154 356,162.058875 356,172 C356,174.103813 356.360925,176.123326 357.024234,178 L390.975766,178 L390.975766,178 L390.975766,178 Z" class="day-s-cloud-2" fill="#FFFFFF"></path>
+					init-after="sky-shine"
+					init-with="p:[transform:translateY(-800px)]"
+					on-init="a:[translateY:-800px:0px:400:easeInOutBack:0:1:f]:delay-4000 | s:[day-sky:public]:delay-4000"></circle>
+				<path d="M432.821041,232 C432.284244,229.754184 432,227.410286 432,225 C432,208.431458 445.431458,195 462,195 C478.568542,195 492,208.431458 492,225 C492,227.410286 491.715756,229.754184 491.178959,232 L432.821041,232 L432.821041,232 L432.821041,232 Z" class="day-b-cloud-1" fill="#FFFFFF"
+					init-after="day-sky"
+					on-init="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:ar]"></path>
+				<path d="M487.756105,232 C487.262518,230.08228 487,228.071797 487,226 C487,212.745166 497.745166,202 511,202 C524.254834,202 535,212.745166 535,226 C535,228.071797 534.737482,230.08228 534.243895,232 L487.756105,232 L487.756105,232 L487.756105,232 Z" class="day-b-cloud-2" fill="#FFFFFF"
+					init-after="day-sky"
+					on-init="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:ar]"></path>
+				<path d="M527.024234,232 C526.360925,230.123326 526,228.103813 526,226 C526,216.058875 534.058875,208 544,208 C553.941125,208 562,216.058875 562,226 C562,228.103813 561.639075,230.123326 560.975766,232 L527.024234,232 L527.024234,232 L527.024234,232 Z" class="day-b-cloud-3" fill="#FFFFFF"
+					init-after="day-sky"
+					on-init="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:ar]"></path>
+				<path d="M430.243895,178 C430.737482,176.08228 431,174.071797 431,172 C431,158.745166 420.254834,148 407,148 C393.745166,148 383,158.745166 383,172 C383,174.071797 383.262518,176.08228 383.756105,178 L430.243895,178 L430.243895,178 L430.243895,178 Z" class="day-s-cloud-1" fill="#FFFFFF"
+					init-after="day-sky"
+					on-init="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:a]"></path>
+				<path d="M390.975766,178 C391.639075,176.123326 392,174.103813 392,172 C392,162.058875 383.941125,154 374,154 C364.058875,154 356,162.058875 356,172 C356,174.103813 356.360925,176.123326 357.024234,178 L390.975766,178 L390.975766,178 L390.975766,178 Z" class="day-s-cloud-2" fill="#FFFFFF"
+					init-after="day-sky"
+					on-init="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:a] | s:[flying:public]:delay-5000"></path>
 				<g class="birds">
-					<g class="b-bird" init-after="day-sky"
+					<g class="b-bird" init-after="flying"
 						on-init="a:[translateY:-3px:3px:1000:linear:0:i:a]">
 						<path d="M499.5,126 C499.5,126 505.438375,126.265969 511.75,131.5 C518.061625,136.734031 520,143 520,143" class="b-bird-left" stroke="#6E6144" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
-							init-after="day-sky"
+							init-after="flying"
 							init-with="p:[transform:rotate(0deg), tro:right bottom]"
 							on-init="a:[rotate:15deg:-10deg:1000:easeInOutCirc:0:i:a]"></path>
 						<path d="M541,126 C541,126 535.061625,126.265969 528.75,131.5 C522.438375,136.734031 520.5,143 520.5,143" class="b-bird-right" stroke="#6E6144" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
-							init-after="day-sky"
+							init-after="flying"
 							init-with="p:[transform:rotate(0deg), tro:left bottom]"
 							on-init="a:[rotate:-15deg:10deg:1000:easeInOutCirc:0:i:a]"></path>
 					</g>
-					<g class="m-bird" init-after="day-sky"
+					<g class="m-bird" init-after="flying"
 						on-init="a:[translateY:-3px:3px:1000:linear:100:200:a]">
 						<path d="M479.294118,158 C479.294118,158 483.136595,158.172098 487.220588,161.558824 C491.304581,164.945549 492.558824,169 492.558824,169" class="m-bird-left" stroke="#6E6144" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
-							init-after="day-sky"
+							init-after="flying"
 							init-with="p:[transform:rotate(0deg), tro:right bottom]"
-							on-init="a:[rotate:10deg:-10deg:1000:easeInOutCirc:100:200:a]"></path>
+							on-init="a:[rotate:10deg:-10deg:1000:easeInOutCirc:100:i:a]"></path>
 						<path d="M506.558824,158 C506.558824,158 502.716346,158.172098 498.632353,161.558824 C494.54836,164.945549 493.294118,169 493.294118,169" class="m-bird-right" stroke="#6E6144" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
-							init-after="day-sky"
+							init-after="flying"
 							init-with="p:[transform:rotate(0deg), tro:left bottom]"
-							on-init="a:[rotate:-10deg:10deg:1000:easeInOutCirc:100:200:a]"></path>
+							on-init="a:[rotate:-10deg:10deg:1000:easeInOutCirc:100:i:a]"></path>
 					</g>
-					<g class="m-bird" init-after="day-sky"
-						on-init="a:[translateY:-3px:3px:1000:linear:150:200:a]">
+					<g class="m-bird" init-after="flying"
+						on-init="a:[translateY:-3px:3px:1000:linear:150:i:a]">
 						<path d="M344.294118,218 C344.294118,218 346.963583,218.062581 349.800835,219.294118 C352.638087,220.525654 353.509441,222 353.509441,222" class="far-bird-left" stroke="#6E6144" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
-							init-after="day-sky"
+							init-after="flying"
 							init-with="p:[transform:rotate(0deg), tro:right bottom]"
-							on-init="a:[rotate:10deg:-10deg:1000:easeInOutCirc:150:200:a]"></path>
+							on-init="a:[rotate:10deg:-10deg:1000:easeInOutCirc:150:i:a]"></path>
 						<path d="M363.509441,218 C363.509441,218 360.839975,218.062581 358.002723,219.294118 C355.165471,220.525654 354.294118,222 354.294118,222" class="far-bird-right" stroke="#6E6144" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
-							init-after="day-sky"
+							init-after="flying"
 							init-with="p:[transform:rotate(0deg), tro:left bottom]"
-							on-init="a:[rotate:-10deg:10deg:1000:easeInOutCirc:150:200:a]"></path>
+							on-init="a:[rotate:-10deg:10deg:1000:easeInOutCirc:150:i:a] | s:[leafing:public]:delay-7000"></path>
 					</g>
-					<g init-after="day-sky"
+					<g init-after="flying"
 						on-init="a:[translateY:-3px:3px:1000:linear:175:200:a]">
 						<path d="M512.294118,178 C512.294118,178 514.963583,178.062581 517.800835,179.294118 C520.638087,180.525654 521.509441,182 521.509441,182" class="small-bird-left" stroke="#6E6144" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
-							init-after="day-sky"
+							init-after="flying"
 							init-with="p:[transform:rotate(0deg), tro:right bottom]"
-							on-init="a:[rotate:10deg:-10deg:1000:easeInOutCirc:175:200:a]"></path>
+							on-init="a:[rotate:10deg:-10deg:1000:easeInOutCirc:175:i:a]"></path>
 						<path d="M530.509441,178 C530.509441,178 527.839975,178.062581 525.002723,179.294118 C522.165471,180.525654 521.294118,182 521.294118,182" class="small-bird-right" stroke="#6E6144" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
-							init-after="day-sky"
+							init-after="flying"
 							init-with="p:[transform:rotate(0deg), tro:left bottom]"
-							on-init="a:[rotate:-10deg:10deg:1000:easeInOutCirc:175:200:a]"></path>
+							on-init="a:[rotate:-10deg:10deg:1000:easeInOutCirc:175:i:a]"></path>
 					</g>
-					<g init-after="day-sky"
+					<g init-after="flying"
 						on-init="a:[translateY:-3px:3px:1000:linear:0:i:a]">
 						<path d="M308.509441,236 C308.284677,236 309.156031,234.525654 311.993282,233.294118 C314.830534,232.062581 317.5,232 317.5,232" class="stour-bird-right" stroke="#6E6144" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
-							init-after="day-sky"
+							init-after="flying"
 							init-with="p:[transform:rotate(0deg), tro:left bottom]"
 							on-init="a:[rotate:-10deg:10deg:1000:easeInOutCirc:0:i:a]"></path>
 						<path d="M308.466318,236 C308.691082,236 307.819728,234.525654 304.982476,233.294118 C302.145224,232.062581 299.475759,232 299.475759,232" class="stout-bird-left" stroke="#6E6144" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
-							init-after="day-sky"
+							init-after="flying"
 							init-with="p:[transform:rotate(0deg), tro:right bottom]"
 							on-init="a:[rotate:10deg:-10deg:1000:easeInOutCirc:0:i:a]"></path>
 					</g>
@@ -188,11 +202,13 @@
 				<rect class="day-mbox-stand" fill="#FFFFFF" x="283" y="472" width="6" height="31"></rect>
 			</g>
 		</g>
-	</svg> -->
+	</svg>
 	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #092D4B;"
-		u on-init="a:[opacity:1:0:3000:easeInOutSine:0:1:f]:delay-4000">
+		init-after="sky-shine" init-with="p:[op:1]" on-init="a:[opacity:1:0:3000:easeInOutSine:0:1:f]:delay-2000">
+
 	    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
-			u on-init="a:[sky:3000:easeInOutSine:0:1:f]:delay-4000">
+			init-after="sky-shine" on-init="a:[sky:3000:easeInOutSine:0:1:f]:delay-2000">
+
 	        <g class="blue-tree">
 	            <rect class="b-canopy" fill="#AADFFF" x="221" y="364" width="43" height="86" rx="21.5"
 					init-after="canopy"
@@ -269,39 +285,39 @@
 	            <circle class="star-1" fill="#FFFFFF" cx="255.5" cy="258.5" r="2.5"
 					init-after="w4"
 					init-with="p:[op:0, tro:center center]"
-					on-init="a:[scaleIn-subtle:1000:easeInOutQuad:2100:i:a] | s:[sky-shine:public:delay-2100]"></circle>
+					on-init="a:[scaleIn-subtle:2000:easeInOutQuad:2100:100:a] | s:[sky-shine:public:delay-2100]"></circle>
 	            <circle class="star-2" fill="#FFFFFF" cx="272.5" cy="137.5" r="2.5"
 					init-after="sky-shine"
 					init-with="p:[op:0, tro:center center]"
-					on-init="a:[scaleIn-subtle:800:easeInOutQuad:0:i:a]"></circle>
+					on-init="a:[scaleIn-subtle:1600:easeInOutQuad:0:100:a]"></circle>
 	            <circle class="star-3" fill="#C5E9FE" cx="462.5" cy="129.5" r="2.5"
 					init-after="sky-shine"
 					init-with="p:[op:0, tro:center center]"
-					on-init="a:[scaleIn-subtle:1000:easeInOutQuad:0:i:a]"></circle>
+					on-init="a:[scaleIn-subtle:1600:easeInOutQuad:0:100:a]"></circle>
 	            <circle class="star-4" fill="#C5E9FE" cx="577.5" cy="231.5" r="2.5"
 					init-after="sky-shine"
 					init-with="p:[op:0, tro:center center]"
-					on-init="a:[scaleIn-subtle:800:easeInOutQuad:0:i:a]"></circle>
+					on-init="a:[scaleIn-subtle:1600:easeInOutQuad:0:100:a]"></circle>
 	            <circle class="star-5" fill="#C5E9FE" cx="567.5" cy="319.5" r="1.5"
 					init-after="sky-shine"
 					init-with="p:[op:0, tro:center center]"
-					on-init="a:[scaleIn-subtle:1000:easeInOutQuad:0:i:a]"></circle>
+					on-init="a:[scaleIn-subtle:1600:easeInOutQuad:0:100:a]"></circle>
 	            <circle class="star-6" fill="#FFFFFF" cx="266" cy="306" r="2"
 					init-after="sky-shine"
 					init-with="p:[op:0, tro:center center]"
-					on-init="a:[scaleIn-subtle:800:easeInOutQuad:0:i:a]"></circle>
+					on-init="a:[scaleIn-subtle:1600:easeInOutQuad:0:100:a]"></circle>
 	            <path d="M328.839652,146.767195 C327.82364,146.343485 327.830745,145.653552 328.839652,145.232805 L332.923049,143.529896 C333.939061,143.106186 335.109149,141.931956 335.529896,140.923049 L337.232805,136.839652 C337.656515,135.82364 338.346448,135.830745 338.767195,136.839652 L340.470104,140.923049 C340.893814,141.939061 342.068044,143.109149 343.076951,143.529896 L347.160348,145.232805 C348.17636,145.656515 348.169255,146.346448 347.160348,146.767195 L343.076951,148.470104 C342.060939,148.893814 340.890851,150.068044 340.470104,151.076951 L338.767195,155.160348 C338.343485,156.17636 337.653552,156.169255 337.232805,155.160348 L335.529896,151.076951 C335.106186,150.060939 333.931956,148.890851 332.923049,148.470104 L328.839652,146.767195 Z" class="star-7" fill="#FFFFFF"
 					init-after="sky-shine"
-					init-with="p:[op:0, tro:center center]"
-					on-init="a:[scaleIn-subtle:1100:easeInOutQuad:500:i:a]"></path>
+					init-with="p:[transform:scale(0) rotate(0deg), tro:center center]"
+					on-init="a:[scaleIn-subtle:2000:linear:0:i:a]"></path>
 	            <path d="M403.849736,117.2714 C402.828155,116.845368 402.823135,116.156726 403.849736,115.7286 L404.031615,115.652751 C405.053196,115.226718 406.224624,114.058216 406.652751,113.031615 L406.7286,112.849736 C407.154632,111.828155 407.843274,111.823135 408.2714,112.849736 L408.347249,113.031615 C408.773282,114.053196 409.941784,115.224624 410.968385,115.652751 L411.150264,115.7286 C412.171845,116.154632 412.176865,116.843274 411.150264,117.2714 L410.968385,117.347249 C409.946804,117.773282 408.775376,118.941784 408.347249,119.968385 L408.2714,120.150264 C407.845368,121.171845 407.156726,121.176865 406.7286,120.150264 L406.652751,119.968385 C406.226718,118.946804 405.058216,117.775376 404.031615,117.347249 L403.849736,117.2714 Z" class="star-8" fill="#FFFFFF"
 					init-after="sky-shine"
 					init-with="p:[op:0, tro:center center]"
-					on-init="a:[scaleIn-subtle:1100:easeInOutQuad:20:i:a]"></path>
+					on-init="a:[scaleIn-subtle:1100:easeInOutQuad:200:i:a]"></path>
 	            <path d="M432.839299,213.267047 C431.823482,212.843419 431.820073,212.158003 432.839299,211.732953 L433.747752,211.354098 C434.763569,210.930469 435.929048,209.766978 436.354098,208.747752 L436.732953,207.839299 C437.156581,206.823482 437.841997,206.820073 438.267047,207.839299 L438.645902,208.747752 C439.069531,209.763569 440.233022,210.929048 441.252248,211.354098 L442.160701,211.732953 C443.176518,212.156581 443.179927,212.841997 442.160701,213.267047 L441.252248,213.645902 C440.236431,214.069531 439.070952,215.233022 438.645902,216.252248 L438.267047,217.160701 C437.843419,218.176518 437.158003,218.179927 436.732953,217.160701 L436.354098,216.252248 C435.930469,215.236431 434.766978,214.070952 433.747752,213.645902 L432.839299,213.267047 Z" class="star-9" fill="#FFFFFF"
 					init-after="sky-shine"
 					init-with="p:[op:0, tro:center center]"
-					on-init="a:[scaleIn-subtle:800:easeInOutQuad:70:i:a]"></path>
+					on-init="a:[scaleIn-subtle:1600:easeInOutQuad:700:i:a]"></path>
 	            <path d="M278.839437,178.767105 C277.823544,178.343445 277.826828,177.655186 278.839437,177.232895 L280.100464,176.707006 C281.116357,176.283345 282.284715,175.113072 282.707006,174.100464 L283.232895,172.839437 C283.656555,171.823544 284.344814,171.826828 284.767105,172.839437 L285.292994,174.100464 C285.716655,175.116357 286.886928,176.284715 287.899536,176.707006 L289.160563,177.232895 C290.176456,177.656555 290.173172,178.344814 289.160563,178.767105 L287.899536,179.292994 C286.883643,179.716655 285.715285,180.886928 285.292994,181.899536 L284.767105,183.160563 C284.343445,184.176456 283.655186,184.173172 283.232895,183.160563 L282.707006,181.899536 C282.283345,180.883643 281.113072,179.715285 280.100464,179.292994 L278.839437,178.767105 Z" class="star-10" fill="#C5E9FE"
 					init-after="sky-shine"
 					init-with="p:[op:0, tro:center center]"
@@ -309,7 +325,7 @@
 	            <path d="M530.851147,280.271989 C529.828787,279.845631 529.826992,279.155117 530.851147,278.728011 L532.441603,278.064739 C533.463964,277.638382 534.637633,276.465758 535.064739,275.441603 L535.728011,273.851147 C536.154369,272.828787 536.844883,272.826992 537.271989,273.851147 L537.935261,275.441603 C538.361618,276.463964 539.534242,277.637633 540.558397,278.064739 L542.148853,278.728011 C543.171213,279.154369 543.173008,279.844883 542.148853,280.271989 L540.558397,280.935261 C539.536036,281.361618 538.362367,282.534242 537.935261,283.558397 L537.271989,285.148853 C536.845631,286.171213 536.155117,286.173008 535.728011,285.148853 L535.064739,283.558397 C534.638382,282.536036 533.465758,281.362367 532.441603,280.935261 L530.851147,280.271989 Z" class="star-11" fill="#FFFFFF"
 					init-after="sky-shine"
 					init-with="p:[op:0, tro:center center]"
-					on-init="a:[scaleIn-subtle:900:easeInOutQuad:0:i:a]"></path>
+					on-init="a:[scaleIn-subtle:1800:linear:0:100:a]"></path>
 				<g init-after="sky-shine"
 					init-with="p:[tro:right top, opacity:0, transform:rotate(90deg)]"
 					on-init="a:[opacity:0:1:50:linear:0:1:f, rotate:90deg:0deg:500:easeOutQuart:0:1:f]">

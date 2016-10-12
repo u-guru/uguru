@@ -22,6 +22,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
       return {
         renderElementStates: renderElementStates,
+        renderState: renderState,
         getShortcutDict: getShortcutDict,
         addShortcuts: addShortcuts,
         launchExternalWindow: launchExternalWindow
@@ -365,7 +366,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         // console.log('pre condense', animations)
         // animations = condenseAnimationsAndShortcuts(scope, animations);
         var state = AnimationFrameService.init.state('', animations, element[0], defaults);
-
+        // console.log(state.props.counter[0])
 
         if (!player) {
 

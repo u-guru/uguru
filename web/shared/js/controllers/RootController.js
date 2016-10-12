@@ -22,6 +22,7 @@ angular.module('uguru.shared.controllers', [])
     root.inspectAnimations = [];
     root.inspectElements = [];
     root.broadcaster = {};
+    root.easings = easings;
     root.public = {customStates: [], customShortcuts: {}};
     RootService.customShortcuts.getAnimProps = function () {return root.public.customShortcuts};
     root.pauseElement = pauseElement(root);
