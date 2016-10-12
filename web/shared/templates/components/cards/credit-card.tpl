@@ -7,8 +7,8 @@
 			on-mouse-leave="s:[flip-leave:public]">
 	        <div class="credit-card"
 				init-default
-				when-flip-enter="p:[transform:rotateY(0deg):rotateX(180deg):300:easeInOutSine]"
-				when-flip-leave="p:[transform:rotateY(180deg):rotateX(0deg):300:easeInOutSine]">
+				when-flip-enter="p:[transform:rotateY(0deg):rotateY(180deg):300:easeInOutSine]"
+				when-flip-leave="p:[transform:rotateY(180deg):rotateY(0deg):300:easeInOutSine]">
 	            <svg width="240px" height="150px" viewBox="0 0 240 150">
 	                <rect fill="none" x="0" y="0" width="240" height="150"></rect>
 	            </svg>
@@ -91,8 +91,8 @@
 	        </div>
 	        <div class="credit-card-back"
 				init-with="p:[tr:rotateY(180deg)]"
-				when-flip-enter="p:[transform:rotateY(180deg):rotateX(0deg):300:easeInOutSine]"
-				when-flip-leave="p:[transform:rotateY(0deg):rotateX(180deg):300:easeInOutSine]">
+				when-flip-enter="p:[transform:rotateY(180deg):rotateY(0deg):300:easeInOutSine]"
+				when-flip-leave="p:[transform:rotateY(0deg):rotateY(180deg):300:easeInOutSine]">
 	            <svg width="240px" height="150px" viewBox="0 0 240 150">
 	                <rect fill="none" x="0" y="0" width="240" height="150"></rect>
 	            </svg>

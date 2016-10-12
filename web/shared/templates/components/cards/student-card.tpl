@@ -56,8 +56,8 @@
 		</svg>
 		<div class="school-id-front"
 			init-default
-			when-flip-enter="p:[transform:rotateY(0deg):rotateX(180deg):300:easeInOutSine]"
-			when-flip-leave="p:[transform:rotateY(180deg):rotateX(0deg):300:easeInOutSine]">
+			when-flip-enter="p:[transform:rotateY(0deg):rotateY(180deg):300:easeInOutSine]"
+			when-flip-leave="p:[transform:rotateY(180deg):rotateY(0deg):300:easeInOutSine]">
 			<div class="school-id-bg" style="background-image: url('/shared/images/uc-berkeley.svg')"></div>
 			<div class="school-id-top" style="background: #003262;">
 				<span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/marcogomes/128.jpg');"
@@ -87,8 +87,8 @@
 		</div>
 		<div class="school-id-back"
 			init-with="p:[tr:rotateY(180deg)]"
-			when-flip-enter="p:[transform:rotateY(180deg):rotateX(0deg):300:easeInOutSine]"
-			when-flip-leave="p:[transform:rotateY(0deg):rotateX(180deg):300:easeInOutSine]">
+			when-flip-enter="p:[transform:rotateY(180deg):rotateY(0deg):300:easeInOutSine]"
+			when-flip-leave="p:[transform:rotateY(0deg):rotateY(180deg):300:easeInOutSine]">
 			<div class="school-id-bar"></div>
 			<div class="school-id-info">
 				<ul>
