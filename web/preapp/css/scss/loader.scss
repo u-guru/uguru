@@ -318,11 +318,11 @@
 }
 
 @keyframes l-head-hover {
-	0% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-	52.15% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 3.516, 0, 1); }
-	63.26% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -2.895, 0, 1); }
-	85.49% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 3.516, 0, 1); }
-	100% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+	0% { transform: translateY(0px); }
+	52.15% { transform: translateY(3.5px); }
+	63.26% { transform: translateY(-3px); }
+	85.49% { transform: translateY(3.5px); }
+	100% { transform: translateY(0px); }
 }
 
 /* http://goo.gl/qhW7IK */
