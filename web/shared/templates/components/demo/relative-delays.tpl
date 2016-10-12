@@ -15,7 +15,7 @@
                 <div class='height-128 width-128'
 					init-after="activate-child"
 					init-with="p:[opacity:0, transform:translateX(-1000%)]"
-					on-init="p:[opacity:1]|a:[translateX:-1000%:0%:500:bouncePast:0:1:f]">
+					on-init="p:[opacity:1]|a:[translateX:-1000%:0%:500:bouncePast:0:1:f]|send:[activate-child-2]:delay-1000">
                     Child #1
                 </div>
 				<div class='height-128 width-128'

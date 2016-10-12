@@ -116,7 +116,7 @@
 	</div>
 
 	<!-- WITHOUT init-after -->
-	<div ng-if="false" u on-init="s:[walk-1:public]:delay-1000"
+	<div ng-if="true" u on-init="s:[walk-1:public]:delay-1000"
 		when-walk-1="s:[walk-2:public]:delay-100"
 		when-walk-2="s:[walk-3:public]:delay-100"
 		when-walk-3="s:[walk-4:public]:delay-100">
@@ -216,7 +216,7 @@
 	</div>
 
 	<!-- old syntax -->
-	<div ng-if="true" init-default
+	<div ng-if="false" init-default
 		on-init="s:[walk-1:public]:delay-1000"
 		when-walk-1="s:[walk-2:public]:delay-100"
 		when-walk-2="s:[walk-3:public]:delay-100"
