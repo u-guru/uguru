@@ -17,9 +17,6 @@
 					init-with="p:[opacity:0, transform:translateX(-1000%)]"
 					on-init="p:[opacity:1]|a:[translateX:-1000%:0%:500:bouncePast:0:1:f]">
                     Child #1
-					<div init-after="activate-child-2" init-with="p:[opacity:0, transform:translateX(-1000%)]" 		on-init="p:[opacity:1]|a:[translateX:-1000%:5%:500:bouncePast:0:1:f]" class='height-128 width-128' >
-	                    Child #2
-	                </div>
                 </div>
 				<div class='height-128 width-128'
 					init-after="activate-child-2"
