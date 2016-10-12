@@ -127,6 +127,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         }
 
         function initTickFromStream(stream, tick) {
+
           tick.infinite = stream.iter.infinite;
           if (tick.infinite) {
             stream.iter.count.total = 100;
@@ -354,8 +355,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             player.tick.start = player.tick.current;
           }
         }
-        console.log('player.tick.total:' + player.tick.start*16.6)
-        console.log('already passed:'+alreadyPassed * 16.6, 'remaining:' + remaining * 16.6)
 
 
 
@@ -1119,10 +1118,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             }
             var offset = iPropObj.delay;
             var values = TweenService.preComputeValues(iPropObj.property, iPropObj.duration, iPropObj.start, iPropObj.end, iPropObj.easingFunc, {cache:[]}, kf).cache;
-            // if (!values[values.length - 1]) {
-            //   values.unshift();
-            //   values = values.splice(0, values.length)
-            // }
+
 
             if (!(iPropObj.property in timeline.props)) {
               timeline.props[iPropObj.property] = [];
@@ -1130,8 +1126,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                 transformExists = true;
               }
             }
-
-            // var values = TweenService.preComputeValues(iPropObj.property, iPropObj.duration, iPropObj.start, iPropObj.end, iPropObj.easingFunc, {cache:[]}, kf).cache;
 
             var result = {
               duration: iPropObj.duration,
@@ -1146,7 +1140,106 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             }
 
             if (result.name === 'counter') {
-              var options = {prefix: '', suffix:''};
+              convertStreamEventIntoCounter(result);
+            }
+
+            if (debug) {
+
+              if (result.name === 'transform' && result.values[0].indexOf('matrix3d') === -1) {
+
+
+
+                delete timeline.props['transform'];
+                addIndependentTransformPropsToTimeline(result, timeline);
+
+                // timeline.props[iPropObj.property].push(result);
+              } else {
+                timeline.props[iPropObj.property].push(result);
+              }
+
+
+            }
+            timeline.events.push(result);
+          // }
+        }
+
+
+        // timeline.events.slice(1).forEach(function(_event, i) {
+        compareAndMergeWithPrevious(timeline);
+        // })
+        // if (streams.length) {
+        //   timeline.events = streams;
+        // }
+
+        debug &&scaleTimelineValuesForPlot(player, timeline.props, null,  debug, timeline);
+        normalizeStateDurationAndDelay(timeline);
+        if (debug) {
+          cache.states.push(timeline);
+          timeline.debug = true;
+          timeline.id = cache.states.length;
+        }
+        console.log(timeline)
+        return timeline;
+      }
+
+      function compareAndMergeWithPrevious(timeline) {
+        // if (!timeline.events || !timeline.events.length) {
+        //   timeline.events.push(result);
+        //   return;
+        // }
+        streamDict = {};
+        // var prevFirst = prev_result.values[prev_result.values.length - 2];
+        // var currentFirst = result.values[0];
+        timeline.events.forEach(function(_event, i) {
+
+          if (!(_event.name in streamDict)) {
+            streamDict[_event.name] = [_event];
+            return;
+          }
+
+          var propArr = streamDict[_event.name];
+          // if (propArr.length < 2) {
+          //   streamDict[_event.name].push(_event)
+          // }
+
+          var numEventsOfType = propArr.length;
+          if (numEventsOfType >= 1) {
+            var prev = propArr[numEventsOfType - 1];
+            var current = _event;
+            if (Math.abs((prev.offset + prev.duration) - current.offset) < 5 && prev.direction.value === current.direction.value && prev.easing === current.easing) {
+              prev.duration += current.duration;
+              prev.values.push.apply(prev.values, current.values);
+              prev.iter.btwn = current.iter.btwn;
+              streamDict[_event.name] = propArr.splice(0, propArr.length);
+            }
+          } else {
+            streamDict[_event.name].push(_event)
+          }
+        });
+        timeline.events = [];
+        for (key in streamDict) {
+
+          var streamArr = streamDict[key];
+          streamArr.forEach(function(stream, i) {
+            // var filteredValues = [];
+            stream.values = stream.values.filter(function(val, j) {
+              if (!val) return;
+              if ( j > 1 && val === stream.values[j - 2] && stream.values[j - 1] === null) {
+                  return false;
+              }
+              return true;
+            })
+            stream.values.push(null);
+            stream.iter.btwn = 0;
+            stream.duration = 1000.00/60 * stream.values.length;
+            timeline.events.push(stream);
+          })
+        }
+
+      }
+
+      function convertStreamEventIntoCounter(result) {
+        var options = {prefix: '', suffix:''};
 
               result.values.forEach(function(val, i) {
 
@@ -1168,62 +1261,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                   }
               })
               result.applyAtT = getApplyInnerHTMLFunc(elem, options)
-            }
-
-            if (debug) {
-
-              if (result.name === 'transform' && result.values[0].indexOf('matrix3d') === -1) {
-
-
-
-                delete timeline.props['transform'];
-                addIndependentTransformPropsToTimeline(result, timeline);
-
-                // timeline.props[iPropObj.property].push(result);
-              } else {
-                timeline.props[iPropObj.property].push(result);
-              }
-
-
-            }
-
-             compareAndMergeWithPrevious(timeline.events[timeline.events.length - 1], result, timeline);
-            // timeline.events.push(result);
-          // }
-        }
-
-        debug &&scaleTimelineValuesForPlot(player, timeline.props, null,  debug, timeline);
-        normalizeStateDurationAndDelay(timeline);
-        if (debug) {
-          cache.states.push(timeline);
-          timeline.debug = true;
-          timeline.id = cache.states.length;
-        }
-        console.log(timeline.events)
-        return timeline;
-      }
-
-      function compareAndMergeWithPrevious(prev_result, result, timeline) {
-        if (!timeline.events || !timeline.events.length) {
-          timeline.events.push(result);
-          return;
-        }
-        var prevFirst = prev_result.values[prev_result.values.length - 2];
-        var currentFirst = result.values[0];
-        if (prev_result.name === result.name && prev_result.direction.value === result.direction.value && prev_result.easing === result.easing) {
-          if (prev_result.values[prev_result.values.length - 1] === null) {
-            prev_result.values[prev_result.values.length - 1] = result.values.slice(1,2)[0]
-          }
-          result.values.slice(2).forEach(function(val, i) {
-            prev_result.values.push(val);
-          })
-          prev_result.duration += result.duration
-          prev_result.iter.btwn = 0;
-          prev_result.offset = 0;
-        } else {
-          timeline.events.push(result);
-        }
-        // console.log(prev_result, result)
       }
 
       function getApplyInnerHTMLFunc(elem, options, debug) {
