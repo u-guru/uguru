@@ -2,16 +2,18 @@
 	<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
 		<ellipse class="shadow" fill="#2B3234" opacity="0.1" cx="150.248786" cy="417.919273" rx="90.2132448" ry="14.8712727"></ellipse>
 		<g class="relaxed-hand">
-			<g init-default
+			<g>
+				<!-- init-default
 				when-student-convert="p:[tro:90% 10%, transform:rotate(0deg):rotate(30deg):200:easeInOutBack:^:2+0:a]"
-				when-student-card-end="p:[op:0]:delay-100">
+				when-student-card-end="p:[op:0]:delay-100" -->
 				<path d="M30.1627263,282.983594 C28.9506874,281.064358 29.5390985,278.503818 31.4956789,277.294078 C33.4659003,276.075904 36.0277198,276.670246 37.2481308,278.602739 L41.273254,284.97643 C47.929596,283.715065 56.192991,283.543065 61.6189584,277.585994 C61.6189584,277.585994 66.9162808,281.0222 66.9162808,281.0222 C66.9162808,281.0222 62.174206,287.12855 58.3643619,289.565026 C45.33608,297.896885 23.960692,300.866951 23.678687,292.791386 C23.5362563,288.712704 27.1319877,287.401491 32.3536498,286.452871 L30.1627263,282.983594 L30.1627263,282.983594 Z" class="relaxed-left-hand" stroke="#33534D" stroke-width="3" fill="#F9ECE5"></path>
 				<path d="M94.4153254,261.062718 C88.1196234,267.758883 69.6111818,272.131869 55.18244,279.422847 C55.18244,279.422846 60.7907129,287.3744 60.7907129,287.3744 C71.3935331,285.133689 101.900814,272.361697 103.095211,266.708387 C104.289608,261.055078 99.2208274,259.028695 94.4153254,261.062718 L94.4153254,261.062718 Z" class="relaxed-left-forearm" stroke="#757575" stroke-width="3" fill="#C6BDA6"></path>
 				<path d="M101.389161,268.980262 C106.194078,257.116544 116.254068,237.565537 122.45225,224.231822 C125.355202,217.986904 121.107729,202.69738 121.107729,202.69738 C121.107729,202.69738 109.977471,207.592125 107.134655,211.226538 C105.367292,213.486031 104.60554,218.067829 104.282125,221.211102 C104.085325,223.123808 92.3611379,261.9985 92.3611379,261.9985" class="relaxed-left-shoulder" stroke="#757575" stroke-width="3" fill="#C6BDA6"></path>
 			</g>
-			<g init-default
+			<g>
+				<!-- init-default
 				when-student-convert="p:[tro:10% 10%, transform:rotate(0deg):rotate(-30deg):200:easeInOutBack:^:2+0:a]"
-				when-student-card-end="p:[op:0]:delay-100">
+				when-student-card-end="p:[op:0]:delay-100" -->
 				<path d="M272.219021,278.143779 C273.294228,276.144671 272.528636,273.631413 270.492434,272.561105 C268.442037,271.483334 265.927917,272.254931 264.845283,274.267849 L261.274571,280.906792 C254.546455,280.112822 246.291191,280.517667 240.462897,274.953604 C240.462897,274.953604 235.418176,278.750962 235.418176,278.750962 C235.418176,278.750962 240.574657,284.511647 244.54518,286.676426 C258.122927,294.079182 279.653427,295.550941 279.371422,287.475376 C279.228991,283.396695 275.550553,282.339501 270.275439,281.757437 L272.219021,278.143779 L272.219021,278.143779 Z" class="relaxed-right-hand" stroke="#33534D" stroke-width="3" fill="#F9ECE5"></path>
 				<path d="M206.593814,260.758336 C213.341281,266.999024 232.109681,270.070273 247.011868,276.336993 C247.011868,276.336993 241.971929,284.66039 241.971929,284.66039 C231.238633,283.164752 199.914737,272.551953 198.328895,266.995731 C196.743052,261.43951 201.658132,259.064484 206.593814,260.758336 L206.593814,260.758336 Z" class="relaxed-right-forearm" stroke="#757575" stroke-width="3" fill="#C6BDA6"></path>
 				<path d="M200.189267,269.143064 C194.568483,257.643419 183.16919,238.841787 176.055993,225.972915 C172.724489,219.945709 175.895072,204.397141 175.895072,204.397141 C175.895072,204.397141 187.339658,208.503556 190.429073,211.93081 C192.349744,214.061515 193.429251,218.579015 193.971141,221.69207 C194.300886,223.586389 208.708275,261.548546 208.708275,261.548546" class="relaxed-right-shoulder" stroke="#757575" stroke-width="3" fill="#C6BDA6"></path>
@@ -47,15 +49,15 @@
 </svg>
 <div class="card-container">
 	<div class="student-card"
+		init-after="card-rotate"
 		init-with="p:[op:0, tro:center center]"
-		when-student-convert="p:[transform:scale(0.6) translateY(-426px), op:1] | s:[student-card-end:public]:delay-100"
-		when-student-card-end="p:[transform:rotate(10deg) scale(0.6) translateY(-426px):rotate(0deg) scale(1) translateY(0px):450:easeInExpo easeOutBack easeOutExpo]">
+		on-init="p:[op:1] | s:[card-flip:public]:delay-1000 | a:[translateX:0px:342px:500:linear:0:1:f, translateY:0px:-113px:500:linear:0:1:f, rotate:0deg:180deg:500:linear:0:1:f]:delay-2000">
 		<svg viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 		</svg>
 		<div class="school-id-front"
-			init-default
-			when-card-flip="p:[transform:rotateY(0deg):rotateY(180deg):300:easeInOutSine]">
+			init-after="card-flip"
+			on-init="a:[rotateY:0deg:180deg:300:easeInOutSine:0:1:f] | p:[op:0:delay-300]">
 			<div class="school-id-bg" style="background-image: url('/shared/images/uc-berkeley.svg')"></div>
 			<div class="school-id-top" style="background: #003262;">
 				<span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/marcogomes/128.jpg');"></span>
@@ -83,8 +85,9 @@
 			</div>
 		</div>
 		<div class="school-id-back"
+			init-after="card-flip"
 			init-with="p:[tr:rotateY(180deg)]"
-			when-card-flip="p:[transform:rotateY(180deg):rotateY(0deg):300:easeInOutSine]">
+			on-init="a:[rotateY:180deg:0deg:300:easeInOutSine:0:1:f]">
 			<div class="school-id-bar"></div>
 			<div class="school-id-info">
 				<ul>
