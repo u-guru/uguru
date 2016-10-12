@@ -69,7 +69,7 @@
 					on-init="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:a] | s:[flying:public]:delay-5000"></path>
 				<g class="birds">
 					<g class="b-bird" init-after="flying"
-						on-init="a:[translateY:-3px:3px:1000:linear:0:i:a]">
+						when-flying="a:[translateY:-3px:3px:1000:linear:0:i:a]">
 						<path d="M499.5,126 C499.5,126 505.438375,126.265969 511.75,131.5 C518.061625,136.734031 520,143 520,143" class="b-bird-left" stroke="#6E6144" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
 							init-after="flying"
 							init-with="p:[transform:rotate(0deg), tro:right bottom]"
@@ -205,7 +205,6 @@
 	</svg>
 	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #092D4B;"
 		u init-with="p:[op:1]" on-init="a:[opacity:1:0:3000:easeInOutSine:0:1:f]:delay-6000">
-
 	    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 	        <g class="blue-tree">
 	            <rect class="b-canopy" fill="#AADFFF" x="221" y="364" width="43" height="86" rx="21.5"
@@ -334,41 +333,36 @@
 					init-with="p:[transform:scale(0), tro:center bottom]"
 					on-init="a:[scale:0:1:200:easeOutSine:0:1:f]">
 		            <path d="M376.178959,232 C376.715756,229.754184 377,227.410286 377,225 C377,208.431458 363.568542,195 347,195 C330.431458,195 317,208.431458 317,225 C317,227.410286 317.284244,229.754184 317.821041,232 L376.178959,232 L376.178959,232 Z" class="b-cloud-1" fill="#BCE5FF"
-						init-after="sky-shine"
-						init-with="p:[transform:translateY(0px), tro:center center]"
-						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a] | s:[day-transition:public]:delay-7000"></path>
+						u init-with="p:[transform:translateY(0px), tro:center center]"
+						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a]:delay-2500 | s:[day-transition:public]:delay-7000"></path>
 				</g>
 				<g init-after="sky-shine"
 					init-with="p:[transform:scale(0), tro:center bottom]"
 					on-init="a:[scale:0:1:200:easeOutSine:0:1:f]">
 		            <path d="M321.243895,232 C321.737482,230.08228 322,228.071797 322,226 C322,212.745166 311.254834,202 298,202 C284.745166,202 274,212.745166 274,226 C274,228.071797 274.262518,230.08228 274.756105,232 L321.243895,232 L321.243895,232 Z" class="b-cloud-2" fill="#BCE5FF"
-						init-after="sky-shine"
-						init-with="p:[transform:translateY(0px), tro:center center]"
-						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a]"></path>
+						u init-with="p:[transform:translateY(0px), tro:center center]"
+						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a]:delay-2500"></path>
 				</g>
 				<g init-after="sky-shine"
 					init-with="p:[transform:scale(0), tro:center bottom]"
 					on-init="a:[scale:0:1:200:easeOutSine:0:1:f]">
 		            <path d="M281.975766,232 C282.639075,230.123326 283,228.103813 283,226 C283,216.058875 274.941125,208 265,208 C255.058875,208 247,216.058875 247,226 C247,228.103813 247.360925,230.123326 248.024234,232 L281.975766,232 L281.975766,232 Z" class="b-cloud-3" fill="#BCE5FF"
-						init-after="sky-shine"
-						init-with="p:[transform:translateY(0px), tro:center center]"
-						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a]"></path>
+						u init-with="p:[transform:translateY(0px), tro:center center]"
+						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a]:delay-2500"></path>
 				</g>
 				<g init-after="sky-shine"
 					init-with="p:[transform:scale(0), tro:center bottom]"
 					on-init="a:[scale:0:1:200:easeOutSine:0:1:f]">
 		            <path d="M378.756105,178 C378.262518,176.08228 378,174.071797 378,172 C378,158.745166 388.745166,148 402,148 C415.254834,148 426,158.745166 426,172 C426,174.071797 425.737482,176.08228 425.243895,178 L378.756105,178 L378.756105,178 Z" class="s-cloud-1" fill="#BCE5FF"
-						init-after="sky-shine"
-						init-with="p:[transform:translateY(0px), tro:center center]"
-						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a]"></path>
+						u init-with="p:[transform:translateY(0px), tro:center center]"
+						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a]:delay-2500"></path>
 				</g>
 				<g init-after="sky-shine"
 					init-with="p:[transform:scale(0), tro:center bottom]"
 					on-init="a:[scale:0:1:200:easeOutSine:0:1:f]">
 		            <path d="M418.024234,178 C417.360925,176.123326 417,174.103813 417,172 C417,162.058875 425.058875,154 435,154 C444.941125,154 453,162.058875 453,172 C453,174.103813 452.639075,176.123326 451.975766,178 L418.024234,178 L418.024234,178 Z" class="s-cloud-2" fill="#BCE5FF"
-						init-after="sky-shine"
-						init-with="p:[transform:translateY(0px), tro:center center]"
-						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a]"></path>
+						u init-with="p:[transform:translateY(0px), tro:center center]"
+						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a]:delay-2500"></path>
 				</g>
 	        </g>
 	        <g class="house">
