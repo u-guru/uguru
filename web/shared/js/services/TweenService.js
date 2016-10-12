@@ -17,45 +17,7 @@ function TweenService() {
     }
 
     function getAllEasing() {
-        return ["easeInQuad",
-        "linear",
-        "easeOutQuad",
-        "easeInOutQuad",
-        "easeInCubic",
-        "easeOutCubic",
-        "easeInOutCubic",
-        "easeInQuart",
-        "easeOutQuart",
-        "easeInOutQuart",
-        "easeInQuint",
-        "easeOutQuint",
-        "easeInOutQuint",
-        "easeInSine",
-        "easeOutSine",
-        "easeInOutSine",
-        "easeInExpo",
-        "easeOutExpo",
-        "easeInOutExpo",
-        "easeInCirc",
-        "easeOutCirc",
-        "easeInOutCirc",
-        "easeInBack",
-        "easeOutBack",
-        "easeInOutBack",
-        "easeInOutBounce",
-        "easeInBounce",
-        "easeOutBounce",
-        "easeInElastic",
-        "easeOutElastic",
-        "easeInOutElastic",
-        "bouncePast",
-        "swingFromTo",
-        "swingFrom",
-        "swingTo",
-        "easeFromTo",
-        "easeFrom",
-        "easeTo"
-        ]
+        return easings
 
         // "easeInElastic", // easings.net or https://github.com/ai/easings.net/blob/master/vendor/jquery.easing.js
         // "easeOutElastic",
@@ -75,6 +37,16 @@ function TweenService() {
         return {
             "nameOfCB": [1,1,1,1]
         }
+    }
+
+    function getArrayOfDecimals(value) {
+          var r = /[\d*\.?\d-*]+/g;
+          var m;
+          var resultArr = [];
+          while ((m = r.exec(value)) != null) {
+            resultArr.push(m[0]);
+          }
+          return resultArr
     }
 
     function getAllAnimatable() {
@@ -149,10 +121,27 @@ function TweenService() {
         // }
         result_arr.cache.push(null)
         t.dispose();
-
+        if (property === 'counter') {
+            formatCounterValues(start.counter, end.counter, result_arr.cache);
+        }
         // console.log(result_arr.cache)
         return result_arr
         // t.dispose();
+    }
+
+    function formatCounterValues(start, end, arr) {
+        var num = getArrayOfDecimals(arr[0])[0];
+        var nonNumeric = start.split(num).filter(function(val, i) {return val.length});
+        var replaceStart;
+        if (start.indexOf(nonNumeric[0]) === 0) {
+            replaceStart = nonNumeric[0];
+        }
+        arr.forEach(function(val, i) {
+            if (!val) return;
+            if (replaceStart) {
+                arr[i] = replaceStart + arr[i].replace(replaceStart, '');
+            }
+        })
     }
 
     function getKeyframeValuesByProperty(property, start_val, end_val, duration, easeFunc, max_keyframe) {
@@ -336,3 +325,43 @@ var animatableProps =
 "-moz-outline-radius-bottomright",
 "-moz-outline-radius-topleft",
 "-moz-outline-radius-topright"]
+
+var easings = ["easeInQuad",
+        "linear",
+        "easeOutQuad",
+        "easeInOutQuad",
+        "easeInCubic",
+        "easeOutCubic",
+        "easeInOutCubic",
+        "easeInQuart",
+        "easeOutQuart",
+        "easeInOutQuart",
+        "easeInQuint",
+        "easeOutQuint",
+        "easeInOutQuint",
+        "easeInSine",
+        "easeOutSine",
+        "easeInOutSine",
+        "easeInExpo",
+        "easeOutExpo",
+        "easeInOutExpo",
+        "easeInCirc",
+        "easeOutCirc",
+        "easeInOutCirc",
+        "easeInBack",
+        "easeOutBack",
+        "easeInOutBack",
+        "easeInOutBounce",
+        "easeInBounce",
+        "easeOutBounce",
+        "easeInElastic",
+        "easeOutElastic",
+        "easeInOutElastic",
+        "bouncePast",
+        "swingFromTo",
+        "swingFrom",
+        "swingTo",
+        "easeFromTo",
+        "easeFrom",
+        "easeTo"
+        ]
