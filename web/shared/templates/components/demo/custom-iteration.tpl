@@ -20,7 +20,7 @@
             <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-after="init-all-scale"
 
-                on-init="a:[scaleInX-subtle:1000:linear:0:4:r]">
+                on-init="a:[scaleInX-subtle:1000:linear:0:i:r]">
                 <h1 class="txt-azure txt-2 height-50p weight-900 opacity-50p semibold txt-center full-x">
                     4 iteration <br>
                 </h1>
