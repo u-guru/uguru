@@ -12,8 +12,15 @@
                 init-with="p:[transform:scale(0)]"
                 init-after="init-all-scale"
                 on-init="a:[scale:0:1:1000:easeOutCirc:0:1:{{direction}}]|send:[activate-child]:delay-1000">
+<<<<<<< HEAD
                 <div init-after="activate-child" init-with="p:[opacity:0, transform:translateX(-1000%)]" on-init="p:[opacity:1]|a:[translateX:-1000%:0%:500:bouncePast:0:1:f]" class='height-128 width-128'>
+=======
+                <div init-after="activate-child" init-with="p:[opacity:0, transform:translateX(-1000%)]" on-init="p:[opacity:1]|a:[translateX:-1000%:0%:500:bouncePast:0:1:f]|send:[activate-child-2]:delay-500" class='height-128 width-128' >
+>>>>>>> 4c2d50534bfe48ca03b6e013137ad978261b775a
                     Child #1
+                </div>
+				<div init-after="activate-child-2" init-with="p:[opacity:0, transform:translateX(-1000%)]" on-init="p:[opacity:1]|a:[translateX:-1000%:5%:500:bouncePast:0:1:f]" class='height-128 width-128' >
+                    Child #2
                 </div>
             </div>
         </li>

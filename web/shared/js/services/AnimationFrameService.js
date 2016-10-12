@@ -138,7 +138,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             isComplete: isCurrentCycleCompleteFunc(tick),
             reset: resetCycleFunc(tick),
             btwn: stream.iter.btwn,
-            c_duration: stream.iter.btwn + stream.duration
+            c_duration: stream.duration + stream.btwn
           }
 
 
@@ -158,21 +158,36 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             if (tick.cycleIndex < tick.cycle.repeats || tick.infinite) {
               tick.cycleIndex += 1;
 
-              tick.current = tick.start;
+
               tick.direction.current = getTickDirection(tick.cycleIndex, tick.direction);
               ['ar', 'a'].indexOf(tick.direction.value) > -1 && reverseStreamValues(stream, tick)
+
+              if (['ar', 'a'].indexOf(tick.direction.value) > -1) {
+
+                // var newStart = (tick.end - tick.start)
+                // console.log('start-end:' +newStart, '#frames:' +stream.values.length, ''tick.end)
+                tick.current = calcTickLength(stream.offset) * -1;
+                console.log(tick.current)
+                // tick.current -= 1;
+
+                // tick.current = tick.start;
+              } else {
+                tick.current = tick.start;
+              }
             }
           }
         }
 
         function reverseStreamValues(stream, tick) {
-          // var tickStart = Math.ceil(calcTickLength(stream.offset) * -1);
-          // if (tick.start === tickStart) {
-          //   tick.start = Math.ceil(calcTickLength(tick.cycle.btwn) * -1);
-          // } else {
-          //   tick.start = tickStart;
-          // }
-          // tick.current = tick.start;
+          if (tick.cycle.btwn && tick.direction.current === 'r') {
+            // tick.current = (tick.end + tick.start)
+            // (tick.end + tick.start) * -1
+            var duration = tick.end - tick.start
+            var frameLength = stream.values.length;
+            // tick.current, tick.start, tick.end, Math.ceil(calcTickLength(stream.offset) * -1)
+            // tick.current =
+            console.log(stream.name, frameLength, tick.start, tick.end)
+          }
           stream.values.reverse();
         }
 
@@ -1264,7 +1279,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             stream.plot = {max: 0, min: 100000000000, duration: 0, values:[], sections:[]};
             var streamTick = initStreamTick(stream)
             stream.values = stream.values.slice(0, stream.values.length - 1);
-            streamDuration = streamTick.cycle.c_duration * streamTick.cycle.repeats + stream.offset;
+            streamDuration = (streamTick.cycle.c_duration * streamTick.cycle.repeats) + stream.offset;
             streamAllValues = [];
             var maxVal = 0;
             var streamSections = [];
