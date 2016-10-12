@@ -60,7 +60,7 @@
 						<path d="M499.5,126 C499.5,126 505.438375,126.265969 511.75,131.5 C518.061625,136.734031 520,143 520,143" class="b-bird-left" stroke="#6E6144" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
 							init-after="day-sky"
 							init-with="p:[transform:rotate(0deg), tro:right bottom]"
-							on-init="a:[rotate:15deg:-10deg:1000:easeInOutCirc:0:i:a]"></path>
+							on-init="a:[rotate:15deg:-10deg:1000:easeInOutCirc:0:i:ar]"></path>
 						<path d="M541,126 C541,126 535.061625,126.265969 528.75,131.5 C522.438375,136.734031 520.5,143 520.5,143" class="b-bird-right" stroke="#6E6144" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
 							init-after="day-sky"
 							init-with="p:[transform:rotate(0deg), tro:left bottom]"
