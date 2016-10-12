@@ -437,8 +437,8 @@
 	        </g>
 	        <g class="house">
 	            <rect class="house-foundation" fill="#AADFFF" x="307" y="285" width="187" height="204"
-					u init-with="p:[tro:center bottom, transform:scaleY(0)]"
-					on-init="a:[scaleY:0:1:1050:easeOutBounce:0:1:f] | s:[build-house:public:delay-500]"></rect>
+					u init-with="p:[transform:scaleY(0), transform-origin:center bottom]"
+					on-init="a:[scaleY:0:1:1000:easeOutBounce:0:1:f] | s:[build-house:public]:delay-500"></rect>
 	            <rect class="house-casing" fill="#FFFFFF" x="301" y="485" width="199" height="19"
 					init-after="build-house"
 					init-with="p:[tro:center bottom, transform:scaleY(0)]"
