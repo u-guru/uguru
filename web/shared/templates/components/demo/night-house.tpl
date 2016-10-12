@@ -171,8 +171,10 @@
 					<rect class="roof-top" fill="#FFFFFF" x="296" y="258" width="209" height="7"></rect>
 				</g>
 				<g class="w5">
-					<rect class="w5-bg" fill="#BDE397" x="435" y="407" width="38" height="60"></rect>
-					<rect class="w5-blind" fill="#A0857A" x="435" y="407" width="38" height="60" clip-path="url(#w5-clip)"></rect>
+					<g clip-path="url(#w5-clip)">
+						<rect class="w5-bg" fill="#BDE397" x="435" y="407" width="38" height="60"></rect>
+						<rect class="w5-blind" fill="#A0857A" x="435" y="407" width="38" height="60"></rect>
+					</g>
 					<rect class="w5-shadow-btm" fill="#5B4F4B" x="434" y="477" width="40" height="5"></rect>
 					<rect class="w5-ledge" fill="#C56C76" x="432" y="467" width="44" height="10"></rect>
 					<rect class="w5-shadow-top" fill="#5B4F4B" x="440" y="414" width="28" height="7"></rect>
@@ -180,8 +182,10 @@
 					<path d="M435,407 L473,407 L473,467 L435,467 L435,407 L435,407 L435,407 L435,407 Z M441,414 L467,414 L467,438 L441,438 L441,414 L441,414 L441,414 L441,414 Z M441,443 L467,443 L467,467 L441,467 L441,443 L441,443 L441,443 L441,443 Z" class="w5-casing" fill="#FFFFFF"></path>
 				</g>
 				<g class="w4">
-					<rect class="w4-bg" fill="#BDE397" x="382" y="407" width="38" height="60"></rect>
-					<rect class="w4-blind" fill="#A0857A" x="382" y="407" width="38" height="60" clip-path="url(#w4-clip)"></rect>
+					<g clip-path="url(#w4-clip)">
+						<rect class="w4-bg" fill="#BDE397" x="382" y="407" width="38" height="60"></rect>
+						<rect class="w4-blind" fill="#A0857A" x="382" y="407" width="38" height="60"></rect>
+					</g>
 					<rect class="w4-shadow-btm" fill="#5B4F4B" x="381" y="477" width="40" height="5"></rect>
 					<rect class="w4-ledge" fill="#C56C76" x="379" y="467" width="44" height="10"></rect>
 					<rect class="w4-shadow-top" fill="#5B4F4B" x="387" y="414" width="28" height="7"></rect>
@@ -196,8 +200,10 @@
 					<path d="M382,407 L420,407 L420,467 L382,467 L382,407 L382,407 L382,407 L382,407 Z M388,414 L414,414 L414,438 L388,438 L388,414 L388,414 L388,414 L388,414 Z M388,443 L414,443 L414,467 L388,467 L388,443 L388,443 L388,443 L388,443 Z" class="w4-casing" fill="#FFFFFF"></path>
 				</g>
 				<g class="w3">
-					<rect class="w3-bg" fill="#BDE397" x="435" y="306" width="38" height="60"></rect>
-					<rect class="w3-blind" fill="#A0857A" x="435" y="306" width="38" height="60" clip-path="url(#w3-clip)"></rect>
+					<g clip-path="url(#w3-clip)">
+						<rect class="w3-bg" fill="#BDE397" x="435" y="306" width="38" height="60"></rect>
+						<rect class="w3-blind" fill="#A0857A" x="435" y="306" width="38" height="60"></rect>
+					</g>
 					<rect class="w3-shadow-btm" fill="#5B4F4B" x="434" y="376" width="40" height="5"></rect>
 					<rect class="w3-ledge" fill="#C56C76" x="432" y="366" width="44" height="10"></rect>
 					<rect class="w3-shadow-top" fill="#5B4F4B" x="440" y="313" width="28" height="7"></rect>
@@ -221,8 +227,10 @@
 					</g>
 				</g>
 				<g class="w2">
-					<rect class="w2-bg" fill="#BDE397" x="382" y="306" width="38" height="60"></rect>
-					<rect class="w2-blind" fill="#A0857A" x="382" y="306" width="38" height="60" clip-path="url(#w2-clip)"></rect>
+					<g clip-path="url(#w2-clip)">
+						<rect class="w2-bg" fill="#BDE397" x="382" y="306" width="38" height="60"></rect>
+						<rect class="w2-blind" fill="#A0857A" x="382" y="306" width="38" height="60"></rect>
+					</g>
 					<rect class="w2-shadow-btm" fill="#5B4F4B" x="381" y="376" width="40" height="5"></rect>
 					<rect class="w2-ledge" fill="#C56C76" x="379" y="366" width="44" height="10"></rect>
 					<rect class="w2-shadow-top" fill="#5B4F4B" x="387" y="313" width="28" height="7"></rect>
@@ -230,8 +238,10 @@
 					<path d="M382,306 L420,306 L420,366 L382,366 L382,306 L382,306 L382,306 L382,306 Z M388,313 L414,313 L414,337 L388,337 L388,313 L388,313 L388,313 L388,313 Z M388,342 L414,342 L414,366 L388,366 L388,342 L388,342 L388,342 L388,342 Z" class="w2-casing" fill="#FFFFFF"></path>
 				</g>
 				<g class="w1">
-					<rect class="w1-bg" fill="#BDE397" x="329" y="306" width="38" height="60"></rect>
-					<rect class="w1-blind" fill="#A0857A" x="329" y="306" width="38" height="60" clip-path="url(#w1-clip)"></rect>
+					<g clip-path="url(#w1-clip)">
+						<rect class="w1-bg" fill="#BDE397" x="329" y="306" width="38" height="60"></rect>
+						<rect class="w1-blind" fill="#A0857A" x="329" y="306" width="38" height="60"></rect>
+					</g>
 					<rect class="w1-shadow-btm" fill="#5B4F4B" x="328" y="376" width="40" height="5"></rect>
 					<rect class="w1-ledge" fill="#C56C76" x="326" y="366" width="44" height="10"></rect>
 					<rect class="w1-shadow-top" fill="#5B4F4B" x="334" y="313" width="28" height="7"></rect>
@@ -445,19 +455,24 @@
 					init-after="build-house"
 					init-with="p:[tro:center bottom, transform:scaleY(0)]"
 					on-init="a:[scaleY:0:1:750:easeOutBounce:0:1:f]"></rect>
-				<g init-after="w4"
+				<g class="w5"
+					init-after="w4"
 					init-with="p:[op:0, tro:20% 80%]"
 					on-init="a:[scoop-enter:1000:linear:0:1:f]">
+					<g clip-path="url(#w5-clip)">
+						<rect class="w5-bg" fill="#FEF1AE" x="435" y="407" width="38" height="60"></rect>
+						<rect class="w5-blind" fill="#2E5573" x="435" y="407" width="38" height="60"
+							init-after="w4"
+							on-init="a:[fill:#2E5573:#FEF1AE:5000:easeInOutSine:0:i:a]"></rect>
+					</g>
 	            	<rect class="w5-shadow-btm" fill="#0B3B5E" x="434" y="477" width="40" height="5"></rect>
 		            <rect class="w5-ledge" fill="#8C70B3" x="432" y="467" width="44" height="10"></rect>
-		            <rect class="w5-blind" fill="#2E5573" x="435" y="407" width="38" height="60"
-						init-after="w4"
-						on-init="a:[fill:#2E5573:#FEF1AE:5000:easeInOutSine:0:i:a]"></rect>
 		            <rect class="w5-shadow-top" fill="#0B3B5E" x="440" y="414" width="28" height="7"></rect>
 		            <rect class="w5-shadow-mid" fill="#0B3B5E" x="440" y="443" width="28" height="7"></rect>
 		            <path d="M435,407 L473,407 L473,467 L435,467 L435,407 L435,407 Z M441,414 L467,414 L467,438 L441,438 L441,414 L441,414 Z M441,443 L467,443 L467,467 L441,467 L441,443 L441,443 Z" class="w5-casing" fill="#FFFFFF"></path>
 				</g>
-				<g init-after="w3"
+				<g class="w4"
+					init-after="w3"
 					init-with="p:[op:0, tro:20% 80%]"
 					on-init="a:[scoop-enter:1000:linear:0:1:f]| s:[w4:public:delay-1100]">
 		            <rect class="w4-shadow-btm" fill="#0B3B5E" x="381" y="477" width="40" height="5"></rect>
@@ -467,7 +482,8 @@
 		            <rect class="w4-shadow-mid" fill="#0B3B5E" x="387" y="443" width="28" height="7"></rect>
 		            <path d="M382,407 L420,407 L420,467 L382,467 L382,407 L382,407 Z M388,414 L414,414 L414,438 L388,438 L388,414 L388,414 Z M388,443 L414,443 L414,467 L388,467 L388,443 L388,443 Z" class="w4-casing" fill="#FFFFFF"></path>
 				</g>
-				<g init-after="w2"
+				<g class="w3"
+					init-after="w2"
 					init-with="p:[op:0, tro:20% 80%]"
 					on-init="a:[scoop-enter:1000:linear:0:1:f]| s:[w3:public:delay-1000]">
 		            <rect class="w3-shadow-btm" fill="#0B3B5E" x="434" y="376" width="40" height="5"></rect>
@@ -477,7 +493,8 @@
 		            <rect class="w3-shadow-mid" fill="#0B3B5E" x="440" y="342" width="28" height="7"></rect>
 		            <path d="M435,306 L473,306 L473,366 L435,366 L435,306 L435,306 Z M441,313 L467,313 L467,337 L441,337 L441,313 L441,313 Z M441,342 L467,342 L467,366 L441,366 L441,342 L441,342 Z" class="w3-casing" fill="#FFFFFF"></path>
 				</g>
-				<g init-after="w1"
+				<g class="w2"
+					init-after="w1"
 					init-with="p:[op:0, tro:20% 80%]"
 					on-init="a:[scoop-enter:1000:linear:0:1:f] | s:[w2:public:delay-900]">
 		            <rect class="w2-shadow-btm" fill="#0B3B5E" x="381" y="376" width="40" height="5"></rect>
@@ -489,15 +506,16 @@
 		            <rect class="w2-shadow-mid" fill="#0B3B5E" x="387" y="342" width="28" height="7"></rect>
 		            <path d="M382,306 L420,306 L420,366 L382,366 L382,306 L382,306 Z M388,313 L414,313 L414,337 L388,337 L388,313 L388,313 Z M388,342 L414,342 L414,366 L388,366 L388,342 L388,342 Z" class="w2-casing" fill="#FFFFFF"></path>
 				</g>
-				<g init-after="build-house"
+				<g class="w1"
+					init-after="build-house"
 					init-with="p:[op:0, tro:20% 80%]"
 					on-init="a:[scoop-enter:1000:linear:0:1:f] | s:[w1:public:delay-800]">
 					<!-- when-build-house="a:[scoop-enter:1000:linear:0:1:f]:delay-400" -->
-		            <rect class="w-shadow-btm" fill="#0B3B5E" x="328" y="376" width="40" height="5"></rect>
-		            <rect class="w-ledge" fill="#8C70B3" x="326" y="366" width="44" height="10"></rect>
-		            <rect class="w-blind" fill="#2E5573" x="329" y="306" width="38" height="60"></rect>
-		            <rect class="w-shadow-top" fill="#0B3B5E" x="334" y="313" width="28" height="7"></rect>
-		            <rect class="w-shadow-mid" fill="#0B3B5E" x="334" y="342" width="28" height="7"></rect>
+		            <rect class="w1-shadow-btm" fill="#0B3B5E" x="328" y="376" width="40" height="5"></rect>
+		            <rect class="w1-ledge" fill="#8C70B3" x="326" y="366" width="44" height="10"></rect>
+		            <rect class="w1-blind" fill="#2E5573" x="329" y="306" width="38" height="60"></rect>
+		            <rect class="w1-shadow-top" fill="#0B3B5E" x="334" y="313" width="28" height="7"></rect>
+		            <rect class="w1-shadow-mid" fill="#0B3B5E" x="334" y="342" width="28" height="7"></rect>
 		            <path d="M329,306 L367,306 L367,366 L329,366 L329,306 L329,306 Z M335,313 L361,313 L361,337 L335,337 L335,313 L335,313 Z M335,342 L361,342 L361,366 L335,366 L335,342 L335,342 Z" class="w-casing" fill="#FFFFFF"></path>
 				</g>
 				<g>
@@ -533,8 +551,7 @@
 					when-mailbox-enter="a:[scaleX:0:1:300:easeOutBack:200:1:f]"></rect>
 	            <rect class="mbox-stand" fill="#FFFFFF" x="283" y="473" width="6" height="31"
 					u init-with="p:[tro:center bottom, transform:scaleY(0)]"
-					when-mailbox-enter="a:[scaleY:0:1:300:easeOutBack:0:1:f]"
-					></rect>
+					when-mailbox-enter="a:[scaleY:0:1:300:easeOutBack:0:1:f]"></rect>
 	        </g>
 	    </g>
 	</svg>
