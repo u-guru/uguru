@@ -162,7 +162,7 @@
 					</g>
 				</g>
 			</g>
-			<g class="house">
+			<g class="house" u on-init="s:[blinds:public]:delay-7000">
 				<g>
 					<rect class="house-foundation-beige" fill="#E5D8B7" x="307" y="285" width="187" height="204"></rect>
 					<rect class="house-casing" fill="#FFFFFF" x="301" y="485" width="199" height="19"></rect>
@@ -185,6 +185,10 @@
 					<g clip-path="url(#w4-clip)">
 						<rect class="w4-bg" fill="#BDE397" x="382" y="407" width="38" height="60"></rect>
 						<rect class="w4-blind" fill="#A0857A" x="382" y="407" width="38" height="60"></rect>
+						<!-- 
+							init-after="blinds"
+							init-with="p:[tro:center top, transform:scaleY(1)]"
+							on-init="a:[hiw-shade-bounceUp:1000:easeInOutBack:0:i:a]" -->
 					</g>
 					<rect class="w4-shadow-btm" fill="#5B4F4B" x="381" y="477" width="40" height="5"></rect>
 					<rect class="w4-ledge" fill="#C56C76" x="379" y="467" width="44" height="10"></rect>
@@ -499,7 +503,6 @@
 					on-init="a:[scoop-enter:1000:linear:0:1:f] | s:[w2:public:delay-900]">
 					<g clip-path="url(#w2-clip)">
 						<rect class="w2-bg" fill="#FEF1AE" x="382" y="306" width="38" height="60"></rect>
-
 			            <rect class="w2-blind" fill="#2E5573" x="382" y="306" width="38" height="60"
 							init-after="w1"
 							on-init="a:[fill:#2E5573:#FEF1AE:3000:easeInOutSine:0:i:a]"></rect>
