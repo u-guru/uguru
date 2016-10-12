@@ -1,19 +1,19 @@
 <div class="loader-portal-outer">
 	<div class="loader-portal states"
 		u on-init="s:[portal-open:public]"
-		when-portal-open="s:[warp-objects-container-init:public]"
-		when-warp-objects-container-init="s:[warp-objects-init:public]:delay-500"
+		when-portal-open="s:[warp-objects-container-enter:public]"
+		when-warp-objects-container-init="s:[warp-objects-enter:public]:delay-500"
 		when-transition-end="p-op">
 		<div class="loader-portal-inside"
 			u init-with="p:[tr:scale(0), tro:50% 90%]"
 			when-portal-open="a:[scale:0:1:250:easeInOutBack:100:1:f]">
 			<div class="portal"
 				u init-with="p:[tr:translateY(37%) translateZ(25px) rotateX(75deg)]"
-				when-portal-complete="a:[translateY:37%:-37.5%:650:easeOutCirc:0:1:f, translateZ:25px:0px:650:easeOutCubic:0:1:f, rotateX:75deg:0deg:650:easeOutSine:0:1:f]:delay-2000 | s:[page-init:public]:delay-1000"
-				when-page-init="s:[warp-start:public]:delay-1000">
+				when-portal-complete="a:[translateY:37%:-37.5%:650:easeOutCirc:0:1:f, translateZ:25px:0px:650:easeOutCubic:0:1:f, rotateX:75deg:0deg:650:easeOutSine:0:1:f]:delay-2000 | s:[page-enter:public]:delay-1000"
+				when-page-enter="s:[warp-start:public]:delay-1000">
 				<div>
 					<svg width="200px" height="200px" viewBox="0 0 400 400">
-						<circle cx="200" cy="200" r="192" stroke="#55A4B7" stroke-width="16" fill="#2B3234" stroke-linecap="round" stroke-linejoin="round"
+						<circle cx="200" cy="200" r="192" stroke-width="16" fill="#2B3234" stroke-linecap="round" stroke-linejoin="round"
 							init-with="p:[stroke-dasharray:1207, stroke-dashoffset:1207, stroke:#55A4B7]"
 							init-after="portal-hover"
 							on-init="a:[l-progress-color:2000:linear:250:1:f, stroke-dashoffset:1207:0:2000:linear:250:1:f] | s:[portal-complete:public]:delay-2000"></circle>
@@ -38,7 +38,7 @@
 				when-portal-complete="a:[translateY:0px:350px:200:easeInBack:900:1:f]">
 				<div init-with="p:[tro:center top]"
 					init-after="portal-open"
-					on-init="s:[portal-hover:public, warp-vehicles-init:public]:delay-950 | a:[l-head-hover:800:(.88,.34,.05,.68):1000:3:f]">
+					on-init="s:[portal-hover:public, warp-vehicles-enter:public]:delay-950 | a:[l-head-hover:800:(.88,.34,.05,.68):1000:3:f]">
 					<!-- s:[portal-hover:public:delay-950, warp-vehicles-init:public] -->
 					<svg viewBox="0 0 130 204">
 						<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
