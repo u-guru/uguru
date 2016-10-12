@@ -1,24 +1,65 @@
 <div class="full-xy flex-center absolute full-xy top-0 left-0">
-    <ul class="flex-wrap-center p15-grid" on-init="s:[init-all-scale:public]">
-        <li class='width-20p'>
-            <div class="bg-transparent border-dashed border-slate border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2">
-                <h1 class="txt-azure height-50p weight-900 opacity-50p semibold">
-                    1 Property Iteration
-                </h1>
-            </div>
-        </li>
-        <li class='width-20p p20xy' ng-repeat="direction in ['f', 'r', 'a', 'ar']">
+    <ul class="flex-wrap-center p15-grid full-x" on-init="s:[init-all-scale:public]">
+        <li class='width-20p p20xy'>
             <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-after="init-all-scale"
 
-                on-init="a:[scaleInX-subtle:2500:linear:0:2:a]">
+                on-init="a:[scaleInX-subtle:1000:linear:0:4:f]">
                 <h1 class="txt-azure txt-2 height-50p weight-900 opacity-50p semibold txt-center full-x">
-                    1 iteration <br>
+                    4 iteration <br>
                 </h1>
                 <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
                     <li class='m05y border-white weight-900 txt-1 uppercase  p10x txt-center txt-white bg-transparent'>
                         <span class='opacity-50p'>direction:</span>
-                        {{direction}}
+                        Forward
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class='width-20p p20xy'>
+            <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
+                init-after="init-all-scale"
+
+                on-init="a:[scaleInX-subtle:1000:linear:0:4:r]">
+                <h1 class="txt-azure txt-2 height-50p weight-900 opacity-50p semibold txt-center full-x">
+                    4 iteration <br>
+                </h1>
+                <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
+                    <li class='m05y border-white weight-900 txt-1 uppercase  p10x txt-center txt-white bg-transparent'>
+                        <span class='opacity-50p'>direction:</span>
+                        Reverse
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class='width-20p p20xy'>
+            <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
+                init-after="init-all-scale"
+
+                on-init="a:[scaleInX-subtle:1000:linear:0:4:a]">
+                <h1 class="txt-azure txt-2 height-50p weight-900 opacity-50p semibold txt-center full-x">
+                    4 iteration <br>
+                </h1>
+                <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
+                    <li class='m05y border-white weight-900 txt-1 uppercase  p10x txt-center txt-white bg-transparent'>
+                        <span class='opacity-50p'>direction:</span>
+                        Alternate
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class='width-20p p20xy'>
+            <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
+                init-after="init-all-scale"
+
+                on-init="a:[scaleInX-subtle:1000:linear:0:4:ar]">
+                <h1 class="txt-azure txt-2 height-50p weight-900 opacity-50p semibold txt-center full-x">
+                    4 iteration <br>
+                </h1>
+                <ul class='full-x flex-wrap-center txt-azure weight-500 grid'>
+                    <li class='m05y border-white weight-900 txt-1 uppercase  p10x txt-center txt-white bg-transparent'>
+                        <span class='opacity-50p'>direction:</span>
+                        Alternate Reverse
                     </li>
                 </ul>
             </div>

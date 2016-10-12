@@ -248,7 +248,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function applySendAnimProp(scope, element, actions, context, cb) {
-        console.log('activating', actions.anim)
         if (actions.prop) {
           if ('prop' in actions.delays) {
               $timeout(function() {
