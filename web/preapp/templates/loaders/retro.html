@@ -21,7 +21,7 @@
 				<div class="mask"></div>
 			</div>
 			<div class="logo"
-				ng-include="'preapp/templates/loaders/props/logo.html'"
+				ng-include="'preapp/templates/loaders/logo/main.html'"
 				init-with="p:[tr:translateY(350px), tro:center center]"
 				when-portal-open="p:[transform:translateY(350px) scale(0.5):translateY(0px) scale(1):500:easeOutExpo easeInOutBack]:delay-500"
 				when-portal-complete="p:[transform:translateY(0px):translateY(350px):150:easeInOutBack]:delay-1250">
@@ -30,7 +30,7 @@
 				init-with="p:[tr:translateY(400px), tro:center top]"
 				when-portal-open="p:[transform:translateY(400px) scale(0.8):translateY(45px) scale(1):500:easeOutBack easeOutBack]:delay-900"
 				when-portal-complete="p:[transform:translateY(0px):translateY(350px):200:easeInBack]:delay-900">
-				<div ng-include="'preapp/templates/loaders/props/guru.html'"
+				<div ng-include="'preapp/templates/loaders/guru/retro.html'"
 					init-with="p:[tro:center top]"
 					when-portal-open="s:[portal-hover:public:delay-950]"
 					when-portal-hover="a:[l-head-hover:set:(dur:800ms#func:cubic-bezier(.88#.34#.05#.68)#count:3):in]:delay-1000 | s:[warp-vehicles-init:public]">
