@@ -11,7 +11,7 @@
             <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-with="p:[transform:scale(0)]"
                 init-after="init-all-scale"
-                on-init="a:[scale:0:1:1000:easeOutCirc:0:1:{{direction}}]">
+                on-init="a:[scale:0:1:1000:easeOutCirc:0:i:{{direction}}]">
                 <h1 class="txt-azure txt-2 height-50p weight-900 opacity-50p semibold txt-center full-x">
                     1 iteration <br>
                 </h1>
