@@ -178,6 +178,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
 
       function registerAnimationListeners(scope, element, attr, actions, context) {
+        // if (context.name && (context.name.toLowerCase() === 'init' || context.name.toLowerCase() === '') return;
         var name = context.name
         var baseName = 'when-' + name;
         var classWatcher = [];
@@ -188,10 +189,13 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           classWatcher.push(scopeNameSplit[0])
           var scopeTitle = UtilitiesService.camelCase(listenFor);
           var scopeTitle = scopeTitle.split(':')[0]
-          var scopeTitle = scopeTitle.split(':')[0];
             if (!('when' in scope.root.public.customStates)) {
               scope.root.public.customStates['when'] = {};
               scope.root.public.customStates['when'][scopeTitle] = false;
+            }
+            if (!('after' in scope.root.public.customStates)) {
+              scope.root.public.customStates['after'] = {};
+              scope.root.public.customStates['after'][scopeTitle] = false;
             }
             var hasDelay = parseFloat(scopeNameSplit[1])
             if (scope.root.public.customStates['when'][scopeTitle]) {
@@ -200,8 +204,9 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               } else {
                 applySendAnimProp(scope, element, actions, context, registerWatchFunctionCallback);
               }
-            } else {
-              registerWatchFunction(scopeName, hasDelay);
+            } else if (['wheninit', 'whenwith'].indexOf(scopeTitle.toLowerCase()) === -1) {
+              scopeName = scopeName.replace('.when.', '.after.');
+              registerWatchFunction(scopeName, parseInt(hasDelay));
             }
         }
 
@@ -212,14 +217,18 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         }
 
         function registerWatchFunction(scope_name, hasDelay) {
-          return scope.$watch(scopeName, function(_new, _old) {
-
+          return scope.$parent.$watch(scopeName, function(_new, _old) {
+            if (_new && parseInt(_new) && hasDelay) {
+              hasDelay = hasDelay + _new;
+            };
             if (hasDelay) {
               $timeout(function() {
+                console.log('applying', scope, element, actions, context, hasDelay);
                 applySendAnimProp(scope, element, actions, context)
               }, hasDelay)
             } else {
-              if (_new && _old === false) {
+              if (_new) {
+                console.log('applying', scope, element, actions, context, hasDelay);
                 applySendAnimProp(scope, element, actions, context)
               }
             }
@@ -240,7 +249,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           registerAnimationListeners(scope, element, attr, actions, context)
 
           element.on(name,function(e) {
-            console.log('initializing', element, actions, context)
             // delete actions['send']
               applySendAnimProp(scope, element, actions, context)
           })
@@ -287,15 +295,17 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           }
 
           if (actions.send) {
+            applySendArgsAndCallback(element, scope, actions.send, actions.delays.send)
+            // if ('send' in actions.delays) {
 
-            if ('send' in actions.delays) {
-              $timeout(function() {
-                console.log('sending', element, scope, actions.send)
-                applySendArgsAndCallback(element, scope, actions.send);
-              }, actions.delays.send)
-            } else {
-              applySendArgsAndCallback(element, scope, actions.send);
-            }
+            //   // console.log(actions.delays.send)
+            //   // $timeout(function() {
+            //   //   console.log('sending', element, scope, actions.send)
+            //   //   ;
+            //   // }, actions.delays.send)
+            // } else {
+            //   applySendArgsAndCallback(element, scope, actions.send);
+            // }
           }
           cb && cb();
       }
@@ -395,15 +405,15 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         // player.play();
       }
 
-      function applySendArgsAndCallback(element, scope, messages) {
-
+      function applySendArgsAndCallback(element, scope, messages, global_delay) {
+        global_delay = global_delay || 0;
         messages.split(',').forEach(function(msg, i) {
           if (!rShortcuts.cmds) {
             rShortcuts.cmds = RootService.animations.customShortcuts.cmds;;
           }
+
           if (msg in rShortcuts.cmds) {
             msg = rShortcuts.cmds[msg];
-            console.log(msg)
           }
           var msgSplit = msg.split(':')
           var iMsg = msgSplit[0].trim();
@@ -413,7 +423,11 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
 
           if (msgSplit.length > 2) {
-            msgDelay = parseInt(msgSplit[2].replace('delay-', ''));
+            msgDelayArr = msgSplit.slice(2);
+            if (msgDelayArr.length) {
+              msgDelay = parseInt(msgDelayArr[0]) + global_delay;
+            }
+
           }
 
           // if (msgScope.trim() ==='self') {
@@ -430,18 +444,23 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           console.log('sending', iMsg, 'with delay', msgDelay)
           if (msgDelay) {
             $timeout(function() {
-              scope.root.public.customStates.when[_attr.camel] = true;
+
+              scope.root.public.customStates.when[_attr.camel] = msgDelay || true;
+              scope.root.public.customStates.after[_attr.camel] = msgDelay || true;
 
               $timeout(function() {
-                scope.$apply();
+                // scope.$apply();
                 scope.root.public.customStates.when[_attr.camel] = false;
+                scope.root.public.customStates.after[_attr.camel] = msgDelay || false;
               })
             }, msgDelay)
           } else {
             scope.root.public.customStates.when[_attr.camel] = true;
+            scope.root.public.customStates.after[_attr.camel] = true;
             $timeout(function() {
               scope.$apply();
               scope.root.public.customStates.when[_attr.camel] = false;
+              scope.root.public.customStates.after[_attr.camel] = false;
             })
 
             // console.log(_attr.camel)

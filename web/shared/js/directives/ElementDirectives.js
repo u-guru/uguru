@@ -56,14 +56,16 @@ angular.module('uguru.shared.directives')
                     var whenAttrListeners = [];
                     scope.transcludeComplete = false;
                     transclude(scope, function(clone, innerScope) {
-                      whenAttr.forEach(function(attr_name, i) {
-                        var iListen = scope.$watch('root.public.customStates.when.' + attr_name, function(val, new_val) {
-                          // console.log(lElem, whenAttr, val, new_val)
-                          if (val) {
 
-                            whenAttrListeners.forEach(function(i_listener, j) {
-                              i_listener();
-                            })
+                      whenAttr.forEach(function(attr_name, i) {
+                        console.log('rendering init after', attr_name)
+                        var iListen = scope.$watch('root.public.customStates.after.' + attr_name, function(val, new_val) {
+
+                          if (val) {
+                            console.log(val)
+                            whenAttrListeners[i]();
+                            // whenAttrListeners.forEach(function(i_listener, j) {
+                            // })
 
                             lElem[0].removeAttribute('init-after');
                             if (lAttr.ngIncludeAfter) {

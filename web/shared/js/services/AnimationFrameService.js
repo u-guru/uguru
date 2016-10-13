@@ -1140,7 +1140,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             }
 
             if (result.name === 'counter') {
-              convertStreamEventIntoCounter(result);
+              convertStreamEventIntoCounter(elem, result);
             }
 
             if (debug) {
@@ -1238,7 +1238,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
       }
 
-      function convertStreamEventIntoCounter(result) {
+      function convertStreamEventIntoCounter(elem, result) {
         var options = {prefix: '', suffix:''};
 
               result.values.forEach(function(val, i) {
