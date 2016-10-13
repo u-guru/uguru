@@ -11,7 +11,7 @@
             <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-with="p:[transform:scale(0)]"
                 init-after="init-all-scale"
-                on-init="a:[scale:0:1:500:linear:0:1:f]">
+                on-init="a:[scaleX:0:1:500:(0.17,0.67,0.83,0.67):0:1:f]">
                 <h1 class="txt-azure height-50p weight-900 opacity-50p semibold txt-center full-x">
                     Scale
                 </h1>
