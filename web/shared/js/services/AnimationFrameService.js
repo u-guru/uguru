@@ -120,7 +120,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
         function getTickInitFunc(tick) {
           return function(stream) {
-
             tick.direction.current = getTickDirection(tick.cycleIndex, tick.direction);
             tick.direction.current === 'r' && stream.values.reverse();
           }
@@ -130,6 +129,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
           tick.infinite = stream.iter.infinite;
           if (tick.infinite) {
+            // @jeselle-infinite, @gabrielle-infinite
             stream.iter.count.total = 100;
           }
           tick.cycle = {

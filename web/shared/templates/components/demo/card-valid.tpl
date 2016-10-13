@@ -186,7 +186,7 @@
 				            <circle class="off-valid" fill-opacity="0.75" fill="#757575" cx="50" cy="121" r="10"></circle>
 				            <circle class="off-invalid" fill="#757575" cx="95" cy="121" r="10"
 								u init-with="p:[fill-opacity:0.75]"
-								when-card-swipe="p:[fill-opacity:0:75:0:100:easeInOutSine:0:5:a]:delay-3000"></circle>
+								when-card-swipe="p:[fill-opacity:0:75:0:150:easeInOutSine:0:5:a]:delay-3000"></circle>
 						</g>
 						<g class="reader">
 							<rect class="led" stroke="#0F0F2F" stroke-width="3" fill="#2B3234" x="40" y="146" width="251" height="46"></rect>
