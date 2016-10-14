@@ -14,12 +14,12 @@
                 1. "send&nbsp;:<span class='weight-700'>&nbsp;self "</span>
             </li>
             <li class='width-20p'>
-                <div class='txt-1' u on-init="s:[scale-subtle:self:100]:delay-100" when-scale-subtle="a:[scaleInX-subtle:1000:linear:100:1:f]:delay-100">
+                <div class='txt-1' u on-init="s:[scale-subtle:self]" when-scale-subtle="a:[scaleInX-subtle:1000:linear:800:1:f]">
                     4x Delay = 400ms
                 </div>
             </li>
             <li class='width-20p'>
-                <div class='txt-1' u on-init="s:[scale-subtle:self:200]:delay-200" when-scale-subtle="a:[scaleInX-subtle:1000:linear:200:1:f]:delay-200">
+                <div class='txt-1' u on-init="s:[scale-subtle:self:200]:delay-200" when-scale-subtle="a:[scaleInX-subtle:1000:linear:0:1:f, scaleInX-subtle:1000:linear:0:1:f, scaleInX-subtle:1000:linear:200:1:f]:delay-400">
                     4x Delay = 800ms
                 </div>
             </li>
@@ -61,7 +61,7 @@
             </li>
 
             <li class='width-20p'>
-                <div class='txt-1' u on-init="s:[scale-subtle-three:parent:4000]:delay-500">
+                <div class='txt-1' u on-init="s:[scale-subtle-one:public:7000]:delay-500">
                     Scale-subtle-three +4500/+200
                 </div>
             </li>
@@ -72,13 +72,13 @@
     </div>
 
     <div class='full-x overflow-auto height-20p' >
-        <ul class='grid flex-vertical-center full-x overflow-x' u when-scale-subtle-one-public="a:[scaleInX-subtle:500:linear:100:1:f]:delay-100"
+        <ul class='grid flex-vertical-center full-x overflow-x' u on-init="s:[scale-subtle-one-public:public:100]:delay-100"
         >
             <li class='flex-start width-30p border-2-right m20x text-left border-solid border-white'>
                 2. "send&nbsp;:<span class='weight-700'>&nbsp;public"</span>
             </li>
             <li class='width-20p'>
-                <div class='txt-1' u on-init="s:[scale-subtle-one-public:public:100]:delay-100">
+                <div class='txt-1' u when-scale-subtle-one-public="a:[scaleInX-subtle:500:linear:100:1:f]:delay-100">
                     Scale-subtle-one 400ms
                 </div>
             </li>
