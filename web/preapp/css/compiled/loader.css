@@ -2189,6 +2189,7 @@
     transform: none !important; } }
 /*-- UI.GURU */
 .ui-guru-scene {
+  opacity: 0.75;
   position: absolute;
   top: 50%;
   left: 50%;
