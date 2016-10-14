@@ -1,5 +1,5 @@
 <div class="full-xy flex-center absolute full-xy top-0 left-0">
-    <ul class="flex-wrap-center p15-grid" on-init="s:[init-all-scale:public]">
+    <ul class="flex-wrap-center p15-grid" u on-init="s:[init-all-scale:public]">
         <li class='width-20p'>
             <div class="bg-transparent border-dashed border-slate border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2">
                 <h1 class="txt-azure height-50p weight-900 opacity-50p semibold">

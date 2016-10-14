@@ -9,8 +9,11 @@ angular.module('uguru.shared.controllers', [])
   'RootService',
   'XHRService',
   '$compile',
-  function($scope, $state, $timeout, RootService, XHRService, $compile) {
+  '$rootScope',
+  function($scope, $state, $timeout, RootService, XHRService, $compile, $rootScope) {
     var root = this;
+    root.scope = $rootScope;
+    root.scope.public = {customStates: {when: {}}};
     root.window = getBodyDimensions();
     root.base_url = RootService.getBaseUrl();
     root.local = window.location.href.split(':8100').length > 1;
