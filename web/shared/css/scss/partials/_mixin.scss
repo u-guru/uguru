@@ -405,20 +405,23 @@
 $links: 'a:active, a:focus, a:hover';
 $buttons: 'button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:focus, a[class*=btn]:hover';
 
-
+// neutrals
 $charcoal: #2B3234;
 $slate: #40484B;
+$rocket: #696269;
 $taupe: #757575;
 $campus: #8A9EA3;
 $smoke: #F1F1F1;
 
-$rocket: #696269;
-$shamrock: #69B3A5;
+// universal
 $robin: #2BB3B8;
 $lake: #50A5DD;
 
 $moxie: #43cb9d;
 $crimson: #d3242c;
+
+// default
+$shamrock: #69B3A5;
 
 $auburn: #F04F54;
 $orange: #E5753C;
@@ -429,23 +432,37 @@ $cobalt: #7872e3;
 $eggplant: #9A5BC5;
 $cerise: #e6389b;
 
+// ui.guru
+$aero: mix(lighten(desaturate($shamrock, 20%), 20%), #7EB1B6);
+
+$copper: mix(darken(desaturate($auburn, 40%), 20%), #7EB1B6, 80%);
+$sienna: lighten(mix($orange, $auburn, 40%), 5%);
+$cream: lighten(mix($gold, $auburn, 80%), 20%);
+$olive: darken(mix(desaturate($moola, 20%), $orange, 70%), 5%);
+$neptune: mix(desaturate($azure, 20%), #7EB1B6);
+$stone: darken(mix(desaturate($cobalt, 50%), #7EB1B6, 80%), 25%);
+$cosmic: darken(mix(desaturate($eggplant, 30%), desaturate($cerise, 30%), 60%), 20%);
+$rose: lighten(mix(desaturate($cerise, 20%), $orange, 60%), 10%);
+
+// metals
 $first: #e8c480;
 $second: #c8bbc9;
 $third: #c5857c;
 
+// social
 $facebook: #3b5998;
 $facebook-light: #6279B1;
 $instagram: #517fa4;
 $linkedin: #007bb6;
 $twitter: #00aced;
 
-$beige: #FFFDFA;
-
+// powerups
 $gpa: mix($azure, $robin);
 $munchies: mix($auburn, $orange, 75%);
 $sound: mix($cobalt, $eggplant);
 $transit: mix($moola, $moxie);
 
+// team
 $gabrielle: #F5C8BF;
 $jeselle: #7DD7D6;
 $jason: desaturate(mix($cobalt, $eggplant, 60%), 15%);

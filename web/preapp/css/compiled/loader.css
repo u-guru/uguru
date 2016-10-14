@@ -2219,7 +2219,7 @@
     opacity: 1; }
   100% {
     opacity: 0; } }
-@keyframes l-progress {
+@keyframes portal-progress {
   0% {
     stroke: #69B3A5;
     stroke-dashoffset: 1207; }
@@ -2244,7 +2244,7 @@
   100% {
     stroke: #F6C64E;
     stroke-dashoffset: 0; } }
-@keyframes l-progress-color {
+@keyframes portal-progress-color {
   0% {
     stroke: #69B3A5; }
   10% {
@@ -2554,7 +2554,7 @@
   animation: l-portal 1000ms linear forwards; }
 
 .portal-progress {
-  animation: l-progress 3000ms linear both; }
+  animation: portal-progress 3000ms linear both; }
 
 .portal-logo-move-up {
   animation: l-move-up 1000ms linear forwards; }
@@ -2644,7 +2644,7 @@
       .default.loader-portal .portal > div:not(.mask) svg circle {
         stroke-dasharray: 1207;
         stroke-dashoffset: 1207;
-        animation: l-progress 3000ms linear 2000ms forwards; }
+        animation: portal-progress 3000ms linear 2000ms forwards; }
   .default.loader-portal .logo {
     position: absolute;
     top: 40px;
