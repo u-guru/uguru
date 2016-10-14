@@ -15,6 +15,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       var stateShortcuts = {};
       var rAnimations;
       var stateTypes = ['on', 'when', 'init'];
+      var delayMatchStr =  ['delay-', 'd-', 'd', '+'];
       var onStateMappings = {
         'init': 'ready'
       }
@@ -113,14 +114,16 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function renderState(elem, name, value, name_camel) {
-        var state = {type: null, name: {camel: name_camel, dash:name}};
+        var state = {type: null, nameCamel: '', name: {camel: name_camel, dash:name}};
         state.type = detectStateType(name, name_camel);
 
         if (!isValidState(state.type)) return;
+        console.log('rendering', name, value)
         var parsedArgs = getParsedArgsByType(elem, state.type, name.split('-').splice(1), value)
 
         state.name = parsedArgs[state.type];
         state.actions = parsedArgs.actions;
+        state.nameCamel = parsedArgs.fullNameCamel;
         state.exec = getStateFunc(state.type, state.name, parsedArgs.actions);
         return state;
       }
@@ -149,7 +152,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                   // scope.$apply();
                 });
               }
-              registerAnimationListeners(scope, element, attr, actions, context);
+              // registerAnimationListeners(scope, element, attr, actions, context);
               applySendAnimProp(scope, element, actions, context);
               // applyPropsToElement(element, actions.prop, rShortcuts);
             }
@@ -164,46 +167,137 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           }
           if (type === 'when') {
 
-            return function(element, scope, attr) {
+            return function(element, scope, attr, updated_actions) {
               $timeout(function() {
                 if (name.indexOf('-debug') > -1) {
                   name = name.replace('-debug', '');
                 }
                 registerAnimationListeners(scope, element, attr, actions, context);
               })
+
+              // if (delays) {
+              //   actions.delays = delays;
+              // }
+              console.log('updated', actions)
+              if (actions && actions.send && actions.delays&& actions.delays.send.indexOf('[object') > -1|| (updated_actions && updated_actions.send && updated_actions.delays.send.indexOf('[object') > -1)) {
+                return;
+              }
+              applySendAnimProp(scope, element, updated_actions || actions, context);
             }
           }
       }
 
+      function parseDelayFromState(key, action_dict) {
+        var delayDict = action_dict && action_dict.delays;
+        if (!action_dict) return;
+        var extStrToParseSplit = action_dict['raw'] && key in action_dict['raw'] && action_dict['raw'][key].split(']:');
+        if (!delayDict) {
+          delayDict = {external: 0, internal: 0};
+        }
+        if (extStrToParseSplit && extStrToParseSplit.length > 1) {
+          delayDict.external = getExternalDelay(':' + extStrToParseSplit[1], delayMatchStr);
+        }
+        var intStrToParseSplit = action_dict['raw'] && key in action_dict['raw'] && action_dict['raw'][key].split(']')[0].split('[')[1];
+        delayDict.internal = getInternalDelay(key, intStrToParseSplit, delayMatchStr)
 
+        if (key === 'send') {
+          action_dict.delays[key] = delayDict;
+
+        }
+        // console.log(action_dict)
+        // var extDelay =
+        // action_dict[key] = parsedSend;
+
+
+      }
+
+      function getInternalDelay(key, int_str, delay_match_strs) {
+          result = {};
+          var argTypeStr = {'a': 'anim', 's': 'send', 'p': 'prop'};
+          if (key.length === 1) {
+            key = argTypeStr[key]
+          }
+          if (key === 'send') {
+            int_str = UtilitiesService.replaceAll(int_str, ', ', ',')
+            var msgArr = int_str.split(',');
+            msgArr.forEach(function(msg, i) {
+              if (msg.split(':').length > 2) {
+                var msgSplit =msg.split(':')
+                var msgName = msgSplit[0];
+                var delay = msgSplit[2];
+                result[msgName] = parseInt(delay);
+              }
+            })
+          }
+
+          if (!Object.keys(result).length) {
+            result = null;
+          }
+          return result;
+        }
+
+        function getExternalDelay(ext_str, delay_match_strs) {
+          if (!delay_match_strs) {
+            delay_match_strs = ['delay-', 'd-', 'd', '+'];
+          }
+          var result = 0;
+          var extArgs = ext_str.split(':').filter(function(arg, i) {return arg && arg.length});
+
+          extArgs.forEach(function(e_arg, i) {
+
+            delay_match_strs.forEach(function(d, j) {
+              if (e_arg.indexOf(d) > -1 && !result) {
+
+                var strDelay = e_arg.replace(d, '');
+                result = parseInt(strDelay);
+              }
+            })
+          })
+
+          return result;
+        }
 
       function registerAnimationListeners(scope, element, attr, actions, context) {
-        var name = context.name
-        var baseName = 'when-' + name;
-        var classWatcher = [];
-        for (key in actions) {
-          var listenFor = baseName;
-          var scopeNameSplit=  UtilitiesService.camelCase(listenFor).split(':');
-          var scopeName = 'root.public.customStates.when.' + scopeNameSplit[0];
-          classWatcher.push(scopeNameSplit[0])
-          var scopeTitle = UtilitiesService.camelCase(listenFor);
-          var scopeTitle = scopeTitle.split(':')[0]
-          var scopeTitle = scopeTitle.split(':')[0];
-            if (!('when' in scope.root.public.customStates)) {
-              scope.root.public.customStates['when'] = {};
-              scope.root.public.customStates['when'][scopeTitle] = false;
-            }
-            var hasDelay = parseFloat(scopeNameSplit[1])
-            if (scope.root.public.customStates['when'][scopeTitle]) {
-              if (hasDelay) {
-                $timeout(function() {applySendAnimProp(scope, element, actions, context, registerWatchFunctionCallback)}, hasDelay);
-              } else {
-                applySendAnimProp(scope, element, actions, context, registerWatchFunctionCallback);
-              }
-            } else {
-              registerWatchFunction(scopeName, hasDelay);
-            }
-        }
+        console.log
+        // for (var key in actions) {
+        //   var hasDelay = parseDelayFromState(actions[key]);
+        //   console.log(actions)
+        // }
+
+
+
+        console.log(actions)
+        // if (context.name && (context.name.toLowerCase() === 'init' || context.name.toLowerCase() === '') return;
+        // var name = context.name
+        // var baseName = 'when-' + name;
+        // var classWatcher = [];
+        // for (key in actions) {
+        //   var listenFor = baseName;
+        //   var scopeNameSplit=  UtilitiesService.camelCase(listenFor).split(':');
+        //   var scopeName = 'root.public.customStates.when.' + scopeNameSplit[0];
+        //   classWatcher.push(scopeNameSplit[0])
+        //   var scopeTitle = UtilitiesService.camelCase(listenFor);
+        //   var scopeTitle = scopeTitle.split(':')[0]
+        //     if (!('when' in scope.root.public.customStates)) {
+        //       scope.root.public.customStates['when'] = {};
+        //       scope.root.public.customStates['when'][scopeTitle] = false;
+        //     }
+        //     if (!('after' in scope.root.public.customStates)) {
+        //       scope.root.public.customStates['after'] = {};
+        //       scope.root.public.customStates['after'][scopeTitle] = false;
+        //     }
+        //     var hasDelay = parseFloat(scopeNameSplit[1])
+        //     if (scope.root.public.customStates['when'][scopeTitle]) {
+        //       if (hasDelay) {
+        //         $timeout(function() {applySendAnimProp(scope, element, actions, context, registerWatchFunctionCallback)}, hasDelay);
+        //       } else {
+        //         applySendAnimProp(scope, element, actions, context, registerWatchFunctionCallback);
+        //       }
+        //     } else if (['wheninit', 'whenwith'].indexOf(scopeTitle.toLowerCase()) === -1) {
+        //       scopeName = scopeName.replace('.when.', '.after.');
+        //       registerWatchFunction(scopeName, parseInt(hasDelay));
+        //     }
+        // }
 
         function registerWatchFunctionCallback(scope_name) {
           return function() {
@@ -212,14 +306,18 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         }
 
         function registerWatchFunction(scope_name, hasDelay) {
-          return scope.$watch(scopeName, function(_new, _old) {
-
+          return scope.$parent.$watch(scopeName, function(_new, _old) {
+            if (_new && parseInt(_new) && hasDelay) {
+              hasDelay = hasDelay + _new;
+            };
             if (hasDelay) {
               $timeout(function() {
+                console.log('applying', scope, element, actions, context, hasDelay);
                 applySendAnimProp(scope, element, actions, context)
               }, hasDelay)
             } else {
-              if (_new && _old === false) {
+              if (_new) {
+                console.log('applying', scope, element, actions, context, hasDelay);
                 applySendAnimProp(scope, element, actions, context)
               }
             }
@@ -230,17 +328,18 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
       function applyOnToElement(scope, element, attr, actions, context) {
         var name = context.name;
-        if (name === 'init') {
-          registerAnimationListeners(scope, element, attr, actions, context)
+        console.log('applying on', actions, name)
+        if (name === 'init' || typeof(name) === 'object' && name.indexOf('init') > -1) {
+          // registerAnimationListeners(scope, element, attr, actions, context)
 
           element.ready(function(e) {
+
             applySendAnimProp(scope, element, actions, context);
           })
         } else {
-          registerAnimationListeners(scope, element, attr, actions, context)
+          // registerAnimationListeners(scope, element, attr, actions, context)
 
           element.on(name,function(e) {
-            console.log('initializing', element, actions, context)
             // delete actions['send']
               applySendAnimProp(scope, element, actions, context)
           })
@@ -248,6 +347,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function applySendAnimProp(scope, element, actions, context, cb) {
+        console.log(actions)
         if (actions.prop) {
           if ('prop' in actions.delays) {
               $timeout(function() {
@@ -259,6 +359,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           };
           if (actions.anim) {
             actions.anim = condenseAnimationsAndShortcuts(scope, actions.anim.replace(':delay-0', ''));
+            console.log(actions.delays.anim, actions.anim)
             // embeddedAnimDelayArr = [];
             if ('anim' in actions.delays && actions.delays.anim > 0) {
 
@@ -268,14 +369,14 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                 animStrSplit.forEach(function(single_anim, j) {
                   var singleAnimSplit = single_anim.split(':');
 
-                  if (singleAnimSplit.length < 7) {
-                    singleAnimSplit[2] = parseFloat(singleAnimSplit[2]) + actions.delays['anim'];
+                  if (singleAnimSplit.length < 8) {
+                    singleAnimSplit[3] = parseFloat(singleAnimSplit[3]) + actions.delays['anim'];
                   } else {
                     singleAnimSplit[5] = parseFloat(singleAnimSplit[5]) + actions.delays['anim'];
                   }
                   animArr.push(singleAnimSplit.join(':'));
                 })
-
+                actions.anim = animArr.join(",")
                 // embeddedAnimDelayArr.push(animArr)
               // })
               // if (embeddedAnimDelayArr && embeddedAnimDelayArr.length) {
@@ -288,14 +389,17 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
           if (actions.send) {
 
-            if ('send' in actions.delays) {
-              $timeout(function() {
-                console.log('sending', element, scope, actions.send)
-                applySendArgsAndCallback(element, scope, actions.send);
-              }, actions.delays.send)
-            } else {
-              applySendArgsAndCallback(element, scope, actions.send);
-            }
+            applySendArgsAndCallback(element, scope, actions.send, actions.delays.send)
+            // if ('send' in actions.delays) {
+
+            //   // console.log(actions.delays.send)
+            //   // $timeout(function() {
+            //   //   console.log('sending', element, scope, actions.send)
+            //   //   ;
+            //   // }, actions.delays.send)
+            // } else {
+            //   applySendArgsAndCallback(element, scope, actions.send);
+            // }
           }
           cb && cb();
       }
@@ -335,7 +439,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function applyAnimArgs(element, scope, animations, context) {
-
+        console.log(animations)
         var stateName = context.type + '-' + context.name;
         var defaults = {"kf":60,"autoPlay":false,"toolbar":{},"hidePlot":false}
         var animDelay = 0;
@@ -385,63 +489,150 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         // else {
 
           if (!player.active) {
-        //     console.log('it should play again')
-            // player = player.scheduleStream(player, state, 0);
-            // player.active = true;
               player.play(player);
           }
-
-        // }
-        // player.play();
       }
 
-      function applySendArgsAndCallback(element, scope, messages) {
+      function applySendArgsAndCallback(element, scope, messages, delay_dict) {
+        if (!delay_dict) {
+          delay_dict = {internal: {}, external:0}
+        };
+        global_delay = delay_dict || 0;
 
         messages.split(',').forEach(function(msg, i) {
           if (!rShortcuts.cmds) {
             rShortcuts.cmds = RootService.animations.customShortcuts.cmds;;
           }
+
           if (msg in rShortcuts.cmds) {
             msg = rShortcuts.cmds[msg];
-            console.log(msg)
           }
           var msgSplit = msg.split(':')
           var iMsg = msgSplit[0].trim();
+          var msgName = iMsg;
           var msgScope = msgSplit[1].trim();
 
-          var msgDelay = 0;
 
 
-          if (msgSplit.length > 2) {
-            msgDelay = parseInt(msgSplit[2].replace('delay-', ''));
+          var internalDelay = msgName in delay_dict.internal && delay_dict.internal[msgName] || 0;
+          var msgDelay = delay_dict.external +internalDelay;
+          var fullMsgName = ['when',msgName].join('-')
+
+
+          if (msgScope === 'self') {
+
+            if (fullMsgName in scope.states) {
+              var stateRef = scope.states[fullMsgName];
+              if (stateRef.actions) {
+                var infoStates = ['raw', 'delays'];
+                for (key in stateRef.actions) {
+                  if (infoStates.indexOf(key) === -1) {
+                    if (!(key in stateRef.actions.delays)) {
+                      stateRef.actions.delays[key] = 0;
+                    }
+
+                    stateRef.actions.delays[key] += msgDelay
+                  }
+                }
+                stateRef.func && stateRef.func(stateRef.actions, scope);
+              }
+            }
           }
-
-          // if (msgScope.trim() ==='self') {
-          //     if (!msgDelay) {
-
-          //       // element[0].classList.add('when-' + msgScope)
-          //     }
-          //     return;
-          // }
-
-
-          var _attr = {dashed: iMsg, camel: UtilitiesService.camelCase('when-' + iMsg)};
-          _attr.camel = _attr.camel.replace(' ', '-')
-          console.log('sending', iMsg, 'with delay', msgDelay)
-          if (msgDelay) {
-            $timeout(function() {
-              scope.root.public.customStates.when[_attr.camel] = true;
-
-              $timeout(function() {
-                scope.$apply();
-                scope.root.public.customStates.when[_attr.camel] = false;
+          else if (msgScope === 'parent') {
+            var elementFound = false;
+              scope.$parent.public.customStates.whenElements.forEach(function(elem, i) {
+                if (!elementFound && elem.contains(element[0])) {
+                  elementFound = elem;
+                  return;
+                }
               })
-            }, msgDelay)
-          } else {
+              var camelName = UtilitiesService.camelCase(fullMsgName);
+              if (elementFound && !scope.$parent.public.customStates.when[camelName]) {
+                console.log('editing parent scope', scope.$parent.public.customStates.when, camelName)
+                scope.$parent.public.customStates.when[camelName] = true;
+
+                $timeout(function() {
+                  scope.$parent.public.customStates.when[camelName] = false;
+                })
+                var stateRef = scope.$parent.states[fullMsgName];
+                if (stateRef.actions) {
+                var infoStates = ['raw', 'delays'];
+                for (key in stateRef.actions) {
+                  if (infoStates.indexOf(key) === -1) {
+                    if (!(key in stateRef.actions.delays)) {
+                      stateRef.actions.delays[key] = 0;
+                    }
+
+                    stateRef.actions.delays[key] += msgDelay
+                  }
+                }
+                stateRef.func && stateRef.func(stateRef.actions, scope);
+              }
+                // scope.$parent.public.customStates.when[camelName] = elementFound;
+              }
+          }
+          else if(msgScope === 'public' && fullMsgName in scope.root.scope.public.customStates) {
+
+            var stateRef = scope.root.scope.public.customStates[fullMsgName];
+            console.log('public', fullMsgName, scope.root.scope.public.customStates)
+            console.log(stateRef)
+            if (stateRef.actions) {
+              var infoStates = ['raw', 'delays'];
+              for (key in stateRef.actions) {
+                if (infoStates.indexOf(key) === -1) {
+                  if (!(key in stateRef.actions.delays)) {
+                    stateRef.actions.delays[key] = 0;
+                  }
+
+                  stateRef.actions.delays[key] += msgDelay
+                }
+              }
+              stateRef.func && stateRef.func(stateRef.actions, scope);
+            }
+          }
+          // if (stateRef.)
+
+          //todo :finishSelf --> remove listener
+          //todo :public set $rootScope
+          //todo :children --> set scope
+          //todo :siblings --> set parent scope
+          //todo :nth --> set
+
+
+
+
+
+          // else if(msgDelay) {
+          //   var _attr = {dashed: msgName, camel: UtilitiesService.camelCase('when-' + msgName)};
+          //   _attr.camel = _attr.camel.replace(' ', '-')
+
+          //   $timeout(function() {
+          //     if (!scope.root.public.customStates.when) {
+          //       scope.root.public.customStates.when = {};
+          //       scope.root.public.customStates.after = {};
+          //     }
+          //     scope.root.public.customStates.when[_attr.camel] = msgDelay || true;
+          //     scope.root.public.customStates.after[_attr.camel] = msgDelay || true;
+
+          //     $timeout(function() {
+          //       // scope.$apply();
+          //       scope.root.public.customStates.when[_attr.camel] = false;
+          //       scope.root.public.customStates.after[_attr.camel] = msgDelay || false;
+          //     })
+          //   }, msgDelay)
+           else {
+            var _attr = {dashed: msgName, camel: UtilitiesService.camelCase('when-' + msgName)};
+            _attr.camel = _attr.camel.replace(' ', '-')
+            if (!scope.root.public.customStates.when) {
+              scope.root.public.customStates.when = {};
+              scope.root.public.customStates.after = {};
+            }
             scope.root.public.customStates.when[_attr.camel] = true;
+            scope.root.public.customStates.after[_attr.camel] = true;
             $timeout(function() {
               scope.$apply();
               scope.root.public.customStates.when[_attr.camel] = false;
+              scope.root.public.customStates.after[_attr.camel] = false;
             })
 
             // console.log(_attr.camel)
@@ -545,69 +736,60 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         var argDict = {};
 
 
+        remainderStateName = state_args;
         state_args = getStateArgsFromValue(state_args, arg_value);
 
-        argDict[state_type] = configureNameFromArgs(state_type, state_args)
+
+        if (state_type === 'when') {
+          argDict[state_type] = remainderStateName.join('-');
+          argDict.fullNameCamel = UtilitiesService.camelCase(state_type +'-' +argDict[state_type]);
+        } else {
+          argDict[state_type] = remainderStateName;
+        }
+
+
 
           // var shortCutDict = getShortcutDict(elem, arg_value);
 
         argDict.actions = getArgActions(state_args, arg_value);
-
         return argDict;
-      }
-
-      function configureNameFromArgs(state_type, state_args) {
-
-        if (state_type === 'when') {
-          var nameArr = [];
-          state_args.forEach(function(arg, i ) {
-
-            if (['send', 'anim', 'prop'].indexOf(arg) === -1) {
-
-              nameArr.push(arg);
-            }
-          })
-          state_args.splice(0, nameArr.length);
-          return nameArr.join('-').replace('prop', '').replace('anim', '').replace('send', '')
-        }
-
-
-        return state_args.splice(0,1)[0]
       }
 
       function getStateArgsFromValue(state_args, arg_value) {
         //SHORTCUTS GO HERE for FULL anim/send/trigger states;
         arg_value = UtilitiesService.replaceAll(arg_value, ' | ', '|');
-
+        var resultArr = [];
         arg_value.split('|').forEach(function(param_value, i) {
+          resultDict = {argName: '', delays: {internal: 0, external: 0}};
 
-          var hasDelay = (param_value + '').split(']')[1];
-          var delay = '';
-          if (hasDelay) {
-            delay = ':' + parseFloat(hasDelay.replace(':delay-', '')).toFixed(4);
-          }
+          resultDict.delays.external = getExternalDelay(arg_value + '') || 0;
+
+
           param_value = param_value.trim();
 
           if (param_value.indexOf('s:[') > -1 || param_value.indexOf('send:[') > -1 || param_value.indexOf('trigger:[') > -1 || param_value.indexOf('t:[') > -1) {
 
-            state_args.push('send' + delay);
+            resultDict.argName = 'send';
           }
           if (param_value.indexOf('p:[') > -1 || param_value.indexOf('prop:[') > -1) {
-            state_args.push('prop' + delay);
+            resultDict.argName = 'prop';
           }
           if (param_value.indexOf('a:[') > -1 || param_value.indexOf('anim:[') > -1) {
-            state_args.push('anim' + delay);
-
+            resultDict.argName = 'anim';
           }
+          resultArr.push(resultDict)
         })
-        return state_args
+
+        return resultArr;
       }
 
       function getArgActions(state_args, full_value, shortcuts) {
+
         var actionDict = {};
         var delayDict = {};
+        var rawDict = {};
         var state_args_base = [];
-        state_args.forEach(function(arg, i) {state_args_base.push(arg.split(':')[0].trim())});
+        state_args.forEach(function(arg_dict, i) {state_args_base.push(arg_dict.argName.split(':')[0].trim())});
         // var detectAndAddStrArgValues = detectAndAddStrArgValues(state_args);
         var joinedSends = [];
 
@@ -655,46 +837,66 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         })
 
         //
-        state_args.forEach(function(arg, i) {
+        state_args.forEach(function(arg_dict, i) {
 
-          var delay = arg.split(':')[1] || 0;
-          var arg = arg.split(':')[0];
+          var extDelay = arg_dict.delays.external || 0;
 
-          var delay = delay && parseFloat(delay.replace(':delay-', ''));
+          var arg = arg_dict.argName.split(':')[0];
+
+          if (!arg_dict.delays) {
+            delays = {internal: 0, external: extDelay};
+          }
 
           full_value = UtilitiesService.replaceAll(full_value, ': ', ':');
           full_value = UtilitiesService.replaceAll(full_value, ', ', ',');
+
           if (arg in actionDict) {
             actionDict[arg] = actionDict[arg].trim() +  '|' + extractRelevantValueFromArg(arg, full_value).trim();
+
           } else {
             actionDict[arg] = extractRelevantValueFromArg(arg, full_value);
           }
           if (actionDict[arg]) {
             actionDict[arg] = actionDict[arg].trim();
           }
-          if (delay) {
-            delayDict[arg] = delay;
+          if (extDelay && extDelay > 0) {
+            delayDict[arg] = extDelay
           }
-
+          rawDict[arg] = extractRelevantValueFromArg(arg, full_value, true)
         })
-
+        actionDict.raw = rawDict;
         actionDict.delays = delayDict;
+
+        if (actionDict.delays && Object.keys(actionDict.delays).length) {
+          for (key in actionDict) {
+            if (['anim', 'send', 'prop'].indexOf(key) > -1) {
+
+              parseDelayFromState(key, actionDict);
+              if (!actionDict.delays.internal) {
+                actionDict.delays.internal = {};
+              }
+            }
+          }
+        }
+
         return actionDict
 
         function detectAndAddStrArgValues(state_args) {
           return [];
         }
 
-        function extractRelevantValueFromArg(arg, full_value) {
-
+        function extractRelevantValueFromArg(arg, full_value, remove_external) {
+          remove_external = remove_external || false;
           arg = arg.trim();
           var returnValue = full_value;
           full_value.split('|').forEach(function(value, i) {
             if (value.indexOf(arg + ':[') > -1 || value.indexOf(arg[0] + ':[') > -1) {
               returnValue = value;
-              returnValue = UtilitiesService.replaceAll(returnValue, arg+':[', '');
-              returnValue = UtilitiesService.replaceAll(returnValue, arg[0]+':[', '');
-              returnValue = UtilitiesService.replaceAll(returnValue, ']', '');
+              if (!remove_external) {
+                returnValue = UtilitiesService.replaceAll(returnValue, arg+':[', '');
+                returnValue = UtilitiesService.replaceAll(returnValue, arg[0]+':[', '');
+                returnValue = UtilitiesService.replaceAll(returnValue, ']', '');
+              }
             }
           })
           return returnValue
@@ -702,6 +904,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function detectStateType(name, camel) {
+
         return name.split('-')[0].toLowerCase();
       }
 
