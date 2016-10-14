@@ -3,6 +3,9 @@
 		init-default
 		on-init="s:[portal-open:public]"
 		when-transition-end="p:[op:1]:delay-2000">
+		<div class="ui-guru-scene"
+			ng-include="'preapp/templates/loaders/props/scene.html'">
+		</div>
 		<div class="loader-portal-inside"
 			init-with="p:[tr:scale(0), tro:50% 90%]"
 			when-portal-open="p:[transform:scale(0):scale(1):250:easeInOutBack]:delay-100">

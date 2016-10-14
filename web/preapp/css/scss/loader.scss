@@ -266,6 +266,13 @@
 }
 
 /*-- UI.GURU */
+.ui-guru-scene {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
 .ui-guru-loader {
 	background: #C6DDD6;
 	.loader-portal-container {
