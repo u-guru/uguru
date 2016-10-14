@@ -433,16 +433,25 @@ $eggplant: #9A5BC5;
 $cerise: #e6389b;
 
 // ui.guru
-$aero: mix(lighten(desaturate($shamrock, 20%), 20%), #7EB1B6);
+$aero: #9cbdbe;
+// mix(lighten(desaturate($shamrock, 20%), 20%), #7EB1B6)
 
-$copper: mix(darken(desaturate($auburn, 40%), 20%), #7EB1B6, 80%);
-$sienna: lighten(mix($orange, $auburn, 40%), 5%);
-$cream: lighten(mix($gold, $auburn, 80%), 20%);
-$olive: darken(mix(desaturate($moola, 20%), $orange, 70%), 5%);
-$neptune: mix(desaturate($azure, 20%), #7EB1B6);
-$stone: darken(mix(desaturate($cobalt, 50%), #7EB1B6, 80%), 25%);
-$cosmic: darken(mix(desaturate($eggplant, 30%), desaturate($cerise, 30%), 60%), 20%);
-$rose: lighten(mix(desaturate($cerise, 20%), $orange, 60%), 10%);
+$copper: #975357;
+// mix(darken(desaturate($auburn, 40%), 20%), #7EB1B6, 80%)
+$sienna: #ee7361;
+// lighten(mix($orange, $auburn, 40%), 5%)
+$cream: #fadab0;
+// lighten(mix($gold, $auburn, 80%), 20%)
+$olive: #98855d;
+// darken(mix(desaturate($moola, 20%), $orange, 70%), 5%)
+$neptune: #76a3ab;
+// mix(desaturate($azure, 20%), #7EB1B6)
+$stone: #555f7b;
+// darken(mix(desaturate($cobalt, 50%), #7EB1B6, 80%), 25%)
+$cosmic: #6d4266;
+// darken(mix(desaturate($eggplant, 30%), desaturate($cerise, 30%), 60%), 20%)
+$rose: #e28797;
+// lighten(mix(desaturate($cerise, 20%), $orange, 60%), 10%)
 
 // metals
 $first: #e8c480;
@@ -457,10 +466,14 @@ $linkedin: #007bb6;
 $twitter: #00aced;
 
 // powerups
-$gpa: mix($azure, $robin);
-$munchies: mix($auburn, $orange, 75%);
-$sound: mix($cobalt, $eggplant);
-$transit: mix($moola, $moxie);
+$gpa: #40acb8;
+// mix($azure, $robin)
+$munchies: #ed594e;
+// mix($auburn, $orange, 75%)
+$sound: #8967d4;
+// mix($cobalt, $eggplant)
+$transit: #62c082;
+// mix($moola, $moxie)
 
 // team
 $gabrielle: #F5C8BF;

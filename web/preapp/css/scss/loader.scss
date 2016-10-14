@@ -265,6 +265,32 @@
 	}
 }
 
+/*-- UI.GURU */
+.ui-guru-loader {
+	.loader-portal-container {
+		background: #C6DDD6;
+	}
+	.states.loader-portal {
+		background: #C6DDD6;
+	    .logo {
+	        position: absolute;
+	        top: 5px;
+	        left: 25px;
+	        width: 200px;
+	        height: 70px;
+	        transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 350, 0, 1);
+	        animation: l-move-up 1000ms linear 1000ms forwards, l-move-down 1000ms linear 4500ms forwards;
+	    }
+	}
+	.portal-transition {
+		background: $aero;
+	}
+	.portal-end {
+		z-index: 10;
+		background: #C6DDD6;
+	}
+}
+
 /*-- ANIMATIONS */
 // portal animations
 @keyframes travel-shake {

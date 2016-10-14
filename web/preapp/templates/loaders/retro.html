@@ -1,4 +1,4 @@
-<div class="loader-portal-outer absolute top-0 left-0 full-xy perspective-container z-index-999">
+<div class="ui-guru-loader loader-portal-outer">
 	<div class="loader-portal states"
 		init-default
 		on-init="s:[portal-open:public]"
@@ -21,7 +21,7 @@
 				<div class="mask"></div>
 			</div>
 			<div class="logo"
-				ng-include="'preapp/templates/loaders/logo/main.html'"
+				ng-include="'preapp/templates/loaders/logo/retro.html'"
 				init-with="p:[tr:translateY(350px), tro:center center]"
 				when-portal-open="p:[transform:translateY(350px) scale(0.5):translateY(0px) scale(1):500:easeOutExpo easeInOutBack]:delay-500"
 				when-portal-complete="p:[transform:translateY(0px):translateY(350px):150:easeInOutBack]:delay-1250">
@@ -64,7 +64,7 @@
 				init-with="p:[-webkit-clip-path:circle(90px at 50% 50%), t:all 750ms cubic-bezier(1#0#1#0)]"
 				when-warp-open="p:[-webkit-clip-path:circle(1500px at 50% 50%)]"
 				when-warp-transition="p:[-webkit-clip-path:none]">
-			    <div class="warp" ng-include="'preapp/templates/loaders/warp.html'" style="background: #16293A;"></div>
+			    <div class="warp" ng-include="'preapp/templates/loaders/time.html'" style="background: #16293A;"></div>
 				<div class="warp-items">
 					<div ng-include="'preapp/templates/loaders/props/warp-objects.html'"></div>
 				</div>
