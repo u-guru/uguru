@@ -1698,7 +1698,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
 
     function checkAndReplaceShortcuts(str, type) {
-      if (str in animPropShortcuts[type]) {
+      if (animPropShortcuts && str in animPropShortcuts[type]) {
         str = animPropShortcuts[type][str];
       }
       return str;

@@ -427,12 +427,13 @@ angular.module('uguru.shared.directives')
           }
         }
 }])
-.directive("u", ["$compile", "ElementService", "$timeout", function($compile, ElementService, $timeout) {
+.directive("u", ["$compile", "ElementService", "$timeout", "$rootScope", function($compile, ElementService, $timeout, $rootScope) {
       return {
           restrict: 'A',
           replace: true,
           transclude: true,
           priority:100,
+          scope:true,
           compile: function(element, attr, transclude) {
               this.states = ElementService.renderElementStates(element, attr);
               var states = this.states;
@@ -440,7 +441,14 @@ angular.module('uguru.shared.directives')
 
               return {
                   pre: function (scope, lElem, lAttr) {
+                    scope.states = {};
 
+                    scope.public = {customStates: {when: {}, whenElements:[]}};
+                    scope.whenCallbacks = {};
+                    transclude(scope, function(clone, innerScope) {
+                              $compile(clone)(scope);
+                              lElem.append(clone);
+                    });
                     if (states.init) {
                       states.init.forEach(function(state, i) {
 
@@ -451,7 +459,7 @@ angular.module('uguru.shared.directives')
                         }
                       })
                     }
-                    scope.whenStates = {};
+
                       if (states.on) {
                         states.on.forEach(function(state, i) {
                           if (state.actions.debug) {
@@ -463,17 +471,59 @@ angular.module('uguru.shared.directives')
                       if (states.when) {
                         states.when.forEach(function(state, i) {
 
-                          if (state.name.indexOf('debug') > -1) {
+                          state.cancelCallback = null;
 
-                            ElementService.launchExternalWindow(state.actions.anim, element);
+                          scope.public.customStates.when[state.nameCamel] = false;
+                          if (scope.public.customStates.whenElements.indexOf(element[0]) === -1) {
+                            scope.public.customStates.whenElements.push(element[0]);
                           }
-                          state.exec(lElem, scope, lAttr);
+                          // scope.root.scope.public.customStates.when[state.nameCamel] = states.when[state.nameCamel];
+
+                          // var watchName = scope.root.public.customStates.when[state.nameCamel];
+                          // console.log(scope.root.public.customStates)
+
+                          // scope.$watch('scope.root.scope.customStates.when.' + state.nameCamel, function(new_val, old_val) {
+                          //   if (!state.recentlyExecuted) {
+                          //     state.recentlyExecuted = true;
+                          //     $timeout(function() {
+                          //       state.recentlyExecuted = false;
+                          //     })
+                          //     state.exec(lElem, scope, lAttr);
+                          //   }
+                          // })
+
+                          var whenCallback = function(actions, scope) {
+
+                            if (!state.recentlyExecuted) {
+                              state.recentlyExecuted = true;
+                              $timeout(function() {
+                                state.recentlyExecuted = false;
+                              })
+                              state.exec(lElem, scope, lAttr, actions);
+                            }
+                          }
+
+
+                          scope.states[state.type + '-' + state.name] = {actions: state.actions, func: whenCallback};
+
+                          scope.root.scope.public.customStates[state.type + '-' + state.name]  = {actions: state.actions, func: whenCallback};
+
+                          if (state.name.indexOf('debug') > -1) {
+                            ElementService.launchExternalWindow(state.actions.anim, element);
+
+                          }
+                          // scope.$watch(function() {
+
+                          // })
+                          // $timeout(function() {
+                          //   scope.$apply();
+                          // })
+
                         })
                       }
-                      transclude(scope, function(clone, innerScope) {
-                              $compile(clone)(scope);
-                              lElem.append(clone);
-                      });
+
+                      // scope.states = states;
+
 
                   },
                   post: angular.noop
@@ -549,15 +599,16 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
-.directive('onInit', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+.directive('onInit', ['$timeout', 'DirectiveService', '$compile', function ($timeout, DirectiveService, $compile) {
   return {
     restrict: 'A',
+    priority:100,
     link: {
       pre: function(scope, element, attr) {
-        scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
-        element.ready(function() {
-          onInitReadyFunc();
-        })
+        if (!('u' in attr) && !attr.initAfter) {
+          attr.$set('u', '');
+          $compile(element)(scope)
+        }
 
 
         scope.$watch(function() {

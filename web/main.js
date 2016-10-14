@@ -468,7 +468,6 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
       // var mappings = {'tiles': 'tiles'};
 
       var name =  $stateParams.name + (($stateParams.version &&  "." + $stateParams.version) || '');
-      console.log(name)
       return '<div ng-include="' + "'shared/templates/components/" + $stateParams.section + "/" + name + ".tpl'" + '"> </div>'
     },
     controller: function($scope, $timeout, $compile, UtilitiesService, $stateParams) {
