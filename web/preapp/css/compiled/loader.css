@@ -2199,9 +2199,7 @@
       top: 5px;
       left: 25px;
       width: 200px;
-      height: 70px;
-      transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 350, 0, 1);
-      animation: l-move-up 1000ms linear 1000ms forwards, l-move-down 1000ms linear 4500ms forwards; }
+      height: 70px; }
   .ui-guru-loader .portal-transition {
     background: #9cbdbe; }
   .ui-guru-loader .portal-end {
@@ -2557,38 +2555,6 @@
   z-index: 999; }
 
 /*-- DEPRECATED */
-.loader-bob {
-  animation: l-head-hover 1000ms linear infinite forwards; }
-
-.pop-up {
-  transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 350, 0, 21);
-  animation: l-move-up 1500ms linear forwards; }
-
-.pop-down {
-  animation: l-move-down 1000ms linear forwards; }
-
-.portal-fadeIn {
-  animation: fadeIn 50ms linear both; }
-
-.portal-open {
-  transform: matrix3d(0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  animation: l-portal 1000ms linear forwards; }
-
-.portal-progress {
-  animation: portal-progress 3000ms linear both; }
-
-.portal-logo-move-up {
-  animation: l-move-up 1000ms linear forwards; }
-
-.portal-logo-move-down {
-  animation: l-move-down 1000ms linear forwards; }
-
-.portal-up {
-  animation: warp-transition 2500ms ease-out forwards; }
-
-.portal-exit {
-  animation: portal-flip 900ms ease-out forwards; }
-
 /*-- OTHER LOADER STUFF */
 .loader-portal-outside {
   z-index: 1; }
@@ -2618,8 +2584,7 @@
   overflow: hidden;
   -webkit-perspective: 1000;
   perspective: 1000;
-  transform-style: preserve-3d;
-  animation: portal-fadeOut 1000ms ease 7400ms forwards; }
+  transform-style: preserve-3d; }
   .default.loader-portal .loader-portal-inside {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -2643,9 +2608,7 @@
     max-width: 250px;
     transform-style: preserve-3d;
     transform-origin: center center;
-    overflow: hidden;
-    opacity: 0;
-    animation: fadeIn 50ms linear 50ms forwards, portal-scaleUp 1000ms ease 6400ms forwards; }
+    overflow: hidden; }
   .default.loader-portal * {
     transform-style: preserve-3d;
     transform-origin: center center; }
@@ -2655,25 +2618,19 @@
     left: 25px;
     width: 200px;
     height: 200px;
-    transform: translate3d(0, 37%, 25px) rotateX(75deg);
-    animation: portal-flip 900ms ease-out 5500ms forwards; }
+    transform: translate3d(0, 37%, 25px) rotateX(75deg); }
     .default.loader-portal .portal > div:not(.mask) {
       width: 100%;
-      height: 100%;
-      transform: matrix3d(0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-      animation: l-portal 1000ms linear 500ms forwards; }
+      height: 100%; }
       .default.loader-portal .portal > div:not(.mask) svg circle {
         stroke-dasharray: 1207;
-        stroke-dashoffset: 1207;
-        animation: portal-progress 3000ms linear 2000ms forwards; }
+        stroke-dashoffset: 1207; }
   .default.loader-portal .logo {
     position: absolute;
     top: 40px;
     left: 60px;
     width: 130px;
-    height: 37px;
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 350, 0, 1);
-    animation: l-move-up 1000ms linear 1000ms forwards, l-move-down 1000ms linear 4500ms forwards; }
+    height: 37px; }
   .default.loader-portal .guru {
     position: absolute;
     top: 50px;
@@ -2682,8 +2639,6 @@
     transform: translate3d(0, 50px, 0); }
     .default.loader-portal .guru > div {
       width: 100%;
-      height: 100%;
-      transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 350, 0, 1);
-      animation: l-move-up 1000ms linear 1500ms forwards, l-head-hover 1000ms linear 2500ms 5 forwards, l-move-down 1000ms linear 4500ms forwards; }
+      height: 100%; }
 
 /*# sourceMappingURL=loader.css.map */

@@ -23,12 +23,12 @@
 			</div>
 			<div class="logo"
 				ng-include="'preapp/templates/loaders/logo/retro.html'"
-				init-with="p:[tr:translateY(350px), tro:center center]"
+				init-with="p:[tr:translateY(350px) scale(0.5), tro:center center]"
 				when-portal-open="p:[transform:translateY(350px) scale(0.5):translateY(0px) scale(1):500:easeOutExpo easeInOutBack]:delay-500"
 				when-portal-complete="p:[transform:translateY(0px):translateY(350px):150:easeInOutBack]:delay-1250">
 			</div>
 			<div class="guru"
-				init-with="p:[tr:translateY(400px), tro:center top]"
+				init-with="p:[tr:translateY(400px) scale(0.8), tro:center top]"
 				when-portal-open="p:[transform:translateY(400px) scale(0.8):translateY(45px) scale(1):500:easeOutBack easeOutBack]:delay-900"
 				when-portal-complete="p:[transform:translateY(0px):translateY(350px):200:easeInBack]:delay-900">
 				<div ng-include="'preapp/templates/loaders/guru/retro.html'"
