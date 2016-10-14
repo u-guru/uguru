@@ -2188,23 +2188,25 @@
   .warp-letters {
     transform: none !important; } }
 /*-- UI.GURU */
-.ui-guru-loader .loader-portal-container {
+.ui-guru-loader {
   background: #C6DDD6; }
-.ui-guru-loader .states.loader-portal {
-  background: #C6DDD6; }
-  .ui-guru-loader .states.loader-portal .logo {
-    position: absolute;
-    top: 5px;
-    left: 25px;
-    width: 200px;
-    height: 70px;
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 350, 0, 1);
-    animation: l-move-up 1000ms linear 1000ms forwards, l-move-down 1000ms linear 4500ms forwards; }
-.ui-guru-loader .portal-transition {
-  background: #9cbdbe; }
-.ui-guru-loader .portal-end {
-  z-index: 10;
-  background: #C6DDD6; }
+  .ui-guru-loader .loader-portal-container {
+    background: #C6DDD6; }
+  .ui-guru-loader .states.loader-portal {
+    background: #C6DDD6; }
+    .ui-guru-loader .states.loader-portal .logo {
+      position: absolute;
+      top: 5px;
+      left: 25px;
+      width: 200px;
+      height: 70px;
+      transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 350, 0, 1);
+      animation: l-move-up 1000ms linear 1000ms forwards, l-move-down 1000ms linear 4500ms forwards; }
+  .ui-guru-loader .portal-transition {
+    background: #9cbdbe; }
+  .ui-guru-loader .portal-end {
+    z-index: 10;
+    background: #C6DDD6; }
 
 /*-- ANIMATIONS */
 @keyframes travel-shake {
@@ -2552,7 +2554,7 @@
   visibility: visible; }
 
 .loader-portal-outer {
-  z-index: 100000; }
+  z-index: 999; }
 
 /*-- DEPRECATED */
 .loader-bob {

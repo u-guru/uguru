@@ -267,6 +267,7 @@
 
 /*-- UI.GURU */
 .ui-guru-loader {
+	background: #C6DDD6;
 	.loader-portal-container {
 		background: #C6DDD6;
 	}
@@ -571,7 +572,8 @@
 }
 
 .loader-portal-outer {
-    z-index: 100000;
+	z-index: 999;
+    // z-index: 100000;
 }
 
 /*-- DEPRECATED */
