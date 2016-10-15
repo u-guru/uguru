@@ -50,7 +50,6 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp', 'u
     controller: function($state, $scope, $anchorScroll) {
       $scope.$on('$locationChangeSuccess', function(info, url_before, url_after) {
         console.log('location change', info, url_before, url_after);
-
       });
     }
   })
