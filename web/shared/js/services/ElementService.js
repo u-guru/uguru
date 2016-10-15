@@ -130,6 +130,16 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         return stateTypes.indexOf(type) > -1;
       }
 
+      function loadAnimations() {
+        if (!rShortcuts.animations || !rShortcuts.animations.customShortcuts) {
+          rAnimations = RootService.animations;
+          rShortcuts.cssPropValues = RootService.animations.customShortcuts.cssPropValues;
+          rShortcuts.cssProps = RootService.animations.customShortcuts.cssProps;
+          rShortcuts.cmds = RootService.animations.customShortcuts.cmds;
+          rShortcuts.args = RootService.animations.customShortcuts.args;
+        }
+      }
+
       function getStateFunc(type, name, actions) {
         var context = {name: name, type: type}
 
@@ -189,16 +199,21 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         if (key === 'send') {
           action_dict.delays[key] = delayDict;
         }
-        // console.log(action_dict)
-        // var extDelay =
-        // action_dict[key] = parsedSend;
-
 
       }
 
       function getInternalDelay(key, int_str, delay_match_strs) {
 
           //to refactor
+          if (!rShortcuts || !rShortcuts.cmds) {
+            loadAnimations();
+            if (!rShortcuts || !rShortcuts.cmds) {
+              $timeout(function() {
+                getInternalDelay(key, int_str, delay_match_strs)
+              })
+              return;
+            }
+          }
           if (int_str in rShortcuts.cmds) {
             int_str = rShortcuts.cmds[int_str]
           }
@@ -494,9 +509,31 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               if (stateRef.actions) {
                 for (key in stateRef.actions) {
 
-                    stateRef.actions[key].delays.external += totalMsgDelay;
+                  var splitSendObj = {};
+                  splitSendObj[key] = stateRef.actions[key];
+
+                  //warning: send to self loop;
+                  if (key === 'send') {
+                    var extDelay = stateRef.actions.send.delays.external + totalMsgDelay;
+
+
+                      splitSendObj[key].delays.external = 0;
+                      console.log('clearing ext', msgName, extDelay);
+                      $timeout(function() {
+                        stateRef.func && stateRef.func(splitSendObj, scope);
+                      }, extDelay);
+                  } else {
+
+
+                    // splitSendObj[key].delays.external += ;
+
+
+                    console.log('send level', key, msgScope, splitSendObj);
+                    $timeout(function() {
+                      stateRef.func && stateRef.func(splitSendObj, scope);
+                    }, totalMsgDelay)
+                  }
                 }
-                stateRef.func && stateRef.func(stateRef.actions, scope);
               }
             })
           }

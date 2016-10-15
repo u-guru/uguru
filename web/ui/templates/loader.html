@@ -1,3 +1,4 @@
+<!-- ['delay-', 'd-', 'd', '+']; -->
 <div class="ui-guru-loader loader-portal-outer">
     <div class="loader-portal states"
         init-after="ui-body-init"
@@ -42,37 +43,39 @@
                 on-init="a:[translateY:400px:45px:500:easeOutBack:0:1:f, scale:0.8:1:500:easeOutBack:0:1:f]:delay-900"
                 when-portal-complete="a:[translateY:0px:350px:200:easeInBack:900:1:f]">
                 <div init-after="portal-open"
-					on-init="s:[portal-hover:public:950] | a:[l-head-hover:800:(.88,.34,.05,.68):950:3:f]">
+					on-init="s:[portal-hover:public:950] | a:[l-head-hover:800:linear:950:3:f]">
 					<div inner-src="'ui/templates/components/svg/guru.html'" init-after="portal-open"></div>
 				</div>
             </div>
         </div>
     </div>
 
-    <!-- <div class="portal-page"
+    <div class="portal-page"
+		init-after="portal-complete"
         init-with="p:[op:0, width:200px, height:200px, left:50%, top:50%, margin-left:-100px, margin-top:-100px, border-radius:100%, border-radius:0, tr:translateY(20.5%) translateZ(25px) rotateX(84deg)]"
-        when-portal-complete="p:[opacity:0:1:250:easeOutSine, transform:translateY(71.5%) translateZ(25px) rotateX(84deg):translateY(0%) translateZ(25px) rotateX(0deg):650:easeOutCirc easeOutCubic easeOutSine]:delay-2000"
-        when-transition-start="p:[width:100%, height:100%, left:0, top:0, margin-left:0, margin-top:0, border-radius:0]">
-        <div class="bg-charcoal" init-with="p:[-webkit-clip-path:circle(90px at 50% 50%), t:all 750ms cubic-bezier(1#0#1#0), overflow:hidden]"
-            when-transition-start="p:[-webkit-clip-path:circle(1500px at 50% 50%)]"
-            when-transition-end="p:[-webkit-clip-path:none]:delay-1000">
-            <main class='full-xy'
-                when-transition-end="s:[head-squash:public:delay-600]"
-                init-with="p:[tro:center center, tr:scale(0.4) translateZ(0px)]"
-                when-head-squash="p:[transform:scale(0.2) translateZ(0px):scale(1) translateZ(0px):750:easeOutExpo]">
-                <section class="full-xy flex-center"
-                    init-with="p:[background-color:#2B3234]"
-                    when-head-squash="p:[background-color:rgba(43#50#52#1):rgba(249#217#178#1):750:easeOutSine]:delay-1000">
-                    <div class="splash-guru-head">
-                        <div class="splash-hero-guru splash-logo-guru"
-                            ng-include="root.base_url + 'shared/templates/components/guru-head/main.html'"
-                            init-with="p:[tro:center center]"
-                            when-head-squash="a:[head-return-center:set:(dur:2000ms#func:linear):in]">
-                        </div>
-                    </div>
-                </section>
-            </main>
-        </div>
-    </div> -->
+        on-init="a:[opacity:0:1:250:easeOutSine:0:1:f, translateY:71.5%:0%:650:easeOutCirc:0:1:f, rotateX:84deg:0deg:650:easeOutSine:0:1:f]:delay-2000"
+		when-transition-start="p:[width:100%, height:100%, left:0, top:0, margin-left:0, margin-top:0, border-radius:0]">
+		<div class="bg-charcoal"
+			u init-with="p:[-webkit-clip-path:circle(90px at 50% 50%), t:all 750ms cubic-bezier(1#0#1#0), overflow:hidden]"
+			when-transition-start="p:[-webkit-clip-path:circle(1500px at 50% 50%)]"
+			when-transition-end="p:[-webkit-clip-path:none]:delay-1000">
+			<main class='full-xy'
+				u init-with="p:[tro:center center, tr:scale(0.4) translateZ(0px)]"
+				when-transition-end="s:[head-squash:public:delay-600]"
+				when-head-squash="a:[scale:0.2:1:750:easeOutExpo:0:1:f]">
+				<!-- <section class="full-xy flex-center"
+					u init-with="p:[background-color:#2B3234]"
+					when-head-squash="a:[background-color:#2B3234:#fadab0:750:easeOutSine]:delay-1000">
+					<div class="splash-guru-head">
+						<div class="splash-hero-guru splash-logo-guru"
+							inner-src="'shared/templates/components/guru-head/main.html'" init-after="portal-complete"
+							init-with="p:[tro:center center]"
+							when-head-squash="a:[head-return-center:set:(dur:2000ms#func:linear):in]">
+						</div>
+					</div>
+				</section> -->
+			</main>
+		</div>
+    </div>
 
 </div>

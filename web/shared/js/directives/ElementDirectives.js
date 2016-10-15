@@ -437,7 +437,6 @@ angular.module('uguru.shared.directives')
               this.states = ElementService.renderElementStates(element, attr);
               var states = this.states;
 
-
               return {
                   pre: function (scope, lElem, lAttr) {
                     scope.states = {};
@@ -514,7 +513,11 @@ angular.module('uguru.shared.directives')
           priority: 100,
           compile: function(element, attr) {
             var div = angular.element('<div></div>');
-
+            for (var key in attr.$attr) {
+              if (key !== 'u') {
+                div[0].setAttribute(key, attr[key]);
+              }
+            }
 
             // element[0].removeAttribute('inner-src');
 
@@ -522,9 +525,8 @@ angular.module('uguru.shared.directives')
               pre: function(scope, pElem, attr) {
                 element.replaceWith(div);
                 div.attr('ng-include', attr.innerSrc);
-                element[0].removeAttribute('inner-src');
                 $compile(div)(scope);
-
+                element[0].removeAttribute('inner-src');
               }
             }
           }
