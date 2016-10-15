@@ -78,7 +78,10 @@
                 2. "send&nbsp;:<span class='weight-700'>&nbsp;public"</span>
             </li>
             <li class='width-20p'>
-                <div class='txt-1' u when-scale-subtle-one-public="a:[scaleInX-subtle:500:linear:100:1:f]:delay-100">
+                <div class='txt-1' u when-scale-subtle-one-public="a:[scaleInX-subtle:500:linear:100:1:f]:delay-100 | s:[scale-again:public]">
+                    Scale-subtle-one 400ms
+                </div>
+				<div class='txt-1' u when-scale-again-public="a:[scaleInX-subtle:500:linear:100:1:f]:delay-100">
                     Scale-subtle-one 400ms
                 </div>
             </li>
