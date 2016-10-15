@@ -91,14 +91,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           player.schedule.lastTimeDelta = time - player.time.delta;
           player.stepForward(player.schedule);
           player.time.delta = time;
-
           player.rAF_id = player.rAF.request(player.animFunc);
-
-
-          // player.debug.status.update(player.tick.current);
-          // player.active = false;
         } else {
-          console.log('player pausing')
           player.pause();
         }
       }
@@ -789,7 +783,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           player.debug.elemPlayer.update(player.tick, schedule.lastTimeDelta);
         }
         if (player.tick.current < 0) {
-          console.log('pausing player')
             player.active = false;
             if (player.debug) {
               var elem = document.querySelector('#pause-element')
@@ -1178,7 +1171,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           timeline.debug = true;
           timeline.id = cache.states.length;
         }
-        console.log(timeline)
         return timeline;
       }
 
@@ -1306,7 +1298,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           return false;
         }
         var animName = animStrArgs[0].trim();
-
         var allCustomAnimations = RootService.getCustomAnimations();
         var customAnimationNames = allCustomAnimations.customNameOnly;
         var customAnimIndex = customAnimationNames.indexOf(animName);

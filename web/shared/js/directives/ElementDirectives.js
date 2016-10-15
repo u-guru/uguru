@@ -445,10 +445,7 @@ angular.module('uguru.shared.directives')
 
                     scope.public = {customStates: {when: {}, whenElements:[]}};
                     scope.whenCallbacks = {};
-                    transclude(scope, function(clone, innerScope) {
-                              $compile(clone)(scope);
-                              lElem.append(clone);
-                    });
+
                     if (states.init) {
                       states.init.forEach(function(state, i) {
 
@@ -473,10 +470,6 @@ angular.module('uguru.shared.directives')
 
                           state.cancelCallback = null;
 
-                          scope.public.customStates.when[state.nameCamel] = false;
-                          if (scope.public.customStates.whenElements.indexOf(element[0]) === -1) {
-                            scope.public.customStates.whenElements.push(element[0]);
-                          }
                           // scope.root.scope.public.customStates.when[state.nameCamel] = states.when[state.nameCamel];
 
                           // var watchName = scope.root.public.customStates.when[state.nameCamel];
@@ -492,44 +485,33 @@ angular.module('uguru.shared.directives')
                           //   }
                           // })
 
-                          var whenCallback = function(actions, scope) {
-
-                            // if (!state.recentlyExecuted) {
-                            //   state.recentlyExecuted = true;
-                            //   $timeout(function() {
-                            //     state.recentlyExecuted = false;
-                            //   })
+                          var whenCallback = function(actions) {
                               state.exec(lElem, scope, lAttr, actions);
-                            // }
                           }
 
+                          var whenMetadata = {actions: state.actions, func: whenCallback, name:state.name};
+                          scope.public.customStates.when[state.nameCamel] = whenMetadata;
+                          if (scope.public.customStates.whenElements.indexOf(element[0]) === -1) {
+                            scope.public.customStates.whenElements.push(element[0]);
+                          }
 
-                          scope.states[state.type + '-' + state.name] = {actions: state.actions, func: whenCallback};
                           var whenStateName = state.type + '-' + state.name;
                           if (!(whenStateName in scope.root.scope.public.customStates)) {
                             scope.root.scope.public.customStates[whenStateName] = [];
                           }
-                          if (scope.root.scope.public.customStates[whenStateName]) {
-                            scope.root.scope.public.customStates[whenStateName].push({actions: state.actions, func: whenCallback})
-                          }
-
-
+                          scope.root.scope.public.customStates[whenStateName].push(whenMetadata)
                           if (state.name.indexOf('debug') > -1) {
                             ElementService.launchExternalWindow(state.actions.anim, element);
 
                           }
-                          // scope.$watch(function() {
-
-                          // })
-                          // $timeout(function() {
-                          //   scope.$apply();
-                          // })
-
                         })
                       }
 
                       // scope.states = states;
-
+                      transclude(scope, function(clone, innerScope) {
+                              $compile(lElem.contents())(scope);
+                              lElem.append(clone);
+                      });
 
                   },
                   post: angular.noop
