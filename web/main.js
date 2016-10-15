@@ -301,6 +301,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/dev/splash/loader/retro',
     templateUrl: 'preapp/templates/loaders/retro.html'
   })
+  .state('root.dev-splash-loader-scene', {
+    url:'/dev/splash/loader/scene',
+    templateUrl: 'preapp/templates/loaders/scene.html'
+  })
   .state('root.dev-splash-nav', {
     url:'/dev/splash/nav',
     template: '<ion-view ng-controller="SplashController as splash"> <ion-content><div class="full-xy" ng-include="' + "'" + "preapp/templates/splash.nav.html" + "'" + '"></div></ion-content></ion-view>'
