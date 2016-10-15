@@ -1,6 +1,6 @@
 var LOCAL = true; _startpage = 'calendar'; var FIRST_PAGE='^.' + _startpage; var img_base = ''; if (LOCAL) {BASE = 'remote/';REST_URL = "http://localhost:5000";}
 
-angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
+angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp', 'uguru.ui',
   'uguru.shared.directives', 'uguru.shared.services',
   'uguru.shared.directives.components', 'uguru.shared.directives.base.components', 'uguru.shared.controllers', 'uguru.admin'])
 
@@ -59,6 +59,12 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     parent: 'root',
     url:'/',
     templateUrl: 'preapp/templates/loaders/regular.html'
+  })
+  .state('root.ui', {
+    name: 'root.ui',
+    parent: 'root',
+    url:'/',
+    templateUrl: 'ui/'
   })
   .state('root.api', {
     name: 'root.api',
