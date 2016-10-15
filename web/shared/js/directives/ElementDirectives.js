@@ -527,8 +527,6 @@ angular.module('uguru.shared.directives')
                 div.attr('ng-include', attr.innerSrc);
                 $compile(div)(scope);
                 element[0].removeAttribute('inner-src');
-
-
               }
             }
           }

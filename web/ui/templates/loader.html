@@ -1,3 +1,4 @@
+<!-- ['delay-', 'd-', 'd', '+']; -->
 <div class="ui-guru-loader loader-portal-outer">
     <div class="loader-portal states"
         init-after="ui-body-init"
@@ -19,7 +20,7 @@
                         <circle cx="200" cy="200" r="192"
                             stroke="#55A4B7" stroke-width="16" fill="#2B3234" stroke-linecap="round" stroke-linejoin="round"
 							u init-with="p:[s:#55A4B7]"
-                            when-portal-hover="a:[portal-progress-color:0:1:2000:linear:0:1:f] | s:[portal-complete:public:2000]"
+                            when-portal-hover="a:[portal-progress-color:2000:linear:0:1:f] | s:[portal-complete:public:2000]"
                             when-portal-complete="s:[transition-start:public:2500]"
                             when-transition-start="s:[transition-end:public]">
 							<!-- draw:init -->
@@ -40,10 +41,9 @@
                 init-after="portal-open"
 				init-with="p:[tr:translateY(400px) scale(0.8), tro:center top]"
                 on-init="a:[translateY:400px:45px:500:easeOutBack:0:1:f, scale:0.8:1:500:easeOutBack:0:1:f]:delay-900"
-                when-portal-complete="a:[translateY:0px:350px:200:easeInBack:900:1:f]">
+                when-portal-complete="a:[translateY:0px:350px:200:easeInBack:0:1:f]">
                 <div init-after="portal-open"
-					on-init="s:[portal-hover:public:950]"
-					when-portal-hover="a:[l-head-hover:800:(.88,.34,.05,.68):1000:3:f]">
+					on-init="s:[portal-hover:public:950]|a:[l-head-hover:800:(.88,.34,.05,.68):1000:3:f]">
 					<div inner-src="'ui/templates/components/svg/guru.html'" init-after="portal-open"></div>
 				</div>
             </div>
