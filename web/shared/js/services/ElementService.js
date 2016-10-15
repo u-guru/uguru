@@ -7,11 +7,12 @@ angular.module('uguru.shared.services')
     'AnimationFrameService',
     '$window',
     'RootService',
+    'SVGService',
     ElementService
         ]);
 
-function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window, RootService) {
-      var rShortcuts = {special: getSpecialShortcuts(), animations:null, propValues: {}, props: {}, values:{}};
+function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window, RootService, SVGService) {
+      var rShortcuts = {special: getSpecialAnimShortcuts(), animations:null, propValues: {}, props: {}, values:{}};
       var stateShortcuts = {};
       var rAnimations;
       var stateTypes = ['on', 'when', 'init'];
@@ -165,7 +166,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (type === 'when') {
 
             return function(element, scope, attr, updated_actions) {
-
+              console.log('executing', updated_actions)
               applySendAnimProp(scope, element, updated_actions || actions, context);
             }
           }
@@ -196,6 +197,11 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function getInternalDelay(key, int_str, delay_match_strs) {
+
+          //to refactor
+          if (int_str in rShortcuts.cmds) {
+            int_str = rShortcuts.cmds[int_str]
+          }
           int_str = UtilitiesService.replaceAll(int_str, ', ', ',');
           int_str = int_str.split('[')[1];
           int_str = int_str.split(']')[0];
@@ -353,6 +359,8 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               finalAnim = pureAnimSplit.join(":")
             }
           }
+
+          finalAnim = checkAndReplaceSpecialArgs(element, finalAnim);
           animArr.push(finalAnim);
         })
 
@@ -412,9 +420,9 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           }
 
           var fullMsgName = ['when',msgName].join('-');
-
+          var camelName = UtilitiesService.camelCase(fullMsgName);
           if (msgScope === 'self') {
-            var camelName = UtilitiesService.camelCase(fullMsgName);
+
 
             if (camelName in scope.public.customStates.when) {
               var stateRef = scope.public.customStates.when[camelName];
@@ -474,8 +482,8 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                 // scope.$parent.public.customStates.when[camelName] = elementFound;
               }
           }
-          else if(msgScope === 'public' && fullMsgName in scope.root.scope.public.customStates) {
-            var stateRefs = scope.root.scope.public.customStates[fullMsgName];
+          else if(msgScope === 'public' && camelName in scope.root.scope.public.customStates) {
+            var stateRefs = scope.root.scope.public.customStates[camelName];
             stateRefs.forEach(function(stateRef, i) {
               if (stateRef.actions) {
                 for (key in stateRef.actions) {
@@ -487,14 +495,18 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             })
           }
            else {
+
             var _attr = {dashed: msgName, camel: UtilitiesService.camelCase('when-' + msgName)};
             _attr.camel = _attr.camel.replace(' ', '-')
             if (!scope.root.public.customStates.when) {
               scope.root.public.customStates.when = {};
+            }
+            if (!scope.root.public.customStates.after) {
               scope.root.public.customStates.after = {};
             }
             scope.root.public.customStates.when[_attr.camel] = true;
             scope.root.public.customStates.after[_attr.camel] = true;
+            scope.root.scope.public.customStates[camelName] = [];
             $timeout(function() {
               scope.$apply();
               scope.root.public.customStates.when[_attr.camel] = false;
@@ -570,7 +582,13 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (!rShortcuts || !rShortcuts.cssPropValues) {
 
           }
+
           var prop = prop.trim();
+
+          prop = checkAndReplaceSpecialPropArgs(elem, prop);
+          console.log(prop)
+          if (!prop || !prop.length) return;
+
           if (rShortcuts && rShortcuts.cssPropValues && prop.toLowerCase() in rShortcuts.cssPropValues) {
             prop = rShortcuts.props[prop] + "";
           }
@@ -751,12 +769,52 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         return name.split('-')[0].toLowerCase();
       }
 
-      function getSpecialShortcuts() {
+      function getSpecialAnimShortcuts() {
         return {draw: drawFunc}
       }
 
-      function drawFunc(elem, shortcut) {
+      function getSpecialPropShortcuts() {
+        return {draw: initDrawFunc}
+
+        function initDrawFunc(elem) {
+          var pathLength = SVGService.getTotalPathLength(elem[0]);
+
+          elem[0].setAttribute('stroke-dashoffset', pathLength + "")
+          return "stroke-dasharray:" + pathLength + ';stroke-dashoffset:' + pathLength;
+        }
+
+      }
+
+      function checkAndReplaceSpecialPropArgs(elem, prop_str) {
+        var firstArg = prop_str.split(':')[0];
+        var specialPropDict = getSpecialPropShortcuts();
+        if (firstArg in specialPropDict) {
+          var result = specialPropDict[firstArg](elem);
+
+          return result;
+        }
+        return prop_str;
+      }
+
+      function checkAndReplaceSpecialArgs(elem, anim_str) {
+
+        var firstArg = (anim_str + '').split(':')[0];
+        var specialFuncDict = getSpecialAnimShortcuts();
+        var func = specialFuncDict[firstArg];
+
+        if (func) {
+
+          var result = func(elem, null, anim_str);
+          console.log(result)
+          return result;
+        }
+
+        return result || anim_str
+      }
+
+      function drawFunc(elem, shortcut, formatted) {
         var shortcut = shortcut || "draw:100%";
+
         var parsedShortcut = shortcut.split('draw:')[1];
         var percentDraw = parseInt(parsedShortcut)/100;
         var isNegative = shortcut.indexOf('-') > -1;
@@ -764,8 +822,24 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           percentDraw *= isNegative
         }
 
-
-        return 'stroke-dashoffset:' + (elem[0].getTotalLength() * percentDraw).toFixed(4);
+        if (formatted) {
+          var pathLength = SVGService.getTotalPathLength(elem[0]);
+          var percentStart = parseInt(formatted.split(':')[1].replace('%', ''))/100.0;
+          var percentEnd = parseInt(formatted.split(':')[2].replace('%', ''))/100.0;
+          var pathLengthStart = percentStart * pathLength;
+          var pathLengthEnd = percentEnd * pathLength;
+          console.log(pathLengthStart, pathLengthEnd)
+          elem.css('stroke-dasharray', pathLength);
+          var remainderAnim = formatted.split(':').slice(3).join(":");
+          // if (pathLengthEnd !== pathLength) {
+            result = "stroke-dashoffset:" + (pathLength - pathLengthStart) + ':' + (pathLength - pathLengthEnd) + ':' + remainderAnim;
+          // } else {
+          //   result = "stroke-dashoffset:" + pathLengthStart + ':' + pathLength + ':' + remainderAnim;
+          // }
+          console.log(result)
+          return result;
+        }
+        return 'strokeDashoffset:' + (elem[0].getTotalLength() * percentDraw).toFixed(4);
       }
 
       function getShortcutDict(elem, str) {

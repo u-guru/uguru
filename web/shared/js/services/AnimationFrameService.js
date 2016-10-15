@@ -753,6 +753,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             if (stream.tick.current <= stream.values.length && stream.tick.current >= 0) {
 
               stream.applyProp && stream.applyProp(stream.values[stream.tick.current]);
+
               player.debug && player.debug.propStreamValueUpdate[stream.name](stream.name, stream.values[stream.tick.current], stream.tick.current, stream.tick.cycleIndex)
             }
             stream.tick.current += tick_delta;
@@ -1076,19 +1077,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           })
 
 
-          // iAnim = iAnim && filterParentheticals(iAnim)
 
-          // var isCustomAnim = isCustomAnimation(iAnim);
-
-          // if (isCustomAnim) {
-
-          //   // iAnim = iAnim && filterParentheticals(iAnim)
-          //   iAnim = iAnim && replaceShortcutSyntax(iAnim);
-
-          //   addCustomAnimPropsToTimeline(elem, iAnim, isCustomAnim, timeline, debug)
-
-
-          // } else {
             iAnim = iAnim && filterParentheticals(iAnim);
 
             iAnim = iAnim && replaceShortcutSyntax(iAnim);
@@ -1159,6 +1148,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
         // timeline.events.slice(1).forEach(function(_event, i) {
         compareAndMergeWithPrevious(timeline);
+
         // })
         // if (streams.length) {
         //   timeline.events = streams;
@@ -1261,13 +1251,15 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         options.suffix = options.suffix || '';
 
         return function(value) {
-
+          if (!value && value !== 0) return;
           elem.innerHTML = options.prefix + value + options.suffix;
         }
       }
 
       function getApplyPropertyFunc(elem, prop, debug) {
         return function(value) {
+
+          if (value === null) return;
           elem.style[prop] = value;
         }
       }
@@ -1504,7 +1496,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
                   // console.log(_prop.prop + ':' + startVal + ':' + endVal + ':' + genArgsCopy.join(":"));
                   uniquePropStreams.push(_prop.prop + ':' + startVal + ':' + endVal + ':' + genArgsCopy.join(":"));
-                  // console.log(c_anim_dict.args[0], deltaPercent, _prop)
                 })
               }
             }

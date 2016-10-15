@@ -337,12 +337,16 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
-.directive('initWith', ['DirectiveService', 'UtilitiesService', function(DirectiveService, UtilitiesService) {
+.directive('initWith', ['DirectiveService', 'UtilitiesService', '$compile', function(DirectiveService, UtilitiesService, $compile) {
   return {
     restrict: 'A',
       link: {
         pre: function(scope, element, attr) {
-
+          // if (!('u' in attr) && !attr.initAfter) {
+          //   attr.$set('u', '');
+          //   $compile(element)(scope)
+          //   return;
+          // }
           scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
 
           var switchDict;
@@ -458,27 +462,15 @@ angular.module('uguru.shared.directives')
                             ElementService.launchExternalWindow(state.actions.debug, element);
                           }
                           state.exec(lElem, scope, lAttr);
+                          if (state.name.indexOf('debug') > -1) {
+                            ElementService.launchExternalWindow(state.actions.anim.parsed, element);
+                          }
                         })
                       }
                       if (states.when) {
                         states.when.forEach(function(state, i) {
 
                           state.cancelCallback = null;
-
-                          // scope.root.scope.public.customStates.when[state.nameCamel] = states.when[state.nameCamel];
-
-                          // var watchName = scope.root.public.customStates.when[state.nameCamel];
-                          // console.log(scope.root.public.customStates)
-
-                          // scope.$watch('scope.root.scope.customStates.when.' + state.nameCamel, function(new_val, old_val) {
-                          //   if (!state.recentlyExecuted) {
-                          //     state.recentlyExecuted = true;
-                          //     $timeout(function() {
-                          //       state.recentlyExecuted = false;
-                          //     })
-                          //     state.exec(lElem, scope, lAttr);
-                          //   }
-                          // })
 
                           var whenCallback = function(actions) {
                               state.exec(lElem, scope, lAttr, actions);
@@ -491,6 +483,7 @@ angular.module('uguru.shared.directives')
                           }
 
                           var whenStateName = state.type + '-' + state.name;
+
                           if (!(whenStateName in scope.root.scope.public.customStates)) {
                             scope.root.scope.public.customStates[whenStateName] = [];
                           }
@@ -503,7 +496,7 @@ angular.module('uguru.shared.directives')
 
                       // scope.states = states;
                       transclude(scope, function(clone, innerScope) {
-                              $compile(lElem.contents())(scope);
+                              $compile(clone)(scope);
                               lElem.append(clone);
                       });
 
@@ -587,10 +580,10 @@ angular.module('uguru.shared.directives')
     priority:100,
     link: {
       pre: function(scope, element, attr) {
-        if (!('u' in attr) && !attr.initAfter) {
-          attr.$set('u', '');
-          $compile(element)(scope)
-        }
+        // if (!('u' in attr) && !attr.initAfter) {
+        //   attr.$set('u', '');
+        // }
+        // $compile(element.contents())(scope)
 
 
         scope.$watch(function() {

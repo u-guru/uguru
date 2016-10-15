@@ -81,12 +81,12 @@
                 <div class='txt-1 1' u when-scale-subtle-one-public="a:[scaleInX-subtle:500:linear:100:1:f]:delay-200">
                     Scale-subtle-one 400ms
                 </div>
-                <div class='txt-1 2' u when-hide-myself-debug="a:[scale:1:0:250:linear:1000:1:f]" when-scale-subtle-one-public="a:[scaleInX-subtle:500:linear:100:1:f]:delay-300|send:[hide-myself:self:500]:delay-500">
+                <div class='txt-1 2' u when-hide-myself="a:[scale:1:0:250:linear:1000:1:f]" when-scale-subtle-one-public="a:[scaleInX-subtle:500:linear:100:1:f]:delay-300|send:[hide-myself:self:500]:delay-500">
                     Scale-subtle-one 400ms
                 </div>
-				<!-- <div class='txt-1 2' u when-hide-myself="a:[scale:1:0:250:linear:1000:1:f]|send:[scale-subtle-one-public:self:1000]:delay-1250" when-scale-subtle-one-public="a:[scaleInX-subtle:500:linear:100:1:f]:delay-300|send:[hide-myself:self:500]:delay-500">
+				<div class='txt-1 2' u when-hide-myself="a:[scale:1:0:250:linear:1000:1:f]|send:[scale-subtle-one-public:self:1000]:delay-1250" when-scale-subtle-one-public="a:[scaleInX-subtle:500:linear:100:1:f]:delay-300|send:[hide-myself:self:500]:delay-500">
                     Scale-subtle-one 400ms
-                </div> -->
+                </div>
             </li>
         </ul>
     </div>

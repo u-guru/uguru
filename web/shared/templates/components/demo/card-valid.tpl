@@ -1,5 +1,5 @@
 <div class="onboarding absolute top-0 left-0 full-xy"
-	init-default
+	u
 	on-init="s:[card-rotate:public]">
 	<div class="onboarding-guru projector-guru-body-container"
 		u init-with="p:[z-index:1]">
@@ -51,10 +51,11 @@
 				</svg>
 				<div class="card-container">
 					<div class="student-card"
+
 						init-after="card-rotate"
 						init-with="p:[op:0, tro:center center]"
-						on-init="p:[op:1] | s:[card-flip:public, card-swipe:public]:delay-1000 | a:[translateX:0px:342px:500:linear:0:1:f, translateY:0px:-122px:500:linear:0:1:f, rotate:0deg:180deg:500:linear:0:1:f]:delay-2000"
-						when-card-swipe="p:[op:0]:delay-2500">
+						on-init="p:[op:1]|s:[card-flip:public,card-swipe:public]:delay-1000|a:[translateX:0px:342px:500:linear:0:1:f, translateY:0px:-122px:500:linear:0:1:f, rotate:0deg:180deg:500:linear:0:1:f]:delay-2000"
+						when-card-swipe="a:[op:0]:delay-2500">
 						<svg viewBox="0 0 240 150">
 							<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 						</svg>
@@ -69,16 +70,16 @@
 								<div class="school-id-details">
 									<h1 class='lettercase'>Marco Polo</h1>
 									<h2>UC Berkeley</h2>
-									<h2 init-default
-										when-hs-click="p:[tro:center center, transform:translateZ(0px):translateZ(30px):250:easeInOutBack:^:2+0:a]:delay-200"
-										when-parent-click="p:[tro:center center, transform:translateZ(0px):translateZ(30px):250:easeInOutBack:^:2+0:a]:delay-200"
-										when-alumni-click="p:[tro:center center, transform:translateZ(0px):translateZ(30px):250:easeInOutBack:^:2+0:a]:delay-200"
-										when-professor-click="p:[tro:center center, transform:translateZ(0px):translateZ(30px):250:easeInOutBack:^:2+0:a]:delay-200"
-										when-freshman-click="p:[tro:center center, transform:translateZ(0px):translateZ(30px):250:easeInOutBack:^:2+0:a]:delay-200"
-										when-sophomore-click="p:[tro:center center, transform:translateZ(0px):translateZ(30px):250:easeInOutBack:^:2+0:a]:delay-200"
-										when-junior-click="p:[tro:center center, transform:translateZ(0px):translateZ(30px):250:easeInOutBack:^:2+0:a]:delay-200"
-										when-senior-click="p:[tro:center center, transform:translateZ(0px):translateZ(30px):250:easeInOutBack:^:2+0:a]:delay-200"
-										when-graduate-click="p:[tro:center center, transform:translateZ(0px):translateZ(30px):250:easeInOutBack:^:2+0:a]:delay-200">Freshman</h2>
+									<h2 u
+										when-hs-click="p:[tro:center center]|a:[translateZ:0px:30px:250:easeInOutBack:0:2:a]:delay-200"
+										when-parent-click="p:[tro:center center]|a:[translateZ:0px:30px:250:easeInOutBack:0:2:a]:delay-200"
+										when-alumni-click="p:[tro:center center]|a:[translateZ:0px:30px:250:easeInOutBack:0:2:a]:delay-200"
+										when-professor-click="p:[tro:center center]|a:[translateZ:0px:30px:250:easeInOutBack:0:2:a]:delay-200"
+										when-freshman-click="p:[tro:center center]|a:[translateZ:0px:30px:250:easeInOutBack:0:2:a]:delay-200"
+										when-sophomore-click="p:[tro:center center]|a:[translateZ:0px:30px:250:easeInOutBack:0:2:a]:delay-200"
+										when-junior-click="p:[tro:center center]|a:[translateZ:0px:30px:250:easeInOutBack:0:2:a]:delay-200"
+										when-senior-click="p:[tro:center center]|a:[translateZ:0px:30px:250:easeInOutBack:0:2:a]:delay-200"
+										when-graduate-click="p:[tro:center center]|a:[translateZ:0px:30px:250:easeInOutBack:0:2:a]:delay-200">Freshman</h2>
 								</div>
 								<h3 class="school-id-courses">
 									<span>SELECTED COURSES</span>
@@ -144,7 +145,7 @@
 								<div class="school-id-details">
 									<h1 class='lettercase'>Marco Polo</h1>
 									<h2>UC Berkeley</h2>
-									<h2 init-default>Freshman</h2>
+									<h2 u>Freshman</h2>
 								</div>
 								<h3 class="school-id-courses">
 									<span>SELECTED COURSES</span>
@@ -186,7 +187,7 @@
 				            <circle class="off-valid" fill-opacity="0.75" fill="#757575" cx="50" cy="121" r="10"></circle>
 				            <circle class="off-invalid" fill="#757575" cx="95" cy="121" r="10"
 								u init-with="p:[fill-opacity:0.75]"
-								when-card-swipe="p:[fill-opacity:0:75:0:150:easeInOutSine:0:5:a]:delay-3000"></circle>
+								when-card-swipe="a:[fill-opacity:0:75:0:150:easeInOutSine:0:5:a]:delay-3000"></circle>
 						</g>
 						<g class="reader">
 							<rect class="led" stroke="#0F0F2F" stroke-width="3" fill="#2B3234" x="40" y="146" width="251" height="46"></rect>
@@ -196,7 +197,7 @@
 				            <path d="M63.792,181.956 L58.528,181.956 L56.792,180.36 L56.848,180.304 L55.588,178.932 L55.588,169.916 L56.82,168.516 L55.588,167.2 L55.588,158.156 L57.156,156.392 L57.184,156.42 L58.5,155.132 L63.792,155.132 L65.164,156.392 L66.452,155.132 L71.744,155.132 L73.48,156.728 L71.744,158.408 L66.48,158.408 L65.108,157.148 L63.792,158.408 L58.808,158.408 L58.808,166.892 L63.792,166.892 L65.164,168.18 L66.452,166.892 L71.744,166.892 L73.48,168.516 L71.744,170.196 L66.48,170.196 L65.108,168.908 L63.792,170.196 L58.808,170.196 L58.808,178.68 L63.792,178.68 L65.164,179.94 L66.452,178.68 L71.744,178.68 L73.48,180.276 L71.744,181.956 L66.48,181.956 L65.108,180.696 L63.792,181.956 Z M83.208,166.864 L88.248,166.864 L89.62,168.152 L90.908,166.864 L95.948,166.864 L95.948,158.408 L90.908,158.408 L89.536,157.148 L88.248,158.408 L83.208,158.408 L83.208,166.864 Z M81.64,180.668 L79.988,178.876 L79.988,169.888 L81.248,168.488 L79.988,167.172 L79.988,158.156 L81.556,156.392 L81.584,156.42 L82.928,155.132 L88.248,155.132 L89.62,156.392 L90.908,155.132 L96.228,155.132 L97.964,156.728 L97.936,156.756 L99.168,158.072 L99.168,167.172 L97.6,168.936 L97.544,168.88 L96.228,170.14 L92.756,170.14 L96.592,175.74 L96.592,179.296 L95.22,179.296 L90.516,172.492 L90.516,169.776 L89.536,168.88 L88.248,170.14 L83.208,170.14 L83.208,178.876 L81.64,180.668 Z M107.608,166.864 L112.648,166.864 L114.02,168.152 L115.308,166.864 L120.348,166.864 L120.348,158.408 L115.308,158.408 L113.936,157.148 L112.648,158.408 L107.608,158.408 L107.608,166.864 Z M106.04,180.668 L104.388,178.876 L104.388,169.888 L105.648,168.488 L104.388,167.172 L104.388,158.156 L105.956,156.392 L105.984,156.42 L107.328,155.132 L112.648,155.132 L114.02,156.392 L115.308,155.132 L120.628,155.132 L122.364,156.728 L122.336,156.756 L123.568,158.072 L123.568,167.172 L122,168.936 L121.944,168.88 L120.628,170.14 L117.156,170.14 L120.992,175.74 L120.992,179.296 L119.62,179.296 L114.916,172.492 L114.916,169.776 L113.936,168.88 L112.648,170.14 L107.608,170.14 L107.608,178.876 L106.04,180.668 Z M132.008,178.68 L137.048,178.68 L138.42,179.94 L139.708,178.68 L144.748,178.68 L144.748,169.916 L145.98,168.516 L144.748,167.2 L144.748,158.408 L139.708,158.408 L138.336,157.148 L137.048,158.408 L132.008,158.408 L132.008,167.2 L130.776,168.6 L132.008,169.916 L132.008,178.68 Z M137.048,181.956 L131.728,181.956 L129.992,180.36 L130.048,180.304 L128.788,178.932 L128.788,169.916 L130.048,168.516 L128.788,167.2 L128.788,158.156 L130.356,156.392 L130.384,156.42 L131.728,155.132 L137.048,155.132 L138.42,156.392 L139.708,155.132 L145.028,155.132 L146.764,156.728 L146.736,156.756 L147.968,158.1 L147.968,167.2 L146.708,168.6 L147.968,169.916 L147.968,178.932 L146.4,180.752 L146.344,180.696 L145.028,181.956 L139.708,181.956 L138.336,180.696 L137.048,181.956 Z M156.408,166.864 L161.448,166.864 L162.82,168.152 L164.108,166.864 L169.148,166.864 L169.148,158.408 L164.108,158.408 L162.736,157.148 L161.448,158.408 L156.408,158.408 L156.408,166.864 Z M154.84,180.668 L153.188,178.876 L153.188,169.888 L154.448,168.488 L153.188,167.172 L153.188,158.156 L154.756,156.392 L154.784,156.42 L156.128,155.132 L161.448,155.132 L162.82,156.392 L164.108,155.132 L169.428,155.132 L171.164,156.728 L171.136,156.756 L172.368,158.072 L172.368,167.172 L170.8,168.936 L170.744,168.88 L169.428,170.14 L165.956,170.14 L169.792,175.74 L169.792,179.296 L168.42,179.296 L163.716,172.492 L163.716,169.776 L162.736,168.88 L161.448,170.14 L156.408,170.14 L156.408,178.876 L154.84,180.668 Z" class="error" fill="#FFFFFF"
 								init-after
 								init-with="p-op"
-								when-card-swipe="p:[opacity:0:75:0:100:easeInOutSine:0:5:a]:delay-3000"></path>
+								when-card-swipe="a:[opacity:0:75:0:100:easeInOutSine:0:5:a]:delay-3000"></path>
 				        </g>
 					</g>
 				</svg>
