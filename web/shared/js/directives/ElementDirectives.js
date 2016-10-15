@@ -70,7 +70,7 @@ angular.module('uguru.shared.directives')
                               clone.attr('ng-include', src);
                             }
                             lElem[0].setAttribute('u', '');
-                            $compile(lElem[0])(scope);
+                            $compile(lElem)(innerScope);
 
 
                             lElem.append(clone);
@@ -609,8 +609,6 @@ angular.module('uguru.shared.directives')
         if (!('u' in attr) && !attr.initAfter) {
           attr.$set('u', '');
         }
-
-
 
         scope.$watch(function() {
               return element.attr('class');

@@ -176,7 +176,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (type === 'when') {
 
             return function(element, scope, attr, updated_actions) {
-              console.log('executing', updated_actions)
               applySendAnimProp(scope, element, updated_actions || actions, context);
             }
           }
@@ -308,8 +307,9 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                 })
                 actions.anim.parsed = animArr.join(",")
             }
-
-            applyAnimArgs(element, scope, actions.anim.parsed, context);
+            $timeout(function() {
+              applyAnimArgs(element, scope, actions.anim.parsed, context);
+            })
           }
 
           if (actions.send) {
@@ -354,7 +354,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function applyAnimArgs(element, scope, animations, context) {
-        console.log(animations)
+
         var stateName = context.type + '-' + context.name;
         var defaults = {"kf":60,"autoPlay":false,"toolbar":{},"hidePlot":false}
         var animDelay = 0;
@@ -528,7 +528,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                     // splitSendObj[key].delays.external += ;
 
 
-                    console.log('send level', key, msgScope, splitSendObj);
                     $timeout(function() {
                       stateRef.func && stateRef.func(splitSendObj, scope);
                     }, totalMsgDelay)
@@ -629,7 +628,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           var prop = prop.trim();
 
           prop = checkAndReplaceSpecialPropArgs(elem, prop);
-          console.log(prop)
           if (!prop || !prop.length) return;
 
           if (rShortcuts && rShortcuts.cssPropValues && prop.toLowerCase() in rShortcuts.cssPropValues) {
