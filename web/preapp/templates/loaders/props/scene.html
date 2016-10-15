@@ -70,8 +70,20 @@
 		</g>
 		<g class="cabinet">
 			<g class="cabinet-wheels" stroke="#A7A3AB" stroke-width="2" fill="#CCCACE">
-				<ellipse class="cabinet-wheel-left" cx="109.5" cy="389.5" rx="5.5" ry="5.5"></ellipse>
-				<circle class="cabinet-wheel-right" cx="198.5" cy="389.5" r="5.5"></circle>
+				<g class="cabinet-wheel-left">
+					<ellipse class="cabinet-wheel-left" cx="109.5" cy="389.5" rx="5.5" ry="5.5"></ellipse>
+					<g stroke="#9D99A2" stroke-with="1" opacity="0.5">
+						<path d="M109.5,386.5 L109.5,392.5" class="cabinet-wheel-left-line-1"></path>
+			            <path d="M112.5,389.5 L106.5,389.5" class="cabinet-wheel-left-line-2"></path>
+					</g>
+				</g>
+				<g class="cabinet-wheel-right">
+					<circle class="cabinet-wheel-right" cx="198.5" cy="389.5" r="5.5"></circle>
+					<g stroke="#9D99A2" stroke-with="1" opacity="0.5">
+			            <path d="M198.5,386.5 L198.5,392.5" class="cabinet-wheel-right-line-1"></path>
+			            <path d="M201.5,389.5 L195.5,389.5" class="cabinet-wheel-right-line-2"></path>
+					</g>
+				</g>
 			</g>
 			<g stroke="#889E91" stroke-width="2">
 				<polyline class="cabinet-main" fill="#D0E4D8" points="104 383 204 383 204 278 104 278 104 383"></polyline>
