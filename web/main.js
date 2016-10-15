@@ -63,8 +63,8 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp', 'u
   .state('root.ui', {
     name: 'root.ui',
     parent: 'root',
-    url:'/',
-    templateUrl: 'ui/'
+    url:'/ui',
+    templateUrl: 'ui/templates/index.html'
   })
   .state('root.api', {
     name: 'root.api',
