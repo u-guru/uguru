@@ -1,0 +1,65 @@
+<div class="wrap"
+	init-with="p:[tr:translateZ(-500px)]"
+	when-warp-speed="s:[warp-zoom-2:public:delay-6000]"
+	when-warp-zoom-2="p:[transform:translateZ(-500px) rotate(180deg):translateZ(500px) rotate(0deg):12000:linear linear:^:2000] | s:[warp-fade-in-2:public]:delay-3000"
+	when-warp-fade-in-2="s:[warp-fade-out-2:public]:delay-3000"
+	when-warp-fade-out-2="s:[warp-fade-in-2:public]:delay-4500">
+	<!-- style="background-image: url('/shared/images/gabrielle.jpg')" -->
+	<div class="wall wall-right"
+		style="background-image: url('/preapp/images/time.svg')"
+		init-default
+		when-warp-fade-in-2="p:[opacity:0:1:3000:linear]"
+		when-warp-fade-out-2="p:[opacity:1:0:3000:linear]"></div>
+	<div class="wall wall-left"
+		style="background-image: url('/preapp/images/time.svg')"
+		init-default
+		when-warp-fade-in-2="p:[opacity:0:1:3000:linear]"
+		when-warp-fade-out-2="p:[opacity:1:0:3000:linear]"></div>
+	<div class="wall wall-top"
+		style="background-image: url('/preapp/images/time.svg')"
+		init-default
+		when-warp-fade-in-2="p:[opacity:0:1:3000:linear]"
+		when-warp-fade-out-2="p:[opacity:1:0:3000:linear]"></div>
+	<div class="wall wall-bottom"
+		style="background-image: url('/preapp/images/time.svg')"
+		init-default
+		when-warp-fade-in-2="p:[opacity:0:1:3000:linear]"
+		when-warp-fade-out-2="p:[opacity:1:0:3000:linear]"></div>
+	<div class="wall wall-back"
+		style="background-image: url('/preapp/images/time.svg')"
+		init-default
+		when-warp-fade-in-2="p:[opacity:0:1:3000:linear]"
+		when-warp-fade-out-2="p:[opacity:1:0:3000:linear]"></div>
+</div>
+<div class="wrap"
+	init-with="p:[tr:translateZ(-500px)]"
+	when-warp-speed="s:[warp-zoom:public]"
+	when-warp-zoom="p:[transform:translateZ(-500px) rotate(180deg):translateZ(500px) rotate(0deg):12000:linear linear:^:2000] | s:[warp-fade-in:public]:delay-3000"
+	when-warp-fade-in="s:[warp-fade-out:public]:delay-3000"
+	when-warp-fade-out="s:[warp-fade-in:public]:delay-4500">
+	<div class="wall wall-right"
+		style="background-image: url('/preapp/images/time.svg')"
+		init-default
+		when-warp-fade-in="p:[opacity:0:1:3000:linear]"
+		when-warp-fade-out="p:[opacity:1:0:3000:linear]"></div>
+	<div class="wall wall-left"
+		style="background-image: url('/preapp/images/time.svg')"
+		init-default
+		when-warp-fade-in="p:[opacity:0:1:3000:linear]"
+		when-warp-fade-out="p:[opacity:1:0:3000:linear]"></div>
+	<div class="wall wall-top"
+		style="background-image: url('/preapp/images/time.svg')"
+		init-default
+		when-warp-fade-in="p:[opacity:0:1:3000:linear]"
+		when-warp-fade-out="p:[opacity:1:0:3000:linear]"></div>
+	<div class="wall wall-bottom"
+		style="background-image: url('/preapp/images/time.svg')"
+		init-default
+		when-warp-fade-in="p:[opacity:0:1:3000:linear]"
+		when-warp-fade-out="p:[opacity:1:0:3000:linear]"></div>
+	<div class="wall wall-back"
+		style="background-image: url('/preapp/images/time.svg')"
+		init-default
+		when-warp-fade-in="p:[opacity:0:1:3000:linear]"
+		when-warp-fade-out="p:[opacity:1:0:3000:linear]"></div>
+</div>

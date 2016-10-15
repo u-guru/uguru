@@ -8,7 +8,7 @@
             <hr class='full-x absolute left-0'>
         </div>
     </div>
-    <div class='full-x overflow-auto height-20p'>
+    <!-- <div class='full-x overflow-auto height-20p'>
         <ul class='grid flex-vertical-center full-x overflow-x'>
             <li class='flex-start width-30p border-2-right m20x text-left border-solid border-white'>
                 1. "send&nbsp;:<span class='weight-700'>&nbsp;self "</span>
@@ -69,7 +69,7 @@
 
 
         </ul>
-    </div>
+    </div> -->
 
     <div class='full-x overflow-auto height-20p' >
         <ul class='grid flex-vertical-center full-x overflow-x' u on-init="s:[scale-subtle-one-public:public:100]:delay-100"
@@ -79,6 +79,9 @@
             </li>
             <li class='width-20p'>
                 <div class='txt-1' u when-scale-subtle-one-public="a:[scaleInX-subtle:500:linear:100:1:f]:delay-100">
+                    Scale-subtle-one 400ms
+                </div>
+				<div class='txt-1' u when-scale-subtle-one-public="a:[scaleInX-subtle:500:linear:100:1:f]:delay-100">
                     Scale-subtle-one 400ms
                 </div>
             </li>

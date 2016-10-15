@@ -1,4 +1,4 @@
-<div class="loader-portal-outer absolute top-0 left-0 full-xy perspective-container z-index-999">
+<div class="loader-portal-outer">
 	<div class="loader-portal states"
 		init-default
 		on-init="s:[portal-open:public]"
@@ -14,7 +14,7 @@
 					<svg width="200px" height="200px" viewBox="0 0 400 400">
 						<circle cx="200" cy="200" r="192" stroke="#55A4B7" stroke-width="16" fill="#2B3234" stroke-linecap="round" stroke-linejoin="round"
 							init-default
-							when-portal-hover="p:[l-progress-color:0:1:2000:linear:0, stroke-dashoffset:1207:0:2000:linear:0]:delay-250 |  s:[portal-complete:public:delay-2000]">
+							when-portal-hover="p:[portal-progress-color:0:1:2000:linear:0, stroke-dashoffset:1207:0:2000:linear:0]:delay-250 |  s:[portal-complete:public:delay-2000]">
 							<!-- p:[l-progress:0:1:5000:linear:0]:delay-250 | p:[stroke-dashoffset:1207:0:2000:linear:0]:delay-250 -->
 					</svg>
 				</div>
@@ -23,8 +23,8 @@
 			<div class="logo"
 				ng-include="'preapp/templates/loaders/logo/main.html'"
 				init-with="p:[tr:translateY(350px), tro:center center]"
-				when-portal-open="p:[transform:translateY(350px) scale(0.5):translateY(0px) scale(1):500:easeOutExpo easeInOutBack]:delay-500"
-				when-portal-complete="p:[transform:translateY(0px):translateY(350px):150:easeInOutBack]:delay-1250">
+				when-portal-open="p:[transform:translateY(350px) scale(0.5):translateY(0px) scale(1):500:easeOutExpo easeOutBack]:delay-500"
+				when-portal-complete="p:[transform:translateY(0px):translateY(350px):150:easeInBack]:delay-1250">
 			</div>
 			<div class="guru"
 				init-with="p:[tr:translateY(400px), tro:center top]"

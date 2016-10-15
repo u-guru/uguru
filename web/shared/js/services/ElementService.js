@@ -572,23 +572,25 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               }
           }
           else if(msgScope === 'public' && fullMsgName in scope.root.scope.public.customStates) {
+            console.log(element)
+            var stateRefs = scope.root.scope.public.customStates[fullMsgName];
+            stateRefs.forEach(function(stateRef, i) {
+              console.log('public', fullMsgName, scope.root.scope.public.customStates)
+              console.log(stateRef)
+              if (stateRef.actions) {
+                var infoStates = ['raw', 'delays'];
+                for (key in stateRef.actions) {
+                  if (infoStates.indexOf(key) === -1) {
+                    if (!(key in stateRef.actions.delays)) {
+                      stateRef.actions.delays[key] = 0;
+                    }
 
-            var stateRef = scope.root.scope.public.customStates[fullMsgName];
-            console.log('public', fullMsgName, scope.root.scope.public.customStates)
-            console.log(stateRef)
-            if (stateRef.actions) {
-              var infoStates = ['raw', 'delays'];
-              for (key in stateRef.actions) {
-                if (infoStates.indexOf(key) === -1) {
-                  if (!(key in stateRef.actions.delays)) {
-                    stateRef.actions.delays[key] = 0;
+                    stateRef.actions.delays[key] += msgDelay
                   }
-
-                  stateRef.actions.delays[key] += msgDelay
                 }
+                stateRef.func && stateRef.func(stateRef.actions, scope);
               }
-              stateRef.func && stateRef.func(stateRef.actions, scope);
-            }
+            })
           }
           // if (stateRef.)
 

@@ -494,19 +494,25 @@ angular.module('uguru.shared.directives')
 
                           var whenCallback = function(actions, scope) {
 
-                            if (!state.recentlyExecuted) {
-                              state.recentlyExecuted = true;
-                              $timeout(function() {
-                                state.recentlyExecuted = false;
-                              })
+                            // if (!state.recentlyExecuted) {
+                            //   state.recentlyExecuted = true;
+                            //   $timeout(function() {
+                            //     state.recentlyExecuted = false;
+                            //   })
                               state.exec(lElem, scope, lAttr, actions);
-                            }
+                            // }
                           }
 
 
                           scope.states[state.type + '-' + state.name] = {actions: state.actions, func: whenCallback};
+                          var whenStateName = state.type + '-' + state.name;
+                          if (!(whenStateName in scope.root.scope.public.customStates)) {
+                            scope.root.scope.public.customStates[whenStateName] = [];
+                          }
+                          if (scope.root.scope.public.customStates[whenStateName]) {
+                            scope.root.scope.public.customStates[whenStateName].push({actions: state.actions, func: whenCallback})
+                          }
 
-                          scope.root.scope.public.customStates[state.type + '-' + state.name]  = {actions: state.actions, func: whenCallback};
 
                           if (state.name.indexOf('debug') > -1) {
                             ElementService.launchExternalWindow(state.actions.anim, element);

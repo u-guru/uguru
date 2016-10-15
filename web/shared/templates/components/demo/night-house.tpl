@@ -1,5 +1,5 @@
 <div class="absolute top-0 left-0 full-xy flex-center perspective-container">
-	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #BBF2FE;"
+	<!-- <svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #BBF2FE;"
 		init-after="day-transition" on-init="a:[opacity:0:1:3000:easeInOutSine:0:1:f]:delay-2500">
 		<defs>
 			<clipPath id="w1-clip">
@@ -177,7 +177,7 @@
 						<!--
 							init-after="blinds"
 							init-with="p:[tro:center top, transform:scaleY(1)]"
-							on-init="a:[hiw-shade-bounceUp:1000:easeInOutBack:0:i:a]" -->
+							on-init="a:[hiw-shade-bounceUp:1000:easeInOutBack:0:i:a]"
 					</g>
 					<rect class="w5-shadow-btm" fill="#5B4F4B" x="434" y="477" width="40" height="5"></rect>
 					<rect class="w5-ledge" fill="#C56C76" x="432" y="467" width="44" height="10"></rect>
@@ -189,10 +189,6 @@
 					<g clip-path="url(#w4-clip)">
 						<rect class="w4-bg" fill="#BDE397" x="382" y="407" width="38" height="60"></rect>
 						<rect class="w4-blind" fill="#A0857A" x="382" y="407" width="38" height="60"></rect>
-						<!--
-							init-after="blinds"
-							init-with="p:[tro:center top, transform:scaleY(1)]"
-							on-init="a:[hiw-shade-bounceUp:1000:easeInOutBack:0:i:a]" -->
 					</g>
 					<rect class="w4-shadow-btm" fill="#5B4F4B" x="381" y="477" width="40" height="5"></rect>
 					<rect class="w4-ledge" fill="#C56C76" x="379" y="467" width="44" height="10"></rect>
@@ -290,7 +286,7 @@
 				<path d="M453.859068,457.815873 C453.660391,458.513826 450.618833,456.91487 452.859068,455.167764 C455.099302,453.420659 454.179285,450.185674 453.859068,451.654751" class="pie-8" stroke="#DAE3E6"></path>
 			</g>
 		</g>
-	</svg>
+	</svg> --> -->
 	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #092D4B;"
 		u init-with="p:[op:1]" on-init="a:[opacity:1:0:3000:easeInOutSine:0:1:f]:delay-6000">
 	    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
