@@ -362,7 +362,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             }
           }
 
-          // finalAnim = checkAndReplaceSpecialArgs(element, finalAnim);
+          finalAnim = checkAndReplaceSpecialArgs(element, finalAnim);
           animArr.push(finalAnim);
         })
 

@@ -1,9 +1,0 @@
-.project-enter {
-	z-index: 100;
-	animation: project-enter 500ms ease 0ms both;
-}
-
-@keyframes project-enter {
-	0% { z-index: 0; opacity: 0; }
-	100% { z-index: 100; opacity: 1; }
-}
