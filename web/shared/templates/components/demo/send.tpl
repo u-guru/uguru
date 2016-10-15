@@ -72,17 +72,17 @@
     </div>
 
     <div class='full-x overflow-auto height-20p' >
-        <ul class='grid flex-vertical-center full-x overflow-x' u on-init="s:[scale-subtle-one-public:public:100]:delay-100"
-        >
+        <ul class='grid flex-vertical-center full-x overflow-x'
+			u on-init="s:[scale-subtle-once:public]">
             <li class='flex-start width-30p border-2-right m20x text-left border-solid border-white'>
-                2. "send&nbsp;:<span class='weight-700'>&nbsp;public"</span>
+                3. "send&nbsp;:<span class='weight-700'>&nbsp;public"</span>
             </li>
             <li class='width-20p'>
-                <div class='txt-1' u when-scale-subtle-one-public="a:[scaleInX-subtle:500:linear:100:1:f]:delay-100 | s:[scale-again:public]">
-                    Scale-subtle-one 400ms
+                <div class='txt-1' u when-scale-subtle-once="a:[scaleInX-subtle:500:linear:100:1:f]:delay-100 | s:[scale-again:public]">
+                    Scale-subtle-once 400ms
                 </div>
-				<div class='txt-1' u when-scale-again-public="a:[scaleInX-subtle:500:linear:100:1:f]:delay-100">
-                    Scale-subtle-one 400ms
+				<div class='txt-1' u when-scale-again="a:[scaleInX-subtle:500:linear:100:1:f]:delay-100">
+                    Scale-again 400ms
                 </div>
             </li>
         </ul>
