@@ -1,6 +1,5 @@
 <div class="full-xy flex absolute full-xy top-0 left-0 flex-wrap">
     <div class='grid p15-grid full-x relative'>
-
         <h1 class="txt-azure text-center weight-900 semibold">
             Send Scopes
         </h1>

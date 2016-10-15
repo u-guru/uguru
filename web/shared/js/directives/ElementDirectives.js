@@ -496,8 +496,9 @@ angular.module('uguru.shared.directives')
 
                       // scope.states = states;
                       transclude(scope, function(clone, innerScope) {
-                              // $compile(clone)(scope);
-                              lElem.append(clone);
+                          $compile(lElem.contents())(scope);
+
+                          lElem.append(clone);
                       });
 
                   },
@@ -505,6 +506,29 @@ angular.module('uguru.shared.directives')
               }
           }
       }
+}])
+.directive("innerSrc", ["$compile", function($compile) {
+      return {
+          restrict: 'A',
+          replace: true,
+          priority: 100,
+          compile: function(element, attr) {
+            var div = angular.element('<div></div>');
+
+
+            // element[0].removeAttribute('inner-src');
+
+            return {
+              pre: function(scope, pElem, attr) {
+                element.replaceWith(div);
+                div.attr('ng-include', attr.innerSrc);
+                element[0].removeAttribute('inner-src');
+                $compile(div)(scope);
+
+              }
+            }
+          }
+        }
 }])
 .directive("initLater", ["CompService", "$compile", function(CompService, $compile) {
       return {
