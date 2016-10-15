@@ -303,13 +303,9 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp', 'u
     url:'/dev/splash/loader/original',
     templateUrl: 'preapp/templates/loaders/original.html'
   })
-  .state('root.dev-splash-loader-retro', {
-    url:'/dev/splash/loader/retro',
-    templateUrl: 'preapp/templates/loaders/retro.html'
-  })
   .state('root.dev-splash-loader-scene', {
-    url:'/dev/splash/loader/scene',
-    templateUrl: 'preapp/templates/loaders/scene.html'
+    url:'/ui/scene',
+    templateUrl: 'ui/templates/loader/scene.html'
   })
   .state('root.dev-splash-nav', {
     url:'/dev/splash/nav',
