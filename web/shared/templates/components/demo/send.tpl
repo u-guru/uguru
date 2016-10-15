@@ -72,7 +72,7 @@
     </div> -->
 
     <div class='full-x overflow-auto height-20p' >
-        <ul class='grid flex-vertical-center full-x overflow-x' u on-init="s:[scale-subtle-one-public:public:100]:delay-250"
+        <ul class='grid flex-vertical-center full-x overflow-x' u on-init="s:[scale-subtle-one-public:public:100]:+50"
         >
             <li class='flex-start width-30p border-2-right m20x text-left border-solid border-white'>
                 2. "send&nbsp;:<span class='weight-700'>&nbsp;public"</span>
@@ -81,9 +81,12 @@
                 <div class='txt-1 1' u when-scale-subtle-one-public="a:[scaleInX-subtle:500:linear:100:1:f]:delay-200">
                     Scale-subtle-one 400ms
                 </div>
-				<div class='txt-1 2' u when-hide-myself="a:[scale:1:0:250:linear:1000:1:f]" when-scale-subtle-one-public="a:[scaleInX-subtle:500:linear:100:1:f]:delay-300|send:[hide-myself:self]">
+                <div class='txt-1 2' u when-hide-myself-debug="a:[scale:1:0:250:linear:1000:1:f]" when-scale-subtle-one-public="a:[scaleInX-subtle:500:linear:100:1:f]:delay-300|send:[hide-myself:self:500]:delay-500">
                     Scale-subtle-one 400ms
                 </div>
+				<!-- <div class='txt-1 2' u when-hide-myself="a:[scale:1:0:250:linear:1000:1:f]|send:[scale-subtle-one-public:self:1000]:delay-1250" when-scale-subtle-one-public="a:[scaleInX-subtle:500:linear:100:1:f]:delay-300|send:[hide-myself:self:500]:delay-500">
+                    Scale-subtle-one 400ms
+                </div> -->
             </li>
         </ul>
     </div>

@@ -58,21 +58,16 @@ angular.module('uguru.shared.directives')
                     transclude(scope, function(clone, innerScope) {
 
                       whenAttr.forEach(function(attr_name, i) {
-                        console.log('rendering init after', attr_name)
                         var iListen = scope.$watch('root.public.customStates.after.' + attr_name, function(val, new_val) {
 
                           if (val) {
-                            console.log(val)
                             whenAttrListeners[i]();
-                            // whenAttrListeners.forEach(function(i_listener, j) {
-                            // })
 
                             lElem[0].removeAttribute('init-after');
                             if (lAttr.ngIncludeAfter) {
                               var src = lAttr.ngIncludeAfter;
                               lElem[0].removeAttribute('ng-include-after');
                               clone.attr('ng-include', src);
-                              // $compile(lElem[0])(scope);
                             }
                             lElem[0].setAttribute('u', '');
                             $compile(lElem[0])(scope);
@@ -501,8 +496,7 @@ angular.module('uguru.shared.directives')
                           }
                           scope.root.scope.public.customStates[whenStateName].push(whenMetadata)
                           if (state.name.indexOf('debug') > -1) {
-                            ElementService.launchExternalWindow(state.actions.anim, element);
-
+                            ElementService.launchExternalWindow(state.actions.anim.parsed, element);
                           }
                         })
                       }

@@ -196,14 +196,16 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function getInternalDelay(key, int_str, delay_match_strs) {
-
-          result = {};
+          int_str = UtilitiesService.replaceAll(int_str, ', ', ',');
+          int_str = int_str.split('[')[1];
+          int_str = int_str.split(']')[0];
+          var result = {};
           var argTypeStr = {'a': 'anim', 's': 'send', 'p': 'prop'};
           if (key.length === 1) {
             key = argTypeStr[key]
           }
-          if (key === 'send') {
-            int_str = UtilitiesService.replaceAll(int_str, ', ', ',')
+          if (key === 'send' || argTypeStr[key] === 'send') {
+
             var msgArr = int_str.split(',');
             msgArr.forEach(function(msg, i) {
               if (msg.split(':').length > 2) {
@@ -213,10 +215,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                 result[msgName] = parseInt(delay);
               }
             })
-          }
-
-          if (!Object.keys(result).length) {
-            result = null;
           }
           return result;
         }
@@ -239,7 +237,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             })
           })
 
-          return result;
+          return result || 0;
         }
 
       function applyOnToElement(scope, element, attr, actions, context) {
@@ -262,10 +260,8 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function applySendAnimProp(scope, element, actions, context, cb) {
-
           if (actions.prop) {
             if ('prop' in actions.prop.delays) {
-              console.log('internal delays');
               $timeout(function() {
                 applyPropsToElement(element, actions.prop.parsed, actions.prop.delays);
               }, actions.prop.delays.external)
@@ -408,40 +404,47 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           var msgName = iMsg;
           var msgScope = msgSplit[1].trim();
 
+          msgDelay = delay_dict;
+          var totalMsgDelay = msgDelay.external || 0;
 
+          if (msgSplit.length > 2) {
+            totalMsgDelay = (msgDelay.external || 0) + (msgDelay.internal[msgName] || 0);
+          }
 
-          var internalDelay = msgName in delay_dict.internal && delay_dict.internal[msgName] || 0;
-          var msgDelay = delay_dict.external +internalDelay;
-          var fullMsgName = ['when',msgName].join('-')
-
+          var fullMsgName = ['when',msgName].join('-');
 
           if (msgScope === 'self') {
-            console.log(scope.public.customStates.when)
             var camelName = UtilitiesService.camelCase(fullMsgName);
+
             if (camelName in scope.public.customStates.when) {
               var stateRef = scope.public.customStates.when[camelName];
 
-
               if (stateRef.actions) {
                 for (key in stateRef.actions) {
-                  console.log(key, stateRef.actions[key])
-                  stateRef.actions[key].delays.external += msgDelay;
-                }
-                stateRef.func && stateRef.func(stateRef.actions, scope);
-              }
-              // if (stateRef.actions) {
-              //   var infoStates = ['raw', 'delays'];
-              //   for (key in stateRef.actions) {
-              //     if (infoStates.indexOf(key) === -1) {
-              //       if (!(key in stateRef.actions.delays)) {
-              //         stateRef.actions.delays[key] = 0;
-              //       }
 
-              //       stateRef.actions.delays[key] += msgDelay
-              //     }
-              //   }
-              //   stateRef.func && stateRef.func(stateRef.actions, scope);
-              // }
+                  var splitSendObj = {};
+                  splitSendObj[key] = stateRef.actions[key];
+
+                  //warning: send to self loop;
+                  if (key === 'send') {
+                    var extDelay = stateRef.actions.send.delays.external + totalMsgDelay;
+
+
+                      splitSendObj[key].delays.external = 0;
+                      console.log('clearing ext', msgName, extDelay);
+                      $timeout(function() {
+                        stateRef.func && stateRef.func(splitSendObj, scope);
+                      }, extDelay);
+                  } else {
+
+                    splitSendObj[key].delays.external += totalMsgDelay;
+
+                    console.log('send level', key, msgScope, splitSendObj[key].delays);
+                    stateRef.func && stateRef.func(splitSendObj, scope);
+                  }
+                }
+              }
+
             }
           }
           else if (msgScope === 'parent') {
@@ -454,7 +457,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               })
               var camelName = UtilitiesService.camelCase(fullMsgName);
               if (elementFound && !scope.$parent.public.customStates.when[camelName]) {
-                console.log('editing parent scope', scope.$parent.public.customStates.when, camelName)
+
                 scope.$parent.public.customStates.when[camelName] = true;
 
                 $timeout(function() {
@@ -462,18 +465,12 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                 })
                 var stateRef = scope.$parent.states[fullMsgName];
                 if (stateRef.actions) {
-                var infoStates = ['raw', 'delays'];
-                for (key in stateRef.actions) {
-                  if (infoStates.indexOf(key) === -1) {
-                    if (!(key in stateRef.actions.delays)) {
-                      stateRef.actions.delays[key] = 0;
-                    }
+                  for (key in stateRef.actions) {
 
-                    stateRef.actions.delays[key] += msgDelay
+                      stateRef.actions[key].delays.external += totalMsgDelay;
                   }
+                  stateRef.func && stateRef.func(stateRef.actions, scope);
                 }
-                stateRef.func && stateRef.func(stateRef.actions, scope);
-              }
                 // scope.$parent.public.customStates.when[camelName] = elementFound;
               }
           }
@@ -482,7 +479,8 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             stateRefs.forEach(function(stateRef, i) {
               if (stateRef.actions) {
                 for (key in stateRef.actions) {
-                    stateRef.actions[key].delays.external += msgDelay;
+
+                    stateRef.actions[key].delays.external += totalMsgDelay;
                 }
                 stateRef.func && stateRef.func(stateRef.actions, scope);
               }
@@ -630,7 +628,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         arg_value.split('|').forEach(function(param_value, i) {
           resultDict = {argName: '', delays: {internal: 0, external: 0}};
 
-          resultDict.delays.external = getExternalDelay(arg_value + '') || 0;
+          // resultDict.delays.external = getExternalDelay(arg_value + '') || 0;
 
 
           param_value = param_value.trim();
@@ -707,7 +705,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
         state_args.forEach(function(arg_dict, i) {
 
-          var extDelay = arg_dict.delays.external || 0;
+          // var extDelay = arg_dict.delays.external || 0;
           //to elimiate
           var arg = arg_dict.argName.split(':')[0];
           resultDict[arg] = {};
@@ -719,8 +717,9 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             resultDict[arg].raw = extractRelevantValueFromArg(arg, full_value);
           }
           resultDict[arg].raw = extractRelevantValueFromArg(arg, full_value, true);
-          resultDict[arg].delays = {internal: getInternalDelay(arg, resultDict[arg].parsed, delayMatchStr), external: getExternalDelay(resultDict[arg].parsed), internal:{}};
-          console.log(arg, resultDict[arg].delays)
+
+          resultDict[arg].delays = {internal: getInternalDelay(arg, resultDict[arg].raw, delayMatchStr), external: getExternalDelay(resultDict[arg].parsed)};
+
         })
 
         return resultDict;
