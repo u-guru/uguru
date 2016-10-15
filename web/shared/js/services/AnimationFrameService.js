@@ -91,14 +91,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           player.schedule.lastTimeDelta = time - player.time.delta;
           player.stepForward(player.schedule);
           player.time.delta = time;
-
           player.rAF_id = player.rAF.request(player.animFunc);
-
-
-          // player.debug.status.update(player.tick.current);
-          // player.active = false;
         } else {
-          console.log('player pausing')
           player.pause();
         }
       }
@@ -759,6 +753,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             if (stream.tick.current <= stream.values.length && stream.tick.current >= 0) {
 
               stream.applyProp && stream.applyProp(stream.values[stream.tick.current]);
+
               player.debug && player.debug.propStreamValueUpdate[stream.name](stream.name, stream.values[stream.tick.current], stream.tick.current, stream.tick.cycleIndex)
             }
             stream.tick.current += tick_delta;
@@ -789,7 +784,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           player.debug.elemPlayer.update(player.tick, schedule.lastTimeDelta);
         }
         if (player.tick.current < 0) {
-          console.log('pausing player')
             player.active = false;
             if (player.debug) {
               var elem = document.querySelector('#pause-element')
@@ -1083,19 +1077,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           })
 
 
-          // iAnim = iAnim && filterParentheticals(iAnim)
 
-          // var isCustomAnim = isCustomAnimation(iAnim);
-
-          // if (isCustomAnim) {
-
-          //   // iAnim = iAnim && filterParentheticals(iAnim)
-          //   iAnim = iAnim && replaceShortcutSyntax(iAnim);
-
-          //   addCustomAnimPropsToTimeline(elem, iAnim, isCustomAnim, timeline, debug)
-
-
-          // } else {
             iAnim = iAnim && filterParentheticals(iAnim);
 
             iAnim = iAnim && replaceShortcutSyntax(iAnim);
@@ -1166,6 +1148,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
         // timeline.events.slice(1).forEach(function(_event, i) {
         compareAndMergeWithPrevious(timeline);
+
         // })
         // if (streams.length) {
         //   timeline.events = streams;
@@ -1178,7 +1161,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           timeline.debug = true;
           timeline.id = cache.states.length;
         }
-        console.log(timeline)
         return timeline;
       }
 
@@ -1269,13 +1251,15 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         options.suffix = options.suffix || '';
 
         return function(value) {
-
+          if (!value && value !== 0) return;
           elem.innerHTML = options.prefix + value + options.suffix;
         }
       }
 
       function getApplyPropertyFunc(elem, prop, debug) {
         return function(value) {
+
+          if (value === null) return;
           elem.style[prop] = value;
         }
       }
@@ -1306,7 +1290,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           return false;
         }
         var animName = animStrArgs[0].trim();
-
         var allCustomAnimations = RootService.getCustomAnimations();
         var customAnimationNames = allCustomAnimations.customNameOnly;
         var customAnimIndex = customAnimationNames.indexOf(animName);
@@ -1513,7 +1496,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
                   // console.log(_prop.prop + ':' + startVal + ':' + endVal + ':' + genArgsCopy.join(":"));
                   uniquePropStreams.push(_prop.prop + ':' + startVal + ':' + endVal + ':' + genArgsCopy.join(":"));
-                  // console.log(c_anim_dict.args[0], deltaPercent, _prop)
                 })
               }
             }

@@ -58,21 +58,16 @@ angular.module('uguru.shared.directives')
                     transclude(scope, function(clone, innerScope) {
 
                       whenAttr.forEach(function(attr_name, i) {
-                        console.log('rendering init after', attr_name)
                         var iListen = scope.$watch('root.public.customStates.after.' + attr_name, function(val, new_val) {
 
                           if (val) {
-                            console.log(val)
                             whenAttrListeners[i]();
-                            // whenAttrListeners.forEach(function(i_listener, j) {
-                            // })
 
                             lElem[0].removeAttribute('init-after');
                             if (lAttr.ngIncludeAfter) {
                               var src = lAttr.ngIncludeAfter;
                               lElem[0].removeAttribute('ng-include-after');
                               clone.attr('ng-include', src);
-                              // $compile(lElem[0])(scope);
                             }
                             lElem[0].setAttribute('u', '');
                             $compile(lElem[0])(scope);
@@ -342,12 +337,16 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
-.directive('initWith', ['DirectiveService', 'UtilitiesService', function(DirectiveService, UtilitiesService) {
+.directive('initWith', ['DirectiveService', 'UtilitiesService', '$compile', function(DirectiveService, UtilitiesService, $compile) {
   return {
     restrict: 'A',
       link: {
         pre: function(scope, element, attr) {
-
+          // if (!('u' in attr) && !attr.initAfter) {
+          //   attr.$set('u', '');
+          //   $compile(element)(scope)
+          //   return;
+          // }
           scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
 
           var switchDict;
@@ -445,10 +444,7 @@ angular.module('uguru.shared.directives')
 
                     scope.public = {customStates: {when: {}, whenElements:[]}};
                     scope.whenCallbacks = {};
-                    transclude(scope, function(clone, innerScope) {
-                              $compile(clone)(scope);
-                              lElem.append(clone);
-                    });
+
                     if (states.init) {
                       states.init.forEach(function(state, i) {
 
@@ -466,6 +462,9 @@ angular.module('uguru.shared.directives')
                             ElementService.launchExternalWindow(state.actions.debug, element);
                           }
                           state.exec(lElem, scope, lAttr);
+                          if (state.name.indexOf('debug') > -1) {
+                            ElementService.launchExternalWindow(state.actions.anim.parsed, element);
+                          }
                         })
                       }
                       if (states.when) {
@@ -473,57 +472,33 @@ angular.module('uguru.shared.directives')
 
                           state.cancelCallback = null;
 
-                          scope.public.customStates.when[state.nameCamel] = false;
+                          var whenCallback = function(actions) {
+                              state.exec(lElem, scope, lAttr, actions);
+                          }
+
+                          var whenMetadata = {actions: state.actions, func: whenCallback, name:state.name};
+                          scope.public.customStates.when[state.nameCamel] = whenMetadata;
                           if (scope.public.customStates.whenElements.indexOf(element[0]) === -1) {
                             scope.public.customStates.whenElements.push(element[0]);
                           }
-                          // scope.root.scope.public.customStates.when[state.nameCamel] = states.when[state.nameCamel];
 
-                          // var watchName = scope.root.public.customStates.when[state.nameCamel];
-                          // console.log(scope.root.public.customStates)
+                          var whenStateName = state.type + '-' + state.name;
 
-                          // scope.$watch('scope.root.scope.customStates.when.' + state.nameCamel, function(new_val, old_val) {
-                          //   if (!state.recentlyExecuted) {
-                          //     state.recentlyExecuted = true;
-                          //     $timeout(function() {
-                          //       state.recentlyExecuted = false;
-                          //     })
-                          //     state.exec(lElem, scope, lAttr);
-                          //   }
-                          // })
-
-                          var whenCallback = function(actions, scope) {
-
-                            if (!state.recentlyExecuted) {
-                              state.recentlyExecuted = true;
-                              $timeout(function() {
-                                state.recentlyExecuted = false;
-                              })
-                              state.exec(lElem, scope, lAttr, actions);
-                            }
+                          if (!(whenStateName in scope.root.scope.public.customStates)) {
+                            scope.root.scope.public.customStates[whenStateName] = [];
                           }
-
-
-                          scope.states[state.type + '-' + state.name] = {actions: state.actions, func: whenCallback};
-
-                          scope.root.scope.public.customStates[state.type + '-' + state.name]  = {actions: state.actions, func: whenCallback};
-
+                          scope.root.scope.public.customStates[whenStateName].push(whenMetadata)
                           if (state.name.indexOf('debug') > -1) {
-                            ElementService.launchExternalWindow(state.actions.anim, element);
-
+                            ElementService.launchExternalWindow(state.actions.anim.parsed, element);
                           }
-                          // scope.$watch(function() {
-
-                          // })
-                          // $timeout(function() {
-                          //   scope.$apply();
-                          // })
-
                         })
                       }
 
                       // scope.states = states;
-
+                      transclude(scope, function(clone, innerScope) {
+                              $compile(clone)(scope);
+                              lElem.append(clone);
+                      });
 
                   },
                   post: angular.noop
@@ -605,10 +580,10 @@ angular.module('uguru.shared.directives')
     priority:100,
     link: {
       pre: function(scope, element, attr) {
-        if (!('u' in attr) && !attr.initAfter) {
-          attr.$set('u', '');
-          $compile(element)(scope)
-        }
+        // if (!('u' in attr) && !attr.initAfter) {
+        //   attr.$set('u', '');
+        // }
+        // $compile(element.contents())(scope)
 
 
         scope.$watch(function() {
