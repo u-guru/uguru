@@ -496,7 +496,7 @@ angular.module('uguru.shared.directives')
 
                       // scope.states = states;
                       transclude(scope, function(clone, innerScope) {
-                              $compile(clone)(scope);
+                              // $compile(clone)(scope);
                               lElem.append(clone);
                       });
 
@@ -580,10 +580,10 @@ angular.module('uguru.shared.directives')
     priority:100,
     link: {
       pre: function(scope, element, attr) {
-        // if (!('u' in attr) && !attr.initAfter) {
-        //   attr.$set('u', '');
-        // }
-        // $compile(element.contents())(scope)
+        if (!('u' in attr) && !attr.initAfter) {
+          attr.$set('u', '');
+        }
+
 
 
         scope.$watch(function() {

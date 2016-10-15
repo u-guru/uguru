@@ -266,6 +266,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function applySendAnimProp(scope, element, actions, context, cb) {
+
           if (actions.prop) {
             if ('prop' in actions.prop.delays) {
               $timeout(function() {
@@ -338,6 +339,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function applyAnimArgs(element, scope, animations, context) {
+        console.log(animations)
         var stateName = context.type + '-' + context.name;
         var defaults = {"kf":60,"autoPlay":false,"toolbar":{},"hidePlot":false}
         var animDelay = 0;
@@ -360,7 +362,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             }
           }
 
-          finalAnim = checkAndReplaceSpecialArgs(element, finalAnim);
+          // finalAnim = checkAndReplaceSpecialArgs(element, finalAnim);
           animArr.push(finalAnim);
         })
 
@@ -394,6 +396,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function applySendArgsAndCallback(element, scope, messages, delay_dict) {
+
         if (!delay_dict) {
           delay_dict = {internal: {}, external:0}
         };
@@ -482,8 +485,11 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                 // scope.$parent.public.customStates.when[camelName] = elementFound;
               }
           }
-          else if(msgScope === 'public' && camelName in scope.root.scope.public.customStates) {
-            var stateRefs = scope.root.scope.public.customStates[camelName];
+          else if(msgScope === 'public' && (fullMsgName in scope.root.scope.public.customStates || camelName in scope.root.scope.public.customStates)) {
+            if (camelName in scope.root.scope.public.customStates) {
+              fullMsgName = camelName
+            }
+            var stateRefs = scope.root.scope.public.customStates[fullMsgName];
             stateRefs.forEach(function(stateRef, i) {
               if (stateRef.actions) {
                 for (key in stateRef.actions) {
