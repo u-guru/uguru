@@ -1,6 +1,5 @@
 <div class="absolute top-0 left-0 full-xy flex-center perspective-container">
-	<!-- <svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #BBF2FE;"
-		init-after="day-transition" on-init="a:[opacity:0:1:3000:easeInOutSine:0:1:f]:delay-2500">
+	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600">
 		<defs>
 			<clipPath id="w1-clip">
 				<rect x="329" y="306" width="38" height="60"></rect>
@@ -21,6 +20,10 @@
 				<rect class="cat-mask" x="405" y="313" width="62" height="53"></rect>
 			</clipPath>
 		</defs>
+	</svg>
+	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #BBF2FE;"
+		init-after="day-transition" on-init="a:[opacity:0:1:3000:easeInOutSine:0:1:f]:delay-2500"
+		ng-if="false">
 		<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 			<g class="left-tree">
 				<rect class="l-canopy" fill="#B4CB5D" x="221" y="364" width="43" height="86" rx="21.5"></rect>
@@ -88,7 +91,7 @@
 				<circle class="sun" fill="#FECE67" cx="281" cy="171" r="44"
 					init-after="day-transition"
 					init-with="p:[transform:translateY(-800px)]"
-					on-init="a:[translateY:-800px:0px:400:easeInOutBack:0:1:f]:delay-4000 | s:[day-sky:public]:delay-4000"></circle>
+					on-init="a:[translateY:-800px:0px:400:easeInOutBack:0:1:f]:delay-4000 | s:[day-sky:public:4000]"></circle>
 				<path d="M432.821041,232 C432.284244,229.754184 432,227.410286 432,225 C432,208.431458 445.431458,195 462,195 C478.568542,195 492,208.431458 492,225 C492,227.410286 491.715756,229.754184 491.178959,232 L432.821041,232 L432.821041,232 L432.821041,232 Z" class="day-b-cloud-1" fill="#FFFFFF"
 					init-after="day-sky"
 					on-init="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:ar]"></path>
@@ -103,7 +106,7 @@
 					on-init="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:a]"></path>
 				<path d="M390.975766,178 C391.639075,176.123326 392,174.103813 392,172 C392,162.058875 383.941125,154 374,154 C364.058875,154 356,162.058875 356,172 C356,174.103813 356.360925,176.123326 357.024234,178 L390.975766,178 L390.975766,178 L390.975766,178 Z" class="day-s-cloud-2" fill="#FFFFFF"
 					init-after="day-sky"
-					on-init="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:a] | s:[flying:public]:delay-5000"></path>
+					on-init="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:a] | s:[flying:public:5000]"></path>
 				<g class="birds">
 					<g class="b-bird" init-after="flying"
 						on-init="a:[translateY:-3px:3px:1000:linear:0:i:a]">
@@ -136,7 +139,7 @@
 						<path d="M363.509441,218 C363.509441,218 360.839975,218.062581 358.002723,219.294118 C355.165471,220.525654 354.294118,222 354.294118,222" class="far-bird-right" stroke="#6E6144" stroke-width="3"
 							init-after="flying"
 							init-with="p:[transform:rotate(0deg), tro:left bottom]"
-							on-init="a:[rotate:-10deg:10deg:1000:easeInOutCirc:150:i:a] | s:[leafing:public]:delay-7000"></path>
+							on-init="a:[rotate:-10deg:10deg:1000:easeInOutCirc:150:i:a] | s:[leafing:public:7000]"></path>
 					</g>
 					<g init-after="flying"
 						on-init="a:[translateY:-3px:3px:1000:linear:175:200:a]">
@@ -162,7 +165,7 @@
 					</g>
 				</g>
 			</g>
-			<g class="house" u on-init="s:[blinds:public]:delay-7000">
+			<g class="house" u on-init="s:[blinds:public:7000]">
 				<g>
 					<rect class="house-foundation-beige" fill="#E5D8B7" x="307" y="285" width="187" height="204"></rect>
 					<rect class="house-casing" fill="#FFFFFF" x="301" y="485" width="199" height="19"></rect>
@@ -174,10 +177,9 @@
 					<g clip-path="url(#w5-clip)">
 						<rect class="w5-bg" fill="#BDE397" x="435" y="407" width="38" height="60"></rect>
 						<rect class="w5-blind" fill="#A0857A" x="435" y="407" width="38" height="60"></rect>
-						<!--
-							init-after="blinds"
+							<!-- init-after="blinds"
 							init-with="p:[tro:center top, transform:scaleY(1)]"
-							on-init="a:[hiw-shade-bounceUp:1000:easeInOutBack:0:i:a]"
+							on-init="a:[hiw-shade-bounceUp:1000:easeInOutBack:0:i:a]" -->
 					</g>
 					<rect class="w5-shadow-btm" fill="#5B4F4B" x="434" y="477" width="40" height="5"></rect>
 					<rect class="w5-ledge" fill="#C56C76" x="432" y="467" width="44" height="10"></rect>
@@ -286,7 +288,7 @@
 				<path d="M453.859068,457.815873 C453.660391,458.513826 450.618833,456.91487 452.859068,455.167764 C455.099302,453.420659 454.179285,450.185674 453.859068,451.654751" class="pie-8" stroke="#DAE3E6"></path>
 			</g>
 		</g>
-	</svg> --> -->
+	</svg>
 	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #092D4B;"
 		u init-with="p:[op:1]" on-init="a:[opacity:1:0:3000:easeInOutSine:0:1:f]:delay-6000">
 	    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
@@ -316,7 +318,7 @@
 	            <polygon class="p-tree-trunk-1" stroke="#0B3B5E" stroke-width="5" points="559.5 499.514151 559.5 397.485849"
 					init-after="foliage"
 					init-with="p:[transform:scale(0), tro:center bottom]"
-					on-init="a:[scaleY:0:1:800:easeInOutExpo:0:1:f] | s:[branch:public:delay-1750]"></polygon>
+					on-init="a:[scaleY:0:1:800:easeInOutExpo:0:1:f] | s:[branch:public:1750]"></polygon>
 	            <polygon class="p-tree-trunk-2" stroke="#0B3B5E" stroke-width="5" points="559.53306 432.899271 568.381131 424.0512"
 					init-after="branch"
 					init-with="p:[transform:scale(0), tro:left bottom]"
@@ -324,7 +326,7 @@
 	            <polygon class="p-tree-trunk-3" stroke="#0B3B5E" stroke-width="5" points="559.381131 412.899271 550.53306 404.0512"
 					init-after="branch"
 					init-with="p:[transform:scale(0), tro:right bottom]"
-					on-init="a:[scaleY:0:1:800:easeInOutExpo:200:1:f] | s:[canopy:public:delay-2300]"></polygon>
+					on-init="a:[scaleY:0:1:800:easeInOutExpo:200:1:f] | s:[canopy:public:2300]"></polygon>
 	        </g>
 	        <g class="purple-bushes">
 	            <path d="M298.79867,504 C297.256668,481.09864 278.191583,463 254.899335,463 C231.607087,463 212.542002,481.09864 211,504 L298.79867,504 L298.79867,504 Z" class="prpl-bush-big" fill="#C3B6D6"
@@ -360,13 +362,13 @@
 	            <path d="M474,504 C475.046946,487.801477 487.991229,475 503.805556,475 C519.619882,475 532.564165,487.801477 533.611111,504 L474,504 L474,504 L474,504 Z" class="blue-bush-medium" fill="#4E6D84"
 					init-after="sky-shine"
 					init-with="p:[transform:translateX(-150px), op:0]"
-					on-init="a:[opacity:0:1:500:linear:0:1:f, translateX:-150px:0px:800:easeOutCirc:0:1:f] | s:[foliage:public:delay-1500]"></path>
+					on-init="a:[opacity:0:1:500:linear:0:1:f, translateX:-150px:0px:800:easeOutCirc:0:1:f] | s:[foliage:public:1500]"></path>
 	        </g>
 	        <g class="sky">
 	            <circle class="star-1" fill="#FFFFFF" cx="255.5" cy="258.5" r="2.5"
 					init-after="w4"
 					init-with="p:[op:0, tro:center center]"
-					on-init="a:[scaleIn-subtle:2000:easeInOutQuad:2100:100:a] | s:[sky-shine:public:delay-2100]"></circle>
+					on-init="a:[scaleIn-subtle:2000:easeInOutQuad:2100:100:a] | s:[sky-shine:public:2100]"></circle>
 	            <circle class="star-2" fill="#FFFFFF" cx="272.5" cy="137.5" r="2.5"
 					init-after="sky-shine"
 					init-with="p:[op:0, tro:center center]"
@@ -418,7 +420,7 @@
 					on-init="a:[scale:0:1:200:easeOutSine:0:1:f]">
 		            <path d="M376.178959,232 C376.715756,229.754184 377,227.410286 377,225 C377,208.431458 363.568542,195 347,195 C330.431458,195 317,208.431458 317,225 C317,227.410286 317.284244,229.754184 317.821041,232 L376.178959,232 L376.178959,232 Z" class="b-cloud-1" fill="#BCE5FF"
 						init-after="sky-shine" init-with="p:[transform:translateY(0px), tro:center center]"
-						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a] | s:[day-transition:public]:delay-7000"></path>
+						on-init="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a] | s:[day-transition:public:7000]"></path>
 				</g>
 				<g init-after="sky-shine"
 					init-with="p:[transform:scale(0), tro:center bottom]"
@@ -452,7 +454,7 @@
 	        <g class="house">
 	            <rect class="house-foundation" fill="#AADFFF" x="307" y="285" width="187" height="204"
 					u init-with="p:[transform:scaleY(0), transform-origin:center bottom]"
-					on-init="a:[scaleY:0:1:1000:easeOutBounce:0:1:f] | s:[build-house:public]:delay-500"></rect>
+					on-init="a:[scaleY:0:1:1000:easeOutBounce:0:1:f] | s:[build-house:public:500]"></rect>
 	            <rect class="house-casing" fill="#FFFFFF" x="301" y="485" width="199" height="19"
 					init-after="build-house"
 					init-with="p:[tro:center bottom, transform:scaleY(0)]"
@@ -469,7 +471,7 @@
 					init-after="build-house"
 					init-with="p:[tro:center bottom, transform:scaleY(0)]"
 					on-init="a:[scaleY:0:1:750:easeOutBounce:0:1:f]"></rect>
-				<g class="w5"
+				<!-- <g class="w5"
 					init-after="w4"
 					init-with="p:[op:0, tro:20% 80%]"
 					on-init="a:[scoop-enter:1000:linear:0:1:f]">
@@ -488,7 +490,7 @@
 				<g class="w4"
 					init-after="w3"
 					init-with="p:[op:0, tro:20% 80%]"
-					on-init="a:[scoop-enter:1000:linear:0:1:f]| s:[w4:public:delay-1100]">
+					on-init="a:[scoop-enter:1000:linear:0:1:f]| s:[w4:public:100]">
 		            <rect class="w4-shadow-btm" fill="#0B3B5E" x="381" y="477" width="40" height="5"></rect>
 		            <rect class="w4-ledge" fill="#8C70B3" x="379" y="467" width="44" height="10"></rect>
 		            <rect class="w4-blind" fill="#2E5573" x="382" y="407" width="38" height="60"></rect>
@@ -499,7 +501,7 @@
 				<g class="w3"
 					init-after="w2"
 					init-with="p:[op:0, tro:20% 80%]"
-					on-init="a:[scoop-enter:1000:linear:0:1:f]| s:[w3:public:delay-1000]">
+					on-init="a:[scoop-enter:1000:linear:0:1:f] | s:[w3:public:100]">
 		            <rect class="w3-shadow-btm" fill="#0B3B5E" x="434" y="376" width="40" height="5"></rect>
 		            <rect class="w3-ledge" fill="#8C70B3" x="432" y="366" width="44" height="10"></rect>
 		            <rect class="w3-blind" fill="#2E5573" x="435" y="306" width="38" height="60"></rect>
@@ -510,7 +512,7 @@
 				<g class="w2"
 					init-after="w1"
 					init-with="p:[op:0, tro:20% 80%]"
-					on-init="a:[scoop-enter:1000:linear:0:1:f] | s:[w2:public:delay-900]">
+					on-init="a:[scoop-enter:1000:linear:0:1:f] | s:[w2:public:100]">
 					<g clip-path="url(#w2-clip)">
 						<rect class="w2-bg" fill="#FEF1AE" x="382" y="306" width="38" height="60"></rect>
 			            <rect class="w2-blind" fill="#2E5573" x="382" y="306" width="38" height="60"
@@ -522,11 +524,11 @@
 		            <rect class="w2-shadow-top" fill="#0B3B5E" x="387" y="313" width="28" height="7"></rect>
 		            <rect class="w2-shadow-mid" fill="#0B3B5E" x="387" y="342" width="28" height="7"></rect>
 		            <path d="M382,306 L420,306 L420,366 L382,366 L382,306 L382,306 Z M388,313 L414,313 L414,337 L388,337 L388,313 L388,313 Z M388,342 L414,342 L414,366 L388,366 L388,342 L388,342 Z" class="w2-casing" fill="#FFFFFF"></path>
-				</g>
+				</g> -->
 				<g class="w1"
 					init-after="build-house"
 					init-with="p:[op:0, tro:20% 80%]"
-					on-init="a:[scoop-enter:1000:linear:0:1:f] | s:[w1:public:delay-800]">
+					on-init="a:[scoop-enter:1000:linear:0:1:f] | s:[w1:public:100]">
 					<!-- when-build-house="a:[scoop-enter:1000:linear:0:1:f]:delay-400" -->
 		            <rect class="w1-shadow-btm" fill="#0B3B5E" x="328" y="376" width="40" height="5"></rect>
 		            <rect class="w1-ledge" fill="#8C70B3" x="326" y="366" width="44" height="10"></rect>
