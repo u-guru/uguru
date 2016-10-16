@@ -1,10 +1,10 @@
 <div class="full-xy flex-center absolute full-xy top-0 left-0">
-    <ul class="flex-wrap-center p15-grid full-x" on-init="s:[init-all-scale:public]">
+    <ul class="flex-wrap-center p15-grid full-x" u on-init="s:[init-all-scale:public]">
         <li class='width-20p p20xy'>
             <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-after="init-all-scale"
 				init-with="p:[tro:center center]"
-                on-init="a:[rotateScaleTranslateSkewDemo:500:linear:0:4:f]">
+                on-init="a:[bounceIn-rotate-subtle:1000:linear:0:4:f]">
                 <h1 class="txt-azure txt-2 height-50p weight-900 opacity-50p semibold txt-center full-x">
                     4 iteration <br>
                 </h1>
@@ -20,7 +20,7 @@
             <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-after="init-all-scale"
 				init-with="p:[tro:center center]"
-                on-init="a:[rotateScaleTranslateSkewDemo:500:linear:0:4:r]">
+                on-init="a:[bounceIn-rotate-subtle:1000:linear:0:4:r]">
                 <h1 class="txt-azure txt-2 height-50p weight-900 opacity-50p semibold txt-center full-x">
                     4 iteration <br>
                 </h1>
@@ -36,7 +36,7 @@
             <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-after="init-all-scale"
 				init-with="p:[tro:center center]"
-                on-init="a:[rotateScaleTranslateSkewDemo:500:linear:0:4:a]">
+                on-init="a:[bounceIn-rotate-subtle:1000:linear:0:4:a]">
                 <h1 class="txt-azure txt-2 height-50p weight-900 opacity-50p semibold txt-center full-x">
                     4 iteration <br>
                 </h1>
@@ -52,7 +52,7 @@
             <div class="bg-transparent border-solid border-smoke border-3 p10xy flex-center flex-wrap width-128 height-128 radius-2"
                 init-after="init-all-scale"
 				init-with="p:[tro:center center]"
-                on-init="a:[rotateScaleTranslateSkewDemo:500:linear:0:4:ar]">
+                on-init="a:[bounceIn-rotate-subtle:1000:linear:0:4:ar]">
                 <h1 class="txt-azure txt-2 height-50p weight-900 opacity-50p semibold txt-center full-x">
                     4 iteration <br>
                 </h1>

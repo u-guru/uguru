@@ -1,8 +1,6 @@
 <div class="loader-portal-outer">
 	<div class="loader-portal states"
 		u on-init="s:[portal-open:public]"
-		when-portal-open="s:[warp-objects-container-enter:public]"
-		when-warp-objects-container-init="s:[warp-objects-enter:public]:delay-500"
 		when-transition-end="p-op">
 		<div class="loader-portal-inside"
 			u init-with="p:[tr:scale(0), tro:50% 90%]"
@@ -35,10 +33,10 @@
 				init-with="p:[tr:translateY(400px) scale(0.8), tro:center top]"
 				init-after="portal-open"
 				on-init="a:[translateY:400px:45px:500:easeOutBack:0:1:f, scale:0.8:1:500:easeOutBack:0:1:f]:delay-900"
-				when-portal-complete="a:[translateY:0px:350px:200:easeInBack:900:1:f]">
+				when-portal-complete="a:[translateY:45px:400px:200:easeInBack:900:1:f]">
 				<div init-with="p:[tro:center top]"
 					init-after="portal-open"
-					on-init="s:[portal-hover:public, warp-vehicles-enter:public]:delay-950 | a:[l-head-hover:800:(.88,.34,.05,.68):1000:3:f]">
+					on-init="s:[portal-hover:public,warp-vehicles-enter:public]:delay-950|a:[l-head-hover:800:(.88,.34,.05,.68):1000:3:f]">
 					<!-- s:[portal-hover:public:delay-950, warp-vehicles-init:public] -->
 					<svg viewBox="0 0 130 204">
 						<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
@@ -83,20 +81,20 @@
 	</div>
 
 	<!-- <div class="portal-transition-container"
-		when-warp-objects-container-init="t:[init:self]"
-		init-with="p-op"
-		on-init="p:[opacity:0:1:250:easeOutSine]"
+
+
+		on-init="p:[opacity:0:1:250:easeOutSine:0:1:f]|s:[warp-objects-container-init:self]"
 		when-transition-end="p:[opacity:1:0:250:easeOutSine]:delay-2000"
-		init-later>
-		<div style="display:none"
-			init-default
-			when-warp-start="s:[warp-open:public:delay-1250]"
+		init-after="warp-objects-container-init"> -->
+		<!-- <div
+			u
+			when-warp-start="s:[warp-open:self:delay-1250]"
 			when-warp-open="s:[warp-transition:public:delay-1000]"
 			when-warp-transition="s:[warp-end:public:delay-700]"
 			when-warp-objects-init="s:[warp-speed:public:delay-1500]"
 			when-warp-end="s:[transition-start:public:delay-500]"
 			when-transition-start="s:[transition-end:public]">
-		</div>
+		</div> -->
 
 		<div class="portal-transition-container"
 			init-with="p:[width:200px, height:200px, left:50%, top:50%, margin-left:-100px, margin-top:-100px, border-radius:100%, op:0, tr:translateY(20.5%) translateZ(25px) rotateX(84deg)]"
@@ -107,13 +105,13 @@
 				init-with="p:[-webkit-clip-path:circle(90px at 50% 50%), t:all 750ms cubic-bezier(1#0#1#0)]"
 				when-warp-open="p:[-webkit-clip-path:circle(1500px at 50% 50%)]"
 				when-warp-transition="p:[-webkit-clip-path:none]">
-			    <div class="warp" ng-include="'preapp/templates/loaders/warp.html'" style="background: #16293A;"></div>
+			    <!-- <div class="warp" ng-include="'preapp/templates/loaders/warp.html'" style="background: #16293A;"></div>
 				<div class="warp-items">
 					<div ng-include="'preapp/templates/loaders/props/warp-objects.html'"></div>
-				</div>
+				</div> -->
 			</div>
 		</div>
-	</div> -->
+	</div>
 </div>
 
 <!-- <div class="portal-page"

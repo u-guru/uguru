@@ -1179,7 +1179,6 @@ function AnimationService($ionicViewSwitcher, $timeout, $state, RootService) {
       }
       return null;
     };
-
     return InterpolableColor;
 
   })();

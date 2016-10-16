@@ -1,6 +1,6 @@
 var LOCAL = true; _startpage = 'calendar'; var FIRST_PAGE='^.' + _startpage; var img_base = ''; if (LOCAL) {BASE = 'remote/';REST_URL = "http://localhost:5000";}
 
-angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
+angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp', 'uguru.ui',
   'uguru.shared.directives', 'uguru.shared.services',
   'uguru.shared.directives.components', 'uguru.shared.directives.base.components', 'uguru.shared.controllers', 'uguru.admin'])
 
@@ -50,7 +50,6 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     controller: function($state, $scope, $anchorScroll) {
       $scope.$on('$locationChangeSuccess', function(info, url_before, url_after) {
         console.log('location change', info, url_before, url_after);
-
       });
     }
   })
@@ -59,6 +58,12 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     parent: 'root',
     url:'/',
     templateUrl: 'preapp/templates/loaders/regular.html'
+  })
+  .state('root.ui', {
+    name: 'root.ui',
+    parent: 'root',
+    url:'/ui',
+    templateUrl: 'ui/templates/index.html'
   })
   .state('root.api', {
     name: 'root.api',
@@ -297,14 +302,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/dev/splash/loader/original',
     templateUrl: 'preapp/templates/loaders/original.html'
   })
-  .state('root.dev-splash-loader-retro', {
-    url:'/dev/splash/loader/retro',
-    templateUrl: 'preapp/templates/loaders/retro.html'
-  })
-  .state('root.dev-splash-loader-scene', {
-    url:'/dev/splash/loader/scene',
-    templateUrl: 'preapp/templates/loaders/scene.html'
-  })
+  // .state('root.dev-splash-loader-scene', {
+  //   url:'/ui/scene',
+  //   templateUrl: 'ui/templates/loader/scene.html'
+  // })
   .state('root.dev-splash-nav', {
     url:'/dev/splash/nav',
     template: '<ion-view ng-controller="SplashController as splash"> <ion-content><div class="full-xy" ng-include="' + "'" + "preapp/templates/splash.nav.html" + "'" + '"></div></ion-content></ion-view>'
@@ -480,7 +481,6 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
       // var mappings = {'tiles': 'tiles'};
 
       var name =  $stateParams.name + (($stateParams.version &&  "." + $stateParams.version) || '');
-      console.log(name)
       return '<div ng-include="' + "'shared/templates/components/" + $stateParams.section + "/" + name + ".tpl'" + '"> </div>'
     },
     controller: function($scope, $timeout, $compile, UtilitiesService, $stateParams) {

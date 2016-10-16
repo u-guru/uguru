@@ -7,14 +7,16 @@ angular.module('uguru.shared.services')
     'AnimationFrameService',
     '$window',
     'RootService',
+    'SVGService',
     ElementService
         ]);
 
-function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window, RootService) {
-      var rShortcuts = {special: getSpecialShortcuts(), animations:null, propValues: {}, props: {}, values:{}};
+function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window, RootService, SVGService) {
+      var rShortcuts = {special: getSpecialAnimShortcuts(), animations:null, propValues: {}, props: {}, values:{}};
       var stateShortcuts = {};
       var rAnimations;
       var stateTypes = ['on', 'when', 'init'];
+      var delayMatchStr =  ['delay-', 'd-', 'd', '+'];
       var onStateMappings = {
         'init': 'ready'
       }
@@ -113,20 +115,29 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function renderState(elem, name, value, name_camel) {
-        var state = {type: null, name: {camel: name_camel, dash:name}};
+        var state = {type: null, nameCamel: '', name: {camel: name_camel, dash:name}};
         state.type = detectStateType(name, name_camel);
-
         if (!isValidState(state.type)) return;
         var parsedArgs = getParsedArgsByType(elem, state.type, name.split('-').splice(1), value)
-
         state.name = parsedArgs[state.type];
         state.actions = parsedArgs.actions;
+        state.nameCamel = parsedArgs.fullNameCamel;
         state.exec = getStateFunc(state.type, state.name, parsedArgs.actions);
         return state;
       }
 
       function isValidState(type) {
         return stateTypes.indexOf(type) > -1;
+      }
+
+      function loadAnimations() {
+        if (!rShortcuts.animations || !rShortcuts.animations.customShortcuts) {
+          rAnimations = RootService.animations;
+          rShortcuts.cssPropValues = RootService.animations.customShortcuts.cssPropValues;
+          rShortcuts.cssProps = RootService.animations.customShortcuts.cssProps;
+          rShortcuts.cmds = RootService.animations.customShortcuts.cmds;
+          rShortcuts.args = RootService.animations.customShortcuts.args;
+        }
       }
 
       function getStateFunc(type, name, actions) {
@@ -149,7 +160,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                   // scope.$apply();
                 });
               }
-              registerAnimationListeners(scope, element, attr, actions, context);
+              // registerAnimationListeners(scope, element, attr, actions, context);
               applySendAnimProp(scope, element, actions, context);
               // applyPropsToElement(element, actions.prop, rShortcuts);
             }
@@ -164,83 +175,104 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           }
           if (type === 'when') {
 
-            return function(element, scope, attr) {
+            return function(element, scope, attr, updated_actions) {
+              applySendAnimProp(scope, element, updated_actions || actions, context);
+            }
+          }
+      }
+
+      function parseDelayFromState(key, action_dict) {
+
+        var delayDict = action_dict && action_dict.delays;
+        if (!action_dict) return;
+        var extStrToParseSplit = action_dict['raw'] && key in action_dict['raw'] && action_dict['raw'][key].split(']:');
+        if (!delayDict) {
+          delayDict = {external: 0, internal: 0};
+        }
+        if (extStrToParseSplit && extStrToParseSplit.length > 1) {
+          delayDict.external = getExternalDelay(':' + extStrToParseSplit[1], delayMatchStr);
+        }
+        var intStrToParseSplit = action_dict['raw'] && key in action_dict['raw'] && action_dict['raw'][key].split(']')[0].split('[')[1];
+        delayDict.internal = getInternalDelay(key, intStrToParseSplit, delayMatchStr)
+
+        if (key === 'send') {
+          action_dict.delays[key] = delayDict;
+        }
+
+      }
+
+      function getInternalDelay(key, int_str, delay_match_strs) {
+
+          //to refactor
+          if (!rShortcuts || !rShortcuts.cmds) {
+            loadAnimations();
+            if (!rShortcuts || !rShortcuts.cmds) {
               $timeout(function() {
-                if (name.indexOf('-debug') > -1) {
-                  name = name.replace('-debug', '');
-                }
-                registerAnimationListeners(scope, element, attr, actions, context);
+                getInternalDelay(key, int_str, delay_match_strs)
               })
+              return;
             }
           }
-      }
-
-
-
-      function registerAnimationListeners(scope, element, attr, actions, context) {
-        var name = context.name
-        var baseName = 'when-' + name;
-        var classWatcher = [];
-        for (key in actions) {
-          var listenFor = baseName;
-          var scopeNameSplit=  UtilitiesService.camelCase(listenFor).split(':');
-          var scopeName = 'root.public.customStates.when.' + scopeNameSplit[0];
-          classWatcher.push(scopeNameSplit[0])
-          var scopeTitle = UtilitiesService.camelCase(listenFor);
-          var scopeTitle = scopeTitle.split(':')[0]
-          var scopeTitle = scopeTitle.split(':')[0];
-            if (!('when' in scope.root.public.customStates)) {
-              scope.root.public.customStates['when'] = {};
-              scope.root.public.customStates['when'][scopeTitle] = false;
-            }
-            var hasDelay = parseFloat(scopeNameSplit[1])
-            if (scope.root.public.customStates['when'][scopeTitle]) {
-              if (hasDelay) {
-                $timeout(function() {applySendAnimProp(scope, element, actions, context, registerWatchFunctionCallback)}, hasDelay);
-              } else {
-                applySendAnimProp(scope, element, actions, context, registerWatchFunctionCallback);
-              }
-            } else {
-              registerWatchFunction(scopeName, hasDelay);
-            }
-        }
-
-        function registerWatchFunctionCallback(scope_name) {
-          return function() {
-            return registerWatchFunction(scope_name);
+          if (int_str in rShortcuts.cmds) {
+            int_str = rShortcuts.cmds[int_str]
           }
+          int_str = UtilitiesService.replaceAll(int_str, ', ', ',');
+          int_str = int_str.split('[')[1];
+          int_str = int_str.split(']')[0];
+          var result = {};
+          var argTypeStr = {'a': 'anim', 's': 'send', 'p': 'prop'};
+          if (key.length === 1) {
+            key = argTypeStr[key]
+          }
+          if (key === 'send' || argTypeStr[key] === 'send') {
+
+            var msgArr = int_str.split(',');
+            msgArr.forEach(function(msg, i) {
+              if (msg.split(':').length > 2) {
+                var msgSplit =msg.split(':')
+                var msgName = msgSplit[0];
+                var delay = msgSplit[2];
+                result[msgName] = parseInt(delay);
+              }
+            })
+          }
+          return result;
         }
 
-        function registerWatchFunction(scope_name, hasDelay) {
-          return scope.$watch(scopeName, function(_new, _old) {
+        function getExternalDelay(ext_str, delay_match_strs) {
+          if (!delay_match_strs) {
+            delay_match_strs = ['delay-', 'd-', 'd', '+'];
+          }
+          var result = 0;
+          var extArgs = ext_str.split(':').filter(function(arg, i) {return arg && arg.length});
 
-            if (hasDelay) {
-              $timeout(function() {
-                applySendAnimProp(scope, element, actions, context)
-              }, hasDelay)
-            } else {
-              if (_new && _old === false) {
-                applySendAnimProp(scope, element, actions, context)
+          extArgs.forEach(function(e_arg, i) {
+
+            delay_match_strs.forEach(function(d, j) {
+              if (e_arg.indexOf(d) > -1 && !result) {
+
+                var strDelay = e_arg.replace(d, '');
+                result = parseInt(strDelay);
               }
-            }
+            })
           })
-        }
 
-      }
+          return result || 0;
+        }
 
       function applyOnToElement(scope, element, attr, actions, context) {
         var name = context.name;
-        if (name === 'init') {
-          registerAnimationListeners(scope, element, attr, actions, context)
+        if (name === 'init' || typeof(name) === 'object' && name.indexOf('init') > -1) {
+          // registerAnimationListeners(scope, element, attr, actions, context)
 
           element.ready(function(e) {
+
             applySendAnimProp(scope, element, actions, context);
           })
         } else {
-          registerAnimationListeners(scope, element, attr, actions, context)
+          // registerAnimationListeners(scope, element, attr, actions, context)
 
           element.on(name,function(e) {
-            console.log('initializing', element, actions, context)
             // delete actions['send']
               applySendAnimProp(scope, element, actions, context)
           })
@@ -248,54 +280,41 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function applySendAnimProp(scope, element, actions, context, cb) {
-        if (actions.prop) {
-          if ('prop' in actions.delays) {
+
+          if (actions.prop) {
+            if ('prop' in actions.prop.delays) {
               $timeout(function() {
-                applyPropsToElement(element, actions.prop);
-              }, actions.delays.prop)
+                applyPropsToElement(element, actions.prop.parsed, actions.prop.delays);
+              }, actions.prop.delays.external)
             } else {
-              applyPropsToElement(element, actions.prop);
+              applyPropsToElement(element, actions.prop.parsed);
             }
           };
           if (actions.anim) {
-            actions.anim = condenseAnimationsAndShortcuts(scope, actions.anim.replace(':delay-0', ''));
-            // embeddedAnimDelayArr = [];
-            if ('anim' in actions.delays && actions.delays.anim > 0) {
+            actions.anim.parsed = condenseAnimationsAndShortcuts(scope, actions.anim.parsed.replace(':delay-0', ''));
 
-              // actions.anim.split('|').forEach(function(anim_str, i) {
-                var animStrSplit = (actions.anim + "").split(',');
+            if ('anim' in actions.anim.delays && actions.anim.delays > 0) {
+                var animStrSplit = (actions.anim.parsed + "").split(',');
                 var animArr = [];
                 animStrSplit.forEach(function(single_anim, j) {
                   var singleAnimSplit = single_anim.split(':');
-
-                  if (singleAnimSplit.length < 7) {
-                    singleAnimSplit[2] = parseFloat(singleAnimSplit[2]) + actions.delays['anim'];
+                  if (singleAnimSplit.length < 8) {
+                    singleAnimSplit[3] = parseFloat(singleAnimSplit[3]) + actions.anim.delays.external;
                   } else {
-                    singleAnimSplit[5] = parseFloat(singleAnimSplit[5]) + actions.delays['anim'];
+                    singleAnimSplit[5] = parseFloat(singleAnimSplit[5]) + actions.anim.delays.external;
                   }
                   animArr.push(singleAnimSplit.join(':'));
                 })
-
-                // embeddedAnimDelayArr.push(animArr)
-              // })
-              // if (embeddedAnimDelayArr && embeddedAnimDelayArr.length) {
-              //   actions.anim = embeddedAnimDelayArr.join(",");
-              // }
+                actions.anim.parsed = animArr.join(",")
             }
-
-            applyAnimArgs(element, scope, actions.anim, context);
+            $timeout(function() {
+              applyAnimArgs(element, scope, actions.anim.parsed, context);
+            })
           }
 
           if (actions.send) {
 
-            if ('send' in actions.delays) {
-              $timeout(function() {
-                console.log('sending', element, scope, actions.send)
-                applySendArgsAndCallback(element, scope, actions.send);
-              }, actions.delays.send)
-            } else {
-              applySendArgsAndCallback(element, scope, actions.send);
-            }
+            applySendArgsAndCallback(element, scope, actions.send.parsed, actions.send.delays)
           }
           cb && cb();
       }
@@ -357,6 +376,8 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               finalAnim = pureAnimSplit.join(":")
             }
           }
+
+          finalAnim = checkAndReplaceSpecialArgs(element, finalAnim);
           animArr.push(finalAnim);
         })
 
@@ -385,63 +406,158 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         // else {
 
           if (!player.active) {
-        //     console.log('it should play again')
-            // player = player.scheduleStream(player, state, 0);
-            // player.active = true;
               player.play(player);
           }
-
-        // }
-        // player.play();
       }
 
-      function applySendArgsAndCallback(element, scope, messages) {
+      function applySendArgsAndCallback(element, scope, messages, delay_dict) {
+
+        if (!delay_dict) {
+          delay_dict = {internal: {}, external:0}
+        };
+        global_delay = delay_dict || 0;
 
         messages.split(',').forEach(function(msg, i) {
           if (!rShortcuts.cmds) {
             rShortcuts.cmds = RootService.animations.customShortcuts.cmds;;
           }
+
           if (msg in rShortcuts.cmds) {
             msg = rShortcuts.cmds[msg];
-            console.log(msg)
           }
           var msgSplit = msg.split(':')
           var iMsg = msgSplit[0].trim();
+          var msgName = iMsg;
           var msgScope = msgSplit[1].trim();
 
-          var msgDelay = 0;
-
+          msgDelay = delay_dict;
+          var totalMsgDelay = msgDelay.external || 0;
 
           if (msgSplit.length > 2) {
-            msgDelay = parseInt(msgSplit[2].replace('delay-', ''));
+            totalMsgDelay = (msgDelay.external || 0) + (msgDelay.internal[msgName] || 0);
           }
 
-          // if (msgScope.trim() ==='self') {
-          //     if (!msgDelay) {
-
-          //       // element[0].classList.add('when-' + msgScope)
-          //     }
-          //     return;
-          // }
+          var fullMsgName = ['when',msgName].join('-');
+          var camelName = UtilitiesService.camelCase(fullMsgName);
+          if (msgScope === 'self') {
 
 
-          var _attr = {dashed: iMsg, camel: UtilitiesService.camelCase('when-' + iMsg)};
-          _attr.camel = _attr.camel.replace(' ', '-')
-          console.log('sending', iMsg, 'with delay', msgDelay)
-          if (msgDelay) {
-            $timeout(function() {
-              scope.root.public.customStates.when[_attr.camel] = true;
+            if (camelName in scope.public.customStates.when) {
+              var stateRef = scope.public.customStates.when[camelName];
 
-              $timeout(function() {
-                scope.$apply();
-                scope.root.public.customStates.when[_attr.camel] = false;
+              if (stateRef.actions) {
+                for (key in stateRef.actions) {
+
+                  var splitSendObj = {};
+                  splitSendObj[key] = stateRef.actions[key];
+
+                  //warning: send to self loop;
+                  if (key === 'send') {
+                    var extDelay = stateRef.actions.send.delays.external + totalMsgDelay;
+
+                      splitSendObj[key].delays.external = 0;
+                      $timeout(function() {
+                        stateRef.func && stateRef.func(splitSendObj, scope);
+                      }, extDelay);
+                  } else {
+
+                    splitSendObj[key].delays.external += totalMsgDelay;
+
+                    console.log('send level', key, msgScope, splitSendObj[key].delays);
+                    stateRef.func && stateRef.func(splitSendObj, scope);
+                  }
+                }
+              }
+
+            }
+          }
+          else if (msgScope === 'parent') {
+            var elementFound = false;
+              scope.$parent.public.customStates.whenElements.forEach(function(elem, i) {
+                if (!elementFound && elem.contains(element[0])) {
+                  elementFound = elem;
+                  return;
+                }
               })
-            }, msgDelay)
-          } else {
+              var camelName = UtilitiesService.camelCase(fullMsgName);
+              if (elementFound && !scope.$parent.public.customStates.when[camelName]) {
+
+                scope.$parent.public.customStates.when[camelName] = true;
+
+                $timeout(function() {
+                  scope.$parent.public.customStates.when[camelName] = false;
+                })
+                var stateRef = scope.$parent.states[fullMsgName];
+                if (stateRef.actions) {
+                  for (key in stateRef.actions) {
+
+                      stateRef.actions[key].delays.external += totalMsgDelay;
+                  }
+                  stateRef.func && stateRef.func(stateRef.actions, scope);
+                }
+                // scope.$parent.public.customStates.when[camelName] = elementFound;
+              }
+          }
+          else if(msgScope === 'public' && (fullMsgName in scope.root.scope.public.customStates || camelName in scope.root.scope.public.customStates)) {
+            if (camelName in scope.root.scope.public.customStates) {
+              fullMsgName = camelName
+            }
+            var stateRefs = scope.root.scope.public.customStates[fullMsgName];
+            stateRefs.forEach(function(stateRef, i) {
+              if (stateRef.actions && Object.keys(stateRef.actions).length) {
+
+
+                $timeout(function() {
+                      stateRef.func && stateRef.func(stateRef.actions, scope);
+                }, totalMsgDelay);
+
+                // for (key in stateRef.actions) {
+
+                  // if (!stateRef.actions[key]) {
+                  //   continue
+                  // }
+                  // var splitSendObj = {};
+                  // splitSendObj[key] = stateRef.actions[key];
+
+                  // //warning: send to self loop;
+                  // if (key === 'send') {
+                  //   console.log('ending', splitSendObj[key])
+                  //   var extDelay = stateRef.actions.send.delays.external + totalMsgDelay;
+
+
+                  //     splitSendObj[key].delays.external = 0;
+
+
+                  // } else {
+
+
+                  //   // splitSendObj[key].delays.external += ;
+
+
+                  //   $timeout(function() {
+                  //     stateRef.func && stateRef.func(splitSendObj, scope);
+                  //   }, totalMsgDelay)
+                  // }
+              }
+            })
+          }
+           else {
+
+            var _attr = {dashed: msgName, camel: UtilitiesService.camelCase('when-' + msgName)};
+            _attr.camel = _attr.camel.replace(' ', '-')
+            if (!scope.root.public.customStates.when) {
+              scope.root.public.customStates.when = {};
+            }
+            if (!scope.root.public.customStates.after) {
+              scope.root.public.customStates.after = {};
+            }
             scope.root.public.customStates.when[_attr.camel] = true;
+            scope.root.public.customStates.after[_attr.camel] = true;
+            scope.root.scope.public.customStates[camelName] = [];
             $timeout(function() {
               scope.$apply();
               scope.root.public.customStates.when[_attr.camel] = false;
+              scope.root.public.customStates.after[_attr.camel] = false;
             })
 
             // console.log(_attr.camel)
@@ -513,7 +629,12 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (!rShortcuts || !rShortcuts.cssPropValues) {
 
           }
+
           var prop = prop.trim();
+
+          prop = checkAndReplaceSpecialPropArgs(elem, prop);
+          if (!prop || !prop.length) return;
+
           if (rShortcuts && rShortcuts.cssPropValues && prop.toLowerCase() in rShortcuts.cssPropValues) {
             prop = rShortcuts.props[prop] + "";
           }
@@ -545,72 +666,64 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         var argDict = {};
 
 
+        remainderStateName = state_args;
         state_args = getStateArgsFromValue(state_args, arg_value);
 
-        argDict[state_type] = configureNameFromArgs(state_type, state_args)
+
+        if (state_type === 'when') {
+          argDict[state_type] = remainderStateName.join('-');
+          argDict.fullNameCamel = UtilitiesService.camelCase(state_type +'-' +argDict[state_type]);
+        } else {
+          argDict[state_type] = remainderStateName;
+        }
+
+
 
           // var shortCutDict = getShortcutDict(elem, arg_value);
 
         argDict.actions = getArgActions(state_args, arg_value);
-
         return argDict;
-      }
-
-      function configureNameFromArgs(state_type, state_args) {
-
-        if (state_type === 'when') {
-          var nameArr = [];
-          state_args.forEach(function(arg, i ) {
-
-            if (['send', 'anim', 'prop'].indexOf(arg) === -1) {
-
-              nameArr.push(arg);
-            }
-          })
-          state_args.splice(0, nameArr.length);
-          return nameArr.join('-').replace('prop', '').replace('anim', '').replace('send', '')
-        }
-
-
-        return state_args.splice(0,1)[0]
       }
 
       function getStateArgsFromValue(state_args, arg_value) {
         //SHORTCUTS GO HERE for FULL anim/send/trigger states;
         arg_value = UtilitiesService.replaceAll(arg_value, ' | ', '|');
-
+        var resultArr = [];
         arg_value.split('|').forEach(function(param_value, i) {
+          resultDict = {argName: '', delays: {internal: 0, external: 0}};
 
-          var hasDelay = (param_value + '').split(']')[1];
-          var delay = '';
-          if (hasDelay) {
-            delay = ':' + parseFloat(hasDelay.replace(':delay-', '')).toFixed(4);
-          }
+          // resultDict.delays.external = getExternalDelay(arg_value + '') || 0;
+
+
           param_value = param_value.trim();
 
           if (param_value.indexOf('s:[') > -1 || param_value.indexOf('send:[') > -1 || param_value.indexOf('trigger:[') > -1 || param_value.indexOf('t:[') > -1) {
 
-            state_args.push('send' + delay);
+            resultDict.argName = 'send';
           }
           if (param_value.indexOf('p:[') > -1 || param_value.indexOf('prop:[') > -1) {
-            state_args.push('prop' + delay);
+            resultDict.argName = 'prop';
           }
           if (param_value.indexOf('a:[') > -1 || param_value.indexOf('anim:[') > -1) {
-            state_args.push('anim' + delay);
-
+            resultDict.argName = 'anim';
           }
+          resultArr.push(resultDict)
         })
-        return state_args
+
+        return resultArr;
       }
 
       function getArgActions(state_args, full_value, shortcuts) {
+
         var actionDict = {};
         var delayDict = {};
+        var rawDict = {};
         var state_args_base = [];
-        state_args.forEach(function(arg, i) {state_args_base.push(arg.split(':')[0].trim())});
-        // var detectAndAddStrArgValues = detectAndAddStrArgValues(state_args);
-        var joinedSends = [];
+        state_args.forEach(function(arg_dict, i) {state_args_base.push(arg_dict.argName.split(':')[0].trim())});
 
+        var joinedSends = [];
+        full_value = UtilitiesService.replaceAll(full_value, ': ', ':');
+        full_value = UtilitiesService.replaceAll(full_value, ', ', ',');
 
         //trigger
         full_value.split('|').forEach(function(stream) {
@@ -645,56 +758,52 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               full_value = full_value.replace('t:[', 'send:[').replace('trigger:[', 'send:[').trim();
               state_args.push('send' + delay);
             } else {
-              // var sendIndex = full_value.split('send:[');
-              // var sendIndexStream = sendIndex[1];
               full_value = full_value.replace('t:[', 'send:[').replace('trigger:[', 'send:[').trim();
-
-              // state_args.push('send' + delay);
             }
           }
         })
 
         //
-        state_args.forEach(function(arg, i) {
+        var resultDict = {};
 
-          var delay = arg.split(':')[1] || 0;
-          var arg = arg.split(':')[0];
 
-          var delay = delay && parseFloat(delay.replace(':delay-', ''));
+        state_args.forEach(function(arg_dict, i) {
 
-          full_value = UtilitiesService.replaceAll(full_value, ': ', ':');
-          full_value = UtilitiesService.replaceAll(full_value, ', ', ',');
+          // var extDelay = arg_dict.delays.external || 0;
+          //to elimiate
+          var arg = arg_dict.argName.split(':')[0];
+          resultDict[arg] = {};
+
           if (arg in actionDict) {
-            actionDict[arg] = actionDict[arg].trim() +  '|' + extractRelevantValueFromArg(arg, full_value).trim();
+            resultDict[arg].parsed = actionDict[arg];
           } else {
-            actionDict[arg] = extractRelevantValueFromArg(arg, full_value);
+            resultDict[arg].parsed = extractRelevantValueFromArg(arg, full_value);
+            resultDict[arg].raw = extractRelevantValueFromArg(arg, full_value);
           }
-          if (actionDict[arg]) {
-            actionDict[arg] = actionDict[arg].trim();
-          }
-          if (delay) {
-            delayDict[arg] = delay;
-          }
+          resultDict[arg].raw = extractRelevantValueFromArg(arg, full_value, true);
+
+          resultDict[arg].delays = {internal: getInternalDelay(arg, resultDict[arg].raw, delayMatchStr), external: getExternalDelay(resultDict[arg].parsed)};
 
         })
 
-        actionDict.delays = delayDict;
-        return actionDict
+        return resultDict;
 
         function detectAndAddStrArgValues(state_args) {
           return [];
         }
 
-        function extractRelevantValueFromArg(arg, full_value) {
-
+        function extractRelevantValueFromArg(arg, full_value, remove_external) {
+          remove_external = remove_external || false;
           arg = arg.trim();
           var returnValue = full_value;
           full_value.split('|').forEach(function(value, i) {
             if (value.indexOf(arg + ':[') > -1 || value.indexOf(arg[0] + ':[') > -1) {
               returnValue = value;
-              returnValue = UtilitiesService.replaceAll(returnValue, arg+':[', '');
-              returnValue = UtilitiesService.replaceAll(returnValue, arg[0]+':[', '');
-              returnValue = UtilitiesService.replaceAll(returnValue, ']', '');
+              if (!remove_external) {
+                returnValue = UtilitiesService.replaceAll(returnValue, arg+':[', '');
+                returnValue = UtilitiesService.replaceAll(returnValue, arg[0]+':[', '');
+                returnValue = UtilitiesService.replaceAll(returnValue, ']', '');
+              }
             }
           })
           return returnValue
@@ -702,15 +811,56 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function detectStateType(name, camel) {
+
         return name.split('-')[0].toLowerCase();
       }
 
-      function getSpecialShortcuts() {
+      function getSpecialAnimShortcuts() {
         return {draw: drawFunc}
       }
 
-      function drawFunc(elem, shortcut) {
+      function getSpecialPropShortcuts() {
+        return {draw: initDrawFunc}
+
+        function initDrawFunc(elem) {
+          var pathLength = SVGService.getTotalPathLength(elem[0]);
+
+          elem[0].setAttribute('stroke-dashoffset', pathLength + "")
+          return "stroke-dasharray:" + pathLength + ';stroke-dashoffset:' + pathLength;
+        }
+
+      }
+
+      function checkAndReplaceSpecialPropArgs(elem, prop_str) {
+        var firstArg = prop_str.split(':')[0];
+        var specialPropDict = getSpecialPropShortcuts();
+        if (firstArg in specialPropDict) {
+          var result = specialPropDict[firstArg](elem);
+
+          return result;
+        }
+        return prop_str;
+      }
+
+      function checkAndReplaceSpecialArgs(elem, anim_str) {
+
+        var firstArg = (anim_str + '').split(':')[0];
+        var specialFuncDict = getSpecialAnimShortcuts();
+        var func = specialFuncDict[firstArg];
+
+        if (func) {
+
+          var result = func(elem, null, anim_str);
+          console.log(result)
+          return result;
+        }
+
+        return result || anim_str
+      }
+
+      function drawFunc(elem, shortcut, formatted) {
         var shortcut = shortcut || "draw:100%";
+
         var parsedShortcut = shortcut.split('draw:')[1];
         var percentDraw = parseInt(parsedShortcut)/100;
         var isNegative = shortcut.indexOf('-') > -1;
@@ -718,8 +868,24 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           percentDraw *= isNegative
         }
 
-
-        return 'stroke-dashoffset:' + (elem[0].getTotalLength() * percentDraw).toFixed(4);
+        if (formatted) {
+          var pathLength = SVGService.getTotalPathLength(elem[0]);
+          var percentStart = parseInt(formatted.split(':')[1].replace('%', ''))/100.0;
+          var percentEnd = parseInt(formatted.split(':')[2].replace('%', ''))/100.0;
+          var pathLengthStart = percentStart * pathLength;
+          var pathLengthEnd = percentEnd * pathLength;
+          console.log(pathLengthStart, pathLengthEnd)
+          elem.css('stroke-dasharray', pathLength);
+          var remainderAnim = formatted.split(':').slice(3).join(":");
+          // if (pathLengthEnd !== pathLength) {
+            result = "stroke-dashoffset:" + (pathLength - pathLengthStart) + ':' + (pathLength - pathLengthEnd) + ':' + remainderAnim;
+          // } else {
+          //   result = "stroke-dashoffset:" + pathLengthStart + ':' + pathLength + ':' + remainderAnim;
+          // }
+          console.log(result)
+          return result;
+        }
+        return 'strokeDashoffset:' + (elem[0].getTotalLength() * percentDraw).toFixed(4);
       }
 
       function getShortcutDict(elem, str) {

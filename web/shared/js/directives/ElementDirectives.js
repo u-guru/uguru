@@ -56,24 +56,21 @@ angular.module('uguru.shared.directives')
                     var whenAttrListeners = [];
                     scope.transcludeComplete = false;
                     transclude(scope, function(clone, innerScope) {
-                      whenAttr.forEach(function(attr_name, i) {
-                        var iListen = scope.$watch('root.public.customStates.when.' + attr_name, function(val, new_val) {
-                          // console.log(lElem, whenAttr, val, new_val)
-                          if (val) {
 
-                            whenAttrListeners.forEach(function(i_listener, j) {
-                              i_listener();
-                            })
+                      whenAttr.forEach(function(attr_name, i) {
+                        var iListen = scope.$watch('root.public.customStates.after.' + attr_name, function(val, new_val) {
+
+                          if (val) {
+                            whenAttrListeners[i]();
 
                             lElem[0].removeAttribute('init-after');
                             if (lAttr.ngIncludeAfter) {
                               var src = lAttr.ngIncludeAfter;
                               lElem[0].removeAttribute('ng-include-after');
                               clone.attr('ng-include', src);
-                              // $compile(lElem[0])(scope);
                             }
                             lElem[0].setAttribute('u', '');
-                            $compile(lElem[0])(scope);
+                            $compile(lElem)(innerScope);
 
 
                             lElem.append(clone);
@@ -340,12 +337,16 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
-.directive('initWith', ['DirectiveService', 'UtilitiesService', function(DirectiveService, UtilitiesService) {
+.directive('initWith', ['DirectiveService', 'UtilitiesService', '$compile', function(DirectiveService, UtilitiesService, $compile) {
   return {
     restrict: 'A',
       link: {
         pre: function(scope, element, attr) {
-
+          // if (!('u' in attr) && !attr.initAfter) {
+          //   attr.$set('u', '');
+          //   $compile(element)(scope)
+          //   return;
+          // }
           scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
 
           var switchDict;
@@ -425,19 +426,23 @@ angular.module('uguru.shared.directives')
           }
         }
 }])
-.directive("u", ["$compile", "ElementService", "$timeout", function($compile, ElementService, $timeout) {
+.directive("u", ["$compile", "ElementService", "$timeout", "$rootScope", function($compile, ElementService, $timeout, $rootScope) {
       return {
           restrict: 'A',
           replace: true,
           transclude: true,
           priority:100,
+          scope:true,
           compile: function(element, attr, transclude) {
               this.states = ElementService.renderElementStates(element, attr);
               var states = this.states;
 
-
               return {
                   pre: function (scope, lElem, lAttr) {
+                    scope.states = {};
+
+                    scope.public = {customStates: {when: {}, whenElements:[]}};
+                    scope.whenCallbacks = {};
 
                     if (states.init) {
                       states.init.forEach(function(state, i) {
@@ -449,28 +454,50 @@ angular.module('uguru.shared.directives')
                         }
                       })
                     }
-                    scope.whenStates = {};
+
                       if (states.on) {
                         states.on.forEach(function(state, i) {
                           if (state.actions.debug) {
                             ElementService.launchExternalWindow(state.actions.debug, element);
                           }
                           state.exec(lElem, scope, lAttr);
+                          if (state.name.indexOf('debug') > -1) {
+                            ElementService.launchExternalWindow(state.actions.anim.parsed, element);
+                          }
                         })
                       }
                       if (states.when) {
                         states.when.forEach(function(state, i) {
 
-                          if (state.name.indexOf('debug') > -1) {
+                          state.cancelCallback = null;
 
-                            ElementService.launchExternalWindow(state.actions.anim, element);
+                          var whenCallback = function(actions) {
+                              state.exec(lElem, scope, lAttr, actions);
                           }
-                          state.exec(lElem, scope, lAttr);
+
+                          var whenMetadata = {actions: state.actions, func: whenCallback, name:state.name};
+                          scope.public.customStates.when[state.nameCamel] = whenMetadata;
+                          if (scope.public.customStates.whenElements.indexOf(element[0]) === -1) {
+                            scope.public.customStates.whenElements.push(element[0]);
+                          }
+
+                          var whenStateName = state.type + '-' + state.name;
+
+                          if (!(whenStateName in scope.root.scope.public.customStates)) {
+                            scope.root.scope.public.customStates[whenStateName] = [];
+                          }
+                          scope.root.scope.public.customStates[whenStateName].push(whenMetadata)
+                          if (state.name.indexOf('debug') > -1) {
+                            ElementService.launchExternalWindow(state.actions.anim.parsed, element);
+                          }
                         })
                       }
+
+                      // scope.states = states;
                       transclude(scope, function(clone, innerScope) {
-                              $compile(clone)(scope);
-                              lElem.append(clone);
+                          $compile(lElem.contents())(scope);
+
+                          lElem.append(clone);
                       });
 
                   },
@@ -478,6 +505,32 @@ angular.module('uguru.shared.directives')
               }
           }
       }
+}])
+.directive("innerSrc", ["$compile", function($compile) {
+      return {
+          restrict: 'A',
+          replace: true,
+          priority: 100,
+          compile: function(element, attr) {
+            var div = angular.element('<div></div>');
+            for (var key in attr.$attr) {
+              if (key !== 'u') {
+                div[0].setAttribute(key, attr[key]);
+              }
+            }
+
+            // element[0].removeAttribute('inner-src');
+
+            return {
+              pre: function(scope, pElem, attr) {
+                element.replaceWith(div);
+                div.attr('ng-include', attr.innerSrc);
+                $compile(div)(scope);
+                element[0].removeAttribute('inner-src');
+              }
+            }
+          }
+        }
 }])
 .directive("initLater", ["CompService", "$compile", function(CompService, $compile) {
       return {
@@ -547,16 +600,15 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
-.directive('onInit', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+.directive('onInit', ['$timeout', 'DirectiveService', '$compile', function ($timeout, DirectiveService, $compile) {
   return {
     restrict: 'A',
+    priority:100,
     link: {
       pre: function(scope, element, attr) {
-        scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
-        element.ready(function() {
-          onInitReadyFunc();
-        })
-
+        if (!('u' in attr) && !attr.initAfter) {
+          attr.$set('u', '');
+        }
 
         scope.$watch(function() {
               return element.attr('class');
