@@ -472,15 +472,9 @@
 					init-with="p:[tro:center bottom, transform:scaleY(0)]"
 					on-init="a:[scaleY:0:1:750:easeOutBounce:0:1:f]"></rect>
 				<g class="w5"
-<<<<<<< HEAD
 					u
 					init-with="p:[opacity:0, tro:20% 80%]"
 					when-w1="a:[scoop-enter:1000:linear:400:1:f]">
-=======
-					init-after="w4"
-					init-with="p:[op:0, tro:20% 80%]"
-					on-init="a:[scoop-enter:1000:linear:0:1:f]">
->>>>>>> f3bced0d2954c9a36ff300058c9e47134faffcc9
 					<g clip-path="url(#w5-clip)">
 						<rect class="w5-bg" fill="#FEF1AE" x="435" y="407" width="38" height="60"></rect>
 						<rect class="w5-blind" fill="#2E5573" x="435" y="407" width="38" height="60"
