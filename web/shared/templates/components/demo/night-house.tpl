@@ -289,8 +289,8 @@
 			</g>
 		</g>
 	</svg>
-	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #092D4B;"
-		u init-with="p:[op:1]" on-init="a:[opacity:1:0:3000:easeInOutSine:0:1:f]:delay-6000">
+	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #092D4B;">
+		<!-- u init-with="p:[op:1]" on-init="a:[opacity:1:0:3000:easeInOutSine:0:1:f]:delay-6000"> -->
 	    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 	        <g class="blue-tree">
 	            <rect class="b-canopy" fill="#AADFFF" x="221" y="364" width="43" height="86" rx="21.5"
@@ -471,7 +471,7 @@
 					init-after="build-house"
 					init-with="p:[tro:center bottom, transform:scaleY(0)]"
 					on-init="a:[scaleY:0:1:750:easeOutBounce:0:1:f]"></rect>
-				<!-- <g class="w5"
+				<g class="w5"
 					init-after="w4"
 					init-with="p:[op:0, tro:20% 80%]"
 					on-init="a:[scoop-enter:1000:linear:0:1:f]">
@@ -524,7 +524,7 @@
 		            <rect class="w2-shadow-top" fill="#0B3B5E" x="387" y="313" width="28" height="7"></rect>
 		            <rect class="w2-shadow-mid" fill="#0B3B5E" x="387" y="342" width="28" height="7"></rect>
 		            <path d="M382,306 L420,306 L420,366 L382,366 L382,306 L382,306 Z M388,313 L414,313 L414,337 L388,337 L388,313 L388,313 Z M388,342 L414,342 L414,366 L388,366 L388,342 L388,342 Z" class="w2-casing" fill="#FFFFFF"></path>
-				</g> -->
+				</g>
 				<g class="w1"
 					init-after="build-house"
 					init-with="p:[op:0, tro:20% 80%]"
