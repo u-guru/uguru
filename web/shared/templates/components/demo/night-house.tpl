@@ -364,7 +364,7 @@
 					init-with="p:[transform:translateX(-150px), op:0]"
 					on-init="a:[opacity:0:1:500:linear:0:1:f, translateX:-150px:0px:800:easeOutCirc:0:1:f] | s:[foliage:public:1500]"></path>
 	        </g>
-	        <g class="sky" init-after="night-sky" on-init="s:[activate-sky-children:public:450]">
+	        <g class="sky" init-after="night-sky" on-init="s:[activate-sky-children:public:500]:delay-250">
 	            <circle class="star-1" fill="#FFFFFF" cx="255.5" cy="258.5" r="2.5"
 					u
 					init-with="p:[op:0, tro:center center]"
@@ -416,36 +416,33 @@
 						<!-- on-exit
 						 u on-init="a:[translateY:0px:-800px:400:easeInOutBack:0:1:f]:delay-5000" -->
 				</g>
-				<g class="big-cloud">
-					<g	u
+				<g class="big-cloud"
+					init-after="night-sky"
+					when-hover-sky="a:[translateY:-3px:3px:900:easeInOutSine:200:100:a]">
+		            <path d="M376.178959,232 C376.715756,229.754184 377,227.410286 377,225 C377,208.431458 363.568542,195 347,195 C330.431458,195 317,208.431458 317,225 C317,227.410286 317.284244,229.754184 317.821041,232 L376.178959,232 L376.178959,232 Z" class="b-cloud-1" fill="#BCE5FF"
+						u
 						init-with="p:[transform:scale(0), tro:center bottom]"
-						when-activate-sky-children="a:[scale:0:1:200:easeOutSine:0:1:f]">
-			            <path d="M376.178959,232 C376.715756,229.754184 377,227.410286 377,225 C377,208.431458 363.568542,195 347,195 C330.431458,195 317,208.431458 317,225 C317,227.410286 317.284244,229.754184 317.821041,232 L376.178959,232 L376.178959,232 Z" class="b-cloud-1" fill="#BCE5FF"></path>
-					</g>
-					<g u
+						when-activate-sky-children="a:[scale:0:1:200:easeOutSine:0:1:f] | s:[hover-sky:public:100]"></path>
+		            <path d="M321.243895,232 C321.737482,230.08228 322,228.071797 322,226 C322,212.745166 311.254834,202 298,202 C284.745166,202 274,212.745166 274,226 C274,228.071797 274.262518,230.08228 274.756105,232 L321.243895,232 L321.243895,232 Z" class="b-cloud-2" fill="#BCE5FF"
+						u
 						init-with="p:[transform:scale(0), tro:center bottom]"
-						when-activate-sky-children="a:[scale:0:1:200:easeOutSine:0:1:f]">
-			            <path d="M321.243895,232 C321.737482,230.08228 322,228.071797 322,226 C322,212.745166 311.254834,202 298,202 C284.745166,202 274,212.745166 274,226 C274,228.071797 274.262518,230.08228 274.756105,232 L321.243895,232 L321.243895,232 Z" class="b-cloud-2" fill="#BCE5FF"></path>
-					</g>
-					<g u
+						when-activate-sky-children="a:[scale:0:1:200:easeOutSine:0:1:f]"></path>
+		            <path d="M281.975766,232 C282.639075,230.123326 283,228.103813 283,226 C283,216.058875 274.941125,208 265,208 C255.058875,208 247,216.058875 247,226 C247,228.103813 247.360925,230.123326 248.024234,232 L281.975766,232 L281.975766,232 Z" class="b-cloud-3" fill="#BCE5FF"
+						u
 						init-with="p:[transform:scale(0), tro:center bottom]"
-						when-activate-sky-children="a:[scale:0:1:200:easeOutSine:0:1:f]">
-			            <path d="M281.975766,232 C282.639075,230.123326 283,228.103813 283,226 C283,216.058875 274.941125,208 265,208 C255.058875,208 247,216.058875 247,226 C247,228.103813 247.360925,230.123326 248.024234,232 L281.975766,232 L281.975766,232 Z" class="b-cloud-3" fill="#BCE5FF"></path>
-					</g>
+						when-activate-sky-children="a:[scale:0:1:200:easeOutSine:0:1:f]"></path>
 				</g>
-				<g class="small-cloud">
-						<!-- u
-						when-small-cloud="a:[translateY:3px:-3px:900:easeInOutQuad:0:i:a]" -->
-					<g u
+				<g class="small-cloud"
+					init-after="night-sky"
+					when-hover-sky="a:[translateY:3px:-3px:900:easeInOutSine:200:100:a]">
+		            <path d="M378.756105,178 C378.262518,176.08228 378,174.071797 378,172 C378,158.745166 388.745166,148 402,148 C415.254834,148 426,158.745166 426,172 C426,174.071797 425.737482,176.08228 425.243895,178 L378.756105,178 L378.756105,178 Z" class="s-cloud-1" fill="#BCE5FF"
+						u
 						init-with="p:[transform:scale(0), tro:center bottom]"
-						when-activate-sky-children="a:[scale:0:1:200:easeOutSine:0:1:f]">
-			            <path d="M378.756105,178 C378.262518,176.08228 378,174.071797 378,172 C378,158.745166 388.745166,148 402,148 C415.254834,148 426,158.745166 426,172 C426,174.071797 425.737482,176.08228 425.243895,178 L378.756105,178 L378.756105,178 Z" class="s-cloud-1" fill="#BCE5FF"></path>
-					</g>
-					<g u
+						when-activate-sky-children="a:[scale:0:1:200:easeOutSine:0:1:f]"></path>
+		            <path d="M418.024234,178 C417.360925,176.123326 417,174.103813 417,172 C417,162.058875 425.058875,154 435,154 C444.941125,154 453,162.058875 453,172 C453,174.103813 452.639075,176.123326 451.975766,178 L418.024234,178 L418.024234,178 Z" class="s-cloud-2" fill="#BCE5FF"
+						u
 						init-with="p:[transform:scale(0), tro:center bottom]"
-						when-activate-sky-children="a:[scale:0:1:200:easeOutSine:0:1:f] | s:[small-cloud:public:200]">
-			            <path d="M418.024234,178 C417.360925,176.123326 417,174.103813 417,172 C417,162.058875 425.058875,154 435,154 C444.941125,154 453,162.058875 453,172 C453,174.103813 452.639075,176.123326 451.975766,178 L418.024234,178 L418.024234,178 Z" class="s-cloud-2" fill="#BCE5FF"></path>
-					</g>
+						when-activate-sky-children="a:[scale:0:1:200:easeOutSine:0:1:f]"></path>
 				</g>
 	        </g>
 	        <g class="house">
@@ -534,7 +531,7 @@
 		            <rect class="w1-shadow-mid" fill="#0B3B5E" x="334" y="342" width="28" height="7"></rect>
 		            <path d="M329,306 L367,306 L367,366 L329,366 L329,306 L329,306 Z M335,313 L361,313 L361,337 L335,337 L335,313 L335,313 Z M335,342 L361,342 L361,366 L335,366 L335,342 L335,342 Z" class="w-casing" fill="#FFFFFF"></path>
 				</g>
-				<g init-after="door" on-init="s:[night-sky:public:700]">
+				<g init-after="door" on-init="s:[night-sky:public:1000]">
 		            <rect class="door-casing" fill="#FFFFFF" x="324" y="444" width="50" height="58"
 						init-after="door"
 						init-with="p:[tro:center top, transform:scaleY(0)]"
