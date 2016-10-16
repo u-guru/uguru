@@ -474,7 +474,7 @@
 				<g class="w5"
 					u
 					init-with="p:[opacity:0, tro:20% 80%]"
-					when-w1="a:[scoop-enter:1000:linear:400:1:f]">
+					when-w1="a:[scoop-enter:1000:linear:400:1:f] | s:[door:public]">
 					<g clip-path="url(#w5-clip)">
 						<rect class="w5-bg" fill="#FEF1AE" x="435" y="407" width="38" height="60"></rect>
 						<rect class="w5-blind" fill="#2E5573" x="435" y="407" width="38" height="60"
@@ -490,8 +490,7 @@
 				<g class="w4"
 					u
 					init-with="p:[op:0, tro:20%:80%]|send:[after-w3:self]"
-					when-w1="a:[scoop-enter:1000:linear:300:1:f]"
-					>
+					when-w1="a:[scoop-enter:1000:linear:300:1:f]">
 		            <rect class="w4-shadow-btm" fill="#0B3B5E" x="381" y="477" width="40" height="5"></rect>
 		            <rect class="w4-ledge" fill="#8C70B3" x="379" y="467" width="44" height="10"></rect>
 		            <rect class="w4-blind" fill="#2E5573" x="382" y="407" width="38" height="60"></rect>
@@ -512,7 +511,7 @@
 				</g>
 				<g class="w2"
 					u
-					init-with="p:[op:0, tro:20% 80%]|"
+					init-with="p:[op:0, tro:20% 80%]"
 					when-w1="a:[scoop-enter:1000:linear:100:1:f]">
 					<g clip-path="url(#w2-clip)">
 						<rect class="w2-bg" fill="#FEF1AE" x="382" y="306" width="38" height="60"></rect>
@@ -540,24 +539,24 @@
 				</g>
 				<g>
 		            <rect class="door-casing" fill="#FFFFFF" x="324" y="444" width="50" height="58"
-						init-after="w2"
+						init-after="door"
 						init-with="p:[tro:center top, transform:scaleY(0)]"
 						on-init="a:[scaleY:0:1:200:easeOutSine:300:1:f]"></rect>
 		            <rect class="door-light" fill="#FEF1AE" x="329" y="444" width="40" height="58"
-						init-after="w2"
+						init-after="door"
 						init-with="p:[tro:center top, transform:scaleY(0)]"
 						on-init="a:[scaleY:0:1:200:easeOutSine:250:1:f]"></rect>
 		            <path d="M329,444 L369,444 L369,502 L329,502 L329,444 L329,444 Z M337,444 L361,444 L361,450 L337,450 L337,444 L337,444 Z M337,457 L361,457 L361,477 L337,477 L337,457 L337,457 Z" class="door-front" fill="#2E5573"
-						init-after="w2"
+						init-after="door"
 						init-with="p:[tro:center top, transform:scaleY(0)]"
 						on-init="a:[scaleY:0:1:200:easeOutSine:200:1:f]"></path>
 		            <rect class="door-shade" fill="#FFFFFF" x="321" y="399" width="56" height="36"
-						init-after="w2"
+						init-after="door"
 						init-with="p:[op:0, tro:center top]"
 						on-init="a:[bounceIn-subtle:1000:linear:0:1:f]"></rect>
 						<!--on-init="a:[bounceIn-subtle:500:linear:0:1:f]:delay-500" -->
 		            <rect class="door-shade-edge" fill="#8A70B3" x="321" y="435" width="56" height="9"
-						init-after="w2"
+						init-after="door"
 						init-with="p:[tro:center top, transform:scaleY(0)]"
 						on-init="a:[scaleY:0:1:200:easeOutSine:0:1:f]"></rect>
 				</g>
