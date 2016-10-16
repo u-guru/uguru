@@ -62,7 +62,8 @@ function CompService($timeout) {
       var type = (attr.type && (attr.type + '.')) || '';
       var defaultCompRoutes = {
         'grid': "<div class='flex-wrap-center full-xy absolute'></div>",
-        'letter': "shared/templates/components/base/text/letter." + type + "tpl"
+        'letter': "shared/templates/components/base/text/letter." + type + "tpl",
+        "input": "shared/templates/components/base/inputs/text." + type + "tpl"
       }
       if (element_type && type_elem) {
         return defaultCompRoutes[element_type + '.' + type_elem]

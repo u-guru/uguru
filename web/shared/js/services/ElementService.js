@@ -54,9 +54,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         var shortCutArr = [];
         shortcuts.forEach(function(child, i) {
           child.nodeName !== '#text' && parseShortcut(prefix, child.attributes);
-
         });
-
       }
 
       function parseShortcut(prefix, attr) {
