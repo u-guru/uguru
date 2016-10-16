@@ -88,74 +88,76 @@
 			</g>
 			<g class="sky" init-after="day-transition" on-init="s:[day-sky:public:6000]">
 				<circle class="sun" fill="#FECE67" cx="281" cy="171" r="44"
+					u
 					init-with="p:[transform:translateY(-800px)]"
-					when-day-sky="a:[translateY:-800px:0px:400:easeInOutBack:0:1:f]:delay-4000"></circle>
+					when-day-sky="a:[translateY:-800px:0px:400:easeInOutBack:0:1:f]:delay-4000 | s:[flying:public:5000]"></circle>
 				<g 	u
-					when-day-sky="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:ar]">
+					when-day-sky="a:[translateY:4px:-4px:1000:easeInOutQuad:0:100:ar]">
 					<path d="M432.821041,232 C432.284244,229.754184 432,227.410286 432,225 C432,208.431458 445.431458,195 462,195 C478.568542,195 492,208.431458 492,225 C492,227.410286 491.715756,229.754184 491.178959,232 L432.821041,232 L432.821041,232 L432.821041,232 Z" class="day-b-cloud-1" fill="#FFFFFF"></path>
 					<path d="M487.756105,232 C487.262518,230.08228 487,228.071797 487,226 C487,212.745166 497.745166,202 511,202 C524.254834,202 535,212.745166 535,226 C535,228.071797 534.737482,230.08228 534.243895,232 L487.756105,232 L487.756105,232 L487.756105,232 Z" class="day-b-cloud-2" fill="#FFFFFF"></path>
 					<path d="M527.024234,232 C526.360925,230.123326 526,228.103813 526,226 C526,216.058875 534.058875,208 544,208 C553.941125,208 562,216.058875 562,226 C562,228.103813 561.639075,230.123326 560.975766,232 L527.024234,232 L527.024234,232 L527.024234,232 Z" class="day-b-cloud-3" fill="#FFFFFF"></path>
 				</g>
-				<g u
-					when-day-sky="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:a] | s:[flying:public:5000]">
+				<g 	u
+				 	when-day-sky="a:[translateY:4px:-4px:1000:easeInOutQuad:0:100:a]">
 					<path d="M430.243895,178 C430.737482,176.08228 431,174.071797 431,172 C431,158.745166 420.254834,148 407,148 C393.745166,148 383,158.745166 383,172 C383,174.071797 383.262518,176.08228 383.756105,178 L430.243895,178 L430.243895,178 L430.243895,178 Z" class="day-s-cloud-1" fill="#FFFFFF"></path>
 					<path d="M390.975766,178 C391.639075,176.123326 392,174.103813 392,172 C392,162.058875 383.941125,154 374,154 C364.058875,154 356,162.058875 356,172 C356,174.103813 356.360925,176.123326 357.024234,178 L390.975766,178 L390.975766,178 L390.975766,178 Z" class="day-s-cloud-2" fill="#FFFFFF"></path>
 				</g>
-				<g class="birds">
-					<g class="b-bird" init-after="flying"
-						on-init="a:[translateY:-3px:3px:1000:linear:0:i:a]">
+				<g class="birds" init-after="flying" on-init="s:[fly-start:public]">
+					<g class="b-bird"
+						u
+						when-fly-start="a:[translateY:-3px:3px:1000:linear:0:200:a]">
 						<path d="M499.5,126 C499.5,126 505.438375,126.265969 511.75,131.5 C518.061625,136.734031 520,143 520,143" class="b-bird-left" stroke="#6E6144" stroke-width="4"
-							init-after="flying"
+							u
 							init-with="p:[transform:rotate(0deg), tro:right bottom]"
-							on-init="a:[rotate:15deg:-10deg:1000:easeInOutCirc:0:i:a]"></path>
+							when-fly-start="a:[rotate:15deg:-10deg:1000:easeInOutCirc:0:200:a]"></path>
 						<path d="M541,126 C541,126 535.061625,126.265969 528.75,131.5 C522.438375,136.734031 520.5,143 520.5,143" class="b-bird-right" stroke="#6E6144" stroke-width="4"
-							init-after="flying"
+							u
 							init-with="p:[transform:rotate(0deg), tro:left bottom]"
-							on-init="a:[rotate:-15deg:10deg:1000:easeInOutCirc:0:i:a]"></path>
+							when-fly-start"a:[rotate:-15deg:10deg:1000:easeInOutCirc:0:200:a]"></path>
 					</g>
-					<g class="m-bird" init-after="flying"
-						on-init="a:[translateY:-3px:3px:1000:linear:100:200:a]">
+					<g class="m-bird" u
+						when-fly-start="a:[translateY:-3px:3px:1000:linear:100:200:a]">
 						<path d="M479.294118,158 C479.294118,158 483.136595,158.172098 487.220588,161.558824 C491.304581,164.945549 492.558824,169 492.558824,169" class="m-bird-left" stroke="#6E6144" stroke-width="4"
-							init-after="flying"
+							u
 							init-with="p:[transform:rotate(0deg), tro:right bottom]"
-							on-init="a:[rotate:10deg:-10deg:1000:easeInOutCirc:100:i:a]"></path>
+							when-fly-start="a:[rotate:10deg:-10deg:1000:easeInOutCirc:100:i:a]"></path>
 						<path d="M506.558824,158 C506.558824,158 502.716346,158.172098 498.632353,161.558824 C494.54836,164.945549 493.294118,169 493.294118,169" class="m-bird-right" stroke="#6E6144" stroke-width="4"
-							init-after="flying"
+							u
 							init-with="p:[transform:rotate(0deg), tro:left bottom]"
-							on-init="a:[rotate:-10deg:10deg:1000:easeInOutCirc:100:i:a]"></path>
+							when-fly-start="a:[rotate:-10deg:10deg:1000:easeInOutCirc:100:i:a]"></path>
 					</g>
-					<g class="m-bird" init-after="flying"
-						on-init="a:[translateY:-3px:3px:1000:linear:150:i:a]">
+					<g class="m-bird" u
+						when-fly-start="a:[translateY:-3px:3px:1000:linear:150:i:a]">
 						<path d="M344.294118,218 C344.294118,218 346.963583,218.062581 349.800835,219.294118 C352.638087,220.525654 353.509441,222 353.509441,222" class="far-bird-left" stroke="#6E6144" stroke-width="3"
-							init-after="flying"
+							u
 							init-with="p:[transform:rotate(0deg), tro:right bottom]"
-							on-init="a:[rotate:10deg:-10deg:1000:easeInOutCirc:150:i:a]"></path>
+							when-fly-start="a:[rotate:10deg:-10deg:1000:easeInOutCirc:150:i:a]"></path>
 						<path d="M363.509441,218 C363.509441,218 360.839975,218.062581 358.002723,219.294118 C355.165471,220.525654 354.294118,222 354.294118,222" class="far-bird-right" stroke="#6E6144" stroke-width="3"
-							init-after="flying"
+							u
 							init-with="p:[transform:rotate(0deg), tro:left bottom]"
-							on-init="a:[rotate:-10deg:10deg:1000:easeInOutCirc:150:i:a] | s:[leafing:public:7000]"></path>
+							when-fly-start="a:[rotate:-10deg:10deg:1000:easeInOutCirc:150:i:a]"></path>
 					</g>
-					<g init-after="flying"
-						on-init="a:[translateY:-3px:3px:1000:linear:175:200:a]">
+					<g u
+						when-fly-start="a:[translateY:-3px:3px:1000:linear:175:200:a]">
 						<path d="M512.294118,178 C512.294118,178 514.963583,178.062581 517.800835,179.294118 C520.638087,180.525654 521.509441,182 521.509441,182" class="small-bird-left" stroke="#6E6144" stroke-width="3"
-							init-after="flying"
+							u
 							init-with="p:[transform:rotate(0deg), tro:right bottom]"
-							on-init="a:[rotate:10deg:-10deg:1000:easeInOutCirc:175:i:a]"></path>
+							when-fly-start="a:[rotate:10deg:-10deg:1000:easeInOutCirc:175:i:a]"></path>
 						<path d="M530.509441,178 C530.509441,178 527.839975,178.062581 525.002723,179.294118 C522.165471,180.525654 521.294118,182 521.294118,182" class="small-bird-right" stroke="#6E6144" stroke-width="3"
-							init-after="flying"
+							u
 							init-with="p:[transform:rotate(0deg), tro:left bottom]"
-							on-init="a:[rotate:-10deg:10deg:1000:easeInOutCirc:175:i:a]"></path>
+							when-fly-start="a:[rotate:-10deg:10deg:1000:easeInOutCirc:175:i:a]"></path>
 					</g>
-					<g init-after="flying"
-						on-init="a:[translateY:-3px:3px:1000:linear:0:i:a]">
-						<path d="M308.509441,236 C308.284677,236 309.156031,234.525654 311.993282,233.294118 C314.830534,232.062581 317.5,232 317.5,232" class="stour-bird-right" stroke="#6E6144" stroke-width="4"
-							init-after="flying"
+					<g u
+						when-fly-start="a:[translateY:-3px:3px:1000:linear:0:i:a]">
+						<path d="M308.509441,236 C308.284677,236 309.156031,234.525654 311.993282,233.294118 C314.830534,232.062581 317.5,232 317.5,232" class="stout-bird-right" stroke="#6E6144" stroke-width="4"
+							u
 							init-with="p:[transform:rotate(0deg), tro:left bottom]"
-							on-init="a:[rotate:-10deg:10deg:1000:easeInOutCirc:0:i:a]"></path>
+							when-fly-start="a:[rotate:-10deg:10deg:1000:easeInOutCirc:0:i:a]"></path>
 						<path d="M308.466318,236 C308.691082,236 307.819728,234.525654 304.982476,233.294118 C302.145224,232.062581 299.475759,232 299.475759,232" class="stout-bird-left" stroke="#6E6144" stroke-width="4"
-							init-after="flying"
+							u
 							init-with="p:[transform:rotate(0deg), tro:right bottom]"
-							on-init="a:[rotate:10deg:-10deg:1000:easeInOutCirc:0:i:a]"></path>
+							when-fly-start="a:[rotate:10deg:-10deg:1000:easeInOutCirc:0:i:a]"></path>
 					</g>
 				</g>
 			</g>
@@ -360,7 +362,7 @@
 					init-with="p:[transform:translateX(-150px), op:0]"
 					on-init="a:[opacity:0:1:500:linear:0:1:f, translateX:-150px:0px:800:easeOutCirc:0:1:f] | s:[foliage:public:1500]"></path>
 	        </g>
-	        <g class="sky" init-after="door" on-init="s:[night-sky:public]">
+	        <g class="sky" init-after="fixtures" on-init="s:[night-sky:public:500]">
 				<g init-after="night-sky" on-init="s:[activate-sky-children:public]:delay-500">
 		            <circle class="star-1" fill="#FFFFFF" cx="255.5" cy="258.5" r="2.5"
 						u
@@ -447,109 +449,113 @@
 					u init-with="p:[transform:scaleY(0), transform-origin:center bottom]"
 					on-init="a:[scaleY:0:1:1000:easeOutBounce:0:1:f] | s:[build-house:public:500]"></rect>
 	            <rect class="house-casing" fill="#FFFFFF" x="301" y="485" width="199" height="19"
-					init-after="build-house"
+					u
 					init-with="p:[tro:center bottom, transform:scaleY(0)]"
-					on-init="a:[scaleY:0:1:500:easeOutBounce:0:1:f]"></rect>
+					when-build-house="a:[scaleY:0:1:500:easeOutBounce:0:1:f]"></rect>
 	            <rect class="roof-edge" fill="#FFFFFF" x="299" y="258" width="203" height="19"
-					init-after="build-house"
+					u
 					init-with="p:[tro:center bottom, transform:scaleY(0)]"
-					on-init="a:[scaleY:0:1:750:easeOutQuad:0:1:f]"></rect>
+					when-build-house="a:[scaleY:0:1:750:easeOutQuad:0:1:f]"></rect>
 	            <rect class="roof-blue" fill="#AADFFF" x="299" y="258" width="203" height="12"
-					init-after="build-house"
+					u
 					init-with="p:[tro:center bottom, transform:scaleY(0)]"
-					on-init="a:[scaleY:0:1:750:easeOutQuad:0:1:f]"></rect>
+					when-build-house="a:[scaleY:0:1:750:easeOutQuad:0:1:f]"></rect>
 	            <rect class="roof-top" fill="#FFFFFF" x="296" y="258" width="209" height="7"
-					init-after="build-house"
+					u
 					init-with="p:[tro:center bottom, transform:scaleY(0)]"
-					on-init="a:[scaleY:0:1:750:easeOutBounce:0:1:f]"></rect>
-				<g class="w5"
-					u
-					init-with="p:[opacity:0, tro:20% 80%]"
-					when-w1="a:[scoop-enter:1000:linear:400:1:f] | s:[door:public:200]">
-					<g clip-path="url(#w5-clip)">
-						<rect class="w5-bg" fill="#FEF1AE" x="435" y="407" width="38" height="60"></rect>
-						<rect class="w5-blind" fill="#2E5573" x="435" y="407" width="38" height="60"
-							init-after="w4"
-							on-init="a:[fill:#2E5573:#FEF1AE:5000:easeInOutSine:0:i:a]"></rect>
+					when-build-house="a:[scaleY:0:1:750:easeOutBounce:0:1:f] | s:[fixtures:public:1000]"></rect>
+				<g class="windows"
+					init-after="fixtures"
+					on-init="s:[w1:public:100]">
+					<g class="w5"
+						u
+						init-with="p:[opacity:0, tro:20% 80%]"
+						when-w1="a:[scoop-enter:1000:linear:400:1:f]">
+						<g clip-path="url(#w5-clip)">
+							<rect class="w5-bg" fill="#FEF1AE" x="435" y="407" width="38" height="60"></rect>
+							<rect class="w5-blind" fill="#2E5573" x="435" y="407" width="38" height="60"
+								init-after="w4"
+								on-init="a:[fill:#2E5573:#FEF1AE:5000:easeInOutSine:0:i:a]"></rect>
+						</g>
+		            	<rect class="w5-shadow-btm" fill="#0B3B5E" x="434" y="477" width="40" height="5"></rect>
+			            <rect class="w5-ledge" fill="#8C70B3" x="432" y="467" width="44" height="10"></rect>
+			            <rect class="w5-shadow-top" fill="#0B3B5E" x="440" y="414" width="28" height="7"></rect>
+			            <rect class="w5-shadow-mid" fill="#0B3B5E" x="440" y="443" width="28" height="7"></rect>
+			            <path d="M435,407 L473,407 L473,467 L435,467 L435,407 L435,407 Z M441,414 L467,414 L467,438 L441,438 L441,414 L441,414 Z M441,443 L467,443 L467,467 L441,467 L441,443 L441,443 Z" class="w5-casing" fill="#FFFFFF"></path>
 					</g>
-	            	<rect class="w5-shadow-btm" fill="#0B3B5E" x="434" y="477" width="40" height="5"></rect>
-		            <rect class="w5-ledge" fill="#8C70B3" x="432" y="467" width="44" height="10"></rect>
-		            <rect class="w5-shadow-top" fill="#0B3B5E" x="440" y="414" width="28" height="7"></rect>
-		            <rect class="w5-shadow-mid" fill="#0B3B5E" x="440" y="443" width="28" height="7"></rect>
-		            <path d="M435,407 L473,407 L473,467 L435,467 L435,407 L435,407 Z M441,414 L467,414 L467,438 L441,438 L441,414 L441,414 Z M441,443 L467,443 L467,467 L441,467 L441,443 L441,443 Z" class="w5-casing" fill="#FFFFFF"></path>
-				</g>
-				<g class="w4"
-					u
-					init-with="p:[op:0, tro:20%:80%]"
-					when-w1="a:[scoop-enter:1000:linear:300:1:f]">
-		            <rect class="w4-shadow-btm" fill="#0B3B5E" x="381" y="477" width="40" height="5"></rect>
-		            <rect class="w4-ledge" fill="#8C70B3" x="379" y="467" width="44" height="10"></rect>
-		            <rect class="w4-blind" fill="#2E5573" x="382" y="407" width="38" height="60"></rect>
-		            <rect class="w4-shadow-top" fill="#0B3B5E" x="387" y="414" width="28" height="7"></rect>
-		            <rect class="w4-shadow-mid" fill="#0B3B5E" x="387" y="443" width="28" height="7"></rect>
-		            <path d="M382,407 L420,407 L420,467 L382,467 L382,407 L382,407 Z M388,414 L414,414 L414,438 L388,438 L388,414 L388,414 Z M388,443 L414,443 L414,467 L388,467 L388,443 L388,443 Z" class="w4-casing" fill="#FFFFFF"></path>
-				</g>
-				<g class="w3"
-					u
-					init-with="p:[op:0, tro:20% 80%]"
-					when-w1="a:[scoop-enter:1000:linear:200:1:f]">
-		            <rect class="w3-shadow-btm" fill="#0B3B5E" x="434" y="376" width="40" height="5"></rect>
-		            <rect class="w3-ledge" fill="#8C70B3" x="432" y="366" width="44" height="10"></rect>
-		            <rect class="w3-blind" fill="#2E5573" x="435" y="306" width="38" height="60"></rect>
-		            <rect class="w3-shadow-top" fill="#0B3B5E" x="440" y="313" width="28" height="7"></rect>
-		            <rect class="w3-shadow-mid" fill="#0B3B5E" x="440" y="342" width="28" height="7"></rect>
-		            <path d="M435,306 L473,306 L473,366 L435,366 L435,306 L435,306 Z M441,313 L467,313 L467,337 L441,337 L441,313 L441,313 Z M441,342 L467,342 L467,366 L441,366 L441,342 L441,342 Z" class="w3-casing" fill="#FFFFFF"></path>
-				</g>
-				<g class="w2"
-					u
-					init-with="p:[op:0, tro:20% 80%]"
-					when-w1="a:[scoop-enter:1000:linear:100:1:f]">
-					<g clip-path="url(#w2-clip)">
-						<rect class="w2-bg" fill="#FEF1AE" x="382" y="306" width="38" height="60"></rect>
-			            <rect class="w2-blind" fill="#2E5573" x="382" y="306" width="38" height="60"
-							init-after="w1"
-							on-init="a:[fill:#2E5573:#FEF1AE:3000:easeInOutSine:0:i:a]"></rect>
+					<g class="w4"
+						u
+						init-with="p:[op:0, tro:20%:80%]"
+						when-w1="a:[scoop-enter:1000:linear:300:1:f]">
+			            <rect class="w4-shadow-btm" fill="#0B3B5E" x="381" y="477" width="40" height="5"></rect>
+			            <rect class="w4-ledge" fill="#8C70B3" x="379" y="467" width="44" height="10"></rect>
+			            <rect class="w4-blind" fill="#2E5573" x="382" y="407" width="38" height="60"></rect>
+			            <rect class="w4-shadow-top" fill="#0B3B5E" x="387" y="414" width="28" height="7"></rect>
+			            <rect class="w4-shadow-mid" fill="#0B3B5E" x="387" y="443" width="28" height="7"></rect>
+			            <path d="M382,407 L420,407 L420,467 L382,467 L382,407 L382,407 Z M388,414 L414,414 L414,438 L388,438 L388,414 L388,414 Z M388,443 L414,443 L414,467 L388,467 L388,443 L388,443 Z" class="w4-casing" fill="#FFFFFF"></path>
 					</g>
-		            <rect class="w2-shadow-btm" fill="#0B3B5E" x="381" y="376" width="40" height="5"></rect>
-		            <rect class="w2-ledge" fill="#8C70B3" x="379" y="366" width="44" height="10"></rect>
-		            <rect class="w2-shadow-top" fill="#0B3B5E" x="387" y="313" width="28" height="7"></rect>
-		            <rect class="w2-shadow-mid" fill="#0B3B5E" x="387" y="342" width="28" height="7"></rect>
-		            <path d="M382,306 L420,306 L420,366 L382,366 L382,306 L382,306 Z M388,313 L414,313 L414,337 L388,337 L388,313 L388,313 Z M388,342 L414,342 L414,366 L388,366 L388,342 L388,342 Z" class="w2-casing" fill="#FFFFFF"></path>
+					<g class="w3"
+						u
+						init-with="p:[op:0, tro:20% 80%]"
+						when-w1="a:[scoop-enter:1000:linear:200:1:f]">
+			            <rect class="w3-shadow-btm" fill="#0B3B5E" x="434" y="376" width="40" height="5"></rect>
+			            <rect class="w3-ledge" fill="#8C70B3" x="432" y="366" width="44" height="10"></rect>
+			            <rect class="w3-blind" fill="#2E5573" x="435" y="306" width="38" height="60"></rect>
+			            <rect class="w3-shadow-top" fill="#0B3B5E" x="440" y="313" width="28" height="7"></rect>
+			            <rect class="w3-shadow-mid" fill="#0B3B5E" x="440" y="342" width="28" height="7"></rect>
+			            <path d="M435,306 L473,306 L473,366 L435,366 L435,306 L435,306 Z M441,313 L467,313 L467,337 L441,337 L441,313 L441,313 Z M441,342 L467,342 L467,366 L441,366 L441,342 L441,342 Z" class="w3-casing" fill="#FFFFFF"></path>
+					</g>
+					<g class="w2"
+						u
+						init-with="p:[op:0, tro:20% 80%]"
+						when-w1="a:[scoop-enter:1000:linear:100:1:f]">
+						<g clip-path="url(#w2-clip)">
+							<rect class="w2-bg" fill="#FEF1AE" x="382" y="306" width="38" height="60"></rect>
+				            <rect class="w2-blind" fill="#2E5573" x="382" y="306" width="38" height="60"
+								init-after="w1"
+								on-init="a:[fill:#2E5573:#FEF1AE:3000:easeInOutSine:0:i:a]"></rect>
+						</g>
+			            <rect class="w2-shadow-btm" fill="#0B3B5E" x="381" y="376" width="40" height="5"></rect>
+			            <rect class="w2-ledge" fill="#8C70B3" x="379" y="366" width="44" height="10"></rect>
+			            <rect class="w2-shadow-top" fill="#0B3B5E" x="387" y="313" width="28" height="7"></rect>
+			            <rect class="w2-shadow-mid" fill="#0B3B5E" x="387" y="342" width="28" height="7"></rect>
+			            <path d="M382,306 L420,306 L420,366 L382,366 L382,306 L382,306 Z M388,313 L414,313 L414,337 L388,337 L388,313 L388,313 Z M388,342 L414,342 L414,366 L388,366 L388,342 L388,342 Z" class="w2-casing" fill="#FFFFFF"></path>
+					</g>
+					<g class="w1"
+						u
+						init-with="p:[op:0, tro:20% 80%]"
+						when-w1="a:[scoop-enter:1000:linear:0:1:f]">
+			            <rect class="w1-shadow-btm" fill="#0B3B5E" x="328" y="376" width="40" height="5"></rect>
+			            <rect class="w1-ledge" fill="#8C70B3" x="326" y="366" width="44" height="10"></rect>
+			            <rect class="w1-blind" fill="#2E5573" x="329" y="306" width="38" height="60"></rect>
+			            <rect class="w1-shadow-top" fill="#0B3B5E" x="334" y="313" width="28" height="7"></rect>
+			            <rect class="w1-shadow-mid" fill="#0B3B5E" x="334" y="342" width="28" height="7"></rect>
+			            <path d="M329,306 L367,306 L367,366 L329,366 L329,306 L329,306 Z M335,313 L361,313 L361,337 L335,337 L335,313 L335,313 Z M335,342 L361,342 L361,366 L335,366 L335,342 L335,342 Z" class="w-casing" fill="#FFFFFF"></path>
+					</g>
 				</g>
-				<g class="w1"
-					init-after="build-house"
-					init-with="p:[op:0, tro:20% 80%]"
-					on-init="a:[scoop-enter:1000:linear:0:1:f] | s:[w1:public]">
-					<!-- when-build-house="a:[scoop-enter:1000:linear:0:1:f]:delay-400" -->
-		            <rect class="w1-shadow-btm" fill="#0B3B5E" x="328" y="376" width="40" height="5"></rect>
-		            <rect class="w1-ledge" fill="#8C70B3" x="326" y="366" width="44" height="10"></rect>
-		            <rect class="w1-blind" fill="#2E5573" x="329" y="306" width="38" height="60"></rect>
-		            <rect class="w1-shadow-top" fill="#0B3B5E" x="334" y="313" width="28" height="7"></rect>
-		            <rect class="w1-shadow-mid" fill="#0B3B5E" x="334" y="342" width="28" height="7"></rect>
-		            <path d="M329,306 L367,306 L367,366 L329,366 L329,306 L329,306 Z M335,313 L361,313 L361,337 L335,337 L335,313 L335,313 Z M335,342 L361,342 L361,366 L335,366 L335,342 L335,342 Z" class="w-casing" fill="#FFFFFF"></path>
-				</g>
-				<g>
+				<g class="door" init-after="fixtures" on-init="s:[door-enter:public]">
 		            <rect class="door-casing" fill="#FFFFFF" x="324" y="444" width="50" height="58"
-						init-after="door"
+						u
 						init-with="p:[tro:center top, transform:scaleY(0)]"
-						on-init="a:[scaleY:0:1:200:easeOutSine:300:1:f]"></rect>
+						when-door-enter="a:[scaleY:0:1:200:easeOutSine:300:1:f]"></rect>
 		            <rect class="door-light" fill="#FEF1AE" x="329" y="444" width="40" height="58"
-						init-after="door"
+						u
 						init-with="p:[tro:center top, transform:scaleY(0)]"
-						on-init="a:[scaleY:0:1:200:easeOutSine:250:1:f]"></rect>
+						when-door-enter="a:[scaleY:0:1:200:easeOutSine:250:1:f]"></rect>
 		            <path d="M329,444 L369,444 L369,502 L329,502 L329,444 L329,444 Z M337,444 L361,444 L361,450 L337,450 L337,444 L337,444 Z M337,457 L361,457 L361,477 L337,477 L337,457 L337,457 Z" class="door-front" fill="#2E5573"
-						init-after="door"
+						u
 						init-with="p:[tro:center top, transform:scaleY(0)]"
-						on-init="a:[scaleY:0:1:200:easeOutSine:200:1:f]"></path>
+						when-door-enter="a:[scaleY:0:1:200:easeOutSine:200:1:f]"></path>
 		            <rect class="door-shade" fill="#FFFFFF" x="321" y="399" width="56" height="36"
-						init-after="door"
+						u
 						init-with="p:[op:0, tro:center top]"
-						on-init="a:[bounceIn-subtle:1000:linear:0:1:f]"></rect>
+						when-door-enter="a:[bounceIn-subtle:1000:linear:0:1:f]"></rect>
 						<!--on-init="a:[bounceIn-subtle:500:linear:0:1:f]:delay-500" -->
 		            <rect class="door-shade-edge" fill="#8A70B3" x="321" y="435" width="56" height="9"
-						init-after="door"
+						u
 						init-with="p:[tro:center top, transform:scaleY(0)]"
-						on-init="a:[scaleY:0:1:200:easeOutSine:0:1:f]"></rect>
+						when-door-enter="a:[scaleY:0:1:200:easeOutSine:0:1:f]"></rect>
+					</g>
 				</g>
 	        </g>
 	        <g class="mailbox" u on-init="s:[mailbox-enter:public]">
