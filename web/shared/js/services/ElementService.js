@@ -455,9 +455,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                   if (key === 'send') {
                     var extDelay = stateRef.actions.send.delays.external + totalMsgDelay;
 
-
                       splitSendObj[key].delays.external = 0;
-                      console.log('clearing ext', msgName, extDelay);
                       $timeout(function() {
                         stateRef.func && stateRef.func(splitSendObj, scope);
                       }, extDelay);
@@ -506,33 +504,40 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             }
             var stateRefs = scope.root.scope.public.customStates[fullMsgName];
             stateRefs.forEach(function(stateRef, i) {
-              if (stateRef.actions) {
-                for (key in stateRef.actions) {
-
-                  var splitSendObj = {};
-                  splitSendObj[key] = stateRef.actions[key];
-
-                  //warning: send to self loop;
-                  if (key === 'send') {
-                    var extDelay = stateRef.actions.send.delays.external + totalMsgDelay;
+              if (stateRef.actions && Object.keys(stateRef.actions).length) {
 
 
-                      splitSendObj[key].delays.external = 0;
-                      console.log('clearing ext', msgName, extDelay);
-                      $timeout(function() {
-                        stateRef.func && stateRef.func(splitSendObj, scope);
-                      }, extDelay);
-                  } else {
+                $timeout(function() {
+                      stateRef.func && stateRef.func(stateRef.actions, scope);
+                }, totalMsgDelay);
+
+                // for (key in stateRef.actions) {
+
+                  // if (!stateRef.actions[key]) {
+                  //   continue
+                  // }
+                  // var splitSendObj = {};
+                  // splitSendObj[key] = stateRef.actions[key];
+
+                  // //warning: send to self loop;
+                  // if (key === 'send') {
+                  //   console.log('ending', splitSendObj[key])
+                  //   var extDelay = stateRef.actions.send.delays.external + totalMsgDelay;
 
 
-                    // splitSendObj[key].delays.external += ;
+                  //     splitSendObj[key].delays.external = 0;
 
 
-                    $timeout(function() {
-                      stateRef.func && stateRef.func(splitSendObj, scope);
-                    }, totalMsgDelay)
-                  }
-                }
+                  // } else {
+
+
+                  //   // splitSendObj[key].delays.external += ;
+
+
+                  //   $timeout(function() {
+                  //     stateRef.func && stateRef.func(splitSendObj, scope);
+                  //   }, totalMsgDelay)
+                  // }
               }
             })
           }
