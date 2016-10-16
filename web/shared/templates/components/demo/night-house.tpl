@@ -289,8 +289,8 @@
 			</g>
 		</g>
 	</svg>
-	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #092D4B;"
-		u init-with="p:[op:1]" on-init="a:[opacity:1:0:3000:easeInOutSine:0:1:f]:delay-6000">
+	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #092D4B;">
+		<!-- u init-with="p:[op:1]" on-init="a:[opacity:1:0:3000:easeInOutSine:0:1:f]:delay-6000"> -->
 	    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 	        <g class="blue-tree">
 	            <rect class="b-canopy" fill="#AADFFF" x="221" y="364" width="43" height="86" rx="21.5"
@@ -472,9 +472,15 @@
 					init-with="p:[tro:center bottom, transform:scaleY(0)]"
 					on-init="a:[scaleY:0:1:750:easeOutBounce:0:1:f]"></rect>
 				<g class="w5"
+<<<<<<< HEAD
 					u
 					init-with="p:[opacity:0, tro:20% 80%]"
 					when-w1="a:[scoop-enter:1000:linear:400:1:f]">
+=======
+					init-after="w4"
+					init-with="p:[op:0, tro:20% 80%]"
+					on-init="a:[scoop-enter:1000:linear:0:1:f]">
+>>>>>>> f3bced0d2954c9a36ff300058c9e47134faffcc9
 					<g clip-path="url(#w5-clip)">
 						<rect class="w5-bg" fill="#FEF1AE" x="435" y="407" width="38" height="60"></rect>
 						<rect class="w5-blind" fill="#2E5573" x="435" y="407" width="38" height="60"
