@@ -1,4 +1,4 @@
-<div class="ui-guru-loader loader-portal-outer">
+<div class="ui-guru-loader loader-portal-outer"  init-with-prop-opacity on-init="" >
     <div class="loader-portal states"
         init-after="ui-body-init"
         on-init="s:[portal-open:public]"
@@ -45,8 +45,13 @@
             <div class="guru"
 				u init-with="p:[tr:translateY(400px) scale(0.8), tro:center top]"
                 when-portal-open="a:[translateY:400px:45px:500:easeOutBack:0:1:f, scale:0.8:1:500:easeOutBack:0:1:f]:delay-900 | s:[portal-hover:public:950]"
+<<<<<<< HEAD
+                when-portal-complete="a:[translateY:45px:350px:200:easeInBack:0:1:f]:+500">
+                <div u init-with="p:[tr:none]" when-portal-hover="a:[l-head-hover:800:linear:0:5:f]">
+=======
                 when-portal-complete="a:[translateY:45px:350px:200:easeInBack:900:1:f]">
                 <div u init-with="p:[tr:none]" when-portal-hover="a:[l-head-hover:800:linear:0:3:f]:delay-950">
+>>>>>>> c068d5e87e6c23f6e92f00842b4e1f795c1810ec
 					<svg viewBox="0 0 130 204">
 					    <defs>
 					        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="guru-glasses">

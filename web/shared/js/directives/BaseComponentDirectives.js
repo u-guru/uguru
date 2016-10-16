@@ -14,11 +14,90 @@ angular.module('uguru.shared.directives.base.components')
                             // lElem[0].innerHTML = clone[0].innerHTML;
 
                             lElem.html(clone.html())// = .innerHTML;
+                            lElem.attr('u', '');
                             $compile(lElem)(lScope);
                         })
                     },
                     post: angular.noop
                 }
+            }
+        }
+    }])
+    .directive("uInput", ["CompService", "$compile", '$timeout', function(CompService, $compile, $timeout) {
+        return {
+            restrict: 'E',
+            replace: true,
+            transclude: true,
+            scope: true,
+            templateUrl:CompService.getCompTemplateType('input'),
+            compile: function(element, attr, transclude) {
+                var input = {
+                    placeholder: attr.placeHolder || 'this is a placeholder',
+                    type: attr.iType,
+                    text: attr.text,
+                    element: null,
+                    ghost: null
+                };
+                return {
+                    pre:
+                    function (scope, lElem, lAttr) {
+
+                        scope.input = input;
+                        scope.input.func = {
+                            onKeyPress: onKeyPress(scope),
+                            focusAndSelectText: focusInvisibleInput(scope),
+                            addKeyListener: onKeyPress(scope)
+                        }
+
+
+                         transclude(scope, function(clone, innerScope) {
+
+
+                            lElem.html(clone.html());
+                            $compile(lElem)(scope);
+
+                        })
+
+                         $timeout(function() {
+                            scope.input.element = lElem.find('input');
+                            scope.input.ghost = lElem[0].querySelector('#ghost-input-container');
+                            if (scope.input.ghost) {
+                                scope.input.ghost = angular.element(scope.input.ghost);
+                            }
+                            scope.input.ghost.innerHTML = '';
+                         })
+
+
+                    },
+                    post: angular.noop
+                }
+            }
+        }
+        function focusInvisibleInput(scope) {
+            return function(input, $event) {
+                // angular.element(input.element[0]).triggerHandler('focus');
+                scope.input.element.triggerHandler('click').triggerHandler('select')
+
+
+                // scope.input.element[0].focus();
+
+            }
+
+        }
+        function onKeyPress(scope) {
+            return function(input, text, $event) {
+                scope.input.element.triggerHandler('click').triggerHandler('select')
+
+                input.element.on('keydown', function($event) {
+                    var newLetters = angular.element('<letter keep type="squishBounce">' + $event.key + '</letter>');
+                    scope.input.ghost.append(newLetters)
+                    $compile(newLetters)(scope);
+
+                })
+                if (!scope.input.element && $event.target.nodeName.toLowerCase() === 'label') {
+                    scope.input.element = $event.target;
+                }
+
             }
         }
     }])
@@ -296,11 +375,18 @@ angular.module('uguru.shared.directives.base.components')
             restrict: 'E',
             replace: true,
             transclude: true,
+            scope: {innerText: '=text'},
             templateUrl:CompService.getCompTemplateType('letter'),
             compile: function(element, attr, transclude) {
+
                 return {
                     pre:
                     function (lScope, lElem, lAttr) {
+                        // if (lScope.innerText) {
+
+
+                        //     lElem[0].innerHTML =lScope.innerText;
+                        // }
                         var tpl = lElem
                         var delay = 0;
                         if (!('keep' in attr)) {
@@ -312,7 +398,7 @@ angular.module('uguru.shared.directives.base.components')
 
                         transclude(lScope, function(clone, innerScope) {
                             var childArr = [];
-                            var textStr = clone.html();
+                            var textStr = clone.html() || lScope.innerText;
 
                             for (var i = 0; i < textStr.length; i++) {
 
@@ -321,13 +407,22 @@ angular.module('uguru.shared.directives.base.components')
                                     iChild += '&nbsp;';
                                 }
                                 var cloneLetter = tpl.clone();
+                                cloneLetter.css('webkit-transition', 'none');
+
+                                cloneLetter.attr('on-init', cloneLetter.attr('on-init') + ':delay-' + (delay * i || 0));
+                                cloneLetter.attr('u', '')
                                 if (delay) {
                                     CompService.applyDelayToWord(cloneLetter, delay * i);
                                 }
                                 cloneLetter.html(iChild);
-                                $compile(cloneLetter)(innerScope)
+
+
+
+                                $compile(cloneLetter)(innerScope);
                                 lElem.append(cloneLetter);
+
                             }
+                            console.log(lElem.contents()[0])
                             if ('keep' in attr ) {
                                 keepContainer = angular.element('<div></div>');
                                 lElem.parent().append(keepContainer);
@@ -335,6 +430,8 @@ angular.module('uguru.shared.directives.base.components')
                                 lElem.replaceWith(keepContainer)
                                 keepContainer.append(children);
                             }
+
+                            $compile(lElem)(lScope)
                         })
                     }
                 }

@@ -1,1 +1,1 @@
-<span class="block" init-with="p-op" on-init="p:[opacity:0:1:50:easeOutSine]"></span>
+<span class="block" init-with="p-op"  on-init="a:[opacity:0:1:250:easeOutSine:0:1:f]"></span>

@@ -1,1 +1,1 @@
-<span class="block" init-with="p-op" on-init="p:[tro:center center, opacity:0:1:250:easeOutSine, transform:scale(0):scale(1):500:easeOutBounce]"></span>
+<span class="block" on-init="p:[tro:center center] | a:[opacity:0:1:250:easeOutSine:0:1:f, scale:0:1:250:easeOutBounce:0:1:f]|p:[margin-left:-2px]"></span>
