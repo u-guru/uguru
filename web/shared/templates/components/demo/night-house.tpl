@@ -417,7 +417,7 @@
 						 u on-init="a:[translateY:0px:-800px:400:easeInOutBack:0:1:f]:delay-5000" -->
 				</g>
 				<g class="big-cloud"
-					init-after="night-sky"
+					u
 					when-hover-sky="a:[translateY:-3px:3px:900:easeInOutSine:200:100:a]">
 		            <path d="M376.178959,232 C376.715756,229.754184 377,227.410286 377,225 C377,208.431458 363.568542,195 347,195 C330.431458,195 317,208.431458 317,225 C317,227.410286 317.284244,229.754184 317.821041,232 L376.178959,232 L376.178959,232 Z" class="b-cloud-1" fill="#BCE5FF"
 						u
@@ -433,7 +433,7 @@
 						when-activate-sky-children="a:[scale:0:1:200:easeOutSine:0:1:f]"></path>
 				</g>
 				<g class="small-cloud"
-					init-after="night-sky"
+					u
 					when-hover-sky="a:[translateY:3px:-3px:900:easeInOutSine:200:100:a]">
 		            <path d="M378.756105,178 C378.262518,176.08228 378,174.071797 378,172 C378,158.745166 388.745166,148 402,148 C415.254834,148 426,158.745166 426,172 C426,174.071797 425.737482,176.08228 425.243895,178 L378.756105,178 L378.756105,178 Z" class="s-cloud-1" fill="#BCE5FF"
 						u
