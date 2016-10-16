@@ -1,4 +1,3 @@
-<!-- ['delay-', 'd-', 'd', '+']; -->
 <div class="ui-guru-loader loader-portal-outer">
     <div class="loader-portal states"
         init-after="ui-body-init"
@@ -19,9 +18,7 @@
                         <circle cx="200" cy="200" r="192"
                             stroke="#55A4B7" stroke-width="16" fill="#2B3234" stroke-linecap="round" stroke-linejoin="round"
 							u init-with="p:[s:#55A4B7]"
-                            when-portal-hover="a:[portal-progress-color:2000:linear:0:1:f] | s:[portal-complete:public:2000]"
-                            when-portal-complete="s:[transition-start:public:2500]"
-                            when-transition-start="s:[transition-end:public]">
+                            when-portal-hover="a:[portal-progress-color:2000:linear:0:1:f] | s:[portal-complete:public:2000, transition-start:public:2500, transition-end:public:2500]">
 							<!-- draw:init -->
 							<!-- draw:0%:100%:2000:0:1:f -->
                         </circle>
