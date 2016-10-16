@@ -22,8 +22,7 @@
 		</defs>
 	</svg>
 	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #BBF2FE;"
-		init-after="day-transition" on-init="a:[opacity:0:1:3000:easeInOutSine:0:1:f]:delay-2500"
-		ng-if="false">
+		init-after="day-transition" on-init="a:[opacity:0:1:3000:easeInOutSine:0:1:f]:delay-2500">
 		<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 			<g class="left-tree">
 				<rect class="l-canopy" fill="#B4CB5D" x="221" y="364" width="43" height="86" rx="21.5"></rect>
@@ -87,26 +86,21 @@
 					<path d="M248.805664,430.794922 C248.805664,430.794922 253.556519,430.672017 256.170506,428.905234 C258.784493,427.13845 259.264987,424.117312 259.264987,424.117312" class="leaf-c-2" stroke="#63AC69" stroke-width="2"></path>
 				</g>
 			</g>
-			<g class="sky">
+			<g class="sky" init-after="day-transition" on-init="s:[day-sky:public:6000]">
 				<circle class="sun" fill="#FECE67" cx="281" cy="171" r="44"
-					init-after="day-transition"
 					init-with="p:[transform:translateY(-800px)]"
-					on-init="a:[translateY:-800px:0px:400:easeInOutBack:0:1:f]:delay-4000 | s:[day-sky:public:4000]"></circle>
-				<path d="M432.821041,232 C432.284244,229.754184 432,227.410286 432,225 C432,208.431458 445.431458,195 462,195 C478.568542,195 492,208.431458 492,225 C492,227.410286 491.715756,229.754184 491.178959,232 L432.821041,232 L432.821041,232 L432.821041,232 Z" class="day-b-cloud-1" fill="#FFFFFF"
-					init-after="day-sky"
-					on-init="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:ar]"></path>
-				<path d="M487.756105,232 C487.262518,230.08228 487,228.071797 487,226 C487,212.745166 497.745166,202 511,202 C524.254834,202 535,212.745166 535,226 C535,228.071797 534.737482,230.08228 534.243895,232 L487.756105,232 L487.756105,232 L487.756105,232 Z" class="day-b-cloud-2" fill="#FFFFFF"
-					init-after="day-sky"
-					on-init="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:ar]"></path>
-				<path d="M527.024234,232 C526.360925,230.123326 526,228.103813 526,226 C526,216.058875 534.058875,208 544,208 C553.941125,208 562,216.058875 562,226 C562,228.103813 561.639075,230.123326 560.975766,232 L527.024234,232 L527.024234,232 L527.024234,232 Z" class="day-b-cloud-3" fill="#FFFFFF"
-					init-after="day-sky"
-					on-init="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:ar]"></path>
-				<path d="M430.243895,178 C430.737482,176.08228 431,174.071797 431,172 C431,158.745166 420.254834,148 407,148 C393.745166,148 383,158.745166 383,172 C383,174.071797 383.262518,176.08228 383.756105,178 L430.243895,178 L430.243895,178 L430.243895,178 Z" class="day-s-cloud-1" fill="#FFFFFF"
-					init-after="day-sky"
-					on-init="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:a]"></path>
-				<path d="M390.975766,178 C391.639075,176.123326 392,174.103813 392,172 C392,162.058875 383.941125,154 374,154 C364.058875,154 356,162.058875 356,172 C356,174.103813 356.360925,176.123326 357.024234,178 L390.975766,178 L390.975766,178 L390.975766,178 Z" class="day-s-cloud-2" fill="#FFFFFF"
-					init-after="day-sky"
-					on-init="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:a] | s:[flying:public:5000]"></path>
+					when-day-sky="a:[translateY:-800px:0px:400:easeInOutBack:0:1:f]:delay-4000"></circle>
+				<g 	u
+					when-day-sky="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:ar]">
+					<path d="M432.821041,232 C432.284244,229.754184 432,227.410286 432,225 C432,208.431458 445.431458,195 462,195 C478.568542,195 492,208.431458 492,225 C492,227.410286 491.715756,229.754184 491.178959,232 L432.821041,232 L432.821041,232 L432.821041,232 Z" class="day-b-cloud-1" fill="#FFFFFF"></path>
+					<path d="M487.756105,232 C487.262518,230.08228 487,228.071797 487,226 C487,212.745166 497.745166,202 511,202 C524.254834,202 535,212.745166 535,226 C535,228.071797 534.737482,230.08228 534.243895,232 L487.756105,232 L487.756105,232 L487.756105,232 Z" class="day-b-cloud-2" fill="#FFFFFF"></path>
+					<path d="M527.024234,232 C526.360925,230.123326 526,228.103813 526,226 C526,216.058875 534.058875,208 544,208 C553.941125,208 562,216.058875 562,226 C562,228.103813 561.639075,230.123326 560.975766,232 L527.024234,232 L527.024234,232 L527.024234,232 Z" class="day-b-cloud-3" fill="#FFFFFF"></path>
+				</g>
+				<g u
+					when-day-sky="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:a] | s:[flying:public:5000]">
+					<path d="M430.243895,178 C430.737482,176.08228 431,174.071797 431,172 C431,158.745166 420.254834,148 407,148 C393.745166,148 383,158.745166 383,172 C383,174.071797 383.262518,176.08228 383.756105,178 L430.243895,178 L430.243895,178 L430.243895,178 Z" class="day-s-cloud-1" fill="#FFFFFF"></path>
+					<path d="M390.975766,178 C391.639075,176.123326 392,174.103813 392,172 C392,162.058875 383.941125,154 374,154 C364.058875,154 356,162.058875 356,172 C356,174.103813 356.360925,176.123326 357.024234,178 L390.975766,178 L390.975766,178 L390.975766,178 Z" class="day-s-cloud-2" fill="#FFFFFF"></path>
+				</g>
 				<g class="birds">
 					<g class="b-bird" init-after="flying"
 						on-init="a:[translateY:-3px:3px:1000:linear:0:i:a]">
@@ -289,8 +283,10 @@
 			</g>
 		</g>
 	</svg>
-	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #092D4B;">
-		<!-- u init-with="p:[op:1]" on-init="a:[opacity:1:0:3000:easeInOutSine:0:1:f]:delay-6000"> -->
+	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #092D4B;"
+		u
+		init-with="p:[op:1]"
+		on-init="a:[opacity:1:0:3000:easeInOutSine:0:1:f]:delay-6000 | s:[day-transition:public]">
 	    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 	        <g class="blue-tree">
 	            <rect class="b-canopy" fill="#AADFFF" x="221" y="364" width="43" height="86" rx="21.5"
@@ -365,7 +361,7 @@
 					on-init="a:[opacity:0:1:500:linear:0:1:f, translateX:-150px:0px:800:easeOutCirc:0:1:f] | s:[foliage:public:1500]"></path>
 	        </g>
 	        <g class="sky" init-after="door" on-init="s:[night-sky:public]">
-				<g init-after="night-sky" on-init="s:[activate-sky-children:public]:delay-1000">
+				<g init-after="night-sky" on-init="s:[activate-sky-children:public]:delay-500">
 		            <circle class="star-1" fill="#FFFFFF" cx="255.5" cy="258.5" r="2.5"
 						u
 						init-with="p:[op:0, tro:center center]"
@@ -411,11 +407,10 @@
 						init-with="p:[op:0, tro:center center]"
 						when-activate-sky-children="a:[scaleIn-subtle:1800:linear:0:100:a]"></path>
 					<g	u
-						init-with="p:[tro:right top, opacity:0, transform:rotate(90deg)]"
-						when-activate-sky-children="a:[opacity:0:1:50:linear:0:1:f, rotate:90deg:0deg:500:easeOutQuart:0:1:f]">
-			            <path d="M560.15882,201.030391 C552.128267,209.626465 540.691661,215 528,215 C503.699471,215 484,195.300529 484,171 C484,146.699471 503.699471,127 528,127 C541.337224,127 553.288467,132.934088 561.357524,142.306058 C558.554356,141.45669 555.580511,141 552.5,141 C535.655315,141 522,154.655315 522,171.5 C522,188.344685 535.655315,202 552.5,202 C555.145091,202 557.711539,201.663289 560.15882,201.030391 L560.15882,201.030391 Z" class="moon" fill="#FFFFFF"
-						on-exit="a:[translateY:0px:-800px:400:easeInOutBack:0:1:f]:delay-5000"></path>
-
+						init-with="p:[transform-origin:right top, transform:rotate(90deg), opacity:0, ]"
+						when-activate-sky-children="a:[rotate:90deg:0deg:500:easeOutQuart:0:1:f, opacity:0:1:50:linear:0:1:f]">
+			            <path d="M560.15882,201.030391 C552.128267,209.626465 540.691661,215 528,215 C503.699471,215 484,195.300529 484,171 C484,146.699471 503.699471,127 528,127 C541.337224,127 553.288467,132.934088 561.357524,142.306058 C558.554356,141.45669 555.580511,141 552.5,141 C535.655315,141 522,154.655315 522,171.5 C522,188.344685 535.655315,202 552.5,202 C555.145091,202 557.711539,201.663289 560.15882,201.030391 L560.15882,201.030391 Z" class="moon" fill="#FFFFFF"></path>
+						<!-- on-exit="a:[translateY:0px:-800px:400:easeInOutBack:0:1:f]:delay-5000" -->
 					</g>
 					<g class="big-cloud"
 						u
