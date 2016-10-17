@@ -172,10 +172,9 @@
 				<g class="w5">
 					<g clip-path="url(#w5-clip)">
 						<rect class="w5-bg" fill="#BDE397" x="435" y="407" width="38" height="60"></rect>
-						<rect class="w5-blind" fill="#A0857A" x="435" y="407" width="38" height="60"></rect>
-							<!-- init-after="blinds"
-							init-with="p:[tro:center top, transform:scaleY(1)]"
-							on-init="a:[hiw-shade-bounceUp:1000:easeInOutBack:0:i:a]" -->
+						<rect class="w5-blind" fill="#A0857A" x="435" y="407" width="38" height="60"
+							u init-with="p:[tro:center top]"
+							when-blinds="a:[hiw-shade-bounceUp:2000:linear:0:i:a]"></rect>
 					</g>
 					<rect class="w5-shadow-btm" fill="#5B4F4B" x="434" y="477" width="40" height="5"></rect>
 					<rect class="w5-ledge" fill="#C56C76" x="432" y="467" width="44" height="10"></rect>
@@ -205,10 +204,6 @@
 					<g clip-path="url(#w3-clip)">
 						<rect class="w3-bg" fill="#BDE397" x="435" y="306" width="38" height="60"></rect>
 						<rect class="w3-blind" fill="#A0857A" x="435" y="306" width="38" height="60"></rect>
-						<!--
-							init-after="blinds"
-							init-with="p:[tro:center top, transform:scaleY(1)]"
-							on-init="a:[hiw-shade-bounceUp:1000:easeInOutBack:0:i:a]" -->
 					</g>
 					<rect class="w3-shadow-btm" fill="#5B4F4B" x="434" y="376" width="40" height="5"></rect>
 					<rect class="w3-ledge" fill="#C56C76" x="432" y="366" width="44" height="10"></rect>
@@ -249,8 +244,8 @@
 					<g clip-path="url(#w1-clip)">
 						<rect class="w1-bg" fill="#BDE397" x="329" y="306" width="38" height="60"></rect>
 						<rect class="w1-blind" fill="#A0857A" x="329" y="306" width="38" height="60"
-							init-with="p:[tro:center top]"
-							on-init="a:[hiw-shade-bounceUp:set:(dur:2000ms#func:linear#aic:200#ad:alternate):in]"></rect>
+						u init-with="p:[tro:center top]"
+						when-blinds="a:[hiw-shade-bounceUp:2000:linear:100:i:a]"></rect>
 								<!-- u init-with="p:[tro:center top]"
 								on-init="a:[hiw-shade-bounceUp:2000:linear:0:i:a]" -->
 					</g>
@@ -466,16 +461,16 @@
 					when-build-house="a:[scaleY:0:1:750:easeOutBounce:0:1:f] | s:[fixtures:public:1000]"></rect>
 				<g class="windows"
 					init-after="fixtures"
-					on-init="s:[w1:public:100]">
+					on-init="s:[w1:public]:delay-100">
 					<g class="w5"
 						u
 						init-with="p:[opacity:0, tro:20% 80%]"
 						when-w1="a:[scoop-enter:1000:linear:400:1:f]">
 						<g clip-path="url(#w5-clip)">
 							<rect class="w5-bg" fill="#FEF1AE" x="435" y="407" width="38" height="60"></rect>
-							<rect class="w5-blind" fill="#2E5573" x="435" y="407" width="38" height="60"
-								init-after="w4"
-								on-init="a:[fill:#2E5573:#FEF1AE:5000:easeInOutSine:0:i:a]"></rect>
+							<rect class="w5-blind" fill="#2E5573" x="435" y="407" width="38" height="60"></rect>
+								<!-- init-after="w4"
+								on-init="a:[fill:#2E5573:#FEF1AE:5000:easeInOutSine:0:i:a]" -->
 						</g>
 		            	<rect class="w5-shadow-btm" fill="#0B3B5E" x="434" y="477" width="40" height="5"></rect>
 			            <rect class="w5-ledge" fill="#8C70B3" x="432" y="467" width="44" height="10"></rect>
@@ -485,7 +480,7 @@
 					</g>
 					<g class="w4"
 						u
-						init-with="p:[op:0, tro:20%:80%]"
+						init-with="p:[op:0, tro:20% 80%]"
 						when-w1="a:[scoop-enter:1000:linear:300:1:f]">
 			            <rect class="w4-shadow-btm" fill="#0B3B5E" x="381" y="477" width="40" height="5"></rect>
 			            <rect class="w4-ledge" fill="#8C70B3" x="379" y="467" width="44" height="10"></rect>
