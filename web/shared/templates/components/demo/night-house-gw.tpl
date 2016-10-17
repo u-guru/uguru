@@ -507,7 +507,7 @@
 						<g clip-path="url(#w2-clip)">
 							<rect class="w2-bg" fill="#FEF1AE" x="382" y="306" width="38" height="60"></rect>
 				            <rect class="w2-blind" fill="#2E5573" x="382" y="306" width="38" height="60"
-								init-after="w1"
+								init-after="windows"
 								on-init="a:[fill:#2E5573:#FEF1AE:3000:easeInOutSine:0:i:a]"></rect>
 						</g>
 			            <rect class="w2-shadow-btm" fill="#0B3B5E" x="381" y="376" width="40" height="5"></rect>
