@@ -119,7 +119,7 @@
 					<path d="M430.243895,178 C430.737482,176.08228 431,174.071797 431,172 C431,158.745166 420.254834,148 407,148 C393.745166,148 383,158.745166 383,172 C383,174.071797 383.262518,176.08228 383.756105,178 L430.243895,178 L430.243895,178 L430.243895,178 Z" class="day-s-cloud-1" fill="#FFFFFF"></path>
 					<path d="M390.975766,178 C391.639075,176.123326 392,174.103813 392,172 C392,162.058875 383.941125,154 374,154 C364.058875,154 356,162.058875 356,172 C356,174.103813 356.360925,176.123326 357.024234,178 L390.975766,178 L390.975766,178 L390.975766,178 Z" class="day-s-cloud-2" fill="#FFFFFF"></path>
 				</g>
-				<g class="birds" init-after="flying" on-init="s:[fly-start:public]">
+				<g class="birds" init-after="flying" on-init="s:[fly-start:public, leaving:public:1100]">
 					<g class="b-bird"
 						u
 						when-fly-start="a:[translateY:-3px:3px:1000:linear:0:i:a]">
@@ -166,7 +166,7 @@
 							when-fly-start="a:[rotate:-10deg:10deg:1100:easeInOutCirc:175:i:a]"></path>
 					</g>
 					<g u
-						when-fly-start="a:[translateY:-3px:3px:1000:linear:0:i:a] | s:[leaving:public]:delay-1100">
+						when-fly-start="a:[translateY:-3px:3px:1000:linear:0:i:a]">
 						<path d="M308.509441,236 C308.284677,236 309.156031,234.525654 311.993282,233.294118 C314.830534,232.062581 317.5,232 317.5,232" class="stout-bird-right" stroke="#6E6144" stroke-width="4"
 							u
 							init-with="p:[transform:rotate(0deg), tro:left bottom]"
