@@ -54,22 +54,22 @@
 				<path d="M474,504 C475.046946,487.801477 487.991229,475 503.805556,475 C519.619882,475 532.564165,487.801477 533.611111,504 L474,504 L474,504 L474,504 Z" class="lime-bush-medium" fill="#93AA3C"></path>
 			</g>
 			<g class="leaves"
-				init-after="leaving" on-init="s:[leaf-fall:public:6000]">
+				init-after="leaving" on-init="s:[leaf-fall:public:6500]">
 				<g class="ref-leaf-a"
-				u init-with="p:[op:0, transform:translateY(0px), tro:center center]"
-				when-leaf-fall="a:[translateY:0px:10px:2000:easeInOutExpo:0:1:f, rotate:0deg:90deg:2000:easeInOutExpo:0:1:f] | p:[op:1]">
+					u init-with="p:[op:0, transform:translateY(-10px)]"
+					when-leaf-fall="a:[translateY:-10px:0px:300:easeInOutBack:0:1:f] | p:[op:1]">
 					<path d="M606.083984,497.017578 L604.187448,500.796089 C603.127672,502.907502 600.448902,504.001567 598.229722,503.227902 C598.229722,503.227902 596.506449,502.689824 595.957136,502.343444 C595.011023,501.746855 592.317797,499.777724 592.317797,499.777724 L597.446445,495.770785 C599.308648,494.315872 602.355483,494.269454 604.257069,495.671034 L606.083984,497.017578 L606.083984,497.017578 Z" class="ref-leaf-a-1" fill="#107959"></path>
 					<path d="M596.805664,499.794922 C596.805664,499.794922 601.556519,499.672017 604.170506,497.905234 C606.784493,496.13845 607.264987,493.117312 607.264987,493.117312" class="ref-leaf-a-2" stroke="#C8D39F" stroke-width="2"></path>
 				</g>
 				<g class="leaf-a"
-					u init-with="p:[op:0, transform:translateY(0px), tro:center center]"
-					when-leaf-fall="a:[translateY:0px:80px:2000:easeInOutExpo:600:1:f, rotate:0deg:15deg:200:easeInOutExpo:600:1:f] | p:[op:1]:delay-600">
+					u init-with="p:[op:0, transform:translateY(-60px)]"
+					when-leaf-fall="a:[translateY:-60px:0px:3000:easeInOutBack:600:1:f] | p:[op:1]:delay-600">
 					<path d="M576.083984,416.017578 L574.187448,419.796089 C573.127672,421.907502 570.448902,423.001567 568.229722,422.227902 C568.229722,422.227902 566.506449,421.689824 565.957136,421.343444 C565.011023,420.746855 562.317797,418.777724 562.317797,418.777724 L567.446445,414.770785 C569.308648,413.315872 572.355483,413.269454 574.257069,414.671034 L576.083984,416.017578 L576.083984,416.017578 Z" class="leaf-a-1" fill="#107959"></path>
 					<path d="M566.805664,418.794922 C566.805664,418.794922 571.556519,418.672017 574.170506,416.905234 C576.784493,415.13845 577.264987,412.117312 577.264987,412.117312" class="leaf-a-2" stroke="#C8D39F" stroke-width="2"></path>
 				</g>
 				<g class="ref-leaf-b"
-					u init-with="p:[op:0, transform:translateY(-30px) translateX(10px)]"
-					when-leaf-fall="a:[translateY:-30px:0px:1300:easeInOutBack:300:1:f,translateX:10px:0px:1300:easeInOutBack:300:1:f] | p:[op:1]:delay-300">
+					u init-with="p:[op:0, transform:translateY(-10px)]"
+					when-leaf-fall="a:[translateY:-10px:0px:300:easeInOutBack:300:1:f] | p:[op:1]:delay-300">
 					<path d="M509.916016,498.017578 L511.812552,501.796089 C512.872328,503.907502 515.551098,505.001567 517.770278,504.227902 C517.770278,504.227902 519.493551,503.689824 520.042864,503.343444 C520.988977,502.746855 523.682203,500.777724 523.682203,500.777724 L518.553555,496.770785 C516.691352,495.315872 513.644517,495.269454 511.742931,496.671034 L509.916016,498.017578 L509.916016,498.017578 Z" class="ref-leaf-b-1" fill="#107959"></path>
 					<path d="M519.194336,500.794922 C519.194336,500.794922 514.443481,500.672017 511.829494,498.905234 C509.215507,497.13845 508.735013,494.117312 508.735013,494.117312" class="ref-leaf-b-2" stroke="#C8D39F" stroke-width="2"></path>
 				</g>
@@ -376,7 +376,7 @@
 					init-with="p:[transform:translateX(-150px), op:0]"
 					on-init="a:[opacity:0:1:500:linear:0:1:f, translateX:-150px:0px:800:easeOutCirc:0:1:f] | s:[foliage:public:1500]"></path>
 	        </g>
-			<g class="sky" init-after="fixtures" on-init="s:[night-sky:public:1000, hover-sky:public:1100]">
+			<g class="sky" init-after="fixtures" on-init="s:[night-sky:public:1100, hover-sky:public:1200]">
 				<g class="stars">
 					<circle class="star-1" fill="#FFFFFF" cx="255.5" cy="258.5" r="2.5"
 						u
