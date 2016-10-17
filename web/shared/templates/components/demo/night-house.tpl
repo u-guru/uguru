@@ -166,7 +166,7 @@
 							when-fly-start="a:[rotate:-10deg:10deg:1100:easeInOutCirc:175:i:a]"></path>
 					</g>
 					<g u
-						when-fly-start="a:[translateY:-3px:3px:1000:linear:0:i:a]">
+						when-fly-start="a:[translateY:-3px:3px:1000:linear:0:i:a] | s:[leaving:public]:delay-1100">
 						<path d="M308.509441,236 C308.284677,236 309.156031,234.525654 311.993282,233.294118 C314.830534,232.062581 317.5,232 317.5,232" class="stout-bird-right" stroke="#6E6144" stroke-width="4"
 							u
 							init-with="p:[transform:rotate(0deg), tro:left bottom]"
@@ -174,7 +174,7 @@
 						<path d="M308.466318,236 C308.691082,236 307.819728,234.525654 304.982476,233.294118 C302.145224,232.062581 299.475759,232 299.475759,232" class="stout-bird-left" stroke="#6E6144" stroke-width="4"
 							u
 							init-with="p:[transform:rotate(0deg), tro:right bottom]"
-							when-fly-start="a:[rotate:10deg:-10deg:1000:easeInOutCirc:0:i:a] | s:[leaving:public]"></path>
+							when-fly-start="a:[rotate:10deg:-10deg:1000:easeInOutCirc:0:i:a]"></path>
 					</g>
 				</g>
 			</g>
