@@ -18087,7 +18087,8 @@ input[type=range] {
   height: 15px;
   border-radius: 1px;
   border: solid 1px currentColor;
-  transform-origin: center center; }
+  transform-origin: center center;
+  animation: bounceIn-subtle 1000ms linear infinite forwards; }
 
 .focus.sample:before {
   content: '';
@@ -18099,8 +18100,7 @@ input[type=range] {
   color: white;
   background-color: currentColor;
   -webkit-transform-origin: center;
-  transform-origin: center;
-  animation: bounceIn-subtle 1000ms linear infinite forwards; }
+  transform-origin: center; }
 
 .focus.sample:after {
   content: '';
@@ -18114,8 +18114,7 @@ input[type=range] {
   -webkit-transform-origin: center;
   transform-origin: center;
   -webkit-transform: rotate(90deg);
-  transform: rotate(90deg);
-  animation: bounceIn-subtle 1000ms linear infinite forwards; }
+  transform: rotate(90deg); }
 
 .guru-switch-container {
   -ms-box-orient: horizontal;
