@@ -1,4 +1,4 @@
-<div class="ui-guru-loader loader-portal-outer"  init-with-prop-opacity on-init="" >
+<div class="ui-guru-loader loader-portal-outer">
     <div class="loader-portal states"
         init-after="ui-body-init"
         on-init="s:[portal-open:public]"
@@ -12,13 +12,13 @@
             when-portal-open="a:[scale:0:1:250:easeInOutBack:0:1:f]:delay-100">
             <div class="portal"
                 u init-with="p:[tr:translateY(37%) translateZ(25px) rotateX(75deg)]"
-                when-portal-complete="a:[translateY:37%:-37.5%:650:easeOutCirc:0:1:f, translateZ:25px:0px:650:easeOutCubic:0:1:f, rotateX:75deg:0deg:650:easeOutSine:0:1:f]:delay-2000">
+                when-portal-transform="a:[translateY:37%:-37.5%:650:easeOutCirc:0:1:f, translateZ:25px:0px:650:easeOutCubic:0:1:f, rotateX:75deg:0deg:650:easeOutSine:0:1:f]">
                 <div>
                     <svg width="200px" height="200px" viewBox="0 0 400 400">
                         <circle cx="200" cy="200" r="192"
                             stroke="#55A4B7" stroke-width="16" fill="#2B3234" stroke-linecap="round" stroke-linejoin="round"
 							u init-with="p:[s:#55A4B7]"
-                            when-portal-hover="a:[portal-progress-color:2000:linear:0:1:f] | s:[portal-complete:public:2000, transition-start:public:2500, transition-end:public:2500]">
+                            when-portal-hover="a:[portal-progress-color:2000:linear:0:1:f] | s:[portal-complete:public:2000, portal-transform:public:4000]">
 							<!-- draw:init -->
 							<!-- draw:0%:100%:2000:0:1:f -->
                         </circle>
@@ -29,7 +29,7 @@
             <div class="logo"
 				u init-with="p:[tr:translateY(350px) scale(0.5), tro:center center]"
                 when-portal-open="a:[translateY:350px:0px:500:easeOutExpo:0:1:f, scale:0.5:1:500:easeInOutBack:0:1:f]:delay-500"
-                when-portal-complete="a:[translateY:0px:350px:150:easeInOutBack:1250:1:f]">
+                when-portal-complete="a:[translateY:0px:350px:150:easeInOutBack:1000:1:f]">
 				<svg width="200px" height="70px" viewBox="0 0 482 166">
 				    <g fill="#83BBAB" fill-rule="evenodd">
 				        <path d="M86.8148568,103.983015 C84.4960793,103.983015 82.9502276,102.698052 82.9502276,100.899104 C82.9502276,100.385119 83.0790486,99.6141407 83.3366905,98.9716593 L98.6663862,56.0538963 C99.1816701,54.7689333 99.310491,53.6124667 99.310491,52.456 C99.310491,47.3161481 94.801757,43.8467481 90.164202,43.8467481 C86.4283939,43.8467481 82.5637647,46.0311852 80.6314501,51.4280296 L66.4611432,90.8763926 C62.854156,97.9436889 57.3148542,103.983015 52.1620153,103.983015 C50.2297008,103.983015 49.199133,102.698052 49.199133,100.770607 C49.199133,99.742637 49.4567749,98.0721852 49.8432379,96.7872222 C49.8432379,96.7872222 64.1538696,55.9124711 64.2579515,55.5328772 C67.6634395,45.1510198 69.3315703,37.8090397 69.3315703,33.9820444 C69.3315703,13.860288 55.4490327,0.307407407 35.7542916,0.307407407 C14.5369988,0.492185623 0.308184143,15.9054671 0.308184143,38.5857778 C0.308184143,53.6559556 9.30138768,63.8497481 22.7957647,63.8497481 C33.9386792,63.8497481 41.2892788,55.2631375 41.2892788,43.2780444 C41.2892788,42.3358462 41.2431289,41.5993096 41.106442,39.9632005 C40.6753912,35.5544888 37.0216935,32.2679407 32.6477954,32.2679407 C28.0006111,32.2679407 24.1838261,36.209873 24.1838261,40.8876444 C24.1838261,41.2957918 24.1966392,41.6089212 24.2307142,42.2037321 C24.2432733,42.4229608 24.2464581,42.4797344 24.2515942,42.5796375 C24.265766,42.8552907 24.2725831,43.069488 24.2725831,43.2780444 C24.2725831,46.3578311 23.7287198,47.2300741 22.2632225,47.2300741 C19.6738473,47.2300741 17.768665,44.1294532 17.768665,38.9399111 C17.768665,25.8489455 25.117616,17.2812148 36.1093197,17.2812148 C45.6359074,17.2812148 50.6861892,23.93639 50.6861892,34.0708346 C50.6861892,36.4190879 49.9858669,39.1121369 49.1813362,41.8676962 C48.4309575,44.4377821 30.906555,94.9882741 30.906555,94.9882741 C30.1336292,97.3012074 29.7471662,99.6141407 29.7471662,101.798578 C29.7471662,112.206778 38.2493504,119.274074 49.070312,119.274074 C56.7995703,119.274074 62.5965141,115.547681 67.36289,110.40783 C71.0986982,115.93317 78.0550307,119.274074 85.784289,119.274074 C90.9113895,119.274074 96.3550369,117.943418 101.622653,114.431715 C98.3012097,110.740333 96.3574706,105.90771 96.3574706,100.256622 C96.3574706,99.7083816 96.3919808,99.1529205 96.4644518,98.5590721 C93.1628289,102.277403 89.8379675,103.983015 86.8148568,103.983015 Z" class="letter-u"></path>
@@ -45,13 +45,8 @@
             <div class="guru"
 				u init-with="p:[tr:translateY(400px) scale(0.8), tro:center top]"
                 when-portal-open="a:[translateY:400px:45px:500:easeOutBack:0:1:f, scale:0.8:1:500:easeOutBack:0:1:f]:delay-900 | s:[portal-hover:public:950]"
-<<<<<<< HEAD
-                when-portal-complete="a:[translateY:45px:350px:200:easeInBack:0:1:f]:+500">
-                <div u init-with="p:[tr:none]" when-portal-hover="a:[l-head-hover:800:linear:0:5:f]">
-=======
-                when-portal-complete="a:[translateY:45px:350px:200:easeInBack:900:1:f]">
-                <div u init-with="p:[tr:none]" when-portal-hover="a:[l-head-hover:800:linear:0:3:f]:delay-950">
->>>>>>> c068d5e87e6c23f6e92f00842b4e1f795c1810ec
+                when-portal-complete="a:[translateY:45px:400px:200:easeInBack:750:1:f]">
+                <div u init-with="p:[tr:none]" when-portal-hover="a:[l-head-hover:800:linear:0:3:f]">
 					<svg viewBox="0 0 130 204">
 					    <defs>
 					        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="guru-glasses">
@@ -105,34 +100,28 @@
 					        </g>
 					    </g>
 					</svg>
-
 				</div>
             </div>
         </div>
     </div>
 
-    <div class="absolute full-xy top-0 left-0"
-		u init-with="p:[op:0]"
-		when-portal-complete="a:[opacity:0:1:650:easeOutSine:0:1:f]:delay-2000">
-		<div class="portal-page"
-			init-after="portal-open"
-	        init-with="p:[op:0, width:200px, height:200px, left:50%, top:50%, margin-left:-100px, margin-top:-100px, border-radius:100%, border-radius:0, tr:translateY(20.5%) translateZ(25px) rotateX(84deg)]"
-	        when-portal-complete="a:[opacity:0:1:650:easeOutSine:0:1:f, translateY:71.5%:0%:650:easeOutCirc:0:1:f, rotateX:84deg:0deg:650:easeOutSine:0:1:f]:delay-2000"
-			when-transition-start="p:[width:100%, height:100%, left:0, top:0, margin-left:0, margin-top:0, border-radius:0]">
-			<div class="bg-charcoal"
-				u init-with="p:[-webkit-clip-path:circle(90px at 50% 50%), overflow:hidden]"
-				when-transition-start="a:[-webkit-clip-path:circle(90px at 50% 50%):circle(1500px at 50% 50%):750:(1,0,1,0):0:1:f]"
-				when-transition-end="p:[-webkit-clip-path:none]">
-				<main class='full-xy'
-					u init-with="p:[tro:center center]"
-					when-transition-end="s:[page-enter:public:delay-1000]">
-					<section class="full-xy flex-center"
-						u init-with="p:[background-color:#2B3234]"
-						when-page-enter="a:[background-color:#2B3234:#fadab0:750:easeOutSine]">
-					</section>
-				</main>
-			</div>
-	    </div>
+	<div class="portal-page"
+		u init-with="p:[op:0, width:200px, height:200px, left:50%, top:50%, margin-left:-100px, margin-top:-100px, border-radius:100%, border-radius:0, tr:translateY(20.5%) translateZ(25px) rotateX(84deg)]"
+		when-portal-transform="a:[opacity:0:1:250:easeOutSine:750:1:f, translateY:71.5%:0%:650:easeOutCirc:0:1:f, rotateX:84deg:0deg:650:easeOutSine:0:1:f] | s:[transition-start:public:500]"
+		when-transition-start="p:[width:100%, height:100%, left:0, top:0, margin-left:0, margin-top:0, border-radius:0]">
+		<div class="bg-charcoal"
+			u init-with="p:[-webkit-clip-path:circle(90px at 50% 50%), overflow:hidden]"
+			when-transition-start="a:[-webkit-clip-path:circle(90px at 50% 50%):circle(1500px at 50% 50%):750:(1,0,1,0):0:1:f] | s:[transition-end:self]:delay-750"
+			when-transition-end="p:[-webkit-clip-path:none]">
+			<main class='full-xy'
+				u init-with="p:[tro:center center]"
+				when-transition-start="s:[page-enter:public:1000]">
+				<section class="full-xy flex-center"
+					u init-with="p:[background-color:#2B3234]"
+					when-page-enter="a:[background-color:#2B3234:#fadab0:750:easeOutSine]">
+				</section>
+			</main>
+		</div>
 	</div>
 
 </div>

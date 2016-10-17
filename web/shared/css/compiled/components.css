@@ -18065,6 +18065,58 @@ input[type=range] {
         background: #934073;
         color: white; }
 
+.icon-container {
+  position: relative;
+  display: inline-block;
+  width: 75px;
+  height: 75px;
+  padding: 26px;
+  box-sizing: border-box;
+  border: solid 1px #ccc;
+  border-radius: 0;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  background: white; }
+
+.focus.sample {
+  color: #000;
+  position: absolute;
+  margin-left: 2px;
+  margin-top: 2px;
+  width: 15px;
+  height: 15px;
+  border-radius: 1px;
+  border: solid 1px currentColor;
+  transform-origin: center center; }
+
+.focus.sample:before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: -2px;
+  width: 9px;
+  height: 19px;
+  color: white;
+  background-color: currentColor;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  animation: bounceIn-subtle 1000ms linear infinite forwards; }
+
+.focus.sample:after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: -2px;
+  width: 9px;
+  height: 19px;
+  color: white;
+  background-color: currentColor;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  animation: bounceIn-subtle 1000ms linear infinite forwards; }
+
 .guru-switch-container {
   -ms-box-orient: horizontal;
   display: -webkit-box;
