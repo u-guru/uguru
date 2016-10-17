@@ -376,7 +376,7 @@
 					init-with="p:[transform:translateX(-150px), op:0]"
 					on-init="a:[opacity:0:1:500:linear:0:1:f, translateX:-150px:0px:800:easeOutCirc:0:1:f] | s:[foliage:public:1500]"></path>
 	        </g>
-			<g class="sky" init-after="fixtures" on-init="s:[night-sky:public:1100]">
+			<g class="sky" init-after="fixtures" on-init="s:[night-sky:public:1000, hover-sky:public:1100]">
 				<g class="stars">
 					<circle class="star-1" fill="#FFFFFF" cx="255.5" cy="258.5" r="2.5"
 						u
@@ -435,7 +435,7 @@
 					<path d="M376.178959,232 C376.715756,229.754184 377,227.410286 377,225 C377,208.431458 363.568542,195 347,195 C330.431458,195 317,208.431458 317,225 C317,227.410286 317.284244,229.754184 317.821041,232 L376.178959,232 L376.178959,232 Z" class="b-cloud-1" fill="#BCE5FF"
 						u
 						init-with="p:[transform:scale(0), tro:center bottom]"
-						when-night-sky="a:[scale:0:1:200:easeOutSine:0:1:f] | s:[hover-sky:public:100]"></path>
+						when-night-sky="a:[scale:0:1:200:easeOutSine:0:1:f]"></path>
 					<path d="M321.243895,232 C321.737482,230.08228 322,228.071797 322,226 C322,212.745166 311.254834,202 298,202 C284.745166,202 274,212.745166 274,226 C274,228.071797 274.262518,230.08228 274.756105,232 L321.243895,232 L321.243895,232 Z" class="b-cloud-2" fill="#BCE5FF"
 						u
 						init-with="p:[transform:scale(0), tro:center bottom]"
@@ -480,11 +480,11 @@
 					when-build-house="a:[scaleY:0:1:750:easeOutBounce:0:1:f] | s:[fixtures:public:1000]"></rect>
 				<g class="windows"
 					init-after="fixtures"
-					on-init="s:[w1:public]:delay-100">
+					on-init="s:[w1:public:100]">
 					<g class="w5"
 						u
 						init-with="p:[opacity:0, tro:20% 80%]"
-						when-w1="a:[scoop-enter:1000:linear:400:1:f]">
+						when-w1="a:[zoom-enter:1000:linear:400:1:f]">
 						<g clip-path="url(#w5-clip)">
 							<rect class="w5-bg" fill="#FEF1AE" x="435" y="407" width="38" height="60"></rect>
 							<rect class="w5-blind" fill="#2E5573" x="435" y="407" width="38" height="60"></rect>
@@ -500,7 +500,7 @@
 					<g class="w4"
 						u
 						init-with="p:[op:0, tro:20% 80%]"
-						when-w1="a:[scoop-enter:1000:linear:300:1:f]">
+						when-w1="a:[zoom-enter:1000:linear:300:1:f]">
 			            <rect class="w4-shadow-btm" fill="#0B3B5E" x="381" y="477" width="40" height="5"></rect>
 			            <rect class="w4-ledge" fill="#8C70B3" x="379" y="467" width="44" height="10"></rect>
 			            <rect class="w4-blind" fill="#2E5573" x="382" y="407" width="38" height="60"></rect>
@@ -511,7 +511,7 @@
 					<g class="w3"
 						u
 						init-with="p:[op:0, tro:20% 80%]"
-						when-w1="a:[scoop-enter:1000:linear:200:1:f]">
+						when-w1="a:[zoom-enter:1000:linear:200:1:f]">
 			            <rect class="w3-shadow-btm" fill="#0B3B5E" x="434" y="376" width="40" height="5"></rect>
 			            <rect class="w3-ledge" fill="#8C70B3" x="432" y="366" width="44" height="10"></rect>
 			            <rect class="w3-blind" fill="#2E5573" x="435" y="306" width="38" height="60"></rect>
@@ -522,7 +522,7 @@
 					<g class="w2"
 						u
 						init-with="p:[op:0, tro:20% 80%]"
-						when-w1="a:[scoop-enter:1000:linear:100:1:f]">
+						when-w1="a:[zoom-enter:1000:linear:100:1:f]">
 						<g clip-path="url(#w2-clip)">
 							<rect class="w2-bg" fill="#FEF1AE" x="382" y="306" width="38" height="60"></rect>
 				            <rect class="w2-blind" fill="#2E5573" x="382" y="306" width="38" height="60"
@@ -538,7 +538,7 @@
 					<g class="w1"
 						u
 						init-with="p:[op:0, tro:20% 80%]"
-						when-w1="a:[scoop-enter:1000:linear:0:1:f]">
+						when-w1="a:[zoom-enter:1000:linear:0:1:f]">
 			            <rect class="w1-shadow-btm" fill="#0B3B5E" x="328" y="376" width="40" height="5"></rect>
 			            <rect class="w1-ledge" fill="#8C70B3" x="326" y="366" width="44" height="10"></rect>
 			            <rect class="w1-blind" fill="#2E5573" x="329" y="306" width="38" height="60"></rect>
@@ -547,41 +547,41 @@
 			            <path d="M329,306 L367,306 L367,366 L329,366 L329,306 L329,306 Z M335,313 L361,313 L361,337 L335,337 L335,313 L335,313 Z M335,342 L361,342 L361,366 L335,366 L335,342 L335,342 Z" class="w-casing" fill="#FFFFFF"></path>
 					</g>
 				</g>
-				<g class="door" init-after="fixtures" on-init="s:[door-enter:public]">
+				<g class="door" init-after="fixtures" on-init="s:[door:public]">
 		            <rect class="door-casing" fill="#FFFFFF" x="324" y="444" width="50" height="58"
 						u
 						init-with="p:[tro:center top, transform:scaleY(0)]"
-						when-door-enter="a:[scaleY:0:1:200:easeOutSine:300:1:f]"></rect>
+						when-door="a:[scaleY:0:1:200:easeOutSine:300:1:f]"></rect>
 		            <rect class="door-light" fill="#FEF1AE" x="329" y="444" width="40" height="58"
 						u
 						init-with="p:[tro:center top, transform:scaleY(0)]"
-						when-door-enter="a:[scaleY:0:1:200:easeOutSine:250:1:f]"></rect>
+						when-door="a:[scaleY:0:1:200:easeOutSine:250:1:f]"></rect>
 		            <path d="M329,444 L369,444 L369,502 L329,502 L329,444 L329,444 Z M337,444 L361,444 L361,450 L337,450 L337,444 L337,444 Z M337,457 L361,457 L361,477 L337,477 L337,457 L337,457 Z" class="door-front" fill="#2E5573"
 						u
 						init-with="p:[tro:center top, transform:scaleY(0)]"
-						when-door-enter="a:[scaleY:0:1:200:easeOutSine:200:1:f]"></path>
+						when-door="a:[scaleY:0:1:200:easeOutSine:200:1:f]"></path>
 		            <rect class="door-shade" fill="#FFFFFF" x="321" y="399" width="56" height="36"
 						u
 						init-with="p:[op:0, tro:center top]"
-						when-door-enter="a:[bounceIn-subtle:1000:linear:0:1:f]"></rect>
+						when-door="a:[bounceIn-subtle:1000:linear:0:1:f]"></rect>
 						<!--on-init="a:[bounceIn-subtle:500:linear:0:1:f]:delay-500" -->
 		            <rect class="door-shade-edge" fill="#8A70B3" x="321" y="435" width="56" height="9"
 						u
 						init-with="p:[tro:center top, transform:scaleY(0)]"
-						when-door-enter="a:[scaleY:0:1:200:easeOutSine:0:1:f]"></rect>
+						when-door="a:[scaleY:0:1:200:easeOutSine:0:1:f]"></rect>
 					</g>
 				</g>
 	        </g>
-	        <g class="mailbox" u on-init="s:[mailbox-enter:public]">
+	        <g class="mailbox" u on-init="s:[mailbox:public]">
 	            <rect class="mbox-store" fill="#8C70B3" x="272" y="454" width="28" height="15" rx="2"
 					u init-with="p:[tro:left center, transform:scaleX(0)]"
-					when-mailbox-enter="a:[scaleX:0:1:300:easeOutBack:250:1:f]"></rect>
+					when-mailbox="a:[scaleX:0:1:300:easeOutBack:250:1:f]"></rect>
 	            <rect class="mbox-hatch" fill="#B5E3FE" x="272" y="454" width="12" height="15" rx="2"
 					u init-with="p:[tro:left center, transform:scaleX(0)]"
-					when-mailbox-enter="a:[scaleX:0:1:300:easeOutBack:200:1:f]"></rect>
+					when-mailbox="a:[scaleX:0:1:300:easeOutBack:200:1:f]"></rect>
 	            <rect class="mbox-stand" fill="#FFFFFF" x="283" y="473" width="6" height="31"
 					u init-with="p:[tro:center bottom, transform:scaleY(0)]"
-					when-mailbox-enter="a:[scaleY:0:1:300:easeOutBack:0:1:f]"></rect>
+					when-mailbox="a:[scaleY:0:1:300:easeOutBack:0:1:f]"></rect>
 	        </g>
 	    </g>
 	</svg>

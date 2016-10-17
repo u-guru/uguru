@@ -2,7 +2,7 @@
     <div class="loader-portal states"
         init-after="ui-body-init"
         on-init="s:[portal-open:public]"
-        when-transition-end="p:[op:1]:delay-2000">
+        when-transition-start="p:[op:0]:delay-2000">
         <div class="ui-guru-scene"
             ng-if="false"
             ng-include="'ui/templates/loader/scene.html'">
