@@ -75,32 +75,32 @@
 				</g>
 				<g class="leaf-b"
 					u init-with="p:[op:0, transform:translateY(-10px)]"
-					when-leaf-fall="a:[translateY:-10px:0px:300:easeInOutBack:0:1:f] | p:[op:1]">
+					when-leaf-fall="a:[translateY:-10px:0px:1300:easeInOutBack:0:1:f] | p:[op:1]">
 					<path d="M539.916016,423.017578 L541.812552,426.796089 C542.872328,428.907502 545.551098,430.001567 547.770278,429.227902 C547.770278,429.227902 549.493551,428.689824 550.042864,428.343444 C550.988977,427.746855 553.682203,425.777724 553.682203,425.777724 L548.553555,421.770785 C546.691352,420.315872 543.644517,420.269454 541.742931,421.671034 L539.916016,423.017578 L539.916016,423.017578 Z" class="leaf-b-1" fill="#107959"></path>
 					<path d="M549.194336,425.794922 C549.194336,425.794922 544.443481,425.672017 541.829494,423.905234 C539.215507,422.13845 538.735013,419.117312 538.735013,419.117312" class="leaf-b-2" stroke="#C8D39F" stroke-width="2"></path>
 				</g>
 				<g class="ref-leaf-d"
-					u init-with="p:[op:0, transform:translateY(-10px)]"
-					when-leaf-fall="a:[translateY:-10px:0px:300:easeInOutBack:0:1:f] | p:[op:1]">
+					u init-with="p:[op:0, transform:translateY(-30px) translateX(10px)]"
+					when-leaf-fall="a:[translateY:-30px:0px:1300:easeInOutBack:300:1:f,translateX:10px:0px:1300:easeInOutBack:300:1:f] | p:[op:1]:delay-300">
 					<path d="M191.916016,496.017578 L193.812552,499.796089 C194.872328,501.907502 197.551098,503.001567 199.770278,502.227902 C199.770278,502.227902 201.493551,501.689824 202.042864,501.343444 C202.988977,500.746855 205.682203,498.777724 205.682203,498.777724 L200.553555,494.770785 C198.691352,493.315872 195.644517,493.269454 193.742931,494.671034 L191.916016,496.017578 L191.916016,496.017578 L191.916016,496.017578 Z" class="ref-leaf-d-1" fill="#B4CB5D"></path>
 					<path d="M201.194336,498.794922 C201.194336,498.794922 196.443481,498.672017 193.829494,496.905234 C191.215507,495.13845 190.735013,492.117312 190.735013,492.117312" class="ref-leaf-d-2" stroke="#63AC69" stroke-width="2"></path>
 				</g>
 				<g class="leaf-d"
-					u init-with="p:[op:0, transform:translateY(-10px)]"
-					when-leaf-fall="a:[translateY:-10px:0px:300:easeInOutBack:0:1:f] | p:[op:1]">
+					u init-with="p:[op:0, transform:translateY(0px), tro:center center]"
+					when-leaf-fall="a:[translateY:0px:80px:2000:easeInOutExpo:400:1:f, rotate:0deg:15deg:200:easeInOutExpo:400:1:f] | p:[op:1]:delay-400">
 					<path d="M221.916016,421.017578 L223.812552,424.796089 C224.872328,426.907502 227.551098,428.001567 229.770278,427.227902 C229.770278,427.227902 231.493551,426.689824 232.042864,426.343444 C232.988977,425.746855 235.682203,423.777724 235.682203,423.777724 L230.553555,419.770785 C228.691352,418.315872 225.644517,418.269454 223.742931,419.671034 L221.916016,421.017578 L221.916016,421.017578 L221.916016,421.017578 Z" class="leaf-d-1" fill="#B4CB5D"></path>
 					<path d="M231.194336,423.794922 C231.194336,423.794922 226.443481,423.672017 223.829494,421.905234 C221.215507,420.13845 220.735013,417.117312 220.735013,417.117312" class="leaf-d-2" stroke="#63AC69" stroke-width="2"></path>
 				</g>
 
 				<g class="ref-leaf-c"
 					u init-with="p:[op:0, transform:translateY(-10px)]"
-					when-leaf-fall="a:[translateY:-10px:0px:300:easeInOutBack:0:1:f] | p:[op:1]">
+					when-leaf-fall="a:[translateY:-10px:0px:2300:easeInOutBack:0:1:f] | p:[op:1]">
 					<path d="M288.083984,498.017578 L286.187448,501.796089 C285.127672,503.907502 282.448902,505.001567 280.229722,504.227902 C280.229722,504.227902 278.506449,503.689824 277.957136,503.343444 C277.011023,502.746855 274.317797,500.777724 274.317797,500.777724 L279.446445,496.770785 C281.308648,495.315872 284.355483,495.269454 286.257069,496.671034 L288.083984,498.017578 L288.083984,498.017578 L288.083984,498.017578 Z" class="ref-leaf-c-1" fill="#B4CB5D"></path>
 					<path d="M278.805664,500.794922 C278.805664,500.794922 283.556519,500.672017 286.170506,498.905234 C288.784493,497.13845 289.264987,494.117312 289.264987,494.117312" class="ref-leaf-c-2" stroke="#63AC69" stroke-width="2"></path>
 				</g>
 				<g class="leaf-c"
 					u init-with="p:[op:0, transform:translateY(-10px)]"
-					when-leaf-fall="a:[translateY:-10px:0px:300:easeInOutBack:0:1:f] | p:[op:1]">
+					when-leaf-fall="a:[translateY:-10px:0px:1300:easeInOutBack:0:1:f] | p:[op:1]">
 					<path d="M258.083984,428.017578 L256.187448,431.796089 C255.127672,433.907502 252.448902,435.001567 250.229722,434.227902 C250.229722,434.227902 248.506449,433.689824 247.957136,433.343444 C247.011023,432.746855 244.317797,430.777724 244.317797,430.777724 L249.446445,426.770785 C251.308648,425.315872 254.355483,425.269454 256.257069,426.671034 L258.083984,428.017578 L258.083984,428.017578 L258.083984,428.017578 Z" class="leaf-c-1" fill="#B4CB5D"></path>
 					<path d="M248.805664,430.794922 C248.805664,430.794922 253.556519,430.672017 256.170506,428.905234 C258.784493,427.13845 259.264987,424.117312 259.264987,424.117312" class="leaf-c-2" stroke="#63AC69" stroke-width="2"></path>
 				</g>
@@ -376,7 +376,7 @@
 					init-with="p:[transform:translateX(-150px), op:0]"
 					on-init="a:[opacity:0:1:500:linear:0:1:f, translateX:-150px:0px:800:easeOutCirc:0:1:f] | s:[foliage:public:1500]"></path>
 	        </g>
-			<g class="sky" init-after="fixtures" on-init="s:[night-sky:public:1000, hover-sky:public:1100]">
+			<g class="sky" init-after="fixtures" on-init="s:[night-sky:public:1000, hover-sky:public:1000]">
 				<g class="stars">
 					<circle class="star-1" fill="#FFFFFF" cx="255.5" cy="258.5" r="2.5"
 						u
@@ -480,11 +480,11 @@
 					when-build-house="a:[scaleY:0:1:750:easeOutBounce:0:1:f] | s:[fixtures:public:1000]"></rect>
 				<g class="windows"
 					init-after="fixtures"
-					on-init="s:[w1:public:100]">
+					on-init="s:[w1:public]">
 					<g class="w5"
 						u
 						init-with="p:[opacity:0, tro:20% 80%]"
-						when-w1="a:[zoom-enter:1000:linear:400:1:f]">
+						when-w1="a:[zoom-enter:800:linear:400:1:f]">
 						<g clip-path="url(#w5-clip)">
 							<rect class="w5-bg" fill="#FEF1AE" x="435" y="407" width="38" height="60"></rect>
 							<rect class="w5-blind" fill="#2E5573" x="435" y="407" width="38" height="60"></rect>
@@ -500,7 +500,7 @@
 					<g class="w4"
 						u
 						init-with="p:[op:0, tro:20% 80%]"
-						when-w1="a:[zoom-enter:1000:linear:300:1:f]">
+						when-w1="a:[zoom-enter:800:linear:300:1:f]">
 			            <rect class="w4-shadow-btm" fill="#0B3B5E" x="381" y="477" width="40" height="5"></rect>
 			            <rect class="w4-ledge" fill="#8C70B3" x="379" y="467" width="44" height="10"></rect>
 			            <rect class="w4-blind" fill="#2E5573" x="382" y="407" width="38" height="60"></rect>
@@ -525,9 +525,10 @@
 						when-w1="a:[zoom-enter:1000:linear:100:1:f]">
 						<g clip-path="url(#w2-clip)">
 							<rect class="w2-bg" fill="#FEF1AE" x="382" y="306" width="38" height="60"></rect>
-				            <rect class="w2-blind" fill="#2E5573" x="382" y="306" width="38" height="60"
+				            <rect class="w2-blind" fill="#2E5573" x="382" y="306" width="38" height="60"></rect>
+							<!--
 								init-after="w1"
-								on-init="a:[fill:#2E5573:#FEF1AE:3000:easeInOutSine:0:i:a]"></rect>
+								on-init="a:[fill:#2E5573:#FEF1AE:3000:easeInOutSine:0:i:a]" -->
 						</g>
 			            <rect class="w2-shadow-btm" fill="#0B3B5E" x="381" y="376" width="40" height="5"></rect>
 			            <rect class="w2-ledge" fill="#8C70B3" x="379" y="366" width="44" height="10"></rect>
