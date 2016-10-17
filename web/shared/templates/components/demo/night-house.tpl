@@ -24,17 +24,19 @@
 	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #BBF2FE;"
 		init-after="day-transition" on-init="a:[opacity:0:1:3000:easeInOutSine:0:1:f]:delay-2500">
 		<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-			<g class="left-tree">
-				<rect class="l-canopy" fill="#B4CB5D" x="221" y="364" width="43" height="86" rx="21.5"></rect>
+			<g class="left-tree" init-after="leaving">
+				<rect class="l-canopy" fill="#B4CB5D" x="221" y="364" width="43" height="86" rx="21.5"
+					u init-with="p:[tro:50% 80%]"
+					when-tree-shake="a:[rustle:300:linear:0:3:ar]"></rect>
 				<path d="M241.5,499.514151 L241.5,397.485849 L241.5,499.514151 Z" class="l-tree-trunk-1" stroke="#625317" stroke-width="5"></path>
 				<path d="M241.46694,432.899271 L232.618869,424.0512 L241.46694,432.899271 Z" class="l-tree-trunk-2" stroke="#625317" stroke-width="5"></path>
 				<path d="M241.618869,412.899271 L250.46694,404.0512 L241.618869,412.899271 Z" class="l-tree-trunk-3" stroke="#625317" stroke-width="5"></path>
 			</g>
 			<g class="right-tree"
-				init-after="leaving" on-init="s:[tree-shake:public:6000]">
+				init-after="leaving" on-init="s:[tree-shake:public]:delay-5700">
 				<rect class="e-tree-canopy" fill="#0F7959" x="538" y="364" width="43" height="86" rx="21.5"
-					u init-with="p:[tro:center center]"
-					when-tree-shake="a:[rustle:300:linear:0:6:a]"></rect>
+					u init-with="p:[tro:50% 80%]"
+					when-tree-shake="a:[rustle:300:linear:0:3:a]"></rect>
 				<polygon class="e-tree-trunk-1" stroke="#625317" stroke-width="5" points="559.5 499.514151 559.5 397.485849"></polygon>
 				<polygon class="e-tree-trunk-2" stroke="#625317" stroke-width="5" points="559.53306 432.899271 568.381131 424.0512"></polygon>
 				<polygon class="e-tree-trunk-3" stroke="#625317" stroke-width="5" points="559.381131 412.899271 550.53306 404.0512"></polygon>
@@ -61,13 +63,13 @@
 				</g>
 				<g class="leaf-a"
 					u init-with="p:[op:0, transform:translateY(-10px)]"
-					when-leaf-fall="a:[translateY:-10px:0px:300:easeInOutBack:200:1:f] | p:[op:1]">
+					when-leaf-fall="a:[translateY:-10px:0px:300:easeInOutBack:200:1:f] | p:[op:1]:delay-200">
 					<path d="M576.083984,416.017578 L574.187448,419.796089 C573.127672,421.907502 570.448902,423.001567 568.229722,422.227902 C568.229722,422.227902 566.506449,421.689824 565.957136,421.343444 C565.011023,420.746855 562.317797,418.777724 562.317797,418.777724 L567.446445,414.770785 C569.308648,413.315872 572.355483,413.269454 574.257069,414.671034 L576.083984,416.017578 L576.083984,416.017578 Z" class="leaf-a-1" fill="#107959"></path>
 					<path d="M566.805664,418.794922 C566.805664,418.794922 571.556519,418.672017 574.170506,416.905234 C576.784493,415.13845 577.264987,412.117312 577.264987,412.117312" class="leaf-a-2" stroke="#C8D39F" stroke-width="2"></path>
 				</g>
 				<g class="ref-leaf-b"
 					u init-with="p:[op:0, transform:translateY(-10px)]"
-					when-leaf-fall="a:[translateY:-10px:0px:300:easeInOutBack:300:1:f] | p:[op:1]">
+					when-leaf-fall="a:[translateY:-10px:0px:300:easeInOutBack:300:1:f] | p:[op:1]:delay-300">
 					<path d="M509.916016,498.017578 L511.812552,501.796089 C512.872328,503.907502 515.551098,505.001567 517.770278,504.227902 C517.770278,504.227902 519.493551,503.689824 520.042864,503.343444 C520.988977,502.746855 523.682203,500.777724 523.682203,500.777724 L518.553555,496.770785 C516.691352,495.315872 513.644517,495.269454 511.742931,496.671034 L509.916016,498.017578 L509.916016,498.017578 Z" class="ref-leaf-b-1" fill="#107959"></path>
 					<path d="M519.194336,500.794922 C519.194336,500.794922 514.443481,500.672017 511.829494,498.905234 C509.215507,497.13845 508.735013,494.117312 508.735013,494.117312" class="ref-leaf-b-2" stroke="#C8D39F" stroke-width="2"></path>
 				</g>
@@ -119,7 +121,7 @@
 					<path d="M430.243895,178 C430.737482,176.08228 431,174.071797 431,172 C431,158.745166 420.254834,148 407,148 C393.745166,148 383,158.745166 383,172 C383,174.071797 383.262518,176.08228 383.756105,178 L430.243895,178 L430.243895,178 L430.243895,178 Z" class="day-s-cloud-1" fill="#FFFFFF"></path>
 					<path d="M390.975766,178 C391.639075,176.123326 392,174.103813 392,172 C392,162.058875 383.941125,154 374,154 C364.058875,154 356,162.058875 356,172 C356,174.103813 356.360925,176.123326 357.024234,178 L390.975766,178 L390.975766,178 L390.975766,178 Z" class="day-s-cloud-2" fill="#FFFFFF"></path>
 				</g>
-				<g class="birds" init-after="flying" on-init="s:[fly-start:public]">
+				<g class="birds" init-after="flying" on-init="s:[fly-start:public, leaving:public:1100]">
 					<g class="b-bird"
 						u
 						when-fly-start="a:[translateY:-3px:3px:1000:linear:0:i:a]">
@@ -166,7 +168,7 @@
 							when-fly-start="a:[rotate:-10deg:10deg:1100:easeInOutCirc:175:i:a]"></path>
 					</g>
 					<g u
-						when-fly-start="a:[translateY:-3px:3px:1000:linear:0:i:a] | s:[leaving:public]:delay-1100">
+						when-fly-start="a:[translateY:-3px:3px:1000:linear:0:i:a]">
 						<path d="M308.509441,236 C308.284677,236 309.156031,234.525654 311.993282,233.294118 C314.830534,232.062581 317.5,232 317.5,232" class="stout-bird-right" stroke="#6E6144" stroke-width="4"
 							u
 							init-with="p:[transform:rotate(0deg), tro:left bottom]"
