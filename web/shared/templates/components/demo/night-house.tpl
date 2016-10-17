@@ -49,10 +49,10 @@
 				<path d="M474,504 C475.046946,487.801477 487.991229,475 503.805556,475 C519.619882,475 532.564165,487.801477 533.611111,504 L474,504 L474,504 L474,504 Z" class="lime-bush-medium" fill="#93AA3C"></path>
 			</g>
 			<g class="leaves"
-				init-after="leafingionic"
-				init-with="p-op"
-				on-init="a:[opacity:0:1:1000:linear:0:1:f]">
-				<g class="ref-leaf-a">
+				init-after="leaving" on-init="s:[leaf-fall:public:6500]">
+				<g class="ref-leaf-a"
+					u init-with="p:[op:0, transform:translateY(-10px)]"
+					when-leaf-fall="a:[translateY:-10px:0px:300:easeInOutBack:0:1:f] | p:[op:1]">
 					<path d="M606.083984,497.017578 L604.187448,500.796089 C603.127672,502.907502 600.448902,504.001567 598.229722,503.227902 C598.229722,503.227902 596.506449,502.689824 595.957136,502.343444 C595.011023,501.746855 592.317797,499.777724 592.317797,499.777724 L597.446445,495.770785 C599.308648,494.315872 602.355483,494.269454 604.257069,495.671034 L606.083984,497.017578 L606.083984,497.017578 Z" class="ref-leaf-a-1" fill="#107959"></path>
 					<path d="M596.805664,499.794922 C596.805664,499.794922 601.556519,499.672017 604.170506,497.905234 C606.784493,496.13845 607.264987,493.117312 607.264987,493.117312" class="ref-leaf-a-2" stroke="#C8D39F" stroke-width="2"></path>
 				</g>
@@ -157,7 +157,7 @@
 						<path d="M308.466318,236 C308.691082,236 307.819728,234.525654 304.982476,233.294118 C302.145224,232.062581 299.475759,232 299.475759,232" class="stout-bird-left" stroke="#6E6144" stroke-width="4"
 							u
 							init-with="p:[transform:rotate(0deg), tro:right bottom]"
-							when-fly-start="a:[rotate:10deg:-10deg:1000:easeInOutCirc:0:i:a]"></path>
+							when-fly-start="a:[rotate:10deg:-10deg:1000:easeInOutCirc:0:i:a] | s:[leaving:public]"></path>
 					</g>
 				</g>
 			</g>
