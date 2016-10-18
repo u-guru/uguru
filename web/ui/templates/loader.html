@@ -195,7 +195,7 @@
 						when-cabinet-enter="a:[translateX:30px:0px:750:easeOutSine:250:1:f]"
 						when-transition-start="p:[tro:300px 225px] | a:[scale:1:0:1000:easeOutExpo:320:1:f]">
 						<g u init-with="p:[tro:center center]"
-							when-transition-start="a:[rotate:0deg:-20deg:1000:easeOutExpo:100:1:f]">
+							when-transition-start="a:[rotate:0deg:-20deg:1000:easeOutExpo:320:1:f]">
 							<g class="cabinet-wheels" stroke="#A7A3AB" stroke-width="2" fill="#CCCACE">
 								<g class="cabinet-wheel-left"
 									u init-with="p:[op:0, tro:center center, transform:rotate(720deg)]"
@@ -242,73 +242,85 @@
 					<g class="plant"
 						u init-with="p:[tro:300px 225px]"
 						when-transition-start="a:[scale:1:0:1000:easeOutExpo:310:1:f]">
-						<g u when-plant-enter="s:[plant-sway:public:1500]"
-							init-with="p:[tro:50% 110%]"
-							when-plant-sway="a:[rustle:2500:linear:0:i:a]">
-							<g class="leaf-2" u init-with="p:[transform:scale(0), tro:right bottom]"
-								when-plant-enter="a:[scale:0:1:500:easeOutBack:600:1:f]">
-								<path d="M123.444154,213.956382 L152.859488,245.500466 C152.859488,245.500466 155.577071,228.355893 146.405196,222.032027 C137.233321,215.708161 123.444154,213.956382 123.444154,213.956382 L123.444154,213.956382 Z" class="leaf-2-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
-								<path d="M123.82948,214.817829 C123.82948,214.817829 139.072379,221.844272 144.239749,226.932504 C148.794923,231.417915 152.99711,243.53876 152.99711,243.53876" class="leaf-2-line" stroke="#4A5924" stroke-width="2"></path>
+						<g u init-with="p:[tro:center center]"
+							when-transition-start="a:[rotate:0deg:-30deg:1000:easeOutExpo:310:1:f]">
+							<g u when-plant-enter="s:[plant-sway:public:1500]"
+								init-with="p:[tro:50% 110%]"
+								when-plant-sway="a:[rustle:2500:linear:0:i:a]">
+								<g class="leaf-2" u init-with="p:[transform:scale(0), tro:right bottom]"
+									when-plant-enter="a:[scale:0:1:500:easeOutBack:600:1:f]">
+									<path d="M123.444154,213.956382 L152.859488,245.500466 C152.859488,245.500466 155.577071,228.355893 146.405196,222.032027 C137.233321,215.708161 123.444154,213.956382 123.444154,213.956382 L123.444154,213.956382 Z" class="leaf-2-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
+									<path d="M123.82948,214.817829 C123.82948,214.817829 139.072379,221.844272 144.239749,226.932504 C148.794923,231.417915 152.99711,243.53876 152.99711,243.53876" class="leaf-2-line" stroke="#4A5924" stroke-width="2"></path>
+								</g>
+								<g class="leaf-1" u init-with="p:[transform:scale(0), tro:right bottom]"
+									when-plant-enter="a:[scale:0:1:500:easeOutBack:500:1:f]">
+									<path d="M110.219862,238.982466 L152.886481,245.021371 C152.886481,245.021371 144.208581,229.964119 133.114255,230.814952 C122.019929,231.665786 110.219862,238.982466 110.219862,238.982466 L110.219862,238.982466 L110.219862,238.982466 Z" class="leaf-1-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
+									<path d="M111.257225,238.5 C111.257225,238.5 118.213747,233.617426 131.624277,235.773952 C145.034808,237.930479 151.991329,245.050388 151.991329,245.050388" class="leaf-1-line" stroke="#4A5924" stroke-width="2"></path>
+								</g>
+								<g class="leaf-3" u init-with="p:[transform:scale(0), tro:left bottom]"
+									when-plant-enter="a:[scale:0:1:500:easeOutBack:600:1:f]">
+									<path d="M183.555846,213.956382 L154.140512,245.500466 C154.140512,245.500466 151.422929,228.355893 160.594804,222.032027 C169.766679,215.708161 183.555846,213.956382 183.555846,213.956382 L183.555846,213.956382 Z" class="leaf-3-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
+									<path d="M183.17052,214.817829 C183.17052,214.817829 167.927621,221.844272 162.760251,226.932504 C158.205077,231.417915 154.00289,243.53876 154.00289,243.53876" class="leaf-3-line" stroke="#4A5924" stroke-width="2"></path>
+								</g>
+								<g class="leaf-4" u init-with="p:[transform:scale(0), tro:left bottom]"
+									when-plant-enter="a:[scale:0:1:500:easeOutBack:500:1:f]">
+									<path d="M196.780138,238.982466 L154.113519,245.021371 C154.113519,245.021371 162.791419,229.964119 173.885745,230.814952 C184.980071,231.665786 196.780138,238.982466 196.780138,238.982466 L196.780138,238.982466 L196.780138,238.982466 Z" class="leaf-4-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
+									<path d="M195.742775,238.5 C195.742775,238.5 188.786253,233.617426 175.375723,235.773952 C161.965192,237.930479 155.008671,245.050388 155.008671,245.050388" class="leaf-4-line" stroke="#4A5924" stroke-width="2"></path>
+								</g>
+								<path d="M166.070072,252.099681 L164.815029,271 L142.687861,271 L141.388567,252.099681 L166.070072,252.099681 Z M138.66474,243.286822 L168.83815,243.286822 L168.83815,251.852713 L138.66474,251.852713 L138.66474,243.286822 Z" class="plant-pot" stroke="#965358" stroke-width="2" fill="#E87464"
+									u init-with="p:[op:0, tro:center center]"
+									when-plant-enter="a:[bounceIn-rotate-subtle:1000:linear:0:1:f]"></path>
 							</g>
-							<g class="leaf-1" u init-with="p:[transform:scale(0), tro:right bottom]"
-								when-plant-enter="a:[scale:0:1:500:easeOutBack:500:1:f]">
-								<path d="M110.219862,238.982466 L152.886481,245.021371 C152.886481,245.021371 144.208581,229.964119 133.114255,230.814952 C122.019929,231.665786 110.219862,238.982466 110.219862,238.982466 L110.219862,238.982466 L110.219862,238.982466 Z" class="leaf-1-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
-								<path d="M111.257225,238.5 C111.257225,238.5 118.213747,233.617426 131.624277,235.773952 C145.034808,237.930479 151.991329,245.050388 151.991329,245.050388" class="leaf-1-line" stroke="#4A5924" stroke-width="2"></path>
-							</g>
-							<g class="leaf-3" u init-with="p:[transform:scale(0), tro:left bottom]"
-								when-plant-enter="a:[scale:0:1:500:easeOutBack:600:1:f]">
-								<path d="M183.555846,213.956382 L154.140512,245.500466 C154.140512,245.500466 151.422929,228.355893 160.594804,222.032027 C169.766679,215.708161 183.555846,213.956382 183.555846,213.956382 L183.555846,213.956382 Z" class="leaf-3-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
-								<path d="M183.17052,214.817829 C183.17052,214.817829 167.927621,221.844272 162.760251,226.932504 C158.205077,231.417915 154.00289,243.53876 154.00289,243.53876" class="leaf-3-line" stroke="#4A5924" stroke-width="2"></path>
-							</g>
-							<g class="leaf-4" u init-with="p:[transform:scale(0), tro:left bottom]"
-								when-plant-enter="a:[scale:0:1:500:easeOutBack:500:1:f]">
-								<path d="M196.780138,238.982466 L154.113519,245.021371 C154.113519,245.021371 162.791419,229.964119 173.885745,230.814952 C184.980071,231.665786 196.780138,238.982466 196.780138,238.982466 L196.780138,238.982466 L196.780138,238.982466 Z" class="leaf-4-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
-								<path d="M195.742775,238.5 C195.742775,238.5 188.786253,233.617426 175.375723,235.773952 C161.965192,237.930479 155.008671,245.050388 155.008671,245.050388" class="leaf-4-line" stroke="#4A5924" stroke-width="2"></path>
-							</g>
-							<path d="M166.070072,252.099681 L164.815029,271 L142.687861,271 L141.388567,252.099681 L166.070072,252.099681 Z M138.66474,243.286822 L168.83815,243.286822 L168.83815,251.852713 L138.66474,251.852713 L138.66474,243.286822 Z" class="plant-pot" stroke="#965358" stroke-width="2" fill="#E87464"
-								u init-with="p:[op:0, tro:center center]"
-								when-plant-enter="a:[bounceIn-rotate-subtle:1000:linear:0:1:f]"></path>
 						</g>
 					</g>
 					<g class="clock" stroke-width="2"
 						u init-with="p:[tro:300px 225px]"
 						when-transition-start="a:[scale:1:0:1000:easeOutExpo:300:1:f]">
-						<ellipse class="clock-outer" stroke="#AA6C78" fill="#E08898" cx="84" cy="78" rx="40" ry="40"
-							u init-with="p:[fop:0, sda:251.33, sdo:251.33, tro:center center, tr:rotate(-180deg)]"
-							when-clock-init="a:[stroke-dashoffset:251.33:0:1000:easeOutExpo:0:1:f, rotate:-180deg:0deg:1000:easeOutExpo:0:1:f, fill-opacity:0:1:500:easeOutSine:500:1:f]"></ellipse>
-						<circle class="clock-inner" stroke="#AA6C78" fill="#F3E9DD" cx="84" cy="78" r="34"
-							u init-with="p:[fop:0, sda:213.63, sdo:213.63, tro:center center, tr:rotate(0deg)]"
-							when-clock-init="a:[stroke-dashoffset:213.63:0:1000:easeOutExpo:250:1:f, rotate:0deg:-180deg:1000:easeOutExpo:250:1:f, fill-opacity:0:1:500:easeOutSine:500:1:f]"></circle>
-						<line x1="84" x2="84" y1="84.5" y2="56" class="clock-minute-hand" stroke="#E08898"
-							u init-with="p:[sda:28.5, sdo:28.5, tro:50% 78px]"
-							when-clock-init="a:[stroke-dashoffset:28.5:0:500:easeOutBack:1200:1:f]"
-							when-time-shift="a:[rotate:0deg:360deg:2000:linear:0:i:f]"/>
-						<line x1="77.5" x2="99.5" y1="78" y2="78" class="clock-hour-hand" stroke="#55607A"
-							u init-with="p:[sda:22, sdo:22, tro:84px 50%]"
-							when-clock-init="a:[stroke-dashoffset:22:0:400:easeOutBack:1100:1:f]"
-							when-time-shift="a:[rotate:0deg:360deg:12000:linear:1500:i:f]"/>
-						<ellipse class="clock-center" stroke="#55607A" fill="#282E3C" cx="84.0006957" cy="78" rx="3.0006957" ry="3"
-							u init-with="p:[op:0, tro:center center]"
-							when-clock-init="a:[bounceIn-subtle:800:linear:1000:1:f]"></ellipse>
-						<path d="M111.75,77.25 C111.197715,77.25 110.75,77.6977153 110.75,78.25 C110.75,78.8022847 111.197715,79.25 111.75,79.25 L114.75,79.25 C115.302285,79.25 115.75,78.8022847 115.75,78.25 C115.75,77.6977153 115.302285,77.25 114.75,77.25 L111.75,77.25 Z M53.25,77.25 C52.6977153,77.25 52.25,77.6977153 52.25,78.25 C52.25,78.8022847 52.6977153,79.25 53.25,79.25 L56.25,79.25 C56.8022847,79.25 57.25,78.8022847 57.25,78.25 C57.25,77.6977153 56.8022847,77.25 56.25,77.25 L53.25,77.25 Z M83,50.5 C83,51.0522847 83.4477153,51.5 84,51.5 C84.5522847,51.5 85,51.0522847 85,50.5 L85,47.5 C85,46.9477153 84.5522847,46.5 84,46.5 C83.4477153,46.5 83,46.9477153 83,47.5 L83,50.5 Z M83,109 C83,109.552285 83.4477153,110 84,110 C84.5522847,110 85,109.552285 85,109 L85,106 C85,105.447715 84.5522847,105 84,105 C83.4477153,105 83,105.447715 83,106 L83,109 Z" class="clock-tick" stroke-width="1" stroke="#55607A" fill="#55607A"
-							u init-with="p:[op:0]"></path>
+						<g u init-with="p:[tro:center center]"
+							when-transition-start="a:[rotate:0deg:-30deg:1000:easeOutExpo:300:1:f]">
+							<ellipse class="clock-outer" stroke="#AA6C78" fill="#E08898" cx="84" cy="78" rx="40" ry="40"
+								u init-with="p:[fop:0, sda:251.33, sdo:251.33, tro:center center, tr:rotate(-180deg)]"
+								when-clock-init="a:[stroke-dashoffset:251.33:0:1000:easeOutExpo:0:1:f, rotate:-180deg:0deg:1000:easeOutExpo:0:1:f, fill-opacity:0:1:500:easeOutSine:500:1:f]"></ellipse>
+							<circle class="clock-inner" stroke="#AA6C78" fill="#F3E9DD" cx="84" cy="78" r="34"
+								u init-with="p:[fop:0, sda:213.63, sdo:213.63, tro:center center, tr:rotate(0deg)]"
+								when-clock-init="a:[stroke-dashoffset:213.63:0:1000:easeOutExpo:250:1:f, rotate:0deg:-180deg:1000:easeOutExpo:250:1:f, fill-opacity:0:1:500:easeOutSine:500:1:f]"></circle>
+							<line x1="84" x2="84" y1="84.5" y2="56" class="clock-minute-hand" stroke="#E08898"
+								u init-with="p:[sda:28.5, sdo:28.5, tro:50% 78px]"
+								when-clock-init="a:[stroke-dashoffset:28.5:0:500:easeOutBack:1200:1:f]"
+								when-time-shift="a:[rotate:0deg:360deg:2000:linear:0:i:f]"/>
+							<line x1="77.5" x2="99.5" y1="78" y2="78" class="clock-hour-hand" stroke="#55607A"
+								u init-with="p:[sda:22, sdo:22, tro:84px 50%]"
+								when-clock-init="a:[stroke-dashoffset:22:0:400:easeOutBack:1100:1:f]"
+								when-time-shift="a:[rotate:0deg:360deg:12000:linear:1500:i:f]"/>
+							<ellipse class="clock-center" stroke="#55607A" fill="#282E3C" cx="84.0006957" cy="78" rx="3.0006957" ry="3"
+								u init-with="p:[op:0, tro:center center]"
+								when-clock-init="a:[bounceIn-subtle:800:linear:1000:1:f]"></ellipse>
+							<path d="M111.75,77.25 C111.197715,77.25 110.75,77.6977153 110.75,78.25 C110.75,78.8022847 111.197715,79.25 111.75,79.25 L114.75,79.25 C115.302285,79.25 115.75,78.8022847 115.75,78.25 C115.75,77.6977153 115.302285,77.25 114.75,77.25 L111.75,77.25 Z M53.25,77.25 C52.6977153,77.25 52.25,77.6977153 52.25,78.25 C52.25,78.8022847 52.6977153,79.25 53.25,79.25 L56.25,79.25 C56.8022847,79.25 57.25,78.8022847 57.25,78.25 C57.25,77.6977153 56.8022847,77.25 56.25,77.25 L53.25,77.25 Z M83,50.5 C83,51.0522847 83.4477153,51.5 84,51.5 C84.5522847,51.5 85,51.0522847 85,50.5 L85,47.5 C85,46.9477153 84.5522847,46.5 84,46.5 C83.4477153,46.5 83,46.9477153 83,47.5 L83,50.5 Z M83,109 C83,109.552285 83.4477153,110 84,110 C84.5522847,110 85,109.552285 85,109 L85,106 C85,105.447715 84.5522847,105 84,105 C83.4477153,105 83,105.447715 83,106 L83,109 Z" class="clock-tick" stroke-width="1" stroke="#55607A" fill="#55607A"
+								u init-with="p:[op:0, tro:center center, tr:scale(0)]"
+								when-clock-init="a:[opacity:0:1:100:linear:1000:1:f, rotate:-45deg:0deg:500:easeOutBack:1000:1:f, scale:0:1:500:easeOutExpo:1000:1:f]"></path>
+						</g>
 					</g>
 					<g class="trash" stroke-width="2"
 						u init-with="p:[tro:left bottom, transform:translateX(-90px) rotate(-35deg)]"
 						when-desk-init="a:[translateX:-90px:0px:700:easeInQuart:400:1:f, rotate:-35deg:0deg:700:easeInQuart:400:1:f]"
 						when-transition-start="p:[tro:300px 225px] | a:[scale:1:0:1000:easeOutExpo:350:1:f]">
-						<g u init-with="p:[tro:left bottom, transform:scale(0)]"
-							when-desk-init="a:[scale:0:1:700:easeOutBack:0:1:f]">
-							<polygon class="paper-2" stroke="#8C818D" fill="#F1F1F1" points="652.230036 333.115824 628.747062 337.407058 633.17108 363.776463 646.176254 363.423693"
-								u init-with="p:[transform:translateY(10px)]"
-								when-desk-init="a:[translateY:10px:0px:00:easeInSine:700:1:f]"></polygon>
-							<path d="M623.665661,359.360099 L611.966001,333.742199 C611.966001,333.742199 624.814955,333.767356 633.482375,332.465371 C636.693536,331.983004 638.536902,330.66721 640.080275,330.035751 L644.936626,356.166571 L623.665661,359.360099 Z" class="paper-1" stroke="#8C818D" fill="#F1F1F1"
-								u init-with="p:[transform:translateY(10px)]"
-								when-desk-init="a:[translateY:10px:0px:600:easeInSine:850:1:f]"></path>
-							<path d="M609,341.206897 L656,341.206897 L651.451613,395 L613.548387,395 L609,341.206897 Z M619.612903,350.172414 C619.612903,348.521908 620.952086,347.183908 622.61017,347.183908 L634.051121,347.183908 C635.706465,347.183908 637.048387,348.525266 637.048387,350.172414 L637.048387,350.172414 C637.048387,351.82292 635.709205,353.16092 634.051121,353.16092 L622.61017,353.16092 C620.954825,353.16092 619.612903,351.819561 619.612903,350.172414 L619.612903,350.172414 Z" class="trash-bin" stroke="#ECBD7F" fill="#FADAB0"></path>
+						<g u init-with="p:[tro:center center]"
+							when-transition-start="a:[rotate:0deg:50deg:1000:easeOutExpo:350:1:f]">
+							<g u init-with="p:[tro:left bottom, transform:scale(0)]"
+								when-desk-init="a:[scale:0:1:700:easeOutBack:0:1:f]">
+								<polygon class="paper-2" stroke="#8C818D" fill="#F1F1F1" points="652.230036 333.115824 628.747062 337.407058 633.17108 363.776463 646.176254 363.423693"
+									u init-with="p:[transform:translateY(10px)]"
+									when-desk-init="a:[translateY:10px:0px:00:easeInSine:700:1:f]"></polygon>
+								<path d="M623.665661,359.360099 L611.966001,333.742199 C611.966001,333.742199 624.814955,333.767356 633.482375,332.465371 C636.693536,331.983004 638.536902,330.66721 640.080275,330.035751 L644.936626,356.166571 L623.665661,359.360099 Z" class="paper-1" stroke="#8C818D" fill="#F1F1F1"
+									u init-with="p:[transform:translateY(10px)]"
+									when-desk-init="a:[translateY:10px:0px:600:easeInSine:850:1:f]"></path>
+								<path d="M609,341.206897 L656,341.206897 L651.451613,395 L613.548387,395 L609,341.206897 Z M619.612903,350.172414 C619.612903,348.521908 620.952086,347.183908 622.61017,347.183908 L634.051121,347.183908 C635.706465,347.183908 637.048387,348.525266 637.048387,350.172414 L637.048387,350.172414 C637.048387,351.82292 635.709205,353.16092 634.051121,353.16092 L622.61017,353.16092 C620.954825,353.16092 619.612903,351.819561 619.612903,350.172414 L619.612903,350.172414 Z" class="trash-bin" stroke="#ECBD7F" fill="#FADAB0"></path>
+							</g>
 						</g>
 					</g>
-					<g class="shelf">
+					<g class="shelf"
+						u init-with="p:[tro:center center]"
+						when-transition-start="a:[rotate:0deg:-45deg:1000:easeOutExpo:225:1:f]">
 						<g class="wood"
 							u init-with="p:[tro:300px 225px]"
 							when-transition-start="a:[scale:1:0:1000:easeOutExpo:225:1:f]">
