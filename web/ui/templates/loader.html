@@ -5,8 +5,7 @@
         on-init="p:[op:1]">
         <div class="ui-guru-scene"
 			u init-with="p:[tro:center center]"
-			when-portal-open="a:[opacity:1:0.75:1000:linear:0:1:f]"
-			when-transition-start="a:[scale:1:0:1000:easeOutExpo:0:1:f]">
+			when-portal-open="a:[opacity:1:0.75:1000:linear:0:1:f]">
 			<svg width="800px" height="450px" viewBox="-100 0 800 450"
 				init-after="ui-body-init"
 				on-init="s:[scene-init:public]">
@@ -39,10 +38,11 @@
 						<rect x="439.23125" y="98.8004988" width="203.9625" height="93.6907731"></rect>
 					</clipPath>
 			    </defs>
-
 			    <g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"
 					u when-scene-init="s:[floor-lamp:public:800, shelf-enter:public:250, plant-enter:public:400, cabinet-enter:public, photo-init:public, lamp-init:public, basket-init:public:500, desk-init:public, outlet-init:public:1000, monitor-init:public:1300, window-init:public:1500, clock-init:public:1500]">
-					<g class="window">
+					<g class="window"
+						u init-with="p:[tro:300px 225px]"
+						when-transition-start="a:[scale:1:0:1000:easeOutExpo:0:1:f]">
 						<g clip-path="url(#window)"
 							u init-with="p:[op:0]"
 							when-window-init="a:[opacity:0:1:250:linear:600:1:f] | s:[time-shift:public:1500]">
@@ -76,7 +76,9 @@
 							u init-with="p:[op:0, tro:left bottom, tr:scale(0) rotate(15deg)]"
 							when-window-init="a:[opacity:0:1:250:linear:0:1:f, rotate:15deg:0deg:1000:easeOutBack:0:1:f, scale:0:1:1000:easeOutExpo:0:1:f]"></path>
 					</g>
-					<g class="basket" stroke-width="2">
+					<g class="basket" stroke-width="2"
+						u init-with="p:[tro:300px 225px]"
+						when-transition-start="a:[scale:1:0:1000:easeOutExpo:0:1:f]">
 						<rect class="basket-book" stroke="#816181" fill="#E08898" x="325" y="235" width="15.8355804" height="63"
 							u init-with="p:[op:0, tro:bottom center, tr:scaleY(0)]"
 							when-basket-init="a:[opacity:0:1:100:linear:100:1:f, scaleY:0:1:400:easeOutBack:100:1:f]"></rect>
@@ -87,7 +89,9 @@
 							u init-with="p:[op:0, tro:bottom center, tr:scaleY(0)]"
 							when-basket-init="a:[opacity:0:1:100:linear:0:1:f, scaleY:0:1:400:easeOutBack:0:1:f]"></path>
 					</g>
-					<g class="lamp" stroke-width="2">
+					<g class="lamp" stroke-width="2"
+						u init-with="p:[tro:300px 225px]"
+						when-transition-start="a:[scale:1:0:1000:easeOutExpo:0:1:f]">
 						<g u init-with="p:[tro:bottom left]"
 							when-lamp-init="a:[rotate:45deg:0deg:500:easeOutBack:300:1:f]">
 							<path d="M308.375458,246.542398 C310.988067,243.07535 310.81824,238.540797 307.996139,236.414192 C305.174038,234.287586 300.768336,235.37423 298.155728,238.841279 C295.543119,242.308327 295.712946,246.84288 298.535047,248.969485 C301.357148,251.096091 305.76285,250.009447 308.375458,246.542398 L308.375458,246.542398 Z" class="lamp-bulb" stroke="#FFFFFF" fill="#F5DEA6"
@@ -116,7 +120,9 @@
 							u init-with="p:[op:0, tro:center center]"
 							when-lamp-init="a:[bounceIn-subtle:500:linear:0:1:f]"></ellipse>
 					</g>
-					<g class="monitor">
+					<g class="monitor"
+						u init-with="p:[tro:300px 225px]"
+						when-transition-start="a:[scale:1:0:1000:easeOutExpo:100:1:f]">
 						<g class="mon-hardware" stroke="#474E5E" stroke-width="2">
 							<g>
 								<rect class="mon-base" fill="#94A9AB" x="410" y="296" width="86" height="5"
@@ -160,7 +166,9 @@
 							</g>
 						</g>
 					</g>
-					<g class="outlet" stroke="#FFFFFF" stroke-width="2" opacity="0.4">
+					<g class="outlet" stroke="#FFFFFF" stroke-width="2" opacity="0.4"
+						u init-with="p:[tro:300px 225px]"
+						when-transition-start="a:[scale:1:0:1000:easeOutExpo:100:1:f]">
 						<rect class="outlet-wall" x="490" y="347" width="28" height="28" rx="2"
 							u init-with="p:[sda:108.58, sdo:108.58]"
 							when-outlet-init="a:[stroke-dashoffset:108.58:0:750:easeOutExpo:0:1:f]"></rect>
@@ -172,8 +180,9 @@
 							when-outlet-init="a:[stroke-dashoffset:93.41:0:1000:easeOutExpo:300:1:f]"></path>
 					</g>
 					<g class="desk" stroke="#965358" stroke-width="2"
-						u init-with="p:[tr:translateY(30px)]"
-						when-desk-init="a:[translateY:30px:0px:500:easeOutSine:100:1:f]">
+						u init-with="p:[tr:translateY(30px), tro:300px 225px]"
+						when-desk-init="a:[translateY:30px:0px:500:easeOutSine:100:1:f]"
+						when-transition-start="a:[scale:1:0:1000:easeOutExpo:200:1:f]">
 						<rect class="desk-legs" fill="#965358" x="265" y="314" width="12" height="80"
 							u init-with="p:[op:0, tr:scaleY(0), tro:center top]"
 							when-desk-init="a:[opacity:0:1:250:linear:100:1:f, scaleY:0:1:750:easeOutExpo:100:1:f]"></rect>
@@ -186,7 +195,8 @@
 					</g>
 					<g class="cabinet"
 						u init-with="p:[transform:translateX(30px)]"
-						when-cabinet-enter="a:[translateX:30px:0px:750:easeOutSine:250:1:f]">
+						when-cabinet-enter="a:[translateX:30px:0px:750:easeOutSine:250:1:f]"
+						when-transition-start="p:[tro:300px 225px] | a:[scale:1:0:1000:easeOutExpo:320:1:f]">
 						<g class="cabinet-wheels" stroke="#A7A3AB" stroke-width="2" fill="#CCCACE">
 							<g class="cabinet-wheel-left"
 								u init-with="p:[op:0, tro:center center, transform:rotate(720deg)]"
@@ -229,7 +239,9 @@
 							</g>
 						</g>
 					</g>
-					<g class="plant">
+					<g class="plant"
+						u init-with="p:[tro:300px 225px]"
+						when-transition-start="a:[scale:1:0:1000:easeOutExpo:310:1:f]">
 						<g class="leaf-2" u init-with="p:[transform:scale(0), tro:right bottom]"
 							when-plant-enter="a:[scale:0:1:500:easeOutBack:600:1:f]">
 							<path d="M123.444154,213.956382 L152.859488,245.500466 C152.859488,245.500466 155.577071,228.355893 146.405196,222.032027 C137.233321,215.708161 123.444154,213.956382 123.444154,213.956382 L123.444154,213.956382 Z" class="leaf-2-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
@@ -254,7 +266,9 @@
 							u init-with="p:[op:0, tro:center center]"
 							when-plant-enter="a:[bounceIn-rotate-subtle:1000:linear:0:1:f]"></path>
 					</g>
-					<g class="clock" stroke-width="2">
+					<g class="clock" stroke-width="2"
+						u init-with="p:[tro:300px 225px]"
+						when-transition-start="a:[scale:1:0:1000:easeOutExpo:300:1:f]">
 						<ellipse class="clock-outer" stroke="#AA6C78" fill="#E08898" cx="84" cy="78" rx="40" ry="40"
 							u init-with="p:[fop:0, sda:251.33, sdo:251.33, tro:center center, tr:rotate(-180deg)]"
 							when-clock-init="a:[stroke-dashoffset:251.33:0:1000:easeOutExpo:0:1:f, rotate:-180deg:0deg:1000:easeOutExpo:0:1:f, fill-opacity:0:1:500:easeOutSine:500:1:f]"></ellipse>
@@ -277,7 +291,8 @@
 					</g>
 					<g class="trash" stroke-width="2"
 						u init-with="p:[tro:left bottom, transform:translateX(-90px) rotate(-35deg)]"
-						when-desk-init="a:[translateX:-90px:0px:700:easeInQuart:400:1:f, rotate:-35deg:0deg:700:easeInQuart:400:1:f]">
+						when-desk-init="a:[translateX:-90px:0px:700:easeInQuart:400:1:f, rotate:-35deg:0deg:700:easeInQuart:400:1:f]"
+						when-transition-start="p:[tro:300px 225px] | a:[scale:1:0:1000:easeOutExpo:350:1:f]">
 						<g u init-with="p:[tro:left bottom, transform:scale(0)]"
 							when-desk-init="a:[scale:0:1:700:easeOutBack:0:1:f]">
 							<polygon class="paper-2" stroke="#8C818D" fill="#F1F1F1" points="652.230036 333.115824 628.747062 337.407058 633.17108 363.776463 646.176254 363.423693"
@@ -290,7 +305,9 @@
 						</g>
 					</g>
 					<g class="shelf">
-						<g class="wood">
+						<g class="wood"
+							u init-with="p:[tro:300px 225px]"
+							when-transition-start="a:[scale:1:0:1000:easeOutExpo:225:1:f]">
 							<g class="top" stroke="#965358" stroke-width="3" fill="#F9D9B2"
 								u init-with="p:[transform-origin:right bottom, transform:rotate(90deg) scale(0)]"
 								when-shelf-enter="a:[rotate:90deg:0deg:500:easeInBack:0:1:f, scale:0:1:500:bouncePast:0:1:f]">
@@ -306,7 +323,8 @@
 						</g>
 						<g class="book-2" stroke-width="2.25"
 							u init-with="p:[tro:center bottom, transform:translateX(30px) scale(0)]"
-							when-shelf-enter="a:[translateX:30px:0px:250:easeInBack:0:1:f, scale:0:1:250:easeOutBack:0:1:f]:delay-1250">
+							when-shelf-enter="a:[translateX:30px:0px:250:easeInBack:0:1:f, scale:0:1:250:easeOutBack:0:1:f]:delay-1250"
+							when-transition-start="p:[tro:300px 225px] | a:[scale:1:0:1000:easeOutExpo:100:1:f]">
 							<polygon class="book-2-base" stroke="#7CA9B1" fill="#BADCE2" points="160.5 147.625 91.5 147.625 91.5 131.125 160.5 131.125"></polygon>
 							<polygon class="book-2-border-thick" stroke="#7CA9B1" fill="#7CA9B1" points="156 147.625 147 147.625 147 131.125 156 131.125"></polygon>
 							<path d="M142.5,131.125 L142.5,147.625" class="book-2-border-thin-1" stroke="#7CA9B1"></path>
@@ -315,17 +333,21 @@
 						</g>
 						<g class="book-1" stroke-width="2.25"
 							u init-with="p:[tro:right bottom, transform:translateX(30px) scale(0)]"
-							when-shelf-enter="a:[translateX:30px:0px:450:easeInBack:0:1:f, scale:0:1:450:easeOutBack:0:1:f]:delay-1000">
+							when-shelf-enter="a:[translateX:30px:0px:450:easeInBack:0:1:f, scale:0:1:450:easeOutBack:0:1:f]:delay-1000"
+							when-transition-start="p:[tro:300px 225px] | a:[scale:1:0:1000:easeOutExpo:150:1:f]">
 							<polygon class="book-1-base" stroke="#F27D69" fill="#F7B0A4" points="159 149.875 159 161.875 87 161.875 87 149.875"></polygon>
 							<polygon class="book-1-border-thick" stroke="#F27D69" fill="#F27D69" points="154.5 149.875 154.5 161.875 145.5 161.875 145.5 149.875"></polygon>
 							<path d="M141,149.875 L141,161.875" class="book-1-border-thin-1" stroke="#F27D69"></path>
 							<path d="M96,149.875 L96,161.875" class="book-1-border-thin-2" stroke="#F27D69"></path>
 							<polygon class="book-1-shadow" stroke="#2B3234" fill="#2B3234" opacity="0.1" points="159 157.375 159 161.875 87 161.875 87 157.375"></polygon>
 						</g>
-						<g class="pencil-cup">
+						<g class="pencil-cup"
+							u init-with="p:[tro:300px 225px]"
+							when-transition-start="a:[scale:1:0:1000:easeOutExpo:200:1:f]">
 							<g class="pencil" stroke="#69B3A5" stroke-width="0.75"
 								u init-with="p:[op:0, tro:right top]"
-								when-shelf-enter="a:[bounceIn-subtle:600:easeOutExpo:1000:1:f]"  >
+								when-shelf-enter="a:[bounceIn-subtle:600:easeOutExpo:1000:1:f]"
+								when-transition-start="p:[tro:300px 225px] | a:[scale:1:0:1000:easeOutExpo::175:f]">
 								<path d="M181.097745,159.306689 C181.319904,158.952807 181.161769,158.665929 180.756917,158.665929 L177.743083,158.665929 C177.33269,158.665929 177.176554,158.947165 177.402255,159.306689 L179.25,162.25 L181.097745,159.306689 Z" class="pencil" fill="#E5D8B9"></path>
 								<polygon class="pencil" stroke="none" fill="#2B3234" points="179.875 161.05531 178.625 161.05531 179.25 162.011062"></polygon>
 								<rect class="pencil" fill="#F9D57B" x="177" y="140.745575" width="4.5" height="17.920354" rx="0.75"></rect>
@@ -334,7 +356,7 @@
 							</g>
 							<g class="pen" stroke="#7872E3" stroke-width="0.75" fill="#2B3234"
 								u init-with="p:[op:0, tro:left top]"
-								when-shelf-enter="a:[bounceIn-subtle:400:linear:800:1:f]" >
+								when-shelf-enter="a:[bounceIn-subtle:400:linear:800:1:f]">
 								<path d="M178.334121,154.524791 L178.764069,156.963146 L177.131361,157.251037 L176.70173,154.814478 C176.093371,154.620105 175.614306,154.103064 175.495826,153.431133 L174.489493,147.723933 L177.988152,147.107025 L178.994485,152.814225 C179.112609,153.484139 178.837263,154.133622 178.334121,154.524791 L178.334121,154.524791 Z" class="pen"></path>
 								<path d="M173.716281,146.066667 L172.003704,136.354165 C171.78794,135.130503 172.596551,133.965107 173.828845,133.74782 L173.828845,133.74782 C175.052607,133.532038 176.220367,134.353582 176.435339,135.572748 L178.147915,145.28525 L173.716281,146.066667 L173.716281,146.066667 Z" class="pen"></path>
 								<path d="M174.798617,147.925655 C174.394458,147.996919 174.008634,147.724683 173.937694,147.322368 L173.672463,145.818164 L178.104098,145.036747 L178.369329,146.540951 C178.440645,146.945402 178.165365,147.332007 177.766663,147.402309 L174.798617,147.925655 L174.798617,147.925655 Z" class="pen"></path>
@@ -355,7 +377,9 @@
 								when-shelf-enter="a:[rotateX:90deg:0deg:500:easeInExpo:450:1:f,rotateY:-30deg:0deg:500:easeOutExpo:450:1:f, translateY:-100px:0px:100:easeInBounce:450:1:f]"></polygon>
 						</g>
 					</g>
-					<g class="polaroids">
+					<g class="polaroids"
+						u init-with="p:[tro:300px 225px]"
+						when-transition-start="a:[scale:1:0:1000:easeOutExpo:0:1:f]">
 						<g class="polaroid-cosmic" u init-with="p:[op:0, tro:left top]"
 							when-photo-init="a:[bounceIn-rotate-subtle:1000:linear:600:1:f]">
 							<rect class="polaroid-cosmic-back" stroke="#55607A" stroke-width="2" fill="#F1F1F1" x="221" y="216" width="27" height="28"></rect>
@@ -382,7 +406,8 @@
 					</g>
 					<g class="floor-lamp"
 						u init-with="p:[tro:center bottom, transform:rotate(15deg) translateX(100px), op:0]"
-						when-floor-lamp="a:[opacity:0:1:50:linear:0:1:f, translateX:100px:0px:400:easeInQuint:0:1:f, rotate:15deg:0deg:500:easeInSine:0:1:f]">
+						when-floor-lamp="a:[opacity:0:1:50:linear:0:1:f, translateX:100px:0px:400:easeInQuint:0:1:f, rotate:15deg:0deg:500:easeInSine:0:1:f]"
+						when-transition-start="p:[tro:300px 225px] | a:[scale:1:0:1000:easeOutExpo:0:1:f]">
 						<path d="M20.6074139,110.17377 C20.6074139,110.17377 21,108.312336 21,107 C21,107 -62,107 -62,107 C-62,108.161496 -61.6910727,110.17377 -61.6910727,110.17377 L20.6074139,110.17377 Z" class="path-light" stroke="#F5DEA6" stroke-width="2" fill="#FFFFFF"
 							u init-with="p-op"
 							when-floor-lamp="a:[opacity:0:1:1000:easeOutBounce:1000:1:f]"></path>
