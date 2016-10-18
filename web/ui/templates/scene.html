@@ -1,7 +1,7 @@
 <div class="absolute top-0 left-0 full-xy flex-center" style="background:#C6DDD6;">
 	<svg width="800px" height="450px" viewBox="-100 0 800 450"
 		u on-init="s:[scene-init:public]">
-	    <defs>
+		<defs>
 			<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="night-sky-gradient">
 				<stop stop-color="#16293A" offset="0%"></stop>
 				<stop stop-color="#1A3058" offset="50%"></stop>
@@ -12,44 +12,34 @@
 				<stop stop-color="#FF8D77" offset="50%"></stop>
 				<stop stop-color="#F7DE67" offset="100%"></stop>
 			</linearGradient>
-			<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="sunrise-sky-gradient">
-				<stop stop-color="#FF8D77" offset="0%"></stop>
-				<stop stop-color="#FFBDB1" offset="50%"></stop>
-				<stop stop-color="#F4E3F6" offset="100%"></stop>
-			</linearGradient>
 			<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="day-sky-gradient">
 				<stop stop-color="#94C7DF" offset="0%"></stop>
 				<stop stop-color="#B6E2F7" offset="50%"></stop>
 				<stop stop-color="#F4E3F6" offset="100%"></stop>
 			</linearGradient>
-	        <linearGradient x1="50%" y1="100%" x2="50%" y2="12%" id="light-gradient">
-	            <stop stop-color="#F4DEA6" stop-opacity="0.4" offset="0%"></stop>
-	            <stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"></stop>
-	        </linearGradient>
+			<linearGradient x1="50%" y1="100%" x2="50%" y2="12%" id="light-gradient">
+				<stop stop-color="#F4DEA6" stop-opacity="0.4" offset="0%"></stop>
+				<stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"></stop>
+			</linearGradient>
 			<clipPath id="window">
 				<rect x="439.23125" y="98.8004988" width="203.9625" height="93.6907731"></rect>
 			</clipPath>
-	    </defs>
-
-	    <g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"
+		</defs>
+		<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"
 			u when-scene-init="s:[floor-lamp:public:800, shelf-enter:public:250, plant-enter:public:400, cabinet-enter:public, photo-init:public, lamp-init:public, basket-init:public:500, desk-init:public, outlet-init:public:1000, monitor-init:public:1300, window-init:public:1500, clock-init:public:1500]">
-			<!-- <g class="window">
+			<g class="window"
+				u init-with="p:[tro:300px 225px]"
+				when-transition-start="a:[scale:1:0:1000:easeOutExpo:0:1:f]">
 				<g clip-path="url(#window)"
 					u init-with="p:[op:0]"
 					when-window-init="a:[opacity:0:1:250:linear:600:1:f] | s:[time-shift:public:1500]">
 					<g>
 						<rect class="window-sky" stroke="#637074" stroke-width="2" fill="url(#night-sky-gradient)" x="439.23125" y="98.8004988" width="203.9625" height="93.6907731"></rect>
-						<path d="M618.07941,155.015196 C614.064133,159.313233 608.345831,162 602,162 C589.849736,162 580,152.150264 580,140 C580,127.849736 589.849736,118 602,118 C608.668612,118 614.644234,120.967044 618.678762,125.653029 C617.277178,125.228345 615.790255,125 614.25,125 C605.827658,125 599,131.827658 599,140.25 C599,148.672342 605.827658,155.5 614.25,155.5 C615.572545,155.5 616.855769,155.331645 618.07941,155.015196 L618.07941,155.015196 Z" class="window-moon" stroke-opacity="0.5" stroke="#FFFFFF" stroke-width="2" fill="#FFFFFF"
-							u init-with="p:[op:0]"
-							when-time-shift="a:[hiw-night-shift:12000:linear:500:i:f]"></path>
+						<path d="M618.07941,155.015196 C614.064133,159.313233 608.345831,162 602,162 C589.849736,162 580,152.150264 580,140 C580,127.849736 589.849736,118 602,118 C608.668612,118 614.644234,120.967044 618.678762,125.653029 C617.277178,125.228345 615.790255,125 614.25,125 C605.827658,125 599,131.827658 599,140.25 C599,148.672342 605.827658,155.5 614.25,155.5 C615.572545,155.5 616.855769,155.331645 618.07941,155.015196 L618.07941,155.015196 Z" class="window-moon" stroke-opacity="0.5" stroke="#FFFFFF" stroke-width="2" fill="#FFFFFF"></path>
 					</g>
 					<rect class="window-sky" stroke="#637074" stroke-width="2" fill="url(#sunset-sky-gradient)" x="439.23125" y="98.8004988" width="203.9625" height="93.6907731"
-						u init-with="p:[op:0]"
-						when-time-shift="a:[hiw-sunset-shift:12000:linear:500:i:f]"></rect>
-					<rect class="window-sky" stroke="#637074" stroke-width="2" fill="url(#sunrise-sky-gradient)" x="439.23125" y="98.8004988" width="203.9625" height="93.6907731"
-						u init-with="p:[op:0]"
-						when-time-shift="a:[hiw-sunrise-shift:12000:linear:500:i:f]"></rect>
-					<g u when-time-shift="a:[hiw-day-shift:12000:linear:500:i:f]">
+						u when-time-shift="a:[opacity:1:0:1000:linear:3500:1:f]"></rect>
+					<g u when-time-shift="a:[opacity:1:0:1000:linear:2500:1:f]">
 						<rect class="window-sky" stroke="#637074" stroke-width="2" fill="url(#day-sky-gradient)" x="439.23125" y="98.8004988" width="203.9625" height="93.6907731"></rect>
 						<circle class="window-sun" fill="#FECE67" cx="483" cy="140" r="22"
 							u init-with="p:[tro:center center, tr:scale(0)]"
@@ -62,8 +52,10 @@
 				<path d="M536.8025,98.8004988 L439.23125,98.8004988 L439.23125,192.491272 L536.8025,192.491272 L536.8025,98.8004988 L536.8025,98.8004988 Z M545.07125,98.8004988 L643.19375,98.8004988 L643.19375,192.491272 L545.07125,192.491272 L545.07125,98.8004988 L545.07125,98.8004988 Z M651.4625,90.5336658 L651.4625,200.758105 L430.9625,200.758105 L430.9625,90.5336658 L651.4625,90.5336658 Z" class="window-frame-in" stroke="#6B6352" stroke-width="2" fill="#FFFFFF"
 					u init-with="p:[op:0, tro:left bottom, tr:scale(0) rotate(15deg)]"
 					when-window-init="a:[opacity:0:1:250:linear:0:1:f, rotate:15deg:0deg:1000:easeOutBack:0:1:f, scale:0:1:1000:easeOutExpo:0:1:f]"></path>
-			</g> -->
-			<g class="basket" stroke-width="2">
+			</g>
+			<g class="basket" stroke-width="2"
+				u init-with="p:[tro:300px 225px]"
+				when-transition-start="a:[scale:1:0:1000:easeOutExpo:0:1:f]">
 				<rect class="basket-book" stroke="#816181" fill="#E08898" x="325" y="235" width="15.8355804" height="63"
 					u init-with="p:[op:0, tro:bottom center, tr:scaleY(0)]"
 					when-basket-init="a:[opacity:0:1:100:linear:100:1:f, scaleY:0:1:400:easeOutBack:100:1:f]"></rect>
@@ -74,7 +66,9 @@
 					u init-with="p:[op:0, tro:bottom center, tr:scaleY(0)]"
 					when-basket-init="a:[opacity:0:1:100:linear:0:1:f, scaleY:0:1:400:easeOutBack:0:1:f]"></path>
 			</g>
-			<g class="lamp" stroke-width="2">
+			<g class="lamp" stroke-width="2"
+				u init-with="p:[tro:300px 225px]"
+				when-transition-start="a:[scale:1:0:1000:easeOutExpo:0:1:f]">
 				<g u init-with="p:[tro:bottom left]"
 					when-lamp-init="a:[rotate:45deg:0deg:500:easeOutBack:300:1:f]">
 					<path d="M308.375458,246.542398 C310.988067,243.07535 310.81824,238.540797 307.996139,236.414192 C305.174038,234.287586 300.768336,235.37423 298.155728,238.841279 C295.543119,242.308327 295.712946,246.84288 298.535047,248.969485 C301.357148,251.096091 305.76285,250.009447 308.375458,246.542398 L308.375458,246.542398 Z" class="lamp-bulb" stroke="#FFFFFF" fill="#F5DEA6"
@@ -103,7 +97,9 @@
 					u init-with="p:[op:0, tro:center center]"
 					when-lamp-init="a:[bounceIn-subtle:500:linear:0:1:f]"></ellipse>
 			</g>
-			<g class="monitor">
+			<g class="monitor"
+				u init-with="p:[tro:300px 225px]"
+				when-transition-start="a:[scale:1:0:1000:easeOutExpo:100:1:f]">
 				<g class="mon-hardware" stroke="#474E5E" stroke-width="2">
 					<g>
 						<rect class="mon-base" fill="#94A9AB" x="410" y="296" width="86" height="5"
@@ -124,21 +120,32 @@
 						when-monitor-init="a:[opacity:0:1:100:linear:750:1:f, scaleY:0:1:400:easeOutBack:750:1:f]"></path>
 				</g>
 				<g class="mon-ui" stroke="#696269" stroke-width="2"
-					u init-with="p-op">
-					<rect class="ui-br-1" fill="#A59E9E" x="420" y="204" width="63" height="44"></rect>
-					<rect class="ui-br-1" fill="#F1F1F1" x="420" y="204" width="63" height="6"></rect>
-					<rect class="ui-br-2" fill="#A59E9E" x="470" y="220" width="47" height="37"></rect>
-					<rect class="ui-br-2" fill="#F1F1F1" x="470" y="220" width="47" height="6"></rect>
-					<rect class="ui-toolbar" fill="#A59E9E" x="389" y="206" width="15" height="45"></rect>
-					<path d="M396.5,207 L396.5,236.655556" class="ui-toolbar"></path>
-					<path d="M390.5,237 L402.5,237" class="ui-toolbar"></path>
-					<path d="M390.5,231 L402.5,231" class="ui-toolbar"></path>
-					<path d="M390.5,225 L402.5,225" class="ui-toolbar"></path>
-					<path d="M390.5,219 L402.5,219" class="ui-toolbar"></path>
-					<path d="M390.5,213 L402.5,213" class="ui-toolbar"></path>
+					u when-monitor-init="s:[ui-init:public:1000]">
+					<g u init-with="p:[op:0, tro:center center]"
+						when-ui-init="a:[opacity:0:1:100:linear:100:1:f, scale:0:1:250:easeOutBounce:100:1:f]">
+						<rect class="ui-br-1" fill="#A59E9E" x="420" y="204" width="63" height="44"></rect>
+						<rect class="ui-br-1" fill="#F1F1F1" x="420" y="204" width="63" height="6"></rect>
+					</g>
+					<g u init-with="p:[op:0, tro:center center]"
+						when-ui-init="a:[opacity:0:1:100:linear:0:1:f, scale:0:1:250:easeOutBounce:0:1:f]">
+						<rect class="ui-br-2" fill="#A59E9E" x="470" y="220" width="47" height="37"></rect>
+						<rect class="ui-br-2" fill="#F1F1F1" x="470" y="220" width="47" height="6"></rect>
+					</g>
+					<g u init-with="p:[op:0, tro:center center]"
+						when-ui-init="a:[opacity:0:1:100:linear:200:1:f, scale:0:1:250:easeOutBounce:200:1:f]">
+						<rect class="ui-toolbar" fill="#A59E9E" x="389" y="206" width="15" height="45"></rect>
+						<path d="M396.5,207 L396.5,236.655556" class="ui-toolbar"></path>
+						<path d="M390.5,237 L402.5,237" class="ui-toolbar"></path>
+						<path d="M390.5,231 L402.5,231" class="ui-toolbar"></path>
+						<path d="M390.5,225 L402.5,225" class="ui-toolbar"></path>
+						<path d="M390.5,219 L402.5,219" class="ui-toolbar"></path>
+						<path d="M390.5,213 L402.5,213" class="ui-toolbar"></path>
+					</g>
 				</g>
 			</g>
-			<g class="outlet" stroke="#FFFFFF" stroke-width="2" opacity="0.4">
+			<g class="outlet" stroke="#FFFFFF" stroke-width="2" opacity="0.4"
+				u init-with="p:[tro:300px 225px]"
+				when-transition-start="a:[scale:1:0:1000:easeOutExpo:100:1:f]">
 				<rect class="outlet-wall" x="490" y="347" width="28" height="28" rx="2"
 					u init-with="p:[sda:108.58, sdo:108.58]"
 					when-outlet-init="a:[stroke-dashoffset:108.58:0:750:easeOutExpo:0:1:f]"></rect>
@@ -150,8 +157,9 @@
 					when-outlet-init="a:[stroke-dashoffset:93.41:0:1000:easeOutExpo:300:1:f]"></path>
 			</g>
 			<g class="desk" stroke="#965358" stroke-width="2"
-				u init-with="p:[tr:translateY(30px)]"
-				when-desk-init="a:[translateY:30px:0px:500:easeOutSine:100:1:f]">
+				u init-with="p:[tr:translateY(30px), tro:300px 225px]"
+				when-desk-init="a:[translateY:30px:0px:500:easeOutSine:100:1:f]"
+				when-transition-start="a:[scale:1:0:1000:easeOutExpo:200:1:f]">
 				<rect class="desk-legs" fill="#965358" x="265" y="314" width="12" height="80"
 					u init-with="p:[op:0, tr:scaleY(0), tro:center top]"
 					when-desk-init="a:[opacity:0:1:250:linear:100:1:f, scaleY:0:1:750:easeOutExpo:100:1:f]"></rect>
@@ -164,7 +172,8 @@
 			</g>
 			<g class="cabinet"
 				u init-with="p:[transform:translateX(30px)]"
-				when-cabinet-enter="a:[translateX:30px:0px:750:easeOutSine:250:1:f]">
+				when-cabinet-enter="a:[translateX:30px:0px:750:easeOutSine:250:1:f]"
+				when-transition-start="p:[tro:300px 225px] | a:[scale:1:0:1000:easeOutExpo:320:1:f]">
 				<g class="cabinet-wheels" stroke="#A7A3AB" stroke-width="2" fill="#CCCACE">
 					<g class="cabinet-wheel-left"
 						u init-with="p:[op:0, tro:center center, transform:rotate(720deg)]"
@@ -172,7 +181,7 @@
 						<ellipse class="cabinet-wheel-left" cx="109.5" cy="389.5" rx="5.5" ry="5.5"></ellipse>
 						<g stroke="#9D99A2" stroke-with="1" opacity="0.5">
 							<path d="M109.5,386.5 L109.5,392.5" class="cabinet-wheel-left-line-1"></path>
-				            <path d="M112.5,389.5 L106.5,389.5" class="cabinet-wheel-left-line-2"></path>
+							<path d="M112.5,389.5 L106.5,389.5" class="cabinet-wheel-left-line-2"></path>
 						</g>
 					</g>
 					<g class="cabinet-wheel-right"
@@ -180,8 +189,8 @@
 						when-cabinet-enter="a:[rotate:720deg:0deg:700:easeInOutQuart:250:1:f, opacity:0:1:10:linear:250:1:f]">
 						<circle class="cabinet-wheel-right" cx="198.5" cy="389.5" r="5.5"></circle>
 						<g stroke="#9D99A2" stroke-with="1" opacity="0.5">
-				            <path d="M198.5,386.5 L198.5,392.5" class="cabinet-wheel-right-line-1"></path>
-				            <path d="M201.5,389.5 L195.5,389.5" class="cabinet-wheel-right-line-2"></path>
+							<path d="M198.5,386.5 L198.5,392.5" class="cabinet-wheel-right-line-1"></path>
+							<path d="M201.5,389.5 L195.5,389.5" class="cabinet-wheel-right-line-2"></path>
 						</g>
 					</g>
 				</g>
@@ -208,38 +217,39 @@
 				</g>
 			</g>
 			<g class="plant"
-				u when-plant-enter="s:[plant-sway:public:1500]"
-				init-with="p:[tro:50% 110%]"
-				when-plant-sway="a:[rustle:2500:linear:0:i:a]">
-				<g class="leaf-2" u init-with="p:[transform:scale(0), tro:right bottom]"
-					when-plant-enter="a:[scale:0:1:500:easeOutBack:600:1:f]"
-					when-plant-sway="a:[scaleX:1:1.2:2000:easeInOutQuad:0:i:a]">
-					<path d="M123.444154,213.956382 L152.859488,245.500466 C152.859488,245.500466 155.577071,228.355893 146.405196,222.032027 C137.233321,215.708161 123.444154,213.956382 123.444154,213.956382 L123.444154,213.956382 Z" class="leaf-2-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
-					<path d="M123.82948,214.817829 C123.82948,214.817829 139.072379,221.844272 144.239749,226.932504 C148.794923,231.417915 152.99711,243.53876 152.99711,243.53876" class="leaf-2-line" stroke="#4A5924" stroke-width="2"></path>
+				u init-with="p:[tro:300px 225px]"
+				when-transition-start="a:[scale:1:0:1000:easeOutExpo:310:1:f]">
+				<g u when-plant-enter="s:[plant-sway:public:1500]"
+					init-with="p:[tro:50% 110%]"
+					when-plant-sway="a:[rustle:2500:linear:0:i:a]">
+					<g class="leaf-2" u init-with="p:[transform:scale(0), tro:right bottom]"
+						when-plant-enter="a:[scale:0:1:500:easeOutBack:600:1:f]">
+						<path d="M123.444154,213.956382 L152.859488,245.500466 C152.859488,245.500466 155.577071,228.355893 146.405196,222.032027 C137.233321,215.708161 123.444154,213.956382 123.444154,213.956382 L123.444154,213.956382 Z" class="leaf-2-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
+						<path d="M123.82948,214.817829 C123.82948,214.817829 139.072379,221.844272 144.239749,226.932504 C148.794923,231.417915 152.99711,243.53876 152.99711,243.53876" class="leaf-2-line" stroke="#4A5924" stroke-width="2"></path>
+					</g>
+					<g class="leaf-1" u init-with="p:[transform:scale(0), tro:right bottom]"
+						when-plant-enter="a:[scale:0:1:500:easeOutBack:500:1:f]">
+						<path d="M110.219862,238.982466 L152.886481,245.021371 C152.886481,245.021371 144.208581,229.964119 133.114255,230.814952 C122.019929,231.665786 110.219862,238.982466 110.219862,238.982466 L110.219862,238.982466 L110.219862,238.982466 Z" class="leaf-1-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
+						<path d="M111.257225,238.5 C111.257225,238.5 118.213747,233.617426 131.624277,235.773952 C145.034808,237.930479 151.991329,245.050388 151.991329,245.050388" class="leaf-1-line" stroke="#4A5924" stroke-width="2"></path>
+					</g>
+					<g class="leaf-3" u init-with="p:[transform:scale(0), tro:left bottom]"
+						when-plant-enter="a:[scale:0:1:500:easeOutBack:600:1:f]">
+						<path d="M183.555846,213.956382 L154.140512,245.500466 C154.140512,245.500466 151.422929,228.355893 160.594804,222.032027 C169.766679,215.708161 183.555846,213.956382 183.555846,213.956382 L183.555846,213.956382 Z" class="leaf-3-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
+						<path d="M183.17052,214.817829 C183.17052,214.817829 167.927621,221.844272 162.760251,226.932504 C158.205077,231.417915 154.00289,243.53876 154.00289,243.53876" class="leaf-3-line" stroke="#4A5924" stroke-width="2"></path>
+					</g>
+					<g class="leaf-4" u init-with="p:[transform:scale(0), tro:left bottom]"
+						when-plant-enter="a:[scale:0:1:500:easeOutBack:500:1:f]">
+						<path d="M196.780138,238.982466 L154.113519,245.021371 C154.113519,245.021371 162.791419,229.964119 173.885745,230.814952 C184.980071,231.665786 196.780138,238.982466 196.780138,238.982466 L196.780138,238.982466 L196.780138,238.982466 Z" class="leaf-4-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
+						<path d="M195.742775,238.5 C195.742775,238.5 188.786253,233.617426 175.375723,235.773952 C161.965192,237.930479 155.008671,245.050388 155.008671,245.050388" class="leaf-4-line" stroke="#4A5924" stroke-width="2"></path>
+					</g>
+					<path d="M166.070072,252.099681 L164.815029,271 L142.687861,271 L141.388567,252.099681 L166.070072,252.099681 Z M138.66474,243.286822 L168.83815,243.286822 L168.83815,251.852713 L138.66474,251.852713 L138.66474,243.286822 Z" class="plant-pot" stroke="#965358" stroke-width="2" fill="#E87464"
+						u init-with="p:[op:0, tro:center center]"
+						when-plant-enter="a:[bounceIn-rotate-subtle:1000:linear:0:1:f]"></path>
 				</g>
-				<g class="leaf-1" u init-with="p:[transform:scale(0), tro:right bottom]"
-					when-plant-enter="a:[scale:0:1:500:easeOutBack:500:1:f]"
-					when-plant-sway="a:[scaleX:1:1.2:2000:easeInOutQuad:0:i:a]:delay-100">
-					<path d="M110.219862,238.982466 L152.886481,245.021371 C152.886481,245.021371 144.208581,229.964119 133.114255,230.814952 C122.019929,231.665786 110.219862,238.982466 110.219862,238.982466 L110.219862,238.982466 L110.219862,238.982466 Z" class="leaf-1-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
-					<path d="M111.257225,238.5 C111.257225,238.5 118.213747,233.617426 131.624277,235.773952 C145.034808,237.930479 151.991329,245.050388 151.991329,245.050388" class="leaf-1-line" stroke="#4A5924" stroke-width="2"></path>
-				</g>
-				<g class="leaf-3" u init-with="p:[transform:scale(0), tro:left bottom]"
-					when-plant-enter="a:[scale:0:1:500:easeOutBack:600:1:f]"
-					when-plant-sway="a:[scaleX:1:1.2:2000:easeInOutQuad:0:i:a]">
-					<path d="M183.555846,213.956382 L154.140512,245.500466 C154.140512,245.500466 151.422929,228.355893 160.594804,222.032027 C169.766679,215.708161 183.555846,213.956382 183.555846,213.956382 L183.555846,213.956382 Z" class="leaf-3-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
-					<path d="M183.17052,214.817829 C183.17052,214.817829 167.927621,221.844272 162.760251,226.932504 C158.205077,231.417915 154.00289,243.53876 154.00289,243.53876" class="leaf-3-line" stroke="#4A5924" stroke-width="2"></path>
-				</g>
-				<g class="leaf-4" u init-with="p:[transform:scale(0), tro:left bottom]"
-					when-plant-enter="a:[scale:0:1:500:easeOutBack:500:1:f]"
-					when-plant-sway="a:[scaleX:1:1.2:2000:easeInOutQuad:0:i:a]:delay-100">
-					<path d="M196.780138,238.982466 L154.113519,245.021371 C154.113519,245.021371 162.791419,229.964119 173.885745,230.814952 C184.980071,231.665786 196.780138,238.982466 196.780138,238.982466 L196.780138,238.982466 L196.780138,238.982466 Z" class="leaf-4-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
-					<path d="M195.742775,238.5 C195.742775,238.5 188.786253,233.617426 175.375723,235.773952 C161.965192,237.930479 155.008671,245.050388 155.008671,245.050388" class="leaf-4-line" stroke="#4A5924" stroke-width="2"></path>
-				</g>
-				<path d="M166.070072,252.099681 L164.815029,271 L142.687861,271 L141.388567,252.099681 L166.070072,252.099681 Z M138.66474,243.286822 L168.83815,243.286822 L168.83815,251.852713 L138.66474,251.852713 L138.66474,243.286822 Z" class="plant-pot" stroke="#965358" stroke-width="2" fill="#E87464"
-					u init-with="p:[op:0, tro:center center]"
-					when-plant-enter="a:[bounceIn-rotate-subtle:1000:linear:0:1:f]"></path>
 			</g>
-			<g class="clock" stroke-width="2">
+			<g class="clock" stroke-width="2"
+				u init-with="p:[tro:300px 225px]"
+				when-transition-start="a:[scale:1:0:1000:easeOutExpo:300:1:f]">
 				<ellipse class="clock-outer" stroke="#AA6C78" fill="#E08898" cx="84" cy="78" rx="40" ry="40"
 					u init-with="p:[fop:0, sda:251.33, sdo:251.33, tro:center center, tr:rotate(-180deg)]"
 					when-clock-init="a:[stroke-dashoffset:251.33:0:1000:easeOutExpo:0:1:f, rotate:-180deg:0deg:1000:easeOutExpo:0:1:f, fill-opacity:0:1:500:easeOutSine:500:1:f]"></ellipse>
@@ -262,7 +272,8 @@
 			</g>
 			<g class="trash" stroke-width="2"
 				u init-with="p:[tro:left bottom, transform:translateX(-90px) rotate(-35deg)]"
-				when-desk-init="a:[translateX:-90px:0px:700:easeInQuart:400:1:f, rotate:-35deg:0deg:700:easeInQuart:400:1:f] | s:[paper:public:1600]">
+				when-desk-init="a:[translateX:-90px:0px:700:easeInQuart:400:1:f, rotate:-35deg:0deg:700:easeInQuart:400:1:f] | s:[paper:public:1600]"
+				when-transition-start="p:[tro:300px 225px] | a:[scale:1:0:1000:easeOutExpo:350:1:f]">
 				<g u init-with="p:[tro:left bottom, transform:scale(0)]"
 					when-desk-init="a:[scale:0:1:700:easeOutBack:0:1:f]">
 					<polygon class="paper-2" stroke="#8C818D" fill="#F1F1F1" points="652.230036 333.115824 628.747062 337.407058 633.17108 363.776463 646.176254 363.423693"
@@ -277,7 +288,9 @@
 				</g>
 			</g>
 			<g class="shelf">
-				<g class="wood">
+				<g class="wood"
+					u init-with="p:[tro:300px 225px]"
+					when-transition-start="a:[scale:1:0:1000:easeOutExpo:225:1:f]">
 					<g class="top" stroke="#965358" stroke-width="3" fill="#F9D9B2"
 						u init-with="p:[transform-origin:right bottom, transform:rotate(90deg) scale(0)]"
 						when-shelf-enter="a:[rotate:90deg:0deg:500:easeInBack:0:1:f, scale:0:1:500:bouncePast:0:1:f]">
@@ -293,7 +306,8 @@
 				</g>
 				<g class="book-2" stroke-width="2.25"
 					u init-with="p:[tro:center bottom, transform:translateX(30px) scale(0)]"
-					when-shelf-enter="a:[translateX:30px:0px:250:easeInBack:0:1:f, scale:0:1:250:easeOutBack:0:1:f]:delay-1250">
+					when-shelf-enter="a:[translateX:30px:0px:250:easeInBack:0:1:f, scale:0:1:250:easeOutBack:0:1:f]:delay-1250"
+					when-transition-start="p:[tro:300px 225px] | a:[scale:1:0:1000:easeOutExpo:100:1:f]">
 					<polygon class="book-2-base" stroke="#7CA9B1" fill="#BADCE2" points="160.5 147.625 91.5 147.625 91.5 131.125 160.5 131.125"></polygon>
 					<polygon class="book-2-border-thick" stroke="#7CA9B1" fill="#7CA9B1" points="156 147.625 147 147.625 147 131.125 156 131.125"></polygon>
 					<path d="M142.5,131.125 L142.5,147.625" class="book-2-border-thin-1" stroke="#7CA9B1"></path>
@@ -302,7 +316,8 @@
 				</g>
 				<g class="book-1" stroke-width="2.25"
 					u init-with="p:[tro:right bottom, transform:translateX(30px) scale(0)]"
-					when-shelf-enter="a:[translateX:30px:0px:450:easeInBack:0:1:f, scale:0:1:450:easeOutBack:0:1:f]:delay-1000">
+					when-shelf-enter="a:[translateX:30px:0px:450:easeInBack:0:1:f, scale:0:1:450:easeOutBack:0:1:f]:delay-1000"
+					when-transition-start="p:[tro:300px 225px] | a:[scale:1:0:1000:easeOutExpo:150:1:f]">
 					<polygon class="book-1-base" stroke="#F27D69" fill="#F7B0A4" points="159 149.875 159 161.875 87 161.875 87 149.875"></polygon>
 					<polygon class="book-1-border-thick" stroke="#F27D69" fill="#F27D69" points="154.5 149.875 154.5 161.875 145.5 161.875 145.5 149.875"></polygon>
 					<path d="M141,149.875 L141,161.875" class="book-1-border-thin-1" stroke="#F27D69"></path>
@@ -348,8 +363,11 @@
 				</g>
 			</g>
 			<g class="polaroids"
-				u when-photo-init="s:[photo-fade:public:2000]">
-				<g class="polaroid-cosmic" u init-with="p:[op:0, tro:left top]"
+				u init-with="p:[tro:300px 225px]"
+				when-photo-init="s:[photo-fade:public:3000]"
+				when-transition-start="a:[scale:1:0:1000:easeOutExpo:0:1:f]">
+				<g class="polaroid-cosmic"
+					u init-with="p:[op:0, tro:left top]"
 					when-photo-init="a:[bounceIn-rotate-subtle:1000:linear:600:1:f]"
 					when-photo-fade="a:[skewY:0deg:10deg:900:easeInOutExpo:0:i:a, skewX:0deg:-5deg:900:easeInOutExpo:0:i:a]">
 					<rect class="polaroid-cosmic-back" stroke="#55607A" stroke-width="2" fill="#F1F1F1" x="221" y="216" width="27" height="28"></rect>
@@ -370,19 +388,19 @@
 				<g class="polaroid-rose"
 					u init-with="p:[transform:translateX(-98px) translateY(27px), tro:right top]"
 					when-photo-init="a:[translateX:-98px:0px:500:easeInQuint:900:1:f, translateY:27px:0px:500:easeInQuint:900:1:f]"
-					when-photo-fade="a:[skewY:0deg:5deg:1000:easeInOutExpo:0:i:a, skewX:0deg:-10deg:1000:easeInOutExpo:0:i:a]">
+					when-photo-fade="a:[skewY:0deg:5deg:1000:easeInOutExpo:0:i:a, skewX:0deg:-10deg:1000:easeInOutExpo:0:i:a]">>
 					<g u init-with="p:[op:0, tro:right top]"
 						when-photo-init="a:[bounceIn-rotate-cc-subtle:1000:linear:900:1:f]">
 						<rect class="polaroid-rose-back" stroke="#55607A" stroke-width="2" fill="#F1F1F1" x="319" y="189" width="27" height="28"></rect>
 						<rect class="polaroid-rose-front" stroke="#E6919E" fill="#E6919E" x="323" y="193" width="19" height="16"
 							u when-photo-fade="a:[fill:#E6919E:#6B99A1:2000:easeInOutSine:0:i:a, stroke:#E6919E:#6B99A1:2000:easeInOutSine:0:i:a]"></rect>
-
 					</g>
 				</g>
 			</g>
 			<g class="floor-lamp"
 				u init-with="p:[tro:center bottom, transform:rotate(15deg) translateX(100px), op:0]"
-				when-floor-lamp="a:[opacity:0:1:50:linear:0:1:f, translateX:100px:0px:400:easeInQuint:0:1:f, rotate:15deg:0deg:500:easeInSine:0:1:f]">
+				when-floor-lamp="a:[opacity:0:1:50:linear:0:1:f, translateX:100px:0px:400:easeInQuint:0:1:f, rotate:15deg:0deg:500:easeInSine:0:1:f]"
+				when-transition-start="p:[tro:300px 225px] | a:[scale:1:0:1000:easeOutExpo:0:1:f]">
 				<path d="M20.6074139,110.17377 C20.6074139,110.17377 21,108.312336 21,107 C21,107 -62,107 -62,107 C-62,108.161496 -61.6910727,110.17377 -61.6910727,110.17377 L20.6074139,110.17377 Z" class="path-light" stroke="#F5DEA6" stroke-width="2" fill="#FFFFFF"
 					u init-with="p-op"
 					when-floor-lamp="a:[opacity:0:1:1000:easeOutBounce:1000:1:f]"></path>
@@ -403,7 +421,7 @@
 					u init-with="p-op"
 					when-floor-lamp="a:[zoom-enter:1000:linear:1250:1:f]"></path>
 			</g>
-	    </g>
+		</g>
 	</svg>
 
 </div>
