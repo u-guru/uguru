@@ -2177,8 +2177,26 @@
   .warp-letters > div:nth-child(2) {
     font-size: 140px; }
   .warp-letters > div span {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    position: absolute;
     top: calc(50% - 36px);
     left: calc(50% - 36px);
+    width: 72px;
+    height: 72px;
     transform-origin: center center; }
 
 @media screen and (min-width: 768px) {

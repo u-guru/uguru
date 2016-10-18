@@ -249,8 +249,13 @@
 			font-size: 140px;
 		}
 		span {
+			@include flex;
+			@include flex-center;
+			position: absolute;
 			top: calc(50% - 36px);
 			left: calc(50% - 36px);
+			width: 72px;
+			height: 72px;
 			transform-origin: center center;
 		}
 	}
