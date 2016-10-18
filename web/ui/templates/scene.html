@@ -272,16 +272,18 @@
 			</g>
 			<g class="trash" stroke-width="2"
 				u init-with="p:[tro:left bottom, transform:translateX(-90px) rotate(-35deg)]"
-				when-desk-init="a:[translateX:-90px:0px:700:easeInQuart:400:1:f, rotate:-35deg:0deg:700:easeInQuart:400:1:f]"
+				when-desk-init="a:[translateX:-90px:0px:700:easeInQuart:400:1:f, rotate:-35deg:0deg:700:easeInQuart:400:1:f] | s:[paper:public:1600]"
 				when-transition-start="p:[tro:300px 225px] | a:[scale:1:0:1000:easeOutExpo:350:1:f]">
 				<g u init-with="p:[tro:left bottom, transform:scale(0)]"
 					when-desk-init="a:[scale:0:1:700:easeOutBack:0:1:f]">
 					<polygon class="paper-2" stroke="#8C818D" fill="#F1F1F1" points="652.230036 333.115824 628.747062 337.407058 633.17108 363.776463 646.176254 363.423693"
-						u init-with="p:[transform:translateY(10px)]"
-						when-desk-init="a:[translateY:10px:0px:00:easeInSine:700:1:f]"></polygon>
+						u init-with="p:[transform:translateY(10px), tro:center bottom]"
+						when-desk-init="a:[translateY:10px:0px:600:easeInSine:700:1:f]"
+						when-paper="a:[translateY:10px:0px:1300:easeOutSine:0:i:a, rotate:8deg:0deg:1300:easeOutSine:0:i:a]"></polygon>
 					<path d="M623.665661,359.360099 L611.966001,333.742199 C611.966001,333.742199 624.814955,333.767356 633.482375,332.465371 C636.693536,331.983004 638.536902,330.66721 640.080275,330.035751 L644.936626,356.166571 L623.665661,359.360099 Z" class="paper-1" stroke="#8C818D" fill="#F1F1F1"
-						u init-with="p:[transform:translateY(10px)]"
-						when-desk-init="a:[translateY:10px:0px:600:easeInSine:850:1:f]"></path>
+						u init-with="p:[transform:translateY(10px), tro:center bottom]"
+						when-desk-init="a:[translateY:10px:0px:600:easeInSine:850:1:f]"
+						when-paper="a:[translateY:10px:0px:1000:easeOutSine:0:i:a, rotate:8deg:0deg:1000:easeOutSine:0:i:a]"></path>
 					<path d="M609,341.206897 L656,341.206897 L651.451613,395 L613.548387,395 L609,341.206897 Z M619.612903,350.172414 C619.612903,348.521908 620.952086,347.183908 622.61017,347.183908 L634.051121,347.183908 C635.706465,347.183908 637.048387,348.525266 637.048387,350.172414 L637.048387,350.172414 C637.048387,351.82292 635.709205,353.16092 634.051121,353.16092 L622.61017,353.16092 C620.954825,353.16092 619.612903,351.819561 619.612903,350.172414 L619.612903,350.172414 Z" class="trash-bin" stroke="#ECBD7F" fill="#FADAB0"></path>
 				</g>
 			</g>
@@ -323,21 +325,16 @@
 					<polygon class="book-1-shadow" stroke="#2B3234" fill="#2B3234" opacity="0.1" points="159 157.375 159 161.875 87 161.875 87 157.375"></polygon>
 				</g>
 				<g class="pencil-cup"
-					u init-with="p:[tro:300px 225px]"
-					when-shelf-enter="s:[writing-swivel:public:2800]"
-					when-transition-start="a:[scale:1:0:1000:easeOutExpo:200:1:f]">
+					u when-shelf-enter="s:[writing-swivel:public:1800]">
 					<g u when-writing-swivel="a:[translateY:0px:-15px:250:easeOutQuad:250:i:a]">
 						<g class="pencil" stroke="#69B3A5" stroke-width="0.75"
 							u init-with="p:[op:0, tro:right top]"
-							when-shelf-enter="a:[bounceIn-subtle:600:easeOutExpo:1000:1:f]"
-							when-transition-start="p:[tro:300px 225px] | a:[scale:1:0:1000:easeOutExpo::175:f]">
-							<g u when-writing-swivel="a:[translateY:0px:-15px:250:easeOutQuad:250:i:a]">
-								<path d="M181.097745,159.306689 C181.319904,158.952807 181.161769,158.665929 180.756917,158.665929 L177.743083,158.665929 C177.33269,158.665929 177.176554,158.947165 177.402255,159.306689 L179.25,162.25 L181.097745,159.306689 Z" class="pencil" fill="#E5D8B9"></path>
-								<polygon class="pencil" stroke="none" fill="#2B3234" points="179.875 161.05531 178.625 161.05531 179.25 162.011062"></polygon>
-								<rect class="pencil" fill="#F9D57B" x="177" y="140.745575" width="4.5" height="17.920354" rx="0.75"></rect>
-								<rect class="pencil" fill="#AFCFD7" x="177" y="138.356195" width="4.5" height="2.38938053"></rect>
-								<rect class="pencil" fill="#DAA5C1" x="177" y="135.25" width="4.5" height="3.10619469" rx="0.75"></rect>
-							</g>
+							when-shelf-enter="a:[bounceIn-subtle:600:easeOutExpo:1000:1:f]">
+							<path d="M181.097745,159.306689 C181.319904,158.952807 181.161769,158.665929 180.756917,158.665929 L177.743083,158.665929 C177.33269,158.665929 177.176554,158.947165 177.402255,159.306689 L179.25,162.25 L181.097745,159.306689 Z" class="pencil" fill="#E5D8B9"></path>
+							<polygon class="pencil" stroke="none" fill="#2B3234" points="179.875 161.05531 178.625 161.05531 179.25 162.011062"></polygon>
+							<rect class="pencil" fill="#F9D57B" x="177" y="140.745575" width="4.5" height="17.920354" rx="0.75"></rect>
+							<rect class="pencil" fill="#AFCFD7" x="177" y="138.356195" width="4.5" height="2.38938053"></rect>
+							<rect class="pencil" fill="#DAA5C1" x="177" y="135.25" width="4.5" height="3.10619469" rx="0.75"></rect>
 						</g>
 						<g class="pen" stroke="#7872E3" stroke-width="0.75" fill="#2B3234"
 							u init-with="p:[op:0, tro:left top]"
@@ -359,10 +356,10 @@
 							<path d="M185.07704,144.953109 L185.655249,142.232854 C185.784643,141.624102 186.040772,140.640348 186.224076,140.06672 C186.224076,140.06672 187.931724,134.300692 188.920333,134.510828 C189.908942,134.720963 189.123702,140.683054 189.123702,140.683054 C189.053502,141.294976 188.893049,142.278178 188.762306,142.893279 L188.184097,145.613534 C187.642433,148.161866 185.994184,153.138453 185.994184,153.138453 L184.016966,152.718182 C184.016966,152.718182 184.535376,147.501441 185.07704,144.953109 L185.07704,144.953109 Z" class="brush" stroke="#F6C64E" fill="#A17143"></path>
 							<path d="M181.997269,152.652082 C182.078856,152.268244 182.460532,152.024152 182.84128,152.105082 L187.317596,153.056553 C187.702144,153.138291 187.94831,153.513039 187.866154,153.899552 L187.866154,153.899552 C187.784567,154.28339 187.402891,154.527482 187.022143,154.446552 L182.545827,153.495082 C182.161279,153.413344 181.915113,153.038596 181.997269,152.652082 L181.997269,152.652082 L181.997269,152.652082 Z" class="brush" stroke="#F6C64E" fill="#8A9EA3"></path>
 						</g>
-						<polygon class="cup" stroke="#8BA0AF" stroke-width="1.5" fill-opacity="0.3" fill="#C7DDD6" points="171 141.25 190.5 141.25 188.727273 162.25 172.772727 162.25"
-							u init-with="p:[tro:center center, transform:rotateX(90deg) rotateY(120deg) translateY(-100px)]"
-							when-shelf-enter="a:[rotateX:90deg:0deg:500:easeInExpo:450:1:f,rotateY:-30deg:0deg:500:easeOutExpo:450:1:f, translateY:-100px:0px:100:easeInBounce:450:1:f]" when-writing-swivel="a:[translateY:0px:3px:250:bouncePast:250:i:a]"></polygon>
 					</g>
+					<polygon class="cup" stroke="#8BA0AF" stroke-width="1.5" fill-opacity="0.3" fill="#C7DDD6" points="171 141.25 190.5 141.25 188.727273 162.25 172.772727 162.25"
+						u init-with="p:[tro:center center, transform:rotateX(90deg) rotateY(120deg) translateY(-100px)]"
+						when-shelf-enter="a:[rotateX:90deg:0deg:500:easeInExpo:450:1:f,rotateY:-30deg:0deg:500:easeOutExpo:450:1:f, translateY:-100px:0px:100:easeInBounce:450:1:f]" when-writing-swivel="a:[translateY:0px:3px:250:bouncePast:250:i:a]"></polygon>
 				</g>
 			</g>
 			<g class="polaroids"
