@@ -124,18 +124,27 @@
 						when-monitor-init="a:[opacity:0:1:100:linear:750:1:f, scaleY:0:1:400:easeOutBack:750:1:f]"></path>
 				</g>
 				<g class="mon-ui" stroke="#696269" stroke-width="2"
-					u init-with="p-op">
-					<rect class="ui-br-1" fill="#A59E9E" x="420" y="204" width="63" height="44"></rect>
-					<rect class="ui-br-1" fill="#F1F1F1" x="420" y="204" width="63" height="6"></rect>
-					<rect class="ui-br-2" fill="#A59E9E" x="470" y="220" width="47" height="37"></rect>
-					<rect class="ui-br-2" fill="#F1F1F1" x="470" y="220" width="47" height="6"></rect>
-					<rect class="ui-toolbar" fill="#A59E9E" x="389" y="206" width="15" height="45"></rect>
-					<path d="M396.5,207 L396.5,236.655556" class="ui-toolbar"></path>
-					<path d="M390.5,237 L402.5,237" class="ui-toolbar"></path>
-					<path d="M390.5,231 L402.5,231" class="ui-toolbar"></path>
-					<path d="M390.5,225 L402.5,225" class="ui-toolbar"></path>
-					<path d="M390.5,219 L402.5,219" class="ui-toolbar"></path>
-					<path d="M390.5,213 L402.5,213" class="ui-toolbar"></path>
+					u when-monitor-init="s:[ui-init:public:1000]">
+					<g u init-with="p:[op:0, tro:center center]"
+						when-ui-init="a:[opacity:0:1:100:linear:100:1:f, scale:0:1:250:easeOutBounce:100:1:f]">
+						<rect class="ui-br-1" fill="#A59E9E" x="420" y="204" width="63" height="44"></rect>
+						<rect class="ui-br-1" fill="#F1F1F1" x="420" y="204" width="63" height="6"></rect>
+					</g>
+					<g u init-with="p:[op:0, tro:center center]"
+						when-ui-init="a:[opacity:0:1:100:linear:0:1:f, scale:0:1:250:easeOutBounce:0:1:f]">
+						<rect class="ui-br-2" fill="#A59E9E" x="470" y="220" width="47" height="37"></rect>
+						<rect class="ui-br-2" fill="#F1F1F1" x="470" y="220" width="47" height="6"></rect>
+					</g>
+					<g u init-with="p:[op:0, tro:center center]"
+						when-ui-init="a:[opacity:0:1:100:linear:200:1:f, scale:0:1:250:easeOutBounce:200:1:f]">
+						<rect class="ui-toolbar" fill="#A59E9E" x="389" y="206" width="15" height="45"></rect>
+						<path d="M396.5,207 L396.5,236.655556" class="ui-toolbar"></path>
+						<path d="M390.5,237 L402.5,237" class="ui-toolbar"></path>
+						<path d="M390.5,231 L402.5,231" class="ui-toolbar"></path>
+						<path d="M390.5,225 L402.5,225" class="ui-toolbar"></path>
+						<path d="M390.5,219 L402.5,219" class="ui-toolbar"></path>
+						<path d="M390.5,213 L402.5,213" class="ui-toolbar"></path>
+					</g>
 				</g>
 			</g>
 			<g class="outlet" stroke="#FFFFFF" stroke-width="2" opacity="0.4">
