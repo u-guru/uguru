@@ -190,7 +190,7 @@
 		when-hiw-enter="a:[scaleY:0:1:500:easeOutBack:800:1:f, translateZ:0:0:500:linear:800:1:f]">
 		<path d="M569.91471,246.038098 C567.684562,241.254125 563.291829,238 558.237486,238 C550.926624,238 545,244.808349 545,253.206873 C545,257.528912 552.011437,259.626748 558.817874,259.500381 C564.385536,262.822539 580.827474,261.972061 580.827474,256.948948 C580.827474,251.211823 576.026076,246.505309 569.91471,246.038098 L569.91471,246.038098 Z" class="map-student-union-bush-right" stroke="#57984F" fill="#74B66C"
 			u init-with="p:[op:0, tro:center center]"
-			when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-900"
+			when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-900"
 			when-hiw-micro-enter="a:[hiw-shake-small:1000:linear:0:i:a]:delay-3000"></path>
 		<path d="M294.912764,245.038098 C297.142912,240.254125 301.535645,237 306.589988,237 C313.90085,237 319.827474,243.808349 319.827474,252.206873 C319.827474,256.528912 312.816037,258.626748 306.0096,258.500381 C300.441938,261.822539 284,260.972061 284,255.948948 C284,250.211823 288.801398,245.505309 294.912764,245.038098 L294.912764,245.038098 L294.912764,245.038098 Z" class="map-student-union-bush-left" stroke="#57984F" fill="#74B66C"
 			u init-with="p:[op:0, tro:center center]"
@@ -215,8 +215,8 @@
 		<rect class="map-student-union-3" stroke="#435365" stroke-width="0.849673203" fill="#FFFFFF" x="475.677778" y="225.916824" width="6.76666667" height="3.23251418"></rect>
 		<rect class="map-student-union-2" stroke="#435365" stroke-width="0.849673203" fill="#FFFFFF" x="476.644444" y="202.642722" width="5.15555556" height="22.9508507"></rect>
 		<g class="map-student-union-flag"
-			init-with="p:[tro:left center,transform:none]"
-			when-hiw-enter="p:[transform:scaleX(1) skewX(0deg):scaleX(0.5) skewX(-5deg):750:easeOutCubic easeOutSine:^:200+0:a]">
+			u init-with="p:[tro:left center, transform:none]"
+			when-hiw-enter="a:[scaleX:1:0.5:750:easeOutCubic:0:i:a, skewX:0deg:-5deg:750:easeOutSine:0:i:a]">
 			<!-- when-hiw-enter="a:[map-student-union-flag:set:(dur:750ms#func:ease-out#aic:infinite#ad:alternate):in]" -->
 			<path d="M454.388889,95 L454.388889,108.57656 L433.444444,108.57656 C433.444444,108.57656 435.444444,105.694336 435.444444,101.78828 C435.444444,97.8822236 433.444444,95 433.444444,95 L454.388889,95 Z M432.638889,95.1616257 L432.638889,123.60775 L432.638889,95.1616257 L432.638889,95.1616257 Z" class="map-student-union-1" stroke="#435365" fill="#75A1EE"></path>
 			<path d="M440.773487,104.50718 C440.773487,104.50718 440.492024,104.774679 440.161853,104.532864 C439.831683,104.291049 439.785032,103.732775 439.981491,103.395244 C440.177949,103.057714 440.523292,103.08255 440.523292,103.08255 C440.380137,100.083151 442.919552,99.7382899 443.869245,99.8065893 C444.818938,99.8748888 445.807393,100.649294 446.867208,100.373854 C446.867208,100.373854 448.343944,101.62295 448.007629,102.741656 C448.364866,102.591518 448.617926,102.697632 448.766811,103.059999 C448.915695,103.422365 448.80859,103.775938 448.569324,104.075146 C448.330059,104.374355 447.912482,104.14145 447.912482,104.14145 C447.878806,105.339307 447.031217,106.608815 445.361131,106.906918 L444.143303,106.954279 C441.560438,106.761279 441.062682,105.124724 440.773487,104.50718 L440.773487,104.50718 Z" class="map-student-union-face" stroke="#33534D" stroke-width="0.5" fill="#F9EDE6"></path>
@@ -225,14 +225,14 @@
 		</g>
 	</g>
 	<g class="ppl-gabri"
-		init-with="p:[op:0, transform:translateX(50px), tro:center center]"
-		when-hiw-people-enter="p:[opacity:0:1:50:easeInOutSine] | s:[gabri-walk-init:public]"
-		when-gabri-walk-init="p:[op:1, transform:translateX(50px):translateX(0px):1000:easeInCirc] | s:[gabri-stairs:public]:delay-1500"
-		when-gabri-stairs="a:[ppl-gabrielle-walk:set:(dur:1000ms#func:steps(5#start)):in] | p:[transform:translateX(-50px)]:delay-900 | s:[gabri-walk-end:public]:delay-1800"
-		when-gabri-walk-end="p:[transform:translateX(-50px):translateX(-230px):2000:easeOutCubic] | s:[gabri-wrap-around:public]:delay-2000"
-		when-gabri-wrap-around="p:[transform:translateX(-230px) rotateY(0deg):translateX(-230px) rotateY(100deg):1000:easeOutSine easeOutSine, opacity:1:0:200:linear:1000] | s:[gabri-walk-init:public]:delay-2000">
-		<g init-with="p:[tro:center center]"
-			when-hiw-people-enter="p:[transform:translateY(-1px) rotate(-2deg):translateY(1px) rotate(2deg):300:easeInOutQuad easeInOutQuad:^:200+0:a]">
+		u init-with="p:[op:0, transform:translateX(50px), tro:center center]"
+		when-hiw-people-enter="a:[opacity:0:1:50:easeInOutSine:0:1:f] | s:[gabri-walk-init:public]"
+		when-gabri-walk-init="a:[translateX:50px:0px:1000:easeInCirc:0:1:f, opacity:0:1:10:linear:0:1:f] | s:[gabri-stairs:public:1500]"
+		when-gabri-stairs="a:[ppl-gabrielle-walk:1000:steps(5,start):0:1:f] | p:[transform:translateX(-50px)]:delay-900 | s:[gabri-walk-end:public:1800]"
+		when-gabri-walk-end="a:[translateX:-50px:-230px:2000:easeOutCubic:0:1:f] | s:[gabri-wrap-around:public:2000]"
+		when-gabri-wrap-around="a:translateX:-230px:-230px:1000:easeOutSine:0:1:f, rotateY:0deg:100deg:1000:easeOutSine:0:1:f, opacity:1:0:200:linear:1000:1:f] | s:[gabri-walk-init:public:2000]">
+		<g u init-with="p:[tro:center center]"
+			when-hiw-people-enter="a:[translateY:-1px:1px:300:easeInOutQuad:0:i:a, rotate:-2deg:2deg:300:easeInOutQuad:0:i:a]">
 			<path d="M521.282353,258.960707 L521.282353,266.124351 C521.282353,266.607959 520.885064,267 520.40581,267 L520.445954,267 C519.961853,267 519.569412,266.608164 519.569412,266.130449 L519.569412,257.004478 C519.569412,257.004478 525.136471,257.692212 525.136471,258.03608 L525.136471,266.121938 C525.136471,266.606878 524.739182,267 524.259928,267 L524.300072,267 C523.815971,267 523.423529,266.612248 523.423529,266.124351 L523.423529,258.960707 L521.282353,258.960707 Z" class="ppl-gabri-legs" stroke="#26403C" stroke-width="0.5" fill="#F9E6DC"></path>
 			<path d="M518.769607,246.675984 C518.769607,246.112107 518.580743,244.824163 518.580743,244.824163 C518.417246,243.557822 519.330138,242.53125 520.612399,242.53125 L520.667601,242.53125 C521.95315,242.53125 522.995294,243.562855 522.995294,244.858369 L522.995294,247.623312 C522.995294,248.908544 521.965236,250.145607 520.718223,250.381892 L520.182261,250.483447 C518.92467,250.721736 518.127799,249.891798 518.392976,248.648275 C518.392976,248.648275 518.769607,246.986134 518.769607,246.675984 Z" class="ppl-gabri-hair-back-blonde" stroke="#A96E40" stroke-width="0.5" fill="#EEC194"></path>
 			<path d="M527.491765,256.744073 C527.491765,252.257379 525.847792,249.324892 522.567059,249.324892 C519.231426,249.324892 517.214118,252.437718 517.214118,256.744073 C517.214118,257.105617 517.501709,257.398707 517.856471,257.398707 C518.211232,257.398707 518.498824,257.105617 518.498824,256.744073 C518.498824,253.074348 520.08022,250.634159 522.567059,250.634159 C524.945431,250.634159 526.207059,252.884627 526.207059,256.744073 C526.207059,257.105617 526.49465,257.398707 526.849412,257.398707 C527.204173,257.398707 527.491765,257.105617 527.491765,256.744073 L527.491765,256.744073 Z" class="ppl-gabri-arms" stroke="#2C4944" stroke-width="0.5" fill="#F9E9E1"></path>
@@ -243,8 +243,8 @@
 			<path d="M524.360503,246.382976 C524.360503,245.283822 521.28755,243.76064 521.28755,243.76064 C520.137825,243.106617 520.277632,242.576427 521.604461,242.576427 L524.071224,242.576427 C525.395974,242.576427 526.541891,243.646149 526.631704,244.980624 L526.782117,247.215507 C526.871481,248.543309 526.035776,250.202561 524.92428,250.915926 L524.004684,251.506129 C523.598957,251.766527 523.363022,251.587962 523.470056,251.130608 C523.470056,251.130608 524.360503,247.48213 524.360503,246.382976 Z" class="ppl-gabri-hair" stroke="#637074" stroke-width="0.5" fill="#40484B"></path>
 			<path d="M523.809929,249.656331 C524.061425,248.513248 526.7322,246.473825 526.782779,247.225344 L526.830256,247.930781 C526.893033,248.863548 526.303984,250.030422 525.512989,250.538089 L524.004684,251.506129 C523.598957,251.766527 523.358517,251.606269 523.471568,251.127961 C523.471568,251.127961 523.627471,250.485624 523.809929,249.656331 Z" class="ppl-gabri-hair-blonde" stroke="#A96E3F" stroke-width="0.5" fill="#EEC194"></path>
 			<g class="ppl-gabri-purse-swing"
-				init-with="p:[tro:center top]"
-				when-hiw-people-enter="p:[transform:rotate(-10deg):rotate(10deg):500:easeInOutSine:^:200+0:a]">
+				u init-with="p:[tro:center top]"
+				when-hiw-people-enter="a:[rotate:-10deg:10deg:500:easeInOutSine:0:i:a]">
 				<rect class="ppl-gabri-purse-handle" stroke="#E970B5" stroke-width="0.5" x="526.058824" y="256.875" width="2.47058824" height="2.53125" rx="0.84375"></rect>
 				<path d="M524.249062,259.395989 C524.33892,258.935666 524.790003,258.5625 525.262367,258.5625 L529.325868,258.5625 C529.795643,258.5625 530.249553,258.936886 530.339173,259.395989 L530.837297,261.947761 C530.927155,262.408084 530.62226,262.78125 530.149776,262.78125 L524.438459,262.78125 C523.968893,262.78125 523.661318,262.406864 523.750938,261.947761 L524.249062,259.395989 Z" class="ppl-gabri-purse" stroke="#E970B5" stroke-width="0.5" fill="#ECA8CF"></path>
 			</g>
@@ -265,15 +265,15 @@
 	</g>
 
 	<g class="bench-5"
-		init-with="p:[tro:center bottom, transform:scaleY(0)]"
-		when-hiw-enter="p:[transform:scaleY(0):scaleY(1):1000:bouncePast]:delay-1500">
+		u init-with="p:[tro:center bottom, transform:scaleY(0)]"
+		when-hiw-enter="a:[scaleY:0:1:1000:bouncePast:0:1:f]:delay-1500">
 		<path d="M548.5,304.5 L581,304.5 L581,308 L548.5,308 L548.5,304.5 L548.5,304.5 Z M548.5,314.5 L581,314.5 L581,318 L548.5,318 L548.5,314.5 L548.5,314.5 Z M548.5,309.5 L581,309.5 L581,313 L548.5,313 L548.5,309.5 L548.5,309.5 Z" id="bench-5-top" stroke="#4F3836" stroke-width="0.5" fill="#FFD08F"></path>
 		<path d="M545,316.5 L581,316.5 L581,319.131579 L545,319.131579 L545,316.5 L545,316.5 L545,316.5 Z M545,319.131579 L547.727273,319.131579 L547.727273,326.5 L545,326.5 L545,319.131579 L545,319.131579 L545,319.131579 Z M578.272727,319.131579 L581,319.131579 L581,326.5 L578.272727,326.5 L578.272727,319.131579 L578.272727,319.131579 L578.272727,319.131579 Z" id="bench-5-bottom" stroke="#4F3836" stroke-width="0.5" fill="#977A52"></path>
 		<rect id="bench-5-invisible-container" x="538" y="289" width="50" height="50"></rect>
 	</g>
 	<g class="ppl-tower-purple"
-		init-with="p-op"
-		when-hiw-people-enter="p:[opacity:0:1:500:easeInOutSine]:delay-200">
+		u init-with="p-op"
+		when-hiw-people-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-200">
 		<path d="M541.5,314.327586 C541.5,309.899786 540.089851,306.310345 536.5,306.310345 C532.910149,306.310345 531,309.899786 531,314.327586" class="ppl-tower-purple-arms" stroke="#9A5BC5" stroke-width="2.06896552"></path>
 		<rect class="ppl-tower-purple-torso" stroke="#9A5BC5" stroke-width="0.5" fill="#9168DA" x="533" y="306.092639" width="6.5" height="11.0797751" rx="68.9655172"></rect>
 		<path d="M535,317.471949 L535,325.61454 C535,326.379708 534.389067,327 533.610933,327 L534.389067,327 C533.621906,327 533,326.379758 533,325.617866 L533,315.153455 L533,314.368501 L539.5,314.368501 L539.5,315.153455 L539.5,325.617866 C539.5,326.381197 538.889067,327 538.110933,327 L538.889067,327 C538.121906,327 537.5,326.374838 537.5,325.61454 L537.5,317.471949 L535,317.471949 Z" class="ppl-tower-purple-legs" stroke="#356977" stroke-width="0.5" fill="#55A4B7"></path>
@@ -281,8 +281,8 @@
 		<path d="M536.23156,297 C534.42962,297 532.468859,298.513305 532.468859,300.378382 L532.468859,300.7987 C532.468859,302.048482 532.076472,301.874438 533.050781,302.458816 L533.299481,301.86551 C533.741711,300.810513 535.035357,299.955269 536.160516,299.955269 L539.468859,299.955269 C539.267354,298.289145 537.891725,297 536.23156,297 L536.23156,297 Z" class="ppl-tower-purple-hair" stroke="#33534D" stroke-width="0.5" fill="#000000"></path>
 	</g>
 	<g class="ppl-tower-blue"
-		init-with="p-op"
-		when-hiw-people-enter="p:[opacity:0:1:500:easeInOutSine]:delay-300">
+		u init-with="p-op"
+		when-hiw-people-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-300">
 		<path d="M571.5,314.327586 C571.5,309.899786 570.089851,306.310345 566.5,306.310345 C562.910149,306.310345 561,309.899786 561,314.327586" class="ppl-tower-blue-arms" stroke="#3F59B6" stroke-width="2.06896552"></path>
 		<rect class="ppl-tower-blue-torso" stroke="#4A66BC" stroke-width="0.689655172" fill="#6887DA" x="563" y="306.092639" width="6.5" height="10.0797751" rx="68.9655172"></rect>
 		<path d="M564.243164,316.665283 L564.899498,325.627629 C564.955004,326.385569 564.389067,327 563.610933,327 L564.389067,327 C563.621906,327 562.928353,326.389766 562.841283,325.63382 C562.841283,325.63382 562.025635,318.836245 562.025635,316.665283 C562.025635,315.348108 563,315.153455 563,315.153455 L563,314.368501 L569.5,314.368501 L569.5,315.153455 C569.5,315.153455 569.969971,315.398971 569.969971,316.32959 C569.969971,318.887108 569.577606,325.616495 569.577606,325.616495 C569.534745,326.380584 568.889067,327 568.110933,327 L568.889067,327 C568.121906,327 567.5,326.384466 567.5,325.627629 L567.5,316.665283 L564.243164,316.665283 Z" class="ppl-tower-blue-legs" stroke="#2B3234" stroke-width="0.689655172" fill="#40484B"></path>
@@ -290,11 +290,11 @@
 		<path d="M563.803467,297.324951 C564.439602,297.009824 564.8838,296 565.683178,296 C567.994277,296 570.509074,297.513305 570.509074,299.378382 C570.509074,299.378382 571.087746,301.347263 569.838135,301.931641 L569.30887,300.82335 C568.816174,299.791637 567.498311,298.988434 566.351071,299.020105 C566.351071,299.020105 563.779175,299.149715 562.687744,298.955269 C562.044335,298.840641 561.176025,297.665283 561.176025,297.665283 C561.337443,296.624663 562.745159,297.849213 563.803467,297.324951 Z" class="ppl-tower-blue-hair" stroke="#644A2A" stroke-width="0.689655172" fill="#906E43"></path>
 	</g>
 	<g class="ppl-wheelchair"
-		init-with="p-op"
-		when-hiw-people-enter="p:[opacity:0:1:500:easeInOutSine]:delay-600"
-		when-hiw-micro-enter="a:[ppl-wheelchair-move:set:(dur:10000ms#func:ease-in-out):in]">
-		<g init-with="p:[tro:center bottom]"
-			when-hiw-micro-enter="a:[ppl-wheelchair-rotate:set:(dur:10000ms#func:linear):in]">
+		u init-with="p-op"
+		when-hiw-people-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-600"
+		when-hiw-micro-enter="a:[ppl-wheelchair-move:10000:easeInOutSine:0:1:f]">
+		<g u init-with="p:[tro:center bottom]"
+			when-hiw-micro-enter="a:[ppl-wheelchair-rotate:10000:linear:0:1:f]">
 			<path d="M599,321.00169 L599,311.995577 C599,311.444837 598.552752,311 598.001043,311 L596.998957,311 C596.44266,311 596,311.445735 596,311.995577 L596,320 L588.995577,320 C588.444837,320 588,320.447248 588,320.998957 L588,322.001043 C588,322.55734 588.445735,323 588.995577,323 L598.004423,323 C598.555163,323 599,322.552752 599,322.001043 L599,321.00169 L599,321.00169 Z" class="ppl-wheelchair-seat" stroke="#2B3234" stroke-width="2" fill="#696269"></path>
 			<path d="M597,316.044668 C597,314.529016 595.768783,313.290039 594.25,313.290039 C592.734307,313.290039 591.5,314.523328 591.5,316.044668 L591.5,318.005401 C591.5,318.169787 591.540858,318.325264 591.613155,318.462319 L586.995578,320 C586.444837,320 586.445735,322.709961 586.995577,322.709961 L596.004423,320 C596.555163,320 597,319.552752 597,319.001043 L597,318.002179 L597,316.044668 Z" class="ppl-wheelchair-torso" stroke="#984A23" fill="#E5753C"></path>
 			<path d="M586.995578,320 C586.444837,320 586.445735,325.46582 586.995578,325.46582 C586.995578,325.46582 589.180084,322.052837 590.272337,321.724275 C592.183032,321.149517 596.004423,320 596.004423,320 C596.555163,320 586.995578,320 586.995578,320 Z" class="ppl-wheelchair-legs" stroke="#55A4B7" fill="#55A4B7"></path>
@@ -305,15 +305,15 @@
 		<circle class="ppl-wheelchair-wheel" stroke="#2B3234" cx="592" cy="323" r="4"></circle>
 	</g>
 	<g class="bench-2"
-		init-with="p:[tro:center bottom, transform:scaleY(0)]"
-		when-hiw-enter="p:[transform:scaleY(0):scaleY(1):1000:bouncePast]:delay-1500">
+		u init-with="p:[tro:center bottom, transform:scaleY(0)]"
+		when-hiw-enter="a:[scaleY:0:1:1000:bouncePast:0:1:f]:delay-1500">
 		<path d="M282.5,304.5 L315,304.5 L315,308 L282.5,308 L282.5,304.5 L282.5,304.5 Z M282.5,314.5 L315,314.5 L315,318 L282.5,318 L282.5,314.5 L282.5,314.5 Z M282.5,309.5 L315,309.5 L315,313 L282.5,313 L282.5,309.5 L282.5,309.5 Z" id="bench-2-top" stroke="#4F3836" stroke-width="0.5" fill="#FFD08F"></path>
 		<path d="M282,316.5 L318,316.5 L318,319.131579 L282,319.131579 L282,316.5 L282,316.5 L282,316.5 Z M282,319.131579 L284.727273,319.131579 L284.727273,326.5 L282,326.5 L282,319.131579 L282,319.131579 L282,319.131579 Z M315.272727,319.131579 L318,319.131579 L318,326.5 L315.272727,326.5 L315.272727,319.131579 L315.272727,319.131579 L315.272727,319.131579 Z" id="bench-2-bottom" stroke="#4F3836" stroke-width="0.5" fill="#977A52"></path>
 		<rect id="bench-2-invisible-container" x="272" y="289" width="50" height="50"></rect>
 	</g>
 	<g class="map-clock-tower"
 		u init-with="p:[transform:scaleY(0) translateZ(0), tro:center bottom]"
-		when-hiw-enter="p:[transform:scaleY(0) translateZ(0):scaleY(1) translateZ(0):500:easeOutBack easeOutSine]:delay-2200 | s:[hiw-details-enter:public]:delay-2750"
+		when-hiw-enter="a:[scaleY:0:1:500:easeOutBack:0:1:f, translateZ:0:0:500:easeOutSine:0:1:f]:delay-2200 | s:[hiw-details-enter:public:2750]"
 		when-hiw-details-enter="s:[hiw-people-enter:public:500, hiw-micro-enter:public:2500]">
 		<ellipse class="map-clock-tower-base" stroke="#D3B3A8" stroke-width="2" fill="#F3ECDA" cx="432.088942" cy="373.22541" rx="62.0697115" ry="21.4180328"></ellipse>
 		<polygon class="map-clock-tower-main" stroke="#CABEB2" fill="#FCEDDF" points="413.208042 235.118881 451.547203 235.118881 451.547203 374.192308 413.208042 374.192308"></polygon>
@@ -350,7 +350,7 @@
 		<path d="M401.5,375.471949 L401.5,383.61454 C401.5,384.379708 402.110933,385 402.889067,385 L402.110933,385 C402.878094,385 403.5,384.379758 403.5,383.617866 L403.5,373.153455 L403.5,372.368501 L397,372.368501 L397,373.153455 L397,383.617866 C397,384.381197 397.610933,385 398.389067,385 L397.610933,385 C398.378094,385 399,384.374838 399,383.61454 L399,375.471949 L401.5,375.471949 L401.5,375.471949 Z" class="ppl-musician-legs" stroke="#356977" stroke-width="0.689655172" fill="#55A4B7"></path>
 		<g class="ppl-musician-guitar"
 			init-with="p-op"
-			when-hiw-details-enter="p:[opacity:0:1:500:easeInOutSine]">
+			when-hiw-details-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]">
 			<path d="M391.735689,371.979337 C392.192753,374.330727 393.891358,375.978752 395.52963,375.660304 C397.167901,375.341857 397.975931,373.625737 398.769473,373.471487 C399.66617,373.297187 400.781233,373.705558 401.520062,373.561945 C402.121915,373.444956 403.06544,373.042366 402.467296,369.768837 C401.795772,366.51049 400.77031,366.49155 400.168456,366.608538 C399.429628,366.752152 398.548738,367.548497 397.652041,367.722797 C396.920152,367.865062 395.466437,366.588581 393.828165,366.907029 C392.189893,367.225476 391.232335,369.389807 391.689399,371.741197 C391.697278,371.78173 391.708273,371.820468 391.722273,371.857458 C391.723205,371.897283 391.727635,371.937905 391.735689,371.979337 L391.735689,371.979337 Z" class="ppl-musician-guitar-body" stroke="#2B3234" stroke-width="0.5" fill="#C4A98E"></path>
 			<path d="M396.533983,370.918922 C396.694573,371.745086 397.501819,372.283217 398.337016,372.120871 C399.172213,371.958525 399.71909,371.15718 399.5585,370.331016 C399.39791,369.504852 398.590665,368.966721 397.755468,369.129067 C396.920271,369.291413 396.373393,370.092758 396.533983,370.918922 L396.533983,370.918922 Z" class="ppl-musician-guitar-hole" stroke="#2B3234" stroke-width="0.5" fill="#637074"></path>
 			<path d="M393.594534,369.460202 C393.787272,369.422737 393.9724,369.540958 394.011005,369.739562 L394.636514,372.95753 C394.673787,373.149281 394.542121,373.336193 394.35502,373.372561 L394.35502,373.372561 C394.162282,373.410026 393.977153,373.291805 393.938549,373.093201 L393.313039,369.875233 C393.275767,369.683482 393.407433,369.496571 393.594534,369.460202 L393.594534,369.460202 L393.594534,369.460202 Z" class="ppl-musician-guitar-bridge" stroke="#2B3234" stroke-width="0.5" fill="#637074"></path>
@@ -385,7 +385,7 @@
 	</g>
 	<g class="ppl-yellow"
 		init-with="p-op"
-		when-hiw-people-enter="p:[opacity:0:1:500:easeInOutSine]:delay-2450">
+		when-hiw-people-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-2450">
 		<path d="M261.751136,387.846446 C261.79576,386.274397 263.101389,385 264.675178,385 L264.708693,385 C266.278973,385 267.551936,386.274977 267.551936,387.83846 L267.551936,396.528557 C267.551936,398.096196 266.330801,399.736011 264.822937,400.191646 L264.100094,400.410069 C262.59291,400.865499 261.407257,399.960788 261.451895,398.388251 L261.751136,387.846446 Z" class="ppl-yellow-hair-back" stroke="#2C4944" stroke-width="0.517241379" fill="#4E4438"></path>
 		<path d="M272.74,402.844828 C272.74,397.527264 270.743747,394.051724 266.76,394.051724 C262.709589,394.051724 260.26,397.741 260.26,402.844828 C260.26,403.273324 260.609218,403.62069 261.04,403.62069 C261.470782,403.62069 261.82,403.273324 261.82,402.844828 C261.82,398.495523 263.740268,395.603448 266.76,395.603448 C269.648023,395.603448 271.18,398.270669 271.18,402.844828 C271.18,403.273324 271.529218,403.62069 271.96,403.62069 C272.390782,403.62069 272.74,403.273324 272.74,402.844828 L272.74,402.844828 Z" class="ppl-yellow-arms" stroke="#2C4944" stroke-width="0.517241379" fill="#F9E9E1"></path>
 		<path d="M265.2,405.471949 L265.2,413.962194 C265.2,414.535358 264.738381,415 264.16,415 L264.16,415 C263.585624,415 263.12,414.535601 263.12,413.969421 L263.12,403.153455 C263.12,403.153455 269.88,403.968548 269.88,404.376094 L269.88,413.959333 C269.88,414.534078 269.418381,415 268.84,415 L268.84,415 C268.265624,415 267.8,414.540442 267.8,413.962194 L267.8,405.471949 L265.2,405.471949 Z" class="ppl-yellow-legs" stroke="#26403C" stroke-width="0.517241379" fill="#F9E6DC"></path>
@@ -461,7 +461,7 @@
 	</g>
 	<g class="ppl-fan-2"
 		init-with="p:[op:0, tro:right bottom, transform:none]"
-		when-hiw-people-enter="p:[opacity:0:1:500:easeInOutSine] | send:[fan-jump:public]"
+		when-hiw-people-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f] | send:[fan-jump:public]"
 		when-fan-jump="p:[transform:translateY(0%):translateY(-10%):250:easeInOutBack:^:4+0:a]"
 		when-hiw-micro-enter="a:[ppl-fan-2-push:set:(dur:500ms#func:cubic-bezier(0.8#0.1#0.5#0.93)#aic:2):in:delay-650, ppl-fan-1-push:set:(dur:500ms#func:ease-in-out#aic:2):in:delay-1150, ppl-fan-cheer:set:(dur:500ms#func:ease-in-out#aic:infinite#ad:alternate):in:delay-3500]">
 		 <!-- | a:[ppl-fan-cheer:set:(dur:500ms#func:ease-in-out#aic:4#ad:alternate-reverse):in:delay-1750] -->
@@ -477,7 +477,7 @@
 		<path d="M252.104553,261 C253.765327,261 255.946289,262.097624 255.946289,263.651855 L255.309102,263.415958 C254.621567,263.161421 253.472897,262.955078 252.728282,262.955078 L251.270264,262.955078 C250.585718,262.955078 249.120867,262.656273 249.120867,262.656273 C249.306586,261.267836 250.574447,261 252.104553,261 Z" class="ppl-fan-2-hair" stroke="#534533" stroke-width="0.689655172" fill="#FF8D65"></path>
 		<g class="ppl-fan-2-wave"
 			init-with="p:[op:0, tro:left bottom]"
-			when-hiw-details-enter="p:[opacity:0:1:500:easeInOutSine] | a:[hiw-sway:set:(dur:500ms#func:ease-in-out#aic:infinite#ad:alternate):in]">
+			when-hiw-details-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f] | a:[hiw-sway:set:(dur:500ms#func:ease-in-out#aic:infinite#ad:alternate):in]">
 			<path d="M253.91766,270.460439 C257.386028,271.654694 260.529999,269.389373 261.94616,265.276543 C262.096166,264.840896 261.864607,264.366131 261.42896,264.216125 C260.993313,264.06612 260.518548,264.297678 260.368543,264.733325 C259.220005,268.068922 256.916784,269.728459 254.460877,268.882822 C252.120688,268.077031 250.499796,269.283574 253.91766,270.460439 L253.91766,270.460439 L253.91766,270.460439 Z" class="ppl-fan-2-arm-left" stroke="#2C4944" stroke-width="0.5" fill="#F9E9E1"></path>
 			<path d="M263.585309,265.638031 L263.136156,267.583526 C262.762142,269.203557 256.917018,267.849105 257.289936,266.233819 L257.739089,264.288325 C257.939656,263.419571 258.49564,262.728385 259.217132,262.331629 L260.063583,258.665245 C260.188676,258.123407 260.724731,257.791777 261.262861,257.916014 C261.804742,258.041117 262.136536,258.577121 262.012323,259.115147 L261.337427,262.038445 C262.948531,262.410398 263.958227,264.022746 263.585309,265.638031 L263.585309,265.638031 L263.585309,265.638031 Z" class="ppl-fan-2-foam" stroke="#324F7B" stroke-width="0.5" fill="#0648BB"></path>
 			<text class="ppl-fan-2-foam-no" transform="translate(260.337427, 264.961555) rotate(14.000000) translate(-260.337427, -264.961555) " font-family="Source Sans Pro" font-size="3" font-weight="900" fill="#FFFFFF">
@@ -490,12 +490,12 @@
 	</g>
 	<g class="ppl-fan-1"
 		init-with="p:[op:0, tro:right bottom]"
-		when-hiw-details-enter="p:[opacity:0:1:500:easeInOutSine] | a:[ppl-fan-cheer:set:(dur:500ms#func:ease-in-out#aic:4#dir:alternate-reverse):in:delay-1500]"
+		when-hiw-details-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f] | a:[ppl-fan-cheer:set:(dur:500ms#func:ease-in-out#aic:4#dir:alternate-reverse):in:delay-1500]"
 		when-hiw-micro-enter="a:[ppl-fan-2-push:set:(dur:500ms#func:cubic-bezier(0.8#0.1#0.5#0.93)#aic:2):in:delay-750, ppl-fan-1-push:set:(dur:500ms#func:cubic-bezier(0.8#0.1#0.5#0.93)#aic:2):in:delay-1250, ppl-fan-cheer:set:(dur:500ms#func:ease-in-out#aic:infinite#ad:alternate):in:delay-3000]">
 		<path d="M236.221198,267.92436 C239.889416,267.92436 242.124583,271.089841 242.124583,275.439655 C242.124583,275.900404 241.751072,276.273915 241.290323,276.273915 C240.829573,276.273915 240.456062,275.900404 240.456062,275.439655 C240.456062,271.911859 238.818616,269.592881 236.221198,269.592881 C233.746166,269.592881 232.606395,267.92436 236.221198,267.92436 L236.221198,267.92436 Z" class="ppl-fan-1-arm-left" stroke="#2C4944" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" fill="#F9E9E1"></path>
 		<g class="ppl-fan-1-wave"
 			init-with="p:[op:0, tro:right bottom]"
-			when-hiw-details-enter="p:[opacity:0:1:500:easeInOutSine] | a:[hiw-sway:set:(dur:500ms#func:ease-in-out#aic:infinite#ad:alternate):in]">
+			when-hiw-details-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f] | a:[hiw-sway:set:(dur:500ms#func:ease-in-out#aic:infinite#ad:alternate):in]">
 			<path d="M235.08234,270.460439 C231.613972,271.654694 228.470001,269.389373 227.05384,265.276543 C226.903834,264.840896 227.135393,264.366131 227.57104,264.216125 C228.006687,264.06612 228.481452,264.297678 228.631457,264.733325 C229.779995,268.068922 232.083216,269.728459 234.539123,268.882822 C236.879312,268.077031 238.500204,269.283574 235.08234,270.460439 L235.08234,270.460439 Z" class="ppl-fan-1-arm-right" stroke="#2C4944" stroke-width="0.5" fill="#F9E9E1"></path>
 			<path d="M225.414691,265.638031 L225.863844,267.583526 C226.237858,269.203557 232.082982,267.849105 231.710064,266.233819 L231.260911,264.288325 C231.060344,263.419571 230.50436,262.728385 229.782868,262.331629 L228.936417,258.665245 C228.811324,258.123407 228.275269,257.791777 227.737139,257.916014 C227.195258,258.041117 226.863464,258.577121 226.987677,259.115147 L227.662573,262.038445 C226.051469,262.410398 225.041773,264.022746 225.414691,265.638031 L225.414691,265.638031 Z" class="ppl-fan-1-foam" stroke="#A44748" stroke-width="0.5" fill="#F25A5B"></path>
 			<text class="ppl-fan-1-foam-no" transform="translate(228.337427, 264.961555) rotate(-13.000000) translate(-228.337427, -264.961555) " font-family="Source Sans Pro" font-size="3" font-weight="900" fill="#FFFFFF">
@@ -603,7 +603,7 @@
 		</g>
 		<g class="map-gym-elm-1"
 			init-with="p-op"
-			when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-1100">
+			when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-1100">
 			<rect class="gym-elm-1-trunk" stroke="#6E5E56" stroke-width="0.833333333" fill="#342A41" x="54.4151722" y="395.333333" width="2.1" height="16.5517241"></rect>
 			<ellipse class="gym-elm-1-leaves" stroke="#57984F" stroke-width="0.833333333" fill="#74B66C" cx="55.2551722" cy="391.791667" rx="10.5" ry="9.79166667"></ellipse>
 			<path d="M61.079845,399.951833 C59.4131167,400.982459 57.4099431,401.583333 55.2551722,401.583333 C49.4561823,401.583333 44.7551722,397.23136 44.7551722,391.862928 C44.7551722,388.710337 46.3763529,385.90828 48.8890413,384.132254 C47.1060608,385.903134 46.0151722,388.279074 46.0151722,390.890887 C46.0151722,396.366688 50.8102025,400.805701 56.7251722,400.805701 C58.2757619,400.805701 59.7493883,400.500648 61.079845,399.951833 L61.079845,399.951833 Z" class="gym-elm-1-shadow" stroke="#57984F" stroke-width="0.833333333" fill="#57984F"></path>
@@ -611,7 +611,7 @@
 	</g>
 	<g class="ppl-jeselle"
 		init-with="p-op"
-		when-hiw-people-enter="p:[opacity:0:1:500:easeInOutSine]:delay-450">
+		when-hiw-people-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-450">
 		<path d="M104.428571,413.154347 L104.428571,421.620637 C104.428571,422.382438 105.053153,423 105.810911,423 L105.331946,423 C106.095391,423 106.714286,422.376116 106.714286,421.619548 L106.714286,410.75857 L106.714286,409.947451 L99.2857143,409.947451 L99.2857143,410.75857 L99.2857143,421.619548 C99.2857143,422.381951 99.9102958,423 100.668054,423 L100.189089,423 C100.952534,423 101.571429,422.38411 101.571429,421.620637 L101.571429,413.154347 L104.428571,413.154347 L104.428571,413.154347 Z" class="ppl-jeselle-legs" stroke="#2C4944" stroke-width="0.689655172" fill="#F4B99A"></path>
 		<polygon class="ppl-jeselle-shorts" stroke="#A44747" stroke-width="0.689655172" fill="#F25A5B" points="104.428571 413.154347 104.428571 416 107.714286 416 106.714286 410.75857 106.714286 409.947451 99.2857143 409.947451 99.2857143 410.75857 98.2857143 416 101.571429 416 101.571429 413.154347"></polygon>
 		<path d="M107.851191,396.912278 C107.851191,396.243979 108.070442,394.798117 108.070442,394.798117 C108.274543,393.252759 107.170547,392 105.613515,392 L105.546485,392 C103.98546,392 102.72,393.259837 102.72,394.830594 L102.72,397.962509 C102.72,399.525803 103.970785,401.024423 105.485014,401.304465 L106.135826,401.424826 C107.662901,401.707242 108.625057,400.698857 108.293295,399.178994 C108.293295,399.178994 107.851191,397.279863 107.851191,396.912278 L107.851191,396.912278 Z" class="ppl-jeselle-hair-back" stroke="#2C4944" stroke-width="0.517241379" fill="#40484B"></path>
@@ -635,7 +635,7 @@
 	</g>
 	<g class="ppl-athlete"
 		init-with="p-op"
-		when-hiw-people-enter="p:[opacity:0:1:500:easeInOutSine]:delay-900">
+		when-hiw-people-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-900">
 		<!-- BUG Can't get internal delay for transform to work in conjuction with a opacity.
 		transform:translateX(-10px) rotate(15deg):translateX(10px) rotate(0deg):1000:easeOutCirc easeOutExpo:1500, tro:center bottom -->
 		<g init-with="p:[tro:center bottom]"
@@ -670,7 +670,7 @@
 					when-lab-teal-glow="p:[transform:scale(1):scale(0.5):500:easeOutExpo:^:200+4800, opacity:1:0:500:easeOutExpo:^:200+4800]:delay-1200"></path>
 	            <g class="lab-teal-windows-glow-inside"
 					init-with="p-op"
-					when-hiw-micro-enter="p:[opacity:0:1:50:easeOutExpo:^:200+4800]"
+					when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:^:200+4800]"
 					when-lab-teal-glow="p:[opacity:1:0:500:easeOutExpo:^:200+4800]:delay-1100">
 	                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#lab-teal-use"></use>
 	                <use fill="black" fill-opacity="1" filter="url(#glow-inside)" xlink:href="#lab-teal-use"></use>
@@ -682,7 +682,7 @@
 				when-time-shift="a:[hiw-night-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
 				<polygon class="lab-teal-roof-glow" fill="#C6DBE3" opacity="0.5" points="108.930275 431.753261 108.389796 431.254902 108.389796 439.302521 108.851616 438.803981 -2.41368981 447.324989 -1.8755102 447.823529 -1.8755102 440.292335 -2.33503142 440.790694"
 					init-with="p-op"
-					when-hiw-micro-enter="p:[opacity:0:1:50:easeOutExpo:^:200+4800]"
+					when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:^:200+4800]"
 					when-lab-teal-glow="p:[opacity:1:0:500:easeOutExpo:^:200+4800]:delay-1200"></polygon>
 			</g>
 			<rect class="lab-teal-door" stroke="#7C8181" fill="#598E96" x="68.644898" y="471.966387" width="16.5714286" height="27.929972"></rect>
@@ -690,7 +690,7 @@
 				when-time-shift="a:[hiw-night-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
 				<polygon class="lab-teal-door-glow" fill="#C7DCE3" opacity="0.5" points="85.2163265 472.466387 84.7163265 471.966387 84.7163265 499.896359 85.2163265 499.396359 68.644898 499.396359 69.144898 499.896359 69.144898 471.966387 68.644898 472.466387"
 					init-with="p-op"
-					when-hiw-micro-enter="p:[opacity:0:1:50:easeOutExpo:^:200+4800]"
+					when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:^:200+4800]"
 					when-lab-teal-glow="p:[opacity:1:0:500:easeOutExpo:^:200+4800]:delay-1200"></polygon>
 			</g>
 			<rect class="lab-teal-door-top" stroke="#7C8181" fill="#C3C3C3" x="65.8040816" y="471.966387" width="22.2530612" height="6.62745098"></rect>
@@ -698,32 +698,32 @@
 				when-time-shift="a:[hiw-night-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
 				<polygon class="lab-teal-door-top-glow" fill="#C7DCE3" points="88.0571429 472.466387 87.5571429 471.966387 87.5571429 478.593838 88.0571429 478.093838 65.8040816 478.093838 66.3040816 478.593838 66.3040816 471.966387 65.8040816 472.466387"
 					init-with="p-op"
-					when-hiw-micro-enter="p:[opacity:0:1:50:easeOutExpo:^:200+4800]"
+					when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:^:200+4800]"
 					when-lab-teal-glow="p:[opacity:1:0:500:easeOutExpo:^:200+4800]:delay-1200"></polygon>
 			</g>
 			<rect class="lab-teal-invisible-container" x="-18" y="418" width="142.040816" height="94.6778711"></rect>
 		</g>
 		<g class="tri-1"
 			init-with="p-op"
-			when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-500">
+			when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-500">
 			<rect class="tri-1-trunk" stroke="#6E5E56" stroke-width="2" fill="#82644F" x="19.8194444" y="510.666667" width="2.91666667" height="23.1724138"></rect>
 			<path d="M16.4028355,496.124841 C19.0072568,490.922262 23.2343274,490.93119 25.8342793,496.124841 L30.5352818,505.515541 C33.1397031,510.71812 31.018381,517.009356 25.7569061,519.507852 C25.7569061,519.507852 22.2338565,521.405227 21.1185574,521.405227 C20.0032583,521.405227 16.4613164,519.49913 16.4613164,519.49913 C11.228305,516.978786 9.10188111,510.709192 11.701833,505.515541 L16.4028355,496.124841 Z" class="tri-1-bottom-base" stroke="#497A43" stroke-width="2" fill="#57984F"></path>
 		</g>
 		<g class="tri-2"
 			init-with="p-op"
-			when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-600">
+			when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-600">
 			<rect class="tri-2-trunk" stroke="#6E5E56" stroke-width="2" fill="#82644F" x="38.4444444" y="526.888889" width="3.26388889" height="25.9310345"></rect>
 			<path d="M34.6210964,510.615893 C37.5355678,504.793959 42.2573168,504.786882 45.175331,510.615893 L50.4359768,521.124534 C53.3504482,526.946468 50.9765877,533.98666 45.0887468,536.782597 C45.0887468,536.782597 41.1462865,538.905849 39.8982137,538.905849 C38.6501409,538.905849 34.6865393,536.772836 34.6865393,536.772836 C28.8305503,533.952452 26.4424365,526.953545 29.3604507,521.124534 L34.6210964,510.615893 Z" class="tri-2-bottom-base" stroke="#497A43" stroke-width="2" fill="#57984F"></path>
 		</g>
 		<g class="tri-3"
 			init-with="p-op"
-			when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-700">
+			when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-700">
 			<rect class="tri-3-trunk" stroke="#6E5E56" stroke-width="2" fill="#82644F" x="55.8888889" y="505.777778" width="2.77777778" height="22.0689655"></rect>
 			<path d="M52.6349756,491.92842 C55.1153769,486.973582 59.1411584,486.982085 61.617303,491.92842 L66.0944483,500.871944 C68.5748495,505.826781 66.5545427,511.818434 61.5436143,514.197955 C61.5436143,514.197955 58.1883289,516.004978 57.1261393,516.004978 C56.0639497,516.004978 52.6906717,514.189648 52.6906717,514.189648 C47.7068513,511.78932 45.6816857,505.818278 48.1578303,500.871944 L52.6349756,491.92842 Z" class="tri-3-bottom-base" stroke="#497A43" stroke-width="2" fill="#57984F"></path>
 		</g>
 		<g class="tri-4"
 			init-with="p-op"
-			when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-800">
+			when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-800">
 			<rect class="tri-4-trunk" stroke="#6E5E56" stroke-width="2" fill="#82644F" x="120.888889" y="470.777778" width="2.77777778" height="22.0689655"></rect>
 			<path d="M117.634976,456.92842 C120.115377,451.973582 124.141158,451.982085 126.617303,456.92842 L131.094448,465.871944 C133.57485,470.826781 131.554543,476.818434 126.543614,479.197955 C126.543614,479.197955 123.188329,481.004978 122.126139,481.004978 C121.06395,481.004978 117.690672,479.189648 117.690672,479.189648 C112.706851,476.78932 110.681686,470.818278 113.15783,465.871944 L117.634976,456.92842 Z" class="tri-4-bottom-base" stroke="#497A43" stroke-width="2" fill="#57984F"></path>
 		</g>
@@ -744,7 +744,7 @@
 					when-lab-brown-glow="p:[transform:scale(1):scale(0.5):500:easeOutExpo:^:200+7200, opacity:1:0:500:easeOutExpo:^:200+7200]:delay-1000"></path>
 	            <g class="lab-brown-windows-glow-inside"
 					init-with="p-op"
-					when-hiw-micro-enter="p:[opacity:0:1:50:easeOutExpo:^:200+7200]:delay-4000"
+					when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:^:200+7200]:delay-4000"
 					when-lab-brown-glow="p:[opacity:1:0:500:easeOutExpo:^:200+7200]:delay-900">
 	                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#lab-brown-use"></use>
 	                <use fill="black" fill-opacity="1" filter="url(#glow-inside)" xlink:href="#lab-brown-use"></use>
@@ -756,7 +756,7 @@
 				when-time-shift="a:[hiw-night-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
 				<polygon class="lab-brown-roof-glow" fill="#C7DBE3" opacity="0.5" points="247.162928 431.753261 246.622449 431.254902 246.622449 439.302521 247.084269 438.803981 135.818963 447.324989 136.357143 447.823529 136.357143 440.292335 135.897622 440.790694"
 					init-with="p-op"
-					when-hiw-micro-enter="p:[opacity:0:1:50:easeOutExpo:^:200+7200]:delay-4000"
+					when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:^:200+7200]:delay-4000"
 					when-lab-brown-glow="p:[opacity:1:0:500:easeOutExpo:^:200+7200]:delay-1000"></polygon>
 			</g>
 			<rect class="lab-brown-door" stroke="#7C8181" fill="#968D59" x="206.877551" y="471.966387" width="16.5714286" height="27.929972"></rect>
@@ -764,7 +764,7 @@
 				when-time-shift="a:[hiw-night-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
 				<polygon class="lab-brown-door-glow" fill="#C6DBE3" opacity="0.33" points="223.44898 472.466387 222.94898 471.966387 222.94898 499.896359 223.44898 499.396359 206.877551 499.396359 207.377551 499.896359 207.377551 471.966387 206.877551 472.466387"
 					init-with="p-op"
-					when-hiw-micro-enter="p:[opacity:0:1:50:easeOutExpo:^:200+7200]:delay-4000"
+					when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:^:200+7200]:delay-4000"
 					when-lab-brown-glow="p:[opacity:1:0:500:easeOutExpo:^:200+7200]:delay-1000"></polygon>
 			</g>
 			<rect class="lab-brown-door-top" stroke="#7C8181" fill="#C3C3C3" x="204.036735" y="471.966387" width="22.2530612" height="6.62745098"></rect>
@@ -772,7 +772,7 @@
 				when-time-shift="a:[hiw-night-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
 				<polygon class="lab-brown-door-top-glow" fill="#C9DCE3" points="226.289796 472.466387 225.789796 471.966387 225.789796 478.593838 226.289796 478.093838 204.036735 478.093838 204.536735 478.593838 204.536735 471.966387 204.036735 472.466387"
 					init-with="p-op"
-					when-hiw-micro-enter="p:[opacity:0:1:50:easeOutExpo:^:200+7200]:delay-4000"
+					when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:^:200+7200]:delay-4000"
 					when-lab-brown-glow="p:[opacity:1:0:500:easeOutExpo:^:200+7200]:delay-1000"></polygon>
 			</g>
 			<rect class="lab-brown-invisible-container" x="120.232653" y="418" width="142.040816" height="94.6778711"></rect>
@@ -794,7 +794,7 @@
 					when-lab-maroon-glow="p:[transform:scale(1):scale(2):500:easeOutExpo:^:200+9000, opacity:1:0:500:easeOutExpo:^:200+9000]:delay-1000"></path>
 	            <g class="lab-maroon-windows-glow-inside"
 					init-with="p-op"
-					when-hiw-micro-enter="p:[opacity:0:1:50:easeOutExpo:^:200+9000]:delay-2900"
+					when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:^:200+9000]:delay-2900"
 					when-lab-maroon-glow="p:[opacity:1:0:500:easeOutExpo:^:200+9000]:delay-900">
 	                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#lab-maroon-use"></use>
 	                <use fill="black" fill-opacity="1" filter="url(#filter-12)" xlink:href="#lab-maroon-use"></use>
@@ -806,7 +806,7 @@
 				when-time-shift="a:[hiw-night-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
 				<polygon class="lab-maroon-roof-glow" fill="#D4E5EA" points="191.26905 490.602 190.728571 490.103641 190.728571 498.151261 191.190392 497.65272 79.9250857 506.173729 80.4632653 506.672269 80.4632653 499.141075 80.0037441 499.639433"
 					init-with="p-op"
-					when-hiw-micro-enter="p:[opacity:0:1:50:easeOutExpo:^:200+9000]:delay-2900"
+					when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:^:200+9000]:delay-2900"
 					when-lab-maroon-glow="p:[opacity:1:0:500:easeOutExpo:^:200+9000]:delay-1000"></polygon>
 			</g>
 			<rect class="lab-maroon-door" stroke="#7C8181" fill="#96597B" x="150.983673" y="530.815126" width="16.5714286" height="27.929972"></rect>
@@ -814,7 +814,7 @@
 				when-time-shift="a:[hiw-night-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
 				<polygon class="lab-maroon-door-glow" fill="#D4E5EA" fill-opacity="0.3" points="167.555102 531.315126 167.055102 530.815126 167.055102 558.745098 167.555102 558.245098 150.983673 558.245098 151.483673 558.745098 151.483673 530.815126 150.983673 531.315126"
 					init-with="p-op"
-					when-hiw-micro-enter="p:[opacity:0:1:50:easeOutExpo:^:200+9000]:delay-2900"
+					when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:^:200+9000]:delay-2900"
 					when-lab-maroon-glow="p:[opacity:1:0:500:easeOutExpo:^:200+9000]:delay-1000"></polygon>
 			</g>
 			<rect class="lab-maroon-door-top" stroke="#7C8181" fill="#E6E6E6" x="148.142857" y="530.815126" width="22.2530612" height="6.62745098"></rect>
@@ -822,7 +822,7 @@
 				when-time-shift="a:[hiw-night-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
 				<polygon class="lab-maroon-door-top-glow" fill="#D4E5EA" points="170.395918 531.315126 169.895918 530.815126 169.895918 537.442577 170.395918 536.942577 148.142857 536.942577 148.642857 537.442577 148.642857 530.815126 148.142857 531.315126"
 					init-with="p-op"
-					when-hiw-micro-enter="p:[opacity:0:1:50:easeOutExpo:^:200+9000]:delay-2900"
+					when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:^:200+9000]:delay-2900"
 					when-lab-maroon-glow="p:[opacity:1:0:500:easeOutExpo:^:200+9000]:delay-1000"></polygon>
 			</g>
 			<rect class="lab-maroon-invisible-container" x="64.3387755" y="476.848739" width="142.040816" height="94.6778711"></rect>
@@ -830,7 +830,7 @@
 	</g>
 	<g class="ppl-eating"
 		init-with="p-op"
-		when-hiw-people-enter="p:[opacity:0:1:500:easeInOutSine]:delay-200">
+		when-hiw-people-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-200">
 		<path d="M215.186813,526.154347 L214.361,532.633392 C214.264799,533.388149 213.571565,534 212.804236,534 L212.668291,534 C211.904715,534 211.247811,533.376116 211.201846,532.619548 L210.541992,521.75857 L211.285714,520.947451 L220.714286,520.947451 L221.537109,521.75857 L220.807075,532.619548 C220.755829,533.381951 220.099037,534 219.331709,534 L219.195764,534 C218.432188,534 217.734718,533.384365 217.639,532.633392 L216.813187,526.154347 L215.186813,526.154347 Z" class="ppl-eating-legs" stroke="#356977" stroke-width="0.689655172" fill="#55A4B7"></path>
 		<path d="M216.285714,513.62069 C212.183028,513.62069 210,517.329779 210,521.905172" class="ppl-eating-arm-right" stroke="#A25681" stroke-width="2"></path>
 		<rect class="ppl-eating-face" stroke="#33534D" stroke-width="0.689655172" fill="#E9A07D" x="211.142857" y="504" width="9.14285714" height="9.0862069" rx="68.9655172"></rect>
@@ -855,7 +855,7 @@
 	</g>
 	<g class="ppl-labs"
         init-with="p-op"
-        when-hiw-people-enter="p:[opacity:0:1:500:easeInOutSine]:delay-2500">
+        when-hiw-people-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-2500">
         <path d="M193.034483,551.905172 C193.034483,546.296664 190.76807,542.586207 186.285714,542.586207 C181.737125,542.586207 178.965517,546.511403 178.965517,551.905172 C178.965517,552.476501 179.428671,552.939655 180,552.939655 C180.571329,552.939655 181.034483,552.476501 181.034483,551.905172 C181.034483,547.530705 183.064916,544.655172 186.285714,544.655172 C189.354754,544.655172 190.965517,547.292234 190.965517,551.905172 C190.965517,552.476501 191.428671,552.939655 192,552.939655 C192.571329,552.939655 193.034483,552.476501 193.034483,551.905172 L193.034483,551.905172 Z" class="ppl-labs-arms" stroke="#2C4944" stroke-width="0.5" fill="#F9E9E1"></path>
         <path d="M182.29337,546.87261 C182.152093,547.090745 182.021807,547.323301 181.902975,547.569522 C181.340353,548.735277 179.339133,548.142462 180.037139,546.67964 C181.240263,544.15823 183.407152,542.586207 186.285714,542.586207 C188.688147,542.586207 190.994695,544.091588 192.116211,545.944336 C193.087171,547.548366 190.710485,548.54697 190.210027,547.378786 C190.044525,546.992466 189.852183,546.644916 189.633348,546.33764 C189.686383,546.587713 189.714286,546.847066 189.714286,547.112922 L189.714286,551.127633 C189.714286,553.180583 188.047169,554.844828 186,554.844828 C183.948657,554.844828 182.285714,553.18003 182.285714,551.127633 L182.285714,547.112922 C182.285714,547.032191 182.288292,546.952061 182.29337,546.87261 L182.29337,546.87261 Z" class="ppl-labs-torso" stroke="#2C4944" stroke-width="0.5" fill="#8A9EA3"></path>
         <path d="M184.571429,555.154347 L184.571429,563.620637 C184.571429,564.382438 183.946847,565 183.189089,565 L183.668054,565 C182.904609,565 182.285714,564.376116 182.285714,563.619548 L182.285714,552.75857 L182.285714,551.947451 L189.714286,551.947451 L189.714286,552.75857 L189.714286,563.619548 C189.714286,564.381951 189.089704,565 188.331946,565 L188.810911,565 C188.047466,565 187.428571,564.38411 187.428571,563.620637 L187.428571,555.154347 L184.571429,555.154347 Z" class="ppl-labs-legs" stroke="#2C4944" stroke-width="0.689655172" fill="#F9E9E1"></path>
@@ -869,22 +869,22 @@
 		when-hiw-enter="p:[transform:scaleY(0) translateZ(0):scaleY(1) translateZ(0):500:easeOutBack easeOutSine]:delay-200">
 		<path d="M571.714193,532.652744 C570.279299,529.890499 567.363534,528 564,528 C560.636466,528 557.720701,529.890499 556.285807,532.652744 C555.976622,532.607027 555.660131,532.583333 555.338028,532.583333 C551.837632,532.583333 549,535.381554 549,538.833333 C549,542.285113 551.837632,545.083333 555.338028,545.083333 C556.835335,545.083333 558.211374,544.571334 559.295924,543.715193 C560.650499,544.580738 562.265729,545.083333 564,545.083333 C565.734271,545.083333 567.349501,544.580738 568.704076,543.715193 C569.788626,544.571334 571.164665,545.083333 572.661972,545.083333 C576.162368,545.083333 579,542.285113 579,538.833333 C579,535.381554 576.162368,532.583333 572.661972,532.583333 C572.339869,532.583333 572.023378,532.607027 571.714193,532.652744 L571.714193,532.652744 Z" class="map-library-bush-2" stroke="#57984F" fill="#74B66C"
 			init-with="p:[op:0, tro:center center]"
-			when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]"
+			when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]"
 			when-hiw-details-enter="a:[hiw-shake-small:set:(dur:1000ms#func:linear#aic:infinite#ad:alternate):in]"></path>
 		<path d="M308.714193,533.652744 C307.279299,530.890499 304.363534,529 301,529 C297.636466,529 294.720701,530.890499 293.285807,533.652744 C292.976622,533.607027 292.660131,533.583333 292.338028,533.583333 C288.837632,533.583333 286,536.381554 286,539.833333 C286,543.285113 288.837632,546.083333 292.338028,546.083333 C293.835335,546.083333 295.211374,545.571334 296.295924,544.715193 C297.650499,545.580738 299.265729,546.083333 301,546.083333 C302.734271,546.083333 304.349501,545.580738 305.704076,544.715193 C306.788626,545.571334 308.164665,546.083333 309.661972,546.083333 C313.162368,546.083333 316,543.285113 316,539.833333 C316,536.381554 313.162368,533.583333 309.661972,533.583333 C309.339869,533.583333 309.023378,533.607027 308.714193,533.652744 L308.714193,533.652744 Z" class="map-library-bush-1" stroke="#57984F" fill="#74B66C"
 			init-with="p:[op:0, tro:center center]"
-			when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]"
+			when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]"
 			when-hiw-details-enter="a:[hiw-shake-small:set:(dur:1000ms#func:linear#aic:infinite#ad:alternate):in]"></path>
 		<g class="map-library-elm-2"
 			init-with="p-op"
-			when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-300">
+			when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-300">
 			<rect class="map-library-elm-2-trunk" stroke="#6E5E56" stroke-width="1.38888889" fill="#82644F" x="577.1" y="464.222222" width="3.5" height="27.5862069"></rect>
 			<ellipse class="map-library-elm-2-leaves" stroke="#57984F" stroke-width="1.38888889" fill="#74B66C" cx="578.5" cy="458.319444" rx="17.5" ry="16.3194444"></ellipse>
 			<path d="M588.207788,471.919722 C585.429908,473.637431 582.091285,474.638889 578.5,474.638889 C568.835017,474.638889 561,467.385599 561,458.438213 C561,453.183895 563.701968,448.513801 567.889782,445.553757 C564.918148,448.505223 563.1,452.465123 563.1,456.818145 C563.1,465.944479 571.091717,473.342835 580.95,473.342835 C583.534316,473.342835 585.99036,472.834413 588.207788,471.919722 L588.207788,471.919722 Z" class="map-library-elm-2-shadow" stroke="#57984F" stroke-width="1.38888889" fill="#57984F"></path>
 		</g>
 		<g class="map-library-elm-1"
 			init-with="p-op"
-			when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-400">
+			when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-400">
 			<rect class="map-library-elm-1-trunk" stroke="#6E5E56" stroke-width="1.38888889" fill="#82644F" x="284.1" y="464.222222" width="3.5" height="27.5862069"></rect>
 			<ellipse class="map-library-elm-1-leaves" stroke="#57984F" stroke-width="1.38888889" fill="#74B66C" cx="285.5" cy="458.319444" rx="17.5" ry="16.3194444"></ellipse>
 			<path d="M295.207788,471.919722 C292.429908,473.637431 289.091285,474.638889 285.5,474.638889 C275.835017,474.638889 268,467.385599 268,458.438213 C268,453.183895 270.701968,448.513801 274.889782,445.553757 C271.918148,448.505223 270.1,452.465123 270.1,456.818145 C270.1,465.944479 278.091717,473.342835 287.95,473.342835 C290.534316,473.342835 292.99036,472.834413 295.207788,471.919722 L295.207788,471.919722 Z" class="map-library-elm-1-shadow" stroke="#57984F" stroke-width="1.38888889" fill="#57984F"></path>
@@ -1003,16 +1003,16 @@
 		</g>
 		<path d="M576.714193,545.652744 C575.279299,542.890499 572.363534,541 569,541 C565.636466,541 562.720701,542.890499 561.285807,545.652744 C560.976622,545.607027 560.660131,545.583333 560.338028,545.583333 C556.837632,545.583333 554,548.381554 554,551.833333 C554,555.285113 556.837632,558.083333 560.338028,558.083333 C561.835335,558.083333 563.211374,557.571334 564.295924,556.715193 C565.650499,557.580738 567.265729,558.083333 569,558.083333 C570.734271,558.083333 572.349501,557.580738 573.704076,556.715193 C574.788626,557.571334 576.164665,558.083333 577.661972,558.083333 C581.162368,558.083333 584,555.285113 584,551.833333 C584,548.381554 581.162368,545.583333 577.661972,545.583333 C577.339869,545.583333 577.023378,545.607027 576.714193,545.652744 L576.714193,545.652744 Z" class="map-library-bush-4" stroke="#57984F" fill="#74B66C"
 			init-with="p:[op:0, tro:center center]"
-			when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]"
+			when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]"
 			when-hiw-details-enter="a:[hiw-shake-small:set:(dur:1000ms#func:linear#aic:infinite#ad:alternate):in]"></path>
 		<path d="M303.714193,545.652744 C302.279299,542.890499 299.363534,541 296,541 C292.636466,541 289.720701,542.890499 288.285807,545.652744 C287.976622,545.607027 287.660131,545.583333 287.338028,545.583333 C283.837632,545.583333 281,548.381554 281,551.833333 C281,555.285113 283.837632,558.083333 287.338028,558.083333 C288.835335,558.083333 290.211374,557.571334 291.295924,556.715193 C292.650499,557.580738 294.265729,558.083333 296,558.083333 C297.734271,558.083333 299.349501,557.580738 300.704076,556.715193 C301.788626,557.571334 303.164665,558.083333 304.661972,558.083333 C308.162368,558.083333 311,555.285113 311,551.833333 C311,548.381554 308.162368,545.583333 304.661972,545.583333 C304.339869,545.583333 304.023378,545.607027 303.714193,545.652744 L303.714193,545.652744 Z" class="map-library-bush-3" stroke="#57984F" fill="#74B66C"
 			init-with="p:[op:0, tro:center center]"
-			when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]"
+			when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]"
 			when-hiw-details-enter="a:[hiw-shake-small:set:(dur:1000ms#func:linear#aic:infinite#ad:alternate):in]"></path>
 	</g>
 	<g class="ppl-library"
 		init-with="p-op"
-		when-hiw-details-enter="p:[opacity:0:1:500:easeInOutSine]:delay-500">
+		when-hiw-details-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-500">
 		<path d="M380,551.905172 C380,547.329779 378.388401,543.62069 374.285714,543.62069 C370.183028,543.62069 368,547.329779 368,551.905172" class="ppl-library-arms" stroke="#4940EF" stroke-width="2"></path>
 		<rect class="ppl-library-torso" stroke="#4A40EF" stroke-width="0.5" fill="#FFFFFF" x="370.285714" y="543.395727" width="7.42857143" height="11.4491009" rx="68.9655172"></rect>
 		<path d="M372.571429,555.154347 L372.571429,563.620637 C372.571429,564.382438 371.946847,565 371.189089,565 L371.668054,565 C370.904609,565 370.285714,564.376116 370.285714,563.619548 L370.285714,552.75857 L370.285714,551.947451 L377.714286,551.947451 L377.714286,552.75857 L377.714286,563.619548 C377.714286,564.381951 377.089704,565 376.331946,565 L376.810911,565 C376.047466,565 375.428571,564.38411 375.428571,563.620637 L375.428571,555.154347 L372.571429,555.154347 Z" class="ppl-library-legs" stroke="#2B3234" stroke-width="0.5" fill="#40484B"></path>
@@ -1163,7 +1163,7 @@
 
 	<g class="pine-back-6"
 		init-with="p-op"
-		when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-1200 | t:[on-enter:children]:delay-1200">
+		when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-1200 | t:[on-enter:children]:delay-1200">
 		<rect class="pine-back-6-trunk" stroke="#6E5E56" fill="#82644F" x="842.777778" y="223.777778" width="2.77777778" height="22.0689655"></rect>
 		<polygon class="pine-back-6-bottom-base" stroke="#497A43" fill="#57984F" points="844.015028 206 857.474501 240.444444 830.555556 240.444444"></polygon>
 		<polygon class="pine-back-6-bottom-shadow" stroke="#497A43" fill="#497A43" points="834.318305 240.444444 845.833333 240.444444 830.429416 240.444444 843.888889 206 845.833333 210.976072 854.901185 234.595388"></polygon>
@@ -1176,7 +1176,7 @@
 	</g>
 	<g class="pine-back-5"
 		init-with="p-op"
-		when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-1100 | t:[on-enter:children]:delay-1100">
+		when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-1100 | t:[on-enter:children]:delay-1100">
 		<rect class="pine-back-5-trunk" stroke="#6E5E56" fill="#82644F" x="798.777778" y="223.777778" width="2.77777778" height="22.0689655"></rect>
 		<polygon class="pine-back-5-bottom-base" stroke="#497A43" fill="#57984F" points="800.015028 206 813.474501 240.444444 786.555556 240.444444"></polygon>
 		<polygon class="pine-back-5-bottom-shadow" stroke="#497A43" fill="#497A43" points="790.318305 240.444444 801.833333 240.444444 786.429416 240.444444 799.888889 206 801.833333 210.976072 810.901185 234.595388"></polygon>
@@ -1202,7 +1202,7 @@
 	</g>
 	<g class="pine-back-3"
 		init-with="p-op"
-		when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-900 | t:[on-enter:children]:delay-900">
+		when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-900 | t:[on-enter:children]:delay-900">
 		<rect class="pine-back-3-trunk" stroke="#6E5E56" fill="#82644F" x="710.777778" y="223.777778" width="2.77777778" height="22.0689655"></rect>
 		<polygon class="pine-back-3-bottom-base" stroke="#497A43" fill="#57984F" points="712.015028 206 725.474501 240.444444 698.555556 240.444444"></polygon>
 		<polygon class="pine-back-3-bottom-shadow" stroke="#497A43" fill="#497A43" points="702.318305 240.444444 713.833333 240.444444 698.429416 240.444444 711.888889 206 713.833333 210.976072 722.901185 234.595388"></polygon>
@@ -1215,7 +1215,7 @@
 	</g>
 	<g class="pine-back-2"
 		init-with="p-op"
-		when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-800 | t:[on-enter:children]:delay-800">
+		when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-800 | t:[on-enter:children]:delay-800">
 		<rect class="pine-back-2-trunk" stroke="#6E5E56" fill="#82644F" x="666.777778" y="223.777778" width="2.77777778" height="22.0689655"></rect>
 		<polygon class="pine-back-2-bottom-base" stroke="#497A43" fill="#57984F" points="668.015028 206 681.474501 240.444444 654.555556 240.444444"></polygon>
 		<polygon class="pine-back-2-bottom-shadow" stroke="#497A43" fill="#497A43" points="658.318305 240.444444 669.833333 240.444444 654.429416 240.444444 667.888889 206 669.833333 210.976072 678.901185 234.595388"></polygon>
@@ -1228,7 +1228,7 @@
 	</g>
 	<g class="pine-back-1"
 		init-with="p-op"
-		when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-700 | t:[on-enter:children]:delay-700">
+		when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-700 | t:[on-enter:children]:delay-700">
 		<rect class="pine-back-1-trunk" stroke="#6E5E56" fill="#82644F" x="622.777778" y="223.777778" width="2.77777778" height="22.0689655"></rect>
 		<polygon class="pine-back-1-bottom-base" stroke="#497A43" fill="#57984F" points="624.015028 206 637.474501 240.444444 610.555556 240.444444"></polygon>
 		<polygon class="pine-back-1-bottom-shadow" stroke="#497A43" fill="#497A43" points="614.318305 240.444444 625.833333 240.444444 610.429416 240.444444 623.888889 206 625.833333 210.976072 634.901185 234.595388"></polygon>
@@ -1242,7 +1242,7 @@
 
 	<g class="map-darm-gate-back"
 		init-with="p-op"
-		when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-2000">
+		when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-2000">
 		<path d="M620.13874,242.75 L868.310299,242.75 L620.13874,242.75 L620.13874,242.75 Z M620,243 L620,250 L620,243 L620,243 Z M623,243 L623,250 L623,243 L623,243 Z M626,243 L626,250 L626,243 L626,243 Z M629,243 L629,250 L629,243 L629,243 Z M632,243 L632,250 L632,243 L632,243 Z M635,243 L635,250 L635,243 L635,243 Z M638,243 L638,250 L638,243 L638,243 Z M641,243 L641,250 L641,243 L641,243 Z M644,243 L644,250 L644,243 L644,243 Z M647,243 L647,250 L647,243 L647,243 Z M650,243 L650,250 L650,243 L650,243 Z M653,243 L653,250 L653,243 L653,243 Z M656,243 L656,250 L656,243 L656,243 Z M659,243 L659,250 L659,243 L659,243 Z M662,243 L662,250 L662,243 L662,243 Z M665,243 L665,250 L665,243 L665,243 Z M668,243 L668,250 L668,243 L668,243 Z M671,243 L671,250 L671,243 L671,243 Z M674,243 L674,250 L674,243 L674,243 Z M677,243 L677,250 L677,243 L677,243 Z M680,243 L680,250 L680,243 L680,243 Z M683,243 L683,250 L683,243 L683,243 Z M686,243 L686,250 L686,243 L686,243 Z M689,243 L689,250 L689,243 L689,243 Z M692,243 L692,250 L692,243 L692,243 Z M695,243 L695,250 L695,243 L695,243 Z M698,243 L698,250 L698,243 L698,243 Z M701,243 L701,250 L701,243 L701,243 Z M704,243 L704,250 L704,243 L704,243 Z M707,243 L707,250 L707,243 L707,243 Z M710,243 L710,250 L710,243 L710,243 Z M713,243 L713,250 L713,243 L713,243 Z M716,243 L716,250 L716,243 L716,243 Z M719,243 L719,250 L719,243 L719,243 Z M722,243 L722,250 L722,243 L722,243 Z M725,243 L725,250 L725,243 L725,243 Z M728,243 L728,250 L728,243 L728,243 Z M731,243 L731,250 L731,243 L731,243 Z M734,243 L734,250 L734,243 L734,243 Z M737,243 L737,250 L737,243 L737,243 Z M740,243 L740,250 L740,243 L740,243 Z M743,243 L743,250 L743,243 L743,243 Z M746,243 L746,250 L746,243 L746,243 Z M749,243 L749,250 L749,243 L749,243 Z M752,243 L752,250 L752,243 L752,243 Z M755,243 L755,250 L755,243 L755,243 Z M758,243 L758,250 L758,243 L758,243 Z M761,243 L761,250 L761,243 L761,243 Z M764,243 L764,250 L764,243 L764,243 Z M767,243 L767,250 L767,243 L767,243 Z M770,243 L770,250 L770,243 L770,243 Z M773,243 L773,250 L773,243 L773,243 Z M776,243 L776,250 L776,243 L776,243 Z M779,243 L779,250 L779,243 L779,243 Z M782,243 L782,250 L782,243 L782,243 Z M785,243 L785,250 L785,243 L785,243 Z M788,243 L788,250 L788,243 L788,243 Z M791,243 L791,250 L791,243 L791,243 Z M794,243 L794,250 L794,243 L794,243 Z M797,243 L797,250 L797,243 L797,243 Z M800,243 L800,250 L800,243 L800,243 Z M803,243 L803,250 L803,243 L803,243 Z M806,243 L806,250 L806,243 L806,243 Z M809,243 L809,250 L809,243 L809,243 Z M812,243 L812,250 L812,243 L812,243 Z M815,243 L815,250 L815,243 L815,243 Z M818,243 L818,250 L818,243 L818,243 Z M821,243 L821,250 L821,243 L821,243 Z M824,243 L824,250 L824,243 L824,243 Z M827,243 L827,250 L827,243 L827,243 Z M830,243 L830,250 L830,243 L830,243 Z M833,243 L833,250 L833,243 L833,243 Z M836,243 L836,250 L836,243 L836,243 Z M839,243 L839,250 L839,243 L839,243 Z M842,243 L842,250 L842,243 L842,243 Z M845,243 L845,250 L845,243 L845,243 Z M848,243 L848,250 L848,243 L848,243 Z M851,243 L851,250 L851,243 L851,243 Z M854,243 L854,250 L854,243 L854,243 Z M857,243 L857,250 L857,243 L857,243 Z M860,243 L860,250 L860,243 L860,243 Z M863,243 L863,250 L863,243 L863,243 Z M866,243 L866,250 L866,243 L866,243 Z" class="gate-back-1" stroke="#000000" stroke-width="0.5"></path>
 		<rect class="gate-back-2" stroke="#4D371C" stroke-width="0.5" fill="#D5C7B6" x="616" y="250" width="252.812985" height="3.97393887"></rect>
 		<rect class="gate-back-3" stroke="#4D371C" stroke-width="0.5" fill="#D5C7B6" x="615" y="239" width="5.88134267" height="2.94203561"></rect>
@@ -1459,7 +1459,7 @@
 	</g>
 	<g class="ppl-bald"
 		init-with="p:[op:0, tro:center top]"
-		when-hiw-people-enter="p:[opacity:0:1:500:easeInOutSine]:delay-900 | send:[bald-walk:public]"
+		when-hiw-people-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-900 | send:[bald-walk:public]"
 		when-bald-walk="p:[transform:translateX(0px):translateX(-150px):3000:easeInOutExpo] | s:[bald-walk-down:public]:delay-3000"
 		when-bald-walk-down="p:[transform:translateX(-150px) translateY(0px) rotateY(0deg):translateX(150px) translateY(30px) rotateY(180deg):3000:easeInExpo easeInExpo easeInQuad] | s:[bald-walk-back:public]:delay-3000"
 		when-bald-walk-back="p:[transform:translateX(150px) translateY(30px) rotateY(180deg):translateX(0px) translateY(0px) rotateY(0deg):3000:easeInExpo easeInExpo easeInSine]">
@@ -1547,7 +1547,7 @@
 	</g>
 	<g class="ppl-bsns"
 		init-with="p-op"
-		when-hiw-details-enter="p:[opacity:0:1:500:easeInOutSine]:delay-1750]">
+		when-hiw-details-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-1750]">
 		<path d="M795.5,403.327586 C795.5,398.899786 794.089851,395.310345 790.5,395.310345 C786.910149,395.310345 785,398.899786 785,403.327586" class="ppl-bsns-arms" stroke="#DFFEFF" stroke-width="2.06896552"></path>
 		<rect class="ppl-bsns-torso" stroke="#DFFEFF" stroke-width="0.689655172" fill="#D0FEFF" x="787" y="395.092639" width="6.5" height="11.0797751" rx="68.9655172"></rect>
 		<path d="M790.171429,395 L790,394 L789.828571,395 L789,395 L789.707317,395.707317 L789,399.833333 C789,399.833333 789.666667,401 790,401 C790.333333,401 791,399.833333 791,399.833333 L790.292683,395.707317 L791,395 L790.171429,395 L790.171429,395 Z" class="ppl-bsns-tie" fill="#000000"></path>
@@ -1557,7 +1557,7 @@
 	</g>
 	<g class="ppl-kite"
 		init-with="p-op"
-		when-hiw-people-enter="p:[opacity:0:1:500:easeInOutSine]:delay-150 | s:[kite-fly:public]:delay-10000"
+		when-hiw-people-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-150 | s:[kite-fly:public]:delay-10000"
 		when-kite-fly="send:[run-after:public]:delay-6000"
 		when-run-after="p:[transform:translateX(0px):translateX(300px):4000:easeInOutCubic]:delay-5000">
 		<g init-with="p:[tro:center center]"
@@ -1592,7 +1592,7 @@
 
 	<g class="pine-front-4"
 		init-with="p-op"
-		when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-400 | t:[on-enter:children]:delay-400">
+		when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-400 | t:[on-enter:children]:delay-400">
 		<rect class="pine-front-4-trunk" stroke="#6E5E56" stroke-width="2" fill="#82644F" x="831" y="461" width="5" height="39.7241379"></rect>
 		<polygon class="pine-front-4-bottom-base" stroke="#497A43" stroke-width="2" fill="#57984F" points="833.227051 429 857.454102 494 809 494"></polygon>
 		<polygon class="pine-front-4-bottom-shadow" stroke="#497A43" stroke-width="2" fill="#497A43" points="815.772949 494 836.5 494 808.772949 494 833 429 836.5 438.39033 852.822132 482.962264"></polygon>
@@ -1605,7 +1605,7 @@
 	</g>
 	<g class="pine-front-3"
 		init-with="p-op"
-		when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-300 | t:[on-enter:children]:delay-300">
+		when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-300 | t:[on-enter:children]:delay-300">
 		<rect class="pine-front-3-trunk" stroke="#6E5E56" stroke-width="2" fill="#82644F" x="767" y="461" width="5" height="39.7241379"></rect>
 		<polygon class="pine-front-3-bottom-base" stroke="#497A43" stroke-width="2" fill="#57984F" points="769.227051 429 793.454102 494 745 494"></polygon>
 		<polygon class="pine-front-3-bottom-shadow" stroke="#497A43" stroke-width="2" fill="#497A43" points="751.772949 494 772.5 494 744.772949 494 769 429 772.5 438.39033 788.822132 482.962264"></polygon>
@@ -1618,7 +1618,7 @@
 	</g>
 	<g class="pine-front-2"
 		init-with="p-op"
-		when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-200 | t:[on-enter:children]:delay-200">
+		when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-200 | t:[on-enter:children]:delay-200">
 		<rect class="pine-front-2-trunk" stroke="#6E5E56" stroke-width="2" fill="#82644F" x="701" y="461" width="5" height="39.7241379"></rect>
 		<polygon class="pine-front-2-bottom-base" stroke="#497A43" stroke-width="2" fill="#57984F" points="703.227051 429 727.454102 494 679 494"></polygon>
 		<polygon class="pine-front-2-bottom-shadow" stroke="#497A43" stroke-width="2" fill="#497A43" points="685.772949 494 706.5 494 678.772949 494 703 429 706.5 438.39033 722.822132 482.962264"></polygon>
@@ -1631,7 +1631,7 @@
 	</g>
 	<g class="pine-front-1"
 		init-with="p-op"
-		when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-100 | t:[on-enter:children]:delay-100">
+		when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-100 | t:[on-enter:children]:delay-100">
 		<rect class="pine-front-1-trunk" stroke="#6E5E56" stroke-width="2" fill="#82644F" x="638" y="461" width="5" height="39.7241379"></rect>
 		<polygon class="pine-front-1-bottom-base" stroke="#497A43" stroke-width="2" fill="#57984F" points="640.227051 429 664.454102 494 616 494"></polygon>
 		<polygon class="pine-front-1-bottom-shadow" stroke="#497A43" stroke-width="2" fill="#497A43" points="622.772949 494 643.5 494 615.772949 494 640 429 643.5 438.39033 659.822132 482.962264"></polygon>
@@ -1646,7 +1646,7 @@
 	<g class="ppl-couple">
 		<g class="ppl-couple-guy"
 			init-with="p-op"
-			when-hiw-details-enter="p:[opacity:0:1:500:easeInOutSine]:delay-400">
+			when-hiw-details-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-400">
 			<path d="M735.5,507.327586 C735.5,502.899786 734.089851,499.310345 730.5,499.310345 C726.910149,499.310345 725,502.899786 725,507.327586" class="ppl-couple-guy-arms" stroke="#996146" stroke-width="2"></path>
 			<path d="M726.509277,503.122314 C726.021347,502.856197 725.381338,501.371682 725.608643,500.916504 C726.191858,499.748613 729.12283,498.092639 730.25,498.092639 C731.701735,498.092639 734.842218,499.911225 735.259277,501.476563 C735.329046,501.738425 734.577327,502.667549 734.039306,502.856201 C733.817031,502.93414 733.5,502.241403 733.5,502.342073 L733.5,506.92298 C733.5,508.717593 732.041273,510.172414 730.25,510.172414 C728.455075,510.172414 727,508.723927 727,506.92298 L727,502.342073 C727,502.116858 726.758954,503.258488 726.509277,503.122314 Z" class="ppl-couple-guy-torso" stroke="#315D55" stroke-width="0.5" fill="#69B3A5"></path>
 			<path d="M729,510.471949 L729,518.61454 C729,519.379708 728.389067,520 727.610933,520 L728.389067,520 C727.621906,520 727,519.379758 727,518.617866 L727,508.153455 L727,507.368501 L733.5,507.368501 L733.5,508.153455 L733.5,518.617866 C733.5,519.381197 732.889067,520 732.110933,520 L732.889067,520 C732.121906,520 731.5,519.374838 731.5,518.61454 L731.5,510.471949 L729,510.471949 Z" class="ppl-couple-guy-legs" stroke="#356977" stroke-width="0.5" fill="#336E7C"></path>
@@ -1655,7 +1655,7 @@
 		</g>
 		<g class="ppl-couple-girl"
 			init-with="p-op"
-			when-hiw-details-enter="p:[opacity:0:1:500:easeInOutSine]:delay-500">
+			when-hiw-details-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-500">
 			<path d="M747.74,509.844828 C747.74,504.527264 745.743747,501.051724 741.76,501.051724 C737.709589,501.051724 735.26,504.741 735.26,509.844828 C735.26,510.273324 735.609218,510.62069 736.04,510.62069 C736.470782,510.62069 736.82,510.273324 736.82,509.844828 C736.82,505.495523 738.740268,502.603448 741.76,502.603448 C744.648023,502.603448 746.18,505.270669 746.18,509.844828 C746.18,510.273324 746.529218,510.62069 746.96,510.62069 C747.390782,510.62069 747.74,510.273324 747.74,509.844828 L747.74,509.844828 Z" class="ppl-couple-girl-arms" stroke="#2C4944" stroke-width="0.517241379" fill="#EFCDBC"></path>
 			<path d="M740.2,512.471949 L740.2,520.962194 C740.2,521.535358 739.738381,522 739.16,522 L739.16,522 C738.585624,522 738.12,521.535601 738.12,520.969421 L738.12,510.153455 C738.12,510.153455 744.88,510.968548 744.88,511.376094 L744.88,520.959333 C744.88,521.534078 744.418381,522 743.84,522 L743.84,522 C743.265624,522 742.8,521.540442 742.8,520.962194 L742.8,512.471949 L740.2,512.471949 Z" class="ppl-couple-girl-legs" stroke="#26403C" stroke-width="0.517241379" fill="#EFCDBC"></path>
 			<path d="M744.348934,510.088772 C744.356259,510.005599 744.36,509.921403 744.36,509.836338 L744.36,504.463198 C744.36,502.880871 743.079534,501.60988 741.5,501.60988 C739.92368,501.60988 738.64,502.887354 738.64,504.463198 L738.64,509.413793 L735,514.241379 L747.48,514.241379 L744.348934,510.088772 L744.348934,510.088772 Z" class="ppl-couple-girl-torso" stroke="#637074" stroke-width="0.517241379" fill="#8A9EA3"></path>
@@ -1667,14 +1667,14 @@
 
 	<g class="elm-front-1"
 		init-with="p-op"
-		when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-500">
+		when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-500">
 		<rect class="elm-front-1-trunk" stroke="#6E5E56" stroke-width="2" fill="#82644F" x="619" y="532" width="5" height="39.7241379"></rect>
 		<ellipse class="elm-front-1-leaves" stroke="#57984F" stroke-width="2" fill="#74B66C" cx="621" cy="523.5" rx="25" ry="23.5"></ellipse>
 		<path d="M634.868269,543.084399 C630.899868,545.557901 626.130407,547 621,547 C607.192881,547 596,536.555263 596,523.671027 C596,516.104809 599.859954,509.379873 605.842546,505.11741 C601.597354,509.367521 599,515.069777 599,521.338129 C599,534.48005 610.416739,545.133682 624.5,545.133682 C628.19188,545.133682 631.700515,544.401555 634.868269,543.084399 L634.868269,543.084399 Z" class="elm-front-1-shadow" stroke="#57984F" stroke-width="2" fill="#57984F"></path>
 	</g>
 	<g class="elm-front-2"
 		init-with="p-op"
-		when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-600">
+		when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-600">
 		<rect class="elm-front-2-trunk" stroke="#6E5E56" stroke-width="2" fill="#82644F" x="837" y="532" width="5" height="39.7241379"></rect>
 		<ellipse class="elm-front-2-leaves" stroke="#57984F" stroke-width="2" fill="#74B66C" cx="839" cy="523.5" rx="25" ry="23.5"></ellipse>
 		<path d="M852.868269,543.084399 C848.899868,545.557901 844.130407,547 839,547 C825.192881,547 814,536.555263 814,523.671027 C814,516.104809 817.859954,509.379873 823.842546,505.11741 C819.597354,509.367521 817,515.069777 817,521.338129 C817,534.48005 828.416739,545.133682 842.5,545.133682 C846.19188,545.133682 849.700515,544.401555 852.868269,543.084399 L852.868269,543.084399 Z" class="elm-front-2-shadow" stroke="#57984F" stroke-width="2" fill="#57984F"></path>
