@@ -36,23 +36,24 @@
 			<g class="window">
 				<g clip-path="url(#window)"
 					u init-with="p:[op:0]"
-					when-window-init="a:[opacity:0:1:250:linear:600:1:f] | s:[time-shift:public:1000]">
+					when-window-init="a:[opacity:0:1:250:linear:600:1:f] | s:[time-shift:public:500]">
 					<g>
 						<rect class="window-sky" stroke="#637074" stroke-width="2" fill="url(#night-sky-gradient)" x="439.23125" y="98.8004988" width="203.9625" height="93.6907731"></rect>
-						<path d="M618.07941,155.015196 C614.064133,159.313233 608.345831,162 602,162 C589.849736,162 580,152.150264 580,140 C580,127.849736 589.849736,118 602,118 C608.668612,118 614.644234,120.967044 618.678762,125.653029 C617.277178,125.228345 615.790255,125 614.25,125 C605.827658,125 599,131.827658 599,140.25 C599,148.672342 605.827658,155.5 614.25,155.5 C615.572545,155.5 616.855769,155.331645 618.07941,155.015196 L618.07941,155.015196 Z" class="window-moon" stroke-opacity="0.5" stroke="#FFFFFF" stroke-width="2" fill="#FFFFFF"></path>
-						<!-- when-time-shift="a:[hiw-night-shift:12000:linear:0:i:f]" -->
+						<path d="M618.07941,155.015196 C614.064133,159.313233 608.345831,162 602,162 C589.849736,162 580,152.150264 580,140 C580,127.849736 589.849736,118 602,118 C608.668612,118 614.644234,120.967044 618.678762,125.653029 C617.277178,125.228345 615.790255,125 614.25,125 C605.827658,125 599,131.827658 599,140.25 C599,148.672342 605.827658,155.5 614.25,155.5 C615.572545,155.5 616.855769,155.331645 618.07941,155.015196 L618.07941,155.015196 Z" class="window-moon" stroke-opacity="0.5" stroke="#FFFFFF" stroke-width="2" fill="#FFFFFF"
+							u init-with="p:[op:0]"
+							when-time-shift="a:[hiw-night-shift:12000:linear:500:i:f]"></path>
 					</g>
-					<rect class="window-sky" stroke="#637074" stroke-width="2" fill="url(#sunset-sky-gradient)" x="439.23125" y="98.8004988" width="203.9625" height="93.6907731"></rect>
-					<!-- when-time-shift="a:[hiw-sunset-shift:12000:linear:0:i:f]" -->
-					<rect class="window-sky" stroke="#637074" stroke-width="2" fill="url(#sunrise-sky-gradient)" x="439.23125" y="98.8004988" width="203.9625" height="93.6907731"></rect>
-					<!-- when-time-shift="a:[hiw-sunrise-shift:12000:linear:0:i:f]" -->
-					<g>
-						<!-- when-time-shift="a:[hiw-day-shift:12000:linear:0:i:f]" -->
+					<rect class="window-sky" stroke="#637074" stroke-width="2" fill="url(#sunset-sky-gradient)" x="439.23125" y="98.8004988" width="203.9625" height="93.6907731"
+						u init-with="p:[op:0]"
+						when-time-shift="a:[hiw-sunset-shift:12000:linear:500:i:f]"></rect>
+					<rect class="window-sky" stroke="#637074" stroke-width="2" fill="url(#sunrise-sky-gradient)" x="439.23125" y="98.8004988" width="203.9625" height="93.6907731"
+						u init-with="p:[op:0]"
+						when-time-shift="a:[hiw-sunrise-shift:12000:linear:500:i:f]"></rect>
+					<g u when-time-shift="a:[hiw-day-shift:12000:linear:500:i:f]">
 						<rect class="window-sky" stroke="#637074" stroke-width="2" fill="url(#day-sky-gradient)" x="439.23125" y="98.8004988" width="203.9625" height="93.6907731"></rect>
 						<circle class="window-sun" fill="#FECE67" cx="483" cy="140" r="22"
 							u init-with="p:[tro:center center, tr:scale(0)]"
 							when-window-init="a:[scale:0:1:1000:easeOutElastic:900:1:f]"></circle>
-						<!-- when-time-shift="a:[hiw-day-shift:12000:linear:0:i:f]" -->
 					</g>
 				</g>
 				<rect class="window-frame-out" stroke="#E8E9EA" stroke-width="2" fill="#F1F1F1" x="439.23" y="98.80" width="203.96" height="8.27"
@@ -240,12 +241,12 @@
 					when-clock-init="a:[stroke-dashoffset:213.63:0:1000:easeOutExpo:250:1:f, rotate:0deg:-180deg:1000:easeOutExpo:250:1:f, fill-opacity:0:1:500:easeOutSine:500:1:f]"></circle>
 				<line x1="84" x2="84" y1="84.5" y2="56" class="clock-minute-hand" stroke="#E08898"
 					u init-with="p:[sda:28.5, sdo:28.5, tro:50% 78px]"
-					when-clock-init="a:[stroke-dashoffset:28.5:0:500:easeOutBack:1200:1:f]"/>
-					<!-- on-init="a:[hiw-minute-hand:2000:linear:500:i:f]" -->
+					when-clock-init="a:[stroke-dashoffset:28.5:0:500:easeOutBack:1200:1:f]"
+					when-time-shift="a:[rotate:0deg:360deg:2000:linear:0:i:f]"/>
 				<line x1="77.5" x2="99.5" y1="78" y2="78" class="clock-hour-hand" stroke="#55607A"
 					u init-with="p:[sda:22, sdo:22, tro:84px 50%]"
-					when-clock-init="a:[stroke-dashoffset:22:0:400:easeOutBack:1100:1:f]"/>
-					<!-- on-init="a:[hiw-hour-hand:12000:linear:2000:i:f]" -->
+					when-clock-init="a:[stroke-dashoffset:22:0:400:easeOutBack:1100:1:f]"
+					when-time-shift="a:[rotate:0deg:360deg:12000:linear:1500:i:f]"/>
 				<ellipse class="clock-center" stroke="#55607A" fill="#282E3C" cx="84.0006957" cy="78" rx="3.0006957" ry="3"
 					u init-with="p:[op:0, tro:center center]"
 					when-clock-init="a:[bounceIn-subtle:800:linear:1000:1:f]"></ellipse>
