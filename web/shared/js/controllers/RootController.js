@@ -10,11 +10,12 @@ angular.module('uguru.shared.controllers', [])
   'XHRService',
   '$compile',
   '$rootScope',
-  function($scope, $state, $timeout, RootService, XHRService, $compile, $rootScope) {
+  '$window',
+  function($scope, $state, $timeout, RootService, XHRService, $compile, $rootScope, $window) {
     var root = this;
     root.scope = $rootScope;
     root.scope.public = {customStates: {when: {}}};
-    root.window = getBodyDimensions();
+    root.window = getBodyDimensions($window);
     root.base_url = RootService.getBaseUrl();
     root.local = window.location.href.split(':8100').length > 1;
     root.browserPrefix = RootService.getBrowserPrefix();
@@ -106,10 +107,16 @@ function pauseElement(scope) {
   }
 }
 
-function getBodyDimensions() {
+function getBodyDimensions(window_obj) {
     var desktopHeightLimit = 690;
     var desktopWidthLimit= 767;
     var bodyRect = document.body.getBoundingClientRect();
     var isDesktop = (bodyRect.height >= desktopHeightLimit && bodyRect.width >= desktopWidthLimit);
-    return {height:bodyRect.height, width: bodyRect.width, desktop: isDesktop, mobile: !isDesktop}
+    return {height:bodyRect.height, width: bodyRect.width, desktop: isDesktop, mobile: !isDesktop, open: openWindowFunc(window_obj)}
+
+    function openWindowFunc(window_obj) {
+      return function(url, is_external) {
+        window_obj.open(url, is_external && '_blank');
+      }
+    }
 };

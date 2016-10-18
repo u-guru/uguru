@@ -13,7 +13,12 @@ function CompService($timeout) {
     getOptions: getOptions,
     getCompTemplateType: getCompTemplateType,
     getAndParseDimensions: getAndParseDimensions,
-    applyDelayToWord: applyDelayToWord
+    applyDelayToWord: applyDelayToWord,
+    parseSrcUrl: parseSrcUrl
+  }
+
+  function parseSrcUrl(obj_str) {
+    var elem = obj_str.split('.');
   }
 
   function applyDelayToWord(elem, delay) {
