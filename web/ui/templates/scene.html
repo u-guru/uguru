@@ -235,18 +235,20 @@
 			<g class="clock" stroke-width="2">
 				<ellipse class="clock-outer" stroke="#AA6C78" fill="#E08898" cx="84" cy="78" rx="40" ry="40"
 					u init-with="p:[fop:0, sda:251.33, sdo:251.33, tro:center center, tr:rotate(-180deg)]"
-					when-clock-init="a:[stroke-dashoffset:251.33:0:1000:easeOutExpo:0:1:f], rotate:-180deg:0deg:1000:easeOutExpo:0:1:f"></ellipse>
+					when-clock-init="a:[stroke-dashoffset:251.33:0:1000:easeOutExpo:0:1:f, rotate:-180deg:0deg:1000:easeOutExpo:0:1:f, fill-opacity:0:1:500:easeOutSine:500:1:f]"></ellipse>
 				<circle class="clock-inner" stroke="#AA6C78" fill="#F3E9DD" cx="84" cy="78" r="34"
 					u init-with="p:[fop:0, sda:213.63, sdo:213.63, tro:center center, tr:rotate(0deg)]"
-					when-clock-init="a:[stroke-dashoffset:213.63:0:1000:easeOutExpo:250:1:f], rotate:0deg:-180deg:1000:easeOutExpo:250:1:f"></circle>
-				<line x1="84" x2="84" y1="56" y2="84.5" class="clock-minute-hand" stroke="#E08898"
-					u init-with="p:[op:0, tro:50% 78px]"/>
+					when-clock-init="a:[stroke-dashoffset:213.63:0:1000:easeOutExpo:250:1:f, rotate:0deg:-180deg:1000:easeOutExpo:250:1:f, fill-opacity:0:1:500:easeOutSine:500:1:f]"></circle>
+				<line x1="84" x2="84" y1="84.5" y2="56" class="clock-minute-hand" stroke="#E08898"
+					u init-with="p:[sda:28.5, sdo:28.5, tro:50% 78px]"
+					when-clock-init="a:[stroke-dashoffset:28.5:0:500:easeOutBack:1200:1:f]"/>
 					<!-- on-init="a:[hiw-minute-hand:2000:linear:500:i:f]" -->
 				<line x1="77.5" x2="99.5" y1="78" y2="78" class="clock-hour-hand" stroke="#55607A"
-					u init-with="p:[op:0, tro:84px 50%]"/>
+					u init-with="p:[sda:22, sdo:22, tro:84px 50%]"
+					when-clock-init="a:[stroke-dashoffset:22:0:400:easeOutBack:1100:1:f]"/>
 					<!-- on-init="a:[hiw-hour-hand:12000:linear:2000:i:f]" -->
 				<ellipse class="clock-center" stroke="#55607A" fill="#282E3C" cx="84.0006957" cy="78" rx="3.0006957" ry="3"
-					u init-with="p:[op:0]"
+					u init-with="p:[op:0, tro:center center]"
 					when-clock-init="a:[bounceIn-subtle:800:linear:1000:1:f]"></ellipse>
 				<path d="M111.75,77.25 C111.197715,77.25 110.75,77.6977153 110.75,78.25 C110.75,78.8022847 111.197715,79.25 111.75,79.25 L114.75,79.25 C115.302285,79.25 115.75,78.8022847 115.75,78.25 C115.75,77.6977153 115.302285,77.25 114.75,77.25 L111.75,77.25 Z M53.25,77.25 C52.6977153,77.25 52.25,77.6977153 52.25,78.25 C52.25,78.8022847 52.6977153,79.25 53.25,79.25 L56.25,79.25 C56.8022847,79.25 57.25,78.8022847 57.25,78.25 C57.25,77.6977153 56.8022847,77.25 56.25,77.25 L53.25,77.25 Z M83,50.5 C83,51.0522847 83.4477153,51.5 84,51.5 C84.5522847,51.5 85,51.0522847 85,50.5 L85,47.5 C85,46.9477153 84.5522847,46.5 84,46.5 C83.4477153,46.5 83,46.9477153 83,47.5 L83,50.5 Z M83,109 C83,109.552285 83.4477153,110 84,110 C84.5522847,110 85,109.552285 85,109 L85,106 C85,105.447715 84.5522847,105 84,105 C83.4477153,105 83,105.447715 83,106 L83,109 Z" class="clock-tick" stroke-width="1" stroke="#55607A" fill="#55607A"
 					u init-with="p:[op:0]"></path>
