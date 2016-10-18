@@ -131,7 +131,6 @@
 				<rect class="desk" fill="#F9D9B2" x="253" y="300" width="330" height="16" rx="2"
 					u init-with="p:[op:0, tr:scaleX(0), tro:left center]"
 					when-scene-init="a:[opacity:0:1:250:linear:0:1:f, scaleX:0:1:1000:easeOutExpo:0:1:f]"></rect>
->>>>>>> be0940173c226483c8cc228e95b48baaa7226d59
 			</g>
 			<g class="cabinet"
 				u init-with="p:[transform:translateX(30px)]"
@@ -290,23 +289,28 @@
 				</g>
 			</g>
 			<g class="polaroids">
-				<g class="polaroid-cosmic"
-					u init-with="p:[op:0, tro:left top]"
+				<g class="polaroid-cosmic" u init-with="p:[op:0, tro:left top]"
 					when-scene-init="a:[bounceIn-rotate-subtle:1000:linear:600:1:f]">
 					<rect class="polaroid-cosmic-back" stroke="#55607A" stroke-width="2" fill="#F1F1F1" x="221" y="216" width="27" height="28"></rect>
 					<rect class="polaroid-cosmic-front" stroke="#764C6E" fill="#764C6E" x="225" y="220" width="19" height="16"></rect>
 				</g>
 				<g class="polaroid-olive"
-					u init-with="p:[op:0, tro:center top]"
-					when-scene-init="a:[bounceIn-rotate-subtle:1000:linear:700:1:f]">
-					<rect class="polaroid-olive-back" stroke="#55607A" stroke-width="2" fill="#F1F1F1" x="259" y="184" width="27" height="28"></rect>
-					<rect class="polaroid-olive-front" stroke="#9F8B65" fill="#9F8B65" x="263" y="188" width="19" height="16"></rect>\
+					u init-with="p:[transform:translateX(-38px) translateY(32px)]"
+					when-scene-init="a:[translateX:-38px:0px:500:easeInQuint:800:1:f, translateY:32px:0px:500:easeInQuint:800:1:f]">
+					<g u init-with="p:[op:0, tro:center top]"
+						when-scene-init="a:[bounceIn-rotate-subtle:1000:linear:800:1:f]">
+						<rect class="polaroid-olive-back" stroke="#55607A" stroke-width="2" fill="#F1F1F1" x="259" y="184" width="27" height="28"></rect>
+						<rect class="polaroid-olive-front" stroke="#9F8B65" fill="#9F8B65" x="263" y="188" width="19" height="16"></rect>
+					</g>
 				</g>
 				<g class="polaroid-rose"
-					u init-with="p:[op:0, tro:right top]"
-					when-scene-init="a:[bounceIn-rotate-cc-subtle:1000:linear:800:1:f]">
-					<rect class="polaroid-rose-back" stroke="#55607A" stroke-width="2" fill="#F1F1F1" x="319" y="189" width="27" height="28"></rect>
-					<rect class="polaroid-rose-front" stroke="#E6919E" fill="#E6919E" x="323" y="193" width="19" height="16"></rect>
+					u init-with="p:[transform:translateX(-98px) translateY(27px)]"
+					when-scene-init="a:[translateX:-98px:0px:500:easeInQuint:900:1:f, translateY:27px:0px:500:easeInQuint:900:1:f]">
+					<g u init-with="p:[op:0, tro:right top]"
+						when-scene-init="a:[bounceIn-rotate-cc-subtle:1000:linear:900:1:f]">
+						<rect class="polaroid-rose-back" stroke="#55607A" stroke-width="2" fill="#F1F1F1" x="319" y="189" width="27" height="28"></rect>
+						<rect class="polaroid-rose-front" stroke="#E6919E" fill="#E6919E" x="323" y="193" width="19" height="16"></rect>
+					</g>
 				</g>
 			</g>
 			<g class="floor-lamp"
