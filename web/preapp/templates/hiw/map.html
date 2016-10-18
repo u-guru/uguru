@@ -39,28 +39,35 @@
         <path d="M88.9591837,503.759104 L88.9591837,544.543417 L181.285714,544.543417 L181.285714,497.204482 L88.9591837,503.759104 L88.9591837,503.759104 L88.9591837,503.759104 Z M159.15102,500.289316 L159.15102,544.29892 M135.477551,502.172469 L135.477551,544.309324 M111.804082,503.584834 L111.804082,544.317127" id="lab-maroon-use"></path>
 	</defs>
 	<rect class="regular-sky" fill="#B6E2F7" x="0" y="0" width="864" height="286"></rect>
-	<g class="night-sky-container"
-		u init-with="p:[op:0]"
-		when-time-shift="a:[hiw-night-shift:12000:linear:0:i:f]">
-		<rect class="regular-sky" fill="#B6E2F7" x="0" y="0" width="864" height="286"></rect>
-		<rect class="night-sky" fill="url(#night-sky-gradient)" x="0" y="0" width="864" height="286" opacity="0.25"></rect>
+	<g class="night-sky-container">
+		<rect class="regular-sky" fill="#B6E2F7" x="0" y="0" width="864" height="286"
+			u init-with="p:[op:0]"
+			when-time-shift="a:[hiw-night-shift:12000:linear:0:i:f]"></rect>
+		<rect class="night-sky" fill="url(#night-sky-gradient)" x="0" y="0" width="864" height="286" fill-opacity="0.25"
+			u init-with="p:[op:0]"
+			when-time-shift="a:[hiw-night-shift:12000:linear:0:i:f]"></rect>
 	</g>
-	<g class="sunset-sky-container"
-		u init-with="p:[op:0]"
-		when-time-shift="a:[hiw-sunset-shift:12000:linear:0:i:f]">
-		<rect class="transition-sky" fill="#F4E3F6" x="0" y="0" width="864" height="286"></rect>
-		<rect class="sunset-sky" fill="url(#sunset-sky-gradient)" x="0" y="0" width="864" height="286" opacity="0.25"></rect>
+	<g class="sunset-sky-container">
+		<rect class="transition-sky" fill="#F4E3F6" x="0" y="0" width="864" height="286"
+			u init-with="p:[op:0]"
+			when-time-shift="a:[hiw-sunset-shift:12000:linear:0:i:f]"></rect>
+		<rect class="sunset-sky" fill="url(#sunset-sky-gradient)" x="0" y="0" width="864" height="286" fill-opacity="0.25"
+			u init-with="p:[op:0]"
+			when-time-shift="a:[hiw-sunset-shift:12000:linear:0:i:f]"></rect>
 	</g>
-	<g class="sunrise-sky-container"
-		u init-with="p:[opacity:0]"
-		when-time-shift="a:[hiw-sunset-shift:12000:linear:0:200:f]">
-		<rect class="transition-sky" fill="#F4E3F6" x="0" y="0" width="864" height="286"></rect>
-		<rect class="sunrise-sky" fill="url(#sunrise-sky-gradient)" x="0" y="0" width="864" height="286" opacity="0.25"></rect>
+	<g class="sunrise-sky-container">
+		<rect class="transition-sky" fill="#F4E3F6" x="0" y="0" width="864" height="286"
+			u init-with="p:[opacity:0]"
+			when-time-shift="a:[hiw-sunset-shift:12000:linear:0:200:f]"></rect>
+		<rect class="sunrise-sky" fill="url(#sunrise-sky-gradient)" x="0" y="0" width="864" height="286" fill-opacity="0.25"
+			u init-with="p:[opacity:0]"
+			when-time-shift="a:[hiw-sunset-shift:12000:linear:0:200:f]"></rect>
 	</g>
-	<g class="day-sky-container"
-		u when-time-shift="a:[hiw-day-shift:12000:linear:0:i:f]:delay-1000">
-		<rect class="regular-sky" fill="#B6E2F7" x="0" y="0" width="864" height="286"></rect>
-		<rect class="day-sky" fill="url(#day-sky-gradient)" x="0" y="0" width="864" height="286" opacity="0.25"></rect>
+	<g class="day-sky-container">
+		<rect class="regular-sky" fill="#B6E2F7" x="0" y="0" width="864" height="286"
+			u when-time-shift="a:[hiw-day-shift:12000:linear:0:i:f]:delay-1000"></rect>
+		<rect class="day-sky" fill="url(#day-sky-gradient)" x="0" y="0" width="864" height="286" fill-opacity="0.25"
+			u when-time-shift="a:[hiw-day-shift:12000:linear:0:i:f]:delay-1000"></rect>
 	</g>
 	<rect class="map-terrain-main" fill="#8CD07E" x="0" y="194" width="864" height="378"></rect>
 	<rect class="clock-tower-base" fill="#D3B3A8" x="266" y="301" width="335" height="154"></rect>
