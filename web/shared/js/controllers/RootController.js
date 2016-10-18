@@ -16,6 +16,7 @@ angular.module('uguru.shared.controllers', [])
     root.scope = $rootScope;
     root.scope.public = {customStates: {when: {}}};
     root.window = getBodyDimensions($window);
+    root.window.elemInfo = getElemWindowInfo(root.window);
     root.base_url = RootService.getBaseUrl();
     root.local = window.location.href.split(':8100').length > 1;
     root.browserPrefix = RootService.getBrowserPrefix();
@@ -35,6 +36,7 @@ angular.module('uguru.shared.controllers', [])
     root.animationCounter = 0;
     root.transitionCounter = 0;
     root.inspector = {players:[], activePlayer: null, elements: [], preferences: {}};
+    RootService._window = root.window;
     RootService.setGetInspector(getInspectorPrefs(root.inspector));
     RootService.setInspectableElements(pushElemPlayer(root.inspector));
     RootService.getCustomEasingAnimations(root)();
@@ -45,6 +47,19 @@ angular.module('uguru.shared.controllers', [])
       registerAnimationShortcuts();
 
     })
+
+    function getElemWindowInfo(window) {
+      return function(elem) {
+        var eRect = elem.getBoundingClientRect();
+        var result = {};
+        result.bottom = window.height - eRect.top - eRect.height
+        result.top = eRect.top * -1
+        result.right =window.width - eRect.right;
+        result.left = eRect.left * -1;
+        result.rect = eRect;
+        return result;
+      }
+    }
 
     function registerAnimationShortcuts() {
       if (root.local) {
