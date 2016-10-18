@@ -48,21 +48,11 @@
 							when-window-init="a:[opacity:0:1:250:linear:600:1:f] | s:[time-shift:public:1500]">
 							<g>
 								<rect class="window-sky" stroke="#637074" stroke-width="2" fill="url(#night-sky-gradient)" x="439.23125" y="98.8004988" width="203.9625" height="93.6907731"></rect>
-								<path d="M618.07941,155.015196 C614.064133,159.313233 608.345831,162 602,162 C589.849736,162 580,152.150264 580,140 C580,127.849736 589.849736,118 602,118 C608.668612,118 614.644234,120.967044 618.678762,125.653029 C617.277178,125.228345 615.790255,125 614.25,125 C605.827658,125 599,131.827658 599,140.25 C599,148.672342 605.827658,155.5 614.25,155.5 C615.572545,155.5 616.855769,155.331645 618.07941,155.015196 L618.07941,155.015196 Z" class="window-moon" stroke-opacity="0.5" stroke="#FFFFFF" stroke-width="2" fill="#FFFFFF">
-									<!-- u init-with="p:[op:0]"
-									when-time-shift="a:[hiw-night-shift:12000:linear:500:i:f]" -->
-								</path>
+								<path d="M618.07941,155.015196 C614.064133,159.313233 608.345831,162 602,162 C589.849736,162 580,152.150264 580,140 C580,127.849736 589.849736,118 602,118 C608.668612,118 614.644234,120.967044 618.678762,125.653029 C617.277178,125.228345 615.790255,125 614.25,125 C605.827658,125 599,131.827658 599,140.25 C599,148.672342 605.827658,155.5 614.25,155.5 C615.572545,155.5 616.855769,155.331645 618.07941,155.015196 L618.07941,155.015196 Z" class="window-moon" stroke-opacity="0.5" stroke="#FFFFFF" stroke-width="2" fill="#FFFFFF"></path>
 							</g>
-							<rect class="window-sky" stroke="#637074" stroke-width="2" fill="url(#sunset-sky-gradient)" x="439.23125" y="98.8004988" width="203.9625" height="93.6907731">
-								<!-- u init-with="p:[op:0]"
-								when-time-shift="a:[hiw-sunset-shift:12000:linear:500:i:f]" -->
-							</rect>
-							<rect class="window-sky" stroke="#637074" stroke-width="2" fill="url(#sunrise-sky-gradient)" x="439.23125" y="98.8004988" width="203.9625" height="93.6907731">
-								<!-- u init-with="p:[op:0]"
-								when-time-shift="a:[hiw-sunrise-shift:12000:linear:500:i:f]" -->
-							</rect>
-							<g>
-								<!-- u when-time-shift="a:[hiw-day-shift:12000:linear:500:i:f]" -->
+							<rect class="window-sky" stroke="#637074" stroke-width="2" fill="url(#sunset-sky-gradient)" x="439.23125" y="98.8004988" width="203.9625" height="93.6907731"
+								u when-time-shift="a:[opacity:1:0:1000:linear:3500:1:f]"></rect>
+							<g u when-time-shift="a:[opacity:1:0:1000:linear:2500:1:f]">
 								<rect class="window-sky" stroke="#637074" stroke-width="2" fill="url(#day-sky-gradient)" x="439.23125" y="98.8004988" width="203.9625" height="93.6907731"></rect>
 								<circle class="window-sun" fill="#FECE67" cx="483" cy="140" r="22"
 									u init-with="p:[tro:center center, tr:scale(0)]"
