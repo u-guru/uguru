@@ -13,6 +13,7 @@ function RootService($timeout, $state) {
     var setInspectableElem;
     var animations = {custom: [], customNameOnly: []};
     var addElemToInspector;
+    var _window;
     var customShortcuts = {animProps: {}};
     var getInspectorPreferences = function() {};
     initBaseUrlByEnv();

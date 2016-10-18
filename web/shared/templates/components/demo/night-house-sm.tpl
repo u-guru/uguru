@@ -264,13 +264,14 @@
 					<rect class="w1-shadow-mid" fill="#5B4F4B" x="334" y="342" width="28" height="7"></rect>
 					<path d="M329,306 L367,306 L367,366 L329,366 L329,306 L329,306 L329,306 L329,306 Z M335,313 L361,313 L361,337 L335,337 L335,313 L335,313 L335,313 L335,313 Z M335,342 L361,342 L361,366 L335,366 L335,342 L335,342 L335,342 L335,342 Z" class="w1-casing" fill="#FFFFFF"></path>
 				</g>
+			</g>
 				<g class="door">
 					<rect class="door-casing" fill="#FFFFFF" x="324" y="444" width="50" height="58"></rect>
 					<rect class="door-light" fill="#40484B" x="329" y="444" width="40" height="58"></rect>
 					<path d="M329,444 L369,444 L369,502 L329,502 L329,444 L329,444 L329,444 L329,444 Z M337,444 L361,444 L361,450 L337,450 L337,444 L337,444 L337,444 L337,444 Z M337,457 L361,457 L361,477 L337,477 L337,457 L337,457 L337,457 L337,457 Z" class="door-front" fill="#A0857A"></path>
 					<rect class="door-shade" fill="#FFFFFF" x="321" y="399" width="56" height="36"></rect>
 					<rect class="door-shade-edge" fill="#C56C76" x="321" y="435" width="56" height="9"></rect>
-				</g>
+
 			</g>
 			<g class="mailbox">
 				<rect class="mbox-store" fill="#C56C76" x="272" y="454" width="28" height="15" rx="2"></rect>
@@ -364,7 +365,7 @@
 					init-with="p:[transform:translateX(-150px), op:0]"
 					on-init="a:[opacity:0:1:500:linear:0:1:f, translateX:-150px:0px:800:easeOutCirc:0:1:f] | s:[foliage:public:1500]"></path>
 	        </g>
-	        <g class="sky" init-after="door" on-init="s:[night-sky:public]">
+	        <g class="sky" u on-init="p:[opacity:1]|s:[night-sky:public]">
 				<g init-with="p:[opacity:0]" u on-init="s:[activate-sky-children:public]:delay-1000 | p:[opacity:1]">
 		            <circle class="star-1" fill="#FFFFFF" cx="255.5" cy="258.5" r="2.5"
 						u
@@ -470,7 +471,7 @@
 				<g class="w5"
 					u
 					init-with="p:[opacity:0, tro:20% 80%]"
-					when-w1="a:[scoop-enter:1000:linear:400:1:f] | s:[door:public]">
+					when-w1="a:[scoop-enter:1000:linear:400:1:f] | s:[door:public:200]">
 					<g clip-path="url(#w5-clip)">
 						<rect class="w5-bg" fill="#FEF1AE" x="435" y="407" width="38" height="60"></rect>
 						<rect class="w5-blind" fill="#2E5573" x="435" y="407" width="38" height="60"
@@ -535,26 +536,26 @@
 				</g>
 				<g>
 		            <rect class="door-casing" fill="#FFFFFF" x="324" y="444" width="50" height="58"
-						init-after="door"
+
 						init-with="p:[tro:center top, transform:scaleY(0)]"
-						on-init="a:[scaleY:0:1:200:easeOutSine:300:1:f]"></rect>
+						when-door="a:[scaleY:0:1:200:easeOutSine:300:1:f]"></rect>
 		            <rect class="door-light" fill="#FEF1AE" x="329" y="444" width="40" height="58"
-						init-after="door"
+
 						init-with="p:[tro:center top, transform:scaleY(0)]"
-						on-init="a:[scaleY:0:1:200:easeOutSine:250:1:f]"></rect>
+						when-door="a:[scaleY:0:1:200:easeOutSine:250:1:f]"></rect>
 		            <path d="M329,444 L369,444 L369,502 L329,502 L329,444 L329,444 Z M337,444 L361,444 L361,450 L337,450 L337,444 L337,444 Z M337,457 L361,457 L361,477 L337,477 L337,457 L337,457 Z" class="door-front" fill="#2E5573"
-						init-after="door"
+
 						init-with="p:[tro:center top, transform:scaleY(0)]"
-						on-init="a:[scaleY:0:1:200:easeOutSine:200:1:f]"></path>
+						when-door="a:[scaleY:0:1:200:easeOutSine:200:1:f]"></path>
 		            <rect class="door-shade" fill="#FFFFFF" x="321" y="399" width="56" height="36"
-						init-after="door"
+
 						init-with="p:[op:0, tro:center top]"
-						on-init="a:[bounceIn-subtle:1000:linear:0:1:f]"></rect>
+						when-door="a:[bounceIn-subtle:1000:linear:0:1:f]"></rect>
 						<!--on-init="a:[bounceIn-subtle:500:linear:0:1:f]:delay-500" -->
 		            <rect class="door-shade-edge" fill="#8A70B3" x="321" y="435" width="56" height="9"
-						init-after="door"
+
 						init-with="p:[tro:center top, transform:scaleY(0)]"
-						on-init="a:[scaleY:0:1:200:easeOutSine:0:1:f]"></rect>
+						when-door="a:[scaleY:0:1:200:easeOutSine:0:1:f]"></rect>
 				</g>
 	        </g>
 	        <g class="mailbox" u on-init="s:[mailbox-enter:public]">
