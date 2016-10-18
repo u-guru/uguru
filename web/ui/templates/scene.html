@@ -30,6 +30,7 @@
 				<rect x="439.23125" y="98.8004988" width="203.9625" height="93.6907731"></rect>
 			</clipPath>
 	    </defs>
+
 	    <g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"
 			u when-scene-init="s:[lamp-init:public, basket-init:public:500, desk-init:public:900, outlet-init:public:1000, monitor-init:public:1300, window-init:public:1500]">
 			<g class="window">
@@ -159,18 +160,25 @@
 				<rect class="desk" fill="#F9D9B2" x="253" y="300" width="330" height="16" rx="2"
 					u init-with="p:[op:0, tr:scaleX(0), tro:left center]"
 					when-scene-init="a:[opacity:0:1:250:linear:0:1:f, scaleX:0:1:1000:easeOutExpo:0:1:f]"></rect>
+>>>>>>> be0940173c226483c8cc228e95b48baaa7226d59
 			</g>
 			<g class="cabinet"
-				u init-with="p-op">
+				u init-with="p:[transform:translateX(30px)]"
+				when-scene-init="s:[cabinet-enter:public]"
+				when-cabinet-enter="a:[translateX:30px:0px:750:easeOutSine:250:1:f]">
 				<g class="cabinet-wheels" stroke="#A7A3AB" stroke-width="2" fill="#CCCACE">
-					<g class="cabinet-wheel-left">
+					<g class="cabinet-wheel-left"
+						u init-with="p:[op:0, tro:center center, transform:rotate(720deg)]"
+						when-cabinet-enter="a:[rotate:720deg:0deg:600:easeInOutQuart:350:1:f, opacity:0:1:10:linear:250:1:f]">
 						<ellipse class="cabinet-wheel-left" cx="109.5" cy="389.5" rx="5.5" ry="5.5"></ellipse>
 						<g stroke="#9D99A2" stroke-with="1" opacity="0.5">
 							<path d="M109.5,386.5 L109.5,392.5" class="cabinet-wheel-left-line-1"></path>
 				            <path d="M112.5,389.5 L106.5,389.5" class="cabinet-wheel-left-line-2"></path>
 						</g>
 					</g>
-					<g class="cabinet-wheel-right">
+					<g class="cabinet-wheel-right"
+						u init-with="p:[op:0, tro:center center, transform:rotate(720deg)]"
+						when-cabinet-enter="a:[rotate:720deg:0deg:700:easeInOutQuart:250:1:f, opacity:0:1:10:linear:250:1:f]">
 						<circle class="cabinet-wheel-right" cx="198.5" cy="389.5" r="5.5"></circle>
 						<g stroke="#9D99A2" stroke-with="1" opacity="0.5">
 				            <path d="M198.5,386.5 L198.5,392.5" class="cabinet-wheel-right-line-1"></path>
@@ -178,7 +186,9 @@
 						</g>
 					</g>
 				</g>
-				<g stroke="#889E91" stroke-width="2">
+				<g stroke="#889E91" stroke-width="2"
+					u init-with="p:[tro:right bottom, transform:scale(0)]"
+					when-cabinet-enter="a:[scale:0:1:500:easeInCirc:0:1:f]">
 					<polyline class="cabinet-main" fill="#D0E4D8" points="104 383 204 383 204 278 104 278 104 383"></polyline>
 					<polyline class="cabinet-top" fill="#D0E4D8" points="104 278 204 278 204 273 104 273 104 278"></polyline>
 					<g class="drawer-1">
@@ -198,34 +208,33 @@
 					</g>
 				</g>
 			</g>
-			<g class="plant"
-				u init-with="p-op">
+			<g class="plant" u when-scene-init="s:[plant-enter:public:400]">
 				<g class="leaf-2" u init-with="p:[transform:scale(0), tro:right bottom]"
-					on-init="a:[scale:0:1:500:easeOutBack:600:1:f]">
+					when-plant-enter="a:[scale:0:1:500:easeOutBack:600:1:f]">
 					<path d="M123.444154,213.956382 L152.859488,245.500466 C152.859488,245.500466 155.577071,228.355893 146.405196,222.032027 C137.233321,215.708161 123.444154,213.956382 123.444154,213.956382 L123.444154,213.956382 Z" class="leaf-2-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
 					<path d="M123.82948,214.817829 C123.82948,214.817829 139.072379,221.844272 144.239749,226.932504 C148.794923,231.417915 152.99711,243.53876 152.99711,243.53876" class="leaf-2-line" stroke="#4A5924" stroke-width="2"></path>
 				</g>
 				<g class="leaf-1" u init-with="p:[transform:scale(0), tro:right bottom]"
-					on-init="a:[scale:0:1:500:easeOutBack:500:1:f]">
+					when-plant-enter="a:[scale:0:1:500:easeOutBack:500:1:f]">
 					<path d="M110.219862,238.982466 L152.886481,245.021371 C152.886481,245.021371 144.208581,229.964119 133.114255,230.814952 C122.019929,231.665786 110.219862,238.982466 110.219862,238.982466 L110.219862,238.982466 L110.219862,238.982466 Z" class="leaf-1-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
 					<path d="M111.257225,238.5 C111.257225,238.5 118.213747,233.617426 131.624277,235.773952 C145.034808,237.930479 151.991329,245.050388 151.991329,245.050388" class="leaf-1-line" stroke="#4A5924" stroke-width="2"></path>
 				</g>
 				<g class="leaf-3" u init-with="p:[transform:scale(0), tro:left bottom]"
-					on-init="a:[scale:0:1:500:easeOutBack:600:1:f]">
+					when-plant-enter="a:[scale:0:1:500:easeOutBack:600:1:f]">
 					<path d="M183.555846,213.956382 L154.140512,245.500466 C154.140512,245.500466 151.422929,228.355893 160.594804,222.032027 C169.766679,215.708161 183.555846,213.956382 183.555846,213.956382 L183.555846,213.956382 Z" class="leaf-3-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
 					<path d="M183.17052,214.817829 C183.17052,214.817829 167.927621,221.844272 162.760251,226.932504 C158.205077,231.417915 154.00289,243.53876 154.00289,243.53876" class="leaf-3-line" stroke="#4A5924" stroke-width="2"></path>
 				</g>
 				<g class="leaf-4" u init-with="p:[transform:scale(0), tro:left bottom]"
-					on-init="a:[scale:0:1:500:easeOutBack:500:1:f]">
+					when-plant-enter="a:[scale:0:1:500:easeOutBack:500:1:f]">
 					<path d="M196.780138,238.982466 L154.113519,245.021371 C154.113519,245.021371 162.791419,229.964119 173.885745,230.814952 C184.980071,231.665786 196.780138,238.982466 196.780138,238.982466 L196.780138,238.982466 L196.780138,238.982466 Z" class="leaf-4-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
 					<path d="M195.742775,238.5 C195.742775,238.5 188.786253,233.617426 175.375723,235.773952 C161.965192,237.930479 155.008671,245.050388 155.008671,245.050388" class="leaf-4-line" stroke="#4A5924" stroke-width="2"></path>
 				</g>
 				<path d="M166.070072,252.099681 L164.815029,271 L142.687861,271 L141.388567,252.099681 L166.070072,252.099681 Z M138.66474,243.286822 L168.83815,243.286822 L168.83815,251.852713 L138.66474,251.852713 L138.66474,243.286822 Z" class="plant-pot" stroke="#965358" stroke-width="2" fill="#E87464"
 					u init-with="p:[op:0, tro:center center]"
-					on-init="a:[bounceIn-rotate-subtle:1000:linear:0:1:f]"></path>
+					when-plant-enter="a:[bounceIn-rotate-subtle:1000:linear:0:1:f]"></path>
 			</g>
 			<g class="clock" stroke-width="2"
-				u init-with="p-op">
+				u init-with="p:[op:0.5]">
 				<ellipse class="clock-outer" stroke="#AA6C78" fill="#E08898" cx="84" cy="78" rx="40" ry="40"></ellipse>
 				<circle class="clock-inner" stroke="#AA6C78" fill="#F3E9DD" cx="84" cy="78" r="34"></circle>
 				<line x1="84" x2="84" y1="56" y2="84.5" class="clock-minute-hand" stroke="#E08898"
@@ -238,31 +247,38 @@
 				<path d="M111.75,77.25 C111.197715,77.25 110.75,77.6977153 110.75,78.25 C110.75,78.8022847 111.197715,79.25 111.75,79.25 L114.75,79.25 C115.302285,79.25 115.75,78.8022847 115.75,78.25 C115.75,77.6977153 115.302285,77.25 114.75,77.25 L111.75,77.25 Z M53.25,77.25 C52.6977153,77.25 52.25,77.6977153 52.25,78.25 C52.25,78.8022847 52.6977153,79.25 53.25,79.25 L56.25,79.25 C56.8022847,79.25 57.25,78.8022847 57.25,78.25 C57.25,77.6977153 56.8022847,77.25 56.25,77.25 L53.25,77.25 Z M83,50.5 C83,51.0522847 83.4477153,51.5 84,51.5 C84.5522847,51.5 85,51.0522847 85,50.5 L85,47.5 C85,46.9477153 84.5522847,46.5 84,46.5 C83.4477153,46.5 83,46.9477153 83,47.5 L83,50.5 Z M83,109 C83,109.552285 83.4477153,110 84,110 C84.5522847,110 85,109.552285 85,109 L85,106 C85,105.447715 84.5522847,105 84,105 C83.4477153,105 83,105.447715 83,106 L83,109 Z" class="clock-tick" stroke-width="1" stroke="#55607A" fill="#55607A"></path>
 			</g>
 			<g class="trash" stroke-width="2"
-				u init-with="p-op">
+				u init-with="p:[op:0.5]">
 				<polygon class="paper-2" stroke="#8C818D" fill="#F1F1F1" points="652.230036 333.115824 628.747062 337.407058 633.17108 363.776463 646.176254 363.423693"></polygon>
 				<path d="M623.665661,359.360099 L611.966001,333.742199 C611.966001,333.742199 624.814955,333.767356 633.482375,332.465371 C636.693536,331.983004 638.536902,330.66721 640.080275,330.035751 L644.936626,356.166571 L623.665661,359.360099 Z" class="paper-1" stroke="#8C818D" fill="#F1F1F1"></path>
 				<path d="M609,341.206897 L656,341.206897 L651.451613,395 L613.548387,395 L609,341.206897 Z M619.612903,350.172414 C619.612903,348.521908 620.952086,347.183908 622.61017,347.183908 L634.051121,347.183908 C635.706465,347.183908 637.048387,348.525266 637.048387,350.172414 L637.048387,350.172414 C637.048387,351.82292 635.709205,353.16092 634.051121,353.16092 L622.61017,353.16092 C620.954825,353.16092 619.612903,351.819561 619.612903,350.172414 L619.612903,350.172414 Z" class="trash-bin" stroke="#ECBD7F" fill="#FADAB0"></path>
 			</g>
-			<g class="shelf"
-				u init-with="p-op">
+			<g class="shelf" u when-scene-init="s:[shelf-enter:public:250]">
 				<g class="wood">
-					<g class="top" stroke="#965358" stroke-width="3" fill="#F9D9B2">
+					<g class="top" stroke="#965358" stroke-width="3" fill="#F9D9B2"
+						u init-with="p:[transform-origin:right bottom, transform:rotate(90deg) scale(0)]"
+						when-shelf-enter="a:[rotate:90deg:0deg:500:easeInBack:0:1:f, scale:0:1:500:bouncePast:0:1:f]">
 						<rect class="shelf-back" x="60" y="166" width="150" height="9" rx="4.5"></rect>
 						<rect class="shelf-front" x="60" y="164.5" width="150" height="9" rx="4.5"></rect>
 					</g>
-					<g class="bottom">
+					<g class="bottom"
+						u init-with="p:[tro:center top, transform:scaleY(0)]"
+						when-shelf-enter="a:[scaleY:0:1:250:easeInOutBounce:450:1:f]">
 						<path d="M78.0904537,174.494991 C78.0404975,173.945473 78.4463114,173.5 78.9975446,173.5 L86.0024554,173.5 C86.553384,173.5 86.9598786,173.941335 86.9095463,174.494991 L85.5904537,189.005009 C85.5404975,189.554527 85.0490248,190 84.509222,190 L80.490778,190 C79.9435864,190 79.4598786,189.558665 79.4095463,189.005009 L78.0904537,174.494991 Z" class="shelf-left" fill="#965358"></path>
 						<path d="M183.090454,174.494991 C183.040498,173.945473 183.446311,173.5 183.997545,173.5 L191.002455,173.5 C191.553384,173.5 191.959879,173.941335 191.909546,174.494991 L190.590454,189.005009 C190.540498,189.554527 190.049025,190 189.509222,190 L185.490778,190 C184.943586,190 184.459879,189.558665 184.409546,189.005009 L183.090454,174.494991 Z" class="shelf-right" fill="#965358"></path>
 					</g>
 				</g>
-				<g class="book-2" stroke-width="2.25">
+				<g class="book-2" stroke-width="2.25"
+					u init-with="p:[tro:center bottom, transform:translateX(30px) scale(0)]"
+					when-shelf-enter="a:[translateX:30px:0px:250:easeInBack:0:1:f, scale:0:1:250:easeOutBack:0:1:f]:delay-1250">
 					<polygon class="book-2-base" stroke="#7CA9B1" fill="#BADCE2" points="160.5 147.625 91.5 147.625 91.5 131.125 160.5 131.125"></polygon>
 					<polygon class="book-2-border-thick" stroke="#7CA9B1" fill="#7CA9B1" points="156 147.625 147 147.625 147 131.125 156 131.125"></polygon>
 					<path d="M142.5,131.125 L142.5,147.625" class="book-2-border-thin-1" stroke="#7CA9B1"></path>
 					<path d="M99,131.125 L99,147.625" class="book-2-border-thin-2" stroke="#7CA9B1"></path>
 					<polygon class="book-2-shadow" stroke="#2B3234" fill="#2B3234" opacity="0.1" points="160.5 147.5 91.5 147.5 91.5 140.5 160.5 140.5"></polygon>
 				</g>
-				<g class="book-1" stroke-width="2.25">
+				<g class="book-1" stroke-width="2.25"
+					u init-with="p:[tro:right bottom, transform:translateX(30px) scale(0)]"
+					when-shelf-enter="a:[translateX:30px:0px:450:easeInBack:0:1:f, scale:0:1:450:easeOutBack:0:1:f]:delay-1000">
 					<polygon class="book-1-base" stroke="#F27D69" fill="#F7B0A4" points="159 149.875 159 161.875 87 161.875 87 149.875"></polygon>
 					<polygon class="book-1-border-thick" stroke="#F27D69" fill="#F27D69" points="154.5 149.875 154.5 161.875 145.5 161.875 145.5 149.875"></polygon>
 					<path d="M141,149.875 L141,161.875" class="book-1-border-thin-1" stroke="#F27D69"></path>
@@ -270,14 +286,18 @@
 					<polygon class="book-1-shadow" stroke="#2B3234" fill="#2B3234" opacity="0.1" points="159 157.375 159 161.875 87 161.875 87 157.375"></polygon>
 				</g>
 				<g class="pencil-cup">
-					<g class="pencil" stroke="#69B3A5" stroke-width="0.75">
+					<g class="pencil" stroke="#69B3A5" stroke-width="0.75"
+						u init-with="p:[op:0, tro:right top]"
+						when-shelf-enter="a:[bounceIn-subtle:600:easeOutExpo:1000:1:f]"  >
 						<path d="M181.097745,159.306689 C181.319904,158.952807 181.161769,158.665929 180.756917,158.665929 L177.743083,158.665929 C177.33269,158.665929 177.176554,158.947165 177.402255,159.306689 L179.25,162.25 L181.097745,159.306689 Z" class="pencil" fill="#E5D8B9"></path>
 						<polygon class="pencil" stroke="none" fill="#2B3234" points="179.875 161.05531 178.625 161.05531 179.25 162.011062"></polygon>
 						<rect class="pencil" fill="#F9D57B" x="177" y="140.745575" width="4.5" height="17.920354" rx="0.75"></rect>
 						<rect class="pencil" fill="#AFCFD7" x="177" y="138.356195" width="4.5" height="2.38938053"></rect>
 						<rect class="pencil" fill="#DAA5C1" x="177" y="135.25" width="4.5" height="3.10619469" rx="0.75"></rect>
 					</g>
-					<g class="pen" stroke="#7872E3" stroke-width="0.75" fill="#2B3234">
+					<g class="pen" stroke="#7872E3" stroke-width="0.75" fill="#2B3234"
+						u init-with="p:[op:0, tro:left top]"
+						when-shelf-enter="a:[bounceIn-subtle:400:linear:800:1:f]" >
 						<path d="M178.334121,154.524791 L178.764069,156.963146 L177.131361,157.251037 L176.70173,154.814478 C176.093371,154.620105 175.614306,154.103064 175.495826,153.431133 L174.489493,147.723933 L177.988152,147.107025 L178.994485,152.814225 C179.112609,153.484139 178.837263,154.133622 178.334121,154.524791 L178.334121,154.524791 Z" class="pen"></path>
 						<path d="M173.716281,146.066667 L172.003704,136.354165 C171.78794,135.130503 172.596551,133.965107 173.828845,133.74782 L173.828845,133.74782 C175.052607,133.532038 176.220367,134.353582 176.435339,135.572748 L178.147915,145.28525 L173.716281,146.066667 L173.716281,146.066667 Z" class="pen"></path>
 						<path d="M174.798617,147.925655 C174.394458,147.996919 174.008634,147.724683 173.937694,147.322368 L173.672463,145.818164 L178.104098,145.036747 L178.369329,146.540951 C178.440645,146.945402 178.165365,147.332007 177.766663,147.402309 L174.798617,147.925655 L174.798617,147.925655 Z" class="pen"></path>
@@ -285,13 +305,17 @@
 						<polygon class="pen" points="177.715147 159.197933 178.881367 158.992297 177.934236 160.440447"></polygon>
 						<path d="M173.611042,135.922396 C173.554488,135.601662 173.779128,135.293961 174.091752,135.238837 L174.091752,135.238837 C174.413795,135.182052 174.721082,135.398149 174.777262,135.71676 L176.062265,143.004377 C176.11882,143.325111 175.89418,143.632811 175.581556,143.687936 L175.581556,143.687936 C175.259513,143.74472 174.952225,143.528624 174.896046,143.210013 L173.611042,135.922396 L173.611042,135.922396 Z" class="pen" fill="#AFCFD7"></path>
 					</g>
-					<g class="brush" stroke-width="0.75">
+					<g class="brush" stroke-width="0.75"
+						u init-with="p:[op:0, tro:center top]"
+						when-shelf-enter="a:[bounceIn-subtle:600:easeOutCirc:1000:1:f]" >
 						<path d="M183.63323,153.766072 C183.453633,153.839538 183.279173,153.927088 183.117292,154.045362 C182.00376,154.85893 181.670304,156.506878 182.357913,157.797465 C182.931275,158.873179 182.88741,159.471146 182.183873,160.166891 C182.082593,160.266977 182.054852,160.418133 182.114674,160.542775 C182.174751,160.667453 182.308812,160.73763 182.448596,160.717781 C183.057482,160.629905 183.793856,160.29659 184.469109,159.803236 C185.127876,159.321928 185.682241,158.721792 186.029957,158.112985 C186.670959,156.990884 186.801833,155.61091 186.355122,154.678797 C186.277572,154.516938 186.183727,154.372782 186.076724,154.245597 L183.63323,153.766072 L183.63323,153.766072 Z" class="brush" stroke="#F6C64E" fill="#2C1F13"></path>
 						<path d="M182.538424,157.902829 C183.032338,158.939784 182.982598,159.522577 182.341129,160.212132 C182.248785,160.311328 182.221317,160.458941 182.272632,160.579208 C182.324174,160.699506 182.442846,160.765457 182.568217,160.74368 C183.11435,160.647449 183.778821,160.310082 184.391439,159.818019 C184.989098,159.33797 185.495469,158.744096 185.817165,158.145414 C186.410196,157.041971 184.697722,159.405253 183.69005,158.486482 C183.565127,158.372581 181.946102,156.658739 182.538424,157.902829 L182.538424,157.902829 Z M185.253651,157.702647 C185.444316,157.743174 185.648484,157.542656 185.709675,157.254778 C185.770865,156.9669 185.665906,156.700675 185.475241,156.660148 C185.284577,156.619621 185.080408,156.820138 185.019218,157.108017 C184.958027,157.395895 185.062987,157.66212 185.253651,157.702647 L185.253651,157.702647 Z M184.316716,157.866695 C184.412049,157.886959 184.505866,157.825595 184.526262,157.729636 C184.546659,157.633676 184.485912,157.539459 184.39058,157.519195 C184.295248,157.498932 184.201431,157.560296 184.181034,157.656255 C184.160637,157.752214 184.221384,157.846432 184.316716,157.866695 L184.316716,157.866695 Z" class="brush" stroke="none" fill="#F25A5B"></path>
 						<path d="M185.07704,144.953109 L185.655249,142.232854 C185.784643,141.624102 186.040772,140.640348 186.224076,140.06672 C186.224076,140.06672 187.931724,134.300692 188.920333,134.510828 C189.908942,134.720963 189.123702,140.683054 189.123702,140.683054 C189.053502,141.294976 188.893049,142.278178 188.762306,142.893279 L188.184097,145.613534 C187.642433,148.161866 185.994184,153.138453 185.994184,153.138453 L184.016966,152.718182 C184.016966,152.718182 184.535376,147.501441 185.07704,144.953109 L185.07704,144.953109 Z" class="brush" stroke="#F6C64E" fill="#A17143"></path>
 						<path d="M181.997269,152.652082 C182.078856,152.268244 182.460532,152.024152 182.84128,152.105082 L187.317596,153.056553 C187.702144,153.138291 187.94831,153.513039 187.866154,153.899552 L187.866154,153.899552 C187.784567,154.28339 187.402891,154.527482 187.022143,154.446552 L182.545827,153.495082 C182.161279,153.413344 181.915113,153.038596 181.997269,152.652082 L181.997269,152.652082 L181.997269,152.652082 Z" class="brush" stroke="#F6C64E" fill="#8A9EA3"></path>
 					</g>
-					<polygon class="cup" stroke="#8BA0AF" stroke-width="1.5" fill-opacity="0.3" fill="#C7DDD6" points="171 141.25 190.5 141.25 188.727273 162.25 172.772727 162.25"></polygon>
+					<polygon class="cup" stroke="#8BA0AF" stroke-width="1.5" fill-opacity="0.3" fill="#C7DDD6" points="171 141.25 190.5 141.25 188.727273 162.25 172.772727 162.25"
+						u init-with="p:[tro:center center, transform:rotateX(90deg) rotateY(120deg) translateY(-100px)]"
+						when-shelf-enter="a:[rotateX:90deg:0deg:500:easeInExpo:450:1:f,rotateY:-30deg:0deg:500:easeOutExpo:450:1:f, translateY:-100px:0px:100:easeInBounce:450:1:f]"></polygon>
 				</g>
 			</g>
 			<g class="polaroids">
@@ -315,14 +339,28 @@
 				</g>
 			</g>
 			<g class="floor-lamp"
-				u init-with="p-op">
-				<path d="M20.6074139,110.17377 C20.6074139,110.17377 21,108.312336 21,107 C21,107 -62,107 -62,107 C-62,108.161496 -61.6910727,110.17377 -61.6910727,110.17377 L20.6074139,110.17377 Z" class="light" stroke="#F5DEA6" stroke-width="2" fill="#FFFFFF"></path>
-				<line x1="-20.5" x2="-20.5" y1="146.5" y2="382.5" stroke="#1F232C" stroke-width="5"/>
-				<rect x="-30" y="232" width="7.15" height="6.71" stroke="#1F232C" stroke-width="2" fill="#55607A"></rect>
-				<path d="M20.6074139,110.17377 C20.6074139,110.17377 50.6074139,1.31233638 50.6074139,-4.34257055e-17 C50.6074139,-6.15929854e-15 -92.3925861,-1.22751714e-14 -92.3925861,-4.34257055e-17 C-92.3925861,1.1614956 -61.6910727,110.17377 -61.6910727,110.17377 L20.6074139,110.17377 Z" class="light" fill="url(#light-gradient)"></path>
-				<path d="M-20.5,151.5 C2.41981712,151.5 21,132.919817 21,110 C21,110 -62,110 -62,110 C-62,132.919817 -43.4198171,151.5 -20.5,151.5 Z" class="light" stroke="#1F232C" stroke-width="2" fill="#55607A"></path>
-				<path d="M-20.5,380 C-5.75,380 7.55621627,393.629085 7.55621627,393.629085 C8.35359601,394.386221 8.09686041,395 7.00315698,395 L-48.003157,395 C-49.1059829,395 -49.3575106,394.374566 -48.5562163,393.629085 C-48.5562163,393.629085 -35.25,380 -20.5,380 Z" class="light" stroke="#1F232C" stroke-width="2" fill="#55607A"></path>
-				<path d="M-61.5059524,114 L20.5119045,114" class="light" stroke="#1F232C" stroke-width="2"></path>
+				u when-scene-init="s:[floor-lamp:public:800]"
+				init-with="p:[tro:center bottom, transform:rotate(15deg) translateX(100px), op:0]"
+				when-floor-lamp="a:[opacity:0:1:50:linear:0:1:f, translateX:100px:0px:400:easeInQuint:0:1:f, rotate:15deg:0deg:500:easeInSine:0:1:f]">
+				<path d="M20.6074139,110.17377 C20.6074139,110.17377 21,108.312336 21,107 C21,107 -62,107 -62,107 C-62,108.161496 -61.6910727,110.17377 -61.6910727,110.17377 L20.6074139,110.17377 Z" class="path-light" stroke="#F5DEA6" stroke-width="2" fill="#FFFFFF"
+					u init-with="p-op"
+					when-floor-lamp="a:[opacity:0:1:1000:easeOutBounce:1000:1:f]"></path>
+				<line x1="-20.5" x2="-20.5" y1="146.5" y2="382.5" stroke="#1F232C" stroke-width="5"
+					u init-with="p:[tro:center bottom, transform:scaleY(0)]"
+					when-floor-lamp="a:[scaleY:0:1:600:easeInQuint:0:1:f]"/>
+				<rect x="-30" y="232" width="7.15" height="6.71" stroke="#1F232C" stroke-width="2" fill="#55607A" class="button"
+					u init-with="p:[tro:right center, transform:scaleX(0)]"
+					when-floor-lamp="a:[scaleX:0:1:450:easeOutQuint:700:0:1:f]"></rect>
+				<path d="M20.6074139,110.17377 C20.6074139,110.17377 50.6074139,1.31233638 50.6074139,-4.34257055e-17 C50.6074139,-6.15929854e-15 -92.3925861,-1.22751714e-14 -92.3925861,-4.34257055e-17 C-92.3925861,1.1614956 -61.6910727,110.17377 -61.6910727,110.17377 L20.6074139,110.17377 Z" class="light" fill="url(#light-gradient)"
+					u init-with="p-op"
+					when-floor-lamp="a:[opacity:0:1:1000:easeOutBounce:1000:1:f]"></path>
+				<path d="M-20.5,151.5 C2.41981712,151.5 21,132.919817 21,110 C21,110 -62,110 -62,110 C-62,132.919817 -43.4198171,151.5 -20.5,151.5 Z" class="shade" stroke="#1F232C" stroke-width="2" fill="#55607A"
+					u init-with="p:[tro:center top, transform:rotate(-45deg) scale(0)]"
+					when-floor-lamp="a:[rotate:-45deg:0deg:500:easeInQuint:550:1:f, scale:0:1:500:easeInQuint:550:1:f]"></path>
+				<path d="M-20.5,380 C-5.75,380 7.55621627,393.629085 7.55621627,393.629085 C8.35359601,394.386221 8.09686041,395 7.00315698,395 L-48.003157,395 C-49.1059829,395 -49.3575106,394.374566 -48.5562163,393.629085 C-48.5562163,393.629085 -35.25,380 -20.5,380 Z" class="stand" stroke="#1F232C" stroke-width="2" fill="#55607A"></path>
+				<path d="M-61.5059524,114 L20.5119045,114" class="light" stroke="#1F232C" stroke-width="2"
+					u init-with="p-op"
+					when-floor-lamp="a:[zoom-enter:1000:linear:1250:1:f]"></path>
 			</g>
 	    </g>
 	</svg>
