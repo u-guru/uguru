@@ -20,11 +20,6 @@
 						<stop stop-color="#FF8D77" offset="50%"></stop>
 						<stop stop-color="#F7DE67" offset="100%"></stop>
 					</linearGradient>
-					<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="sunrise-sky-gradient">
-						<stop stop-color="#FF8D77" offset="0%"></stop>
-						<stop stop-color="#FFBDB1" offset="50%"></stop>
-						<stop stop-color="#F4E3F6" offset="100%"></stop>
-					</linearGradient>
 					<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="day-sky-gradient">
 						<stop stop-color="#94C7DF" offset="0%"></stop>
 						<stop stop-color="#B6E2F7" offset="50%"></stop>
@@ -232,29 +227,33 @@
 					<g class="plant"
 						u init-with="p:[tro:300px 225px]"
 						when-transition-start="a:[scale:1:0:1000:easeOutExpo:310:1:f]">
-						<g class="leaf-2" u init-with="p:[transform:scale(0), tro:right bottom]"
-							when-plant-enter="a:[scale:0:1:500:easeOutBack:600:1:f]">
-							<path d="M123.444154,213.956382 L152.859488,245.500466 C152.859488,245.500466 155.577071,228.355893 146.405196,222.032027 C137.233321,215.708161 123.444154,213.956382 123.444154,213.956382 L123.444154,213.956382 Z" class="leaf-2-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
-							<path d="M123.82948,214.817829 C123.82948,214.817829 139.072379,221.844272 144.239749,226.932504 C148.794923,231.417915 152.99711,243.53876 152.99711,243.53876" class="leaf-2-line" stroke="#4A5924" stroke-width="2"></path>
+						<g u when-plant-enter="s:[plant-sway:public:1500]"
+							init-with="p:[tro:50% 110%]"
+							when-plant-sway="a:[rustle:2500:linear:0:i:a]">
+							<g class="leaf-2" u init-with="p:[transform:scale(0), tro:right bottom]"
+								when-plant-enter="a:[scale:0:1:500:easeOutBack:600:1:f]">
+								<path d="M123.444154,213.956382 L152.859488,245.500466 C152.859488,245.500466 155.577071,228.355893 146.405196,222.032027 C137.233321,215.708161 123.444154,213.956382 123.444154,213.956382 L123.444154,213.956382 Z" class="leaf-2-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
+								<path d="M123.82948,214.817829 C123.82948,214.817829 139.072379,221.844272 144.239749,226.932504 C148.794923,231.417915 152.99711,243.53876 152.99711,243.53876" class="leaf-2-line" stroke="#4A5924" stroke-width="2"></path>
+							</g>
+							<g class="leaf-1" u init-with="p:[transform:scale(0), tro:right bottom]"
+								when-plant-enter="a:[scale:0:1:500:easeOutBack:500:1:f]">
+								<path d="M110.219862,238.982466 L152.886481,245.021371 C152.886481,245.021371 144.208581,229.964119 133.114255,230.814952 C122.019929,231.665786 110.219862,238.982466 110.219862,238.982466 L110.219862,238.982466 L110.219862,238.982466 Z" class="leaf-1-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
+								<path d="M111.257225,238.5 C111.257225,238.5 118.213747,233.617426 131.624277,235.773952 C145.034808,237.930479 151.991329,245.050388 151.991329,245.050388" class="leaf-1-line" stroke="#4A5924" stroke-width="2"></path>
+							</g>
+							<g class="leaf-3" u init-with="p:[transform:scale(0), tro:left bottom]"
+								when-plant-enter="a:[scale:0:1:500:easeOutBack:600:1:f]">
+								<path d="M183.555846,213.956382 L154.140512,245.500466 C154.140512,245.500466 151.422929,228.355893 160.594804,222.032027 C169.766679,215.708161 183.555846,213.956382 183.555846,213.956382 L183.555846,213.956382 Z" class="leaf-3-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
+								<path d="M183.17052,214.817829 C183.17052,214.817829 167.927621,221.844272 162.760251,226.932504 C158.205077,231.417915 154.00289,243.53876 154.00289,243.53876" class="leaf-3-line" stroke="#4A5924" stroke-width="2"></path>
+							</g>
+							<g class="leaf-4" u init-with="p:[transform:scale(0), tro:left bottom]"
+								when-plant-enter="a:[scale:0:1:500:easeOutBack:500:1:f]">
+								<path d="M196.780138,238.982466 L154.113519,245.021371 C154.113519,245.021371 162.791419,229.964119 173.885745,230.814952 C184.980071,231.665786 196.780138,238.982466 196.780138,238.982466 L196.780138,238.982466 L196.780138,238.982466 Z" class="leaf-4-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
+								<path d="M195.742775,238.5 C195.742775,238.5 188.786253,233.617426 175.375723,235.773952 C161.965192,237.930479 155.008671,245.050388 155.008671,245.050388" class="leaf-4-line" stroke="#4A5924" stroke-width="2"></path>
+							</g>
+							<path d="M166.070072,252.099681 L164.815029,271 L142.687861,271 L141.388567,252.099681 L166.070072,252.099681 Z M138.66474,243.286822 L168.83815,243.286822 L168.83815,251.852713 L138.66474,251.852713 L138.66474,243.286822 Z" class="plant-pot" stroke="#965358" stroke-width="2" fill="#E87464"
+								u init-with="p:[op:0, tro:center center]"
+								when-plant-enter="a:[bounceIn-rotate-subtle:1000:linear:0:1:f]"></path>
 						</g>
-						<g class="leaf-1" u init-with="p:[transform:scale(0), tro:right bottom]"
-							when-plant-enter="a:[scale:0:1:500:easeOutBack:500:1:f]">
-							<path d="M110.219862,238.982466 L152.886481,245.021371 C152.886481,245.021371 144.208581,229.964119 133.114255,230.814952 C122.019929,231.665786 110.219862,238.982466 110.219862,238.982466 L110.219862,238.982466 L110.219862,238.982466 Z" class="leaf-1-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
-							<path d="M111.257225,238.5 C111.257225,238.5 118.213747,233.617426 131.624277,235.773952 C145.034808,237.930479 151.991329,245.050388 151.991329,245.050388" class="leaf-1-line" stroke="#4A5924" stroke-width="2"></path>
-						</g>
-						<g class="leaf-3" u init-with="p:[transform:scale(0), tro:left bottom]"
-							when-plant-enter="a:[scale:0:1:500:easeOutBack:600:1:f]">
-							<path d="M183.555846,213.956382 L154.140512,245.500466 C154.140512,245.500466 151.422929,228.355893 160.594804,222.032027 C169.766679,215.708161 183.555846,213.956382 183.555846,213.956382 L183.555846,213.956382 Z" class="leaf-3-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
-							<path d="M183.17052,214.817829 C183.17052,214.817829 167.927621,221.844272 162.760251,226.932504 C158.205077,231.417915 154.00289,243.53876 154.00289,243.53876" class="leaf-3-line" stroke="#4A5924" stroke-width="2"></path>
-						</g>
-						<g class="leaf-4" u init-with="p:[transform:scale(0), tro:left bottom]"
-							when-plant-enter="a:[scale:0:1:500:easeOutBack:500:1:f]">
-							<path d="M196.780138,238.982466 L154.113519,245.021371 C154.113519,245.021371 162.791419,229.964119 173.885745,230.814952 C184.980071,231.665786 196.780138,238.982466 196.780138,238.982466 L196.780138,238.982466 L196.780138,238.982466 Z" class="leaf-4-back" stroke="#4A5924" stroke-width="3" fill="#C6E581"></path>
-							<path d="M195.742775,238.5 C195.742775,238.5 188.786253,233.617426 175.375723,235.773952 C161.965192,237.930479 155.008671,245.050388 155.008671,245.050388" class="leaf-4-line" stroke="#4A5924" stroke-width="2"></path>
-						</g>
-						<path d="M166.070072,252.099681 L164.815029,271 L142.687861,271 L141.388567,252.099681 L166.070072,252.099681 Z M138.66474,243.286822 L168.83815,243.286822 L168.83815,251.852713 L138.66474,251.852713 L138.66474,243.286822 Z" class="plant-pot" stroke="#965358" stroke-width="2" fill="#E87464"
-							u init-with="p:[op:0, tro:center center]"
-							when-plant-enter="a:[bounceIn-rotate-subtle:1000:linear:0:1:f]"></path>
 					</g>
 					<g class="clock" stroke-width="2"
 						u init-with="p:[tro:300px 225px]"
@@ -333,20 +332,24 @@
 						</g>
 						<g class="pencil-cup"
 							u init-with="p:[tro:300px 225px]"
+							when-shelf-enter="s:[writing-swivel:public:2800]"
 							when-transition-start="a:[scale:1:0:1000:easeOutExpo:200:1:f]">
 							<g class="pencil" stroke="#69B3A5" stroke-width="0.75"
 								u init-with="p:[op:0, tro:right top]"
 								when-shelf-enter="a:[bounceIn-subtle:600:easeOutExpo:1000:1:f]"
 								when-transition-start="p:[tro:300px 225px] | a:[scale:1:0:1000:easeOutExpo::175:f]">
-								<path d="M181.097745,159.306689 C181.319904,158.952807 181.161769,158.665929 180.756917,158.665929 L177.743083,158.665929 C177.33269,158.665929 177.176554,158.947165 177.402255,159.306689 L179.25,162.25 L181.097745,159.306689 Z" class="pencil" fill="#E5D8B9"></path>
-								<polygon class="pencil" stroke="none" fill="#2B3234" points="179.875 161.05531 178.625 161.05531 179.25 162.011062"></polygon>
-								<rect class="pencil" fill="#F9D57B" x="177" y="140.745575" width="4.5" height="17.920354" rx="0.75"></rect>
-								<rect class="pencil" fill="#AFCFD7" x="177" y="138.356195" width="4.5" height="2.38938053"></rect>
-								<rect class="pencil" fill="#DAA5C1" x="177" y="135.25" width="4.5" height="3.10619469" rx="0.75"></rect>
+								<g u when-writing-swivel="a:[translateY:0px:-15px:250:easeOutQuad:250:i:a]">
+									<path d="M181.097745,159.306689 C181.319904,158.952807 181.161769,158.665929 180.756917,158.665929 L177.743083,158.665929 C177.33269,158.665929 177.176554,158.947165 177.402255,159.306689 L179.25,162.25 L181.097745,159.306689 Z" class="pencil" fill="#E5D8B9"></path>
+									<polygon class="pencil" stroke="none" fill="#2B3234" points="179.875 161.05531 178.625 161.05531 179.25 162.011062"></polygon>
+									<rect class="pencil" fill="#F9D57B" x="177" y="140.745575" width="4.5" height="17.920354" rx="0.75"></rect>
+									<rect class="pencil" fill="#AFCFD7" x="177" y="138.356195" width="4.5" height="2.38938053"></rect>
+									<rect class="pencil" fill="#DAA5C1" x="177" y="135.25" width="4.5" height="3.10619469" rx="0.75"></rect>
+								</g>
 							</g>
 							<g class="pen" stroke="#7872E3" stroke-width="0.75" fill="#2B3234"
 								u init-with="p:[op:0, tro:left top]"
-								when-shelf-enter="a:[bounceIn-subtle:400:linear:800:1:f]">
+								when-shelf-enter="a:[bounceIn-subtle:400:linear:800:1:f]"
+								when-writing-swivel="p:[tro:center bottom] | a:[rotate:0deg:-15deg:250:easeOutQuad:250:i:a]">
 								<path d="M178.334121,154.524791 L178.764069,156.963146 L177.131361,157.251037 L176.70173,154.814478 C176.093371,154.620105 175.614306,154.103064 175.495826,153.431133 L174.489493,147.723933 L177.988152,147.107025 L178.994485,152.814225 C179.112609,153.484139 178.837263,154.133622 178.334121,154.524791 L178.334121,154.524791 Z" class="pen"></path>
 								<path d="M173.716281,146.066667 L172.003704,136.354165 C171.78794,135.130503 172.596551,133.965107 173.828845,133.74782 L173.828845,133.74782 C175.052607,133.532038 176.220367,134.353582 176.435339,135.572748 L178.147915,145.28525 L173.716281,146.066667 L173.716281,146.066667 Z" class="pen"></path>
 								<path d="M174.798617,147.925655 C174.394458,147.996919 174.008634,147.724683 173.937694,147.322368 L173.672463,145.818164 L178.104098,145.036747 L178.369329,146.540951 C178.440645,146.945402 178.165365,147.332007 177.766663,147.402309 L174.798617,147.925655 L174.798617,147.925655 Z" class="pen"></path>
@@ -356,7 +359,8 @@
 							</g>
 							<g class="brush" stroke-width="0.75"
 								u init-with="p:[op:0, tro:center top]"
-								when-shelf-enter="a:[bounceIn-subtle:600:easeOutCirc:1000:1:f]" >
+								when-shelf-enter="a:[bounceIn-subtle:600:easeOutCirc:1000:1:f]"
+								when-writing-swivel="p:[tro:center bottom] | a:[rotate:0deg:15deg:250:easeOutQuad:250:i:a]">
 								<path d="M183.63323,153.766072 C183.453633,153.839538 183.279173,153.927088 183.117292,154.045362 C182.00376,154.85893 181.670304,156.506878 182.357913,157.797465 C182.931275,158.873179 182.88741,159.471146 182.183873,160.166891 C182.082593,160.266977 182.054852,160.418133 182.114674,160.542775 C182.174751,160.667453 182.308812,160.73763 182.448596,160.717781 C183.057482,160.629905 183.793856,160.29659 184.469109,159.803236 C185.127876,159.321928 185.682241,158.721792 186.029957,158.112985 C186.670959,156.990884 186.801833,155.61091 186.355122,154.678797 C186.277572,154.516938 186.183727,154.372782 186.076724,154.245597 L183.63323,153.766072 L183.63323,153.766072 Z" class="brush" stroke="#F6C64E" fill="#2C1F13"></path>
 								<path d="M182.538424,157.902829 C183.032338,158.939784 182.982598,159.522577 182.341129,160.212132 C182.248785,160.311328 182.221317,160.458941 182.272632,160.579208 C182.324174,160.699506 182.442846,160.765457 182.568217,160.74368 C183.11435,160.647449 183.778821,160.310082 184.391439,159.818019 C184.989098,159.33797 185.495469,158.744096 185.817165,158.145414 C186.410196,157.041971 184.697722,159.405253 183.69005,158.486482 C183.565127,158.372581 181.946102,156.658739 182.538424,157.902829 L182.538424,157.902829 Z M185.253651,157.702647 C185.444316,157.743174 185.648484,157.542656 185.709675,157.254778 C185.770865,156.9669 185.665906,156.700675 185.475241,156.660148 C185.284577,156.619621 185.080408,156.820138 185.019218,157.108017 C184.958027,157.395895 185.062987,157.66212 185.253651,157.702647 L185.253651,157.702647 Z M184.316716,157.866695 C184.412049,157.886959 184.505866,157.825595 184.526262,157.729636 C184.546659,157.633676 184.485912,157.539459 184.39058,157.519195 C184.295248,157.498932 184.201431,157.560296 184.181034,157.656255 C184.160637,157.752214 184.221384,157.846432 184.316716,157.866695 L184.316716,157.866695 Z" class="brush" stroke="none" fill="#F25A5B"></path>
 								<path d="M185.07704,144.953109 L185.655249,142.232854 C185.784643,141.624102 186.040772,140.640348 186.224076,140.06672 C186.224076,140.06672 187.931724,134.300692 188.920333,134.510828 C189.908942,134.720963 189.123702,140.683054 189.123702,140.683054 C189.053502,141.294976 188.893049,142.278178 188.762306,142.893279 L188.184097,145.613534 C187.642433,148.161866 185.994184,153.138453 185.994184,153.138453 L184.016966,152.718182 C184.016966,152.718182 184.535376,147.501441 185.07704,144.953109 L185.07704,144.953109 Z" class="brush" stroke="#F6C64E" fill="#A17143"></path>
@@ -369,28 +373,36 @@
 					</g>
 					<g class="polaroids"
 						u init-with="p:[tro:300px 225px]"
+						when-photo-init="s:[photo-fade:public:3000]"
 						when-transition-start="a:[scale:1:0:1000:easeOutExpo:0:1:f]">
-						<g class="polaroid-cosmic" u init-with="p:[op:0, tro:left top]"
-							when-photo-init="a:[bounceIn-rotate-subtle:1000:linear:600:1:f]">
+						<g class="polaroid-cosmic"
+							u init-with="p:[op:0, tro:left top]"
+							when-photo-init="a:[bounceIn-rotate-subtle:1000:linear:600:1:f]"
+							when-photo-fade="a:[skewY:0deg:10deg:900:easeInOutExpo:0:i:a, skewX:0deg:-5deg:900:easeInOutExpo:0:i:a]">
 							<rect class="polaroid-cosmic-back" stroke="#55607A" stroke-width="2" fill="#F1F1F1" x="221" y="216" width="27" height="28"></rect>
-							<rect class="polaroid-cosmic-front" stroke="#764C6E" fill="#764C6E" x="225" y="220" width="19" height="16"></rect>
+							<rect class="polaroid-cosmic-front" stroke="#764C6E" fill="#764C6E" x="225" y="220" width="19" height="16"
+								u when-photo-fade="a:[fill:#764C6E:#EC6756:2000:easeInOutSine:0:i:a, stroke:#764C6E:#EC6756:2000:easeInOutSine:0:i:a]:delay-150"></rect>
 						</g>
 						<g class="polaroid-olive"
-							u init-with="p:[transform:translateX(-38px) translateY(32px)]"
-							when-photo-init="a:[translateX:-38px:0px:500:easeInQuint:800:1:f, translateY:32px:0px:500:easeInQuint:800:1:f]">
+							u init-with="p:[transform:translateX(-38px) translateY(32px), tro:center top]"
+							when-photo-init="a:[translateX:-38px:0px:500:easeInQuint:800:1:f, translateY:32px:0px:500:easeInQuint:800:1:f]"
+							when-photo-fade="a:[skewY:10deg:0deg:1000:easeInOutExpo:0:i:a, skewX:-5deg:0deg:1000:easeInOutExpo:0:i:a]">
 							<g u init-with="p:[op:0, tro:center top]"
 								when-photo-init="a:[bounceIn-rotate-subtle:1000:linear:800:1:f]">
 								<rect class="polaroid-olive-back" stroke="#55607A" stroke-width="2" fill="#F1F1F1" x="259" y="184" width="27" height="28"></rect>
-								<rect class="polaroid-olive-front" stroke="#9F8B65" fill="#9F8B65" x="263" y="188" width="19" height="16"></rect>
+								<rect class="polaroid-olive-front" stroke="#9F8B65" fill="#9F8B65" x="263" y="188" width="19" height="16"
+									u when-photo-fade="a:[fill:#9F8B65:#8C494D:2000:easeInOutSine:0:i:a, stroke:#9F8B65:#8C494D:2000:easeInOutSine:0:i:a]:delay-100"></rect>
 							</g>
 						</g>
 						<g class="polaroid-rose"
-							u init-with="p:[transform:translateX(-98px) translateY(27px)]"
-							when-photo-init="a:[translateX:-98px:0px:500:easeInQuint:900:1:f, translateY:27px:0px:500:easeInQuint:900:1:f]">
+							u init-with="p:[transform:translateX(-98px) translateY(27px), tro:right top]"
+							when-photo-init="a:[translateX:-98px:0px:500:easeInQuint:900:1:f, translateY:27px:0px:500:easeInQuint:900:1:f]"
+							when-photo-fade="a:[skewY:0deg:5deg:1000:easeInOutExpo:0:i:a, skewX:0deg:-10deg:1000:easeInOutExpo:0:i:a]">>
 							<g u init-with="p:[op:0, tro:right top]"
 								when-photo-init="a:[bounceIn-rotate-cc-subtle:1000:linear:900:1:f]">
 								<rect class="polaroid-rose-back" stroke="#55607A" stroke-width="2" fill="#F1F1F1" x="319" y="189" width="27" height="28"></rect>
-								<rect class="polaroid-rose-front" stroke="#E6919E" fill="#E6919E" x="323" y="193" width="19" height="16"></rect>
+								<rect class="polaroid-rose-front" stroke="#E6919E" fill="#E6919E" x="323" y="193" width="19" height="16"
+									u when-photo-fade="a:[fill:#E6919E:#6B99A1:2000:easeInOutSine:0:i:a, stroke:#E6919E:#6B99A1:2000:easeInOutSine:0:i:a]"></rect>
 							</g>
 						</g>
 					</g>
