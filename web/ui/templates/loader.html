@@ -4,7 +4,9 @@
 		init-with="p:[op:0]"
         on-init="p:[op:1]">
         <div class="ui-guru-scene"
-			u when-portal-open="a:[opacity:1:0.75:1000:linear:0:1:f]">
+			u init-with="p:[tro:center center]"
+			when-portal-open="a:[opacity:1:0.75:1000:linear:0:1:f]"
+			when-transition-start="a:[scale:1:0:1000:easeOutExpo:0:1:f]">
 			<svg width="800px" height="450px" viewBox="-100 0 800 450"
 				init-after="ui-body-init"
 				on-init="s:[scene-init:public]">
@@ -43,7 +45,7 @@
 					<g class="window">
 						<g clip-path="url(#window)"
 							u init-with="p:[op:0]"
-							when-window-init="a:[opacity:0:1:250:linear:600:1:f] | s:[time-shift:public:1500, portal-open:public:1400]">
+							when-window-init="a:[opacity:0:1:250:linear:600:1:f] | s:[time-shift:public:1500]">
 							<g>
 								<rect class="window-sky" stroke="#637074" stroke-width="2" fill="url(#night-sky-gradient)" x="439.23125" y="98.8004988" width="203.9625" height="93.6907731"></rect>
 								<path d="M618.07941,155.015196 C614.064133,159.313233 608.345831,162 602,162 C589.849736,162 580,152.150264 580,140 C580,127.849736 589.849736,118 602,118 C608.668612,118 614.644234,120.967044 618.678762,125.653029 C617.277178,125.228345 615.790255,125 614.25,125 C605.827658,125 599,131.827658 599,140.25 C599,148.672342 605.827658,155.5 614.25,155.5 C615.572545,155.5 616.855769,155.331645 618.07941,155.015196 L618.07941,155.015196 Z" class="window-moon" stroke-opacity="0.5" stroke="#FFFFFF" stroke-width="2" fill="#FFFFFF">
@@ -135,18 +137,27 @@
 								when-monitor-init="a:[opacity:0:1:100:linear:750:1:f, scaleY:0:1:400:easeOutBack:750:1:f]"></path>
 						</g>
 						<g class="mon-ui" stroke="#696269" stroke-width="2"
-							u init-with="p-op">
-							<rect class="ui-br-1" fill="#A59E9E" x="420" y="204" width="63" height="44"></rect>
-							<rect class="ui-br-1" fill="#F1F1F1" x="420" y="204" width="63" height="6"></rect>
-							<rect class="ui-br-2" fill="#A59E9E" x="470" y="220" width="47" height="37"></rect>
-							<rect class="ui-br-2" fill="#F1F1F1" x="470" y="220" width="47" height="6"></rect>
-							<rect class="ui-toolbar" fill="#A59E9E" x="389" y="206" width="15" height="45"></rect>
-							<path d="M396.5,207 L396.5,236.655556" class="ui-toolbar"></path>
-							<path d="M390.5,237 L402.5,237" class="ui-toolbar"></path>
-							<path d="M390.5,231 L402.5,231" class="ui-toolbar"></path>
-							<path d="M390.5,225 L402.5,225" class="ui-toolbar"></path>
-							<path d="M390.5,219 L402.5,219" class="ui-toolbar"></path>
-							<path d="M390.5,213 L402.5,213" class="ui-toolbar"></path>
+							u when-monitor-init="s:[ui-init:public:1000]">
+							<g u init-with="p:[op:0, tro:center center]"
+								when-ui-init="a:[opacity:0:1:100:linear:100:1:f, scale:0:1:250:easeOutBounce:100:1:f]">
+								<rect class="ui-br-1" fill="#A59E9E" x="420" y="204" width="63" height="44"></rect>
+								<rect class="ui-br-1" fill="#F1F1F1" x="420" y="204" width="63" height="6"></rect>
+							</g>
+							<g u init-with="p:[op:0, tro:center center]"
+								when-ui-init="a:[opacity:0:1:100:linear:0:1:f, scale:0:1:250:easeOutBounce:0:1:f]">
+								<rect class="ui-br-2" fill="#A59E9E" x="470" y="220" width="47" height="37"></rect>
+								<rect class="ui-br-2" fill="#F1F1F1" x="470" y="220" width="47" height="6"></rect>
+							</g>
+							<g u init-with="p:[op:0, tro:center center]"
+								when-ui-init="a:[opacity:0:1:100:linear:200:1:f, scale:0:1:250:easeOutBounce:200:1:f]">
+								<rect class="ui-toolbar" fill="#A59E9E" x="389" y="206" width="15" height="45"></rect>
+								<path d="M396.5,207 L396.5,236.655556" class="ui-toolbar"></path>
+								<path d="M390.5,237 L402.5,237" class="ui-toolbar"></path>
+								<path d="M390.5,231 L402.5,231" class="ui-toolbar"></path>
+								<path d="M390.5,225 L402.5,225" class="ui-toolbar"></path>
+								<path d="M390.5,219 L402.5,219" class="ui-toolbar"></path>
+								<path d="M390.5,213 L402.5,213" class="ui-toolbar"></path>
+							</g>
 						</g>
 					</g>
 					<g class="outlet" stroke="#FFFFFF" stroke-width="2" opacity="0.4">
@@ -397,6 +408,7 @@
         </div>
         <div class="loader-portal-inside"
 			u init-with="p:[tr:scale(0), tro:50% 90%]"
+			when-window-init="s:[portal-open:public:1400]"
             when-portal-open="a:[scale:0:1:250:easeInOutBack:100:1:f]">
             <div class="portal"
                 u init-with="p:[tr:translateY(37%) translateZ(25px) rotateX(75deg)]"
@@ -405,10 +417,8 @@
                     <svg width="200px" height="200px" viewBox="0 0 400 400">
                         <circle cx="200" cy="200" r="192"
                             stroke="#55A4B7" stroke-width="16" fill="#2B3234" stroke-linecap="round" stroke-linejoin="round"
-							u init-with="p:[s:#55A4B7]"
-                            when-portal-hover="a:[portal-progress-color:2000:linear:0:1:f] | s:[portal-complete:public:2000, portal-transform:public:4000]">
-							<!-- draw:init -->
-							<!-- draw:0%:100%:2000:0:1:f -->
+							u init-with="p:[s:#55A4B7, sda:1206.38, sdo:1206.38]"
+                            when-portal-hover="a:[portal-progress-color:2000:linear:0:1:f, stroke-dashoffset:1206.38:0:2000:linear:0:1:f] | s:[portal-complete:public:2000, portal-transform:public:4000]">
                         </circle>
                     </svg>
                 </div>
