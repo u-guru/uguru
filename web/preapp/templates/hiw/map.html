@@ -39,35 +39,28 @@
         <path d="M88.9591837,503.759104 L88.9591837,544.543417 L181.285714,544.543417 L181.285714,497.204482 L88.9591837,503.759104 L88.9591837,503.759104 L88.9591837,503.759104 Z M159.15102,500.289316 L159.15102,544.29892 M135.477551,502.172469 L135.477551,544.309324 M111.804082,503.584834 L111.804082,544.317127" id="lab-maroon-use"></path>
 	</defs>
 	<rect class="regular-sky" fill="#B6E2F7" x="0" y="0" width="864" height="286"></rect>
-	<g class="night-sky-container">
-		<rect class="regular-sky" fill="#B6E2F7" x="0" y="0" width="864" height="286"
-			u init-with="p:[op:0]"
-			when-time-shift="a:[hiw-night-shift:12000:linear:0:i:f]"></rect>
-		<rect class="night-sky" fill="url(#night-sky-gradient)" x="0" y="0" width="864" height="286" fill-opacity="0.25"
-			u init-with="p:[op:0]"
-			when-time-shift="a:[hiw-night-shift:12000:linear:0:i:f]"></rect>
+	<g class="night-sky-container"
+		u init-with="p:[op:0]"
+		when-time-shift="a:[hiw-night-shift:12000:linear:0:i:f]">
+		<rect class="regular-sky" fill="#B6E2F7" x="0" y="0" width="864" height="286"></rect>
+		<rect class="night-sky" fill="url(#night-sky-gradient)" x="0" y="0" width="864" height="286" opacity="0.25"></rect>
 	</g>
-	<g class="sunset-sky-container">
-		<rect class="transition-sky" fill="#F4E3F6" x="0" y="0" width="864" height="286"
-			u init-with="p:[op:0]"
-			when-time-shift="a:[hiw-sunset-shift:12000:linear:0:i:f]"></rect>
-		<rect class="sunset-sky" fill="url(#sunset-sky-gradient)" x="0" y="0" width="864" height="286" fill-opacity="0.25"
-			u init-with="p:[op:0]"
-			when-time-shift="a:[hiw-sunset-shift:12000:linear:0:i:f]"></rect>
+	<g class="sunset-sky-container"
+		u init-with="p:[op:0]"
+		when-time-shift="a:[hiw-sunset-shift:12000:linear:0:i:f]">
+		<rect class="transition-sky" fill="#F4E3F6" x="0" y="0" width="864" height="286"></rect>
+		<rect class="sunset-sky" fill="url(#sunset-sky-gradient)" x="0" y="0" width="864" height="286" opacity="0.25"></rect>
 	</g>
-	<g class="sunrise-sky-container">
-		<rect class="transition-sky" fill="#F4E3F6" x="0" y="0" width="864" height="286"
-			u init-with="p:[opacity:0]"
-			when-time-shift="a:[hiw-sunset-shift:12000:linear:0:200:f]"></rect>
-		<rect class="sunrise-sky" fill="url(#sunrise-sky-gradient)" x="0" y="0" width="864" height="286" fill-opacity="0.25"
-			u init-with="p:[opacity:0]"
-			when-time-shift="a:[hiw-sunset-shift:12000:linear:0:200:f]"></rect>
+	<g class="sunrise-sky-container"
+		u init-with="p:[opacity:0]"
+		when-time-shift="a:[hiw-sunset-shift:12000:linear:0:200:f]">
+		<rect class="transition-sky" fill="#F4E3F6" x="0" y="0" width="864" height="286"></rect>
+		<rect class="sunrise-sky" fill="url(#sunrise-sky-gradient)" x="0" y="0" width="864" height="286" opacity="0.25"></rect>
 	</g>
-	<g class="day-sky-container">
-		<rect class="regular-sky" fill="#B6E2F7" x="0" y="0" width="864" height="286"
-			u when-time-shift="a:[hiw-day-shift:12000:linear:0:i:f]:delay-1000"></rect>
-		<rect class="day-sky" fill="url(#day-sky-gradient)" x="0" y="0" width="864" height="286" fill-opacity="0.25"
-			u when-time-shift="a:[hiw-day-shift:12000:linear:0:i:f]:delay-1000"></rect>
+	<g class="day-sky-container"
+		u when-time-shift="a:[hiw-day-shift:12000:linear:0:i:f]:delay-1000">
+		<rect class="regular-sky" fill="#B6E2F7" x="0" y="0" width="864" height="286"></rect>
+		<rect class="day-sky" fill="url(#day-sky-gradient)" x="0" y="0" width="864" height="286" opacity="0.25"></rect>
 	</g>
 	<rect class="map-terrain-main" fill="#8CD07E" x="0" y="194" width="864" height="378"></rect>
 	<rect class="clock-tower-base" fill="#D3B3A8" x="266" y="301" width="335" height="154"></rect>
@@ -109,18 +102,17 @@
 				u init-with="p:[transform:translateY(2px)]"
 				when-hiw-enter="a:[translateY:2px:-2px:1500:linear:0:i:a]:delay-300"></path>
 			<path d="M759.994021,59.6971228 C762.228593,58.9351368 743.818335,72.7486566 759.994021,72.7486568 C766.36147,69.6758419 773.851143,59.2504463 775.234329,59.7300457 C776.694078,57.4970566 760.574845,73.7496349 786.820779,76.2008061 C804.513876,71.7202153 805.479742,57.6793824 817.710058,59.440936 C818.635491,59.4559756 799.12902,69.3359444 811.726688,74.2305916 C820.568,77.3174438 831.842499,72.0158125 830.453175,73.4021627 C827.767408,76.0821823 822.87579,77.875 817.286723,77.875 C814.17053,77.875 788.825819,80.7375494 777.993272,80.7375494 C767.160725,80.7375494 753.659358,76.9375 750.749102,76.9375 C745.364822,76.9375 741,74.3169445 741,71.0843254 C741,69.4793796 742.075916,68.0253056 743.818335,66.9679067 C745.585428,65.8955342 738.075269,73.7325445 746.381047,72.09375 C749.341004,67.9454955 749.138215,65.3511378 752.722585,65.3511377 C753.789836,62.9329558 756.452906,60.904638 759.994021,59.6971228 Z" class="map-cloud-1-detail" fill="#FBFBFB"
-				init-with="p:[transform:translateY(2px)]"
+				u init-with="p:[transform:translateY(2px)]"
 				when-hiw-enter="a:[translateY:2px:-2px:1500:linear:0:i:a]:delay-800"></path>
 		</g>
 	</g>
 	<g class="map-thumbnail-balloons">
 		<g class="map-thumbnail-balloon-baking"
-			init-with="p:[op:0, tro:center top]"
-			when-hiw-micro-enter="p:[opacity:0:1:1000:easeOutSine]:delay-500"
-			when-hiw-people-enter="p:[transform:rotate(-3deg):rotate(3deg):3000:easeInOutSine:^:200+0:a]">
-			<!--  a:[hiw-sway:set:(dur:3000ms#func:cubic-bezier(1#0.09#0.33#0.92)#aic:infinite#dir:alternate):in:delay-700] -->
-			<g init-with="p:[transform:translateY(3px)]"
-				when-hiw-enter="p:[transform:translateY(3px):translateY(-3px):3000:linear:^:200+1270:a]">
+			u init-with="p:[op:0, tro:center top]"
+			when-hiw-micro-enter="a:[opacity:0:1:1000:easeOutSine:0:1:f]:delay-500"
+			when-hiw-people-enter="a:[rotate:-3deg:3deg:3000:(1,0.09,0.33,0.92):0:i:a]">
+			<g u init-with="p:[transform:translateY(3px)]"
+				when-hiw-enter="a:[translateY:3px:-3px:3000:linear:1270:i:a]">
 				<!-- when-hiw-micro-enter="a:[hiw-cloud-hover:set:(dur:1500ms#func:linear#aic:infinite#dir:alternate):in:delay-1270]" -->
 				<path d="M477,99.4396552 C477,95.7498217 478.208699,92.7586207 481.285714,92.7586207 C484.362729,92.7586207 486,95.7498217 486,99.4396552" class="map-thumbnail-balloon-arms" stroke="#F25A5B" stroke-width="2.06896552"></path>
 				<path d="M484.285714,95.3725037 C484.285714,93.8286995 483.035377,92.5771989 481.5,92.5771989 L481.5,92.5771989 C479.961492,92.5771989 478.714286,93.8224221 478.714286,95.3725037 L478.714286,99.0150401 C478.714286,100.558844 479.964623,101.810345 481.5,101.810345 L481.5,101.810345 C483.038508,101.810345 484.285714,100.565122 484.285714,99.0150401 L484.285714,95.3725037 L484.285714,95.3725037 Z" class="map-thumbnail-balloon-torso" stroke="#F25A5B" stroke-width="0.689655172" fill="#DA6869"></path>
@@ -137,11 +129,10 @@
 			</g>
 		</g>
 		<g class="map-thumbnail-balloon-hh"
-			init-with="p:[op:0, tro:center top]"
-			when-hiw-micro-enter="p:[opacity:0:1:1000:easeOutSine]:delay-960"
-			when-hiw-people-enter="p:[transform:rotate(-3deg):rotate(3deg):3500:easeInOutSine:^:200+0:a]">
-			<g u
-				when-hiw-enter="a:[hiw-cloud-hover:set:(dur:1500#func:linear#aic:infinite#ad:alternate):in:delay-640]">
+			u init-with="p:[op:0, tro:center top]"
+			when-hiw-micro-enter="a:[opacity:0:1:1000:easeOutSine:0:1:f]:delay-960"
+			when-hiw-people-enter="a:[rotate:-3deg:3deg:3500:easeInOutSine:0:i:a]">
+			<g u when-hiw-enter="a:[hiw-cloud-hover:1500:linear:0:i:a]:delay-640">
 				<g init-with="p:[op:0.8]">
 					<path d="M579.5,107.347403 C588.78926,107.347403 605,87.2801098 605,75.7062774 C605,64.132445 593.583261,54.75 579.5,54.75 C565.416739,54.75 554,64.132445 554,75.7062774 C554,87.2801098 570.21074,107.347403 579.5,107.347403 Z" class="thumbnail-hh-hotair-envelope" stroke="#2D278D" stroke-width="0.701298701" fill="#7872E3"></path>
 					<path d="M579.25509,106.240666 C579.18115,106.332489 579.106824,106.42426 579.03211,106.51598 C579.070024,106.534126 579.107974,106.552143 579.14596,106.570028 C589.816377,101.546064 600.39101,88.3296976 600.39101,77.953125 C600.39101,54.9837662 582.991166,54.9837662 579.03211,54.9837662 C582.991166,56.7360998 589.607153,64.0467735 589.607153,77.953125 C589.607153,88.7694333 586.127659,97.6433652 579.394901,106.0664 C572.539069,97.5736998 568.994866,88.6357786 568.994866,77.7193588 C568.994866,63.8130073 575.610853,56.1389002 579.569909,54.75 C575.610853,56.1389002 558.211009,54.75 558.211009,77.7193588 C558.211009,88.030782 568.653273,101.146452 579.25509,106.240666 L579.25509,106.240666 Z" class="thumbnail-hh-hotair-panels" stroke="#3F39A1" stroke-width="0.701298701" fill="#FFFFFF"></path>
@@ -154,11 +145,11 @@
 			</g>
 		</g>
 		<g class="map-thumbnail-balloon-academic"
-			init-with="p:[op:0, tro:center top]"
-			when-hiw-micro-enter="p:[opacity:0:1:1000:easeOutSine]:delay-1550"
-			when-hiw-people-enter="p:[transform:rotate(-3deg):rotate(3deg):3000:easeInOutSine:^:200+0:a]">
-			<g init-with="p:[transform:translateY(3px)]"
-				when-hiw-enter="p:[transform:translateY(3px):translateY(-3px):3000:easeInOutCubic:^:200+200:a]">
+			u init-with="p:[op:0, tro:center top]"
+			when-hiw-micro-enter="a:[opacity:0:1:1000:easeOutSine:0:1:f]:delay-1550"
+			when-hiw-people-enter="a:[rotate:-3deg:3deg:3000:easeInOutSine:0:i:a]">
+			<g u init-with="p:[transform:translateY(3px)]"
+				when-hiw-enter="a:[translateY:3px:-3px:3000:easeInOutCubic:200:i:a]">
 				<!-- when-hiw-enter="a:[hiw-cloud-hover:set:(dur:1500#func:linear#aic:infinite#ad:alternate):in:delay-200]" -->
 				<g init-with="p:[op:0.3]">
 					<path d="M528.2,112.339045 C531.915704,112.339045 538.4,104.192916 538.4,99.4946275 C538.4,94.7963391 533.833304,90.9876238 528.2,90.9876238 C522.566696,90.9876238 518,94.7963391 518,99.4946275 C518,104.192916 524.484296,112.339045 528.2,112.339045 Z" class="thumbnail-academic-hotair-envelope" stroke="#AD377C" stroke-width="0.5" fill="#E6389B"></path>
@@ -195,16 +186,16 @@
 	</g>
 
 	<g class="map-student-union"
-		init-with="p:[transform:scaleY(0) translateZ(0), tro:center bottom]"
-		when-hiw-enter="p:[transform:scaleY(0) translateZ(0):scaleY(1) translateZ(0):500:easeOutBack easeOutSine]:delay-800">
+		u init-with="p:[transform:scaleY(0) translateZ(0), tro:center bottom]"
+		when-hiw-enter="a:[scaleY:0:1:500:easeOutBack:800:1:f, translateZ:0:0:500:linear:800:1:f]">
 		<path d="M569.91471,246.038098 C567.684562,241.254125 563.291829,238 558.237486,238 C550.926624,238 545,244.808349 545,253.206873 C545,257.528912 552.011437,259.626748 558.817874,259.500381 C564.385536,262.822539 580.827474,261.972061 580.827474,256.948948 C580.827474,251.211823 576.026076,246.505309 569.91471,246.038098 L569.91471,246.038098 Z" class="map-student-union-bush-right" stroke="#57984F" fill="#74B66C"
-			init-with="p:[op:0, tro:center center]"
+			u init-with="p:[op:0, tro:center center]"
 			when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-900"
-			when-hiw-micro-enter="a:[hiw-shake-small:set:(dur:1000ms#func:linear#aic:infinite#ad:alternate):in]:delay-3000"></path>
+			when-hiw-micro-enter="a:[hiw-shake-small:1000:linear:0:i:a]:delay-3000"></path>
 		<path d="M294.912764,245.038098 C297.142912,240.254125 301.535645,237 306.589988,237 C313.90085,237 319.827474,243.808349 319.827474,252.206873 C319.827474,256.528912 312.816037,258.626748 306.0096,258.500381 C300.441938,261.822539 284,260.972061 284,255.948948 C284,250.211823 288.801398,245.505309 294.912764,245.038098 L294.912764,245.038098 L294.912764,245.038098 Z" class="map-student-union-bush-left" stroke="#57984F" fill="#74B66C"
-			init-with="p:[op:0, tro:center center]"
-			when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-1000"
-			when-hiw-micro-enter="a:[hiw-shake-small:set:(dur:1000ms#func:linear#aic:infinite#ad:alternate):in]:delay-3000"></path>
+			u init-with="p:[op:0, tro:center center]"
+			when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-1000"
+			when-hiw-micro-enter="a:[hiw-shake-small:1000:linear:0:i:a]:delay-3000"></path>
 		<rect class="map-student-union-19" stroke="#435365" stroke-width="1.1328976" fill="#ADC5C6" x="310.702538" y="158.357278" width="243.769921" height="100.331226"></rect>
 		<rect class="map-student-union-18" stroke="#435365" stroke-width="1.1328976" fill="#FFFFFF" x="310.690245" y="202.642722" width="243.61951" height="57.7003781"></rect>
 		<rect class="map-student-union-17" stroke="#435365" stroke-width="1.1328976" fill="#E6E6E6" x="302.302713" y="250.483932" width="260.394575" height="9.85916824"></rect>
@@ -351,7 +342,7 @@
 	</g>
 	<g class="ppl-musician"
 		init-with="p:[op:0, tro:center bottom, transform:none]"
-		when-hiw-people-enter="p:[opacity:0:1:500:easeInOutSine]:delay-1000"
+		when-hiw-people-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-1000"
 		when-hiw-details-enter="p:[transform:scaleY(1) rotate(0deg) translateZ(0):scaleY(1.1) rotate(-10deg) translateZ(0):500:linear linear:^:200+1000:a]">
 		<!-- a:[ppl-musician-rock:set:(dur:500ms#func:linear#aic:infinite#ad:alternate):in:delay-1000] -->
 		<path d="M400,364.310345 C403.589851,364.310345 405.908203,368.318966 407.092773,370.952149" class="ppl-musician-arm-left" stroke="#1B2C4A" stroke-width="2"></path>
@@ -605,7 +596,7 @@
 		<rect class="gym-invisible-container" x="9" y="276" width="227" height="150"></rect>
 		<g class="map-gym-elm-2"
 			init-with="p-op"
-			when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-1000">
+			when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-1000">
 			<rect class="gym-elm-2-trunk" stroke="#6E5E56" stroke-width="0.833333333" fill="#342A41" x="187.415172" y="395.333333" width="2.1" height="16.5517241"></rect>
 			<ellipse class="gym-elm-2-leaves" stroke="#57984F" stroke-width="0.833333333" fill="#74B66C" cx="188.255172" cy="391.791667" rx="10.5" ry="9.79166667"></ellipse>
 			<path d="M194.079845,399.951833 C192.413117,400.982459 190.409943,401.583333 188.255172,401.583333 C182.456182,401.583333 177.755172,397.23136 177.755172,391.862928 C177.755172,388.710337 179.376353,385.90828 181.889041,384.132254 C180.106061,385.903134 179.015172,388.279074 179.015172,390.890887 C179.015172,396.366688 183.810202,400.805701 189.725172,400.805701 C191.275762,400.805701 192.749388,400.500648 194.079845,399.951833 L194.079845,399.951833 Z" class="gym-elm-2-shadow" stroke="#57984F" stroke-width="0.833333333" fill="#57984F"></path>
@@ -1198,7 +1189,7 @@
 	</g>
 	<g class="pine-back-4"
 		init-with="p-op"
-		when-hiw-enter="p:[opacity:0:1:500:easeInOutSine]:delay-1000 | t:[on-enter:children]:delay-1000">
+		when-hiw-enter="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-1000 | t:[on-enter:children]:delay-1000">
 		<rect class="pine-back-4-trunk" stroke="#6E5E56" fill="#82644F" x="754.777778" y="223.777778" width="2.77777778" height="22.0689655"></rect>
 		<polygon class="pine-back-4-bottom-base" stroke="#497A43" fill="#57984F" points="756.015028 206 769.474501 240.444444 742.555556 240.444444"></polygon>
 		<polygon class="pine-back-4-bottom-shadow" stroke="#497A43" fill="#497A43" points="746.318305 240.444444 757.833333 240.444444 742.429416 240.444444 755.888889 206 757.833333 210.976072 766.901185 234.595388"></polygon>
