@@ -725,24 +725,24 @@
 			<path d="M117.634976,456.92842 C120.115377,451.973582 124.141158,451.982085 126.617303,456.92842 L131.094448,465.871944 C133.57485,470.826781 131.554543,476.818434 126.543614,479.197955 C126.543614,479.197955 123.188329,481.004978 122.126139,481.004978 C121.06395,481.004978 117.690672,479.189648 117.690672,479.189648 C112.706851,476.78932 110.681686,470.818278 113.15783,465.871944 L117.634976,456.92842 Z" class="tri-4-bottom-base" stroke="#497A43" stroke-width="2" fill="#57984F"></path>
 		</g>
 		<g class="map-lab-brown"
-			init-with="p:[transform:scaleY(0) translateZ(0), tro:center bottom]"
-			when-hiw-enter="a:[scaleY:0:1:500:easeOutBack, translateZ:0:0:500:easeOutSine]:delay-600">
+			u init-with="p:[transform:scaleY(0) translateZ(0), tro:center bottom]"
+			when-hiw-enter="a:[scaleY:0:1:500:easeOutBack:0:1:f]:delay-600">
 			<polygon class="lab-brown-building" stroke="#7C8181" fill="#C3C3C3" points="137.75102 446.876751 137.75102 499.896359 244.281633 499.896359 244.281633 438.355742"></polygon>
 			<path d="M144.853061,444.910364 L144.853061,485.694678 L237.179592,485.694678 L237.179592,438.355742 L144.853061,444.910364 L144.853061,444.910364 Z M215.044898,441.440576 L215.044898,485.45018 M191.371429,443.323729 L191.371429,485.460584 M167.697959,444.736094 L167.697959,485.468387" class="lab-brown-windows" stroke="#BBBBBB" fill="#94D8F2"></path>
 			<g u init-with="p-op"
 				when-time-shift="a:[hiw-night-shift:12000:linear:0:i:f]:delay-1000">
 				<path d="M144.853061,444.910364 L144.853061,485.694678 L237.179592,485.694678 L237.179592,438.355742 L144.853061,444.910364 L144.853061,444.910364 L144.853061,444.910364 Z M215.044898,441.440576 L215.044898,485.45018 M191.371429,443.323729 L191.371429,485.460584 M167.697959,444.736094 L167.697959,485.468387" class="lab-brown-windows-glow-blue" fill="#28C7FE" fill-opacity="0.5" filter="url(#glow-blue)"
-					init-with="p:[op:0, tro:center center]"
-					when-hiw-micro-enter="p:[transform:scale(0.5):scale(1):5:easeOutExpo:^:200+7200, opacity:0:1:50:easeOutExpo:^:200+7200]:delay-4000 | s:[lab-brown-glow:public]:delay-4000"
-					when-lab-brown-glow="p:[transform:scale(1):scale(0.5):500:easeOutExpo:^:200+7200, opacity:1:0:500:easeOutExpo:^:200+7200]:delay-1000"></path>
+					u init-with="p:[op:0, tro:center center]"
+					when-hiw-micro-enter="a:[scale:0.5:1:50:easeOutExpo:7200:i:f, opacity:0:1:50:easeOutExpo:7200:i:f]:delay-4000 | s:[lab-brown-glow:public]:delay-4000"
+					when-lab-brown-glow="a:[scale:1:0.5:500:easeOutExpo:7200:i:f, opacity:1:0:500:easeOutExpo:7200:i:f]:delay-1000"></path>
 	            <path d="M144.853061,444.910364 L144.853061,485.694678 L237.179592,485.694678 L237.179592,438.355742 L144.853061,444.910364 L144.853061,444.910364 L144.853061,444.910364 Z M215.044898,441.440576 L215.044898,485.45018 M191.371429,443.323729 L191.371429,485.460584 M167.697959,444.736094 L167.697959,485.468387" class="lab-brown-windows-glow-white" fill="#FFFFFF" filter="url(#glow-white)"
-					init-with="p:[op:0, tro:center center]"
-					when-hiw-micro-enter="p:[transform:scale(0.5):scale(1):5:easeOutExpo:^:200+7200, opacity:0:1:50:easeOutExpo:^:200+7200]:delay-4000"
-					when-lab-brown-glow="p:[transform:scale(1):scale(0.5):500:easeOutExpo:^:200+7200, opacity:1:0:500:easeOutExpo:^:200+7200]:delay-1000"></path>
+					u init-with="p:[op:0, tro:center center]"
+					when-hiw-micro-enter="a:[scale:0.5:1:5:easeOutExpo:7200:i:f, opacity:0:1:50:easeOutExpo:7200:i:f]:delay-4000"
+					when-lab-brown-glow="a:[scale:1:0.5:500:easeOutExpo:7200:i:f, opacity:1:0:500:easeOutExpo:7200:i:f]:delay-1000"></path>
 	            <g class="lab-brown-windows-glow-inside"
-					init-with="p-op"
-					when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:^:200+7200]:delay-4000"
-					when-lab-brown-glow="p:[opacity:1:0:500:easeOutExpo:^:200+7200]:delay-900">
+					u init-with="p-op"
+					when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:7200:i:f]:delay-4000"
+					when-lab-brown-glow="a:[opacity:1:0:500:easeOutExpo:7200:i:f]:delay-900">
 	                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#lab-brown-use"></use>
 	                <use fill="black" fill-opacity="1" filter="url(#glow-inside)" xlink:href="#lab-brown-use"></use>
 	                <use stroke-opacity="0.2" stroke="#E6E6E6" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" xlink:href="#lab-brown-use"></use>
@@ -753,24 +753,24 @@
 				when-time-shift="a:[hiw-night-shift:12000:linear:0:i:f]:delay-1000">
 				<polygon class="lab-brown-roof-glow" fill="#C7DBE3" opacity="0.5" points="247.162928 431.753261 246.622449 431.254902 246.622449 439.302521 247.084269 438.803981 135.818963 447.324989 136.357143 447.823529 136.357143 440.292335 135.897622 440.790694"
 					init-with="p-op"
-					when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:^:200+7200]:delay-4000"
-					when-lab-brown-glow="p:[opacity:1:0:500:easeOutExpo:^:200+7200]:delay-1000"></polygon>
+					when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:7200:i:f]:delay-4000"
+					when-lab-brown-glow="a:[opacity:1:0:500:easeOutExpo:7200:i:f]:delay-1000"></polygon>
 			</g>
 			<rect class="lab-brown-door" stroke="#7C8181" fill="#968D59" x="206.877551" y="471.966387" width="16.5714286" height="27.929972"></rect>
 			<g u init-with="p-op"
 				when-time-shift="a:[hiw-night-shift:12000:linear:0:i:f]:delay-1000">
 				<polygon class="lab-brown-door-glow" fill="#C6DBE3" opacity="0.33" points="223.44898 472.466387 222.94898 471.966387 222.94898 499.896359 223.44898 499.396359 206.877551 499.396359 207.377551 499.896359 207.377551 471.966387 206.877551 472.466387"
 					init-with="p-op"
-					when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:^:200+7200]:delay-4000"
-					when-lab-brown-glow="p:[opacity:1:0:500:easeOutExpo:^:200+7200]:delay-1000"></polygon>
+					when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:7200:i:f]:delay-4000"
+					when-lab-brown-glow="a:[opacity:1:0:500:easeOutExpo:7200:i:f]:delay-1000"></polygon>
 			</g>
 			<rect class="lab-brown-door-top" stroke="#7C8181" fill="#C3C3C3" x="204.036735" y="471.966387" width="22.2530612" height="6.62745098"></rect>
 			<g u init-with="p-op"
 				when-time-shift="a:[hiw-night-shift:12000:linear:0:i:f]:delay-1000">
 				<polygon class="lab-brown-door-top-glow" fill="#C9DCE3" points="226.289796 472.466387 225.789796 471.966387 225.789796 478.593838 226.289796 478.093838 204.036735 478.093838 204.536735 478.593838 204.536735 471.966387 204.036735 472.466387"
 					init-with="p-op"
-					when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:^:200+7200]:delay-4000"
-					when-lab-brown-glow="p:[opacity:1:0:500:easeOutExpo:^:200+7200]:delay-1000"></polygon>
+					when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:7200:i:f]:delay-4000"
+					when-lab-brown-glow="a:[opacity:1:0:500:easeOutExpo:7200:i:f]:delay-1000"></polygon>
 			</g>
 			<rect class="lab-brown-invisible-container" x="120.232653" y="418" width="142.040816" height="94.6778711"></rect>
 		</g>
