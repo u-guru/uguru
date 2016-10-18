@@ -2,7 +2,8 @@
 
 
     <!--  Stage One: Loader Dont render + import internally-->
-    <div init-after="ui-body-init" inner-src="'ui/templates/loader.html'"></div>
+	<div ng-include="root.base_url + 'ui/templates/loader.html'"</div>
+    <!-- <div init-after="ui-body-init" inner-src="'ui/templates/loader.html'"></div> -->
 
     <!--  Stage Two: Access -->
     <!-- <div init-after="ui-body-init" inner-src="'ui/templates/access.html'"></div> -->
