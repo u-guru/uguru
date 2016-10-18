@@ -18078,6 +18078,15 @@ input[type=range] {
   margin-bottom: 5px;
   background: white; }
 
+.focus-uri {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: calc(50% - 12px);
+  left: calc(50% - 12px);
+  background: url("data:image/svg+xml, %3Csvg%20width%3D%2224px%22%20height%3D%2224px%22%20viewBox%3D%220%200%2024%2024%22%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%3E%0A%20%20%20%20%3Cg%20stroke%3D%22%23000000%22%20stroke-width%3D%221%22%20fill%3D%22none%22%3E%0A%09%09%3Cpath%20d%3D%22M17%2C20%20L19.0010434%2C20%20C19.5527519%2C20%2020%2C19.5573397%2020%2C19.0010434%20L20%2C17%22%3E%3C/path%3E%0A%09%09%3Cpath%20d%3D%22M7%2C20%20L4.99895656%2C20%20C4.44724809%2C20%204%2C19.5573397%204%2C19.0010434%20L4%2C17%22%3E%3C/path%3E%0A%09%09%3Cpath%20d%3D%22M17%2C4%20L19.0010434%2C4%20C19.5527519%2C4%2020%2C4.44266033%2020%2C4.99895656%20L20%2C7%22%3E%3C/path%3E%0A%09%09%3Cpath%20d%3D%22M7%2C4%20L4.99895656%2C4%20C4.44724809%2C4%204%2C4.44266033%204%2C4.99895656%20L4%2C7%22%3E%3C/path%3E%0A%20%20%20%20%3C/g%3E%0A%3C/svg%3E") center center no-repeat;
+  animation: bounceIn-subtle 1000ms linear infinite forwards; }
+
 .focus.sample {
   color: #000;
   position: absolute;
@@ -18087,7 +18096,8 @@ input[type=range] {
   height: 15px;
   border-radius: 1px;
   border: solid 1px currentColor;
-  transform-origin: center center; }
+  transform-origin: center center;
+  animation: bounceIn-subtle 1000ms linear infinite forwards; }
 
 .focus.sample:before {
   content: '';
@@ -18099,8 +18109,7 @@ input[type=range] {
   color: white;
   background-color: currentColor;
   -webkit-transform-origin: center;
-  transform-origin: center;
-  animation: bounceIn-subtle 1000ms linear infinite forwards; }
+  transform-origin: center; }
 
 .focus.sample:after {
   content: '';
@@ -18114,8 +18123,7 @@ input[type=range] {
   -webkit-transform-origin: center;
   transform-origin: center;
   -webkit-transform: rotate(90deg);
-  transform: rotate(90deg);
-  animation: bounceIn-subtle 1000ms linear infinite forwards; }
+  transform: rotate(90deg); }
 
 .guru-switch-container {
   -ms-box-orient: horizontal;
@@ -18625,20 +18633,13 @@ input[type=range] {
     transform: rotateY(-81deg); }
   100% {
     transform: rotateY(-80deg); } }
-@keyframes sky {
-  0% {
-    background: #083355; }
-  50% {
-    background: #FAE0DC; }
-  100% {
-    background: #BBF2FE; } }
 @keyframes rustle {
   0% {
     transform: rotate(0deg); }
-  33.33% {
-    transform: rotate(3deg); }
-  66.66% {
-    transform: rotate(-3deg); }
+  25% {
+    transform: rotate(-8deg); }
+  50% {
+    transform: rotate(8deg); }
   100% {
     transform: rotate(0deg); } }
 .chalkboard-onboarding .chalkboard-onboarding-header {
