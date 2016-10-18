@@ -10,11 +10,13 @@ angular.module('uguru.shared.controllers', [])
   'XHRService',
   '$compile',
   '$rootScope',
-  function($scope, $state, $timeout, RootService, XHRService, $compile, $rootScope) {
+  '$window',
+  function($scope, $state, $timeout, RootService, XHRService, $compile, $rootScope, $window) {
     var root = this;
     root.scope = $rootScope;
     root.scope.public = {customStates: {when: {}}};
-    root.window = getBodyDimensions();
+    root.window = getBodyDimensions($window);
+    root.window.elemInfo = getElemWindowInfo(root.window);
     root.base_url = RootService.getBaseUrl();
     root.local = window.location.href.split(':8100').length > 1;
     root.browserPrefix = RootService.getBrowserPrefix();
@@ -34,6 +36,7 @@ angular.module('uguru.shared.controllers', [])
     root.animationCounter = 0;
     root.transitionCounter = 0;
     root.inspector = {players:[], activePlayer: null, elements: [], preferences: {}};
+    RootService._window = root.window;
     RootService.setGetInspector(getInspectorPrefs(root.inspector));
     RootService.setInspectableElements(pushElemPlayer(root.inspector));
     RootService.getCustomEasingAnimations(root)();
@@ -44,6 +47,19 @@ angular.module('uguru.shared.controllers', [])
       registerAnimationShortcuts();
 
     })
+
+    function getElemWindowInfo(window) {
+      return function(elem) {
+        var eRect = elem.getBoundingClientRect();
+        var result = {};
+        result.bottom = window.height - eRect.top - eRect.height
+        result.top = eRect.top * -1
+        result.right =window.width - eRect.right;
+        result.left = eRect.left * -1;
+        result.rect = eRect;
+        return result;
+      }
+    }
 
     function registerAnimationShortcuts() {
       if (root.local) {
@@ -106,10 +122,16 @@ function pauseElement(scope) {
   }
 }
 
-function getBodyDimensions() {
+function getBodyDimensions(window_obj) {
     var desktopHeightLimit = 690;
     var desktopWidthLimit= 767;
     var bodyRect = document.body.getBoundingClientRect();
     var isDesktop = (bodyRect.height >= desktopHeightLimit && bodyRect.width >= desktopWidthLimit);
-    return {height:bodyRect.height, width: bodyRect.width, desktop: isDesktop, mobile: !isDesktop}
+    return {height:bodyRect.height, width: bodyRect.width, desktop: isDesktop, mobile: !isDesktop, open: openWindowFunc(window_obj)}
+
+    function openWindowFunc(window_obj) {
+      return function(url, is_external) {
+        window_obj.open(url, is_external && '_blank');
+      }
+    }
 };

@@ -23,6 +23,71 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
+    .directive('media', ['$compile', 'XHRService', '$timeout', 'CompService', function($compile, XHRService, $timeout, CompService) {
+        return {
+            restrict: 'E',
+            replace: true,
+            transclude: true,
+
+            templateUrl:'shared/templates/components/base/svg/media.svg.tpl',
+            compile: function(element, attrs) {
+                var progressFunc;
+
+                var imgSrc = attrs.src;
+                var img = element[0].firstChild;
+
+
+                return {
+                    pre: function(scope, lElem, lAttr) {
+                        scope.m = {type: lAttr.type, url: lAttr.url};
+                        scope.imgLoaded = false;
+                        scope.loadRate = 0;
+                        console.log(scope.m.url)
+                        var startTime = new Date().getTime();
+                        var progElement = lElem[0].querySelector('.progress-elem');
+                        var div = document.createElement('div');
+                        div.classList.add('txt-64', 'weight-900', 'absolute', 'full-xy', 'top-0', 'left-0', 'txt-charcoal');
+                        progressFunc = function(oEvent) {
+                            var kbRemaining = oEvent.loaded/1000;
+                            var kbTotal = oEvent.total/1000;
+                            var deltaT = new Date().getTime() - startTime;
+                            console.log(kbTotal, kbRemaining)
+                            if (!scope.loadRate) {
+                                scope.loadRate = (1000/deltaT) * 1500;
+                            }
+                        };
+                        scope.$watch(function(new_val, old) {
+                            if (new_val) {
+                                lElem.append(angular.element(div));
+                                var count = scope.loadRate;
+                                var interval = setInterval(function() {
+                                    if (count < 0) clearTimeout(interval);
+                                    div.innerHTML = ((scope.loadRate - count)/scope.loadRate).toFixed(2) + '%';
+                                }, 16);
+                            }
+                        })
+                        var callback = function(response) {
+                            var img = document.createElement('img');
+
+                            for (var i = 0; i < lElem[0].attributes.length; i++) {
+                                img.setAttribute(lElem[0].attributes[i].name, lElem[0].attributes[i].value)
+                            }
+
+                            img = angular.element(img);
+                            img.attr('src', response);
+                            $compile(img)(scope);
+                            lElem.replaceWith(img);
+                        }
+                        console.log(lAttr.url)
+                        XHRService.getFileWithProgress(lAttr.url, progressFunc, null, callback)
+
+                        // scope.img =  {imgHTML: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30'><circle cx='15' cy='15' r='10' /></svg>"}
+                    },
+                    post: angular.noop
+                }
+            }
+        }
+    }])
     .directive("uInput", ["CompService", "$compile", '$timeout', function(CompService, $compile, $timeout) {
         return {
             restrict: 'E',
@@ -182,6 +247,43 @@ angular.module('uguru.shared.directives.base.components')
                 }
             }
         }
+    }])
+.directive('text', ['StyleService', '$compile', '$timeout', function (StyleService, $compile, $timeout) {
+      return {
+        restrict: 'AE',
+        priority: 1,
+        compile: function(elem, attr) {
+          !('fill' in attr) && attr.$set('fill', 'white');
+
+          !('x' in attr) && attr.$set('x', '50');
+          !('y' in attr) && attr.$set('y', '56.25');
+          !('fontSize' in attr) && attr.$set('font-size', '75');
+          !('textAnchor' in attr) && attr.$set('text-anchor', 'middle');
+          // return {
+          //       pre:function (lScope, lElem, lAttr) {
+
+          //           transclude(lScope, function(clone, innerScope) {
+          //               // lElem[0].innerHTML = clone[0].innerHTML;
+          //               // lElem.html(clone.html())// = .innerHTML
+          //           })
+          //       }
+          //   }
+
+        }
+      };
+    }])
+    .directive('item', ['StyleService', '$compile', function (StyleService, $compile) {
+      return {
+        restrict: 'AE',
+        templateUrl: 'shared/templates/components/base/svg/item.svg.tpl',
+        compile: function(elem, attr) {
+          elem.css(StyleService.css.flexItem);
+          ('height' in attr) && attr.$set('height', attr.height);
+        },
+        replace: true,
+        transclude: true,
+        priority:1
+      };
     }])
     angular.module('uguru.shared.directives.base.components')
     .directive("render", ["AdminSVGRenderService", "$compile", function(AdminSVGRenderService, $compile) {
@@ -390,16 +492,27 @@ angular.module('uguru.shared.directives.base.components')
                         var tpl = lElem
                         var delay = 0;
                         if (!('keep' in attr)) {
-                            lElem = lElem.parent().html('');
+                            lElem = lElem.parent();
+                            if (!lElem) lElem = element;
+                            lElem.attr('class', attr.class);
+                            lElem.html('');
+
+                            if (!lElem) {
+                                lElem = element;
+                            }
                         }
                         if ('delay' in attr && attr.delay.length) {
                             delay = parseInt(attr.delay);
                         }
 
+
+
                         transclude(lScope, function(clone, innerScope) {
                             var childArr = [];
                             var textStr = clone.html() || lScope.innerText;
-
+                            if (textStr.charAt(textStr.length - 1) !== ' ') {
+                                textStr += ' '
+                            }
                             for (var i = 0; i < textStr.length; i++) {
 
                                 var iChild = textStr.charAt(i);
@@ -428,10 +541,13 @@ angular.module('uguru.shared.directives.base.components')
                                 lElem.parent().append(keepContainer);
                                 var children = lElem.contents();
                                 lElem.replaceWith(keepContainer)
+
                                 keepContainer.append(children);
                             }
 
-                            $compile(lElem)(lScope)
+                            $compile(lElem)(lScope);
+
+
                         })
                     }
                 }

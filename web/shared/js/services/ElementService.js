@@ -8,10 +8,11 @@ angular.module('uguru.shared.services')
     '$window',
     'RootService',
     'SVGService',
+    '$parse',
     ElementService
         ]);
 
-function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window, RootService, SVGService) {
+function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window, RootService, SVGService, $parse) {
       var rShortcuts = {special: getSpecialAnimShortcuts(), animations:null, propValues: {}, props: {}, values:{}};
       var stateShortcuts = {};
       var rAnimations;
@@ -631,6 +632,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           var prop = prop.trim();
 
           prop = checkAndReplaceSpecialPropArgs(elem, prop);
+          console.log(prop)
           if (!prop || !prop.length) return;
 
           if (rShortcuts && rShortcuts.cssPropValues && prop.toLowerCase() in rShortcuts.cssPropValues) {
@@ -814,13 +816,94 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function getSpecialAnimShortcuts() {
-        return {draw: drawFunc}
+        return {draw: drawFunc, move: moveToFunc}
+      }
+
+      // function getWindowObj() {
+      //   console.log(RootService._window)
+      // }
+
+      function moveToFunc(elem, shortcut, formatted) {
+        var argSplit = formatted.split(':');
+        var elemCurrentPosition = elem[0].getBoundingClientRect();
+        var moveToArgs = [argSplit[1], argSplit[2]];
+        var vp_info = RootService._window.elemInfo(elem[0])
+        // var currentStyle = window.getComputedStyle()
+        moveToArgs.forEach(function(pos, i)  {
+
+
+          // function(pos, i) {
+
+
+            var shortcutReplace = isShortcutMoveTo(pos, elemCurrentPosition, vp_info);
+            console.log(shortcutReplace);
+            if (shortcutReplace) {
+              moveToArgs[i] = shortcutReplace + 'px';
+            }
+          // }
+        });
+
+        // return 'translateX:' + ''
+
+
+        function isShortcutMoveTo(arg, coords, vp_info) {
+          var resultValue = 0;
+          var values = [];
+          var resultExpr = '';
+          var shortcuts = { left:0, right: 1, bottom:0, bottom: 1};
+          var vp = vp_info
+
+
+          // if (arg.indexOf('vp.') > -1) {
+
+          //   var hasDirection = arg.split('.')[1];
+          //   if (hasDirection in shortcuts) {
+          //     resultExpr += shortcuts[hasDirection] + '-'
+          //   }
+          // }
+          if (arg.indexOf('vp.') > -1) {
+
+            // var direction = arg.split('vp.')[0]
+            var vpIndex = arg.indexOf('vp.');
+
+            remainderString = arg.substring(vpIndex + arg.substring(0, 3).length, arg.length);
+            ['right', 'left', 'top', 'bottom'].forEach(function(dir, i) {
+              if (remainderString.indexOf(dir) === 0) {
+                arg = arg.replace('vp.' + dir, vp[dir])
+              }
+            })
+            console.log(arg);
+            // console.log(arg.split('vp.')[0])
+            // var numReplaced = vp[direction];
+
+            // if (hasDirection in shortcuts) {
+            // console.log(toReplace, numReplaced)
+            resultExpr += arg;
+
+          }
+          console.log(resultExpr)
+          // var resultExpr = arg + coords[hasDirection];
+          return $parse(resultExpr)();
+        }
+
+        if (formatted) {
+          var argSplit = (formatted + "").split(':')
+          var translateX = ['translateX', '0px', moveToArgs[0], argSplit[3], argSplit[4], argSplit[5], argSplit[6], argSplit[7]].join(":");
+          var translateY = ['translateY', '0px', moveToArgs[1], argSplit[3], argSplit[4], argSplit[5], argSplit[6], argSplit[7]].join(":");
+          console.log(translateX, translateY)
+          return [translateX, translateY].join(',')
+        }
+        return 'strokeDashoffset:' + (elem[0].getTotalLength() * percentDraw).toFixed(4);
       }
 
       function getSpecialPropShortcuts() {
-        return {draw: initDrawFunc}
+        return {draw: initDrawFunc, move: identityFunc}
 
-        function initDrawFunc(elem) {
+        function identityFunc(elem, prop_str) {
+          return prop_str
+        }
+
+        function initDrawFunc(elem, attr) {
           var pathLength = SVGService.getTotalPathLength(elem[0]);
 
           elem[0].setAttribute('stroke-dashoffset', pathLength + "")
@@ -832,8 +915,9 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       function checkAndReplaceSpecialPropArgs(elem, prop_str) {
         var firstArg = prop_str.split(':')[0];
         var specialPropDict = getSpecialPropShortcuts();
+        console.log(firstArg)
         if (firstArg in specialPropDict) {
-          var result = specialPropDict[firstArg](elem);
+          var result = specialPropDict[firstArg](elem, null, prop_str);
 
           return result;
         }
