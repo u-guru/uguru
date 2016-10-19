@@ -54,7 +54,8 @@
 						init-with="p:[op:0, tro:center center]"
 						on-init="p:[op:1] | s:[card-flip:public, card-swipe:public]:delay-1000 | a:[translateX:0px:342px:500:linear:0:1:f, translateY:0px:-122px:500:linear:0:1:f, rotate:0deg:180deg:500:linear:0:1:f]:delay-2000"
 						when-card-error="a:[translateX:200px:0px:1000:easeOutBack:0:1:f, rotate:180deg:0deg:1000:easeOutBack:0:1:f] | s:[card-valid:public:1000]"
-						when-card-valid="a:[translateX:0px:342px:500:linear:0:1:f, translateY:0px:-122px:500:linear:0:1:f, rotate:0deg:180deg:500:linear:0:1:f]">
+						when-card-valid="a:[translateX:0px:342px:500:linear:0:1:f, translateY:0px:-122px:500:linear:0:1:f, rotate:0deg:180deg:500:linear:0:1:f] | s:[card-success:public:900]"
+						when-card-success="a:[translateX:342px:750px:350:easeInBack:0:1:f, translateY:-122px:-222px:350:easeInBack:0:1:f, rotate:180deg:150deg:350:linear:0:1:f]">
 						<svg viewBox="0 0 240 150">
 							<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 						</svg>
@@ -184,7 +185,9 @@
 						<g class="buttons" stroke="#0F0F2F">
 				            <circle class="valid" fill="#43CB9D" cx="50" cy="121" r="10"></circle>
 				            <circle class="invalid" fill="#D3242C" cx="95" cy="121" r="10"></circle>
-				            <circle class="off-valid" fill-opacity="0.75" fill="#757575" cx="50" cy="121" r="10"></circle>
+				            <circle class="off-valid" fill-opacity="0.75" fill="#757575" cx="50" cy="121" r="10"
+								u
+								when-card-valid="p:[op:0]:delay-600"></circle>
 				            <circle class="off-invalid" fill="#757575" cx="95" cy="121" r="10"
 								u init-with="p:[fill-opacity:0.75]"
 								when-card-swipe="a:[fill-opacity:0:.75:150:easeInOutSine:0:5:a]:delay-1750"></circle>
