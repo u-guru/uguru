@@ -104,7 +104,8 @@
 <div class="portal-page"
 	u init-with="p-op"
 	when-warp-open="a:[opacity:0:1:250:easeOutSine:300:1:f]">
-	<div class="portal-page-round" u init-with="p:[-webkit-clip-path:circle(8px at 50% 50%), tr:translateY(2px), overflow:hidden]"
+	<div class="portal-page-round"
+		u init-with="p:[-webkit-clip-path:circle(8px at 50% 50%), tr:translateY(2px), overflow:hidden]"
 		when-transition-start="a:[-webkit-clip-path:circle(8px at 50% 50%):circle(1500px at 50% 50%):750:(1,0,1,0):0:1:f, translateY:2px:0px:750:linear:0:1:f] | s:[transition-end:self:750]"
 		when-transition-end="p:[-webkit-clip-path:none]">
 		<div class="portal-page-splash" u init-with="p-op"
