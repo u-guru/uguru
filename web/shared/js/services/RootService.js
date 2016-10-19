@@ -14,6 +14,7 @@ function RootService($timeout, $state) {
     var animations = {custom: [], customNameOnly: []};
     var addElemToInspector;
     var _window;
+    var elemIdCache = {};
     var customShortcuts = {animProps: {}};
     var getInspectorPreferences = function() {};
     initBaseUrlByEnv();
@@ -43,7 +44,8 @@ function RootService($timeout, $state) {
         getCustomAnimations: getCustomAnimations,
         getAnimShortcuts: getAnimShortcuts,
         customShortcuts: customShortcuts,
-        animations: animations
+        animations: animations,
+        elemIdCache: elemIdCache
     }
 
     function getAnimShortcuts(prop) {
