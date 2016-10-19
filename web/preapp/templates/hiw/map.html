@@ -64,8 +64,8 @@
 	</g>
 	<rect class="map-terrain-main" fill="#8CD07E" x="0" y="194" width="864" height="378"></rect>
 	<rect class="clock-tower-base" fill="#D3B3A8" x="266" y="301" width="335" height="154"></rect>
-	<g class="map-clouds" init-after="cloud-sky" when-hiw-enter="s:[cloud-enter:public:300, balloons:public:200]"
-		when-hiw-details-enter="s:[cloud-details-enter:public:700]">
+	<g class="map-clouds" init-after="cloud-sky" when-hiw-enter="s:[cloud-enter:public:300, balloons:public:200, hiw-details-enter:public:2750]"
+		when-hiw-details-enter="s:[cloud-details-enter:public:700,hiw-people-enter:public:500, hiw-micro-enter:public:2500]">
 		<g class="map-cloud-4"
 			u init-with="p:[op:0, tro:center center]"
 			when-cloud-details-enter="a:[hiw-map-clouds:1000:linear:600:1:f]">
@@ -309,16 +309,15 @@
 			<circle class="ppl-wheelchair-wheel" stroke="#2B3234" cx="592" cy="323" r="4"></circle>
 		</g>
 		<g class="bench-2"
-			u init-with="p:[tro:center bottom, transform:scaleY(0)]"
-			when-hiw-enter="a:[scaleY:0:1:1000:bouncePast:0:1:f]:delay-1500">
+			init-after="buildings" init-with="p:[tro:center bottom, transform:scaleY(0)]"
+			when-hiw-enter="a:[scaleY:0:1:1000:bouncePast:0:1:f]:delay-700">
 			<path d="M282.5,304.5 L315,304.5 L315,308 L282.5,308 L282.5,304.5 L282.5,304.5 Z M282.5,314.5 L315,314.5 L315,318 L282.5,318 L282.5,314.5 L282.5,314.5 Z M282.5,309.5 L315,309.5 L315,313 L282.5,313 L282.5,309.5 L282.5,309.5 Z" id="bench-2-top" stroke="#4F3836" stroke-width="0.5" fill="#FFD08F"></path>
 			<path d="M282,316.5 L318,316.5 L318,319.131579 L282,319.131579 L282,316.5 L282,316.5 L282,316.5 Z M282,319.131579 L284.727273,319.131579 L284.727273,326.5 L282,326.5 L282,319.131579 L282,319.131579 L282,319.131579 Z M315.272727,319.131579 L318,319.131579 L318,326.5 L315.272727,326.5 L315.272727,319.131579 L315.272727,319.131579 L315.272727,319.131579 Z" id="bench-2-bottom" stroke="#4F3836" stroke-width="0.5" fill="#977A52"></path>
 			<rect id="bench-2-invisible-container" x="272" y="289" width="50" height="50"></rect>
 		</g>
 		<g class="map-clock-tower"
-			u init-with="p:[transform:scaleY(0) translateZ(0), tro:center bottom]"
-			when-hiw-enter="a:[scaleY:0:1:500:easeOutBack:0:1:f]:delay-2200 | s:[hiw-details-enter:public:2750]"
-			when-hiw-details-enter="s:[hiw-people-enter:public:500, hiw-micro-enter:public:2500]">
+			init-after="buildings" init-with="p:[transform:scaleY(0) translateZ(0), tro:center bottom]"
+			when-hiw-enter="a:[scaleY:0:1:500:easeOutBack:0:1:f]:delay-2200">
 			<ellipse class="map-clock-tower-base" stroke="#D3B3A8" stroke-width="2" fill="#F3ECDA" cx="432.088942" cy="373.22541" rx="62.0697115" ry="21.4180328"></ellipse>
 			<polygon class="map-clock-tower-main" stroke="#CABEB2" fill="#FCEDDF" points="413.208042 235.118881 451.547203 235.118881 451.547203 374.192308 413.208042 374.192308"></polygon>
 			<polygon class="map-clock-tower-step-lower" stroke="#947B62" fill="#CABEB2" points="403.435315 365.547203 461.31993 365.547203 461.31993 374.568182 403.435315 374.568182"></polygon>
@@ -374,15 +373,15 @@
 			</g>
 		</g>
 		<g class="bench-4"
-			u init-with="p:[tro:center bottom, transform:scaleY(0)]"
-			when-hiw-enter="a:[scaleY:0:1:1000:bouncePast:0:1:f]:delay-1000">
+			init-after="buildings" init-with="p:[tro:center bottom, transform:scaleY(0)]"
+			when-hiw-enter="a:[scaleY:0:1:1000:bouncePast:0:1:f]:delay-200">
 			<path d="M533.5,394.5 L566,394.5 L566,398 L533.5,398 L533.5,394.5 L533.5,394.5 Z M533.5,404.5 L566,404.5 L566,408 L533.5,408 L533.5,404.5 L533.5,404.5 Z M533.5,399.5 L566,399.5 L566,403 L533.5,403 L533.5,399.5 L533.5,399.5 Z" id="bench-4-top" stroke="#4F3836" stroke-width="0.5" fill="#FFD08F"></path>
 			<path d="M530,406.5 L566,406.5 L566,409.131579 L530,409.131579 L530,406.5 L530,406.5 L530,406.5 Z M530,409.131579 L532.727273,409.131579 L532.727273,416.5 L530,416.5 L530,409.131579 L530,409.131579 L530,409.131579 Z M563.272727,409.131579 L566,409.131579 L566,416.5 L563.272727,416.5 L563.272727,409.131579 L563.272727,409.131579 L563.272727,409.131579 Z" id="bench-4-bottom" stroke="#4F3836" stroke-width="0.5" fill="#977A52"></path>
 			<rect id="bench-4-invisible-container" x="523" y="379" width="50" height="50"></rect>
 		</g>
 		<g class="bench-1"
-			u init-with="p:[tro:center bottom, transform:scaleY(0)]"
-			when-hiw-enter="a:[scaleY:0:1:1000:bouncePast:0:1:f]:delay-1000">
+			init-after="buildings" init-with="p:[tro:center bottom, transform:scaleY(0)]"
+			when-hiw-enter="a:[scaleY:0:1:1000:bouncePast:0:1:f]:delay-200">
 			<path d="M307.5,394.5 L340,394.5 L340,398 L307.5,398 L307.5,394.5 L307.5,394.5 Z M307.5,404.5 L340,404.5 L340,408 L307.5,408 L307.5,404.5 L307.5,404.5 Z M307.5,399.5 L340,399.5 L340,403 L307.5,403 L307.5,399.5 L307.5,399.5 Z" id="bench-1-top" stroke="#4F3836" stroke-width="0.5" fill="#FFD08F"></path>
 			<path d="M307,406.5 L343,406.5 L343,409.131579 L307,409.131579 L307,406.5 L307,406.5 L307,406.5 Z M307,409.131579 L309.727273,409.131579 L309.727273,416.5 L307,416.5 L307,409.131579 L307,409.131579 L307,409.131579 Z M340.272727,409.131579 L343,409.131579 L343,416.5 L340.272727,416.5 L340.272727,409.131579 L340.272727,409.131579 L340.272727,409.131579 Z" id="bench-1-bottom" stroke="#4F3836" stroke-width="0.5" fill="#977A52"></path>
 			<rect id="bench-1-invisible-container" x="297" y="379" width="50" height="50"></rect>
@@ -399,7 +398,7 @@
 		</g>
 
 		<g class="map-stadium"
-			u init-with="p:[transform:scaleY(0) translateZ(0), tro:center bottom]"
+			init-after="buildings" init-with="p:[transform:scaleY(0) translateZ(0), tro:center bottom]"
 			when-hiw-enter="a:[scaleY:0:1:500:easeOutBack]:delay-500">
 			<g class="map-stadium-inside">
 				<path d="M27.3981481,174.555556 C27.3981481,174.555556 91.2098765,185.203704 123.115741,185.203704 C155.021605,185.203704 218.833333,174.555556 218.833333,174.555556 L218.833333,231.062597 L27.3981481,231.062597 L27.3981481,174.555556 Z" class="mini-stadium-inside-0" stroke="#2B3234" stroke-width="0.694444444" fill="#6F828F"></path>
