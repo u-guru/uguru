@@ -851,7 +851,8 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           var values = [];
           var resultExpr = '';
           var shortcuts = { left:0, right: 1, bottom:0, bottom: 1};
-          var vp = vp_info
+          var vp = vp_info;
+          var replaceDict = {'x': 'left', 'y': 'top'};
 
 
           // if (arg.indexOf('vp.') > -1) {
@@ -861,30 +862,79 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           //     resultExpr += shortcuts[hasDirection] + '-'
           //   }
           // }
-          if (arg.indexOf('vp.') > -1) {
+          var arg = arg;
+          while (arg.indexOf('vp.') > -1 || arg.indexOf('#') > -1) {
 
-            // var direction = arg.split('vp.')[0]
-            var vpIndex = arg.indexOf('vp.');
-
-            remainderString = arg.substring(vpIndex + arg.substring(0, 3).length, arg.length);
-            ['right', 'left', 'top', 'bottom'].forEach(function(dir, i) {
-              if (remainderString.indexOf(dir) === 0) {
-                arg = arg.replace('vp.' + dir, vp[dir])
+            if (arg.indexOf('#') > -1) {
+              var idIndex = arg.indexOf('#');
+              var idNamePlusSplit = arg.substring(idIndex + 1, arg.length).split('.');
+              var idName = idNamePlusSplit[0];
+              var idDirection = idNamePlusSplit[1];
+              if (idDirection in replaceDict) {
+                idDirection = replaceDict[idDirection]
               }
-            })
-            console.log(arg);
-            // console.log(arg.split('vp.')[0])
-            // var numReplaced = vp[direction];
 
-            // if (hasDirection in shortcuts) {
-            // console.log(toReplace, numReplaced)
-            resultExpr += arg;
+              if (!(idName in RootService.elemIdCache)) {
+                var elem = document.querySelector('#' + idName);
+                if (elem) {
+                  RootService.elemIdCache[idName] = elem.getBoundingClientRect();
+                }
+              }
+              var toElemRect = RootService.elemIdCache[idName]
+              var toReplaceStr = '#' + idName + '.' + idDirection;
 
+              if (arg.indexOf(toReplaceStr) > -1)  {
+                arg = arg.replace(toReplaceStr, toElemRect[idDirection] || '0')
+              }
+              if (('.' + idDirection).indexOf(arg) > -1) {
+                    arg = arg.replace('.' + idDirection, '')
+                }
+              // arg = arg.replace('#', '');
+
+              // ['right', 'left', 'top', 'bottom'].forEach(function(dir, i) {
+              //   if (remainderString.indexOf(dir) === 0) {
+
+              //   }
+              // })
+            }
+            if (arg.indexOf('vp.') > -1) {
+              console.log(arg)
+              // var direction = arg.split('vp.')[0]
+              var vpIndex = arg.indexOf('vp.');
+              if (vpIndex || parseInt(vpIndex) === 0)  {
+
+                remainderString = arg.substring(vpIndex + arg.substring(vpIndex, 3).length, arg.length);
+                ['right', 'left', 'top', 'bottom'].forEach(function(dir, i) {
+                  if (remainderString.indexOf(dir) >= 0) {
+
+
+                    if (('.' + dir).indexOf(arg) > -1) {
+                      arg = arg.replace('.' + dir, '')
+                    }
+                    arg = arg.replace('vp.' + dir, vp[dir] || '0')
+                  }
+                })
+              }
+
+              // console.log(arg.split('vp.')[0])
+              // var numReplaced = vp[direction];
+
+              // if (hasDirection in shortcuts) {
+              // console.log(toReplace, numReplaced)
+              // resultExpr += arg;
+
+            }
           }
-          console.log(resultExpr)
+          // resultArg = arg;
+          ['.left', '.right', '.top', '.bottom'].forEach(function(direct, i) {
+            if (arg.indexOf(direct) > -1) {
+              arg = arg.replace(direct, i);
+            }
+          });
           // var resultExpr = arg + coords[hasDirection];
-          return $parse(resultExpr)();
+          return $parse(arg)();
         }
+
 
         if (formatted) {
           var argSplit = (formatted + "").split(':')
