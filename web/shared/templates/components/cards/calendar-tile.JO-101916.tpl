@@ -1,7 +1,7 @@
 <div class="perspective-container full-xy flex-center p15xy">
 	<div class="calendar-tile bg-moxie" u
 		init-with="p:[opacity:0, tro:center center]"
-		on-init="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[cal-info:public:250]">
+		on-init="a:[bounceInDown-subtle:1000:linear:0:1:f] | s:[cal-info:public:250]">
 		<!-- on-click is to demonstrate drag state-->
 		<div></div><div></div>
 		<div></div><div></div>

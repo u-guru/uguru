@@ -1,6 +1,6 @@
-<div class="perspective-container full-xy flex-center" types='flip, edit, short, mini' default-type="mini">
+<div class="perspective-container full-xy flex-center" types='flip, edit, short, mini' default-type="flip">
 	<div class="card-container" ng-if='activeType === "flip"'>
-		<div class="credit-card-flip" tabindex
+		<div class="credit-card-flip" 
 			init-with="p-op"
 			on-init="s:[credit-card-init:public] | a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]"
 			on-mouse-enter="s:[flip-enter:public]"
