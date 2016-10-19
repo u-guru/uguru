@@ -436,7 +436,7 @@
 		</g>
 
 		<g class="hot-dog"
-			u init-with="p:[transform:translateX(-100%) skewX(120deg), tro:center center]"
+			init-after="buildings" init-with="p:[transform:translateX(-100%) skewX(120deg), tro:center center]"
 			when-hiw-details-enter="a:[translateX:-100%:0%:1000:bouncePast:0:1:f, skewX:120deg:0deg:1000:easeOutExpo:0:1:f]">
 		   <path d="M72.8071333,285.88 L33.1928667,285.88 C32.3389671,283.23664 29.8998727,281.328726 27.0242188,281.328726 C24.1485648,281.328726 21.7094704,283.23664 20.8555708,285.88 L14.04,285.88 L14.04,253.88 L72.5460556,253.88 L79.5808467,265.62331 C79.7472272,265.986089 80.18489,266.383895 80.5628557,266.513362 L92.9957389,270.772064 C94.1247531,271.158791 95.04,272.439997 95.04,273.629274 L95.04,285.88 L85.1444292,285.88 C84.2905296,283.23664 81.8514352,281.328726 78.9757813,281.328726 C76.1001273,281.328726 73.6610329,283.23664 72.8071333,285.88 L72.8071333,285.88 L72.8071333,285.88 L72.8071333,285.88 L72.8071333,285.88 L72.8071333,285.88 Z M11.88,249.92 L75.88,249.92 L75.88,253.92 L11.88,253.92 L11.88,249.92 L11.88,249.92 L11.88,249.92 L11.88,249.92 L11.88,249.92 Z" class="hd-truck" stroke="#824221" stroke-linecap="round" stroke-linejoin="round" fill="#E5753C"></path>
 		   <rect class="hd-menu" stroke="#824221" stroke-linecap="round" stroke-linejoin="round" fill="#FFFFFF" x="20" y="267.96" width="30.6" height="11.44"></rect>
@@ -519,8 +519,8 @@
 		</g>
 
 		<g class="map-gym"
-			u init-with="p:[transform:scaleY(0) translateZ(0), tro:center bottom]"
-			when-hiw-enter="a:[scaleY:0:1:500:easeOutBack:0:1:f]:delay-900">
+			init-after="buildings" init-with="p:[transform:scaleY(0) translateZ(0), tro:center bottom]"
+			when-hiw-enter="a:[scaleY:0:1:500:easeOutBack:0:1:f]:delay-100">
 			<rect class="gym-building" stroke="#7B611B" fill="#C5937E" x="30.5439815" y="318.744755" width="183.912037" height="92.8321678"></rect>
 			<rect class="gym-open-windows" stroke="#FFFFFF" fill="#94D8F2" x="69.9537037" y="318.744755" width="105.092593" height="83.1293706"></rect>
 			<path d="M99.3796296,362.178322 L145.883102,362.178322 L145.883102,392.86014 L99.3796296,392.86014 L99.3796296,362.178322 L99.3796296,362.178322 Z M122.762731,362.302039 L122.762731,392.736423" class="gym-doors-double" stroke="#7B611B"></path>
@@ -653,7 +653,7 @@
 			</g>
 		</g>
 
-		<g class="map-labs">
+		<g class="map-labs" init-after="buildings" when-hiw-micro-enter="s:[labs-micro-enter:public:4800]">
 			<g class="map-lab-teal"
 				u init-with="p:[transform:scaleY(0) translateZ(0), tro:center bottom]"
 				when-hiw-enter="a:[scaleY:0:1:500:easeOutBack:0:1:f]:delay-400">
@@ -663,15 +663,15 @@
 					when-time-shift="a:[hiw-night-shift:12000:linear:0:i:a]:delay-1000">
 					<path d="M6.62040816,444.910364 L6.62040816,485.694678 L98.9469388,485.694678 L98.9469388,438.355742 L6.62040816,444.910364 L6.62040816,444.910364 L6.62040816,444.910364 Z M76.8122449,441.440576 L76.8122449,485.45018 M53.1387755,443.323729 L53.1387755,485.460584 M29.4653061,444.736094 L29.4653061,485.468387" class="lab-teal-windows-glow-blue" fill="#28C7FE" fill-opacity="0.5" filter="url(#glow-blue)"
 						u init-with="p:[op:0, tro:center center]"
-						when-hiw-micro-enter="a:[scale:0.5:1:50:easeOutExpo:4800:i:f, opacity:0:1:50:easeOutExpo:4800:i:f] | s:[lab-teal-glow:public]"
+						when-labs-micro-enter="a:[scale:0.5:1:50:easeOutExpo:0:i:f, opacity:0:1:50:easeOutExpo:0:i:f] | s:[lab-teal-glow:public]"
 						when-lab-teal-glow="a:[scale:1:0.5:500:easeOutExpo:4800:i:f, opacity:1:0:500:easeOutExpo:4800:i:f]:delay-1200"></path>
 		            <path d="M6.62040816,444.910364 L6.62040816,485.694678 L98.9469388,485.694678 L98.9469388,438.355742 L6.62040816,444.910364 L6.62040816,444.910364 L6.62040816,444.910364 Z M76.8122449,441.440576 L76.8122449,485.45018 M53.1387755,443.323729 L53.1387755,485.460584 M29.4653061,444.736094 L29.4653061,485.468387" class="lab-teal-windows-glow-white" fill="#FFFFFF" filter="url(#glow-white)"
 						u init-with="p:[op:0, tro:center center]"
-						when-hiw-micro-enter="a:[scale:0.5:1:50:easeOutExpo:4800:i:f, opacity:0:1:50:easeOutExpo:4800:i:f]"
+						when-labs-micro-enter="a:[scale:0.5:1:50:easeOutExpo:0:i:f, opacity:0:1:50:easeOutExpo:0:i:f]"
 						when-lab-teal-glow="a:[scale:1:0.5:500:easeOutExpo:4800:i:f, opacity:1:0:500:easeOutExpo:4800:i:f]:delay-1200"></path>
 		            <g class="lab-teal-windows-glow-inside"
 						u init-with="p-op"
-						when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:4800:i:f]"
+						when-labs-micro-enter="a:[opacity:0:1:50:easeOutExpo:0:i:f]"
 						when-lab-teal-glow="a:[opacity:1:0:500:easeOutExpo:4800:i:f]:delay-1100">
 		                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#lab-teal-use"></use>
 		                <use fill="black" fill-opacity="1" filter="url(#glow-inside)" xlink:href="#lab-teal-use"></use>
@@ -683,7 +683,7 @@
 					when-time-shift="a:[hiw-night-shift:12000:linear:0:i:f]:delay-1000]">
 					<polygon class="lab-teal-roof-glow" fill="#C6DBE3" opacity="0.5" points="108.930275 431.753261 108.389796 431.254902 108.389796 439.302521 108.851616 438.803981 -2.41368981 447.324989 -1.8755102 447.823529 -1.8755102 440.292335 -2.33503142 440.790694"
 						u init-with="p-op"
-						when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:4800:i:f]"
+						when-labs-micro-enter="a:[opacity:0:1:50:easeOutExpo:0:i:f]"
 						when-lab-teal-glow="a:[opacity:1:0:500:easeOutExpo:4800:i:f]:delay-1200"></polygon>
 				</g>
 				<rect class="lab-teal-door" stroke="#7C8181" fill="#598E96" x="68.644898" y="471.966387" width="16.5714286" height="27.929972"></rect>
@@ -691,7 +691,7 @@
 					when-time-shift="a:[hiw-night-shift:12000:linear:0:i:f]:delay-1000">
 					<polygon class="lab-teal-door-glow" fill="#C7DCE3" opacity="0.5" points="85.2163265 472.466387 84.7163265 471.966387 84.7163265 499.896359 85.2163265 499.396359 68.644898 499.396359 69.144898 499.896359 69.144898 471.966387 68.644898 472.466387"
 						u init-with="p-op"
-						when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:4800:i:f]"
+						when-labs-micro-enter="a:[opacity:0:1:50:easeOutExpo:0:i:f]"
 						when-lab-teal-glow="a:[opacity:1:0:500:easeOutExpo:4800:i:f]:delay-1200"></polygon>
 				</g>
 				<rect class="lab-teal-door-top" stroke="#7C8181" fill="#C3C3C3" x="65.8040816" y="471.966387" width="22.2530612" height="6.62745098"></rect>
@@ -699,7 +699,7 @@
 					when-time-shift="a:[hiw-night-shift:12000:linear:0:i:f]:delay-1000">
 					<polygon class="lab-teal-door-top-glow" fill="#C7DCE3" points="88.0571429 472.466387 87.5571429 471.966387 87.5571429 478.593838 88.0571429 478.093838 65.8040816 478.093838 66.3040816 478.593838 66.3040816 471.966387 65.8040816 472.466387"
 						u init-with="p-op"
-						when-hiw-micro-enter="a:[opacity:0:1:50:easeOutExpo:4800:i:f]"
+						when-labs-micro-enter="a:[opacity:0:1:50:easeOutExpo:0:i:f]"
 						when-lab-teal-glow="a:[opacity:1:0:500:easeOutExpo:4800:i:f]:delay-1200"></polygon>
 				</g>
 				<rect class="lab-teal-invisible-container" x="-18" y="418" width="142.040816" height="94.6778711"></rect>
