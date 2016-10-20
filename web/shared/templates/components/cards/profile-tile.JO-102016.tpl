@@ -1,6 +1,6 @@
 <div class="perspective-container full-xy flex-center p15xy" types='academic, baking, photo, tech, household' default-type="academic">
 	<div class="pf-tile-container" ng-if='activeType === "academic"'
-		u init-with="p:[opacity:0, transform-origin:left top, rotateX:30deg, rotateY:30deg, translateY:300px]"
+		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[academic-tile-init:public]"
 		when-academic-tile-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f, translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
 		when-academic-tile-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:500:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:0:1:f, rotateY:0deg:30deg:1000:easeOutCubic:0:1:f, translateY:0px:-300px:1000:easeOutCubic:0:1:f]">
@@ -8,27 +8,27 @@
 		<div class="pf-tile bg-academic">
 			<div class="pf-tile-border">
 				<div class="top"
-					u init-with="p:[transform-origin:left center, scaleX:0]"
+					u init-with="p:[transform-origin:left center, transform:scaleX(0)]"
 					when-academic-tile-init="a:[scaleX:0:1:500:easeOutCubic:500:1:f]"
 					when-academic-tile-exit="a:[scaleX:1:0:500:easeOutCubic]"></div>
 				<div class="right"
-					u init-with="p:[transform-origin:center bottom, scaleY:0]"
+					u init-with="p:[transform-origin:center bottom, transform:scaleY(0)]"
 					when-academic-tile-init="a:[scaleY:0:1:500:easeOutCubic:500:1:f]"
 					when-academic-tile-exit="p:[scaleY:0]"></div>
 				<div class="bot"
-					u init-with="p:[transform-origin:right center, scaleX:0]"
+					u init-with="p:[transform-origin:right center, transform:scaleX(0)]"
 					when-academic-tile-init="a:[scaleX:0:1:500:easeOutCubic:500:1:f]"
 					when-academic-tile-exit="p:[scaleX:0]"></div>
 				<div class="left"
-					u init-with="p:[transform-origin:center top, scaleY:0]"
+					u init-with="p:[transform-origin:center top, transform:scaleY(0)]"
 					when-academic-tile-init="a:[scaleY:0:1:500:easeOutCubic:500:1:f]"
 					when-academic-tile-exit="p:[scaleY:0]"></div>
 			</div>
 			<div class="pf-tile-top">
 				<div class="pf-pricing"
-					u init-with="p:[opacity:0]"
-					when-academic-tile-init="a:[slideInLeft:750:linear:875:1:f]">$10/hr</div>
-				<div u init-with="p:[translateY:-80%, opacity:0]"
+					u init-with="p:[opacity:0, tro:left center]"
+					when-academic-tile-init="a:[bounceIn-subtle:750:linear:875:1:f]">$10/hr</div>
+				<div u init-with="p:[transform:translateY(-80%), opacity:0]"
 					when-academic-tile-init="a:[translateY:-100px:0px:750:easeOutCubic:1000:1:f, opacity:0:1:250:linear:1000:1:f]">
 					<div class="pf-tile-icon">
 						<svg viewBox="0 0 100 100">
@@ -43,13 +43,13 @@
 						</svg>
 					</div>
 				</div>
-				<h1 u init-with="p:[translateY:-100px, opacity:0]"
+				<h1 u init-with="p:[transform:translateY(-100px), opacity:0]"
 					when-academic-tile-init="a:[translateY:-100px:0px:750:easeOutSine:500:1:f, opacity:0:1:750:easeOutSine:500:1:f]">Chem 133</h1>
-				<h2 init-with="p:[translateY(-100px), opacity:0]"
+				<h2 init-with="p:[transform:translateY(-100px), opacity:0]"
 					when-academic-tile-init="a:[translateY:-100px:0px:750:easeOutSine:500:1:f, opacity:0:1:750:easeOutSine:500:1:f]">Organic Chemistry</h2>
 			</div>
 			<div class="pf-tile-bottom"
-				u init-with="p:[transform-origin:center bottom, opacity:0, translateY(-100px) scaleY(3)]"
+				u init-with="p:[transform-origin:center bottom, opacity:0, transform:translateY(-100px) scaleY(3)]"
 				when-academic-tile-init="a:[translateY:-100px:0px:1000:easeInOutCubic:0:1:f, scaleY:3:1:1000:easeInOutCubic:0:1:f, opacity:0:1:250:easeOutSine:250:1:f]">
 				<ul class="rating-stars" data-rating="4" data-half="true">
 					<li u init-with="p:[opacity:0]"
@@ -93,7 +93,7 @@
 	</div>
 
 	<div class="pf-tile-container" ng-if='activeType === "baking"'
-		u init-with="p:[opacity:0, transform-origin:left top, rotateX:30deg, rotateY:30deg, translateY:300px]"
+		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[baking-tile-init:public]"
 		when-baking-tile-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f, translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
 		when-baking-tile-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:500:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:0:1:f, rotateY:0deg:30deg:1000:easeOutCubic:0:1:f, translateY:0px:-300px:1000:easeOutCubic:0:1:f]">
@@ -169,7 +169,7 @@
 	</div>
 
 	<div class="pf-tile-container" ng-if='activeType === "photo"'
-		u init-with="p:[opacity:0, transform-origin:left top, rotateX:30deg, rotateY:30deg, translateY:300px]"
+		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[photo-tile-init:public]"
 		when-photo-tile-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f, translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
 		when-photo-tile-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]">
@@ -254,7 +254,7 @@
 	</div>
 
 	<div class="pf-tile-container" ng-if='activeType === "tech"'
-		u init-with="p:[opacity:0, transform-origin:left top, rotateX:30deg, rotateY:30deg, translateY:300px]"
+		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[tech-tile-init:public]"
 		when-tech-tile-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f, translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f] | s:[tech-borders-init:public:delay-1000]"
 		when-tech-tile-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]">
@@ -362,7 +362,7 @@
 	</div>
 
 	<div class="pf-tile-container" ng-if='activeType === "household"'
-		u init-with="p:[opacity:0, transform-origin:left top, rotateX:30deg, rotateY:30deg, translateY:300px]"
+		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[household-tile-init:public]"
 		when-household-tile-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f, translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
 		when-household-tile-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]">
