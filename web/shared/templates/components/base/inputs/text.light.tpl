@@ -2,7 +2,7 @@
 <div class="p30xy radius-2 bg-slate full-x" style="max-width:460px">
     <div class="input-border"
             u
-            on-init="s:[input-border-enter:public, input-valid:public:100]"
+            on-init="s:[input-border-enter:public, input-invalid:public:1000]"
 
             when-input-invalid="p:[transform:translateY(0px):translateY(10px):100:linear:^:6:a]">
             <input class="input-border light" init-with="p:[opacity:0]" type="{{::input.iType}}"  required placeholder=""

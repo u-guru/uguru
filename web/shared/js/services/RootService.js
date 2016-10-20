@@ -45,12 +45,21 @@ function RootService($timeout, $state) {
         getAnimShortcuts: getAnimShortcuts,
         customShortcuts: customShortcuts,
         animations: animations,
-        elemIdCache: elemIdCache
+        elemIdCache: elemIdCache,
+        activeElem: activeElem
     }
 
     function getAnimShortcuts(prop) {
       var rootShortcuts = customShortcuts.getAnimProps();
       return rootShortcuts[prop];
+    }
+
+    function activeElem() {
+      return document.activeElement;
+    }
+
+    function setActiveElem(elem) {
+      document.activeElement = elem;
     }
 
     function getCustomAnimations() {
