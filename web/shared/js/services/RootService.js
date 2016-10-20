@@ -76,7 +76,7 @@ function RootService($timeout, $state) {
           for (var j = 0; j < ss[i].cssRules.length; ++j) {
               if (ss[i].cssRules[j].type == window.CSSRule.WEBKIT_KEYFRAMES_RULE) {
 
-                if (ss[i].cssRules[j].cssRules.length > 2) {
+                if (ss[i].cssRules[j].cssRules.length >= 2) {
                   scope.animations.custom.push(ss[i].cssRules[j])
                   scope.animations.customNameOnly.push(ss[i].cssRules[j].name)
                 }
