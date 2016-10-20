@@ -16,7 +16,7 @@
         </li>
 
         <li class='full-x width-128 height-128 absolute top-0 right-0' u on-click='a:[move:vp.right*0.5:vp.bottom*-1:1000:easeOutCirc:0:1:f]|'>
-            <item class='flex-wrap' id='move-1'>
+            <item class='flex-wrap' cache-id id='move-1'>
                 <text y="95" fill="white" font-size="10" fill="black">Base</text>
                 <text y="56.25" fill="white" font-size="18" fill="black">or</text>
                 <text fill="white" font-size="10" fill="black" y="10" x="50">Custom Item</text>

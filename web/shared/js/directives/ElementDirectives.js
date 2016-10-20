@@ -23,6 +23,23 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
+.directive("id", ["$compile", "RootService", "$timeout", function($compile, RootService, $timeout) {
+  return {
+    restrict: 'A',
+    scope: false,
+    priority: 1000,
+       compile: function(element, attr) {
+
+
+          if (!(attr.id in RootService.elemIdCache)) {
+              var elementRect = element[0].getBoundingClientRect();
+              RootService.elemIdCache[attr.id] = JSON.parse(JSON.stringify(elementRect));
+              console.log(RootService.elemIdCache[attr.id])
+          }
+
+       }
+   }
+  }])
 .directive("counter", ["$compile", "ElementService", "$timeout", function($compile, ElementService, $timeout) {
   return {
     restrict: 'A',
