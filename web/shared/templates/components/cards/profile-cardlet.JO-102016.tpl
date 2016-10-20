@@ -225,15 +225,15 @@
 			<div class="pf-cardlet-bottom-container">
 				<div class="pf-cardlet-bottom">
 					<div u init-with="p:[transform:scaleX(0)]"
-					 	when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]"></div>
-					<div init-with="p:[tr:scaleY(0), transform-origin:center top]"
-						when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
+					 	when-tech-cardlet-init="a:[scaleX:0:1:250:easeOutSine:0:1:f]"></div>
+					<div u init-with="p:[transform:scaleY(0), transform-origin:center top]"
+						when-tech-cardlet-init="a:[scaleY:0:1:250:easeOutSine:0:1:f]:delay-550"></div>
 					<div u init-with="p:[transform:scaleX(0)]"
-					 	when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
-					<div init-with="p:[tr:scaleY(0), transform-origin:center top]"
-						when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
+					 	when-tech-cardlet-init="a:[scaleX:0:1:250:easeOutSine:0:1:f]:delay-1200"></div>
+					<div u init-with="p:[transform:scaleY(0), transform-origin:center top]"
+						when-tech-cardlet-init="a:[scaleY:0:1:250:easeOutSine:0:1:f]:delay-550"></div>
 					<div u init-with="p:[transform:scaleX(0)]"
-					 	when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
+					 	when-tech-cardlet-init="a:[scaleX:0:1:250:easeOutSine:0:1:f]:delay-1200"></div>
 					<h1>When to Replace Your Phone</h1>
 					<div>
 						<div u init-with="p:[opacity:0]"
