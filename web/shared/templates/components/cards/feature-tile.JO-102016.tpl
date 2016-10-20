@@ -4,7 +4,6 @@
 		init-with="p:[opacity:0]"
 		on-init="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[feature-tile:public:250]"
 		on-mouse-enter="s:[icon-wiggle:public]">
-
 		<div class="feature-tile-icon">
 			<div class="feature-tile-type bg-lake"
 				u
