@@ -2,10 +2,11 @@ angular
     .module('uguru.shared.services')
     .factory('CompService', [
     '$timeout',
+    '$compile',
     CompService
     ]);
 
-function CompService($timeout) {
+function CompService($timeout, $compile) {
   var genOptionSpec = ['type', 'when-*', 'as*', '']
   var itemSpec = [];
   return {
@@ -14,7 +15,56 @@ function CompService($timeout) {
     getCompTemplateType: getCompTemplateType,
     getAndParseDimensions: getAndParseDimensions,
     applyDelayToWord: applyDelayToWord,
-    parseSrcUrl: parseSrcUrl
+    parseSrcUrl: parseSrcUrl,
+    getMediaElemOfType: getMediaElemOfType
+  }
+
+  function getMediaElemOfType(type, data_url, attributes, scope, attr, element) {
+    var mDict = {};
+    var import_type = attr.import;
+    if (type === 'img') {
+      if (import_type) {
+        var elem  = element[0].querySelector('[media-child]')
+        console.log(elem)
+
+        // var elem = element[0].children
+        // if (elem) {
+        //   elem = angular.element(elem);
+        //   // elem.attr('style', 'background-image:url("' + scope.m.url + '")');
+        //   elem.attr('u', '')
+        //   $compile(elem)(scope)
+
+
+
+        //   // element.children(elem);
+        //   // elem.parent().replaceWith(elem)
+        //   // elem.css('display', 'none');
+
+        //   // elem.parent().replaceWith(elem)
+        //   // $compile(element.contents())(scope);
+
+        // }
+
+        // // element.attr('style', 'background-image:url("' + data_url + '")');
+
+
+      } else {
+        mDict.elem = document.createElement('img');
+        for (var i = 0; i < attributes.length; i++) {
+          mDict.elem.setAttribute(attributes[i].name, attributes[i].value);
+        }
+        mDict.elem.src =  data_url;
+        mDict.elem = angular.element(mDict.elem);
+        mediaDict.elem.attr('u', '');
+        $compile(mediaDict.elem)(scope);
+        element.replaceWith(mediaDict.elem);
+      }
+
+
+
+
+    }
+    return mDict;
   }
 
   function parseSrcUrl(obj_str) {

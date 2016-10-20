@@ -27,9 +27,8 @@ angular.module('uguru.shared.directives.base.components')
         return {
             restrict: 'E',
             replace: true,
-            transclude: true,
 
-            templateUrl:'shared/templates/components/base/svg/media.svg.tpl',
+            templateUrl:'shared/templates/components/base/media.tpl',
             compile: function(element, attrs) {
                 var progressFunc;
 
@@ -39,44 +38,48 @@ angular.module('uguru.shared.directives.base.components')
 
                 return {
                     pre: function(scope, lElem, lAttr) {
-                        scope.m = {type: lAttr.type, url: lAttr.url};
+                        scope.m = {type: lAttr.type, url: lAttr.url, media:{url:''}, loader: {url: '', duration: 0, mb: {total:0, loaded:0},kb: {total:0, loaded:0}}};
                         scope.imgLoaded = false;
                         scope.loadRate = 0;
-                        console.log(scope.m.url)
+
                         var startTime = new Date().getTime();
-                        var progElement = lElem[0].querySelector('.progress-elem');
-                        var div = document.createElement('div');
-                        div.classList.add('txt-64', 'weight-900', 'absolute', 'full-xy', 'top-0', 'left-0', 'txt-charcoal');
+                        if (lAttr.loadWith) {
+                            scope.m.loader.url = 'shared/templates/components/base/loader/' + lAttr.loadWith + '.tpl';
+                        }
+
+                        if (lAttr.import) {
+                            scope.m.media.url = 'shared/templates/components/base/media/' + lAttr.import + '.tpl';
+                        }
+
                         progressFunc = function(oEvent) {
                             var kbRemaining = oEvent.loaded/1000;
                             var kbTotal = oEvent.total/1000;
                             var deltaT = new Date().getTime() - startTime;
-                            console.log(kbTotal, kbRemaining)
+                            var percent = parseInt(10000*(kbRemaining/kbTotal))/100;
+                            var eta = 100/percent * deltaT;
+
                             if (!scope.loadRate) {
                                 scope.loadRate = (1000/deltaT) * 1500;
                             }
+                            scope.m.loader.kb.total = kbTotal;
+                            scope.m.loader.kb.loaded = kbRemaining;
+                            scope.m.loader.mb.total = kbTotal/1000;
+                            scope.m.loader.mb.loaded = kbRemaining/1000;
+                            scope.m.loader.duration = Math.max(eta, 1000);
+                            scope.m.loader.percent = percent;
+
+                            if (scope.m.loader.kb.total === scope.m.loader.kb.loaded) {
+                                $timeout(function() {
+                                    scope.m.loader.complete = true;
+                                    scope.$parent.public.customStates['when-loader-complete'][0].func()
+                                }, 1000)
+                            }
                         };
-                        scope.$watch(function(new_val, old) {
-                            if (new_val) {
-                                lElem.append(angular.element(div));
-                                var count = scope.loadRate;
-                                var interval = setInterval(function() {
-                                    if (count < 0) clearTimeout(interval);
-                                    div.innerHTML = ((scope.loadRate - count)/scope.loadRate).toFixed(2) + '%';
-                                }, 16);
-                            }
-                        })
                         var callback = function(response) {
-                            var img = document.createElement('img');
+                            scope.m.data_url = response;
+                            var mediaDict = CompService.getMediaElemOfType(lAttr.type, response, lElem[0].attributes, scope, lAttr, lElem);
 
-                            for (var i = 0; i < lElem[0].attributes.length; i++) {
-                                img.setAttribute(lElem[0].attributes[i].name, lElem[0].attributes[i].value)
-                            }
 
-                            img = angular.element(img);
-                            img.attr('src', response);
-                            $compile(img)(scope);
-                            lElem.replaceWith(img);
                         }
                         console.log(lAttr.url)
                         XHRService.getFileWithProgress(lAttr.url, progressFunc, null, callback)
