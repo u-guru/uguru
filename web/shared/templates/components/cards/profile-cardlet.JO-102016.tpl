@@ -165,7 +165,7 @@
 				<div class="pf-cardlet-front">
 					<div></div><div></div><div></div>
 					<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
-						u init-with="p:[opacity:0]"
+						u init-with="p:[opacity:0, clip-path: circle(0px at 50% 50%)]"
 						when-photo-cardlet-init="a:[pf-photo-enter:750:easeInOutSine:500:1:f]"
 						when-photo-cardlet-exit="a:[pf-photo-enter:750:easeInOutSine:0:1:r]">&nbsp;</div>
 					<div class="pf-cardlet-overlay"></div>
@@ -177,15 +177,15 @@
 				<div class="pf-cardlet-bottom">
 					<h1 u init-with="p:[opacity:0]"
 						when-photo-cardlet-init="a:[opacity:0:1:650:easeOutSine:450:1:f]">2016 Camera Models</h1>
-					<div u init-with="p:[opacity:0]"
-						when-photo-cardlet-init="a:[bounceInX:1000:linear:450:1:f]">
+					<div u init-with="p:[op:0, tro:center center]"
+						when-photo-cardlet-init="a:[scaleInX-subtle:1000:linear:450:1:f]">
 						<h2>03/28/2016</h2>
 					</div>
 				</div>
 			</div>
 			<div class="pf-cardlet-back-container"
 				init-with="p:[tr:translateX(-7.5px) translateY(-7.5px) translateZ(0px)]"
-				when-photo-cardlet-init="p:[transform:translateX(-7.5px) translateY(-7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
+				when-photo-cardlet-init="a:[translateX:-7.5px:0px:450:easeOutSine:0:1:f, translateY:-7.5px:0px:450:easeOutSine:0:1:f]:delay-750">
 				<div class="pf-cardlet-back"></div>
 			</div>
 			<div class="pf-cardlet-ribbon-container"
