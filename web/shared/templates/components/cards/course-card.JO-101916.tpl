@@ -36,7 +36,9 @@
 			<h2 style="color: #003262;">BIO 1A</h2>
 			<h1 style="color: #003262;">Introduction to Biology</h1>
 		</div>
-		<div class="course-card-border" style="background: #003262;"></div>
+		<div class="course-card-border" style="background: #003262;"
+			u init-with="p:[transform:scaleY(0)]"
+			when-course-card-init="a:[scaleY:0:1:500:easeOutSine:0:1:f]"></div>
 		<div class="course-card-count-container"
 			u init-with="p:[opacity:0, transform-origin:right top]"
 			when-course-card-init="a:[bounceIn-subtle:1000:linear:250:1:f]">
