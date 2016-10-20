@@ -55,7 +55,7 @@
 						on-init="p:[op:1] | s:[card-flip:public, card-swipe:public]:delay-1000 | a:[translateX:0px:342px:500:linear:0:1:f, translateY:0px:-122px:500:linear:0:1:f, rotate:0deg:180deg:500:linear:0:1:f]:delay-2000"
 						when-card-error="a:[translateX:200px:0px:1000:easeOutBack:0:1:f, rotate:180deg:0deg:1000:easeOutBack:0:1:f] | s:[card-valid:public:1000]"
 						when-card-valid="a:[translateX:0px:342px:500:linear:0:1:f, translateY:0px:-122px:500:linear:0:1:f, rotate:0deg:180deg:500:linear:0:1:f] | s:[card-success:public:900]"
-						when-card-success="a:[translateX:342px:750px:350:easeInBack:0:1:f, translateY:-122px:-222px:350:easeInBack:0:1:f, rotate:180deg:150deg:350:linear:0:1:f]">
+						when-card-success="a:[translateX:342px:1750px:350:easeInBack:0:1:f, translateY:-122px:-222px:350:easeInBack:0:1:f, rotate:180deg:150deg:350:linear:0:1:f] | s:[card-exit:public:500]">
 						<svg viewBox="0 0 240 150">
 							<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 						</svg>
