@@ -473,7 +473,7 @@ angular.module('uguru.shared.directives')
           compile: function(element, attr, transclude) {
               this.states = ElementService.renderElementStates(element, attr);
               var states = this.states;
-
+              var postStates = [];
               return {
                   pre: function (scope, lElem, lAttr) {
                     scope.states = {};
@@ -493,7 +493,12 @@ angular.module('uguru.shared.directives')
                     }
 
                       if (states.on) {
+
                         states.on.forEach(function(state, i) {
+                          if (state.name.indexOf('init') > -1) {
+                            postStates.push(state);
+                            return;
+                          }
                           if (state.actions.debug) {
                             ElementService.launchExternalWindow(state.actions.debug, element);
                           }
@@ -538,7 +543,21 @@ angular.module('uguru.shared.directives')
                       });
 
                   },
-                  post: angular.noop
+                  post: function(scope, element, attr) {
+                    if (postStates.length) {
+                      postStates.forEach(function(state, i) {
+                      if (state.name.indexOf('init') > -1) {
+                          console.log('rendering on init')
+                          state.exec(element, scope, attr);
+                            if (state.name.indexOf('debug') > -1) {
+                              ElementService.launchExternalWindow(state.actions.anim.parsed, element);
+                            }
+                        }
+                      });
+                    } else {
+                      return angular.noop;
+                    }
+                  }
               }
           }
       }

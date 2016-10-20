@@ -39,11 +39,10 @@ function XHRService($timeout) {
           // and String.fromCharCode() takes one or more single values, not
           // an array.
           var raw = '';
-          var i,j,subArray,chunk = 50;
+          var i,j,subArray,chunk = 5000;
           for (i=0,j=arr.length; i<j; i+=chunk) {
 
              subArray = arr.subarray(i,i+chunk);
-             console.log(btoa(String.fromCharCode.apply(null, subArray)))
              raw += String.fromCharCode.apply(null, subArray);
           }
 
