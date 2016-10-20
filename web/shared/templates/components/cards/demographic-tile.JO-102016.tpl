@@ -8,13 +8,13 @@
 			</svg>
 			<div>
 				<div class="borders">
-					<div u init-with="p:[scaleX:0, transform-origin:center center]"
+					<div u init-with="p:[transform:scaleX(0), transform-origin:center center]"
 						when-demo-card-enter="a:[scaleX:0:1:800:easeOutCubic:0:1:f]"></div>
-					<div init-with="p:[scaleY:0, transform-origin:center top]"
+					<div u init-with="p:[transform:scaleY(0), transform-origin:center top]"
 						when-demo-card-enter="a:[scaleY:0:1:1000:easeOutCubic:0:1:f]"></div>
-					<div u init-with="p:[scaleX:0, transform-origin:center center]"
+					<div u init-with="p:[transform:scaleX(0), transform-origin:center center]"
 						when-demo-card-enter="a:[scaleX:0:1:800:easeOutCubic:0:1:f]"></div>
-					<div init-with="p:[scaleY:0, transform-origin:center bottom]"
+					<div u init-with="p:[transform:scaleY(0), transform-origin:center bottom]"
 						when-demo-card-enter="a:[scaleY:0:1:1000:easeOutCubic:0:1:f]"></div>
 					<div class="border-bottom"
 						u init-with="p:[opacity:0]"
@@ -37,13 +37,13 @@
 			</svg>
 			<div>
 				<div class="borders">
-					<div u init-with="p:[scaleX:0, transform-origin:center center]"
+					<div u init-with="p:[transform:scaleX(0), transform-origin:center center]"
 						when-demo-card-enter="a:[scaleX:0:1:800:easeOutCubic:0:1:f]"></div>
-					<div init-with="p:[scaleY:0, transform-origin:center top]"
+					<div u init-with="p:[transform:scaleY(0), transform-origin:center top]"
 						when-demo-card-enter="a:[scaleY:0:1:1000:easeOutCubic:0:1:f]"></div>
-					<div u init-with="p:[scaleX:0, transform-origin:center center]"
+					<div u init-with="p:[transform:scaleX(0), transform-origin:center center]"
 						when-demo-card-enter="a:[scaleX:0:1:800:easeOutCubic:0:1:f]"></div>
-					<div init-with="p:[scaleY:0, transform-origin:center bottom]"
+					<div u init-with="p:[transform:scaleY(0), transform-origin:center bottom]"
 						when-demo-card-enter="a:[scaleY:0:1:1000:easeOutCubic:0:1:f]"></div>
 					<div class="border-bottom"
 						u init-with="p:[opacity:0]"
@@ -66,13 +66,13 @@
 			</svg>
 			<div>
 				<div class="borders">
-					<div u init-with="p:[scaleX:0, transform-origin:center center]"
+					<div u init-with="p:[transform:scaleX(0), transform-origin:center center]"
 						when-demo-card-enter="a:[scaleX:0:1:800:easeOutCubic:0:1:f]"></div>
-					<div init-with="p:[scaleY:0, transform-origin:center top]"
+					<div u init-with="p:[transform:scaleY(0), transform-origin:center top]"
 						when-demo-card-enter="a:[scaleY:0:1:1000:easeOutCubic:0:1:f]"></div>
-					<div u init-with="p:[scaleX:0, transform-origin:center center]"
+					<div u init-with="p:[transform:scaleX(0), transform-origin:center center]"
 						when-demo-card-enter="a:[scaleX:0:1:800:easeOutCubic:0:1:f]"></div>
-					<div init-with="p:[scaleY:0, transform-origin:center bottom]"
+					<div u init-with="p:[transform:scaleY(0), transform-origin:center bottom]"
 						when-demo-card-enter="a:[scaleY:0:1:1000:easeOutCubic:0:1:f]"></div>
 					<div class="border-bottom"
 						u init-with="p:[opacity:0]"
@@ -95,13 +95,13 @@
 			</svg>
 			<div>
 				<div class="borders">
-					<div u init-with="p:[scaleX:0, transform-origin:center center]"
+					<div u init-with="p:[transform:scaleX(0), transform-origin:center center]"
 						when-demo-card-enter="a:[scaleX:0:1:800:easeOutCubic:0:1:f]"></div>
-					<div init-with="p:[scaleY:0, transform-origin:center top]"
+					<div u init-with="p:[transform:scaleY(0), transform-origin:center top]"
 						when-demo-card-enter="a:[scaleY:0:1:1000:easeOutCubic:0:1:f]"></div>
-					<div u init-with="p:[scaleX:0, transform-origin:center center]"
+					<div u init-with="p:[transform:scaleX(0), transform-origin:center center]"
 						when-demo-card-enter="a:[scaleX:0:1:800:easeOutCubic:0:1:f]"></div>
-					<div init-with="p:[scaleY:0, transform-origin:center bottom]"
+					<div u init-with="p:[transform:scaleY(0), transform-origin:center bottom]"
 						when-demo-card-enter="a:[scaleY:0:1:1000:easeOutCubic:0:1:f]"></div>
 					<div class="border-bottom"
 						u init-with="p:[opacity:0]"
@@ -124,13 +124,13 @@
 			</svg>
 			<div>
 				<div class="borders">
-					<div u init-with="p:[scaleX:0, transform-origin:center center]"
+					<div u init-with="p:[transform:scaleX(0), transform-origin:center center]"
 						when-demo-card-enter="a:[scaleX:0:1:800:easeOutCubic:0:1:f]"></div>
-					<div init-with="p:[scaleY:0, transform-origin:center top]"
+					<div u init-with="p:[transform:scaleY(0), transform-origin:center top]"
 						when-demo-card-enter="a:[scaleY:0:1:1000:easeOutCubic:0:1:f]"></div>
-					<div u init-with="p:[scaleX:0, transform-origin:center center]"
+					<div u init-with="p:[transform:scaleX(0), transform-origin:center center]"
 						when-demo-card-enter="a:[scaleX:0:1:800:easeOutCubic:0:1:f]"></div>
-					<div init-with="p:[scaleY:0, transform-origin:center bottom]"
+					<div u init-with="p:[transform:scaleY(0), transform-origin:center bottom]"
 						when-demo-card-enter="a:[scaleY:0:1:1000:easeOutCubic:0:1:f]"></div>
 					<div class="border-bottom"
 						u init-with="p:[opacity:0]"
@@ -154,13 +154,13 @@
 			</svg>
 			<div>
 				<div class="borders">
-					<div u init-with="p:[scaleX:0, transform-origin:center center]"
+					<div u init-with="p:[transform:scaleX(0), transform-origin:center center]"
 						when-demo-card-enter="a:[scaleX:0:1:800:easeOutCubic:0:1:f]"></div>
-					<div init-with="p:[scaleY:0, transform-origin:center top]"
+					<div u init-with="p:[transform:scaleY(0), transform-origin:center top]"
 						when-demo-card-enter="a:[scaleY:0:1:1000:easeOutCubic:0:1:f]"></div>
-					<div u init-with="p:[scaleX:0, transform-origin:center center]"
+					<div u init-with="p:[transform:scaleX(0), transform-origin:center center]"
 						when-demo-card-enter="a:[scaleX:0:1:800:easeOutCubic:0:1:f]"></div>
-					<div init-with="p:[scaleY:0, transform-origin:center bottom]"
+					<div u init-with="p:[transform:scaleY(0), transform-origin:center bottom]"
 						when-demo-card-enter="a:[scaleY:0:1:1000:easeOutCubic:0:1:f]"></div>
 					<div class="border-bottom"
 						u init-with="p:[opacity:0]"
@@ -183,13 +183,13 @@
 			</svg>
 			<div>
 				<div class="borders">
-					<div u init-with="p:[scaleX:0, transform-origin:center center]"
+					<div u init-with="p:[transform:scaleX(0), transform-origin:center center]"
 						when-demo-card-enter="a:[scaleX:0:1:800:easeOutCubic:0:1:f]"></div>
-					<div init-with="p:[scaleY:0, transform-origin:center top]"
+					<div u init-with="p:[transform:scaleY(0), transform-origin:center top]"
 						when-demo-card-enter="a:[scaleY:0:1:1000:easeOutCubic:0:1:f]"></div>
-					<div u init-with="p:[scaleX:0, transform-origin:center center]"
+					<div u init-with="p:[transform:scaleX(0), transform-origin:center center]"
 						when-demo-card-enter="a:[scaleX:0:1:800:easeOutCubic:0:1:f]"></div>
-					<div init-with="p:[scaleY:0, transform-origin:center bottom]"
+					<div u init-with="p:[transform:scaleY(0), transform-origin:center bottom]"
 						when-demo-card-enter="a:[scaleY:0:1:1000:easeOutCubic:0:1:f]"></div>
 					<div class="border-bottom"
 						u init-with="p:[opacity:0]"
@@ -212,13 +212,13 @@
 			</svg>
 			<div>
 				<div class="borders">
-					<div u init-with="p:[scaleX:0, transform-origin:center center]"
+					<div u init-with="p:[transform:scaleX(0), transform-origin:center center]"
 						when-demo-card-enter="a:[scaleX:0:1:800:easeOutCubic:0:1:f]"></div>
-					<div init-with="p:[scaleY:0, transform-origin:center top]"
+					<div u init-with="p:[transform:scaleY(0), transform-origin:center top]"
 						when-demo-card-enter="a:[scaleY:0:1:1000:easeOutCubic:0:1:f]"></div>
-					<div u init-with="p:[scaleX:0, transform-origin:center center]"
+					<div u init-with="p:[transform:scaleX(0), transform-origin:center center]"
 						when-demo-card-enter="a:[scaleX:0:1:800:easeOutCubic:0:1:f]"></div>
-					<div init-with="p:[scaleY:0, transform-origin:center bottom]"
+					<div u init-with="p:[transform:scaleY(0), transform-origin:center bottom]"
 						when-demo-card-enter="a:[scaleY:0:1:1000:easeOutCubic:0:1:f]"></div>
 					<div class="border-bottom"
 						u init-with="p:[opacity:0]"
@@ -241,13 +241,13 @@
 			</svg>
 			<div>
 				<div class="borders">
-					<div u init-with="p:[scaleX:0, transform-origin:center center]"
+					<div u init-with="p:[transform:scaleX(0), transform-origin:center center]"
 						when-demo-card-enter="a:[scaleX:0:1:800:easeOutCubic:0:1:f]"></div>
-					<div init-with="p:[scaleY:0, transform-origin:center top]"
+					<div u init-with="p:[transform:scaleY(0), transform-origin:center top]"
 						when-demo-card-enter="a:[scaleY:0:1:1000:easeOutCubic:0:1:f]"></div>
-					<div u init-with="p:[scaleX:0, transform-origin:center center]"
+					<div u init-with="p:[transform:scaleX(0), transform-origin:center center]"
 						when-demo-card-enter="a:[scaleX:0:1:800:easeOutCubic:0:1:f]"></div>
-					<div init-with="p:[scaleY:0, transform-origin:center bottom]"
+					<div u init-with="p:[transform:scaleY(0), transform-origin:center bottom]"
 						when-demo-card-enter="a:[scaleY:0:1:1000:easeOutCubic:0:1:f]"></div>
 					<div class="border-bottom"
 						u init-with="p:[opacity:0]"
@@ -270,13 +270,13 @@
 			</svg>
 			<div>
 				<div class="borders">
-					<div u init-with="p:[scaleX:0, transform-origin:center center]"
+					<div u init-with="p:[transform:scaleX(0), transform-origin:center center]"
 						when-demo-card-enter="a:[scaleX:0:1:800:easeOutCubic:0:1:f]"></div>
-					<div init-with="p:[scaleY:0, transform-origin:center top]"
+					<div u init-with="p:[transform:scaleY(0), transform-origin:center top]"
 						when-demo-card-enter="a:[scaleY:0:1:1000:easeOutCubic:0:1:f]"></div>
-					<div u init-with="p:[scaleX:0, transform-origin:center center]"
+					<div u init-with="p:[transform:scaleX(0), transform-origin:center center]"
 						when-demo-card-enter="a:[scaleX:0:1:800:easeOutCubic:0:1:f]"></div>
-					<div init-with="p:[scaleY:0, transform-origin:center bottom]"
+					<div u init-with="p:[transform:scaleY(0), transform-origin:center bottom]"
 						when-demo-card-enter="a:[scaleY:0:1:1000:easeOutCubic:0:1:f]"></div>
 					<div class="border-bottom"
 						u init-with="p:[opacity:0]"
