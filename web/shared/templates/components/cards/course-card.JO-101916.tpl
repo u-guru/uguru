@@ -23,7 +23,7 @@
 	</div> -->
 	<!-- ng-if='activeType === "checkbox-tiny"' -->
 
-	<!-- <div class="course-card short"
+	<div class="course-card short"
 		u init-with="p:[opacity:0]"
 		on-init="s:[course-card-init:public] | a:[scoop-enter:800:(0,0.2,0.3,1):0:1:f]">
 		<svg width="240px" height="50px" viewBox="0 0 240 50">
@@ -47,7 +47,7 @@
 				</svg>
 			</span>
 		</div>
-	</div> -->
+	</div>
 	<!-- ng-if='activeType === "checkbox-short"' -->
 
 	<!-- <div class="course-card mini"
@@ -92,7 +92,9 @@
 			<h2 style="color: #003262;">BIO 1A</h2>
 			<h1 style="color: #003262;">Introduction to Biology</h1>
 		</div>
-		<div class="course-card-border" style="background: #003262;"></div>
+		<div class="course-card-border" style="background: #003262;"
+			u init-with="p:[transform:scaleX(0), tro:center center]"
+			when-course-card-init="a:[scaleX:0:1:250:easeOutSine:0:1:f]"></div>
 		<div class="course-card-count-container"
 			u init-with="p:[opacity:0, transform-origin:right top]"
 			when-course-card-init="a:[bounceIn-subtle:1000:linear:250:1:f]">
@@ -119,12 +121,12 @@
 			<h1 style="color: #003262;">Introduction to Biology</h1>
 		</div>
 		<div class="course-card-border" style="background: #003262;"
-			u init-with="p:[scaleX:0, transform-origin:center center]"
+			u init-with="p:[transform:scaleX(0), transform-origin:center center]"
 			when-course-card-init="a:[scaleX:0:1:250:easeOutSine:0:1:f]"></div>
 	</div> -->
 	<!-- ng-if='activeType === "default"' -->
 
-	<a class="course-card"
+	<!-- <a class="course-card"
 		u init-with="p:[opacity:0]"
 		on-init="s:[course-card-init:public] | a:[scoop-enter:800:(0,0.2,0.3,1):0:1:f]"
 		on-mouseEnter="p:[transform:translateZ(10px)]"
@@ -140,9 +142,9 @@
 		</div>
 		<div class="course-card-hover" style="background: #003262;"></div>
 		<div class="course-card-border" style="background: #003262;"
-			u init-with="p:[scaleX:0, transform-origin:center center]"
+			u init-with="p:[transform:scaleX(0), transform-origin:center center]"
 			when-course-card-init="a:[scaleX:0:1:250:easeOutSine:0:1:f]"></div>
-	</a>
+	</a> -->
 	<!-- ng-if='activeType === "link"' -->
 
 	<!-- <div class="course-card with-hover"
