@@ -206,7 +206,7 @@
 	</div>
 
 	<div class="pf-tile-container" ng-if='activeType === "tech"'
-		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
+		u init-with="p:[transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px), opacity:0]"
 		on-init="s:[tech-cardlet-init:public]"
 		when-tech-cardlet-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f,  translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f] | s:[tech-ribbon:public:delay-500, tech-cardlet-back:public:delay-1000]"
 		when-tech-cardlet-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]">
@@ -283,10 +283,10 @@
 			<div class="pf-cardlet-bottom-container">
 				<div class="pf-cardlet-bottom">
 					<h1 u init-with="p:[opacity:0]"
-						when-household-cardlet-init="a:[bounceInUp-subtle:1000:linear:500:1:f]">How to Make Your Plants Live Longer</h1>
+						when-household-cardlet-init="a:[zoom-enter:800:linear:500:1:f]">How to Make Your Plants Live Longer</h1>
 					<div>
 						<div class="pf-cardlet-border"
-							u init-with="p:[scale:0, transform-origin:right bottom]"
+							u init-with="p:[transform:scale(0), transform-origin:right bottom]"
 							when-household-cardlet-init="a:[scale:0:1:1000:easeOutBack:250:1:f]">
 							<div></div>
 							<div></div>
