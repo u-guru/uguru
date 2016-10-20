@@ -45,41 +45,41 @@
 	</div>
 
 	<div class="pf-tile-container" ng-if='activeType === "academic"'
-		u init-with="p:[opacity:0, transform-origin:left top, rotateX:30deg, rotateY:30deg, translateY:300px]"
+		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[academic-cardlet-init:public]"
 		when-academic-cardlet-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f,  translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f] | s:[academic-ribbon:public]:delay-500"
 		when-academic-cardlet-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-cardlet highlight bg-academic">
 			<div class="pf-cardlet-front-container"
-				u init-with="p:[translateX:7.5px, translateY:7.5px]"
+				u init-with="p:[transform:translateX(7.5px) translateY(7.5px)]"
 				when-academic-cardlet-init="a:[translateX:7.5px:0px:450:easeOutSine:750:1:f, translateY:7.5px:0px:450:easeOutSine:750:1:f]">
 				<div class="pf-cardlet-front" style="background-image: url('http://i1-news.softpedia-static.com/images/news2/no-two-brains-are-alike-investigation-reveals-494462-2.jpg');"></div>
 			</div>
 			<div class="pf-cardlet-back-container"
-				u init-with="p:[translateX:-7.5px, translateY:-7.5px]"
+				u init-with="p:[transform:translateX(-7.5px) translateY(-7.5px)]"
 				when-academic-cardlet-init="a:[translateX:-7.5px:0px:450:easeOutSine:500:1:f, translateY:-7.5px:0px::450:easeOutSine:500:1:f]">
 				<div class="pf-cardlet-back" style="background-image: url('http://i1-news.softpedia-static.com/images/news2/no-two-brains-are-alike-investigation-reveals-494462-2.jpg');"></div>
 			</div>
 			<div class="pf-cardlet-bottom-container"
-				u init-with="p:[translateX:7.5px, translateY:7.5px]"
+				u init-with="p:[transform:translateX(7.5px) translateY(7.5px)]"
 				when-academic-cardlet-init="a:[translateX:7.5px:0px:450:easeOutSine:750:1:f, translateY:7.5px:0px:450:easeOutSine:750:1:f]">
 				<div class="pf-cardlet-bottom">
 					<div class="pf-cardlet-bg deco"></div>
 					<div class="pf-cardlet-border deco">
-						<div u init-with="p:[scaleX:0]"
+						<div u init-with="p:[transform:scaleX(0)]"
 							when-academic-cardlet-init="a:[scaleX:0:1:1450:easeOutSine:0:1:f]"></div>
-						<div u init-with="p:[scaleY:0]"
+						<div u init-with="p:[transform:scaleY(0)]"
 							when-academic-cardlet-init="a:[scaleY:0:1:1450:easeOutSine:0:1:f]"></div>
-						<div u init-with="p:[scaleY:0]"
+						<div u init-with="p:[transform:scaleY(0)]"
 							when-academic-cardlet-init="a:[scaleY:0:1:1450:easeOutSine:0:1:f]"></div>
-						<div u init-with="p:[scaleX:0]"
+						<div u init-with="p:[transform:scaleX(0)]"
 							when-academic-cardlet-init="a:[scaleX:0:1:1450:easeOutSine:0:1:f]"></div>
 					</div>
 					<h1 u init-with="p:[opacity:0]"
 						when-academic-cardlet-init="a:[zoomIn:400:(.8,.1,.41,.91):450:1:f]">Master the Cerebral Cortex</h1>
 					<div>
-						<div u init-with="p:[opacity:0, scaleY:0]"
+						<div u init-with="p:[opacity:0, transform:scaleY(0)]"
 							when-academic-cardlet-init-1="a:[opacity:0:1:400:easeOutSine:650:1:f, scaleY:0:1:400:easeOutSine:650:1:f]">
 							<h2>03/28/2016</h2>
 						</div>
@@ -87,7 +87,7 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-ribbon-container"
-				u init-with="p:[opacity:0, translateX:-10px]"
+				u init-with="p:[opacity:0, transform:translateX(-10px)]"
 				when-academic-ribbon="a:[opacity:0:1:250:easeOutSine:0:1:f, translateX:-10px:0px:900:easeOutQuad:500:1:f]">
 				<div class="pf-cardlet-ribbon">
 					<svg viewBox="0 0 100 100">
@@ -96,7 +96,7 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-ribbon-edge-container"
-				u init-with="p:[opacity:0, translateY:-10px]"
+				u init-with="p:[opacity:0, transform:translateY(-10px)]"
 				when-academic-ribbon="a:[opacity:0:1:450:linear:200:1:f, translateY:-10px:0px:900:easeOutQuad:700:1:f]">
 				<div class="pf-cardlet-ribbon-edge"></div>
 			</div>
@@ -104,7 +104,7 @@
 	</div>
 
 	<div class="pf-tile-container" ng-if='activeType === "baking"'
-		u init-with="p:[opacity:0, transform-origin:left top, rotateX:30deg, rotateY:30deg, translateY:300px]"
+		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[baking-cardlet-init:public]"
 		when-baking-cardlet-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f,  translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f] | s:[baking-ribbon:public]:delay-500"
 		when-baking-cardlet-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]"
@@ -113,21 +113,19 @@
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-cardlet highlight bg-baking">
 			<div class="pf-cardlet-front-container"
-				u init-default
-				when-baking-cardlet-hover="a:[baking-cardlet-hover:1000:linear:0:1:f]">
+				u when-baking-cardlet-hover="a:[baking-cardlet-hover:1000:linear:0:1:f]">
 				<div class="pf-cardlet-front"></div>
 			</div>
 			<div class="pf-cardlet-back-container"
-				u init-with="p:[opacity:0]"
+				u init-with="p:[opacity:0, transform:center center]"
 				when-baking-cardlet-init="a:[baking-cardlet-scaleX-enter:2000:linear:600:1:f]">
 				<div class="pf-cardlet-back" style="background: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"></div>
 			</div>
 			<div class="pf-cardlet-bottom-container"
-				u init-default
-				when-baking-cardlet-hover="a:[baking-cardlet-hover:1000:linear:0:1:f]">
+				u when-baking-cardlet-hover="a:[baking-cardlet-hover:1000:linear:0:1:f]">
 				<div class="pf-cardlet-bottom">
 					<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"
-						u init-with="p:[opacity:0]"
+						u init-with="p:[transform:scale(0), tro:center center]"
 						when-baking-cardlet-init="a:[icon-rotate-enter:1000:linear:300:1:f]"></div>
 					<h1 u init-with="p:[opacity:0]"
 						when-baking-cardlet-init="a:[opacity:0:1:650:easeOutSine:450:1:f]">Four-Star Strawberry Cake on a Budget</h1>
@@ -138,7 +136,7 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-ribbon-container"
-				u init-with="p:[opacity:0, translateX:-10px]"
+				u init-with="p:[opacity:0, transform:translateX(-10px)]"
 				when-baking-ribbon="a:[opacity:0:1:250:easeOutSine:0:1:f, translateX:-10px:0px:900:easeOutQuad:500:1:f]">
 				<div class="pf-cardlet-ribbon">
 					<svg viewBox="0 0 100 100">
@@ -147,7 +145,7 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-ribbon-edge-container"
-				u init-with="p:[opacity:0, translateY:-10px]"
+				u init-with="p:[opacity:0, transform:translateY(-10px)]"
 				when-baking-ribbon="a:[opacity:0:1:450:linear:200:1:f, translateY:-10px:0px:900:easeOutQuad:700:1:f]">
 				<div class="pf-cardlet-ribbon-edge"></div>
 			</div>
@@ -155,14 +153,14 @@
 	</div>
 
 	<div class="pf-tile-container" ng-if='activeType === "photo"'
-		u init-with="p:[opacity:0, transform-origin:left top, rotateX:30deg, rotateY:30deg, translateY:300px]"
+		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[photo-cardlet-init:public]"
 		when-photo-cardlet-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f,  translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f] | s:[photo-ribbon:public]:delay-500"
 		when-photo-cardlet-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-cardlet highlight bg-photography">
 			<div class="pf-cardlet-front-container"
-				u init-with="p:[translateX:7.5px, translateY:7.5px]"
+				u init-with="p:[transform:translateX(7.5px) translateY(7.5px)]"
 				when-photo-cardlet-init="a:[translateX:7.5px:0px:450:easeOutSine:750:1:f, translateY:7.5px:0px:450:easeOutSine:750:1:f]">
 				<div class="pf-cardlet-front">
 					<div></div><div></div><div></div>
@@ -174,7 +172,7 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-bottom-container"
-				u init-with="p:[translateX:7.5px, translateY:7.5px]"
+				u init-with="p:[transform:translateX(7.5px) translateY(7.5px)]"
 				when-photo-cardlet-init="a:[translateX:7.5px:0px:450:easeOutSine:750:1:f, translateY:7.5px:0px:450:easeOutSine:750:1:f]">
 				<div class="pf-cardlet-bottom">
 					<h1 u init-with="p:[opacity:0]"
@@ -191,7 +189,7 @@
 				<div class="pf-cardlet-back"></div>
 			</div>
 			<div class="pf-cardlet-ribbon-container"
-				u init-with="p:[opacity:0, translateX:-10px]"
+				u init-with="p:[opacity:0, transform:translateX(-10px)]"
 				when-photo-cardlet-init="a:[opacity:0:1:250:easeOutSine:0:1:f, translateX:-10px:0px:900:easeOutQuad:500:1:f]">
 				<div class="pf-cardlet-ribbon">
 					<svg viewBox="0 0 100 100">
@@ -200,7 +198,7 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-ribbon-edge-container"
-				u init-with="p:[opacity:0, translateY:-10px]"
+				u init-with="p:[opacity:0, transform:translateY(-10px)]"
 				when-photo-ribbon="a:[opacity:0:1:450:linear:200:1:f, translateY:-10px:0px:900:easeOutQuad:700:1:f]">
 				<div class="pf-cardlet-ribbon-edge"></div>
 			</div>
@@ -208,7 +206,7 @@
 	</div>
 
 	<div class="pf-tile-container" ng-if='activeType === "tech"'
-		u init-with="p:[opacity:0, transform-origin:left top, rotateX:30deg, rotateY:30deg, translateY:300px]"
+		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[tech-cardlet-init:public]"
 		when-tech-cardlet-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f,  translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f] | s:[tech-ribbon:public:delay-500, tech-cardlet-back:public:delay-1000]"
 		when-tech-cardlet-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]">
@@ -226,15 +224,15 @@
 			</div>
 			<div class="pf-cardlet-bottom-container">
 				<div class="pf-cardlet-bottom">
-					<div u init-with="p:[scaleX:0]"
+					<div u init-with="p:[transform:scaleX(0)]"
 					 	when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]"></div>
 					<div init-with="p:[tr:scaleY(0), transform-origin:center top]"
 						when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
-					<div u init-with="p:[scaleX:0]"
+					<div u init-with="p:[transform:scaleX(0)]"
 					 	when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
 					<div init-with="p:[tr:scaleY(0), transform-origin:center top]"
 						when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
-					<div u init-with="p:[scaleX:0]"
+					<div u init-with="p:[transform:scaleX(0)]"
 					 	when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
 					<h1>When to Replace Your Phone</h1>
 					<div>
@@ -248,7 +246,7 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-ribbon-container"
-				u init-with="p:[opacity:0, translateX:-10px]"
+				u init-with="p:[opacity:0, transform:translateX(-10px)]"
 				when-tech-ribbon="a:[opacity:0:1:250:easeOutSine:0:1:f, translateX:-10px:0px:900:easeOutQuad:500:1:f]">
 				<div class="pf-cardlet-ribbon">
 					<svg viewBox="0 0 100 100">
@@ -257,7 +255,7 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-ribbon-edge-container"
-				u init-with="p:[opacity:0, translateY:-10px]"
+				u init-with="p:[opacity:0, transform:translateY(-10px)]"
 				when-tech-ribbon="a:[opacity:0:1:450:linear:200:1:f, translateY:-10px:0px:900:easeOutQuad:700:1:f]">
 				<div class="pf-cardlet-ribbon-edge"></div>
 			</div>
@@ -265,7 +263,7 @@
 	</div>
 
 	<div class="pf-tile-container" ng-if='activeType === "household"'
-		u init-with="p:[opacity:0, transform-origin:left top, rotateX:30deg, rotateY:30deg, translateY:300px]"
+		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[household-cardlet-init:public]"
 		when-household-cardlet-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f,  translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f] | s:[household-ribbon:public]:delay-500"
 		when-household-cardlet-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]">
@@ -278,7 +276,7 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-back-container"
-				u init-with="p:[translateX:-7.5px, translateY:-7.5px]"
+				u init-with="p:[transform:translateX(-7.5px) translateY(-7.5px)]"
 				when-household-cardlet-init="a:[translateX:-7.5px:0px:450:easeOutSine:500:1:f, translateY:-7.5px:0px::450:easeOutSine:500:1:f]">
 				<div class="pf-cardlet-back"></div>
 			</div>
@@ -301,7 +299,7 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-ribbon-container"
-				u init-with="p:[opacity:0, translateX:-10px]"
+				u init-with="p:[opacity:0, transform:translateX(-10px)]"
 				when-household-ribbon="a:[opacity:0:1:250:easeOutSine:0:1:f, translateX:-10px:0px:900:easeOutQuad:500:1:f]">
 				<div class="pf-cardlet-ribbon">
 					<svg viewBox="0 0 100 100">
@@ -310,7 +308,7 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-ribbon-edge-container"
-				u init-with="p:[opacity:0, translateY:-10px]"
+				u init-with="p:[opacity:0, transform:translateY(-10px)]"
 				when-household-ribbon="a:[opacity:0:1:450:linear:200:1:f, translateY:-10px:0px:900:easeOutQuad:700:1:f]">
 				<div class="pf-cardlet-ribbon-edge"></div>
 			</div>
