@@ -124,7 +124,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           tick.infinite = stream.iter.infinite;
           if (tick.infinite) {
             // @jeselle-infinite, @gabrielle-infinite
-            stream.iter.count.total = 100;
+            stream.iter.count.total = 10;
           }
           tick.cycle = {
             repeats: stream.iter.count.total,
@@ -1099,6 +1099,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               duration: iPropObj.duration
             }
             var offset = iPropObj.delay;
+            console.log(stateName || str)
             var values = TweenService.preComputeValues(iPropObj.property, iPropObj.duration, iPropObj.start, iPropObj.end, iPropObj.easingFunc, {cache:[]}, kf).cache;
 
 

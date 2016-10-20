@@ -130,7 +130,10 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function loadAnimations() {
-        if (!rShortcuts.animations || !rShortcuts.animations.customShortcuts) {
+        if (!RootService.animations.customShortcuts) {
+          return false;
+        }
+        if (!rShortcuts.animations || !rShortcuts.animations.customShortcuts || !RootService.animations) {
           rAnimations = RootService.animations;
           rShortcuts.cssPropValues = RootService.animations.customShortcuts.cssPropValues;
           rShortcuts.cssProps = RootService.animations.customShortcuts.cssProps;
@@ -204,8 +207,8 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
           //to refactor
           if (!rShortcuts || !rShortcuts.cmds) {
-            loadAnimations();
-            if (!rShortcuts || !rShortcuts.cmds) {
+            var animStatus = loadAnimations();
+            if (!rShortcuts || !rShortcuts.cmds || !animStatus) {
               $timeout(function() {
                 getInternalDelay(key, int_str, delay_match_strs)
               })
@@ -418,7 +421,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
         messages.split(',').forEach(function(msg, i) {
           if (!rShortcuts.cmds) {
-            rShortcuts.cmds = RootService.animations.customShortcuts.cmds;;
+            rShortcuts.cmds = RootService.animations.customShortcuts.cmds;
           }
 
           if (msg in rShortcuts.cmds) {
@@ -433,6 +436,9 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           var totalMsgDelay = msgDelay.external || 0;
 
           if (msgSplit.length > 2) {
+            if (!msgDelay.internal && msgDelay.internal !== 0) {
+              msgDelay.internal = 0;
+            }
             totalMsgDelay = (msgDelay.external || 0) + (msgDelay.internal[msgName] || 0);
           }
 
@@ -632,7 +638,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           var prop = prop.trim();
 
           prop = checkAndReplaceSpecialPropArgs(elem, prop);
-          console.log(prop)
           if (!prop || !prop.length) return;
 
           if (rShortcuts && rShortcuts.cssPropValues && prop.toLowerCase() in rShortcuts.cssPropValues) {
@@ -646,12 +651,14 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           }
           var iPropSplit = prop.split(':');
 
-          var propKey = iPropSplit[0].trim();
-          var propValue = iPropSplit[1].trim();
-          if (propKey.toLowerCase() in rShortcuts.cssProps) {
-            propKey = rShortcuts.cssProps[propKey];
+          if (iPropSplit.length >= 2) {
+            var propKey = iPropSplit[0].trim();
+            var propValue = iPropSplit[1].trim();
+            if (propKey.toLowerCase() in rShortcuts.cssProps) {
+              propKey = rShortcuts.cssProps[propKey];
+            }
+            propertyArr.push({key: propKey, value: propValue});
           }
-          propertyArr.push({key: propKey, value: propValue});
         })
 
         // properties = parsePropertiesWithShortcuts(elem, properties);
@@ -965,7 +972,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       function checkAndReplaceSpecialPropArgs(elem, prop_str) {
         var firstArg = prop_str.split(':')[0];
         var specialPropDict = getSpecialPropShortcuts();
-        console.log(firstArg)
         if (firstArg in specialPropDict) {
           var result = specialPropDict[firstArg](elem, null, prop_str);
 
