@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='checkbox, short, mini, link' default-type="link">
+<div class="perspective-container full-xy flex-center p15xy" types='checkbox, short, mini' default-type="mini">
 
 	<div class="card-container" ng-if='activeType === "short"'>
 		<div class="university-card short">
@@ -70,7 +70,7 @@
 				<div class="school-card-border" style="border-color: #FDB515;"></div>
 				<div class="school-card-top" style="background-color: #003262;">
 					<span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg'); border-color: #003262;"
-						u init-with="p:[transform:scale(0), tro:center center]"
+						u init-with="p:[tro:center center, transform:scale(0)]"
 						when-university-card-init="a:[icon-enter:1000:(0,0.2,0.3,1):450:1:f]">
 						<span class="school-card-icon-bg" style="background-color: #003262;"></span>
 						<span class="school-card-state">
@@ -97,11 +97,11 @@
 		</div>
 	</div>
 
-	<div class="card-container" ng-if='activeType === "link"'>
+	<!-- <div class="card-container" ng-if='activeType === "link"'>
 		<a class="university-card with-hover"
-			init-with="p-op"
+			u init-with="p-op"
 			on-init="s:[university-card-init:public]"
-			when-university-card-init="a:[zoom-enter:800:(0,0.2,0.3,1):0:1:f]">
+			when-university-card-init="a:[zoom-enter::800:(0,0.2,0.3,1):0:1:f]">
 			<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 				<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 			</svg>
@@ -115,7 +115,7 @@
 				<div class="school-card-border" style="border-color: #FDB515;"></div>
 				<div class="school-card-top" style="background-color: #003262;">
 					<span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg'); border-color: #003262;"
-						init-with="p-op"
+						u init-with="p:[tro:center center, tr:scale(0)]"
 						when-university-card-init="a:[icon-enter:1000:(0,0.2,0.3,1):450:1:f]">
 						<span class="school-card-icon-bg" style="background-color: #003262;"></span>
 						<span class="school-card-state">
@@ -134,13 +134,14 @@
 					<div class="school-card-map"></div>
 					<div class="school-card-color" style="background-color: #003262;"></div>
 					<div class="school-card-info">
-						<h1 init-with="p:[op:0, tro:center bottom]"
+						<h1 u init-with="p:[op:0, tro:center bottom]"
 							when-university-card-init="a:[bounceIn-subtle:1000:easeInSine:150:1:f]">UC Berkeley</h1>
-						<h2 init-with="p:[op:0, tro:center bottom]"
+						<h2 u init-with="p:[op:0, tro:center bottom]"
 							when-university-card-init="a:[bounceIn-subtle:1000:easeInSine:150:1:f]">Berkeley, CA</h2>
 					</div>
 				</div>
 			</div>
 		</a>
-	</div>
+	</div> -->
+
 </div>
