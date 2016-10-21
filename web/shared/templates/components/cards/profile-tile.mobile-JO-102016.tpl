@@ -357,7 +357,7 @@
 	</div>
 
 	<div class="pf-tile-container mobile" ng-if='activeType === "household"'
-		init-with="p:[transform-origin:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
+		u init-with="p:[transform-origin:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
 		on-init="s:[household-tile-init:public]"
 		when-household-tile-init="a:[rotateX:-30deg:0deg:1000:easeOutCubic:1:f, rotateY:30deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:500:easeOutSine:0:1:f]"
 		when-household-tile-exit="p:[rotateX(-30deg) rotateY(30deg), opacity:0:delay-500]">
@@ -366,11 +366,11 @@
 			<div class="pf-tile-top" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg')"
 				u init-with="p:[opacity:0]"
 				when-household-tile-init="a:[opacity:0:1:500:easeOutSine:0:1:f]:delay-250"
-				when-household-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-250"></div>
+				when-household-tile-exit="a:[opacity:1:0:500:easeOutSine:0:1:f]:delay-250"></div>
 			<div class="pf-tile-bg"
-				init-with="p:[overflow:visible]"
+				u init-with="p:[overflow:visible]"
 				when-household-tile-init="p:[overflow:hidden:delay-1800]"
-				when-household-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-250">
+				when-household-tile-exit="a:[opacity:1:0:500:easeOutSine:0:1:f]:delay-250">
 				<svg viewBox="0 0 380 270">
 					<defs>
 						<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="bub-front-color">
@@ -400,7 +400,7 @@
 					<g class="bubbles" fill="#FFFFFF" fill-rule="evenodd">
 						<g class="bub-back"
 							u init-with="p:[opacity:0]"
-							when-household-tile-init="a:[pf-hh-bubble-blow:1000:linear:450] | s:[bub-sink:public:delay-1000]"
+							when-household-tile-init="a:[pf-hh-bubble-blow:1000:linear:450:1:f] | s:[bub-sink:public:delay-1000]"
 							when-bub-sink="p:[opacity:1:0:250:linear, translateY(0px):translateY(119px):500:easeInCubic]:delay-250">
 							<g init-with="p:[opacity:0, transform-origin:center center]"
 								when-household-tile-init="a:[pf-hh-bubble-blow:1000:linear:800]">
