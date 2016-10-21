@@ -249,7 +249,7 @@
 	</div>
 
 	<div class="pf-tile-container mobile" ng-if='activeType === "tech"'
-		init-with="p:[transform-origin:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
+		u init-with="p:[transform-origin:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
 		on-init="s:[tech-tile-init:public]"
 		when-tech-tile-init="a:[rotateX:-30deg:0deg:1000:easeOutCubic:1:f, rotateY:30deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:500:easeOutSine:0:1:f] | s:[tech-borders-init:public:delay-500]"
 		when-tech-tile-exit="p:[rotateX(-30deg) rotateY(30deg), opacity:0:delay-500]">
@@ -257,59 +257,59 @@
 		<div class="pf-tile bg-tech">
 			<div class="pf-tile-top" style="background-image: url('http://www.iphoneinformer.com/wp-content/uploads/2015/11/wet-iPhone-6-2.jpg');"
 				u init-with="p:[opacity:0]"
-				when-tech-tile-init="p:[opacity:0:1:500:easeOutSine]:delay-250"
-				when-tech-tile-exit="p:[opacity:1:0:easeOutSine]:delay-1000">
+				when-tech-tile-init="a:[opacity:0:1:500:easeOutSine:0:1:f]:delay-250"
+				when-tech-tile-exit="a:[opacity:1:0:easeOutSine:0:1:f]:delay-1000">
 				<div class="pf-pricing">
 					<div>$10/hr</div>
 					<div class="border border-corner">
 						<span class="left"
-							init-with="p:[scaleY(0)]"
-							when-tech-tile-init="p:[scaleY(0):scaleY(1):500:easeOutBack]:delay-1250"
-							when-tech-tile-exit="p:[scaleY(1):scaleY(0):500:easeOutBack]:delay-1000"></span>
+							u init-with="p:[transform:scaleY(0)]"
+							when-tech-tile-init="a:[scaleY:0:1:500:easeOutBack:0:1:f]:delay-1250"
+							when-tech-tile-exit="a:[scaleY:1:0:500:easeOutBack:0:1:f]:delay-1000"></span>
 						<span class="bot"
-							init-with="p:[scaleX(0)]"
-							when-tech-tile-init="p:[scaleX(0):scaleX(1):500:easeOutBack]:delay-1250"
-							when-tech-tile-exit="p:[scaleX(1):scaleX(0):500:easeOutBack]:delay-1000"></span>
+								u init-with="p:[transform:scaleX(0)]"
+								when-tech-tile-init="a:[scaleX:0:1:500:easeOutBack:0:1:f]:delay-1250"
+								when-tech-tile-exit="a:[scaleX:1:0:500:easeOutBack:0:1:f]:delay-1000"></span>
 					</div>
 				</div>
 			</div>
 			<div class="pf-tile-bottom"
 				u init-with="p:[opacity:0]"
-				when-tech-tile-init="p:[opacity:0:1:500:easeOutSine]:delay-250"
-				when-tech-tile-exit="p:[opacity:1:0:easeOutSine]:delay-1000">
-				<h1 init-with="p:[opacity:0, translateY(10px)]"
-					when-tech-tile-init="p:[opacity:0:1:50:linear, translateY(10px):translateY(0px):500:easeOutExpo]:delay-450">Water Damage</h1>
+				when-tech-tile-init="a:[opacity:0:1:500:easeOutSine:0:1:f]:delay-250"
+				when-tech-tile-exit="a:[opacity:1:0:easeOutSine:0:1:f]:delay-1000">
+				<h1 u init-with="p:[opacity:0, transform:translateY(10px)]"
+					when-tech-tile-init="a:[opacity:0:1:50:linear:0:1:f, translateY:10px:0px:500:easeOutExpo:0:1:f]:delay-450">Water Damage</h1>
 				<ul class="rating-stars" data-rating="4" data-half="true">
 					<li u init-with="p:[opacity:0]"
-						when-tech-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:900]">
+						when-tech-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:900:1:f]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
 					<li u init-with="p:[opacity:0]"
-						when-tech-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1000]">
+						when-tech-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1000:1:f]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
 					<li u init-with="p:[opacity:0]"
-						when-tech-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1100]">
+						when-tech-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1100:1:f]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
 					<li u init-with="p:[opacity:0]"
-						when-tech-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1200]">
+						when-tech-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1200:1:f]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
 					<li u init-with="p:[opacity:0]"
-						when-tech-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1300]">
+						when-tech-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1300:1:f]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -318,40 +318,40 @@
 				</ul>
 				<div class="border border-top">
 					<span class="left"
-						init-with="p:[scaleX(0)]"
-						when-tech-borders-init="p:[scaleX(0):scaleX(1):500:easeOutCubic]"
-						when-tech-tile-exit="p:[opacity:0:delay-750, scaleX(0):delay-250]"></span>
+						u init-with="p:[transform:scaleX(0)]"
+						when-tech-borders-init="a:[scaleX:0:1:500:easeOutCubic:0:1:f]"
+						when-tech-tile-exit="p:[opacity:0:delay-750, transform:scaleX(0):delay-250]"></span>
 					<span class="right"
-						init-with="p:[scaleX(0)]"
-						when-tech-borders-init="p:[scaleX(0):scaleX(1):500:easeOutCubic]"
-						when-tech-tile-exit="p:[opacity:0:delay-750, scaleX(0):delay-250]"></span>
+						u init-with="p:[transform:scaleX(0)]"
+						when-tech-borders-init="a:[scaleX:0:1:500:easeOutCubic:0:1:f]"
+						when-tech-tile-exit="p:[opacity:0:delay-750, transform:scaleX(0):delay-250]"></span>
 				</div>
 			</div>
 			<div class="border border-outside">
 				<span class="top-left"
-					init-with="p:[scaleX(0)]"
-					when-tech-borders-init="p:[scaleX(0):scaleX(1):500:easeOutCubic]"
-					when-tech-tile-exit="p:[scaleX(1):scaleX(0):500:easeInCubic]:delay-800"></span>
+					u init-with="p:[transform:scaleX(0)]"
+					when-tech-borders-init="a:[scaleX:0:1:500:easeOutCubic:0:1:f]"
+					when-tech-tile-exit="a:[scaleX:1:0:500:easeInCubic:0:1:f]:delay-800"></span>
 				<span class="top-right"
-					init-with="p:[scaleX(0)]"
-					when-tech-borders-init="p:[scaleX(0):scaleX(1):500:easeOutCubic]"
-					when-tech-tile-exit="p:[scaleX(1):scaleX(0):500:easeInCubic]:delay-800"></span>
+					u init-with="p:[transform:scaleX(0)]"
+					when-tech-borders-init="a:[scaleX:0:1:500:easeOutCubic:0:1:f]"
+					when-tech-tile-exit="a:[scaleX:1:0:500:easeInCubic:0:1:f]:delay-800"></span>
 				<span class="right"
-					init-with="p:[scaleY(0)]"
-					when-tech-borders-init="p:[scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
-					when-tech-tile-exit="p:[opacity:0:delay-800, scaleY(0):delay-500]"></span>
+					u init-with="p:[transform:scaleY(0)]"
+					when-tech-borders-init="a:[scaleY:0:1:300:easeOutCubic:0:1:f]:delay-450"
+					when-tech-tile-exit="p:[opacity:0:delay-800, transform:scaleY(0):delay-500]"></span>
 				<span class="bot-left"
-					init-with="p:[scaleX(0)]"
-					when-tech-borders-init="p:[scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
-					when-tech-tile-exit="p:[opacity:0:delay-500, scaleX(0)]"></span>
+					u init-with="p:[transform:scaleX(0)]"
+					when-tech-borders-init="a:[scaleX:0:1:500:easeOutCubic:0:1:f]:delay-750"
+					when-tech-tile-exit="p:[opacity:0:delay-500, transform:scaleX(0)]"></span>
 				<span class="bot-right"
-					init-with="p:[scaleX(0)]"
-					when-tech-borders-init="p:[scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
-					when-tech-tile-exit="p:[opacity:0:delay-500, scaleX(0)]"></span>
+					u init-with="p:[transform:scaleX(0)]"
+					when-tech-borders-init="a:[scaleX:0:1:500:easeOutCubic:0:1:f]:delay-750"
+					when-tech-tile-exit="p:[opacity:0:delay-500, transform:scaleX(0)]"></span>
 				<span class="left"
-					init-with="p:[scaleY(0)]"
-					when-tech-borders-init="p:[scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
-					when-tech-tile-exit="p:[opacity:0:delay-800, scaleY(0):delay-500]"></span>
+					u init-with="p:[transform:scaleY(0)]"
+					when-tech-borders-init="a:[scaleY:0:1:300:easeOutCubic:0:1:f]:delay-450"
+					when-tech-tile-exit="p:[opacity:0:delay-800, transform:scaleY(0):delay-500]"></span>
 			</div>
 		</div>
 	</div>
@@ -365,7 +365,7 @@
 		<div class="pf-tile bg-household">
 			<div class="pf-tile-top" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg')"
 				u init-with="p:[opacity:0]"
-				when-household-tile-init="p:[opacity:0:1:500:easeOutSine]:delay-250"
+				when-household-tile-init="a:[opacity:0:1:500:easeOutSine:0:1:f]:delay-250"
 				when-household-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-250"></div>
 			<div class="pf-tile-bg"
 				init-with="p:[overflow:visible]"
