@@ -287,7 +287,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             var charPressed = RootService.keyMap.toChar[keypressEvent.which];
             charPressed = charPressed && charPressed.toLowerCase() || '';
             console.log(charPressed)
-            if (scope.validKeys.split(',').indexOf(charPressed) > -1 ) {
+            if (scope.validKeys.indexOf(charPressed) > -1 ) {
 
               applySendAnimProp(scope, element, actions, context);
             }
