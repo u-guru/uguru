@@ -14,7 +14,7 @@
 				<div class="right"
 					u init-with="p:[transform-origin:center bottom, transform:scaleY(0)]"
 					when-academic-tile-init="a:[scaleY:0:1:500:easeOutCubic:500:1:f]"
-					when-academic-tile-exit="p:[scaleY:0]"></div>
+					when-academic-tile-exit="p:[transform:scaleY(0)]"></div>
 				<div class="bot"
 					u init-with="p:[transform-origin:right center, transform:scaleX(0)]"
 					when-academic-tile-init="a:[scaleX:0:1:500:easeOutCubic:500:1:f]"
@@ -22,7 +22,7 @@
 				<div class="left"
 					u init-with="p:[transform-origin:center top, transform:scaleY(0)]"
 					when-academic-tile-init="a:[scaleY:0:1:500:easeOutCubic:500:1:f]"
-					when-academic-tile-exit="p:[scaleY:0]"></div>
+					when-academic-tile-exit="p:[transform:scaleY(0)]"></div>
 			</div>
 			<div class="pf-tile-top">
 				<div class="pf-pricing"
@@ -104,7 +104,7 @@
 				when-baking-tile-init="a:[opacity:0:1:500:easeOutSine:250:1:f]"
 				when-baking-tile-exit="a:[opacity:1:0:500:easeInSine:750:1:f]">
 				<div class="full-x flex-center preserve-3d m15bottom"
-					u init-with="p:[transform-origin:center top, rotateX:180deg]"
+					u init-with="p:[transform-origin:center top, transform:rotateX(180deg)]"
 					when-baking-tile-init="a:[rotateX:180deg:0deg:1000:easeInOutQuint:0:1:f, opacity:0:1:100:easeInOutQuint:0:1:f]"
 					when-baking-tile-exit="a:[rotateX:0deg:180deg:1000:easeInOutQuint:0:1:f]">
 					<h1>
@@ -186,7 +186,7 @@
 			</div>
 			<div class="pf-tile-bottom">
 				<h1 u init-with="p:[opacity:0]"
-					when-photo-tile-init="p:[opacity:0:1:250:easeOutSine:1000:1:f]">Professional Headshots</h1>
+					when-photo-tile-init="a:[opacity:0:1:250:easeOutSine:1000:1:f]">Professional Headshots</h1>
 				<ul class="rating-stars" data-rating="4" data-half="true">
 					<li u init-with="p:[opacity:0]"
 						when-photo-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1100:1:f]">
@@ -228,24 +228,24 @@
 					u init-with="p:[transform-origin:center center, opacity:0]"
 					when-photo-tile-init="a:[slideInUp-subtle:1000:easeOutSine:1000:1:f]">
 					<div class="pf-border"
-						init-default
+						u
 						when-photo-tile-init="s:[viewport-init:public]:delay-2000">
-						<div init-with="a:[scaleX:0]"
-							when-viewport-init="a:[scaleX:0:1:250:easeOutCubic]"></div>
-						<div init-with="p:[scaleY:0]"
-							when-viewport-init="a:[scaleY:0:1:250:easeOutCubic]"></div>
-						<div init-with="p:[scaleX:0]"
-							when-viewport-init="a:[scaleX:0:1:250:easeOutCubic]"></div>
-						<div init-with="p:[scaleY:0]"
-							when-viewport-init="a:[scaleY:0:1:250:easeOutCubic]"></div>
-						<div init-with="p:[scaleX:0]"
-							when-viewport-init="a:[scaleX:0:1:250:easeOutCubic]"></div>
-						<div init-with="p:[scaleY:0]"
-							when-viewport-init="a:[scaleY:0:1:250:easeOutCubic]"></div>
-						<div init-with="p:[scaleX:0]"
-							when-viewport-init="a:[scaleX:0:1:250:easeOutCubic]"></div>
-						<div init-with="p:[scaleY:0]"
-							when-viewport-init="a:[scaleY:0:1:250:easeOutCubic]"></div>
+						<div u init-with="p:[transform:scaleX(0)]"
+							when-viewport-init="a:[scaleX:0:1:250:easeOutCubic:0:1:f]"></div>
+						<div u init-with="p:[transform:scaleY(0)]"
+							when-viewport-init="a:[scaleY:0:1:250:easeOutCubic:0:1:f]"></div>
+						<div u init-with="p:[transform:scaleX(0)]"
+							when-viewport-init="a:[scaleX:0:1:250:easeOutCubic:0:1:f]"></div>
+						<div u init-with="p:[transform:scaleY(0)]"
+							when-viewport-init="a:[scaleY:0:1:250:easeOutCubic:0:1:f]"></div>
+						<div u init-with="p:[transform:scaleX(0)]"
+							when-viewport-init="a:[scaleX:0:1:250:easeOutCubic:0:1:f]"></div>
+						<div u init-with="p:[transform:scaleY(0)]"
+							when-viewport-init="a:[scaleY:0:1:250:easeOutCubic:0:1:f]"></div>
+						<div u init-with="p:[transform:scaleX(0)]"
+							when-viewport-init="a:[scaleX:0:1:250:easeOutCubic:0:1:f]"></div>
+						<div u init-with="p:[transform:scaleY(0)]"
+							when-viewport-init="a:[scaleY:0:1:250:easeOutCubic:0:1:f]"></div>
 					</div>
 					<span>$10/hr</span>
 				</div>
@@ -268,11 +268,11 @@
 					<div>$10/hr</div>
 					<div class="border border-corner">
 						<span class="left"
-							u init-with="p:[scaleY:0]"
+							u init-with="p:[transform:scaleY(0)]"
 							when-tech-tile-init="a:[scaleY:0:1:500:easeOutCubic:1250:1:f]"
 							when-tech-tile-exit="a:[scaleY:1:0:500:easeInCubic:1000:1:f]"></span>
 						<span class="bot"
-							u init-with="p:[scaleX:0]"
+							u init-with="p:[transform:scaleX(0)]"
 							when-tech-tile-init="a:[scaleX:0:1:500:easeOutCubic:1250:1:f]"
 							when-tech-tile-exit="a:[scaleX:1:0:500:easeInCubic:1000:1:f]"></span>
 					</div>
@@ -323,38 +323,38 @@
 				</ul>
 				<div class="border border-top">
 					<span class="left"
-						u init-with="p:[scaleX:0]"
+						u init-with="p:[transform:scaleX(0)]"
 						when-tech-borders-init="a:[scaleX:0:1:500:easeOutCubic:0:1:f]"
 						when-tech-tile-exit="a:[opacity:1:0:1:linear:750:1:f, scaleX:1:0:1:linear:250:1:f]"></span>
 					<span class="right"
-						u init-with="p:[scaleX:0]"
+						u init-with="p:[transform:scaleX(0)]"
 						when-tech-borders-init="a:[scaleX:0:1:500:easeOutCubic:0:1:f]"
 						when-tech-tile-exit="a:[opacity:1:0:1:linear:750:1:f, scaleX:1:0:1:linear:250:1:f]"></span>
 				</div>
 			</div>
 			<div class="border border-outside">
 				<span class="top-left"
-					u init-with="p:[scaleX:0]"
+					u init-with="p:[transform:scaleX(0)]"
 					when-tech-borders-init="a:[scaleX:0:1:500:(0,.66,.47,1.09):0:1:f]"
 					when-tech-tile-exit="a:[scaleX:1:0:500:(0,.66,.47,1.09):800:1:f]"></span>
 				<span class="top-right"
-					u init-with="p:[scaleX:0]"
+					u init-with="p:[transform:scaleX(0)]"
 					when-tech-borders-init="a:[scaleX:0:1:500:(0,.66,.47,1.09):0:1:f]"
 					when-tech-tile-exit="a:[scaleX:1:0:500:(0,.66,.47,1.09):800:1:f]"></span>
 				<span class="right"
-					u init-with="p:[scaleY:0]"
+					u init-with="p:[transform:scaleY(0)]"
 					when-tech-borders-init="a:[scaleY:0:1:300:(0,.66,.47,1.09):450:1:f]"
 					when-tech-tile-exit="a:[opacity:1:0:1:linear:800:1:f, scaleY:1:0:1:linear:500:1:f]"></span>
 				<span class="bot-left"
-					u init-with="p:[scaleX:0]"
+					u init-with="p:[transform:scaleX(0)]"
 					when-tech-borders-init="a:[scaleX:0:1:500:(0,.66,.47,1.09)]:delay-750"
 					when-tech-tile-exit="a:[opacity:1:0:1:linear:500:1:f, scaleX:1:0:1:linear:0:1:f]"></span>
 				<span class="bot-right"
-					u init-with="p:[scaleX:0]"
+					u init-with="p:[transform:scaleX(0)]"
 					when-tech-borders-init="a:[scaleX:0:1:500:(0,.66,.47,1.09)]:delay-750"
 					when-tech-tile-exit="a:[opacity:1:0:1:linear:500:1:f, scaleX:1:0:1:linear:0:1:f]"></span>
 				<span class="left"
-					u init-with="p:[scaleY:0]"
+					u init-with="p:[transform:scaleY(0)]"
 					when-tech-borders-init="a:[scaleY:0:1:300:(0,.66,.47,1.09)]:delay-450"
 					when-tech-tile-exit="a:[opacity:1:0:1:linear:800:1:f, scaleY:1:0:1:linear:500:1:f]"></span>
 			</div>
@@ -455,7 +455,7 @@
 				</svg>
 			</div>
 			<div class="pf-tile-bottom"
-				init-default
+				u
 				when-household-tile-exit="p:[opacity:1:0:500:easeOutSine:250:1:f]">
 				<div>
 					<h1 init-with="p:[opacity:0, translateY:-80%]"
