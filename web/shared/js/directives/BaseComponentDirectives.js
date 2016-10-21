@@ -31,6 +31,7 @@ angular.module('uguru.shared.directives.base.components')
             templateUrl:'shared/templates/components/base/media.tpl',
             compile: function(element, attrs) {
                 var progressFunc;
+                var callback;
 
                 var imgSrc = attrs.src;
                 var img = element[0].firstChild;
@@ -67,21 +68,19 @@ angular.module('uguru.shared.directives.base.components')
                             scope.m.loader.mb.loaded = kbRemaining/1000;
                             scope.m.loader.duration = Math.max(eta, 1000);
                             scope.m.loader.percent = percent;
-
-                            if (scope.m.loader.kb.total === scope.m.loader.kb.loaded) {
-                                $timeout(function() {
-                                    scope.m.loader.complete = true;
-                                    scope.$parent.public.customStates['when-loader-complete'][0].func()
-                                }, 1000)
-                            }
                         };
-                        var callback = function(response) {
-                            scope.m.data_url = response;
-                            var mediaDict = CompService.getMediaElemOfType(lAttr.type, response, lElem[0].attributes, scope, lAttr, lElem);
+                        callback = function(response) {
 
+                            scope.m.loader.complete = true;
+                            scope.m.data_url = window.URL.createObjectURL(new Blob([response]));
+                            var elem = document.querySelector('[media-child]');
 
+                            elem.style.backgroundImage = "url('" + response + "')";
+                            elem.setAttribute('u', '');
+                            $compile(angular.element(elem))(scope)
+                            // CompService.getMediaElemOfType(lAttr.type, response, lElem[0].attributes, scope, lAttr, lElem);
+                            scope.$parent.public.customStates['when-loader-complete'][0].func()
                         }
-                        console.log(lAttr.url)
                         XHRService.getFileWithProgress(lAttr.url, progressFunc, null, callback)
 
                         // scope.img =  {imgHTML: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30'><circle cx='15' cy='15' r='10' /></svg>"}
