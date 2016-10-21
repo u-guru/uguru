@@ -262,8 +262,8 @@
 		<div class="pf-tile bg-tech">
 			<div class="pf-tile-top" style="background-image: url('http://www.iphoneinformer.com/wp-content/uploads/2015/11/wet-iPhone-6-2.jpg');"
 				u init-with="p:[opacity:0]"
-				when-tech-tile-init="p:[opacity:0:1:500:easeOutSine:250:1:f]"
-				when-tech-tile-exit="p:[opacity:1:0:500:easeOutSine:1000:1:f]">
+				when-tech-tile-init="a:[opacity:0:1:500:easeOutSine:250:1:f]"
+				when-tech-tile-exit="a:[opacity:1:0:500:easeOutSine:1000:1:f]">
 				<div class="pf-pricing">
 					<div>$10/hr</div>
 					<div class="border border-corner">
@@ -280,10 +280,10 @@
 			</div>
 			<div class="pf-tile-bottom"
 				u init-with="p:[opacity:0]"
-				when-tech-tile-init="p:[opacity:0:1:500:easeOutSine:250:1:f]"
-				when-tech-tile-exit="p:[opacity:1:0:easeOutSine:1000:1:f]">
-				<h1 init-with="p:[opacity:0, translateY:10px]"
-					when-tech-tile-init="p:[opacity:0:1:500:linear:450:1:f, translateY:10px:0px:500:easeOutExpo:450:1:f]">Water Damage</h1>
+				when-tech-tile-init="a:[opacity:0:1:500:easeOutSine:250:1:f]"
+				when-tech-tile-exit="a:[opacity:1:0:easeOutSine:1000:1:f]">
+				<h1 u init-with="p:[opacity:0, transform:translateY(10px)]"
+					when-tech-tile-init="a:[opacity:0:1:500:linear:450:1:f, translateY:10px:0px:500:easeOutExpo:450:1:f]">Water Damage</h1>
 				<ul class="rating-stars" data-rating="4" data-half="true">
 					<li u init-with="p:[opacity:0]"
 						when-tech-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:900:1:f]">
@@ -335,27 +335,27 @@
 			<div class="border border-outside">
 				<span class="top-left"
 					u init-with="p:[transform:scaleX(0)]"
-					when-tech-borders-init="a:[scaleX:0:1:500:(0,.66,.47,1.09):0:1:f]"
-					when-tech-tile-exit="a:[scaleX:1:0:500:(0,.66,.47,1.09):800:1:f]"></span>
+					when-tech-borders-init="a:[scaleX:0:1:500:easeOutCubic:0:1:f]"
+					when-tech-tile-exit="a:[scaleX:1:0:500:easeOutCubic:800:1:f]"></span>
 				<span class="top-right"
 					u init-with="p:[transform:scaleX(0)]"
-					when-tech-borders-init="a:[scaleX:0:1:500:(0,.66,.47,1.09):0:1:f]"
-					when-tech-tile-exit="a:[scaleX:1:0:500:(0,.66,.47,1.09):800:1:f]"></span>
+					when-tech-borders-init="a:[scaleX:0:1:500:easeOutCubic:0:1:f]"
+					when-tech-tile-exit="a:[scaleX:1:0:500:easeOutCubic:800:1:f]"></span>
 				<span class="right"
 					u init-with="p:[transform:scaleY(0)]"
-					when-tech-borders-init="a:[scaleY:0:1:300:(0,.66,.47,1.09):450:1:f]"
+					when-tech-borders-init="a:[scaleY:0:1:300:easeOutCubic:450:1:f]"
 					when-tech-tile-exit="a:[opacity:1:0:1:linear:800:1:f, scaleY:1:0:1:linear:500:1:f]"></span>
 				<span class="bot-left"
 					u init-with="p:[transform:scaleX(0)]"
-					when-tech-borders-init="a:[scaleX:0:1:500:(0,.66,.47,1.09)]:delay-750"
+					when-tech-borders-init="a:[scaleX:0:1:500:easeOutCubic:0:1:f]:delay-750"
 					when-tech-tile-exit="a:[opacity:1:0:1:linear:500:1:f, scaleX:1:0:1:linear:0:1:f]"></span>
 				<span class="bot-right"
 					u init-with="p:[transform:scaleX(0)]"
-					when-tech-borders-init="a:[scaleX:0:1:500:(0,.66,.47,1.09)]:delay-750"
+					when-tech-borders-init="a:[scaleX:0:1:500:easeOutCubic:0:1:f]:delay-750"
 					when-tech-tile-exit="a:[opacity:1:0:1:linear:500:1:f, scaleX:1:0:1:linear:0:1:f]"></span>
 				<span class="left"
 					u init-with="p:[transform:scaleY(0)]"
-					when-tech-borders-init="a:[scaleY:0:1:300:(0,.66,.47,1.09)]:delay-450"
+					when-tech-borders-init="a:[scaleY:0:1:300:easeOutCubic:0:1:f]:delay-450"
 					when-tech-tile-exit="a:[opacity:1:0:1:linear:800:1:f, scaleY:1:0:1:linear:500:1:f]"></span>
 			</div>
 		</div>
@@ -370,7 +370,7 @@
 		<div class="pf-tile bg-household">
 			<div class="pf-tile-top" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg')"
 				u init-with="p:[opacity:0]"
-				when-household-tile-init="p:[opacity:0:1:500:easeOutSine:250:1:f]"
+				when-household-tile-init="a:[opacity:0:1:500:easeOutSine:250:1:f]"
 				when-household-tile-exit="p:[opacity:1:0:500:easeOutSine:250:1:f]"></div>
 			<div class="pf-tile-bg"
 				u init-with="p:[overflow:visible]"
