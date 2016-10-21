@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='flip, short' default-type="flip">
+<div class="perspective-container full-xy flex-center p15xy" types='flip, short, link' default-type="flip">
 	<div class="student-card short" ng-if='activeType === "short"'>
 		<svg width="240px" height="50px" viewBox="0 0 240 50">
 			<rect fill="none" x="0" y="0" width="240" height="50"></rect>
@@ -47,48 +47,48 @@
 	</div>
 
 	<div class="student-card" ng-if='activeType === "flip"'
-		init-with="p-op"
-		on-init="s:[student-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]"
+		u init-with="p-op"
+		on-init="s:[student-card-init:public] | a:[scoop-enter:800:(0,0.2,0.3,1):0:1:f]"
 		on-mouse-enter="s:[flip-enter:public]"
 		on-mouse-leave="s:[flip-leave:public]">
 		<svg viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 		</svg>
 		<div class="school-id-front"
-			init-default
-			when-flip-enter="p:[transform:rotateY(0deg):rotateY(180deg):300:easeInOutSine]"
-			when-flip-leave="p:[transform:rotateY(180deg):rotateY(0deg):300:easeInOutSine]">
+			u
+			when-flip-enter="a:[rotateY:0deg:180deg:300:easeInOutSine:0:1:f]"
+			when-flip-leave="a:[rotateY:180deg:0deg:300:easeInOutSine:0:1:f]">
 			<div class="school-id-bg" style="background-image: url('/shared/images/uc-berkeley.svg')"></div>
 			<div class="school-id-top" style="background: #003262;">
 				<span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/marcogomes/128.jpg');"
-					init-with="p-op"
-					when-student-card-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]"></span>
+					u init-with="p:[transform:scale(0)]"
+					when-student-card-init="a:[icon-enter:1000:(0,0.2,0.3,1):450:1:f]"></span>
 			</div>
 			<div class="school-id-bottom">
 				<div class="school-id-details">
 					<h1 class='lettercase'
-						init-with="p:[op:0, tro:center top]"
-						when-student-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-150]">Marco Polo</h1>
-					<h2 init-with="p-op"
-						when-student-card-init="p:[opacity:0:1:800:easeInSine]:delay-150">UC Berkeley</h2>
-					<h2 init-with="p-op"
-						when-student-card-init="p:[opacity:0:1:800:easeInSine]:delay-150">Freshman</h2>
+						u init-with="p:[op:0, tro:center top]"
+						when-student-card-init="a:[bounceIn-subtle:1000:linear:150:1:f]">Marco Polo</h1>
+					<h2 u init-with="p-op"
+						when-student-card-init="a:[opacity:0:1:800:easeInSine:0:1:f]:delay-150">UC Berkeley</h2>
+					<h2 u init-with="p-op"
+						when-student-card-init="a:[opacity:0:1:800:easeInSine:0:1:f]:delay-150">Freshman</h2>
 				</div>
 				<h3 class="school-id-courses">
-					<span init-with="p-op"
-						when-student-card-init="p:[opacity:0:1:800:easeInSine]:delay-150">SELECTED COURSES</span>
+					<span u init-with="p-op"
+						when-student-card-init="a:[opacity:0:1:800:easeInSine:0:1:f]:delay-150">SELECTED COURSES</span>
 					<span style="background: #003262;"
-						init-with="p:[op:0, tro:left center]"
-						when-student-card-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-350]">9</span>
-					<a init-with="p-op"
-						when-student-card-init="p:[opacity:0:1:800:easeInSine]:delay-150"><span>Edit</span></a>
+						u init-with="p:[op:0, tro:left center]"
+						when-student-card-init="a:[bounceIn-rotate-subtle:1000:linear:350:1:f]">9</span>
+					<a u init-with="p-op"
+						when-student-card-init="a:[opacity:0:1:800:easeInSine:0:1:f]:delay-150"><span>Edit</span></a>
 				</h3>
 			</div>
 		</div>
 		<div class="school-id-back"
-			init-with="p:[tr:rotateY(180deg)]"
-			when-flip-enter="p:[transform:rotateY(180deg):rotateY(0deg):300:easeInOutSine]"
-			when-flip-leave="p:[transform:rotateY(0deg):rotateY(180deg):300:easeInOutSine]">
+			u init-with="p:[tr:rotateY(180deg)]"
+			when-flip-enter="a:[rotateY:180deg:0deg:300:easeInOutSine:0:1:f]"
+			when-flip-leave="a:[rotateY:0deg:180deg:300:easeInOutSine:0:1:f]">
 			<div class="school-id-bar"></div>
 			<div class="school-id-info">
 				<ul>
@@ -165,37 +165,37 @@
 		</div>
 	</div>
 
-	<!-- <a class="student-card with-hover" ng-if='activeType === "link"'
-		init-with="p-op"
-		on-init="s:[student-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
+	<a class="student-card with-hover" ng-if='activeType === "link"'
+		u init-with="p-op"
+		on-init="s:[student-card-init:public] | a:[scoop-enter:800:(0,0.2,0.3,1):0:1:f]">
 		<svg viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 		</svg>
 		<div class="school-id-inside">
 			<div class="school-id-top" style="background: #003262;">
 				<span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/marcogomes/128.jpg');"
-					init-with="p-op"
-					when-student-card-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]"></span>
+					u init-with="p:[transform:scale(0)]"
+					when-student-card-init="a:[icon-enter:1000:(0,0.2,0.3,1):450:1:f]"></span>
 			</div>
 			<div class="school-id-bottom">
 				<div>
 					<h1 class='lettercase' style="color: #003262;"
-						init-with="p:[op:0, tro:center top]"
-						when-student-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-150]">Marco Polo</h1>
+						u init-with="p:[op:0, tro:center top]"
+						when-student-card-init="a:[bounceIn-subtle:1000:linear:150:1:f]">Marco Polo</h1>
 					<h2 style="color: #003262;"
-						init-with="p-op"
-						when-student-card-init="p:[opacity:0:1:800:easeInSine]:delay-150">Cal Freshman</h2>
+						u init-with="p-op"
+						when-student-card-init="a:[opacity:0:1:800:easeInSine:0:1:f]:delay-150">Cal Freshman</h2>
 					<h2 style="color: #003262;"
-						init-with="p-op"
-						when-student-card-init="p:[opacity:0:1:800:easeInSine]:delay-150">email@school.edu</h2>
+						u init-with="p-op"
+						when-student-card-init="a:[opacity:0:1:800:easeInSine:0:1:f]:delay-150">email@school.edu</h2>
 				</div>
 			</div>
 		</div>
-		<div class="school-id-hover" tabindex>
+		<!-- <div class="school-id-hover" tabindex>
 			<span style="background: #003262;"></span>
 			<div>
 				Content can go in here.
 			</div>
-		</div>
-	</a> -->
+		</div> -->
+	</a>
 </div>
