@@ -119,7 +119,9 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         if (!isValidState(state.type)) return;
         var parsedArgs = getParsedArgsByType(elem, state.type, name.split('-').splice(1), value)
         state.name = parsedArgs[state.type];
+
         state.actions = parsedArgs.actions;
+
         state.nameCamel = parsedArgs.fullNameCamel;
         state.exec = getStateFunc(state.type, state.name, parsedArgs.actions);
         return state;
@@ -271,7 +273,29 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
             applySendAnimProp(scope, element, actions, context);
           })
-        } else {
+        }
+
+        else if (typeof(name) === 'object' && name.indexOf('key') > -1) {
+          scope.validKeys = attr.acceptKeys || 'abcdefghijklmnopqrstuvwxyz';
+          var specialKeys = {'space': 32}
+          //keyboardservice
+          scope.$on('key' + name[1], function(onEvent, keypressEvent) {
+
+            var charPressed = String.fromCharCode(keypressEvent.keyCode);
+            if ([' '].indexOf(charPressed) > -1) {
+              console.log(charPressed)
+              charPressed = keypressEvent.code.toLowerCase();
+              applySendAnimProp(scope, element, actions, context);
+            }
+
+            else if (scope.validKeys.split(',').indexOf(charPressed.toLowerCase()) > -1 ) {
+
+              applySendAnimProp(scope, element, actions, context);
+            }
+          });
+        }
+
+        else {
           // registerAnimationListeners(scope, element, attr, actions, context)
 
           element.on(name,function(e) {
@@ -680,6 +704,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         if (state_type === 'when') {
           argDict[state_type] = remainderStateName.join('-');
           argDict.fullNameCamel = UtilitiesService.camelCase(state_type +'-' +argDict[state_type]);
+
         } else {
           argDict[state_type] = remainderStateName;
         }
