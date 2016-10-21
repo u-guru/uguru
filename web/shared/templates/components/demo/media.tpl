@@ -6,11 +6,11 @@
                 </media>
             </div>
         </li>
-        <li class='width-50p overflow-auto'>
-            <div class='flex-vertical-center'>
-                <media class='user-icon' load-with="counter.easeOutCirc" import="media.slideInUp" type='img' url="ui/static/gif/sample.gif" >
-                </media>
-            </div>
+        <li class='height-128 width-128 relative' >
+            <media load-with="counter.easeOutCirc" import="media.slideInUp" type='img' url="ui/static/gif/sample.gif" >
+            </media>
         </li>
+
+
     </ul>
 </div>
