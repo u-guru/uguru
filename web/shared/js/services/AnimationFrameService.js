@@ -1297,7 +1297,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
         if (customAnimIndex >= 0) {
           var customAnimObj = allCustomAnimations.custom[customAnimIndex];
-
+          console.log(customAnimObj)
           return PropertyService.parseAnimObjToPropArr(customAnimObj.cssRules).props;
         }
         return;

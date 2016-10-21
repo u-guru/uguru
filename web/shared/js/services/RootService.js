@@ -78,6 +78,7 @@ function RootService($timeout, $state) {
               if (ss[i].cssRules[j].type == window.CSSRule.WEBKIT_KEYFRAMES_RULE) {
 
                 if (ss[i].cssRules[j].cssRules.length >= 2) {
+
                   scope.animations.custom.push(ss[i].cssRules[j])
                   scope.animations.customNameOnly.push(ss[i].cssRules[j].name)
                 }
@@ -189,6 +190,7 @@ function RootService($timeout, $state) {
     }
 
     function getAnimationObjFromAnimationName(anim_name) {
+
       var ss = document.styleSheets;
       for (var i = 0; i < ss.length; ++i) {
         for (var j = 0; j < ss[i].cssRules.length; ++j) {
