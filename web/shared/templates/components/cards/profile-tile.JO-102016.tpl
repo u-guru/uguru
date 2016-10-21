@@ -1,6 +1,6 @@
 <div class="perspective-container full-xy flex-center p15xy" types='academic, baking, photo, tech, household' default-type="academic">
 	<div class="pf-tile-container" ng-if='activeType === "academic"'
-		u init-with="p:[opacity:0, transform-origin:left top, rotateX:30deg, rotateY:30deg, translateY:300px]"
+		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[academic-tile-init:public]"
 		when-academic-tile-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f, translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
 		when-academic-tile-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:500:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:0:1:f, rotateY:0deg:30deg:1000:easeOutCubic:0:1:f, translateY:0px:-300px:1000:easeOutCubic:0:1:f]">
@@ -8,27 +8,27 @@
 		<div class="pf-tile bg-academic">
 			<div class="pf-tile-border">
 				<div class="top"
-					u init-with="p:[transform-origin:left center, scaleX:0]"
+					u init-with="p:[transform-origin:left center, transform:scaleX(0)]"
 					when-academic-tile-init="a:[scaleX:0:1:500:easeOutCubic:500:1:f]"
 					when-academic-tile-exit="a:[scaleX:1:0:500:easeOutCubic]"></div>
 				<div class="right"
-					u init-with="p:[transform-origin:center bottom, scaleY:0]"
+					u init-with="p:[transform-origin:center bottom, transform:scaleY(0)]"
 					when-academic-tile-init="a:[scaleY:0:1:500:easeOutCubic:500:1:f]"
-					when-academic-tile-exit="p:[scaleY:0]"></div>
+					when-academic-tile-exit="p:[transform:scaleY(0)]"></div>
 				<div class="bot"
-					u init-with="p:[transform-origin:right center, scaleX:0]"
+					u init-with="p:[transform-origin:right center, transform:scaleX(0)]"
 					when-academic-tile-init="a:[scaleX:0:1:500:easeOutCubic:500:1:f]"
 					when-academic-tile-exit="p:[scaleX:0]"></div>
 				<div class="left"
-					u init-with="p:[transform-origin:center top, scaleY:0]"
+					u init-with="p:[transform-origin:center top, transform:scaleY(0)]"
 					when-academic-tile-init="a:[scaleY:0:1:500:easeOutCubic:500:1:f]"
-					when-academic-tile-exit="p:[scaleY:0]"></div>
+					when-academic-tile-exit="p:[transform:scaleY(0)]"></div>
 			</div>
 			<div class="pf-tile-top">
 				<div class="pf-pricing"
-					u init-with="p:[opacity:0]"
-					when-academic-tile-init="a:[slideInLeft:750:linear:875:1:f]">$10/hr</div>
-				<div u init-with="p:[translateY:-80%, opacity:0]"
+					u init-with="p:[opacity:0, tro:left center]"
+					when-academic-tile-init="a:[bounceIn-subtle:750:linear:875:1:f]">$10/hr</div>
+				<div u init-with="p:[transform:translateY(-80%), opacity:0]"
 					when-academic-tile-init="a:[translateY:-100px:0px:750:easeOutCubic:1000:1:f, opacity:0:1:250:linear:1000:1:f]">
 					<div class="pf-tile-icon">
 						<svg viewBox="0 0 100 100">
@@ -43,13 +43,13 @@
 						</svg>
 					</div>
 				</div>
-				<h1 u init-with="p:[translateY:-100px, opacity:0]"
+				<h1 u init-with="p:[transform:translateY(-100px), opacity:0]"
 					when-academic-tile-init="a:[translateY:-100px:0px:750:easeOutSine:500:1:f, opacity:0:1:750:easeOutSine:500:1:f]">Chem 133</h1>
-				<h2 init-with="p:[translateY(-100px), opacity:0]"
+				<h2 init-with="p:[transform:translateY(-100px), opacity:0]"
 					when-academic-tile-init="a:[translateY:-100px:0px:750:easeOutSine:500:1:f, opacity:0:1:750:easeOutSine:500:1:f]">Organic Chemistry</h2>
 			</div>
 			<div class="pf-tile-bottom"
-				u init-with="p:[transform-origin:center bottom, opacity:0, translateY(-100px) scaleY(3)]"
+				u init-with="p:[transform-origin:center bottom, opacity:0, transform:translateY(-100px) scaleY(3)]"
 				when-academic-tile-init="a:[translateY:-100px:0px:1000:easeInOutCubic:0:1:f, scaleY:3:1:1000:easeInOutCubic:0:1:f, opacity:0:1:250:easeOutSine:250:1:f]">
 				<ul class="rating-stars" data-rating="4" data-half="true">
 					<li u init-with="p:[opacity:0]"
@@ -93,7 +93,7 @@
 	</div>
 
 	<div class="pf-tile-container" ng-if='activeType === "baking"'
-		u init-with="p:[opacity:0, transform-origin:left top, rotateX:30deg, rotateY:30deg, translateY:300px]"
+		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[baking-tile-init:public]"
 		when-baking-tile-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f, translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
 		when-baking-tile-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:500:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:0:1:f, rotateY:0deg:30deg:1000:easeOutCubic:0:1:f, translateY:0px:-300px:1000:easeOutCubic:0:1:f]">
@@ -104,7 +104,7 @@
 				when-baking-tile-init="a:[opacity:0:1:500:easeOutSine:250:1:f]"
 				when-baking-tile-exit="a:[opacity:1:0:500:easeInSine:750:1:f]">
 				<div class="full-x flex-center preserve-3d m15bottom"
-					u init-with="p:[transform-origin:center top, rotateX:180deg]"
+					u init-with="p:[transform-origin:center top, transform:rotateX(180deg)]"
 					when-baking-tile-init="a:[rotateX:180deg:0deg:1000:easeInOutQuint:0:1:f, opacity:0:1:100:easeInOutQuint:0:1:f]"
 					when-baking-tile-exit="a:[rotateX:0deg:180deg:1000:easeInOutQuint:0:1:f]">
 					<h1>
@@ -169,7 +169,7 @@
 	</div>
 
 	<div class="pf-tile-container" ng-if='activeType === "photo"'
-		u init-with="p:[opacity:0, transform-origin:left top, rotateX:30deg, rotateY:30deg, translateY:300px]"
+		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[photo-tile-init:public]"
 		when-photo-tile-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f, translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
 		when-photo-tile-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]">
@@ -186,7 +186,7 @@
 			</div>
 			<div class="pf-tile-bottom">
 				<h1 u init-with="p:[opacity:0]"
-					when-photo-tile-init="p:[opacity:0:1:250:easeOutSine:1000:1:f]">Professional Headshots</h1>
+					when-photo-tile-init="a:[opacity:0:1:250:easeOutSine:1000:1:f]">Professional Headshots</h1>
 				<ul class="rating-stars" data-rating="4" data-half="true">
 					<li u init-with="p:[opacity:0]"
 						when-photo-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1100:1:f]">
@@ -228,24 +228,24 @@
 					u init-with="p:[transform-origin:center center, opacity:0]"
 					when-photo-tile-init="a:[slideInUp-subtle:1000:easeOutSine:1000:1:f]">
 					<div class="pf-border"
-						init-default
+						u
 						when-photo-tile-init="s:[viewport-init:public]:delay-2000">
-						<div init-with="a:[scaleX:0]"
-							when-viewport-init="a:[scaleX:0:1:250:easeOutCubic]"></div>
-						<div init-with="p:[scaleY:0]"
-							when-viewport-init="a:[scaleY:0:1:250:easeOutCubic]"></div>
-						<div init-with="p:[scaleX:0]"
-							when-viewport-init="a:[scaleX:0:1:250:easeOutCubic]"></div>
-						<div init-with="p:[scaleY:0]"
-							when-viewport-init="a:[scaleY:0:1:250:easeOutCubic]"></div>
-						<div init-with="p:[scaleX:0]"
-							when-viewport-init="a:[scaleX:0:1:250:easeOutCubic]"></div>
-						<div init-with="p:[scaleY:0]"
-							when-viewport-init="a:[scaleY:0:1:250:easeOutCubic]"></div>
-						<div init-with="p:[scaleX:0]"
-							when-viewport-init="a:[scaleX:0:1:250:easeOutCubic]"></div>
-						<div init-with="p:[scaleY:0]"
-							when-viewport-init="a:[scaleY:0:1:250:easeOutCubic]"></div>
+						<div u init-with="p:[transform:scaleX(0)]"
+							when-viewport-init="a:[scaleX:0:1:250:easeOutCubic:0:1:f]"></div>
+						<div u init-with="p:[transform:scaleY(0)]"
+							when-viewport-init="a:[scaleY:0:1:250:easeOutCubic:0:1:f]"></div>
+						<div u init-with="p:[transform:scaleX(0)]"
+							when-viewport-init="a:[scaleX:0:1:250:easeOutCubic:0:1:f]"></div>
+						<div u init-with="p:[transform:scaleY(0)]"
+							when-viewport-init="a:[scaleY:0:1:250:easeOutCubic:0:1:f]"></div>
+						<div u init-with="p:[transform:scaleX(0)]"
+							when-viewport-init="a:[scaleX:0:1:250:easeOutCubic:0:1:f]"></div>
+						<div u init-with="p:[transform:scaleY(0)]"
+							when-viewport-init="a:[scaleY:0:1:250:easeOutCubic:0:1:f]"></div>
+						<div u init-with="p:[transform:scaleX(0)]"
+							when-viewport-init="a:[scaleX:0:1:250:easeOutCubic:0:1:f]"></div>
+						<div u init-with="p:[transform:scaleY(0)]"
+							when-viewport-init="a:[scaleY:0:1:250:easeOutCubic:0:1:f]"></div>
 					</div>
 					<span>$10/hr</span>
 				</div>
@@ -254,7 +254,7 @@
 	</div>
 
 	<div class="pf-tile-container" ng-if='activeType === "tech"'
-		u init-with="p:[opacity:0, transform-origin:left top, rotateX:30deg, rotateY:30deg, translateY:300px]"
+		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[tech-tile-init:public]"
 		when-tech-tile-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f, translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f] | s:[tech-borders-init:public:delay-1000]"
 		when-tech-tile-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]">
@@ -262,17 +262,17 @@
 		<div class="pf-tile bg-tech">
 			<div class="pf-tile-top" style="background-image: url('http://www.iphoneinformer.com/wp-content/uploads/2015/11/wet-iPhone-6-2.jpg');"
 				u init-with="p:[opacity:0]"
-				when-tech-tile-init="p:[opacity:0:1:500:easeOutSine:250:1:f]"
-				when-tech-tile-exit="p:[opacity:1:0:500:easeOutSine:1000:1:f]">
+				when-tech-tile-init="a:[opacity:0:1:500:easeOutSine:250:1:f]"
+				when-tech-tile-exit="a:[opacity:1:0:500:easeOutSine:1000:1:f]">
 				<div class="pf-pricing">
 					<div>$10/hr</div>
 					<div class="border border-corner">
 						<span class="left"
-							u init-with="p:[scaleY:0]"
+							u init-with="p:[transform:scaleY(0)]"
 							when-tech-tile-init="a:[scaleY:0:1:500:easeOutCubic:1250:1:f]"
 							when-tech-tile-exit="a:[scaleY:1:0:500:easeInCubic:1000:1:f]"></span>
 						<span class="bot"
-							u init-with="p:[scaleX:0]"
+							u init-with="p:[transform:scaleX(0)]"
 							when-tech-tile-init="a:[scaleX:0:1:500:easeOutCubic:1250:1:f]"
 							when-tech-tile-exit="a:[scaleX:1:0:500:easeInCubic:1000:1:f]"></span>
 					</div>
@@ -280,10 +280,10 @@
 			</div>
 			<div class="pf-tile-bottom"
 				u init-with="p:[opacity:0]"
-				when-tech-tile-init="p:[opacity:0:1:500:easeOutSine:250:1:f]"
-				when-tech-tile-exit="p:[opacity:1:0:easeOutSine:1000:1:f]">
-				<h1 init-with="p:[opacity:0, translateY:10px]"
-					when-tech-tile-init="p:[opacity:0:1:500:linear:450:1:f, translateY:10px:0px:500:easeOutExpo:450:1:f]">Water Damage</h1>
+				when-tech-tile-init="a:[opacity:0:1:500:easeOutSine:250:1:f]"
+				when-tech-tile-exit="a:[opacity:1:0:easeOutSine:1000:1:f]">
+				<h1 u init-with="p:[opacity:0, transform:translateY(10px)]"
+					when-tech-tile-init="a:[opacity:0:1:500:linear:450:1:f, translateY:10px:0px:500:easeOutExpo:450:1:f]">Water Damage</h1>
 				<ul class="rating-stars" data-rating="4" data-half="true">
 					<li u init-with="p:[opacity:0]"
 						when-tech-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:900:1:f]">
@@ -323,46 +323,46 @@
 				</ul>
 				<div class="border border-top">
 					<span class="left"
-						u init-with="p:[scaleX:0]"
+						u init-with="p:[transform:scaleX(0)]"
 						when-tech-borders-init="a:[scaleX:0:1:500:easeOutCubic:0:1:f]"
 						when-tech-tile-exit="a:[opacity:1:0:1:linear:750:1:f, scaleX:1:0:1:linear:250:1:f]"></span>
 					<span class="right"
-						u init-with="p:[scaleX:0]"
+						u init-with="p:[transform:scaleX(0)]"
 						when-tech-borders-init="a:[scaleX:0:1:500:easeOutCubic:0:1:f]"
 						when-tech-tile-exit="a:[opacity:1:0:1:linear:750:1:f, scaleX:1:0:1:linear:250:1:f]"></span>
 				</div>
 			</div>
 			<div class="border border-outside">
 				<span class="top-left"
-					u init-with="p:[scaleX:0]"
-					when-tech-borders-init="a:[scaleX:0:1:500:(0,.66,.47,1.09):0:1:f]"
-					when-tech-tile-exit="a:[scaleX:1:0:500:(0,.66,.47,1.09):800:1:f]"></span>
+					u init-with="p:[transform:scaleX(0)]"
+					when-tech-borders-init="a:[scaleX:0:1:500:easeOutCubic:0:1:f]"
+					when-tech-tile-exit="a:[scaleX:1:0:500:easeOutCubic:800:1:f]"></span>
 				<span class="top-right"
-					u init-with="p:[scaleX:0]"
-					when-tech-borders-init="a:[scaleX:0:1:500:(0,.66,.47,1.09):0:1:f]"
-					when-tech-tile-exit="a:[scaleX:1:0:500:(0,.66,.47,1.09):800:1:f]"></span>
+					u init-with="p:[transform:scaleX(0)]"
+					when-tech-borders-init="a:[scaleX:0:1:500:easeOutCubic:0:1:f]"
+					when-tech-tile-exit="a:[scaleX:1:0:500:easeOutCubic:800:1:f]"></span>
 				<span class="right"
-					u init-with="p:[scaleY:0]"
-					when-tech-borders-init="a:[scaleY:0:1:300:(0,.66,.47,1.09):450:1:f]"
+					u init-with="p:[transform:scaleY(0)]"
+					when-tech-borders-init="a:[scaleY:0:1:300:easeOutCubic:450:1:f]"
 					when-tech-tile-exit="a:[opacity:1:0:1:linear:800:1:f, scaleY:1:0:1:linear:500:1:f]"></span>
 				<span class="bot-left"
-					u init-with="p:[scaleX:0]"
-					when-tech-borders-init="a:[scaleX:0:1:500:(0,.66,.47,1.09)]:delay-750"
+					u init-with="p:[transform:scaleX(0)]"
+					when-tech-borders-init="a:[scaleX:0:1:500:easeOutCubic:0:1:f]:delay-750"
 					when-tech-tile-exit="a:[opacity:1:0:1:linear:500:1:f, scaleX:1:0:1:linear:0:1:f]"></span>
 				<span class="bot-right"
-					u init-with="p:[scaleX:0]"
-					when-tech-borders-init="a:[scaleX:0:1:500:(0,.66,.47,1.09)]:delay-750"
+					u init-with="p:[transform:scaleX(0)]"
+					when-tech-borders-init="a:[scaleX:0:1:500:easeOutCubic:0:1:f]:delay-750"
 					when-tech-tile-exit="a:[opacity:1:0:1:linear:500:1:f, scaleX:1:0:1:linear:0:1:f]"></span>
 				<span class="left"
-					u init-with="p:[scaleY:0]"
-					when-tech-borders-init="a:[scaleY:0:1:300:(0,.66,.47,1.09)]:delay-450"
+					u init-with="p:[transform:scaleY(0)]"
+					when-tech-borders-init="a:[scaleY:0:1:300:easeOutCubic:0:1:f]:delay-450"
 					when-tech-tile-exit="a:[opacity:1:0:1:linear:800:1:f, scaleY:1:0:1:linear:500:1:f]"></span>
 			</div>
 		</div>
 	</div>
 
 	<div class="pf-tile-container" ng-if='activeType === "household"'
-		u init-with="p:[opacity:0, transform-origin:left top, rotateX:30deg, rotateY:30deg, translateY:300px]"
+		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[household-tile-init:public]"
 		when-household-tile-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f, translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
 		when-household-tile-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]">
@@ -370,8 +370,8 @@
 		<div class="pf-tile bg-household">
 			<div class="pf-tile-top" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg')"
 				u init-with="p:[opacity:0]"
-				when-household-tile-init="p:[opacity:0:1:500:easeOutSine:250:1:f]"
-				when-household-tile-exit="p:[opacity:1:0:500:easeOutSine:250:1:f]"></div>
+				when-household-tile-init="a:[opacity:0:1:500:easeOutSine:250:1:f]"
+				when-household-tile-exit="a:[opacity:1:0:500:easeOutSine:250:1:f]"></div>
 			<div class="pf-tile-bg"
 				u init-with="p:[overflow:visible]"
 				when-household-tile-init="p:[overflow:hidden]:delay-1800"
@@ -405,9 +405,9 @@
 					<g class="bubbles" fill="#FFFFFF" fill-rule="evenodd">
 						<g class="bub-back"
 							u init-with="p:[opacity:0]"
-							when-household-tile-init="a:[pf-hh-bubble-blow:1000:linear:450:1:f] | s:[bub-sink:public:delay-1500]"
-							when-bub-sink="p:[opacity:1:0:250:linear:250:1:f, translateY:0%:100%:500:easeInCubic:250:1:f]">
-							<g init-with="p:[opacity:0, transform-origin:center center]"
+							when-household-tile-init="a:[pf-hh-bubble-blow:1000:linear:450:1:f] | s:[bub-sink:public:1500]"
+							when-bub-sink="a:[opacity:1:0:250:linear:250:1:f, translateY:0%:100%:500:easeInCubic:250:1:f]">
+							<g u init-with="p:[opacity:0, transform-origin:center center]"
 								when-household-tile-init="a:[pf-hh-bubble-blow:1000:linear:800:1:f]">
 								<path d="M186.36829,41.0424598 C195.375073,44.3206607 199.994675,54.3464594 196.686459,63.4357079 C193.378243,72.5249564 183.394964,77.2357412 174.388181,73.9575402 C165.381398,70.6793393 160.761796,60.6535406 164.070012,51.5642921 C167.378228,42.4750436 177.361507,37.7642588 186.36829,41.0424598 L186.36829,41.0424598 L186.36829,41.0424598 Z" class="bub-back-18"></path>
 								<path d="M295.030127,16.3827652 C315.61706,8.8897345 338.435984,19.6572426 345.99762,40.4326677 C353.559256,61.2080927 343.000167,84.124204 322.413235,91.6172348 C301.826302,99.1102655 279.007378,88.3427574 271.445742,67.5673323 C263.884105,46.7919073 274.443194,23.875796 295.030127,16.3827652 L295.030127,16.3827652 L295.030127,16.3827652 Z" class="bub-back-17"></path>
@@ -432,7 +432,7 @@
 						<g class="bub-mid"
 							u init-with="p:[opacity:0, transform-origin:center center]"
 							when-household-tile-init="a:[pf-hh-bubble-blow:1000:linear:450:1:f]"
-							when-bub-sink="p:[opacity:1:0:250:linear:300:1:f, translateY:0%:100%:500:easeInCubic:300:1:f]">
+							when-bub-sink="a:[opacity:1:0:250:linear:300:1:f, translateY:0%:100%:500:easeInCubic:300:1:f]">
 							<path d="M115.696926,83.0336412 C106.2023,62.0461607 81.8199237,51.6601249 59.6190792,59.7405715 C36.3392132,68.2137497 24.273701,93.7834547 32.6700034,116.852106 C37.0361983,128.848128 46.0757807,137.805587 57.0212138,142.449282 C66.5158396,163.436762 90.8982162,173.822798 113.099061,165.742352 C135.85912,157.458367 154.00358,135.394667 146.683611,112.741463 C151.983322,108.565154 154.277303,101.355784 151.862779,94.7219363 C148.845358,86.4316397 133.513564,79.6176735 125.147363,82.6627219 C123.373073,83.3085105 121.780049,84.2306418 120.39999,85.361936 C118.879532,84.4949901 117.308898,83.717534 115.696926,83.0336412 L115.696926,83.0336412 Z" class="bub-mid-12"></path>
 							<path d="M161.959412,104.615952 C170.44517,97.4395013 182.370998,94.8721228 193.48842,98.9185335 C210.064421,104.951705 218.566293,123.403093 212.477883,140.130863 C206.389473,156.858633 188.016337,165.528318 171.440335,159.495147 C170.706867,159.228186 169.989207,158.936911 169.28792,158.622547 C160.802161,165.798998 148.876334,168.366376 137.758912,164.319965 C121.182911,158.286794 112.681038,139.835406 118.769449,123.107636 C124.857859,106.379866 143.230995,97.7101807 159.806996,103.743352 C160.540465,104.010313 161.258125,104.301588 161.959412,104.615952 L161.959412,104.615952 L161.959412,104.615952 Z" class="bub-mid-11"></path>
 							<path d="M39.3357458,115.615952 C47.8215046,108.439501 59.7473319,105.872123 70.8647538,109.918533 C87.4407552,115.951705 95.9426276,134.403093 89.8542173,151.130863 C83.7658069,167.858633 65.392671,176.528318 48.8166696,170.495147 C48.0832008,170.228186 47.3655408,169.936911 46.6642542,169.622547 C38.1784954,176.798998 26.2526681,179.366376 15.1352462,175.319965 C-1.44075524,169.286794 -9.94262762,150.835406 -3.85421727,134.107636 C2.23419307,117.379866 20.607329,108.710181 37.1833304,114.743352 C37.9167992,115.010313 38.6344592,115.301588 39.3357458,115.615952 L39.3357458,115.615952 L39.3357458,115.615952 Z" class="bub-mid-10"></path>
@@ -455,11 +455,10 @@
 				</svg>
 			</div>
 			<div class="pf-tile-bottom"
-				init-default
-				when-household-tile-exit="p:[opacity:1:0:500:easeOutSine:250:1:f]">
+				u when-household-tile-exit="a:[opacity:1:0:500:easeOutSine:250:1:f]">
 				<div>
-					<h1 init-with="p:[opacity:0, translateY:-80%]"
-						when-bub-sink="p:[opacity:0:1:750:easeOutSine:0:1:f, translateY:-100px:0px:750:easeOutQuad:0:1:f]">Furniture Care</h1>
+					<h1 u init-with="p:[opacity:0, transform:translateY(-80%)]"
+						when-bub-sink="a:[opacity:0:1:750:easeOutSine:0:1:f, translateY:-100px:0px:750:easeOutQuad:0:1:f]">Furniture Care</h1>
 					<ul class="rating-stars" data-rating="4" data-half="true">
 						<li u init-with="p:[opacity:0]"
 							when-household-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1500:1:f]">
