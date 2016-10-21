@@ -276,19 +276,18 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         }
 
         else if (typeof(name) === 'object' && name.indexOf('key') > -1) {
+          if (name.length > 1 && name[1] === 'press') {
+            name[1] = 'down'
+          }
           scope.validKeys = attr.acceptKeys || 'abcdefghijklmnopqrstuvwxyz';
           var specialKeys = {'space': 32}
           //keyboardservice
           scope.$on('key' + name[1], function(onEvent, keypressEvent) {
 
-            var charPressed = String.fromCharCode(keypressEvent.keyCode);
-            if ([' '].indexOf(charPressed) > -1) {
-              console.log(charPressed)
-              charPressed = keypressEvent.code.toLowerCase();
-              applySendAnimProp(scope, element, actions, context);
-            }
-
-            else if (scope.validKeys.split(',').indexOf(charPressed.toLowerCase()) > -1 ) {
+            var charPressed = RootService.keyMap.toChar[keypressEvent.which];
+            charPressed = charPressed && charPressed.toLowerCase() || '';
+            console.log(charPressed)
+            if (scope.validKeys.split(',').indexOf(charPressed) > -1 ) {
 
               applySendAnimProp(scope, element, actions, context);
             }
