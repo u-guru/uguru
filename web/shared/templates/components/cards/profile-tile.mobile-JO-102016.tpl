@@ -251,7 +251,7 @@
 	<div class="pf-tile-container mobile" ng-if='activeType === "tech"'
 		u init-with="p:[transform-origin:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
 		on-init="s:[tech-tile-init:public]"
-		when-tech-tile-init="a:[rotateX:-30deg:0deg:1000:easeOutCubic:1:f, rotateY:30deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:500:easeOutSine:0:1:f] | s:[tech-borders-init:public:delay-500]"
+		when-tech-tile-init="a:[rotateX:-30deg:0deg:1000:easeOutCubic:1:f, rotateY:30deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:500:easeOutSine:0:1:f] | s:[tech-borders-init:public:500]"
 		when-tech-tile-exit="p:[rotateX(-30deg) rotateY(30deg), opacity:0:delay-500]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-tech">
@@ -400,8 +400,8 @@
 					<g class="bubbles" fill="#FFFFFF" fill-rule="evenodd">
 						<g class="bub-back"
 							u init-with="p:[opacity:0]"
-							when-household-tile-init="a:[pf-hh-bubble-blow:1000:linear:450:1:f] | s:[bub-sink:public:delay-1000]"
-							when-bub-sink="p:[opacity:1:0:250:linear, translateY(0px):translateY(119px):500:easeInCubic]:delay-250">
+							when-household-tile-init="a:[pf-hh-bubble-blow:1000:linear:450:1:f] | s:[bub-sink:public:1000]"
+							when-bub-sink="a:[opacity:1:0:250:linear:0:1:f, translateY:0px:119px:500:easeInCubic:0:1:f]:delay-250">
 							<g init-with="p:[opacity:0, transform-origin:center center]"
 								when-household-tile-init="a:[pf-hh-bubble-blow:1000:linear:800]">
 								<path d="M186.36829,41.0424598 C195.375073,44.3206607 199.994675,54.3464594 196.686459,63.4357079 C193.378243,72.5249564 183.394964,77.2357412 174.388181,73.9575402 C165.381398,70.6793393 160.761796,60.6535406 164.070012,51.5642921 C167.378228,42.4750436 177.361507,37.7642588 186.36829,41.0424598 L186.36829,41.0424598 L186.36829,41.0424598 Z" class="bub-back-18"></path>
@@ -425,9 +425,9 @@
 							<path d="M162.779003,21.4467685 C166.666099,22.8517117 168.6598,27.1484826 167.232059,31.0438748 C165.804318,34.939267 161.495791,36.9581748 157.608695,35.5532315 C153.721599,34.1482883 151.727898,29.8515174 153.155639,25.9561252 C154.58338,22.060733 158.891907,20.0418252 162.779003,21.4467685 L162.779003,21.4467685 L162.779003,21.4467685 Z" class="bub-back-1"></path>
 						</g>
 						<g class="bub-mid"
-							init-with="p:[opacity:0, transform-origin:center center]"
-							when-household-tile-init="a:[pf-hh-bubble-blow:1000:linear:450]"
-							when-bub-sink="p:[opacity:1:0:500:linear, translateY(0px):translateY(137px):500:easeInOutSine]:delay-300">
+							u init-with="p:[opacity:0, transform-origin:center center]"
+							when-household-tile-init="a:[pf-hh-bubble-blow:1000:linear:450:1:f]"
+							when-bub-sink="a:[opacity:1:0:500:linear:0:1:f, translateY:0px:137px:500:easeInOutSine:0:1:f]:delay-300">
 							<path d="M115.696926,83.0336412 C106.2023,62.0461607 81.8199237,51.6601249 59.6190792,59.7405715 C36.3392132,68.2137497 24.273701,93.7834547 32.6700034,116.852106 C37.0361983,128.848128 46.0757807,137.805587 57.0212138,142.449282 C66.5158396,163.436762 90.8982162,173.822798 113.099061,165.742352 C135.85912,157.458367 154.00358,135.394667 146.683611,112.741463 C151.983322,108.565154 154.277303,101.355784 151.862779,94.7219363 C148.845358,86.4316397 133.513564,79.6176735 125.147363,82.6627219 C123.373073,83.3085105 121.780049,84.2306418 120.39999,85.361936 C118.879532,84.4949901 117.308898,83.717534 115.696926,83.0336412 L115.696926,83.0336412 Z" class="bub-mid-12"></path>
 							<path d="M161.959412,104.615952 C170.44517,97.4395013 182.370998,94.8721228 193.48842,98.9185335 C210.064421,104.951705 218.566293,123.403093 212.477883,140.130863 C206.389473,156.858633 188.016337,165.528318 171.440335,159.495147 C170.706867,159.228186 169.989207,158.936911 169.28792,158.622547 C160.802161,165.798998 148.876334,168.366376 137.758912,164.319965 C121.182911,158.286794 112.681038,139.835406 118.769449,123.107636 C124.857859,106.379866 143.230995,97.7101807 159.806996,103.743352 C160.540465,104.010313 161.258125,104.301588 161.959412,104.615952 L161.959412,104.615952 L161.959412,104.615952 Z" class="bub-mid-11"></path>
 							<path d="M39.3357458,115.615952 C47.8215046,108.439501 59.7473319,105.872123 70.8647538,109.918533 C87.4407552,115.951705 95.9426276,134.403093 89.8542173,151.130863 C83.7658069,167.858633 65.392671,176.528318 48.8166696,170.495147 C48.0832008,170.228186 47.3655408,169.936911 46.6642542,169.622547 C38.1784954,176.798998 26.2526681,179.366376 15.1352462,175.319965 C-1.44075524,169.286794 -9.94262762,150.835406 -3.85421727,134.107636 C2.23419307,117.379866 20.607329,108.710181 37.1833304,114.743352 C37.9167992,115.010313 38.6344592,115.301588 39.3357458,115.615952 L39.3357458,115.615952 L39.3357458,115.615952 Z" class="bub-mid-10"></path>
@@ -442,50 +442,50 @@
 							<path d="M306.914846,59.4467685 C303.02775,60.8517117 301.034049,65.1484826 302.46179,69.0438748 C303.889531,72.939267 308.198058,74.9581748 312.085154,73.5532315 C315.97225,72.1482883 317.965951,67.8515174 316.53821,63.9561252 C315.110469,60.060733 310.801942,58.0418252 306.914846,59.4467685 L306.914846,59.4467685 L306.914846,59.4467685 Z" class="bub-mid-1"></path>
 						</g>
 						<g class="bub-front"
-							init-with="p:[opacity:0, transform-origin:center center]"
-							when-household-tile-init="a:[pf-hh-bubble-blow:1000:linear:250]">
+							u init-with="p:[opacity:0, transform-origin:center center]"
+							when-household-tile-init="a:[pf-hh-bubble-blow:1000:linear:250:1:f]">
 							<rect x="0" y="0" width="380" height="270" clip-path="url(#bub-front)" fill="url(#bub-front-color)"></rect>
 						</g>
 					</g>
 				</svg>
 			</div>
 			<div class="pf-tile-bottom"
-				init-with="p:[t:opacity 500ms easeOutSine]"
-				when-household-tile-exit="p:[opacity:0:delay-250]">
+				u
+				when-household-tile-exit="a:[opacity:1:0:500:easeOutSine:250:1:f]">
 				<div>
-					<h1 init-with="p:[opacity:0, translateY(-100px)]"
-						when-bub-sink="p:[opacity:0:1:750:easeOutSine, translateY(-100px):translateY(0px):750:easeOutQuad]">Furniture Care</h1>
+					<h1 u init-with="p:[opacity:0, transform:translateY(-100px)]"
+						when-bub-sink="a:[opacity:0:1:750:easeOutSine:0:1:f, translateY:-100px:0px:750:easeOutQuad:0:1:f]">Furniture Care</h1>
 					<ul class="rating-stars" data-rating="4" data-half="true">
-						<li u init-with="p:[opacity:0]"
-							when-household-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1500]">
+						<li  u init-with="p:[opacity:0, tro:center center]"
+							when-household-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1500:1:f]">
 							<svg viewBox="0 0 100 100">
 								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 							</svg>
 						</li>
-						<li u init-with="p:[opacity:0]"
-							when-household-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1600]">
+						<li  u init-with="p:[opacity:0, tro:center center]"
+							when-household-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1600:1:f]">
 							<svg viewBox="0 0 100 100">
 								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 							</svg>
 						</li>
-						<li u init-with="p:[opacity:0]"
-							when-household-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1700]">
+						<li u init-with="p:[opacity:0, tro:center center]"
+							when-household-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1700:1:f]">
 							<svg viewBox="0 0 100 100">
 								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 							</svg>
 						</li>
-						<li u init-with="p:[opacity:0]"
-							when-household-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1800]">
+						<li  u init-with="p:[opacity:0, tro:center center]"
+							when-household-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1800:1:f]">
 							<svg viewBox="0 0 100 100">
 								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 							</svg>
 						</li>
-						<li u init-with="p:[opacity:0]"
-							when-household-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1900]">
+						<li u init-with="p:[opacity:0, tro:center center]"
+							when-household-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1900:1:f]">
 							<svg viewBox="0 0 100 100">
 								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -494,8 +494,8 @@
 					</ul>
 				</div>
 				<div class="pf-pricing"
-					init-with="p:[opacity:0, transform-origin:center center]"
-					when-household-tile-init="a:[bounceIn-rotate-subtle:1000:linear:2000]">$10/hr</div>
+					u init-with="p:[opacity:0, transform-origin:center center]"
+					when-household-tile-init="a:[bounceIn-rotate-subtle:1000:linear:2000:1:f]">$10/hr</div>
 			</div>
 			<div class="pf-tile-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
 		</div>
