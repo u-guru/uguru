@@ -49,9 +49,9 @@ function XHRService($timeout) {
           // This works!!!
           var b64=btoa(raw);
           var dataURL="data:image/jpeg;base64,"+b64;
-          $timeout(function() {
+          // $timeout(function() {
             callback(dataURL);
-          }, 1000)
+          // }, 1000)
 
       };
 

@@ -90,6 +90,27 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
+    .directive('keypressEvents', [
+      '$document',
+      '$rootScope',
+      function($document, $rootScope) {
+        return {
+          restrict: 'A',
+          link: function() {
+            $document.bind('keypress', function(e) {
+              console.log('Got keypress:', e);
+              $rootScope.$broadcast('keypress', e);
+              $rootScope.$broadcast('keypress:' + e.which, e);
+            });
+            $document.bind('keyup', function(e) {
+              console.log('Got keyup:', e.which);
+              $rootScope.$broadcast('keyup', e);
+              $rootScope.$broadcast('keyup:' + e.which, e);
+            });
+          }
+        };
+      }
+    ])
     .directive("uInput", ["CompService", "$compile", '$timeout', function(CompService, $compile, $timeout) {
         return {
             restrict: 'E',
