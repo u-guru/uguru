@@ -6,7 +6,7 @@
 				<svg class="fill-moxie absolute top-0 left-0 width-128 height-128" viewBox="0 0 128 128">
 					<rect x="2" y="2" width="124" height="124" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" rx="2"
 						u init-with="p:[stroke-dasharray:1207, stroke-dashoffset:1207, stroke:#55A4B7]"
-						when-portal-hover="a:[l-progress-color:2000:linear:250:1:f, stroke-dashoffset:1207:0:2000:linear:250:1:f] | s:[portal-complete:public:delay-2000]"></rect>
+						when-portal-hover="a:[l-progress-color:2000:linear:250:1:f, stroke-dashoffset:1207:0:2000:linear:250:1:f] | s:[portal-complete:public:2000]"></rect>
 				</svg>
 				<h1 class="relative z-index-2 txt-14 semibold txt-center">stroke-dashoffset</h1>
 			</div>
@@ -142,7 +142,7 @@
 				on-mouseleave="a:[scale:1.5:1:1000:easeOutElastic:0:1:f]">
 				<h1 class="txt-14 semibold txt-center">types</h1>
 			</a>
-		</li> -->
+		</li>
 		<li>
 			<div class="bg-auburn p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
@@ -164,7 +164,7 @@
 				<h1 class="txt-14 semibold txt-center">stagger-children doesn't work</h1>
 				<div class="absolute bottom-0 left-0 flex-center full-x">
 					<ul class="pf-rating rating-stars" data-rating="4" data-half="true" u on-init="t-enter">
-						<stagger-children on-init="[rating]:2500:linear">
+
 							<li rating class="rating"
 								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
 								on-init="s:[stars-come-out:public:delay-1000]"
@@ -211,11 +211,12 @@
 								</svg>
 							</li>
 
-						</stagger-children>
+
 					</ul>
 				</div>
 			</div>
 		</li>
+		-->
 
 		<!-- <li>
 			<div class="relative bg-moxie p10xy flex-center width-128 height-128 radius-2">
@@ -256,10 +257,17 @@
 			</div>
 		</li>
 		<li>
+			<div class="bg-moxie p10xy flex-center width-128 height-128 radius-2"
+				u init-with="p:[transform-origin:center center]"
+				on-init="a:[opacity:0:1:1000:linear:0:10:a, scale:0:1:1000:linear:0:10:a,rotate:-360deg:0deg:1000:easeOutSine:0:10:a]| send:[show-header-elem:public]:delay-1000">
+				<h1 class="txt-14 semibold txt-center">Verify Iterations</h1>
+			</div>
+		</li>
+		<li>
 			<div class="bg-auburn p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
-				on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f, rotate:40deg:0deg:1000:easeInOutElastic:0:1:f]:delay-200 | send:[show-header-elem:public]:delay-1000">
-				<h1 class="txt-14 semibold txt-center">Verify Iterations</h1>
+				on-init="a:[background-color:rgba(255,255,255,1):rgba(0,0,0,1):5000:linear:0:10:a, scale:1.25:1:5000:linear:0:10:ar]">
+				<h1 class="txt-14 semibold txt-center p10xy" u on-init="a:[background-color:rgba(0,0,0,1):rgba(255,255,255,1):5000:linear:0:10:a]">Jesus</h1>
 			</div>
 		</li>
 	</ul>

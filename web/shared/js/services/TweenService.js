@@ -4,7 +4,7 @@ angular.module('uguru.shared.services')
 ]);
 
 function TweenService() {
-
+    var specialPropertyTypes = ['background-color', 'background']
     return  {
         getKeyframeValues: getKeyframeValues,
         getAllEasing: getAllEasing,
@@ -62,6 +62,10 @@ function TweenService() {
         }
     }
 
+    function parseSpecialPropertyType(property, value) {
+        return 'rgba(' + value.split('|').join(',') + ')'
+    }
+
     function preComputeValues(property, duration, start, end, ease, result_arr) {
         duration = parseFloat(duration)
         result_arr.cache = [];
@@ -71,6 +75,10 @@ function TweenService() {
         var endDict = {};
         endDict[property] = end;
         var t = new Tweenable();
+        if (specialPropertyTypes.indexOf(property) > -1) {
+            start = parseSpecialPropertyType(property, start);
+            end = parseSpecialPropertyType(property, end);
+        }
         if (ease.indexOf('|') > -1) {
             var easeSplit = ease.split('|');
             if (ease && ease.length && easeSplit.length === 4) {

@@ -1098,6 +1098,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               duration: iPropObj.duration
             }
             var offset = iPropObj.delay;
+            console.log('getting values', iPropObj)
             var values = TweenService.preComputeValues(iPropObj.property, iPropObj.duration, iPropObj.start, iPropObj.end, iPropObj.easingFunc, {cache:[]}, kf).cache;
 
 
@@ -1298,7 +1299,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
         if (customAnimIndex >= 0) {
           var customAnimObj = allCustomAnimations.custom[customAnimIndex];
-          console.log(customAnimObj)
           return PropertyService.parseAnimObjToPropArr(customAnimObj.cssRules).props;
         }
         return;

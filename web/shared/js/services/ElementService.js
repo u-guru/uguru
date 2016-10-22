@@ -451,7 +451,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function applySendArgsAndCallback(element, scope, messages, delay_dict) {
-        console.log(messages)
+        messages = messages.trim();
         if (!delay_dict) {
           delay_dict = {internal: {}, external:0}
         };
@@ -535,7 +535,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               var easeFunc = delay_dict.internal.stagger.ease;
               var numChildren = stateRefs.length;
               var tempDuration = numChildren * (1000/60.0);
-
 
               var values = TweenService.preComputeValues("send", tempDuration, {send: 0}, {send:1}, easeFunc, delay_dict.internal.stagger.delays, 60).cache;
 
@@ -905,6 +904,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
           // var extDelay = arg_dict.delays.external || 0;
           //to elimiate
+          console.log(arg_dict)
           var arg = arg_dict.argName.split(':')[0];
           resultDict[arg] = {};
 
