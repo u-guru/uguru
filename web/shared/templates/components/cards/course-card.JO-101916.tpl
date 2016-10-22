@@ -84,13 +84,18 @@
 
 	<div ng-if='activeType === "checkbox"' class="course-card"
 		u init-with="p:[opacity:0]"
-		on-init="a:[scoop-enter:800:(0,0.2,0.3,1):0:1:f] | s:[checkbox-init:public]">
+		on-init="s:[checkbox-card:self, checkbox-init:public:350]"
+		when-checkbox-card="a:[scoop-enter:800:(0,0.2,0.3,1):0:1:f]"
+		when-checkbox-enter="a:[translateZ:0px:4px:100:easeOutSine:0:1:f]"
+		when-checkbox-leave="a:[translateZ:4px:0px:100:easeOutSine:0:1:f]">
 		<svg width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 		</svg>
-		<input type="checkbox" checked/>
+		<input type="checkbox" checked
+			u on-mouseenter="s:[checkbox-enter:parent:100]"
+			on-mouseleave="s:[checkbox-leave:parent:100]"/>
 		<div class="course-card-inside"
-			u init-with="p:[opacity:0]"
+			u init-with="p:[transform:scale(0)]"
 			when-checkbox-init="a:[bounceInUp-subtle:1000:linear:150:1:f]">
 			<h2 style="color: #003262;">BIO 1A</h2>
 			<h1 style="color: #003262;">Introduction to Biology</h1>
