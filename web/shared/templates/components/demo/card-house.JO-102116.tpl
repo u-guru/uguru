@@ -56,7 +56,7 @@
 			when-house-stack="a:[opacity:0:1:50:linear:0:1:f]"
 			when-house-return="a:[scale-hover:2000:linear:0:i:f]">
 
-			<div class="team-card-container team-gabrie"
+			<div class="team-card-container team-gabrie" id="gabrie-card"
 				u init-with="p:[transform:translateX(528px) translateY(-375px) translateZ(0px) rotateX(45deg) rotateY(45deg) rotate(90deg),tro:center bottom]"
 				when-house-stack="a:[translateX:528px:-362px:1000:easeInExpo:0:1:f, translateY:-375px:-362px:1000:easeInExpo:0:1:f, translateZ:0px:0px:1000:easeInExpo:0:1:f, rotateX:45deg:90deg:1000:easeInExpo:0:1:f, rotateY:45deg:0deg:1000:easeInExpo:0:1:f, rotate:90deg:90deg:1000:easeInExpo:0:1:f]">
 				<!-- when-house-build="p:[transform:rotateY(0deg) rotateX(90deg) translateX(-362px) translateY(324px) translateZ(0px) rotate(90deg):rotateY(90deg) rotateX(-31deg) translateX(-5px) translateY(4px) translateZ(10px) rotate(0deg):1250:easeOutCirc]"
@@ -158,10 +158,12 @@
 
 		<li u init-with="p:[op:0, tro:center center]"
 			when-house-stack="a:[opacity:0:1:50:linear:0:1:f]:delay-150"
-			when-house-return="a:[scale-hover:2000:linear:0:i:f]">
+			when-house-return="a:[scale-hover:2000:linear:0:i:f]"
+			>
 			<div class="team-card-container team-jeselle"
-				init-with="p:[tr:rotateY(30deg) translateX(-90px) translateY(-364px) translateZ(0px) rotateX(60deg) rotate(90deg), tro:center bottom]"
-				when-house-stack="p:[transform:rotateY(30deg) translateX(-90px) translateY(-364px) translateZ(0px) rotateX(60deg) rotate(90deg):rotateY(0deg) translateX(-725px) translateY(316px) translateZ(0px) rotateX(90deg) rotate(90deg):1000:easeInExpo]:delay-150">
+				u init-with="p:[tr:rotateY(30deg) translateX(-90px) translateY(-364px) translateZ(0px) rotateX(60deg) rotate(90deg), tro:center bottom]"
+				when-house-stack='a:[move:vp.right+#gabrie-card.left:vp.top+#gabrie-card.top:0:easeInExpo:150:1:f]'>
+				<!-- when-house-stack="p:[transform:rotateY(30deg) translateX(-90px) translateY(-364px) translateZ(0px) rotateX(60deg) rotate(90deg):rotateY(0deg) translateX(-725px) translateY(316px) translateZ(0px) rotateX(90deg) rotate(90deg):1000:easeInExpo]:delay-150"> -->
 				<!-- when-house-build="p:[transform:rotateY(0deg) rotateX(90deg) translateX(-725px) translateY(316px) translateZ(0px) rotate(90deg):rotateY(-90deg) rotateX(-31deg) translateX(-5px) translateY(4px) translateZ(10px) rotate(0deg):1250:easeOutCirc]:delay-100"
 				when-house-return="p:[transform:rotateY(-90deg) rotateX(-31deg) translateX(-5px) translateY(4px) translateZ(10px) rotate(0deg):rotateY(0deg) rotateX(0deg) translateX(0px) translateY(0px) translateZ(0px) rotate(0deg):1500:easeOutSine]:delay-450" -->
 				<a></a><a></a><a></a><a></a><a></a><a></a>
