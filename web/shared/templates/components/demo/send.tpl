@@ -18,17 +18,26 @@
             <li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>
                 Stagger-based Delays (Requires prefix send:[msg-name]:children)
             </li>
-            <li class='flex-start relative flex-wrap m20x p20left text-left border-solid border-white full-x m20y txt-4 weight-300' ng-repeat='_scope in ["linear-1000"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}">
+            <li class='flex-start relative flex-wrap m20x p20left text-left border-solid border-white full-x m20y txt-4 weight-300' ng-repeat='_scope in ["linear-1000", "easeInCirc-1000"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}">
                     <div>
                         #{{$index + 1}}. send : [ example-child-msg : children:<span class='weight-700'>&nbsp;{{_scope}}</span>
                         ]
                     </div>
 
-                    <ul class='full-x m10y right-0 txt-1 relative weight-900 uppercase p10xy border-2 flex-vertical-center' ng-if='_scope === "linear-1000"' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]|s:[example-child-msg:children:linear-1000]:+1000' when-reset-request="send:[on-init:self:2500]">
-                        <li class='width-64 height-32 bg-moxie' u on-click="send:[reset-request:parent:250]">
+                    <ul class='full-x m10y right-0 txt-1 relative weight-900 uppercase p10xy border-2 flex-vertical-center' ng-if='_scope === "linear-1000"' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]|s:[example-child-msg:children:linear-1000]:+1000' when-reset-request="s:[example-child-msg:children:linear-1000]:+1000">
+                        <!-- <li class='width-64 height-32 bg-moxie' u on-mouseenter="send:[reset-request:parent:250]">
                             Reset
-                        </li>
+                        </li> -->
                         <li class='width-64 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u on-init="p:[opacity:0.25]" when-reset-children="p:[opacity:0.25]" when-example-child-msg="a:[opacity:0.25:1:1000:easeInCirc:0:1:f]" ng-repeat='letter in "abcdefghijklmnop"'>
+                            {{letter}}
+                        </li>
+
+                    </ul>
+                    <ul class='full-x m10y right-0 txt-1 relative weight-900 uppercase p10xy border-2 flex-vertical-center' ng-if='_scope === "easeInCirc-1000"' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]|s:[example-child-msg:children:easeInCirc-1000]:+1000' when-reset-request="s:[example-child-msg:children:easeInCirc-1000]:+1000">
+                        <!-- <li class='width-64 height-32 bg-moxie' u on-mouseenter="send:[reset-request:parent:250]">
+                            Reset
+                        </li> -->
+                        <li class='width-64 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u on-init="p:[opacity:0.25]" when-reset-children="p:[opacity:0.25]" when-example-child-msg="a:[opacity:0.25:1:1000:linear:0:1:f]" ng-repeat='letter in "abcdefghijklmnop"'>
                             {{letter}}
                         </li>
 
