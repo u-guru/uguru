@@ -515,8 +515,14 @@ angular.module('uguru.shared.directives')
 
                           state.cancelCallback = null;
 
-                          var whenCallback = function(actions) {
-                              state.exec(lElem, scope, lAttr, actions);
+                          var whenCallback = function(actions, scope, delay) {
+                            if (delay) {
+                              $timeout(function() {
+                                state.exec(lElem, scope, lAttr, actions);
+                              }, delay)
+                              return;
+                            }
+                            state.exec(lElem, scope, lAttr, actions);
                           }
 
                           var whenMetadata = {actions: state.actions, func: whenCallback, name:state.name};
