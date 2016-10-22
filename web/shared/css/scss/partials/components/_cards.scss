@@ -1208,9 +1208,9 @@
 	backface-visibility: hidden;
 	position: relative;
 	display: block;
-	* {
-		transition: all 150ms ease-in-out;
-	}
+	// * {
+	// 	transition: all 150ms ease-in-out;
+	// }
 	&:hover, &:focus {
 		.credit-card .credit-card-inside, .credit-card-back {
 			background: lighten(#394851, 5%);

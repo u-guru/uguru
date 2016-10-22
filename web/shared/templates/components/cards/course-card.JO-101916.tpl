@@ -84,7 +84,7 @@
 
 	<div ng-if='activeType === "checkbox"' class="course-card"
 		u init-with="p:[opacity:0]"
-		on-init="s:[checkbox-card:self, checkbox-init:public:350]"
+		on-init="s:[checkbox-card:self, checkbox-init:public:150]"
 		when-checkbox-card="a:[scoop-enter:800:(0,0.2,0.3,1):0:1:f]"
 		when-checkbox-enter="a:[translateZ:0px:4px:100:easeOutSine:0:1:f]"
 		when-checkbox-leave="a:[translateZ:4px:0px:100:easeOutSine:0:1:f]">
@@ -96,7 +96,7 @@
 			on-mouseleave="s:[checkbox-leave:parent:100]"/>
 		<div class="course-card-inside"
 			u init-with="p:[transform:scale(0)]"
-			when-checkbox-init="a:[bounceInUp-subtle:1000:linear:150:1:f]">
+			when-checkbox-init="a:[bounceInUp-subtle:1000:linear:0:1:f]">
 			<h2 style="color: #003262;">BIO 1A</h2>
 			<h1 style="color: #003262;">Introduction to Biology</h1>
 		</div>
@@ -105,7 +105,7 @@
 			when-checkbox-init="a:[scaleX:0:1:250:easeOutSine:0:1:f]"></div>
 		<div class="course-card-count-container"
 			u init-with="p:[opacity:0, transform-origin:right top]"
-			when-checkbox-init="a:[bounceIn-subtle:1000:linear:250:1:f]">
+			when-checkbox-init="a:[bounceIn-subtle:1000:linear:100:1:f]">
 			<span class="course-card-count">
 				<span style="background: #003262;"></span>
 				<svg viewBox="0 0 100 100">

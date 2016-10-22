@@ -4368,8 +4368,6 @@ fieldset.no-border * {
   backface-visibility: hidden;
   position: relative;
   display: block; }
-  .credit-card-flip * {
-    transition: all 150ms ease-in-out; }
   .credit-card-flip:hover .credit-card .credit-card-inside, .credit-card-flip:hover .credit-card-back, .credit-card-flip:focus .credit-card .credit-card-inside, .credit-card-flip:focus .credit-card-back {
     background: #445560; }
 
