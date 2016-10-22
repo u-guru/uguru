@@ -28,49 +28,36 @@
 	                <div class="credit-card-row">
 	                    <div class="credit-card-number-container">
 	                        <h4>Card Number</h4>
-							<div class="credit-card-number has-span">
+							<div class="credit-card-number has-span"
+								u on-init='s:[cc-number:children:easeInQuad-800]'>
 								<span>
-									<stagger-children on-enter="[cc-number]:800:easeInQuad">
-		                                <span cc-number init-with="p:[tr:scale(0), tro:center center]"
-											on-init="t:[on-enter:self]"
-											on-enter="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
-										<span cc-number init-with="p:[tr:scale(0), tro:center center]"
-											on-init="t:[on-enter:self]"
-											on-enter="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
-										<span cc-number init-with="p:[tr:scale(0), tro:center center]"
-											on-init="t:[on-enter:self]"
-											on-enter="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
-										<span cc-number init-with="p:[tr:scale(0), tro:center center]"
-											on-init="t:[on-enter:self]"
-											on-enter="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
+	                                <span u init-with="p:[tr:scale(0), tro:center center]"
+										when-cc-number="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
+									<span u init-with="p:[tr:scale(0), tro:center center]"
+										when-cc-number="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
+									<span u init-with="p:[tr:scale(0), tro:center center]"
+										when-cc-number="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
+									<span u init-with="p:[tr:scale(0), tro:center center]"
+										when-cc-number="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
 
 
-										<span cc-number init-with="p:[tr:scale(0), tro:center center]"
-											on-init="t:[on-enter:self]"
-											on-enter="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
-										<span cc-number init-with="p:[tr:scale(0), tro:center center]"
-											on-init="t:[on-enter:self]"
-											on-enter="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
-										<span cc-number init-with="p:[tr:scale(0), tro:center center]"
-											on-init="t:[on-enter:self]"
-											on-enter="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
-										<span cc-number init-with="p:[tr:scale(0), tro:center center]"
-											on-init="t:[on-enter:self]"
-											on-enter="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
+									<span u init-with="p:[tr:scale(0), tro:center center]"
+										when-cc-number="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
+									<span u init-with="p:[tr:scale(0), tro:center center]"
+										when-cc-number="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
+									<span u init-with="p:[tr:scale(0), tro:center center]"
+										when-cc-number="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
+									<span u init-with="p:[tr:scale(0), tro:center center]"
+										when-cc-number="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
 
-										<span cc-number init-with="p:[tr:scale(0), tro:center center]"
-											on-init="t:[on-enter:self]"
-											on-enter="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
-										<span cc-number init-with="p:[tr:scale(0), tro:center center]"
-											on-init="t:[on-enter:self]"
-											on-enter="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
-										<span cc-number init-with="p:[tr:scale(0), tro:center center]"
-											on-init="t:[on-enter:self]"
-											on-enter="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
-										<span cc-number init-with="p:[tr:scale(0), tro:center center]"
-											on-init="t:[on-enter:self]"
-											on-enter="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
-									</stagger-children>
+									<span u init-with="p:[tr:scale(0), tro:center center]"
+										when-cc-number="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
+									<span u init-with="p:[tr:scale(0), tro:center center]"
+										when-cc-number="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
+									<span u init-with="p:[tr:scale(0), tro:center center]"
+										when-cc-number="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
+									<span u init-with="p:[tr:scale(0), tro:center center]"
+										when-cc-number="a:[scale:0:1:1000:bouncePast:0:1:f]">&bull;</span>
 	                            </span>
 	                            <span u init-with="p:[op:0, tro:center center]"
 									when-credit-flip-init="a:[bounceIn-subtle:1000:easeOutSine:0:1:f]:delay-1500">1234</span>
@@ -139,18 +126,16 @@
 	                    </svg>
 	                </div>
 	                <div class="credit-card-number has-span">
-	                    <!-- <span>
-							<stagger-children u on-init="[cc-edit-number]:+200">
-								<span cc-edit-number u init-with="p:[op:0, tro:center center]"
-									on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
-								<span u cc-edit-number init-with="p:[op:0, tro:center center]"
-									on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
-								<span u cc-edit-number init-with="p:[op:0, tro:center center]"
-									on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
-								<span u cc-edit-number init-with="p:[op:0, tro:center center]"
-									on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
-							</stagger-children>
-						</span> -->
+	                    <span u on-init="s:[cc-edit-number:children:linear-600]">
+							<span u init-with="p:[op:0, tro:center center]"
+								when-cc-edit-number="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
+							<span u init-with="p:[op:0, tro:center center]"
+								when-cc-edit-number="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
+							<span u init-with="p:[op:0, tro:center center]"
+								when-cc-edit-number="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
+							<span u init-with="p:[op:0, tro:center center]"
+								when-cc-edit-number="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
+						</span>
 						<span u init-with="p:[op:0, tro:center center]"
 							when-credit-edit-init="a:[bounceIn-subtle:1000:easeOutSine:0:1:f]:delay-750">1234</span>
 	                </div>
@@ -179,22 +164,16 @@
 	                    </svg>
 	                </div>
 	                <div class="credit-card-number has-span">
-						<!-- <span>
-							<stagger-children u on-enter="[cc-edit-number]:+200">
-								<span u cc-edit-number init-with="p:[op:0, tro:center center]"
-									on-init="t:[on-enter:self]"
-									on-enter="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
-								<span u cc-edit-number init-with="p:[op:0, tro:center center]"
-									on-init="t:[on-enter:self]"
-									on-enter="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
-								<span u cc-edit-number init-with="p:[op:0, tro:center center]"
-									on-init="t:[on-enter:self]"
-									on-enter="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
-								<span u cc-edit-number init-with="p:[op:0, tro:center center]"
-									on-init="t:[on-enter:self]"
-									on-enter="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
-							</stagger-children>
-						</span> -->
+						<span u  on-init="s:[cc-edit-short:children:linear-600]:+1000">
+							<span u init-with="p:[op:0, tro:center center]"
+								when-cc-edit-short="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
+							<span u init-with="p:[op:0, tro:center center]"
+								when-cc-edit-short="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
+							<span u init-with="p:[op:0, tro:center center]"
+								when-cc-edit-short="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
+							<span u init-with="p:[op:0, tro:center center]"
+								when-cc-edit-short="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
+						</span>
 						<span u init-with="p:[op:0, tro:center center]"
 							when-credit-short-init="a:[bounceIn-subtle:1000:easeOutSine:0:1:f]:delay-750">1234</span>
 	                </div>
@@ -222,22 +201,16 @@
                         </svg>
                     </div>
                     <div class="credit-card-number has-span">
-						<!-- <span>
-							<stagger-children u on-enter="[cc-edit-number]:+200">
-								<span u cc-edit-number init-with="p:[op:0, tro:center center]"
-									on-init="t:[on-enter:self]"
-									on-enter="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
-								<span u cc-edit-number init-with="p:[op:0, tro:center center]"
-									on-init="t:[on-enter:self]"
-									on-enter="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
-								<span u  cc-edit-number init-with="p:[op:0, tro:center center]"
-									on-init="t:[on-enter:self]"
-									on-enter="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
-								<span u cc-edit-number init-with="p:[op:0, tro:center center]"
-									on-init="t:[on-enter:self]"
-									on-enter="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
-							</stagger-children>
-						</span> -->
+						<span u on-init="s:[cc-mini-number:children:linear-600]:+1000">
+							<span u init-with="p:[op:0, tro:center center]"
+								when-cc-mini-number="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
+							<span u init-with="p:[op:0, tro:center center]"
+								when-cc-mini-number="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
+							<span u init-with="p:[op:0, tro:center center]"
+								when-cc-mini-number="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
+							<span u init-with="p:[op:0, tro:center center]"
+								when-cc-mini-number="a:[opacity:0:1:1000:easeOutSine:0:1:f]">&bull;</span>
+						</span>
 						<span u init-with="p:[op:0, tro:center center]"
 							when-credit-mini-init="a:[bounceIn-subtle:1000:easeOutSine:0:1:f]:delay-750">1234</span>
                     </div>
