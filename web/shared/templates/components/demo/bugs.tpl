@@ -251,7 +251,7 @@
 		</li> -->
 		<li>
 			<div class="bg-gold p10xy flex-center width-128 height-128 radius-2"
-				u init-with="p:[transform-origin:center center]"
+				u init-with="p:[transform-origin:center center, tr:scale(0)]"
 				on-init="a:[icon-enter:1000:linear:250:1:f]:delay-500">
 				<h1 class="txt-14 semibold txt-center">Icon enter</h1>
 			</div>
