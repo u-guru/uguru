@@ -2,7 +2,8 @@
 	<div class="card-container" ng-if='activeType === "freshman"'>
 		<a class="demographic-tile freshman"
 			u init-with="p:[opacity:0, transform-origin:center center]"
-			on-init="s:[demo-card-enter:public] | a:[bounceIn-subtle:1000:(.8,.1,1,.05):0:1:f]">
+			on-init="s:[freshman-card:self, demo-card-enter:public:100] "
+			when-freshman-card="a:[bounceIn-subtle:1000:(.8,.1,1,.05):0:1:f]">
 			<svg width="180px" height="180px" viewBox="0 0 100 100">
 				<rect x="0" y="0" width="100" height="100"></rect>
 			</svg>
