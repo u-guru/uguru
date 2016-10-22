@@ -478,7 +478,7 @@ angular.module('uguru.shared.directives')
               var postStates = [];
               return {
                   pre: function (scope, lElem, lAttr) {
-                    scope.states = {};
+                    scope.states = states || {};
 
                     scope.public = {customStates: {when: {}, whenElements:[]}};
                     scope.whenCallbacks = {};

@@ -63,7 +63,7 @@
         </ul>
         <ul class='flex-vertical-center flex-wrap full-xy'>
             <li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>
-                Scope/Target/Audience Examples
+                Stagger-based Delays (Requires prefix send:[msg-name]:children)
             </li>
             <li class='flex-start relative flex-wrap m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='_scope in ["self", "children", "parent", "grandparent", "depth(+/- LEVEL)", "odd children"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}">
             </li>
