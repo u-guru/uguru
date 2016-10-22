@@ -10,10 +10,11 @@ angular.module('uguru.shared.services')
     'SVGService',
     '$parse',
     'SendService',
+    'TweenService',
     ElementService
         ]);
 
-function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window, RootService, SVGService, $parse, SendService) {
+function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window, RootService, SVGService, $parse, SendService, TweenService) {
       var rShortcuts = {special: getSpecialAnimShortcuts(), animations:null, propValues: {}, props: {}, values:{}};
       var stateShortcuts = {};
       var rAnimations;
@@ -207,7 +208,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function getInternalDelay(key, int_str, delay_match_strs) {
-
+        console.log(key, int_str, delay_match_strs)
           //to refactor
           if (!rShortcuts || !rShortcuts.cmds) {
             var animStatus = loadAnimations();
@@ -238,6 +239,19 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                 var msgName = msgSplit[0];
                 var delay = msgSplit[2];
                 result[msgName] = parseInt(delay);
+                if (!result[msgName] && delay.indexOf('-') > -1) {
+                  result[msgName] = 0;
+                  var staggerSplit = delay.split('-');
+                  var easeFunc = staggerSplit[0];
+                  var duration = parseInt(staggerSplit[1]);
+
+                  if (easeFunc.length > -1 && duration) {
+                    var staggerDelays = [];
+
+                    result.stagger = {ease: easeFunc, duration: duration, delays:[]}
+
+                  }
+                }
               }
             })
           }
@@ -515,14 +529,32 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           else if (msgScope === 'children') {
 
 
-            var stateRefs = scope.public.customStates.when[camelName] || [];;
+            var stateRefs = scope.public.customStates.when[camelName] || [];
+            if (delay_dict.internal && delay_dict.internal.stagger) {
+              var duration = delay_dict.internal.stagger.duration;
+              var easeFunc = delay_dict.internal.stagger.ease;
+              var numChildren = stateRefs.length;
+              var tempDuration = numChildren * (1000/60.0);
+
+
+              var values = TweenService.preComputeValues("send", tempDuration, {send: 0}, {send:1}, easeFunc, delay_dict.internal.stagger.delays, 60).cache;
+
+              delay_dict.internal.stagger.delays = values.slice(0, values.length - 2);
+              delay_dict.internal.stagger.delays.forEach(function(delay_val, i) {
+                delay_dict.internal.stagger.delays[i] = delay_dict.internal.stagger.delays[i] * duration;
+              })
+            }
+
+
 
             stateRefs.forEach(function(stateRef, i) {
+              var stagger_delay = 0;
+              if (delay_dict.internal && delay_dict.internal.stagger && delay_dict.internal.stagger.delays) {
+                stagger_delay = delay_dict.internal.stagger.delays[i];
+              }
               if (stateRef.actions && Object.keys(stateRef.actions).length) {
-
-
                 $timeout(function() {
-                      stateRef.func && stateRef.func(stateRef.actions, scope);
+                      stateRef.func && stateRef.func(stateRef.actions, scope, stagger_delay);
                 }, totalMsgDelay);
               }
             })
@@ -885,6 +917,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           resultDict[arg].raw = extractRelevantValueFromArg(arg, full_value, true);
 
           resultDict[arg].delays = {internal: getInternalDelay(arg, resultDict[arg].raw, delayMatchStr), external: getExternalDelay(resultDict[arg].parsed)};
+
 
         })
 
