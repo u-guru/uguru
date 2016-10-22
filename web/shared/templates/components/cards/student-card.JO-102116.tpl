@@ -167,7 +167,9 @@
 
 	<a class="student-card with-hover" ng-if='activeType === "link"'
 		u init-with="p-op"
-		on-init="s:[student-card-init:public] | a:[scoop-enter:800:(0,0.2,0.3,1):0:1:f]">
+		on-init="s:[student-card-init:public:350, student-link:self]"
+		when-student-link="a:[zoom-enter:1000:linear:0:1:f]">
+		<!-- when-student-link="a:[scoop-enter:1000:(0,0.2,0.3,1):0:1:f]" -->
 		<svg viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 		</svg>
