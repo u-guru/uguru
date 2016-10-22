@@ -9,7 +9,7 @@
 					<li u init-with="p:[opacity:0]"
 						when-pf-card-1-init="a:[opacity:0:1:1000:(.8,.1,1,.05):0:1:f]">Gabrielle's Shop</li>
 					<li u init-with="p:[opacity:0]"
-						when-pf-card-1-init="a:[bounceInRight-subtle:1000:(.8,.1,1,.05):250:1:f]">
+						when-pf-card-1-init="a:[fadeInRight:1000:(.8,.1,1,.05):250:1:f]">
 						<span><span data-rank="25">25</span>&nbsp;Percentile</span>
 					</li>
 				</ul>
@@ -119,7 +119,7 @@
 							<li u init-with="p:[opacity:0]"
 								when-pf-card-3-init="a:[opacity:0:1:1000:(.8,.1,1,.05):1:f]">Gabrielle's Shop</li>
 							<li u init-with="p:[opacity:0]"
-								when-pf-card-3-init="a:[bounceInRight-subtle:1000:(.8,.1,1,.05):250:1:f]">
+								when-pf-card-3-init="a:[fadeInRight:1000:(.8,.1,1,.05):250:1:f]">
 								<span><span data-rank="25">25</span>&nbsp;Percentile</span>
 							</li>
 						</ul>
@@ -214,7 +214,7 @@
 							<li u init-with="p:[opacity:0]"
 								when-pf-card-2-init="a:[opacity:0:1:1000:(.8,.1,1,.05):1:f]">Gabrielle's Shop</li>
 							<li u init-with="p:[opacity:0]"
-								when-pf-card-2-init="a:[bounceInRight-subtle:1000:(.8,.1,1,.05):250:1:f]">
+								when-pf-card-2-init="a:[fadeInRight:1000:(.8,.1,1,.05):250:1:f]">
 								<span><span data-rank="25">25</span>&nbsp;Percentile</span>
 							</li>
 						</ul>
@@ -308,7 +308,7 @@
 							<li u init-with="p:[opacity:0]"
 								when-pf-card-1-init="a:[opacity:0:1:1000:cubic-bezier(.8,.1,1,.05):0:1:f]">Gabrielle's Shop</li>
 							<li u init-with="p:[opacity:0]"
-								when-pf-card-1-init="a:[bounceInRight-subtle:1000:(.8,.1,1,.05):250:1:f]">
+								when-pf-card-1-init="a:[fadeInRight:1000:(.8,.1,1,.05):250:1:f]">
 								<span><span data-rank="25">25</span>&nbsp;Percentile</span>
 							</li>
 						</ul>

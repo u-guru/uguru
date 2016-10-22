@@ -83,7 +83,7 @@
 			<div class="ranking-tile small with-icon tile-lake"
 				u init-with="p:[op:0, tro:center center]"
 				on-init="s:[ranking-tile-init-4:public:300]"
-				when-ranking-tile-init-4="a:[fadeInDown:250:(0,.35,.77,1):0:1:f]">
+				when-ranking-tile-init-4="a:[slideInUp:250:(0,.35,.77,1):0:1:f]">
 				<header u init-with="p:[op:0, tro:center center]"
 					when-ranking-tile-init-4="a:[bounceInUp-subtle:1000:linear:0:1:f]">
 					<div class="ranking-tile-icon" ng-include="root.base_url + 'shared/templates/components/svg/main/user.html'"></div>
@@ -110,7 +110,7 @@
 			<div class="ranking-tile small with-icon tile-auburn"
 				u init-with="p:[op:0, tro:center center]"
 				on-init="s:[ranking-tile-init-5:public:400]"
-				when-ranking-tile-init-5="a:[bounceInUp-subtle:450:(0,.35,.77,1):150:1:f]">
+				when-ranking-tile-init-5="a:[fadeInDownBig:450:(0,.35,.77,1):150:1:f]">
 				<header u init-with="p-op"
 					when-ranking-tile-init-5="a:[bounceInUp-subtle:1000:linear:0:1:f]">
 					<div class="ranking-tile-icon" ng-include="root.base_url + 'shared/templates/components/svg/main/user.html'"></div>
