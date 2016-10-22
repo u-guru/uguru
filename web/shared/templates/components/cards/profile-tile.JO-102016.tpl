@@ -112,37 +112,38 @@
 						<span class="border"></span>
 						<span class="border"></span>
 						<div>Peach Pancake</div>
-						<ul class="rating-stars" data-rating="4" data-half="true">
+						<ul class="rating-stars" data-rating="4" data-half="true"
+							u on-init="s:[baking-stars:children:easeInQuad-500]:+1400">
 							<li u init-with="p:[opacity:0]"
-								when-baking-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1400:1:f]">
+								when-baking-stars="a:[pf-bounceIn-rotate:500:easeOutSine:1400:1:f]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
 							</li>
 							<li u init-with="p:[opacity:0]"
-								when-baking-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1500:1:f]">
+								when-baking-stars="a:[pf-bounceIn-rotate:500:easeOutSine:1500:1:f]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
 							</li>
 							<li u init-with="p:[opacity:0]"
-								when-baking-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1600:1:f]">
+								when-baking-stars="a:[pf-bounceIn-rotate:500:easeOutSine:1600:1:f]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
 							</li>
 							<li u init-with="p:[opacity:0]"
-								when-baking-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1700:1:f]">
+								when-baking-stars="a:[pf-bounceIn-rotate:500:easeOutSine:1700:1:f]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
 							</li>
 							<li u init-with="p:[opacity:0]"
-								when-baking-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1800:1:f]">
+								when-baking-stars="a:[pf-bounceIn-rotate:500:easeOutSine:1800:1:f]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
