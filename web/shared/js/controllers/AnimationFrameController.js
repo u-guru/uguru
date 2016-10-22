@@ -61,7 +61,6 @@ angular.module('uguru.shared.controllers')
 
         afc.element.dom = domRef;
 
-        console.log(stateName, afc.params.raw, afc.element.dom, JSON.stringify(afc.params.defaults))
         afc.stateObj = afc.service.init.state(stateName, afc.params.raw, afc.element.dom, afc.params.defaults);
         afc.player = AnimationFrameService.getPlayer();
         afc.player = afc.player.scheduleStream(afc.player, afc.stateObj, afc.stateObj.offset, afc.params.defaults);
@@ -87,7 +86,6 @@ angular.module('uguru.shared.controllers')
 
       var hasBounds = true;
       var isSvg = AdminElementService.isSVGElement(element.nodeName.toLowerCase());
-      console.log(element)
       if (isSvg) {
         element = AdminElementService.getSVGParent(element)
         element = AdminElementService.scaleSvgCSS(element, _window, true, true);

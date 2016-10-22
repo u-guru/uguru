@@ -145,7 +145,7 @@ angular.module('uguru.shared.directives')
           // console.log('its compiling', attr.onEnter)
 
           return {
-            pre: function preLink(lScope, lElem, lAttr) {
+            post: function postLink(lScope, lElem, lAttr) {
               var parent = lElem.parent();
 
 
@@ -153,6 +153,7 @@ angular.module('uguru.shared.directives')
                   transclude(lScope, function(clone, innerScope) {
 
                     var clonedChildrenWithAttr = [];
+                    console.log(clone)
 
                     // for (var i = 0; i < clone.length; i++) {
                     //   // console.log(angular.element(clone[i]).parent())
@@ -168,6 +169,7 @@ angular.module('uguru.shared.directives')
                       var hasKey = key in stagDict && stagDict[key];
                       var stateTime = hasKey && 'time' in stagDict[key] && stagDict[key].time;
                       if (hasKey && stateTime && (!stateTime.values || !stateTime.values.length)) {
+                        console.log
                         if (stateTime.valueFunc) {
                           stateTime.valueFunc(clone, stateTime);
                           // if ()
@@ -519,15 +521,36 @@ angular.module('uguru.shared.directives')
 
                           var whenMetadata = {actions: state.actions, func: whenCallback, name:state.name};
                           scope.public.customStates.when[state.nameCamel] = whenMetadata;
+
+
+
+                          if (scope.$parent.public.customStates) {
+                            if (!(state.nameCamel in scope.$parent.public.customStates.when)) {
+                              scope.$parent.public.customStates.when[state.nameCamel] = [];
+                              console.log(scope.$parent.public.customStates.when)
+                            }
+                            console.log(scope.$parent.public.customStates.when[state.nameCamel])
+                            if (typeof scope.$parent.public.customStates.when[state.nameCamel] === 'object' && scope.$parent.public.customStates.when[state.nameCamel] !== [] && !scope.$parent.public.customStates.when[state.nameCamel].length) {
+                              scope.$parent.public.customStates.when[state.nameCamel] = [scope.$parent.public.customStates.when[state.nameCamel], whenMetadata]
+                            } else {
+                              scope.$parent.public.customStates.when[state.nameCamel].push(whenMetadata)
+                            }
+                          }
+
+
                           if (scope.public.customStates.whenElements.indexOf(element[0]) === -1) {
                             scope.public.customStates.whenElements.push(element[0]);
                           }
+
 
                           var whenStateName = state.type + '-' + state.name;
 
                           if (!(whenStateName in scope.root.scope.public.customStates)) {
                             scope.root.scope.public.customStates[whenStateName] = [];
+                          } else {
+                            // scope.public.customStates.when[].push(whenMetadata)
                           }
+
                           scope.root.scope.public.customStates[whenStateName].push(whenMetadata)
                           if (state.name.indexOf('debug') > -1) {
                             ElementService.launchExternalWindow(state.actions.anim.parsed, element);
@@ -547,7 +570,6 @@ angular.module('uguru.shared.directives')
                     if (postStates.length) {
                       postStates.forEach(function(state, i) {
                       if (state.name.indexOf('init') > -1) {
-                          console.log('rendering on init')
                           state.exec(element, scope, attr);
                             if (state.name.indexOf('debug') > -1) {
                               ElementService.launchExternalWindow(state.actions.anim.parsed, element);
