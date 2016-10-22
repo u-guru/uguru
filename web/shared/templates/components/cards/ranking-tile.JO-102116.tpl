@@ -4,7 +4,7 @@
 			<div class="ranking-tile large"
 				u init-with="p:[op:0, tro:center center]"
 				on-init="s:[ranking-tile-init-1:public]"
-				when-ranking-tile-init-1="a:[bounceInUp-subtle:450:(.63,.01,1,.53):0:1:f]">
+				when-ranking-tile-init-1="a:[fadeInUp:450:(.63,.01,1,.53):0:1:f]">
 				<header u init-with="p:[op:0, tro:center center]"
 					when-ranking-tile-init-1="a:[bounceInUp-subtle:1000:linear:0:1:f]">
 					<h2>Ranking at UIUC</h2>
@@ -31,7 +31,7 @@
 			<div class="ranking-tile small no-icon"
 				u init-with="p:[op:0, tro:center center]"
 				on-init="s:[ranking-tile-init-2:public:100]"
-				when-ranking-tile-init-2="a:[bounceInUp-subtle:250:(0,.35,.77,1):0:1:f]">
+				when-ranking-tile-init-2="a:[fadeInRight:250:linear:0:1:f]">
 				<header u init-with="p:[op:0, tro:center center]"
 					when-ranking-tile-init-2="a:[bounceInUp-subtle:1000:linear:0:1:f]">
 					<h3>Big 10 Academic Ratings</h3>
@@ -83,7 +83,7 @@
 			<div class="ranking-tile small with-icon tile-lake"
 				u init-with="p:[op:0, tro:center center]"
 				on-init="s:[ranking-tile-init-4:public:300]"
-				when-ranking-tile-init-4="a:[bounceInUp-subtle:250:(0,.35,.77,1):0:1:f]">
+				when-ranking-tile-init-4="a:[fadeInDown:250:(0,.35,.77,1):0:1:f]">
 				<header u init-with="p:[op:0, tro:center center]"
 					when-ranking-tile-init-4="a:[bounceInUp-subtle:1000:linear:0:1:f]">
 					<div class="ranking-tile-icon" ng-include="root.base_url + 'shared/templates/components/svg/main/user.html'"></div>
