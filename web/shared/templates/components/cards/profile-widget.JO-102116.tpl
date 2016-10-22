@@ -80,7 +80,7 @@
 				when-pf-widget-init="a:[opacity:0:1:1000:(0.8,0.1,1,0.05):1100:1:f]"><span>72</span> reviews</h3>
 		</div>
 		<div u init-with="p:[transform:scaleX(0), tro:center center]"
-			when-pf-widget-init="a:[bounceInX:1200:linear:500:1:f]">
+			when-pf-widget-init="a:[split-button:1200:linear:500:1:f]">
 			<button class="bg-moola normal">
 				<span u init-with="p-op"
 					when-pf-widget-init="a:[opacity:0:1:500:easeInOutSine:700:1:f]">Contact Guru</span>
