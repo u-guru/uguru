@@ -2,9 +2,10 @@
 
 	<a ng-if='activeType === "link-no-photo"' class="category-tile bg-household no-photo"
 		u init-with="p:[opacity:0.1]"
-		on-init="s:[link-no-photo-init:public]"
-		on-click="s:[link-no-photo-init:self]"
-		when-link-no-photo-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
+		on-init="s:[link-no-photo-init:public:100, link-no-photo-card:self]"
+		on-click="s:[link-no-photo-click:self:100]"
+		when-link-no-photo-card="a:[bounceIn-subtle:1000:linear:0:1:f]"
+		when-link-no-photo-click="a:[translateZ:0px:4px:100:easeInOutSine:0:2:a]"
 		on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]">
 		<svg width="240px" height="150px" viewBox="0 0 240 150">''
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -27,8 +28,8 @@
 
 	<div ng-if='activeType === "photo"' class="category-tile bg-household" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
 		u init-with="p:[opacity:0]"
-		on-init="s:[category-photo-init:public]"
-		when-category-photo-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
+		on-init="s:[category-photo-init:public:100, category-photo-card:self]"
+		when-category-photo-card="a:[bounceIn-subtle:1000:linear:0:1:f]"
 		on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]">
 		<svg width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
