@@ -27,6 +27,7 @@
 					u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]'>
 					Mouse over me to reset this div
 				</div>
+
 				<ul style='top:20% !important;' class='absolute width-50p flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' ng-if='_scope === "children"'
 					on-mouseenter="send:[start-counter:children:1000]"
 					u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]'>
@@ -73,41 +74,44 @@
 					</li>
 				</ul>
 			</li>
+        </ul>
+        <ul class='flex-vertical-center flex-wrap full-xy'>
+            <li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>
+                Stagger-based Delays (Requires prefix send:[msg-name]:children)
+            </li>
+            <li class='flex-start relative flex-wrap m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='_scope in ["self", "children", "parent", "grandparent", "depth(+/- LEVEL)", "odd children"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}">
+            </li>
+        </ul>
+        <ul class='flex-vertical-center flex-wrap full-xy'>
+            <li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>
+                Internal/External Delay Examples
+            </li>
+            <li class='flex-start m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='_scope in ["]", ": 0]", ": 1000]", "]:delay-100", "]:+100", "]:d100"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}">
+                #{{$index + 1}}. send:&nbsp;
+                [
+                <span class='weight-500'>message-name:&nbsp;public</span> <span class='weight-700'>{{_scope}}</span>
+            </li>
+        </ul>
+        <ul class='flex-vertical-center flex-wrap full-xy' ng-init="action_states=['on-init', 'on-mouseleave', 'on-key-press', 'when-intro-anim-complete']; action_audience=['self', 'children', 'parents', 'public']">
+            <li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>
+                Action
+            </li>
+            <li class='flex-start m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='action in ["reverse]", "off]", "reset]"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}">
+                #{{$index + 1}}. send:&nbsp;
+                [
+                <span class='weight-500' style='text-decoration:underline;'>{{action_states[$index]}}</span>:&nbsp;{{action_audience[$index]}}:1000:&nbsp; <span class='weight-700'>{{action}}</span>
+            </li>
+        </ul>
+        <ul class='flex-vertical-center flex-wrap full-xy' ng-init="action_states=['on-init', 'on-mouseleave', 'on-key-press', 'when-intro-anim-complete']; action_audience=['self', 'children', 'parents', 'public']">
+            <li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>
+                Data
+            </li>
+            <li class='flex-start m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='action in ["reverse : with(duration@0.5, delay@+500)", "reset : data(me.coords)"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}">
+                #{{$index + 1}}. send:&nbsp;
+                [
+                <span class='weight-500'>{{action_states[$index]}}</span>:&nbsp;{{action_audience[$index]}}:1000:&nbsp; <span class='weight-900'>{{action}}</span>]
+            </li>
+        </ul>
+    </div>
 
-		</ul>
-		<ul class='flex-vertical-center flex-wrap full-xy'>
-			<li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>
-				Scope/Target/Audience Examples
-			</li>
-			<li class='flex-start relative flex-wrap m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='_scope in ["self", "children", "parent", "grandparent", "depth(+/- LEVEL)", "odd children"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}">
-			</li>
-		</ul>
-		<ul class='flex-vertical-center flex-wrap full-xy'>
-			<li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>
-				Internal/External Delay Examples
-			</li>
-			<li class='flex-start m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='_scope in ["]", ": 0]", ": 1000]", "]:delay-100", "]:+100", "]:d100"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}">
-				#{{$index + 1}}. send:&nbsp; [
-				<span class='weight-500'>message-name:&nbsp;public</span> <span class='weight-700'>{{_scope}}</span>
-			</li>
-		</ul>
-		<ul class='flex-vertical-center flex-wrap full-xy' ng-init="action_states=['on-init', 'on-mouseleave', 'on-key-press', 'when-intro-anim-complete']; action_audience=['self', 'children', 'parents', 'public']">
-			<li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>
-				Action
-			</li>
-			<li class='flex-start m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='action in ["reverse]", "off]", "reset]"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}">
-				#{{$index + 1}}. send:&nbsp; [
-				<span class='weight-500' style='text-decoration:underline;'>{{action_states[$index]}}</span>:&nbsp;{{action_audience[$index]}}:1000:&nbsp; <span class='weight-700'>{{action}}</span>
-			</li>
-		</ul>
-		<ul class='flex-vertical-center flex-wrap full-xy' ng-init="action_states=['on-init', 'on-mouseleave', 'on-key-press', 'when-intro-anim-complete']; action_audience=['self', 'children', 'parents', 'public']">
-			<li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>
-				Data
-			</li>
-			<li class='flex-start m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='action in ["reverse : with(duration@0.5, delay@+500)", "reset : data(me.coords)"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}">
-				#{{$index + 1}}. send:&nbsp; [
-				<span class='weight-500'>{{action_states[$index]}}</span>:&nbsp;{{action_audience[$index]}}:1000:&nbsp; <span class='weight-900'>{{action}}</span>]
-			</li>
-		</ul>
-	</div>
 </div>

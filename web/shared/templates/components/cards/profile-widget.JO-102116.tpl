@@ -2,24 +2,24 @@
 	<!-- @samir Background not transitioning. Same problem as Gabrielle's toggle opacity -->
 	<div class="pf-aside-widget"
 		u init-with="p:[background:rgba(99#112#116#0)]"
-		on-init="s:[pf-widget-init:public]"
+		on-init="s:[pf-widget-init:public, pf-widget-borders:children:150]"
 		when-pf-widget-init="a:[background:rgba(99#112#116#0):rgba(99#112#116#0.3):700:easeOutSine:0:1:f]:delay-700">
 		<!-- init-with="p:[background:rgba(99#112#116#0, t: background 700ms ease-in-out)]" -->
 		<div class="top"
 			u init-with="p:[tr:scale(0), tro:center center]"
-			when-pf-widget-init="a:[scale:0:1:500:easeOutQuart:0:1:f]:delay-150"></div>
+			when-pf-widget-borders="a:[scale:0:1:500:easeOutQuart:0:1:f]"></div>
 		<div class="left"
 			u init-with="p:[tr:scale(0), tro:left top]"
-			when-pf-widget-init="a:[scale:0:1:500:easeOutQuart:0:1:f]:delay-450"></div>
+			when-pf-widget-borders="a:[scale:0:1:500:easeOutQuart:0:1:f]:delay-300"></div>
 		<div class="right"
 			u init-with="p:[tr:scale(0), tro:right top]"
-			when-pf-widget-init="a:[scale:0:1:500:easeOutQuart:0:1:f]:delay-450"></div>
+			when-pf-widget-borders="a:[scale:0:1:500:easeOutQuart:0:1:f]:delay-300"></div>
 		<div class="bot-left"
 			u init-with="p:[tr:scale(0), tro:left center]"
-			when-pf-widget-init="a:[scale:0:1:500:easeOutQuart:0:1:f]:delay-750"></div>
+			when-pf-widget-borders="a:[scale:0:1:500:easeOutQuart:0:1:f]:delay-600"></div>
 		<div class="bot-right"
 			u init-with="p:[tr:scale(0), tro:right center]"
-			when-pf-widget-init="a:[scale:0:1:500:easeOutQuart:0:1:f]:delay-750"></div>
+			when-pf-widget-borders="a:[scale:0:1:500:easeOutQuart:0:1:f]:delay-600"></div>
 		<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=256');"
 			u init-with="p:[transform:scale(0), tro:center center]"
 			when-pf-widget-init="a:[icon-enter:1000:easeOutSine:0:1:f]"></span>
@@ -38,37 +38,38 @@
 			<h2 class="pf-school-name"
 				u init-with="p-op"
 				when-pf-widget-init="a:[opacity:0:1:1000:(0.8,0.1,1,0.05):150:1:f]">Ex'pression College for Digital Arts</h2>
-			<ul class="pf-rating rating-stars" data-rating="4" data-half="true">
+			<ul class="pf-rating rating-stars" data-rating="4" data-half="true"
+				u when-pf-widget-init="s:[pf-star-init:children:800]">
 				<li u init-with="p-op"
-					when-pf-widget-init="a:[bounceIn-rotate-subtle:500:easeOutSine:800:1:f]">
+					when-pf-star-init="a:[bounceIn-rotate-subtle:500:easeOutSine:0:1:f]">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 					</svg>
 				</li>
 				<li u init-with="p-op"
-					when-pf-widget-init="a:[bounceIn-rotate-subtle:500:easeOutSine:900:1:f]">
+					when-pf-star-init="a:[bounceIn-rotate-subtle:500:easeOutSine:100:1:f]">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 					</svg>
 				</li>
 				<li u init-with="p-op"
-					when-pf-widget-init="a:[bounceIn-rotate-subtle:500:easeOutSine:1000:1:f]">
+					when-pf-star-init="a:[bounceIn-rotate-subtle:500:easeOutSine:200:1:f]">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 					</svg>
 				</li>
 				<li u init-with="p-op"
-					when-pf-widget-init="a:[bounceIn-rotate-subtle:500:easeOutSine:1100:1:f]">
+					when-pf-star-init="a:[bounceIn-rotate-subtle:500:easeOutSine:300:1:f]">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 					</svg>
 				</li>
 				<li u init-with="p-op"
-					when-pf-widget-init="a:[bounceIn-rotate-subtle:500:easeOutSine:1200:1:f]">
+					when-pf-star-init="a:[bounceIn-rotate-subtle:500:easeOutSine:400:1:f]">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>

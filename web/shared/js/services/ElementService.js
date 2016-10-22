@@ -475,7 +475,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           var camelName = UtilitiesService.camelCase(fullMsgName);
           if (msgScope === 'self') {
 
-            if (msgType === 'on' && scope.states.on) {
+            if (msgType === 'on') {
               console.log('waiting total', totalMsgDelay, delay_dict)
               $timeout(function() {
                 console.log('activating', camelName)
