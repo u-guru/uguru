@@ -17,9 +17,49 @@
             <li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>
                 Scope/Target/Audience Examples
             </li>
-            <li class='flex-start m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='_scope in ["self", "children", "parent", "grand-[children,parent]", "depth(+/- LEVEL)", "odd children"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}">
-                #{{$index + 1}}. send:<span class='weight-700'>&nbsp;{{_scope}}</span>
+            <li class='flex-start relative flex-wrap m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='_scope in ["self", "children", "parent", "grandparent", "depth(+/- LEVEL)", "odd children"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}">
+                    <div>
+                        #{{$index + 1}}. send:<span class='weight-700'>&nbsp;{{_scope}}</span>
+                    </div>
+
+                    <div class='absolute width-25p right-0 txt-1 weight-900 uppercase p10xy border-2' ng-if='_scope === "self"' on-mouseenter="send:[on-init:self:1000]" u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]'>
+                        Mouse over me to reset this div
+                    </div>
+                    <ul style='top:20% !important;' class='absolute width-50p flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' ng-if='_scope === "children"' on-mouseenter="send:[start-counter:children:1000]" u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]'>
+                        <!-- @gabrielle,@jeselle, comment out the 'U' and it becomes a child-->
+                        <li class='width-50p' u>
+                            <span class='grand-child' u when-start-counter="a:[counter:0:100:5000:easeOutCirc:0:1:f]">
+                                Mouse over me to initialize my children
+                            </span>
+                        </li>
+                        <li class='width-64 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u when-start-counter="a:[counter:0:100:5000:easeOutCirc:0:1:f]" ng-repeat='counter in ["c1", "c2", "c3"]'>
+                            {{counter}}
+                        </li>
+                    </ul>
+                    <ul style='top:20% !important;' class='absolute width-50p flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' ng-if='_scope === "parent"' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]'>
+                        <!-- @gabrielle,@jeselle, add a u and see which background changes-->
+                        <li class='width-50p' when-start-counter="a:[counter:0:100:5000:easeOutCirc:0:1:f]" u>
+                            <span class='grand-child' on-mouseenter="send:[start-counter:parent:1000]" u>
+                                Mouse over me to initialize my parent
+                            </span>
+                        </li>
+                        <li class='width-64 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u when-start-counter="a:[counter:0:100:5000:easeOutCirc:0:1:f]" ng-repeat='counter in ["c1", "c2", "c3"]'>
+                            {{counter}}
+                        </li>
+                    </ul>
+                    <ul style='top:20% !important;' class='absolute width-50p flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' ng-if='_scope === "grandparent"' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]' when-start-counter="a:[counter:0:100:5000:easeOutCirc:0:1:f]">
+                        <!-- @gabrielle,@jeselle, add a u and see which background changes-->
+                        <li class='width-50p' u>
+                            <span class='grand-child' on-mouseenter="send:[start-counter:grandparent:1000]" u>
+                                Mouse over me to initialize my parent
+                            </span>
+                        </li>
+                        <li class='width-64 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u  ng-repeat='counter in ["c1", "c2", "c3"]'>
+                            {{counter}}
+                        </li>
+                    </ul>
             </li>
+
         </ul>
         <ul class='flex-vertical-center flex-wrap full-xy'>
             <li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>

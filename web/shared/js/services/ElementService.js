@@ -9,10 +9,11 @@ angular.module('uguru.shared.services')
     'RootService',
     'SVGService',
     '$parse',
+    'SendService',
     ElementService
         ]);
 
-function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window, RootService, SVGService, $parse) {
+function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window, RootService, SVGService, $parse, SendService) {
       var rShortcuts = {special: getSpecialAnimShortcuts(), animations:null, propValues: {}, props: {}, values:{}};
       var stateShortcuts = {};
       var rAnimations;
@@ -436,7 +437,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function applySendArgsAndCallback(element, scope, messages, delay_dict) {
-
+        console.log(messages)
         if (!delay_dict) {
           delay_dict = {internal: {}, external:0}
         };
@@ -465,11 +466,23 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             totalMsgDelay = (msgDelay.external || 0) + (msgDelay.internal[msgName] || 0);
           }
 
-          var fullMsgName = ['when',msgName].join('-');
+          var fullMsgName = msgName;
+          var msgType = msgName.split('-')[0];
+          if (['as', 'on'].indexOf(msgType) === -1) {
+             fullMsgName = ['when',msgName].join('-');
+          }
+
           var camelName = UtilitiesService.camelCase(fullMsgName);
           if (msgScope === 'self') {
 
+            if (msgType === 'on' && scope.states.on) {
+              console.log('waiting total', totalMsgDelay, delay_dict)
+              $timeout(function() {
+                console.log('activating', camelName)
+                SendService.sendMsgToSelf(element, scope, fullMsgName.split('-').slice(1), msgType)
+              }, totalMsgDelay)
 
+            }
             if (camelName in scope.public.customStates.when) {
               var stateRef = scope.public.customStates.when[camelName];
 
@@ -499,32 +512,90 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
             }
           }
-          else if (msgScope === 'parent') {
-            var elementFound = false;
-              scope.$parent.public.customStates.whenElements.forEach(function(elem, i) {
-                if (!elementFound && elem.contains(element[0])) {
-                  elementFound = elem;
-                  return;
-                }
-              })
-              var camelName = UtilitiesService.camelCase(fullMsgName);
-              if (elementFound && !scope.$parent.public.customStates.when[camelName]) {
+          else if (msgScope === 'children') {
 
-                scope.$parent.public.customStates.when[camelName] = true;
+
+            var stateRefs = scope.public.customStates.when[camelName] || [];;
+
+            stateRefs.forEach(function(stateRef, i) {
+              if (stateRef.actions && Object.keys(stateRef.actions).length) {
+
 
                 $timeout(function() {
-                  scope.$parent.public.customStates.when[camelName] = false;
-                })
-                var stateRef = scope.$parent.states[fullMsgName];
-                if (stateRef.actions) {
-                  for (key in stateRef.actions) {
-
-                      stateRef.actions[key].delays.external += totalMsgDelay;
-                  }
-                  stateRef.func && stateRef.func(stateRef.actions, scope);
-                }
-                // scope.$parent.public.customStates.when[camelName] = elementFound;
+                      stateRef.func && stateRef.func(stateRef.actions, scope);
+                }, totalMsgDelay);
               }
+            })
+          }
+          else if (msgScope === 'grandparent') {
+            var stateRef;
+            var depthScope = scope.$parent.$parent;
+            if (camelName in depthScope.public.customStates.when) {
+
+              stateRef = depthScope.public.customStates.when[camelName];
+
+              if ('name' in stateRef) {
+                stateRef.func && stateRef.func(stateRef.actions, scope);
+              } else {
+                var stateRefs = stateRef;
+                stateRefs.forEach(function(stateRef, i) {
+                  if (stateRef.actions && Object.keys(stateRef.actions).length) {
+
+
+                    $timeout(function() {
+                          stateRef.func && stateRef.func(stateRef.actions, scope);
+                    }, totalMsgDelay);
+                  }
+                })
+              }
+            }
+          }
+          else if (msgScope === 'parent') {
+            var stateRef;
+            if (camelName in scope.$parent.public.customStates.when) {
+
+              stateRef = scope.$parent.public.customStates.when[camelName];
+              if ('name' in stateRef) {
+                stateRef.func && stateRef.func(stateRef.actions, scope);
+              } else {
+                var stateRefs = stateRef;
+                stateRefs.forEach(function(stateRef, i) {
+                  if (stateRef.actions && Object.keys(stateRef.actions).length) {
+
+
+                    $timeout(function() {
+                          stateRef.func && stateRef.func(stateRef.actions, scope);
+                    }, totalMsgDelay);
+                  }
+                })
+              }
+            }
+
+            // var elementFound = false;
+            //   scope.$parent.public.customStates.whenElements.forEach(function(elem, i) {
+            //     if (!elementFound && elem.contains(element[0])) {
+            //       elementFound = elem;
+            //       return;
+            //     }
+            //   })
+            //   var camelName = UtilitiesService.camelCase(fullMsgName);
+            //   if (elementFound && !scope.$parent.public.customStates.when[camelName]) {
+
+            //     scope.$parent.public.customStates.when[camelName] = true;
+
+            //     $timeout(function() {
+            //       scope.$parent.public.customStates.when[camelName] = false;
+            //     })
+            //     var stateRef = scope.$parent.states[fullMsgName];
+            //     if (stateRef.actions) {
+            //       for (key in stateRef.actions) {
+
+            //           stateRef.actions[key].delays.external += totalMsgDelay;
+            //       }
+            //       stateRef.func && stateRef.func(stateRef.actions, scope);
+            //     }
+            //     // scope.$parent.public.customStates.when[camelName] = elementFound;
+            //   }
           }
           else if(msgScope === 'public' && (fullMsgName in scope.root.scope.public.customStates || camelName in scope.root.scope.public.customStates)) {
             if (camelName in scope.root.scope.public.customStates) {

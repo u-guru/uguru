@@ -753,7 +753,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             if (stream.tick.current <= stream.values.length && stream.tick.current >= 0) {
 
               stream.applyProp && stream.applyProp(stream.values[stream.tick.current]);
-              console.log('applying', stream.name, stream.values[stream.tick.current])
               player.debug && player.debug.propStreamValueUpdate[stream.name](stream.name, stream.values[stream.tick.current], stream.tick.current, stream.tick.cycleIndex)
             }
             stream.tick.current += tick_delta;
@@ -979,7 +978,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
         var firstArgs = strSplit.splice(0,3);
         var formattedArgs = checkAndParseTransform(firstArgs[0], firstArgs[1], firstArgs[2]);
-        console.log(formattedArgs)
         var formattedArgs = checkAndParseShortcuts(formattedArgs[0], formattedArgs[1], formattedArgs[2]);
         var result = formattedArgs.join(':') + ':' + strSplit.join(':');
         return result;
@@ -1100,7 +1098,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               duration: iPropObj.duration
             }
             var offset = iPropObj.delay;
-            console.log(stateName || str)
             var values = TweenService.preComputeValues(iPropObj.property, iPropObj.duration, iPropObj.start, iPropObj.end, iPropObj.easingFunc, {cache:[]}, kf).cache;
 
 
@@ -1137,12 +1134,10 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         compareAndMergeWithPrevious(timeline);
         if (debug) {
           timeline.events.forEach(function(result, i) {
-            console.log(result)
 
               if (result.name === 'transform' && result.values[0].indexOf('matrix3d') === -1) {
 
 
-                console.log('it gets here')
                 delete timeline.props['transform'];
                 addIndependentTransformPropsToTimeline(result, timeline);
 
