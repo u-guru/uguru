@@ -18,7 +18,7 @@
 				</svg>
 			</li>
 			<li class="bottom"
-				u when-credit-tile-load="s:[credit-cta:public:1000]">
+				u when-credit-tile-load="s:[credit-cta:public]:delay-1000">
 				<h1>50 Credits</h1>
 				<button class="btn-split">
 					<span u init-with="p:[transform:scale(0), tro:right center]"
