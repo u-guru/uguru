@@ -2,7 +2,7 @@
     <div class='grid p15-grid full-x relative'>
         <h1 class="txt-azure text-center weight-900 semibold full-x">
             <ul class='p15-grid flex-wrap-center full-x'>
-                <li ng-repeat='send_arg in ["msg name", "scope/target audience", "delay", "action", "data&nbsp;&nbsp;", "]:ext-delay"]' class='txt-3' style='width:calc(100%/6)'>
+                <li ng-repeat='send_arg in ["msg name", "scope/target audience", "delay/stagger", "action", "data&nbsp;&nbsp;", "]:ext-delay"]' class='txt-3' style='width:calc(100%/6)'>
                     {{send_arg}}
                 </li>
             </ul>
@@ -51,7 +51,7 @@
                         <!-- @gabrielle,@jeselle, add a u and see which background changes-->
                         <li class='width-50p' u>
                             <span class='grand-child' on-mouseenter="send:[start-counter:grandparent:1000]" u>
-                                Mouse over me to initialize my parent
+                                Mouse over me to initialize my grandparent
                             </span>
                         </li>
                         <li class='width-64 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u  ng-repeat='counter in ["c1", "c2", "c3"]'>
@@ -60,6 +60,13 @@
                     </ul>
             </li>
 
+        </ul>
+        <ul class='flex-vertical-center flex-wrap full-xy'>
+            <li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>
+                Scope/Target/Audience Examples
+            </li>
+            <li class='flex-start relative flex-wrap m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='_scope in ["self", "children", "parent", "grandparent", "depth(+/- LEVEL)", "odd children"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}">
+            </li>
         </ul>
         <ul class='flex-vertical-center flex-wrap full-xy'>
             <li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>
