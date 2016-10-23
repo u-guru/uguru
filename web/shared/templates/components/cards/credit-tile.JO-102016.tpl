@@ -27,13 +27,13 @@
 						<!-- u init-with="p:[transform:scaleX(0), tro:right center]"
 							when-credit-cta="a:[split-button:1000:linear:0:1:f]" -->
 						<span u init-with="p:[opacity:0]"
-							when-credit-cta="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-500">Split button</span>
+							when-credit-cta="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-250">Split button</span>
 					</span>
 					<span u>
 						<!-- u init-with="p:[transform:scaleX(0), tro:left center]"
 							when-credit-cta="a:[split-button:1000:linear:0:1:f]" -->
 						<span u init-with="p:[opacity:0]"
-							when-credit-cta="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-500">$40</span>
+							when-credit-cta="a:[opacity:0:1:500:easeInOutSine:0:1:f]:delay-250">$40</span>
 					</span>
 				</button>
 			</li>

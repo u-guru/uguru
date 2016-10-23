@@ -2,9 +2,9 @@
 	<a class="feature-tile"
 		u
 		init-with="p:[opacity:0]"
-		on-init="s:[feature-bounce:self, feature-tile:public:350]"
+		on-init="s:[feature-bounce:self, feature-tile:public]"
 		when-feature-bounce="a:[bounceIn-subtle:1000:linear:0:1:f]"
-		on-mouse-enter="s:[icon-wiggle:public]">
+		on-mouseenter="s:[icon-wiggle:public]">
 		<!-- on-mouseenter="s:[icon-wiggle:public]" -->
 		<div class="feature-tile-icon">
 			<div class="feature-tile-type bg-lake"
