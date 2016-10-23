@@ -208,7 +208,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function getInternalDelay(key, int_str, delay_match_strs) {
-        console.log(key, int_str, delay_match_strs)
           //to refactor
           if (!rShortcuts || !rShortcuts.cmds) {
             var animStatus = loadAnimations();
@@ -904,7 +903,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
           // var extDelay = arg_dict.delays.external || 0;
           //to elimiate
-          console.log(arg_dict)
           var arg = arg_dict.argName.split(':')[0];
           resultDict[arg] = {};
 
