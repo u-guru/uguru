@@ -285,7 +285,6 @@
 					u init-with="p:[background-color:rgba(255,255,255,1), color:rgba(236, 116, 101, 1)]"
 					on-init="a:[background-color:rgba(255,255,255,0):rgba(255,255,255,1):1500:linear:0:100:a, color:rgba(236, 116, 101, 1):rgba(57, 96, 120, 1):10000:linear:10:ar]">RGBA values</h1>
 					<!-- Init-with isn't taking the values
-						Color for text isn't animating
 					-->
 			</div>
 		</li>
