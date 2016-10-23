@@ -972,7 +972,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             prop.start = prop.start.trim();
             prop.end = prop.end.trim();
 
-            if (startSplit.length !== endSplit.length && startSplit.length > 3 && endSplit.length > 3) {
+            if (startSplit.length !== endSplit.length) {
               var transformDict = {};
               prop.start.split(' ').forEach(function(prop_val, i) {prop_val = prop_val.split('(')[0].trim(); if (!(prop_val in transformDict)) {transformDict[prop_val] = 0};transformDict[prop_val] += 1;})
               prop.end.split(' ').forEach(function(prop_val, i) {prop_val = prop_val.split('(')[0].trim(); if (!(prop_val in transformDict)) {transformDict[prop_val] = 0};transformDict[prop_val] += 1;})
@@ -993,9 +993,9 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                   prop.end += ' ' + extension;
                 }
               })
-              console.log(prop.start, prop.end)
-
             }
+            prop.start = prop.start.split(' ').sort().join(' ');
+            prop.end = prop.end.split(' ').sort().join(' ');
 
           }
         }
