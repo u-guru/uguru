@@ -6,7 +6,7 @@
 				<svg class="fill-moxie absolute top-0 left-0 width-128 height-128" viewBox="0 0 128 128">
 					<rect x="2" y="2" width="124" height="124" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" rx="2"
 						u init-with="p:[stroke-dasharray:1207, stroke-dashoffset:1207, stroke:#55A4B7]"
-						when-portal-hover="a:[l-progress-color:2000:linear:250:1:f, stroke-dashoffset:1207:0:2000:linear:250:1:f] | s:[portal-complete:public:2000]"></rect>
+						when-portal-hover="a:[portal-progress-color:2000:linear:250:1:f, stroke-dashoffset:1207:0:2000:linear:250:1:f] | s:[portal-complete:public:2000]"></rect>
 				</svg>
 				<h1 class="relative z-index-2 txt-14 semibold txt-center">stroke-dashoffset</h1>
 			</div>
@@ -252,8 +252,15 @@
 		<li>
 			<div class="bg-gold p10xy flex-center width-128 height-128 radius-2"
 				u init-with="p:[transform-origin:center center]"
-				on-init="a:[icon-enter:1000:linear:250:1:f]:delay-500">
+				on-init="a:[icon-enter:1000:linear:0:2:f]:+1000">
 				<h1 class="txt-14 semibold txt-center">Icon enter</h1>
+			</div>
+		</li>
+		<li>
+			<div class="bg-gold p10xy flex-center width-128 height-128 radius-2"
+				u init-with="p:[transform-origin:center center]"
+				on-init="a:[frame-enter:1000:linear:0:1:f]:+1000">
+				<h1 class="txt-14 semibold txt-center">Frame enter</h1>
 			</div>
 		</li>
 		<li>

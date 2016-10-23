@@ -966,7 +966,37 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           endSplit = endSplit.filter(function(end_arg, i) {return end_arg && end_arg.length})
           if (count && (startSplit.length && endSplit.length)) {
             prop.start = startSplit.join(" ").trim();
-            prop.end = endSplit.join(" ").trim();
+            prop.end = endSplit.join(" ").trim()
+            prop.start = UtilitiesService.replaceAll(UtilitiesService.replaceAll(prop.start, ') ', ')').split(')').join(') '), '  ', ' ');
+            prop.end = UtilitiesService.replaceAll(UtilitiesService.replaceAll(prop.end, ') ', ')').split(')').join(') '), '  ', ' ')
+            prop.start = prop.start.trim();
+            prop.end = prop.end.trim();
+
+            if (startSplit.length !== endSplit.length && startSplit.length > 3 && endSplit.length > 3) {
+              var transformDict = {};
+              prop.start.split(' ').forEach(function(prop_val, i) {prop_val = prop_val.split('(')[0].trim(); if (!(prop_val in transformDict)) {transformDict[prop_val] = 0};transformDict[prop_val] += 1;})
+              prop.end.split(' ').forEach(function(prop_val, i) {prop_val = prop_val.split('(')[0].trim(); if (!(prop_val in transformDict)) {transformDict[prop_val] = 0};transformDict[prop_val] += 1;})
+              var unevenProps = [];
+              for (key in transformDict) {
+                if (transformDict[key] === 1) {
+                  unevenProps.push(key);
+                }
+              }
+              unevenProps.forEach(function(uneven_prop, i) {
+                var defaultPropDict = {'translateX': '0px', 'translateY': '0px', 'translateZ':'0px', 'scaleX': 1, 'scaleY': 1, 'skewX': '0deg', 'skewY': '0deg', 'scaleZ': 1, 'rotate': '0deg', 'scale': 1, 'skew': '0deg'};
+                var extension = (uneven_prop + '(' + defaultPropDict[uneven_prop] + ')');
+
+                if (prop.start.indexOf(uneven_prop) === -1) {
+                  prop.start += ' ' + extension;
+                } else if (prop.end.indexOf(uneven_prop) === -1) {
+
+                  prop.end += ' ' + extension;
+                }
+              })
+              console.log(prop.start, prop.end)
+
+            }
+
           }
         }
 
@@ -1098,7 +1128,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               duration: iPropObj.duration
             }
             var offset = iPropObj.delay;
-            console.log('getting values', iPropObj)
             var values = TweenService.preComputeValues(iPropObj.property, iPropObj.duration, iPropObj.start, iPropObj.end, iPropObj.easingFunc, {cache:[]}, kf).cache;
 
 
