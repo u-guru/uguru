@@ -1,6 +1,6 @@
 <div class="perspective-container full-xy flex-center p15xy">
 	<ul class="pf-rating rating-stars" data-rating="4" data-half="true"
-		u on-init='s:[rating-star:children:linear-1000]'>
+		u on-init='s:[rating-star:children:easeOutCirc-1200]'>
 			<li rating class="rating"
 				u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
 				when-rating-star="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
