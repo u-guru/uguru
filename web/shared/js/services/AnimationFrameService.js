@@ -752,8 +752,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
             if (stream.tick.current <= stream.values.length && stream.tick.current >= 0) {
 
-              stream.applyProp && stream.applyProp(stream.values[stream.tick.current]);
-              player.debug && player.debug.propStreamValueUpdate[stream.name](stream.name, stream.values[stream.tick.current], stream.tick.current, stream.tick.cycleIndex)
+              stream.applyProp  && stream.applyProp(stream.values[stream.tick.current]);
+              // player.debug && player.debug.propStreamValueUpdate[stream.name](stream.name, stream.values[stream.tick.current], stream.tick.current, stream.tick.cycleIndex)
             }
             stream.tick.current += tick_delta;
 
@@ -994,10 +994,10 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                 }
               })
             }
-            prop.start = prop.start.split(' ').sort().join(' ');
-            prop.end = prop.end.split(' ').sort().join(' ');
 
           }
+          prop.start = prop.start.split(' ').sort().join(' ').trim();
+          prop.end = prop.end.split(' ').sort().join(' ').trim();
         }
 
       }
@@ -1291,7 +1291,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         return function(value) {
 
           if (value === null) return;
-
           elem.style[prop] = value;
         }
       }

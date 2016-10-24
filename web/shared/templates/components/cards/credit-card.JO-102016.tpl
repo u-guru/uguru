@@ -4,7 +4,7 @@
 	<div class="card-container" ng-if='activeType === "flip"'>
 		<div class="credit-card-flip"
 			u init-with="p:[opacity:0, tro:center center]"
-			on-init="a:[scoop-enter:1000:linear:0:1:f] | s:[credit-flip-init:public]"
+			on-init="a:[scoop-enter:1000:linear:0:1:f]:+1500 | s:[credit-flip-init:public]"
 			on-mouseenter="s:[flip-enter:public]"
 			on-mouse-leave="s:[flip-leave:public]">
 			<!-- on-mouse-enter="s:[flip-enter:public]" -->
