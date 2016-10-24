@@ -29,7 +29,7 @@ function SendService($timeout) {
   function sendMsgToSelf(element, scope, state_ref, msg_type) {
     msg_type = msg_type.trim();
     state_ref = state_ref.trim();
-    if (['with', 'init', 'as'].indexOf(state_ref) > -1) {
+    if (['with', 'init', 'as'].indexOf(state_ref) > -1 || msg_type === 'when') {
 
       // if (state_ref && state_ref.length && typeof) {``
 
@@ -39,8 +39,8 @@ function SendService($timeout) {
       console.log(scope.states)
       if (scope.states[msg_type] && scope.states[msg_type].length) {
         scope.states[msg_type].forEach(function(state, i) {
-          console.log(state.name)
-          if (state.name.indexOf(state_ref) > -1) {
+
+          if (state.name.indexOf(state_ref) > -1 || msg_type === 'when') {
             state.exec(element, scope, null);
           }
           // if (on_state.name && on_state.name.indexOf())
