@@ -544,16 +544,20 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             }
 
             if (delay_dict.internal && delay_dict.internal.stagger) {
+
               var duration = delay_dict.internal.stagger.duration;
               var easeFunc = delay_dict.internal.stagger.ease;
-              var numChildren = stateRefs.length;
+              var numChildren = stateRefs.elements.length;
+
               var tempDuration = numChildren * (1000/60.0);
 
               var values = TweenService.preComputeValues("send", tempDuration, {send: 0}, {send:1}, easeFunc, delay_dict.internal.stagger.delays, 60).cache;
 
               delay_dict.internal.stagger.delays = values.slice(0, values.length - 2);
+              console.log(delay_dict.internal.stagger, delay_dict.internal.stagger.delays[i], values, tempDuration)
               delay_dict.internal.stagger.delays.forEach(function(delay_val, i) {
                 delay_dict.internal.stagger.delays[i] = delay_dict.internal.stagger.delays[i] * duration;
+
               })
             }
 
