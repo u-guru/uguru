@@ -1,7 +1,7 @@
 <div class="perspective-container full-xy flex-center p15xy">
 	<div class="timeline-icon timeline-parent timeline-icon-right"
-		init-with="p:[op:0, tr:center center]"
-		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]"
+		u init-with="p:[op:0, tr:center center]"
+		on-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
 		on-mouse-enter="s:[timeline-enter:public]"
 		on-mouse-leave="s:[timeline-leave:public]">
 		<div class="timeline-icon-svg">
@@ -18,8 +18,8 @@
 		</div>
 		<div class="timeline-icon-cover bg-charcoal"></div>
 		<h2 class="timeline-icon-text"
-			on-init="p:[tr:translateX(-100%)]"
-			when-timeline-enter="p:[transform:translateX(-100%):translateX(0%):450:easeOutBack]"
-			when-timeline-leave="p:[transform:translateX(0%):translateX(-100%):250:easeInOutCubic]">Milestones</h2>
+			u on-init="p:[tr:translateX(-100%)]"
+			when-timeline-enter="a:[translateX:-100%:0%:450:easeOutBack:0:1:f]"
+			when-timeline-leave="a:[translateX:0%:-100%:450:easeOutBack:0:1:f]">Milestones</h2>
 	</div>
 </div>
