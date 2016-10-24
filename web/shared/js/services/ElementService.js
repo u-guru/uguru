@@ -642,12 +642,14 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             //     // scope.$parent.public.customStates.when[camelName] = elementFound;
             //   }
           }
-          else if(msgScope === 'public' && (fullMsgName in scope.root.scope.public.customStates || camelName in scope.root.scope.public.customStates)) {
-            if (camelName in scope.root.scope.public.customStates) {
-              fullMsgName = camelName
-            }
+          else if(msgScope === 'public' ) {
+            // if (camelName in scope.root.scope.public.customStates) {
+            //   fullMsgName = camelName
+            // }
+            // var  = UtilitiesService.camelCase(msg.split(':')[0]);
             var stateRefs = scope.root.scope.public.customStates[fullMsgName];
-            stateRefs.elements.forEach(function(stateRef, i) {
+
+            stateRefs.forEach(function(stateRef, i) {
               if (stateRef.actions && Object.keys(stateRef.actions).length) {
 
 

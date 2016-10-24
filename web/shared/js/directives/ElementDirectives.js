@@ -597,13 +597,11 @@ angular.module('uguru.shared.directives')
 
                           var whenStateName = state.type + '-' + state.name;
 
-                          // if (!(whenStateName in scope.root.scope.public.customStates)) {
-                          //   scope.root.scope.public.customStates[whenStateName] = [];
-                          // } else {
-                          //   // scope.public.customStates.when[].push(whenMetadata)
-                          // }
-
-                          // scope.root.scope.public.customStates[whenStateName].push(whenMetadata)
+                          if (!(whenStateName in scope.root.scope.public.customStates)) {
+                            scope.root.scope.public.customStates[whenStateName] = [];
+                          }
+                          console.log('initializing', whenStateName)
+                          scope.root.scope.public.customStates[whenStateName].push(whenMetadata)
                           if (state.name.indexOf('debug') > -1) {
                             ElementService.launchExternalWindow(state.actions.anim.parsed, element);
                           }

@@ -24,7 +24,7 @@
                         ]
                     </div>
 
-                    <ul class='full-x m10y right-0 txt-1 relative weight-900 uppercase p10xy border-2 flex-vertical-center' ng-if='_scope === "linear-1000"' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]|s:[example-child-msg:children:linear-1000,some-random-ish:public]:+1000' >
+                    <ul class='full-x m10y right-0 txt-1 relative weight-900 uppercase p10xy border-2 flex-vertical-center' ng-if='_scope === "linear-1000"' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]|s:[example-child-msg:children:linear-1000]:+1000' >
                         <!-- when-reset-request="s:[example-child-msg:children:linear-1000]:+1000" -->
                         <!-- <li class='width-64 height-32 bg-moxie' u on-mouseenter="send:[reset-request:parent:250]">
                             Reset
@@ -50,14 +50,17 @@
             <li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>
                 Scope/Target/Audience Examples
             </li>
-            <li class='flex-start relative flex-wrap m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='_scope in ["self", "children", "parent", "grandparent", "grandchildren", "depth(+/- LEVEL)", "down ", "down+", "odd children", "siblings"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}">
+            <li class='flex-start relative flex-wrap m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='_scope in ["self", "public", "children", "parent", "grandparent", "grandchildren", "depth(+/- LEVEL)", "down ", "down+", "odd children", "siblings"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}">
             <!-- <li class='flex-start relative flex-wrap m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='_scope in ["siblings"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}"> -->
-                    <div>
+                    <div when-turn-pink="p:[background:#e6389b]|a:[scale:0:1:500:bouncePast:0:1:f,rotate:0deg:-1080deg:500:easeOutCirc:0:1:f,opacity:0:1:500:easeOutCirc:0:1:f, padding:0px:15px:500:easeOutCirc:0:1:f]" u>
                         #{{$index + 1}}. send:<span class='weight-700'>&nbsp;{{_scope}}</span>
                     </div>
 
                     <div class='absolute width-25p right-0 txt-1 weight-900 uppercase p10xy border-2' ng-if='_scope === "self"' on-mouseenter="send:[on-init:self:1000, init-with:self:2000]" init-with="p:[opacity:0]" u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]|p:[opacity:1]'>
                         Mouse over me to reset this div
+                    </div>
+                    <div class='absolute width-25p right-0 txt-1 weight-900 uppercase p10xy border-2' ng-if='_scope === "public"' on-mouseenter="send:[turn-pink:public]" init-with="p:[opacity:0]" u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]|p:[opacity:1]'>
+                        Mouse over me to change background of each #'d item to pink
                     </div>
                     <ul style='top:20% !important;' class='absolute width-50p flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' ng-if='_scope === "children"' on-mouseenter="send:[start-counter:children:easeOutBounce-1000]" u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]'>
                             <li class='width-50p' u>
