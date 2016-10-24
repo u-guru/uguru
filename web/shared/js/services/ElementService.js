@@ -484,13 +484,14 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           var msgType = msgName.split('-')[0];
           if (['as', 'init', 'on'].indexOf(msgType) === -1) {
              fullMsgName = ['when',msgName].join('-');
+             var msgType = 'when'
           }
 
           var camelName = UtilitiesService.camelCase(fullMsgName.replace('when-', ''));
-          console.log('sending', camelName, 'with scope', msgScope)
+          console.log('sending', fullMsgName, camelName, 'with scope', msgScope, msgType, msg)
           if (msgScope === 'self') {
 
-            if (['on', 'init'].indexOf(msgType) > -1) {
+            if (['on', 'init', 'when'].indexOf(msgType) > -1) {
               console.log('waiting total', totalMsgDelay, delay_dict)
               $timeout(function() {
                 console.log('activating', camelName, fullMsgName)
