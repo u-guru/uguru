@@ -39,37 +39,37 @@
 				u init-with="p-op"
 				when-pf-widget-init="a:[opacity:0:1:1000:(0.8,0.1,1,0.05):150:1:f]">Ex'pression College for Digital Arts</h2>
 			<ul class="pf-rating rating-stars" data-rating="4" data-half="true"
-				u on-init="s:[pf-star-init:children:linear-800]">
+				u on-init="s:[pf-star:children:linear-800]">
 				<li u init-with="p-op"
-					when-pf-star-init="a:[bounceIn-rotate-subtle:500:easeOutSine:0:1:f]">
+					when-pf-star="a:[bounceIn-rotate-subtle:500:easeOutSine:0:1:f]">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 					</svg>
 				</li>
 				<li u init-with="p-op"
-					when-pf-star-init="a:[bounceIn-rotate-subtle:500:easeOutSine:0:1:f]">
+					when-pf-star="a:[bounceIn-rotate-subtle:500:easeOutSine:0:1:f]">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 					</svg>
 				</li>
 				<li u init-with="p-op"
-					when-pf-star-init="a:[bounceIn-rotate-subtle:500:easeOutSine:0:1:f]">
+					when-pf-star="a:[bounceIn-rotate-subtle:500:easeOutSine:0:1:f]">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 					</svg>
 				</li>
 				<li u init-with="p-op"
-					when-pf-star-init="a:[bounceIn-rotate-subtle:500:easeOutSine:0:1:f]">
+					when-pf-star="a:[bounceIn-rotate-subtle:500:easeOutSine:0:1:f]">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 					</svg>
 				</li>
 				<li u init-with="p-op"
-					when-pf-star-init="a:[bounceIn-rotate-subtle:500:easeOutSine:0:1:f]">
+					when-pf-star="a:[bounceIn-rotate-subtle:500:easeOutSine:0:1:f]">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
