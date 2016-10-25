@@ -157,10 +157,12 @@
 
 	<div class="dropdown-color" ng-if='activeType === "color"'
 		u init-with="p-op"
-		on-init="s:[dropdown-color-card:self, dropdown-color-init:children:linear-750]"
+		on-init="s:[dropdown-color-card:self, dropdown-color-init:public]"
 		when-dropdown-color-init="a:[opacity:0:1:250:easeOutSine:0:1:f]">
+
 		<a class="bg-robin"
-			on-click="s:[dropdown-color-open:public]">
+			u on-click="s:[dropdown-color-open:public, dropdown-color-items:public]">
+				<!-- on-click="s:[dropdown-color-card:self, dropdown-color-items:depth(>2):linear-750]" -->
 			<div u init-with="p:[tr:scaleX(0)]"
 				when-dropdown-color-init="a:[scaleX:0:1:250:easeOutCubic:0:1:f]"></div>
 			<div u init-with="p:[tr:scaleY(0)]"
@@ -189,8 +191,9 @@
 				<path d="M2,36 L2,34 C2,32.8954305 2.8931253,32 4.0093292,32 L168,32 L198,2 L228,32 L391.990671,32 C393.100393,32 394,32.8877296 394,34 L394,36" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
 			</svg>
 			<ul>
+				<!-- u when-dropdown-color-open="s:[dropdown-color-items:children:easeInCirc-800]" -->
 				<li u init-with="p-op"
-					when-dropdown-color-open="a:[opacity:0:1:250:easeOutSine:0:1:f]:delay-200"
+					when-dropdown-color-items="a:[opacity:0:1:250:easeOutSine:0:1:f]:delay-100"
 					when-dropdown-color-close="a:[opacity:1:0:250:easeOutSine:0:1:f]:delay-300">
 					<div></div><div></div>
 					<div></div><div></div>
@@ -203,7 +206,7 @@
 					</svg>
 				</li>
 				<li u init-with="p:[tr:translateY(-48px), op:0]"
-					when-dropdown-color-open="a:[translateY:-48px:0px:250:easeOutQuad:0:1:f, opacity:0:1:250:easeOutQuad:0:1:f]:delay-200"
+					when-dropdown-color-items="a:[translateY:-48px:0px:250:easeOutQuad:0:1:f, opacity:0:1:250:easeOutQuad:0:1:f]:delay-200"
 					when-dropdown-color-close="a:[translateY:0px:-48px:250:easeOutQuad:0:1:f, opacity:1:0:250:easeOutQuad:0:1:f]:delay-300">
 					<div></div><div></div>
 					<div></div><div></div>
@@ -216,7 +219,7 @@
 					</svg>
 				</li>
 				<li u init-with="p:[tr:translateY(-48px), op:0]"
-					when-dropdown-color-open="a:[translateY:-48px:0px:250:easeOutQuad:0:1:f, opacity:0:1:250:easeOutQuad:0:1:f]:delay-300"
+					when-dropdown-color-items="a:[translateY:-48px:0px:250:easeOutQuad:0:1:f, opacity:0:1:250:easeOutQuad:0:1:f]:delay-300"
 					when-dropdown-color-close="a:[translateY:0px:-48px:250:easeOutQuad:0:1:f, opacity:1:0:250:easeOutQuad:0:1:f]:delay-200">
 					<div></div><div></div>
 					<div></div><div></div>
@@ -229,7 +232,7 @@
 					</svg>
 				</li>
 				<li u init-with="p:[tr:translateY(-48px), op:0]"
-					when-dropdown-color-open="a:[translateY:-48px:0px:250:easeOutQuad:0:1:f, opacity:0:1:250:easeOutQuad:0:1:f]:delay-400"
+					when-dropdown-color-items="a:[translateY:-48px:0px:250:easeOutQuad:0:1:f, opacity:0:1:250:easeOutQuad:0:1:f]:delay-400"
 					when-dropdown-color-close="a:[translateY:0px:-48px:250:easeOutQuad:0:1:f, opacity:1:0:250:easeOutQuad:0:1:f]:delay-100">
 					<div></div><div></div>
 					<div></div><div></div>

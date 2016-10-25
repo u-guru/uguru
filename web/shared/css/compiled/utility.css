@@ -2432,16 +2432,10 @@ button, input, textarea {
   .link-logo svg {
     display: block;
     height: 100%; }
-    .link-logo svg path {
-      -webkit-transition: all 150ms ease-in-out;
-      -moz-transition: all 150ms ease-in-out;
-      -ms-transition: all 150ms ease-in-out;
-      -o-transition: all 150ms ease-in-out;
-      transition: all 150ms ease-in-out; }
-      .link-logo svg path:first-child {
-        fill: rgba(255, 255, 255, 0.8); }
-      .link-logo svg path:last-child {
-        fill: white; }
+    .link-logo svg path:first-child {
+      fill: rgba(255, 255, 255, 0.8); }
+    .link-logo svg path:last-child {
+      fill: white; }
     .link-logo svg text {
       fill: white; }
   .link-logo:hover, .link-logo:focus {

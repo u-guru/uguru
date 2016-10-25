@@ -2761,7 +2761,7 @@ button, input, textarea {
 		display: block;
 		height: 100%;
 		path {
-			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+			// @include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 			&:first-child {
 				fill: rgba(white,.8);
 			}
