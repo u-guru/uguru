@@ -36,37 +36,38 @@
 	<div class="toggle-container" ng-if='activeType === "time-period"'
 		u
 		on-init="send:[input-load:public]"
-		when-input-load="send:[input-enter:public]:delay-450"
+		when-input-load="send:[input-enter:public:450]"
 		on-click="send:[pm-exit:public]">
 		<div class="toggle am-pm">
 			<input type="checkbox"/>
 			<label>
-				<div init-with="p-op"
+				<div u init-with="p-op"
 					when-input-enter="a:[opacity:0:1:400:easeOutCubic:200:1:f]"></div>
 				<svg class="square" viewBox="0 0 26 26">
 					<rect x="2" y="2" width="22" height="22"
-						init-with="p:[sdo:88, sda:88, fill-opacity:0]"
-						when-input-load="p:[stroke-dashoffset:88:0:1750:easeOutSine]"
-						when-input-enter="p:[fill-opacity:0:1:500:easeOutExpo]:delay-500"></rect>
+						u init-with="p:[sdo:88, sda:88, fill-opacity:0]"
+						when-input-load="a:[stroke-dashoffset:88:0:600:easeOutExpo:0:1:f]"
+						when-input-enter="a:[fill-opacity:0:1:500:easeOutExpo:00:1:f]"></rect>
 				</svg>
 				<svg class="square" viewBox="0 0 26 26">
 					<rect x="2" y="2" width="22" height="22"></rect>
 				</svg>
-				<span init-with="p-op"
-					when-input-enter="p:[opacity:0:1:750:easeOutSine]:delay-600">
+				<span u init-with="p-op"
+					when-input-enter="a:[opacity:0:1:750:easeOutSine:0:1:f]:delay-600">
 					<span class="am">AM</span>
 					<span class="pm">PM</span>
 				</span>
-				<div init-with="p:[op:1]"
-					when-input-load="p:[opacity:1:0:800:linear]:delay-200">
-					<div init-with="p:[tr:scale(0)]"
-						when-input-load="a:[scale:0:1:50:easeOutQuad:0:1:f]"></div>
-					<div init-with="p:[tr:scale(0)]"
-						when-input-load="a:[scale:0:1:50:easeOutQuad:0:1:f]:delay-50"></div>
-					<div init-with="p:[tr:scale(0)]"
-						when-input-load="a:[scale:0:1:50:easeOutQuad:0:1:f]:delay-200"></div>
-					<div init-with="p:[tr:scale(0)]"
-						when-input-load="a:[scale:0:1:50:easeOutQuad:0:1:f]:delay-250"></div>
+				<div u init-with="p:[op:1]"
+					when-input-load="a:[opacity:1:0:800:linear:0:1:f]:delay-200"
+					on-init="s:[time-draw:children:easeInCubic-450]">
+					<div u init-with="p:[tr:scaleX(0)]"
+						when-time-draw="a:[scaleX:0:1:50:easeOutQuad:0:1:f]"></div>
+					<div u init-with="p:[tr:scaleY(0)]"
+						when-time-draw="a:[scaleY:0:1:50:easeOutQuad:0:1:f]:delay-50"></div>
+					<div u init-with="p:[tr:scaleX(0)]"
+						when-time-draw="a:[scaleX:0:1:50:easeOutQuad:0:1:f]:delay-200"></div>
+					<div u init-with="p:[tr:scaleY(0)]"
+						when-time-draw="a:[scaleY:0:1:50:easeOutQuad:0:1:f]:delay-250"></div>
 				</div>
 			</label>
 		</div>
@@ -75,57 +76,51 @@
 
 	<div class="toggle-container" ng-if='activeType === "round"'
 		u
-		on-init="send:[round-load:public]"
-		when-round-load="send:[round-enter:public:delay-450]">
+		on-init="send:[round-load:grandchildren, round-enter:public:450]">
 		<div class="toggle round">
 			<input type="checkbox" checked />
 			<label>
-				<div init-with="p-op"
-					when-round-enter="p:[opacity:0:1:750:easeOutQuad]:delay-500"></div>
+				<div u init-with="p-op"
+					when-round-enter="a:[opacity:0:1:750:easeOutQuad:500:1:f]"></div>
 				<svg class="square" viewBox="0 0 26 26">
 					<circle cx="13" cy="13" r="13"
-						init-with="p:[fop:0, sdo:0, sda:81]"
-						when-round-load="p:[draw:0:1:500:easeOutQuad]:delay-300"
-						when-round-enter="p:[fill-opacity:0:1:500:linear]:delay-100"></circle>
+						u init-with="p:[fop:0, sdo:0, sda:81]"
+						when-round-load="a:[draw:0:1:500:easeOutQuad:300:1:f]"
+						when-round-enter="a:[fill-opacity:0:1:500:linear:100:1:f]"></circle>
 				</svg>
 				<svg class="square" viewBox="0 0 26 26">
 					<circle cx="13" cy="13" r="13"></circle>
 				</svg>
 				<svg class="bg" width="72px" height="36px" viewBox="0 0 72 36"
-					u
-					when-round-enter="p:[op:0:delay-500]">
+					u when-round-enter="p:[op:0:delay-500]">
 				    <rect x="1" y="1" width="70" height="34" rx="17"
-						init-with="p:[fop:0, sdo:0, sda:1]"
-						when-round-load="p:[draw:0:1:450:easeOutQuad, fill-opacity:1:0:450:easeOutQuad:600]"></rect>
+						u init-with="p:[fop:0, sdo:0, sda:1]"
+						when-round-load="a:[draw:0:1:450:easeOutQuad:0:1:f, fill-opacity:1:0:450:easeOutQuad:400:1:f]"></rect>
 				</svg>
 			</label>
 		</div>
 	</div>
 
 	<div class="toggle-container" ng-if='activeType === "white-round"'
-		u
-		on-init="send:[round-load:public]:delay-1000"
-		when-round-load="send:[round-enter:public:delay-450]">
+		u on-init="send:[round-load:children:100, round-enter:public:750]">
 		<div class="toggle white-round">
 			<input type="checkbox" checked />
 			<label>
-				<div init-with="p-op"
-					when-round-enter="p:[opacity:0:1:750:easeOutSine]:delay-500"></div>
+				<div u init-with="p-op"
+					when-round-enter="a:[opacity:0:1:750:easeInOutCubic:0:1:f]"></div>
 				<svg class="square" viewBox="0 0 26 26">
-					<!-- @samir look here for multiple delay workaround. Ideally, get the one state working like this :
-						when-round-load="p:[stroke-dashoffset:82:0:500:easeOutQuad:300, fill-opacityL0:1:500:linear:450]"-->
 					<circle cx="13" cy="13" r="13"
-					init-with="p:[fop:0, sdo:82, sda:82]"
-					when-round-load="p:[stroke-dashoffset:82:0:500:easeOutQuad]:delay-300"
-					when-round-enter="p:[fill-opacity:0:1:500:linear]"></circle>
+					u init-with="p:[fop:0, sdo:82, sda:82]"
+					when-round-load="a:[stroke-dashoffset:82:0:400:easeOutQuad:200:1:f]"
+					when-round-enter="a:[fill-opacity:0:1:500:linear:0:1:f]"></circle>
 				</svg>
 				<svg class="square" viewBox="0 0 26 26">
 					<circle cx="13" cy="13" r="13"></circle>
 				</svg>
 				<svg class="bg" width="72px" height="36px" viewBox="0 0 72 36">
 				    <rect x="1" y="1" width="70" height="34" rx="17"
-						init-with="p:[fop:0, sdo:0, sda:0]"
-						when-round-load="p:[stroke-dashoffset:0:1:450:easeOutQuad, fill-opacity:1:0:450:easeOutQuad:400]"></rect>
+						u init-with="p:[fop:0, sdo:308, sda:308]"
+						when-round-load="a:[stroke-dashoffset:308:0:400:easeOutQuad:0:1:f, fill-opacity:1:0:450:easeOutQuad:400:1:f]"></rect>
 				</svg>
 			</label>
 		</div>
