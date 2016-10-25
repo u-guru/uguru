@@ -30,7 +30,7 @@
 						<div u init-with="p:[tr:scaleY(0)]"
 						when-outline-enter="a:[scaleY:0:1:50:easeOutQuad:0:1:f] | send:[end-outline:depth(-1):300]"></div> -->
 					<div u init-with="p:[tr:scaleY(0)]"
-						when-outline-enter="a:[scaleY:0:1:50:easeOutQuad:0:1:f] | send:[end-outline:parent:300]"></div>
+						when-outline-enter="a:[scaleY:0:1:50:easeOutQuad:0:1:f] | send:[end-outline:depth(-1):300]"></div>
 				</div>
 			</label>
 		</div>

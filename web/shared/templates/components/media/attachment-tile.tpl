@@ -1,11 +1,11 @@
 <div class="perspective-container full-xy flex-center p15xy">
 	<a class="attachment-tile overflow-hidden" style="width: 350px"
 		u init-with="p-op"
-		on-init="s:[attachment-tile-card:self, attachment-tile-init:public]"
+		on-init="s:[attachment-tile-card:self, attachment-tile-enter:public]"
 		when-attachment-tile-card="a:[bounceInUp-subtle:1000:linear:0:1:f]">
 		<div class="attachment-tile-icon"
 			u on-init="s:[attachment-icon-enter:depth(>2):1000]">
-			<!-- when-attachment-tile-init -->
+			<!-- when-attachment-tile-enter -->
 			<svg viewBox="0 0 100 100">
 			    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
 					<path d="M68,14 L68,28.0100002 C68,30.2099991 69.7917156,32 71.9947834,32 L86,32 L68,14 L17.9926786,14 C15.7875831,14 14,15.7977484 14,17.9994146 L14,82.0005854 C14,84.2094011 15.7977484,86 17.9994146,86 L82.0005854,86 C84.2094011,86 86,84.2033234 86,82.0073214 L86,32" stroke="#f1f1f1" stroke-width="2" stroke-opacity="0.2" fill="none"></path>
@@ -40,9 +40,9 @@
 		<div class="attachment-tile-desc"
 			init-with="p:[color:white]">
 			<h3 u init-with="p-op"
-				when-attachment-tile-init="a:[bounceInUp-subtle:1000:linear:1000:1:f]">ingredients.pdf</h3>
+				when-attachment-tile-enter="a:[bounceInUp-subtle:1000:linear:1000:1:f]">ingredients.pdf</h3>
 			<p u init-with="p-op"
-				when-attachment-tile-init="a:[bounceInUp-subtle:1000:linear:1100:1:f]">A list of my ingredients in case of allergies or other restrictions.</p>
+				when-attachment-tile-enter="a:[bounceInUp-subtle:1000:linear:1100:1:f]">A list of my ingredients in case of allergies or other restrictions.</p>
 		</div>
 	</a>
 </div>
