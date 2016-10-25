@@ -41,7 +41,7 @@
             <li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>
                 Scope/Target/Audience Examples
             </li>
-            <li class='flex-wrap relative flex-wrap m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='_scope in ["self", "public", "children", "parent", "grandparent", "grandchildren", "depth(2)", "depth(-2)",  "siblings ", "siblings+me", "depth(>1)(down)"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}">
+            <li class='flex-wrap relative flex-wrap m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='_scope in ["self", "public", "children", "parent", "grandparent", "grandchildren", "depth(2)", "depth(-2)",  "depth(-0) ", "depth(0)", "depth(>1)(down)"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}">
             <!-- <li class='flex-start relative flex-wrap m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='_scope in ["siblings"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}"> -->
                     <div when-turn-pink="p:[background:#e6389b]|a:[scale:0:1:500:bouncePast:0:1:f,rotate:0deg:-1080deg:500:easeOutCirc:0:1:f,opacity:0:1:500:easeOutCirc:0:1:f, padding:0px:15px:500:easeOutCirc:0:1:f]" u>
                         #{{$index + 1}}. send:<span class='weight-700'>&nbsp;{{_scope}}</span>
