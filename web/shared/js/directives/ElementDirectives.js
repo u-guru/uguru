@@ -551,7 +551,12 @@ angular.module('uguru.shared.directives')
                           var whenCallback = function(current_depth) {
 
                             return function(actions, scope, delay, depth) {
-                              if (depth > 0 && current_depth > 0 && current_depth !== depth) return;
+                              console.log(current_depth, depth)
+
+                              if (depth && depth.inclusive && depth.num >= 0 && current_depth < 0) return;
+                              if (depth && depth.inclusive && depth.num <= 0 && current_depth > 0) return;
+                              if (depth && !depth.inclusive && depth.num !== current_depth) return;
+
 
                               if (delay) {
                                 $timeout(function() {

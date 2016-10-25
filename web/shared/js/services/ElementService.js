@@ -488,7 +488,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           }
 
           var camelName = UtilitiesService.camelCase(fullMsgName.replace('when-', ''));
-          console.log('sending', fullMsgName, camelName, 'with scope', msgScope, msgType, msg)
+
           if (msgScope === 'self') {
 
             if (['on', 'init', 'when'].indexOf(msgType) > -1) {
@@ -529,18 +529,37 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
             }
           }
-          else if (['children', 'grandchildren', 'siblings'].indexOf(msgScope) > -1) {
-            var depthLevel = 0;
+          else if (['children', 'grandchildren', 'siblings'].indexOf(msgScope) > -1 || msgScope.indexOf('depth') > -1) {
+            var depthLevel;
+            var depthScope = scope;
+
             var depthShortcutDict = {children: 1, grandchildren:2, siblings:0.5};
             if (msgScope in depthShortcutDict) {
-              depthLevel = depthShortcutDict[msgScope];
+              depthLevel = {num: depthShortcutDict[msgScope], inclusive: false};
+            }
+            else if (msgScope.indexOf('depth') > -1) {
+              var depthNum = msgScope.split('(')[1].replace(')', '') || '0';
+              if (depthNum) {
+                depthNum = parseInt(depthNum)
+              }
+              depthLevel = {num: depthNum, inclusive: msgScope.indexOf('>') > -1 || msgScope.indexOf('<') > -1}
+            }
+            if (!depthLevel) {
+               depthLevel = {num: 0, inclusive:false};
             }
 
-            var stateRefs = scope.public.customStates.when[camelName] || [];
+            if (depthLevel.num < 0) {
+              for (var i = depthLevel.num; i < 0; i++) {
+                depthScope = depthScope.$parent;
+              }
+              depthLevel.num = 0;
+            }
+
+            var stateRefs = depthScope.public.customStates.when[camelName] || [];
 
             if (msgScope === 'siblings' && (!stateRefs || !stateRefs.length)) {
               stateRefs = scope.$parent.public.customStates.when[camelName];
-              console.log(stateRefs, scope.$parent.public.customStates.when)
+
             }
 
             if (delay_dict.internal && delay_dict.internal.stagger) {
@@ -554,7 +573,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               var values = TweenService.preComputeValues("send", tempDuration, {send: 0}, {send:1}, easeFunc, delay_dict.internal.stagger.delays, 60).cache;
 
               delay_dict.internal.stagger.delays = values.slice(0, values.length - 2);
-              console.log(delay_dict.internal.stagger, delay_dict.internal.stagger.delays[i], values, tempDuration)
               delay_dict.internal.stagger.delays.forEach(function(delay_val, i) {
                 delay_dict.internal.stagger.delays[i] = delay_dict.internal.stagger.delays[i] * duration;
 
@@ -562,7 +580,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             }
 
 
-            console.log(stateRefs)
             stateRefs.elements.forEach(function(stateRef, i) {
               var stagger_delay = 0;
               if (delay_dict.internal && delay_dict.internal.stagger && delay_dict.internal.stagger.delays) {

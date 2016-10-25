@@ -25,24 +25,15 @@
                     </div>
 
                     <ul class='full-x m10y right-0 txt-1 relative weight-900 uppercase p10xy border-2 flex-vertical-center' ng-if='_scope === "linear-1000"' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]|s:[example-child-msg:children:linear-1000]:+1000' >
-                        <!-- when-reset-request="s:[example-child-msg:children:linear-1000]:+1000" -->
-                        <!-- <li class='width-64 height-32 bg-moxie' u on-mouseenter="send:[reset-request:parent:250]">
-                            Reset
-                        </li> -->
                         <li class='width-64 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u on-init="p:[opacity:0.25]"  when-example-child-msg="a:[opacity:0.25:1:1000:easeInCirc:0:1:f]" ng-repeat='letter in "abcdefghijklmnop"'>
                             {{letter}}
                         </li>
 
                     </ul>
                     <ul class='full-x m10y right-0 txt-1 relative weight-900 uppercase p10xy border-2 flex-vertical-center' ng-if='_scope === "easeInCirc-1000"' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]|s:[example-child-msg:children:easeInCirc-1000]:+1000'>
-                         <!-- when-reset-request="s:[example-child-msg:children:easeInCirc-1000]:+1000" -->
-                        <!-- <li class='width-64 height-32 bg-moxie' u on-mouseenter="send:[reset-request:parent:250]">
-                            Reset
-                        </li> -->
                         <li class='width-64 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u on-init="p:[opacity:0.25]"  when-example-child-msg="a:[opacity:0.25:1:1000:linear:0:1:f]" ng-repeat='letter in "abcdefghijklmnop"'>
                             {{letter}}
                         </li>
-
                     </ul>
             </li>
         </ul>
@@ -50,7 +41,7 @@
             <li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>
                 Scope/Target/Audience Examples
             </li>
-            <li class='flex-start relative flex-wrap m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='_scope in ["self", "public", "children", "parent", "grandparent", "grandchildren", "depth(+/- LEVEL)", "down ", "down+", "odd children", "siblings"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}">
+            <li class='flex-start relative flex-wrap m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='_scope in ["self", "public", "children", "parent", "grandparent", "grandchildren", "depth(2)", "depth(-2)",  "down ", "down+", "odd children", "siblings"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}">
             <!-- <li class='flex-start relative flex-wrap m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='_scope in ["siblings"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}"> -->
                     <div when-turn-pink="p:[background:#e6389b]|a:[scale:0:1:500:bouncePast:0:1:f,rotate:0deg:-1080deg:500:easeOutCirc:0:1:f,opacity:0:1:500:easeOutCirc:0:1:f, padding:0px:15px:500:easeOutCirc:0:1:f]" u>
                         #{{$index + 1}}. send:<span class='weight-700'>&nbsp;{{_scope}}</span>
@@ -122,6 +113,44 @@
                                 </ul>
                             </li>
                     </ul>
+                    <ul  class='full-x m20y flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' ng-if='_scope.indexOf("depth(2)") > -1'
+                        u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]' on-mouseenter="send:[start-counter:depth(2):1000]">
+
+                            <li class='grand-child'>
+                                Mouse over me to initialize my grandchildren via <strong> depth:2 </strong>
+                            </li>
+
+                            <li u  ng-repeat='child in ["c1", "c2", "c3"]' class='full-x flex-wrap'>
+                                <div class='full-x text-center m10y'>
+                                    child #{{$index + 1}}
+                                </div>
+                                <div class='full-x flex-wrap-center relative p10y'>
+                                    <span style='padding:10px 2px' class='absolute full-y bg-smoke top-0'> </span>
+                                </div>
+                                <ul class='flex-vertical-center full-x p15-grid'>
+                                    <li class='m05x border-1-left border-1-right p05y p10x border-1-top border-solid border-white' u when-start-counter="a:[counter:0:100:5000:easeOutCirc:0:1:f]"  ng-repeat='grandchild in ["gc1", "gc2", "gc3"]'> {{grandchild}}</li>
+                                </ul>
+                            </li>
+                    </ul>
+                    <ul  class='full-x m20y flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' ng-if='_scope.indexOf("depth(-2)") > -1'
+                        u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]' when-start-counter="a:[opacity:0:1:250:linear:0:1:f, scale:0.5:1:250:bouncePast:0:1:f]" >
+
+                            <li class='grand-child weight-500'>
+                                Mouse over any <u>grandchildren</u> to shake me via <strong> depth:-2 </strong>
+                            </li>
+
+                            <li u  ng-repeat='child in ["c1", "c2", "c3"]' class='full-x flex-wrap'>
+                                <div class='full-x text-center m10y'>
+                                    child #{{$index + 1}}
+                                </div>
+                                <div class='full-x flex-wrap-center relative p10y'>
+                                    <span style='padding:10px 2px' class='absolute full-y bg-smoke top-0'> </span>
+                                </div>
+                                <ul class='flex-vertical-center full-x p15-grid'>
+                                    <li class='m05x border-1-left border-1-right p05y p10x border-1-top border-solid border-white' u  on-mouseenter="send:[start-counter:depth(-2):1000]" ng-repeat='grandchild in ["gc1", "gc2", "gc3"]'> {{grandchild}}</li>
+                                </ul>
+                            </li>
+                    </ul>
                      <ul style='top:20% !important;' class='p15-grid full-x flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' ng-if='_scope.indexOf("siblings") > -1' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]' >
 
 
@@ -162,14 +191,7 @@
                             </span>
                         </li>
                     </ul>
-                    <ul style='top:40% !important;' class='top-0 bg-auburn absolute width-50p flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' ng-if='_scope.indexOf("depth") > -1' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]' when-start-counter="a:[counter:0:100:5000:easeOutCirc:0:1:f]">
 
-                        <li class='width-50p' u>
-                            <span class='grand-child' on-mouseenter="send:[start-counter:grandparent:1000]" u>
-                                Next iteration
-                            </span>
-                        </li>
-                    </ul>
                     <ul style='top:40% !important;' class='top-0 bg-gold absolute width-50p flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' ng-if='_scope.indexOf("odd") > -1' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]' when-start-counter="a:[counter:0:100:5000:easeOutCirc:0:1:f]">
 
                         <li class='width-50p' u>
@@ -195,7 +217,7 @@
                 <span class='weight-500'>message-name:&nbsp;public</span> <span class='weight-700'>{{_scope}}</span>
             </li>
         </ul> -->
-        <ul class='flex-vertical-center flex-wrap full-xy mtop50' ng-init="action_states=['on-init', 'on-mouseleave', 'on-key-press', 'when-intro-anim-complete']; action_audience=['self', 'children', 'parents', 'public']">
+        <ul class='flex-vertical-center flex-wrap full-xy mtop50' ng-init="action_states=['on-init', 'on-mouseleave', 'on-key-press', 'when-intro-anim-complete']; action_audience=['self', 'children', 'parents', 'public']" ng-if='false'>
             <li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>
                 Action
             </li>
@@ -205,7 +227,7 @@
                 <span class='weight-500' style='text-decoration:underline;'>{{action_states[$index]}}</span>:&nbsp;{{action_audience[$index]}}:1000:&nbsp; <span class='weight-700'>{{action}}</span>
             </li>
         </ul>
-        <ul class='flex-vertical-center flex-wrap full-xy' ng-init="action_states=['on-init', 'on-mouseleave', 'on-key-press', 'when-intro-anim-complete']; action_audience=['self', 'children', 'parents', 'public']">
+        <ul class='flex-vertical-center flex-wrap full-xy' ng-init="action_states=['on-init', 'on-mouseleave', 'on-key-press', 'when-intro-anim-complete']; action_audience=['self', 'children', 'parents', 'public']" ng-if='false'>
             <li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>
                 Data
             </li>
