@@ -8,7 +8,21 @@ function SendService($timeout) {
 
   return {
     sendMsgToSelf: sendMsgToSelf,
-    prepareToSendMessage: prepareToSendMessage
+    prepareToSendMessage: prepareToSendMessage,
+    parseDepth: parseDepth
+  }
+
+  function parseDepth(depth_str) {
+    var depth_str = depth_str && depth_str.replace('depth(', '').replace(')', '') || 'depth(0)';
+    var inclusive = (depth_str.indexOf('>') > -1) || (depth_str.indexOf('<') > -1)
+    if (inclusive) {
+      depth_str = depth_str.replace('<', '').replace('>', '')
+    }
+    var result = {num: 0, inclusive: false};
+    console.log(depth_str, parseInt(depth_str))
+    result.num = parseFloat(depth_str);
+    result.inclusive = inclusive || false;
+    return result
   }
 
   function prepareToSendMessage(msg_name, msg_str, scope) {
