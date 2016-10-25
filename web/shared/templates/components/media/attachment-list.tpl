@@ -253,7 +253,7 @@
 	<div class="attach-list large" ng-if='activeType === "large-icons"'>
 		<!-- @samir - <a> elements inside <li> are being staggered in intervals of 150ms -->
 		<!-- lines: 178, 222, 281, 307, 336, 412, 443, 469, 519, 561 -->
-		<ul u on-init="s:[large-attach-init:children:easeInSine-3000]">
+		<ul u on-init="s:[large-attach-init:children:easeInCirc-3000]">
 			<li>
 				<a u when-large-attach-init="s:[pdf-load:public, pdf-enter:public:1000]">
 					<span>
