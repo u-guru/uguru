@@ -162,7 +162,7 @@
 
 		<a class="bg-robin"
 			u on-click="s:[dropdown-color-open:public, dropdown-color-items:public]">
-				<!-- on-click="s:[dropdown-color-card:self, dropdown-color-items:depth(>2):linear-750]" -->
+				<!-- on-click="s:[dropdown-color-open:public, dropdown-color-items:depth(>2):linear-750]" -->
 			<div u init-with="p:[tr:scaleX(0)]"
 				when-dropdown-color-init="a:[scaleX:0:1:250:easeOutCubic:0:1:f]"></div>
 			<div u init-with="p:[tr:scaleY(0)]"
