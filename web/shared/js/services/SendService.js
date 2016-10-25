@@ -28,7 +28,7 @@ function SendService($timeout) {
   function prepareToSendMessage(msg_name, msg_str, scope) {
     scope.public.customStates.when[msg_name] = {elements: [], depth: 0};
     var msg_scope = msg_str.split(':')[1];
-    if (msg_scope === 'siblings') {
+    if (msg_scope === 'siblings' || msg_scope ==='depth(-0)' || msg_scope ==='depth(0)') {
       if (!scope.$parent.public) {
         scope.$parent.public = {customStates: {when: {}}};
       }
@@ -38,6 +38,7 @@ function SendService($timeout) {
         scope.$apply();
       })
     }
+
   }
 
   function sendMsgToSelf(element, scope, state_ref, msg_type) {

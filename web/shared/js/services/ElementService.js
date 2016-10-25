@@ -488,7 +488,9 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           }
 
           var camelName = UtilitiesService.camelCase(fullMsgName.replace('when-', ''));
-
+          if (msgScope === 'parent') {
+            msgScope = 'depth(-1)'
+          }
           if (msgScope === 'self') {
 
             if (['on', 'init', 'when'].indexOf(msgType) > -1) {
@@ -532,8 +534,19 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           else if (['children', 'grandchildren', 'siblings'].indexOf(msgScope) > -1 || msgScope.indexOf('depth') > -1) {
             var depthLevel;
             var depthScope = scope;
-
-            var depthShortcutDict = {children: 1, grandchildren:2, siblings:0.5};
+            var isInclusive = msgScope.indexOf('>') > -1 || msgScope.indexOf('<') > -1 || false;
+            if (isInclusive) {
+              msgScope = msgScope.replace('>', '').replace('<', '')
+            }
+            //also make sure it gets sent to self
+            if (msgScope === 'depth(0)') {
+              applySendArgsAndCallback(element, scope, msg.replace('depth(0)', 'self'), delay_dict);
+              msgScope = 'siblings'
+            }
+            if (msgScope === 'depth(-0)') {
+              msgScope = 'siblings'
+            }
+            var depthShortcutDict = {children: 1, grandchildren:2, siblings:0.5, parent: -1, "depth(-0)": 0.5, "depth(0)": 0.5};
             if (msgScope in depthShortcutDict) {
               depthLevel = {num: depthShortcutDict[msgScope], inclusive: false};
             }
@@ -542,7 +555,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               if (depthNum) {
                 depthNum = parseInt(depthNum)
               }
-              depthLevel = {num: depthNum, inclusive: msgScope.indexOf('>') > -1 || msgScope.indexOf('<') > -1}
+              depthLevel = {num: depthNum, inclusive: isInclusive}
             }
             if (!depthLevel) {
                depthLevel = {num: 0, inclusive:false};
@@ -555,11 +568,15 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               depthLevel.num = 0;
             }
 
-            var stateRefs = depthScope.public.customStates.when[camelName] || [];
+            var stateRefs = depthScope.public.customStates.when[camelName];
 
             if (msgScope === 'siblings' && (!stateRefs || !stateRefs.length)) {
               stateRefs = scope.$parent.public.customStates.when[camelName];
-
+            } else if (!stateRefs || !camelName in depthScope.public.customStates.when) {
+              if (msgType === 'when') {
+                var dashedName = [msgType, msgName].join('-')
+                stateRefs = {elements: depthScope.public.customStates[dashedName]}
+              }
             }
 
             if (delay_dict.internal && delay_dict.internal.stagger) {
@@ -669,6 +686,10 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             // }
             // var  = UtilitiesService.camelCase(msg.split(':')[0]);
             var stateRefs = scope.root.scope.public.customStates[fullMsgName];
+            if (!stateRefs) {
+              stateRefs = scope.root.scope.public.customStates['when-' + msgName]
+              console.log(scope.root.scope.public.customStates, msgName)
+            }
 
             stateRefs.forEach(function(stateRef, i) {
               if (stateRef.actions && Object.keys(stateRef.actions).length) {
