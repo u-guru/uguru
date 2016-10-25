@@ -28,7 +28,7 @@
 				when-request-card-init="a:[scaleX:0:1:250:easeOutSine:0:1:f]"/>
 			<ul class="ugrid-2">
 				<li u init-with="p:[tr:scaleX(0), tro:center center]"
-					when-request-card-init="a:[icon-enter:800:linear:0:1:f]">
+					when-request-card-init="a:[icon-enter:900:linear:0:1:f]">
 					<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=800);"></span>
 				</li>
 				<li u init-with="p-op"
