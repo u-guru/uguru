@@ -25,13 +25,13 @@
 								when-attachment-icon-enter="a:[stroke-dashoffset:75:0:500:easeOutSine:0:1:f]:delay-500"></path>
 					        <path d="M26.0065349,27 L58.452381,27"
 								u init-with="p:[sda:32.45, sdo:32.45]"
-								when-attachment-tile-enter="a:[stroke-dashoffset:32.45:0:500:easeOutSine:0:1:f]:delay-500"></path>
+								when-attachment-icon-enter="a:[stroke-dashoffset:32.45:0:500:easeOutSine:0:1:f]:delay-500"></path>
 					        <path d="M26.0065349,39 L73,39"
 								u init-with="p:[sda:47, sdo:47]"
-								when-attachment-tile-enter="a:[stroke-dashoffset:47:0:500:easeOutSine:0:1:f]:delay-500"></path>
+								when-attachment-icon-enter="a:[stroke-dashoffset:47:0:500:easeOutSine:0:1:f]:delay-500"></path>
 					        <path d="M68.6006058,52 L52.1852677,69.8143786 L43.0177984,59.8655876 L26.3536791,77.9499504 M61.1012997,52 L68.5969544,52 L68.5969544,60.1384542"
 								u init-with="p:[sda:77.98, sdo:77.98]"
-								when-attachment-tile-enter="a:[stroke-dashoffset:77.98:0:500:easeOutSine:0:1:f]:delay-500"></path>
+								when-attachment-icon-enter="a:[stroke-dashoffset:77.98:0:500:easeOutSine:0:1:f]:delay-500"></path>
 						</g>
 					</g>
 			    </g>
