@@ -540,23 +540,24 @@ angular.module('uguru.shared.directives')
                       }
                       if (states.when) {
                         states.when.forEach(function(state, i) {
-                          if (state.actions.send) {
-                            state.actions.send.parsed.split(',').forEach(function(message_str, i) {
-                              var msgNameCamel = ElementService.toCamelCaseBridge(message_str.split(':')[0]);
-                              SendService.prepareToSendMessage(msgNameCamel, message_str, scope);
-                            })
-                          }
+
                           state.cancelCallback = null;
 
                           var whenCallback = function(current_depth) {
 
                             return function(actions, scope, delay, depth) {
-                              console.log(current_depth, depth)
+                              console.log(state.name, current_depth, depth)
 
                               if (depth && depth.inclusive && depth.num >= 0 && current_depth < 0) return;
                               if (depth && depth.inclusive && depth.num <= 0 && current_depth > 0) return;
                               if (depth && !depth.inclusive && depth.num !== current_depth) return;
 
+                              //  if (state.actions.send) {
+                              //   state.actions.send.parsed.split(',').forEach(function(message_str, i) {
+                              //     var msgNameCamel = ElementService.toCamelCaseBridge(message_str.split(':')[0]);
+                              //     SendService.prepareToSendMessage(msgNameCamel, message_str, scope);
+                              //   })
+                              // }
 
                               if (delay) {
                                 $timeout(function() {

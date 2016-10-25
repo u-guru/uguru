@@ -14,7 +14,7 @@
 	<div class='full-xy overflow-auto height-20p'>
 
 
-        <ul class='flex-vertical-center flex-wrap full-xy' >
+        <ul class='flex-wrap-center flex-wrap full-xy' >
             <li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>
                 Stagger-based Delays (Requires prefix send:[msg-name]:children)
             </li>
@@ -37,11 +37,11 @@
                     </ul>
             </li>
         </ul>
-        <ul class='flex-wrap flex-wrap full-xy'>
+        <ul class='flex-wrapflex-wrap full-xy'>
             <li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>
                 Scope/Target/Audience Examples
             </li>
-            <li class='flex-start relative flex-wrap m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='_scope in ["self", "public", "children", "parent", "grandparent", "grandchildren", "depth(2)", "depth(-2)",  "down ", "down+", "odd children", "siblings"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}">
+            <li class='flex-wrap relative flex-wrap m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='_scope in ["self", "public", "children", "parent", "grandparent", "grandchildren", "depth(2)", "depth(-2)",  "depth(-0) ", "depth(0)", "depth(>1)(down)"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}">
             <!-- <li class='flex-start relative flex-wrap m20x p20left text-left border-solid border-white full-x m20y weight-300' ng-repeat='_scope in ["siblings"]' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}"> -->
                     <div when-turn-pink="p:[background:#e6389b]|a:[scale:0:1:500:bouncePast:0:1:f,rotate:0deg:-1080deg:500:easeOutCirc:0:1:f,opacity:0:1:500:easeOutCirc:0:1:f, padding:0px:15px:500:easeOutCirc:0:1:f]" u>
                         #{{$index + 1}}. send:<span class='weight-700'>&nbsp;{{_scope}}</span>
@@ -151,14 +151,29 @@
                                 </ul>
                             </li>
                     </ul>
-                     <ul style='top:20% !important;' class='p15-grid full-x flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' ng-if='_scope.indexOf("siblings") > -1' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]' >
+                     <ul style='top:20% !important;' class='p15-grid full-x flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' ng-if='_scope.indexOf("siblings ") > -1' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]' >
 
 
                         <li class='border-solid border-white border-1 width-10p' when-start-counter="a:[counter:0:100:5000:easeOutCirc:0:1:f]" u ng-repeat='child in ["s", "s1", "s2"]' class='full-x flex-wrap'>
                             sib #{{$index + 1}}
                         </li>
-                        <li class='width-25p border-solid border-white border-1' u  on-mouseenter="send:[start-counter:siblings]">
+                        <!-- @jeselle, gabrielle Note that it still has the state-->
+                        <li class='width-25p border-solid border-white border-1' u when-start-counter="a:[counter:0:100:5000:easeOutCirc:0:1:f]"  on-mouseenter="send:[start-counter:depth(-0)]">
                                 My Siblings
+                        </li>
+                        <li class='border-solid border-white border-1 width-10p' when-start-counter="a:[counter:0:100:5000:easeOutCirc:0:1:f]" u ng-repeat='child in ["s", "s1", "s2"]' class='full-x flex-wrap'>
+                            sib #{{$index + 4}}
+                        </li>
+
+                    </ul>
+                    <ul style='top:20% !important;' class='p15-grid full-x flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' ng-if='_scope.indexOf("siblings+me") > -1' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]' >
+
+
+                        <li class='border-solid border-white border-1 width-10p' when-start-counter="a:[counter:0:100:5000:easeOutCirc:0:1:f]" u ng-repeat='child in ["s", "s1", "s2"]' class='full-x flex-wrap'>
+                            sib #{{$index + 1}}
+                        </li>
+                        <li class='width-25p border-solid border-white border-1' u when-start-counter="a:[counter:0:100:5000:easeOutCirc:0:1:f]" on-mouseenter="send:[start-counter:depth(0)]">
+                                My Siblings + me
                         </li>
                         <li class='border-solid border-white border-1 width-10p' when-start-counter="a:[counter:0:100:5000:easeOutCirc:0:1:f]" u ng-repeat='child in ["s", "s1", "s2"]' class='full-x flex-wrap'>
                             sib #{{$index + 4}}
@@ -167,23 +182,35 @@
                     </ul>
 
 
-                    <ul style='top:40% !important;' class='top-0 bg-auburn absolute width-50p flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' ng-if='_scope.indexOf("down ") > -1' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]' when-start-counter="a:[counter:0:100:5000:easeOutCirc:0:1:f]">
+                    <ul class='p15-grid full-x flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' u on-mouseenter="s:[start-counter:depth(>1)]" ng-if='_scope.indexOf("down") > -1' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]' style='height:500px'>
+                            <li class='grand-child' >
+                                Mouse over me to initialize my grandchildren
+                            </li>
+
+                            <li u  ng-repeat='child in ["c1", "c2", "c3"]' class='full-x flex-wrap'>
+                                <div class='full-x text-center m10y'>
+                                    child #{{$index + 1}}
+                                </div>
+                                <div class='full-x flex-wrap-center relative p10y'>
+                                    <span style='padding:10px 2px' class='absolute full-y bg-smoke top-0'> </span>
+                                </div>
+                                <ul class='flex-vertical-center full-x p15-grid'>
+                                    <li class='m05x border-1-left border-1-right p05y p10x border-1-top border-solid border-white' u  ng-repeat='grandchild in ["gc1", "gc2", "gc3"]'  when-start-counter="a:[counter:0:100:5000:easeOutCirc:0:1:f]">
+                                        {{grandchild}}
+                                    </li>
+                                </ul>
+                            </li>
+                    </ul>
+
+               <!--      <ul style='top:40% !important;' class='top-0 bg-auburn absolute width-50p flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' ng-if='_scope.indexOf("down+") > -1' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]' when-start-counter="a:[counter:0:100:5000:easeOutCirc:0:1:f]">
 
                         <li class='width-50p' u>
                             <span class='grand-child' on-mouseenter="send:[start-counter:grandparent:1000]" u>
                                 Next Iteration
                             </span>
                         </li>
-                    </ul>
-                    <ul style='top:40% !important;' class='top-0 bg-auburn absolute width-50p flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' ng-if='_scope.indexOf("down+") > -1' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]' when-start-counter="a:[counter:0:100:5000:easeOutCirc:0:1:f]">
-
-                        <li class='width-50p' u>
-                            <span class='grand-child' on-mouseenter="send:[start-counter:grandparent:1000]" u>
-                                Next Iteration
-                            </span>
-                        </li>
-                    </ul>
-                    <ul style='top:40% !important;' class='top-0 bg-auburn absolute width-50p flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' ng-if='_scope.indexOf("up") > -1' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]' when-start-counter="a:[counter:0:100:5000:easeOutCirc:0:1:f]">
+                    </ul> -->
+               <!--      <ul style='top:40% !important;' class='top-0 bg-auburn absolute width-50p flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' ng-if='_scope.indexOf("up") > -1' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]' when-start-counter="a:[counter:0:100:5000:easeOutCirc:0:1:f]">
 
                         <li class='width-50p' u>
                             <span class='grand-child' on-mouseenter="send:[start-counter:grandparent:1000]" u>
@@ -200,10 +227,11 @@
                             </span>
                         </li>
                     </ul>
-
+ -->
             </li>
 
         </ul>
+
       <!--   <ul class='flex-wrap flex-wrap full-xy'>
             <li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>
                 Internal/External Delay Examples
