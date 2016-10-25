@@ -1,7 +1,6 @@
 <div class="perspective-container full-xy flex-center" types='default, time-period, round, white-round' default-type="round" reference="http://codepen.io/teamuguru/pen/6ddde9fa7dbff14ae4124d45341be8c5?editors=1100">
 	<div class="toggle-container" ng-if='activeType === "default"'
-		u
-		on-init="send:[outline-enter:grandchildren:linear-500]">
+		u on-init="send:[outline-enter:grandchildren:linear-500]">
 		<div class="toggle normal">
 			<input type="checkbox" checked/>
 			<label>
