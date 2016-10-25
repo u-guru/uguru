@@ -151,7 +151,7 @@
                                 </ul>
                             </li>
                     </ul>
-                     <ul style='top:20% !important;' class='p15-grid full-x flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' ng-if='_scope.indexOf("siblings ") > -1' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]' >
+                     <ul style='top:20% !important;' class='p15-grid full-x flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' ng-if='_scope.indexOf("depth(-0)") > -1' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]' >
 
 
                         <li class='border-solid border-white border-1 width-10p' when-start-counter="a:[counter:0:100:5000:easeOutCirc:0:1:f]" u ng-repeat='child in ["s", "s1", "s2"]' class='full-x flex-wrap'>
@@ -166,7 +166,7 @@
                         </li>
 
                     </ul>
-                    <ul style='top:20% !important;' class='p15-grid full-x flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' ng-if='_scope.indexOf("siblings+me") > -1' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]' >
+                    <ul style='top:20% !important;' class='p15-grid full-x flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' ng-if='_scope.indexOf("depth(0)") > -1' u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]' >
 
 
                         <li class='border-solid border-white border-1 width-10p' when-start-counter="a:[counter:0:100:5000:easeOutCirc:0:1:f]" u ng-repeat='child in ["s", "s1", "s2"]' class='full-x flex-wrap'>
