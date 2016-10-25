@@ -161,8 +161,8 @@
 		when-dropdown-color-init="a:[opacity:0:1:250:easeOutSine:0:1:f]">
 
 		<a class="bg-robin"
-			u on-click="s:[dropdown-color-open:public, dropdown-color-items:depth(3):linear-750]">
-				<!-- on-click="s:[dropdown-color-open:public, dropdown-color-items:depth(>2):linear-750]" -->
+			u on-click="s:[dropdown-color-open:public, dropdown-color-items:public]">
+				<!-- u on-click="s:[dropdown-color-open:public, dropdown-color-prompt:siblings]" -->
 			<div u init-with="p:[tr:scaleX(0)]"
 				when-dropdown-color-init="a:[scaleX:0:1:250:easeOutCubic:0:1:f]"></div>
 			<div u init-with="p:[tr:scaleY(0)]"
@@ -184,6 +184,7 @@
 		<div u init-with="p:[visibility:hidden, z-index:-1]"
 			when-dropdown-color-open="p:[visibility:visible, z-index:10]"
 			when-dropdown-color-close="p:[visibility:hidden, z-index:-1]:delay-400">
+			<!-- when-dropdown-color-prompt="s:[dropdown-color-items:children:linear-750]" -->
 			<svg viewBox="0 0 396 38"
 				u init-with="p-op"
 				when-dropdown-color-open="a:[opacity:0:1:250:easeOutSine:0:1:f]:delay-200"
@@ -191,7 +192,6 @@
 				<path d="M2,36 L2,34 C2,32.8954305 2.8931253,32 4.0093292,32 L168,32 L198,2 L228,32 L391.990671,32 C393.100393,32 394,32.8877296 394,34 L394,36" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
 			</svg>
 			<ul>
-				<!-- u when-dropdown-color-open="s:[dropdown-color-items:children:easeInCirc-800]" -->
 				<li u init-with="p-op"
 					when-dropdown-color-items="a:[opacity:0:1:250:easeOutSine:0:1:f]:delay-100"
 					when-dropdown-color-close="a:[opacity:1:0:250:easeOutSine:0:1:f]:delay-300">
