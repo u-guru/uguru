@@ -2841,7 +2841,6 @@ fieldset.no-border * {
       width: 48px;
       height: 48px; }
       .dropdown > div a svg {
-        transition: all 150ms ease-in-out;
         fill: none;
         stroke: white;
         stroke-width: 8px;
@@ -2861,7 +2860,6 @@ fieldset.no-border * {
       .dropdown > div a.active svg path {
         transform: rotate(180deg); }
   .dropdown > ul {
-    transition: all 150ms ease-in-out;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -2960,7 +2958,6 @@ fieldset.no-border * {
           .dropdown.info > ul > li .dropdown-popup:hover svg path, .dropdown.info > ul > li .dropdown-popup:focus svg path {
             stroke: #40484B; }
         .dropdown.info > ul > li .dropdown-info {
-          transition: all 150ms ease-in-out 0ms;
           transform: translateZ(0) scale(0);
           transform-origin: 0% 24px;
           z-index: -10;
@@ -2992,7 +2989,6 @@ fieldset.no-border * {
       .dropdown.info > ul .dropdown-popup:hover + .dropdown-info,
       .dropdown.info > ul .dropdown-popup:focus + .dropdown-info,
       .dropdown.info > ul .dropdown-info:hover {
-        transition: all 150ms ease-in-out 600ms;
         transform: translateZ(0) scale(1) !important;
         z-index: auto !important; }
 
@@ -3119,8 +3115,6 @@ fieldset.no-border * {
   display: -webkit-flex;
   display: flex;
   position: relative; }
-  .dropdown-color.old * {
-    transition: all 150ms ease-in-out; }
   .dropdown-color.old > a.active svg {
     transform: rotate(180deg); }
   .dropdown-color.old > div:not(.visible) {
@@ -3144,8 +3138,6 @@ fieldset.no-border * {
     background: #40484B;
     border-radius: 2px;
     z-index: -1; }
-  .dropdown-color a, .dropdown-color .dropdown-color-bg, .dropdown-color .arrow {
-    transition: all 150ms ease-in-out; }
   .dropdown-color > a {
     display: block;
     justify-content: space-between;
@@ -3629,11 +3621,8 @@ fieldset.no-border * {
       width: 55px;
       height: 91px; }
   .team-card-container .team-card {
-    transition: all 500ms ease-out;
     transform-style: preserve-3d;
     backface-visibility: hidden; }
-    .team-card-container .team-card * {
-      transition: all 500ms ease-out; }
     .team-card-container .team-card .team-border, .team-card-container .team-card .team-ribbon, .team-card-container .team-card .team-link, .team-card-container .team-card .team-info, .team-card-container .team-card .team-icon {
       transform-style: preserve-3d; }
   .team-card-container .team-card-placeholder {
@@ -3692,28 +3681,24 @@ fieldset.no-border * {
       backface-visibility: hidden;
       color: white; }
   @media screen and (min-width: 768px) {
-    .team-card-container:not(.mobile) a:hover ~ .team-card, .team-card-container:not(.mobile) a:focus ~ .team-card {
-      transition: all 500ms ease-out !important; }
-      .team-card-container:not(.mobile) a:hover ~ .team-card *, .team-card-container:not(.mobile) a:focus ~ .team-card * {
-        transition: all 500ms ease-out !important; }
-      .team-card-container:not(.mobile) a:hover ~ .team-card .team-border, .team-card-container:not(.mobile) a:focus ~ .team-card .team-border {
-        transform: translateZ(15px) !important; }
-      .team-card-container:not(.mobile) a:hover ~ .team-card .team-link, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link {
-        transform: translateZ(25px) !important; }
-        .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-icon, .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-name, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-icon, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-name {
-          transform: translateZ(10px) !important; }
-          .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-icon [class*="mid"], .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-name [class*="mid"], .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-icon [class*="mid"], .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-name [class*="mid"] {
-            transform: translateZ(5px) !important; }
-          .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-icon [class*="front"], .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-name [class*="front"], .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-icon [class*="front"], .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-name [class*="front"] {
-            transform: translateZ(10px) !important; }
-          .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-icon .eyes, .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-name .eyes, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-icon .eyes, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-name .eyes {
-            opacity: 0; }
-          .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-icon .circle-eyes, .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-name .circle-eyes, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-icon .circle-eyes, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-name .circle-eyes {
-            opacity: 1; }
-      .team-card-container:not(.mobile) a:hover ~ .team-card .team-ribbon-center, .team-card-container:not(.mobile) a:focus ~ .team-card .team-ribbon-center {
-        transform: translateZ(-10px) !important; }
-      .team-card-container:not(.mobile) a:hover ~ .team-card .team-ribbon-info h2, .team-card-container:not(.mobile) a:focus ~ .team-card .team-ribbon-info h2 {
+    .team-card-container:not(.mobile) a:hover ~ .team-card .team-border, .team-card-container:not(.mobile) a:focus ~ .team-card .team-border {
+      transform: translateZ(15px) !important; }
+    .team-card-container:not(.mobile) a:hover ~ .team-card .team-link, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link {
+      transform: translateZ(25px) !important; }
+      .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-icon, .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-name, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-icon, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-name {
         transform: translateZ(10px) !important; }
+        .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-icon [class*="mid"], .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-name [class*="mid"], .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-icon [class*="mid"], .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-name [class*="mid"] {
+          transform: translateZ(5px) !important; }
+        .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-icon [class*="front"], .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-name [class*="front"], .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-icon [class*="front"], .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-name [class*="front"] {
+          transform: translateZ(10px) !important; }
+        .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-icon .eyes, .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-name .eyes, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-icon .eyes, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-name .eyes {
+          opacity: 0; }
+        .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-icon .circle-eyes, .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-name .circle-eyes, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-icon .circle-eyes, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-name .circle-eyes {
+          opacity: 1; }
+    .team-card-container:not(.mobile) a:hover ~ .team-card .team-ribbon-center, .team-card-container:not(.mobile) a:focus ~ .team-card .team-ribbon-center {
+      transform: translateZ(-10px) !important; }
+    .team-card-container:not(.mobile) a:hover ~ .team-card .team-ribbon-info h2, .team-card-container:not(.mobile) a:focus ~ .team-card .team-ribbon-info h2 {
+      transform: translateZ(10px) !important; }
     .team-card-container:not(.mobile) a:active ~ .team-card {
       transform: all 150ms ease-out !important; }
       .team-card-container:not(.mobile) a:active ~ .team-card * {
@@ -4303,7 +4288,6 @@ fieldset.no-border * {
         align-content: center;
         -webkit-justify-content: center;
         justify-content: center;
-        transition: all 150ms ease-in-out;
         position: absolute;
         z-index: 10;
         top: 0;
@@ -4556,16 +4540,13 @@ fieldset.no-border * {
             color: white; }
 
 a.credit-card {
-  transform-origin: center center;
-  transition: all 150ms ease-in; }
+  transform-origin: center center; }
   a.credit-card:hover, a.credit-card:focus {
-    transform: translateZ(20px);
-    transition: all 600ms cubic-bezier(0.6, 0, 0.1, 2); }
+    transform: translateZ(20px); }
     a.credit-card:hover .credit-card-inside, a.credit-card:focus .credit-card-inside {
       background: #445560; }
   a.credit-card:active {
-    transform: translateZ(-20px);
-    transition: all 150ms ease-in; }
+    transform: translateZ(-20px); }
     a.credit-card:active .credit-card-inside {
       background: #2e3b42; }
 
@@ -4573,17 +4554,13 @@ a.credit-card {
   position: relative;
   border-radius: 10px;
   overflow: hidden;
-  transform-origin: center center;
-  transition: all 150ms ease-in; }
+  transform-origin: center center; }
   .university-card:hover, .university-card:focus {
-    transform: translateZ(20px);
-    transition: all 600ms cubic-bezier(0.6, 0, 0.1, 2); }
+    transform: translateZ(20px); }
   .university-card:active {
-    transform: translateZ(-20px);
-    transition: all 150ms ease-in; }
+    transform: translateZ(-20px); }
   .university-card.with-hover .school-card-hover {
     opacity: 0;
-    transition: all 150ms ease-in-out;
     position: absolute;
     z-index: 7;
     top: 0;
@@ -4700,7 +4677,6 @@ a.credit-card {
           font-weight: 400; }
   .university-card .school-card-inside .school-card-border {
     opacity: 0;
-    transition: all 150ms ease-in-out;
     position: absolute;
     top: 0;
     left: 0;
@@ -4747,7 +4723,6 @@ a.credit-card {
       .university-card .school-card-inside .school-card-top .school-card-icon .school-card-icon-bg {
         opacity: 0;
         border-radius: 1000px;
-        transition: all 150ms ease-in-out;
         display: block;
         position: absolute;
         z-index: 6;
@@ -4772,7 +4747,6 @@ a.credit-card {
         -webkit-justify-content: center;
         justify-content: center;
         opacity: 0;
-        transition: all 150ms ease-in-out;
         position: absolute;
         z-index: 7;
         top: 0;
@@ -4781,7 +4755,6 @@ a.credit-card {
         height: 100%; }
         .university-card .school-card-inside .school-card-top .school-card-icon .school-card-state svg {
           border-radius: 1000px;
-          transition: all 150ms ease-in-out;
           display: block;
           width: 50%;
           height: 50%; }
@@ -4796,7 +4769,6 @@ a.credit-card {
           transform: rotate(45deg); }
     .university-card .school-card-inside .school-card-top:after {
       opacity: 0;
-      transition: all 150ms ease-in-out;
       content: "";
       position: absolute;
       z-index: 4;
@@ -4851,7 +4823,6 @@ a.credit-card {
         width: 100%; }
     .university-card .school-card-inside .school-card-main .school-card-color {
       opacity: .1;
-      transition: all 150ms ease-in-out;
       position: absolute;
       z-index: 1;
       top: 0;
@@ -4884,7 +4855,6 @@ a.credit-card {
       align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
-      transition: all 150ms ease-in-out;
       align-self: flex-end;
       position: relative;
       z-index: 4;
@@ -4927,7 +4897,6 @@ a.credit-card {
             stroke-linecap: round;
             stroke-linejoin: round; }
     .university-card .school-card-inside .school-card-main h1, .university-card .school-card-inside .school-card-main h2 {
-      transition: all 150ms ease-in-out;
       text-align: center;
       margin: 0 !important; }
     .university-card .school-card-inside .school-card-main h1 {
@@ -5670,18 +5639,15 @@ a.credit-card {
 
 .course-card-svg {
   display: block;
-  transform-origin: center center;
-  transition: all 150ms ease-in; }
+  transform-origin: center center; }
   .course-card-svg .color {
     opacity: 0; }
   .course-card-svg:hover, .course-card-svg:focus {
-    transform: translateZ(20px);
-    transition: all 600ms cubic-bezier(0.6, 0, 0.1, 2); }
+    transform: translateZ(20px); }
     .course-card-svg:hover .color, .course-card-svg:focus .color {
       opacity: 1; }
   .course-card-svg:active {
-    transform: translateZ(-20px);
-    transition: all 150ms ease-in; }
+    transform: translateZ(-20px); }
     .course-card-svg:active .color-background {
       fill: #637074; }
 
@@ -5689,14 +5655,11 @@ a.credit-card {
   display: block;
   position: relative;
   text-align: center;
-  transform-origin: center center;
-  transition: all 150ms ease-in; }
+  transform-origin: center center; }
   .course-card:hover, .course-card:focus {
-    transform: translateZ(20px);
-    transition: all 600ms cubic-bezier(0.6, 0, 0.1, 2); }
+    transform: translateZ(20px); }
   .course-card:active {
-    transform: translateZ(-20px);
-    transition: all 150ms ease-in; }
+    transform: translateZ(-20px); }
   .course-card > svg {
     background: white;
     border-radius: 2px; }
@@ -5780,7 +5743,6 @@ a.credit-card {
     .course-card.tiny .course-card-inside h2 {
       margin-bottom: 0; }
   .course-card .course-card-hover {
-    transition: all 150ms ease-in-out;
     display: none;
     position: absolute;
     z-index: 1;
@@ -5790,7 +5752,6 @@ a.credit-card {
     height: 100%;
     border-radius: 2px; }
   .course-card .course-card-border {
-    transition: all 150ms ease-in-out;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -5821,7 +5782,6 @@ a.credit-card {
     align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
-    transition: all 150ms ease-in-out;
     position: absolute;
     top: 0;
     right: 0;
@@ -5889,7 +5849,6 @@ a.credit-card {
         opacity: 1; }
   .course-card.with-hover .course-card-hover {
     opacity: 0;
-    transition: all 150ms ease-in-out;
     display: block;
     position: absolute;
     z-index: 7;
@@ -6232,13 +6191,10 @@ a.course-card:active .course-card-hover {
   background: white;
   border-radius: 2px;
   overflow: hidden;
-  transform-origin: center center;
-  transition: all 150ms ease-in; }
+  transform-origin: center center; }
   .request-card:hover, .request-card:focus {
-    transition: all 600ms cubic-bezier(0.6, 0, 0.1, 2);
     transform: translateZ(20px); }
   .request-card:active {
-    transition: all 150ms ease-in;
     transform: translateZ(-20px); }
   .request-card .map {
     position: relative;
@@ -6319,8 +6275,7 @@ a.course-card:active .course-card-hover {
       height: 0;
       margin: 0;
       border: 0;
-      border-bottom: 5px solid #69B3A5;
-      transition: all 150ms ease-out; }
+      border-bottom: 5px solid #69B3A5; }
     .request-card .info .ugrid-2 {
       position: relative;
       padding-bottom: 15px;
@@ -6455,7 +6410,6 @@ a.course-card:active .course-card-hover {
     border-color: #934073; }
 
 .place-marker {
-  transition: all 150ms ease-in-out;
   position: relative;
   cursor: pointer;
   max-width: 262px; }
@@ -6521,7 +6475,6 @@ a.course-card:active .course-card-hover {
       -ms-flex-flow: row wrap;
       -webkit-flex-flow: row wrap;
       flex-flow: row wrap;
-      transition: all 150ms ease-in-out 350ms;
       position: absolute;
       top: 2px;
       left: 2px;

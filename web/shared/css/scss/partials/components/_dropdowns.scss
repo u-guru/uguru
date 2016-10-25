@@ -64,7 +64,7 @@
 			width: 48px;
 			height: 48px;
 			svg {
-				transition: all 150ms ease-in-out;
+				// transition: all 150ms ease-in-out;
 				@include svg-stroke(white, 8);
 				background: $shamrock;
 				padding: 12px 10px 8px;
@@ -95,7 +95,7 @@
 		}
 	}
 	> ul {
-		transition: all 150ms ease-in-out;
+		// transition: all 150ms ease-in-out;
 		@include listless;
 		position: absolute;
 		left: 0;
@@ -220,7 +220,7 @@
 					}
 				}
 				.dropdown-info {
-					transition: all 150ms ease-in-out 0ms;
+					// transition: all 150ms ease-in-out 0ms;
 					transform: translateZ(0) scale(0);
 					transform-origin: 0% 24px;
 					z-index: -10;
@@ -257,7 +257,7 @@
 			.dropdown-popup:hover + .dropdown-info,
 			.dropdown-popup:focus + .dropdown-info,
 			.dropdown-info:hover {
-				transition: all 150ms ease-in-out 600ms;
+				// transition: all 150ms ease-in-out 600ms;
 				transform: translateZ(0) scale(1)!important;
 				z-index: auto!important;
 			}
@@ -468,7 +468,7 @@
 	position: relative;
 	&.old {
 		* {
-			transition: all 150ms ease-in-out;
+			// transition: all 150ms ease-in-out;
 		}
 		> a {
 			&.active {
@@ -504,9 +504,9 @@
 		border-radius: 2px;
 		z-index: -1;
 	}
-	a, .dropdown-color-bg, .arrow {
-		transition: all 150ms ease-in-out;
-	}
+	// a, .dropdown-color-bg, .arrow {
+	// 	transition: all 150ms ease-in-out;
+	// }
 	> a {
 		display: block;
 		justify-content: space-between;
