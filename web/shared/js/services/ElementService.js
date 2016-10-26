@@ -496,8 +496,10 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             if (['on', 'init', 'when'].indexOf(msgType) > -1) {
               console.log('waiting total', totalMsgDelay, delay_dict)
               $timeout(function() {
-                console.log('activating', camelName, fullMsgName)
-                SendService.sendMsgToSelf(element, scope, fullMsgName.split('-').slice(1)[0], msgType)
+                console.log('activating', camelName, fullMsgName, scope.public.customStates.when)
+                fullMsgName = fullMsgName.replace('when-', '');
+
+                SendService.sendMsgToSelf(element, scope, fullMsgName.split('-').slice(1)[0], msgType, UtilitiesService.camelCase(fullMsgName))
               }, totalMsgDelay)
               return;
 
@@ -546,7 +548,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             if (msgScope === 'depth(-0)') {
               msgScope = 'siblings'
             }
-            var depthShortcutDict = {children: 1, grandchildren:2, siblings:0.5, parent: -1, "depth(-0)": 0.5, "depth(0)": 0.5};
+            var depthShortcutDict = {children: 1, grandchildren:2, siblings:0.5, parent: -1, "depth(-0)": 0.5, "depth(0)": 0.5, "depth(>0)": 1};
             if (msgScope in depthShortcutDict) {
               depthLevel = {num: depthShortcutDict[msgScope], inclusive: false};
             }
@@ -597,14 +599,25 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             }
 
 
+            if (!stateRefs.length && msgType === 'when' && msgName.length) {
+              // console.log(UtilitiesService[msgType, msgName].join('-'))
+              // console.log(depthScope.public.customStates.when, camelName)
+            }
             stateRefs.elements.forEach(function(stateRef, i) {
               var stagger_delay = 0;
               if (delay_dict.internal && delay_dict.internal.stagger && delay_dict.internal.stagger.delays) {
                 stagger_delay = delay_dict.internal.stagger.delays[i];
               }
+              if (stateRef.actions.send) {
+                              stateRef.actions.send.parsed.split(',').forEach(function(message_str, i) {
+                                var msgNameCamel = UtilitiesService.camelCase(message_str.split(':')[0]);
+                                SendService.prepareToSendMessage(msgNameCamel, message_str, depthScope);
+                              })
+                        }
               if (stateRef.actions && Object.keys(stateRef.actions).length) {
                 $timeout(function() {
-                      stateRef.func && stateRef.func(stateRef.actions, scope, stagger_delay, depthLevel);
+
+                      stateRef.func && stateRef.func(stateRef.actions, depthScope || scope, stagger_delay, depthLevel);
                 }, totalMsgDelay);
               }
             })
@@ -623,7 +636,12 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                 var stateRefs = stateRef;
                 stateRefs.elements.forEach(function(stateRef, i) {
                   if (stateRef.actions && Object.keys(stateRef.actions).length) {
-
+                    if (stateRef.actions.send) {
+                              stateRef.actions.send.parsed.split(',').forEach(function(message_str, i) {
+                                var msgNameCamel = UtilitiesService.camelCase(message_str.split(':')[0]);
+                                SendService.prepareToSendMessage(msgNameCamel, message_str, scope);
+                              })
+                        }
 
                     $timeout(function() {
                           stateRef.func && stateRef.func(stateRef.actions, scope);
@@ -644,7 +662,12 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                 var stateRefs = stateRef;
                 stateRefs.elements.forEach(function(stateRef, i) {
                   if (stateRef.actions && Object.keys(stateRef.actions).length) {
-
+                    if (stateRef.actions.send) {
+                              stateRef.actions.send.parsed.split(',').forEach(function(message_str, i) {
+                                var msgNameCamel = UtilitiesService.camelCase(message_str.split(':')[0]);
+                                SendService.prepareToSendMessage(msgNameCamel, message_str, scope);
+                              })
+                        }
 
                     $timeout(function() {
                           stateRef.func && stateRef.func(stateRef.actions, scope);
@@ -693,9 +716,18 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
             stateRefs.forEach(function(stateRef, i) {
               if (stateRef.actions && Object.keys(stateRef.actions).length) {
-
+                if (stateRef.actions.send) {
+                      console.log('detected', stateRef.actions.send)
+                       if (stateRef.actions.send) {
+                              stateRef.actions.send.parsed.split(',').forEach(function(message_str, i) {
+                                var msgNameCamel = UtilitiesService.camelCase(message_str.split(':')[0]);
+                                SendService.prepareToSendMessage(msgNameCamel, message_str, scope);
+                              })
+                        }
+                  }
 
                 $timeout(function() {
+
                       stateRef.func && stateRef.func(stateRef.actions, scope);
                 }, totalMsgDelay);
 
