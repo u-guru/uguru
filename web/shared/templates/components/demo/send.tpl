@@ -12,8 +12,46 @@
 		</div>
 	</div>
 	<div class='full-xy overflow-auto height-20p'>
+        <ul class='flex-wrap-center flex-wrap full-xy' >
+            <li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>
+                Stagger-based Delays (Requires prefix send:[msg-name]:children)
+            </li>
+            <li class='flex-start relative flex-wrap m20x p20left text-left border-solid border-white full-x m20y txt-4 weight-300' ng-class="{'bg-slate-50p p20y': $index % 2 === 1}">
+                    <div>
+                        #{{$index + 1}}. send : [ example-child-msg : children:<span class='weight-700'>&nbsp;{{_scope}}</span>
+                        ]
+                    </div>
 
-
+                    <ul class='full-x m10y right-0 txt-1 relative weight-900 uppercase p10xy border-2 flex-wrap-center'  u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]|s:[example-child-msg:children:linear-1000]:+1000' when-reinit-everyone="s:[on-init:self]">
+                        <li class='absolute left-0 bg-azure width-128 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u on-click="s:[reinit-everyone:depth(-1)]">
+                            Reset the whole thing
+                        </li>
+                        <li class='width-64 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u on-init="p:[opacity:0.25]"  when-example-child-msg="a:[opacity:0.25:1:1000:easeInCirc:0:1:f]">
+                            Child 1
+                        </li>
+                        <li class='width-64 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u on-init="p:[opacity:0.25]"  when-example-child-msg="a:[opacity:0.25:1:1000:easeInCirc:0:1:f]">
+                            Child 2
+                        </li>
+                        <li class='width-64 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u on-init="p:[opacity:0.25]"  when-example-child-msg="a:[opacity:0.25:1:1000:easeInCirc:0:1:f]">
+                            Child 3
+                        </li>
+                    </ul>
+                    <ul class='full-x m10y right-0 txt-1 relative weight-900 uppercase p10xy border-2 flex-wrap-center'  u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]|s:[example-child-msg:children:linear-1000]:+1000' when-reinit-everyone="s:[on-init:self]">
+                        <li class='absolute left-0 bg-azure width-128 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u on-click="s:[example-child-msg:depth(0)]" when-example-child-msg="a:[opacity:0.25:1:1000:easeInCirc:0:1:f]">
+                            Reset myself + sibs
+                        </li>
+                        <li class='width-64 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u on-init="p:[opacity:0.25]"  when-example-child-msg="a:[opacity:0.25:1:1000:easeInCirc:0:1:f]" when-reinit-yourself="s:[on-init:self]">
+                            Child 1
+                        </li>
+                        <li class='width-64 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u on-init="p:[opacity:0.25]"  when-example-child-msg="a:[opacity:0.25:1:1000:easeInCirc:0:1:f]" when-reinit-yourself="s:[on-init:self]">
+                            Child 2
+                        </li>
+                        <li class='width-64 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u on-init="p:[opacity:0.25]"  when-example-child-msg="a:[opacity:0.25:1:1000:easeInCirc:0:1:f]" when-reinit-yourself="s:[on-init:self]">
+                            Child 3
+                        </li>
+                    </ul>
+            </li>
+        </ul>
         <ul class='flex-wrap-center flex-wrap full-xy' >
             <li class='flex-start m20x text-left border-solid border-white full-x bg-azure-20p border-1-bottom txt-white p15-grid weight-900 p20xy'>
                 Stagger-based Delays (Requires prefix send:[msg-name]:children)
