@@ -1,13 +1,12 @@
 <div class="full-xy flex-center perspective-container" types='gabrielle, jeselle, jason, samir' default-type="gabrielle">
 	<div class="team-card-container team-gabrie" ng-if='activeType === "gabrielle"'
-		u
-		on-init="s:[gabrie-enter:public]"
+		u on-init="s:[gabrie-enter:public]"
 		when-gabrie-exit="a:[translateY:0px:-200px:1000:easeOutSine:0:1:f, rotateX:0deg:90deg:1000:easeOutSine:0:1:f, rotateY:50deg:15deg:1000:easeOutSine:0:1:f]">
 		<a></a><a></a><a></a><a></a><a></a><a></a>
 		<div class="team-card"
-			u
-			when-gabrie-exit="p:[opacity:1:0:50:easeOutSine]">
-			<div class="team-border">
+			u when-gabrie-exit="p:[opacity:1:0:50:easeOutSine]">
+			<div class="team-border"
+				u on-init="s:[gabrie-line-draw:children:2800]">
 				<div u init-with="p:[tr:scaleX(0), tro:center center]"
 					when-gabrie-line-draw="a:[scaleX:0:1:750:easeOutSine:0:1:f]"></div>
 				<div u init-with="p:[tr:scaleY(0), tro:center center]"
@@ -20,10 +19,10 @@
 			<div class="team-photo" style="background-image: url('/shared/images/gabrielle.jpg')"
 				u init-with="p:[op:0, tr:scale(0.5) rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
 				when-gabrie-enter="p:[op:1] | a:[scale:0.5:1:800:easeOutBack:0:1:f, rotateX:70deg:0deg:800:easeOutBack:0:1:f, rotateY:-15deg:0deg:800:easeOutBack:0:1:f, translateY:-1000px:0px:800:easeOutBack:0:1:f]"></div>
-			<div u when-gabrie-enter="s:[gabrie-icon-enter:public:800]">
+			<div u on-init="s:[gabrie-icon-enter:depth(>2):800]">
 				<div class="team-link"
 					u init-with="p:[transform:scaleX(0), tro:center center]"
-					when-gabrie-icon-enter="a:[scaleX:0:1:1000:easeOutBack:0:1:f] | s:[gabrie-ribbon-expand:public:1000]">
+					when-gabrie-icon-enter="a:[scaleX:0:1:1000:easeOutBack:0:1:f]">
 					<div class="team-icon"
 						u init-with="p:[tro:center center, transform:scale(0)]"
 						when-gabrie-icon-enter="a:[icon-enter:1000:linear:0:1:f]:delay-1700">
@@ -63,27 +62,28 @@
 						u init-with="p-op"
 						when-gabrie-enter="a:[opacity:0:1:500:easeOutSine:0:1:f]:delay-1000">Gabrielle Wee</h1>
 	            </div>
-				<div class="team-ribbon">
+				<div class="team-ribbon"
+					u on-init="s:[gabrie-ribbon-expand:depth(>2):1800]">
 					<div class="team-ribbon-center"
 						u init-with="p:[tr:scaleX(0), tro:center center]"
-						when-gabrie-ribbon-expand="a:[scaleX:0:1:800:easeOutSine:0:1:f]:delay-400">
+						when-gabrie-ribbon-expand="a:[scaleX:0:1:600:easeOutSine:100:1:f]">
 						<div class="team-ribbon-left"
 							u init-with="p:[tr:translateX(50px)]"
-							when-gabrie-ribbon-expand="a:[translateX:50px:0px::500:easeOutSine:0:1:f]:delay-100"></div>
+							when-gabrie-ribbon-expand="a:[translateX:50px:0px:500:easeOutSine:0:1:f]"></div>
 						<div class="team-ribbon-right"
 							u init-with="p:[tr:translateX(-50px)]"
-							when-gabrie-ribbon-expand="a:[translateX:-50px:0px::500:easeOutSine:0:1:f]:delay-100"></div>
+							when-gabrie-ribbon-expand="a:[translateX:-50px:0px:500:easeOutSine:0:1:f]"></div>
 					</div>
 					<div class="team-ribbon-left-corner"
 						u init-with="p:[tr:scale(0), tro:right top]"
-						when-gabrie-ribbon-expand="a:[scale:0:1:450:easeOutSine:0:1:f]:delay-300"></div>
+						when-gabrie-ribbon-expand="a:[scale:0:1:250:easeOutSine:100:1:f]"></div>
 					<div class="team-ribbon-right-corner"
 						u init-with="p:[tr:scale(0), tro:left top]"
-						when-gabrie-ribbon-expand="a:[scale:0:1:450:easeOutSine:0:1:f]:delay-300 | s:[gabrie-line-draw:public:1000]"></div>
+						when-gabrie-ribbon-expand="a:[scale:0:1:250:easeOutSine:100:1:f]"></div>
 				</div>
 				<div class="team-info"
-					u init-with="p:[op:0, tr:translateY(-50px)]"
-					when-gabrie-enter="a:[opacity:0:1:50:easeOutSine:0:1:f, translateY:-50px:0px:300:easeOutSine:0:1:f]:delay-500">
+					u init-with="p:[tr:translateY(-250px), op:0]"
+					when-gabrie-enter="a:[translateY:-250px:0px:300:easeOutBack:0:1:f, opacity:0:1:150:linear:0:1:f]:delay-800">
 					<h2>UI Developer</h2>
 					<h2>SAE Ex'pression College</h2>
 				</div>
@@ -92,14 +92,13 @@
 	</div>
 
 	<div class="team-card-container team-jeselle" ng-if='activeType === "jeselle"'
-		u
-		on-init="s:[jeselle-enter:public:500]"
+		u on-init="s:[jeselle-enter:public:500]"
 		when-jeselle-exit="a:[translateY:0px:-200px:1000:easeOutSine:0:1:f, rotateX:0deg:90deg:1000:easeOutSine:0:1:f, rotateY:50deg:15deg:1000:easeOutSine:0:1:f]">
 		<a></a><a></a><a></a><a></a><a></a><a></a>
 		<div class="team-card"
-			u
-			when-jeselle-exit="p:[opacity:1:0:50:easeOutSine:0:1:f]">
-			<div class="team-border">
+			u when-jeselle-exit="p:[opacity:1:0:50:easeOutSine:0:1:f]">
+			<div class="team-border"
+				 u on-init="s:[jeselle-line-draw:children:2800]">
 				<div u init-with="p:[tr:scaleX(0), tro:center center]"
 					when-jeselle-line-draw="a:[scaleX:0:1:750:easeOutSine:0:1:f]"></div>
 				<div u init-with="p:[tr:scaleY(0), tro:center center]"
@@ -112,13 +111,13 @@
 			<div class="team-photo" style="background-image: url('/shared/images/jeselle.jpg')"
 				u init-with="p:[op:0, tr:scale(0.5) rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
 				when-jeselle-enter="p:[op:1] | a:[scale:0.5:1:800:easeOutBack:0:1:f, rotateX:70deg:0deg:800:easeOutBack:0:1:f, rotateY:-15deg:0deg:800:easeOutBack:0:1:f, translateY:-1000px:0px:800:easeOutBack:0:1:f]"></div>
-			<div>
+			<div u on-init="s:[jeselle-icon-enter:depth(>2):800]">
 	            <div class="team-link"
-					u init-with="p-op"
-					when-jeselle-enter="a:[scaleInX-subtle:1000:linear:0:1:f] | s:[jeselle-ribbon-expand:public:1000]">
+					u init-with="p:[tro:center center, tr:scaleX(0)]"
+					when-jeselle-icon-enter="a:[scaleInX-subtle:1000:linear:0:1:f]">
 					<div class="team-icon"
-						u init-with="p:[tranform:scale(0), tro:center center]"
-						when-jeselle-enter="a:[icon-enter:1000:linear:0:1:f]:delay-600">
+						u init-with="p:[transform:scale(0), tro:center center]"
+						when-jeselle-icon-enter="a:[icon-enter:1000:linear:600:1:f]">
 						<svg class="jeselle-back" viewBox="0 0 200 200">
 						    <g class="jeselle-guru" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 						        <path d="M69.5957037,59.9082032 C90.5874333,51.5140717 126.531517,53.5525281 134,66 C134,66 135,73 132,77 C120,81 114.503907,69.7773437 94.8925787,69.7773437 C86.0125701,69.7773437 76.1750975,75.704329 68.4392353,85.347266 C59.0905947,97.0005697 129.373049,150.648437 62.4667965,159.166015 C62.4667965,159.166015 56.8589303,65.0013591 69.5957037,59.9082032 L69.5957037,59.9082032 Z M147,103 C148.320376,101.5971 130.735204,135.893938 132,149.833982 C133.300996,164.173008 153.438948,158.166356 153.838514,156.628904 C155.399662,150.621916 166.838514,81.6660152 153.838514,76.9999998 C140.838513,72.3339843 136.82853,64.748438 134,66 C134,66 135,73 132,77 C132,77 150,90.0000006 147,103 L147,103 Z" class="hair-back" stroke="#3C4C4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#86A9A8"></path>
@@ -159,29 +158,29 @@
 					</div>
 					<h1 class="team-name"
 						u init-with="p-op"
-						when-jeselle-enter="a:[opacity:0:1:500:easeOutSine:0:1:f]:delay-1000">Jeselle Obina</h1>
+						when-jeselle-icon-enter="a:[opacity:0:1:500:easeOutSine:0:1:f]:delay-200">Jeselle Obina</h1>
 	            </div>
-				<div class="team-ribbon">
+				<div class="team-ribbon" u on-init="s:[jeselle-ribbon-expand:depth(>2):1800]">
 					<div class="team-ribbon-center"
 						u init-with="p:[tr:scaleX(0), tro:center center]"
-						when-jeselle-ribbon-expand="a:[scaleX:0:1:800:easeOutSine:0:1:f]:delay-400">
+						when-jeselle-ribbon-expand="a:[scaleX:0:1:600:easeOutSine:150:1:f]">
 						<div class="team-ribbon-left"
 							u init-with="p:[tr:translateX(50px)]"
-							when-jeselle-ribbon-expand="a:[translateX:50px:0px::500:easeOutSine:0:1:f]:delay-100"></div>
+							when-jeselle-ribbon-expand="a:[translateX:50px:0px:500:easeOutSine:0:1:f]"></div>
 						<div class="team-ribbon-right"
 							u init-with="p:[tr:translateX(-50px)]"
-							when-jeselle-ribbon-expand="a:[translateX:-50px:0px::500:easeOutSine:0:1:f]:delay-100"></div>
+							when-jeselle-ribbon-expand="a:[translateX:-50px:0px:500:easeOutSine:0:1:f]"></div>
 					</div>
 					<div class="team-ribbon-left-corner"
 						u init-with="p:[tr:scale(0), tro:right top]"
-						when-jeselle-ribbon-expand="a:[scale:0:1:450:easeOutSine:0:1:f]:delay-300"></div>
+						when-jeselle-ribbon-expand="a:[scale:0:1:250:easeOutSine:100:1:f]"></div>
 					<div class="team-ribbon-right-corner"
 						u init-with="p:[tr:scale(0), tro:left top]"
-						when-jeselle-ribbon-expand="a:[scale:0:1:450:easeOutSine:0:1:f]:delay-300 | s:[jeselle-line-draw:public:1000]"></div>
+						when-jeselle-ribbon-expand="a:[scale:0:1:250:easeOutSine:100:1:f]"></div>
 				</div>
 				<div class="team-info"
-					u init-with="p:[op:0, tr:translateY(-50px)]"
-					when-jeselle-enter="a:[opacity:0:1:50:easeOutSine:0:1:f, translateY:-50px:0px:300:easeOutSine:0:1:f]:delay-500">
+					u init-with="p:[op:0, tr:translateY(-250px)]"
+					when-jeselle-enter="a:[translateY:-50px:0px:300:easeOutSine:0:1:f, opacity:0:1:50:easeOutSine:0:1:f]:delay-500">
 					<h2>Product &amp; Graphic Designer</h2>
 					<h2>University of Illinois at Urbana</h2>
 				</div>
