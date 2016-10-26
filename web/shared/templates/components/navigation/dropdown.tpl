@@ -161,7 +161,7 @@
 		when-dropdown-color-init="a:[opacity:0:1:250:easeOutSine:0:1:f]">
 
 		<a class="bg-robin"
-			u on-click="s:[dropdown-color-open:public, dropdown-color-items:public]">
+			u on-click="s:[dropdown-color-open:public, dropdown-color-items: ]">
 				<!-- u on-click="s:[dropdown-color-open:public, dropdown-color-prompt:siblings]" -->
 			<div u init-with="p:[tr:scaleX(0)]"
 				when-dropdown-color-init="a:[scaleX:0:1:250:easeOutCubic:0:1:f]"></div>
