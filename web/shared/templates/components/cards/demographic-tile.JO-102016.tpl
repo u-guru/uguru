@@ -2,7 +2,7 @@
 	<div class="card-container" ng-if='activeType === "freshman"'>
 		<a class="demographic-tile freshman"
 			u init-with="p:[opacity:0, transform-origin:center center]"
-			on-init="s:[freshman-card:self, demo-card-enter:public:100] "
+			on-init="s:[freshman-card:self, demo-card-enter:children:100] "
 			when-freshman-card="a:[bounceIn-subtle:1000:(.8,.1,1,.05):0:1:f]">
 			<svg width="180px" height="180px" viewBox="0 0 100 100">
 				<rect x="0" y="0" width="100" height="100"></rect>
@@ -32,7 +32,7 @@
 	<div class="card-container" ng-if='activeType === "sophomore"'>
 		<a class="demographic-tile sophomore"
 			u init-with="p:[opacity:0, transform-origin:center center]"
-			on-init="s:[demo-card-enter:public] | a:[bounceIn-subtle:1000:(.8,.1,1,.05):0:1:f]">
+			on-init="s:[demo-card-enter:children] | a:[bounceIn-subtle:1000:(.8,.1,1,.05):0:1:f]">
 			<svg width="180px" height="180px" viewBox="0 0 100 100">
 				<rect x="0" y="0" width="100" height="100"></rect>
 			</svg>
@@ -61,7 +61,7 @@
 	<div class="card-container" ng-if='activeType === "junior"'>
 		<a class="demographic-tile junior"
 			u init-with="p:[opacity:0, transform-origin:center center]"
-			on-init="s:[demo-card-enter:public] | a:[bounceIn-subtle:1000:(.8,.1,1,.05):0:1:f]">
+			on-init="s:[demo-card-enter:children] | a:[bounceIn-subtle:1000:(.8,.1,1,.05):0:1:f]">
 			<svg width="180px" height="180px" viewBox="0 0 100 100">
 				<rect x="0" y="0" width="100" height="100"></rect>
 			</svg>
@@ -90,7 +90,7 @@
 	<div class="card-container" ng-if='activeType === "senior"'>
 		<a class="demographic-tile senior"
 			u init-with="p:[opacity:0, transform-origin:center center]"
-			on-init="s:[demo-card-enter:public] | a:[bounceIn-subtle:1000:(.8,.1,1,.05):0:1:f]">
+			on-init="s:[demo-card-enter:children] | a:[bounceIn-subtle:1000:(.8,.1,1,.05):0:1:f]">
 			<svg width="180px" height="180px" viewBox="0 0 100 100">
 				<rect x="0" y="0" width="100" height="100"></rect>
 			</svg>
@@ -119,7 +119,7 @@
 	<div class="card-container" ng-if='activeType === "graduate"'>
 		<a class="demographic-tile graduate"
 			u init-with="p:[opacity:0, transform-origin:center center]"
-			on-init="s:[demo-card-enter:public] | a:[bounceIn-subtle:1000:(.8,.1,1,.05):0:1:f]">
+			on-init="s:[demo-card-enter:children] | a:[bounceIn-subtle:1000:(.8,.1,1,.05):0:1:f]">
 			<svg width="180px" height="180px" viewBox="0 0 100 100">
 				<rect x="0" y="0" width="100" height="100"></rect>
 			</svg>
@@ -149,7 +149,7 @@
 	<div class="card-container" ng-if='activeType === "high-school"'>
 		<a class="demographic-tile high-school"
 			u init-with="p:[opacity:0, transform-origin:center center]"
-			on-init="s:[demo-card-enter:public] | a:[bounceIn-subtle:1000:(.8,.1,1,.05):0:1:f]">
+			on-init="s:[demo-card-enter:children] | a:[bounceIn-subtle:1000:(.8,.1,1,.05):0:1:f]">
 			<svg width="180px" height="180px" viewBox="0 0 100 100">
 				<rect x="0" y="0" width="100" height="100"></rect>
 			</svg>
@@ -178,7 +178,7 @@
 	<div class="card-container" ng-if='activeType === "college"'>
 		<a class="demographic-tile college"
 			u init-with="p:[opacity:0, transform-origin:center center]"
-			on-init="s:[demo-card-enter:public] | a:[bounceIn-subtle:1000:(.8,.1,1,.05):0:1:f]">
+			on-init="s:[demo-card-enter:children] | a:[bounceIn-subtle:1000:(.8,.1,1,.05):0:1:f]">
 			<svg width="180px" height="180px" viewBox="0 0 100 100">
 				<rect x="0" y="0" width="100" height="100"></rect>
 			</svg>
@@ -207,7 +207,7 @@
 	<div class="card-container" ng-if='activeType === "alumni"'>
 		<a class="demographic-tile alumni"
 			u init-with="p:[opacity:0, transform-origin:center center]"
-			on-init="s:[demo-card-enter:public] | a:[bounceIn-subtle:1000:(.8,.1,1,.05):0:1:f]">
+			on-init="s:[demo-card-enter:children] | a:[bounceIn-subtle:1000:(.8,.1,1,.05):0:1:f]">
 			<svg width="180px" height="180px" viewBox="0 0 100 100">
 				<rect x="0" y="0" width="100" height="100"></rect>
 			</svg>
@@ -236,7 +236,7 @@
 	<div class="card-container" ng-if='activeType === "parent"'>
 		<a class="demographic-tile parent"
 			u init-with="p:[opacity:0, transform-origin:center center]"
-			on-init="s:[demo-card-enter:public] | a:[bounceIn-subtle:1000:(.8,.1,1,.05):0:1:f]">
+			on-init="s:[demo-card-enter:children] | a:[bounceIn-subtle:1000:(.8,.1,1,.05):0:1:f]">
 			<svg width="180px" height="180px" viewBox="0 0 100 100">
 				<rect x="0" y="0" width="100" height="100"></rect>
 			</svg>
@@ -265,7 +265,7 @@
 	<div class="card-container" ng-if='activeType === "professor"'>
 		<a class="demographic-tile professor"
 			u init-with="p:[opacity:0, transform-origin:center center]"
-			on-init="s:[demo-card-enter:public] | a:[bounceIn-subtle:1000:(.8,.1,1,.05):0:1:f]">
+			on-init="s:[demo-card-enter:children] | a:[bounceIn-subtle:1000:(.8,.1,1,.05):0:1:f]">
 			<svg width="180px" height="180px" viewBox="0 0 100 100">
 				<rect x="0" y="0" width="100" height="100"></rect>
 			</svg>
