@@ -1,8 +1,7 @@
 <div class="perspective-container full-xy flex-center p15xy bg-white" reference="http://codepen.io/teamuguru/pen/b96acb7823f68a8dadc95e01abea94a6?editors=1100">
 	<div class="body-text" number="3" style="max-width: 360px"
-		init-default
-		on-init="s:[body-text-init:public]"
-		on-exit="p:[opacity:1:0:250:easeOutSine]">
+		u on-init="s:[body-text-init:public]"
+		on-exit="a:[opacity:1:0:250:easeOutSine:0:1:f]">
 		<div class="body-text-loader"
 			 u init-with="p:[opacity:1]"
 			 when-body-text-init="a:[opacity:1:0:150:easeOutSine:600:1:f]">
