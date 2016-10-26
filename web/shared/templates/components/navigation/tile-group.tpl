@@ -1,45 +1,40 @@
 <div class="perspective-container full-xy flex-center p15xy" types='link, default, 2x3' default-type="link">
 	<div class="tile-group links" ng-if='activeType === "link"'
-		init-with="p-op"
-		on-init="s:[tile-group-links-init:public]"
-		when-tile-group-links-init="p:[opacity:0:1:100:easeOutSine]">
+		u init-with="p-op"
+		on-init="s:[tile-group-links-init:public, badge-enter:depth(>2):easeOutExpo-700]"
+		when-tile-group-links-init="a:[bounceIn-subtle:1000:easeOutSine:0:1:f]">
 		<ul class="bg-slate">
 			<li>
-				<a class="tile badge-container click"
-					init-default
-					when-tile-group-links-init="t:[on-enter:children]">
+				<a class="tile badge-container click">
 					<span class="badge-top bg-moxie"
-						init-with="p:[op:0, tro:center bottom]"
-						on-enter="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-150]">6</span>
-					<span init-with="p-op"
-						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]">Billing</span>
+						u init-with="p:[op:0, tro:center bottom]"
+						when-badge-enter="a:[bounceIn-rotate-subtle:1000:linear:150:1:f]">6</span>
+					<span u init-with="p-op"
+						when-badge-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">Billing</span>
 				</a>
 				<hr class="tile-border"
-					init-with="p-op"
-					when-tile-group-links-init="a:[scaleInY-subtle:set:(dur:1000ms#func:linear):in:delay-150]"/>
+					u init-with="p-op"
+					when-tile-group-links-init="a:[scaleInY-subtle:1000:linear:150:1:f]"/>
 			</li>
 			<li>
-				<a class="tile badge-container click"
-					init-default
-					when-tile-group-links-init="t:[on-enter:children:delay-300]">
+				<a class="tile badge-container click">
 					<span class="badge-left bg-moxie"
-						init-with="p:[op:0, tro:right center]"
-						on-enter="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-150]">6</span>
-					<span init-with="p-op"
-						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]">Gurus</span>
+						u init-with="p:[op:0, tro:right center]"
+						when-badge-enter="a:[bounceIn-rotate-subtle:1000:linear:150:1:f]">6</span>
+					<span u init-with="p-op"
+						when-badge-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">Gurus</span>
 				</a>
 				<hr class="tile-border"
-					init-with="p-op"
-					when-tile-group-links-init="a:[scaleInY-subtle:set:(dur:1000ms#func:linear):in:delay-450]"/>
+					u init-with="p-op"
+					when-tile-group-links-init="a:[scaleInY-subtle:1000:linear:450:1:f]"/>
 			</li>
-			<li init-default
-				when-tile-group-links-init="t:[on-enter:children:delay-600]">
+			<li>
 				<a class="tile"
-					init-with="p-op"
-					on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]">Requests</a>
+					u init-with="p-op"
+					when-badge-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">Requests</a>
 				<hr class="tile-border"
-					init-with="p-op"
-					when-tile-group-links-init="a:[scaleInY-subtle:set:(dur:1000ms#func:linear):in:delay-750]"/>
+					u init-with="p-op"
+					when-tile-group-links-init="a:[scaleInY-subtle:1000:linear:750:1:f]"/>
 			</li>
 		</ul>
 	</div>
@@ -47,11 +42,11 @@
 	<div class="tile-group" ng-if='activeType === "default"'
 		init-with="p-op"
 		on-init="s:[tile-group-default-init:public]"
-		when-tile-group-default-init="p:[opacity:0:1:100:easeOutSine]">
+		when-tile-group-default-init="a:[opacity:0:1:100:easeOutSine:0:1:f]">
 		<ul class="bg-robin">
 			<li>
 				<a class="tile"
-					init-default
+					u
 					when-tile-group-default-init="t:[on-enter:children]">
 					<span on-enter="t:[on-enter:children]">
 						<svg viewBox="0 0 100 100"
@@ -78,11 +73,11 @@
 				</a>
 				<hr class="tile-border"
 					init-with="p-op"
-					when-tile-group-default-init="a:[scaleInY-subtle:set:(dur:1000ms#func:linear):in:delay-150]"/>
+					when-tile-group-default-init="a:[scaleInY-subtle:1000:linear:150:1:f]"/>
 			</li>
 			<li>
 				<a class="tile"
-					init-default
+					u
 					when-tile-group-default-init="t:[on-enter:children:delay-150]">
 					<span on-enter="t:[on-enter:children]">
 						<svg viewBox="0 0 100 100"
@@ -113,7 +108,7 @@
 			</li>
 			<li>
 				<a class="tile"
-					init-default
+					u
 					when-tile-group-default-init="t:[on-enter:children:delay-300]">
 					<span on-enter="t:[on-enter:children]">
 						<svg viewBox="0 0 100 100"
@@ -140,7 +135,7 @@
 				</a>
 				<hr class="tile-border"
 					init-with="p-op"
-					when-tile-group-default-init="a:[scaleInY-subtle:set:(dur:1000ms#func:linear):in:delay-450]"/>
+					when-tile-group-default-init="a:[scaleInY-subtle:1000:linear:450:1:f]"/>
 			</li>
 		</ul>
 	</div>
@@ -148,11 +143,11 @@
 	<div class="tile-group tile-row-2x3" ng-if='activeType === "2x3"'
 		init-with="p-op"
 		on-init="s:[tile-group-2x3-init:public]"
-		when-tile-group-2x3-init="p:[opacity:0:1:100:easeOutSine]">
+		when-tile-group-2x3-init="a:[opacity:0:1:100:easeOutSine:0:1:f]">
 		<ul class="bg-cobalt">
 			<li>
 				<a class="tile"
-					init-default
+					u
 					when-tile-group-2x3-init="t:[on-enter:children:delay-150]">
 					<span on-enter="t:[on-enter:children]">
 						<svg viewBox="0 0 100 100"
@@ -181,7 +176,7 @@
 			</li>
 			<li>
 				<a class="tile"
-					init-default
+					u
 					when-tile-group-2x3-init="t:[on-enter:children:delay-300]">
 					<span on-enter="t:[on-enter:children]">
 						<svg viewBox="0 0 100 100"
@@ -210,7 +205,7 @@
 			</li>
 			<li>
 				<a class="tile"
-					init-default
+					u
 					when-tile-group-2x3-init="t:[on-enter:children:delay-450]">
 					<span on-enter="t:[on-enter:children]">
 						<svg viewBox="0 0 100 100"
@@ -237,7 +232,7 @@
 			</li>
 			<li>
 				<a class="tile"
-					init-default
+					u
 					when-tile-group-2x3-init="t:[on-enter:children:delay-300]">
 					<span on-enter="t:[on-enter:children]">
 						<svg viewBox="0 0 100 100"
@@ -266,7 +261,7 @@
 			</li>
 			<li>
 				<a class="tile"
-					init-default
+					u
 					when-tile-group-2x3-init="t:[on-enter:children:delay-450]">
 					<span on-enter="t:[on-enter:children]">
 						<svg viewBox="0 0 100 100"
@@ -295,7 +290,7 @@
 			</li>
 			<li>
 				<a class="tile"
-					init-default
+					u
 					when-tile-group-2x3-init="t:[on-enter:children:delay-600]">
 					<span on-enter="t:[on-enter:children]">
 						<svg viewBox="0 0 100 100"
