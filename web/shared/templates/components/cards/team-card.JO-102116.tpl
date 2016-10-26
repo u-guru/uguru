@@ -4,7 +4,7 @@
 		when-gabrie-exit="a:[translateY:0px:-200px:1000:easeOutSine:0:1:f, rotateX:0deg:90deg:1000:easeOutSine:0:1:f, rotateY:50deg:15deg:1000:easeOutSine:0:1:f]">
 		<a></a><a></a><a></a><a></a><a></a><a></a>
 		<div class="team-card"
-			u when-gabrie-exit="p:[opacity:1:0:50:easeOutSine]">
+			u when-gabrie-exit="a:[opacity:1:0:50:easeOutSine:0:1:f]">
 			<div class="team-border"
 				u on-init="s:[gabrie-line-draw:children:2800]">
 				<div u init-with="p:[tr:scaleX(0), tro:center center]"
@@ -92,11 +92,11 @@
 	</div>
 
 	<div class="team-card-container team-jeselle" ng-if='activeType === "jeselle"'
-		u on-init="s:[jeselle-enter:public:500]"
+		u on-init="s:[jeselle-enter:public]"
 		when-jeselle-exit="a:[translateY:0px:-200px:1000:easeOutSine:0:1:f, rotateX:0deg:90deg:1000:easeOutSine:0:1:f, rotateY:50deg:15deg:1000:easeOutSine:0:1:f]">
 		<a></a><a></a><a></a><a></a><a></a><a></a>
 		<div class="team-card"
-			u when-jeselle-exit="p:[opacity:1:0:50:easeOutSine:0:1:f]">
+			u when-jeselle-exit="a:[opacity:1:0:50:easeOutSine:0:1:f]">
 			<div class="team-border"
 				 u on-init="s:[jeselle-line-draw:children:2800]">
 				<div u init-with="p:[tr:scaleX(0), tro:center center]"
@@ -180,7 +180,7 @@
 				</div>
 				<div class="team-info"
 					u init-with="p:[op:0, tr:translateY(-250px)]"
-					when-jeselle-enter="a:[translateY:-50px:0px:300:easeOutSine:0:1:f, opacity:0:1:50:easeOutSine:0:1:f]:delay-500">
+					when-jeselle-enter="a:[translateY:-250px:0px:300:easeOutSine:0:1:f, opacity:0:1:50:easeOutSine:0:1:f]:delay-500">
 					<h2>Product &amp; Graphic Designer</h2>
 					<h2>University of Illinois at Urbana</h2>
 				</div>
@@ -189,14 +189,13 @@
 	</div>
 
 	<div class="team-card-container team-jason" ng-if='activeType === "jason"'
-		u
-		on-init="s:[jason-enter:public:1000]"
+		u on-init="s:[jason-enter:public]"
 		when-jason-exit="a:[translateY:0px:-200px:1000:easeOutSine:0:1:f, rotateX:0deg:90deg:1000:easeOutSine:0:1:f, rotateY:50deg:15deg:1000:easeOutSine:0:1:f]">
 		<a></a><a></a><a></a><a></a><a></a><a></a>
 		<div class="team-card"
-			u
-			when-jason-exit="p:[opacity:1:0:50:easeOutSine]">
-			<div class="team-border">
+			u when-jason-exit="a:[opacity:1:0:50:easeOutSine:0:1:f]">
+			<div class="team-border"
+				u on-init="s:[jason-line-draw:children:1800"]>
 				<div u init-with="p:[tr:scaleX(0), tro:center center]"
 					when-jason-line-draw="a:[scaleX:0:1:750:easeOutSine:0:1:f]"></div>
 				<div u init-with="p:[tr:scaleY(0), tro:center center]"
@@ -209,13 +208,13 @@
 			<div class="team-photo" style="background-image: url('/shared/images/jason.jpg')"
 				u init-with="p:[op:0, tr:scale(0.5) rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
 				when-jason-enter="p:[op:1] | a:[scale:0.5:1:800:easeOutBack:0:1:f, rotateX:70deg:0deg:800:easeOutBack:0:1:f, rotateY:-15deg:0deg:800:easeOutBack:0:1:f, translateY:-1000px:0px:800:easeOutBack:0:1:f]"></div>
-			<div>
+			<div u on-init="s:[jason-icon-enter:depth(>2):800]">
 	            <div class="team-link"
 					u init-with="p-op"
-					when-jason-enter="a:[scaleInX-subtle:1000:linear:800:1:f] | s:[jason-ribbon-expand:public:1000]">
+					when-jason-icon-enter="a:[scaleInX-subtle:1000:linear:0:1:f]">
 					<div class="team-icon"
 						u init-with="p:[tr:scale(0), tro:center center]"
-						when-jason-enter="a:[icon-enter:1000:linear:1300:1:f]">
+						when-jason-icon-enter="a:[icon-enter:1000:linear:500:1:f]">
 						<svg class="jason-back" viewBox="0 0 200 200">
 						    <g class="jason-guru" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 								<path d="M60,107 C60,107 56,107 54,111 C52,115 52.9750979,121.312012 56.970215,123.79248 C60.9653322,126.272949 64.0000002,123 64,123 C67.9716799,130.0625 75.4101584,149.488446 108.506026,147.99722 C134.625974,146.820313 146.641113,128.905274 146,113 C146,113 150.995605,115.307617 153.519043,111.708496 C156.04248,108.109375 157,104 155,100 C153,96.0000005 150,95 146,97 C149,84.0000006 131,71 131,71 C119,75 107,67 96,67 C85,67 56,73 60,107" class="face" stroke="#393E56" stroke-width="2" fill="#F9ECE5"></path>
@@ -243,8 +242,10 @@
 					</div>
 					<h1 class="team-name"
 						u init-with="p-op"
-						when-jason-enter="a:[opacity:0:1:500:easeOutSine:0:1:f]:delay-1000">Jason Huang</h1>
-	            </div><div class="team-ribbon">
+						when-jason-icon-enter="a:[opacity:0:1:500:easeOutSine:0:1:f]:delay-200">Jason Huang</h1>
+	            </div>
+				<div class="team-ribbon"
+				 	u on-init="s:[jason-ribbon-expand:depth(>2):1800"]>
 					<div class="team-ribbon-center"
 						u init-with="p:[tr:scaleX(0), tro:center center]"
 						when-jason-ribbon-expand="a:[scaleX:0:1:800:easeOutSine:0:1:f]:delay-400">
@@ -260,11 +261,11 @@
 						when-jason-ribbon-expand="a:[scale:0:1:450:easeOutSine:0:1:f]:delay-300"></div>
 					<div class="team-ribbon-right-corner"
 						u init-with="p:[tr:scale(0), tro:left top]"
-						when-jason-ribbon-expand="a:[scale:0:1:450:easeOutSine:0:1:f]:delay-300 | s:[jason-line-draw:public:1000]"></div>
+						when-jason-ribbon-expand="a:[scale:0:1:450:easeOutSine:0:1:f]:delay-300"></div>
 				</div>
 				<div class="team-info"
-				u 	init-with="p:[op:0, tr:translateY(-50px)]"
-					when-jason-enter="a:[opacity:0:1:50:easeOutSine:0:1:f, translateY:-50px:0px:300:easeOutSine:0:1:f]:delay-500">
+					u init-with="p:[op:0, tr:translateY(-250px)]"
+					when-jason-enter="a:[translateY:-250px:0px:300:easeOutSine:0:1:f, opacity:0:1:50:easeOutSine:0:1:f]:delay-500">
 					<h2>QA Engineer</h2>
 					<h2>San Jose State University</h2>
 				</div>
@@ -273,14 +274,13 @@
 	</div>
 
 	<div class="team-card-container team-samir" ng-if='activeType === "samir"'
-		u
-		on-init="s:[samir-enter:public:delay-1500, samir-ribbon-expand:public:2000]"
+		u on-init="s:[samir-enter:public]"
 		when-samir-exit="a:[translateY:0px:-200px:1000:easeOutSine:0:1:f, rotateX:0deg:90deg:1000:easeOutSine:0:1:f, rotateY:50deg:15deg:1000:easeOutSine:0:1:f]">
 		<a></a><a></a><a></a><a></a><a></a><a></a>
 		<div class="team-card"
-			u
-			when-samir-exit="p:[opacity:1:0:50:easeOutSine]">
-			<div class="team-border">
+			u when-samir-exit="a:[opacity:1:0:50:easeOutSine:0:1:f]">
+			<div class="team-border"
+				u on-init="s:[samir-line-draw:children:2800]">
 				<div u init-with="p:[tr:scaleX(0), tro:center center]"
 					when-samir-line-draw="a:[scaleX:0:1:750:easeOutSine:0:1:f]"></div>
 				<div u init-with="p:[tr:scaleY(0), tro:center center]"
@@ -293,13 +293,13 @@
 			<div class="team-photo" style="background-image: url('/shared/images/samir.jpg')"
 				u init-with="p:[op:0, tr:scale(0.5) rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
 				when-samir-enter="p:[op:1] | a:[scale:0.5:1:800:easeOutBack:0:1:f, rotateX:70deg:0deg:800:easeOutBack:0:1:f, rotateY:-15deg:0deg:800:easeOutBack:0:1:f, translateY:-1000px:0px:800:easeOutBack:0:1:f]"></div>
-			<div>
+			<div u on-init="s:[samir-icon-enter:depth(>2):800]">
 	            <div class="team-link"
 					u init-with="p-op"
-					when-samir-enter="a:[scaleInX-subtle:1000:linear:800:1:f]">
+					when-samir-icon-enter="a:[scaleInX-subtle:1000:linear:0:1:f]">
 					<div class="team-icon"
 						u init-with="p:[tro:center center, tr:scale(0)]"
-						when-samir-enter="a:[icon-enter:1000:linear:1300:1:f]">
+						when-samir-icon-enter="a:[icon-enter:1000:linear:500:1:f]">
 						<svg class="samir-back" viewBox="0 0 200 200">
 						    <g class="samir-guru" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 						        <path d="M55,117 C53,121 53.9750979,127.312012 57.970215,129.79248 C61.9653322,132.272949 65.0000002,129 65,129 C68.9716799,136.0625 76.4101584,155.488446 109.506026,153.99722 C135.625974,152.820313 147.641113,134.905274 147,119 C147,119 151.995605,121.307617 154.519043,117.708496 C157.04248,114.109375 158,110 156,106 C154,102 151,101 147,103 C150,90.0000006 140.67974,78.7779723 136.482419,75.6123048 C124.018552,66.211914 101.643956,66.4833985 90.9746105,68.1650391 C80.3052647,69.8466797 57,79 61,113 C61,113 57,113 55,117 Z" class="face" stroke="#33534D" stroke-width="2" fill="#F9ECE5"></path>
@@ -324,8 +324,10 @@
 					</div>
 					<h1 class="team-name"
 						u init-with="p-op"
-						when-samir-enter="a:[opacity:0:1:500:easeOutSine:0:1:f]:delay-1000">Samir Makhani</h1>
-	            </div><div class="team-ribbon">
+						when-samir-icon-enter="a:[opacity:0:1:500:easeOutSine:200:1:f]">Samir Makhani</h1>
+	            </div>
+				<div class="team-ribbon"
+					u on-init="s:[samir-ribbon-expand:depth(>2):1800]">
 					<div class="team-ribbon-center"
 						u init-with="p:[tr:scaleX(0), tro:center center]"
 						when-samir-ribbon-expand="a:[scaleX:0:1:800:easeOutSine:0:1:f]:delay-400">
@@ -341,11 +343,11 @@
 						when-samir-ribbon-expand="a:[scale:0:1:450:easeOutSine:0:1:f]:delay-300"></div>
 					<div class="team-ribbon-right-corner"
 						u init-with="p:[tr:scale(0), tro:left top]"
-						when-samir-ribbon-expand="a:[scale:0:1:450:easeOutSine:0:1:f]:delay-300 | s:[samir-line-draw:public:1000]"></div>
+						when-samir-ribbon-expand="a:[scale:0:1:450:easeOutSine:0:1:f]:delay-300"></div>
 				</div>
 				<div class="team-info"
-					u init-with="p:[op:0, tr:translateY(-50px)]"
-					when-samir-enter="a:[opacity:0:1:50:easeOutSine:0:1:f, translateY:-50px:0px:300:easeOutSine:0:1:f]:delay-500">
+					u init-with="p:[op:0, tr:translateY(-250px)]"
+					when-samir-enter="a:[translateY:-250px:0px:300:easeOutSine:0:1:f, opacity:0:1:50:easeOutSine:0:1:f]:delay-500">
 					<h2>Founder</h2>
 					<h2>UC Berkeley</h2>
 				</div>
