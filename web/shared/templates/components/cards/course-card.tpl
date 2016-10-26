@@ -2,7 +2,8 @@
 
 	<div ng-if='activeType === "default"' class="course-card"
 		u init-with="p:[opacity:0]"
-		on-init="s:[course-card-init:children:150] | a:[scoop-enter:900:linear:0:1:f]">
+		on-init="s:[course-card-init:children:150, course-scoop:self]"
+		when-course-scoop="a:[scoop-enter:900:linear:0:1:f]">
 		<svg width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 		</svg>
