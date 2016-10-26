@@ -37,13 +37,14 @@
                         </li>
                     </ul>
                     <ul class='full-x m10y right-0 txt-1 relative weight-900 uppercase p10xy border-2 flex-wrap-center'  u on-init='a:[translateX:250%:0%:1000:bouncePast:0:1:f]|s:[example-child-msg:children:linear-1000]:+1000' when-reinit-everyone="s:[on-init:self]">
-                        <li class='absolute left-0 bg-azure width-128 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u on-click="s:[example-child-msg:depth(0)]" when-example-child-msg="a:[opacity:0.25:1:1000:easeInCirc:0:1:f]">
+                        <li class='absolute left-0 bg-azure width-128 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u on-click="s:[example-child-msg:depth(0):linear-500]" when-example-child-msg="a:[opacity:0.25:1:1000:easeInCirc:0:1:f]">
                             Reset myself + sibs
                         </li>
-                        <li class='width-64 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u on-init="p:[opacity:0.25]"  when-example-child-msg="a:[opacity:0.25:1:1000:easeInCirc:0:1:f]" when-reinit-yourself="s:[on-init:self]">
+                        <li class='width-64 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u on-init="p:[opacity:0.25] | s:[sibling-red:depth(0)]"  when-example-child-msg="a:[opacity:0.25:1:1000:easeInCirc:0:1:f]" when-reinit-yourself="s:[on-init:self]">
                             Child 1
                         </li>
-                        <li class='width-64 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u on-init="p:[opacity:0.25]"  when-example-child-msg="a:[opacity:0.25:1:1000:easeInCirc:0:1:f]" when-reinit-yourself="s:[on-init:self]">
+                        <li class='width-64 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u on-init="p:[opacity:0.25]"  when-example-child-msg="a:[opacity:0.25:1:1000:easeInCirc:0:1:f]" when-reinit-yourself="s:[on-init:self]"
+						when-sibling-red="p:[background:#EC6756]">
                             Child 2
                         </li>
                         <li class='width-64 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u on-init="p:[opacity:0.25]"  when-example-child-msg="a:[opacity:0.25:1:1000:easeInCirc:0:1:f]" when-reinit-yourself="s:[on-init:self]">
