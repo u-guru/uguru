@@ -43,8 +43,8 @@
                         <li class='width-64 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u on-init="p:[opacity:0.25] | s:[sibling-red:depth(0)]"  when-example-child-msg="a:[opacity:0.25:1:1000:easeInCirc:0:1:f]" when-reinit-yourself="s:[on-init:self]">
                             Child 1
                         </li>
-                        <li class='width-64 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u on-init="p:[opacity:0.25]"  when-example-child-msg="a:[opacity:0.25:1:1000:easeInCirc:0:1:f]" when-reinit-yourself="s:[on-init:self]"
-						when-sibling-red="p:[background:#EC6756]">
+                        <li class='width-64 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u on-init="p:[opacity:0.25]"  when-example-child-msg="a:[opacity:0.25:1:1000:easeInCirc:0:1:f] " when-reinit-yourself="s:[on-init:self]"
+						when-sibling-red="p:[background-color:#EC6756]">
                             Child 2
                         </li>
                         <li class='width-64 height-32 flex-wrap-center border-1 border-solid child width-50 p10xy border-2-solid border-white' u on-init="p:[opacity:0.25]"  when-example-child-msg="a:[opacity:0.25:1:1000:easeInCirc:0:1:f]" when-reinit-yourself="s:[on-init:self]">
