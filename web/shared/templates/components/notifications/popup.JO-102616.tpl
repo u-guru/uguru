@@ -83,7 +83,7 @@
 					<path d="M35,95 C35,95 25,91 29,77 C18.8095703,78.2685547 10.9628907,64 20.0712891,53.8300781 C20.0712892,59 24.0009767,64 29.9999994,64" class="hair-2" stroke="#33534D" stroke-width="2" fill="#69B3A5"></path>
 					<path d="M85,121 C90,122 100,120 100,114" class="mouth" stroke="#33534D" stroke-width="2"
 						u init-with="p:[tro:right bottom, tr:rotate(0) translateX(0)]"
-						on-init="s:[mouth-shift:self:1950, mouth-smile:depth(0):1800]"
+						on-init="s:[mouth-shift:self:1800, mouth-smile:depth(0):1800]"
 						when-mouth-shift="a:[rotate:0deg:15deg:250:easeOutQuad:0:1:f, translateX:0px:-10px:250:easeOutQuad:0:1:f]:delay-150"
 						when-mouth-smile="a:[mouth-smile-close:150:easeInOutSine:0:1:f]"></path>
 					<path d="M76,118.279318 C77.7016602,125.799571 91.3261719,125.091563 91.3261719,117 L76,118.279318 Z" class="happy-mouth" stroke="#33534D"  fill="#40484B"
