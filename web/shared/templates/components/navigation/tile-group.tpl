@@ -138,8 +138,7 @@
 		<ul class="bg-cobalt">
 			<li>
 				<a class="tile"
-					u
-					when-tile-group-2x3-init="t:[on-enter:children:delay-150]">
+					u when-tile-group-2x3-init="t:[on-enter:children:delay-150]">
 					<span on-enter="t:[on-enter:children]">
 						<svg viewBox="0 0 100 100"
 							on-enter="t:[on-enter:children]">
