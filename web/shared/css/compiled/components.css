@@ -6939,62 +6939,11 @@ a.course-card:active .course-card-hover {
       bottom: 0;
       left: 0; }
     .pf-tile-container a ~ .pf-tile, .pf-tile-container a ~ .pf-cardlet {
-      transition: all 500ms ease-out;
       transform-style: preserve-3d; }
-      .pf-tile-container a ~ .pf-tile .rating-stars, .pf-tile-container a ~ .pf-cardlet .rating-stars {
-        transition: all 500ms ease-out; }
       .pf-tile-container a ~ .pf-tile *, .pf-tile-container a ~ .pf-cardlet * {
         transform-style: preserve-3d; }
-      .pf-tile-container a ~ .pf-tile .pf-cardlet-overlay, .pf-tile-container a ~ .pf-cardlet .pf-cardlet-overlay {
-        transition: all 500ms ease-out; }
-    .pf-tile-container a ~ .pf-tile.bg-academic .pf-tile-border {
-      transition: all 500ms ease-out; }
-    .pf-tile-container a ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing {
-      transition: all 500ms ease-out; }
-      .pf-tile-container a ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing:before {
-        transition: all 500ms ease-out; }
-    .pf-tile-container a ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon, .pf-tile-container a ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon *, .pf-tile-container a ~ .pf-tile.bg-academic .pf-tile-top h1, .pf-tile-container a ~ .pf-tile.bg-academic .pf-tile-top h2 {
-      transition: all 500ms ease-out; }
-    .pf-tile-container a ~ .pf-tile.bg-baking .pf-tile-top h1, .pf-tile-container a ~ .pf-tile.bg-baking .pf-tile-top h1 .border, .pf-tile-container a ~ .pf-tile.bg-baking .pf-tile-top h1 + div, .pf-tile-container a ~ .pf-tile.bg-baking .pf-tile-top .pf-pricing {
-      transition: all 250ms ease-in-out; }
-    .pf-tile-container a ~ .pf-tile.bg-photography .pf-tile-border div {
-      transition: all 250ms ease-out; }
-    .pf-tile-container a ~ .pf-tile.bg-photography .pf-tile-top {
-      transition: all 250ms ease-in-out; }
     .pf-tile-container a ~ .pf-tile.bg-photography .pf-tile-bottom {
       transform-style: preserve-3d; }
-    .pf-tile-container a ~ .pf-tile.bg-tech .pf-tile-top:after {
-      transition: all 1000ms cubic-bezier(0, 0.66, 0.47, 1.09); }
-    .pf-tile-container a ~ .pf-tile.bg-tech .pf-tile-bottom {
-      transition: all 1000ms cubic-bezier(0, 0.66, 0.47, 1.09); }
-      .pf-tile-container a ~ .pf-tile.bg-tech .pf-tile-bottom h1 {
-        transition: all 500ms ease-out; }
-    .pf-tile-container a ~ .pf-tile.bg-household .bub-front-9 {
-      transition: all 800ms ease-out; }
-    .pf-tile-container a ~ .pf-tile.bg-household .pf-tile-desc {
-      transition: all 250ms ease-in-out; }
-    .pf-tile-container a ~ .pf-tile.bg-household .pf-tile-bottom div {
-      transition: all 500ms ease-out; }
-    .pf-tile-container a ~ .pf-cardlet .pf-cardlet-front, .pf-tile-container a ~ .pf-cardlet .pf-cardlet-back, .pf-tile-container a ~ .pf-cardlet .pf-cardlet-bottom, .pf-tile-container a ~ .pf-cardlet .pf-cardlet-ribbon, .pf-tile-container a ~ .pf-cardlet .pf-cardlet-ribbon-edge {
-      transition: all 500ms ease-out; }
-    .pf-tile-container a ~ .pf-cardlet .pf-cardlet-bottom h1 {
-      transition: all 500ms ease-out; }
-    .pf-tile-container a ~ .pf-cardlet .pf-cardlet-bottom > div:not(:empty) {
-      transition: transform 500ms ease-out; }
-      .pf-tile-container a ~ .pf-cardlet .pf-cardlet-bottom > div:not(:empty) h2, .pf-tile-container a ~ .pf-cardlet .pf-cardlet-bottom > div:not(:empty) h3 {
-        transition: all 500ms ease-out; }
-    .pf-tile-container a ~ .pf-cardlet.bg-academic .pf-cardlet-bottom .deco {
-      transition: all 500ms ease-out; }
-    .pf-tile-container a ~ .pf-cardlet.bg-baking .pf-cardlet-bottom .pf-cardlet-icon {
-      transition: all 500ms ease-out; }
-    .pf-tile-container a ~ .pf-cardlet.bg-photography .pf-cardlet-front div:empty {
-      transition: all 500ms ease-out; }
-    .pf-tile-container a ~ .pf-cardlet.bg-tech .pf-cardlet-bottom > div:empty {
-      transition: all 500ms ease-out; }
-    .pf-tile-container a ~ .pf-cardlet.bg-tech .pf-cardlet-bottom > div:not(:empty) div {
-      transition: all 500ms ease-out; }
-    .pf-tile-container a ~ .pf-cardlet.bg-household .pf-cardlet-front div:empty {
-      transition: all 500ms ease-out; }
     .pf-tile-container a:hover ~ .pf-tile.bg-academic .pf-tile-border > div, .pf-tile-container a:focus ~ .pf-tile.bg-academic .pf-tile-border > div {
       background: #fbe1f0; }
     .pf-tile-container a:hover ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing, .pf-tile-container a:focus ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing {
@@ -7065,35 +7014,25 @@ a.course-card:active .course-card-hover {
       .pf-tile-container a:hover ~ .pf-tile.bg-tech .pf-tile-bottom h1, .pf-tile-container a:focus ~ .pf-tile.bg-tech .pf-tile-bottom h1 {
         color: white; }
     .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-corner span:nth-child(1), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-corner span:nth-child(1) {
-      transform: scaleY(0);
-      transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 250ms; }
+      transform: scaleY(0); }
     .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-corner span:nth-child(2), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-corner span:nth-child(2) {
-      transform: scaleX(0);
-      transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 250ms; }
+      transform: scaleX(0); }
     .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-outside span:nth-child(1), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-outside span:nth-child(1) {
-      transform: scaleX(0);
-      transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 500ms; }
+      transform: scaleX(0); }
     .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-outside span:nth-child(2), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-outside span:nth-child(2) {
-      transform: scaleX(0);
-      transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 500ms; }
+      transform: scaleX(0); }
     .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-outside span:nth-child(3), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-outside span:nth-child(3) {
-      transform: scaleY(0);
-      transition: all 300ms cubic-bezier(0, 0.66, 0.47, 1.09) 250ms; }
+      transform: scaleY(0); }
     .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-outside span:nth-child(4), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-outside span:nth-child(4) {
-      transform: scaleX(0);
-      transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09); }
+      transform: scaleX(0); }
     .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-outside span:nth-child(5), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-outside span:nth-child(5) {
-      transform: scaleX(0);
-      transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09); }
+      transform: scaleX(0); }
     .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-outside span:nth-child(6), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-outside span:nth-child(6) {
-      transform: scaleY(0);
-      transition: all 300ms cubic-bezier(0, 0.66, 0.47, 1.09) 250ms; }
+      transform: scaleY(0); }
     .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-top span:nth-child(1), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-top span:nth-child(1) {
-      transform: scaleX(0);
-      transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09); }
+      transform: scaleX(0); }
     .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-top span:nth-child(2), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-top span:nth-child(2) {
-      transform: scaleX(0);
-      transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09); }
+      transform: scaleX(0); }
     .pf-tile-container a:hover ~ .pf-tile.bg-household .pf-tile-desc, .pf-tile-container a:focus ~ .pf-tile.bg-household .pf-tile-desc {
       opacity: 1; }
     .pf-tile-container a:hover ~ .pf-tile.bg-household .pf-tile-bottom h1, .pf-tile-container a:focus ~ .pf-tile.bg-household .pf-tile-bottom h1 {
@@ -7117,8 +7056,6 @@ a.course-card:active .course-card-hover {
       background: #fbe1f0; }
     .pf-tile-container a:hover ~ .pf-cardlet.bg-baking .pf-cardlet-front, .pf-tile-container a:focus ~ .pf-cardlet.bg-baking .pf-cardlet-front {
       background: #fceeca; }
-    .pf-tile-container a:active * {
-      transition: all 250ms ease-in !important; }
     .pf-tile-container a:active ~ .pf-tile.bg-academic {
       background: #97a2a6; }
       .pf-tile-container a:active ~ .pf-tile.bg-academic .pf-tile-border > div {
@@ -7148,14 +7085,11 @@ a.course-card:active .course-card-hover {
     .pf-tile-container a:active ~ .pf-tile.bg-baking .pf-tile-top h1 .border:nth-child(1) {
       background: #c9a74d; }
     .pf-tile-container a:active ~ .pf-tile.bg-tech .pf-tile-top:after {
-      background: rgba(75, 118, 129, 0.5);
-      transition: all 1000ms cubic-bezier(0, 0.66, 0.47, 1.09); }
+      background: rgba(75, 118, 129, 0.5); }
     .pf-tile-container a:active ~ .pf-tile.bg-tech .pf-tile-bottom {
       background: #4b7681; }
       .pf-tile-container a:active ~ .pf-tile.bg-tech .pf-tile-bottom h1 {
         color: #55A4B7; }
-    .pf-tile-container a:active ~ .pf-cardlet * {
-      transition: all 250ms ease-in !important; }
     .pf-tile-container a:active ~ .pf-cardlet .pf-cardlet-overlay {
       opacity: 0.4; }
     .pf-tile-container a:active ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) > div {
@@ -7250,8 +7184,6 @@ a.course-card:active .course-card-hover {
       transform: none !important; }
       .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet.bg-household .pf-cardlet-bottom div h2 {
         transform: translateZ(0) !important; }
-    .pf-tile-container:not(.mobile) a:active ~ .pf-tile * {
-      transition: all 250ms ease-in; }
     .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-academic .pf-tile-border {
       transform: translateZ(0) !important; }
     .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-academic .pf-tile-top h1, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-academic .pf-tile-top h2, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing {
@@ -7558,8 +7490,7 @@ a.course-card:active .course-card-hover {
         font-size: 18px;
         font-weight: 900;
         background: none;
-        stroke: white;
-        transition: all 250ms ease-in-out; }
+        stroke: white; }
         .pf-tile.bg-baking .pf-tile-top .pf-pricing:not(.large) {
           width: 104px; }
           .pf-tile.bg-baking .pf-tile-top .pf-pricing:not(.large) .large {
@@ -7635,8 +7566,6 @@ a.course-card:active .course-card-hover {
         color: #81B566;
         font-size: 16px;
         font-weight: 600; }
-        .pf-tile.bg-photography .pf-tile-bottom .pf-pricing span {
-          transition: all 500ms ease-out; }
         .pf-tile.bg-photography .pf-tile-bottom .pf-pricing .pf-border {
           opacity: 0.25;
           position: absolute;
@@ -8348,7 +8277,6 @@ a.course-card:active .course-card-hover {
     border-radius: 2px;
     padding: 32px; }
     .pf-cardlet.bg-tech .pf-cardlet-bottom > div:empty {
-      transition: all 500ms ease-out;
       position: absolute;
       border-radius: 1000px;
       background: #55A4B7; }
@@ -9235,16 +9163,13 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   border-radius: 2px;
   padding: 7.5px;
   transform-origin: center center;
-  transition: all 150ms ease-in;
   background: #4c5559; }
   .attachment-tile:hover, .attachment-tile:focus {
     background: #637074;
-    transform: translateZ(20px);
-    transition: all 600ms cubic-bezier(0.6, 0, 0.1, 2); }
+    transform: translateZ(20px); }
   .attachment-tile:active {
     background: #4c5559;
-    transform: translateZ(-20px);
-    transition: all 150ms ease-in; }
+    transform: translateZ(-20px); }
   .attachment-tile .attachment-tile-icon {
     width: 64px;
     height: 64px; }
@@ -9374,16 +9299,13 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   border-radius: 2px;
   padding: 7.5px;
   max-width: 500px;
-  transform-origin: center center;
-  transition: all 150ms ease-in; }
+  transform-origin: center center; }
   .feature-tile:hover, .feature-tile:focus {
     background: #7c8a8f;
-    transform: translateZ(20px);
-    transition: all 600ms cubic-bezier(0.6, 0, 0.1, 2); }
+    transform: translateZ(20px); }
   .feature-tile:active {
     background: #4c5559;
-    transform: translateZ(-20px);
-    transition: all 150ms ease-in; }
+    transform: translateZ(-20px); }
   .feature-tile > div {
     padding: 7.5px; }
   .feature-tile .feature-tile-icon {
@@ -9439,15 +9361,12 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   color: white;
   font-size: 48px;
   font-weight: 600;
-  transform-origin: center center;
-  transition: all 150ms ease-in; }
+  transform-origin: center center; }
   .money-tile:hover, .money-tile:focus {
     transform: translateZ(20px);
-    transition: all 600ms cubic-bezier(0.6, 0, 0.1, 2);
     background: #43cb9d; }
   .money-tile:active {
     transform: translateZ(-20px);
-    transition: all 150ms ease-in;
     background: #428a74; }
   .money-tile svg * {
     fill: none; }
@@ -9471,8 +9390,7 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    transition: all 150ms ease-in-out; }
+    height: 100%; }
   .money-tile .money-icon svg {
     width: 50px;
     height: 50px; }
@@ -9951,17 +9869,14 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
     position: relative;
     width: 85%; }
     .record-tile-container .record-tile:hover .record-tile-back, .record-tile-container .record-tile:focus .record-tile-back {
-      transform: translateX(5%) !important;
-      transition-delay: 50ms !important; }
+      transform: translateX(5%) !important; }
       .record-tile-container .record-tile:hover .record-tile-back div, .record-tile-container .record-tile:focus .record-tile-back div {
         transform: rotate(50deg) translateZ(0) !important; }
     .record-tile-container .record-tile:hover .record-tile-front, .record-tile-container .record-tile:focus .record-tile-front {
-      transform: translateX(-5%) !important;
-      transition-delay: 50ms !important; }
+      transform: translateX(-5%) !important; }
     .record-tile-container .record-tile svg {
       fill: none; }
     .record-tile-container .record-tile .record-tile-front, .record-tile-container .record-tile .record-tile-back {
-      transition: all 150ms ease-out;
       position: absolute;
       top: 0;
       width: 100%;
@@ -9971,7 +9886,6 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
     .record-tile-container .record-tile .record-tile-back {
       right: -15%; }
       .record-tile-container .record-tile .record-tile-back div {
-        transition: all 1000ms cubic-bezier(0, 0.58, 0.33, 1.2);
         width: 100%;
         height: 100%; }
         .record-tile-container .record-tile .record-tile-back div svg {

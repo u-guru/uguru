@@ -539,192 +539,192 @@
 		}
 		// transitions
 		~ .pf-tile, ~ .pf-cardlet {
-			transition: all 500ms ease-out;
+			// transition: all 500ms ease-out;
 			transform-style: preserve-3d;
 			.rating-stars {
-				transition: all 500ms ease-out;
+				// transition: all 500ms ease-out;
 			}
 			* {
 				transform-style: preserve-3d;
 			}
 			.pf-cardlet-overlay {
-				transition: all 500ms ease-out;
+				// transition: all 500ms ease-out;
 			}
 		}
-		// profile tile transitions
+		// profile tile // transitions
 		~ .pf-tile {
-			// profile tile transitions academic
+			// profile tile // transitions academic
 			&.bg-academic {
 				.pf-tile-border {
-					transition: all 500ms ease-out;
+					// transition: all 500ms ease-out;
 				}
 				.pf-tile-top {
 					.pf-pricing {
-						transition: all 500ms ease-out;
+						// transition: all 500ms ease-out;
 						&:before {
-							transition: all 500ms ease-out;
+							// transition: all 500ms ease-out;
 						}
 					}
 					.pf-tile-icon, .pf-tile-icon *, h1, h2 {
-						transition: all 500ms ease-out;
+						// transition: all 500ms ease-out;
 					}
 				}
 			}
-			// profile tile transitions baking
+			// profile tile // transitions baking
 			&.bg-baking {
 				.pf-tile-top {
 					h1, h1 .border, h1 + div, .pf-pricing {
-						transition: all 250ms ease-in-out;
+						// transition: all 250ms ease-in-out;
 					}
 				}
 			}
-			// profile tile transitions photography
+			// profile tile // transitions photography
 			&.bg-photography {
 				.pf-tile-border {
 					div {
-						transition: all 250ms ease-out;
+						// transition: all 250ms ease-out;
 					}
 				}
 				.pf-tile-top {
-					transition: all 250ms ease-in-out;
+					// transition: all 250ms ease-in-out;
 				}
 				.pf-tile-bottom {
 					transform-style: preserve-3d;
 				}
 			}
-			// profile tile transitions tech
+			// profile tile // transitions tech
 			&.bg-tech {
 				// .border-corner {
 				// 	span {
 				// 		&:nth-child(1) {
-				// 			transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+				// 			// transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
 				// 		}
 				// 		&:nth-child(2) {
-				// 			transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+				// 			// transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
 				// 		}
 				// 	}
 				// }
 				// .border-top {
 				// 	span {
 				// 		&:nth-child(1) {
-				// 			transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+				// 			// transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
 				// 		}
 				// 		&:nth-child(2) {
-				// 			transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+				// 			// transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
 				// 		}
 				// 	}
 				// }
 				// .border-outside {
 				// 	span {
 				// 		&:nth-child(1) {
-				// 			transition: all 500ms cubic-bezier(0,.66,.47,1.09);
+				// 			// transition: all 500ms cubic-bezier(0,.66,.47,1.09);
 				// 		}
 				// 		&:nth-child(2) {
-				// 			transition: all 500ms cubic-bezier(0,.66,.47,1.09);
+				// 			// transition: all 500ms cubic-bezier(0,.66,.47,1.09);
 				// 		}
 				// 		&:nth-child(3) {
-				// 			transition: all 300ms cubic-bezier(0,.66,.47,1.09) 250ms;
+				// 			// transition: all 300ms cubic-bezier(0,.66,.47,1.09) 250ms;
 				// 		}
 				// 		&:nth-child(4) {
-				// 			transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+				// 			// transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
 				// 		}
 				// 		&:nth-child(5) {
-				// 			transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+				// 			// transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
 				// 		}
 				// 		&:nth-child(6) {
-				// 			transition: all 300ms cubic-bezier(0,.66,.47,1.09) 250ms;
+				// 			// transition: all 300ms cubic-bezier(0,.66,.47,1.09) 250ms;
 				// 		}
 				// 	}
 				// }
 				.pf-tile-top {
 					&:after {
 						// overlay
-						transition: all 1000ms cubic-bezier(0,.66,.47,1.09);
+						// transition: all 1000ms cubic-bezier(0,.66,.47,1.09);
 					}
 				}
 				.pf-tile-bottom {
-					transition: all 1000ms cubic-bezier(0,.66,.47,1.09);
+					// transition: all 1000ms cubic-bezier(0,.66,.47,1.09);
 					h1 {
-						transition: all 500ms ease-out;
+						// transition: all 500ms ease-out;
 					}
 				}
 			}
-			// profile tile transitions household
+			// profile tile // transitions household
 			&.bg-household {
 				.bub-front-9 {
-					transition: all 800ms ease-out;
+					// transition: all 800ms ease-out;
 				}
 				.pf-tile-desc {
-					transition: all 250ms ease-in-out;
+					// transition: all 250ms ease-in-out;
 				}
 				.pf-tile-bottom {
 					div {
-						transition: all 500ms ease-out;
+						// transition: all 500ms ease-out;
 					}
 				}
 			}
 		}
-		// profile cardlet transitions
+		// profile cardlet // transitions
 		~ .pf-cardlet {
 			.pf-cardlet-front, .pf-cardlet-back, .pf-cardlet-bottom, .pf-cardlet-ribbon, .pf-cardlet-ribbon-edge {
-				transition: all 500ms ease-out;
+				// transition: all 500ms ease-out;
 			}
 			.pf-cardlet-bottom {
 				h1 {
-					transition: all 500ms ease-out;
+					// transition: all 500ms ease-out;
 				}
 				> div:not(:empty) {
-					transition: transform 500ms ease-out;
+					// transition: transform 500ms ease-out;
 					h2, h3 {
-						transition: all 500ms ease-out;
+						// transition: all 500ms ease-out;
 					}
 				}
 			}
-			// profile cardlet transitions academic
+			// profile cardlet // transitions academic
 			&.bg-academic {
 				.pf-cardlet-bottom {
 					.deco {
-						transition: all 500ms ease-out;
+						// transition: all 500ms ease-out;
 					}
 				}
 			}
-			// profile cardlet transitions baking
+			// profile cardlet // transitions baking
 			&.bg-baking {
 				.pf-cardlet-bottom {
 					.pf-cardlet-icon {
-						transition: all 500ms ease-out;
+						// transition: all 500ms ease-out;
 					}
 				}
 			}
-			// profile cardlet transitions photography
+			// profile cardlet // transitions photography
 			&.bg-photography {
 				.pf-cardlet-front {
 					// borders
 					div:empty {
-						transition: all 500ms ease-out;
+						// transition: all 500ms ease-out;
 					}
 				}
 			}
-			// profile cardlet transitions tech
+			// profile cardlet // transitions tech
 			&.bg-tech {
 				.pf-cardlet-bottom {
 					// borders
 					> div:empty {
-						transition: all 500ms ease-out;
+						// transition: all 500ms ease-out;
 					}
 					> div:not(:empty) {
 						div {
-							transition: all 500ms ease-out;
+							// transition: all 500ms ease-out;
 						}
 					}
 				}
 			}
-			// profile cardlet transitions household
+			// profile cardlet // transitions household
 			&.bg-household {
 				.pf-cardlet-front {
 					// borders
 					div:empty {
-						transition: all 500ms ease-out;
+						// transition: all 500ms ease-out;
 					}
 				}
 			}
@@ -869,11 +869,11 @@
 						span {
 							&:nth-child(1) {
 								transform: scaleY(0);
-								transition: all 500ms cubic-bezier(0,.66,.47,1.09) 250ms;
+								// transition: all 500ms cubic-bezier(0,.66,.47,1.09) 250ms;
 							}
 							&:nth-child(2) {
 								transform: scaleX(0);
-								transition: all 500ms cubic-bezier(0,.66,.47,1.09) 250ms;
+								// transition: all 500ms cubic-bezier(0,.66,.47,1.09) 250ms;
 							}
 						}
 					}
@@ -881,27 +881,27 @@
 						span {
 							&:nth-child(1) {
 								transform: scaleX(0);
-								transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+								// transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
 							}
 							&:nth-child(2) {
 								transform: scaleX(0);
-								transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+								// transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
 							}
 							&:nth-child(3) {
 								transform: scaleY(0);
-								transition: all 300ms cubic-bezier(0,.66,.47,1.09) 250ms;
+								// transition: all 300ms cubic-bezier(0,.66,.47,1.09) 250ms;
 							}
 							&:nth-child(4) {
 								transform: scaleX(0);
-								transition: all 500ms cubic-bezier(0,.66,.47,1.09);
+								// transition: all 500ms cubic-bezier(0,.66,.47,1.09);
 							}
 							&:nth-child(5) {
 								transform: scaleX(0);
-								transition: all 500ms cubic-bezier(0,.66,.47,1.09);
+								// transition: all 500ms cubic-bezier(0,.66,.47,1.09);
 							}
 							&:nth-child(6) {
 								transform: scaleY(0);
-								transition: all 300ms cubic-bezier(0,.66,.47,1.09) 250ms;
+								// transition: all 300ms cubic-bezier(0,.66,.47,1.09) 250ms;
 							}
 						}
 					}
@@ -909,11 +909,11 @@
 						span {
 							&:nth-child(1) {
 								transform: scaleX(0);
-								transition: all 500ms cubic-bezier(0,.66,.47,1.09);
+								// transition: all 500ms cubic-bezier(0,.66,.47,1.09);
 							}
 							&:nth-child(2) {
 								transform: scaleX(0);
-								transition: all 500ms cubic-bezier(0,.66,.47,1.09);
+								// transition: all 500ms cubic-bezier(0,.66,.47,1.09);
 							}
 						}
 					}
@@ -988,7 +988,7 @@
 		// click
 		&:active {
 			* {
-				transition: all 250ms ease-in!important;
+				// transition: all 250ms ease-in!important;
 			}
 			// profile tile click
 			~ .pf-tile {
@@ -1050,7 +1050,7 @@
 					.pf-tile-top {
 						&:after {
 							background: rgba(mix($azure, $slate), 0.5);
-							transition: all 1000ms cubic-bezier(0,.66,.47,1.09);
+							// transition: all 1000ms cubic-bezier(0,.66,.47,1.09);
 						}
 					}
 					.pf-tile-bottom {
@@ -1068,7 +1068,7 @@
 			// profile cardlet click
 			~ .pf-cardlet {
 				* {
-					transition: all 250ms ease-in!important;
+					// transition: all 250ms ease-in!important;
 				}
 				.pf-cardlet-overlay {
 					opacity: 0.4;
@@ -1296,7 +1296,7 @@
 					}
 					~ .pf-tile {
 						* {
-							transition: all 250ms ease-in;
+							// transition: all 250ms ease-in;
 						}
 						&.bg-academic {
 							.pf-tile-border {
@@ -1641,7 +1641,7 @@
 				font-weight: 900;
 				background: none;
 				stroke: white;
-				transition: all 250ms ease-in-out;
+				// transition: all 250ms ease-in-out;
 				&:not(.large) {
 					width: 104px;
 					.large {
@@ -1722,7 +1722,7 @@
 				font-size: 16px;
 				font-weight: 600;
 				span {
-					transition: all 500ms ease-out;
+					// transition: all 500ms ease-out;
 				}
 				.pf-border {
 					opacity: 0.25;
@@ -2482,7 +2482,7 @@
 			border-radius: 2px;
 			padding: 32px;
 			> div:empty {
-				transition: all 500ms ease-out;
+				// transition: all 500ms ease-out;
 				position: absolute;
 				border-radius: 1000px;
 				background: $azure;
@@ -3767,17 +3767,17 @@ a.category-tile {
 	border-radius: 2px;
 	padding: 7.5px;
 	transform-origin: center center;
-	transition: all 150ms ease-in;
+	// transition: all 150ms ease-in;
 	background: lighten($slate, 5%);
 	&:hover, &:focus {
 		background: lighten($slate, 15%);
 		transform: translateZ(20px);
-		transition: all 600ms cubic-bezier(.6,0,.1,2);
+		// transition: all 600ms cubic-bezier(.6,0,.1,2);
 	}
 	&:active {
 		background: lighten($slate, 5%);
 		transform: translateZ(-20px);
-		transition: all 150ms ease-in;
+		// transition: all 150ms ease-in;
 	}
 	.attachment-tile-icon {
 		width: 64px;
@@ -3938,16 +3938,16 @@ a.category-tile {
 	padding: 7.5px;
 	max-width: 500px;
 	transform-origin: center center;
-	transition: all 150ms ease-in;
+	// transition: all 150ms ease-in;
 	&:hover, &:focus {
 		background: lighten($slate, 25%);
 		transform: translateZ(20px);
-		transition: all 600ms cubic-bezier(.6,0,.1,2);
+		// transition: all 600ms cubic-bezier(.6,0,.1,2);
 	}
 	&:active {
 		background: lighten($slate, 5%);
 		transform: translateZ(-20px);
-		transition: all 150ms ease-in;
+		// transition: all 150ms ease-in;
 	}
 	> div {
 		padding: 7.5px;
@@ -4005,15 +4005,15 @@ a.category-tile {
 	font-size: 48px;
 	font-weight: 600;
 	transform-origin: center center;
-	transition: all 150ms ease-in;
+	// transition: all 150ms ease-in;
 	&:hover, &:focus {
 		transform: translateZ(20px);
-		transition: all 600ms cubic-bezier(.6,0,.1,2);
+		// transition: all 600ms cubic-bezier(.6,0,.1,2);
 		background: $moxie;
 	}
 	&:active {
 		transform: translateZ(-20px);
-		transition: all 150ms ease-in;
+		// transition: all 150ms ease-in;
 		background: mix($moxie, $slate);
 	}
 	svg {
@@ -4029,7 +4029,7 @@ a.category-tile {
 		left: 0;
 		width: 100%;
 		height: 100%;
-		transition: all 150ms ease-in-out;
+		// transition: all 150ms ease-in-out;
 	}
 	.money-icon {
 		svg {
@@ -4834,21 +4834,21 @@ a.category-tile {
 		&:hover, &:focus {
 			.record-tile-back {
 				transform: translateX(5%)!important;
-				transition-delay: 50ms!important;
+				// transition-delay: 50ms!important;
 				div {
 					transform: rotate(50deg) translateZ(0)!important;
 				}
 			}
 			.record-tile-front {
 				transform: translateX(-5%)!important;
-				transition-delay: 50ms!important;
+				// transition-delay: 50ms!important;
 			}
 		}
 		svg {
 			fill: none;
 		}
 		.record-tile-front, .record-tile-back {
-			transition: all 150ms ease-out;
+			// transition: all 150ms ease-out;
 			position: absolute;
 			top: 0;
 			width: 100%;
@@ -4860,7 +4860,7 @@ a.category-tile {
 		.record-tile-back {
 			right: -15%;
 			div {
-				transition: all 1000ms cubic-bezier(0,.58,.33,1.2);
+				// transition: all 1000ms cubic-bezier(0,.58,.33,1.2);
 				width: 100%;
 				height: 100%;
 				svg {
@@ -5033,7 +5033,7 @@ a.category-tile {
 	max-width: 256px;
 	position: relative;
 	// * {
-	// 	transition: all 150ms ease-in-out;
+	// 	// transition: all 150ms ease-in-out;
 	// }
 	// &:hover, &:focus {
 	// 	.album-art {
@@ -5050,7 +5050,7 @@ a.category-tile {
 	// 		opacity: 1;
 	// 		width: calc(100% + 30px);
 	// 		height: calc(100% + 30px);
-	// 		transition: opacity 300ms ease-out, width 300ms ease-out, height 300ms ease-out;
+	// 		// transition: opacity 300ms ease-out, width 300ms ease-out, height 300ms ease-out;
 	// 	}
 	// }
 	.album-echo {
