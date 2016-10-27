@@ -1,7 +1,7 @@
 <div class="perspective-container full-xy flex-center p15xy" types='academic, baking, photo, tech, household' default-type="academic">
 	<div class="pf-tile-container" ng-if='activeType === "academic"'
 		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-		on-init="s:[academic-tile-init:public]"
+		on-init="s:[academic-tile-init:public, aca-border:children:500, aca-top:children:500]"
 		when-academic-tile-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f, translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
 		when-academic-tile-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:500:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:0:1:f, rotateY:0deg:30deg:1000:easeOutCubic:0:1:f, translateY:0px:-300px:1000:easeOutCubic:0:1:f]">
 		<a></a><a></a><a></a><a></a>
@@ -9,27 +9,27 @@
 			<div class="pf-tile-border">
 				<div class="top"
 					u init-with="p:[transform-origin:left center, transform:scaleX(0)]"
-					when-academic-tile-init="a:[scaleX:0:1:500:easeOutCubic:500:1:f]"
+					when-aca-border="a:[scaleX:0:1:500:easeOutCubic:0:1:f]"
 					when-academic-tile-exit="a:[scaleX:1:0:500:easeOutCubic]"></div>
 				<div class="right"
 					u init-with="p:[transform-origin:center bottom, transform:scaleY(0)]"
-					when-academic-tile-init="a:[scaleY:0:1:500:easeOutCubic:500:1:f]"
+					when-aca-border="a:[scaleY:0:1:500:easeOutCubic:0:1:f]"
 					when-academic-tile-exit="p:[transform:scaleY(0)]"></div>
 				<div class="bot"
 					u init-with="p:[transform-origin:right center, transform:scaleX(0)]"
-					when-academic-tile-init="a:[scaleX:0:1:500:easeOutCubic:500:1:f]"
+					when-aca-border="a:[scaleX:0:1:500:easeOutCubic:0:1:f]"
 					when-academic-tile-exit="p:[scaleX:0]"></div>
 				<div class="left"
 					u init-with="p:[transform-origin:center top, transform:scaleY(0)]"
-					when-academic-tile-init="a:[scaleY:0:1:500:easeOutCubic:500:1:f]"
+					when-aca-border="a:[scaleY:0:1:500:easeOutCubic:0:1:f]"
 					when-academic-tile-exit="p:[transform:scaleY(0)]"></div>
 			</div>
 			<div class="pf-tile-top">
 				<div class="pf-pricing"
 					u init-with="p:[opacity:0, tro:left center]"
-					when-academic-tile-init="a:[bounceIn-subtle:750:linear:875:1:f]">$10/hr</div>
+					when-aca-top="a:[bounceIn-subtle:750:linear:375:1:f]">$10/hr</div>
 				<div u init-with="p:[transform:translateY(-80%), opacity:0]"
-					when-academic-tile-init="a:[translateY:-100px:0px:750:easeOutCubic:1000:1:f, opacity:0:1:250:linear:1000:1:f]">
+					when-aca-top="a:[translateY:-100px:0px:750:easeOutCubic:500:1:f, opacity:0:1:250:linear:500:1:f]">
 					<div class="pf-tile-icon">
 						<svg viewBox="0 0 100 100">
 							<g>
@@ -44,9 +44,9 @@
 					</div>
 				</div>
 				<h1 u init-with="p:[transform:translateY(-100px), opacity:0]"
-					when-academic-tile-init="a:[translateY:-100px:0px:750:easeOutSine:500:1:f, opacity:0:1:750:easeOutSine:500:1:f]">Chem 133</h1>
-				<h2 init-with="p:[transform:translateY(-100px), opacity:0]"
-					when-academic-tile-init="a:[translateY:-100px:0px:750:easeOutSine:500:1:f, opacity:0:1:750:easeOutSine:500:1:f]">Organic Chemistry</h2>
+					when-aca-top="a:[translateY:-100px:0px:750:easeOutSine:0:1:f, opacity:0:1:750:easeOutSine:0:1:f]">Chem 133</h1>
+				<h2 u init-with="p:[transform:translateY(-100px), opacity:0]"
+					when-aca-top="a:[translateY:-100px:0px:750:easeOutSine:0:1:f, opacity:0:1:750:easeOutSine:0:1:f]">Organic Chemistry</h2>
 			</div>
 			<div class="pf-tile-bottom"
 				u init-with="p:[transform-origin:center bottom, opacity:0, transform:translateY(-100px) scaleY(3)]"
@@ -95,18 +95,18 @@
 
 	<div class="pf-tile-container" ng-if='activeType === "baking"'
 		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-		on-init="s:[baking-tile-init:public]"
+		on-init="s:[baking-tile-init:public, bk-tile-top:depth(>2)]"
 		when-baking-tile-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f, translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
 		when-baking-tile-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:500:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:0:1:f, rotateY:0deg:30deg:1000:easeOutCubic:0:1:f, translateY:0px:-300px:1000:easeOutCubic:0:1:f]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-baking">
 			<div class="pf-tile-top" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');"
 				u init-with="p:[opacity:0]"
-				when-baking-tile-init="a:[opacity:0:1:500:easeOutSine:250:1:f]"
+				when-bk-tile-top="a:[opacity:0:1:500:easeOutSine:250:1:f]"
 				when-baking-tile-exit="a:[opacity:1:0:500:easeInSine:750:1:f]">
 				<div class="full-x flex-center preserve-3d m15bottom"
 					u init-with="p:[transform-origin:center top, transform:rotateX(180deg)]"
-					when-baking-tile-init="a:[rotateX:180deg:0deg:1000:easeInOutQuint:0:1:f, opacity:0:1:100:easeInOutQuint:0:1:f]"
+					when-bk-tile-top="a:[rotateX:180deg:0deg:1000:easeInOutQuint:0:1:f, opacity:0:1:100:easeInOutQuint:0:1:f]"
 					when-baking-tile-exit="a:[rotateX:0deg:180deg:1000:easeInOutQuint:0:1:f]">
 					<h1>
 						<span class="border"></span>
@@ -172,14 +172,14 @@
 
 	<div class="pf-tile-container" ng-if='activeType === "photo"'
 		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-		on-init="s:[photo-tile-init:public]"
+		on-init="s:[photo-tile-init:public, ph-info:children:500]"
 		when-photo-tile-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f, translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
 		when-photo-tile-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-photography">
 			<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-				u init-with="p:[opacity:0]"
-				when-photo-tile-init="a:[pf-photo-enter:750:easeInOutSine:500:1:f]"
+				u init-with="p:[clip-path:circle(0px at 50% 50%)]"
+				when-photo-tile-init="a:[pf-photo-enter:750:easeInOutSine:0:1:f]"
 				when-photo-tile-exit="a:[pf-photo-enter:750:easeInOutSine:0:1:r]"></div>
 			<div class="pf-tile-border">
 				<div>
@@ -188,39 +188,39 @@
 			</div>
 			<div class="pf-tile-bottom">
 				<h1 u init-with="p:[opacity:0]"
-					when-photo-tile-init="a:[opacity:0:1:250:easeOutSine:1000:1:f]">Professional Headshots</h1>
+					when-photo-tile-init="a:[opacity:0:1:250:easeOutSine:500:1:f]">Professional Headshots</h1>
 				<ul class="rating-stars" data-rating="4" data-half="true"
 					u on-init="s:[photo-stars:children:easeInQuad-500]:+1100">
 					<li u init-with="p:[opacity:0]"
-						when-photo-stars="a:[pf-bounceIn-rotate:500:easeOutSine:1100:1:f]">
+						when-photo-stars="a:[pf-bounceIn-rotate:500:easeOutSine:0:1:f]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
 					<li u init-with="p:[opacity:0]"
-						when-photo-stars="a:[pf-bounceIn-rotate:500:easeOutSine:1200:1:f]">
+						when-photo-stars="a:[pf-bounceIn-rotate:500:easeOutSine:0:1:f]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
 					<li u init-with="p:[opacity:0]"
-						when-photo-stars="a:[pf-bounceIn-rotate:500:easeOutSine:1300:1:f]">
+						when-photo-stars="a:[pf-bounceIn-rotate:500:easeOutSine:0:1:f]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
 					<li u init-with="p:[opacity:0]"
-						when-photo-stars="a:[pf-bounceIn-rotate:500:easeOutSine:1400:1:f]">
+						when-photo-stars="a:[pf-bounceIn-rotate:500:easeOutSine:0:1:f]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
 					<li u init-with="p:[opacity:0]"
-						when-photo-stars="a:[pf-bounceIn-rotate:500:easeOutSine:1500:1:f]">
+						when-photo-stars="a:[pf-bounceIn-rotate:500:easeOutSine:0:1:f]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -231,8 +231,7 @@
 					u init-with="p:[transform-origin:center center, opacity:0]"
 					when-photo-tile-init="a:[slideInUp-subtle:1000:easeOutSine:1000:1:f]">
 					<div class="pf-border"
-						u
-						when-photo-tile-init="s:[viewport-init:public]:delay-2000">
+						u on-init="s:[viewport-init:children:2000]">
 						<div u init-with="p:[transform:scaleX(0)]"
 							when-viewport-init="a:[scaleX:0:1:250:easeOutCubic:0:1:f]"></div>
 						<div u init-with="p:[transform:scaleY(0)]"
