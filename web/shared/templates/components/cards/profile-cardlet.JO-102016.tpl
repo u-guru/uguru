@@ -67,15 +67,16 @@
 				when-academic-cardlet-init="a:[translateX:7.5px:0px:450:easeOutSine:750:1:f, translateY:7.5px:0px:450:easeOutSine:750:1:f]">
 				<div class="pf-cardlet-bottom">
 					<div class="pf-cardlet-bg deco"></div>
-					<div class="pf-cardlet-border deco">
+					<div class="pf-cardlet-border deco"
+					 	u on-init="s:[aca-border:children]">
 						<div u init-with="p:[transform:scaleX(0)]"
-							when-academic-cardlet-init="a:[scaleX:0:1:1450:easeOutSine:0:1:f]"></div>
+							when-aca-border="a:[scaleX:0:1:1450:easeOutSine:0:1:f]"></div>
 						<div u init-with="p:[transform:scaleY(0)]"
-							when-academic-cardlet-init="a:[scaleY:0:1:1450:easeOutSine:0:1:f]"></div>
+							when-aca-border="a:[scaleY:0:1:1450:easeOutSine:0:1:f]"></div>
 						<div u init-with="p:[transform:scaleY(0)]"
-							when-academic-cardlet-init="a:[scaleY:0:1:1450:easeOutSine:0:1:f]"></div>
+							when-aca-border="a:[scaleY:0:1:1450:easeOutSine:0:1:f]"></div>
 						<div u init-with="p:[transform:scaleX(0)]"
-							when-academic-cardlet-init="a:[scaleX:0:1:1450:easeOutSine:0:1:f]"></div>
+							when-aca-border="a:[scaleX:0:1:1450:easeOutSine:0:1:f]"></div>
 					</div>
 					<h1 u init-with="p:[opacity:0]"
 						when-academic-cardlet-init="a:[zoomIn:400:(.8,.1,.41,.91):450:1:f]">Master the Cerebral Cortex</h1>
