@@ -6936,6 +6936,7 @@ a.course-card:active .course-card-hover {
       bottom: 0;
       left: 0; }
     .pf-tile-container a ~ .pf-tile, .pf-tile-container a ~ .pf-cardlet {
+      transition: all 500ms ease-out;
       transform-style: preserve-3d; }
       .pf-tile-container a ~ .pf-tile *, .pf-tile-container a ~ .pf-cardlet * {
         transform-style: preserve-3d; }
