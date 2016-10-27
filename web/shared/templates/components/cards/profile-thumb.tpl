@@ -1,67 +1,67 @@
 <div class="perspective-container full-xy flex-center p15xy" types='36, 48, 64, 72, 96, 128' default-type="128">
 	<div class="pf-thumb-36 pf-moola" ng-if='activeType === "36"'
-		init-with="p-op"
-		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]">
+		u init-with="p:[opacity:0]"
+		on-init="s:[36:children:50] | a:[bounceIn-subtle:1000:linear:0:1:f]">
 		<div class="top"
-			init-with="p:[transform:scaleY(0), tro:center top]"
-			on-init="p:[transform:scaleY(0):scaleY(1):450:easeOutBack]:delay-50"></div>
+			u init-with="p:[transform:scaleY(0), transform-origin:center top]"
+			when-36="a:[scaleY:0:1:450:easeOutBack:0:1:f]"></div>
 		<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=72);"
-			init-with="p-op"
-			on-init="a:[icon-enter:set:(dur:1000ms#func:linear):in:delay-150] | p:[tro:center top]"></span>
+			u init-with="p:[transform:scale(0), transform-origin:center top]"
+			when-36="a:[icon-rotate-enter:1000:linear:100:1:f]"></span>
 	</div>
 
 	<div class="pf-thumb-48 pf-moola" ng-if='activeType === "48"'
-		init-with="p-op"
-		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]">
+		u init-with="p:[opacity:0]"
+		on-init="s:[48:children:50] | a:[bounceIn-subtle:1000:linear:0:1:f]">
 		<div class="top"
-			init-with="p:[transform:scaleY(0), tro:center top]"
-			on-init="p:[transform:scaleY(0):scaleY(1):450:easeOutBack]:delay-50"></div>
+			u init-with="p:[transform:scaleY(0), transform-origin:center top]"
+			when-48="a:[scaleY:0:1:450:easeOutBack:0:1:f]"></div>
 		<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=96);"
-			init-with="p-op"
-			on-init="a:[icon-rotate-enter:set:(dur:1000ms#func:linear):in:delay-150] | p:[tro:center top]"></span>
+			u init-with="p:[transform:scale(0), transform-origin:center top]"
+			when-48="a:[icon-rotate-enter:1000:linear:100:1:f]"></span>
 	</div>
 
 	<div class="pf-thumb-64 pf-moola" ng-if='activeType === "64"'
-		init-with="p-op"
-		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]">
+		u init-with="p:[opacity:0]"
+		on-init="s:[64:children:50] | a:[bounceIn-subtle:1000:linear:0:1:f]">
 		<div class="top"
-			init-with="p:[transform:scaleY(0), tro:center top]"
-			on-init="p:[transform:scaleY(0):scaleY(1):450:easeOutBack]:delay-50"></div>
+			u init-with="p:[transform:scaleY(0), transform-origin:center top]"
+			when-64="a:[scaleY:0:1:450:easeOutBack:0:1:f]"></div>
 		<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=128);"
-			init-with="p-op"
-			on-init="a:[icon-rotate-enter:set:(dur:1000ms#func:linear):in:delay-150] | p:[tro:center top]"></span>
+			u init-with="p:[transform:scale(0), transform-origin:center top]"
+			when-64="a:[icon-rotate-enter:1000:linear:100:1:f]"></span>
 	</div>
 
 	<div class="pf-thumb-72 pf-moola" ng-if='activeType === "72"'
-		init-with="p-op"
-		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]">
+		u init-with="p:[opacity:0]"
+		on-init="s:[72:children:50] | a:[bounceIn-subtle:1000:linear:0:1:f]">
 		<div class="top"
-			init-with="p:[transform:scaleY(0), tro:center top]"
-			on-init="p:[transform:scaleY(0):scaleY(1):450:easeOutBack]:delay-50"></div>
+			u init-with="p:[transform:scaleY(0), transform-origin:center top]"
+			when-72="a:[scaleY:0:1:450:easeOutBack:0:1:f]"></div>
 		<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=144);"
-			init-with="p-op"
-			on-init="a:[icon-rotate-enter:set:(dur:1000ms#func:linear):in:delay-150]"></span>
+			u init-with="p:[transform:scale(0), transform-origin:center top]"
+			when-72="a:[icon-rotate-enter:1000:linear:100:1:f]"></span>
 	</div>
 
 	<div class="pf-thumb-96 pf-moola" ng-if='activeType === "96"'
-		init-with="p-op"
-		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]">
+		u init-with="p:[opacity:0]"
+		on-init="s:[96:children:50] | a:[bounceIn-subtle:1000:linear:0:1:f]">
 		<div class="top"
-			init-with="p:[transform:scaleY(0), tro:center top]"
-			on-init="p:[transform:scaleY(0):scaleY(1):450:easeOutBack]:delay-50"></div>
+			u init-with="p:[transform:scaleY(0), transform-origin:center top]"
+			when-96="a:[scaleY:0:1:450:easeOutBack:0:1:f]"></div>
 		<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=192);"
-			init-with="p-op"
-			on-init="a:[icon-rotate-enter:set:(dur:1000ms#func:linear):in:delay-150]"></span>
+			u init-with="p:[transform:scale(0), transform-origin:center top]"
+			when-96="a:[icon-rotate-enter:1000:linear:100:1:f]"></span>
 	</div>
 
 	<div class="pf-thumb-128 pf-moola" ng-if='activeType === "128"'
-		init-with="p-op"
-		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]">
+		u init-with="p:[opacity:0]"
+		on-init="s:[128:children:50] | a:[bounceIn-subtle:1000:linear:0:1:f]">
 		<div class="top"
-			init-with="p:[transform:scaleY(0), tro:center top]"
-			on-init="p:[transform:scaleY(0):scaleY(1):450:easeOutBack]:delay-50"></div>
+			u init-with="p:[transform:scaleY(0), transform-origin:center top]"
+			when-128="a:[scaleY:0:1:450:easeOutBack:0:1:f]"></div>
 		<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=256);"
-			init-with="p-op"
-			on-init="a:[icon-rotate-enter:set:(dur:1000ms#func:linear):in:delay-150]"></span>
+			u init-with="p:[transform:scale(0), transform-origin:center top]"
+			when-128="a:[icon-enter:1000:linear:100:1:f]"></span>
 	</div>
 </div>
