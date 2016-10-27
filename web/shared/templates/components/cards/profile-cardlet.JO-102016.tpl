@@ -1,8 +1,8 @@
 <div class="perspective-container full-xy flex-center p15xy" types='default, academic, baking, photo, tech, household' default-type="default">
 	<div class="pf-tile-container" ng-if='activeType === "default"'
 		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-		on-init="s:[default-cardlet-init:public]"
-		when-default-cardlet-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f,  translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f] | s:[default-ribbon:public]:delay-500"
+		on-init="s:[default-cardlet-init:public, default-ribbon:children:500]"
+		when-default-cardlet-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f,  translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
 		when-default-cardlet-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-cardlet highlight">
@@ -16,12 +16,13 @@
 				when-default-cardlet-init="a:[translateX:-7.5px:0px:450:easeOutSine:500:1:f, translateY:-7.5px:0px::450:easeOutSine:500:1:f]">
 				<div class="pf-cardlet-back" style="background-image: url('http://cdn1.pri.org/sites/default/files/styles/story_main/public/story/images/leonardo_da_vinci_studi_di_carri_dassalto_falcati_0.jpg?itok=V1_nRmK3');"></div>
 			</div>
-			<div class="pf-cardlet-bottom-container">
+			<div class="pf-cardlet-bottom-container"
+			 	u on-init="s:[default-bottom:children]">
 				<div class="pf-cardlet-bottom">
 					<h1 u init-with="p:[opacity:0, transform:translateY(10%)]"
-						when-default-cardlet-init="a:[opacity:0:1:400:linear:0:1:f, translateY:10%:0%:600:easeOutExpo:0:1:f]">Leonardo da Vinci</h1>
+						when-default-bottom="a:[opacity:0:1:400:linear:0:1:f, translateY:10%:0%:600:easeOutExpo:0:1:f]">Leonardo da Vinci</h1>
 					<div u init-with="p:[opacity:0, transform:translateY(10%)]"
-						when-default-cardlet-init="a:[opacity:0:1:400:linear:200:1:f, translateY:10%:0%:600:easeOutExpo:200:1:f]">
+						when-default-bottom="a:[opacity:0:1:400:linear:200:1:f, translateY:10%:0%:600:easeOutExpo:200:1:f]">
 						<h3>Created</h3>
 						<h2>03/28/2016</h2>
 					</div>
