@@ -1,15 +1,15 @@
 <div class="perspective-container full-xy flex-center p15xy" types='single, stack'>
 	<div style="min-width: 300px" ng-if='activeType === "single"'
 		u init-with="p:[opacity:0, transform-origin:center bottom]"
-		on-init="s:[pf-card-init:self, pf-card-single-init:public:500]"
+		on-init="s:[pf-card-init:self, pf-card-single-init:children:500]"
 		when-pf-card-init="a:[zoom-enter:800:linear:0:1:f]">
 		<div class="pf-card pf-card-photography">
 			<div class="pf-card-top">
-				<ul>
+				<ul u on-init="s:[strip-enter:children:500]">
 					<li u init-with="p:[opacity:0]"
-						when-pf-card-single-init="a:[opacity:0:1:800:(.8,.1,1,.05):0:1:f]">Gabrielle's Shop</li>
+						when-strip-enter="a:[opacity:0:1:800:(.8,.1,1,.05):0:1:f]">Gabrielle's Shop</li>
 					<li u init-with="p:[opacity:0]"
-						when-pf-card-single-init="a:[fadeInRight:800:(.8,.1,1,.05):250:1:f]">
+						when-strip-enter="a:[fadeInRight:800:(.8,.1,1,.05):250:1:f]">
 						<span><span data-rank="25">25</span>&nbsp;Percentile</span>
 					</li>
 				</ul>
@@ -110,8 +110,8 @@
 	<ul class="pf-card-stack slate" ng-if='activeType === "stack"'>
 		<li u init-with="p:[tr:translateY(-30px) scale(0.8)]">
 			<div style="min-width: 300px"
-				u init-with="p:[opacity:0, transform-origin:center bottom]"
-				when-pf-card-2-init="s:[pf-card-3-init:public:700]"
+				u init-with="p:[tr:scale(0), transform-origin:center bottom]"
+				on-init="s:[pf-card-3-init:self:1500]"
 				when-pf-card-3-init="a:[back-stack:1000:linear:0:1:f]">
 				<div class="pf-card pf-card-household"
 					u init-with="p:[op:0.5]">
@@ -204,8 +204,8 @@
 
 		<li u init-with="p:[tr:translateY(-15px) scale(0.9)]">
 			<div style="min-width: 300px"
-				u init-with="p:[op:0, transform-origin:center bottom]"
-				when-pf-card-1-init="s:[pf-card-2-init:public:700]"
+				u init-with="p:[tr:scale(0), transform-origin:center bottom]"
+				on-init="s:[pf-card-2-init:self:1000]"
 				when-pf-card-2-init="a:[back-stack:1000:linear:0:1:f]">
 				<div class="pf-card pf-card-athletic"
 					u init-with="p:[op:0.75]">
@@ -298,15 +298,15 @@
 		<li>
 			<div style="min-width: 300px"
 				u init-with="p:[opacity:0, transform-origin:center bottom]"
-				on-init="s:[pf-card-1:self, pf-card-1-init:public]"
+				on-init="s:[pf-card-1:self, pf-card-1-init:children]"
 				when-pf-card-1-init="a:[zoom-enter:800:linear:0:1:f]">
 				<div class="pf-card pf-card-photography">
 					<div class="pf-card-top">
-						<ul>
+						<ul u on-init="s:[strip-card-1:children]">
 							<li u init-with="p:[opacity:0]"
-								when-pf-card-1-init="a:[opacity:0:1:800:(.8,.1,1,.05):0:1:f]">Gabrielle's Shop</li>
+								when-strip-card-1="a:[opacity:0:1:800:(.8,.1,1,.05):0:1:f]">Gabrielle's Shop</li>
 							<li u init-with="p:[opacity:0]"
-								when-pf-card-1-init="a:[fadeInRight:800:(.8,.1,1,.05):250:1:f]">
+								when-strip-card-1="a:[fadeInRight:800:(.8,.1,1,.05):250:1:f]">
 								<span><span data-rank="25">25</span>&nbsp;Percentile</span>
 							</li>
 						</ul>

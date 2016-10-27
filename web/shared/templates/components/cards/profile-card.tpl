@@ -1,27 +1,27 @@
-<div class="perspective-container full-xy flex-center p15xy" types='single, stack' default-type="stack">
+<div class="perspective-container full-xy flex-center p15xy" types='single, stack'>
 	<div style="min-width: 300px" ng-if='activeType === "single"'
-		init-with="p:[op:0, tro:center bottom]"
-		on-init="s:[pf-card-1-init:public]"
-		when-pf-card-1-init="a:[scoop-enter:set:(dur:800ms#func:linear):in] | s:[pf-card-2-init:public:delay-300]">
+		u init-with="p:[opacity:0, transform-origin:center bottom]"
+		on-init="s:[pf-card-init:self, pf-card-single-init:children:500]"
+		when-pf-card-init="a:[zoom-enter:800:linear:0:1:f]">
 		<div class="pf-card pf-card-photography">
 			<div class="pf-card-top">
-				<ul>
-					<li init-with="p-op"
-						when-pf-card-1-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]">Gabrielle's Shop</li>
-					<li init-with="p-op"
-						when-pf-card-1-init="a:[fadeInRight:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-250]">
+				<ul u on-init="s:[strip-enter:children:500]">
+					<li u init-with="p:[opacity:0]"
+						when-strip-enter="a:[opacity:0:1:800:(.8,.1,1,.05):0:1:f]">Gabrielle's Shop</li>
+					<li u init-with="p:[opacity:0]"
+						when-strip-enter="a:[fadeInRight:800:(.8,.1,1,.05):250:1:f]">
 						<span><span data-rank="25">25</span>&nbsp;Percentile</span>
 					</li>
 				</ul>
 				<span class="user-icon"  style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=800);"
-					init-with="p-op"
-					when-pf-card-1-init="a:[icon-enter:set:(dur:1000ms#func:linear):in:delay-150]"></span>
+					u init-with="p:[transform:scale(0)]"
+					when-pf-card-single-init="a:[icon-enter:1000:linear:150:1:f]"></span>
 			</div>
 			<div class="pf-card-main">
-				<h1 class="verified">
-					<span class="inline"
-						init-with="p-op"
-						when-pf-card-1-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]">Gabrielle Wee</span>
+				<h1 class="verified"
+					u init-with="p:[opacity:0]"
+					when-pf-card-single-init="a:[opacity:0:1:800:easeOutQuart:0:1:f]">
+					<span class="inline">Gabrielle Wee</span>
 					<span class="inline">
 						<span>
 							<svg preserveAspectRatio="xMidYMax meet" viewBox="0 0 100 100">
@@ -32,39 +32,40 @@
 					</span>
 				</h1>
 				<h2 class="pf-school"
-					init-with="p-op"
-					when-pf-card-1-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]">UC Berkeley</h2>
-				<ul class="pf-rating" data-rating="4" data-half="true">
-					<li init-with="p-op"
-						when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-500]">
+					u init-with="p:[opacity:0]"
+					when-pf-card-single-init="a:[opacity:0:1:800:(.8,.1,1,.05):0:1:f]">UC Berkeley</h2>
+				<ul class="pf-rating" data-rating="4" data-half="true"
+					u on-init="s:[rating-1:children:easeInExpo-750]:+500">
+					<li u init-with="p:[opacity:0, tro:center center]"
+						when-rating-1="a:[bounceIn-rotate-subtle:500:easeOutSine:0:1:f]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
-					<li init-with="p-op"
-						when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-600]">
+					<li u init-with="p:[opacity:0, tro:center center]"
+						when-rating-1="a:[bounceIn-rotate-subtle:500:easeOutSine:100:1:f]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
-					<li init-with="p-op"
-						when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-700]">
+					<li  u init-with="p:[opacity:0, tro:center center]"
+						when-rating-1="a:[bounceIn-rotate-subtle:500:easeOutSine:200:1:f]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
-					<li init-with="p-op"
-						when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-800]">
+					<li  u init-with="p:[opacity:0, tro:center center]"
+						when-rating-1="a:[bounceIn-rotate-subtle:500:easeOutSine:300:1:f]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
-					<li init-with="p-op"
-						when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-900]">
+					<li  u init-with="p:[opacity:0, tro:center center]"
+						when-rating-1="a:[bounceIn-rotate-subtle:500:easeOutSine:400:1:f]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -72,11 +73,11 @@
 					</li>
 				</ul>
 				<span class="pf-review-amt"
-					init-with="p-op"
-					when-pf-card-1-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-1000]">3 Reviews</span>
+					u init-with="p:[opacity:0]"
+					when-pf-card-single-init="a:[opacity:0:1:1000:(.8,.1,1,.05):1000:0:1:f]">3 Reviews</span>
 				<ul class="pf-card-thumbs"
-					init-with="p-op"
-					when-pf-card-1-init="a:[scoop-enter:set:(dur:1200ms#func:linear):in:delay-1000]">
+					u init-with="p:[opacity:0]"
+					when-pf-card-single-init="a:[zoom-enter:1200:linear:0:1:f]:delay-1000]">
 					<li>
 						<a>
 							<span></span>
@@ -106,24 +107,23 @@
 		</div>
 	</div>
 	<!-- Go to line 327 on AdminPropertyController to add-->
-	<ul class="pf-card-stack slate" ng-if='activeType === "stack"' inspector-elem>
-		<li init-with="p:[tr:translateY(-30px) scale(0.8)]">
+	<ul class="pf-card-stack slate" ng-if='activeType === "stack"'>
+		<li u init-with="p:[tr:translateY(-30px) scale(0.8)]">
 			<div style="min-width: 300px"
-				init-with="p:[op:0, tro:center bottom]"
-				when-pf-card-3-init="a:[back-stack:set:(dur:1000ms#func:linear):in]">
+				u init-with="p:[tr:scale(0), transform-origin:center bottom]"
+				on-init="s:[pf-card-3-init:self:1500]"
+				when-pf-card-3-init="a:[back-stack:1000:linear:0:1:f]">
 				<div class="pf-card pf-card-household"
-					init-with="p:[op:0.5]">
+					u init-with="p:[op:0.5]">
 					<div class="pf-card-top">
 						<ul>
-							<li init-with="p-op"
-								when-pf-card-3-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]">Gabrielle's Shop</li>
-							<li init-with="p-op"
-								when-pf-card-3-init="a:[fadeInRight:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-250]">
+							<li>Gabrielle's Shop</li>
+							<li>
 								<span><span data-rank="25">25</span>&nbsp;Percentile</span>
 							</li>
 						</ul>
 
-						<span class="user-icon"  style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=800);"></span>
+						<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=800);"></span>
 					</div>
 					<div class="pf-card-main">
 						<h1 class="verified">
@@ -202,18 +202,17 @@
 			</div>
 		</li>
 
-		<li init-with="p:[tr:translateY(-15px) scale(0.9)]">
+		<li u init-with="p:[tr:translateY(-15px) scale(0.9)]">
 			<div style="min-width: 300px"
-				init-with="p:[op:0, tro:center bottom]"
-				when-pf-card-2-init="a:[back-stack:set:(dur:1000ms#func:linear):in]| s:[pf-card-3-init:public:delay-300]">
+				u init-with="p:[tr:scale(0), transform-origin:center bottom]"
+				on-init="s:[pf-card-2-init:self:1000]"
+				when-pf-card-2-init="a:[back-stack:1000:linear:0:1:f]">
 				<div class="pf-card pf-card-athletic"
-					init-with="p:[op:0.75]">
+					u init-with="p:[op:0.75]">
 					<div class="pf-card-top">
 						<ul>
-							<li init-with="p-op"
-								when-pf-card-2-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]">Gabrielle's Shop</li>
-							<li init-with="p-op"
-								when-pf-card-2-init="a:[fadeInRight:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-250]">
+							<li>Gabrielle's Shop</li>
+							<li>
 								<span><span data-rank="25">25</span>&nbsp;Percentile</span>
 							</li>
 						</ul>
@@ -298,28 +297,28 @@
 
 		<li>
 			<div style="min-width: 300px"
-				init-with="p:[op:0, tro:center bottom]"
-				on-init="s:[pf-card-1-init:public]"
-				when-pf-card-1-init="a:[scoop-enter:set:(dur:800ms#func:linear):in] | s:[pf-card-2-init:public:delay-300]">
+				u init-with="p:[opacity:0, transform-origin:center bottom]"
+				on-init="s:[pf-card-1:self, pf-card-1-init:children]"
+				when-pf-card-1-init="a:[zoom-enter:800:linear:0:1:f]">
 				<div class="pf-card pf-card-photography">
 					<div class="pf-card-top">
-						<ul  inspector-elem >
-							<li init-with="p-op"
-								when-pf-card-1-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]">Gabrielle's Shop</li>
-							<li init-with="p-op"
-								when-pf-card-1-init="a:[fadeInRight:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-250]">
+						<ul u on-init="s:[strip-card-1:children]">
+							<li u init-with="p:[opacity:0]"
+								when-strip-card-1="a:[opacity:0:1:800:(.8,.1,1,.05):0:1:f]">Gabrielle's Shop</li>
+							<li u init-with="p:[opacity:0]"
+								when-strip-card-1="a:[fadeInRight:800:(.8,.1,1,.05):250:1:f]">
 								<span><span data-rank="25">25</span>&nbsp;Percentile</span>
 							</li>
 						</ul>
 						<span class="user-icon"  style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=800);"
-							init-with="p-op"
-							when-pf-card-1-init="a:[icon-enter:set:(dur:1000ms#func:linear):in:delay-150]"></span>
+							u init-with="p:[transform:scale(0)]"
+							when-pf-card-1-init="a:[icon-enter:1000:linear:150:1:f]"></span>
 					</div>
 					<div class="pf-card-main">
-						<h1 class="verified">
-							<span class="inline"
-								init-with="p-op"
-								when-pf-card-1-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]">Gabrielle Wee</span>
+						<h1 class="verified"
+							u init-with="p:[opacity:0]"
+							when-pf-card-1-init="a:[opacity:0:1:800:easeOutQuart:0:1:f]">
+							<span class="inline">Gabrielle Wee</span>
 							<span class="inline">
 								<span>
 									<svg preserveAspectRatio="xMidYMax meet" viewBox="0 0 100 100">
@@ -330,39 +329,40 @@
 							</span>
 						</h1>
 						<h2 class="pf-school"
-							init-with="p-op"
-							when-pf-card-1-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]">UC Berkeley</h2>
-						<ul class="pf-rating" data-rating="4" data-half="true">
-							<li init-with="p-op"
-								when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-500]">
+							u init-with="p:[opacity:0]"
+							when-pf-card-1-init="a:[opacity:0:1:800:(.8,.1,1,.05):0:1:f]">UC Berkeley</h2>
+						<ul class="pf-rating" data-rating="4" data-half="true"
+							u on-init="s:[rating-1:children:easeInExpo-750]:+500">
+							<li u init-with="p:[opacity:0, tro:center center]"
+								when-rating-1="a:[bounceIn-rotate-subtle:500:easeOutSine:0:1:f]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
 							</li>
-							<li init-with="p-op"
-								when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-600]">
+							<li u init-with="p:[opacity:0, tro:center center]"
+								when-rating-1="a:[bounceIn-rotate-subtle:500:easeOutSine:100:1:f]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
 							</li>
-							<li init-with="p-op"
-								when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-700]">
+							<li  u init-with="p:[opacity:0, tro:center center]"
+								when-rating-1="a:[bounceIn-rotate-subtle:500:easeOutSine:200:1:f]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
 							</li>
-							<li init-with="p-op"
-								when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-800]">
+							<li  u init-with="p:[opacity:0, tro:center center]"
+								when-rating-1="a:[bounceIn-rotate-subtle:500:easeOutSine:300:1:f]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
 							</li>
-							<li init-with="p-op"
-								when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-900]">
+							<li  u init-with="p:[opacity:0, tro:center center]"
+								when-rating-1="a:[bounceIn-rotate-subtle:500:easeOutSine:400:1:f]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -370,11 +370,11 @@
 							</li>
 						</ul>
 						<span class="pf-review-amt"
-							init-with="p-op"
-							when-pf-card-1-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-1000]">3 Reviews</span>
+							u init-with="p:[opacity:0]"
+							when-pf-card-1-init="a:[opacity:0:1:1000:(.8,.1,1,.05):1000:0:1:f]">3 Reviews</span>
 						<ul class="pf-card-thumbs"
-							init-with="p-op"
-							when-pf-card-1-init="a:[scoop-enter:set:(dur:1200ms#func:linear):in:delay-1000]">
+							u init-with="p:[opacity:0]"
+							when-pf-card-1-init="a:[zoom-enter:1200:linear:0:1:f]:delay-1000]">
 							<li>
 								<a>
 									<span></span>
