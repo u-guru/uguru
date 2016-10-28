@@ -577,6 +577,68 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
+    .directive("gridItem", ["CompService", "$compile", function(CompService, $compile) {
+        return {
+            restrict: 'E',
+            replace:true,
+            transclude:true,
+            priority: 100,
+            template: '<div class="flex"></div>',
+            compile: function(element, attr, transclude) {
+                attr.spacing && attr.spacing === 'center' && element.addClass('flex-center')
+                if (attr.width) {
+                    if (attr.width.indexOf('%') === -1 && attr.width.indexOf('px') === -1) {
+                        element.css('width', attr.width + '%')
+                    } else {
+                        element.css('width', attr.width)
+                    }
+                }
+                if (attr.height) {
+                    if (attr.height.indexOf('%') === -1 && attr.height.indexOf('px') === -1) {
+                        element.css('height', attr.height + '%')
+                    } else {
+                        element.css('height', attr.height)
+                    }
+                }
+                if (attr.type && attr.type === 'row') {
+                    element.addClass('flex-wrap-center', 'flex-wrap')
+                }
+                return {
+                    pre: function preLink(lScope, lElem, lAttr, transcludeFn) {
+
+                            transclude(lScope, function(clone, innerScope) {
+                                lElem.append(clone)
+                            })
+                    }
+                }
+            }
+        }
+    }])
+    .directive("gridView", ["CompService", "$compile", function(CompService, $compile) {
+        return {
+            restrict: 'E',
+            replace:true,
+            transclude:true,
+            priority: 100,
+            template: '<div class="flex absolute full-xy left-0 top-0"></div>',
+            compile: function(element, attr, transclude) {
+                if (attr.type && attr.type === 'column') {
+                    element.addClass('flex-vertical-center')
+                }
+                if (attr.type && attr.type === 'row') {
+                    element.addClass('flex-wrap-center', 'flexwrap')
+                }
+                return {
+                    pre: function preLink(lScope, lElem, lAttr, transcludeFn) {
+
+                            transclude(lScope, function(clone, innerScope) {
+                                lElem.append(clone)
+                            })
+                    }
+                }
+            }
+        }
+    }])
     .directive("grid", ["CompService", "$compile", function(CompService, $compile) {
         return {
             restrict: 'E',
