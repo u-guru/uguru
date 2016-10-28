@@ -176,8 +176,8 @@
 		<div class="pf-tile bg-photography">
 			<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
 				u init-with="p:[clip-path:circle(0px at 50% 50%)]"
-				when-photo-tile-init="a:[pf-photo-enter:750:easeInOutSine:500]"
-				when-photo-tile-exit="a:[pf-photo-enter:750:easeInOutSine#dir:reverse):out]"></div>
+				when-photo-tile-init="a:[pf-photo-enter:750:easeInOutSine:500:1:f]"
+				when-photo-tile-exit="a:[pf-photo-enter:750:easeInOutSine:0:1:f]"></div>
 			<div class="pf-tile-border">
 				<div>
 					Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -187,37 +187,37 @@
 				<h1 u init-with="p:[opacity:0]"
 					when-photo-tile-init="a:[opacity:0:1:250:easeOutSine:0:1:f]:delay-1000">Professional Headshots</h1>
 				<ul class="rating-stars" data-rating="4" data-half="true"
-					u on-init="s:[ph-stars:children:easeInSine-500]:+1100">
+					u on-init="s:[ph-stars:children:easeInSine-700]:+1100">
 					<li u init-with="p:[opacity:0]"
-						when-ph-stars="a:[pf-bounceIn-rotate:500:easeOutSine:1100:1:f]">
+						when-ph-stars="a:[bounceIn-rotate-subtle:500:easeOutSine:1100:1:f]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
 					<li u init-with="p:[opacity:0]"
-						when-ph-stars="a:[pf-bounceIn-rotate:500:easeOutSine:1200:1:f]">
+						when-ph-stars="a:[bounceIn-rotate-subtle:500:easeOutSine:1200:1:f]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
 					<li u init-with="p:[opacity:0]"
-						when-ph-stars="a:[pf-bounceIn-rotate:500:easeOutSine:1300:1:f]">
+						when-ph-stars="a:[bounceIn-rotate-subtle:500:easeOutSine:1300:1:f]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
 					<li u init-with="p:[opacity:0]"
-						when-ph-stars="a:[pf-bounceIn-rotate:500:easeOutSine:1400:1:f]">
+						when-ph-stars="a:[bounceIn-rotate-subtle:500:easeOutSine:1400:1:f]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
 					<li u init-with="p:[opacity:0]"
-						when-ph-stars="a:[pf-bounceIn-rotate:500:easeOutSine:1500:1:f]">
+						when-ph-stars="a:[bounceIn-rotate-subtle:500:easeOutSine:1500:1:f]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
