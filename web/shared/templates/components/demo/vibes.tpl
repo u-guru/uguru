@@ -1,7 +1,7 @@
 <grid-view type='row'>
     <grid-item class='bg-charcoal' width='100' height='40' spacing='center'>
         <div class="border-10 width-25p height-100 p30xy">
-			<span class="txt-center txt-72 weight-700">VIBES.CLUB</span>
+			<span class="txt-center txt-72 weight-700 p15xy">VIBES.CLUB</span>
 		</div>
     </grid-item>
     <grid-item class='bg-slate' width='100' height='20' spacing='center'>
