@@ -1,6 +1,6 @@
 <div class="full-xy flex-center perspective-container" types='gabrielle, jeselle, jason, samir' default-type="gabrielle">
 	<div class="team-card-container team-gabrie" ng-if='activeType === "gabrielle"'
-		u on-init="s:[gabrie-enter:public]"
+		u on-init="s:[gabrie-enter:depth(>2)]"
 		when-gabrie-exit="a:[translateY:0px:-200px:1000:easeOutSine:0:1:f, rotateX:0deg:90deg:1000:easeOutSine:0:1:f, rotateY:50deg:15deg:1000:easeOutSine:0:1:f]">
 		<a></a><a></a><a></a><a></a><a></a><a></a>
 		<div class="team-card"
@@ -19,7 +19,7 @@
 			<div class="team-photo" style="background-image: url('/shared/images/gabrielle.jpg')"
 				u init-with="p:[op:0, tr:scale(0.5) rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
 				when-gabrie-enter="p:[op:1] | a:[scale:0.5:1:800:easeOutBack:0:1:f, rotateX:70deg:0deg:800:easeOutBack:0:1:f, rotateY:-15deg:0deg:800:easeOutBack:0:1:f, translateY:-1000px:0px:800:easeOutBack:0:1:f]"></div>
-			<div u on-init="s:[gabrie-icon-enter:depth(>2):800]">
+			<div u on-init="s:[gabrie-icon-enter:depth(>2):800, gabrie-team-info:depth(>2):800]">
 				<div class="team-link"
 					u init-with="p:[transform:scaleX(0), tro:center center]"
 					when-gabrie-icon-enter="a:[scaleX:0:1:1000:easeOutBack:0:1:f]">
@@ -83,7 +83,7 @@
 				</div>
 				<div class="team-info"
 					u init-with="p:[tr:translateY(-250px), op:0]"
-					when-gabrie-enter="a:[translateY:-250px:0px:300:easeOutBack:0:1:f, opacity:0:1:150:linear:0:1:f]:delay-800">
+					when-gabrie-team-info="a:[translateY:-250px:0px:300:easeOutBack:0:1:f, opacity:0:1:150:linear:0:1:f]">
 					<h2>UI Developer</h2>
 					<h2>SAE Ex'pression College</h2>
 				</div>
@@ -92,7 +92,7 @@
 	</div>
 
 	<div class="team-card-container team-jeselle" ng-if='activeType === "jeselle"'
-		u on-init="s:[jeselle-enter:public]"
+		u on-init="s:[jeselle-enter:grandchildren]"
 		when-jeselle-exit="a:[translateY:0px:-200px:1000:easeOutSine:0:1:f, rotateX:0deg:90deg:1000:easeOutSine:0:1:f, rotateY:50deg:15deg:1000:easeOutSine:0:1:f]">
 		<a></a><a></a><a></a><a></a><a></a><a></a>
 		<div class="team-card"
@@ -111,7 +111,7 @@
 			<div class="team-photo" style="background-image: url('/shared/images/jeselle.jpg')"
 				u init-with="p:[op:0, tr:scale(0.5) rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
 				when-jeselle-enter="p:[op:1] | a:[scale:0.5:1:800:easeOutBack:0:1:f, rotateX:70deg:0deg:800:easeOutBack:0:1:f, rotateY:-15deg:0deg:800:easeOutBack:0:1:f, translateY:-1000px:0px:800:easeOutBack:0:1:f]"></div>
-			<div u on-init="s:[jeselle-icon-enter:depth(>2):800]">
+			<div u on-init="s:[jeselle-icon-enter:depth(>2):800, jeselle-team-info:children:500]">
 	            <div class="team-link"
 					u init-with="p:[tro:center center, tr:scaleX(0)]"
 					when-jeselle-icon-enter="a:[scaleInX-subtle:1000:linear:0:1:f]">
@@ -180,7 +180,7 @@
 				</div>
 				<div class="team-info"
 					u init-with="p:[op:0, tr:translateY(-250px)]"
-					when-jeselle-enter="a:[translateY:-250px:0px:300:easeOutSine:0:1:f, opacity:0:1:50:easeOutSine:0:1:f]:delay-500">
+					when-jeselle-team-info="a:[translateY:-250px:0px:300:easeOutSine:0:1:f, opacity:0:1:50:easeOutSine:0:1:f]">
 					<h2>Product &amp; Graphic Designer</h2>
 					<h2>University of Illinois at Urbana</h2>
 				</div>
@@ -189,7 +189,7 @@
 	</div>
 
 	<div class="team-card-container team-jason" ng-if='activeType === "jason"'
-		u on-init="s:[jason-enter:public]"
+		u on-init="s:[jason-enter:grandchildren]"
 		when-jason-exit="a:[translateY:0px:-200px:1000:easeOutSine:0:1:f, rotateX:0deg:90deg:1000:easeOutSine:0:1:f, rotateY:50deg:15deg:1000:easeOutSine:0:1:f]">
 		<a></a><a></a><a></a><a></a><a></a><a></a>
 		<div class="team-card"
@@ -245,7 +245,7 @@
 						when-jason-icon-enter="a:[opacity:0:1:500:easeOutSine:0:1:f]:delay-200">Jason Huang</h1>
 	            </div>
 				<div class="team-ribbon"
-				 	u on-init="s:[jason-ribbon-expand:depth(>2):1800"]>
+				 	u on-init="s:[jason-ribbon-expand:depth(>2):1800, jason-team-info:siblings:500]">
 					<div class="team-ribbon-center"
 						u init-with="p:[tr:scaleX(0), tro:center center]"
 						when-jason-ribbon-expand="a:[scaleX:0:1:800:easeOutSine:0:1:f]:delay-400">
@@ -265,7 +265,7 @@
 				</div>
 				<div class="team-info"
 					u init-with="p:[op:0, tr:translateY(-250px)]"
-					when-jason-enter="a:[translateY:-250px:0px:300:easeOutSine:0:1:f, opacity:0:1:50:easeOutSine:0:1:f]:delay-500">
+					when-jason-team-info="a:[translateY:-250px:0px:300:easeOutSine:0:1:f, opacity:0:1:50:easeOutSine:0:1:f]">
 					<h2>QA Engineer</h2>
 					<h2>San Jose State University</h2>
 				</div>
@@ -274,7 +274,7 @@
 	</div>
 
 	<div class="team-card-container team-samir" ng-if='activeType === "samir"'
-		u on-init="s:[samir-enter:public]"
+		u on-init="s:[samir-enter:grandchildren]"
 		when-samir-exit="a:[translateY:0px:-200px:1000:easeOutSine:0:1:f, rotateX:0deg:90deg:1000:easeOutSine:0:1:f, rotateY:50deg:15deg:1000:easeOutSine:0:1:f]">
 		<a></a><a></a><a></a><a></a><a></a><a></a>
 		<div class="team-card"
@@ -293,7 +293,7 @@
 			<div class="team-photo" style="background-image: url('/shared/images/samir.jpg')"
 				u init-with="p:[op:0, tr:scale(0.5) rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
 				when-samir-enter="p:[op:1] | a:[scale:0.5:1:800:easeOutBack:0:1:f, rotateX:70deg:0deg:800:easeOutBack:0:1:f, rotateY:-15deg:0deg:800:easeOutBack:0:1:f, translateY:-1000px:0px:800:easeOutBack:0:1:f]"></div>
-			<div u on-init="s:[samir-icon-enter:depth(>2):800]">
+			<div u on-init="s:[samir-icon-enter:depth(>2):800, samir-team-info:children:500]">
 	            <div class="team-link"
 					u init-with="p-op"
 					when-samir-icon-enter="a:[scaleInX-subtle:1000:linear:0:1:f]">
@@ -347,7 +347,7 @@
 				</div>
 				<div class="team-info"
 					u init-with="p:[op:0, tr:translateY(-250px)]"
-					when-samir-enter="a:[translateY:-250px:0px:300:easeOutSine:0:1:f, opacity:0:1:50:easeOutSine:0:1:f]:delay-500">
+					when-samir-team-info="a:[translateY:-250px:0px:300:easeOutSine:0:1:f, opacity:0:1:50:easeOutSine:0:1:f]">
 					<h2>Founder</h2>
 					<h2>UC Berkeley</h2>
 				</div>
