@@ -1,20 +1,17 @@
 <div class="perspective-container full-xy flex-center p15xy"
-	init-default
-	on-init="s:[record-tile-init:public]">
-	<div class="record-tile-container"
-		on-mouse-enter="s:[record-mouse-enter:public]"
-		on-mouse-leave="s:[record-mouse-leave:public]">
+	u on-init="s:[record-tile-init:depth(>2):250]">
+	<div class="record-tile-container">
 		<a class="record-tile">
 			<svg viewBox="0 0 100 100">
 				<rect x="0" y="0" width="100" height="100"></rect>
 			</svg>
 			<div class="record-tile-back"
-				init-with="p:[tr:translateX(-7.5%)]"
-				when-record-tile-init="p:[transform:translateX(-7.5%):translateX(0%):1000:easeOutSine]:delay-750">
-				<div init-with="p:[tro:center center, tr:rotate(0)]"
-					when-record-tile-init="p:[transform:rotate(0deg):rotate(40deg):1000:easeOutBack]:delay-1750">
-					<svg viewBox="0 0 320 320" init-with="p-op"
-						when-record-tile-init="p:[opacity:0:1:500:easeOutQuint]:delay-250">
+				u init-with="p:[tr:translateX(-7.5%)]"
+				when-record-tile-init="a:[translateX:-7.5%:0%:1000:easeOutSine:0:1:f]:delay-500">
+				<div u init-with="p:[tro:center center, tr:rotate(0)]"
+					when-record-tile-init="a:[rotate:0deg:40deg:1000:easeOutBack:0:1:f]:delay-1500">
+					<svg viewBox="0 0 320 320" u init-with="p-op"
+						when-record-tile-init="a:[opacity:0:1:500:easeOutQuint:0:1:f]">
 						<defs>
 							<filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="vinyl-shine">
 								<feGaussianBlur stdDeviation="8" in="SourceGraphic"></feGaussianBlur>
@@ -39,33 +36,33 @@
 				</div>
 			</div>
 			<div class="record-tile-front"
-				init-with="p:[tr:translateX(7.5%)]"
-				when-record-tile-init="p:[transform:translateX(7.5%):translateX(0%):1000:easeOutSine]:delay-750">
+				u init-with="p:[tr:translateX(7.5%)]"
+				when-record-tile-init="a:[translateX:7.5%:0%:1000:easeOutSine:0:1:f]:delay-750">
 				<div class="record-tile-bg"
-					init-with="p-op"
-					when-record-tile-init="p:[opacity:0:1:250:easeOutSine]:delay-50"></div>
+					u init-with="p-op"
+					when-record-tile-init="a:[opacity:0:1:250:easeOutSine:0:1:f]:delay-50"></div>
 				<div class="record-tile-border">
-					<div init-with="p:[tr:scaleX(0)]"
-						when-record-tile-init="p:[transform:scaleX(0):scaleX(1):500:easeOutExpo]"></div>
-					<div init-with="p:[tr:scaleY(0)]"
-						when-record-tile-init="p:[transform:scaleY(0):scaleY(1):500:easeOutExpo]"></div>
-					<div init-with="p:[tr:scaleX(0)]"
-						when-record-tile-init="p:[transform:scaleX(0):scaleX(1):500:easeOutExpo]"></div>
-					<div init-with="p:[tr:scaleY(0)]"
-						when-record-tile-init="p:[transform:scaleY(0):scaleY(1):500:easeOutExpo]"></div>
+					<div u init-with="p:[tr:scaleX(0)]"
+						when-record-tile-init="a:[scaleX:0:1:500:easeOutExpo:0:1:f]"></div>
+					<div u init-with="p:[tr:scaleY(0)]"
+						when-record-tile-init="a:[scaleY:0:1:500:easeOutExpo:0:1:f]"></div>
+					<div u init-with="p:[tr:scaleX(0)]"
+						when-record-tile-init="a:[scaleX:0:1:500:easeOutExpo:0:1:f]"></div>
+					<div u init-with="p:[tr:scaleY(0)]"
+						when-record-tile-init="a:[scaleY:0:1:500:easeOutExpo:0:1:f]"></div>
 				</div>
 				<div class="record-art"
 					style="background-image:url(https://consequenceofsound.files.wordpress.com/2016/08/blonde-alternative.jpg?w=806&h=806);"
-					init-with="p-op"
-					when-record-tile-init="p:[opacity:0:0.5:250:easeOutSine]:delay-250"></div>
+					u init-with="p-op"
+					when-record-tile-init="a:[opacity:0:0.5:250:easeOutSine:0:1:f]:delay-250"></div>
 				<h1 class="record-label"
-					init-with="p-op"
-					when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1000]">Top 40</h1>
+					u init-with="p-op"
+					when-record-tile-init="a:[slideInUp-subtle:1000:linear:1000:1:f]">Top 40</h1>
 			</div>
 		</a>
 		<div class="record-info">
-			<h3 init-with="p-op"
-				when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1250]">Top 40 - 2016</h3>
+			<h3 u init-with="p-op"
+				when-record-tile-init="a:[slideInUp-subtle:1000:linear:1000:1:f]">Top 40 - 2016</h3>
 		</div>
 	</div>
 </div>

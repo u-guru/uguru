@@ -1,9 +1,9 @@
 <div class="perspective-container full-xy flex-center p15xy">
 	<a class="course-card"
 		u init-with="p:[opacity:0]"
-		on-init="s:[course-card-init:public] | a:[scoop-enter:800:(0,0.2,0.3,1):0:1:f]"
-		on-mouseEnter="p:[transform:translateZ(10px)]"
-		on-mouseLeave="p:[transform:translateZ(0px)]">
+		on-init="s:[course-card-init:public] | a:[scoop-enter:800:(0,0.2,0.3,1):0:1:f]">
+		<!-- on-mouseEnter="p:[transform:translateZ(10px)]"
+		on-mouseLeave="p:[transform:translateZ(0px)]" -->
 		<svg width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 		</svg>
