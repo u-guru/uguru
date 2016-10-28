@@ -97,7 +97,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
       msgObj.nameCamel = RootService.camelCase(msgObj.name)
       msgObj.type = getMsgType(msgSplit[0]);
       msgObj.delay = calcTotalDelay(state, msgObj.name);
-      msgObj.greaterThan = msgSplit[1].indexOf('>') > -1&& true;
+      msgObj.greaterThan = msgSplit[1].indexOf('>') > -1 && true;
       msgObj.lessThan = msgSplit[1].indexOf('<') > -1 && true;
       msgObj.sendScope = getSendScope(msgSplit[1].replace('>', '').replace('<', ''));
       msgResultArr.push(msgObj)
@@ -410,7 +410,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
         msgArr.forEach(function(msg_info, i) {
           var staggerExists = false;
 
-
+          console.log('executing', msg_info.nameCamel)
 
 
 
@@ -437,6 +437,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
             var currentMsgContext = scope.public.customStates.when[msg_info.nameCamel] || scope.$parent.public.customStates.when[msg_info.nameCamel];
             if (currentMsgContext.elements) {
             var numChildren = currentMsgContext.elements.length;
+
             if (delay_dict.internal.stagger && msg_info.name in delay_dict.internal.stagger) {
               var staggerDetails = delay_dict.internal.stagger[msg_info.name];
               staggerExists = true;
@@ -458,7 +459,8 @@ function SendService($timeout, $parse, RootService, TweenService) {
 
                 var elements = [];
                 currentMsgContext.elements.forEach(function(elem_info) {
-                  if (elem_info.depth && msg_info.greaterThan === -1 && msg_info.lessThan === -1 && elem_info.depth === depthNum) {
+
+                  if (elem_info.depth && !msg_info.greaterThan && !msg_info.lessThan && elem_info.depth === depthNum) {
                     elements.push(elem_info);
                   } else if (msg_info.greaterThan && elem_info.depth > depthNum) {
                     console.log(elem_info, depthNum, elem_info.depth, msg_info.greaterThan)
