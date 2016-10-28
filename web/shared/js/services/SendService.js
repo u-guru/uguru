@@ -374,15 +374,17 @@ function SendService($timeout, $parse, RootService, TweenService) {
 
   function execSingleMsgArg(scope, element_arr, options, depth) {
     var depthMappings = {'depth(*)': -1}
+    var total_delay = options.delay || 0
     var stagger_delay = 0;
     var final_depth = options.sendScope in depthMappings && depthMappings[options.sendScope] || 0;
-
+    console.log(total_delay)
 
     element_arr.forEach(function(state_ref, i) {
       if (options.stagger && options.stagger.delays.length) {
         stagger_delay = options.stagger.delays[i]
       }
-      state_ref.func(state_ref.actions, scope, stagger_delay, final_depth);
+      console.log('executing with delay', total_delay, 'and stagger delay', stagger_delay)
+      state_ref.func(state_ref.actions, scope, total_delay + stagger_delay, final_depth);
     })
 
   }
