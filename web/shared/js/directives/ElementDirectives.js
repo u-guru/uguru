@@ -483,6 +483,7 @@ angular.module('uguru.shared.directives')
               return {
                   pre: function (scope, lElem, lAttr) {
                     scope.states = states || {};
+                    scope.elem = lElem;
                     scope.parentCompiled = false;
                     scope.inheritedFromParent = [];
                     // scope.public = scope._public

@@ -355,7 +355,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
           if (actions.send) {
 
-            SendService.applySendArgs(element, scope, actions.send.parsed, actions.send.delays, rShortcuts)
+            SendService.applySendArgs(element, scope, actions.send.parsed, actions.send.delays, rShortcuts, context)
           }
           cb && cb();
       }

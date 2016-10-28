@@ -33,7 +33,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
 
 
     if (stateName in scope.public.customStates.when && scope.public.customStates.when[stateName].elements) {
-      futureExecDict.depth = scope.public.customStates.when[stateName].depth;
+      futureExecDict.depth = expected_depth || scope.public.customStates.when[stateName].depth;
       scope.public.customStates.when[stateName].elements.push(futureExecDict)
     } else {
       if (state.nameCamel in scope.root.scope.public.customStates.when) {
@@ -59,7 +59,6 @@ function SendService($timeout, $parse, RootService, TweenService) {
       'c': 'depth(1)',
       'grandchildren': 'depth(2)',
       'gp': 'depth(-2)',
-      'p': 'depth(-1)',
       'p': 'depth(-1)',
       'grandparent': 'depth(-2)',
       'child': 'depth(1)',
@@ -131,12 +130,22 @@ function SendService($timeout, $parse, RootService, TweenService) {
   }
 
   function registerFutureMessageToScope(msg_obj, scope, depth) {
+
     if (msg_obj.sendScope === 'depth(*)') {
       depth = -1;
-    } else {
+    }
+    else if (msg_obj.sendScope === 'depth(-0)')
+      depth = 0.5;
+     else {
       depth = 0;
     }
-    if ((msg_obj.nameCamel) in scope.root.scope.public.customStates.when) {
+
+    if (depth === 0.5) {
+
+      console.log('handling siblings', scope.$parent.public.customStates.when)
+    }
+    else if ((msg_obj.nameCamel) in scope.root.scope.public.customStates.when) {
+
       if (!scope.root.scope.public.customStates.when[msg_obj.nameCamel].options) {
         scope.root.scope.public.customStates.when[msg_obj.nameCamel].options = msg_obj;
       }
@@ -145,27 +154,92 @@ function SendService($timeout, $parse, RootService, TweenService) {
     } else if (!(msg_obj.nameCamel in scope.public.customStates.when)) {
       if (depth === -1) {
         scope.root.scope.public.customStates.when[msg_obj.nameCamel] = {elements:[], depth: depth}
-      } else {
+      }
+      else {
         scope.public.customStates.when[msg_obj.nameCamel] = {elements:[], depth: depth}
         scope.$parent.public.customStates.when[msg_obj.nameCamel] = scope.public.customStates.when[msg_obj.nameCamel]
       }
-      console.log('registered', msg_obj.nameCamel, depth)
-
+      console.log('registered', msg_obj.nameCamel, depth);
     }
 
   }
 
-  function registerOutgoingMessageToScope(msg_obj, scope) {
+  function registerFutureMessageUpwards(msg_obj, scope, elem, attr, int_depth) {
+    console.log('registering upwards', int_depth)
+    var depthScope = scope;
+
+    for (var i = parseInt(int_depth); i < 0; i++) {
+      depthScope = depthScope.$parent;
+    }
+    var msgName = msg_obj.type;
+    if (msg_obj.type in depthScope.states) {
+      var typeStates = depthScope.states[msg_obj.type];
+      if (typeStates.length) {
+        typeStates.forEach(function(state) {
+          if (state.nameCamel === msg_obj.nameCamel) {
+            parseMessageAndStoreToExecuteLater(depthScope, state, int_depth, depthScope.elem, attr)
+            $timeout(function() {
+              depthScope.$apply();
+            })
+          }
+          return;
+        })
+      }
+    }
+  }
+
+  function registerFutureMessageToSelf(msg_obj, scope, elem, attr) {
+    var msgName = msg_obj.type;
+    if (msg_obj.type in scope.states) {
+      var typeStates = scope.states[msg_obj.type];
+      if (typeStates.length) {
+        typeStates.forEach(function(state) {
+          if (state.nameCamel === msg_obj.nameCamel) {
+            parseMessageAndStoreToExecuteLater(scope, state, null, elem, attr)
+          }
+          return;
+        })
+      }
+    }
+    // if (!(msg_obj.camelName in scope.public.customStates.when)) {
+    //   scope.public.customStates.when[msg_obj.camelName] = {elements: [], depth: 0};
+    // } else {
+    //   scope.public.customStates.when[msg_obj.camelName].elements.push({})
+    // }
+  }
+
+  function registerOutgoingMessageToScope(msg_obj, scope, elem, attr) {
+    //outgoing step #2
 
       var depth = parseDepthString(msg_obj.sendScope.replace('d(', 'depth(')) + '';
-      if (depth !== 'public') {
+
+      if (['public', 'self', 'siblings'].indexOf(depth) === -1) {
         var intDepth = parseInt(depth);
-        if (typeof intDepth === 'number') {
+        if (typeof intDepth === 'number' && intDepth > 0) {
           depth = 'positive';
+        } else if (typeof intDepth ==='number' && intDepth < 0) {
+          depth = 'negative'
         }
       }
-        switch (depth) {
 
+
+
+        switch (depth) {
+          case('negative'):
+            console.log('case upwards');
+            registerFutureMessageUpwards(msg_obj, scope, elem, attr, intDepth)
+
+            break;
+          case('siblings'):
+            console.log('case siblings')
+            registerFutureMessageToScope(msg_obj, scope)
+            break;
+          case('self'):
+          console.log('case self', depth, scope.states)
+
+            registerFutureMessageToSelf(msg_obj, scope, elem, attr)
+            // registerFutureMessageToScope(msg_obj, scope, 'self')
+            break;
           case('public'):
 
             registerFutureMessageToScope(msg_obj, scope)
@@ -186,11 +260,23 @@ function SendService($timeout, $parse, RootService, TweenService) {
   }
 
   function parseDepthString(depth_str) {
-    var specialDepthMappings = {'-':'self', '*':'public'}
-    depth_str = depth_str.indexOf('depth(') > -1  && depth_str || 'depth(0)';
-    depth_str = depth_str.replace('depth(', '').replace(')', '');
-    if (depth_str in specialDepthMappings) return specialDepthMappings[depth_str];
+
+
+    var specialDepthMappings = {'-':'self', '*':'public', '-0':'siblings', 'parent': -1, 'p': -1, 'grandparent': -2, 'gp': -2}
+
+
+    if (depth_str in specialDepthMappings) {
+      return specialDepthMappings[depth_str]
+    } else if (depth_str.indexOf('depth' > -1)) {
+      depth_str = depth_str.replace('depth(', '').replace(')', '');
+      if (depth_str in specialDepthMappings) {
+        return specialDepthMappings[depth_str]
+      }
+    } else {
+      depth_str = '0'
+    }
     depthResult = parseInt(depth_str);
+
     return depth_str
   }
 
@@ -213,15 +299,17 @@ function SendService($timeout, $parse, RootService, TweenService) {
 
     var msgStates = parseStatesForSending(states_dict, scope);
     scope.outgoing_parsed = [];
+    //outgoing step #1
     msgStates.outgoing.forEach(function(o_state) {
       o_state.parsedMsgArr = parseStateMsgContents(o_state.actions.send);
       o_state.parsedMsgArr.forEach(function(msg_obj, i) {
         scope.outgoing_parsed.push(msg_obj.nameCamel)
-        registerOutgoingMessageToScope(msg_obj, scope);
+        console.log('registering message contents', msg_obj.nameCamel, 'from', o_state.nameCamel)
+        registerOutgoingMessageToScope(msg_obj, scope, element, elem_attr);
 
       });
     })
-    console.log('pre-registered', Object.keys(scope.public.customStates.when).join(','))
+
 
     msgStates.incoming.forEach(function(i_state) {
       if (i_state.actions.send && !i_state.parsedObj) {
@@ -310,7 +398,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
     return stagger_info
   }
 
-  function execSendArgs(element, scope, messages, delay_dict, shortcuts) {
+  function execSendArgs(element, scope, messages, delay_dict, shortcuts, context) {
 
 
         var msgArr = parseStateMsgContents({parsed:messages, delays:delay_dict}) || [];
@@ -352,19 +440,63 @@ function SendService($timeout, $parse, RootService, TweenService) {
               msg_info.stagger = delay_dict.internal.stagger[msg_info.name]
             }
 
+              var depthParsed = parseDepthString(msg_info.sendScope)
+              var depthNum = parseInt(depthParsed);
 
-              var depthNum = parseInt(parseDepthString(msg_info.sendScope));
-
-              var elements = [];
-              console.log(depthNum, typeof depthNum)
-              currentMsgContext.elements.forEach(function(elem_info) {
-                elem_info.depth && elem_info.depth === depthNum && elements.push(elem_info);
-
-              })
-              if (elements.length !== currentMsgContext.length) {
-                currentMsgContext = {elements: elements, depth: currentMsgContext.depth, options: currentMsgContext.options};
+              if (depthParsed === 'self') {
+                if (currentMsgContext.elements && currentMsgContext.elements.length) {
+                  currentMsgContext.depth = 'self';
+                  execSingleMsgArg(scope, currentMsgContext.elements, msg_info)
+                }
               }
-              execSingleMsgArg(scope, currentMsgContext.elements, msg_info)
+              else
+              if (typeof depthNum === "number" && depthNum > 0) {
+
+                var elements = [];
+                currentMsgContext.elements.forEach(function(elem_info) {
+                  elem_info.depth && elem_info.depth === depthNum && elements.push(elem_info);
+
+                })
+                if (elements.length !== currentMsgContext.length) {
+                  currentMsgContext = {elements: elements, depth: currentMsgContext.depth, options: currentMsgContext.options};
+                }
+                execSingleMsgArg(scope, currentMsgContext.elements, msg_info)
+              } else if (typeof depthNum === "number" && depthNum < 0) {
+                var depthScope = scope;
+                for (var i = depthNum; i < 0; i++) {
+                  depthScope = depthScope.$parent;
+                }
+                if (msg_info.nameCamel in depthScope.public.customStates.when) {
+                  var depthScopeElems = depthScope.public.customStates.when[msg_info.nameCamel].elements;
+                  var elements = [];
+                  depthScopeElems.forEach(function(state_ref) {
+                    if (state_ref.depth === depthNum) {
+                      elements.push(state_ref);
+                    }
+                  })
+                  if (elements.length) {
+                    currentMsgContext = {elements: elements, depth: depthNum, options:currentMsgContext.options};
+                  }
+                  console.log(msg_info)
+                  execSingleMsgArg(depthScope, currentMsgContext.elements, msg_info)
+                  // console.log(dept)
+                }
+
+                // console.log(scope.$parent.public.customStates.when)
+                // if (msg_info.type in depthScope.states) {
+                //   var typeStates = depthScope.states[msg_info.type];
+                //   if (typeStates.length) {
+                //     typeStates.forEach(function(state) {
+                //       if (state.nameCamel === msg_info.nameCamel) {
+                //         console.log(state)
+                //       }
+                //     })
+                //   }
+                // }
+
+                // execSingleMsgArg(scope, currentMsgContext.elements, msg_info)
+              }
+
             }
           }
 
@@ -712,7 +844,6 @@ function SendService($timeout, $parse, RootService, TweenService) {
       if (scope.public.customStates && scope.public.customStates.when) {
         // console.log(msg_name, msg_scope, scope.public.customStates.when.startCounter)
         if (!(msg_name in scope.public.customStates.when)) {
-          console.log('preregistered', msg_name)
           scope.public.customStates.when[msg_name] = {depth: 0, elements: []}
         }
         // if (!scope.public.customStates.when.elements.length) {
