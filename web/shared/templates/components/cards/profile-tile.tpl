@@ -1,7 +1,7 @@
 <div class="perspective-container full-xy flex-center p15xy" types='academic, baking, photo, tech, household' default-type="academic">
 	<div class="pf-tile-container" ng-if='activeType === "academic"'
 		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-		on-init="s:[academic-tile-init:public, aca-border:children:500, aca-top:children:500]"
+		on-init="s:[academic-tile-init:public, aca-border:c:500, aca-top:c:500]"
 		when-academic-tile-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f, translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
 		when-academic-tile-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:500:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:0:1:f, rotateY:0deg:30deg:1000:easeOutCubic:0:1:f, translateY:0px:-300px:1000:easeOutCubic:0:1:f]">
 		<a></a><a></a><a></a><a></a>
@@ -52,7 +52,7 @@
 				u init-with="p:[transform-origin:center bottom, opacity:0, transform:translateY(-100px) scaleY(3)]"
 				when-academic-tile-init="a:[translateY:-100px:0px:1000:easeInOutCubic:0:1:f, scaleY:3:1:1000:easeInOutCubic:0:1:f, opacity:0:1:250:easeOutSine:250:1:f]">
 				<ul class="rating-stars" data-rating="4" data-half="true"
-					u on-init="s:[academic-stars:children:easeInQuad-500]:+1400">
+					u on-init="s:[academic-stars:c:easeInQuad-500]:+1400">
 					<li u init-with="p:[opacity:0]"
 						when-academic-stars="a:[bounceIn-rotate-subtle:500:easeOutSine:0:1:f]">
 						<svg viewBox="0 0 100 100">
@@ -113,7 +113,7 @@
 						<span class="border"></span>
 						<div>Peach Pancake</div>
 						<ul class="rating-stars" data-rating="4" data-half="true"
-							u on-init="s:[baking-stars:children:easeInQuad-500]:+1400">
+							u on-init="s:[baking-stars:c:easeInQuad-500]:+1400">
 							<li u init-with="p:[opacity:0]"
 								when-baking-stars="a:[pf-bounceIn-rotate:500:easeOutSine:0:1:f]">
 								<svg viewBox="0 0 100 100">
@@ -172,7 +172,7 @@
 
 	<div class="pf-tile-container" ng-if='activeType === "photo"'
 		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-		on-init="s:[photo-tile-init:public, ph-info:children:500]"
+		on-init="s:[photo-tile-init:public, ph-info:c:500]"
 		when-photo-tile-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f, translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
 		when-photo-tile-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]">
 		<a></a><a></a><a></a><a></a>
@@ -190,7 +190,7 @@
 				<h1 u init-with="p:[opacity:0]"
 					when-photo-tile-init="a:[opacity:0:1:250:easeOutSine:500:1:f]">Professional Headshots</h1>
 				<ul class="rating-stars" data-rating="4" data-half="true"
-					u on-init="s:[photo-stars:children:easeInQuad-500]:+1100">
+					u on-init="s:[photo-stars:c:easeInQuad-500]:+1100">
 					<li u init-with="p:[opacity:0]"
 						when-photo-stars="a:[pf-bounceIn-rotate:500:easeOutSine:0:1:f]">
 						<svg viewBox="0 0 100 100">
@@ -231,7 +231,7 @@
 					u init-with="p:[transform-origin:center center, opacity:0]"
 					when-photo-tile-init="a:[slideInUp-subtle:1000:easeOutSine:1000:1:f]">
 					<div class="pf-border"
-						u on-init="s:[viewport-init:children:2000]">
+						u on-init="s:[viewport-init:c:2000]">
 						<div u init-with="p:[transform:scaleX(0)]"
 							when-viewport-init="a:[scaleX:0:1:250:easeOutCubic:0:1:f]"></div>
 						<div u init-with="p:[transform:scaleY(0)]"
@@ -287,7 +287,7 @@
 				<h1 u init-with="p:[opacity:0, transform:translateY(10px)]"
 					when-tech-top="a:[opacity:0:1:500:linear:200:1:f, translateY:10px:0px:500:easeOutExpo:200:1:f]">Water Damage</h1>
 				<ul class="rating-stars" data-rating="4" data-half="true"
-					u on-init="s:[tech-stars:children:easeInQuart-1000]:+900">
+					u on-init="s:[tech-stars:c:easeInQuart-1000]:+900">
 					<li u init-with="p:[opacity:0]"
 						when-tech-stars="a:[pf-bounceIn-rotate:500:easeOutSine:0:1:f]">
 						<svg viewBox="0 0 100 100">
@@ -464,7 +464,7 @@
 					<h1 u init-with="p:[opacity:0, transform:translateY(-80%)]"
 						when-household-tile-init="a:[opacity:0:1:750:easeOutSine:0:1:f, translateY:-100px:0px:750:easeOutQuad:0:1:f]:+1800">Furniture Care</h1>
 					<ul class="rating-stars" data-rating="4" data-half="true"
-						u on-init="s:[hh-ratings:children:easeInQuart-1000]:+1500">
+						u on-init="s:[hh-ratings:c:easeInQuart-1000]:+1500">
 						<li u init-with="p:[opacity:0]"
 							when-hh-ratings="a:[pf-bounceIn-rotate:500:easeOutSine:0:1:f]">
 							<svg viewBox="0 0 100 100">
