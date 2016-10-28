@@ -6,7 +6,7 @@
 
 
                 ng-attr-on-click="s:[broadcast-public:public]"
-                ng-attr-on-key-up="s:[broadcast-public:public:linear-2500, init-all:public:linear-1000]:+1000"
+                ng-attr-on-key-up="s:[broadcast-public:public:linear-2500, init-all:public:linear-1000]:+200"
                 on-mouseenter="p:[opacity:0.5]"
                 on-mouseleave='p:[opacity:1]'
                 ng-attr-accept-keys="1">
@@ -27,7 +27,7 @@
 
 
                 ng-attr-on-click="s:[init-grandchildren:public]"
-                ng-attr-on-key-up="s:[init-grandchildren:public:100]:+1000"
+                ng-attr-on-key-up="s:[init-grandchildren:public:100]:+200"
                 on-mouseenter="p:[opacity:0.5]"
                 on-mouseleave='p:[opacity:1]'
                 ng-attr-accept-keys="2">
@@ -48,7 +48,7 @@
 
 
                 ng-attr-on-click="s:[init-children:public]"
-                ng-attr-on-key-up="s:[init-children:public:100]:+1000"
+                ng-attr-on-key-up="s:[init-children:public:100]:+200"
                 on-mouseenter="p:[opacity:0.5]"
                 on-mouseleave='p:[opacity:1]'
                 ng-attr-accept-keys="3">
@@ -69,7 +69,7 @@
 
 
                 ng-attr-on-click="s:[send-to-self:public]"
-                ng-attr-on-key-up="s:[send-to-self:public:100]:+1000"
+                ng-attr-on-key-up="s:[send-to-self:public:100]:+200"
                 on-mouseenter="p:[opacity:0.5]"
                 on-mouseleave='p:[opacity:1]'
                 ng-attr-accept-keys="4">
@@ -91,12 +91,36 @@
                 u
 
 
-                ng-attr-on-click="s:[send-gc1-to-parent:public]"
-                ng-attr-on-key-up="s:[send-gc1-to-parent:public:100]:+1000"
+                ng-attr-on-click="s:[send-to-depth-greater-one:public]"
+                ng-attr-on-key-up="s:[send-to-depth-greater-one:public:100]:+200"
                 on-mouseenter="p:[opacity:0.5]"
                 on-mouseleave='p:[opacity:1]'
                 ng-attr-accept-keys="5">
                     <span class='opacity-50 uppercase weight-700 p20x'>press key # 5</span>
+                    <span class='p10xy border-1'>
+                        godfather
+                    </span>
+                    <span class='weight-900 txt-32'>
+                        &nbsp;&nbsp;&nbsp;&#8594;&nbsp;&nbsp;
+                    </span>
+                    <span class='p10xy border-1'>
+
+                        <span class='weight-900'>depth(>1)</span>
+                        <span class='opacity-50p weight-400'>&nbsp;aka&nbsp;depth(1>),&nbsp;depth(>c)</span>
+
+
+                    </span>
+            </li>
+            <li class='full-x m20y text-left'
+                u
+
+
+                ng-attr-on-click="s:[send-gc1-to-parent:public]"
+                ng-attr-on-key-up="s:[send-gc1-to-parent:public:100]:+200"
+                on-mouseenter="p:[opacity:0.5]"
+                on-mouseleave='p:[opacity:1]'
+                ng-attr-accept-keys="6">
+                    <span class='opacity-50 uppercase weight-700 p20x'>press key # 6</span>
                     <span class='p10xy border-1'>
                         gc1
                     </span>
@@ -116,8 +140,8 @@
                 ng-attr-on-key-up="s:[send-gc2-to-grandparent:public:100]:delay-1000"
                 on-mouseenter="p:[opacity:0.5]"
                 on-mouseleave='p:[opacity:1]'
-                ng-attr-accept-keys="6">
-                    <span class='opacity-50 uppercase weight-700 p20x'>press key # 6</span>
+                ng-attr-accept-keys="7">
+                    <span class='opacity-50 uppercase weight-700 p20x'>press key # 7</span>
                     <span class='p10xy border-1'>
                         gc2
                     </span>
@@ -134,7 +158,7 @@
 
 
                 ng-attr-on-click="s:[send-to-gc1:public]"
-                ng-attr-on-key-up="s:[send-to-gc1:public:100]:+1000"
+                ng-attr-on-key-up="s:[send-to-gc1:public:100]:+200"
                 on-mouseenter="p:[opacity:0.5]"
                 on-mouseleave='p:[opacity:1]'
                 ng-attr-accept-keys="6">
@@ -158,6 +182,7 @@
         when-init-grandchildren="send:[flash-plz:gc:linear-2500]"
         when-send-to-self="send:[on-init:depth(-):100]:delay-1000"
         when-flash-plz="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]"
+        when-send-to-depth-greater-one="send:[flash-plz:depth(>1):linear-2500]"
         style='height:500px'>
             <!-- when-init-grandchildren="s:[change-bg-pink:grandchildren]" when-init-children="[change-bg-pink:grandchildren]"
 

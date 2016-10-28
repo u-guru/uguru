@@ -97,7 +97,9 @@ function SendService($timeout, $parse, RootService, TweenService) {
       msgObj.nameCamel = RootService.camelCase(msgObj.name)
       msgObj.type = getMsgType(msgSplit[0]);
       msgObj.delay = calcTotalDelay(state, msgObj.name);
-      msgObj.sendScope = getSendScope(msgSplit[1]);
+      msgObj.greaterThan = msgSplit[1].indexOf('>') > -1&& true;
+      msgObj.lessThan = msgSplit[1].indexOf('<') > -1 && true;
+      msgObj.sendScope = getSendScope(msgSplit[1].replace('>', '').replace('<', ''));
       msgResultArr.push(msgObj)
     })
     // console.log(state.nameCamel, state.actions)
@@ -111,6 +113,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
     }
 
     function getSendScope(msg_scope) {
+
       if (msg_scope in sendScopeShortcuts) return sendScopeShortcuts[msg_scope]
       return msg_scope;
     }
@@ -455,7 +458,14 @@ function SendService($timeout, $parse, RootService, TweenService) {
 
                 var elements = [];
                 currentMsgContext.elements.forEach(function(elem_info) {
-                  elem_info.depth && elem_info.depth === depthNum && elements.push(elem_info);
+                  if (elem_info.depth && msg_info.greaterThan === -1 && msg_info.lessThan === -1 && elem_info.depth === depthNum) {
+                    elements.push(elem_info);
+                  } else if (msg_info.greaterThan && elem_info.depth > depthNum) {
+                    console.log(elem_info, depthNum, elem_info.depth, msg_info.greaterThan)
+                    elements.push(elem_info);
+                  } else if (msg_info.lessThan && elem_info.depth < depthNum) {
+                    elements.push(elem_info);
+                  }
 
                 })
                 if (elements.length !== currentMsgContext.length) {
@@ -471,6 +481,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
                   var depthScopeElems = depthScope.public.customStates.when[msg_info.nameCamel].elements;
                   var elements = [];
                   depthScopeElems.forEach(function(state_ref) {
+
                     if (state_ref.depth === depthNum) {
                       elements.push(state_ref);
                     }
@@ -478,7 +489,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
                   if (elements.length) {
                     currentMsgContext = {elements: elements, depth: depthNum, options:currentMsgContext.options};
                   }
-                  console.log(msg_info)
+
                   execSingleMsgArg(depthScope, currentMsgContext.elements, msg_info)
                   // console.log(dept)
                 }
