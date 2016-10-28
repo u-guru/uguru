@@ -1,8 +1,6 @@
 <div class="full-xy flex-center">
     <div class="overflow-hidden relative"
-		u
-		on-init="send:[window-init:public]"
-		when-window-init="send:[window-leave:public:5000]">
+		u on-init="send:[window-init:depth(>2), window-leave:depth(>2):5000]">
 		<div class="absolute z-index-1 bottom-0" style=“left:20px;”
 			u init-with="p:[tr:translateX(0px)]"
 			when-window-init="a:[translateX:0px:320px:1500:easeOutExpo:0:1:f]"
