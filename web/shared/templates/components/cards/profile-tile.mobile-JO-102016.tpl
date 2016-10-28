@@ -92,54 +92,55 @@
 
 	<div class="pf-tile-container mobile" ng-if='activeType === "baking"'
 		u init-with="p:[transform-origin:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
-		on-init="s:[baking-tile-init:public]"
-		when-baking-tile-init="a:[rotateX:-30deg:0deg:1000:easeOutCubic:1:f, rotateY:30deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:500:easeOutSine:0:1:f]"
+		on-init="s:[baking-tile-init:public, bk-label:depth(>2)]"
+		when-baking-tile-init="a:[rotateX:-30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:500:easeOutSine:0:1:f]"
 		when-baking-tile-exit="a:[rotateX:0deg:-30deg:1000:easeInCubic:1:f, rotateY:0deg:30deg:1000:easeInExpo:1:f, opacity:1:0:500:linear:0:1:f]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-baking">
 			<div class="pf-tile-top" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');"
 				u init-with="p:[opacity:0]"
-				when-baking-tile-init="a:[opacity:0:1:500:easeOutSine:150:1:f]"
+				when-bk-label="a:[opacity:0:1:500:easeOutSine:150:1:f]"
 				when-baking-tile-exit="a:[opacity:1:0::500:easeInSine:250:1:f]">
 				<div class="full-x flex-center preserve-3d m15bottom"
 					u init-with="p:[transform-origin:center top, transform:rotateX(180deg)]"
-					when-baking-tile-init="a:[rotateX:180deg:0deg:1000:easeInOutQuint:0:1:f, opacity:0:1:100:easeInOutQuint:0:1:f]"
+					when-bk-label="a:[rotateX:180deg:0deg:1000:easeInOutQuint:0:1:f, opacity:0:1:100:easeInOutQuint:0:1:f]"
 					when-baking-tile-exit="a:[rotate:0deg:180deg:1000:easeInOutQuint:0:1:f]">
 					<h1>
 						<span class="border"></span>
 						<span class="border"></span>
 						<div>Peach Pancake</div>
-						<ul class="rating-stars" data-rating="4" data-half="true">
+						<ul class="rating-stars" data-rating="4" data-half="true"
+							u on-init="s:[bk-stars:children:easeInCirc-600]:+1400">
 							<li u init-with="p:[opacity:0]"
-								when-baking-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1400:1:f]">
+								when-bk-stars="a:[pf-bounceIn-rotate:500:easeOutSine:0:1:f]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
 							</li>
 							<li u init-with="p:[opacity:0]"
-								when-baking-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1500:1:f]">
+								when-bk-stars="a:[pf-bounceIn-rotate:500:easeOutSine:0:1:f]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
 							</li>
 							<li u init-with="p:[opacity:0]"
-								when-baking-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1600:1:f]">
+								when-bk-stars="a:[pf-bounceIn-rotate:500:easeOutSine:0:1:f]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
 							</li>
 							<li u init-with="p:[opacity:0]"
-								when-baking-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1700:1:f]">
+								when-bk-stars="a:[pf-bounceIn-rotate:500:easeOutSine:0:1:f]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
 							</li>
 							<li u init-with="p:[opacity:0]"
-								when-baking-tile-init="a:[pf-bounceIn-rotate:500:easeOutSine:1800:1:f]">
+								when-bk-stars="a:[pf-bounceIn-rotate:500:easeOutSine:0:1:f]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -151,7 +152,7 @@
 				<div>
 					<div class="pf-pricing large"
 						u init-with="p:[opacity:0]"
-						when-baking-tile-init="a:[pf-jelly:1000:(.43,-0.06,.68,1.23):1000:1:f]"
+						when-bk-label="a:[pf-jelly:1000:(.43,-0.06,.68,1.23):1000:1:f]"
 						when-baking-tile-exit="a:[pf-jelly:1000:(.43,-0.06,.68,1.23):1000:1:r]">
 						<svg class="small" viewBox="0 0 104 74">
 							<polygon points="102 37 52 72 2 37 52 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="#757575" fill-opacity="0.75"></polygon>
