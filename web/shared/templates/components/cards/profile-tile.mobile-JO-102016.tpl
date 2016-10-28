@@ -169,14 +169,14 @@
 
 	<div class="pf-tile-container mobile" ng-if='activeType === "photo"'
 		u init-with="p:[transform-origin:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
-		on-init="s:[photo-tile-init:public]"
+		on-init="s:[photo-tile-init:public, photo-info:children:500]"
 		when-photo-tile-init="a:[rotateX:-30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:500:easeOutSine:0:1:f]"
 		when-photo-tile-exit="p:[rotateX(-30deg) rotateY(30deg), opacity:0:delay-500]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-photography">
 			<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
 				u init-with="p:[clip-path:circle(0px at 50% 50%)]"
-				when-photo-tile-init="a:[pf-photo-enter:750:easeInOutSine:500:1:f]"
+				when-photo-info="a:[pf-photo-enter:750:easeInOutSine:0:1:f]"
 				when-photo-tile-exit="a:[pf-photo-enter:750:easeInOutSine:0:1:f]"></div>
 			<div class="pf-tile-border">
 				<div>
@@ -185,7 +185,7 @@
 			</div>
 			<div class="pf-tile-bottom">
 				<h1 u init-with="p:[opacity:0]"
-					when-photo-tile-init="a:[opacity:0:1:250:easeOutSine:0:1:f]:delay-1000">Professional Headshots</h1>
+					when-photo-info="a:[opacity:0:1:250:easeOutSine:500:1:f]">Professional Headshots</h1>
 				<ul class="rating-stars" data-rating="4" data-half="true"
 					u on-init="s:[ph-stars:children:easeInSine-700]:+1100">
 					<li u init-with="p:[opacity:0]"
@@ -226,8 +226,8 @@
 				</ul>
 				<div class="pf-pricing photo-price"
 					u init-with="p:[transform-origin:center center, opacity:0]"
-					when-photo-tile-init="a:[slideInUp-subtle:1000:easeOutSine:1000:1:f]"
-					on-init="s:[ph-borders:children:2000]">
+					when-pricing-enter="a:[slideInUp-subtle:1000:easeOutSine:1000:1:f]"
+					on-init="s:[ph-borders:children:2000, pricing-enter:self]">
 					<div class="pf-border">
 						<div u init-with="p:[transform:scaleX(0)]"
 							when-ph-borders="a:[scaleX:0:1:250:easeOutSine:0:1:f]"></div>
