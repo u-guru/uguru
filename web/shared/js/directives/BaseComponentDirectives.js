@@ -98,12 +98,12 @@ angular.module('uguru.shared.directives.base.components')
           restrict: 'A',
           link: function() {
             $document.bind('keydown', function(e) {
-              console.log('Got keydown:', e.which);
+
               $rootScope.$broadcast('keydown', e);
               $rootScope.$broadcast('keydown:' + e.which || e.keyCode, e);
             });
             $document.bind('keyup', function(e) {
-              console.log('Got keyup:', e.which);
+
               $rootScope.$broadcast('keyup', e);
               $rootScope.$broadcast('keyup:' + e.which || e.keyCode, e);
             });

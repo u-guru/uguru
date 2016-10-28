@@ -10,7 +10,7 @@
                 on-mouseenter="p:[opacity:0.5]"
                 on-mouseleave='p:[opacity:1]'
                 ng-attr-accept-keys="1">
-                    <span class='opacity-50 uppercase weight-300'>key # {{$index + 1}}</span>
+                    <span class='opacity-50 uppercase weight-700 p20x'>press key # {{$index + 1}}</span>
                     <span class='p10xy border-1'>
                         godfather
                     </span>
@@ -18,7 +18,8 @@
                         &nbsp;&nbsp;&nbsp;&#8594;&nbsp;&nbsp;
                     </span>
                     <span class='p10xy border-1'>
-                        {{"broadcast-public".split('-').join(' ')}}
+                        <span class='weight-900'> Public </span>
+                        <span class='opacity-50p weight-400'>&nbsp;aka&nbsp;depth(*)</span>
                     </span>
             </li>
             <li class='full-x m20y text-left'
@@ -30,7 +31,7 @@
                 on-mouseenter="p:[opacity:0.5]"
                 on-mouseleave='p:[opacity:1]'
                 ng-attr-accept-keys="2">
-                    <span class='opacity-50 uppercase weight-300'>key # 2</span>
+                    <span class='opacity-50 uppercase weight-700 p20x'>press key # 2</span>
                     <span class='p10xy border-1'>
                         godfather
                     </span>
@@ -38,7 +39,8 @@
                         &nbsp;&nbsp;&nbsp;&#8594;&nbsp;&nbsp;
                     </span>
                     <span class='p10xy border-1'>
-                        {{"init-grandchildren".split('-').join(' ')}}
+                        <span class='weight-900'>grandchildren</span>
+                        <span class='opacity-50p weight-400'>&nbsp;aka&nbsp;gc,&nbsp;depth(-2)</span>
                     </span>
             </li>
             <li class='full-x m20y text-left'
@@ -50,7 +52,7 @@
                 on-mouseenter="p:[opacity:0.5]"
                 on-mouseleave='p:[opacity:1]'
                 ng-attr-accept-keys="3">
-                    <span class='opacity-50 uppercase weight-300'>key # 2</span>
+                    <span class='opacity-50 uppercase weight-700 p20x'>press key # 3</span>
                     <span class='p10xy border-1'>
                         godfather
                     </span>
@@ -58,33 +60,175 @@
                         &nbsp;&nbsp;&nbsp;&#8594;&nbsp;&nbsp;
                     </span>
                     <span class='p10xy border-1'>
-                        {{"init-children".split('-').join(' ')}}
+                        <span class='weight-900'>children</span>
+                        <span class='opacity-50p weight-400'>&nbsp;aka&nbsp;c,&nbsp;depth(-1)</span>
                     </span>
             </li>
+            <li class='full-x m20y text-left'
+                u
+
+
+                ng-attr-on-click="s:[send-to-self:public]"
+                ng-attr-on-key-up="s:[send-to-self:public:100]:+1000"
+                on-mouseenter="p:[opacity:0.5]"
+                on-mouseleave='p:[opacity:1]'
+                ng-attr-accept-keys="4">
+                    <span class='opacity-50 uppercase weight-700 p20x'>press key # 4</span>
+                    <span class='p10xy border-1'>
+                        godfather
+                    </span>
+                    <span class='weight-900 txt-32'>
+                        &nbsp;&nbsp;&nbsp;&#8594;&nbsp;&nbsp;
+                    </span>
+                    <span class='p10xy border-1'>
+
+                        <span class='weight-900'>self</span>
+                        <span class='opacity-50p weight-400'>&nbsp;aka&nbsp;depth(-)</span>
+
+                    </span>
+            </li>
+            <li class='full-x m20y text-left'
+                u
+
+
+                ng-attr-on-click="s:[send-gc1-to-parent:public]"
+                ng-attr-on-key-up="s:[send-gc1-to-parent:public:100]:+1000"
+                on-mouseenter="p:[opacity:0.5]"
+                on-mouseleave='p:[opacity:1]'
+                ng-attr-accept-keys="5">
+                    <span class='opacity-50 uppercase weight-700 p20x'>press key # 5</span>
+                    <span class='p10xy border-1'>
+                        gc1
+                    </span>
+                    <span class='weight-900 txt-32'>
+                        &nbsp;&nbsp;&nbsp;&#8594;&nbsp;&nbsp;
+                    </span>
+                    <span class='p10xy border-1'>
+                        <span class='weight-900'>parent</span>
+                        <span class='opacity-50p weight-400'>&nbsp;aka&nbsp;depth(-1), p</span>
+                    </span>
+            </li>
+            <li class='full-x m20y text-left'
+                u
+
+
+                ng-attr-on-click="s:[send-gc2-to-grandparent:public]"
+                ng-attr-on-key-up="s:[send-gc2-to-grandparent:public:100]:+1000"
+                on-mouseenter="p:[opacity:0.5]"
+                on-mouseleave='p:[opacity:1]'
+                ng-attr-accept-keys="6">
+                    <span class='opacity-50 uppercase weight-700 p20x'>press key # 6</span>
+                    <span class='p10xy border-1'>
+                        gc2
+                    </span>
+                    <span class='weight-900 txt-32'>
+                        &nbsp;&nbsp;&nbsp;&#8594;&nbsp;&nbsp;
+                    </span>
+                    <span class='p10xy border-1'>
+                        <span class='weight-900'>grandparent</span>
+                        <span class='opacity-50p weight-400'>&nbsp;aka&nbsp;depth(-2), p</span>
+                    </span>
+            </li>
+            <!-- <li class='full-x m20y text-left'
+                u
+
+
+                ng-attr-on-click="s:[send-to-gc1:public]"
+                ng-attr-on-key-up="s:[send-to-gc1:public:100]:+1000"
+                on-mouseenter="p:[opacity:0.5]"
+                on-mouseleave='p:[opacity:1]'
+                ng-attr-accept-keys="6">
+                    <span class='opacity-50 uppercase weight-700 p20x'>press key # 6</span>
+                    <span class='p10xy border-1'>
+                        gc1
+                    </span>
+                    <span class='weight-900 txt-32'>
+                        &nbsp;&nbsp;&nbsp;&#8594;&nbsp;&nbsp;
+                    </span>
+                    <span class='p10xy border-1'>
+                        <span class='weight-900'>siblings</span>
+                        <span class='opacity-50p weight-400'>&nbsp;aka&nbsp;depth(-0)</span>
+                    </span>
+            </li> -->
+
 
         </ul>
-        <ul class='width-50p p15-grid full-y flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' u init-with="p:[opacity:0]"  on-init='a:[opacity:0:1:250:easeOutCirc:100:1:f,translateY:250%:0%:250:bouncePast:100:1:f]' when-init-children="send:[flash-plz:c:linear-2500]" when-init-grandchildren="send:[flash-plz:gc:linear-2500]"  style='height:500px'>
+        <ul class='width-50p p15-grid full-y flex-vertical-center right-0 txt-1 weight-900 uppercase  border-2' u init-with="p:[opacity:0]"  on-init='a:[opacity:0:1:250:easeOutCirc:100:1:f,translateY:250%:0%:250:bouncePast:100:1:f]'
+        when-init-children="send:[flash-plz:c:linear-2500]"
+        when-init-grandchildren="send:[flash-plz:gc:linear-2500]"
+        when-send-to-self="send:[on-init:depth(-):1000]:delay-1000"
+        when-flash-plz="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]"
+        style='height:500px'>
             <!-- when-init-grandchildren="s:[change-bg-pink:grandchildren]" when-init-children="[change-bg-pink:grandchildren]"
 
                 when-reset-requested="s:[init-with:self]"
                      -->
                 <div class='full-x absolute left-0 text-center txt-64' style='top:10%'> Godfather </div>
-                <li u  ng-repeat='child in ["c1", "c2", "c3"]' on-init="p:[opacity:0.5]" class='full-x m10x border-1 flex-wrap' when-flash-plz="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]" when-broadcast-public="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]" >
+                <li u on-init="p:[opacity:0.5]" class='full-x m10x border-1 flex-wrap' when-flash-plz="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]" when-broadcast-public="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]" >
                     <div class='full-x text-center m10y p05y p10x'>
-                        child #{{$index + 1}}
+                        child #1
+                    </div>
+                    <div class='full-x flex-wrap-center relative p10y'>
+                        <span style='padding:10px 2px' class='absolute full-y bg-smoke top-0'> </span>
+                    </div>
+                    <ul class='flex-vertical-center full-x p15-grid'>
+                        <li class='m05x border-1-left border-1-right p05y p10x border-1-top border-solid border-white' u
+                        when-broadcast-public="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]"
+                        when-flash-plz="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]"
+                        when-send-to-gc1="s:[flash-plz:siblings:linear-500]"
+                        when-send-gc1-to-parent="s:[flash-plz:parent:1000]"
+                        >
+                            gc1
+                        </li>
+                        <li class='m05x border-1-left border-1-right p05y p10x border-1-top border-solid border-white' u
+                        when-broadcast-public="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]"
+                        when-flash-plz="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]"
+                        when-send-gc2-to-grandparent="s:[flash-plz:grandparent:1000]"
+                        >
+
+                            gc2
+                        </li>
+                        <li class='m05x border-1-left border-1-right p05y p10x border-1-top border-solid border-white' u  when-broadcast-public="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]" when-flash-plz="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]">
+                            gc3
+                        </li>
+                    </ul>
+                </li>
+
+                <li u on-init="p:[opacity:0.5]" class='full-x m10x border-1 flex-wrap' when-flash-plz="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]" when-broadcast-public="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]" >
+                    <div class='full-x text-center m10y p05y p10x'>
+                        child #2
                     </div>
                     <div class='full-x flex-wrap-center relative p10y'>
                         <span style='padding:10px 2px' class='absolute full-y bg-smoke top-0'> </span>
                     </div>
                     <ul class='flex-vertical-center full-x p15-grid'>
                         <li class='m05x border-1-left border-1-right p05y p10x border-1-top border-solid border-white' u when-broadcast-public="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]"  when-flash-plz="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]">
-                            gc1
+                            gc4
                         </li>
                         <li class='m05x border-1-left border-1-right p05y p10x border-1-top border-solid border-white' u when-broadcast-public="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]" when-flash-plz="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]">
-                            gc2
+                            gc5
                         </li>
                         <li class='m05x border-1-left border-1-right p05y p10x border-1-top border-solid border-white' u  when-broadcast-public="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]" when-flash-plz="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]">
-                            gc3
+                            gc6
+                        </li>
+                    </ul>
+                </li>
+                <li u on-init="p:[opacity:0.5]" class='full-x m10x border-1 flex-wrap' when-flash-plz="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]" when-broadcast-public="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]" >
+                    <div class='full-x text-center m10y p05y p10x'>
+                        child #2
+                    </div>
+                    <div class='full-x flex-wrap-center relative p10y'>
+                        <span style='padding:10px 2px' class='absolute full-y bg-smoke top-0'> </span>
+                    </div>
+                    <ul class='flex-vertical-center full-x p15-grid'>
+                        <li class='m05x border-1-left border-1-right p05y p10x border-1-top border-solid border-white' u when-broadcast-public="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]"  when-flash-plz="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]">
+                            gc7
+                        </li>
+                        <li class='m05x border-1-left border-1-right p05y p10x border-1-top border-solid border-white' u when-broadcast-public="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]" when-flash-plz="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]">
+                            gc8
+                        </li>
+                        <li class='m05x border-1-left border-1-right p05y p10x border-1-top border-solid border-white' u  when-broadcast-public="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]" when-flash-plz="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]">
+                            gc9
                         </li>
                     </ul>
                 </li>

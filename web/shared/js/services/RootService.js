@@ -47,7 +47,14 @@ function RootService($timeout, $state) {
         animations: animations,
         elemIdCache: elemIdCache,
         activeElem: activeElem,
-        keyMap: keyMappings
+        keyMap: keyMappings,
+        camelCase: camelCase
+    }
+
+    function camelCase(input) {
+        return input.toLowerCase().replace(/-(.)/g, function(match, group1) {
+            return group1.toUpperCase();
+        });
     }
 
     function getAnimShortcuts(prop) {

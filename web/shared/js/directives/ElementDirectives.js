@@ -472,6 +472,7 @@ angular.module('uguru.shared.directives')
           transclude: true,
           priority:100,
           scope:true,
+
           compile: function(element, attr, transclude) {
             // attr.$set('public', 'public');
             // attr.$set('root', 'root');
@@ -482,31 +483,22 @@ angular.module('uguru.shared.directives')
               return {
                   pre: function (scope, lElem, lAttr) {
                     scope.states = states || {};
+                    scope.elem = lElem;
+                    scope.parentCompiled = false;
+                    scope.inheritedFromParent = [];
                     // scope.public = scope._public
 
-
-                    scope.public = {customStates: {when: {}}};
-                    if (scope.$parent.public && scope.$parent.public.customStates.when) {
-
-                        for (var state_name in scope.$parent.public.customStates.when) {
-
-                          scope.public.customStates.when[state_name] = {
-                            elements: scope.$parent.public.customStates.when[state_name].elements,
-                            depth: scope.$parent.public.customStates.when[state_name].depth + 1
-                          }
-
-                        }
-                    }
+                    SendService.precompileSendActionArgs(states, scope, lElem, lAttr)
                     scope.whenCallbacks = {};
 
                     if (states.init) {
                       states.init.forEach(function(state, i) {
-                        if (state.actions.send) {
-                          state.actions.send.parsed.split(',').forEach(function(message_str, i) {
-                            var msgNameCamel = ElementService.toCamelCaseBridge(message_str.split(':')[0]);
-                            SendService.prepareToSendMessage(msgNameCamel, message_str, scope);
-                          })
-                        }
+                        // if (state.actions.send) {
+                        //   state.actions.send.parsed.split(',').forEach(function(message_str, i) {
+                        //     var msgNameCamel = ElementService.toCamelCaseBridge(message_str.split(':')[0]);
+                        //     SendService.prepareToSendMessage(msgNameCamel, message_str, scope);
+                        //   })
+                        // }
 
                         if (state.name === 'init' && state.type === 'on') {
                           states.on.push(state);
@@ -519,12 +511,12 @@ angular.module('uguru.shared.directives')
                       if (states.on) {
 
                         states.on.forEach(function(state, i) {
-                          if (state.actions.send) {
-                            state.actions.send.parsed.split(',').forEach(function(message_str, i) {
-                            var msgNameCamel = ElementService.toCamelCaseBridge(message_str.split(':')[0]);
-                            SendService.prepareToSendMessage(msgNameCamel, message_str, scope);
-                          })
-                          }
+                          // if (state.actions.send) {
+                          //   state.actions.send.parsed.split(',').forEach(function(message_str, i) {
+                          //   var msgNameCamel = ElementService.toCamelCaseBridge(message_str.split(':')[0]);
+                          //   SendService.prepareToSendMessage(msgNameCamel, message_str, scope);
+                          // })
+                          // }
                           if (state.name.indexOf('init') > -1) {
                             postStates.push(state);
                             return;
@@ -539,29 +531,34 @@ angular.module('uguru.shared.directives')
                         })
                       }
                       if (states.when) {
-                        states.when.forEach(function(state, i) {
-
-                          state.cancelCallback = null;
-
-                          var whenCallback = function(current_depth) {
-
-                            return function(actions, scope, delay, depth) {
-
-                              if (depth && depth.inclusive && depth.num >= 0 && current_depth < 0) return;
-                              if (depth && depth.inclusive && depth.num <= 0 && current_depth > 0) return;
-                              if (depth && !depth.inclusive && depth.num !== current_depth) return;
+                        // return
+                        // states.when.forEach(function(state, i) {
 
 
+                        //   state.cancelCallback = null;
+                        //   // if (state.actions && state.actions.send) {
+                        //   //   console.log(state.actions.send, state.nameCamel, element)
+                        //   // }
 
-                              if (delay) {
-                                $timeout(function() {
-                                  state.exec(lElem, scope, lAttr, actions);
-                                }, delay)
-                                return;
-                              }
-                              state.exec(lElem, scope, lAttr, actions);
-                            }
-                          }
+                        //   var whenCallback = function(current_depth) {
+
+                        //     return function(actions, scope, delay, depth) {
+
+                        //       if (depth && depth.inclusive && depth.num >= 0 && current_depth < 0) return;
+                        //       if (depth && depth.inclusive && depth.num <= 0 && current_depth > 0) return;
+                        //       if (depth && !depth.inclusive && depth.num !== current_depth) return;
+
+
+
+                        //       if (delay) {
+                        //         $timeout(function() {
+                        //           state.exec(lElem, scope, lAttr, actions);
+                        //         }, delay)
+                        //         return;
+                        //       }
+                        //       state.exec(lElem, scope, lAttr, actions);
+                        //     }
+                        //   }
 
 
 
@@ -571,9 +568,9 @@ angular.module('uguru.shared.directives')
 
                           // if (scope.$parent.public.customStates) {
 
-                            if (!(state.nameCamel in scope.public.customStates.when)) {
-                              scope.public.customStates.when[state.nameCamel] = {elements: [], depth: 0};
-                            }
+                            // if (!(state.nameCamel in scope.public.customStates.when)) {
+                            //   scope.public.customStates.when[state.nameCamel] = {elements: [], depth: 0};
+                            // }
 
 
                             // if (typeof scope.$parent.public.customStates.when[state.nameCamel] === 'object' && scope.$parent.public.customStates.when[state.nameCamel] !== [] && !scope.$parent.public.customStates.when[state.nameCamel].length) {
@@ -581,13 +578,14 @@ angular.module('uguru.shared.directives')
                             // } else {
 
                             // console.log('pushing', whenMetadata.name, scope.public.customStates.when[state.nameCamel].depth)
-                            var currentDepth = scope.public.customStates.when[state.nameCamel].depth;
+                            // var currentDepth = scope.public.customStates.when[state.nameCamel].depth;
 
-                            var whenMetadata = {actions: state.actions, func: whenCallback(currentDepth), name:state.name};
-                            scope.public.customStates.when[state.nameCamel].elements.push(whenMetadata)
+                            // var whenMetadata = {actions: state.actions, func: whenCallback(currentDepth), name:state.name};
+                            // scope.public.customStates.when[state.nameCamel].elements.push(whenMetadata)
 
                             // }
                           // }
+
 
 
                           // if (scope.public.customStates.whenElements.indexOf(element[0]) === -1) {
@@ -595,20 +593,31 @@ angular.module('uguru.shared.directives')
                           // }
 
 
-                          var whenStateName = state.type + '-' + state.name;
+                          // var whenStateName = state.type + '-' + state.name;
 
-                          if (!(whenStateName in scope.root.scope.public.customStates)) {
-                            scope.root.scope.public.customStates[whenStateName] = [];
-                          }
-                          scope.root.scope.public.customStates[whenStateName].push(whenMetadata)
-                          if (state.name.indexOf('debug') > -1) {
-                            ElementService.launchExternalWindow(state.actions.anim.parsed, element);
-                          }
+                          // if (!(whenStateName in scope.root.scope.public.customStates)) {
+                          //   scope.root.scope.public.customStates[whenStateName] = []
+                          // }
+                          // scope.root.scope.public.customStates[whenStateName].push(whenMetadata)
+                          // if (state.name.indexOf('debug') > -1) {
+                          //   ElementService.launchExternalWindow(state.actions.anim.parsed, element);
+                          // }
+
+                          // if (state.actions.send) {
+                          //   state.actions.send.parsed.split(',').forEach(function(message_str, i) {
+                          //     var msgNameCamel = ElementService.toCamelCaseBridge(message_str.split(':')[0]);
+                          //     SendService.prepareToSendMessage(msgNameCamel, message_str, scope);
+                          //     // console.log('prepping..', msgNameCamel, scope.public.customStates)
+                          //   })
+                          // }
+
+                          // console.log('registering my', state.nameCamel, state.actions.send);
+                          // if (state.nameCamel === 'startCounter') {
+                          //   console.log(scope.public.customStates.when)
+                          // }
 
 
-
-
-                        })
+                        // })
                       }
 
                       // scope.states = states;
