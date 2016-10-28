@@ -3,7 +3,7 @@
 <div class="perspective-container full-xy flex-center-wrap p15xy">
 	<div class="message left"
 		u
-		on-init="s:[message-bubble-left-init:public]">
+		on-init="s:[message-bubble-left-init:children]">
 		<div class='message-icon'
 			u init-with="p:[tr:scale(0), tro:center center]"
 			when-message-bubble-left-init="a:[icon-enter:750:easeOutSine:0:1:f]">
@@ -55,7 +55,7 @@
 	</div>
 	<div class="message right"
 		u
-		on-init="s:[message-bubble-right-init:public:1000]">
+		on-init="s:[message-bubble-right-init:children:1000]">
 		<div class="message-content">
 			<div class="message-info"
 				u init-with="p:[op:0, tro: right center]"
