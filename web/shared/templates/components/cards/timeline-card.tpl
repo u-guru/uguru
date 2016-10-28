@@ -1,27 +1,26 @@
 <div class="perspective-container full-xy flex-center p15xy">
 	<article class="timeline-card timeline-tutorial timeline-left"
-		init-with="p:[op:0, tro:left top]"
-		on-init="s:[timeline-card-init:public]"
-		when-timeline-card-init="a:[bounceInLeft-subtle:set:(dur:1000ms#func:linear):in]">
+		u init-with="p:[op:0, tro:left top]"
+		on-init="s:[timeline-card-init:children] |a:[bounceInLeft-subtle:1000:linear:0:1:f]">
 		<header>
 			<a>
-				<span class="block" init-with="p-op"
-					when-timeline-card-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-500]">Making Animated GIFs Tutorial</span>
+				<span class="block" u init-with="p:[op:0, tro:center center]"
+					when-timeline-card-init="a:[bounceInUp-subtle:1000:linear:500:1:f]">Making Animated GIFs Tutorial</span>
 			</a>
 		</header>
 		<figure>
 			<img class="post-banner" src='https://d13yacurqjgara.cloudfront.net/users/802553/screenshots/2874479/meter_maid.gif' alt=''
-				init-with="p:[transform:scaleY(0) skewX(15deg), tro:center top]"
-				when-timeline-card-init="p:[transform:scaleY(0) skewX(15deg):scaleY(1) skewX(0deg):500:easeInOutBack easeOutExpo]:delay-500"/>
+				u init-with="p:[transform:scaleY(0) skewX(15deg), tro:center top]"
+				when-timeline-card-init="a:[scaleY:0:1:500:easeInOutBack:0:1:f, skewX:15deg:0deg:500:easeOutExpo:0:1:f]:delay-500"/>
 		</figure>
 		<section class="overflow-hidden">
-			<p init-with="p-op"
-				when-timeline-card-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1500]">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			<p u init-with="p:[op:0, tro:center center]"
+				when-timeline-card-init="a:[bounceInUp-subtle:1000:linear:1500:1:f]">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 			<div class="attach-list student">
-				<ul>
+				<ul u on-init="s:[timeline-attach:children:easeInCirc-400]:+1600">
 					<li>
-						<a init-with="p-op"
-							when-timeline-card-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-1600]">
+						<a u init-with="p:[op:0, tro:center center]"
+							when-timeline-attach="a:[bounceInRight-subtle:1000:linear:0:1:f]">
 							<span>
 								<svg viewBox="0 0 100 100">
 									<g stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -38,8 +37,8 @@
 						</a>
 					</li>
 					<li>
-						<a init-with="p-op"
-							when-timeline-card-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-1700]">
+						<a u init-with="p:[op:0, tro:center center]"
+							when-timeline-attach="a:[bounceInRight-subtle:1000:linear:0:1:f]">
 							<span>
 								<svg viewBox="0 0 100 100">
 									<g fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -60,8 +59,8 @@
 						</a>
 					</li>
 					<li>
-						<a init-with="p-op"
-							when-timeline-card-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-1800]">
+						<a u init-with="p:[op:0, tro:center center]"
+							when-timeline-attach="a:[bounceInRight-subtle:1000:linear:0:1:f]">
 							<span>
 								<svg viewBox="0 0 100 100">
 									<g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -77,23 +76,23 @@
 				</ul>
 			</div>
 			<div class="tag-list">
-				<ul>
-					<li><a class="chip bg bg-azure" init-with="p-op"
-						when-timeline-card-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-1900]">tag</a></li>
-					<li><a class="chip bg bg-azure" init-with="p-op"
-						when-timeline-card-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-2000]">tag</a></li>
-					<li><a class="chip bg bg-azure" init-with="p-op"
-						when-timeline-card-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-2100]">tag</a></li>
-					<li><a class="chip bg bg-azure" init-with="p-op"
-						when-timeline-card-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-2200]">tag</a></li>
+				<ul u on-init="s:[timeline-chip:children:easeInCirc-500]:+1800">
+					<li u init-with="p:[op:0, tro:left top]"
+						when-timeline-chip="a:[bounceInRight-subtle:1000:linear:0:1:f]"><a class="chip bg bg-azure">tag</a></li>
+					<li u init-with="p:[op:0, tro:left top]"
+						when-timeline-chip="a:[bounceInRight-subtle:1000:linear:0:1:f]"><a class="chip bg bg-azure">tag</a></li>
+					<li u init-with="p:[op:0, tro:left top]"
+						when-timeline-chip="a:[bounceInRight-subtle:1000:linear:0:1:f]"><a class="chip bg bg-azure">tag</a></li>
+					<li u init-with="p:[op:0, tro:left top]"
+						when-timeline-chip="a:[bounceInRight-subtle:1000:linear:0:1:f]"><a class="chip bg bg-azure">tag</a></li>
 				</ul>
 			</div>
 			<footer>
-				<ul>
-					<li init-with="p-op"
-						when-timeline-card-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-2500]"><span class="user-icon-36"></span></li>
-					<li init-with="p-op"
-						when-timeline-card-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-2600]">
+				<ul u on-init="s:[timeline-chip:children:1500]">
+					<li u init-with="p:[op:0, tro:center center]"
+						when-timeline-chip="a:[bounceInUp-subtle:1000:linear:0:1:f]"><span class="user-icon-36"></span></li>
+					<li u init-with="p:[op:0, tro:center center]"
+						when-timeline-chip="a:[bounceInUp-subtle:1000:linear:100:1:f]">
 						<a>Gabrielle Wee&nbsp;<span>Design Guru</span></a>
 						<span>December 12, 2015</span>
 					</li>
