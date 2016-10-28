@@ -1,7 +1,7 @@
 <div class="perspective-container full-xy flex-center p15xy">
 	<div class="wallet-container"
 		u init-with="p:[tro:left center, op:0]"
-		on-init="s:[wallet-enter:public, wallet-container:self]"
+		on-init="s:[wallet-enter:children, wallet-container:self]"
 		when-wallet-container="a:[bounceInLeft-subtle:1000:linear:0:1:f]">
 		<svg class="wallet-back absolute top-0 left-0" viewBox="0 0 264 199">
 			<g fill="none" fill-rule="evenodd" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
