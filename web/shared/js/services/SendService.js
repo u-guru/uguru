@@ -35,16 +35,16 @@ function SendService($timeout, $parse, RootService, TweenService) {
     if (stateName in scope.public.customStates.when && scope.public.customStates.when[stateName].elements) {
       futureExecDict.depth = expected_depth || scope.public.customStates.when[stateName].depth;
       scope.public.customStates.when[stateName].elements.push(futureExecDict)
-    } else {
-      if (state.nameCamel in scope.root.scope.public.customStates.when) {
-
-        scope.root.scope.public.customStates.when[state.nameCamel].elements.push(futureExecDict)
-      } else {
-        scope.root.scope.public.customStates.when[state.nameCamel] = {elements: [], depth: -1}
-        scope.root.scope.public.customStates.when[state.nameCamel].elements.push(futureExecDict);
-      }
-
     }
+
+    else if (state.nameCamel in scope.root.scope.public.customStates.when) {
+
+      scope.root.scope.public.customStates.when[state.nameCamel].elements.push(futureExecDict)
+    } else {
+      scope.root.scope.public.customStates.when[state.nameCamel] = {elements: [], depth: -1}
+      scope.root.scope.public.customStates.when[state.nameCamel].elements.push(futureExecDict);
+    }
+
 
 
     // {actions: state.actions, func: whenCallback(currentDepth), name:state.name};
@@ -61,7 +61,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
       'gp': 'depth(-2)',
       'p': 'depth(-1)',
       'grandparent': 'depth(-2)',
-      'child': 'depth(1)',
+      'children': 'depth(1)',
       'gc': 'depth(2)',
       'ggc': 'depth(3)',
       'gggc': 'depth(4)',
@@ -377,7 +377,6 @@ function SendService($timeout, $parse, RootService, TweenService) {
     var total_delay = options.delay || 0
     var stagger_delay = 0;
     var final_depth = options.sendScope in depthMappings && depthMappings[options.sendScope] || 0;
-    console.log(total_delay)
 
     element_arr.forEach(function(state_ref, i) {
       if (options.stagger && options.stagger.delays.length) {
