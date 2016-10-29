@@ -1,8 +1,7 @@
 <div class="perspective-container full-xy flex-center" reference="http://codepen.io/teamuguru/pen/3d51f2394a6a0dbe38646612aa3e3759?editors=1100">
 	<div class="radio-container bg-moxie"
 		u
-		on-init="send:[radio-load:public]"
-		when-radio-load="send:[radio-enter:public:350]"
+		on-init="send:[radio-load:grandchildren, radio-enter:>children:350]"
 		on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]">
 		<div>
 			<input type="checkbox" id="radio-item" />
