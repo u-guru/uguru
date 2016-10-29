@@ -1,4 +1,5 @@
 <div class="perspective-container full-xy flex-center p15xy" types='academic, baking, photo, tech, household' default-type="baking">
+
 	<div class="pf-tile-container mobile" ng-if='activeType === "academic"'
 		u on-init="s:[academic-tile-init:children, aca-tile-border:grandchildren]">
 		<a></a><a></a><a></a><a></a>
@@ -90,11 +91,12 @@
 		</div>
 	</div>
 
-	<div class="pf-tile-container mobile" ng-if='activeType === "baking"'
+<div class="pf-tile-container mobile" ng-if='activeType === "baking"'
 		u init-with="p:[transform-origin:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
-		on-init="s:[baking-tile-init:public, bk-label:depth(>2)]"
+		on-init="s:[baking-tile-init:self, bk-label:depth(>1)]"
 		when-baking-tile-init="a:[rotateX:-30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:500:easeOutSine:0:1:f]"
 		when-baking-tile-exit="a:[rotateX:0deg:-30deg:1000:easeInCubic:1:f, rotateY:0deg:30deg:1000:easeInExpo:1:f, opacity:1:0:500:linear:0:1:f]">
+
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-baking">
 			<div class="pf-tile-top" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');"
@@ -167,11 +169,12 @@
 		</div>
 	</div>
 
-	<div class="pf-tile-container mobile" ng-if='activeType === "photo"'
+	 <div class="pf-tile-container mobile"  ng-if='activeType === "photo"'
 		u init-with="p:[transform-origin:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
-		on-init="s:[photo-tile-init:public]"
-		when-photo-tile-init="a:[rotateX:-30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:500:easeOutSine:0:1:f]"
+		on-init="s:[photo-tile-init:depth(>1), photo-tile-card:self]"
+		when-photo-tile-card="a:[rotateX:-30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:500:easeOutSine:0:1:f]"
 		when-photo-tile-exit="p:[rotateX(-30deg) rotateY(30deg), opacity:0:delay-500]">
+
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-photography">
 			<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
@@ -226,8 +229,7 @@
 				</ul>
 				<div class="pf-pricing photo-price"
 					u init-with="p:[transform-origin:center center, opacity:0]"
-					when-photo-tile-init="a:[slideInUp-subtle:1000:easeOutSine:1000:1:f]"
-					on-init="s:[ph-borders:children:2000]">
+					when-photo-tile-init="a:[slideInUp-subtle:1000:easeOutSine:1000:1:f] | s:[ph-borders:children:2000]">
 					<div class="pf-border">
 						<div u init-with="p:[transform:scaleX(0)]"
 							when-ph-borders="a:[scaleX:0:1:250:easeOutSine:0:1:f]"></div>
@@ -252,11 +254,12 @@
 		</div>
 	</div>
 
-	<div class="pf-tile-container mobile" ng-if='activeType === "tech"'
+	 <div class="pf-tile-container mobile" ng-if='activeType === "tech"'
 		u init-with="p:[transform-origin:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
-		on-init="s:[tech-tile-init:public , tech-borders-init:depth(>2):500, tech-top:depth(>2):250]"
+		on-init="s:[tech-tile-init:self, tech-borders-init:depth(>1):500, tech-top:depth(>1):250]"
 		when-tech-tile-init="a:[rotateX:-30deg:0deg:1000:easeOutCubic:1:f, rotateY:30deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:500:easeOutSine:0:1:f]"
 		when-tech-tile-exit="p:[rotateX(-30deg) rotateY(30deg), opacity:0:delay-500]">
+
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-tech">
 			<div class="pf-tile-top" style="background-image: url('http://www.iphoneinformer.com/wp-content/uploads/2015/11/wet-iPhone-6-2.jpg');"
@@ -362,7 +365,7 @@
 		</div>
 	</div>
 
-	<div class="pf-tile-container mobile" ng-if='activeType === "household"'
+	<div class="pf-tile-container mobile"  ng-if='activeType === "household"'
 		u init-with="p:[transform-origin:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
 		on-init="s:[household-tile-init:public, hh-content:children]"
 		when-household-tile-init="a:[rotateX:-30deg:0deg:1000:easeOutCubic:1:f, rotateY:30deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:500:easeOutSine:0:1:f]"
@@ -406,10 +409,10 @@
 					<g class="bubbles" fill="#FFFFFF" fill-rule="evenodd">
 						<g class="bub-back"
 							u init-with="p:[opacity:0]"
-							on-init="s:[bub-sink:siblings:1250, hh-bub-back:self:450, hh-bub-out:siblings:250] |a:[opacity:1:0:250:linear:0:1:f, translateY:0px:119px:500:easeInCubic:0:1:f]:delay-1250"
+							error on-init="s:[hh-bub-out:depth(0):250, hh-bub-back:self:450, bub-sink:depth(0):1350] | a:[opacity:1:0:250:linear:0:1:f, translateY:0px:119px:500:easeInCubic:0:1:f]:delay-1250"
 							when-hh-bub-back="a:[pf-hh-bubble-blow:1000:linear:0:1:f]">
 							<g u init-with="p:[opacity:0, transform-origin:center center]"
-								when-hh-bub-out="a:[pf-hh-bubble-blow:1000:linear:550]">
+								when-hh-bub-out="a:[pf-hh-bubble-blow:1000:linear:550:1:f]">
 								<path d="M186.36829,41.0424598 C195.375073,44.3206607 199.994675,54.3464594 196.686459,63.4357079 C193.378243,72.5249564 183.394964,77.2357412 174.388181,73.9575402 C165.381398,70.6793393 160.761796,60.6535406 164.070012,51.5642921 C167.378228,42.4750436 177.361507,37.7642588 186.36829,41.0424598 L186.36829,41.0424598 L186.36829,41.0424598 Z" class="bub-back-18"></path>
 								<path d="M295.030127,16.3827652 C315.61706,8.8897345 338.435984,19.6572426 345.99762,40.4326677 C353.559256,61.2080927 343.000167,84.124204 322.413235,91.6172348 C301.826302,99.1102655 279.007378,88.3427574 271.445742,67.5673323 C263.884105,46.7919073 274.443194,23.875796 295.030127,16.3827652 L295.030127,16.3827652 L295.030127,16.3827652 Z" class="bub-back-17"></path>
 								<path d="M240.030127,31.3827652 C260.61706,23.8897345 283.435984,34.6572426 290.99762,55.4326677 C298.559256,76.2080927 288.000167,99.124204 267.413235,106.617235 C246.826302,114.110266 224.007378,103.342757 216.445742,82.5673323 C208.884105,61.7919073 219.443194,38.875796 240.030127,31.3827652 L240.030127,31.3827652 L240.030127,31.3827652 Z" class="bub-back-16"></path>

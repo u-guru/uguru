@@ -29,7 +29,7 @@
 		<li>
 			<div class="ranking-tile small no-icon"
 				u init-with="p-op"
-				on-init="s:[ranking-tile-init-2:depth(>2):100] |a:[fadeInUp:250:(0,.35,.77,1):100:1:f]">
+				on-init="s:[ranking-tile-init-2:depth(>1):100] |a:[fadeInUp:250:(0,.35,.77,1):100:1:f]">
 				<header u init-with="p-op"
 					when-ranking-tile-init-2="a:[bounceInUp-subtle:1000:linear:0:1:f]">
 					<h3>Big 10 Academic Ratings</h3>
@@ -51,7 +51,7 @@
 			</div>
 			<div class="ranking-tile small with-icon tile-shamrock"
 				u init-with="p-op"
-				on-init="s:[ranking-tile-init-3:depth(>2):200] |a:[fadeInUp:450:(0,.35,.77,1):350:1:f]">
+				on-init="s:[ranking-tile-init-3:depth(>1):200] |a:[fadeInUp:450:(0,.35,.77,1):350:1:f]">
 				<header u init-with="p-op"
 					when-ranking-tile-init-3="a:[bounceInUp-subtle:1000:linear:0:1:f]">
 					<div class="ranking-tile-icon" ng-include="root.base_url + 'shared/templates/components/svg/main/user.html'"></div>
@@ -79,7 +79,7 @@
 		<li>
 			<div class="ranking-tile small with-icon tile-lake"
 				u init-with="p-op"
-				on-init="s:[ranking-tile-init-4:depth(>2):300] |a:[fadeInUp:250:(0,.35,.77,1):300:1:f]">
+				on-init="s:[ranking-tile-init-4:depth(>1):300] |a:[fadeInUp:250:(0,.35,.77,1):300:1:f]">
 				<header u init-with="p-op"
 					when-ranking-tile-init-4="a:[bounceInUp-subtle:1000:linear:0:1:f]">
 					<div class="ranking-tile-icon" ng-include="root.base_url + 'shared/templates/components/svg/main/user.html'"></div>
@@ -105,7 +105,7 @@
 			</div>
 			<div class="ranking-tile small with-icon tile-auburn"
 				u init-with="p-op"
-				on-init="s:[ranking-tile-init-5:depth(>2):400] |a:[fadeInUp:450:(0,.35,.77,1):550:1:f]">
+				on-init="s:[ranking-tile-init-5:depth(>1):400] |a:[fadeInUp:450:(0,.35,.77,1):550:1:f]">
 				<header u init-with="p-op"
 					when-ranking-tile-init-5="a:[bounceInUp-subtle:1000:linear:0:1:f]">
 					<div class="ranking-tile-icon" ng-include="root.base_url + 'shared/templates/components/svg/main/user.html'"></div>
