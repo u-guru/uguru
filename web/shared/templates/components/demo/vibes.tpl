@@ -13,7 +13,7 @@
 	<grid-item class='bg-charcoal' width='100' height='15' align='top center'>
 		<grid-item width='100' align='center center' u init-with="p-op">
 			<h1 class='full-x weight-500 flex-vertical-center txt-28 space-2'>
-			Ready for all the vibes?
+				Ready for all the vibes?
 			</h1>
 		</grid-item>
 	</grid-item>
