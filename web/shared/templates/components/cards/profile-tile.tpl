@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" ng-init="types='academic, baking, photo, tech, household'; activeType='baking'">
+<div class="perspective-container full-xy flex-center p15xy" ng-init="types='academic, baking, photo, tech, household'; activeType='household'">
 	<div class="pf-tile-container" ng-if="activeType ===  'academic'"
 		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		error
@@ -407,7 +407,7 @@
 						</clipPath>
 					</defs>
 					<g class="bubbles" fill="#FFFFFF" fill-rule="evenodd"
-						u on-init="s:[hh-bubbles:depth(>2):250]">
+						u on-init="s:[hh-bubbles:depth(>1):250]">
 						<g class="bub-back"
 							u init-with="p:[opacity:0]"
 							when-hh-bubbles="a:[pf-hh-bubble-blow:1000:linear:200:1:f]"
