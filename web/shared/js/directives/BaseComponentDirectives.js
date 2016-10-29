@@ -566,6 +566,9 @@ angular.module('uguru.shared.directives.base.components')
                                 lElem.replaceWith(keepContainer)
 
                                 keepContainer.append(children);
+                            } else {
+                                lElem.replaceWith(lElem.children());
+                                lElem.addClass('flex-vertical-center')
                             }
 
                             $compile(lElem)(lScope);
@@ -585,6 +588,7 @@ angular.module('uguru.shared.directives.base.components')
             priority: 100,
             template: '<div class="flex"></div>',
             compile: function(element, attr, transclude) {
+                attr.align && CompService.renderAlign(element, attr.align || 'center center');
                 attr.spacing && attr.spacing === 'center' && element.addClass('flex-center')
                 if (attr.width) {
                     if (attr.width.indexOf('%') === -1 && attr.width.indexOf('px') === -1) {

@@ -139,7 +139,7 @@
                         <span class='opacity-50p weight-400'>&nbsp;aka&nbsp;depth(-2), p</span>
                     </span>
             </li>
-          <!--   <li class='full-x m20y text-left'
+            <li class='full-x m20y text-left'
                 u
                 ng-attr-on-click="s:[send-gc4-to-siblings:public]"
                 ng-attr-on-key-up="s:[send-gc4-to-siblings:public:100]:+1000"
@@ -157,7 +157,27 @@
                         <span class='weight-900'>siblings gc5,gc6</span>
                         <span class='opacity-50p weight-400'>&nbsp;aka&nbsp;depth(-0), p</span>
                     </span>
-            </li> -->
+            </li>
+            <li class='full-x m20y text-left'
+                u
+                ng-attr-on-click="s:[send-gc7-to-siblings-and-self:public]"
+                ng-attr-on-key-up="s:[send-gc7-to-siblings-and-self:public:100]:+1000"
+                on-mouseenter="p:[opacity:0.5]"
+                on-mouseleave='p:[opacity:1]'
+                ng-attr-accept-keys="9">
+                    <span class='opacity-50 uppercase weight-700 p20x'>press key # 9</span>
+                    <span class='p10xy border-1'>
+                        gc7
+                    </span>
+                    <span class='weight-900 txt-32'>
+                        &nbsp;&nbsp;&nbsp;&#8594;&nbsp;&nbsp;
+                    </span>
+                    <span class='p10xy border-1'>
+                        <span class='weight-900'>siblings gc8,gc9</span>
+                        <span class='opacity-50p weight-400'>&nbsp;aka&nbsp;depth(-0), p</span>
+                    </span>
+            </li>
+
             <!-- <li class='full-x m20y text-left'
                 u
 
@@ -233,7 +253,7 @@
                         <li class='m05x border-1-left border-1-right p05y p10x border-1-top border-solid border-white' u
                         when-broadcast-public="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]"
                         when-flash-plz="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]"
-
+                        when-send-gc4-to-siblings="s:[flash-plz:depth(-0):100]"
                         >
                             gc4
                         </li>
@@ -253,7 +273,11 @@
                         <span style='padding:10px 2px' class='absolute full-y bg-smoke top-0'> </span>
                     </div>
                     <ul class='flex-vertical-center full-x p15-grid'>
-                        <li class='m05x border-1-left border-1-right p05y p10x border-1-top border-solid border-white' u when-broadcast-public="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]"  when-flash-plz="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]">
+                        <li class='m05x border-1-left border-1-right p05y p10x border-1-top border-solid border-white' u
+                        when-broadcast-public="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]"
+                        when-flash-plz="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]"
+                        when-send-gc7-to-siblings-and-self="s:[flash-plz:depth(0):100]"
+                        >
                             gc7
                         </li>
                         <li class='m05x border-1-left border-1-right p05y p10x border-1-top border-solid border-white' u when-broadcast-public="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]" when-flash-plz="a:[opacity:0.5:1:1000:easeOutQuint:0:1:f]">
