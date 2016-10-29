@@ -2,13 +2,13 @@
 	<div class="checkbox-container bg-moxie"
 		u
 		on-init="s:[checkbox-load:public]"
-		when-checkbox-load="s:[checkbox-enter:public:550]">
+		when-checkbox-load="s:[checkbox-enter:children:550]">
 		<div>
 			<input type="checkbox" id="checkbox-item"/>
 			<span u init-with="p:[background:rgba(64,72,75,0)]"
 				when-checkbox-enter="p:[background:rgba(64,72,75,0):rgba(64,72,75,1):250:easeOutSine]">
 				<svg viewBox="0 0 32 32"
-					u on-init="s:[line-draw:children:easeOutCubic-600]">
+					u on-init="s:[line-draw:depth(1):easeOutCubic-600]">
 					<line class="line-1" x1="1.25" y1="1.25" x2="30.75" y2="1.25"
 						u init-with="p:[sda:29.5, sdo:29.5]"
 						when-line-draw="a:[stroke-dashoffset:29.5:0:250:easeOutSine:0:1:f]"/>
