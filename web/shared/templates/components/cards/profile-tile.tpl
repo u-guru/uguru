@@ -1,8 +1,8 @@
-<div class="perspective-container full-xy flex-center p15xy" ng-init="types='academic, baking, photo, tech, household'; activeType='household'">
+<div class="perspective-container full-xy flex-center p15xy" types="academic, baking, photo, tech, household">
 	<div class="pf-tile-container" ng-if="activeType ===  'academic'"
 		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		error
-		on-init="s:[academic-tile-init:self, aca-border:children:500, aca-top:children:500]"
+		on-init="s:[academic-tile-init:public, aca-border:children:500, aca-top:children:500]"
 		when-academic-tile-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f, translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
 		when-academic-tile-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:500:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:0:1:f, rotateY:0deg:30deg:1000:easeOutCubic:0:1:f, translateY:0px:-300px:1000:easeOutCubic:0:1:f]">
 		<a></a><a></a><a></a><a></a>
@@ -96,7 +96,7 @@
 
 	<div class="pf-tile-container" ng-if='activeType === "baking"'
 		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-		on-init="s:[baking-tile-init:self, bk-tile-top:>c]"
+		on-init="s:[baking-tile-init:public, bk-tile-top:depth(>1)]"
 		when-baking-tile-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f, translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
 		when-baking-tile-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:500:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:0:1:f, rotateY:0deg:30deg:1000:easeOutCubic:0:1:f, translateY:0px:-300px:1000:easeOutCubic:0:1:f]">
 		<a></a><a></a><a></a><a></a>
@@ -407,7 +407,7 @@
 						</clipPath>
 					</defs>
 					<g class="bubbles" fill="#FFFFFF" fill-rule="evenodd"
-						u on-init="s:[hh-bubbles:depth(>1):250]">
+						u on-init="s:[hh-bubbles:depth(>2):250]">
 						<g class="bub-back"
 							u init-with="p:[opacity:0]"
 							when-hh-bubbles="a:[pf-hh-bubble-blow:1000:linear:200:1:f]"

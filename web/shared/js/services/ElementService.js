@@ -11,10 +11,11 @@ angular.module('uguru.shared.services')
     '$parse',
     'SendService',
     'TweenService',
+    '$compile',
     ElementService
         ]);
 
-function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window, RootService, SVGService, $parse, SendService, TweenService) {
+function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window, RootService, SVGService, $parse, SendService, TweenService, $compile) {
       var rShortcuts = {special: getSpecialAnimShortcuts(), animations:null, propValues: {}, props: {}, values:{}};
       var stateShortcuts = {};
       var rAnimations;
@@ -31,7 +32,22 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         getShortcutDict: getShortcutDict,
         addShortcuts: addShortcuts,
         launchExternalWindow: launchExternalWindow,
-        toCamelCaseBridge: UtilitiesService.camelCase
+        toCamelCaseBridge: UtilitiesService.camelCase,
+        renderAnimationStr: applyAnimArgs,
+        constructImportUrlFromObj: UtilitiesService.constructImportUrlFromObj,
+        initElement: initElement
+      }
+
+      function initElement(obj_url) {
+        var objUrlSplit = obj_url.split(':')
+        var type = objUrlSplit[0];
+        var objUrl = objUrlSplit[1]
+        var url = UtilitiesService.constructImportUrlFromObj(objUrl, type).replace('components/components/', 'components/');
+        var elem = angular.element('<div></div>')
+        elem.attr('ng-include', "'" + url + "'");
+        elem.css('height', '25%')
+        elem.css('width', '25%')
+        return elem
       }
 
       function launchExternalWindow(params, element) {
@@ -423,6 +439,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         })
 
         animations = animArr.join(",");
+        console.log(animations)
         // animations = '[' + animations + ']'
         // console.log('pre condense', animations)
         // animations = condenseAnimationsAndShortcuts(scope, animations);
@@ -435,7 +452,11 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         }
 
         animDelay = animDelay || 0;
+
         player.scheduleStream(player, state, animDelay);
+        if (!scope) {
+          return {player: player, stream:state, delay: animDelay}
+        }
         //TODO, inject global offset here
         // if (animDelay && animDelay>0) {
         //   $timeout(function() {

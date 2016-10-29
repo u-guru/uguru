@@ -189,6 +189,64 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
+    .directive('types', ['$compile', '$stateParams', "$timeout", function($compile, $stateParams, $timeout) {
+        return {
+            scope: false,
+            link: {pre: function(scope, element, attr) {
+                scope.types = attr.types.split(', ');
+                scope.activeType = $stateParams.type;
+
+                var d = angular.element('<div></div>')
+                d.attr('ng-include', '"admin/templates/types.tpl"');
+                element.parent().append(d);
+                $compile(d)(scope)
+                scope.activateType = function($event, type) {
+                    $timeout(function() {
+                      scope.activeType = type;
+                      scope.$apply();
+                      $compile(d)(scope)
+                      // $compile(angular.element(elem))($scope);
+                    })
+                }
+                // console.log(element)
+            }}
+        }
+    }])
+    .directive('uChart', ['$compile', function($compile) {
+// http://stackoverflow.com/questions/24615103/angular-directives-when-and-how-to-use-compile-controller-pre-link-and-post
+    return {
+            restrict: 'E',
+            replace:true,
+            transclude: true,
+            templateUrl: 'shared/templates/components/base/grid/state.chart.tpl',
+            controller: 'AdminChartController',
+            controllerAs:'chart',
+            compile: function compile( element, attr ) {
+
+                if (!attr.src) attr.src = 'shared:components.svg.logo.guru-head.html'
+
+                return {
+                    pre: function preLink( scope, element, attributes ) {
+
+                        element.append(scope.chart.element)
+                        $compile(element)(scope)
+                        element.replaceWith(scope.chart.element.children().children().contents())
+                        // $compile(element)(scope)
+
+
+                        console.log( attributes.log + ' (pre-link)'  );
+                    },
+                    post: function postLink( scope, element, attributes ) {
+                        $compile(element)(scope)
+                        // var animObj = scope.renderAnimationStr(element.find('svg'), null, attr.state, scope.chart.context);
+                        // scope.chart.player = animObj.player;
+                        console.log( attributes.log + ' (post-link)'  );
+                    }
+                };
+             }
+         };
+
+    }])
     .directive("chart", ["$compile", "SVGService", "$timeout", function($compile, SVGService, $timeout) {
         return {
             restrict: 'E',
@@ -199,7 +257,10 @@ angular.module('uguru.shared.directives.base.components')
                 return {
                     pre: function(scope, elem, attr) {
 
-
+                        if (scope.stream || typeof scope.stream !== 'object') {
+                            console.log('expecting string', attr.state);
+                            return;
+                        }
 
 
 

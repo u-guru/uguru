@@ -488,36 +488,6 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp', 'u
 
       var name =  $stateParams.name + (($stateParams.version &&  "." + $stateParams.version) || '');
       return '<div ng-include="' + "'shared/templates/components/" + $stateParams.section + "/" + name + ".tpl'" + '"> </div>'
-    },
-    controller: function($scope, $timeout, $compile, UtilitiesService, $stateParams, $rootScope) {
-      $timeout(function() {
-        var elem = document.querySelector('[types]');
-
-        if (elem) {
-          var elemDefaultType = elem.getAttribute('default-type');
-          $scope.types = JSON.parse(JSON.stringify((elem.getAttribute('types')))).split(', ');
-          var defaultTypeIndex = $scope.types.indexOf(elemDefaultType);
-          if (defaultTypeIndex || $stateParams.type) {
-            $scope.activeType = $stateParams.type && $stateParams.type || $scope.types[defaultTypeIndex];
-          }
-          $timeout(function() {
-            $compile(elem)($scope);
-          })
-          var div = document.createElement('div');
-          div.setAttribute('ng-include', '"' +  'admin/templates/types.tpl'  +'"');
-          elem.parentNode.appendChild(div);
-          $scope.activateType = function($event, type) {
-            $timeout(function() {
-              $scope.activeType = type;
-              $scope.$apply();
-              // $compile(angular.element(elem))($scope);
-            })
-          }
-          $compile(div)($scope);
-          $compile(elem)($scope);
-
-        }
-      }, 100)
     }
   })
   .state('root.single-components-version', {
