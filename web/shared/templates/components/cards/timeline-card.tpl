@@ -88,11 +88,11 @@
 				</ul>
 			</div>
 			<footer>
-				<ul u on-init="s:[timeline-chip:children:1500]">
+				<ul u on-init="s:[timeline-team:depth(1):1500]">
 					<li u init-with="p:[op:0, tro:center center]"
-						when-timeline-chip="a:[bounceInUp-subtle:1000:linear:0:1:f]"><span class="user-icon-36"></span></li>
+						when-timeline-team="a:[bounceInUp-subtle:1000:linear:0:1:f]"><span class="user-icon-36"></span></li>
 					<li u init-with="p:[op:0, tro:center center]"
-						when-timeline-chip="a:[bounceInUp-subtle:1000:linear:100:1:f]">
+						when-timeline-team="a:[bounceInUp-subtle:1000:linear:100:1:f]">
 						<a>Gabrielle Wee&nbsp;<span>Design Guru</span></a>
 						<span>December 12, 2015</span>
 					</li>
