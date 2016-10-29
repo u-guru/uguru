@@ -19,7 +19,8 @@ angular.module('uguru.admin')
 
 
     var chart = this;
-    chart.element = ElementService.initElement($attrs.src)
+    chart.elemUrl = ElementService.constructImportUrlFromObj($attrs.src)
+    console.log(chart.elemUrl)
 
     chart.context = context;
 

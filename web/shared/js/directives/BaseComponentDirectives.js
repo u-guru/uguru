@@ -201,15 +201,35 @@ angular.module('uguru.shared.directives.base.components')
                 element.parent().append(d);
                 $compile(d)(scope)
                 scope.activateType = function($event, type) {
+                    scope.activeType = type;
                     $timeout(function() {
-                      scope.activeType = type;
+
+                      // $compile(d)(scope)
                       scope.$apply();
-                      $compile(d)(scope)
+
                       // $compile(angular.element(elem))($scope);
                     })
                 }
                 // console.log(element)
             }}
+        }
+    }])
+    .directive('chartPlayer', ['$compile', function($compile) {
+        return {
+            restrict: 'E',
+            scope: {'player':'='},
+            templateUrl: 'admin/templates/animations/chart.player.tpl',
+            replace:true
+        }
+    }])
+    .directive('chartElem', ['$compile', function($compile) {
+        return {
+            restrict: 'E',
+            templateUrl: function(element, attr) {
+                console.log(attr.url)
+                return attr.url;
+            },
+            replace:true
         }
     }])
     .directive('uChart', ['$compile', function($compile) {
@@ -228,16 +248,16 @@ angular.module('uguru.shared.directives.base.components')
                 return {
                     pre: function preLink( scope, element, attributes ) {
 
-                        element.append(scope.chart.element)
-                        $compile(element)(scope)
-                        element.replaceWith(scope.chart.element.children().children().contents())
+                        // element.append(scope.chart.element)
+                        // $compile(element)(scope)
+                        // element.replaceWith(scope.chart.element.children().children().contents())
                         // $compile(element)(scope)
 
 
                         console.log( attributes.log + ' (pre-link)'  );
                     },
                     post: function postLink( scope, element, attributes ) {
-                        $compile(element)(scope)
+                        // $compile(element)(scope)
                         // var animObj = scope.renderAnimationStr(element.find('svg'), null, attr.state, scope.chart.context);
                         // scope.chart.player = animObj.player;
                         console.log( attributes.log + ' (post-link)'  );
