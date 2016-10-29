@@ -1,5 +1,5 @@
 <div class="perspective-container full-xy flex-center p15xy"
-	u on-init="s:[record-tile-init:depth(>2):250]">
+	u on-init="s:[record-tile-init:depth(>1):250]">
 	<div class="record-tile-container">
 		<a class="record-tile">
 			<svg viewBox="0 0 100 100">

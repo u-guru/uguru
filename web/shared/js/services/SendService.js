@@ -74,16 +74,20 @@ function SendService($timeout, $parse, RootService, TweenService) {
 
 
       return function(actions, scope, delay, depth) {
+
         actions = actions || state.actions;
+
         var options = msg_options
         var current_depth = msg_options.depth
         if (delay) {
           $timeout(function() {
             state.exec(element, scope, attr, actions);
           }, delay)
-          return;
+          // return;
+        } else {
+          state.exec(element, scope, attr, actions);
         }
-        state.exec(element, scope, attr, actions);
+
       }
     }
 
@@ -385,7 +389,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
       if (options.stagger && options.stagger.delays.length) {
         stagger_delay = options.stagger.delays[i]
       }
-      console.log('executing with delay', total_delay, 'and stagger delay', stagger_delay)
+
       state_ref.func(state_ref.actions, scope, total_delay + stagger_delay, final_depth);
     })
 
@@ -462,14 +466,15 @@ function SendService($timeout, $parse, RootService, TweenService) {
 
                   if (elem_info.depth && !msg_info.greaterThan && !msg_info.lessThan && elem_info.depth === depthNum) {
                     elements.push(elem_info);
-                  } else if (msg_info.greaterThan && elem_info.depth > depthNum) {
+                  } else if (msg_info.greaterThan && elem_info.depth >= depthNum) {
                     console.log(elem_info, depthNum, elem_info.depth, msg_info.greaterThan)
                     elements.push(elem_info);
-                  } else if (msg_info.lessThan && elem_info.depth < depthNum) {
+                  } else if (msg_info.lessThan && elem_info.depth <= depthNum) {
                     elements.push(elem_info);
                   }
 
                 })
+
                 if (elements.length !== currentMsgContext.length) {
                   currentMsgContext = {elements: elements, depth: currentMsgContext.depth, options: currentMsgContext.options};
                 }
@@ -845,7 +850,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
     var msg_scope = msg_str.split(':')[1];
 
     // console.log('attempting to precompile',msg_name, msg_scope, msg_str, scope.public.customStates.when)
-    if (msg_scope === 'siblings' || msg_scope ==='depth(-0)' || msg_scope === 'depth(0)') {
+    if (msg_scope === 'siblings' || msg_scope ==='depth(-0)') {
       if (!scope.$parent.public) {
         scope.$parent.public = {customStates: {when: {}}};
       }
