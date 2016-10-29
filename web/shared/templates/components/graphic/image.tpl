@@ -1,6 +1,6 @@
 <div class="full-xy flex-center" reference="http://codepen.io/teamuguru/pen/819ae8236d2546a80f7372d1c6872138?editors=1100">
 	<figure class="figure-image"
-		u on-init="s:[figure-image-init:grandchildren:150, figure-image-load:children:1500]"
+		u on-init="s:[figure-image-init:depth(2):150, figure-image-load:depth(1):1500]"
 		on-exit="p:[opacity:1:0:450:easeOutSine]:delay-150">
 		<img src="http://41.media.tumblr.com/ae90b8caeba47c980d343fedfc547b55/tumblr_n9v9gbigA21sciteso1_500.png"/>
 		<div class="figure-loading"
