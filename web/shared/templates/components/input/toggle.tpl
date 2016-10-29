@@ -1,6 +1,6 @@
-<div class="perspective-container full-xy flex-center" reference="http://codepen.io/teamuguru/pen/6ddde9fa7dbff14ae4124d45341be8c5?editors=1100">
-	 <!-- types='default, time-period, round, white-round' default-type="round" -->
-	<!-- <div class="toggle-container" ng-if='activeType === "default"'>
+<div class="perspective-container full-xy flex-center" types='default, time-period, round, white-round' default-type="round" reference="http://codepen.io/teamuguru/pen/6ddde9fa7dbff14ae4124d45341be8c5?editors=1100">
+
+	<div class="toggle-container" ng-if='activeType === "default"'>
 		<div class="toggle normal">
 			<input type="checkbox" checked/>
 			<label>
@@ -30,14 +30,12 @@
 				</div>
 			</label>
 		</div>
-	</div> -->
+	</div>
 
-	<div class="toggle-container"
+	<div class="toggle-container" ng-if='activeType === "time-period"'
 		u
-		on-init="send:[input-load:public]"
-		when-input-load="send:[input-enter:public:450]"
+		on-init="send:[input-load:>children,input-enter:>children:450]"
 		on-click="send:[pm-exit:public]">
-		 <!-- ng-if='activeType === "time-period"' -->
 		<div class="toggle am-pm">
 			<input type="checkbox"/>
 			<label>
@@ -47,7 +45,7 @@
 					<rect x="2" y="2" width="22" height="22"
 						u init-with="p:[sdo:88, sda:88, fill-opacity:0]"
 						when-input-load="a:[stroke-dashoffset:88:0:600:easeOutExpo:0:1:f]"
-						when-input-enter="a:[fill-opacity:0:1:500:easeOutExpo:00:1:f]"></rect>
+						when-input-enter="a:[fill-opacity:0:1:500:easeOutExpo:0:1:f]"></rect>
 				</svg>
 				<svg class="square" viewBox="0 0 26 26">
 					<rect x="2" y="2" width="22" height="22"></rect>
@@ -58,8 +56,7 @@
 					<span class="pm">PM</span>
 				</span>
 				<div u init-with="p:[op:1]"
-					when-input-load="a:[opacity:1:0:800:linear:0:1:f]:delay-200"
-					on-init="s:[time-draw:children:easeInCubic-450]">
+					when-input-load="a:[opacity:1:0:800:linear:0:1:f]:delay-200 |s:[time-draw:children:easeInCubic-450]">
 					<div u init-with="p:[tr:scaleX(0)]"
 						when-time-draw="a:[scaleX:0:1:50:easeOutQuad:0:1:f]"></div>
 					<div u init-with="p:[tr:scaleY(0)]"
@@ -73,40 +70,41 @@
 		</div>
 	</div>
 
-	<!-- <div class="toggle-container" ng-if='activeType === "round"'
+	<div class="toggle-container" ng-if='activeType === "round"'
 		u
-		on-init="send:[round-load:grandchildren, round-enter:public:450]">
+		on-init="send:[round-load:depth(2), round-enter:>children:350]">
 		<div class="toggle round">
 			<input type="checkbox" checked />
 			<label>
 				<div u init-with="p-op"
-					when-round-enter="a:[opacity:0:1:750:easeOutQuad:500:1:f]"></div>
+					when-round-enter="a:[opacity:0:1:750:easeOutQuad:400:1:f]"></div>
 				<svg class="square" viewBox="0 0 26 26">
 					<circle cx="13" cy="13" r="13"
 						u init-with="p:[fop:0, sdo:0, sda:81]"
 						when-round-load="a:[draw:0:1:500:easeOutQuad:300:1:f]"
-						when-round-enter="a:[fill-opacity:0:1:500:linear:100:1:f]"></circle>
+						when-round-enter="a:[fill-opacity:0:1:500:linear:0:1:f]"></circle>
 				</svg>
 				<svg class="square" viewBox="0 0 26 26">
 					<circle cx="13" cy="13" r="13"></circle>
 				</svg>
 				<svg class="bg" width="72px" height="36px" viewBox="0 0 72 36"
-					u when-round-enter="p:[op:0:delay-500]">
+					u when-round-enter="p:[op:0]:delay-400">
 				    <rect x="1" y="1" width="70" height="34" rx="17"
 						u init-with="p:[fop:0, sdo:0, sda:1]"
 						when-round-load="a:[draw:0:1:450:easeOutQuad:0:1:f, fill-opacity:1:0:450:easeOutQuad:400:1:f]"></rect>
 				</svg>
 			</label>
 		</div>
-	</div> -->
+	</div>
 
-	<!-- <div class="toggle-container" ng-if='activeType === "white-round"'
-		u on-init="send:[round-load:children:100, round-enter:public:750]">
+
+	<div class="toggle-container" ng-if='activeType === "white-round"'
+		u on-init="send:[round-load:children:100, round-enter:children:750]">
 		<div class="toggle white-round">
 			<input type="checkbox" checked />
 			<label>
 				<div u init-with="p-op"
-					when-round-enter="a:[opacity:0:1:750:easeInOutCubic:0:1:f]"></div>
+					when-round-enter="a:[opacity:0:1:550:easeInOutCubic:0:1:f]"></div>
 				<svg class="square" viewBox="0 0 26 26">
 					<circle cx="13" cy="13" r="13"
 					u init-with="p:[fop:0, sdo:82, sda:82]"
@@ -123,5 +121,5 @@
 				</svg>
 			</label>
 		</div>
-	</div> -->
+	</div>
 </div>
