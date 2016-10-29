@@ -1,13 +1,17 @@
 <grid-view type='row'>
 	<grid-item class='bg-charcoal uppercase' width='100' height='40' align='bottom center' margin="5%">
 		<grid-item width='33' align="center center" font-size="64px" padding="0" class='border-10'>
-			<h1 class='full-x weight-900 flex-vertical-center margin-0 ='>
+		<!-- <grid-item width='33' align="center center" font-size="64px" padding="0" class='border-10'
+			u init-with="p:[tr:scale(0.5)]"
+			on-init="a:[scale:0.5:1:500:easeOutSine:0:1:f]"> -->
+			<h1 class='full-x weight-900 flex-vertical-center margin-0'>
 				VIBES.CLUB
 			</h1>
 		</grid-item>
 	</grid-item>
+
 	<grid-item class='bg-charcoal' width='100' height='15' align='top center'>
-		<grid-item width='100' align='center center'>
+		<grid-item width='100' align='center center' u init-with="p-op">
 			<h1 class='full-x weight-500 flex-vertical-center txt-28 space-2'>
 			Ready for all the vibes?
 			</h1>
@@ -15,7 +19,7 @@
 	</grid-item>
 
 	<grid-item class='bg-charcoal' width='100' height='40' align='top center'>
-		<grid-item padding='20px 0'>
+		<grid-item padding='20px 0' u init-with="p-op">
 			<svg width="280px" height="40px" viewBox="0 0 280 40">
 			    <g class="visualizer" stroke-width="3" stroke="#FFFFFF" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 			        <path d="M272.5,6.5 L272.5,33.5"></path>
