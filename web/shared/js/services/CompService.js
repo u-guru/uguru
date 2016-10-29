@@ -16,7 +16,21 @@ function CompService($timeout, $compile) {
     getAndParseDimensions: getAndParseDimensions,
     applyDelayToWord: applyDelayToWord,
     parseSrcUrl: parseSrcUrl,
-    getMediaElemOfType: getMediaElemOfType
+    getMediaElemOfType: getMediaElemOfType,
+    renderAlign: renderAlign
+  }
+
+  function renderAlign(elem, align_args) {
+    var flexAlignMapping = {'bottom': 'flex-end', 'left': 'flex-start', 'right': 'flex-end', 'top': 'flex-start'}
+    var alignArgSplit = align_args.split(' ');
+    var vertArg = alignArgSplit[1];
+    var horizArg = alignArgSplit[0];
+    if (horizArg in flexAlignMapping) horizArg = flexAlignMapping[horizArg];
+    if (vertArg in flexAlignMapping) vertArg = flexAlignMapping[horizArg];
+    console.log(horizArg, vertArg)
+    elem.css('display', 'flex');
+    elem.css('align-items', horizArg);
+    elem.css('justify-content',vertArg);
   }
 
   function getMediaElemOfType(type, data_url, attributes, scope, attr, element) {
@@ -26,28 +40,6 @@ function CompService($timeout, $compile) {
       if (import_type) {
         var elem  = element[0].querySelector('[media-child]')
         console.log(elem)
-
-        // var elem = element[0].children
-        // if (elem) {
-        //   elem = angular.element(elem);
-        //   // elem.attr('style', 'background-image:url("' + scope.m.url + '")');
-        //   elem.attr('u', '')
-        //   $compile(elem)(scope)
-
-
-
-        //   // element.children(elem);
-        //   // elem.parent().replaceWith(elem)
-        //   // elem.css('display', 'none');
-
-        //   // elem.parent().replaceWith(elem)
-        //   // $compile(element.contents())(scope);
-
-        // }
-
-        // // element.attr('style', 'background-image:url("' + data_url + '")');
-
-
       } else {
         mDict.elem = document.createElement('img');
         for (var i = 0; i < attributes.length; i++) {
@@ -65,6 +57,12 @@ function CompService($timeout, $compile) {
 
     }
     return mDict;
+  }
+
+  function getSpacingFunctions() {
+    return {
+
+    }
   }
 
   function parseSrcUrl(obj_str) {

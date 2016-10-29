@@ -379,6 +379,7 @@ angular.module('uguru.shared.directives')
 .directive('initWith', ['DirectiveService', 'UtilitiesService', '$compile', function(DirectiveService, UtilitiesService, $compile) {
   return {
     restrict: 'A',
+    scope:false,
       link: {
         pre: function(scope, element, attr) {
           // if (!('u' in attr) && !attr.initAfter) {
@@ -746,6 +747,7 @@ angular.module('uguru.shared.directives')
   return {
     restrict: 'A',
     priority:100,
+    scope:false,
     link: {
       pre: function(scope, element, attr) {
         if (!('u' in attr) && !attr.initAfter) {

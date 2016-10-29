@@ -489,7 +489,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp', 'u
       var name =  $stateParams.name + (($stateParams.version &&  "." + $stateParams.version) || '');
       return '<div ng-include="' + "'shared/templates/components/" + $stateParams.section + "/" + name + ".tpl'" + '"> </div>'
     },
-    controller: function($scope, $timeout, $compile, UtilitiesService, $stateParams) {
+    controller: function($scope, $timeout, $compile, UtilitiesService, $stateParams, $rootScope) {
       $timeout(function() {
         var elem = document.querySelector('[types]');
 
