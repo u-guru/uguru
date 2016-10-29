@@ -26,7 +26,7 @@
 
 	<div ng-if='activeType === "photo"' class="category-tile bg-household" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
 		u init-with="p:[opacity:0, tro:center center]"
-		on-init="s:[category-photo-init:depth(>2):100, category-photo-card:self]"
+		on-init="s:[category-photo-init:depth(>1):100, category-photo-card:self]"
 		when-category-photo-card="a:[bounceIn-subtle:1000:linear:0:1:f]"
 		on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]">
 		<svg width="240px" height="150px" viewBox="0 0 240 150">
@@ -50,9 +50,9 @@
 		</div>
 	</div>
 
-	<div ng-if='activeType === "photo-price"' class="category-tile bg-household with-price" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
+	<div  ng-if='activeType === "photo-price"' class="category-tile bg-household with-price" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
 		u init-with="p:[opacity:0]"
-		on-init="s:[category-photo-price-init:depth(>2)] | a:[bounceIn-subtle:1000:linear:1:f]"
+		on-init="s:[category-photo-price-init:depth(>1)] | a:[bounceIn-subtle:1000:linear:1:f]"
 		on-exit="a:[bounceOut-subtle:1000:linear:1:f]">
 		<svg width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -78,9 +78,9 @@
 			when-category-photo-price-init="a:[scaleInX-subtle:1000:linear:650:1:f]"><div>$25/hr AVG</div></div>
 	</div>
 
-	<div ng-if='activeType === "photo-price-moxie"' class="category-tile bg-household with-price price-moxie" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
+	<div ng-if='activeType === "photo-price-moxie"'  class="category-tile bg-household with-price price-moxie" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
 		u init-with="p:[opacity:0]"
-		on-init="s:[category-price-moxie-init:depth(>2)] | a:[bounceIn-subtle:1000:linear:0:1:f]"
+		on-init="s:[category-price-moxie-init:depth(>1)] | a:[bounceIn-subtle:1000:linear:0:1:f]"
 		on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]">
 		<svg width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -108,7 +108,7 @@
 
 	<div ng-if='activeType === "photo-price-crimson"' class="category-tile bg-household with-price price-crimson" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
 		u init-with="p:[opacity:0]"
-		on-init="s:[category-price-crimson-init:depth(>2) | a:[bounceIn-subtle:1000:linear:0:1:f]"
+		on-init="s:[category-price-crimson-init:depth(>1) | a:[bounceIn-subtle:1000:linear:0:1:f]"
 		on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]">
 		<svg width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -136,7 +136,7 @@
 
 	<a ng-if='activeType === "link-color"' class="category-tile bg-household no-photo"
 		u init-with="p:[opacity:0]"
-		on-init="s:[category-link-color-init:depth(>2) | a:[bounceIn-subtle:1000:linear:0:1:f]"
+		on-init="s:[category-link-color-init:depth(>1) | a:[bounceIn-subtle:1000:linear:0:1:f]"
 		on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]">
 		<svg width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -161,7 +161,7 @@
 
 	<a ng-if='activeType === "link-square"' class="category-tile bg-household" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
 		u init-with="p:[opacity:0]"
-		on-init="s:[category-link-square-init:depth(>2) | a:[bounceIn-subtle:1000:linear:0:1:f]"
+		on-init="s:[category-link-square-init:depth(>1) | a:[bounceIn-subtle:1000:linear:0:1:f]"
 		on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]">
 		<svg width="150px" height="150px" viewBox="0 0 150 150">
 			<rect x="0" y="0" width="150" height="150" fill="none"></rect>
@@ -187,7 +187,7 @@
 
 	<div ng-if='activeType === "check-square"' class="category-tile bg-household no-photo"
 		u init-with="p:[opacity:0]"
-		on-init="s:[category-check-square-init:depth(>2)] | a:[bounceIn-subtle:1000:linear:0:1:f]"
+		on-init="s:[category-check-square-init:depth(>1)] | a:[bounceIn-subtle:1000:linear:0:1:f]"
 		on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]">
 		<svg width="150px" height="150px" viewBox="0 0 150 150">
 			<rect x="0" y="0" width="150" height="150" fill="none"></rect>

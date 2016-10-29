@@ -1,7 +1,7 @@
 <div class="perspective-container full-xy flex-center p15xy">
 	<div class="pf-aside-widget"
 		u init-with="p:[background:rgba(99,112,116,0)]"
-		on-init="s:[pf-widget-init:self, pf-widget-borders:children:150, pf-widget-info:depth(>2)]"
+		on-init="s:[pf-widget-init:self, pf-widget-borders:children:150, pf-widget-info:depth(>1)]"
 		when-pf-widget-init="a:[background:rgba(99,112,116,0):rgba(99,112,116,0.3):700:easeOutSine:0:1:f]:delay-700">
 		<div class="top"
 			u init-with="p:[tr:scale(0), tro:center center]"

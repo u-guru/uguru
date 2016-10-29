@@ -1,9 +1,8 @@
 <div class="perspective-container full-xy flex-center p15xy">
 	<a class="feature-tile"
-		u
-		init-with="p:[opacity:0]"
-		on-init="s:[feature-bounce:self, feature-tile:children]"
-		when-feature-bounce="a:[bounceIn-subtle:1000:linear:0:1:f]"
+		u init-with="p:[opacity:0]"
+		on-init="s:[feature-tile:children, feature-tile-enter:self]"
+		when-feature-tile-enter="a:[bounceIn-subtle:1000:linear:0:1:f]"
 		on-mouseenter="s:[icon-wiggle:public]">
 		<!-- on-mouseenter="s:[icon-wiggle:public]" -->
 		<div class="feature-tile-icon">
