@@ -1,14 +1,15 @@
-<grid-view type='row'>
-    <grid-item class='bg-charcoal' width='100' height='40' spacing='center'>
+<grid-view type='row' >
+    <grid-item  width='100' height='15' spacing='center'>
         <div class="border-10 width-25p height-100 p30xy">
 			<span class="txt-center txt-72 weight-700 p15xy">VIBES.CLUB</span>
 		</div>
     </grid-item>
-    <grid-item class='bg-slate' width='100' height='20' spacing='center'>
-        Lorem ipsum dolor sit amet?
+    <grid-item  width='100' height='15' spacing='top'>
+        <span class="relative txt-center txt-28" style="left:calc(50% - 160px); top:30px;">Lorem ipsum dolor sit amet?</span>
     </grid-item>
-    <grid-item class='bg-charcoal' width='100' height='40' spacing='center'>
-		<svg width="280px" height="40px" viewBox="0 0 280 40">
+    <grid-item width='100' height='15' spacing='top'>
+		<div class="absolute" style="left:calc(50% - 140px);">
+			<svg width="280px" height="40px" viewBox="0 0 280 40">
 		    <g class="visualizer" stroke-width="3" stroke="#FFFFFF" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 		        <path d="M272.5,6.5 L272.5,33.5"></path>
 		        <path d="M266.5,6.5 L266.5,33.5"></path>
@@ -56,6 +57,7 @@
 		        <path d="M14.5,6.5 L14.5,33.5"></path>
 		        <path d="M8.5,6.5 L8.5,33.5"></path>
 		    </g>
-		</svg>
+			</svg>
+		</div>
     </grid-item>
 </grid-view>
