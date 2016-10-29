@@ -1,7 +1,7 @@
 <div class="perspective-container full-xy flex-center p15xy" types='default, academic, baking, photo, tech, household' default-type="photo">
 	<div class="pf-tile-container mobile" ng-if='activeType === "default"'
 		u init-with="p:[transform-origin:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
-		on-init="s:[default-cardlet-init:public, default-info:children]"
+		on-init="s:[default-cardlet-init:depth(0), default-info:depth(1)]"
 		when-default-cardlet-init="a:[rotateX:-30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:500:easeOutSine:0:1:f]"
 		when-default-cardlet-exit="a:[rotateX:0deg:-30deg:1000:easeOutSine:0:1:f, rotateY:0deg:30deg:1000:easeOutSine:0:1:f, opacity:1:0:1500:easeOutSine:0:1:f]">
 		<a></a><a></a><a></a><a></a>
@@ -40,7 +40,8 @@
 
 	<div class="pf-tile-container mobile" ng-if='activeType === "academic"'
 		u init-with="p:[transform-origin:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
-		on-init="s:[academic-cardlet-init:public, aca-borders:children, aca-info:children:450]"
+		error
+		on-init="s:[academic-cardlet-init:depth(-), aca-info:depth(>1):450, aca-borders:depth(1)]"
 		when-academic-cardlet-init="a:[rotateX:-30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:500:easeOutSine:0:1:f]"
 		when-academic-cardlet-exit="a:[rotateX:0deg:-30deg:1000:easeOutSine:0:1:f, rotateY:0deg:30deg:1000:easeOutSine:0:1:f, opacity:1:0:1500:easeOutSine:0:1:f]">
 		<a></a><a></a><a></a><a></a>
