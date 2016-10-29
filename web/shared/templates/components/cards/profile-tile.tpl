@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='academic, baking, photo, tech, household' default-type="academic">
+<div class="perspective-container full-xy flex-center p15xy" ng-init="types='academic, baking, photo, tech, household'" default-type="academic">
 	<div class="pf-tile-container"
 		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		error
