@@ -1,6 +1,6 @@
 <div class="perspective-container full-xy flex-center p15xy" types='36, 48, 64, 72, 96, 128' default-type="128">
 	<div class="pf-thumb-36 pf-moola" ng-if='activeType === "36"'
-		u init-with="p:[opacity:0]"
+		error u init-with="p:[opacity:0]"
 		on-init="s:[36:children:50] | a:[bounceIn-subtle:1000:linear:0:1:f]">
 		<div class="top"
 			u init-with="p:[transform:scaleY(0), transform-origin:center top]"
@@ -11,7 +11,7 @@
 	</div>
 
 	<div class="pf-thumb-48 pf-moola" ng-if='activeType === "48"'
-		u init-with="p:[opacity:0]"
+		error u init-with="p:[opacity:0]"
 		on-init="s:[48:children:50] | a:[bounceIn-subtle:1000:linear:0:1:f]">
 		<div class="top"
 			u init-with="p:[transform:scaleY(0), transform-origin:center top]"
@@ -22,7 +22,7 @@
 	</div>
 
 	<div class="pf-thumb-64 pf-moola" ng-if='activeType === "64"'
-		u init-with="p:[opacity:0]"
+		error u init-with="p:[opacity:0]"
 		on-init="s:[64:children:50] | a:[bounceIn-subtle:1000:linear:0:1:f]">
 		<div class="top"
 			u init-with="p:[transform:scaleY(0), transform-origin:center top]"
@@ -33,7 +33,7 @@
 	</div>
 
 	<div class="pf-thumb-72 pf-moola" ng-if='activeType === "72"'
-		u init-with="p:[opacity:0]"
+		error u init-with="p:[opacity:0]"
 		on-init="s:[72:children:50] | a:[bounceIn-subtle:1000:linear:0:1:f]">
 		<div class="top"
 			u init-with="p:[transform:scaleY(0), transform-origin:center top]"
@@ -44,7 +44,7 @@
 	</div>
 
 	<div class="pf-thumb-96 pf-moola" ng-if='activeType === "96"'
-		u init-with="p:[opacity:0]"
+		error u init-with="p:[opacity:0]"
 		on-init="s:[96:children:50] | a:[bounceIn-subtle:1000:linear:0:1:f]">
 		<div class="top"
 			u init-with="p:[transform:scaleY(0), transform-origin:center top]"
@@ -55,7 +55,7 @@
 	</div>
 
 	<div class="pf-thumb-128 pf-moola" ng-if='activeType === "128"'
-		u init-with="p:[opacity:0]"
+		error u init-with="p:[opacity:0]"
 		on-init="s:[128:children:50] | a:[bounceIn-subtle:1000:linear:0:1:f]">
 		<div class="top"
 			u init-with="p:[transform:scaleY(0), transform-origin:center top]"

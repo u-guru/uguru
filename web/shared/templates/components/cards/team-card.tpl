@@ -1,6 +1,8 @@
-<div class="full-xy flex-center perspective-container" types='gabrielle, jeselle, jason, samir' default-type="gabrielle">
+<div class="full-xy flex-center perspective-container"	 types='gabrielle, jeselle, jason, samir' default-type="gabrielle">
+
+
 	<div class="team-card-container team-gabrie" ng-if='activeType === "gabrielle"'
-		u on-init="s:[gabrie-enter:depth(>2)]"
+		u on-init="s:[gabrie-enter:>grandchildren]"
 		when-gabrie-exit="a:[translateY:0px:-200px:1000:easeOutSine:0:1:f, rotateX:0deg:90deg:1000:easeOutSine:0:1:f, rotateY:50deg:15deg:1000:easeOutSine:0:1:f]">
 		<a></a><a></a><a></a><a></a><a></a><a></a>
 		<div class="team-card"
@@ -19,7 +21,7 @@
 			<div class="team-photo" style="background-image: url('/shared/images/gabrielle.jpg')"
 				u init-with="p:[op:0, tr:scale(0.5) rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
 				when-gabrie-enter="p:[op:1] | a:[scale:0.5:1:800:easeOutBack:0:1:f, rotateX:70deg:0deg:800:easeOutBack:0:1:f, rotateY:-15deg:0deg:800:easeOutBack:0:1:f, translateY:-1000px:0px:800:easeOutBack:0:1:f]"></div>
-			<div u on-init="s:[gabrie-icon-enter:depth(>2):800, gabrie-team-info:depth(>2):800]">
+			<div u on-init="s:[gabrie-icon-enter:depth(>1):800, gabrie-team-info:depth(>1):800]">
 				<div class="team-link"
 					u init-with="p:[transform:scaleX(0), tro:center center]"
 					when-gabrie-icon-enter="a:[scaleX:0:1:1000:easeOutBack:0:1:f]">
@@ -35,18 +37,15 @@
 						    <g class="gabrie-guru" fill="none" fill-rule="evenodd">
 						        <path d="M147.648434,64.825194 C145.791933,47.1617124 135.753836,25.5046051 106.176757,28.6132814 C76.5996777,31.7219576 76.6914661,34.1469119 66.658203,54.2695304 C56.6249399,74.3921488 149.504936,82.4886756 147.648434,64.825194 L147.648434,64.825194 Z" class="hat-top" stroke="#595241" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#000000"></path>
 						        <path d="M114.481022,120.819805 C154.125216,112.46137 171.84266,102.811847 169.294852,78.5710752 C166.747044,54.3303036 134.462548,37.85543 97.1854107,41.7734149 C59.9082736,45.6913999 31.7545896,68.5185824 34.3023973,92.759354 C36.8502051,117.000126 74.8368287,129.178241 114.481022,120.819805 L114.481022,120.819805 Z" class="hat-brim" stroke="#595241" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#000000"></path>
-						        <!-- hair-back -->
 						        <path d="M55,118 C53,122 53.9750979,128.312012 57.970215,130.79248 C61.9653322,133.272949 65.0000002,130 65,130 C68.9716799,137.0625 76.4101584,156.488446 109.506026,154.99722 C135.625974,153.820313 147.641113,135.905274 147,120 C147,120 151.995605,122.307617 154.519043,118.708496 C157.04248,115.109375 158,111 156,107 C154,103.000001 151,102 147,104 C150,91.0000006 137.818845,80.7192383 132,78 C126.181155,75.2807617 108,74 97,74 C86,74 57,80 61,114 C61,114 57,114 55,118 Z" class="face" stroke="#40484B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#F9ECE5"></path>
 						        <path d="M137.280367,94.3366242 C134.710366,87.9936625 131.027616,88.9269837 127.918155,89.3087775 C123.786597,89.816069 119.033339,91.8150193 116.852944,93.1685907 C114.672549,94.5221621 112.183954,95.4702402 111.399514,93.8381873 C110.547491,92.0655283 114.94629,89.3693847 118.007324,88.2416993 C121.068358,87.1140139 123.863161,86.4106304 127.507235,85.9621067 C134.627818,85.085684 136.387906,89.1415274 137.280367,94.3366242 L137.280367,94.3366242 Z M69.1180322,102.195227 C70.1953083,95.4367102 73.9936217,95.5176718 77.1092723,95.1902037 C81.2490545,94.7550951 86.3301522,95.6335621 88.7591512,96.4619594 C91.1881502,97.2903567 93.8262338,97.6543235 94.2234371,95.8876394 C94.6548606,93.9687502 89.7623028,92.3312229 86.5260489,91.9210228 C83.2897951,91.5108227 80.4083958,91.4541608 76.7568228,91.8368712 C69.6215876,92.5846937 68.8189769,96.9325198 69.1180322,102.195227 L69.1180322,102.195227 Z" class="eyebrows" stroke="#40484B" stroke-linecap="round" stroke-linejoin="round" fill="#40484B"></path>
 						        <path d="M141.060544,80.8652344 C153.607655,90.7666016 142.266364,147.924808 142.266364,147.924808 C142.266364,147.924808 139.109375,172.51758 142.266365,172.51758 C145.423355,172.51758 156.952149,167.311525 156.952149,167.311525 C156.952149,162.35607 161.400875,125.707879 154.813477,98.0624982 C151.487302,84.1035153 150.606059,77.625459 134.136716,67.4941404 C117.667372,57.3628219 98.8967309,60.8584765 94.3349621,60.8583984 C87.890624,60.8582882 60.461915,64.8232421 54.9653232,98.0624982 C50.2506073,126.573556 52.8266513,162.35607 52.8266513,167.311525 C52.8266513,167.311525 64.3554446,172.51758 67.5124347,172.51758 C70.6694247,172.51758 67.5124331,147.666018 67.5124331,147.666018 C67.5124331,147.666018 52.4775379,83.6435551 77.4296884,72.2578122 C84.2671378,69.137863 112.091945,58.0050937 141.060544,80.8652344 Z" class="hair" stroke="#D5AEA6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#2B3234"></path>
-						        <!-- glasses -->
 						        <path d="M111,140 C116,141 126,139 126,133" class="mouth" stroke="#40484B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
 						        <path d="M90.5288326,120.164053 C92.7258698,119.933136 94.3197243,117.964889 94.0888064,115.767852 C93.8578885,113.570815 91.7417349,111.688246 89.5880769,111.213356 C86.4999827,110.53242 84.5109385,110.741477 81.6319013,112.049584 C78.7528641,113.357691 76.1874123,117.649364 76.1874123,117.649364 L78.2593359,118.228857 C82.7309517,112.939578 85.9235743,114.615036 86.1326312,116.60408 C86.3635491,118.801117 88.3317955,120.394971 90.5288326,120.164053 L90.5288326,120.164053 L90.5288326,120.164053 L90.5288326,120.164053 L90.5288326,120.164053 L90.5288326,120.164053 Z M128.289054,115.838813 C130.486092,115.607895 132.079946,113.639649 131.849028,111.442612 C131.61811,109.245574 129.501957,107.363006 127.348299,106.888116 C124.260205,106.207179 122.27116,106.416236 119.392123,107.724344 C116.513086,109.032451 113.947634,113.324124 113.947634,113.324124 L116.019558,113.903616 C120.491174,108.614337 123.683796,110.289795 123.892853,112.278839 C124.123771,114.475876 126.092017,116.069731 128.289054,115.838813 L128.289054,115.838813 L128.289054,115.838813 L128.289054,115.838813 L128.289054,115.838813 L128.289054,115.838813 Z" class="eyes" fill="#40484B"></path>
 								<g class="circle-eyes" fill="#40484b">
 						            <circle class="eye-right" cx="128" cy="113" r="3.5"></circle>
 						            <circle class="eye-left" cx="90" cy="116" r="3.5"></circle>
 						        </g>
-						        <!-- bangs -->
 						        <path d="M156.952148,134.850586 C158.424805,118.55944 156.952149,165.071596 156.952149,167.311525 C156.952149,167.311525 145.423355,172.51758 142.266365,172.51758 C139.109375,172.51758 143.308594,147.845703 143.308594,147.845703 C143.308594,147.845703 155.479492,151.141732 156.952148,134.850586 Z" class="blonde-right" fill="#F5C8BF"></path>
 						        <path d="M52.8266512,126.896484 C52.8266512,96.828419 52.8266513,162.35607 52.8266513,167.311525 C52.8266513,167.311525 64.3554446,172.51758 67.5124347,172.51758 C70.3685167,172.51758 66.5366211,147.535645 66.5366211,147.535645 C66.5366211,147.535645 52.8266512,147.276367 52.8266512,126.896484 L52.8266512,126.896484 Z" class="blonde-left" fill="#F5C8BF"></path>
 						    </g>
@@ -63,7 +62,7 @@
 						when-gabrie-enter="a:[opacity:0:1:500:easeOutSine:0:1:f]:delay-1000">Gabrielle Wee</h1>
 	            </div>
 				<div class="team-ribbon"
-					u on-init="s:[gabrie-ribbon-expand:depth(>2):1800]">
+					u on-init="s:[gabrie-ribbon-expand:depth(>1):1800]">
 					<div class="team-ribbon-center"
 						u init-with="p:[tr:scaleX(0), tro:center center]"
 						when-gabrie-ribbon-expand="a:[scaleX:0:1:600:easeOutSine:100:1:f]">
@@ -92,7 +91,7 @@
 	</div>
 
 	<div class="team-card-container team-jeselle" ng-if='activeType === "jeselle"'
-		u on-init="s:[jeselle-enter:grandchildren]"
+		u on-init="s:[jeselle-enter:>children]"
 		when-jeselle-exit="a:[translateY:0px:-200px:1000:easeOutSine:0:1:f, rotateX:0deg:90deg:1000:easeOutSine:0:1:f, rotateY:50deg:15deg:1000:easeOutSine:0:1:f]">
 		<a></a><a></a><a></a><a></a><a></a><a></a>
 		<div class="team-card"
@@ -111,7 +110,7 @@
 			<div class="team-photo" style="background-image: url('/shared/images/jeselle.jpg')"
 				u init-with="p:[op:0, tr:scale(0.5) rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
 				when-jeselle-enter="p:[op:1] | a:[scale:0.5:1:800:easeOutBack:0:1:f, rotateX:70deg:0deg:800:easeOutBack:0:1:f, rotateY:-15deg:0deg:800:easeOutBack:0:1:f, translateY:-1000px:0px:800:easeOutBack:0:1:f]"></div>
-			<div u on-init="s:[jeselle-icon-enter:depth(>2):800, jeselle-team-info:children:500]">
+			<div u on-init="s:[jeselle-icon-enter:depth(>1):800, jeselle-team-info:children:500]">
 	            <div class="team-link"
 					u init-with="p:[tro:center center, tr:scaleX(0)]"
 					when-jeselle-icon-enter="a:[scaleInX-subtle:1000:linear:0:1:f]">
@@ -128,12 +127,8 @@
 						</svg>
 						<svg class="jeselle-mid" viewBox="0 0 200 200">
 						    <g class="jeselle-guru" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-						        <!-- hair-back -->
-						        <!-- cap -->
 						        <path d="M55.0066708,117 C53.0066708,121 53.9817687,127.312012 57.9768858,129.79248 C61.972003,132.272949 65.006671,129 65.0066708,129 C68.9783507,136.0625 76.4168292,155.488446 109.512697,153.99722 C135.632645,152.820313 147.647784,134.905274 147.006671,119 C147.006671,119 152.002276,121.307617 154.525714,117.708496 C157.049151,114.109375 158.006671,110 156.006671,106 C154.006671,102 151.006671,101 147.006671,103 C150.006671,90.0000006 132.006671,77 132.006671,77 C120.006671,81 128.533203,67.5195312 100,67.5195312 C71.4667969,67.5195312 57.0066708,79 61.0066708,113 C61.0066708,113 57.0066708,113 55.0066708,117 Z" class="face" stroke="#3C4C4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#F9ECE5"></path>
-						        <!-- glasses -->
-						        <!-- bill -->
-						        <!-- front-hair -->
+
 						        <path d="M151.223145,117.766357 C152.051572,117.766357 152.723145,117.094785 152.723145,116.266357 C152.723145,115.43793 152.051572,114.766357 151.223145,114.766357 C150.394717,114.766357 149.723145,115.43793 149.723145,116.266357 C149.723145,117.094785 150.394717,117.766357 151.223145,117.766357 L151.223145,117.766357 L151.223145,117.766357 L151.223145,117.766357 L151.223145,117.766357 L151.223145,117.766357 L151.223145,117.766357 Z" class="earrings" stroke="#4D429A" stroke-linecap="round" stroke-linejoin="round" fill="#F0C8DF"></path>
 						        <path d="M111,139 C116,140 126,138 126,132" class="mouth" stroke="#3C4C4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
 						        <path d="M90.5288326,119.164053 C92.7258698,118.933135 94.3197243,116.964889 94.0888064,114.767852 C93.8578885,112.570815 91.7417349,110.688246 89.5880769,110.213356 C86.4999827,109.53242 84.5109385,109.741477 81.6319013,111.049584 C78.7528641,112.357691 76.1874123,116.649364 76.1874123,116.649364 L78.2593359,117.228857 C82.7309517,111.939577 85.9235743,113.615036 86.1326312,115.60408 C86.3635491,117.801117 88.3317955,119.394971 90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 Z M128.289054,114.838813 C130.486092,114.607895 132.079946,112.639649 131.849028,110.442612 C131.61811,108.245574 129.501957,106.363006 127.348299,105.888116 C124.260205,105.207179 122.27116,105.416236 119.392123,106.724344 C116.513086,108.032451 113.947634,112.324124 113.947634,112.324124 L116.019558,112.903616 C120.491173,107.614337 123.683796,109.289795 123.892853,111.278839 C124.123771,113.475876 126.092017,115.069731 128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 Z" class="eyes" fill="#3C4C4B"></path>
@@ -160,7 +155,7 @@
 						u init-with="p-op"
 						when-jeselle-icon-enter="a:[opacity:0:1:500:easeOutSine:0:1:f]:delay-200">Jeselle Obina</h1>
 	            </div>
-				<div class="team-ribbon" u on-init="s:[jeselle-ribbon-expand:depth(>2):1800]">
+				<div class="team-ribbon" u on-init="s:[jeselle-ribbon-expand:depth(>1):1800]">
 					<div class="team-ribbon-center"
 						u init-with="p:[tr:scaleX(0), tro:center center]"
 						when-jeselle-ribbon-expand="a:[scaleX:0:1:600:easeOutSine:150:1:f]">
@@ -208,7 +203,7 @@
 			<div class="team-photo" style="background-image: url('/shared/images/jason.jpg')"
 				u init-with="p:[op:0, tr:scale(0.5) rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
 				when-jason-enter="p:[op:1] | a:[scale:0.5:1:800:easeOutBack:0:1:f, rotateX:70deg:0deg:800:easeOutBack:0:1:f, rotateY:-15deg:0deg:800:easeOutBack:0:1:f, translateY:-1000px:0px:800:easeOutBack:0:1:f]"></div>
-			<div u on-init="s:[jason-icon-enter:depth(>2):800]">
+			<div u on-init="s:[jason-icon-enter:depth(>1):800]">
 	            <div class="team-link"
 					u init-with="p-op"
 					when-jason-icon-enter="a:[scaleInX-subtle:1000:linear:0:1:f]">
@@ -232,7 +227,6 @@
 						</svg>
 						<svg class="jason-mid" viewBox="0 0 200 200">
 						    <g class="jason-guru" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-								<!-- face -->
 					            <path d="M44.1647785,67.6944711 C39.8934798,66.5915798 39.3697713,63.6568579 42.9916405,61.1419489 L44.3625423,60.1900389 C45.2719058,59.5586063 46.9143439,59.046729 48.0080897,59.046729 L152.492553,59.046729 C153.59657,59.046729 155.154791,59.6486715 155.974488,60.3926137 L159.601045,63.6840076 C160.82631,64.7960341 160.530844,66.0808748 158.933768,66.5341847 C158.933768,66.5341847 131.836161,75.0329652 100.250321,75.0329652 C68.6644816,75.0329652 44.1647785,67.6944711 44.1647785,67.6944711 L44.1647785,67.6944711 Z" class="helmet-visor" stroke="#D8A9F8" stroke-width="2" fill="#9A5BC5"></path>
 					            <path d="M31.476993,124.101486 C29.7084327,121.976184 28.7196944,118.055055 29.2664241,115.354072 L39.0518562,67.0115596 C39.2715101,65.9264136 40.3432539,65.046729 41.4504487,65.046729 L159.307476,65.046729 C160.412528,65.046729 161.468995,65.9362527 161.663192,67.0115596 L170.389328,115.329805 C170.880401,118.048968 169.944222,122.05044 168.300627,124.264226 L167.266352,125.657309 C163.975838,130.089358 157.084344,135.171947 151.87167,137.010331 L138.208407,141.829033 C117.315782,149.197355 83.4472008,149.199139 62.5495169,141.829033 L48.8862542,137.010331 C43.6745201,135.172279 36.5862862,130.241391 33.0543923,125.997068 L31.476993,124.101486 L31.476993,124.101486 Z" class="helmet-tint" fill="#40484B" opacity="0.5"></path>
 					            <path d="M136.917966,127.148436 C153.593747,110.389647 143.696289,65.046729 143.696289,65.046729 L159.857565,65.046729 C160.959358,65.046729 161.959973,65.9449919 162.090557,67.0368046 L165.31543,94.0000008 L162.522271,114.665119 C162.152388,117.401688 159.911789,120.736794 157.50175,122.099849 C157.50175,122.099849 120.242186,143.907225 136.917966,127.148436 L136.917966,127.148436 Z M57.8596694,65.046729 L39.8983659,65.046729 C38.7905054,65.046729 37.7633738,65.9290519 37.6030396,67.0254093 C37.6030396,67.0254093 34.6920348,79.1903976 34.9453125,94.0000008 C35.1985902,108.809604 38.5680588,123.451816 38.5680588,123.451816 C39.477014,128.904193 44.5839521,134.340439 49.9959887,135.402704 C49.9959887,135.402704 81.3137728,143.907225 64.6379924,127.148436 C47.9622119,110.389647 57.8596694,65.046729 57.8596694,65.046729 Z" class="helmet-shine" fill="#FFFFFF" opacity="0.3"></path>
@@ -245,7 +239,7 @@
 						when-jason-icon-enter="a:[opacity:0:1:500:easeOutSine:0:1:f]:delay-200">Jason Huang</h1>
 	            </div>
 				<div class="team-ribbon"
-				 	u on-init="s:[jason-ribbon-expand:depth(>2):1800, jason-team-info:siblings:500]">
+				 	u on-init="s:[jason-ribbon-expand:depth(>1):1800, jason-team-info:siblings:500]">
 					<div class="team-ribbon-center"
 						u init-with="p:[tr:scaleX(0), tro:center center]"
 						when-jason-ribbon-expand="a:[scaleX:0:1:800:easeOutSine:0:1:f]:delay-400">
@@ -293,7 +287,7 @@
 			<div class="team-photo" style="background-image: url('/shared/images/samir.jpg')"
 				u init-with="p:[op:0, tr:scale(0.5) rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
 				when-samir-enter="p:[op:1] | a:[scale:0.5:1:800:easeOutBack:0:1:f, rotateX:70deg:0deg:800:easeOutBack:0:1:f, rotateY:-15deg:0deg:800:easeOutBack:0:1:f, translateY:-1000px:0px:800:easeOutBack:0:1:f]"></div>
-			<div u on-init="s:[samir-icon-enter:depth(>2):800, samir-team-info:children:500]">
+			<div u on-init="s:[samir-icon-enter:depth(>1):800, samir-team-info:children:500]">
 	            <div class="team-link"
 					u init-with="p-op"
 					when-samir-icon-enter="a:[scaleInX-subtle:1000:linear:0:1:f]">
@@ -327,7 +321,7 @@
 						when-samir-icon-enter="a:[opacity:0:1:500:easeOutSine:200:1:f]">Samir Makhani</h1>
 	            </div>
 				<div class="team-ribbon"
-					u on-init="s:[samir-ribbon-expand:depth(>2):1800]">
+					u on-init="s:[samir-ribbon-expand:depth(>1):1800]">
 					<div class="team-ribbon-center"
 						u init-with="p:[tr:scaleX(0), tro:center center]"
 						when-samir-ribbon-expand="a:[scaleX:0:1:800:easeOutSine:0:1:f]:delay-400">

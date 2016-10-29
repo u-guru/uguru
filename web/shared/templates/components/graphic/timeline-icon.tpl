@@ -2,8 +2,8 @@
 	<div class="timeline-icon timeline-parent timeline-icon-right"
 		u init-with="p:[op:0, tr:center center]"
 		on-init="a:[bounceIn-subtle:1000:linear:0:1:f]"
-		on-mouse-enter="s:[timeline-enter:public]"
-		on-mouse-leave="s:[timeline-leave:public]">
+		on-mouseenter="s:[timeline-enter:children]"
+		on-mouseleave="s:[timeline-leave:children]">
 		<div class="timeline-icon-svg">
 			<svg viewBox="0 0 100 100">
 			    <g fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">

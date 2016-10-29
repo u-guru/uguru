@@ -1,7 +1,7 @@
 <div class="perspective-container full-xy flex-center p15xy">
 	<a class="course-card"
 		u init-with="p:[opacity:0]"
-		on-init="s:[course-card-init:public] | a:[scoop-enter:800:(0,0.2,0.3,1):0:1:f]">
+		on-init="s:[course-card-init:children] | a:[scoop-enter:800:(0,0.2,0.3,1):0:1:f]">
 		<!-- on-mouseEnter="p:[transform:translateZ(10px)]"
 		on-mouseLeave="p:[transform:translateZ(0px)]" -->
 		<svg width="240px" height="150px" viewBox="0 0 240 150">

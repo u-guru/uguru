@@ -1,7 +1,7 @@
 <div class="perspective-container full-xy flex-center p15xy">
 	<div class="tag-adlib-container overflow-hidden"
 		u init-with="p-op"
-		on-init="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[tag-adlib-init:public]">
+		on-init="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[tag-adlib-init:>c]">
 		<a class="tag-adlib tag-household">
 			<svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 				<rect x="2" y="2" width="280" height="84" rx="16"

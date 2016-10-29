@@ -54,8 +54,7 @@
 		</div>
 	</div>
 	<div class="message right"
-		u
-		on-init="s:[message-bubble-right-init:children:1000]">
+		u on-init="s:[message-bubble-right-init:children:1000]">
 		<div class="message-content">
 			<div class="message-info"
 				u init-with="p:[op:0, tro: right center]"
