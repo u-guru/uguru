@@ -1,5 +1,5 @@
-<div class="perspective-container full-xy flex-center p15xy" ng-init="types='academic, baking, photo, tech, household'" default-type="academic">
-	<div class="pf-tile-container"
+<div class="perspective-container full-xy flex-center p15xy" ng-init="types='academic, baking, photo, tech, household'; activeType='academic'">
+	<div class="pf-tile-container" ng-if="activeType ===  'academic'"
 		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		error
 		on-init="s:[academic-tile-init:public, aca-border:children:500, aca-top:children:500]"
