@@ -1,6 +1,5 @@
 <div class="perspective-container full-xy flex-center p15xy">
-	<a class="album-tile" u
-		on-init="s:[album-tile-init:public:delay-0]"
+	<a class="album-tile" u on-init="s:[album-tile-init:public]"
 		on-mouse-enter="s:[album-tile-enter:public]"
 		on-mouse-leave="s:[album-tile-leave:public]"
 		on-click="s:[album-tile-click:public]">
