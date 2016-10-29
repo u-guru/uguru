@@ -17,7 +17,28 @@ function CompService($timeout, $compile) {
     applyDelayToWord: applyDelayToWord,
     parseSrcUrl: parseSrcUrl,
     getMediaElemOfType: getMediaElemOfType,
-    renderAlign: renderAlign
+    renderAlign: renderAlign,
+    renderAllStyleAttributes: renderAllStyleAttributes
+  }
+
+
+  function renderAllStyleAttributes(elem, attr) {
+    attr.align && renderAlign(elem, attr.align || 'center center');
+    attr.padding && renderPadding(elem, attr.padding);
+    attr.margin && renderMargin(elem, attr.margin);
+    attr.fontSize && renderFontSize(elem, attr.fontSize);
+  }
+
+  function renderFontSize(elem, font_args) {
+    elem.css('font-size', font_args);
+  }
+
+  function renderMargin(elem, margin_args) {
+    elem.css('margin', margin_args);
+  }
+
+  function renderPadding(elem, padding_args) {
+    elem.css('padding', padding_args);
   }
 
   function renderAlign(elem, align_args) {

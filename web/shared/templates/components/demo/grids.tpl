@@ -1,5 +1,5 @@
 <grid-view type='row'>
-    <grid-item class='bg-charcoal txt-64 uppercase' width='100' height='40' align='top center' padding="10%">
+    <grid-item class='bg-charcoal txt-64 uppercase' width='100' height='40' align='bottom center' padding="10%">
         <grid-item width='33' align="center center" class='border-2'>
             <h1 class='full-x flex-vertical-center'>
                 <letter type='squishBounce'>Y</letter>

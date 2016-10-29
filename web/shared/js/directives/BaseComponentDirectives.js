@@ -588,7 +588,8 @@ angular.module('uguru.shared.directives.base.components')
             priority: 100,
             template: '<div class="flex"></div>',
             compile: function(element, attr, transclude) {
-                attr.align && CompService.renderAlign(element, attr.align || 'center center');
+                CompService.renderAllStyleAttributes(element, attr);
+
                 attr.spacing && attr.spacing === 'center' && element.addClass('flex-center')
                 if (attr.width) {
                     if (attr.width.indexOf('%') === -1 && attr.width.indexOf('px') === -1) {
