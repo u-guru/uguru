@@ -1,5 +1,6 @@
 <div class="perspective-container full-xy flex-center p15xy" types='checkbox, short, mini, link' default-type="mini">
 
+
 	<div class="card-container" ng-if='activeType === "checkbox"'>
 		<div class="university-card"
 			u init-with="p-op"
