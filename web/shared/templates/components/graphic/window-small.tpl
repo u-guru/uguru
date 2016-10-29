@@ -1,7 +1,7 @@
 <div class="full-xy flex-center">
 	<div class="overflow-hidden relative"
 		u init-with="p-op"
-		on-init="send:[window-small-init:depth(>2)]|a:[bounceInDown-subtle:1000:linear:0:1:f]">
+		on-init="send:[window-small-init:depth(>1)]|a:[bounceInDown-subtle:1000:linear:0:1:f]">
 		<div class="absolute z-index-1 bottom-0"
 			u init-with="p:[tr:translateY(150px) translateX(110px)]"
 			when-window-small-init="a:[translateY:150px:0px:450:easeOutCirc:0:1:f, translateX:110px:110px:450:easeOutCirc:0:1:f]">

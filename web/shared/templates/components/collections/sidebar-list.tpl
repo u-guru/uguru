@@ -1,8 +1,8 @@
 <div class="perspective-container full-xy flex" types='email, payment, message' default-type="email">
+
 	<aside class="sidebar-list bg-lake" ng-if='activeType === "email"'
 		u init-with="p-op"
-		on-init="s:[sidebar-list-init-1:public]"
-		when-sidebar-list-init-1="a:[opacity:0:1:250:easeOutSine:0:1:f, translateX:-100%:0%:250:easeOutQuint:0:1:f]"
+		on-init="s:[sidebar-list-init-1:children] |a:[opacity:0:1:250:easeOutSine:0:1:f, translateX:-100%:0%:250:easeOutQuint:0:1:f]"
 		on-exit="a:[opacity:1:0:450:easeOutSine:0:1:f]">
 		<header class="sidebar-list-header bg-white-90p"
 			u init-with="p-op"
@@ -10,8 +10,6 @@
 			<h2 class="txt-charcoal">Ways to Super Student&nbsp;Stardom</h2>
 		</header>
 		<ul u on-init="s:[list-1-init:children:linear-450]">
-			<!-- @samir - <li> elements are being staggered in intervals of 150ms -->
-			<!-- lines: 16, 38, 60 -->
 			<li u init-with="p-op"
 				when-list-1-init="a:[bounceInUp-subtle:1000:linear:0:1:f]">
 				<a class="flex-center-vertical-space-between p15xy height-96 bg-slate-75p"
@@ -83,8 +81,7 @@
 
 	<aside class="sidebar-list bg-moxie" ng-if='activeType === "payment"'
 		u init-with="p-op"
-		on-init="s:[sidebar-list-init-2:public]"
-		when-sidebar-list-init-2="a:[opacity:0:1:250:easeOutSine:0:1:f, translateX:-100%:0%:250:easeOutQuint:0:1:f]"
+		on-init="s:[sidebar-list-init-2:children] |a:[opacity:0:1:250:easeOutSine:0:1:f, translateX:-100%:0%:250:easeOutQuint:0:1:f]"
 		on-exit="a:[opacity:1:0:450:easeOutSine:0:1:f]">
 		<header class="sidebar-list-header bg-charcoal-25p"
 			u init-with="p-op"
@@ -133,8 +130,7 @@
 
 	<aside class="sidebar-list bg-lake" ng-if='activeType === "message"'
 		u init-with="p-op"
-		on-init="s:[sidebar-list-init-3:public]"
-		when-sidebar-list-init-3="a:[opacity:0:1:250:easeOutSine:0:1:f, translateX:-100%:0%:250:easeOutQuint:0:1:f]"
+		on-init="s:[sidebar-list-init-3:depth(1)] |a:[opacity:0:1:250:easeOutSine:0:1:f, translateX:-100%:0%:250:easeOutQuint:0:1:f]"
 		on-exit="a:[opacity:1:0:450:easeOutSine:0:1:f]">
 		<header class="sidebar-list-header bg-slate-50p"
 			u init-with="p-op"
@@ -226,4 +222,5 @@
 			</li>
 		</ul>
 	</aside>
+
 </div>
