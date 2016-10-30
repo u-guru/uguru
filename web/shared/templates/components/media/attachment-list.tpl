@@ -1,13 +1,14 @@
 <div class="full-xy flex-center bg-slate" types='student, guru, no-padding, large-icons' default-type="student">
-	<div class="full-xy flex-center bg-white" ng-if='activeType === "student"'>
+
+	<div class="full-xy flex-center bg-white"  ng-if='activeType === "student"' >
 		<div class="attach-list student">
-			<ul u on-init="s:[attach-list-init:public]">
+			<ul u on-init="s:[attach-list-init:depth(1)]">
 					<li class="student-attach" u init-with="p-op"
 						when-attach-list-init="a:[bounceInRight-subtle:1000:linear:0:1:f]">
 						<a u on-click="s:[attach-upload:public]">
 							<span ng-include="root.base_url + 'shared/templates/components/svg/ext/pdf-fill.html'"></span>
 							<span>vet-ethics-guide.pdf</span>
-							<div u on-init="s:[student-draw:children:linear-800]">
+							<div u when-attach-list-init="s:[student-draw:children:linear-800]">
 								<div class="top"
 									u init-with="p:[tr:scaleX(0)]"
 									when-student-draw="a:[scaleX:0:1:250:easeOutSine:0:1:f]"></div>
@@ -31,7 +32,7 @@
 						<a>
 							<span ng-include="root.base_url + 'shared/templates/components/svg/ext/doc-fill.html'"></span>
 							<span>file.doc</span>
-							<div u on-init="s:[student-draw-file:children:linear-800]">
+							<div u when-attach-list-init="s:[student-draw-file:children:linear-800]">
 								<div class="top"
 									u init-with="p:[tr:scaleX(0)]"
 									when-student-draw-file="a:[scaleX:0:1:250:easeOutSine:0:1:f]"></div>
@@ -55,7 +56,7 @@
 						<a>
 							<span ng-include="root.base_url + 'shared/templates/components/svg/ext/jpg-fill.html'"></span>
 							<span>image.jpg</span>
-							<div u on-init="s:[student-draw-image:children:linear-800]">
+							<div u when-attach-list-init="s:[student-draw-image:children:linear-800]">
 								<div class="top"
 									u init-with="p:[tr:scaleX(0)]"
 									when-student-draw-image="a:[scaleX:0:1:250:easeOutSine:0:1:f]"></div>
@@ -82,7 +83,7 @@
 		<ul u on-init="s:[attach-list-init:public]">
 			<li u init-with="p-op"
 				when-attach-list-init="a:[bounceInRight-subtle:1000:linear:0:1:f]">
-				<a u on-click="s:[attach-upload:public]">
+				<a u on-click="s:[attach-upload:children]">
 					<span>
 						<svg viewBox="0 0 100 100">
 						    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -251,8 +252,6 @@
 	</div>
 
 	<div class="attach-list large" ng-if='activeType === "large-icons"'>
-		<!-- @samir - <a> elements inside <li> are being staggered in intervals of 150ms -->
-		<!-- lines: 178, 222, 281, 307, 336, 412, 443, 469, 519, 561 -->
 		<ul u on-init="s:[large-attach-init:children:easeInCirc-3000]">
 			<li>
 				<a u when-large-attach-init="s:[pdf-load:public, pdf-enter:public:1000]">
@@ -391,7 +390,7 @@
 								<rect x="14" y="14" width="72" height="72" rx="2" stroke="white" stroke-width="2" stroke-opacity="0.1"
 									u init-with="p:[sdo:288, sda:288]"
 									when-jpg-load="a:[stroke-dashoffset:228:0:1050:easeOutSine:0:1:f]"></rect>
-								<!-- this extra element is to draw in, since you probably won't be able to animate the fill coming in properly, it's an image fill -->
+
 								<rect x="14" y="14" width="72" height="72" rx="2" stroke="white" stroke-width="2"
 									u init-with="p:[sdo:288, sda:288]"
 									when-jpg-enter="a:[stroke-dashoffset:288:0:1050:easeOutSine:0:1:f]"></rect>

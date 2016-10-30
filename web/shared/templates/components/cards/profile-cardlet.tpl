@@ -1,7 +1,7 @@
 <div class="perspective-container full-xy flex-center p15xy" types='default, academic, baking, photo, tech, household' default-type="default">
 	<div class="pf-tile-container" ng-if='activeType === "default"'
 		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-		on-init="s:[default-cardlet-init:public, default-ribbon:children:500, default-cardlet-back:children:500]"
+		on-init="s:[default-cardlet-init:self, default-ribbon:children:500, default-cardlet-back:children:500]"
 		when-default-cardlet-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f,  translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
 		when-default-cardlet-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]">
 		<a></a><a></a><a></a><a></a>
@@ -66,7 +66,7 @@
 				u init-with="p:[transform:translateX(7.5px) translateY(7.5px)]"
 				when-aca-cardlet-back="a:[translateX:7.5px:0px:450:easeOutSine:250:1:f, translateY:7.5px:0px:450:easeOutSine:250:1:f]">
 				<div class="pf-cardlet-bottom"
-					u on-init="s:[aca-info:depth(>2):450]">
+					u on-init="s:[aca-info:depth(>1):450]">
 					<div class="pf-cardlet-bg deco"></div>
 					<div class="pf-cardlet-border deco"
 					 	u on-init="s:[aca-border:children]">
@@ -126,7 +126,7 @@
 			</div>
 			<div class="pf-cardlet-bottom-container"
 				u when-baking-cardlet-hover="a:[baking-cardlet-hover:1000:linear:0:1:f]"
-				on-init="s:[bk-info:depth(>2):300]">
+				on-init="s:[bk-info:depth(>1):300]">
 				<div class="pf-cardlet-bottom">
 					<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"
 						u init-with="p:[transform:scale(0), tro:center center]"
@@ -211,7 +211,7 @@
 
 	<div class="pf-tile-container" ng-if='activeType === "tech"'
 		u init-with="p:[transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px), opacity:0]"
-		on-init="s:[tech-cardlet-init:public, tech-cardlet-back:children:1550, tech-ribbon:public:500, tech-border-draw:depth(>2):200]"
+		on-init="s:[tech-cardlet-init:public, tech-cardlet-back:children:1550, tech-ribbon:children:500, tech-border-draw:depth(>1):200]"
 		when-tech-cardlet-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f,  translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
 		when-tech-cardlet-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]">
 		<a></a><a></a><a></a><a></a>
@@ -268,7 +268,7 @@
 
 	<div class="pf-tile-container" ng-if='activeType === "household"'
 		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-		on-init="s:[household-cardlet-init:public, hh-bot:depth(>2):250, household-ribbon:children:500]"
+		on-init="s:[household-cardlet-init:public, hh-bot:depth(>1):250, household-ribbon:children:500]"
 		when-household-cardlet-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f,  translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
 		when-household-cardlet-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]">
 		<a></a><a></a><a></a><a></a>
