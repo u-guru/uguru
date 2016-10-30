@@ -1,6 +1,6 @@
 <div class="perspective-container full-xy flex-center p15xy" types='checkbox, short, mini, link'>
 
-	<div class="card-container" u ng-if='activeType === "checkbox"'>
+	<div class="card-container" ng-if='activeType === "checkbox"'>
 		<div class="university-card"
 			u init-with="p-op"
 			error on-init="s:[university-card-init:children:150] | a:[zoom-enter:800:(0,0.2,0.3,1):0:1:f]">
@@ -64,7 +64,7 @@
 		</div>
 	</div>
 
-	<div class="card-container" u ng-if='activeType === "mini"'>
+	<div class="card-container" ng-if='activeType === "mini"'>
 		<div class="university-card mini"
 			u init-with="p-op"
 			on-init="s:[university-card-init:children:150] |a:[zoom-enter:800:(0,0.2,0.3,1):0:1:f]">

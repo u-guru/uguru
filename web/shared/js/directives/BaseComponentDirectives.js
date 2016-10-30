@@ -201,10 +201,9 @@ angular.module('uguru.shared.directives.base.components')
                 element.parent().append(d);
                 $compile(d)(scope)
                 scope.activateType = function($event, type) {
-                    scope.activeType = type;
                     $timeout(function() {
+                      scope.activeType = type;
 
-                      // $compile(d)(scope)
                       scope.$apply();
 
                       // $compile(angular.element(elem))($scope);
@@ -222,32 +221,41 @@ angular.module('uguru.shared.directives.base.components')
             replace:true
         }
     }])
-    .directive('chartElem', ['$compile', function($compile) {
+    .directive('graphic', ['$compile', function($compile) {
         return {
             restrict: 'E',
+            scope:{chart:'=chart'},
+            replace:true,
             templateUrl: function(element, attr) {
-                console.log(attr.url)
-                return attr.url;
+
+                return attr.src;
             },
-            replace:true
+            link: {
+                post: function(scope, element, attr) {
+                    scope.chart.elem = element;
+
+                }
+            }
+
         }
     }])
-    .directive('uChart', ['$compile', function($compile) {
+    .directive('uChart', ['$compile', '$timeout', function($compile, $timeout) {
 // http://stackoverflow.com/questions/24615103/angular-directives-when-and-how-to-use-compile-controller-pre-link-and-post
     return {
             restrict: 'E',
             replace:true,
-            transclude: true,
+            transclude:true,
             templateUrl: 'shared/templates/components/base/grid/state.chart.tpl',
             controller: 'AdminChartController',
             controllerAs:'chart',
+            scope: true,
             compile: function compile( element, attr ) {
 
                 if (!attr.src) attr.src = 'shared:components.svg.logo.guru-head.html'
 
                 return {
-                    pre: function preLink( scope, element, attributes ) {
-
+                    pre: function preLink( scope, lElem, attributes ) {
+                        console.log(lElem[0])
                         // element.append(scope.chart.element)
                         // $compile(element)(scope)
                         // element.replaceWith(scope.chart.element.children().children().contents())
@@ -256,11 +264,17 @@ angular.module('uguru.shared.directives.base.components')
 
                         console.log( attributes.log + ' (pre-link)'  );
                     },
-                    post: function postLink( scope, element, attributes ) {
+                    post: function postLink( scope, pElem, attributes ) {
                         // $compile(element)(scope)
                         // var animObj = scope.renderAnimationStr(element.find('svg'), null, attr.state, scope.chart.context);
                         // scope.chart.player = animObj.player;
-                        console.log( attributes.log + ' (post-link)'  );
+
+                        $timeout(function() {
+                            // scope.chart.elem = document.querySelector('#chart-elem');
+                            // console.log(scope.chart.elem)
+                        })
+
+
                     }
                 };
              }

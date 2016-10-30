@@ -35,7 +35,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         toCamelCaseBridge: UtilitiesService.camelCase,
         renderAnimationStr: applyAnimArgs,
         constructImportUrlFromObj: UtilitiesService.constructImportUrlFromObj,
-        initElement: initElement
+        initGraphicElement: initElement
       }
 
       function initElement(obj_url) {
@@ -43,8 +43,8 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         var type = objUrlSplit[0];
         var objUrl = objUrlSplit[1]
         var url = UtilitiesService.constructImportUrlFromObj(objUrl, type).replace('components/components/', 'components/');
-        var elem = angular.element('<div></div>')
-        elem.attr('ng-include', "'" + url + "'");
+        var elem = angular.element('<graphic></graphic>')
+        elem.attr('src', "" + url + "");
         elem.css('height', '25%')
         elem.css('width', '25%')
         return elem
@@ -410,8 +410,8 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         return animations
       }
 
-      function applyAnimArgs(element, scope, animations, context) {
-
+      function applyAnimArgs(element, scope, animations, context, debug) {
+        debug = debug || false;
         var stateName = context.type + '-' + context.name;
         var defaults = {"kf":60,"autoPlay":false,"toolbar":{},"hidePlot":false}
         var animDelay = 0;
@@ -453,7 +453,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
         animDelay = animDelay || 0;
 
-        player.scheduleStream(player, state, animDelay);
+        player.scheduleStream(player, state, animDelay, debug);
         if (!scope) {
           return {player: player, stream:state, delay: animDelay}
         }
