@@ -1,7 +1,7 @@
 <div class="perspective-container full-xy flex-center" types='default, info, color' default-type="color">
-	<div class="dropdown auto" ng-if='activeType === "default"'
-		u on-init="s:[dropdown-init:public]">
-		<div u on-init="s:[dropdown-draw:children:linear-1500]">
+
+	<div class="dropdown auto" ng-if='activeType === "default"'>
+		<div u on-init="s:[dropdown-draw:children:linear-1500, dropdown-load-end:children:1500]">
 			<div class="top"
 				u init-with="p:[tr:scaleX(0)]"
 				when-dropdown-draw="a:[scaleX:0:1:250:easeOutCubic:0:1:f]"
@@ -20,14 +20,14 @@
 				when-dropdown-load-end="a:[scaleY:1:0:500:easeOutCubic:0:1:f]"></div>
 			<span class="txt-20"
 				u init-with="p-op"
-				when-dropdown-draw="a:[opacity:0:1:500:easeOutSine:0:1:f] | s:[dropdown-load-end:public:1200]">Photography</span>
+				when-dropdown-draw="a:[opacity:0:1:500:easeOutSine:0:1:f]">Photography</span>
 			<a init-with="p-op"
 				u when-dropdown-draw="a:[opacity:0:1:500:easeOutSine:0:1:f]"
 				on-click="s:[dropdown-open:public]">
 				<svg viewBox="0 0 100 100">
 					<path d="M14,32 L50,68 L86,32"
 						u init-with="p:[op:0, tr:none, sdo:102, sda:102]"
-						when-dropdown-init="a:[opacity:0:1:150:linear:0:1:f] | s:[draw-arrow:self:1000]"
+						on-init="a:[opacity:0:1:150:linear:0:1:f] | s:[draw-arrow:depth(0):1000]"
 						when-draw-arrow="a:[stroke-dashoffset:102:0:450:easeInQuint:0:1:f]"
 						when-dropdown-open="a:[rotate:0deg:180deg:150:easeOutBack:0:1:f]"
 						when-dropdown-close="a:[rotate:180deg:0deg:150:easeOutBack:0:1:f]"></path>
@@ -64,7 +64,7 @@
 	</div>
 
 	<div class="dropdown auto info" ng-if='activeType === "info"'
-		u on-init="s:[dropdown-info-init:public, dropdown-info-draw:children:linear-1500]">
+		u on-init="s:[dropdown-info-draw:children:linear-1500, dropdown-load-end:children:1500]">
 		<div>
 			<div class="top"
 				u init-with="p:[tr:scaleX(0)]"
@@ -83,14 +83,14 @@
 				when-dropdown-info-draw="a:[scaleY:0:1:250:easeOutCubic:0:1:f]"
 				when-dropdown-load-end="a:[scaleY:1:0:500:easeOutCubic:0:1:f]"></div>
 			<span u init-with="p-op"
-				when-dropdown-info-draw="a:[opacity:0:1:500:easeOutSine:0:1:f]| s:[dropdown-load-end:public:delay-1200]">Photography</span>
+				when-dropdown-info-draw="a:[opacity:0:1:500:easeOutSine:0:1:f]">Photography</span>
 			<a u init-with="p-op"
 				when-dropdown-info-draw="a:[opacity:0:1:700:easeOutSine:0:1:f]"
 				on-click="s:[dropdown-open:public]">
 				<svg viewBox="0 0 100 100">
 					<path d="M14,32 L50,68 L86,32"
 						u init-with="p:[op:0, tr:none, sdo:102, sda:102]"
-						when-dropdown-info-init="a:[opacity:0:1:150:linear:0:1:f] | s:[draw-arrow:self:1000]"
+						on-init="a:[opacity:0:1:150:linear:0:1:f] | s:[draw-arrow:depth(0):1000]"
 						when-draw-arrow="a:[stroke-dashoffset:102:0:450:easeInQuint:0:1:f]"
 						when-dropdown-open="a:[rotate:0deg:180deg:150:easeOutBack:0:1:f]"
 						when-dropdown-close="a:[rotate:180deg:0deg:150:easeOutBack:0:1:f]"></path>
@@ -157,11 +157,10 @@
 
 	<div class="dropdown-color" ng-if='activeType === "color"'
 		u init-with="p-op"
-		on-init="s:[dropdown-color-card:self, dropdown-color-init:public]"
-		when-dropdown-color-init="a:[opacity:0:1:250:easeOutSine:0:1:f]">
+		on-init="s:[dropdown-color-card:depth(0), dropdown-color-init:depth(>1)] |a:[opacity:0:1:250:easeOutSine:0:1:f]">
 
 		<a class="bg-robin"
-			u on-click="s:[dropdown-color-open:public, dropdown-color-items: ]">
+			u on-click="s:[dropdown-color-open:>siblings, dropdown-color-items:siblings]">
 				<!-- u on-click="s:[dropdown-color-open:public, dropdown-color-prompt:siblings]" -->
 			<div u init-with="p:[tr:scaleX(0)]"
 				when-dropdown-color-init="a:[scaleX:0:1:250:easeOutCubic:0:1:f]"></div>
@@ -177,7 +176,7 @@
 				<path d="M14,32 L50,68 L86,32"
 					u init-with="p:[tro:center center, tr:rotate(0), sdo:102, sda:102]"
 					when-dropdown-color-init="a:[stroke-dashoffset:102:0:450:easeOutCubic:0:1:f]:delay-100"
-					when-dropdown-color-open="a:[rotate:0deg:180deg:150:easeOutBack:0:1:f]"
+					when-dropdown-color-items="a:[rotate:0deg:180deg:150:easeOutBack:0:1:f]"
 					when-dropdown-color-close="a:[rotate:180deg:0deg:150:easeOutBack:0:1:f]"></path>
 			</svg>
 		</a>
