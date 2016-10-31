@@ -1,9 +1,12 @@
 <div class="perspective-container full-xy flex-center p15xy" types='default, separate-header, tour-guru' default-type="default">
 	<div class="popup" ng-if='activeType === "default"'
-		init-with="p-op"
-		on-init="a:[scaleIn-bounceDown:set:(dur:800ms#func:ease-out):in]">
+		u init-with="p-op"
+		on-init="s:[default-popup:self, default-header:children]"
+		when-default-popup="a:[scaleIn-bounceDown:800:easeOutSine:0:1:f]">
 		<div>
-			<header><h2>This is a header</h2></header>
+			<header><h2
+					u init-with="p:[letter-spacing:15px]"
+					when-default-header="a:[letter-spacing:15px:0px:500:easeOutExpo:0:1:f]">This is a header</h2></header>
 			<div>
 				<fieldset class="input-basic">
 					<label>Name</label>
@@ -26,10 +29,13 @@
 	</div>
 
 	<div class="popup with-header" ng-if='activeType === "separate-header"'
-		init-with="p-op"
-		on-init="a:[scaleIn-bounceDown:set:(dur:800ms#func:ease-out):in]">
+		u init-with="p-op"
+		on-init="s:[sep-popup:self, sep-header:children]"
+		when-sep-popup="a:[scaleIn-bounceDown:800:easeOutSine:0:1:f]">
 		<div>
-			<header class="bg-cobalt"><h2>This is a header</h2></header>
+			<header class="bg-cobalt"><h2
+					u init-with="p:[letter-spacing:15px]"
+					when-sep-header="a:[letter-spacing:15px:0px:500:easeOutExpo:0:1:f]">This is a header</h2></header>
 			<div>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id nunc et leo dignissim egestas.</p>
 				<!-- <fieldset class="input-basic dark m15top">
@@ -48,18 +54,18 @@
 	</div>
 
 	<div class="popup-tour" ng-if='activeType === "tour-guru"'
-		init-with="p-op"
-		on-init="a:[scaleIn-bounceDown:set:(dur:800ms#func:ease-out):in] | s:[popup-tour-init:public]"
-		on-exit="a:[popup-bounceOut:set:(dur:750ms#func:linear):out:delay-4000]">
+		u init-with="p-op"
+		on-init="a:[scaleIn-bounceDown:800:easeOutSine:0:1:f] | s:[popup-tour-init:children]"
+		on-exit="a:[popup-bounceOut:750:linear:4000:1:f]">
 		<header>
 			<svg class="popup-bg-circle" viewBox="0 0 150 150"
-				init-with="p:[op:0, stroke-opacity:0, sdo:472, sda:472, tr:rotate(45deg), tro: center center]"
-				when-popup-tour-init="a:[popup-header-enter:set:(dur:1000ms#func:linear):in:delay-450] | p:[stroke-opacity:0:1:450:easeInOutSine, stroke-dashoffset:472:0:450:easeInOutBack]:delay-600">
+				u init-with="p:[op:0, sdo:472, sda:472, tr:rotate(45deg), tro: center center]"
+				when-popup-tour-init="a:[popup-header-enter:100:linear:450:1:f, stroke-dashoffset:472:0:450:easeInOutBack:600:1:f, rotate:45deg:405deg:200:easeOutExpo:600:1:f]">
 				<circle cy="75" cx="75" r="72" stroke="white" stroke-width="3"></circle>
 			</svg>
 			<svg class="popup-tour-guru" viewBox="0 0 150 150"
-				init-with="p-op"
-				when-popup-tour-init="a:[scaleIn-subtle:set:(dur:1000ms#func:linear):in:delay-750]">
+				u init-with="p:[transform:rotate(215deg) scale(0), tro:left bottom]"
+				when-popup-tour-init="a:[rotate:215deg:0deg:500:easeOutBack:0:1:f, scale:0:1:500:easeOutBack:0:1:f]:delay-1000">
 				<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 					<path d="M75.6699219,97 C110.602507,97 137.245435,83.5915493 138.920963,67.4225352 C140.596491,51.2535211 110.602507,50.0704225 75.6699219,50.0704225 C40.7373366,50.0704225 10.7433568,51.2535211 12.4188811,67.4225352 C14.0944053,83.5915493 40.7373366,97 75.6699219,97 Z" class="hat-under" stroke="#986953" stroke-width="2" fill="#79513E"></path>
 					<path d="M35,95 C35,95 31,95 29,99 C27,103 27.9750979,109.312012 31.970215,111.79248 C35.9653322,114.272949 39.0000002,111 39,111 C42.9716799,118.0625 50.4101584,137.488446 83.5060264,135.99722 C109.625974,134.820313 121.641113,116.905274 121,101 C121,101 125.995605,103.307617 128.519043,99.7084962 C131.04248,96.1093751 132,91.9999999 130,88.0000002 C128,84.0000005 125,83 121,85 C124,72.0000006 106,59 106,59 C94,63 82,55 71,55 C60,55 31,61 35,95" class="face" stroke="#33534D" stroke-width="2" fill="#F9EDE6"></path>
@@ -76,22 +82,21 @@
 					<path d="M98.6496166,40.7790189 C98.6496166,40.7790189 97.9670513,32.6027198 92.5065299,25.973288 C87.0460084,19.3438562 75.6699219,15.3661972 75.6699219,15.3661972" class="hat-line-2" stroke="#986953" stroke-width="2"></path>
 					<path d="M35,95 C35,95 25,91 29,77 C18.8095703,78.2685547 10.9628907,64 20.0712891,53.8300781 C20.0712892,59 24.0009767,64 29.9999994,64" class="hair-2" stroke="#33534D" stroke-width="2" fill="#69B3A5"></path>
 					<path d="M85,121 C90,122 100,120 100,114" class="mouth" stroke="#33534D" stroke-width="2"
-						init-with="p:[tro:right bottom, tr:rotate(0) translateX(0)]"
-						when-popup-tour-init="send:[mouth-shift:public]:delay-2000"
-						when-mouth-shift="p:[transform:rotate(0deg) translateX(0px):rotate(15deg) translateX(-10px):250:easeOutQuad]:delay-150 | send:[mouth-smile:public]"
-						when-mouth-smile="a:[mouth-smile-close:set:(dur:150ms#func:ease-in-out):out]"></path>
+						u init-with="p:[tro:right bottom, tr:rotate(0) translateX(0)]"
+						on-init="s:[mouth-shift:depth(0):1800, mouth-smile:depth(0):1800]"
+						when-mouth-shift="a:[rotate:0deg:15deg:250:easeOutQuad:0:1:f, translateX:0px:-10px:250:easeOutQuad:0:1:f]:delay-150"
+						when-mouth-smile="a:[mouth-smile-close:150:easeInOutSine:0:1:f]"></path>
 					<path d="M76,118.279318 C77.7016602,125.799571 91.3261719,125.091563 91.3261719,117 L76,118.279318 Z" class="happy-mouth" stroke="#33534D"  fill="#40484B"
-					 	init-with="p:[op:0, tro:center top]"
-						when-popup-tour-init="send:[mouth-smile:public]:delay-2000"
-						when-mouth-smile="a:[mouth-smile-open:set:(dur:150ms#func:ease-out):in]"></path>
+					 	u init-with="p:[op:0, tro:center top]"
+						when-mouth-smile="a:[mouth-smile-open:150:easeOutCubic:0:1:f]"></path>
 					<path d="M64.5288326,101.164053 C66.7258698,100.933136 68.3197243,98.9648891 68.0888064,96.767852 C67.8578885,94.5708149 65.7417349,92.6882461 63.5880769,92.2133563 C60.4999827,91.5324198 58.5109385,91.7414768 55.6319013,93.0495841 C52.7528641,94.3576913 50.1874123,98.6493644 50.1874123,98.6493644 L52.2593359,99.2288569 C56.7309517,93.9395775 59.9235743,95.6150359 60.1326312,97.6040797 C60.3635491,99.8011168 62.3317955,101.394971 64.5288326,101.164053 L64.5288326,101.164053 Z M102.289054,96.8388129 C104.486092,96.607895 106.079946,94.6396486 105.849028,92.4426115 C105.61811,90.2455744 103.501957,88.3630056 101.348299,87.8881158 C98.2602046,87.2071793 96.2711603,87.4162363 93.3921231,88.7243435 C90.5130859,90.0324508 87.9476341,94.3241239 87.9476341,94.3241239 L90.0195577,94.9036164 C94.4911735,89.614337 97.6837961,91.2897954 97.892853,93.2788392 C98.123771,95.4758763 100.092017,97.0697308 102.289054,96.8388129 L102.289054,96.8388129 Z" class="eyes" fill="#33534D"
-						init-with="p:[tro:center top]"
-						when-popup-tour-init="send:[guru-blink:public]:delay-2000"
-						when-guru-blink="a:[blink-close:set:(dur:150ms#func:ease-in-out):out]"></path>
+						u init-with="p:[tro:center top]"
+						on-init="send:[guru-blink:depth(0):1800]"
+						when-guru-blink="a:[blink-close:150:easeInOutSine:0:1:f]"></path>
 					<path d="M91.4565803,93.4139753 C91.4564938,93.414389 91.4582797,93.4065963 91.4621441,93.3911626 C91.4699504,93.3599856 91.4802522,93.3222577 91.4932502,93.278544 C91.5321605,93.1476837 91.5842979,92.999364 91.651188,92.8380775 C91.8445623,92.3718105 92.1153481,91.9041885 92.4746117,91.4690242 C93.5043763,90.2217037 95.04398,89.4736476 97.2615379,89.4736476 C99.4790958,89.4736476 101.018699,90.2217037 102.048464,91.4690242 C102.407728,91.9041885 102.678513,92.3718105 102.871888,92.8380775 C102.938778,92.999364 102.990915,93.1476837 103.029826,93.278544 C103.042824,93.3222577 103.053125,93.3599856 103.060932,93.3911626 C103.064796,93.4065963 103.066582,93.414389 103.066495,93.4139753 C103.149862,93.812281 103.540334,94.0675898 103.93864,93.9842235 C104.336945,93.9008572 104.592254,93.5103849 104.508888,93.1120792 C104.470348,92.9279456 104.383806,92.636893 104.233113,92.2735385 C103.986531,91.6789765 103.643022,91.0857696 103.184872,90.5308269 C101.879168,88.9492703 99.9254377,88 97.2615379,88 C94.597638,88 92.6439074,88.9492703 91.3382037,90.5308269 C90.8800533,91.0857696 90.5365451,91.6789765 90.2899632,92.2735385 C90.1392697,92.636893 90.0527274,92.9279456 90.0141879,93.1120792 C89.9308215,93.5103849 90.1861304,93.9008572 90.584436,93.9842235 C90.9827417,94.0675898 91.373214,93.812281 91.4565803,93.4139753 L91.4565803,93.4139753 Z M55.458169,94.4139753 C55.4580824,94.414389 55.4598683,94.4065963 55.4637328,94.3911626 C55.4715391,94.3599856 55.4818409,94.3222577 55.4948388,94.278544 C55.5337491,94.1476837 55.5858865,93.999364 55.6527767,93.8380775 C55.846151,93.3718105 56.1169367,92.9041885 56.4762003,92.4690242 C57.5059649,91.2217037 59.0455686,90.4736476 61.2631265,90.4736476 C63.4806844,90.4736476 65.0202881,91.2217037 66.0500528,92.4690242 C66.4093163,92.9041885 66.6801021,93.3718105 66.8734764,93.8380775 C66.9403665,93.999364 66.992504,94.1476837 67.0314142,94.278544 C67.0444122,94.3222577 67.054714,94.3599856 67.0625203,94.3911626 C67.0663847,94.4065963 67.0681707,94.414389 67.0680841,94.4139753 C67.1514504,94.812281 67.5419227,95.0675898 67.9402284,94.9842235 C68.3385341,94.9008572 68.5938429,94.5103849 68.5104766,94.1120792 C68.471937,93.9279456 68.3853947,93.636893 68.2347012,93.2735385 C67.9881193,92.6789765 67.6446111,92.0857696 67.1864608,91.5308269 C65.880757,89.9492703 63.9270264,89 61.2631265,89 C58.5992267,89 56.645496,89.9492703 55.3397923,91.5308269 C54.881642,92.0857696 54.5381338,92.6789765 54.2915519,93.2735385 C54.1408583,93.636893 54.0543161,93.9279456 54.0157765,94.1120792 C53.9324102,94.5103849 54.187719,94.9008572 54.5860247,94.9842235 C54.9843304,95.0675898 55.3748027,94.812281 55.458169,94.4139753 L55.458169,94.4139753 Z" class="happy-eyes" fill="#33534D" stroke-width="2" stroke="#33534D"
-						init-with="p:[op:0, tro:center top]"
-						when-popup-tour-init="send:[guru-blink-happy:public]:delay-2000"]
-						when-guru-blink-happy="a:[blink-open:set:(dur:150ms#func:ease-in-out):in]"></path>
+						u init-with="p:[op:0, tro:center top]"
+						on-init="send:[guru-blink-happy:depth(0):1800]"
+						when-guru-blink-happy="a:[blink-open:150:easeInOutSine:0:1:f]"></path>
 				</g>
 			</svg>
 		</header>
