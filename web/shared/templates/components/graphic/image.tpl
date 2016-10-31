@@ -2,7 +2,7 @@
 	<figure class="figure-image"
 		u on-init="s:[figure-image-init:depth(2):150, figure-image-load:depth(1):1500]"
 		on-exit="p:[opacity:1:0:450:easeOutSine]:delay-150">
-		<img src="http://41.media.tumblr.com/ae90b8caeba47c980d343fedfc547b55/tumblr_n9v9gbigA21sciteso1_500.png"/>
+		<img bg-url="http://41.media.tumblr.com/ae90b8caeba47c980d343fedfc547b55/tumblr_n9v9gbigA21sciteso1_500.png"></u-image>
 		<div class="figure-loading"
 			u init-with="p:[bg:#ced3d5]"
 			on-click="s:[figure-image-error:children:600] | a:[background-color:#ced3d5:#d3242c:150:easeOutSine:0:1:f]:delay-1350 | p:[op:1]"

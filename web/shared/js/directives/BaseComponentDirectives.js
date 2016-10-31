@@ -23,6 +23,28 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
+    .directive('setTrueOnLoad', ['$compile',  function($compile) {
+        return {
+            restrict: 'A',
+
+        }
+    }])
+    .directive('uImage', ['$compile',  function($compile) {
+        return {
+            restrict: 'E',
+            replace: true,
+            templateUrl: function(element, attr) {
+                return 'shared/templates/components/graphic/image.' + (attr.type && (attr.type + '.')  || '') + 'tpl';
+            },
+            link: {
+                pre: function (scope, element, attrs) {
+                        var imageElem = element[0].querySelector('img');
+                        console.log(imageElem)
+                    }
+
+            }
+        }
+    }])
     .directive('media', ['$compile', 'XHRService', '$timeout', 'CompService', function($compile, XHRService, $timeout, CompService) {
         return {
             restrict: 'E',
@@ -203,8 +225,9 @@ angular.module('uguru.shared.directives.base.components')
                 scope.activateType = function($event, type) {
                     $timeout(function() {
                       scope.activeType = type;
+
                       scope.$apply();
-                      $compile(d)(scope)
+
                       // $compile(angular.element(elem))($scope);
                     })
                 }
@@ -212,35 +235,70 @@ angular.module('uguru.shared.directives.base.components')
             }}
         }
     }])
-    .directive('uChart', ['$compile', function($compile) {
+    .directive('chartPlayer', ['$compile', function($compile) {
+        return {
+            restrict: 'E',
+            scope: {'player':'='},
+            templateUrl: 'admin/templates/animations/chart.player.tpl',
+            replace:true
+        }
+    }])
+    .directive('graphic', ['$compile', 'CompService', function($compile, CompService) {
+        return {
+            restrict: 'E',
+            scope:false,
+            replace:true,
+            templateUrl: function(element, attr) {
+                return attr.src;
+            },
+            compile: function compile(element, attr)  {
+                CompService.renderAllStyleAttributes(element, attr);
+            },
+            link: {
+                post: function(scope, element, attr) {
+                    if (scope.chart) scope.chart.elem = element;
+
+                }
+            }
+
+        }
+    }])
+    .directive('uChart', ['$compile', '$timeout', function($compile, $timeout) {
 // http://stackoverflow.com/questions/24615103/angular-directives-when-and-how-to-use-compile-controller-pre-link-and-post
     return {
             restrict: 'E',
             replace:true,
-            transclude: true,
+            transclude:true,
             templateUrl: 'shared/templates/components/base/grid/state.chart.tpl',
             controller: 'AdminChartController',
             controllerAs:'chart',
+            scope: true,
             compile: function compile( element, attr ) {
 
                 if (!attr.src) attr.src = 'shared:components.svg.logo.guru-head.html'
 
                 return {
-                    pre: function preLink( scope, element, attributes ) {
-
-                        element.append(scope.chart.element)
-                        $compile(element)(scope)
-                        element.replaceWith(scope.chart.element.children().children().contents())
+                    pre: function preLink( scope, lElem, attributes ) {
+                        console.log(lElem[0])
+                        // element.append(scope.chart.element)
+                        // $compile(element)(scope)
+                        // element.replaceWith(scope.chart.element.children().children().contents())
                         // $compile(element)(scope)
 
 
                         console.log( attributes.log + ' (pre-link)'  );
                     },
-                    post: function postLink( scope, element, attributes ) {
-                        $compile(element)(scope)
+                    post: function postLink( scope, pElem, attributes ) {
+                        // $compile(element)(scope)
                         // var animObj = scope.renderAnimationStr(element.find('svg'), null, attr.state, scope.chart.context);
                         // scope.chart.player = animObj.player;
-                        console.log( attributes.log + ' (post-link)'  );
+
+                        $timeout(function() {
+                            // scope.chart.elem = document.querySelector('#chart-elem');
+                            // console.log(scope.chart.elem)
+                        })
+
+
                     }
                 };
              }
@@ -650,25 +708,6 @@ angular.module('uguru.shared.directives.base.components')
             template: '<div class="flex"></div>',
             compile: function(element, attr, transclude) {
                 CompService.renderAllStyleAttributes(element, attr);
-
-                attr.spacing && attr.spacing === 'center' && element.addClass('flex-center')
-                if (attr.width) {
-                    if (attr.width.indexOf('%') === -1 && attr.width.indexOf('px') === -1) {
-                        element.css('width', attr.width + '%')
-                    } else {
-                        element.css('width', attr.width)
-                    }
-                }
-                if (attr.height) {
-                    if (attr.height.indexOf('%') === -1 && attr.height.indexOf('px') === -1) {
-                        element.css('height', attr.height + '%')
-                    } else {
-                        element.css('height', attr.height)
-                    }
-                }
-                if (attr.type && attr.type === 'row') {
-                    element.addClass('flex-wrap-center', 'flex-wrap')
-                }
                 return {
                     pre: function preLink(lScope, lElem, lAttr, transcludeFn) {
 
@@ -680,6 +719,7 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
+    // http://41.media.tumblr.com/ae90b8caeba47c980d343fedfc547b55/tumblr_n9v9gbigA21sciteso1_500.png
     .directive("gridView", ["CompService", "$compile", function(CompService, $compile) {
         return {
             restrict: 'E',
@@ -692,12 +732,23 @@ angular.module('uguru.shared.directives.base.components')
                     element.addClass('flex-vertical-center')
                 }
                 if (attr.type && attr.type === 'row') {
-                    element.addClass('flex-wrap-center', 'flexwrap')
+                    element.addClass('flex flex-wrap');
+                    // element.css('flex-direction', 'row')
                 }
                 return {
                     pre: function preLink(lScope, lElem, lAttr, transcludeFn) {
-
+                        lScope.isView = true;
+                        lScope.viewType = attr.type;
                             transclude(lScope, function(clone, innerScope) {
+                                // $compile(clone)(innerScope)
+                                // var cloneChildren = clone.contents()
+                                // console.log(clone)
+                                for (var i = 0; i < clone.length; i++) {
+                                    clone
+                                }
+                                // .forEach(function(elem, i) {
+                                //     console.log(elem)
+                                // })
                                 lElem.append(clone)
                             })
                     }
@@ -884,17 +935,7 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
-    .directive("uImage", ["RootService", function(RootService) {
-        return {
-            templateUrl: RootService.getBaseUrl() + 'shared/templates/components/base/image.tpl',
-            restrict: 'E',
-            link: {
-                pre: function(scope, element, attr) {
-                    return
-                }
-            }
-        }
-    }])
+
     .directive("uRadio", ["RootService", function(RootService) {
         return {
             templateUrl: RootService.getBaseUrl() + 'shared/templates/components/base/radio.tpl',

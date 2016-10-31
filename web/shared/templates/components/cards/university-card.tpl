@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='checkbox, short, mini, link' default-type="mini">
+<div class="perspective-container full-xy flex-center p15xy" types='checkbox, short, mini, link'>
 
 	<div class="card-container" ng-if='activeType === "checkbox"'>
 		<div class="university-card"

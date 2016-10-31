@@ -410,7 +410,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
     function initCustomStateWatcher(scope, element, type, args, attr_value) {
       if (element[0].hasAttribute('u') && !element[0].hasAttribute('stagger-children')) return;
-      if (!(type in scope.root.public.customStates)) {
+      if (scope.root && scope.root.public && !(type in scope.root.public.customStates)) {
               scope.root.public.customStates[type] = {};
       }
       var watchState = 'root.public.customStates.' + type + '.' + args.camel;

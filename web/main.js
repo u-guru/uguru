@@ -481,6 +481,15 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp', 'u
   //   url:'/dev/components',
   //   templateUrl: 'admin/templates/components/index.tpl'
   // })
+  .state('root.single-layouts', {
+    url: '/dev/layouts/:name?{version}&{type}',
+    templateProvider: function($stateParams) {
+      // var mappings = {'tiles': 'tiles'};
+
+      var name =  $stateParams.name + (($stateParams.version &&  "." + $stateParams.version) || '');
+      return '<div ng-include="' + "'shared/templates/layouts/" + name + ".tpl'" + '"> </div>'
+    }
+  })
   .state('root.single-components', {
     url: '/dev/components/:section/:name?{version}&{type}',
     templateProvider: function($stateParams) {
