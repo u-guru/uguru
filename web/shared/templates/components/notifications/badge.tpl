@@ -1,6 +1,6 @@
 <div class="perspective-container full-xy flex-center p15xy" types='left-hover, bottom-hover, top-default, right-default' default-type="right-default">
 	<a class="badge-container click" ng-if='activeType === "left-hover"'
-		u on-init="s:[badge-left:depth(>2)]">
+		u on-init="s:[badge-left:depth(>1)]">
 		<span class="badge-left bg-moxie"
 			u init-with="p:[tro:right center, op:0]"
 			when-badge-left="a:[bounceIn-rotate-subtle:1000:linear:250:1:f]">
@@ -12,7 +12,7 @@
 	</a>
 
 	<a class="badge-container click" ng-if='activeType === "bottom-hover"'
-		u on-init="s:[badge-bot:depth(>2)]">
+		u on-init="s:[badge-bot:depth(>1)]">
 		<span u init-with="p-op"
 			when-badge-bot="a:[bounceInDown-subtle:1000:linear:0:1:f]">Students</span>
 		<span class="badge-bottom bg-robin"
@@ -24,7 +24,7 @@
 	</a>
 
 	<div class="badge-container" ng-if='activeType === "top-default"'
-		u on-init="s:[badge-top:depth(>2)]">
+		u on-init="s:[badge-top:depth(>1)]">
 		<span class="badge-top bg-orange"
 			u init-with="p:[tro:center bottom, op:0]"
 			when-badge-top="a:[bounceIn-rotate-subtle:1000:linear:250:1:f]">
@@ -36,7 +36,7 @@
 	</div>
 
 	<div class="badge-container" ng-if='activeType === "right-default"'
-		u on-init="s:[badge-right:depth(>2)]">
+		u on-init="s:[badge-right:depth(>1)]">
 		<span u init-with="p-op"
 			when-badge-right="a:[bounceInLeft-subtle:1000:linear:0:1:f]">Gurus</span>
 		<span class="badge-right bg-cobalt"

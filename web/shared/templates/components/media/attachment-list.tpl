@@ -252,9 +252,10 @@
 	</div>
 
 	<div class="attach-list large" ng-if='activeType === "large-icons"'>
-		<ul u on-init="s:[large-attach-init:children:easeInCirc-3000]">
+
+		<ul u on-init="s:[large-attach-init:public:easeInCirc-3000]">
 			<li>
-				<a u when-large-attach-init="s:[pdf-load:public, pdf-enter:public:1000]">
+				<a u when-large-attach-init="s:[pdf-load:children, pdf-enter:children:1000]">
 					<span>
 						<svg viewBox="0 0 100 100">
 							<g fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -296,7 +297,7 @@
 				</a>
 			</li>
 			<li>
-				<a u when-large-attach-init="s:[doc-load:public:150, doc-enter:public:1000]">
+				<a u when-large-attach-init="s:[doc-load:children:150, doc-enter:children:1000]">
 					<span>
 						<svg viewBox="0 0 100 100">
 							<g fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -354,7 +355,7 @@
 				</a>
 			</li>
 			<li>
-				<a u when-large-attach-init="s:[png-load:public:300, png-enter:public:1000]">
+				<a u when-large-attach-init="s:[png-load:children:300, png-enter:children:1000]">
 					<span>
 						<svg viewBox="0 0 100 100">
 							<g stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
@@ -378,7 +379,7 @@
 				</a>
 			</li>
 			<li>
-				<a u when-large-attach-init="s:[jpg-load:public:450, jpg-enter:public:1000]">
+				<a u when-large-attach-init="s:[jpg-load:children:450, jpg-enter:children:1000]">
 					<span>
 						<svg viewBox="0 0 100 100">
 							<defs>
@@ -405,7 +406,7 @@
 				</a>
 			</li>
 			<li>
-				<a u when-large-attach-init="s:[html-load:public:600, html-enter:public:1000]">
+				<a u when-large-attach-init="s:[html-load:children:600, html-enter:children:1000]">
 					<span>
 						<svg viewBox="0 0 100 100">
 							<g fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -479,7 +480,7 @@
 				</a>
 			</li>
 			<li>
-				<a u when-large-attach-init="s:[xls-load:public:750, xls-enter:public:1000]">
+				<a u when-large-attach-init="s:[xls-load:children:750, xls-enter:children:1000]">
 					<span>
 						<svg viewBox="0 0 100 100">
 							<g fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -508,7 +509,7 @@
 				</a>
 			</li>
 			<li>
-				<a u when-large-attach-init="s:[mp3-load:public:900, mp3-enter:public:1000]">
+				<a u when-large-attach-init="s:[mp3-load:children:900, mp3-enter:children:1000]">
 					<span>
 						<svg viewBox="0 0 100 100">
 							<g fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -532,7 +533,7 @@
 				</a>
 			</li>
 			<li>
-				<a u when-large-attach-init="s:[mp4-load:public:1050, mp4-enter:public:1000]">
+				<a u when-large-attach-init="s:[mp4-load:children:1050, mp4-enter:children:1000]">
 					<span>
 						<svg viewBox="0 0 100 100">
 							<g fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -580,7 +581,7 @@
 				</a>
 			</li>
 			<li>
-				<a u when-large-attach-init="s:[ppt-load:public:1200, ppt-enter:public:1000]">
+				<a u when-large-attach-init="s:[ppt-load:children:1200, ppt-enter:children:1000]">
 					<span>
 						<svg viewBox="0 0 100 100">
 							<g stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -620,7 +621,7 @@
 				</a>
 			</li>
 			<li>
-				<a u when-large-attach-init="s:[txt-load:public:1350, txt-enter:public:1000]">
+				<a u when-large-attach-init="s:[txt-load:children:1350, txt-enter:children:1000]">
 					<span>
 						<svg viewBox="0 0 100 100">
 							<g fill="none" stroke-linecap="round" stroke-linejoin="round">

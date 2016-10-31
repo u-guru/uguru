@@ -85,7 +85,7 @@
 		on-init="s:[input-btn:self, input-btn-content:children:350]"
 		when-input-btn="a:[bounceInLeft-subtle:800:linear:0:1:f]">
 		<span class="toast-svg"
-			u init-with="p-op"
+			u init-with="p:[tr:scale(0), tro:center center]"
 			when-input-btn-content="a:[icon-enter:1000:linear:250:1:f]">
 			<svg viewBox="0 0 100 100">
 				<path d="M15,31.9968376 C15,27.5803062 18.579658,24 22.9957852,24 L77.0042148,24 C81.420165,24 85,27.5741706 85,31.9968376 L85,68.0031624 C85,72.4196938 81.420342,76 77.0042148,76 L22.9957852,76 C18.579835,76 15,72.4258294 15,68.0031624 L15,31.9968376 L15,31.9968376 Z M84.9111543,31.4941352 L49.9585003,55.0012225 L15.0058463,31.4941352 M42.8716789,50.2025451 L15.0946246,68.884039 L42.8716789,50.2025451 M57.2229457,50.2025451 L85,68.884039 L57.2229457,50.2025451"></path>
@@ -108,8 +108,7 @@
 
 	<div class="toast bg-smoke txt-moxie border-moxie toast-cta" ng-if='activeType === "cta"'
 		u init-with="p-op"
-		on-init="s:[cta-enter:depth(>1)]"
-		when-cta-enter="a:[bounceInLeft-subtle:800:linear:0:1:f]">
+		on-init="s:[cta-enter:depth(1)] |a:[bounceInLeft-subtle:800:linear:0:1:f]">
 		<p u init-with="p-op"
 			when-cta-enter="a:[opacity:0:1:500:easeOutSine]:delay-150">Your money is here! Update your bank preferences</p>
 		<button u init-with="p-op"
