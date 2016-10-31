@@ -22,9 +22,10 @@
 		</defs>
 	</svg>
 	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #BBF2FE;"
-		init-after="day-transition" on-init="a:[opacity:0:1:3000:easeInOutSine:0:1:f]:delay-2500">
+		u error-children error-depth on-init="a:[opacity:0:1:3000:easeInOutSine:0:1:f]:delay-3000 | s:[day-transition:public:1000, tree-shake:c:4000]:+2500">
+		 <!-- on-init="a:[opacity:0:1:3000:easeInOutSine:0:1:f]:delay-3000 | s:[day-transition:children:1000, tree-shake:c:9500]:+2500" -->
 		<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-			<g class="left-tree" init-after="leaving">
+			<g class="left-tree">
 				<rect class="l-canopy" fill="#B4CB5D" x="221" y="364" width="43" height="86" rx="21.5"
 					u init-with="p:[tro:50% 80%]"
 					when-tree-shake="a:[rustle:300:linear:0:3:ar]"></rect>
@@ -32,8 +33,7 @@
 				<path d="M241.46694,432.899271 L232.618869,424.0512 L241.46694,432.899271 Z" class="l-tree-trunk-2" stroke="#625317" stroke-width="5"></path>
 				<path d="M241.618869,412.899271 L250.46694,404.0512 L241.618869,412.899271 Z" class="l-tree-trunk-3" stroke="#625317" stroke-width="5"></path>
 			</g>
-			<g class="right-tree"
-				init-after="leaving" on-init="s:[tree-shake:public]:delay-5700">
+			<g class="right-tree">
 				<rect class="e-tree-canopy" fill="#0F7959" x="538" y="364" width="43" height="86" rx="21.5"
 					u init-with="p:[tro:50% 80%]"
 					when-tree-shake="a:[rustle:300:linear:0:3:a]"></rect>
@@ -54,7 +54,7 @@
 				<path d="M474,504 C475.046946,487.801477 487.991229,475 503.805556,475 C519.619882,475 532.564165,487.801477 533.611111,504 L474,504 L474,504 L474,504 Z" class="lime-bush-medium" fill="#93AA3C"></path>
 			</g>
 			<g class="leaves"
-				init-after="leaving" on-init="s:[leaf-fall:public:6500]">
+				u on-init="s:[leaf-fall:children:5500]">
 				<g class="ref-leaf-a"
 					u init-with="p:[op:0, transform:translateY(-10px)]"
 					when-leaf-fall="a:[translateY:-10px:0px:300:easeInOutBack:0:1:f] | p:[op:1]">
@@ -62,8 +62,8 @@
 					<path d="M596.805664,499.794922 C596.805664,499.794922 601.556519,499.672017 604.170506,497.905234 C606.784493,496.13845 607.264987,493.117312 607.264987,493.117312" class="ref-leaf-a-2" stroke="#C8D39F" stroke-width="2"></path>
 				</g>
 				<g class="leaf-a"
-					u init-with="p:[op:0, transform:translateY(-60px)]"
-					when-leaf-fall="a:[translateY:-60px:0px:3000:easeInOutBack:600:1:f] | p:[op:1]:delay-600">
+					u init-with="p:[op:0, transform:translateY(-30px)]"
+					when-leaf-fall="a:[translateY:-30px:0px:800:easeInOutBack:600:1:f] | p:[op:1]:delay-600">
 					<path d="M576.083984,416.017578 L574.187448,419.796089 C573.127672,421.907502 570.448902,423.001567 568.229722,422.227902 C568.229722,422.227902 566.506449,421.689824 565.957136,421.343444 C565.011023,420.746855 562.317797,418.777724 562.317797,418.777724 L567.446445,414.770785 C569.308648,413.315872 572.355483,413.269454 574.257069,414.671034 L576.083984,416.017578 L576.083984,416.017578 Z" class="leaf-a-1" fill="#107959"></path>
 					<path d="M566.805664,418.794922 C566.805664,418.794922 571.556519,418.672017 574.170506,416.905234 C576.784493,415.13845 577.264987,412.117312 577.264987,412.117312" class="leaf-a-2" stroke="#C8D39F" stroke-width="2"></path>
 				</g>
@@ -91,7 +91,6 @@
 					<path d="M221.916016,421.017578 L223.812552,424.796089 C224.872328,426.907502 227.551098,428.001567 229.770278,427.227902 C229.770278,427.227902 231.493551,426.689824 232.042864,426.343444 C232.988977,425.746855 235.682203,423.777724 235.682203,423.777724 L230.553555,419.770785 C228.691352,418.315872 225.644517,418.269454 223.742931,419.671034 L221.916016,421.017578 L221.916016,421.017578 L221.916016,421.017578 Z" class="leaf-d-1" fill="#B4CB5D"></path>
 					<path d="M231.194336,423.794922 C231.194336,423.794922 226.443481,423.672017 223.829494,421.905234 C221.215507,420.13845 220.735013,417.117312 220.735013,417.117312" class="leaf-d-2" stroke="#63AC69" stroke-width="2"></path>
 				</g>
-
 				<g class="ref-leaf-c"
 					u init-with="p:[op:0, transform:translateY(-10px)]"
 					when-leaf-fall="a:[translateY:-10px:0px:2300:easeInOutBack:0:1:f] | p:[op:1]">
@@ -105,82 +104,66 @@
 					<path d="M248.805664,430.794922 C248.805664,430.794922 253.556519,430.672017 256.170506,428.905234 C258.784493,427.13845 259.264987,424.117312 259.264987,424.117312" class="leaf-c-2" stroke="#63AC69" stroke-width="2"></path>
 				</g>
 			</g>
-			<g class="sky" init-after="day-transition" on-init="s:[day-sky:public:6000]">
+			<g class="sky" u on-init="s:[day-sky:>c:7000]">
 				<circle class="sun" fill="#FECE67" cx="281" cy="171" r="44"
-					u
-					init-with="p:[transform:translateY(-800px)]"
-					when-day-sky="a:[translateY:-800px:0px:400:easeInOutBack:0:1:f]:delay-4000 | s:[flying:public:5000]"></circle>
-				<g 	u
-					when-day-sky="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:ar]">
+					u init-with="p:[transform:translateY(-800px)]"
+					when-day-sky="a:[translateY:-800px:0px:400:easeInOutBack:0:1:f]"></circle>
+				<g u when-day-sky="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:ar]">
 					<path d="M432.821041,232 C432.284244,229.754184 432,227.410286 432,225 C432,208.431458 445.431458,195 462,195 C478.568542,195 492,208.431458 492,225 C492,227.410286 491.715756,229.754184 491.178959,232 L432.821041,232 L432.821041,232 L432.821041,232 Z" class="day-b-cloud-1" fill="#FFFFFF"></path>
 					<path d="M487.756105,232 C487.262518,230.08228 487,228.071797 487,226 C487,212.745166 497.745166,202 511,202 C524.254834,202 535,212.745166 535,226 C535,228.071797 534.737482,230.08228 534.243895,232 L487.756105,232 L487.756105,232 L487.756105,232 Z" class="day-b-cloud-2" fill="#FFFFFF"></path>
 					<path d="M527.024234,232 C526.360925,230.123326 526,228.103813 526,226 C526,216.058875 534.058875,208 544,208 C553.941125,208 562,216.058875 562,226 C562,228.103813 561.639075,230.123326 560.975766,232 L527.024234,232 L527.024234,232 L527.024234,232 Z" class="day-b-cloud-3" fill="#FFFFFF"></path>
 				</g>
-				<g 	u
-				 	when-day-sky="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:a]">
+				<g u when-day-sky="a:[translateY:4px:-4px:1000:easeInOutQuad:0:i:a]">
 					<path d="M430.243895,178 C430.737482,176.08228 431,174.071797 431,172 C431,158.745166 420.254834,148 407,148 C393.745166,148 383,158.745166 383,172 C383,174.071797 383.262518,176.08228 383.756105,178 L430.243895,178 L430.243895,178 L430.243895,178 Z" class="day-s-cloud-1" fill="#FFFFFF"></path>
 					<path d="M390.975766,178 C391.639075,176.123326 392,174.103813 392,172 C392,162.058875 383.941125,154 374,154 C364.058875,154 356,162.058875 356,172 C356,174.103813 356.360925,176.123326 357.024234,178 L390.975766,178 L390.975766,178 L390.975766,178 Z" class="day-s-cloud-2" fill="#FFFFFF"></path>
 				</g>
-				<g class="birds" init-after="flying" on-init="s:[fly-start:public, leaving:public:1100]">
+				<g class="birds" u on-init="s:[fly-start:>c:5000]">
 					<g class="b-bird"
-						u
-						when-fly-start="a:[translateY:-3px:3px:1000:linear:0:i:a]">
+						u when-fly-start="a:[translateY:-3px:3px:1000:linear:0:i:a]">
 						<path d="M499.5,126 C499.5,126 505.438375,126.265969 511.75,131.5 C518.061625,136.734031 520,143 520,143" class="b-bird-left" stroke="#6E6144" stroke-width="4"
-							u
-							init-with="p:[transform:rotate(0deg), tro:right bottom]"
+							u init-with="p:[transform:rotate(0deg), tro:right bottom]"
 							when-fly-start="a:[rotate:15deg:-10deg:1000:easeInOutCirc:0:i:a]"></path>
 						<path d="M541,126 C541,126 535.061625,126.265969 528.75,131.5 C522.438375,136.734031 520.5,143 520.5,143" class="b-bird-right" stroke="#6E6144" stroke-width="4"
-							u
-							init-with="p:[transform:rotate(0deg), tro:left bottom]"
+							u init-with="p:[transform:rotate(0deg), tro:left bottom]"
 							when-fly-start="a:[rotate:-15deg:10deg:1000:easeInOutCirc:0:i:a]"></path>
 					</g>
-					<g class="m-bird" u
-						when-fly-start="a:[translateY:-3px:3px:1000:linear:100:i:a]">
+					<g class="m-bird" u when-fly-start="a:[translateY:-3px:3px:1000:linear:100:i:a]">
 						<path d="M479.294118,158 C479.294118,158 483.136595,158.172098 487.220588,161.558824 C491.304581,164.945549 492.558824,169 492.558824,169" class="m-bird-left" stroke="#6E6144" stroke-width="4"
-							u
-							init-with="p:[transform:rotate(0deg), tro:right bottom]"
+							u init-with="p:[transform:rotate(0deg), tro:right bottom]"
 							when-fly-start="a:[rotate:10deg:-10deg:1000:easeInOutCirc:100:i:a]"></path>
 						<path d="M506.558824,158 C506.558824,158 502.716346,158.172098 498.632353,161.558824 C494.54836,164.945549 493.294118,169 493.294118,169" class="m-bird-right" stroke="#6E6144" stroke-width="4"
-							u
-							init-with="p:[transform:rotate(0deg), tro:left bottom]"
+							u init-with="p:[transform:rotate(0deg), tro:left bottom]"
 							when-fly-start="a:[rotate:-10deg:10deg:1000:easeInOutCirc:100:i:a]"></path>
 					</g>
-					<g class="m-bird" u
-						when-fly-start="a:[translateY:-3px:3px:1000:linear:150:i:a]">
+					<g class="m-bird"
+						u when-fly-start="a:[translateY:-3px:3px:1000:linear:150:i:a]">
 						<path d="M344.294118,218 C344.294118,218 346.963583,218.062581 349.800835,219.294118 C352.638087,220.525654 353.509441,222 353.509441,222" class="far-bird-left" stroke="#6E6144" stroke-width="3"
-							u
-							init-with="p:[transform:rotate(0deg), tro:right bottom]"
+							u init-with="p:[transform:rotate(0deg), tro:right bottom]"
 							when-fly-start="a:[rotate:10deg:-10deg:1000:easeInOutCirc:150:i:a]"></path>
 						<path d="M363.509441,218 C363.509441,218 360.839975,218.062581 358.002723,219.294118 C355.165471,220.525654 354.294118,222 354.294118,222" class="far-bird-right" stroke="#6E6144" stroke-width="3"
-							u
-							init-with="p:[transform:rotate(0deg), tro:left bottom]"
+							u init-with="p:[transform:rotate(0deg), tro:left bottom]"
 							when-fly-start="a:[rotate:-10deg:10deg:1000:easeInOutCirc:150:i:a]"></path>
 					</g>
-					<g u
-						when-fly-start="a:[translateY:-3px:3px:1000:linear:175:i:a]">
+					<g u when-fly-start="a:[translateY:-3px:3px:1000:linear:175:i:a]">
 						<path d="M512.294118,178 C512.294118,178 514.963583,178.062581 517.800835,179.294118 C520.638087,180.525654 521.509441,182 521.509441,182" class="small-bird-left" stroke="#6E6144" stroke-width="3"
-							u
-							init-with="p:[transform:rotate(0deg), tro:right bottom]"
+							u init-with="p:[transform:rotate(0deg), tro:right bottom]"
 							when-fly-start="a:[rotate:10deg:-10deg:1100:easeInOutCirc:175:i:a]"></path>
 						<path d="M530.509441,178 C530.509441,178 527.839975,178.062581 525.002723,179.294118 C522.165471,180.525654 521.294118,182 521.294118,182" class="small-bird-right" stroke="#6E6144" stroke-width="3"
-							u
-							init-with="p:[transform:rotate(0deg), tro:left bottom]"
+							u init-with="p:[transform:rotate(0deg), tro:left bottom]"
 							when-fly-start="a:[rotate:-10deg:10deg:1100:easeInOutCirc:175:i:a]"></path>
 					</g>
-					<g u
-						when-fly-start="a:[translateY:-3px:3px:1000:linear:0:i:a]">
+					<g u when-fly-start="a:[translateY:-3px:3px:1000:linear:0:i:a]">
 						<path d="M308.509441,236 C308.284677,236 309.156031,234.525654 311.993282,233.294118 C314.830534,232.062581 317.5,232 317.5,232" class="stout-bird-right" stroke="#6E6144" stroke-width="4"
-							u
-							init-with="p:[transform:rotate(0deg), tro:left bottom]"
+							u init-with="p:[transform:rotate(0deg), tro:left bottom]"
 							when-fly-start="a:[rotate:-10deg:10deg:1000:easeInOutCirc:0:i:a]"></path>
 						<path d="M308.466318,236 C308.691082,236 307.819728,234.525654 304.982476,233.294118 C302.145224,232.062581 299.475759,232 299.475759,232" class="stout-bird-left" stroke="#6E6144" stroke-width="4"
-							u
-							init-with="p:[transform:rotate(0deg), tro:right bottom]"
+							u init-with="p:[transform:rotate(0deg), tro:right bottom]"
 							when-fly-start="a:[rotate:10deg:-10deg:1000:easeInOutCirc:0:i:a]"></path>
 					</g>
 				</g>
 			</g>
-			<g class="house" init-after="day-transition" on-init="s:[blinds:public:7000]">
+			<g class="house" u when-day-transition="s:[blinds:children:4000]">
+				 <!-- u when-tree-shake="s:[blinds:children:1000]" -->
 				<g>
 					<rect class="house-foundation-beige" fill="#E5D8B7" x="307" y="285" width="187" height="204"></rect>
 					<rect class="house-casing" fill="#FFFFFF" x="301" y="485" width="199" height="19"></rect>
@@ -302,31 +285,31 @@
 	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #092D4B;"
 		u
 		init-with="p:[op:1]"
-		on-init="a:[opacity:1:0:3000:easeInOutSine:0:1:f]:delay-6000 | s:[day-transition:public, foliage:depth(>1):1500, branch:public:1750]">
+		on-init="a:[opacity:1:0:3000:easeInOutSine:0:1:f]:delay-3000 | s:[foliage:depth(>1):500, branch:children:650, canopy:children:800]">
 	    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 	        <g class="blue-tree">
 	            <rect class="b-canopy" fill="#AADFFF" x="221" y="364" width="43" height="86" rx="21.5"
-					init-after="canopy"
+					u
 					init-with="p:[transform:scaleY(0), tro:center bottom]"
-					on-init="a:[scaleY:0:1:300:easeOutBounce:0:1:f]"></rect>
+					when-canopy="a:[scaleY:0:1:300:easeOutBounce:0:1:f]"></rect>
 	            <path d="M241.5,499.514151 L241.5,397.485849 L241.5,499.514151 Z" class="b-tree-trunk-1" stroke="#0B3B5E" stroke-width="5"
-					init-after="foliage"
+					u
 					init-with="p:[transform:scale(0), tro:center bottom]"
-					on-init="a:[scaleY:0:1:800:easeInOutExpo:0:1:f]"></path>
+					when-foliage="a:[scaleY:0:1:800:easeInOutExpo:0:1:f]"></path>
 	            <path d="M241.46694,432.899271 L232.618869,424.0512 L241.46694,432.899271 Z" class="b-tree-trunk-2" stroke="#0B3B5E" stroke-width="5"
-					init-after="branch"
+					u
 					init-with="p:[transform:scale(0), tro:left bottom]"
-					on-init="a:[scaleY:0:1:800:easeInOutExpo:0:1:f]"></path>
+					when-branch="a:[scaleY:0:1:800:easeInOutExpo:0:1:f]"></path>
 	            <path d="M241.618869,412.899271 L250.46694,404.0512 L241.618869,412.899271 Z" class="b-tree-trunk-3" stroke="#0B3B5E" stroke-width="5"
-					init-after="branch"
+					u
 					init-with="p:[transform:scale(0), tro:right bottom]"
-					on-init="a:[scaleY:0:1:800:easeInOutExpo:200:1:f]"></path>
+					when-branch="a:[scaleY:0:1:800:easeInOutExpo:200:1:f]"></path>
 	        </g>
 	        <g class="purple-tree">
 				<rect class="p-tree-canopy" fill="#8163AC" x="538" y="364" width="43" height="86" rx="21.5"
-						u
-						init-with="p:[transform:scaleY(0), tro:center bottom]"
-						when-canopy="a:[scaleY:0:1:300:easeOutBounce:0:1:f]"></rect>
+					u
+					init-with="p:[transform:scaleY(0), tro:center bottom]"
+					when-canopy="a:[scaleY:0:1:300:easeOutBounce:0:1:f]"></rect>
 	            <polygon class="p-tree-trunk-1" stroke="#0B3B5E" stroke-width="5" points="559.5 499.514151 559.5 397.485849"
 					u
 					init-with="p:[transform:scale(0), tro:center bottom]"
@@ -338,7 +321,7 @@
 	            <polygon class="p-tree-trunk-3" stroke="#0B3B5E" stroke-width="5" points="559.381131 412.899271 550.53306 404.0512"
 					u
 					init-with="p:[transform:scale(0), tro:right bottom]"
-					when-branch="a:[scaleY:0:1:800:easeInOutExpo:200:1:f] | s:[canopy:public:2300]"></polygon>
+					when-branch="a:[scaleY:0:1:800:easeInOutExpo:200:1:f]"></polygon>
 	        </g>
 	        <g class="purple-bushes">
 	            <path d="M298.79867,504 C297.256668,481.09864 278.191583,463 254.899335,463 C231.607087,463 212.542002,481.09864 211,504 L298.79867,504 L298.79867,504 Z" class="prpl-bush-big" fill="#C3B6D6"
