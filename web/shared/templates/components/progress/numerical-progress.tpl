@@ -1,85 +1,84 @@
 <div class="perspective-container full-xy flex-center p15xy">
 	<div class="numerical-bar"
-		init-default
-		on-init="s:[progress-init:public]">
+		u on-init="s:[progress-init:children]">
 		<div class="progress bg-slate txt-shamrock"
-			init-with="p:[op:0, tr:scaleX(0), tro:left center, t:transform 600ms cubic-bezier(.6#0#.1#1.3)#opacity 150ms ease-out]"
-			when-progress-init="p:[tr:none, op:1]">
-			<span init-with="p:[width:0]"
-				when-progress-1-clicked="p:[width:0%:10%:150:easeOutSine]"
-				when-progress-2-clicked="p:[width:10%:30%:150:easeOutSine]"
-				when-progress-3-clicked="p:[width:30%:50%:150:easeOutSine]"
-				when-progress-4-clicked="p:[width:50%:70%:150:easeOutSine]"
-				when-progress-5-clicked="p:[width:70%:90%:150:easeOutSine] | s:[progress-complete:public:delay-700]"
-				when-progress-complete="p:[width:90%:100%:150:easeOutSine]"></span>
+			u init-with="p:[transform-origin:left center, transform:scaleX(0), opacity:0]"
+			when-progress-init="a:[opacity:0:1:150:easeOutSine:0:1:f, scaleX:0:1:600:(0.6,0,0.1,1.3):0:1:f]">
+			<span u init-with="p:[width:0%]"
+				when-progress-1-width="a:[width:0%:10%:150:easeOutSine:0:1:f]"
+				when-progress-2-width="a:[width:10%:30%:150:easeOutSine:0:1:f]"
+				when-progress-3-width="a:[width:30%:50%:150:easeOutSine:0:1:f]"
+				when-progress-4-width="a:[width:50%:70%:150:easeOutSine:0:1:f]"
+				when-progress-5-width="a:[width:70%:90%:150:easeOutSine:0:1:f] | s:[progress-complete:depth(0):700]"
+				when-progress-complete="a:[width:90%:100%:150:easeOutSine:0:1:f]"></span>
 		</div>
 		<ul>
-			<li init-with="p-op"
-				when-progress-init="a:[bounceIn-rotate-subtle-small:set:(dur:1000ms#func:linear):in]">
-				<div on-click="s:[progress-1-clicked]">
+			<li u init-with="p:[opacity:0]"
+				when-progress-init="a:[bounceIn-rotate-subtle-small:1000:linear:0:1:f]">
+				<div u on-click="s:[progress-1-clicked:children:250, progress-1-width:public]">
 					<svg viewBox="0 0 80 80">
 						<path d="M2.5,40 C2.5,60.7106781 19.2893219,77.5 40,77.5 C60.7106781,77.5 77.5,60.7106781 77.5,40"
-							init-with="p:[sda:117.83, sdo:117.83, fill:#40484b]"
-							when-progress-1-clicked="p:[stroke-dashoffset:117.83:0:300:easeOutSine, fill:#40484b:#ffffff:300:easeOutSine]:delay-250"></path>
+							u init-with="p:[sda:117.83, sdo:117.83, fill:rgba(64,72,75,1)]"
+							when-progress-1-clicked="a:[stroke-dashoffset:117.83:0:300:easeOutSine:0:1:f,  fill:rgba(64,72,75,1):rgba(255,255,255,1):300:easeOutSine:0:1:f]"></path>
 			            <path d="M2.5,40 C2.5,19.2893219 19.2893219,2.5 40,2.5 C60.7106781,2.5 77.5,19.2893219 77.5,40"
-							init-with="p:[sda:117.83, sdo:117.83, fill:#40484b]"
-							when-progress-1-clicked="p:[stroke-dashoffset:117.83:0:300:easeOutSine, fill:#40484b:#ffffff:300:easeOutSine]:delay-250"></path>
+							u init-with="p:[sda:117.83, sdo:117.83, fill:rgba(64,72,75,1)]"
+							when-progress-1-clicked="a:[stroke-dashoffset:117.83:0:300:easeOutSine:0:1:f, fill:rgba(64,72,75,1):rgba(255,255,255,1):300:easeOutSine:0:1:f]"></path>
 					</svg>
 					<span>1</span>
 				</div>
 			</li>
-			<li init-with="p-op"
-				when-progress-init="a:[bounceIn-rotate-subtle-small:set:(dur:1000ms#func:linear):in:delay-100]">
-				<div on-click="s:[progress-2-clicked]">
+			<li u init-with="p:[opacity:0]"
+				when-progress-init="a:[bounceIn-rotate-subtle-small:1000:linear:100:1:f]">
+				<div u on-click="s:[progress-2-clicked:children:250, progress-2-width:public]">
 					<svg viewBox="0 0 80 80">
 						<path d="M2.5,40 C2.5,60.7106781 19.2893219,77.5 40,77.5 C60.7106781,77.5 77.5,60.7106781 77.5,40"
-							init-with="p:[sda:117.83, sdo:117.83, fill:#40484b]"
-							when-progress-2-clicked="p:[stroke-dashoffset:117.83:0:300:easeOutSine, fill:#40484b:#ffffff:300:easeOutSine]:delay-250"></path>
+							u init-with="p:[sda:117.83, sdo:117.83, fill:rgba(64,72,75,1)]"
+							when-progress-2-clicked="a:[stroke-dashoffset:117.83:0:300:easeOutSine:0:1:f, fill:rgba(64,72,75,1):rgba(255,255,255,1):300:easeOutSine:0:1:f]"></path>
 			            <path d="M2.5,40 C2.5,19.2893219 19.2893219,2.5 40,2.5 C60.7106781,2.5 77.5,19.2893219 77.5,40"
-							init-with="p:[sda:117.83, sdo:117.83, fill:#40484b]"
-							when-progress-2-clicked="p:[stroke-dashoffset:117.83:0:300:easeOutSine, fill:#40484b:#ffffff:300:easeOutSine]:delay-250"></path>
+							u init-with="p:[sda:117.83, sdo:117.83, fill:rgba(64,72,75,1)]"
+							when-progress-2-clicked="a:[stroke-dashoffset:117.83:0:300:easeOutSine:0:1:f, fill:rgba(64,72,75,1):rgba(255,255,255,1):300:easeOutSine:0:1:f]"></path>
 					</svg>
 					<span>2</span>
 				</div>
 			</li>
-			<li init-with="p-op"
-				when-progress-init="a:[bounceIn-rotate-subtle-small:set:(dur:1000ms#func:linear):in:delay-200]">
-				<div on-click="s:[progress-3-clicked]">
+			<li u init-with="p:[opacity:0]"
+				when-progress-init="a:[bounceIn-rotate-subtle-small:1000:linear:200:1:f]">
+				<div u on-click="s:[progress-3-clicked:children:250, progress-3-width:public]">
 					<svg viewBox="0 0 80 80">
 						<path d="M2.5,40 C2.5,60.7106781 19.2893219,77.5 40,77.5 C60.7106781,77.5 77.5,60.7106781 77.5,40"
-							init-with="p:[sda:117.83, sdo:117.83, fill:#40484b]"
-							when-progress-3-clicked="p:[stroke-dashoffset:117.83:0:300:easeOutSine, fill:#40484b:#ffffff:300:easeOutSine]:delay-250"></path>
+							u init-with="p:[sda:117.83, sdo:117.83, fill:rgba(64,72,75,1)]"
+							when-progress-3-clicked="a:[stroke-dashoffset:117.83:0:300:easeOutSine:0:1:f, fill:rgba(64,72,75,1):rgba(255,255,255,1):300:easeOutSine:0:1:f]"></path>
 			            <path d="M2.5,40 C2.5,19.2893219 19.2893219,2.5 40,2.5 C60.7106781,2.5 77.5,19.2893219 77.5,40"
-							init-with="p:[sda:117.83, sdo:117.83, fill:#40484b]"
-							when-progress-3-clicked="p:[stroke-dashoffset:117.83:0:300:easeOutSine, fill:#40484b:#ffffff:300:easeOutSine]:delay-250"></path>
+							u init-with="p:[sda:117.83, sdo:117.83, fill:rgba(64,72,75,1)]"
+							when-progress-3-clicked="a:[stroke-dashoffset:117.83:0:300:easeOutSine:0:1:f, fill:rgba(64,72,75,1):rgba(255,255,255,1):300:easeOutSine:0:1:f]"></path>
 					</svg>
 					<span>3</span>
 				</div>
 			</li>
-			<li init-with="p-op"
-				when-progress-init="a:[bounceIn-rotate-subtle-small:set:(dur:1000ms#func:linear):in:delay-300]">
-				<div on-click="s:[progress-4-clicked]">
+			<li u init-with="p:[opacity:0]"
+				when-progress-init="a:[bounceIn-rotate-subtle-small:1000:linear:300:1:f]]">
+				<div u on-click="s:[progress-4-clicked:children:250, progress-4-width:public]">
 					<svg viewBox="0 0 80 80">
 						<path d="M2.5,40 C2.5,60.7106781 19.2893219,77.5 40,77.5 C60.7106781,77.5 77.5,60.7106781 77.5,40"
-							init-with="p:[sda:117.83, sdo:117.83, fill:#40484b]"
-							when-progress-4-clicked="p:[stroke-dashoffset:117.83:0:300:easeOutSine, fill:#40484b:#ffffff:300:easeOutSine]:delay-250"></path>
+							u init-with="p:[sda:117.83, sdo:117.83, fill:rgba(64,72,75,1)]"
+							when-progress-4-clicked="a:[stroke-dashoffset:117.83:0:300:easeOutSine:0:1:f, fill:rgba(64,72,75,1):rgba(255,255,255,1):300:easeOutSine:0:1:f]"></path>
 			            <path d="M2.5,40 C2.5,19.2893219 19.2893219,2.5 40,2.5 C60.7106781,2.5 77.5,19.2893219 77.5,40"
-							init-with="p:[sda:117.83, sdo:117.83, fill:#40484b]"
-							when-progress-4-clicked="p:[stroke-dashoffset:117.83:0:300:easeOutSine, fill:#40484b:#ffffff:300:easeOutSine]:delay-250"></path>
+							u init-with="p:[sda:117.83, sdo:117.83, fill:rgba(64,72,75,1)]"
+							when-progress-4-clicked="a:[stroke-dashoffset:117.83:0:300:easeOutSine:0:1:f, fill:rgba(64,72,75,1):rgba(255,255,255,1):300:easeOutSine:0:1:f]"></path>
 					</svg>
 					<span>4</span>
 				</div>
 			</li>
-			<li init-with="p-op"
-				when-progress-init="a:[bounceIn-rotate-subtle-small:set:(dur:1000ms#func:linear):in:delay-400]">
-				<div on-click="s:[progress-5-clicked]">
+			<li u init-with="p:[opacity:0]"
+				when-progress-init="a:[bounceIn-rotate-subtle-small:1000:linear:400:1:f]">
+				<div u on-click="s:[progress-5-clicked:children:250, progress-5-width:public]">
 					<svg viewBox="0 0 80 80">
 						<path d="M2.5,40 C2.5,60.7106781 19.2893219,77.5 40,77.5 C60.7106781,77.5 77.5,60.7106781 77.5,40"
-							init-with="p:[sda:117.83, sdo:117.83, fill:#40484b]"
-							when-progress-5-clicked="p:[stroke-dashoffset:117.83:0:300:easeOutSine, fill:#40484b:#ffffff:300:easeOutSine]:delay-250"></path>
+							u init-with="p:[sda:117.83, sdo:117.83, fill:rgba(64,72,75,1)]"
+							when-progress-5-clicked="a:[stroke-dashoffset:117.83:0:300:easeOutSine:0:1:f, fill:rgba(64,72,75,1):rgba(255,255,255,1):300:easeOutSine:0:1:f]"></path>
 			            <path d="M2.5,40 C2.5,19.2893219 19.2893219,2.5 40,2.5 C60.7106781,2.5 77.5,19.2893219 77.5,40"
-							init-with="p:[sda:117.83, sdo:117.83, fill:#40484b]"
-							when-progress-5-clicked="p:[stroke-dashoffset:117.83:0:300:easeOutSine, fill:#40484b:#ffffff:300:easeOutSine]:delay-250"></path>
+							u init-with="p:[sda:117.83, sdo:117.83, fill:rgba(64,72,75,1)]"
+							when-progress-5-clicked="a:[stroke-dashoffset:117.83:0:300:easeOutSine:0:1:f, fill:rgba(64,72,75,1):rgba(255,255,255,1):300:easeOutSine:0:1:f]"></path>
 					</svg>
 					<span>5</span>
 				</div>
