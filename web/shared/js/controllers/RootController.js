@@ -18,7 +18,7 @@ angular.module('uguru.shared.controllers', [])
     root.window = getBodyDimensions($window);
     root.window.elemInfo = getElemWindowInfo(root.window);
     root.base_url = RootService.getBaseUrl();
-    root.local = window.location.href.split(':8100').length > 1;
+    root.local = window.location.href.split(':8100').length > 1 || window.location.href.split(':8101').length > 1;;
     root.browserPrefix = RootService.getBrowserPrefix();
     root.docs = {items: RootService.getDocItems(), searchText:'', resultIds: [], resultItems:[]};
     root.devMode = window.location.href.split('/dev/').length > 1;

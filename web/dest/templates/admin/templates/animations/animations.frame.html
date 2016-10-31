@@ -1,0 +1,159 @@
+<div class='absolute top-0 left-0 full-xy' ng-controller='AnimationFrameController as afc'>
+	<!-- HEADER -->
+    <header class='full-x bg-campus-50p relative overflow-visible'>
+        <div>
+            <ul class='flex full-x p15-grid txt-center' ng-if="afc.player.debug.showHeader">
+                <li class="full-x">
+                    <div class="bg-campus-50p radius-2 p05xy">
+						<h2 class='uppercase weight-700 opacity-50p txt-14'>Component</h2>
+	                    <div class='lowercase weight-700 opacity-90p txt-20'>
+	                        {{afc.params.comp.split('/').reverse()[0].split('.')[0]}}
+	                    </div>
+					</div>
+                </li>
+                <li class="full-x">
+					<div class="bg-campus-50p radius-2 p05xy">
+	                    <h2 class='uppercase weight-700 opacity-50p txt-14'>State</h2>
+	                    <div class='lowercase weight-700 opacity-90p txt-20'>
+	                        {{afc.player.debug.states[0].stateName}}
+	                    </div>
+					</div>
+                </li>
+                <li class="full-x">
+					<div class="bg-campus-50p radius-2 p05xy">
+	                    <h2 class='uppercase weight-700 opacity-50p txt-14'>Total Streams</h2>
+	                    <div class='lowercase weight-700 opacity-90p txt-20'>
+	                        {{afc.player.debug.totalStreams}}
+	                    </div>
+					</div>
+                </li>
+                <li class="full-x" ng-repeat='(argName, value) in afc.args' ng-if='argName !== "property"'>
+					<div class="bg-moxie radius-2 p05xy">
+	                    <h2 class='uppercase weight-700 opacity-50p txt-14'>{{argName}}</h2>
+	                    <div class='lowercase weight-700 opacity-90p txt-20' ng-init='value = afc.getDebugFormat(argName, value) || value'>
+	                        {{value}}
+	                    </div>
+					</div>
+                </li>
+            </ul>
+
+			<ul class='flex-wrap-center-vertical p15-grid full-x'>
+                <!-- <li>
+                    <h2 class='uppercase weight-700 opacity-50p txt-14'>Element</h2>
+                </li>
+                <li class='relative flex-wrap-center p20xy round bg-charcoal' id='focused-element'>
+                </li> -->
+                <li ng-if='afc.player.debug.stateName'><h2 class='uppercase weight-700 opacity-50p txt-14'>State</h2></li>
+                <li ng-if='afc.player.debug.stateName'>
+                    <span class='chip bg-campus'>{{afc.player.debug.stateName}}</span>
+                </li>
+				<li><h2 class='uppercase weight-700 opacity-50p txt-14'>Properties</h2></li>
+                <li ng-click='afc.player.debug.toggleAllPlots()'>
+                    <span class='chip bg-auburn-50p' ng-if='afc.player.debug.propArr[0].show'> hide </span>
+                    <span class='chip bg-azure-50p' ng-if='!afc.player.debug.propArr[0].show'> show </span>
+                </li>
+				<li ng-repeat='prop_dict in afc.player.debug.propArr' on-hold="prop_dict.showValuesOnly = !prop_dict.showValuesOnly;" ng-click='prop_dict.show = !prop_dict.show' on-hold="afc.player.togglePropStreams(afc.player, prop_dict.name)">
+					<span class='chip bg-campus'>
+						{{prop_dict.name}} ({{prop_dict.streams.length}})
+					</span>
+				</li>
+
+			</ul>
+        </div>
+    </header>
+
+	<!-- KEYFRAMES -->
+	<div class='absolute left-0 z-index-9 full-x bg-charcoal-20p z-index-100' style='top: 62px'>
+
+        <div class='relative z-index-100 flex-start full-x overflow-x no-scrollbar border-1-bottom height-150' style='border-color:rgba(255,255,255,.2)' ng-if='prop_dict.show' ng-repeat='prop_dict in afc.player.debug.propArr'>
+            <div class='absolute top-0 left-0 z-index-100 p05xy'>
+                <div class="bg-slate radius-2" ng-click='prop_dict.show = !prop_dict.show'>
+					<h2 class='weight-600 p05y-p10x txt-16 {{prop}}'>
+						<span class="opacity-50p">{{prop_dict.name}}:</span>
+						<span class='weight-900' id='{{prop_dict.name + "-value"}}'>{{prop_dict.streams[0].plot.values[0]}}</span>
+					</h2>
+				</div>
+            </div>
+            <div class='full-xy relative overflow-auto'>
+                <ul class='full-y flex-vertical-center p05xy absolute overflow-auto'>
+                    <li class='full-y p05xy border-2-right border-slate border-solid flex-wrap-center relative txt-1'  style='width:{{stream.plot.html.width}}!important;' ng-repeat='stream in prop_dict.streams track by $index'>
+                        <chart c-data="stream" player='afc.player' ></chart>
+
+                    </li>
+                </ul>
+                <!-- <ul class='full-y flex-vertical-center p15-grid absolute overflow-auto' style='left:150px;' ng-if='false'>
+                        <span class='absolute top-0 left-0 bg-charcoal opacity-50p txt-smoke weight-900 text-center full-x'>{{stream.duration}}ms, {{stream.values[0]}} {{stream.values[stream.values.length - 1]}} </span>
+                        <svg  ng-attr-view_Box='{{[stream.plot.vb.x1,stream.plot.vb.y1,stream.plot.vb.x2, stream.plot.vb.y2].join(" ")}}'  ng-attr-width="{{stream.duration}}" ng-attr-height="{{stream.plot.height}}" fill="transparent">
+                            <path stroke="white" stroke-linecap="round" stroke-width="2" stroke-linejoin="round" d="{{stream.plot.path.path}}">
+                        </svg>
+                    </li>
+                </ul> -->
+
+                <!-- <ul class='full-y flex-vertical-center tile-border-side-light height-150' style='left:150px; width:calc(100% - 150px);'  ng-repeat='stream in prop_dict.streams track by $index'>
+                    <li class='full-y flex-wrap' style='width:{{section.html.total.width}}!important;' ng-repeat='section in stream.plot.sections track by $index'>
+                        <div class='full-xy absolute top-0 p15xy z-index-100' ng-if='section.offset !== section.duration'>
+							<div class="bg-campus-10p flex-center-vertical p05xy radius-2">
+	                            <span ng-if='section.direction === "forward"' class="svg-24">
+	                                <svg viewBox="0 0 100 100">
+	                                    <path d="M32,86 L68,50 L32,14" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+	                                </svg>
+	                            </span>
+	                            <span ng-if='section.direction !== "forward"' class="svg-24">
+	                                <svg viewBox="0 0 100 100">
+	                                    <path d="M68,86 L32,50 L68,14" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+	                                </svg>
+	                            </span>
+	                            <span>
+									<span class='txt-1 semibold'>
+		                                {{section.start}}, {{section.end}}
+		                            </span>
+									<br/>
+
+		                            <span class='txt-1 semibold'>
+		                                {{section.duration}}ms
+                                        <span ng-if='section.transition'>+ {{section.transition}}ms</span>
+                                    </span>
+		                            </span>
+								</span>
+							</div>
+                        </div>
+
+                        <div class='full-xy relative z-index-100 p15xy' ng-if='section.offset === section.duration'>
+                            <span class='full-xy flex-vertical-center bg-gold txt-charcoal weight-900 txt-4 p05y radius-2 txt-center'>
+                                {{section.offset}}ms delay
+                            </span>
+                        </div>
+
+                        <div class='absolute bottom-0 left-0 full-xy' style='height:75% !important;' ng-if='section.offset !== section.duration'>
+                            <span ng-repeat='point in section.values track by $index'
+                                class='block round border-2 border-white bg bg-charcoal z-index-1000 absolute'
+                                style='left:{{point.left}}; bottom:{{point.bottom}}; width:4px; height:4px;'>
+                            </span>
+                        </div>
+
+						<div class="absolute p15y-p15right right-0 full-y" ng-if='section.transition'>
+							<div class="bg-gold txt-14 semibold txt-charcoal p05xy radius-2 full-y flex-center">
+								{{section.transition}}ms
+							</div>
+						</div>
+                    </li>
+                </ul> -->
+            </div>
+        </div>
+    </div>
+
+	<!-- PLAYER -->
+    <div class='flex-wrap-center perspective-container' style='height: calc(100% - 171px);' ng-if='afc.element.objUrl' >
+		<div ng-include="afc.element.objUrl" style='height:calc(250px); width:calc(250px)' id="anim-element"> </div>
+    </div>
+
+	<!-- PLAYBAR -->
+	<div class='absolute bottom-0 left-0 full-x flex-vertical-center bg-charcoal-90p z-index-10'>
+		<div class='full-x relative flex-vertical-center' ng-include="'admin/templates/animations/animations.frame.player.html'"></div>
+		<div class='p15xy flex' ng-if='afc.params.kf'>
+			<div class='p10y-p15x relative weight-900 txt-smoke opacity-40p border-3 border-solid border-campus txt-20 radius-2'>
+				{{afc.params.kf}} fps
+			</div>
+		</div>
+	</div>
+</div>

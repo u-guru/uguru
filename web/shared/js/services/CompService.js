@@ -8,6 +8,7 @@ angular
 
 function CompService($timeout, $compile) {
   var genOptionSpec = ['type', 'when-*', 'as*', '']
+  var flexAlignMapping = {'bottom': 'flex-end', 'left': 'flex-start', 'right': 'flex-end', 'top': 'flex-start'}
   var itemSpec = [];
   return {
     getBaseSpec: getBaseSpec,
@@ -23,10 +24,50 @@ function CompService($timeout, $compile) {
 
 
   function renderAllStyleAttributes(elem, attr) {
+    if (attr.width) {
+        if (attr.width.indexOf('%') === -1 && attr.width.indexOf('px') === -1) {
+            elem.css('width', attr.width + '%')
+        } else {
+            elem.css('width', attr.width)
+        }
+    }
+    if (attr.height) {
+        if (attr.height.indexOf('%') === -1 && attr.height.indexOf('px') === -1) {
+            elem.css('height', attr.height + '%')
+        } else {
+            elem.css('height', attr.height)
+        }
+    }
+    if (attr.type && attr.type === 'row') {
+        elem.addClass('flex-wrap-center', 'flex-wrap')
+    }
+
+    if (attr.layer && attr.layer.length) {
+      var intLayer = parseInt(attr.layer);
+      elem.css('zIndex', intLayer);
+    }
+
     attr.align && renderAlign(elem, attr.align || 'center center');
     attr.padding && renderPadding(elem, attr.padding);
     attr.margin && renderMargin(elem, attr.margin);
     attr.fontSize && renderFontSize(elem, attr.fontSize);
+    'fixed' in attr && elem.css('position', 'fixed')
+    'absolute' in attr && elem.css('position', 'absolute')
+    attr.alignSelf && renderAlignSelf(elem, attr.alignSelf)
+  }
+
+  function renderAlignSelf(elem, align_args) {
+    var selfAlignArgSplit = align_args.split(' ');
+    console.log(selfAlignArgSplit)
+    align_args = selfAlignArgSplit[0];
+    if (selfAlignArgSplit.length > 1 && ['top', 'bottom', 'right', 'left'].indexOf(selfAlignArgSplit[1])) {
+      elem.css(selfAlignArgSplit[1], 0)
+    }
+    if (align_args in flexAlignMapping) {
+      elem.css('align-self', flexAlignMapping[align_args])
+    } else {
+      elem.css('align-self', align_args)
+    }
   }
 
   function renderFontSize(elem, font_args) {
@@ -42,12 +83,13 @@ function CompService($timeout, $compile) {
   }
 
   function renderAlign(elem, align_args) {
-    var flexAlignMapping = {'bottom': 'flex-end', 'left': 'flex-start', 'right': 'flex-end', 'top': 'flex-start'}
+
+    console.log(align_args)
     var alignArgSplit = align_args.split(' ');
     var vertArg = alignArgSplit[1];
     var horizArg = alignArgSplit[0];
     if (horizArg in flexAlignMapping) horizArg = flexAlignMapping[horizArg];
-    if (vertArg in flexAlignMapping) vertArg = flexAlignMapping[horizArg];
+    if (vertArg in flexAlignMapping) vertArg = flexAlignMapping[vertArg];
     console.log(horizArg, vertArg)
     elem.css('display', 'flex');
     elem.css('align-items', horizArg);

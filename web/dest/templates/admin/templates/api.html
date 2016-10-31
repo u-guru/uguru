@@ -1,0 +1,24 @@
+<div class='absolute top-0 left-0 full-xy flex-wrap flex-vertical-center flex-stretch flex-start bg-charcoal' data="api">
+        <div class='flex-wrap-center full-x text-center bg-azure-20p full-x relative' style='height:25%;'>
+            <div class='bg-azure-50p full-x'>
+                <h1 class='txt-64 uppercase p20y'>
+                    {{api.title}}
+                </h1>
+            </div>
+            <div class='bg-azure-20p full-x'>
+                <h1 class='txt-32 p20y'> {{api.description}}</h1>
+            </div>
+        </div>
+        <div class='flex-vertical-center relative full-x' style='height:75%'>
+            <div class='p15-grid flex-start flex-stretch relative full-xy flex-wrap-center' ng-repeat='(key, value) in api.sections track by $index'>
+                <h4 class='txt-24 uppercase weight-700 txt-azure txt-center full-x p10y border-2-bottom border-slate'> {{key}} </h4>
+                <div class='relative'>
+                    <ul class='txt-24 full-y uppercase weight-500 txt-azure flex-wrap flex-vertical-center'>
+                        <li ng-repeat='comp in value.all' class='full-x flex-stretch' ngif='comp in value[key] && value[key][comp].complete'>
+                            {{ comp}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        <div>
+</div>

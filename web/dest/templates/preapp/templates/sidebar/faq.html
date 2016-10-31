@@ -1,0 +1,158 @@
+<section class="splash-faq splash-modal">
+	<header>
+		<div ng-include="root.base_url + 'preapp/templates/components/graphic/faq.html'"></div>
+		<a class="splash-exit mobile" ng-include="root.base_url + 'shared/templates/components/svg/main/down.html'"
+			init-default
+			on-click="s:[modal-close:public, faq-modal-close:public]"></a>
+		<a class="splash-exit desktop icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/left-circle.html'"
+			init-default
+			on-click="s:[modal-close:public, faq-modal-close:public]"></a>
+		<h1 class="flex"><word type='scoopEnter' delay="50">Frequently Asked Questions</word></h1>
+	</header>
+	<ul>
+		<li>
+			<div class="faq-card ghost border-white txt-white"
+				init-with="p-op"
+				on-init="s:[faq-item-init:public]"
+				on-mouse-enter="s:[ghost-hover:public]"
+				on-mouse-leave="s:[ghost-leave:public]"
+				on-click="s:[ghost-click:public]"
+				when-faq-item-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in]">
+				<!-- @samir what i tried to do on line 20
+				<div u class="faq-card ghost border-white txt-white"
+					init-with="p:[op:0]"
+					on-init="s:[faq-item-init:public]"
+					on-mouse-enter="s:[ghost-hover:public]"
+					on-mouse-leave="s:[ghost-leave:public]"
+					on-click="s:[ghost-click:public]"
+					when-faq-item-init="a:[slideInUp-subtle:1000:linear:200:1:f]"> -->
+				<dt>
+					<a init-default
+						on-click="s:[faq-item-clicked:public]">
+						<h1 init-with="p-op"
+							when-faq-item-init="p:[opacity:0:1:250:easeOutQuart]:delay-250">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt?</h1>
+						<div init-with="p-op"
+							when-faq-item-init="p:[opacity:0:1:250:easeOutQuart]:delay-500">
+							<span ng-include="root.base_url + 'shared/templates/components/svg/main/down.html'"
+								init-with="p:[tro:center center]"
+								when-faq-item-clicked="p:[transform:rotate(0deg):rotate(180deg):250:easeOutSine]"
+								when-faq-item-closed="p:[transform:rotate(180deg):rotate(0deg):250:easeOutSine]"></span>
+						</div>
+					</a>
+				</dt>
+				<dd init-with="p:[max-height:0]"
+					when-faq-item-clicked="p:[max-height:0px:500px:500:easeOutSine]"
+					on-click="s:[faq-item-closed:public]"
+					when-faq-item-closed="p:[max-height:500px:0px:500:easeOutSine]">
+					<div>
+						<p init-with="p-op"
+							when-faq-item-clicked="p:[opacity:0:1:150:easeOutSine]:delay-350"
+							when-faq-item-closed="p:[opacity:1:0:150:easeOutSine]">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					</div>
+				</dd>
+			</div>
+		</li>
+		<li>
+			<div class="faq-card ghost border-white txt-white"
+				init-with="p-op"
+				on-init="s:[faq-item-init:public]"
+				on-mouse-enter="s:[ghost-hover:public]"
+				on-mouse-leave="s:[ghost-leave:public]"
+				on-click="s:[ghost-click:public]"
+				when-faq-item-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in]">
+				<dt>
+					<a init-default
+						on-click="s:[faq-item-clicked:public]">
+						<h1 init-with="p-op"
+							when-faq-item-init="p:[opacity:0:1:250:easeOutQuart]:delay-250">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt?</h1>
+						<div init-with="p-op"
+							when-faq-item-init="p:[opacity:0:1:250:easeOutQuart]:delay-500">
+							<span ng-include="root.base_url + 'shared/templates/components/svg/main/down.html'"
+								init-with="p:[tro:center center]"
+								when-faq-item-clicked="p:[transform:rotate(0deg):rotate(180deg):250:easeOutSine]"
+								when-faq-item-closed="p:[transform:rotate(180deg):rotate(0deg):250:easeOutSine]"></span>
+						</div>
+					</a>
+				</dt>
+				<dd init-with="p:[max-height:0]"
+					when-faq-item-clicked="p:[max-height:0px:500px:500:easeOutSine]"
+					on-click="s:[faq-item-closed:public]"
+					when-faq-item-closed="p:[max-height:500px:0px:500:easeOutSine]">
+					<div>
+						<p init-with="p-op"
+							when-faq-item-clicked="p:[opacity:0:1:150:easeOutSine]:delay-350"
+							when-faq-item-closed="p:[opacity:1:0:150:easeOutSine]">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					</div>
+				</dd>
+			</div>
+		</li>
+		<li>
+			<div class="faq-card ghost border-white txt-white"
+				init-with="p-op"
+				on-init="s:[faq-item-init:public]"
+				on-mouse-enter="s:[ghost-hover:public]"
+				on-mouse-leave="s:[ghost-leave:public]"
+				on-click="s:[ghost-click:public]"
+				when-faq-item-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in]">
+				<dt>
+					<a init-default
+						on-click="s:[faq-item-clicked:public]">
+						<h1 init-with="p-op"
+							when-faq-item-init="p:[opacity:0:1:250:easeOutQuart]:delay-250">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt?</h1>
+						<div init-with="p-op"
+							when-faq-item-init="p:[opacity:0:1:250:easeOutQuart]:delay-500">
+							<span ng-include="root.base_url + 'shared/templates/components/svg/main/down.html'"
+								init-with="p:[tro:center center]"
+								when-faq-item-clicked="p:[transform:rotate(0deg):rotate(180deg):250:easeOutSine]"
+								when-faq-item-closed="p:[transform:rotate(180deg):rotate(0deg):250:easeOutSine]"></span>
+						</div>
+					</a>
+				</dt>
+				<dd init-with="p:[max-height:0]"
+					when-faq-item-clicked="p:[max-height:0px:500px:500:easeOutSine]"
+					on-click="s:[faq-item-closed:public]"
+					when-faq-item-closed="p:[max-height:500px:0px:500:easeOutSine]">
+					<div>
+						<p init-with="p-op"
+							when-faq-item-clicked="p:[opacity:0:1:150:easeOutSine]:delay-350"
+							when-faq-item-closed="p:[opacity:1:0:150:easeOutSine]">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					</div>
+				</dd>
+			</div>
+		</li>
+		<li>
+			<div class="faq-card ghost border-white txt-white"
+				init-with="p-op"
+				on-init="s:[faq-item-init:public]"
+				on-mouse-enter="s:[ghost-hover:public]"
+				on-mouse-leave="s:[ghost-leave:public]"
+				on-click="s:[ghost-click:public]"
+				when-faq-item-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in]">
+				<dt>
+					<a init-default
+						on-click="s:[faq-item-clicked:public]">
+						<h1 init-with="p-op"
+							when-faq-item-init="p:[opacity:0:1:250:easeOutQuart]:delay-250">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt?</h1>
+						<div init-with="p-op"
+							when-faq-item-init="p:[opacity:0:1:250:easeOutQuart]:delay-500">
+							<span ng-include="root.base_url + 'shared/templates/components/svg/main/down.html'"
+								init-with="p:[tro:center center]"
+								when-faq-item-clicked="p:[transform:rotate(0deg):rotate(180deg):250:easeOutSine]"
+								when-faq-item-closed="p:[transform:rotate(180deg):rotate(0deg):250:easeOutSine]"></span>
+						</div>
+					</a>
+				</dt>
+				<dd init-with="p:[max-height:0]"
+					when-faq-item-clicked="p:[max-height:0px:500px:500:easeOutSine]"
+					on-click="s:[faq-item-closed:public]"
+					when-faq-item-closed="p:[max-height:500px:0px:500:easeOutSine]">
+					<div>
+						<p init-with="p-op"
+							when-faq-item-clicked="p:[opacity:0:1:150:easeOutSine]:delay-350"
+							when-faq-item-closed="p:[opacity:1:0:150:easeOutSine]">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					</div>
+				</dd>
+			</div>
+		</li>
+	</ul>
+</section>

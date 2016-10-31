@@ -1,0 +1,516 @@
+<module name='First Time Experience' columns="workflow,status,progress" progress="0000" dimensions="1111" active="{{ms.activeModule.activePerson || 'SM'}}">
+
+    <!-- @jeselle, @gabrielle-->
+    <user-workflow name='Powerups View' default-filters="SM:[func:false|type:func], JH:[func:true|type:func], GW:[type:gesture], JO:[type:gesture]"  url='/#/dev/splash/powerups/' priority="SM:15">
+        <user-stories>
+            <story type="func, transition" desc="User enters powerups screen">
+                <ui-stream desc='Powerups transition in' type='func, gesture' test-id='2017'>
+                    <ui-state name="User clicks powerups icon" desc="Icon zooms to center" type="gesture, transition" func="true">
+                    </ui-state>
+                    <ui-state name="Full view transition" desc="Gold background expands, then fades into the slate" type="transition" func="true">
+                    </ui-state>
+					<ui-state type="transition" name="Title/subtitle animate in" desc="bounceInUp-subtle" func="true">
+                    </ui-state>
+                    <ui-state type="transition" name="GPA tile onEnter" desc="Guru bounces in and buttons spread out from the center" func="true">
+						<bug type="static" open by="Gabrielle" flag="[Samir, Jeselle, Gabrielle]" description="Clips aren't working even though they were working as of 7/27" platform="all" reference="true" reference-name="Clip path"/>
+                    </ui-state>
+                    <ui-state type="transition" name="Munchies tile onEnter" desc="Guru bounces in and cake tiers slideInLeft" func="true">
+                    </ui-state>
+                    <ui-state type="transition" name="Sound tile onEnter" desc="Body translateUp, head scaleDown to size; headphones slideInDown while notes bounceIn" func="true">
+                    </ui-state>
+                    <ui-state type="transition" name="Transit tile onEnter" desc="Tracks drawIn. Lamps scaleDown to size. jellyIn, staggered" func="true">
+						<bug reference-from="Clip path"/>
+                    </ui-state>
+					<ui-state type="transition" name="Hanger onEnter" desc="Hanger swings in on top of tile" func="false" static="true"></ui-state>
+					<ui-state type="transition" name="Highlight new apps" desc="Hanger swings out and new app sign drops in" func="false" static="false"></ui-state>
+                    <!-- add more here, any sequential animations should be a state. Sequential, as in, when one enters, it has an agenda to achieve XYZ in orderly fashion. -->
+                </ui-stream>
+                <ui-stream desc='User hovers over one powerup' test-id='2759'>
+					<ui-state name="Mouse enter state" type="gesture, transition" func="true">
+                    </ui-state>
+					<ui-state type="transition" name="GPA tile mouseEnter" desc="Guru eyebrows wiggle. Button props rotate." func="true">
+					</ui-state>
+					<ui-state type="transition" name="Munchies tile mouseEnter" desc="Guru head rotates bottom center. Cake tiers jelly staggered; frosting color tweens" func="true">
+					</ui-state>
+					<ui-state type="transition" name="Sound tile mouseEnter" desc="Guru head bobs up and down. Headphone muffs scaleY up and down; wire rotateY back and forth. Notes floats with translateY, fadeIn and fadeOut." func="true">
+					</ui-state>
+					<ui-state type="transition" name="Transit tile mouseEnter" desc="jellyIn, staggered" func="true">
+					</ui-state>
+                </ui-stream>
+                <ui-stream desc='User hovers from one to another'>
+                    <ui-state name="Mouse leave state" desc="mouseEnter animation pauses" type="gesture, transition" func="true"> </ui-state>
+					<ui-state name="New mouse enter state" desc="See respective animation in 'User hovers over one powerup' stream" type="gesture, transition" func="true">
+					</ui-state>
+                </ui-stream>
+                <ui-stream desc='User returns to the first and clicks on it'>
+					<ui-state name="Mouse leave state" desc="mouseEnter animation pauses" type="gesture, transition" func="true"> </ui-state>
+					<ui-state name="New mouse enter state" desc="See respective animation in 'User hovers over one powerup' stream" type="gesture, transition" func="true"></ui-state>
+					<ui-state name="Mouse clickOn state" desc="Tile scaleDown" type="gesture, transition" func="true"></ui-state>
+					<ui-state name="Mouse clickOff state" desc="Tile scaleUp to original size" type="gesture, transition" func="true"></ui-state>
+				</ui-stream>
+            </story>
+            <story type="func, transition" desc="User transitions from powerups page to a specific powerup">
+                <ui-stream desc='Selected powerup tile becomes the loader'>
+					<ui-state name="Hover continues" desc="The animation from hover continues playing throughout the transition" type="transition" func="true" static="true">
+						<bug type="functional" open by="Gabrielle" flag="[Samir]" description="on-mouse-leave is overriding on-click and preventing the animation from continuing when it's been clicked but the mouse-leave is triggered" platform="all"/>
+					</ui-state>
+					<ui-state name="Unchosen tiles exit" desc="Tiles fadeOut" type="transition" func="true" static="true"></ui-state>
+					<ui-state name="Selected tile goes to the forefront" desc="Translates to horizontal center" type="transition" func="true" static="true"></ui-state>
+					<ui-state name="Selected tile bg expands" desc="Bg color scaleUp to full page from origin center" type="transition" func="true" static="true"></ui-state>
+                </ui-stream>
+				<ui-stream desc="Loader transitions to landing page tile">
+					<ui-state name="Circle border is reemphasized" desc="Border is drawn over" type="transition" func="true" static="true"></ui-state>
+					<ui-state name="Hover animation plays" desc="See respective animation in 'User hovers over one powerup' stream" type="gesture, transition" func="true" static="true"></ui-state>
+				</ui-stream>
+			</story>
+
+			<story type="transition" desc="Powerups page transitions to landing page">
+				<ui-stream desc="Default onEnter">
+					<ui-state name="Guru circle becomes header" desc="translateY up" type="transition" func="true" static="true">
+						<bug type="functional" open by="Gabrielle" flag="[Samir]" description="Guru tile from powerups page needs to replace guru tile in GPA landing page exactly in the DOM" platform="all"/>
+					</ui-state>
+					<ui-state name="Header text enters" desc="bounceInUp-subtle" type="transition" func="true" static="true"></ui-state>
+					<ui-state name="Content bg peek enters" desc="bounceInUp-subtle" type="transition" func="true" static="true"></ui-state>
+				</ui-stream>
+				<ui-stream desc="GPA onEnter">
+					<ui-state name="Hands enter" desc="Slide in from left and right" type="transition" func="true" static="true"></ui-state>
+				</ui-stream>
+				<ui-stream desc="Munchies onEnter" static="true"></ui-stream>
+				<ui-stream desc="Sound onEnter">
+					<ui-state name="Background fades to darker color" desc="" type="transition" func="true" static="true"></ui-state>
+					<ui-state name="Records animate in" desc="Diagonal scaleOut, record rotateInLeft, text fadeIn" type="transition" func="true" static="true">
+						<bug reference-from="Record texture"/>
+						<bug type="functional" open by="Gabrielle" flag="[Samir]" description="The properties for the transform directives are all 1000ms ease even if specified otherwise" platform="all" reference="true" reference-name="Default transform directive properties"/>
+					</ui-state>
+				</ui-stream>
+				<ui-stream desc="Transit onEnter"></ui-stream>
+			</story>
+
+			<story type="func" desc="User scrolls to demo">
+				<ui-stream desc="User scrolls to GPA demo">
+					<ui-state name="Outside phone screenshots slide out from underneath center screenshot" desc="" type="transition" func="true">
+						<bug type="functional" open by="Gabrielle" flag="[Samir]" description="ion-scroll is interfering with actual scroll - should discuss best practices until ionic is removed" platform="all"/>
+					</ui-state>
+					<ui-state name="Search courses icon animates in" desc="Circle already exists - tablet and person bounceInUp and lines drawIn and scroll" type="transition" func="false" static="true">
+						<bug type="functional" open bg="Gabrielle" flag="[Samir]" description=":a for anim: is not working as expected - it should either keep the animation or put the properties from the last keyframe into the element but is doing neither." platform="all" reference="true" reference-name="Keeping animation"/>
+					</ui-state>
+					<ui-state name="Calculate grades icon animates in" desc="Circle already exists - calculator bounceInUp and numbers countUp" type="transition" func="false" static="true">
+						<bug reference-from="Keeping animation"/>
+						<bug type="functional" open by="Gabrielle" flag="[Samir]" description="Needs countUp directive" platform="all"/>
+					</ui-state>
+					<ui-state name="Track GPA icon animates in" desc="Circle already exists - projector bounceInUp and arrow drawIn" type="transition" func="false" static="true">
+						<bug reference-from="Keeping animation"/>
+					</ui-state>
+				</ui-stream>
+				<ui-stream desc="User scrolls to sound demo" priority="1">
+					<ui-state name="Records animate in" desc="rotateInLeft" type="transition" func="false" static="false">
+						<!-- <visual></visual> -->
+						<bug type="static" open by="Gabrielle" flag="[Jeselle]" description="Record needs a texture in order to show rotation" platform="all" reference="true" reference-name="Record texture"/>
+					</ui-state>
+					<ui-state name="Equalizer starts infinite animation" desc="scaleY up and down, staggered randomly" type="transition" func="true" static="true">
+						<bug type="functional" open by="Gabrielle" flag="[Samir]" description="Needs a randomizer for duration and delay" platform="all"/>
+					</ui-state>
+				</ui-stream>
+				<ui-stream desc="User views Guru Munchies on mobile" priority="1">
+					<ui-state name="Title screen enters" desc="Guru animation, header text, CTA btn, and bread crumbs enter." type="transition" func="false" static="false">
+					</ui-state>
+					<ui-state name="Title screen breadcrumbs hint" desc="After entrance animation enters, the screen slightly shifts up and down with the breadcrumbs transitioning in correspondence." type="functional, transition" func="false" static="false">
+					</ui-state>
+				</ui-stream>
+				<ui-stream desc="User scrolls through the different pages on Guru Munchies on mobile" priority="1">
+					<ui-state name="Title screen to first info page" desc="Scroll snaps to the full page view of the first info page 'Find the best food on campus'." type="transition" func="false" static="false">
+					</ui-state>
+					<ui-state name="Transitioning between info pages" desc="Scroll triggers onExit information and onEnter information for the next screen." type="functional, transition" func="false" static="false">
+					</ui-state>
+				</ui-stream>
+			</story>
+
+			<story type="func, transition" desc="User transitions to powerups page from a specific powerup page">
+                <ui-stream desc='User hovers over close button'>
+					<ui-state name="Close button mouseEnter state" desc="Color darkens" type="gesture, transition" func="true"></ui-state>
+                </ui-stream>
+				<ui-stream desc='User clicks on back button'>
+					<ui-state name="Close button mouseClick state" desc="Color lightens" type="gesture, transition" func="true"></ui-state>
+                </ui-stream>
+				<ui-stream desc='Landing page transitions out'>
+					<ui-state name="Content card bg peak exits" desc="fadeDownOut" type="transition" func="true"></ui-state>
+					<ui-state name="Header text exits" desc="fadeDownOut" type="transition" func="true"></ui-state>
+					<ui-state name="Powerup bg color fades" desc="Color fadeOut to charcoal. Meanwhile, tile bg 'remains' with bounceIn" type="transition" func="true"></ui-state>
+                </ui-stream>
+				<ui-stream desc='Powerups page transitions in'>
+					<ui-state name="Guru circle header transforms back into tile" desc="Translates to respective spot with ease-out" type="transition" func="true"></ui-state>
+					<ui-state name="Other powerup tiles enter" desc="See respective tile onEnter animations in the 'user enters power-ups screen and learns details' stream. Remaining tiles stagger in from left to right" type="transition" func="true"></ui-state>
+                </ui-stream>
+            </story>
+
+    </user-workflow>
+
+    <user-workflow name='Splash Madlib' default-filters="SM:[type:func|func:true], JH:[type:func|func:true], GW:[type:gesture], JO:[type:gesture]"  url='/#/dev/splash/madlib/' priority="-1" workflow-id='2'>
+        <user-stories>
+            <story type='setup' desc="splash madlib bugs and fixes">
+                <ui-stream desc="Splash madlib optimal setup" type='setup'>
+                    <ui-state name="Write out all the states" test-id="">
+                    </ui-state>
+                    <ui-state name="Fix switches">
+                    </ui-state>
+                    <ui-state name="Fix data change">
+                    </ui-state>
+                    <ui-state name="Progress">
+                    </ui-state>
+                    <ui-state name="Previous Bugs" test-id="">
+                        <bug desc="inject class when activated">
+                    </ui-state>
+                </ui-stream>
+            </story>
+            <story type="gesture" desc="User enters splash madlib" func='true' tested='false' cp='false' responsive='false'>
+                <ui-stream desc="Page transitions into guru phase" test-id="1263">
+                    <ui-state name="Warp zooms out" desc="Warp zooms out" func="false" cp='true' j-unsure='true' >
+                        <bug type='functional' open by="Samir" description="Very slow"/>
+                    </ui-state>
+					<ui-state name="Guru head crashes in" desc="Guru head crashes against the screen, then bounces back and readjusts itself" j-unsure='true'></ui-state>
+                    <ui-state name="Title animates in" desc="Warp zooms out" func="false" j-unsure='true'>
+						<bug type="functional" open by="Gabrielle" description="Madlib header letters overlap with each other on smallest screen size, needs tiny mobile attr." platform="mobile"></bug>
+                    </ui-state>
+					<ui-state name="Tags animate in" desc="Tags fall in from the warp in a random, staggered manner, then readjust themselves" j-unsure='true'></ui-state>
+                    <ui-state func='true' type='func' desc="Verify all elements exist after the on-enter madlib transition" ></ui-state>
+                </ui-stream>
+            </story>
+            <story type="gesture, func" desc="User selects/deselects splash tag" func='true' tested='false' cp='false' responsive='false'>
+				<ui-stream desc="User selects/deselects one tag for the first time" test-id='4667'>
+					<ui-state name="User selects one splash tag" desc="" func="true">
+						<bug type="functional" open by="Gabrielle" description="Tags need .active added when selected and removed when deselected - if added currently, tags are selected properly but don’t translate back when another tag is clicked." platform=""/>
+						<bug type="functional" open by="Gabrielle" description="Row 2 Tag 3 doesn't move back into place after being deselected." platform=""/>
+					</ui-state>
+					<ui-state name="User selects two different splash tags from two different rows"></ui-state>
+					<ui-state name="User selects a splash tag whose row already has a splash tag"></ui-state>
+				</ui-stream>
+                <ui-stream desc="User selects/deselects one tag, another already exists"  test-id='5211'>
+                </ui-stream>
+            </story>
+            <story type="gesture, func" desc="User selects/deselects tags to fill/empty both blanks" tested='false' cp='false' responsive='false'>
+                <ui-stream desc='Filling in both blanks' test-id='2085'>
+                    <ui-state func='true' desc="User selects tag from row one">
+                    </ui-state>
+                    <ui-state func='true' desc="User selects tag from row two">
+                    </ui-state>
+                    <ui-state func='true' type='func, gesture' desc="Both blanks filled activates a new splash, madlib state[same state]">
+                    </ui-state>
+                    <ui-state func='false' type='func, gesture' desc="Both blanks filled initiates next splash device state" j-unsure='true'>
+                    </ui-state>
+                    <ui-state func='false' type='func, gesture' desc="Both blanks filled initiates next splash device state" j-unsure='true'>
+                    </ui-state>
+                </ui-stream>
+                <ui-stream desc='Removing a blank + reversing both-blanks activation' func='true' type='func, gesture' test-id='4856'>
+                    <ui-state func='true' desc='Select tag from row 1 when both tags already selected & both blanks are filled' type='func, gesture'>
+                    </ui-state>
+                    <ui-state func='false' desc='Deactivate currently progress-ed activated device state' type='func, gesture'>
+                    <ui-state func='false' desc='Deactivate currently progress-ed activated map state' type='func, gesture'>
+                    </ui-state>
+                </ui-stream>
+            </story>
+            <story desc="User clicks skip" type='func'>
+                <ui-stream desc="Option 1:" test-id='2462'>
+                    <ui-state func='false' desc="Both blanks quickly finish and activate the next steps in a 'fast-forward-y manner" j-unsure='true'>
+                    </ui-state>
+                    <ui-state func='false' desc="Once the device has the 'action button', auto trigger the click (show the button as if being pressed) + activate the splash madlib less active state + activate the map/device next steps" j-unsure='true'>
+                    </ui-state>
+                </ui-stream>
+                <ui-stream desc="Option 2: we scroll back down to getting started" test-id='4454'>
+                    <ui-state func='false' desc="Splash madlib view transitions to less active state en route to Getting Started Workflow" j-unsure='true'>
+                    </ui-state>
+                </ui-stream>
+            </story>
+            <story desc="Given that both blanks are filled, next steps" type='func, gesture'>
+                <ui-stream desc="Splash madlib transitions to idle state" test-id='3797'>
+                    <ui-state func='false' desc='User clicks the "Go" action button'>
+                    </ui-state>
+                    <ui-state func='false' desc='Splash madlib view/container initiates its transition state'>
+                    </ui-state>
+                    <ui-state desc='Splash madlib view transitions to a less emphasized, idly, read-only state'>
+                    </ui-state>
+                </ui-stream>
+                <ui-stream desc="Splash madlib transitions back to active state" test-id='4452'>
+                    <ui-state func='false' desc="User clicks one of the blanks in splash madlib container while the map is the main active state">
+                    </ui-state>
+                    <ui-state func='false' desc="Map view transitions to less active while splash madlib transitions back to active">
+                    </ui-state>
+                </ui-stream>
+            </story>
+            <story type="gesture, func" desc="User selects a new category" tested='false' cp='false' responsive='false'>
+                <ui-stream desc="User selects a category with both blanks empty"  test-id='4421'>
+                    <ui-state func='true' desc='Transition the tags out' j-unsure='true'>
+                    </ui-state>
+                    <ui-state func='true' desc='Transition new category tags back in' j-unsure='true'>
+                    </ui-state>
+                </ui-stream>
+                <ui-stream desc="User selects a category with 1/2 blanks empty" type='func, gesture' tested='false' cp='false' test-id='4138'>
+                    <ui-state func='false' desc='Transition the filled transition tags back to the their original position'>
+                    </ui-state>
+                    <ui-state func='true' desc='Transition the tags with on-exit tag transition' j-unsure='true'>
+                    </ui-state>
+                    <ui-state func='true' desc='Transition new category tags back in' j-unsure='true'>
+                    </ui-state>
+                </ui-stream>
+
+                <ui-stream desc="User selects a category with both blanks filled" func='false' type='func, gesture' tested='false' cp='false' test-id='4486'>
+                    <ui-state func='false' desc='Transition the filled transition tags back to the their original position'>
+                    </ui-state>
+                    <ui-state func='true' desc='Transition the tags with on-exit tag transition' j-unsure='true'>
+                    </ui-state>
+                    <ui-state func='true' desc='Transition new category tags back in' j-unsure='true'>
+                    </ui-state>
+                </ui-stream>
+            </story>
+            <story type="gesture, func" desc="User selects a new university" tested='false' cp='false' responsive='false' >
+                <ui-state func='false' desc='Transition the filled transition tags back to the their original position' >
+                </ui-state>
+                <ui-state func='true' desc='Transition/Trigger the tags with on-exit tag transition'>
+                </ui-state>
+                <ui-state func='true' desc='Transition/Trigger new category tags back in'>
+                </ui-state>
+            </story>
+        </user-stories>
+    </user-workflow>
+
+    <user-workflow name='Splash Nav & Utilities' url='/#/dev/splash/nav/' priority="13">
+        <user-stories>
+            <story name="On enter splash">
+				<ui-stream name="Navigation animates in" test-id='1263'>
+					<ui-state name="Uguru logo animates in" desc="Logo jellyIn; label scaleInX" j-hard='true'></ui-state>
+					<ui-state name="Category dropdown animates in" desc="drawIn" j-hard='true'></ui-state>
+					<ui-state name="@ sign animates in" desc="drawIn" j-hard='true'></ui-state>
+					<ui-state name="School dropdown animates in" desc="drawIn" j-hard='true'></ui-state>
+					<ui-state name="Powerup link animates in" desc="drawIn" j-hard='true'></ui-state>
+					<ui-state name="Sidebar link animates in" desc="drawIn" j-hard='true'></ui-state>
+					<ui-state name="Pennant animates in" desc="rotateIn" j-hard='true'></ui-state>
+					<ui-state name="Skip button animates in" desc="rollIn" j-hard='true'></ui-state>
+				</ui-stream>
+            </story>
+
+            <story name="Select category" priority="GW:1">
+                <ui-stream name="Desktop user selects a category" priority="GW:1" test-id='3020'>
+					<ui-state name="Mouse enter dropdown" desc="User's mouse enters the dropdown space and the guru's hair changes color if different from the current" func="false" priority="GW:1">
+						<bug type="static" open by="Gabrielle" flag="[Jeselle, Gabrielle]" description="Hair needs to be diluted version of category colors" platform="all" time="15" reference="true" reference-name="Guru hair color" priority="GW:2"/>
+						<bug type="functional" open by="Gabrielle" flag="[Samir, Gabrielle]" description="Variable for category name only works once, i.e. guru-fill-^name outputs guru-fill-academic but afterwards keeps outputting guru-fill-^name" platform="all" time="15" reference="true" reference-name="Category name variable" priority="GW:1"/>
+					</ui-state>
+
+					<ui-state name="Mouse over dropdown" desc="Staggered opacity drop starting from the category dropdown" priority="GW:2">
+						<bug type="animation" open by="Gabrielle" flag="[Gabrielle]" description="Hover needs to be put back in" platform="desktop" time="25" reference="true" reference-name="Staggered opacity"/>
+					</ui-state>
+
+					<ui-state name="Click on dropdown" desc="Staggered opacity drop if not already triggered; dropdown options slideInDown; guru head tilts" priority="GW:3">
+						<bug type="functional" open by="Gabrielle" flag="[Samir]" description="Would prefer to have the option to stagger color.tpl options" url="http://codepen.io/teamuguru/pen/e1d55abb071ad8db0845cefd76f7c48f"/>
+					</ui-state>
+
+					<ui-state name="Mouse enter dropdown option" desc="Guru hair changes to category color" priority="GW:4">
+						<bug reference-from="Guru hair color"/>
+						<bug reference-from="Category name variable"/>
+						<bug type="animation" open by="Gabrielle" flag="[Gabrielle]" description="Remove opacity mouseover example from color.tpl" time="5" priority="GW:3"/>
+					</ui-state>
+
+					<ui-state name="Click on dropdown option" desc="Dropdown closes; guru switches out, tags switch out" priority="SM:1">
+						<bug type="functional" open by="Gabrielle" flag="[Samir]" description="Tags flicker when switching categories - appear and then re-animate in" platform="all"/>
+					</ui-state>
+
+                    <ui-state name="Close dropdown" desc="Dropdown closes" priority="SM:2">
+						<bug type="animation" open by="Gabrielle" flag="[Samir, Gabrielle]" description="Mouse-leave doesn't work" platform="desktop" reference="true" reference-name="Dropdown mouse-leave"/>
+                        <bug type="functional" open by="Samir" flag="[Samir]" name="Close dropdown when click outside of it" platform="desktop" reference="true" reference-name="Outside dropdown click"/>
+                    </ui-state>
+                </ui-stream>
+
+				<ui-stream name="Mobile user selects a category" test-id='2890'>
+					<ui-state name="Click on dropdown" desc="Dropdown options bounceIn-subtle staggered"></ui-state>
+
+					<ui-state name="Click on dropdown option" desc="Dropdown closes; guru switches out, tags switch out">
+						<bug type="functional" open by="Gabrielle" flag="[Samir]" description="Mobile switcher does not work as expected - the onExit animates out all at the same time, then the selected university/category reappears and animates out again. In Jeselle's version, the previous selection was prioritized with the delay over the current selection." platform="mobile" reference="true" reference-name="Mobile switch exit"/>
+					</ui-state>
+
+                    <ui-state name="Close dropdown" desc="Dropdown closes" priority="SM:2">
+						<bug reference-from="Mobile switch exit"/>
+                    </ui-state>
+				</ui-stream>
+            </story>
+
+            <story name="Change university" priority="GW:2">
+				<ui-stream name="Desktop user selects a university" priority="GW:1" test-id='3280'>
+					<ui-state name="Mouse enter dropdown" desc="User's mouse enters the dropdown space and the guru's hair changes color if different from the current" func="false" priority="GW:1">
+						<bug type="static" open by="Gabrielle" flag="[Jeselle, Gabrielle]" description="Hair needs to be diluted version of category colors" platform="all" time="15" reference="true" reference-name="Guru hair color"  priority="GW:2"/>
+						<bug type="functional" open by="Gabrielle" flag="[Samir, Gabrielle]" description="Variable for category name only works once, i.e. guru-fill-^name outputs guru-fill-academic but afterwards keeps outputting guru-fill-^name" platform="all" time="15" reference="true" reference-name="Category name variable" priority="GW:1"/>
+					</ui-state>
+
+					<ui-state name="Mouse over dropdown" desc="Staggered opacity drop starting from the category dropdown" priority="GW:2">
+						<bug reference-from="Staggered opacity"/>
+					</ui-state>
+
+					<ui-state name="Click on dropdown" desc="Staggered opacity drop if not already triggered; dropdown options slideInDown; phone transitions in">
+						<bug type="functional" open by="Gabrielle" description="Search link needs to be separated from both the mobile and desktop dropdowns" platform=""/>
+					</ui-state>
+
+					<ui-state name="Mouse enter dropdown option" desc="Device and pennant change to school color"></ui-state>
+
+					<ui-state name="Click on dropdown option" desc="Dropdown closes; pennant changes name"></ui-state>
+
+                    <ui-state name="Close dropdown" desc="Dropdown closes" priority="SM:2">
+						<bug reference-from="Dropdown mouse-leave"/>
+                        <bug reference-name="Outside dropdown click"/>
+                    </ui-state>
+				</ui-stream>
+
+				<ui-stream name="Mobile user selects a university" test-id='3150'>
+					<ui-state name="Click on dropdown" desc="Dropdown options bounceIn-subtle staggered"></ui-state>
+
+					<ui-state name="Click on dropdown option" desc="Dropdown closes; guru switches out, tags switch out">
+						<bug reference-from="Mobile switch exit"/>
+					</ui-state>
+
+                    <ui-state name="Close dropdown" desc="Dropdown closes" priority="SM:2">
+						<bug reference-from="Mobile switch exit"/>
+                    </ui-state>
+				</ui-stream>
+            </story>
+        </user-stories>
+    </user>
+
+    <user-workflow name='Splash Sidebar' priority="14" url='/#/dev/splash/sidebar/'>
+        <setup type="base">
+        </setup>
+        <user-stories>
+            <story type="transition" desc="Sidebar opens" platforms="[desktop, mobile]">
+                <ui-stream desc="User opens sidebar" type="desktop" test-id='1993'>
+					<ui-state name="Elements transition in" desc="Links rotate in from opposite angles; close button drawIn" j-notSure='true'></ui-state>
+                    <ui-state name="Sidebar icon mouse-enter" type="gesture" gesture="hover" j-notSure='true'></ui-state>
+                    <ui-state name="Link mouse-enter" j-notSure='true'></ui-state>
+					<ui-state name="Link mouse-leave" j-notSure='true'></ui-state>
+					<ui-state name="Link click" j-notSure='true'></ui-state>
+					<ui-state name="Modal opens" j-notSure='true'></ui-state>
+                    <!-- <ui-state gesture='click'></ui-state>
+                    <ui-state type="transition" name="sidebar"></ui-state> -->
+                </ui-stream>
+            </story>
+        </user-stories>
+    </user-workflow>
+
+	<user-workflow name="University Search" url='/#/dev/splash/university-search/'>
+		<setup type="base">
+        </setup>
+        <user-stories>
+			<story name="Search activates">
+				<ui-stream desc="University projector loads" test-id='2670'>
+					<ui-state name="Projector animates in" desc="slideInDown"></ui-state>
+					<ui-state name="Loader animates in"></ui-state>
+					<ui-state name="Loader completes and exits"></ui-state>
+				</ui-stream>
+				<ui-stream desc="University search transitions in" test-id='3246'>
+				</ui-stream>
+			</story>
+		</user-stories>
+	</user-workflow>
+
+    <user-workflow name='Splash Device' priority="15"></user-workflow>
+    <user-workflow name='Splash Map' priority="16"></user-workflow>
+    <user-workflow name='Splash Tour' priority="17"></user-workflow>
+    <user-workflow name='Milestones' priority="1000">
+        <user-stories>
+            <story name="Final spec: Write out all workflow->stories->streams" desc="Workflow -> see all "></story>
+            <story name="Resize/clean up active vs inactive" desc="Workflow -> see all "></story>
+            <story name="Calendar Dates" desc="Apply"></story>
+            <story name="Calculate Module workflow/story/stream completion" desc="Apply"></story>
+            <story name="Admin setup">
+                <ui-stream name="Filter related" desc="Some area where one can set the default filters/sort/show/hide preferences on a workflow bases on refresh">
+                    <ui-state></ui-state>
+                </ui-stream>
+                <ui-stream name="References" desc="re-using by referencing it">
+                </ui-stream>
+                <ui-stream name="Pipelines for [states, streams] to be resolved" desc="re-using by referencing it">
+                </ui-stream>
+                <ui-stream name="Visual progress indiciation" desc="re-using by referencing it">
+                </ui-stream>
+            </story>
+        </user-stories>
+    </user-workflow>
+
+    <user-workflow name='Base Components' priority="50">
+        <user-stories>
+            <story name="Base Components" desc="base html components have been 100% created" tested='false' func='false' cp="false" response="false">
+            </story>
+            <story name="MVP Spec" desc="base html components have been 100% created" tested='false' func='false' cp="false" response="false">
+            </story>
+            <story name="HiFi Specs" desc="base html components have been 100% created" tested='false' func='false' cp="false" response="false">
+            </story>
+        </user-stories>
+    </user-workflow>
+    <div ng-include src="'admin/templates/spec/modules/mvp.pre_app.html'" include-replace> </div>
+    <user-workflow name='Dashboard Related' priority="20">
+        <user-stories>
+            <story desc="Quick" type='func'>
+                <ui-stream>
+                    <ui-state desc="Show priorities + number the workflows" complete>
+                    </ui-state>
+                    <ui-state desc="Overall progress + width based">
+                    </ui-state>
+                    <ui-state desc="Collapse only the first one" complete>
+                    </ui-state>
+                    <ui-state desc="Backgrounds" complete>
+                    </ui-state>
+                </ui-stream>
+            </story>
+            <story desc="Allow Streams to be skippable">
+            </story>
+            <story desc="Priority on the state/stream story level" priority="1">
+            </story>
+            <story desc="Global priority">
+            </story>
+            <story desc="Default priority=ID, or with priority tags, or with urgency, or with time">
+            </story>
+            <story desc="One level collapse">
+            </story>
+            <story desc="Color coding">
+            </story>
+        </user-stories>
+    </user-workflow>
+    <user-workflow name='Animation Stuff' priority="-1">
+        <user-stories>
+            <story desc="Property-specific shortcuts/enhancements">
+                <ui-state desc="Remainder of the animation-specific attributes"> </ui-state>
+                <ui-state desc="property specific transitions applied to particular properties"> </ui-state>
+                <ui-state desc="clearing/modifying/reversing particular properties, or subproperties (i.e. transform)"> </ui-state>
+                <ui-state desc="Interfacing properties with switches"> </ui-state>
+            </story>
+            <story desc="Accessing Element Internal Attributes">
+                <ui-state desc="Scroll"> </ui-state>
+                <ui-state desc="Accessing this.x, this.y current coordinates + applying mathematical operation"></ui-state>
+                <ui-state desc="Accessing this.x, this.y current coordinates + applying mathematical operation"></ui-state>
+                <ui-state desc="Relative vs Absolute vs Fixed Transforms"></ui-state>
+                <ui-state desc="Math operations"></ui-state>
+            </story>
+            <story desc="Animation Tool/Animation/Tween Inspector">
+                <ui-state desc="base animation/transition with one svg square">
+                </ui-state>
+                <ui-state desc="property-specific inputs">
+                </ui-state>
+                <ui-state desc="play">
+					<bug type="functional" open by="Jeselle" flag="[Samir]" description="Play isn't going beyond Ex #0." platform="all"/>
+                </ui-state>
+                <ui-state desc="refresh">
+                </ui-state>
+                <ui-state desc="Verify it works with previous draw stuff">
+                </ui-state>
+            </story>
+
+            <story desc="Animation Ease Tool/Playground">
+            </story>
+            <story desc="Concurrent/Sequential transitions/animations">
+                <ui-state desc='simultaneous animations'></ui-state>
+                <ui-state desc='simultaneous transitions'></ui-state>
+            </story>
+            <story desc="Animation recorder">
+            </story>
+            <story desc="Animation draw">
+            </story>
+
+            <story desc="Prioritized directives">
+                <!-- <ui-state> Counter </ui-state> -->
+            </story>
+        </user-stories>
+    </user-workflow>
+</module>

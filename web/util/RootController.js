@@ -1,0 +1,137 @@
+angular.module('uguru.shared.controllers', [])
+// angular.module('uguru.shared.controllers')
+.controller('RootController', [
+
+  //All imported packages go here
+  '$scope',
+  '$state',
+  '$timeout',
+  'RootService',
+  'XHRService',
+  '$compile',
+  '$rootScope',
+  '$window',
+  function($scope, $state, $timeout, RootService, XHRService, $compile, $rootScope, $window) {
+    var root = this;
+    root.scope = $rootScope;
+    root.scope.public = {customStates: {when: {}}};
+    root.window = getBodyDimensions($window);
+    root.window.elemInfo = getElemWindowInfo(root.window);
+    root.base_url = RootService.getBaseUrl();
+    root.local = window.location.href.split(':8100').length > 1;
+    root.browserPrefix = RootService.getBrowserPrefix();
+    root.docs = {items: RootService.getDocItems(), searchText:'', resultIds: [], resultItems:[]};
+    root.devMode = window.location.href.split('/dev/').length > 1;
+    root.milestones = [];
+    root.animStatus = {off: false};
+    root.inspectAnimations = [];
+    root.inspectElements = [];
+    root.broadcaster = {};
+    root.easings = easings;
+    root.public = {customStates: [], customShortcuts: {}};
+    RootService.customShortcuts.getAnimProps = function () {return root.public.customShortcuts};
+    root.pauseElement = pauseElement(root);
+    RootService.setPauseElementFunc(root.pauseElement);
+    RootService.viewPortSize = root.window;
+    root.animationCounter = 0;
+    root.transitionCounter = 0;
+    root.inspector = {players:[], activePlayer: null, elements: [], preferences: {}};
+    RootService._window = root.window;
+    RootService.setGetInspector(getInspectorPrefs(root.inspector));
+    RootService.setInspectableElements(pushElemPlayer(root.inspector));
+    RootService.getCustomEasingAnimations(root)();
+    $timeout(function() {
+      RootService.animations = root.public;
+      $scope.$apply();
+
+      registerAnimationShortcuts();
+
+    })
+
+    function getElemWindowInfo(window) {
+      return function(elem) {
+        var eRect = elem.getBoundingClientRect();
+        var result = {};
+        result.bottom = window.height - eRect.top - eRect.height
+        result.top = eRect.top * -1
+        result.right =window.width - eRect.right;
+        result.left = eRect.left * -1;
+        result.rect = eRect;
+        return result;
+      }
+    }
+
+    function registerAnimationShortcuts() {
+      if (root.local) {
+        var dataSets = ['api'];
+        var callback = function(data) {root.data = {animations: {}}; root.data.animations = data;};
+        XHRService.getJSONFile('get', 'admin/spec/animations.json', callback);
+      }
+    }
+
+
+  }
+]);
+
+function pushElemPlayer(r_inspector) {
+  return function(elem) {
+    r_inspector.players.push(elem);
+    r_inspector.activePlayer = elem;
+    console.log('root inspector elems', r_inspector.players)
+  }
+}
+
+function getInspectorPrefs(r_inspector) {
+  return function() {
+    return r_inspector.preferences;
+  }
+}
+
+
+
+function pauseElement(scope) {
+  return function(element, attr) {
+    var animStartEvent = 'animation';
+    var cssPrefix = ''
+
+    if (scope.browserPrefix) {
+      cssPrefix = '-' + scope.browserPrefix + '-';
+      animStartEvent = 'webkitAnimation';
+    }
+    // console.log(animStartEvent + 'PlayState:paused' + '!important;');
+    if (element[0].style) element[0].style.cssText += ';' + cssPrefix + 'animation-play-state:paused' + '!important;';
+    if (element[0].style) element[0].style.cssText += ';' + cssPrefix + 'transition-duration:50ms' + '!important;';
+    if (element[0].style) element[0].style.opacity = 0.2;
+    // e.target.style.cssText += e.target.style[animStartEvent + 'Duration'] + '!important;'
+    // e.target.style[animStartEvent + 'Delay'] = '-' +
+
+    if (!scope.bodyListener) {
+      document.body.addEventListener(animStartEvent + 'Start', function(e) {
+        // console.log(e.target.style[animStartEvent + 'Delay']);
+
+        if (e.target.style && 'style' in e.target) e.target.style.cssText += ';-webkit-animation-play-state:paused' + '!important;'
+        if (e.target.style) element[0].style.opacity = 0.2;
+        // e.target.style[animStartEvent + 'PlayState'] = 'paused';
+      })
+      scope.bodyListener = true;
+    }
+
+
+
+
+  }
+}
+
+function getBodyDimensions(window_obj) {
+    var desktopHeightLimit = 690;
+    var desktopWidthLimit= 767;
+    var bodyRect = document.body.getBoundingClientRect();
+    var isDesktop = (bodyRect.height >= desktopHeightLimit && bodyRect.width >= desktopWidthLimit);
+    return {height:bodyRect.height, width: bodyRect.width, desktop: isDesktop, mobile: !isDesktop, open: openWindowFunc(window_obj)}
+
+    function openWindowFunc(window_obj) {
+      return function(url, is_external) {
+        window_obj.open(url, is_external && '_blank');
+      }
+    }
+};
