@@ -804,13 +804,13 @@ angular.module('uguru.shared.directives.base.components')
             replace:true,
             priority: 100,
             compile: function(element, attr, transclude) {
+                CompService.renderAllStyleAttributes(element, attr);
                 element.addClass('flex absolute full-xy');
                 if (attr.type && attr.type === 'column') {
                     element.addClass('flex-vertical-center')
                 }
                 if (attr.type && attr.type === 'row') {
                     element.addClass('flex flex-wrap');
-                    // element.css('flex-direction', 'row')
                 }
                 // return {
                 //     // pre: function preLink(lScope, lElem, lAttr, transcludeFn) {
