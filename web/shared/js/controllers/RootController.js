@@ -1,3 +1,4 @@
+var _window;
 angular.module('uguru.shared.controllers', [])
 // angular.module('uguru.shared.controllers')
 .controller('RootController', [
@@ -16,6 +17,7 @@ angular.module('uguru.shared.controllers', [])
     root.scope = $rootScope;
     root.scope.public = {customStates: {when: {}}};
     root.window = getBodyDimensions($window);
+    _window = root.window;
     root.window.elemInfo = getElemWindowInfo(root.window);
     root.base_url = RootService.getBaseUrl();
     root.local = window.location.href.split(':8100').length > 1 || window.location.href.split(':8101').length > 1;;

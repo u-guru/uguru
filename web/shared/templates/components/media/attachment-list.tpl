@@ -1,4 +1,4 @@
-<div class="full-xy flex-center bg-slate" types='student, guru, no-padding, large-icons' default-type="student">
+<div class="full-xy flex-center bg-slate" types='student, guru, no-padding, large-icons'>
 
 	<div class="full-xy flex-center bg-white"  ng-if='activeType === "student"' >
 		<div class="attach-list student">
@@ -252,8 +252,8 @@
 	</div>
 
 	<div class="attach-list large" ng-if='activeType === "large-icons"'>
-
-		<ul u on-init="s:[large-attach-init:public:easeInCirc-3000]">
+		<!-- <ul u on-init="s:[large-attach-init:children:easeInCirc-3000]"> -->
+		<ul u error-children on-init="s:[large-attach-init:depth(>1):easeInCirc-3000]">
 			<li>
 				<a u when-large-attach-init="s:[pdf-load:children, pdf-enter:children:1000]">
 					<span>

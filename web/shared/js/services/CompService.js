@@ -24,6 +24,15 @@ function CompService($timeout, $compile) {
 
 
   function renderAllStyleAttributes(elem, attr) {
+    if (attr.fontWeight) {
+      elem.css('font-weight', attr.fontWeight);
+    }
+    if (attr.border) {
+      elem.css('border', attr.border);
+    }
+    if (attr.letterSpacing) {
+      elem.css('letter-spacing', attr.letterSpacing);
+    }
     if (attr.width) {
         if (attr.width.indexOf('%') === -1 && attr.width.indexOf('px') === -1) {
             elem.css('width', attr.width + '%')
