@@ -1,6 +1,6 @@
 <div class='full-xy'>
 
-<view layer="3" type='row' bg="robin" u on-init="s:[loader-fade:self:10000]"
+<view layer="3" type='row' bg="robin" u on-init="s:[loader-fade:self:4000]" ng-if="false"
 	when-loader-fade="a:[opacity:1:0:500:easeOutSine:0:1:f]">
 	<!-- on-init="s:[loader-fade:self:2000]" -->
 
@@ -30,7 +30,7 @@
 
     <!-- flip: center top -->
     <item class='bg-robin' width='100' height='40' align='center top'>
-        <item padding='20px 0'  bg="auburn" u init-with="p:[tr:scaleY(0), tro:center center]" when-load-enter="a:[scaleY:0:1:1000:easeOutQuint:200:1:f]">
+        <item padding='20px 0' u init-with="p:[tr:scaleY(0), tro:center center]" when-load-enter="a:[scaleY:0:1:1000:easeOutQuint:200:1:f]">
             <svg width="280px" height="40px" viewBox="0 0 280 40">
                 <g class="visualizer" stroke-width="3" stroke="#FFFFFF" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M272.5,6.5 L272.5,33.5"></path>
@@ -84,52 +84,53 @@
     </item>
 </view>
 
-<view layer="2" type='row' ng-if='false'>
+<view layer="2" type='row'>
     <!-- center bottom -->
-    <item m-bg="gold" class='uppercase' width='100' height='15' align='center bottom'>
-        <item align="center center" padding="15" class='border-10'>
+    <item m-bg="gold" class='uppercase' width='100' height='20' align='center top' padding="30">
+        <item align="center center" padding="15" class='border-5'>
             <txt class='weight-900 margin-0 txt-center' font-size="36px" letter-spacing='0.3em' line-height='1.2'>
                 VIBES.CLUB
             </txt>
         </item>
     </item>
 
-    <!-- center top -->
-    <item class='p30y' width='100' height='15' align='center top'>
-        <item width='100' align='top center'>
-            <txt font-size="28px" width='100' weight='500' line-height="1.2" class='flex-vertical-center'>
-                LIVE
-            </txt>
-        </item>
+    <item width='100' height='10' align='center bottom'>
+        <txt font-size="28px" width='100' weight='500' line-height="1.2" class='flex-vertical-center' align="center bottom">
+            LIVE
+        </txt>
     </item>
 
 
-    <!-- center top -->
-	<item class='p30y' width='100' height='15' align='center top'>
+	<item class='p15y' width='100' height='25' align='center center'>
 		<item width='100' align='center center'>
 			<txt font-size="72px" letter-spacing='0.3em' width='100' line-height="1.2" class='weight-700 flex-vertical-center'>
 				PLAYLIST NAME
 			</txt>
 		</item>
 	</item>
-	<item class='p30y' width='100' height='15' align='center top'>
-		<item width='15' align='bottom right'>
-			<txt font-size="28px" width='100' weight='500' line-height="1.2">
+
+	<!-- <item align="center top" padding="15" class='border-2-top border-2-right border-2-bottom border-1-left'>
+		<svg class="absolute" width="48px" height="48px" viewBox="0 0 90 90">
+			<rect x="550" y="500" width="90" height="90"/>
+		</svg>
+		<graphic class='relative svg-stroke-3 stroke-white' height="18" src='shared/templates/components/svg/main/fast-forward.html'> </graphic>
+	</item> -->
+
+	<item  width='100' height='15' align='center top'>
+		<item width='15'  align='right bottom' class="p10x">
+			<txt font-size="28px" weight='500' line-height="1.2">
 				Now Playing:
 			</txt>
 		</item>
-		<item width='30' align='bottom left'>
-			<!-- @text-decoration = t-d -->
-            <txt font-size="28px" width='100' weight='500' line-height="1.2" t-d="underline">
-				 <!-- text-decoration="underline" -->
+		<item width='30' align='left bottom' class="p10x">
+            <txt font-size="28px" weight='500' line-height="1.2" t-d="underline">
 				Artist Name - Song Name
 			</txt>
 		</item>
 	</item>
 
-    <!-- center bottom -->
-	<item m-bg="gold" class='uppercase' width='100' height='15' align='center bottom'>
-        <item align="center center" padding="15" class='border-2-top border-2-left border-2-bottom border-1-right'
+	<item m-bg="gold" class='uppercase' width='100' height='15' align='center top'>
+        <item align="center top" padding="15" class='border-2-top border-2-left border-2-bottom border-1-right'
 			u on-mouseenter="s:[ff-hover:self]"
 			init-with="p:[fill:none]"
 			when-ff-hover="p:[fill:RGBA(1, 47, 161, 1.00)]">
@@ -138,7 +139,7 @@
 			</svg>
 			<graphic class='relative svg-stroke-3 stroke-white' height="60" src='shared/templates/components/svg/main/play-basic.html'> </graphic>
         </item>
-		<item align="center center" padding="15" class='border-2-top border-2-right border-2-bottom border-1-left'
+		<item align="center top" padding="15" class='border-2-top border-2-right border-2-bottom border-1-left'
 			u on-mouseenter="s:[ff-hover:self]"
 			init-with="p:[fill:none]"
 			when-ff-hover="p:[fill:RGBA(1, 47, 161, 1.00)]">
@@ -158,7 +159,7 @@
     </item>
 </view>
 
-<view layer="1" type='row' bg="auburn" ng-if='false'
+<view layer="1" type='row' bg="auburn"
 	u on-init="s:[record-start:children:4400]">
 	 <!-- bg="#CA004E" -->
 	<item m-bg="gold" class='uppercase' width='100' height='100' align='center center' align-self="center center"
