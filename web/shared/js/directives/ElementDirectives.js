@@ -466,7 +466,7 @@ angular.module('uguru.shared.directives')
           }
         }
 }])
-.directive("u", ["$compile", "ElementService", "$timeout", "$rootScope", "SendService", function($compile, ElementService, $timeout, $rootScope, SendService) {
+.directive("u", ["$compile", "ElementService", "$timeout", "$rootScope", "SendService", "CompService", function($compile, ElementService, $timeout, $rootScope, SendService, CompService) {
       return {
           restrict: 'A',
           replace: true,
@@ -477,6 +477,9 @@ angular.module('uguru.shared.directives')
           compile: function(element, attr, transclude) {
             // attr.$set('public', 'public');
             // attr.$set('root', 'root');
+              if (element[0].nodeName.toLowerCase() === 'griditem') {
+                CompService.renderAllStyleAttributes(element, attr);
+              }
               this.states = ElementService.renderElementStates(element, attr);
               var states = this.states;
 

@@ -24,7 +24,9 @@
             </h1>
         </grid-item> -->
             <grid-item  width='100' height='15' spacing='top'>
-                <span class="relative txt-center txt-28" style="left:calc(50% - 160px); top:30px;">Lorem ipsum dolor sit amet?</span>
+                <span class="relative txt-center txt-28" style="left:calc(50% - 160px); top:30px;">
+                    Lorem ipsum dolor sit amet?
+                </span>
             </grid-item>
 
     </grid-item>

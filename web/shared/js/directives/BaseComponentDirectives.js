@@ -414,19 +414,19 @@ angular.module('uguru.shared.directives.base.components')
         }
       };
     }])
-    .directive('item', ['StyleService', '$compile', function (StyleService, $compile) {
-      return {
-        restrict: 'AE',
-        templateUrl: 'shared/templates/components/base/svg/item.svg.tpl',
-        compile: function(elem, attr) {
-          elem.css(StyleService.css.flexItem);
-          ('height' in attr) && attr.$set('height', attr.height);
-        },
-        replace: true,
-        transclude: true,
-        priority:1
-      };
-    }])
+    // .directive('item', ['StyleService', '$compile', function (StyleService, $compile) {
+    //   return {
+    //     restrict: 'AE',
+    //     templateUrl: 'shared/templates/components/base/svg/item.svg.tpl',
+    //     compile: function(elem, attr) {
+    //       elem.css(StyleService.css.flexItem);
+    //       ('height' in attr) && attr.$set('height', attr.height);
+    //     },
+    //     replace: true,
+    //     transclude: true,
+    //     priority:1
+    //   };
+    // }])
     angular.module('uguru.shared.directives.base.components')
     .directive("render", ["AdminSVGRenderService", "$compile", function(AdminSVGRenderService, $compile) {
         return {
@@ -699,35 +699,112 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
+    .directive("item", ["CompService", "$compile", function(CompService, $compile) {
+        return {
+            restrict: 'E',
+            replace:true,
+            priority: 102,
+            compile: function(element, attr, transclude) {
+                CompService.renderAllStyleAttributes(element, attr);
+            }
+        }
+    }])
     .directive("gridItem", ["CompService", "$compile", function(CompService, $compile) {
         return {
             restrict: 'E',
             replace:true,
-            transclude:true,
-            priority: 100,
-            template: '<div class="flex"></div>',
+            priority: 102,
             compile: function(element, attr, transclude) {
                 CompService.renderAllStyleAttributes(element, attr);
-                return {
-                    pre: function preLink(lScope, lElem, lAttr, transcludeFn) {
+            }
+        }
+    }])
+    .directive("bg", [function(CompService) {
+        return {
+            restrict: 'A',
+            compile: function(element, attr) {
+                if (attr.mBg && attr.mBg.length && _window.mobile) return;
 
-                            transclude(lScope, function(clone, innerScope) {
-                                lElem.append(clone)
-                            })
+                var backgroundString = attr.bg;
+                if (attr.bg && attr.bg.length) {
+                    if (attr.bg.indexOf('#') > -1 || attr.bg.indexOf('rgb') > -1) {
+                        element.css('backgroundColor', '#FFFFF');
+                    } else {
+                        element.addClass('bg-' + attr.bg);
                     }
                 }
             }
         }
     }])
+    .directive("txt", ["CompService",function(CompService) {
+        return {
+            restrict: 'E',
+            scope: false,
+            compile: function(element, attr) {
+                if (attr.txt && attr.txt.length && _window.mobile) return;
+                CompService.renderAllStyleAttributes(element, attr);
+                element.addClass('flex-vertical-center')
+                if (attr.center) {
+                    element.css('text-align', 'center');
+                }
+                if (attr.lineHeight) {
+                    console.log('has line height')
+                    element.css('line-height', parseFloat(attr.lineHeight));
+                }
+            }
+        }
+    }])
+    .directive("m-txt", ["CompService",function(CompService) {
+        return {
+            restrict: 'E',
+            scope: false,
+            compile: function(element, attr) {
+                if (!scope.root.window.mobile) {
+                    return;
+                }
+                CompService.renderAllStyleAttributes(element, attr);
+                element.addClass('flex-vertical-center')
+                if (attr.center) {
+                    element.css('text-align', 'center');
+                }
+                if (attr.lineHeight) {
+                    console.log('has line height')
+                    element.css('line-height', parseFloat(attr.lineHeight));
+                }
+            }
+        }
+    }])
+    .directive("mBg", [function(CompService) {
+        return {
+            restrict: 'A',
+            scope: false,
+            link: {pre:
+                 function preLink(scope, element, attr) {
+
+                    if (!scope.root.window.mobile) {
+                        return;
+                    }
+                    var backgroundString = attr.mBg;
+                    if (attr.bg && attr.mBg.length) {
+                        if (attr.mBg.indexOf('#') > -1 || attr.mBg.indexOf('rgb') > -1) {
+                            element.css('backgroundColor', '#FFFFF');
+                        } else {
+                            element.addClass('bg-' + attr.mBg);
+                        }
+                    }
+
+                }
+            }
+        }
+    }])
     // http://41.media.tumblr.com/ae90b8caeba47c980d343fedfc547b55/tumblr_n9v9gbigA21sciteso1_500.png
-    .directive("gridView", ["CompService", "$compile", function(CompService, $compile) {
+    .directive("view", ["CompService", "$compile", function(CompService, $compile) {
         return {
             restrict: 'E',
             replace:true,
-            transclude:true,
             priority: 100,
-            template: '<div class="flex absolute full-xy left-0 top-0"></div>',
             compile: function(element, attr, transclude) {
+                element.addClass('flex absolute full-xy');
                 if (attr.type && attr.type === 'column') {
                     element.addClass('flex-vertical-center')
                 }
@@ -735,24 +812,24 @@ angular.module('uguru.shared.directives.base.components')
                     element.addClass('flex flex-wrap');
                     // element.css('flex-direction', 'row')
                 }
-                return {
-                    pre: function preLink(lScope, lElem, lAttr, transcludeFn) {
-                        lScope.isView = true;
-                        lScope.viewType = attr.type;
-                            transclude(lScope, function(clone, innerScope) {
-                                // $compile(clone)(innerScope)
-                                // var cloneChildren = clone.contents()
-                                // console.log(clone)
-                                for (var i = 0; i < clone.length; i++) {
-                                    clone
-                                }
-                                // .forEach(function(elem, i) {
-                                //     console.log(elem)
-                                // })
-                                lElem.append(clone)
-                            })
-                    }
-                }
+                // return {
+                //     // pre: function preLink(lScope, lElem, lAttr, transcludeFn) {
+                //     //     lScope.isView = true;
+                //     //     lScope.viewType = attr.type;
+                //     //         transclude(lScope, function(clone, innerScope) {
+                //     //             // $compile(clone)(innerScope)
+                //     //             // var cloneChildren = clone.contents()
+                //     //             // console.log(clone)
+                //     //             for (var i = 0; i < clone.length; i++) {
+                //     //                 clone
+                //     //             }
+                //     //             // .forEach(function(elem, i) {
+                //     //             //     console.log(elem)
+                //     //             // })
+                //     //             lElem.append(clone)
+                //     //         })
+                //     // }
+                // }
             }
         }
     }])
