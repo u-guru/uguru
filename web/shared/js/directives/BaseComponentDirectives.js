@@ -709,6 +709,16 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
+    .directive("gridItem", ["CompService", "$compile", function(CompService, $compile) {
+        return {
+            restrict: 'E',
+            replace:true,
+            priority: 102,
+            compile: function(element, attr, transclude) {
+                CompService.renderAllStyleAttributes(element, attr);
+            }
+        }
+    }])
     .directive("bg", [function(CompService) {
         return {
             restrict: 'A',
@@ -731,7 +741,7 @@ angular.module('uguru.shared.directives.base.components')
             restrict: 'E',
             scope: false,
             compile: function(element, attr) {
-                if (attr.mBg && attr.mBg.length && _window.mobile) return;
+                if (attr.txt && attr.txt.length && _window.mobile) return;
                 CompService.renderAllStyleAttributes(element, attr);
                 element.addClass('flex-vertical-center')
                 if (attr.center) {
