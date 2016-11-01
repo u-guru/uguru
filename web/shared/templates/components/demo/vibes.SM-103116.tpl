@@ -11,7 +11,7 @@
 
     <item class='bg-charcoal' width='100' height='15' align='top center'>
         <item width='100' align='center center'>
-            <txt font-size="24px" letter-spacing='2em' width='100' weight='500' class='flex-vertical-center'>
+            <txt font-size="24px" letter-spacing='1em' width='100' weight='500' class='flex-vertical-center'>
                 Ready for all the vibes?
             </txt>
         </item>

@@ -1,6 +1,7 @@
-<div class="full-xy flex-center bg-slate" types='student, guru, no-padding, large-icons'>
+<div class="full-xy flex-center bg-slate">
+	 <!-- types='student, guru, no-padding, large-icons' default-type="student" -->
 
-	<div class="full-xy flex-center bg-white"  ng-if='activeType === "student"' >
+	<!-- <div class="full-xy flex-center bg-white"  ng-if='activeType === "student"' >
 		<div class="attach-list student">
 			<ul u on-init="s:[attach-list-init:depth(1)]">
 					<li class="student-attach" u init-with="p-op"
@@ -249,9 +250,10 @@
 				</a>
 			</li>
 		</ul>
-	</div>
+	</div> -->
 
-	<div class="attach-list large" ng-if='activeType === "large-icons"'>
+	<div class="attach-list large" >
+		<!-- ng-if='activeType === "large-icons"' -->
 		<!-- <ul u on-init="s:[large-attach-init:children:easeInCirc-3000]"> -->
 		<ul u error-children on-init="s:[large-attach-init:depth(>1):easeInCirc-3000]">
 			<li>

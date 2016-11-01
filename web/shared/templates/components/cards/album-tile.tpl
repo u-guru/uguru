@@ -1,8 +1,7 @@
 <div class="perspective-container full-xy flex-center p15xy">
 	<a class="album-tile" u on-init="s:[album-tile-init:depth(>1)]"
-		on-mouse-enter="s:[album-tile-enter:public]"
-		on-mouse-leave="s:[album-tile-leave:public]"
-		on-click="s:[album-tile-click:public]">
+		on-mouseenter="s:[album-tile-enter:public]"
+		on-mouseleave="s:[album-tile-leave:public]">
 		<div class="album-echo"
 			u init-with="p-op">
 			<div style="background: #020c39;"></div>
