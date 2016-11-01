@@ -1,5 +1,5 @@
 <view type='row'>
-    <item bg="auburn" m-bg="gold" class='uppercase' width='100' height='40' align='bottom center' margin="5%">
+    <grid-item bg="auburn" m-bg="gold" class='uppercase' width='100' height='40' align='bottom center' margin="5%">
         <item align="center center" font-size="64px" padding="0" class='border-10'
             u init-with="p:[tr:scale(0.5)]"
             on-init="a:[scale:0.5:1:500:easeOutSine:0:1:f]">
@@ -7,7 +7,7 @@
                 VIBES.CLUB
             </txt>
         </item>
-    </item>
+    </grid-item>
 
     <item class='bg-charcoal' width='100' height='15' align='top center'>
         <item width='100' align='center center'>
