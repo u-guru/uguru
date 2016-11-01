@@ -86,42 +86,42 @@
 
 <view layer="3" type='row'>
 	<item bg="eggplant" width="90" height="90" align="center center">
-		<item class="absolute" style="top:60px; right:90px;" align="right top" height="8">
+		<item class="absolute" style="top:10%; right:8%;" height="8">
 			<graphic height="100" class='svg-stroke-4 stroke-white' src='shared/templates/components/svg/main/times.html'>
 			</graphic>
 		</item>
-		<item align="center center" height="92">
+		<item align="center center" height="92" style="margin-left:9%;">
 			<item class="p30x">
-				<txt font-size="42px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'>
+				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'>
 					All the Vibes
 				</txt>
-				<txt font-size="42px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'>
+				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'>
 					Sad Drake
 				</txt>
-				<txt font-size="42px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'>
+				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'>
 					Hustlin'
 				</txt>
-				<txt font-size="42px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'>
+				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'>
 					The Nicest
 				</txt>
-				<txt font-size="42px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'>
+				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'>
 					Chillout
 				</txt>
 			</item>
 			<item class="p30x">
-				<txt font-size="42px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'>
+				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'>
 					Summer Groovin'
 				</txt>
-				<txt font-size="42px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'>
+				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'>
 					Get on Up
 				</txt>
-				<txt font-size="42px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'>
+				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'>
 					What's Luv?
 				</txt>
-				<txt font-size="42px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'>
+				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'>
 					All Night
 				</txt>
-				<txt font-size="42px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'>
+				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'>
 					Go Hard
 				</txt>
 			</item>
