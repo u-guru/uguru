@@ -798,6 +798,16 @@ angular.module('uguru.shared.directives.base.components')
         }
     }])
     // http://41.media.tumblr.com/ae90b8caeba47c980d343fedfc547b55/tumblr_n9v9gbigA21sciteso1_500.png
+    .directive("importView", ["CompService", "$compile", function(CompService, $compile) {
+        return {
+            restrict: 'E',
+            replace:true,
+            priority: 100,
+            templateUrl: function(element, attr) {
+                return attr.src;
+            }
+        }
+    }])
     .directive("view", ["CompService", "$compile", function(CompService, $compile) {
         return {
             restrict: 'E',
