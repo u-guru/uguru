@@ -24,7 +24,7 @@ function CompService($timeout, $compile) {
 
 
   function renderAllStyleAttributes(elem, attr) {
-    if (attr.fontWeight) {
+     if (attr.fontWeight) {
       elem.css('font-weight', attr.fontWeight);
     }
     if (attr.border) {
@@ -60,9 +60,21 @@ function CompService($timeout, $compile) {
     attr.padding && renderPadding(elem, attr.padding);
     attr.margin && renderMargin(elem, attr.margin);
     attr.fontSize && renderFontSize(elem, attr.fontSize);
+    attr.bgUrl && renderBgImage(elem, attr, attr.bgUrl)
     'fixed' in attr && elem.css('position', 'fixed')
     'absolute' in attr && elem.css('position', 'absolute')
     attr.alignSelf && renderAlignSelf(elem, attr.alignSelf)
+  }
+
+  function renderBgImage(elem, attr, url) {
+    if (url && url.length) {
+      elem.css('background-image', 'url("' +  url + '")');
+      !attr.bgPos && elem.css('background-position', 'center');
+      !attr.bgSize && elem.css('background-size', 'cover');
+    }
+    if (attr.bgPos && attr.bgPos.length) {
+      elem.css('background-position', attr.bgPos)
+    }
   }
 
   function renderAlignSelf(elem, align_args) {
