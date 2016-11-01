@@ -1,17 +1,18 @@
 <div class='full-xy'>
 
-<view layer="3" type='row' bg="robin" u on-init="s:[loader-fade:self:4000]"
-	when-loader-fade="a:[opacity:1:0:500:easeOutSine:0:1:f]">
-	<!-- on-init="s:[loader-fade:self:2000]" -->
+<view layer="3" type='row' bg="robin" u on-init="s:[loader-fade:self:4000]" ng-if='false'
+    when-loader-fade="a:[opacity:1:0:500:easeOutSine:0:1:f]">
+    <!-- on-init="s:[loader-fade:self:2000]" -->
 
     <!-- align='center bottom' -->
     <!-- center bottom -->
     <item bg="robin" m-bg="gold" class='uppercase' width='100' height='33%' align='center bottom'>
-
+        <banner name='vibes.cl'>
+        </banner>
         <item align="center center" padding="15" class='border-10'
             u init-with="p:[tr:scale(0.5) rotate(15deg) translateY(50px), tro:center center]"
             on-init="a:[scale:0.5:1:250:easeOutBack:0:1:f, rotate:15deg:0deg:250:easeOutSine:100:1:f, translateY:50px:100px:500:easeInSine:0:1:f] | s:[logo-up:depth(0):1000, load-enter:depth(0):1000]"
-			when-logo-up="a:[translateY:100px:0px:450:easeInOutExpo:0:1:f]">
+            when-logo-up="a:[translateY:100px:0px:450:easeInOutExpo:0:1:f]">
             <txt class='weight-900 margin-0 txt-center' font-size="64px" letter-spacing='0.3em' line-height='1.2'>
                 VIBES.CLUB
             </txt>
@@ -20,8 +21,8 @@
 
     <item class='bg-robin p30y' width='100' height='15' align='center top'>
         <item width='100' align='center center'
-			u init-with="p-op"
-			when-load-enter="a:[fadeInUp:500:linear:0:1:f]">
+            u init-with="p-op"
+            when-load-enter="a:[fadeInUp:500:linear:0:1:f]">
             <txt font-size="28px" letter-spacing='0.3em' width='100' weight='500' line-height="1.2" class='flex-vertical-center'>
                 Ready for all the vibes?
             </txt>
@@ -105,51 +106,51 @@
 
 
     <!-- center top -->
-	<item class='p30y' width='100' height='15' align='center top'>
-		<item width='100' align='center center'>
-			<txt font-size="72px" letter-spacing='0.3em' width='100' line-height="1.2" class='weight-700 flex-vertical-center'>
-				PLAYLIST NAME
-			</txt>
-		</item>
-	</item>
-	<item class='p30y' width='100' height='15' align='center top'>
-		<item width='15' align='bottom right'>
-			<txt font-size="28px" width='100' weight='500' line-height="1.2">
-				Now Playing:
-			</txt>
-		</item>
-		<item width='30' align='bottom left'>
-			<!-- @text-decoration = t-d -->
-            <txt font-size="28px" width='100' weight='500' line-height="1.2" t-d="underline">
-				 <!-- text-decoration="underline" -->
-				Artist Name - Song Name
-			</txt>
-		</item>
-	</item>
-
-    <!-- center bottom -->
-	<item m-bg="gold" class='uppercase' width='100' height='15' align='center bottom'>
-        <item align="center center" padding="15" class='border-2-top border-2-left border-2-bottom border-1-right'
-			u on-mouseenter="s:[ff-hover:self]"
-			init-with="p:[fill:none]"
-			when-ff-hover="p:[fill:RGBA(1, 47, 161, 1.00)]">
-			<svg class="absolute" width="90px" height="90px" viewBox="0 0 90 90">
-				<rect x="550" y="500" width="90" height="90"/>
-			</svg>
-			<graphic class='relative svg-stroke-3 stroke-white' height="60" src='shared/templates/components/svg/main/play-basic.html'> </graphic>
+    <item class='p30y' width='100' height='15' align='center top'>
+        <item width='100' align='center center'>
+            <txt font-size="72px" letter-spacing='0.3em' width='100' line-height="1.2" class='weight-700 flex-vertical-center'>
+                PLAYLIST NAME
+            </txt>
         </item>
-		<item align="center center" padding="15" class='border-2-top border-2-right border-2-bottom border-1-left'
-			u on-mouseenter="s:[ff-hover:self]"
-			init-with="p:[fill:none]"
-			when-ff-hover="p:[fill:RGBA(1, 47, 161, 1.00)]">
-			<svg class="absolute" width="90px" height="90px" viewBox="0 0 90 90">
-				<rect x="550" y="500" width="90" height="90"/>
-			</svg>
-			<graphic class='relative svg-stroke-3 stroke-white' height="60" src='shared/templates/components/svg/main/fast-forward.html'> </graphic>
+    </item>
+    <item class='p30y' width='100' height='15' align='center top'>
+        <item width='15' align='bottom right'>
+            <txt font-size="28px" width='100' weight='500' line-height="1.2">
+                Now Playing:
+            </txt>
+        </item>
+        <item width='30' align='bottom left'>
+            <!-- @text-decoration = t-d -->
+            <txt font-size="28px" width='100' weight='500' line-height="1.2" t-d="underline">
+                 <!-- text-decoration="underline" -->
+                Artist Name - Song Name
+            </txt>
         </item>
     </item>
 
-	<item  m-bg="gold" class='uppercase' width='100' height='15' align='center center' align-self="bottom center">
+    <!-- center bottom -->
+    <item m-bg="gold" class='uppercase' width='100' height='15' align='center bottom'>
+        <item align="center center" padding="15" class='border-2-top border-2-left border-2-bottom border-1-right'
+            u on-mouseenter="s:[ff-hover:self]"
+            init-with="p:[fill:none]"
+            when-ff-hover="p:[fill:RGBA(1, 47, 161, 1.00)]">
+            <svg class="absolute" width="90px" height="90px" viewBox="0 0 90 90">
+                <rect x="550" y="500" width="90" height="90"/>
+            </svg>
+            <graphic u on-mouseenter="p:[fill:white]" u class='relative svg-stroke-3 stroke-white' height="60" src='shared/templates/components/svg/main/play-basic.html'> </graphic>
+        </item>
+        <item align="center center" padding="15" class='border-2-top border-2-right border-2-bottom border-1-left'
+            u on-mouseenter="s:[ff-hover:self]|p:[opacity:0.5]"
+            init-with="p:[fill:none]"
+            when-ff-hover="p:[fill:RGBA(1, 47, 161, 1.00)]">
+            <svg class="absolute" width="90px" height="90px" viewBox="0 0 90 90">
+                <rect x="550" y="500" width="90" height="90"/>
+            </svg>
+            <graphic class='relative svg-stroke-3 stroke-white' height="60" src='shared/templates/components/svg/main/fast-forward.html'> </graphic>
+        </item>
+    </item>
+
+    <item  m-bg="gold" class='uppercase' width='100' height='15' align='center center' align-self="bottom center">
         <item align="center center" padding="15" class='border-2 radius-2'>
             <txt class='weight-500 margin-0 txt-center' font-size="28px" letter-spacing='1px' line-height='1.2'>
                 Switch Vibes
@@ -159,16 +160,16 @@
 </view>
 
 <view layer="1" type='row' bg="auburn"
-	u on-init="s:[record-start:children:4400]">
-	 <!-- bg="#CA004E" -->
-	<item m-bg="gold" class='uppercase' width='100' height='100' align='center center' align-self="center center"
-		u init-with="p:[tro:center center]"
-		when-record-start="a:[rotate:0deg:360deg:10000:linear:0:i:f]">
-		<svg class="absolute" width="640px" height="640px" viewBox="0 0 640 640">
-    		<circle stroke="none" fill="#2D2D2D" fill-rule="evenodd" cx="320" cy="320" r="320"></circle>
-			<circle id="Oval-Copy" fill="#FFFFFF" opacity="0.2" cx="319.665001" cy="319.665001" r="106.665001"></circle>
-		</svg>
-		<item class='relative round' width="213px" height="213px" bg-url='http://www.etonline.com/news/2016/09/24271863/1280_theweeknd_album_twitter.jpg'> </item>
+    u on-init="s:[record-start:children:4400]">
+     <!-- bg="#CA004E" -->
+    <item m-bg="gold" class='uppercase' width='100' height='100' align='center center' align-self="center center"
+        u init-with="p:[tro:center center]"
+        when-record-start="a:[rotate:0deg:360deg:10000:linear:0:i:f]">
+        <svg class="absolute" width="640px" height="640px" viewBox="0 0 640 640">
+            <circle stroke="none" fill="#2D2D2D" fill-rule="evenodd" cx="320" cy="320" r="320"></circle>
+            <circle id="Oval-Copy" fill="#FFFFFF" opacity="0.2" cx="319.665001" cy="319.665001" r="106.665001"></circle>
+        </svg>
+        <item class='relative round' width="213px" height="213px" bg-url='http://www.etonline.com/news/2016/09/24271863/1280_theweeknd_album_twitter.jpg'> </item>
     </item>
 </view>
 </div>
