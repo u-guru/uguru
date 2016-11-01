@@ -1,8 +1,13 @@
 <div class='full-xy'>
-<view layer="3" type='row' bg="robin" u on-init="s:[loader-fade:self:4000]"
+
+<view layer="3" type='row' bg="robin" u on-init="s:[loader-fade:self:10000]"
 	when-loader-fade="a:[opacity:1:0:500:easeOutSine:0:1:f]">
 	<!-- on-init="s:[loader-fade:self:2000]" -->
-    <item bg="robin" m-bg="gold" class='uppercase' width='100' height='40' align='bottom center'>
+
+    <!-- align='center bottom' -->
+    <!-- center bottom -->
+    <item bg="robin" m-bg="gold" class='uppercase' width='100' height='33%' align='center bottom'>
+
         <item align="center center" padding="15" class='border-10'
             u init-with="p:[tr:scale(0.5) rotate(15deg) translateY(50px), tro:center center]"
             on-init="a:[scale:0.5:1:250:easeOutBack:0:1:f, rotate:15deg:0deg:250:easeOutSine:100:1:f, translateY:50px:100px:500:easeInSine:0:1:f] | s:[logo-up:depth(0):1000, load-enter:depth(0):1000]"
@@ -13,7 +18,7 @@
         </item>
     </item>
 
-    <item class='bg-robin p30y' width='100' height='15' align='top center'>
+    <item class='bg-robin p30y' width='100' height='15' align='center top'>
         <item width='100' align='center center'
 			u init-with="p-op"
 			when-load-enter="a:[fadeInUp:500:linear:0:1:f]">
@@ -23,8 +28,9 @@
         </item>
     </item>
 
-    <item class='bg-robin' width='100' height='40' align='top center'>
-        <item padding='20px 0' u init-with="p:[tr:scaleY(0), tro:center center]" when-load-enter="a:[scaleY:0:1:1000:easeOutQuint:200:1:f]">
+    <!-- flip: center top -->
+    <item class='bg-robin' width='100' height='40' align='center top'>
+        <item padding='20px 0'  bg="auburn" u init-with="p:[tr:scaleY(0), tro:center center]" when-load-enter="a:[scaleY:0:1:1000:easeOutQuint:200:1:f]">
             <svg width="280px" height="40px" viewBox="0 0 280 40">
                 <g class="visualizer" stroke-width="3" stroke="#FFFFFF" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M272.5,6.5 L272.5,33.5"></path>
@@ -78,8 +84,9 @@
     </item>
 </view>
 
-<view layer="2" type='row'>
-    <item m-bg="gold" class='uppercase' width='100' height='15' align='bottom center'>
+<view layer="2" type='row' ng-if='false'>
+    <!-- center bottom -->
+    <item m-bg="gold" class='uppercase' width='100' height='15' align='center bottom'>
         <item align="center center" padding="15" class='border-10'>
             <txt class='weight-900 margin-0 txt-center' font-size="36px" letter-spacing='0.3em' line-height='1.2'>
                 VIBES.CLUB
@@ -87,35 +94,41 @@
         </item>
     </item>
 
-    <item class='p30y' width='100' height='15' align='top center'>
-        <item width='100' align='center top'>
+    <!-- center top -->
+    <item class='p30y' width='100' height='15' align='center top'>
+        <item width='100' align='top center'>
             <txt font-size="28px" width='100' weight='500' line-height="1.2" class='flex-vertical-center'>
                 LIVE
             </txt>
         </item>
     </item>
-	<item class='p30y' width='100' height='15' align='top center'>
+
+
+    <!-- center top -->
+	<item class='p30y' width='100' height='15' align='center top'>
 		<item width='100' align='center center'>
 			<txt font-size="72px" letter-spacing='0.3em' width='100' line-height="1.2" class='weight-700 flex-vertical-center'>
 				PLAYLIST NAME
 			</txt>
 		</item>
 	</item>
-	<item class='p30y' width='100' height='15' align='top center'>
-		<item width='15' align='right bottom'>
+	<item class='p30y' width='100' height='15' align='center top'>
+		<item width='15' align='bottom right'>
 			<txt font-size="28px" width='100' weight='500' line-height="1.2">
 				Now Playing:
 			</txt>
 		</item>
-		<item width='30' align='left bottom'>
-			<txt font-size="28px" width='100' weight='500' line-height="1.2" style="text-decoration:underline;">
+		<item width='30' align='bottom left'>
+			<!-- @text-decoration = t-d -->
+            <txt font-size="28px" width='100' weight='500' line-height="1.2" t-d="underline">
 				 <!-- text-decoration="underline" -->
 				Artist Name - Song Name
 			</txt>
 		</item>
 	</item>
 
-	<item m-bg="gold" class='uppercase' width='100' height='15' align='bottom center'>
+    <!-- center bottom -->
+	<item m-bg="gold" class='uppercase' width='100' height='15' align='center bottom'>
         <item align="center center" padding="15" class='border-2-top border-2-left border-2-bottom border-1-right'
 			u on-mouseenter="s:[ff-hover:self]"
 			init-with="p:[fill:none]"
@@ -145,7 +158,7 @@
     </item>
 </view>
 
-<view layer="1" type='row' bg="auburn"
+<view layer="1" type='row' bg="auburn" ng-if='false'
 	u on-init="s:[record-start:children:4400]">
 	 <!-- bg="#CA004E" -->
 	<item m-bg="gold" class='uppercase' width='100' height='100' align='center center' align-self="center center"

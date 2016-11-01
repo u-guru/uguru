@@ -33,6 +33,9 @@ function CompService($timeout, $compile) {
     if (attr.letterSpacing) {
       elem.css('letter-spacing', attr.letterSpacing);
     }
+    if (attr.textDecoration || attr.tD) {
+      elem.css('text-decoration', attr.textDecoration || attr.tD);
+    }
     if (attr.width) {
         if (attr.width.indexOf('%') === -1 && attr.width.indexOf('px') === -1) {
             elem.css('width', attr.width + '%')
@@ -64,6 +67,7 @@ function CompService($timeout, $compile) {
     'fixed' in attr && elem.css('position', 'fixed')
     'absolute' in attr && elem.css('position', 'absolute')
     attr.alignSelf && renderAlignSelf(elem, attr.alignSelf)
+    attr.alignSelf2 && renderAlignSelf(elem, attr.alignSelf)
   }
 
   function renderBgImage(elem, attr, url) {
@@ -105,10 +109,9 @@ function CompService($timeout, $compile) {
 
   function renderAlign(elem, align_args) {
 
-    console.log(align_args)
     var alignArgSplit = align_args.split(' ');
-    var vertArg = alignArgSplit[1];
-    var horizArg = alignArgSplit[0];
+    var vertArg = alignArgSplit[0];
+    var horizArg = alignArgSplit[1];
     if (horizArg in flexAlignMapping) horizArg = flexAlignMapping[horizArg];
     if (vertArg in flexAlignMapping) vertArg = flexAlignMapping[vertArg];
     console.log(horizArg, vertArg)
