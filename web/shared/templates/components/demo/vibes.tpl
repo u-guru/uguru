@@ -87,7 +87,7 @@
 	<!-- @jeselle pointer AND depth example-->
 	<view depth="3" type='row' pointer>
 		<item bg="eggplant" width="90" height="90" align="center center"
-			u
+			u on-init="s:[switch-vibes:public:800]"
 			init-with="p:[tro:center bottom, tr:scale(0)]"
 			when-switch-vibes="a:[scale:0:1:800:easeOutBack:0:1:f] | s:[playlist:public:800]"
 			when-exit-vibes="a:[scale:1:0:200:easeInBack:0:1:f]">
