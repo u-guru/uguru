@@ -2,7 +2,7 @@
 
 <!-- @jeselle launch example-->
 <view layer="4" type='row' bg="robin" u on-init="s:[loader-fade:self:4000]"
-    when-loader-fade="a:[opacity:1:0:500:easeOutSine:0:1:f]" ng-if='false'>
+    when-loader-fade="a:[opacity:1:0:500:easeOutSine:0:1:f]">
     <!-- on-init="s:[loader-fade:self:2000]" -->
 
     <!-- align='center bottom' -->
