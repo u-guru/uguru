@@ -89,9 +89,12 @@
 	<item bg="eggplant" width="90" height="90" align="center center"
 		u on-init="s:[switch-vibes:self]"
 		init-with="p:[tro:center bottom, tr:scale(0)]"
-		when-switch-vibes="s:[playlist:public:800] | a:[scale:0:1:800:easeOutBack:0:1:f]">
+		when-switch-vibes="s:[playlist:public:800] | a:[scale:0:1:800:easeOutBack:0:1:f]"
+		when-exit-vibes="a:[scale:1:0:200:easeInBack:0:1:f]">
 		<item class="absolute" style="top:10%; right:8%;" height="8">
-			<graphic height="100" class='svg-stroke-4 stroke-white' src='shared/templates/components/svg/main/times.html'>
+			<graphic height="100" class='svg-stroke-4 stroke-white' src='shared/templates/components/svg/main/times.html'
+				u on-click="s:[exit-vibes:public]">
+				<!-- u on-click="s:[exit-vibes:parent] -->
 			</graphic>
 		</item>
 		<item align="center center" height="92" style="margin-left:9%;">
@@ -137,7 +140,8 @@
 					u init-with="p-op"
 					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 					on-mouseenter="s:[tn-scale:children]"
-					on-mouseleave="s:[tn-shrink:children]">
+					on-mouseleave="s:[tn-shrink:children]"
+					on-click="p:[launch:ui.guru/#/]">
 					The Nicest
 					<item class="absolute bottom-0" style="border-bottom:solid 3px white;" width="100"
 						u init-with="p:[tr:scaleX(0), tro:right center]"
