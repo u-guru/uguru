@@ -450,6 +450,7 @@ angular.module('uguru.shared.directives')
     }
 }])
 
+
 .directive("uClass", ["$compile", "ElementService", function($compile, ElementService) {
       return {
           restrict: 'E',

@@ -1,6 +1,7 @@
 <div class='full-xy'>
 
-<view layer="4" type='row' bg="robin" u on-init="s:[loader-fade:self:4000]"
+<!-- @jeselle launch example-->
+<view layer="4" type='row' bg="robin" u on-init="s:[loader-fade:self:4000]|p:[launch:www.google.com]"
     when-loader-fade="a:[opacity:1:0:500:easeOutSine:0:1:f]" ng-if="false">
     <!-- on-init="s:[loader-fade:self:2000]" -->
 

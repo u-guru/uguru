@@ -50,6 +50,13 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         return elem
       }
 
+      function launchExternalOnProp(url) {
+        if (url.indexOf('http://') === -1) {
+          url = 'http://' + url
+        }
+        $window.open(url, '_blank');
+      }
+
       function launchExternalWindow(params, element) {
         var anim_string = params;
         if (anim_string.indexOf('[') > -1) {
@@ -563,6 +570,9 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
 
         propertyArr.forEach(function(kv, i) {
+          if (kv.key === 'launch') {
+            launchExternalOnProp(kv.value);
+          }
           elem.css(kv.key, kv.value);
         })
       }
