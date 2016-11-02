@@ -83,51 +83,76 @@
         </item>
     </item>
 </view>
-
-<!-- @jeselle pointer, depth example-->
+<!-- @jeselle pointer AND depth example-->
 <view depth="3" type='row' pointer>
-    <item bg="eggplant" width="90" height="90" align="center center">
-        <item class="absolute" style="top:60px; right:90px;" align="right top" height="8">
-            <graphic height="100" class='svg-stroke-4 stroke-white' src='shared/templates/components/svg/main/times.html'>
-            </graphic>
-        </item>
-        <item align="center center" height="92">
-            <item class="p30x">
-                <txt font-size="42px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'>
-                    All the Vibes
-                </txt>
-                <txt font-size="42px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'>
-                    Sad Drake
-                </txt>
-                <txt font-size="42px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'>
-                    Hustlin'
-                </txt>
-                <txt font-size="42px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'>
-                    The Nicest
-                </txt>
-                <txt font-size="42px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'>
-                    Chillout
-                </txt>
-            </item>
-            <item class="p30x">
-                <txt font-size="42px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'>
-                    Summer Groovin'
-                </txt>
-                <txt font-size="42px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'>
-                    Get on Up
-                </txt>
-                <txt font-size="42px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'>
-                    What's Luv?
-                </txt>
-                <txt font-size="42px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'>
-                    All Night
-                </txt>
-                <txt font-size="42px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'>
-                    Go Hard
-                </txt>
-            </item>
-        </item>
-    </item>
+	<item bg="eggplant" width="90" height="90" align="center center"
+		u on-init="s:[switch-vibes:self]"
+		init-with="p:[tro:center bottom, tr:scale(0)]"
+		when-switch-vibes="s:[playlist:public:1000] | a:[scale:0:1:800:easeOutBack:0:1:f]">
+		<item class="absolute" style="top:10%; right:8%;" height="8">
+			<graphic height="100" class='svg-stroke-4 stroke-white' src='shared/templates/components/svg/main/times.html'>
+			</graphic>
+		</item>
+		<item align="center center" height="92" style="margin-left:9%;">
+			<item class="p30x"
+				u when-playlist="s:[playlist-enter-left:children:linear-1000]:+400">
+				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'
+					u init-with="p-op"
+					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]">
+					All the Vibes
+				</txt>
+				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'
+					u init-with="p-op"
+					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]">
+					Sad Drake
+				</txt>
+				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'
+					u init-with="p-op"
+					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]">
+					Hustlin'
+				</txt>
+				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'
+					u init-with="p-op"
+					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]">
+					The Nicest
+				</txt>
+				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'
+					u init-with="p-op"
+					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]">
+					Chillout
+				</txt>
+			</item>
+			<item class="p30x"
+				u when-playlist="s:[playlist-enter-right:children:linear-1000]:+300">
+				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'
+					u init-with="p:[op:0]"
+					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]">
+					Summer Groovin'
+				</txt>
+				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'
+					u init-with="p-op"
+					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]">
+					Get on Up
+				</txt>
+				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'
+					u init-with="p-op"
+					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]">
+					What's Luv?
+				</txt>
+				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'
+					u init-with="p-op"
+					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]">
+					All Night
+				</txt>
+				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'
+					u init-with="p-op"
+					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]">
+					Go Hard
+				</txt>
+			</item>
+		</item>
+	</item>
+>>>>>>> 11b5bb42f3d6953507be016611d6ae7a32ccbb1b
 </view>
 
 <view layer="2" type='row'>
@@ -198,6 +223,7 @@
 
     <item  m-bg="gold" class='uppercase' width='100' height='15' align='center center' align-self="bottom center">
         <item align="center center" padding="15" class='border-2 radius-2'>
+			<!-- u on-click="s:[switch-vibes:public]" -->
             <txt class='weight-500 margin-0 txt-center' font-size="28px" letter-spacing='1px' line-height='1.2'>
                 Switch Vibes
             </txt>
