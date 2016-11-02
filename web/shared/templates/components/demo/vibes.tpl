@@ -1,8 +1,8 @@
 <div class='full-xy'>
 
 <!-- @jeselle launch example-->
-<view layer="4" type='row' bg="robin" u on-init="s:[loader-fade:self:4000]|p:[launch:www.google.com]"
-    when-loader-fade="a:[opacity:1:0:500:easeOutSine:0:1:f]" ng-if="false">
+<view layer="4" type='row' bg="robin" u on-init="s:[loader-fade:self:4000]"
+    when-loader-fade="a:[opacity:1:0:500:easeOutSine:0:1:f]" ng-if='false'>
     <!-- on-init="s:[loader-fade:self:2000]" -->
 
     <!-- align='center bottom' -->
@@ -229,9 +229,9 @@
     <item m-bg="gold" class='uppercase' width='100' height='15' align='center top'>
         <item align="center top" padding="15" class='border-2-top border-2-left border-2-bottom border-1-right'
             u on-mouseenter="s:[ff-hover:self]"
-            init-with="p:[fill:none]"
+            >
+            <svg class="absolute" width="90px" height="90px" viewBox="0 0 90 90" u init-with="p:[fill:none]"
             when-ff-hover="p:[fill:RGBA(1, 47, 161, 1.00)]">
-            <svg class="absolute" width="90px" height="90px" viewBox="0 0 90 90">
                 <rect x="550" y="500" width="90" height="90"/>
             </svg>
             <graphic class='relative svg-stroke-3 stroke-white' height="60" src='shared/templates/components/svg/main/play-basic.html'> </graphic>

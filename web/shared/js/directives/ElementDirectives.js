@@ -382,12 +382,12 @@ angular.module('uguru.shared.directives')
     scope:false,
       link: {
         pre: function(scope, element, attr) {
-          // if (!('u' in attr) && !attr.initAfter) {
-          //   attr.$set('u', '');
-          //   $compile(element)(scope)
-          //   return;
-          // }
-          scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
+          if (!('u' in attr) && !attr.initAfter) {
+            attr.$set('u', '');
+            $compile(element)(scope)
+            return;
+          }
+          // scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
 
           var switchDict;
           var elemArgs = DirectiveService.parseArgs(attr.initWith, 'init-with', element);
