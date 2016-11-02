@@ -29,6 +29,7 @@ angular.module('uguru.shared.directives.base.components')
 
         }
     }])
+
     .directive('uImage', ['$compile',  function($compile) {
         return {
             restrict: 'E',
@@ -243,6 +244,30 @@ angular.module('uguru.shared.directives.base.components')
             replace:true
         }
     }])
+    // .directive('ignore', ['$compile', function($compile) {
+    //     return {
+    //         restrict: 'A',
+    //         replace:true,
+    //         priority:10000,
+    //         compile: function compile(element, attr)  {
+    //             var elem = element.clone(true);
+    //             elem.attr('ng-if', false);
+
+    //             // console.log()
+    //             // element[0].setAttribute('ng-if', "false");
+    //             console.log()
+
+    //             // element.attr('ng-if', false);
+    //         },
+    //         link: {pre: function(scope, _element, attr) {
+    //             element.parent().contents(elem)
+    //             // element.replaceWith(elem)
+    //             $compile(elem)(scope)
+    //             }
+
+    //         }
+    //     }
+    // }])
     .directive('graphic', ['$compile', 'CompService', function($compile, CompService) {
         return {
             restrict: 'E',
@@ -802,9 +827,15 @@ angular.module('uguru.shared.directives.base.components')
         return {
             restrict: 'E',
             replace:true,
-            priority: 100,
+            priority: 1000,
             templateUrl: function(element, attr) {
                 return attr.src;
+            },
+            link: {
+                pre:
+                    function preLink(scope, p_element, attr) {
+                       $compile(p_element)(scope)
+                }
             }
         }
     }])

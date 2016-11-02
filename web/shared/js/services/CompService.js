@@ -36,6 +36,11 @@ function CompService($timeout, $compile) {
     if (attr.textDecoration || attr.tD) {
       elem.css('text-decoration', attr.textDecoration || attr.tD);
     }
+
+    if ('pointer' in attr) {
+      elem.css('cursor', 'pointer')
+    }
+
     if (attr.width) {
         if (attr.width.indexOf('%') === -1 && attr.width.indexOf('px') === -1) {
             elem.css('width', attr.width + '%')
@@ -54,8 +59,15 @@ function CompService($timeout, $compile) {
         elem.addClass('flex-wrap-center', 'flex-wrap')
     }
 
-    if (attr.layer && attr.layer.length) {
-      var intLayer = parseInt(attr.layer);
+    if ((attr.layer && attr.layer.length) || (attr.depth && attr.depth.length))  {
+      var intLayer = 0;
+      if (attr.layer) {
+          intLayer = parseInt(attr.layer);
+      } else if (attr.depth) {
+        intLayer = parseInt(attr.depth);
+      }
+
+
       elem.css('zIndex', intLayer);
     }
 
