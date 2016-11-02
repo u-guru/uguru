@@ -30,6 +30,25 @@ angular.module('uguru.shared.directives')
      };
 
 })
+.directive('linkData', ['XHRService', '$compile', '$timeout', '$rootScope', function(XHRService, $compile, $timeout, $rootScope) {
+  return {
+    restrict: 'A',
+    replace:true,
+    compile: function compile(element, attr) {
+
+        var url;
+        if (attr.uSrc) {
+          url = attr.uSrc;
+        } else if (attr.accessCode) {
+          url = 'https://s3-us-west-1.amazonaws.com/ui-coach/users/' + attr.accessCode + '/app.json'
+        } else if (attr.linkData && attr.linkData.length) {
+          url = attr.linkData;
+
+        }
+        url && url.length && XHRService.getJSONFile('GET', url, function(data) {$rootScope[attr.linkDataName] = data}, {});
+      }
+  }
+}])
 .directive('syncWith', ['UtilitiesService', '$timeout', function(UtilitiesService, $timeout) {
   return {
     restrict: 'A',
