@@ -1,7 +1,7 @@
 <div class='full-xy'>
 
 <view layer="4" type='row' bg="robin" u on-init="s:[loader-fade:self:4000]"
-    when-loader-fade="a:[opacity:1:0:500:easeOutSine:0:1:f]" no>
+    when-loader-fade="a:[opacity:1:0:500:easeOutSine:0:1:f]" ng-if="false">
     <!-- on-init="s:[loader-fade:self:2000]" -->
 
     <!-- align='center bottom' -->
@@ -98,27 +98,37 @@
 				u when-playlist="s:[playlist-enter-left:children:linear-1000]:+400">
 				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'
 					u init-with="p-op"
-					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]">
+					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
+					on-mouse-enter="p:[border-bottom:solid 3px white]"
+					on-mouse-leave="p:[border-bottom:none]">
 					All the Vibes
 				</txt>
 				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'
 					u init-with="p-op"
-					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]">
+					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
+					on-mouse-enter="p:[border-bottom:solid 3px white]"
+					on-mouse-leave="p:[border-bottom:none]">
 					Sad Drake
 				</txt>
 				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'
 					u init-with="p-op"
-					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]">
+					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
+					on-mouse-enter="p:[border-bottom:solid 3px white]"
+					on-mouse-leave="p:[border-bottom:none]">
 					Hustlin'
 				</txt>
 				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'
 					u init-with="p-op"
-					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]">
+					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
+					on-mouse-enter="p:[border-bottom:solid 3px white]"
+					on-mouse-leave="p:[border-bottom:none]">
 					The Nicest
 				</txt>
 				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'
 					u init-with="p-op"
-					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]">
+					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
+					on-mouse-enter="p:[border-bottom:solid 3px white]"
+					on-mouse-leave="p:[border-bottom:none]">
 					Chillout
 				</txt>
 			</item>
@@ -126,33 +136,48 @@
 				u when-playlist="s:[playlist-enter-right:children:linear-1000]:+300">
 				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'
 					u init-with="p:[op:0]"
-					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]">
+					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
+					on-mouse-enter="p:[border-bottom:solid 3px white]"
+					on-mouse-leave="p:[border-bottom:none]">
 					Summer Groovin'
 				</txt>
 				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'
 					u init-with="p-op"
-					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]">
+					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
+					on-mouse-enter="p:[border-bottom:solid 3px white]"
+					on-mouse-leave="p:[border-bottom:none]">
 					Get on Up
 				</txt>
 				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'
 					u init-with="p-op"
-					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]">
+					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
+					on-mouse-enter="p:[border-bottom:solid 3px white]"
+					on-mouse-leave="p:[border-bottom:none]">
 					What's Luv?
 				</txt>
 				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'
 					u init-with="p-op"
-					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]">
+					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
+					on-mouse-enter="p:[border-bottom:solid 3px white]"
+					on-mouse-leave="p:[border-bottom:none]">
 					All Night
 				</txt>
 				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'
 					u init-with="p-op"
-					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]">
+					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
+					on-mouse-enter="p:[border-bottom:solid 3px white]"
+					on-mouse-leave="p:[border-bottom:none]">
+					<!-- on-mouse-enter="p:[border-bottom:solid white] | a:[border-width:0px:3px:100:easeInOutSine:0:1:f]"
+					on-mouse-leave="p:[border-bottom:solid white] | a:[border-width:3px:0px:100:easeInOutSine:0:1:f" -->
 					Go Hard
+					<!-- <item class="absolute bottom-0" style="border-bottom:solid 3px white;" width="100"
+						u init-with="p:[tr:scaleX(0), tro:left center]"
+						when-scale-children="a:[scaleX:0:1:500:easeOutSine:0:1:f]"
+						on-mouse-leave="a:[scaleX:1:0:200:easeInSine:0:1:f]"></item> -->
 				</txt>
 			</item>
 		</item>
 	</item>
->>>>>>> 11b5bb42f3d6953507be016611d6ae7a32ccbb1b
 </view>
 
 <view layer="2" type='row'>
