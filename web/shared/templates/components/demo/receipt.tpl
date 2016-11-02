@@ -9,11 +9,69 @@
                 Thank you for your order!
             </txt>
 	    </item>
-		<item width='100' align='center bottom'>
-			<svg width="600px" height="484px" viewBox="0 0 600 484">
-			    <path d="M600,457 L600,4.00928106 C600,1.79214865 598.213568,0 596.009893,0 L3.99010666,0 C1.78833856,0 0,1.79501627 0,4.00928106 L0,457 L0,483.128644 L10.7142857,478.128644 L21.4285714,483.128644 L32.1428571,478.128644 L42.8571429,483.128644 L53.5714286,478.128644 L64.2857143,483.128644 L75,478.128644 L85.7142857,483.128644 L96.4285714,478.128644 L107.142857,483.128644 L117.857143,478.128644 L128.571429,483.128644 L139.285714,478.128644 L150,483.128644 L160.714286,478.128644 L171.428571,483.128644 L182.142857,478.128644 L192.857143,483.128644 L203.571429,478.128644 L214.285714,483.128644 L225,478.128644 L235.714286,483.128644 L246.428571,478.128644 L257.142857,483.128644 L267.857143,478.128644 L278.571429,483.128644 L289.285714,478.128644 L300,483.128644 L310.714286,478.128644 L321.428571,483.128644 L332.142857,478.128644 L342.857143,483.128644 L353.571429,478.128644 L364.285714,483.128644 L375,478.128644 L385.714286,483.128644 L396.428571,478.128644 L407.142857,483.128644 L417.857143,478.128644 L428.571429,483.128644 L439.285714,478.128644 L450,483.128644 L460.714286,478.128644 L471.428571,483.128644 L482.142857,478.128644 L492.857143,483.128644 L503.571429,478.128644 L514.285714,483.128644 L525,478.128644 L535.714286,483.128644 L546.428571,478.128644 L557.142857,483.128644 L567.857143,478.128644 L578.571429,483.128644 L589.285714,478.128644 L600,483.128644 L600,457 L600,457 Z" stroke="none" fill="#FFFFFF" fill-rule="evenodd"></path>
-			</svg>
-		</item>
+
+		<item width='50' height="55" align='center top' bg="white" class="p30xy absolute" style="bottom:5%;">
+			<item width="100" height="5" class="absolute" style="top:5%" >
+				<txt class='weight-600 txt-center txt-charcoal' font-size="36px" line-height='1.2'>
+					Your Receipt
+	            </txt>
+			</item>
+			<item height="10" width="100" style="top:15%" class="absolute" align="center top">
+				<txt class='weight-600 txt-charcoal p10x uppercase' font-size="20px" line-height='1.2'>
+					ORDER:
+				</txt>
+				<txt class='weight-900 txt-taupe p10x uppercase' font-size="20px" line-height='1.2'>
+					EMN45E0OM0
+				</txt>
+			</item>
+
+			<item height="12" width="100" style="top:25%" class="absolute" align="center center" bg="smoke">
+				<txt class='weight-600 txt-charcoal p10x absolute' style="left:5%;" font-size="20px" line-height='1.2'>
+					Description
+				</txt>
+				<txt class='weight-900 txt-taupe p10x absolute' style="right:5%;"font-size="20px" line-height='1.2'>
+					Price
+				</txt>
+			</item>
+
+			<item height="12" width="100" style="top:40%" class="absolute" align="center center" bg="white">
+				<txt class='weight-900 txt-shamrock p10x absolute' style="left:5%;" font-size="20px" line-height='1.2'>
+					Weekly Special
+				</txt>
+				<txt class='weight-900 txt-taupe p10x uppercase absolute bottom-0' style="right:5%;" font-size="20px" line-height='1.2'>
+					$90.00
+				</txt>
+				<txt class='weight-600 txt-taupe p10xy absolute' style="left:5%; margin-top:4%" font-size="18px" line-height='1.2'>
+					100 Credits on 02/23/16
+				</txt>
+			</item>
+
+			<item height="15" width="100" style="top:55%" class="absolute" align="center center" bg="white">
+				<item class="absolute p15y" style="border-top:dashed 3px #EDEEEF;" width="88">
+				</item>
+				<txt class='weight-900 txt-cerise p10xy absolute' style="left:5%;" font-size="20px" line-height='1.2'>
+					Academic Request
+				</txt>
+				<txt class='weight-900 txt-taupe p10xy uppercase absolute bottom-0' style="right:5%;" font-size="20px" line-height='1.2'>
+					$90.00
+				</txt>
+				<txt class='weight-600 txt-taupe p10xy absolute' style="left:5%; margin-top:4%" font-size="18px" line-height='1.2'>
+					In Person Tutoring on 02/23/16
+				</txt>
+			</item>
+
+			<item height="25" width="100" class="absolute bottom-0" align="center center">
+				<item class="absolute" style="border-top:solid 3px #EDEEEF; top:10%;" width="100">
+				</item>
+				<txt class='weight-900 txt-slate p10x absolute uppercase' style="left:5%;" font-size="20px" line-height='1.2'>
+					Total
+				</txt>
+				<txt class='weight-900 txt-moxie p10x absolute' style="right:5%;" font-size="28px" line-height='1.2'>
+					$115.00
+				</txt>
+			</item>
+	    </item>
+
 	</view>
 
 </div>
