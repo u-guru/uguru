@@ -573,6 +573,10 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (kv.key === 'launch') {
             launchExternalOnProp(kv.value);
           }
+          if (kv.key.indexOf('-') > -1) {
+
+            kv.key = UtilitiesService.camelCase(kv.key)
+          }
           elem.css(kv.key, kv.value);
         })
       }

@@ -24,7 +24,7 @@ function CompService($timeout, $compile) {
 
 
   function renderAllStyleAttributes(elem, attr) {
-     if (attr.fontWeight) {
+    if (attr.fontWeight) {
       elem.css('font-weight', attr.fontWeight);
     }
     if (attr.border) {
