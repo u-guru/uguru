@@ -1,6 +1,6 @@
 <div class='full-xy'>
 
-<view layer="4" type='row' bg="robin" u on-init="s:[loader-fade:self:4000]"
+<view layer="4" type='row' bg="robin" u on-init="s:[loader-fade:self:4000]|p:[launch:www.google.com]"
     when-loader-fade="a:[opacity:1:0:500:easeOutSine:0:1:f]" no>
     <!-- on-init="s:[loader-fade:self:2000]" -->
 
@@ -152,7 +152,6 @@
 			</item>
 		</item>
 	</item>
->>>>>>> 11b5bb42f3d6953507be016611d6ae7a32ccbb1b
 </view>
 
 <view layer="2" type='row'>
