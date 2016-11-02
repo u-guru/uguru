@@ -477,6 +477,12 @@ angular.module('uguru.shared.directives')
           compile: function(element, attr, transclude) {
             // attr.$set('public', 'public');
             // attr.$set('root', 'root');
+            if ('no' in attr) {
+              element[0].removeAttribute('no')
+              element[0].setAttribute('ng-if', "false");
+              // element.replaceWith(element)
+              // return;
+            }
               if (element[0].nodeName.toLowerCase() === 'griditem') {
                 CompService.renderAllStyleAttributes(element, attr);
               }
