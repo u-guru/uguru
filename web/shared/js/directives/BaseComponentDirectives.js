@@ -765,6 +765,7 @@ angular.module('uguru.shared.directives.base.components')
         return {
             restrict: 'E',
             scope: false,
+            priority: 1000,
             compile: function(element, attr) {
                 if (attr.txt && attr.txt.length && _window.mobile) return;
                 CompService.renderAllStyleAttributes(element, attr);
@@ -843,6 +844,7 @@ angular.module('uguru.shared.directives.base.components')
         return {
             restrict: 'E',
             replace:true,
+            scope:false,
             priority: 100,
             compile: function(element, attr, transclude) {
                 CompService.renderAllStyleAttributes(element, attr);
