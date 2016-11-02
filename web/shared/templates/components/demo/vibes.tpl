@@ -296,8 +296,8 @@
     </item>
 
     <item  m-bg="gold" class='uppercase' width='100' height='15' align='center center' align-self="bottom center">
-        <item align="center center" padding="15" class='border-2 radius-2'>
-			<!-- u on-click="s:[switch-vibes:public]" -->
+        <item align="center center" padding="15" class='border-2 radius-2' u on-click="s:[switch-vibes:public]">
+			<!-- " -->
             <txt class='weight-500 margin-0 txt-center' font-size="28px" letter-spacing='1px' line-height='1.2'>
                 Switch Vibes
             </txt>
