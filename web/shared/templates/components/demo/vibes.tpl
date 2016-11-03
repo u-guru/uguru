@@ -84,7 +84,7 @@
 	        </item>
 	    </item>
 	</view>
-	<!-- @jeselle pointer AND depth example-->
+	<!-- @samir error for the playlist children-->
 	<view depth="3" type='row'
 		u init-with="p:[tro:center bottom, tr:scale(0)]"
 		when-switch-vibes="s:[playlist:children:800] |a:[scale:0:1:800:easeOutBack:0:1:f]"
