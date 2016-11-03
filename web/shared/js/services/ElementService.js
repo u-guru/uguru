@@ -348,10 +348,10 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (actions.prop) {
             if ('prop' in actions.prop.delays) {
               $timeout(function() {
-                applyPropsToElement(element, actions.prop.parsed, actions.prop.delays);
+                applyPropsToElement(scope, element, actions.prop.parsed, actions.prop.delays);
               }, actions.prop.delays.external)
             } else {
-              applyPropsToElement(element, actions.prop.parsed);
+              applyPropsToElement(scope, element, actions.prop.parsed);
             }
           };
           if (actions.anim) {
@@ -489,6 +489,14 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         return str;
       }
 
+      function rgb2hex(rgb){
+       rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
+       return (rgb && rgb.length === 4) ? "#" +
+        ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
+        ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
+        ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
+      }
+
       function parsePropertiesWithShortcuts(elem, properties) {
 
           var elemProps = properties.split(',');
@@ -522,12 +530,36 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
 
-      function applyPropsToElement(elem, properties, shortcuts) {
-
+      function applyPropsToElement(scope, elem, properties, shortcuts) {
+        if (properties.indexOf('{{') > -1) {
+          properties = $parse(properties)(scope)
+        }
+        var specialProperties = {
+          'attr': ['stroke', 'fill', 'fill-opacity', 'stroke-opacity'],
+          'comma': ['background', 'background-color', 'color']
+        }
+        var specialPropAttrs = [];
         // properties.split(',').forEach(function() )
         var propertyArr = [];
 
         properties = UtilitiesService.replaceAll(properties, ', ', ',');
+        for (prop_type in specialProperties) {
+          specialProperties[prop_type].forEach(function(prop) {
+            if (!prop || !prop.length) return;
+
+
+              var replaceArr = [];
+              properties.split(prop).forEach(function(prop_ref, i) {
+                if (prop_ref.split(':')[1]) {
+                  var newFormat = UtilitiesService.replaceAll(prop_ref, ',', '|');
+                  properties = properties.replace(prop_ref, newFormat);
+                }
+              })
+            if (properties.indexOf(prop) > -1 && prop_type === 'attr') {
+              specialPropAttrs.push(prop);
+            }
+          })
+        }
         var propertySplit = properties.split(',');
         if (!rShortcuts.cssPropValues && RootService.animations.customShortcuts) {
           rShortcuts.cssPropValues = RootService.animations.customShortcuts.cssPropValues;
@@ -536,6 +568,11 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           rShortcuts.args = RootService.animations.customShortcuts.args;
         }
         properties.split(',').forEach(function(prop, i) {
+          prop = UtilitiesService.replaceAll(prop, '|', ',');
+          console.log(prop)
+
+          if (!prop || !prop.length) return;
+          // prop = prop.replaceAll('|', ',');
           if (!rShortcuts || !rShortcuts.cssPropValues) {
 
           }
@@ -550,7 +587,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           }
           if (!rShortcuts.cssPropValues) {
             $timeout(function() {
-              applyPropsToElement(elem, properties, shortcuts);
+              applyPropsToElement(scope, elem, properties, shortcuts);
             })
             return;
           }
@@ -573,9 +610,21 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (kv.key === 'launch') {
             launchExternalOnProp(kv.value);
           }
+
           if (kv.key.indexOf('-') > -1) {
 
             kv.key = UtilitiesService.camelCase(kv.key)
+          }
+
+          if (specialPropAttrs.indexOf(kv.key) > -1) {
+            console.log('setting attr instead', kv)
+            if (kv.value.indexOf('rgb') > -1) {
+              var prevValue = kv.value + '';
+              kv.value = rgb2hex(kv.value);
+              console.log('converted rgba', prevValue, ' to hex', kv.value)
+            }
+            elem.attr(kv.key, kv.value);
+            return;
           }
           elem.css(kv.key, kv.value);
         })
