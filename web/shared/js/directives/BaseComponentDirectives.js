@@ -415,43 +415,43 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
-.directive('text', ['StyleService', '$compile', '$timeout', function (StyleService, $compile, $timeout) {
-      return {
-        restrict: 'AE',
-        priority: 1,
-        compile: function(elem, attr) {
-          !('fill' in attr) && attr.$set('fill', 'white');
+// .directive('text', ['StyleService', '$compile', '$timeout', function (StyleService, $compile, $timeout) {
+//       return {
+//         restrict: 'AE',
+//         priority: 1,
+//         compile: function(elem, attr) {
+//           !('fill' in attr) && attr.$set('fill', 'white');
 
-          !('x' in attr) && attr.$set('x', '50');
-          !('y' in attr) && attr.$set('y', '56.25');
-          !('fontSize' in attr) && attr.$set('font-size', '75');
-          !('textAnchor' in attr) && attr.$set('text-anchor', 'middle');
-          // return {
-          //       pre:function (lScope, lElem, lAttr) {
+//           !('x' in attr) && attr.$set('x', '50');
+//           !('y' in attr) && attr.$set('y', '56.25');
+//           !('fontSize' in attr) && attr.$set('font-size', '75');
+//           !('textAnchor' in attr) && attr.$set('text-anchor', 'middle');
+//           // return {
+//           //       pre:function (lScope, lElem, lAttr) {
 
-          //           transclude(lScope, function(clone, innerScope) {
-          //               // lElem[0].innerHTML = clone[0].innerHTML;
-          //               // lElem.html(clone.html())// = .innerHTML
-          //           })
-          //       }
-          //   }
+//           //           transclude(lScope, function(clone, innerScope) {
+//           //               // lElem[0].innerHTML = clone[0].innerHTML;
+//           //               // lElem.html(clone.html())// = .innerHTML
+//           //           })
+//           //       }
+//           //   }
 
-        }
-      };
-    }])
-    // .directive('item', ['StyleService', '$compile', function (StyleService, $compile) {
-    //   return {
-    //     restrict: 'AE',
-    //     templateUrl: 'shared/templates/components/base/svg/item.svg.tpl',
-    //     compile: function(elem, attr) {
-    //       elem.css(StyleService.css.flexItem);
-    //       ('height' in attr) && attr.$set('height', attr.height);
-    //     },
-    //     replace: true,
-    //     transclude: true,
-    //     priority:1
-    //   };
-    // }])
+//         }
+//       };
+//     }])
+//     // .directive('item', ['StyleService', '$compile', function (StyleService, $compile) {
+//     //   return {
+//     //     restrict: 'AE',
+//     //     templateUrl: 'shared/templates/components/base/svg/item.svg.tpl',
+//     //     compile: function(elem, attr) {
+//     //       elem.css(StyleService.css.flexItem);
+//     //       ('height' in attr) && attr.$set('height', attr.height);
+//     //     },
+//     //     replace: true,
+//     //     transclude: true,
+//     //     priority:1
+//     //   };
+//     // }])
     angular.module('uguru.shared.directives.base.components')
     .directive("render", ["AdminSVGRenderService", "$compile", function(AdminSVGRenderService, $compile) {
         return {
