@@ -196,7 +196,27 @@ angular.module('uguru.shared.directives.base.components')
             scope:false,
             replace:true,
             templateUrl: function(element, attr) {
-                return attr.url;
+                return attr.src || attr.url;
+            },
+            compile: function compile(element, attr)  {
+                CompService.renderAllStyleAttributes(element, attr);
+            },
+            link: {
+                post: function(scope, element, attr) {
+                    if (scope.chart) scope.chart.elem = element;
+
+                }
+            }
+
+        }
+    }])
+    .directive('graphic', ['$compile', 'CompService', function($compile, CompService) {
+        return {
+            restrict: 'E',
+            scope:false,
+            replace:true,
+            templateUrl: function(element, attr) {
+                return attr.src;
             },
             compile: function compile(element, attr)  {
                 CompService.renderAllStyleAttributes(element, attr);
