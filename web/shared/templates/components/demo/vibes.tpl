@@ -85,9 +85,10 @@
 	    </item>
 	</view>
 	<!-- @jeselle pointer AND depth example-->
-	<view depth="3" type='row' init-with="p:[tro:center bottom, tr:scale(0)]" when-switch-vibes="a:[scale:0:1:800:easeOutBack:0:1:f] | s:[playlist:public:800]" u when-exit-vibes="a:[scale:1:0:200:easeInBack:0:1:f]">
-		<item bg="eggplant" width="90" height="90" align="center center"
-			>
+	<view depth="3" type='row'
+		u init-with="p:[tro:center bottom, tr:scale(0)]"
+		when-switch-vibes="s:[playlist:depth(1):800] |a:[scale:0:1:800:easeOutBack:0:1:f]" when-exit-vibes="a:[scale:1:0:200:easeInBack:0:1:f]">
+		<item bg="eggplant" width="90" height="90" align="center center">
 			<item class="absolute" style="top:10%; right:8%;" height="8">
 				<graphic height="100" class='svg-stroke-4 stroke-white' src='shared/templates/components/svg/main/times.html'
 					u on-click="s:[exit-vibes:public]">
@@ -96,7 +97,8 @@
 			</item>
 			<item align="center center" height="92" style="margin-left:9%;">
 				<item class="p30x"
-					u when-playlist="s:[playlist-enter-left:children:linear-1000]:+400">
+					u
+					when-playlist="s:[playlist-enter-left:children:linear-1000]:+400">
 					<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'
 						u init-with="p-op"
 						when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
