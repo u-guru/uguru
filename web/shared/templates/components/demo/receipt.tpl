@@ -19,7 +19,7 @@
 			init-after="details-enter"
 			init-with="p-op"
 			on-init="s:[receipt-fade:self, request-enter:depth(1)]"
-			when-receipt-fade="p:[bounceIn-subtle:1000:linear:0:1:f]">
+			when-receipt-fade="a:[bounceIn-subtle:1000:linear:0:1:f]">
 			<item width="100" height="5" class="absolute" style="top:5%" >
 				<txt class='weight-600 txt-center txt-charcoal' font-size="36px" line-height='1.2'>
 					Your Request Details
@@ -170,7 +170,7 @@
 		<item width='50' height="39" align='center top' class="p30xy absolute" style="bottom:14%;" bg="white"
 			u init-with="p:[op:0, tr:rotateX(-90deg), tro:50% 0%]"
 			when-receipt-enter="p:[op:1] | a:[rotateX:-90deg:0deg:1000:easeOutExpo:0:1:f]"
-			when-receipt-exit="a:[rotateX:0deg:-90deg:500:easeInExpo:0:1:f,opacity:1:0:500:easeInExpo:0:1:f]">
+			when-receipt-exit="a:[rotateX:0deg:-90deg:500:easeInExpo:0:1:f,opacity:1:0:500:linear:0:1:f]">
 
 			<item height="15" width="100" style="top:0%" class="absolute p15xy" align="center center" bg="smoke"
 				u init-with="p:[op:0, tr:translateY(30px)]"
@@ -264,7 +264,7 @@
 		<item height="5" class="absolute p15xy" style="bottom:9%;"
 			u init-with="p-op"
 			when-receipt-enter="a:[bounceIn-subtle:800:linear:0:1:f]"
-			on-click="s:[receipt-exit:depth(0), details-enter:public:2000] | a:[bounceOut-subtle:1000:linear:0:1:f]">
+			on-click="s:[receipt-exit:depth(0), details-enter:public:2000]">
 			<button class="btn-default bg-cerise radius-2 p30x">
 				<span></span>
 				<span></span>
