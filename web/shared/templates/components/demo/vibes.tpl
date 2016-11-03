@@ -1,7 +1,7 @@
 <div class='full-xy' u>
 
 	<!-- @jeselle launch example-->
-	<view layer="4" type='row' bg="robin" u on-init="s:[loader-fade:self:4000]|p:[launch:www.google.com]"
+	<view layer="4" type='row' bg="robin" u on-init="s:[loader-fade:self:4000]"
 	    when-loader-fade="a:[opacity:1:0:500:easeOutSine:0:1:f]" ng-if="false">
 	    <!-- on-init="s:[loader-fade:self:2000]" -->
 
@@ -87,7 +87,9 @@
 	<!-- @jeselle pointer AND depth example-->
 	<view depth="3" type='row'
 		u init-with="p:[tro:center bottom, tr:scale(0)]"
-		when-switch-vibes="s:[playlist:depth(1):800] |a:[scale:0:1:800:easeOutBack:0:1:f]" when-exit-vibes="a:[scale:1:0:200:easeInBack:0:1:f]">
+		when-switch-vibes="s:[playlist:children:800] |a:[scale:0:1:800:easeOutBack:0:1:f]"
+		 when-exit-vibes="a:[scale:1:0:200:easeInBack:0:1:f]">
+
 		<item bg="eggplant" width="90" height="90" align="center center">
 			<item class="absolute" style="top:10%; right:8%;" height="8">
 				<graphic height="100" class='svg-stroke-4 stroke-white' src='shared/templates/components/svg/main/times.html'
@@ -267,8 +269,9 @@
 	            </txt>
 	        </item>
 	        <item width='30' align='left bottom' class="p10x">
-	            <txt font-size="28px" weight='500' line-height="1.2" t-d="underline">
-	                Artist Name - Song Name
+	            <txt font-size="28px" weight='500' line-height="1.2" t-d="underline"
+					u on-click="p:[launch:youtu.be/34Na4j8AVgA]">
+	                The Weeknd - Starboy ft. Daft Punk
 	            </txt>
 	        </item>
 	    </item>
@@ -281,7 +284,8 @@
 	            <svg class="absolute" width="90px" height="90px" viewBox="0 0 90 90">
 	                <rect x="550" y="500" width="90" height="90"/>
 	            </svg>
-	            <graphic class='relative svg-stroke-3 stroke-white' height="60" src='shared/templates/components/svg/main/play-basic.html'> </graphic>
+	            <graphic class='relative svg-stroke-3 stroke-white' height="60"
+					url='shared/templates/components/svg/main/play-basic.html'> </graphic>
 	        </item>
 	        <item align="center top" padding="15" class='border-2-top border-2-right border-2-bottom border-1-left'
 	            u on-mouseenter="s:[ff-hover:self]"
@@ -290,7 +294,8 @@
 	            <svg class="absolute" width="90px" height="90px" viewBox="0 0 90 90">
 	                <rect x="550" y="500" width="90" height="90"/>
 	            </svg>
-	            <graphic class='relative svg-stroke-3 stroke-white' height="60" src='shared/templates/components/svg/main/fast-forward.html'> </graphic>
+	            <graphic class='relative svg-stroke-3 stroke-white' height="60"
+					url='shared/templates/components/svg/main/fast-forward.html'> </graphic>
 	        </item>
 	    </item>
 
