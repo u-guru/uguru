@@ -281,7 +281,8 @@
 	            <svg class="absolute" width="90px" height="90px" viewBox="0 0 90 90">
 	                <rect x="550" y="500" width="90" height="90"/>
 	            </svg>
-	            <graphic class='relative svg-stroke-3 stroke-white' height="60" src='shared/templates/components/svg/main/play-basic.html'> </graphic>
+	            <graphic class='relative svg-stroke-3 stroke-white' height="60"
+					url='shared/templates/components/svg/main/play-basic.html'> </graphic>
 	        </item>
 	        <item align="center top" padding="15" class='border-2-top border-2-right border-2-bottom border-1-left'
 	            u on-mouseenter="s:[ff-hover:self]"
@@ -290,7 +291,8 @@
 	            <svg class="absolute" width="90px" height="90px" viewBox="0 0 90 90">
 	                <rect x="550" y="500" width="90" height="90"/>
 	            </svg>
-	            <graphic class='relative svg-stroke-3 stroke-white' height="60" src='shared/templates/components/svg/main/fast-forward.html'> </graphic>
+	            <graphic class='relative svg-stroke-3 stroke-white' height="60"
+					url='shared/templates/components/svg/main/fast-forward.html'> </graphic>
 	        </item>
 	    </item>
 
