@@ -1,6 +1,6 @@
 <!-- linked-data: place data url, i.e. receipt.json-->
 <!-- linked-data-name:  -->
-<view class='full-xy block overflow-auto flex-wrap-center no-scrollbar flex-wrap' link-data="https://s3-us-west-1.amazonaws.com/ui-guru/receipts/95ffe457c3a44a599ecd.json" link-data-name="receipt">
+<view class='full-xy block overflow-auto flex-wrap-center no-scrollbar ' link-data="data here" link-data-name="receipt">
     <ul class="flex-wrap-center p15-grid">
         <div ng-repeat='(field, data) in receipt'>
             <div class="relative width-128 height-128 flex-center">
