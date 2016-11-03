@@ -210,26 +210,7 @@ angular.module('uguru.shared.directives.base.components')
 
         }
     }])
-    .directive('graphic', ['$compile', 'CompService', function($compile, CompService) {
-        return {
-            restrict: 'E',
-            scope:false,
-            replace:true,
-            templateUrl: function(element, attr) {
-                return attr.src;
-            },
-            compile: function compile(element, attr)  {
-                CompService.renderAllStyleAttributes(element, attr);
-            },
-            link: {
-                post: function(scope, element, attr) {
-                    if (scope.chart) scope.chart.elem = element;
 
-                }
-            }
-
-        }
-    }])
     .directive('uChart', ['$compile', '$timeout', function($compile, $timeout) {
 // http://stackoverflow.com/questions/24615103/angular-directives-when-and-how-to-use-compile-controller-pre-link-and-post
     return {
