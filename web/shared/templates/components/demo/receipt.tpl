@@ -1,4 +1,4 @@
-<div class='full-xy'>
+<div class='full-xy perspective-container'>
 	<view layer="1" type='row' bg="robin">
 	    <item width='100' height='20' align='center top' class="absolute top-0"
 			u init-with="p:[op:0, tro:center center]"
@@ -14,9 +14,9 @@
             </txt>
 	    </item>
 
-		<item width='50' height="55" align='center top' class="p30xy absolute" style="bottom:12%; perspective:1000;" bg="white"
-			u init-with="p:[tr:rotateX(-90deg), tro:50% 20%]"
-			when-receipt-enter="a:[rotateX:-90deg:0deg:1000:easeOutExpo:0:1:f]">
+		<item width='50' height="55" align='center top' class="p30xy absolute" style="bottom:12%;" bg="white"
+			u init-with="p:[op:0, tr:rotateX(-90deg), tro:50% 20%]"
+			when-receipt-enter="p:[op:1] |a:[rotateX:-90deg:0deg:1000:easeOutExpo:0:1:f]">
 			<item width="100" height="5" class="absolute" style="top:5%" bg="white">
 				<txt class='weight-600 txt-center txt-charcoal' font-size="36px" line-height='1.2' bg="white">
 					Your Receipt
@@ -44,7 +44,9 @@
 				</txt>
 			</item>
 
-			<item height="15" width="100" style="top:40%;" class="absolute" align="center top" bg="white">
+			<item height="15" width="100" style="top:40%;" class="absolute" align="center top" bg="white"
+				u init-with="p-op"
+				when-receipt-item-enter="a:[fadeInLeft:450:easeOutSine:0:1:f]">
 				<txt class='weight-900 txt-shamrock p10x absolute' style="left:5%;" font-size="20px" line-height='1.2' bg="white">
 					Weekly Special
 				</txt>
