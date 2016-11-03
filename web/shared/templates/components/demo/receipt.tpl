@@ -18,7 +18,7 @@
 		<item width='50' height="39" align='center top' class="p30xy absolute" style="bottom:14%;" bg="white"
 			u init-with="p:[op:0, tr:rotateX(-90deg), tro:50% 0%]"
 			when-receipt-enter="p:[op:1] | a:[rotateX:-90deg:0deg:1000:easeOutExpo:0:1:f]"
-			when-receipt-exit="a:[rotateX:0deg:-90deg:500:easeInExpo:0:1:f]">
+			when-receipt-exit="a:[rotateX:0deg:-90deg:500:easeInExpo:0:1:f,opacity:1:0:500:easeInExpo:0:1:f]">
 
 			<item height="15" width="100" style="top:0%" class="absolute p15xy" align="center center" bg="smoke"
 				u init-with="p:[op:0, tr:translateY(30px)]"
