@@ -10,6 +10,17 @@
 
 
 angular.module('uguru.shared.directives')
+// todo now
+// - animName: in, out, set, before, after, send, setTemp
+// - anim
+// - tween
+// - verify trigger
+
+// todo later
+// - trigger args
+// - replace trigger scope.watch for 'on' states with a class that initiates the watcher (to prevent future watchers)
+
+
 .directive('transcluder', function() {
 // http://stackoverflow.com/questions/24615103/angular-directives-when-and-how-to-use-compile-controller-pre-link-and-post
     return {
@@ -37,15 +48,13 @@ angular.module('uguru.shared.directives')
     compile: function compile(element, attr) {
 
         var url;
-        if (attr.uSrc) {
-          url = attr.uSrc;
+        if (attr.uSrc || window.location.href.split('8100').length > 1) {
+
+          url = attr.uSrc || 'coach/static/data/site.json';
         } else if (attr.accessCode) {
           url = 'https://s3-us-west-1.amazonaws.com/ui-coach/users/' + attr.accessCode + '/app.json'
-        } else if (attr.linkData && attr.linkData.length) {
-          url = attr.linkData;
-
         }
-        url && url.length && XHRService.getJSONFile('GET', url, function(data) {$rootScope[attr.linkDataName] = data}, {});
+        url && url.length && XHRService.getJSONFile('GET', url, function(data) {$rootScope.app = data; console.log($rootScope.app)}, {});
       }
   }
 }])

@@ -30,22 +30,22 @@ angular.module('uguru.shared.directives.base.components')
         }
     }])
 
-    .directive('uImage', ['$compile',  function($compile) {
-        return {
-            restrict: 'E',
-            replace: true,
-            templateUrl: function(element, attr) {
-                return 'shared/templates/components/graphic/image.' + (attr.type && (attr.type + '.')  || '') + 'tpl';
-            },
-            link: {
-                pre: function (scope, element, attrs) {
-                        var imageElem = element[0].querySelector('img');
-                        console.log(imageElem)
-                    }
+    // .directive('uImage', ['$compile',  function($compile) {
+    //     return {
+    //         restrict: 'E',
+    //         replace: true,
+    //         templateUrl: function(element, attr) {
+    //             return 'shared/templates/components/graphic/image.' + (attr.type && (attr.type + '.')  || '') + 'tpl';
+    //         },
+    //         link: {
+    //             pre: function (scope, element, attrs) {
+    //                     var imageElem = element[0].querySelector('img');
+    //                     console.log(imageElem)
+    //                 }
 
-            }
-        }
-    }])
+    //         }
+    //     }
+    // }])
     .directive('media', ['$compile', 'XHRService', '$timeout', 'CompService', function($compile, XHRService, $timeout, CompService) {
         return {
             restrict: 'E',
@@ -134,93 +134,15 @@ angular.module('uguru.shared.directives.base.components')
         };
       }
     ])
-    .directive("uInput", ["CompService", "$compile", '$timeout', function(CompService, $compile, $timeout) {
-        return {
-            restrict: 'E',
-            replace: true,
-            transclude: true,
-            scope: true,
-            templateUrl:CompService.getCompTemplateType('input'),
-            compile: function(element, attr, transclude) {
-                var input = {
-                    placeholder: attr.placeHolder || 'this is a placeholder',
-                    type: attr.iType,
-                    text: attr.text,
-                    element: null,
-                    ghost: null
-                };
-                return {
-                    pre:
-                    function (scope, lElem, lAttr) {
-
-                        scope.input = input;
-                        scope.input.func = {
-                            onKeyPress: onKeyPress(scope),
-                            focusAndSelectText: focusInvisibleInput(scope),
-                            addKeyListener: onKeyPress(scope)
-                        }
-
-
-                         transclude(scope, function(clone, innerScope) {
-
-
-                            lElem.html(clone.html());
-                            $compile(lElem)(scope);
-
-                        })
-
-                         $timeout(function() {
-                            scope.input.element = lElem.find('input');
-                            scope.input.ghost = lElem[0].querySelector('#ghost-input-container');
-                            if (scope.input.ghost) {
-                                scope.input.ghost = angular.element(scope.input.ghost);
-                            }
-                            scope.input.ghost.innerHTML = '';
-                         })
-
-
-                    },
-                    post: angular.noop
-                }
-            }
-        }
-        function focusInvisibleInput(scope) {
-            return function(input, $event) {
-                // angular.element(input.element[0]).triggerHandler('focus');
-                scope.input.element.triggerHandler('click').triggerHandler('select')
-
-
-                // scope.input.element[0].focus();
-
-            }
-
-        }
-        function onKeyPress(scope) {
-            return function(input, text, $event) {
-                scope.input.element.triggerHandler('click').triggerHandler('select')
-
-                input.element.on('keydown', function($event) {
-                    var newLetters = angular.element('<letter keep type="squishBounce">' + $event.key + '</letter>');
-                    scope.input.ghost.append(newLetters)
-                    $compile(newLetters)(scope);
-
-                })
-                if (!scope.input.element && $event.target.nodeName.toLowerCase() === 'label') {
-                    scope.input.element = $event.target;
-                }
-
-            }
-        }
-    }])
     .directive('types', ['$compile', '$stateParams', "$timeout", function($compile, $stateParams, $timeout) {
         return {
             scope: false,
             link: {pre: function(scope, element, attr) {
                 scope.types = attr.types.split(', ');
-                scope.activeType = $stateParams.type;
+                scope.activeType = $stateParams.type || scope.types[0];
 
                 var d = angular.element('<div></div>')
-                d.attr('ng-include', '"admin/templates/types.tpl"');
+                d.attr('ng-include', '"shared/templates/types.tpl"');
                 element.parent().append(d);
                 $compile(d)(scope)
                 scope.activateType = function($event, type) {
@@ -274,7 +196,7 @@ angular.module('uguru.shared.directives.base.components')
             scope:false,
             replace:true,
             templateUrl: function(element, attr) {
-                return attr.src;
+                return attr.url;
             },
             compile: function compile(element, attr)  {
                 CompService.renderAllStyleAttributes(element, attr);
@@ -415,44 +337,44 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
-// .directive('text', ['StyleService', '$compile', '$timeout', function (StyleService, $compile, $timeout) {
-//       return {
-//         restrict: 'AE',
-//         priority: 1,
-//         compile: function(elem, attr) {
-//           !('fill' in attr) && attr.$set('fill', 'white');
+.directive('text', ['StyleService', '$compile', '$timeout', function (StyleService, $compile, $timeout) {
+      return {
+        restrict: 'AE',
+        priority: 1,
+        compile: function(elem, attr) {
+          !('fill' in attr) && attr.$set('fill', 'white');
 
-//           !('x' in attr) && attr.$set('x', '50');
-//           !('y' in attr) && attr.$set('y', '56.25');
-//           !('fontSize' in attr) && attr.$set('font-size', '75');
-//           !('textAnchor' in attr) && attr.$set('text-anchor', 'middle');
-//           // return {
-//           //       pre:function (lScope, lElem, lAttr) {
+          !('x' in attr) && attr.$set('x', '50');
+          !('y' in attr) && attr.$set('y', '56.25');
+          !('fontSize' in attr) && attr.$set('font-size', '75');
+          !('textAnchor' in attr) && attr.$set('text-anchor', 'middle');
+          // return {
+          //       pre:function (lScope, lElem, lAttr) {
 
-//           //           transclude(lScope, function(clone, innerScope) {
-//           //               // lElem[0].innerHTML = clone[0].innerHTML;
-//           //               // lElem.html(clone.html())// = .innerHTML
-//           //           })
-//           //       }
-//           //   }
+          //           transclude(lScope, function(clone, innerScope) {
+          //               // lElem[0].innerHTML = clone[0].innerHTML;
+          //               // lElem.html(clone.html())// = .innerHTML
+          //           })
+          //       }
+          //   }
 
-//         }
-//       };
-//     }])
-//     // .directive('item', ['StyleService', '$compile', function (StyleService, $compile) {
-//     //   return {
-//     //     restrict: 'AE',
-//     //     templateUrl: 'shared/templates/components/base/svg/item.svg.tpl',
-//     //     compile: function(elem, attr) {
-//     //       elem.css(StyleService.css.flexItem);
-//     //       ('height' in attr) && attr.$set('height', attr.height);
-//     //     },
-//     //     replace: true,
-//     //     transclude: true,
-//     //     priority:1
-//     //   };
-//     // }])
-    angular.module('uguru.shared.directives.base.components')
+        }
+      };
+    }])
+    // .directive('item', ['StyleService', '$compile', function (StyleService, $compile) {
+    //   return {
+    //     restrict: 'AE',
+    //     templateUrl: 'shared/templates/components/base/svg/item.svg.tpl',
+    //     compile: function(elem, attr) {
+    //       elem.css(StyleService.css.flexItem);
+    //       ('height' in attr) && attr.$set('height', attr.height);
+    //     },
+    //     replace: true,
+    //     transclude: true,
+    //     priority:1
+    //   };
+    // }])
+    // angular.module('uguru.shared.directives.base.components')
     .directive("render", ["AdminSVGRenderService", "$compile", function(AdminSVGRenderService, $compile) {
         return {
             restrict: 'E',
@@ -761,11 +683,116 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
+    .directive("tabs", ["CompService", function(CompService) {
+        return {
+            restrict: 'E',
+            scope: false,
+            replace:true,
+            templateUrl: function(element, attr) {
+
+                return attr.import;
+            },
+            compile: function(element, attr) {
+                CompService.renderAllStyleAttributes(element, attr);
+            }
+        }
+    }])
+    .directive("uInput", ["CompService", function(CompService) {
+        return {
+            restrict: 'E',
+            scope: false,
+            replace:true,
+            templateUrl: 'shared/templates/components/base/input.tpl',
+            compile: function(element, attr) {
+                CompService.renderAllStyleAttributes(element, attr);
+                 return {
+                    pre: function preLink(scope, elem, attr) {
+                        scope.type = attr.type || 'light';
+                    }
+                }
+            }
+        }
+    }])
+    .directive("image", [function() {
+        return {
+            restrict: 'E',
+            scope: false,
+            replace:true,
+            templateUrl: 'shared/templates/components/base/image.tpl',
+            compile: function(element, attr) {
+                CompService.renderAllStyleAttributes(element, attr);
+                 return {
+                    pre: function preLink(scope, elem, attr) {
+
+                    },
+                    post: angular.noop
+                }
+            }
+        }
+    }])
+    .directive("calendar", ["$compile", "CompService", function($compile, CompService) {
+        return {
+            restrict: 'E',
+            scope: false,
+            replace:true,
+            templateUrl: 'shared/templates/components/base/calendar.tpl',
+            compile: function(element, attr, transclude) {
+                CompService.renderAllStyleAttributes(element, attr);
+
+                return {
+                    pre: function preLink(scope, elem, attr) {
+                        // var
+
+                        var today = new Date();
+
+                        var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                        scope.daysOfWeek = ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'];
+
+                        var calendar = {
+                            month: months[today.getMonth()],
+                            date: today.getUTCDate(),
+                            year: today.getYear() + 1900,
+                            day: today.getDay() + 1,
+                            numDays: new Date(today.getFullYear(), today.getMonth()+1, 0).getUTCDate(),
+                            days: []
+                        }
+
+
+
+                        for ( var i = 0; i < calendar.numDays; i++) {
+                            calendar.days.push({
+                                isBefore: calendar.date > i,
+                                isToday: calendar.date === i,
+                                isAfter: calendar.date < i,
+                                dayName: scope.daysOfWeek[calendar.day % 6],
+                                day: i
+                            })
+                        }
+                        console.log(calendar.days)
+                        scope.calendar = calendar;
+
+                        // transclude(scope, function(clone, innerScope) {
+
+                        //     console.log();
+                        //     for (var i = 0; i < clone.length; i++) {
+                        //         console.log(clone[i]);
+                        //     }
+                        // });
+                        // for (var i = 0; i < scope.numDays)
+
+
+
+
+
+                    }
+                }
+            }
+        }
+    }])
     .directive("txt", ["CompService",function(CompService) {
         return {
             restrict: 'E',
             scope: false,
-            priority: 1000,
             compile: function(element, attr) {
                 if (attr.txt && attr.txt.length && _window.mobile) return;
                 CompService.renderAllStyleAttributes(element, attr);
@@ -840,11 +867,78 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
+    .directive("mainView", [function() {
+        return {
+            restrict: 'E',
+            scope: false,
+            compile: function(elem, attr, transclude) {
+                return {
+                    post: angular.noop,
+                    pre: function postLink(scope,elem,attr) {
+                        scope.root.mainViews.push(elem);
+                    }
+                }
+            }
+        }
+    }])
+    .directive("modal", ["CompService", "$compile", '$timeout', function(CompService, $compile, $timeout) {
+        return {
+            restrict: 'E',
+            priority: -1,
+            scope: false,
+            transclude:true,
+            terminal:true,
+            replace:true,
+            template: '<view fixed></view>',
+            compile: function(elem, attr, transclude) {
+                elem[0].style.zIndex = -1;
+                elem[0].style.opacity = 0;
+                elem[0].style.position = 'fixed';
+
+                return {
+                    pre: function postLink(scope, p_elem, attr) {
+
+                        var _window = scope.root.window;
+
+                        var width = scope.root.window.width;
+                        if (_window.mobile) {
+                            p_elem.css('transform', 'translateY(' + _window.height + 'px)');
+                        } else {
+                            p_elem.css('transform', 'translateY(-' + _window.height + 'px');
+                        }
+                        $timeout(function() {
+                            if (scope.root.mainViews && scope.root.mainViews.length) {
+                                scope.root.mainViews.forEach(function(parent, i) {
+                                    if (parent[0].contains(p_elem[0])) {
+                                        transclude(scope, function(clone, innerScope) {
+
+                                            p_elem.append(clone);
+
+                                            parent.parent().append(p_elem);
+
+                                            p_elem.attr('u', '')
+
+                                            $compile(p_elem)(scope.$parent)
+                                            p_elem[0].className = '';
+                                            attr.bg && p_elem[0].classList.add('bg-' + attr.bg)
+
+
+
+                                        })
+                                    }
+                                })
+                            }
+                        })
+
+                    }
+                }
+            }
+        }
+    }])
     .directive("view", ["CompService", "$compile", function(CompService, $compile) {
         return {
             restrict: 'E',
             replace:true,
-            scope:false,
             priority: 100,
             compile: function(element, attr, transclude) {
                 CompService.renderAllStyleAttributes(element, attr);
