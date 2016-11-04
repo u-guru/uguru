@@ -4,9 +4,13 @@
             {
                 "url": "ui/templates/loader.html"
             },
+
         "views": {
             "home": {
                 "url": "ui/templates/home.html"
+            },
+            "samir": {
+                "landing_url": "shared/templates/layouts/landing-sm.tpl"
             }
         }
     }
