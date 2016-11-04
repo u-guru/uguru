@@ -1,0 +1,13 @@
+{
+    "app": {
+        "loader":
+            {
+                "url": "ui/templates/loader.html"
+            },
+        "views": {
+            "home": {
+                "url": "ui/templates/home.html"
+            }
+        }
+    }
+}
