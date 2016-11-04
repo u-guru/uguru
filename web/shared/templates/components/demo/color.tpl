@@ -10,18 +10,18 @@
             </div>
             <div  class="p10xy flex-center radius-2 height-128 width-128"
                 u init-with="p:[background-color:rgba(236, 116, 101, 1)]">
-                <txt font-size='12'  bg='#FFFFFF' class='txt-charcoal'>
+                <txt font-size='12'  bg='#2D2D2D' class='txt-charcoal'>
                     bg[hex]
                     <br>
-                    #FFFFFF
+                    #2D2D2D
                 </txt>
             </div>
             <div  class="p10xy flex-center radius-2 height-128 width-128"
                 u init-with="p:[background-color:rgba(236, 116, 101, 1)]">
-                <txt font-size='12'  class='txt-smoke' bg='rgba(0,0,0,0.5)'>
+                <txt font-size='12'  class='txt-smoke' bg='rgba(1, 47, 161, 1)'>
                     bg[rgba]
                     <br>
-                    rgba(0,0,0,0.5)
+                    RGBA(1, 47, 161, 1)
                 </txt>
             </div>
             <div  class="p10xy flex-center radius-2 height-128 width-128"

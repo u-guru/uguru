@@ -2,14 +2,16 @@
 
 
     <view layer="3" type='row' bg="smoke" width='100' height='100' align='center center'>
-        <item width='50' height='30' align='center top' bg="orange">
-			<item width='25' height='50' align='left top' bg="azure">
+        <item width='50' height='30' align='center top' class="border-2 border-taupe">
+			<item width='20' height='50' align='center center' class="border-2-bottom border-taupe">
 				<graphic
-					class='flex-grow svg-stroke-5 stroke-cerise fill-cerise' height='50' align="center bottom" url='shared/templates/components/svg/main/heart.html'></graphic>
+					class='relative svg-stroke-5 stroke-cerise fill-cerise' height='72' url='shared/templates/components/svg/main/heart.html'></graphic>
 			</item>
 
-			<item width='75' height='50' align='right top' bg="shamrock">
-
+			<item width='80' height='50' align='center center' class="border-2-bottom border-2-left border-taupe">
+				<text class='weight-700 uppercase txt-center txt-charcoal' font-size="36px" letter-spacing='2em' line-height='1.2'>
+					Welcome To Cycle City
+				</text>
 			</item>
         </item>
     </view>
