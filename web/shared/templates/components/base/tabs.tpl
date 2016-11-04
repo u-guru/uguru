@@ -1,4 +1,4 @@
-<item class="flex-wrap-center p15-grid bg-transparent" fixed width="100" height="10" align="top center">
+<item class="flex-wrap-center p15-grid" fixed width="100" height="10" bg="rgba(0,0,0,0.5)" align="top center">
     <item align="center center" width="20" height="100%" relative>
         <graphic class="flex-grow svg-stroke-5 stroke-cerise fill-cerise" height="50" url="shared/templates/components/svg/main/heart.html"> </graphic>
         <txt font-size="14" letter-spacing="1px" class="text-left txt-charcoal weight-600 uppercase flex-grow text-center">Member Login</txt>

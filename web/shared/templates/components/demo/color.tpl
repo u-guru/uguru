@@ -1,6 +1,37 @@
 <div class="full-xy flex-center absolute top-0 left-0">
     <ul class='flex-wrap-center full-x p15-grid'>
-
+            <div  class="p10xy flex-center radius-2 height-128 width-128"
+                u init-with="p:[background-color:rgba(236, 116, 101, 1)]">
+                <txt font-size='12'  bg='cerise'>
+                    bg[class name]
+                    <br>
+                    Cerise
+                </txt>
+            </div>
+            <div  class="p10xy flex-center radius-2 height-128 width-128"
+                u init-with="p:[background-color:rgba(236, 116, 101, 1)]">
+                <txt font-size='12'  bg='#FFFFFF' class='txt-charcoal'>
+                    bg[hex]
+                    <br>
+                    #FFFFFF
+                </txt>
+            </div>
+            <div  class="p10xy flex-center radius-2 height-128 width-128"
+                u init-with="p:[background-color:rgba(236, 116, 101, 1)]">
+                <txt font-size='12'  class='txt-smoke' bg='rgba(0,0,0,0.5)'>
+                    bg[rgba]
+                    <br>
+                    rgba(0,0,0,0.5)
+                </txt>
+            </div>
+            <div  class="p10xy flex-center radius-2 height-128 width-128"
+                u init-with="p:[background-color:rgba(236, 116, 101, 1)]">
+                <txt font-size='12'  class='txt-smoke' bg='rgb(0,0,0)'>
+                    bg[rgb]
+                    <br>
+                    rgb(0,0,0)
+                </txt>
+            </div>
             <div class="p10xy flex-center radius-2 height-128 width-128"
                 u init-with="p:[background-color:rgba(236, 116, 101, 1)]">
                 <txt font-size='12'>
