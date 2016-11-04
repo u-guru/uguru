@@ -59,7 +59,7 @@
         <item class='bg-smoke' width='30' m-width='90' height='70' margin='5%'>
         </item>
     </view>
-    <modal  name='lead-gen' position='top' class='bg-charcoal-50p' bg='charcoal-80p' init-with='p:[opacity:0]' when-modal-lead-init-requested='a:[slideInDown-subtle:1000:linear:0:1:f]' when-modal-lead-close="a:[slideOutUp-subtle:1000:linear:0:1:f]|send:[set-transform-after-anim:self:1100]" when-set-transform-after-anim='p:[transform:translateY(-1000%)]' padding='10%' height='100%' width='100%' layer='4' type='row' align='center center'>
+    <modal  position='top' class='bg-charcoal-50p' bg='charcoal-80p' init-with='p:[opacity:0]' when-modal-lead-init-requested='a:[slideInDown-subtle:1000:linear:0:1:f]' when-modal-lead-close="a:[slideOutUp-subtle:1000:linear:0:1:f]|send:[set-transform-after-anim:self:1100]" when-set-transform-after-anim='p:[transform:translateY(-1000%)]' padding='10%' height='100%' width='100%' layer='4' type='row' align='center center'>
         <graphic u absolute  on-click='s:[modal-lead-close:public]' class="flex-grow svg-stroke-10 top-0 right-0 stroke-white flex-center svg-white svg-32 svg-stroke-8 close-icon" init-with='p:[transform:rotate(45deg)]' height='10' width='10' margin='2.5%' url="shared/templates/components/svg/main/plus.html"> </graphic>
         <item layer='-1' padding='10' bg-url='http://www.iheartmylife.com/wp-content/uploads/2016/08/about.jpg' height='100' width='100' align='center center'>
             <item class='bg-smoke' width='30' m-width='90' height='70' margin='5%'>
