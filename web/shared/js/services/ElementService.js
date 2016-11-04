@@ -50,13 +50,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         return elem
       }
 
-      function launchExternalOnProp(url) {
-        if (url.indexOf('http://') === -1) {
-          url = 'http://' + url
-        }
-        $window.open(url, '_blank');
-      }
-
       function launchExternalWindow(params, element) {
         var anim_string = params;
         if (anim_string.indexOf('[') > -1) {
@@ -348,10 +341,10 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (actions.prop) {
             if ('prop' in actions.prop.delays) {
               $timeout(function() {
-                applyPropsToElement(scope, element, actions.prop.parsed, actions.prop.delays);
+                applyPropsToElement(element, actions.prop.parsed, actions.prop.delays);
               }, actions.prop.delays.external)
             } else {
-              applyPropsToElement(scope, element, actions.prop.parsed);
+              applyPropsToElement(element, actions.prop.parsed);
             }
           };
           if (actions.anim) {
@@ -446,13 +439,13 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         })
 
         animations = animArr.join(",");
-        console.log(animations)
+
         // animations = '[' + animations + ']'
         // console.log('pre condense', animations)
         // animations = condenseAnimationsAndShortcuts(scope, animations);
         var state = AnimationFrameService.init.state('', animations, element[0], defaults);
         // console.log(state.props.counter[0])
-
+        // console.log(state)
         if (!player) {
 
           player = AnimationFrameService.getPlayer();
@@ -462,6 +455,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
         player.scheduleStream(player, state, animDelay, debug);
         if (!scope) {
+
           return {player: player, stream:state, delay: animDelay}
         }
         //TODO, inject global offset here
@@ -487,14 +481,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           return rShortcuts[arg][str]
         }
         return str;
-      }
-
-      function rgb2hex(rgb){
-       rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
-       return (rgb && rgb.length === 4) ? "#" +
-        ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
-        ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
-        ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
       }
 
       function parsePropertiesWithShortcuts(elem, properties) {
@@ -530,36 +516,12 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
 
-      function applyPropsToElement(scope, elem, properties, shortcuts) {
-        if (properties.indexOf('{{') > -1) {
-          properties = $parse(properties)(scope)
-        }
-        var specialProperties = {
-          'attr': ['stroke', 'fill', 'fill-opacity', 'stroke-opacity'],
-          'comma': ['background', 'background-color', 'color']
-        }
-        var specialPropAttrs = [];
+      function applyPropsToElement(elem, properties, shortcuts) {
+
         // properties.split(',').forEach(function() )
         var propertyArr = [];
 
         properties = UtilitiesService.replaceAll(properties, ', ', ',');
-        for (prop_type in specialProperties) {
-          specialProperties[prop_type].forEach(function(prop) {
-            if (!prop || !prop.length) return;
-
-
-              var replaceArr = [];
-              properties.split(prop).forEach(function(prop_ref, i) {
-                if (prop_ref.split(':')[1]) {
-                  var newFormat = UtilitiesService.replaceAll(prop_ref, ',', '|');
-                  properties = properties.replace(prop_ref, newFormat);
-                }
-              })
-            if (properties.indexOf(prop) > -1 && prop_type === 'attr') {
-              specialPropAttrs.push(prop);
-            }
-          })
-        }
         var propertySplit = properties.split(',');
         if (!rShortcuts.cssPropValues && RootService.animations.customShortcuts) {
           rShortcuts.cssPropValues = RootService.animations.customShortcuts.cssPropValues;
@@ -568,11 +530,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           rShortcuts.args = RootService.animations.customShortcuts.args;
         }
         properties.split(',').forEach(function(prop, i) {
-          prop = UtilitiesService.replaceAll(prop, '|', ',');
-          console.log(prop)
-
-          if (!prop || !prop.length) return;
-          // prop = prop.replaceAll('|', ',');
           if (!rShortcuts || !rShortcuts.cssPropValues) {
 
           }
@@ -587,7 +544,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           }
           if (!rShortcuts.cssPropValues) {
             $timeout(function() {
-              applyPropsToElement(scope, elem, properties, shortcuts);
+              applyPropsToElement(elem, properties, shortcuts);
             })
             return;
           }
@@ -607,25 +564,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
 
         propertyArr.forEach(function(kv, i) {
-          if (kv.key === 'launch') {
-            launchExternalOnProp(kv.value);
-          }
-
-          if (kv.key.indexOf('-') > -1) {
-
-            kv.key = UtilitiesService.camelCase(kv.key)
-          }
-
-          if (specialPropAttrs.indexOf(kv.key) > -1) {
-            console.log('setting attr instead', kv)
-            if (kv.value.indexOf('rgb') > -1) {
-              var prevValue = kv.value + '';
-              kv.value = rgb2hex(kv.value);
-              console.log('converted rgba', prevValue, ' to hex', kv.value)
-            }
-            elem.attr(kv.key, kv.value);
-            return;
-          }
           elem.css(kv.key, kv.value);
         })
       }
@@ -655,6 +593,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function getStateArgsFromValue(state_args, arg_value) {
+        if (!state_args || !arg_value) return;
         //SHORTCUTS GO HERE for FULL anim/send/trigger states;
         arg_value = UtilitiesService.replaceAll(arg_value, ' | ', '|');
         var resultArr = [];
@@ -683,7 +622,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function getArgActions(state_args, full_value, shortcuts) {
-
+        if (!state_args) return;
         var actionDict = {};
         var delayDict = {};
         var rawDict = {};

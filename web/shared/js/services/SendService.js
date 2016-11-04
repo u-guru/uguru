@@ -360,7 +360,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
         if (state_type === 'when') {
           resultDict.incoming.push(state);
         }
-        if (state.actions.send) {
+        if (state.actions && state.actions.send) {
 
           if (state.actions.send.parsed.indexOf('}}') > -1) {
             repairSendStateName(scope, state, state.actions.send.parsed)
@@ -394,6 +394,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
   }
 
   function execSingleMsgArg(scope, element_arr, options, depth) {
+
     var depthMappings = {'depth(*)': -1}
     var total_delay = options.delay || 0
     var stagger_delay = 0;
@@ -403,7 +404,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
       if (options.stagger && options.stagger.delays.length) {
         stagger_delay = options.stagger.delays[i]
       }
-
+      console.log(state_ref.actions.send)
       state_ref.func(state_ref.actions, scope, total_delay + stagger_delay, final_depth);
     })
 
@@ -428,7 +429,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
         msgArr.forEach(function(msg_info, i) {
           var staggerExists = false;
 
-          console.log('executing', msg_info.nameCamel)
+          // console.log('executing', msg_info.nameCamel)
 
 
 
@@ -453,7 +454,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
           } else {
 
             var currentMsgContext = scope.public.customStates.when[msg_info.nameCamel] || scope.$parent.public.customStates.when[msg_info.nameCamel];
-            if (currentMsgContext.elements) {
+            if (currentMsgContext && currentMsgContext.elements) {
             var numChildren = currentMsgContext.elements.length;
 
             if (delay_dict.internal.stagger && msg_info.name in delay_dict.internal.stagger) {

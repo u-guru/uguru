@@ -41,6 +41,85 @@ angular.module('uguru.shared.directives')
      };
 
 })
+.directive('import', ['$parse', '$compile', '$timeout', '$rootScope', function($parse, $compile, $timeout, $rootScope) {
+  return {
+    restrict: 'E',
+    replace:true,
+    scope: false,
+    templateUrl: function(element, attr) {
+
+      var urlSplit = attr.url.replace('ui.','').split('.');
+      var ptr = $rootScope.ui.data;
+      urlSplit.forEach(function(url_split, i) {
+         ptr = ptr[url_split]
+      })
+      console.log(ptr)
+      return  ptr
+
+    }
+  }
+}])
+
+.directive('linkSrcData', ['XHRService', '$compile', '$timeout', '$rootScope', function(XHRService, $compile, $timeout, $rootScope) {
+  return {
+    restrict: 'A',
+    replace:true,
+    compile: function compile(element, attr) {
+
+        var url;
+        var mainUrl;
+        if (attr.uSrc || window.location.href.split('8100').length > 1) {
+
+          url = attr.linkSrcData || attr.uSrc || 'coach/static/data/site.json';
+        } else if (attr.accessCode) {
+          url = 'https://s3-us-west-1.amazonaws.com/ui-coach/users/' + attr.accessCode + '/app.json'
+        }
+
+        var varName = attr.linkDataName||url.split('/').reverse()[0].split('.')[0];
+        var nestedVars = varName.split('.');
+        mainUrl = nestedVars[0];
+
+        if (url && url.length) {
+          XHRService.getJSONFile(
+            'GET',
+            url,
+            function(data) {
+
+
+
+              var ptr = $rootScope;
+              nestedVars.forEach(function(var_name, i) {
+                ptr[var_name] = {};
+                ptr = ptr[var_name];
+              })
+              ptr.data = data;
+              // console.log(ptr.data)
+              // varName = varName || 'app';
+
+              // $rootScope[varName]= data;
+            },
+          {});
+
+        }
+        return {pre:
+          function preLink(scope, p_elem, attr) {
+
+            $rootScope.$watch(mainUrl + '.data', function(obj) {
+
+              scope[mainUrl] = obj;
+
+              $timeout(function() {
+                scope.$apply();
+              })
+
+
+
+            })
+          }
+        }
+      }
+  }
+}])
 .directive('linkData', ['XHRService', '$compile', '$timeout', '$rootScope', function(XHRService, $compile, $timeout, $rootScope) {
   return {
     restrict: 'A',
@@ -50,7 +129,7 @@ angular.module('uguru.shared.directives')
         var url;
         if (attr.uSrc || window.location.href.split('8100').length > 1) {
 
-          url = attr.uSrc || 'coach/static/data/site.json';
+          url = attr.linkSrcData || attr.uSrc || 'coach/static/data/site.json';
         } else if (attr.accessCode) {
           url = 'https://s3-us-west-1.amazonaws.com/ui-coach/users/' + attr.accessCode + '/app.json'
         }
@@ -101,57 +180,7 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
-.directive("initAfter", ["$compile", "UtilitiesService", function($compile, UtilitiesService) {
-      return {
-          restrict: 'A',
-          replace: true,
-          transclude: true,
-          priority:101,
-          compile: function(element, attr, transclude) {
-            var whenAttr = [];
-            if (attr.initAfter && attr.initAfter.length) {
-              attr.initAfter.split(',').forEach(function(_attr_name, i) {
-                whenAttr.push(UtilitiesService.camelCase('when-' + _attr_name.trim()))
-              })
-            }
-              return {
-                  pre:
-                  function prelink(scope, lElem, lAttr) {
-                    var lElemPointer = lElem;
-                    var whenAttrListeners = [];
-                    scope.transcludeComplete = false;
-                    transclude(scope, function(clone, innerScope) {
 
-                      whenAttr.forEach(function(attr_name, i) {
-                        var iListen = scope.$watch('root.public.customStates.after.' + attr_name, function(val, new_val) {
-
-                          if (val) {
-                            whenAttrListeners[i]();
-
-                            lElem[0].removeAttribute('init-after');
-                            if (lAttr.ngIncludeAfter) {
-                              var src = lAttr.ngIncludeAfter;
-                              lElem[0].removeAttribute('ng-include-after');
-                              clone.attr('ng-include', src);
-                            }
-                            lElem[0].setAttribute('u', '');
-                            $compile(lElem)(innerScope);
-
-
-                            lElem.append(clone);
-                            transcludeComplete = true;
-                          }
-                        });
-                        whenAttrListeners.push(iListen);
-                      })
-                    })
-
-                  },
-                  post: angular.noop
-              }
-          }
-      }
-}])
 .directive('staggerChildren', ['UtilitiesService', 'DirectiveService', '$timeout', '$compile', function(UtilitiesService, DirectiveService, $timeout, $compile) {
   return {
     restrict: 'AE',
@@ -404,79 +433,6 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
-.directive('initWith', ['DirectiveService', 'UtilitiesService', '$compile', function(DirectiveService, UtilitiesService, $compile) {
-  return {
-    restrict: 'A',
-    scope:false,
-      link: {
-        pre: function(scope, element, attr) {
-          if (!('u' in attr) && !attr.initAfter) {
-            attr.$set('u', '');
-            $compile(element)(scope)
-            return;
-          }
-          // scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
-
-          var switchDict;
-          var elemArgs = DirectiveService.parseArgs(attr.initWith, 'init-with', element);
-          var listenerArgs = DirectiveService.detectExternalStates(attr);
-          for (key in listenerArgs) {
-            var type = listenerArgs[key].type
-            var _attr = listenerArgs[key].attr;
-
-            DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
-          }
-          var switchName = attr.switch && attr.switch.split(':')[0];
-          var switchId = 'switch-id' in attr && attr['switch-id'] && parseInt(attr['switch-id'])
-          if ('initLater' in attr) {
-
-            scope.$watch(function() {
-              return element.attr('class');
-            }, function(new_classes, old_classes) {
-              if (new_classes && new_classes.indexOf('init-with') > -1) {
-                console.log('initializing');
-                element[0].classList.remove('init-with');
-                execInitWith(scope);
-              }
-            })
-            return
-          }
-
-          if ('switch' in attr && 'switch-id' in attr) {
-              switchId = parseInt(attr['switch-id'])
-              var scopeSwitches = scope.switchDict[switchName].switches;
-              var switchRef = scopeSwitches[switchId - 1];
-              if ('default' in switchRef) {
-                var defaultArgAttrName = 'on-switch-' + UtilitiesService.camelToDash(switchName).toLowerCase() + '-' + switchRef['default'];
-                var defaultStateArgs = UtilitiesService.camelCase(defaultArgAttrName)
-                switchDict = DirectiveService.parseArgs(attr[defaultStateArgs]);
-              }
-          }
-
-          execInitWith(scope, switchDict);
-
-          function execInitWith(scope, has_switch_default) {
-
-            var supportedCommands = DirectiveService.supportedCommands;
-            for (key in elemArgs) {
-              var switch_interference = has_switch_default && (key in has_switch_default)
-              if (supportedCommands.indexOf(key) > -1 && !switch_interference) {
-                  DirectiveService.activateArg(key, elemArgs[key], scope, element);
-              } else if (switch_interference) {
-                DirectiveService.activateArg(key, has_switch_default[key], scope, element)
-                var switchObjRef = scope.switchDict[switchName].switches[switchId - 1]
-                if (switchId && switchObjRef && switchObjRef.active && switchObjRef.default === 'active') {
-                  scope.switchDict[switchName]['activeSwitches'].push(switchId)
-                }
-              }
-            }
-
-
-          }
-        }
-      }
-    }
-}])
 
 
 .directive("uClass", ["$compile", "ElementService", function($compile, ElementService) {
@@ -500,22 +456,37 @@ angular.module('uguru.shared.directives')
           restrict: 'A',
           replace: true,
           transclude: true,
-          priority:110,
+          priority:100,
           scope:true,
 
           compile: function(element, attr, transclude) {
             // attr.$set('public', 'public');
+            // attr.$set('root', 'root');
+            var hasInitAfter = false;
+              if (attr.initAfter && attr.initAfter.length) {
+                hasInitAfter = ElementService.toCamelCaseBridge(attr.initAfter)
+                var hasInitAfterCamel = ElementService.toCamelCaseBridge('when-' + attr.initAfter);
+                attr.$set(hasInitAfterCamel, attr.onInit);
+                element[0].removeAttribute('init-after');
+                element[0].removeAttribute('on-init')
+                delete attr['initAfter']
+                delete attr['onInit']
+                delete attr.$attr['on-init']
+                // attr.$set();
+              }
 
               if (element[0].nodeName.toLowerCase() === 'griditem') {
                 CompService.renderAllStyleAttributes(element, attr);
               }
               this.states = ElementService.renderElementStates(element, attr);
+
               var states = this.states;
 
               var postStates = [];
               return {
                   pre: function (scope, lElem, lAttr) {
                     scope.states = states || {};
+                    scope.hasInitAfter = hasInitAfter;
                     scope.elem = lElem;
                     scope.parentCompiled = false;
                     scope.inheritedFromParent = [];
@@ -535,7 +506,7 @@ angular.module('uguru.shared.directives')
 
                         if (state.name === 'init' && state.type === 'on') {
                           states.on.push(state);
-                        } else {
+                        } else if (state.exec) {
                           state.exec(element, scope, lAttr, true)
                         }
                       })
@@ -563,7 +534,25 @@ angular.module('uguru.shared.directives')
                           }
                         })
                       }
-                      if (states.when) {
+                      if (states.when && scope.hasInitAfter) {
+                        states.when.forEach(function(w_state, i) {
+                          console.log(w_state, scope.hasInitAfter)
+                          if (w_state.nameCamel === scope.hasInitAfter) {
+                            w_state.exec = function(a1, a2, a3, a4) {
+                              transclude(scope, function(clone, innerScope) {
+                                    // $compile(clone)(innerScope)
+
+                                    lElem.append(clone);
+                                    // $compile(clone)(scope)
+                                    // $compile(lElem.contents())(scope);
+
+
+
+                              });
+                            }
+                          }
+                        })
+
                         // return
                         // states.when.forEach(function(state, i) {
 
@@ -654,7 +643,7 @@ angular.module('uguru.shared.directives')
                       }
 
                       // scope.states = states;
-                      transclude(scope, function(clone, innerScope) {
+                      !scope.hasInitAfter && transclude(scope, function(clone, innerScope) {
                           $compile(lElem.contents())(scope);
 
                           lElem.append(clone);
@@ -665,7 +654,7 @@ angular.module('uguru.shared.directives')
                     scope.states = states
                     if (postStates.length) {
                       postStates.forEach(function(state, i) {
-                      if (state.name.indexOf('init') > -1) {
+                      if (state.name.indexOf('init') > -1 && !scope.hasInitAfter) {
                           state.exec(element, scope, attr);
 
                             if (state.name.indexOf('debug') > -1) {
@@ -775,49 +764,7 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
-.directive('onInit', ['$timeout', 'DirectiveService', '$compile', function ($timeout, DirectiveService, $compile) {
-  return {
-    restrict: 'A',
-    priority:100,
-    scope:false,
-    link: {
-      pre: function(scope, element, attr) {
-        if (!('u' in attr) && !attr.initAfter) {
-          attr.$set('u', '');
-        }
 
-        scope.$watch(function() {
-              return element.attr('class');
-        }, function(new_classes, old_classes) {
-          if (new_classes && new_classes.indexOf('on-init') > -1) {
-            element[0].classList.remove('on-init');
-            onInitReadyFunc();
-          }
-        })
-
-        function onInitReadyFunc() {
-
-          var elemArgs = DirectiveService.parseArgs(attr.onInit, 'on-init', element);
-          var listenerArgs = DirectiveService.detectExternalStates(attr);
-
-          var supportedCommands = DirectiveService.supportedCommands;
-          for (key in elemArgs) {
-            if (supportedCommands.indexOf(key) > -1) {
-                DirectiveService.activateArg(key, elemArgs[key], scope, element);
-            }
-          }
-
-          for (key in listenerArgs) {
-            var type = listenerArgs[key].type
-            var _attr = listenerArgs[key].attr;
-            DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
-          }
-        }
-
-      }
-    }
-  }
-}])
 .directive('initDefault', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
   return {
     restrict: 'A',

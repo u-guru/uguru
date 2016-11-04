@@ -85,7 +85,7 @@
 	    </item>
 	</view>
 	<!-- @samir error for the playlist children-->
-	<view depth="3" type='row'
+	<modal link-size-to="#switch-vibes-btn"
 		u init-with="p:[tro:center bottom, tr:scale(0)]"
 		when-switch-vibes="s:[playlist:children:800] |a:[scale:0:1:800:easeOutBack:0:1:f]"
 		 when-exit-vibes="a:[scale:1:0:200:easeInBack:0:1:f]">
@@ -300,7 +300,7 @@
 	    </item>
 
     <item  m-bg="gold" class='uppercase' width='100' height='15' align='center center' align-self="bottom center">
-        <item align="center center" padding="15" class='border-2 radius-2' u on-click="s:[switch-vibes:public]">
+        <item align="center center" padding="15" class='border-2 radius-2' u on-click="s:[switch-vibes:public]" id='switch-vibes-btn' public-attr="coords">
 			<!-- " -->
             <txt class='weight-500 margin-0 txt-center' font-size="28px" letter-spacing='1px' line-height='1.2'>
                 Switch Vibes
