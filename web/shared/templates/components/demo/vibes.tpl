@@ -1,7 +1,6 @@
 <div class='full-xy' u>
 
-	<!-- @jeselle launch example-->
-	<view layer="4" type='row' bg="robin" u on-init="s:[loader-fade:self:4000]"
+	<view layer="4" type='row' bg="robin" u on-init="s:[loader-fade:depth(0):4000]"
 	    when-loader-fade="a:[opacity:1:0:500:easeOutSine:0:1:f]" ng-if="false">
 	    <!-- on-init="s:[loader-fade:self:2000]" -->
 
@@ -85,10 +84,18 @@
 	    </item>
 	</view>
 	<!-- @samir error for the playlist children-->
+<<<<<<< HEAD
 	<modal link-size-to="#switch-vibes-btn"
 		u init-with="p:[tro:center bottom, tr:scale(0)]"
 		when-switch-vibes="s:[playlist:children:800] |a:[scale:0:1:800:easeOutBack:0:1:f]"
 		 when-exit-vibes="a:[scale:1:0:200:easeInBack:0:1:f]">
+=======
+	<view depth="3" type='row'
+		u
+		init-with="p:[tro:center bottom, tr:scale(0)]"
+		when-switch-vibes="s:[playlist:depth(>1):800] | a:[scale:0:1:800:easeOutBack:0:1:f]"
+		when-exit-vibes="a:[scale:1:0:200:easeInBack:0:1:f]">
+>>>>>>> 2a9151cdf8c8b26e6add2a3dfabb2f58af07ee50
 
 		<item bg="eggplant" width="90" height="90" align="center center">
 			<item class="absolute" style="top:10%; right:8%;" height="8">
@@ -299,6 +306,7 @@
 	        </item>
 	    </item>
 
+<<<<<<< HEAD
     <item  m-bg="gold" class='uppercase' width='100' height='15' align='center center' align-self="bottom center">
         <item align="center center" padding="15" class='border-2 radius-2' u on-click="s:[switch-vibes:public]" id='switch-vibes-btn' public-attr="coords">
 			<!-- " -->
@@ -308,6 +316,17 @@
         </item>
     </item>
 </view>
+=======
+	    <item  m-bg="gold" class='uppercase' width='100' height='15' align='center center' align-self="bottom center">
+	        <item align="center center" padding="15" class='border-2 radius-2' u on-click="s:[switch-vibes:public]">
+				<!-- @samir error sending to line 90 -->
+	            <txt class='weight-500 margin-0 txt-center' font-size="28px" letter-spacing='1px' line-height='1.2'>
+	                Switch Vibes
+	            </txt>
+	        </item>
+	    </item>
+	</view>
+>>>>>>> 2a9151cdf8c8b26e6add2a3dfabb2f58af07ee50
 
 	<view layer="1" type='row' bg="auburn"
 	    u on-init="s:[record-start:children:4400]">
@@ -322,4 +341,5 @@
 	        <item class='relative round' width="213px" height="213px" bg-url='http://www.etonline.com/news/2016/09/24271863/1280_theweeknd_album_twitter.jpg'> </item>
 	    </item>
 	</view>
+
 </div>
