@@ -670,14 +670,19 @@ angular.module('uguru.shared.directives.base.components')
     .directive("bg", [function(CompService) {
         return {
             restrict: 'A',
+            scope: false,
+            replace:true,
             compile: function(element, attr) {
                 if (attr.mBg && attr.mBg.length && _window.mobile) return;
 
                 var backgroundString = attr.bg;
                 if (attr.bg && attr.bg.length) {
-                    if (attr.bg.indexOf('#') > -1 || attr.bg.indexOf('rgb') > -1) {
-                        element.css('backgroundColor', '#FFFFF');
-                    } else {
+                    var hasHex = attr.bg.indexOf('#');
+                    var hasRgb = attr.bg.indexOf('rgb');
+                    if (hasHex > -1 || hasRgb > -1) {
+                        element.css('backgroundColor', attr.bg);
+                    }
+                    else if (attr.bg.length){
                         element.addClass('bg-' + attr.bg);
                     }
                 }
