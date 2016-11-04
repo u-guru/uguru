@@ -2,18 +2,18 @@
 
 
     <view layer="3" type='row' bg="smoke" width='100' height='100' align='center center'>
-        <item width='50' height='30' align='center top' class="border-2 border-taupe">
-			<item width='20' height='50' align='center bottom' class="border-2-bottom border-taupe">
+        <item width='50' height='30' align='center top' class="border-2 border-rocket absolute">
+			<item width='20' height='50' align='center center' class="border-2-bottom border-rocket">
 				<graphic
-					class='relative svg-stroke-5 stroke-cerise fill-cerise' height='72' url='shared/templates/components/svg/main/heart.html'></graphic>
+					class='relative svg-stroke-3 stroke-rocket' height='72' url='shared/templates/components/svg/categories/athletic.html'></graphic>
 			</item>
 
-			<item width='80' height='50' align='center center' class="border-2-bottom border-2-left border-taupe">
-				<text class='weight-700 uppercase txt-center txt-charcoal' font-size="36px" letter-spacing='2em' line-height='1.2'>
+			<item width='80' height='50' align='center center' class="border-2-bottom border-2-left border-rocket">
+				<text class='weight-700 uppercase txt-center txt-rocket' font-size="36px" line-height='1.2' style=" letter-spacing:0.1em;">
 					Welcome To Cycle City
 				</text>
 			</item>
-			<text class='weight-700 uppercase txt-center txt-charcoal absolute txt-64' align="center bottom" letter-spacing='2em' line-height='1.2'>
+			<text class='weight-700 uppercase txt-center txt-rocket txt-64 absolute' width="100" height="50" style="bottom:20%; letter-spacing:0.1em;" line-height='1.2'>
 				Active
 			</text>
         </item>
