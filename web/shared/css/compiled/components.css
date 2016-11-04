@@ -18089,6 +18089,30 @@ input[type=range] {
         width: 100%;
         padding: 10px;
         height: auto; }
+      .guru-switch-controls .guru-switch-button .thumbnail div span {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        min-width: 100%;
+        width: 100%;
+        height: 100%;
+        font-size: 24px;
+        font-weight: 600;
+        opacity: 0.75; }
+    .guru-switch-controls .guru-switch-button .thumbnail.hair div svg, .guru-switch-controls .guru-switch-button .thumbnail.left-prop div svg {
+      padding: 15px; }
 .guru-switch-controls button {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -18107,7 +18131,7 @@ input[type=range] {
   justify-content: center;
   border: 0;
   border-radius: 2px;
-  background: transparent;
+  background: #aaa;
   color: white;
   font-weight: 600;
   font-size: 20px;

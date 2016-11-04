@@ -3,7 +3,26 @@
 		<svg class="shadow" viewBox="0 0 300 300">
 			<ellipse fill="#2B3234" opacity="0.1" cx="150" cy="258.94" rx="54" ry="8.94"></ellipse>
 		</svg>
-		<div class="move hair back" data-move="0" data-index="1">
+		<div class="move hair back" data-move="0" data-index="1"
+			u init-with="p:[transform:translateX(0px)]"
+			when-hair-move-1="a:[translateX:0px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-2="a:[translateX:-600px:-1200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-3="a:[translateX:-1200px:-1800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-4="a:[translateX:-1800px:-2400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-5="a:[translateX:-2400px:-3000px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-6="a:[translateX:-3000px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-7="a:[translateX:-3600px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-8="a:[translateX:-4200px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-9="a:[translateX:-4800px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-9="a:[translateX:0px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-8="a:[translateX:-4800px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-7="a:[translateX:-4200px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-6="a:[translateX:-3600px:-3000px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-5="a:[translateX:-3000px:-2400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-4="a:[translateX:-2400px:-1800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-3="a:[translateX:-1800px:-1200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-2="a:[translateX:-1200px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-1="a:[translateX:-600px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]">
 			<svg class="g1" viewBox="0 0 300 300"></svg>
 			<svg class="g2" viewBox="0 0 300 300">
 				<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -23,7 +42,25 @@
 			</svg>
 		</div>
 		<div class="move right-prop back" data-move="0" data-index="1"
-			>
+			u init-with="p:[transform:translateX(0px)]"
+			when-right-prop-move-1="a:[translateX:0px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-2="a:[translateX:-600px:-1200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-3="a:[translateX:-1200px:-1800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-4="a:[translateX:-1800px:-2400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-5="a:[translateX:-2400px:-3000px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-6="a:[translateX:-3000px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-7="a:[translateX:-3600px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-8="a:[translateX:-4200px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-9="a:[translateX:-4800px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-9="a:[translateX:0px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-8="a:[translateX:-4800px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-7="a:[translateX:-4200px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-6="a:[translateX:-3600px:-3000px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-5="a:[translateX:-3000px:-2400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-4="a:[translateX:-2400px:-1800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-3="a:[translateX:-1800px:-1200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-2="a:[translateX:-1200px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-1="a:[translateX:-600px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]">
 			<svg class="g1" viewBox="0 0 300 300"></svg>
 			<svg class="g2" viewBox="0 0 300 300"></svg>
 			<svg class="g3" viewBox="0 0 300 300"></svg>
@@ -49,9 +86,16 @@
 			when-top-move-6="a:[translateX:-3000px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
 			when-top-move-7="a:[translateX:-3600px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
 			when-top-move-8="a:[translateX:-4200px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
-			when-top-move-9="a:[translateX:-4800px:-5400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
-			when-top-move-back-1="a:[translateX:-600px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]"
-			when-top-move-back-2="a:[translateX:-1200px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]">
+			when-top-move-9="a:[translateX:-4800px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-9="a:[translateX:0px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-8="a:[translateX:-4800px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-7="a:[translateX:-4200px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-6="a:[translateX:-3600px:-3000px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-5="a:[translateX:-3000px:-2400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-4="a:[translateX:-2400px:-1800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-3="a:[translateX:-1800px:-1200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-2="a:[translateX:-1200px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-1="a:[translateX:-600px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]">
 			<svg class="g1" viewBox="0 0 300 300">
 				<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
 					<path d="M202.422702,165.99636 L204.697451,162.08393 C205.387152,160.897688 206.90726,160.486999 208.111328,161.177307 C209.30706,161.862835 209.712547,163.388343 209.027578,164.566448 L207.789404,166.696031 C210.932909,167.156252 213.111328,167.868347 213.111328,170.320971 C213.111328,175.177034 200.099669,174.040756 192.294365,169.110706 C179.734131,161.177307 172.90917,145.350269 171.525879,142.850675 L163.131836,139.013722 L168.150505,127.830002 C168.150505,127.830002 175.570552,132.759829 177.446404,136.445113 C181.265125,143.947344 184.908078,155.55425 190.644658,160.743548 C194.076172,164.204224 198.729655,165.426996 202.422702,165.99636 Z" stroke="#33534D" fill="#F9ECE5"></path>
@@ -94,7 +138,25 @@
 			<svg class="j5" viewBox="0 0 300 300"></svg>
 		</div>
 		<div class="move bottom" data-move="0" data-index="1"
-			>
+			u init-with="p:[transform:translateX(0px)]"
+			when-bottom-move-1="a:[translateX:0px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-bottom-move-2="a:[translateX:-600px:-1200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-bottom-move-3="a:[translateX:-1200px:-1800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-bottom-move-4="a:[translateX:-1800px:-2400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-bottom-move-5="a:[translateX:-2400px:-3000px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-bottom-move-6="a:[translateX:-3000px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-bottom-move-7="a:[translateX:-3600px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-bottom-move-8="a:[translateX:-4200px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-bottom-move-9="a:[translateX:-4800px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-bottom-move-back-9="a:[translateX:0px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-bottom-move-back-8="a:[translateX:-4800px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-bottom-move-back-7="a:[translateX:-4200px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-bottom-move-back-6="a:[translateX:-3600px:-3000px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-bottom-move-back-5="a:[translateX:-3000px:-2400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-bottom-move-back-4="a:[translateX:-2400px:-1800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-bottom-move-back-3="a:[translateX:-1800px:-1200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-bottom-move-back-2="a:[translateX:-1200px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-bottom-move-back-1="a:[translateX:-600px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]">
 			<svg class="g1" viewBox="0 0 300 300">
 				<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
 					<path d="M151.368114,180.265197 C147.663105,180.265197 144.889077,180.421709 142.397224,180.65069 C135.935204,184.589284 101.495753,205.976537 107.268442,210.975388 C110.291864,213.593515 132.588396,212.897281 132.588396,212.897281 C134.228205,213.057915 135.571288,214.546426 135.571288,216.20738 L135.571288,216.959332 C135.571288,218.629854 134.235785,220.073096 132.588358,220.204272 C132.588358,220.204272 111.627373,222.361025 98.5692236,217.581212 C85.5110743,212.801399 126.477427,177.622378 126.477427,177.622378 C126.477427,177.622378 127.626463,174.729508 127.90918,173.2905 C127.937306,173.145375 129.516846,165.812378 129.516846,165.812378 C134.588358,165.812378 164.428712,164.411621 169.85437,165.149658 C169.85437,165.149658 171.514614,173.001041 171.584595,173.2905 C171.933692,174.734459 173.266841,177.622378 173.266841,177.622378 C173.266841,177.622378 216.488926,212.801399 203.430776,217.581212 C190.372627,222.361025 169.411642,220.204272 169.411642,220.204272 C167.764215,220.073096 166.428712,218.629854 166.428712,216.959332 L166.428712,216.20738 C166.428712,214.546426 167.76329,213.040659 169.407038,212.864929 C169.407038,212.864929 191.410989,213.850829 194.731558,210.975388 C200.53277,205.951838 166.4285,184.548044 160.339004,180.794315 C157.388169,180.488833 154.047476,180.265197 151.368114,180.265197 Z" stroke="#40484B" fill="#8A9EA3"></path>
@@ -192,7 +254,25 @@
 			</svg>
 		</div>
 		<div class="move right-prop mid" data-move="0" data-index="1"
-			>
+			u init-with="p:[transform:translateX(0px)]"
+			when-right-prop-move-1="a:[translateX:0px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-2="a:[translateX:-600px:-1200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-3="a:[translateX:-1200px:-1800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-4="a:[translateX:-1800px:-2400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-5="a:[translateX:-2400px:-3000px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-6="a:[translateX:-3000px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-7="a:[translateX:-3600px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-8="a:[translateX:-4200px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-9="a:[translateX:-4800px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-9="a:[translateX:0px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-8="a:[translateX:-4800px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-7="a:[translateX:-4200px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-6="a:[translateX:-3600px:-3000px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-5="a:[translateX:-3000px:-2400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-4="a:[translateX:-2400px:-1800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-3="a:[translateX:-1800px:-1200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-2="a:[translateX:-1200px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-1="a:[translateX:-600px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]">
 			<svg class="g1" viewBox="0 0 300 300"></svg>
 			<svg class="g2" viewBox="0 0 300 300"></svg>
 			<svg class="g3" viewBox="0 0 300 300"></svg>
@@ -222,9 +302,16 @@
 			when-top-move-6="a:[translateX:-3000px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
 			when-top-move-7="a:[translateX:-3600px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
 			when-top-move-8="a:[translateX:-4200px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
-			when-top-move-9="a:[translateX:-4800px:-5400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
-			when-top-move-back-1="a:[translateX:-600px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]"
-			when-top-move-back-2="a:[translateX:-1200px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]">
+			when-top-move-9="a:[translateX:-4800px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-9="a:[translateX:0px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-8="a:[translateX:-4800px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-7="a:[translateX:-4200px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-6="a:[translateX:-3600px:-3000px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-5="a:[translateX:-3000px:-2400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-4="a:[translateX:-2400px:-1800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-3="a:[translateX:-1800px:-1200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-2="a:[translateX:-1200px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-1="a:[translateX:-600px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]">
 			<svg class="g1" viewBox="0 0 300 300"></svg>
 			<svg class="g2" viewBox="0 0 300 300">
 				<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -316,7 +403,25 @@
 			</svg>
 		</div>
 		<div class="move face" data-move="0" data-index="1"
-			>
+			u init-with="p:[transform:translateX(0px)]"
+			when-face-move-1="a:[translateX:0px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-face-move-2="a:[translateX:-600px:-1200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-face-move-3="a:[translateX:-1200px:-1800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-face-move-4="a:[translateX:-1800px:-2400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-face-move-5="a:[translateX:-2400px:-3000px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-face-move-6="a:[translateX:-3000px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-face-move-7="a:[translateX:-3600px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-face-move-8="a:[translateX:-4200px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-face-move-9="a:[translateX:-4800px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-face-move-back-9="a:[translateX:0px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-face-move-back-8="a:[translateX:-4800px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-face-move-back-7="a:[translateX:-4200px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-face-move-back-6="a:[translateX:-3600px:-3000px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-face-move-back-5="a:[translateX:-3000px:-2400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-face-move-back-4="a:[translateX:-2400px:-1800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-face-move-back-3="a:[translateX:-1800px:-1200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-face-move-back-2="a:[translateX:-1200px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-face-move-back-1="a:[translateX:-600px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]">
 			<svg class="g1" viewBox="0 0 300 300">
 				<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
 					<path d="M103.618796,97.8229519 C101.823924,101.426555 104.214443,107.393761 107.799805,109.628418 C111.385166,111.863075 113.724121,107.984375 113.724121,107.984375 C120.591797,121.142578 127.716954,132.076715 152.534461,131.15378 C173.501953,130.374023 182.398438,118.168945 186.182899,99.6247537 C186.182899,99.6247537 189.756373,102.310323 192.020996,99.0678711 C194.285619,95.8254197 196.054694,91.5166455 194.259822,87.9130421 C192.46495,84.3094388 189.772642,83.4085374 186.182899,85.2103392 C187.226985,79.226731 184.901237,49.1726668 144.897461,51.9702148 C106.208984,54.6757813 107.224064,79.0364968 109.003411,94.2193483 C109.003411,94.2193483 105.413668,94.2193483 103.618796,97.8229519 Z" stroke="#33534D" fill="#F9EDE6"></path>
@@ -396,9 +501,16 @@
 			when-top-move-6="a:[translateX:-3000px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
 			when-top-move-7="a:[translateX:-3600px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
 			when-top-move-8="a:[translateX:-4200px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
-			when-top-move-9="a:[translateX:-4800px:-5400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
-			when-top-move-back-1="a:[translateX:-600px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]"
-			when-top-move-back-2="a:[translateX:-1200px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]">
+			when-top-move-9="a:[translateX:-4800px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-9="a:[translateX:0px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-8="a:[translateX:-4800px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-7="a:[translateX:-4200px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-6="a:[translateX:-3600px:-3000px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-5="a:[translateX:-3000px:-2400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-4="a:[translateX:-2400px:-1800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-3="a:[translateX:-1800px:-1200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-2="a:[translateX:-1200px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-top-move-back-1="a:[translateX:-600px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]">
 			<svg class="g1" viewBox="0 0 300 300"></svg>
 			<svg class="g2" viewBox="0 0 300 300"></svg>
 			<svg class="g3" viewBox="0 0 300 300">
@@ -419,7 +531,26 @@
 			<svg class="j4" viewBox="0 0 300 300"></svg>
 			<svg class="j5" viewBox="0 0 300 300"></svg>
 		</div>
-		<div class="move hair mid" data-move="0" data-index="1">
+		<div class="move hair mid" data-move="0" data-index="1"
+			u init-with="p:[transform:translateX(0px)]"
+			when-hair-move-1="a:[translateX:0px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-2="a:[translateX:-600px:-1200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-3="a:[translateX:-1200px:-1800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-4="a:[translateX:-1800px:-2400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-5="a:[translateX:-2400px:-3000px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-6="a:[translateX:-3000px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-7="a:[translateX:-3600px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-8="a:[translateX:-4200px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-9="a:[translateX:-4800px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-9="a:[translateX:0px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-8="a:[translateX:-4800px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-7="a:[translateX:-4200px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-6="a:[translateX:-3600px:-3000px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-5="a:[translateX:-3000px:-2400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-4="a:[translateX:-2400px:-1800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-3="a:[translateX:-1800px:-1200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-2="a:[translateX:-1200px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-1="a:[translateX:-600px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]">
 			<svg class="g1" viewBox="0 0 300 300">
 				<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
 					<path d="M156.265647,41.854318 C162.668821,34.9877545 162.497417,30.0794008 155.630854,23.6762268 C148.76429,17.2730528 138.007043,17.6487042 131.603869,24.5152676 C125.200695,31.381831 125.372098,36.2901848 132.238661,42.6933588" stroke="#33534D" fill="#69B3A5"></path>
@@ -475,7 +606,25 @@
 			<svg class="j5" viewBox="0 0 300 300"></svg>
 		</div>
 		<div class="move glasses" data-move="0" data-index="1"
-			>
+			u init-with="p:[transform:translateX(0px)]"
+			when-glasses-move-1="a:[translateX:0px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-glasses-move-2="a:[translateX:-600px:-1200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-glasses-move-3="a:[translateX:-1200px:-1800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-glasses-move-4="a:[translateX:-1800px:-2400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-glasses-move-5="a:[translateX:-2400px:-3000px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-glasses-move-6="a:[translateX:-3000px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-glasses-move-7="a:[translateX:-3600px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-glasses-move-8="a:[translateX:-4200px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-glasses-move-9="a:[translateX:-4800px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-glasses-move-back-9="a:[translateX:0px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-glasses-move-back-8="a:[translateX:-4800px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-glasses-move-back-7="a:[translateX:-4200px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-glasses-move-back-6="a:[translateX:-3600px:-3000px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-glasses-move-back-5="a:[translateX:-3000px:-2400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-glasses-move-back-4="a:[translateX:-2400px:-1800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-glasses-move-back-3="a:[translateX:-1800px:-1200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-glasses-move-back-2="a:[translateX:-1200px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-glasses-move-back-1="a:[translateX:-600px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]">
 			<svg class="g1" viewBox="0 0 300 300">
 				<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
 					<circle stroke="#33534D" fill="#33534D" cx="130" cy="97" r="3"></circle>
@@ -544,7 +693,26 @@
 				</g>
 			</svg>
 		</div>
-		<div class="move hair front" data-move="0" data-index="1">
+		<div class="move hair front" data-move="0" data-index="1"
+			u init-with="p:[transform:translateX(0px)]"
+			when-hair-move-1="a:[translateX:0px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-2="a:[translateX:-600px:-1200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-3="a:[translateX:-1200px:-1800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-4="a:[translateX:-1800px:-2400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-5="a:[translateX:-2400px:-3000px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-6="a:[translateX:-3000px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-7="a:[translateX:-3600px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-8="a:[translateX:-4200px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-9="a:[translateX:-4800px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-9="a:[translateX:0px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-8="a:[translateX:-4800px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-7="a:[translateX:-4200px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-6="a:[translateX:-3600px:-3000px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-5="a:[translateX:-3000px:-2400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-4="a:[translateX:-2400px:-1800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-3="a:[translateX:-1800px:-1200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-2="a:[translateX:-1200px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-hair-move-back-1="a:[translateX:-600px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]">
 			<svg class="g1" viewBox="0 0 300 300"></svg>
 			<svg class="g2" viewBox="0 0 300 300"></svg>
 			<svg class="g3" viewBox="0 0 300 300"></svg>
@@ -562,7 +730,25 @@
 			</svg>
 		</div>
 		<div class="move left-prop" data-move="0" data-index="1"
-			>
+			u init-with="p:[transform:translateX(0px)]"
+			when-left-prop-move-1="a:[translateX:0px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-left-prop-move-2="a:[translateX:-600px:-1200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-left-prop-move-3="a:[translateX:-1200px:-1800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-left-prop-move-4="a:[translateX:-1800px:-2400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-left-prop-move-5="a:[translateX:-2400px:-3000px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-left-prop-move-6="a:[translateX:-3000px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-left-prop-move-7="a:[translateX:-3600px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-left-prop-move-8="a:[translateX:-4200px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-left-prop-move-9="a:[translateX:-4800px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-left-prop-move-back-9="a:[translateX:0px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-left-prop-move-back-8="a:[translateX:-4800px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-left-prop-move-back-7="a:[translateX:-4200px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-left-prop-move-back-6="a:[translateX:-3600px:-3000px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-left-prop-move-back-5="a:[translateX:-3000px:-2400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-left-prop-move-back-4="a:[translateX:-2400px:-1800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-left-prop-move-back-3="a:[translateX:-1800px:-1200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-left-prop-move-back-2="a:[translateX:-1200px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-left-prop-move-back-1="a:[translateX:-600px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]">
 			<svg class="g1" viewBox="0 0 300 300">
 				<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
 					<path d="M100.686906,176.855329 L103.618184,176.17859 C104.683928,175.932544 105.356469,174.854372 105.106935,173.773522 L103.311165,165.995185 C103.062238,164.916966 101.99052,164.238717 100.918772,164.486149 L75.5688139,170.338648 C74.5030707,170.584695 73.830529,171.662867 74.0800628,172.743716 L75.8758335,180.522054 C76.1247598,181.600272 77.1964782,182.278522 78.2682265,182.031089 L81.1995048,181.35435 L80.0766684,176.490811 C79.8271346,175.409962 80.5000387,174.331706 81.5646186,174.085928 L97.1724775,170.48257 C98.2437836,170.23524 99.3151434,170.913572 99.5640697,171.99179 L100.686906,176.855329 L100.686906,176.855329 Z" stroke="#514551" fill="#514551"></path>
@@ -669,7 +855,25 @@
 			</svg>
 		</div>
 		<div class="move right-prop" data-move="0" data-index="1"
-			>
+			u init-with="p:[transform:translateX(0px)]"
+			when-right-prop-move-1="a:[translateX:0px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-2="a:[translateX:-600px:-1200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-3="a:[translateX:-1200px:-1800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-4="a:[translateX:-1800px:-2400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-5="a:[translateX:-2400px:-3000px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-6="a:[translateX:-3000px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-7="a:[translateX:-3600px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-8="a:[translateX:-4200px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-9="a:[translateX:-4800px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-9="a:[translateX:0px:-4800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-8="a:[translateX:-4800px:-4200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-7="a:[translateX:-4200px:-3600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-6="a:[translateX:-3600px:-3000px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-5="a:[translateX:-3000px:-2400px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-4="a:[translateX:-2400px:-1800px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-3="a:[translateX:-1800px:-1200px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-2="a:[translateX:-1200px:-600px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+			when-right-prop-move-back-1="a:[translateX:-600px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]">
 			<svg class="g1" viewBox="0 0 300 300">
 				<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
 					<path d="M194.54752,154.119866 C194.577702,153.845035 194.819394,153.672391 195.090652,153.735016 L214.6962,158.261313 C214.965982,158.323597 215.111531,158.578025 215.015657,158.845308 L206.891964,181.49289 C206.798613,181.753137 206.51292,181.915623 206.228632,181.84999 L192.360657,178.648315 C192.08766,178.585289 191.890003,178.318831 191.921001,178.03657 L194.54752,154.119866 L194.54752,154.119866 Z" stroke="#60544E" fill="#A0938C"></path>
@@ -724,55 +928,119 @@
 						<div>
 							<button class="g1 button"
 								u init-with="p:[z-index:10]"
+								when-top-move-back-1="p:[z-index:10]"
+								when-top-move-9="p:[z-index:10]"
 								when-top-move-1="p:[z-index:-1]"
-								on-click="s:[top-move-back-1:public] | p:[z-index:-1]">&#8701;</button>
+								on-click="s:[top-move-back-9:public] | p:[z-index:-1]">&#8701;</button>
 							<button class="g2 button"
 								u init-with="p:[z-index:-1]"
-								when-top-move-back-1="p:[z-index:10]"
+								when-top-move-back-9="p:[z-index:10]"
+								when-top-move-8="p:[z-index:10]"
+								when-top-move-9="p:[z-index:-1]"
+								on-click="s:[top-move-back-8:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="g3 button"
+								u init-with="p:[z-index:-1]"
+								when-top-move-back-8="p:[z-index:10]"
+								when-top-move-7="p:[z-index:10]"
+								when-top-move-8="p:[z-index:-1]"
+								on-click="s:[top-move-back-7:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="g4 button"
+								u init-with="p:[z-index:-1]"
+								when-top-move-back-7="p:[z-index:10]"
+								when-top-move-6="p:[z-index:10]"
+								when-top-move-7="p:[z-index:-1]"
+								on-click="s:[top-move-back-6:public] | p:[z-index:-1]">&#8701;</button>
+
+							<button class="j1 button"
+								u init-with="p:[z-index:-1]"
+								when-top-move-back-6="p:[z-index:10]"
+								when-top-move-5="p:[z-index:10]"
+								when-top-move-6="p:[z-index:-1]"
+								on-click="s:[top-move-back-5:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j2 button"
+								u init-with="p:[z-index:-1]"
+								when-top-move-back-5="p:[z-index:10]"
+								when-top-move-4="p:[z-index:10]"
+								when-top-move-5="p:[z-index:-1]"
+								on-click="s:[top-move-back-4:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j3 button"
+								u init-with="p:[z-index:-1]"
+								when-top-move-back-4="p:[z-index:10]"
+								when-top-move-3="p:[z-index:10]"
+								when-top-move-4="p:[z-index:-1]"
+								on-click="s:[top-move-back-3:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j4 button"
+								u init-with="p:[z-index:-1]"
+								when-top-move-back-3="p:[z-index:10]"
+								when-top-move-2="p:[z-index:10]"
+								when-top-move-3="p:[z-index:-1]"
+								on-click="s:[top-move-back-2:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j5 button"
+								u init-with="p:[z-index:-1]"
+								when-top-move-back-2="p:[z-index:10]"
 								when-top-move-1="p:[z-index:10]"
 								when-top-move-2="p:[z-index:-1]"
-								on-click="s:[top-move-back-2:public] | p:[z-index:-1]">&#8701;</button>
+								on-click="s:[top-move-back-1:public] | p:[z-index:-1]">&#8701;</button>
 						</div>
 						<div>
 							<button class="g1 button"
 								u init-with="p:[z-index:10]"
+								when-top-move-9="p:[z-index:10]"
+								when-top-move-back-1="p:[z-index:10]"
+								when-top-move-back-9="p:[z-index:-1]"
 								on-click="s:[top-move-1:public] | p:[z-index:-1]">&#8702;</button>
 							<button class="g2 button"
 								u init-with="p:[z-index:-1]"
 								when-top-move-1="p:[z-index:10]"
+								when-top-move-back-2="p:[z-index:10]"
+								when-top-move-back-1="p:[z-index:-1]"
 								on-click="s:[top-move-2:public] | p:[z-index:-1]">&#8702;</button>
 							<button class="g3 button"
 								u init-with="p:[z-index:-1]"
 								when-top-move-2="p:[z-index:10]"
+								when-top-move-back-3="p:[z-index:10]"
+								when-top-move-back-2="p:[z-index:-1]"
 								on-click="s:[top-move-3:public] | p:[z-index:-1]">&#8702;</button>
 							<button class="g4 button"
 								u init-with="p:[z-index:-1]"
 								when-top-move-3="p:[z-index:10]"
+								when-top-move-back-4="p:[z-index:10]"
+								when-top-move-back-3="p:[z-index:-1]"
 								on-click="s:[top-move-4:public] | p:[z-index:-1]">&#8702;</button>
 
 							<button class="j1 button"
 								u init-with="p:[z-index:-1]"
 								when-top-move-4="p:[z-index:10]"
+								when-top-move-back-5="p:[z-index:10]"
+								when-top-move-back-4="p:[z-index:-1]"
 								on-click="s:[top-move-5:public] | p:[z-index:-1]">&#8702;</button>
 							<button class="j2 button"
 								u init-with="p:[z-index:-1]"
 								when-top-move-5="p:[z-index:10]"
+								when-top-move-back-6="p:[z-index:10]"
+								when-top-move-back-5="p:[z-index:-1]"
 								on-click="s:[top-move-6:public] | p:[z-index:-1]">&#8702;</button>
 							<button class="j3 button"
 								u init-with="p:[z-index:-1]"
 								when-top-move-6="p:[z-index:10]"
+								when-top-move-back-7="p:[z-index:10]"
+								when-top-move-back-6="p:[z-index:-1]"
 								on-click="s:[top-move-7:public] | p:[z-index:-1]">&#8702;</button>
 							<button class="j4 button"
 								u init-with="p:[z-index:-1]"
 								when-top-move-7="p:[z-index:10]"
+								when-top-move-back-8="p:[z-index:10]"
+								when-top-move-back-7="p:[z-index:-1]"
 								on-click="s:[top-move-8:public] | p:[z-index:-1]">&#8702;</button>
 							<button class="j5 button"
 								u init-with="p:[z-index:-1]"
 								when-top-move-8="p:[z-index:10]"
+								when-top-move-back-9="p:[z-index:10]"
+								when-top-move-back-8="p:[z-index:-1]"
 								on-click="s:[top-move-9:public] | p:[z-index:-1]">&#8702;</button>
 						</div>
 					</nav>
-					<div class="thumbnail">
+					<div class="thumbnail top">
 						<div u init-with="p:[transform:translateX(0px)]"
 							when-top-move-1="a:[translateX:0px:-137px:300:(0.17,0.67,0.83,0.67):0:1:f]"
 							when-top-move-2="a:[translateX:-137px:-274px:300:(0.17,0.67,0.83,0.67):0:1:f]"
@@ -782,7 +1050,16 @@
 							when-top-move-6="a:[translateX:-685px:-822px:300:(0.17,0.67,0.83,0.67):0:1:f]"
 							when-top-move-7="a:[translateX:-822px:-959px:300:(0.17,0.67,0.83,0.67):0:1:f]"
 							when-top-move-8="a:[translateX:-959px:-1096px:300:(0.17,0.67,0.83,0.67):0:1:f]"
-							when-top-move-9="a:[translateX:-1096px:-1233px:300:(0.17,0.67,0.83,0.67):0:1:f]">
+							when-top-move-9="a:[translateX:-1096px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-top-move-back-9="a:[translateX:0px:-1096px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-top-move-back-8="a:[translateX:-1096px:-959px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-top-move-back-7="a:[translateX:-959px:-822px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-top-move-back-6="a:[translateX:-822px:-685px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-top-move-back-5="a:[translateX:-685px:-548px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-top-move-back-4="a:[translateX:-548px:-411px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-top-move-back-3="a:[translateX:-411px:-274px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-top-move-back-2="a:[translateX:-274px:-137px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-top-move-back-1="a:[translateX:-137px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]">
 							<svg class="g1" viewBox="0 0 100 100">
 							    <g stroke="#696269" stroke-width="2" fill="#C8BBC9" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 							        <path d="M50.2890513,34.8614545 C65.0275988,34.8614545 68.4406462,31 68.4406462,31 C68.4406462,31 76.5066893,31.8629193 78.7599983,38.4027142 C78.7599983,38.4027142 71.8162226,46.0206735 71.8162226,46.0206735 L68.8160425,68.818933 C68.8160425,68.818933 57.2728693,68.804947 50.0011926,68.804947 C42.729516,68.804947 31.1863427,68.818933 31.1863427,68.818933 L28.1861627,47.1456871 C28.1861627,47.1456871 22,38.9207806 22,38.9207806 C23.6741727,33.5245404 32.1864028,31 32.1864028,31 C32.1864028,31 35.7323996,34.8614545 50.2890513,34.8614545 Z"></path>
@@ -855,7 +1132,14 @@
 							        <path d="M53.8117647,57.7636364 C54.7474,57.7636364 55.5058824,56.9984503 55.5058824,56.0545455 C55.5058824,55.1106406 54.7474,54.3454545 53.8117647,54.3454545 C52.8761294,54.3454545 52.1176471,55.1106406 52.1176471,56.0545455 C52.1176471,56.9984503 52.8761294,57.7636364 53.8117647,57.7636364 Z M53.8117647,66.3090909 C54.7474,66.3090909 55.5058824,65.5439048 55.5058824,64.6 C55.5058824,63.6560952 54.7474,62.8909091 53.8117647,62.8909091 C52.8761294,62.8909091 52.1176471,63.6560952 52.1176471,64.6 C52.1176471,65.5439048 52.8761294,66.3090909 53.8117647,66.3090909 Z" stroke="#091932" stroke-width="2" fill="#313757"></path>
 							    </g>
 							</svg>
-							<svg class="j4" viewBox="0 0 100 100"></svg>
+							<svg class="j4" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M49.5971995,41.0575421 C49.332652,41.0575421 64.9510164,31.2419679 64.9510164,31.2419679 C64.9510164,31.2419679 71.2362326,35.4133601 72.8251892,38.5316776 C76.2178189,45.1896924 79.3576232,55.7006482 85.0669121,59.376463 C85.0669121,59.376463 82.2431101,63.5299713 82.2431104,63.5299712 C78.126103,60.8315921 77.3581162,58.5502342 75.0089643,55.4170987 C71.7584357,51.0817697 68.9818851,46.0668097 67.8101566,43.9517686 L67.8101566,70.0118343 C67.8101566,70.0118343 55.4918202,71.6923077 49.332652,71.6923077 C43.1734838,71.6923077 30.8551474,70.0118343 30.8551474,70.0118343 L30.8551474,44.9037031 C29.4907569,47.3450523 27.0180659,51.6391323 24.1854348,55.4170987 C21.8362829,58.5502342 21.0682961,60.8315921 16.9512887,63.5299712 C16.951289,63.5299713 14.127487,59.376463 14.127487,59.376463 C19.8367758,55.7006482 22.9765802,45.1896924 26.3692099,38.5316776 C27.9581665,35.4133601 34.2433827,31.2419679 34.2433827,31.2419679 C34.2433827,31.2419679 49.8617471,41.0575421 49.5971995,41.0575421 Z" stroke="#2B3234" fill="#D69F5B"></path>
+							        <path d="M40.0749716,71.0915503 C35.2336285,70.6091488 30.8551474,70.0118343 30.8551474,70.0118343 L30.8551474,44.9037031 C29.4907569,47.3450523 27.0180659,51.6391323 24.1854348,55.4170987 C21.8362829,58.5502342 21.0682961,60.8315921 16.9512887,63.5299712 C16.951289,63.5299713 14.127487,59.376463 14.127487,59.376463 C19.8367758,55.7006482 22.9765802,45.1896924 26.3692099,38.5316776 C27.9581665,35.4133601 34.2433827,31.2419679 34.2433827,31.2419679 C34.2433827,31.2419679 35.7158709,29.4624643 41.524313,28.5402374 C43.5558441,28.217684 43.3540794,71.4182874 40.0749716,71.0915503 Z M59.2451178,71.0915503 C64.0864608,70.6091488 68.464942,70.0118343 68.464942,70.0118343 L68.464942,44.9037031 C69.8293324,47.3450523 72.3020235,51.6391323 75.1346545,55.4170987 C77.4838065,58.5502342 78.2517933,60.8315921 82.3688007,63.5299712 C82.3688004,63.5299713 85.1926024,59.376463 85.1926024,59.376463 C79.4833135,55.7006482 76.3435091,45.1896924 72.9508795,38.5316776 C71.3619229,35.4133601 65.0767067,31.2419679 65.0767067,31.2419679 C65.0767067,31.2419679 63.6042185,29.4624643 57.7957764,28.5402374 C55.7642452,28.217684 55.9660099,71.4182874 59.2451178,71.0915503 Z" stroke="#404042" fill="#58585A"></path>
+							        <path d="M54.8202693,38.1903315 C54.8202693,38.1903315 57.297704,38.3303709 58.5364214,37.5601539 C59.7751388,36.789937 65.8422335,32.0612807 65.8422335,32.0612807 L63.4933824,31.3609467 L53.8117647,33.1489113 L54.0652855,34.416238 L54.8202693,38.1903315 Z M46.3122931,33.3867963 L45.351376,38.1903315 C45.351376,38.1903315 42.8739412,38.3303709 41.6352238,37.5601539 C40.3965064,36.789937 34.3294118,32.0612807 34.3294118,32.0612807 L36.6782629,31.3609467 L46.3598805,33.1489113 L46.3122931,33.3867963 L46.3122931,33.3867963 L46.3122931,33.3867963 L46.3122931,33.3867963 Z" stroke="#404042" fill="#58585A"></path>
+							        <path d="M59.8724109,45.3639268 C59.8724109,45.1204522 60.0719973,44.9230769 60.3177566,44.9230769 L65.2252426,44.9230769 C65.4712002,44.9230769 65.6705882,45.1206485 65.6705882,45.3639268 L65.6705882,47.7928994 C65.6705882,49.3778586 64.3837848,50.6627219 62.7884863,50.6627219 L62.7545128,50.6627219 C61.1627719,50.6627219 59.8724109,49.3746335 59.8724109,47.7928994 L59.8724109,45.3639268 L59.8724109,45.3639268 L59.8724109,45.3639268 Z" stroke="#404042" fill="#58585A"></path>
+							    </g>
+							</svg>
 							<svg class="j5" viewBox="0 0 100 100">
 							    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 							        <path d="M65.3938492,31.5079435 C65.4174946,31.4776619 65.4285714,31.4615385 65.4285714,31.4615385 C65.4285714,31.4615385 65.4365261,31.4911074 65.4516309,31.5474475 C66.3531082,32.1655962 71.8195093,35.9936932 73.2932956,38.9169234 C76.7263137,45.7262566 79.9034968,56.4760979 85.6807533,60.2354539 C85.6807533,60.2354539 82.8233347,64.4833601 82.8233349,64.48336 C78.6573156,61.7236541 77.8801861,59.3904472 75.503068,56.186104 C72.6367152,52.3222747 70.4200229,46.9570326 69.0393897,44.4601982 C69.0393897,44.4601982 65.7892275,50.8208135 64.0720714,55.9159289 C63.6261691,57.5278772 63.311518,59.039858 63.2521337,60.2354539 C63.157856,62.1335655 64.0786169,64.8246599 65.0306995,67.0551459 C66.1980988,69.3509397 67.4448027,71.1125382 67.4448027,71.1125382 C67.4448027,71.1125382 56.2889709,72.8312041 50.0564792,72.8312041 C49.9850812,72.8312041 49.913039,72.8309786 49.8403767,72.8305327 C49.7677144,72.8309786 49.6956722,72.8312041 49.6242741,72.8312041 C43.3917825,72.8312041 32.2359507,71.1125382 32.2359507,71.1125382 C32.2359507,71.1125382 33.4826545,69.3509397 34.6500538,67.0551459 C35.6021364,64.8246599 36.5228973,62.1335655 36.4286196,60.2354539 C36.3692353,59.039858 36.0545843,57.5278772 35.608682,55.9159289 C33.8915259,50.8208135 30.6413636,44.4601982 30.6413636,44.4601982 C29.2607304,46.9570326 27.0440382,52.3222747 24.1776853,56.186104 C21.8005673,59.3904472 21.0234378,61.7236541 16.8574184,64.48336 C16.8574187,64.4833601 14,60.2354539 14,60.2354539 C19.7772566,56.4760979 22.9544396,45.7262566 26.3874577,38.9169234 C27.861244,35.9936932 33.3276452,32.1655962 34.2291225,31.5474475 C34.2442272,31.4911074 34.2521819,31.4615385 34.2521819,31.4615385 C34.2521819,31.4615385 34.2632588,31.4776619 34.2869042,31.5079435 C34.3317079,31.477411 34.3553707,31.4615385 34.3553707,31.4615385 C34.3553707,31.4615385 37.3294658,35.790618 49.8403792,35.8024906 C62.3512879,35.7906174 65.3253827,31.4615385 65.3253827,31.4615385 C65.3253827,31.4615385 65.3490454,31.477411 65.3938492,31.5079435 L65.3938492,31.5079435 Z" stroke="#B764AE" stroke-width="2" fill="#FFFFFF"></path>
@@ -873,14 +1157,142 @@
 				<div class="guru-switch-button">
 					<nav>
 						<div>
-							<button class="button"
-								u on-click="s:[bottom-move:public]">&#8701;</button>
+							<button class="g1 button"
+								u init-with="p:[z-index:10]"
+								when-bottom-move-back-1="p:[z-index:10]"
+								when-bottom-move-9="p:[z-index:10]"
+								when-bottom-move-1="p:[z-index:-1]"
+								on-click="s:[bottom-move-back-9:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="g2 button"
+								u init-with="p:[z-index:-1]"
+								when-bottom-move-back-9="p:[z-index:10]"
+								when-bottom-move-8="p:[z-index:10]"
+								when-bottom-move-9="p:[z-index:-1]"
+								on-click="s:[bottom-move-back-8:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="g3 button"
+								u init-with="p:[z-index:-1]"
+								when-bottom-move-back-8="p:[z-index:10]"
+								when-bottom-move-7="p:[z-index:10]"
+								when-bottom-move-8="p:[z-index:-1]"
+								on-click="s:[bottom-move-back-7:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="g4 button"
+								u init-with="p:[z-index:-1]"
+								when-bottom-move-back-7="p:[z-index:10]"
+								when-bottom-move-6="p:[z-index:10]"
+								when-bottom-move-7="p:[z-index:-1]"
+								on-click="s:[bottom-move-back-6:public] | p:[z-index:-1]">&#8701;</button>
+
+							<button class="j1 button"
+								u init-with="p:[z-index:-1]"
+								when-bottom-move-back-6="p:[z-index:10]"
+								when-bottom-move-5="p:[z-index:10]"
+								when-bottom-move-6="p:[z-index:-1]"
+								on-click="s:[bottom-move-back-5:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j2 button"
+								u init-with="p:[z-index:-1]"
+								when-bottom-move-back-5="p:[z-index:10]"
+								when-bottom-move-4="p:[z-index:10]"
+								when-bottom-move-5="p:[z-index:-1]"
+								on-click="s:[bottom-move-back-4:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j3 button"
+								u init-with="p:[z-index:-1]"
+								when-bottom-move-back-4="p:[z-index:10]"
+								when-bottom-move-3="p:[z-index:10]"
+								when-bottom-move-4="p:[z-index:-1]"
+								on-click="s:[bottom-move-back-3:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j4 button"
+								u init-with="p:[z-index:-1]"
+								when-bottom-move-back-3="p:[z-index:10]"
+								when-bottom-move-2="p:[z-index:10]"
+								when-bottom-move-3="p:[z-index:-1]"
+								on-click="s:[bottom-move-back-2:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j5 button"
+								u init-with="p:[z-index:-1]"
+								when-bottom-move-back-2="p:[z-index:10]"
+								when-bottom-move-1="p:[z-index:10]"
+								when-bottom-move-2="p:[z-index:-1]"
+								on-click="s:[bottom-move-back-1:public] | p:[z-index:-1]">&#8701;</button>
 						</div>
 						<div>
-							<button class="button"
-								u on-click="s:[bottom-move:public]">&#8702;</button>
+							<button class="g1 button"
+								u init-with="p:[z-index:10]"
+								when-bottom-move-9="p:[z-index:10]"
+								when-bottom-move-back-1="p:[z-index:10]"
+								when-bottom-move-back-9="p:[z-index:-1]"
+								on-click="s:[bottom-move-1:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="g2 button"
+								u init-with="p:[z-index:-1]"
+								when-bottom-move-1="p:[z-index:10]"
+								when-bottom-move-back-2="p:[z-index:10]"
+								when-bottom-move-back-1="p:[z-index:-1]"
+								on-click="s:[bottom-move-2:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="g3 button"
+								u init-with="p:[z-index:-1]"
+								when-bottom-move-2="p:[z-index:10]"
+								when-bottom-move-back-3="p:[z-index:10]"
+								when-bottom-move-back-2="p:[z-index:-1]"
+								on-click="s:[bottom-move-3:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="g4 button"
+								u init-with="p:[z-index:-1]"
+								when-bottom-move-3="p:[z-index:10]"
+								when-bottom-move-back-4="p:[z-index:10]"
+								when-bottom-move-back-3="p:[z-index:-1]"
+								on-click="s:[bottom-move-4:public] | p:[z-index:-1]">&#8702;</button>
+
+							<button class="j1 button"
+								u init-with="p:[z-index:-1]"
+								when-bottom-move-4="p:[z-index:10]"
+								when-bottom-move-back-5="p:[z-index:10]"
+								when-bottom-move-back-4="p:[z-index:-1]"
+								on-click="s:[bottom-move-5:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j2 button"
+								u init-with="p:[z-index:-1]"
+								when-bottom-move-5="p:[z-index:10]"
+								when-bottom-move-back-6="p:[z-index:10]"
+								when-bottom-move-back-5="p:[z-index:-1]"
+								on-click="s:[bottom-move-6:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j3 button"
+								u init-with="p:[z-index:-1]"
+								when-bottom-move-6="p:[z-index:10]"
+								when-bottom-move-back-7="p:[z-index:10]"
+								when-bottom-move-back-6="p:[z-index:-1]"
+								on-click="s:[bottom-move-7:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j4 button"
+								u init-with="p:[z-index:-1]"
+								when-bottom-move-7="p:[z-index:10]"
+								when-bottom-move-back-8="p:[z-index:10]"
+								when-bottom-move-back-7="p:[z-index:-1]"
+								on-click="s:[bottom-move-8:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j5 button"
+								u init-with="p:[z-index:-1]"
+								when-bottom-move-8="p:[z-index:10]"
+								when-bottom-move-back-9="p:[z-index:10]"
+								when-bottom-move-back-8="p:[z-index:-1]"
+								on-click="s:[bottom-move-9:public] | p:[z-index:-1]">&#8702;</button>
 						</div>
 					</nav>
+					<div class="thumbnail bottom">
+						<div u init-with="p:[transform:translateX(0px)]"
+							when-bottom-move-1="a:[translateX:0px:-137px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-bottom-move-2="a:[translateX:-137px:-274px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-bottom-move-3="a:[translateX:-274px:-411px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-bottom-move-4="a:[translateX:-411px:-548px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-bottom-move-5="a:[translateX:-548px:-685px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-bottom-move-6="a:[translateX:-685px:-822px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-bottom-move-7="a:[translateX:-822px:-959px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-bottom-move-8="a:[translateX:-959px:-1096px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-bottom-move-9="a:[translateX:-1096px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-bottom-move-back-9="a:[translateX:0px:-1096px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-bottom-move-back-8="a:[translateX:-1096px:-959px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-bottom-move-back-7="a:[translateX:-959px:-822px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-bottom-move-back-6="a:[translateX:-822px:-685px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-bottom-move-back-5="a:[translateX:-685px:-548px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-bottom-move-back-4="a:[translateX:-548px:-411px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-bottom-move-back-3="a:[translateX:-411px:-274px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-bottom-move-back-2="a:[translateX:-274px:-137px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-bottom-move-back-1="a:[translateX:-137px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]">
+						</div>
+					</div>
 					<h1>bottom</h1>
 				</div>
 			</li>
@@ -889,14 +1301,211 @@
 				<div class="guru-switch-button">
 					<nav>
 						<div>
-							<button class="button"
-								u on-click="s:[face-move:public]">&#8701;</button>
+							<button class="g1 button"
+								u init-with="p:[z-index:10]"
+								when-face-move-back-1="p:[z-index:10]"
+								when-face-move-9="p:[z-index:10]"
+								when-face-move-1="p:[z-index:-1]"
+								on-click="s:[face-move-back-9:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="g2 button"
+								u init-with="p:[z-index:-1]"
+								when-face-move-back-9="p:[z-index:10]"
+								when-face-move-8="p:[z-index:10]"
+								when-face-move-9="p:[z-index:-1]"
+								on-click="s:[face-move-back-8:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="g3 button"
+								u init-with="p:[z-index:-1]"
+								when-face-move-back-8="p:[z-index:10]"
+								when-face-move-7="p:[z-index:10]"
+								when-face-move-8="p:[z-index:-1]"
+								on-click="s:[face-move-back-7:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="g4 button"
+								u init-with="p:[z-index:-1]"
+								when-face-move-back-7="p:[z-index:10]"
+								when-face-move-6="p:[z-index:10]"
+								when-face-move-7="p:[z-index:-1]"
+								on-click="s:[face-move-back-6:public] | p:[z-index:-1]">&#8701;</button>
+
+							<button class="j1 button"
+								u init-with="p:[z-index:-1]"
+								when-face-move-back-6="p:[z-index:10]"
+								when-face-move-5="p:[z-index:10]"
+								when-face-move-6="p:[z-index:-1]"
+								on-click="s:[face-move-back-5:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j2 button"
+								u init-with="p:[z-index:-1]"
+								when-face-move-back-5="p:[z-index:10]"
+								when-face-move-4="p:[z-index:10]"
+								when-face-move-5="p:[z-index:-1]"
+								on-click="s:[face-move-back-4:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j3 button"
+								u init-with="p:[z-index:-1]"
+								when-face-move-back-4="p:[z-index:10]"
+								when-face-move-3="p:[z-index:10]"
+								when-face-move-4="p:[z-index:-1]"
+								on-click="s:[face-move-back-3:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j4 button"
+								u init-with="p:[z-index:-1]"
+								when-face-move-back-3="p:[z-index:10]"
+								when-face-move-2="p:[z-index:10]"
+								when-face-move-3="p:[z-index:-1]"
+								on-click="s:[face-move-back-2:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j5 button"
+								u init-with="p:[z-index:-1]"
+								when-face-move-back-2="p:[z-index:10]"
+								when-face-move-1="p:[z-index:10]"
+								when-face-move-2="p:[z-index:-1]"
+								on-click="s:[face-move-back-1:public] | p:[z-index:-1]">&#8701;</button>
 						</div>
 						<div>
-							<button class="button"
-								u on-click="s:[face-move:public]">&#8702;</button>
+							<button class="g1 button"
+								u init-with="p:[z-index:10]"
+								when-face-move-9="p:[z-index:10]"
+								when-face-move-back-1="p:[z-index:10]"
+								when-face-move-back-9="p:[z-index:-1]"
+								on-click="s:[face-move-1:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="g2 button"
+								u init-with="p:[z-index:-1]"
+								when-face-move-1="p:[z-index:10]"
+								when-face-move-back-2="p:[z-index:10]"
+								when-face-move-back-1="p:[z-index:-1]"
+								on-click="s:[face-move-2:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="g3 button"
+								u init-with="p:[z-index:-1]"
+								when-face-move-2="p:[z-index:10]"
+								when-face-move-back-3="p:[z-index:10]"
+								when-face-move-back-2="p:[z-index:-1]"
+								on-click="s:[face-move-3:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="g4 button"
+								u init-with="p:[z-index:-1]"
+								when-face-move-3="p:[z-index:10]"
+								when-face-move-back-4="p:[z-index:10]"
+								when-face-move-back-3="p:[z-index:-1]"
+								on-click="s:[face-move-4:public] | p:[z-index:-1]">&#8702;</button>
+
+							<button class="j1 button"
+								u init-with="p:[z-index:-1]"
+								when-face-move-4="p:[z-index:10]"
+								when-face-move-back-5="p:[z-index:10]"
+								when-face-move-back-4="p:[z-index:-1]"
+								on-click="s:[face-move-5:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j2 button"
+								u init-with="p:[z-index:-1]"
+								when-face-move-5="p:[z-index:10]"
+								when-face-move-back-6="p:[z-index:10]"
+								when-face-move-back-5="p:[z-index:-1]"
+								on-click="s:[face-move-6:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j3 button"
+								u init-with="p:[z-index:-1]"
+								when-face-move-6="p:[z-index:10]"
+								when-face-move-back-7="p:[z-index:10]"
+								when-face-move-back-6="p:[z-index:-1]"
+								on-click="s:[face-move-7:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j4 button"
+								u init-with="p:[z-index:-1]"
+								when-face-move-7="p:[z-index:10]"
+								when-face-move-back-8="p:[z-index:10]"
+								when-face-move-back-7="p:[z-index:-1]"
+								on-click="s:[face-move-8:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j5 button"
+								u init-with="p:[z-index:-1]"
+								when-face-move-8="p:[z-index:10]"
+								when-face-move-back-9="p:[z-index:10]"
+								when-face-move-back-8="p:[z-index:-1]"
+								on-click="s:[face-move-9:public] | p:[z-index:-1]">&#8702;</button>
 						</div>
 					</nav>
+					<div class="thumbnail face">
+						<div u init-with="p:[transform:translateX(0px)]"
+							when-face-move-1="a:[translateX:0px:-137px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-face-move-2="a:[translateX:-137px:-274px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-face-move-3="a:[translateX:-274px:-411px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-face-move-4="a:[translateX:-411px:-548px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-face-move-5="a:[translateX:-548px:-685px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-face-move-6="a:[translateX:-685px:-822px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-face-move-7="a:[translateX:-822px:-959px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-face-move-8="a:[translateX:-959px:-1096px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-face-move-9="a:[translateX:-1096px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-face-move-back-9="a:[translateX:0px:-1096px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-face-move-back-8="a:[translateX:-1096px:-959px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-face-move-back-7="a:[translateX:-959px:-822px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-face-move-back-6="a:[translateX:-822px:-685px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-face-move-back-5="a:[translateX:-685px:-548px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-face-move-back-4="a:[translateX:-548px:-411px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-face-move-back-3="a:[translateX:-411px:-274px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-face-move-back-2="a:[translateX:-274px:-137px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-face-move-back-1="a:[translateX:-137px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]">
+							<svg class="g1" viewBox="0 0 100 100">
+							    <g stroke="#33534D" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M15.7219359,54.5270503 C14.375782,57.229753 16.1686712,61.7051575 18.8576923,63.3811499 C21.5467135,65.0571423 23.3009297,62.1481176 23.3009296,62.1481176 C28.4516865,72.01677 33.7955543,80.2173727 52.4086844,79.5251717 C68.1343036,78.940354 74.8066669,69.7865454 77.6450128,55.8784016 C77.6450128,55.8784016 80.3251183,57.8925783 82.0235859,55.4607397 C83.7220534,53.0289011 85.048859,49.7973205 83.7027051,47.094618 C82.3565513,44.3919155 80.3373205,43.7162394 77.6450128,45.0675908 C78.4280777,40.5798846 76.6837664,18.0393365 46.6809345,20.1374975 C17.6645771,22.1666723 18.4258866,40.437209 19.7603974,51.8243476 C19.7603974,51.8243476 17.0680897,51.8243476 15.7219359,54.5270503 Z" stroke-width="2" fill="#F9EDE6"></path>
+							        <path d="M47.5078388,68.9098364 C47.5078388,68.9098364 48.4738818,70.8159643 50.8207553,70.8159643 C53.1676288,70.8159643 54.1336716,68.9098364 54.1336716,68.9098364" stroke-width="2"></path>
+							        <path d="M21.7772854,61.232912 C21.7772854,60.6731639 21.3252652,60.2193984 20.76767,60.2193984 C20.2100748,60.2193984 19.7580546,60.6731639 19.7580546,61.232912 C19.7580546,61.79266 20.2100748,62.2464255 20.76767,62.2464255 C21.3252652,62.2464255 21.7772854,61.79266 21.7772854,61.232912 Z M80.7471293,54.0313458 C80.7471293,53.4715978 80.2951091,53.0178323 79.7375139,53.0178323 C79.1799188,53.0178323 78.7278985,53.4715978 78.7278985,54.0313458 C78.7278985,54.5910939 79.1799188,55.0448593 79.7375139,55.0448593 C80.2951091,55.0448593 80.7471293,54.5910939 80.7471293,54.0313458 Z" fill="#33534D"></path>
+							        <path d="M15.649271,54.1409551 C14.9248656,53.9730673 14.2020424,54.4264812 14.0348003,55.1536835 C13.8675581,55.8808859 14.3192282,56.6064999 15.0436336,56.7743877 C15.768039,56.9422756 16.4908621,56.4888617 16.6581043,55.7616594 M82.8388197,51.8402952 C82.6589603,52.5644567 83.0979466,53.2978734 83.8193229,53.4784271 C84.5406992,53.6589809 85.271295,53.2182997 85.4511543,52.4941382 C85.6310136,51.7699766 85.1920274,51.03656 84.4706511,50.8560062"></path>
+							    </g>
+							</svg>
+							<svg class="g2" viewBox="0 0 100 100">
+							    <g stroke="#33534D" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M15.7219359,54.5270503 C14.375782,57.229753 16.1686712,61.7051575 18.8576923,63.3811499 C21.5467135,65.0571423 23.3009297,62.1481176 23.3009296,62.1481176 C28.4516865,72.01677 33.7955543,80.2173727 52.4086844,79.5251717 C68.1343036,78.940354 74.8066669,69.7865454 77.6450128,55.8784016 C77.6450128,55.8784016 80.3251183,57.8925783 82.0235859,55.4607397 C83.7220534,53.0289011 85.048859,49.7973205 83.7027051,47.094618 C82.3565513,44.3919155 80.3373205,43.7162394 77.6450128,45.0675908 C78.4280777,40.5798846 76.6837664,18.0393365 46.6809345,20.1374975 C17.6645771,22.1666723 18.4258866,40.437209 19.7603974,51.8243476 C19.7603974,51.8243476 17.0680897,51.8243476 15.7219359,54.5270503 Z" stroke-width="2" fill="#F9EDE6"></path>
+							        <path d="M47.5078388,68.9098364 C47.5078388,68.9098364 48.4738818,70.8159643 50.8207553,70.8159643 C53.1676288,70.8159643 54.1336716,68.9098364 54.1336716,68.9098364" stroke-width="2"></path>
+							        <path d="M21.7772854,61.232912 C21.7772854,60.6731639 21.3252652,60.2193984 20.76767,60.2193984 C20.2100748,60.2193984 19.7580546,60.6731639 19.7580546,61.232912 C19.7580546,61.79266 20.2100748,62.2464255 20.76767,62.2464255 C21.3252652,62.2464255 21.7772854,61.79266 21.7772854,61.232912 Z M80.7471293,54.0313458 C80.7471293,53.4715978 80.2951091,53.0178323 79.7375139,53.0178323 C79.1799188,53.0178323 78.7278985,53.4715978 78.7278985,54.0313458 C78.7278985,54.5910939 79.1799188,55.0448593 79.7375139,55.0448593 C80.2951091,55.0448593 80.7471293,54.5910939 80.7471293,54.0313458 Z" fill="#33534D"></path>
+							        <path d="M15.649271,54.1409551 C14.9248656,53.9730673 14.2020424,54.4264812 14.0348003,55.1536835 C13.8675581,55.8808859 14.3192282,56.6064999 15.0436336,56.7743877 C15.768039,56.9422756 16.4908621,56.4888617 16.6581043,55.7616594 M82.8388197,51.8402952 C82.6589603,52.5644567 83.0979466,53.2978734 83.8193229,53.4784271 C84.5406992,53.6589809 85.271295,53.2182997 85.4511543,52.4941382 C85.6310136,51.7699766 85.1920274,51.03656 84.4706511,50.8560062"></path>
+							    </g>
+							</svg>
+							<svg class="g3" viewBox="0 0 100 100">
+							    <g stroke="#33534D" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M15.7219359,54.5270503 C14.375782,57.229753 16.1686712,61.7051575 18.8576923,63.3811499 C21.5467135,65.0571423 23.3009297,62.1481176 23.3009296,62.1481176 C28.4516865,72.01677 33.7955543,80.2173727 52.4086844,79.5251717 C68.1343036,78.940354 74.8066669,69.7865454 77.6450128,55.8784016 C77.6450128,55.8784016 80.3251183,57.8925783 82.0235859,55.4607397 C83.7220534,53.0289011 85.048859,49.7973205 83.7027051,47.094618 C82.3565513,44.3919155 80.3373205,43.7162394 77.6450128,45.0675908 C78.4280777,40.5798846 76.6837664,18.0393365 46.6809345,20.1374975 C17.6645771,22.1666723 18.4258866,40.437209 19.7603974,51.8243476 C19.7603974,51.8243476 17.0680897,51.8243476 15.7219359,54.5270503 Z" stroke-width="2" fill="#F9EDE6"></path>
+							        <path d="M47.5078388,68.9098364 C47.5078388,68.9098364 48.4738818,70.8159643 50.8207553,70.8159643 C53.1676288,70.8159643 54.1336716,68.9098364 54.1336716,68.9098364" stroke-width="2"></path>
+							        <path d="M21.7772854,61.232912 C21.7772854,60.6731639 21.3252652,60.2193984 20.76767,60.2193984 C20.2100748,60.2193984 19.7580546,60.6731639 19.7580546,61.232912 C19.7580546,61.79266 20.2100748,62.2464255 20.76767,62.2464255 C21.3252652,62.2464255 21.7772854,61.79266 21.7772854,61.232912 Z M80.7471293,54.0313458 C80.7471293,53.4715978 80.2951091,53.0178323 79.7375139,53.0178323 C79.1799188,53.0178323 78.7278985,53.4715978 78.7278985,54.0313458 C78.7278985,54.5910939 79.1799188,55.0448593 79.7375139,55.0448593 C80.2951091,55.0448593 80.7471293,54.5910939 80.7471293,54.0313458 Z" fill="#33534D"></path>
+							        <path d="M15.649271,54.1409551 C14.9248656,53.9730673 14.2020424,54.4264812 14.0348003,55.1536835 C13.8675581,55.8808859 14.3192282,56.6064999 15.0436336,56.7743877 C15.768039,56.9422756 16.4908621,56.4888617 16.6581043,55.7616594 M82.8388197,51.8402952 C82.6589603,52.5644567 83.0979466,53.2978734 83.8193229,53.4784271 C84.5406992,53.6589809 85.271295,53.2182997 85.4511543,52.4941382 C85.6310136,51.7699766 85.1920274,51.03656 84.4706511,50.8560062"></path>
+							    </g>
+							</svg>
+							<svg class="g4" viewBox="0 0 100 100">
+							    <g stroke="#33534D" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M15.7219359,54.5270503 C14.375782,57.229753 16.1686712,61.7051575 18.8576923,63.3811499 C21.5467135,65.0571423 23.3009297,62.1481176 23.3009296,62.1481176 C28.4516865,72.01677 33.7955543,80.2173727 52.4086844,79.5251717 C68.1343036,78.940354 74.8066669,69.7865454 77.6450128,55.8784016 C77.6450128,55.8784016 80.3251183,57.8925783 82.0235859,55.4607397 C83.7220534,53.0289011 85.048859,49.7973205 83.7027051,47.094618 C82.3565513,44.3919155 80.3373205,43.7162394 77.6450128,45.0675908 C78.4280777,40.5798846 76.6837664,18.0393365 46.6809345,20.1374975 C17.6645771,22.1666723 18.4258866,40.437209 19.7603974,51.8243476 C19.7603974,51.8243476 17.0680897,51.8243476 15.7219359,54.5270503 Z" stroke-width="2" fill="#F9EDE6"></path>
+							        <path d="M47.5078388,68.9098364 C47.5078388,68.9098364 48.4738818,70.8159643 50.8207553,70.8159643 C53.1676288,70.8159643 54.1336716,68.9098364 54.1336716,68.9098364" stroke-width="2"></path>
+							        <path d="M21.7772854,61.232912 C21.7772854,60.6731639 21.3252652,60.2193984 20.76767,60.2193984 C20.2100748,60.2193984 19.7580546,60.6731639 19.7580546,61.232912 C19.7580546,61.79266 20.2100748,62.2464255 20.76767,62.2464255 C21.3252652,62.2464255 21.7772854,61.79266 21.7772854,61.232912 Z M80.7471293,54.0313458 C80.7471293,53.4715978 80.2951091,53.0178323 79.7375139,53.0178323 C79.1799188,53.0178323 78.7278985,53.4715978 78.7278985,54.0313458 C78.7278985,54.5910939 79.1799188,55.0448593 79.7375139,55.0448593 C80.2951091,55.0448593 80.7471293,54.5910939 80.7471293,54.0313458 Z" fill="#33534D"></path>
+							        <path d="M15.649271,54.1409551 C14.9248656,53.9730673 14.2020424,54.4264812 14.0348003,55.1536835 C13.8675581,55.8808859 14.3192282,56.6064999 15.0436336,56.7743877 C15.768039,56.9422756 16.4908621,56.4888617 16.6581043,55.7616594 M82.8388197,51.8402952 C82.6589603,52.5644567 83.0979466,53.2978734 83.8193229,53.4784271 C84.5406992,53.6589809 85.271295,53.2182997 85.4511543,52.4941382 C85.6310136,51.7699766 85.1920274,51.03656 84.4706511,50.8560062"></path>
+							    </g>
+							</svg>
+
+							<svg class="j1" viewBox="0 0 100 100">
+							    <g stroke="#33534D" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M15.7219359,51.9975651 C14.375782,54.7246165 15.0320979,59.0279116 17.7211191,60.719003 C20.4101402,62.4100944 22.4527052,60.1787193 22.4527051,60.1787193 C25.1259512,64.9936693 30.1326194,78.2375578 52.4086844,77.2208949 C69.9894183,76.4185233 78.0765314,64.2047153 77.6450128,53.3610908 C77.6450128,53.3610908 81.0074396,54.9343386 82.7059071,52.4805915 C84.4043747,50.0268445 85.048859,47.2252252 83.7027051,44.498174 C82.3565513,41.7711228 80.3373205,41.0893596 77.6450128,42.4528853 C79.0111763,36.456447 74.0771607,26.5757032 64.4775391,22.2197266 C59.8886306,20.1374385 49.1682889,21.0966797 44.0791016,21.0966797 C33.2197266,21.0966797 17.0680897,26.0905771 19.7603974,49.2705138 C19.7603974,49.2705138 17.0680897,49.2705138 15.7219359,51.9975651 Z" stroke-width="2" fill="#F9EDE6"></path>
+							        <path d="M53.4142436,66.9963477 C56.7796282,67.6781105 63.5103974,66.3145849 63.5103974,62.2240078" stroke-width="2"></path>
+							        <path d="M19.423859,60.1787193 C19.9814541,60.1787193 20.4334743,59.7208658 20.4334743,59.156075 C20.4334743,58.5912842 19.9814541,58.1334307 19.423859,58.1334307 C18.8662638,58.1334307 18.4142436,58.5912842 18.4142436,59.156075 C18.4142436,59.7208658 18.8662638,60.1787193 19.423859,60.1787193 L19.423859,60.1787193 L19.423859,60.1787193 L19.423859,60.1787193 Z M80.4875139,52.5200391 C81.0451091,52.5200391 81.4971293,52.0621857 81.4971293,51.4973949 C81.4971293,50.932604 81.0451091,50.4747506 80.4875139,50.4747506 C79.9299188,50.4747506 79.4778985,50.932604 79.4778985,51.4973949 C79.4778985,52.0621857 79.9299188,52.5200391 80.4875139,52.5200391 L80.4875139,52.5200391 L80.4875139,52.5200391 L80.4875139,52.5200391 Z" fill="#33534D"></path>
+							        <path d="M15.649271,51.6079917 C14.9248656,51.4385913 14.2020424,51.89609 14.0348003,52.6298437 C13.8675581,53.3635974 14.3192282,54.0957485 15.0436336,54.2651489 C15.768039,54.4345493 16.4908621,53.9770505 16.6581043,53.2432968 M82.8388197,49.2866051 C82.6589603,50.0172906 83.0979466,50.7573146 83.8193229,50.9394949 C84.5406992,51.1216753 85.271295,50.677024 85.4511543,49.9463385 C85.6310136,49.215653 85.1920274,48.475629 84.4706511,48.2934486"></path>
+							    </g>
+							</svg>
+							<svg class="j2" viewBox="0 0 100 100">
+							    <g stroke="#33534D" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M15.9354057,51.5975976 C14.5892518,54.2882883 15.2455677,58.5342061 17.9345889,60.2027496 C20.62361,61.8712932 22.666175,59.6696697 22.6661749,59.6696697 C23.0295522,60.3154444 24.4279285,62.2763247 26.1727246,64.9000019 C30.0419331,70.7181911 37.4583884,77.8908352 52.6937207,77.8908352 C66.3673047,77.8908352 75.1709458,65.8053961 77.0687207,58.7195852 C77.7004282,56.3609494 77.890763,53.7433011 77.8584826,52.9429429 C77.8584826,52.9429429 81.2209093,54.495214 82.9193769,52.0741836 C84.6178444,49.6531532 85.2623287,46.8888888 83.9161749,44.1981983 C82.570021,41.5075078 80.5507903,40.8348348 77.8584826,42.1801802 C79.8777134,33.4354358 68.5810547,20.2167969 46.9228516,21.5263672 C39.5190054,21.5263672 17.2815595,26.036036 19.9738672,48.9069069 C19.9738672,48.9069069 17.2815595,48.9069069 15.9354057,51.5975976 Z" stroke-width="2" fill="#F9EDE6"></path>
+							        <path d="M53.5078388,67.3814897 C56.8732234,68.0541624 63.6039927,66.7088171 63.6039927,62.672781" stroke-width="2"></path>
+							        <path d="M19.423859,59.8065428 C19.9814541,59.8065428 20.4334743,59.3547941 20.4334743,58.7975338 C20.4334743,58.2402735 19.9814541,57.7885248 19.423859,57.7885248 C18.8662638,57.7885248 18.4142436,58.2402735 18.4142436,58.7975338 C18.4142436,59.3547941 18.8662638,59.8065428 19.423859,59.8065428 L19.423859,59.8065428 L19.423859,59.8065428 L19.423859,59.8065428 Z M80.4875139,52.2499784 C81.0451091,52.2499784 81.4971293,51.7982297 81.4971293,51.2409694 C81.4971293,50.6837091 81.0451091,50.2319604 80.4875139,50.2319604 C79.9299188,50.2319604 79.4778985,50.6837091 79.4778985,51.2409694 C79.4778985,51.7982297 79.9299188,52.2499784 80.4875139,52.2499784 L80.4875139,52.2499784 L80.4875139,52.2499784 L80.4875139,52.2499784 Z" fill="#33534D"></path>
+							        <path d="M15.649271,51.3500916 C14.9248656,51.1829498 14.2020424,51.6343486 14.0348003,52.3583189 C13.8675581,53.0822893 14.3192282,53.8046783 15.0436336,53.97182 C15.768039,54.1389617 16.4908621,53.687563 16.6581043,52.9635927 M82.8388197,49.0596568 C82.6589603,49.7805998 83.0979466,50.5107568 83.8193229,50.6905081 C84.5406992,50.8702594 85.271295,50.4315368 85.4511543,49.7105938 C85.6310136,48.9896507 85.1920274,48.2594937 84.4706511,48.0797424"></path>
+							    </g>
+							</svg>
+							<svg class="j3" viewBox="0 0 100 100">
+							    <g stroke-width="2" stroke="#744041" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M46.086377,16.2122964 L49.4023507,16.0376471 C63.731937,15.2829211 76.0094368,25.9646976 77.3573845,40.0880563 C78.1216749,39.384469 79.0654509,38.9472359 80.1032928,38.8925737 C82.8625115,38.7472483 85.2417476,41.3610487 85.4174654,44.7306604 C85.5931832,48.1002721 83.4988419,50.9496917 80.7396232,51.0950172 C79.7125847,51.1491103 78.7381921,50.8209313 77.9104863,50.2137921 L78.2537096,56.7955353 C79.0202544,71.495006 57.3176004,83.1373655 49.8229977,83.1373655 C42.3283951,83.1373655 22.3985803,74.4722751 21.6322925,59.7777328 L21.4037924,55.3959525 C20.7820845,55.7945801 20.0780754,56.0359871 19.3244689,56.0756789 C16.5652502,56.2210044 14.1860141,53.607204 14.0102963,50.2375922 C13.8345785,46.8679805 15.9289198,44.0185609 18.6881385,43.8732355 C19.441745,43.8335437 20.1670062,43.9996724 20.8267695,44.3308061 C20.0550626,29.532346 31.3724145,16.9872671 46.086377,16.2122964 L46.086377,16.2122964 Z" fill="#F9ECE5"></path>
+							        <path d="M51.9338348,71.0453933 C55.7434031,72.16875 63.6349902,71.2858149 64.0436658,66.5913423"></path>
+							    </g>
+							</svg>
+							<svg class="j4" viewBox="0 0 100 100">
+							    <g stroke="#3C3353" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M15.7219359,51.9975651 C14.375782,54.7246165 15.0320979,59.0279116 17.7211191,60.719003 C20.4101402,62.4100944 22.4527052,60.1787193 22.4527051,60.1787193 C25.1259512,64.9936693 30.1326194,78.2375578 52.4086844,77.2208949 C69.9894183,76.4185233 78.0765314,64.2047153 77.6450128,53.3610908 C77.6450128,53.3610908 81.0074396,54.9343386 82.7059071,52.4805915 C84.4043747,50.0268445 85.048859,47.2252252 83.7027051,44.498174 C82.3565513,41.7711228 80.3373205,41.0893596 77.6450128,42.4528853 C79.0111763,36.456447 74.0771607,26.5757032 64.4775391,22.2197266 C59.8886306,20.1374385 49.1682889,21.0966797 44.0791016,21.0966797 C33.2197266,21.0966797 17.0680897,26.0905771 19.7603974,49.2705138 C19.7603974,49.2705138 17.0680897,49.2705138 15.7219359,51.9975651 Z" stroke-width="2" fill="#F9EDE6"></path>
+							        <path d="M53.4142436,66.9963477 C56.7796282,67.6781105 63.5103974,66.3145849 63.5103974,62.2240078" stroke-width="2"></path>
+							        <path d="M19.423859,60.1787193 C19.9814541,60.1787193 20.4334743,59.7208658 20.4334743,59.156075 C20.4334743,58.5912842 19.9814541,58.1334307 19.423859,58.1334307 C18.8662638,58.1334307 18.4142436,58.5912842 18.4142436,59.156075 C18.4142436,59.7208658 18.8662638,60.1787193 19.423859,60.1787193 L19.423859,60.1787193 L19.423859,60.1787193 L19.423859,60.1787193 Z M80.4875139,52.5200391 C81.0451091,52.5200391 81.4971293,52.0621857 81.4971293,51.4973949 C81.4971293,50.932604 81.0451091,50.4747506 80.4875139,50.4747506 C79.9299188,50.4747506 79.4778985,50.932604 79.4778985,51.4973949 C79.4778985,52.0621857 79.9299188,52.5200391 80.4875139,52.5200391 L80.4875139,52.5200391 L80.4875139,52.5200391 L80.4875139,52.5200391 Z" fill="#33534D"></path>
+							        <path d="M15.649271,51.6079917 C14.9248656,51.4385913 14.2020424,51.89609 14.0348003,52.6298437 C13.8675581,53.3635974 14.3192282,54.0957485 15.0436336,54.2651489 C15.768039,54.4345493 16.4908621,53.9770505 16.6581043,53.2432968 M82.8388197,49.2866051 C82.6589603,50.0172906 83.0979466,50.7573146 83.8193229,50.9394949 C84.5406992,51.1216753 85.271295,50.677024 85.4511543,49.9463385 C85.6310136,49.215653 85.1920274,48.475629 84.4706511,48.2934486"></path>
+							    </g>
+							</svg>
+							<svg class="j5" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M46.0338531,18.4405927 L49.8435177,18.1737389 C66.7549454,16.9891517 83.8528496,28.099658 84.8994222,43.0919708 L85.8826197,57.1764257 C86.9295432,72.1737667 58.9069883,81.5293865 58.9069883,81.5293865 C56.6287789,82.4002181 52.8051405,82.8694222 50.3807462,82.5248507 C50.3807462,82.5248507 16.8250256,79.3146342 15.778453,64.3223214 L14.7952555,50.2378666 C13.748332,35.2405255 29.1292374,19.6247027 46.0338531,18.4405927 L46.0338531,18.4405927 Z" stroke="#366797" fill="#F9ECE5"></path>
+							        <path d="M48.2107447,71.4560764 C49.3285592,76.0974691 58.278453,75.6604968 58.278453,70.6664995 L48.2107447,71.4560764 Z" stroke="#DF8DC8" fill="#8B8987"></path>
+							    </g>
+							</svg>
+						</div>
+					</div>
 					<h1>face</h1>
 				</div>
 			</li>
@@ -905,14 +1514,200 @@
 				<div class="guru-switch-button">
 					<nav>
 						<div>
-							<button class="button"
-								u on-click="s:[hair-move:public]">&#8701;</button>
+							<button class="g1 button"
+								u init-with="p:[z-index:10]"
+								when-hair-move-back-1="p:[z-index:10]"
+								when-hair-move-9="p:[z-index:10]"
+								when-hair-move-1="p:[z-index:-1]"
+								on-click="s:[hair-move-back-9:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="g2 button"
+								u init-with="p:[z-index:-1]"
+								when-hair-move-back-9="p:[z-index:10]"
+								when-hair-move-8="p:[z-index:10]"
+								when-hair-move-9="p:[z-index:-1]"
+								on-click="s:[hair-move-back-8:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="g3 button"
+								u init-with="p:[z-index:-1]"
+								when-hair-move-back-8="p:[z-index:10]"
+								when-hair-move-7="p:[z-index:10]"
+								when-hair-move-8="p:[z-index:-1]"
+								on-click="s:[hair-move-back-7:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="g4 button"
+								u init-with="p:[z-index:-1]"
+								when-hair-move-back-7="p:[z-index:10]"
+								when-hair-move-6="p:[z-index:10]"
+								when-hair-move-7="p:[z-index:-1]"
+								on-click="s:[hair-move-back-6:public] | p:[z-index:-1]">&#8701;</button>
+
+							<button class="j1 button"
+								u init-with="p:[z-index:-1]"
+								when-hair-move-back-6="p:[z-index:10]"
+								when-hair-move-5="p:[z-index:10]"
+								when-hair-move-6="p:[z-index:-1]"
+								on-click="s:[hair-move-back-5:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j2 button"
+								u init-with="p:[z-index:-1]"
+								when-hair-move-back-5="p:[z-index:10]"
+								when-hair-move-4="p:[z-index:10]"
+								when-hair-move-5="p:[z-index:-1]"
+								on-click="s:[hair-move-back-4:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j3 button"
+								u init-with="p:[z-index:-1]"
+								when-hair-move-back-4="p:[z-index:10]"
+								when-hair-move-3="p:[z-index:10]"
+								when-hair-move-4="p:[z-index:-1]"
+								on-click="s:[hair-move-back-3:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j4 button"
+								u init-with="p:[z-index:-1]"
+								when-hair-move-back-3="p:[z-index:10]"
+								when-hair-move-2="p:[z-index:10]"
+								when-hair-move-3="p:[z-index:-1]"
+								on-click="s:[hair-move-back-2:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j5 button"
+								u init-with="p:[z-index:-1]"
+								when-hair-move-back-2="p:[z-index:10]"
+								when-hair-move-1="p:[z-index:10]"
+								when-hair-move-2="p:[z-index:-1]"
+								on-click="s:[hair-move-back-1:public] | p:[z-index:-1]">&#8701;</button>
 						</div>
 						<div>
-							<button class="button"
-								u on-click="s:[hair-move:public]">&#8702;</button>
+							<button class="g1 button"
+								u init-with="p:[z-index:10]"
+								when-hair-move-9="p:[z-index:10]"
+								when-hair-move-back-1="p:[z-index:10]"
+								when-hair-move-back-9="p:[z-index:-1]"
+								on-click="s:[hair-move-1:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="g2 button"
+								u init-with="p:[z-index:-1]"
+								when-hair-move-1="p:[z-index:10]"
+								when-hair-move-back-2="p:[z-index:10]"
+								when-hair-move-back-1="p:[z-index:-1]"
+								on-click="s:[hair-move-2:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="g3 button"
+								u init-with="p:[z-index:-1]"
+								when-hair-move-2="p:[z-index:10]"
+								when-hair-move-back-3="p:[z-index:10]"
+								when-hair-move-back-2="p:[z-index:-1]"
+								on-click="s:[hair-move-3:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="g4 button"
+								u init-with="p:[z-index:-1]"
+								when-hair-move-3="p:[z-index:10]"
+								when-hair-move-back-4="p:[z-index:10]"
+								when-hair-move-back-3="p:[z-index:-1]"
+								on-click="s:[hair-move-4:public] | p:[z-index:-1]">&#8702;</button>
+
+							<button class="j1 button"
+								u init-with="p:[z-index:-1]"
+								when-hair-move-4="p:[z-index:10]"
+								when-hair-move-back-5="p:[z-index:10]"
+								when-hair-move-back-4="p:[z-index:-1]"
+								on-click="s:[hair-move-5:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j2 button"
+								u init-with="p:[z-index:-1]"
+								when-hair-move-5="p:[z-index:10]"
+								when-hair-move-back-6="p:[z-index:10]"
+								when-hair-move-back-5="p:[z-index:-1]"
+								on-click="s:[hair-move-6:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j3 button"
+								u init-with="p:[z-index:-1]"
+								when-hair-move-6="p:[z-index:10]"
+								when-hair-move-back-7="p:[z-index:10]"
+								when-hair-move-back-6="p:[z-index:-1]"
+								on-click="s:[hair-move-7:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j4 button"
+								u init-with="p:[z-index:-1]"
+								when-hair-move-7="p:[z-index:10]"
+								when-hair-move-back-8="p:[z-index:10]"
+								when-hair-move-back-7="p:[z-index:-1]"
+								on-click="s:[hair-move-8:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j5 button"
+								u init-with="p:[z-index:-1]"
+								when-hair-move-8="p:[z-index:10]"
+								when-hair-move-back-9="p:[z-index:10]"
+								when-hair-move-back-8="p:[z-index:-1]"
+								on-click="s:[hair-move-9:public] | p:[z-index:-1]">&#8702;</button>
 						</div>
 					</nav>
+					<div class="thumbnail hair">
+						<div u init-with="p:[transform:translateX(0px)]"
+							when-hair-move-1="a:[translateX:0px:-137px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-hair-move-2="a:[translateX:-137px:-274px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-hair-move-3="a:[translateX:-274px:-411px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-hair-move-4="a:[translateX:-411px:-548px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-hair-move-5="a:[translateX:-548px:-685px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-hair-move-6="a:[translateX:-685px:-822px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-hair-move-7="a:[translateX:-822px:-959px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-hair-move-8="a:[translateX:-959px:-1096px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-hair-move-9="a:[translateX:-1096px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-hair-move-back-9="a:[translateX:0px:-1096px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-hair-move-back-8="a:[translateX:-1096px:-959px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-hair-move-back-7="a:[translateX:-959px:-822px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-hair-move-back-6="a:[translateX:-822px:-685px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-hair-move-back-5="a:[translateX:-685px:-548px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-hair-move-back-4="a:[translateX:-548px:-411px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-hair-move-back-3="a:[translateX:-411px:-274px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-hair-move-back-2="a:[translateX:-274px:-137px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-hair-move-back-1="a:[translateX:-137px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]">
+							<svg class="g1" viewBox="0 0 100 100">
+							    <g stroke-width="2" stroke="#33534D" fill="#69B3A5" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M58.3241753,38.1059202 C63.6849721,32.3380069 63.5414715,28.2149897 57.7927208,22.8363236 C52.04397,17.4576574 43.0379022,17.7732045 37.6771054,23.5411178 C32.3163085,29.3090311 32.4598091,33.4320483 38.2085599,38.8107144"></path>
+							        <path d="M83.1528004,74.3674042 C90.6139465,56.9650509 78.4000112,33.8404415 47.4240846,37.1233321 C16.448158,40.4062227 8.77673721,65.6652852 18.7163676,81.9082931 C15.7193242,56.269271 37.6215247,52.7685737 45.689758,51.7447377 C73.4102765,48.2270821 85.2056888,65.414232 83.1528004,74.3674042 Z" stroke-linecap="round" stroke-linejoin="round"></path>
+							        <path d="M33.3892232,71.9324825 C39.3154849,70.9921954 48.0408179,69.9269616 54.1404496,69.3760593 C71.3992519,67.8172907 84.5956102,68.7762355 82.6412448,66.7001095 C80.1074298,29.5398972 10.5531788,37.1687231 17.623594,74.9760427 C17.623594,74.9760427 24.0853829,73.4266697 29.8509346,72.3683779 C30.5202237,64.808887 29.7692837,67.0979508 31.1192371,62.6070686 C31.640604,66.8674157 32.1964904,68.990376 33.3892232,71.9324825 Z"></path>
+							    </g>
+							</svg>
+							<svg class="g2" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M76.5433433,76.9025053 C82.1008959,31.4393818 70.7302574,19.3098539 47.9972119,20.5269963 C20.1470785,22.0181109 13.1407397,37.2175065 25.5702964,79.5178007 C36.8702183,66.0931791 62.4027964,66.3949979 76.5433433,76.9025053 Z" stroke="#646150" fill="#998255"></path>
+							        <path d="M70.0566636,82.9683622 C74.4466246,81.6940549 80.0501792,76.3367704 80.0501792,76.3367704 C97.6866636,29.5850309 68.3023667,14.776605 55.8391246,17.724954 C21.7192808,7.31957374 0.356937054,45.9997648 24.006898,79.8108457 C24.006898,79.8108457 28.9934605,84.0900053 35.2667417,84.8919309 C24.6622105,69.8718809 10.9579735,29.6435675 47.4308656,28.0745328 C84.419398,26.4833158 77.8873479,66.3382399 70.0566636,82.9683622 Z" stroke="#646150" fill="#E8C480"></path>
+							        <path d="M34.1795734,44.4745351 L36.6258824,44.0428556 C36.6258824,44.0428556 35.1559996,40.9018339 36.6258824,34.5959257 C36.3792613,39.3293928 39.2926597,43.6683897 39.2926597,43.6683897 C39.2926597,43.6683897 49.4973687,42.5143112 52.0256281,42.2871194 C63.0832527,41.2934705 73.8127574,39.9974302 73.8127574,39.9974302 L73.8127574,35.2483457 C74.8227964,37.4744352 76.2699238,40.1093653 76.5363121,39.9974302 C75.7038034,27.8497842 64.5961949,19.8548826 55.5227183,21.5355924 C40.7697496,12.9769224 16.8636262,27.0879437 20.6211323,47.0787719 C21.112504,46.9655141 20.6211323,44.0428556 22.5528355,40.9018339 C22.5528355,44.4745351 23.0263902,46.445474 23.0263902,46.445474 L31.1366453,44.847511 C31.1366453,44.847511 30.6994175,41.8199247 31.6477574,38.718736 C32.1209605,42.2871194 34.1795734,44.4745351 34.1795734,44.4745351 Z" stroke="#595746" fill="#E6BD70"></path>
+							    </g>
+							</svg>
+							<svg class="g3" viewBox="0 0 100 100">
+							    <g stroke="#5C4744" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M22.8060963,50.8306073 C16.4893339,50.9416078 14.1120376,48.6304512 14.0017781,42.2712374 C13.8915186,35.9120237 18.9228833,30.6668787 25.2396457,30.5558782 C31.5564081,30.4448777 33.9337044,32.7560343 34.0439639,39.1152481" fill="#C5857C"></path>
+							        <path d="M16.4715723,49.0233124 C16.4715723,49.0233124 18.5578286,43.0998609 22.5429112,39.0879968 C26.5279939,35.0761326 32.411903,32.9758559 32.411903,32.9758559"></path>
+							        <path d="M76.6021907,49.2785249 C82.9189531,49.3895254 85.2962493,47.0783688 85.4065088,40.719155 C85.5167683,34.3599413 80.4854036,29.1147963 74.1686412,29.0037958 C67.8518788,28.8927953 65.4745826,31.2039519 65.3643231,37.5631656" fill="#C5857C"></path>
+							        <path d="M82.9367146,47.47123 C82.9367146,47.47123 80.8504584,41.5477785 76.8653757,37.5359144 C72.880293,33.5240502 66.9963839,31.4237734 66.9963839,31.4237734"></path>
+							        <path d="M76.585564,64.8845829 C82.5823731,50.8504269 72.7655652,32.2015484 47.8690261,34.8490409 C22.972487,37.4965333 16.8066721,57.866745 24.7955339,70.9659448 C22.3866953,50.2893141 39.9903331,47.4661712 46.4750814,46.640497 C68.7551242,43.803678 78.2355491,57.6642827 76.585564,64.8845829 Z" stroke-linecap="round" stroke-linejoin="round" fill="#C5857C"></path>
+							        <path d="M36.5886702,62.9209363 C41.3518338,62.1626403 48.3647183,61.3035808 53.267226,60.8593047 C67.1387867,59.6022332 77.7452056,60.3755758 76.1744072,58.7012806 C74.137883,28.7333675 18.2344663,34.8856465 23.9172299,65.3754204 C23.9172299,65.3754204 29.1108173,64.125926 33.7448121,63.2724649 C34.2827454,57.1761012 33.6791861,59.0221204 34.7641954,55.4004412 C35.183238,58.836205 35.6300251,60.5482698 36.5886702,62.9209363 Z" stroke-linecap="round" stroke-linejoin="round" fill="#C5857C"></path>
+							    </g>
+							</svg>
+							<svg class="g4" viewBox="0 0 100 100">
+							    <g stroke-width="2" stroke="#5C4744" fill="#C5857C" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M15.0756355,50.4833649 C29.9078044,20.3430806 64.2654563,34.6918526 74.320786,41.9348804 C74.320786,41.9348804 75.0971286,47.3748251 72.7681009,50.4833649 C63.4519901,53.5919047 54.1358794,47.3748251 45.5961112,47.3748251 C38.2762029,47.3748251 17.1960233,48.8621152 20.0873072,77.3168435 C20.0873072,77.3168435 17.2041935,74.6858988 17.6477789,78.4602233 C14.5424086,67.4977262 12.7138132,55.2827975 15.0756355,50.4833649 Z"></path>
+							        <path d="M84.4132393,70.6888737 C85.4053314,64.0046614 86.4004661,51.9718546 85.003111,48.4292794 C75.979701,25.5531257 53.2519344,34.0332614 51.3825114,26.615453 C50.3005037,28.6748047 52.0551395,31.209684 53.2519344,32.0373134 C45.40489,32.0373134 40.9832503,25.2442427 41.818529,21 C26.1036852,31.0194729 31.6420948,46.0862783 39.0958256,51.9718546 C52.7741483,62.7724609 65.7781487,45.8444369 77.9146792,54.3845761 C81.2036946,59.1060372 80.9220843,64.0142519 81.7686909,68.9234819 C81.7686909,68.9234819 84.4132393,70.6888737 84.4132393,70.6888737 Z"></path>
+							    </g>
+							</svg>
+
+							<svg class="j1" viewBox="0 0 100 100">
+							    <g stroke-width="2" stroke="#33534D" fill="#69B3A5" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M22.4266312,61.2716591 C15.7939551,62.0982169 10.6867627,52.8011906 16.6151738,46.1747289 C16.6151739,49.5433181 19.1729016,52.8011906 23.0775039,52.8011906 C15.2543153,48.2121718 19.0483204,30.2136989 30.4665665,28 C28.0238856,32.8976259 35.0811533,35.2086792 37.3967116,35.2086792 C37.3967116,35.2086792 38.0475846,29.9960832 42.603696,28.6929342 C38.6984577,39.1181262 66.0351261,29.3445087 73.8456028,42.3759986 C73.8456028,42.3759986 74.4964759,46.9370201 72.5438567,49.5433181 C64.73338,52.1496161 56.9229033,46.9370201 49.7632997,46.9370201 C42.603696,46.9370201 23.7283773,50.8464671 26.3318696,73 C26.3318696,73 19.823139,70.393702 22.4266312,61.2716591 Z M72.5438567,49.5433181 C72.5438567,49.5433181 84.2595717,58.0137869 82.3069526,66.484255 C92.7209215,55.4074882 78.258522,40.4212752 73.8456028,42.3759986"></path>
+							    </g>
+							</svg>
+							<svg class="j2" viewBox="0 0 100 100" style="transform:rotateY(180deg)">
+							    <g stroke-width="2" stroke="#49362C" fill="#E5753C" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M22.4266312,61.2716591 C15.7939551,62.0982169 10.6867627,52.8011906 16.6151738,46.1747289 C16.6151739,49.5433181 19.1729016,52.8011906 23.0775039,52.8011906 C15.2543153,48.2121718 19.0483204,30.2136989 30.4665665,28 C28.0238856,32.8976259 35.0811533,35.2086792 37.3967116,35.2086792 C37.3967116,35.2086792 38.0475846,29.9960832 42.603696,28.6929342 C38.6984577,39.1181262 66.0351261,29.3445087 73.8456028,42.3759986 C73.8456028,42.3759986 74.4964759,46.9370201 72.5438567,49.5433181 C64.73338,52.1496161 56.9229033,46.9370201 49.7632997,46.9370201 C42.603696,46.9370201 23.7283773,50.8464671 26.3318696,73 C26.3318696,73 19.823139,70.393702 22.4266312,61.2716591 Z M72.5438567,49.5433181 C72.5438567,49.5433181 84.2595717,58.0137869 82.3069526,66.484255 C92.7209215,55.4074882 78.258522,40.4212752 73.8456028,42.3759986"></path>
+							    </g>
+							</svg>
+							<svg class="j3" viewBox="0 0 100 100">
+							    <g stroke-width="2" stroke="#744041" fill="#8B5D5E" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M19.5049243,68 C15.7088889,68 12.5236248,56.8487632 14.7191463,53.3699201 C19.6229367,44.8043931 36.1914684,33 49.5274941,33 C57.7681417,33 72.5208554,36.5333977 79.8886521,41.0271947 C80.7084802,41.5272277 80.8522047,42.8967708 81.5736128,43.4150519 C82.3109555,43.944781 83.7439698,42.8357497 84.3424244,43.4150519 C86.4121124,45.4185035 87,48.6178027 87,50.9172809 C79.8886521,73.3131743 81.5736128,66.4186193 81.5736128,66.4186193 C78.1329651,63.0975473 71.9882947,57.2617877 71.4218547,51.4239897 L33.7291501,61.5136277 L19.5049243,68 Z"></path>
+							    </g>
+							</svg>
+							<svg class="j4" viewBox="0 0 100 100">
+							    <g stroke-width="2" stroke="#3C3353" fill="#55A4B7" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M20.2985309,57.321409 C6.89210466,53.8817296 17.2692376,38.1894792 29.2912094,32.9301234 C41.3131812,27.6707677 68.8146433,29.7916734 75.5317875,36.8947903 C75.5317875,36.8947903 76.2309427,41.8253534 74.1334772,44.6428181 C65.7436155,47.4602827 57.3537537,41.8253534 49.6630471,41.8253534 C41.9723405,41.8253534 21.6968412,46.0515504 24.4934618,70 C24.4934618,70 17.5019103,67.1825353 20.2985309,57.321409 Z M74.1334772,44.6428181 C74.1334772,44.6428181 84.6208044,62.9563384 84.6208044,62.9563384 C92.005651,55.7130029 80.2720592,34.7816918 75.5317875,36.8947903"></path>
+							    </g>
+							</svg>
+							<svg class="j5" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M34.5290698,19.4782609 C26.5673551,19.4782609 20.1162791,25.9586098 20.1162791,33.9525253 L20.1162791,74.6561703 C20.1162791,82.6558723 27.2892968,74.6561703 50.5,74.6561703 C73.7107032,74.6561703 80.8837209,80.7223175 80.8837209,70.3503793 L80.8837209,38.2583164 C80.8837209,27.8799405 72.5124869,19.4782609 62.1860465,19.4782609 C56.0479819,19.4782609 50.6020203,22.4476658 47.1932815,27.0339937 C44.7499303,22.530966 39.9948019,19.4782609 34.5290698,19.4782609 Z" fill="#754F3E"></path>
+							        <path d="M31.134298,19.9336312 C39.5681157,16.9897978 47.9453117,23.4618578 47.9453117,23.4618578 C48.6474793,23.9420094 48.5249889,24.4172321 47.6785617,24.5598443 C47.6785617,24.5598443 35.6534719,25.4634442 31.7304412,37.0824853 C27.8074105,48.7015265 32.9608561,72.4770113 32.9608561,72.4770113 L36.2232742,83.6009151 C36.4658128,84.4279015 35.9623861,85.1840478 35.1195892,85.2755435 C35.1195892,85.2755435 31.3034763,85.8155147 29.3713102,85.3540745 C27.5492982,84.9189412 20.4346028,81.8007409 20.4346028,81.8007409 C19.6498576,81.4608218 18.9569866,80.4832741 18.8888368,79.6234182 C18.8888368,79.6234182 16.0026059,44.5997149 17.3657258,37.69225 C18.7288458,30.7847852 22.7004803,22.8774647 31.134298,19.9336312 L31.134298,19.9336312 Z" stroke="#6D574E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#A57A66"></path>
+							        <path d="M63.6224461,14.3279308 C50.4238575,12.5869712 38.552144,18.0521582 39.8452667,24.2393906 C41.1383894,30.4266231 64.6814992,25.027043 70.3155853,34.8877364 C75.9496714,44.7484297 71.5752073,71.1224432 71.5752073,71.1224432 L68.438931,82.4959322 C68.2101538,83.3255771 68.7253215,84.0240176 69.5746316,84.0472744 C69.5746316,84.0472744 74.6321974,84.2955693 76.9588944,83.6847307 C79.1529448,83.1087164 82.4350187,80.4752732 82.4350187,80.4752732 C83.1234661,79.9551324 83.6571702,78.8317868 83.626928,77.9618285 L82.2585936,38.5998659 C81.6760981,21.8436054 76.8210347,16.0688903 63.6224461,14.3279308 L63.6224461,14.3279308 L63.6224461,14.3279308 Z" stroke="#6D574E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#A57A66"></path>
+							    </g>
+							</svg>
+						</div>
+					</div>
 					<h1>hair</h1>
 				</div>
 			</li>
@@ -921,14 +1716,205 @@
 				<div class="guru-switch-button">
 					<nav>
 						<div>
-							<button class="button"
-								u on-click="s:[glasses-move:public]">&#8701;</button>
+							<button class="g1 button"
+								u init-with="p:[z-index:10]"
+								when-glasses-move-back-1="p:[z-index:10]"
+								when-glasses-move-9="p:[z-index:10]"
+								when-glasses-move-1="p:[z-index:-1]"
+								on-click="s:[glasses-move-back-9:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="g2 button"
+								u init-with="p:[z-index:-1]"
+								when-glasses-move-back-9="p:[z-index:10]"
+								when-glasses-move-8="p:[z-index:10]"
+								when-glasses-move-9="p:[z-index:-1]"
+								on-click="s:[glasses-move-back-8:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="g3 button"
+								u init-with="p:[z-index:-1]"
+								when-glasses-move-back-8="p:[z-index:10]"
+								when-glasses-move-7="p:[z-index:10]"
+								when-glasses-move-8="p:[z-index:-1]"
+								on-click="s:[glasses-move-back-7:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="g4 button"
+								u init-with="p:[z-index:-1]"
+								when-glasses-move-back-7="p:[z-index:10]"
+								when-glasses-move-6="p:[z-index:10]"
+								when-glasses-move-7="p:[z-index:-1]"
+								on-click="s:[glasses-move-back-6:public] | p:[z-index:-1]">&#8701;</button>
+
+							<button class="j1 button"
+								u init-with="p:[z-index:-1]"
+								when-glasses-move-back-6="p:[z-index:10]"
+								when-glasses-move-5="p:[z-index:10]"
+								when-glasses-move-6="p:[z-index:-1]"
+								on-click="s:[glasses-move-back-5:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j2 button"
+								u init-with="p:[z-index:-1]"
+								when-glasses-move-back-5="p:[z-index:10]"
+								when-glasses-move-4="p:[z-index:10]"
+								when-glasses-move-5="p:[z-index:-1]"
+								on-click="s:[glasses-move-back-4:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j3 button"
+								u init-with="p:[z-index:-1]"
+								when-glasses-move-back-4="p:[z-index:10]"
+								when-glasses-move-3="p:[z-index:10]"
+								when-glasses-move-4="p:[z-index:-1]"
+								on-click="s:[glasses-move-back-3:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j4 button"
+								u init-with="p:[z-index:-1]"
+								when-glasses-move-back-3="p:[z-index:10]"
+								when-glasses-move-2="p:[z-index:10]"
+								when-glasses-move-3="p:[z-index:-1]"
+								on-click="s:[glasses-move-back-2:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j5 button"
+								u init-with="p:[z-index:-1]"
+								when-glasses-move-back-2="p:[z-index:10]"
+								when-glasses-move-1="p:[z-index:10]"
+								when-glasses-move-2="p:[z-index:-1]"
+								on-click="s:[glasses-move-back-1:public] | p:[z-index:-1]">&#8701;</button>
 						</div>
 						<div>
-							<button class="button"
-								u on-click="s:[glasses-move:public]">&#8702;</button>
+							<button class="g1 button"
+								u init-with="p:[z-index:10]"
+								when-glasses-move-9="p:[z-index:10]"
+								when-glasses-move-back-1="p:[z-index:10]"
+								when-glasses-move-back-9="p:[z-index:-1]"
+								on-click="s:[glasses-move-1:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="g2 button"
+								u init-with="p:[z-index:-1]"
+								when-glasses-move-1="p:[z-index:10]"
+								when-glasses-move-back-2="p:[z-index:10]"
+								when-glasses-move-back-1="p:[z-index:-1]"
+								on-click="s:[glasses-move-2:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="g3 button"
+								u init-with="p:[z-index:-1]"
+								when-glasses-move-2="p:[z-index:10]"
+								when-glasses-move-back-3="p:[z-index:10]"
+								when-glasses-move-back-2="p:[z-index:-1]"
+								on-click="s:[glasses-move-3:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="g4 button"
+								u init-with="p:[z-index:-1]"
+								when-glasses-move-3="p:[z-index:10]"
+								when-glasses-move-back-4="p:[z-index:10]"
+								when-glasses-move-back-3="p:[z-index:-1]"
+								on-click="s:[glasses-move-4:public] | p:[z-index:-1]">&#8702;</button>
+
+							<button class="j1 button"
+								u init-with="p:[z-index:-1]"
+								when-glasses-move-4="p:[z-index:10]"
+								when-glasses-move-back-5="p:[z-index:10]"
+								when-glasses-move-back-4="p:[z-index:-1]"
+								on-click="s:[glasses-move-5:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j2 button"
+								u init-with="p:[z-index:-1]"
+								when-glasses-move-5="p:[z-index:10]"
+								when-glasses-move-back-6="p:[z-index:10]"
+								when-glasses-move-back-5="p:[z-index:-1]"
+								on-click="s:[glasses-move-6:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j3 button"
+								u init-with="p:[z-index:-1]"
+								when-glasses-move-6="p:[z-index:10]"
+								when-glasses-move-back-7="p:[z-index:10]"
+								when-glasses-move-back-6="p:[z-index:-1]"
+								on-click="s:[glasses-move-7:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j4 button"
+								u init-with="p:[z-index:-1]"
+								when-glasses-move-7="p:[z-index:10]"
+								when-glasses-move-back-8="p:[z-index:10]"
+								when-glasses-move-back-7="p:[z-index:-1]"
+								on-click="s:[glasses-move-8:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j5 button"
+								u init-with="p:[z-index:-1]"
+								when-glasses-move-8="p:[z-index:10]"
+								when-glasses-move-back-9="p:[z-index:10]"
+								when-glasses-move-back-8="p:[z-index:-1]"
+								on-click="s:[glasses-move-9:public] | p:[z-index:-1]">&#8702;</button>
 						</div>
 					</nav>
+					<div class="thumbnail glasses">
+						<div u init-with="p:[transform:translateX(0px)]"
+							when-glasses-move-1="a:[translateX:0px:-137px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-glasses-move-2="a:[translateX:-137px:-274px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-glasses-move-3="a:[translateX:-274px:-411px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-glasses-move-4="a:[translateX:-411px:-548px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-glasses-move-5="a:[translateX:-548px:-685px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-glasses-move-6="a:[translateX:-685px:-822px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-glasses-move-7="a:[translateX:-822px:-959px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-glasses-move-8="a:[translateX:-959px:-1096px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-glasses-move-9="a:[translateX:-1096px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-glasses-move-back-9="a:[translateX:0px:-1096px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-glasses-move-back-8="a:[translateX:-1096px:-959px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-glasses-move-back-7="a:[translateX:-959px:-822px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-glasses-move-back-6="a:[translateX:-822px:-685px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-glasses-move-back-5="a:[translateX:-685px:-548px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-glasses-move-back-4="a:[translateX:-548px:-411px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-glasses-move-back-3="a:[translateX:-411px:-274px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-glasses-move-back-2="a:[translateX:-274px:-137px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-glasses-move-back-1="a:[translateX:-137px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]">
+							<svg class="g1" viewBox="0 0 100 100">
+							    <g stroke="#33534D" stroke-width="1" fill="none" fill-rule="evenodd">
+							        <path d="M35.1449946,52.6004189 C36.655039,52.6004189 37.8791719,51.3962193 37.8791719,49.9107638 C37.8791719,48.4253082 36.655039,47.2211086 35.1449946,47.2211086 C33.6349503,47.2211086 32.4108174,48.4253082 32.4108174,49.9107638 C32.4108174,51.3962193 33.6349503,52.6004189 35.1449946,52.6004189 Z M67.9551212,49.014212 C69.4651656,49.014212 70.6892984,47.8100124 70.6892984,46.3245569 C70.6892984,44.8391013 69.4651656,43.6349017 67.9551212,43.6349017 C66.4450768,43.6349017 65.220944,44.8391013 65.220944,46.3245569 C65.220944,47.8100124 66.4450768,49.014212 67.9551212,49.014212 Z" fill="#33534D"></path>
+							        <path d="M50.9811104,43.345643 C47.914301,43.6627289 47.4186097,43.2381939 46.8684817,42.9142048 C46.3883656,42.631448 44.3589709,41.4839265 40.6302949,41.1958756 C34.0342477,40.6863122 24.007581,42.4081341 17.3539327,43.9213187 C14.6190085,44.5433 14.9157185,44.1564338 15.1335662,46.1953656 C15.3725476,48.4320971 15.9365497,47.6553421 16.8422137,48.0801595 C18.1541213,48.6955324 18.2990228,49.3490754 19.0997631,52.91925 C19.0997631,52.9192501 19.4221466,52.885918 21.7071128,52.649669 C20.704713,48.2648342 20.9754002,45.8012504 25.0578747,44.7294165 C28.069557,43.9387139 30.4261077,43.6857916 33.0073561,43.4189092 C36.40266,43.0678593 41.4453017,43.0535068 43.47441,44.5003272 C45.7277712,46.1070473 45.3503133,48.2823615 45.3884495,50.5548685 C47.1235494,45.1767178 48.0095598,47.0995958 51.3453485,46.7546998 C54.6811371,46.4098038 55.244868,44.3370322 58.0787415,49.2427841 C57.6357425,47.012137 56.8067733,44.9615586 58.6713076,42.9290779 C60.3502847,41.0988683 65.2857661,40.081555 68.6810699,39.7305052 C71.2623184,39.4636227 73.6208287,39.2290419 76.7338162,39.3864979 C80.9536144,39.5999368 81.7390729,41.9543228 81.685327,46.4483554 C83.9702932,46.2121064 84.2926768,46.1787743 84.2926768,46.1787743 C84.3213509,42.5228441 84.3249575,41.8539465 85.4781357,40.9837016 C86.2742223,40.3829355 86.9900692,41.0273633 86.7510878,38.7906318 C86.5332401,36.7517 86.9052318,37.0694273 84.0986144,37.0204013 C77.2705478,36.9011286 67.0990751,37.2676481 60.7548653,39.1151406 C57.1685503,40.1595086 55.4260352,41.6970184 55.0161723,42.0717925 C54.5465421,42.5012172 54.0479198,43.0285571 50.9811104,43.345643 L50.9811104,43.345643 Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#C8BBC9"></path>
+							        <path d="M20.9832792,53.1005132 C21.6631018,56.0601031 23.0712666,59.506575 25.0913758,60.9732166 C27.111485,62.4398582 31.1740653,62.3730667 34.3463553,62.0450749 C37.5186454,61.7170831 42.005855,60.9282852 44.0753559,56.6157816 C45.1242524,54.4300515 45.4661886,51.8742553 45.4406919,49.7555115 M82.4886306,46.7413047 C82.4491828,49.7752619 81.8002128,53.4344267 80.1342273,55.2821838 C78.4682419,57.1299409 74.480322,57.8955129 71.308032,58.2235048 C68.135742,58.5514968 63.5798737,58.6976877 60.6441346,54.9026897 C59.1561978,52.9792498 58.2815579,50.5492388 57.858694,48.4715799" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+							    </g>
+							</svg>
+							<svg class="g2" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M67.9551212,49.014212 C69.4651656,49.014212 72.7127854,47.9596256 72.7127854,43.6349017 C71.1950589,44.7205698 68.7819097,43.6349017 67.9551212,43.6349017 C66.4450768,43.6349017 65.220944,44.8391013 65.220944,46.3245569 C65.220944,47.8100124 66.4450768,49.014212 67.9551212,49.014212 Z M35.9348219,52.3075965 C34.4634799,52.6417513 31.0579391,52.3328533 30.0689843,48.1189718 C31.7960763,48.8409596 33.8991119,47.249116 34.7047098,47.0661575 C36.1760518,46.7320027 37.6441802,47.6344528 37.9838663,49.0818363 C38.3235524,50.5292197 37.4061639,51.9734417 35.9348219,52.3075965 Z" stroke="#33534D" fill="#33534D"></path>
+							        <path d="M50.9811104,43.345643 C47.914301,43.6627289 47.4186097,43.2381939 46.8684817,42.9142048 C46.3883656,42.631448 44.3589709,41.4839265 40.6302949,41.1958756 C34.0342477,40.6863122 24.007581,42.4081341 17.3539327,43.9213187 C14.6190085,44.5433 14.9157185,44.1564338 15.1335662,46.1953656 C15.3725476,48.4320971 15.9365497,47.6553421 16.8422137,48.0801595 C18.1541213,48.6955324 18.2990228,49.3490754 19.0997631,52.91925 C19.0997631,52.9192501 19.4221466,52.885918 21.7071128,52.649669 C20.704713,48.2648342 20.9754002,45.8012504 25.0578747,44.7294165 C28.069557,43.9387139 30.4261077,43.6857916 33.0073561,43.4189092 C36.40266,43.0678593 41.4453017,43.0535068 43.47441,44.5003272 C45.7277712,46.1070473 45.3503133,48.2823615 45.3884495,50.5548685 C47.1235494,45.1767178 48.0095598,47.0995958 51.3453485,46.7546998 C54.6811371,46.4098038 55.244868,44.3370322 58.0787415,49.2427841 C57.6357425,47.012137 56.8067733,44.9615586 58.6713076,42.9290779 C60.3502847,41.0988683 65.2857661,40.081555 68.6810699,39.7305052 C71.2623184,39.4636227 73.6208287,39.2290419 76.7338162,39.3864979 C80.9536144,39.5999368 81.7390729,41.9543228 81.685327,46.4483554 C83.9702932,46.2121064 84.2926768,46.1787743 84.2926768,46.1787743 C84.3213509,42.5228441 84.3249575,41.8539465 85.4781357,40.9837016 C86.2742223,40.3829355 86.9900692,41.0273633 86.7510878,38.7906318 C86.5332401,36.7517 86.9052318,37.0694273 84.0986144,37.0204013 C77.2705478,36.9011286 67.0990751,37.2676481 60.7548653,39.1151406 C57.1685503,40.1595086 55.4260352,41.6970184 55.0161723,42.0717925 C54.5465421,42.5012172 54.0479198,43.0285571 50.9811104,43.345643 L50.9811104,43.345643 Z" stroke="#40484B" stroke-width="2" fill="#FFFFFF"></path>
+							        <path d="M20.9832792,53.1005132 C21.6631018,56.0601031 23.0712666,59.506575 25.0913758,60.9732166 C27.111485,62.4398582 31.1740653,62.3730667 34.3463553,62.0450749 C37.5186454,61.7170831 42.005855,60.9282852 44.0753559,56.6157816 C45.1242524,54.4300515 45.4661886,51.8742553 45.4406919,49.7555115 M82.4886306,46.7413047 C82.4491828,49.7752619 81.8002128,53.4344267 80.1342273,55.2821838 C78.4682419,57.1299409 74.480322,57.8955129 71.308032,58.2235048 C68.135742,58.5514968 63.5798737,58.6976877 60.6441346,54.9026897 C59.1561978,52.9792498 58.2815579,50.5492388 57.858694,48.4715799" stroke="#40484B" stroke-width="2"></path>
+							    </g>
+							</svg>
+							<svg class="g3" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M34.0311928,54.625942 C35.5412372,54.625942 36.76537,53.4013091 36.76537,51.8906479 C36.76537,50.3799866 35.5412372,49.1553537 34.0311928,49.1553537 C32.5211485,49.1553537 31.2970156,50.3799866 31.2970156,51.8906479 C31.2970156,53.4013091 32.5211485,54.625942 34.0311928,54.625942 Z M66.8413194,50.9788832 C68.3513638,50.9788832 69.5754966,49.7542503 69.5754966,48.243589 C69.5754966,46.7329278 68.3513638,45.5082949 66.8413194,45.5082949 C65.331275,45.5082949 64.1071422,46.7329278 64.1071422,48.243589 C64.1071422,49.7542503 65.331275,50.9788832 66.8413194,50.9788832 Z" stroke="#33534D" fill="#33534D"></path>
+							        <path d="M15.0153718,44.7951857 C14.857112,43.2888287 15.9384173,41.940499 17.4492465,41.7816396 L41.9195776,39.2086535 C43.4220294,39.050675 44.7679618,40.140512 44.926562,41.6501087 L46.83038,59.7711264 C46.9886399,61.2774834 45.9073345,62.6258131 44.3965053,62.7846725 L19.9261742,65.3576586 C18.4237224,65.5156372 17.0777901,64.4258001 16.9191898,62.9162034 L15.0153718,44.7951857 L15.0153718,44.7951857 Z M18.8787347,46.6770624 C18.7996182,45.9240117 19.3415817,45.2498137 20.1019353,45.1698647 L40.0290204,43.0745881 C40.783692,42.9952365 41.4585384,43.5311702 41.5387273,44.2944283 L42.9670171,57.8892497 C43.0461336,58.6423004 42.5041702,59.3164984 41.7438165,59.3964474 L21.8167314,61.491724 C21.0620598,61.5710756 20.3872135,61.0351419 20.3070246,60.2718838 L18.8787347,46.6770624 L18.8787347,46.6770624 Z M54.8969587,40.6017497 C54.7386989,39.0953927 55.8200042,37.747063 57.3308334,37.5882036 L81.8011645,35.0152175 C83.3036163,34.857239 84.6495487,35.947076 84.8081489,37.4566727 L86.7119669,55.5776904 C86.8702267,57.0840474 85.7889214,58.4323771 84.2780922,58.5912366 L59.8077611,61.1642226 C58.3053093,61.3222012 56.9593769,60.2323642 56.8007767,58.7227674 L54.8969587,40.6017497 L54.8969587,40.6017497 Z M58.7603216,42.4836264 C58.6812051,41.7305757 59.2231686,41.0563777 59.9835222,40.9764287 L79.9106073,38.8811521 C80.6652789,38.8018005 81.3401252,39.3377342 81.4203142,40.1009924 L82.848604,53.6958137 C82.9277205,54.4488644 82.385757,55.1230624 81.6254034,55.2030114 L61.6983183,57.298288 C60.9436467,57.3776396 60.2688004,56.8417059 60.1886115,56.0784478 L58.7603216,42.4836264 L58.7603216,42.4836264 Z M45.5926717,47.9903077 L55.5630684,46.9419487 L56.0394006,51.4757985 L46.0690039,52.5241575 L45.5926717,47.9903077 L45.5926717,47.9903077 Z" stroke="#CDCDCD" stroke-width="2" fill="#FFFFFF"></path>
+							    </g>
+							</svg>
+							<svg class="g4" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M34.0311928,54.625942 C35.5412372,54.625942 36.76537,53.4013091 36.76537,51.8906479 C36.76537,50.3799866 35.5412372,49.1553537 34.0311928,49.1553537 C32.5211485,49.1553537 31.2970156,50.3799866 31.2970156,51.8906479 C31.2970156,53.4013091 32.5211485,54.625942 34.0311928,54.625942 Z M66.8413194,50.9788832 C68.3513638,50.9788832 69.5754966,49.7542503 69.5754966,48.243589 C69.5754966,46.7329278 68.3513638,45.5082949 66.8413194,45.5082949 C65.331275,45.5082949 64.1071422,46.7329278 64.1071422,48.243589 C64.1071422,49.7542503 65.331275,50.9788832 66.8413194,50.9788832 Z" stroke="#33534D" fill="#33534D"></path>
+							        <path d="M17.4492465,41.7816396 L41.9195776,39.2086535 C43.4220294,39.050675 44.7679618,40.140512 44.926562,41.6501087 L46.83038,59.7711264 C46.9886399,61.2774834 45.9073345,62.6258131 44.3965053,62.7846725 L19.9261742,65.3576586 C18.4237224,65.5156372 17.0777901,64.4258001 16.9191898,62.9162034 L15.0153718,44.7951857 C14.857112,43.2888287 15.9384173,41.940499 17.4492465,41.7816396 Z M20.1019353,45.1698647 L40.0290204,43.0745881 C40.783692,42.9952365 41.4585384,43.5311702 41.5387273,44.2944283 L42.9670171,57.8892497 C43.0461336,58.6423004 42.5041702,59.3164984 41.7438165,59.3964474 L21.8167314,61.491724 C21.0620598,61.5710756 20.3872135,61.0351419 20.3070246,60.2718838 L18.8787347,46.6770624 C18.7996182,45.9240117 19.3415817,45.2498137 20.1019353,45.1698647 Z M57.3308334,37.5882036 L81.8011645,35.0152175 C83.3036163,34.857239 84.6495487,35.947076 84.8081489,37.4566727 L86.7119669,55.5776904 C86.8702267,57.0840474 85.7889214,58.4323771 84.2780922,58.5912366 L59.8077611,61.1642226 C58.3053093,61.3222012 56.9593769,60.2323642 56.8007767,58.7227674 L54.8969587,40.6017497 C54.7386989,39.0953927 55.8200042,37.747063 57.3308334,37.5882036 Z M59.9835222,40.9764287 L79.9106073,38.8811521 C80.6652789,38.8018005 81.3401252,39.3377342 81.4203142,40.1009924 L82.848604,53.6958137 C82.9277205,54.4488644 82.385757,55.1230624 81.6254034,55.2030114 L61.6983183,57.298288 C60.9436467,57.3776396 60.2688004,56.8417059 60.1886115,56.0784478 L58.7603216,42.4836264 C58.6812051,41.7305757 59.2231686,41.0563777 59.9835222,40.9764287 Z M55.5630684,46.9419487 L56.0394006,51.4757985 L46.0690039,52.5241575 L45.5926717,47.9903077 L55.5630684,46.9419487 Z" stroke="#CDCCD9" stroke-width="2" fill="#FFFFFF"></path>
+							    </g>
+							</svg>
+
+							<svg class="j1" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M15.7565244,51.8158462 C16.1862694,53.4186684 18.0340055,57.2248215 21.0958076,59.1219975 C24.2197679,61.0576884 28.5772711,61.066193 30.9030943,60.8217391 C35.5084631,60.3376954 42.0354935,59.2947064 45.2004788,54.4583071 C46.8046058,52.0070481 47.3997677,49.1748604 47.4458732,46.8388979 M85.9348855,43.5973856 C85.8423079,46.9365526 84.9979706,50.9725025 82.9411745,53.0298407 C80.8843783,55.087179 76.01463,55.9871852 72.1449908,56.3939007 C68.2753515,56.8006163 62.7227553,57.0272472 59.2018057,52.8935679 C57.4172633,50.7984724 56.3873387,48.1370883 55.9026462,45.8569148 M16.0158624,51.0892631 C14.8589705,46.2786149 48.8438821,43.0332019 47.5326946,46.8160534 C47.7796249,46.7901001 55.8750401,45.9392377 56.1219709,45.9132842 C55.4476578,41.8729665 85.6367981,37.8789084 85.505377,42.8249637" stroke="#8D9699" stroke-width="3"></path>
+							        <path d="M73.0698444,51.7013178 C75.0415443,51.4940838 76.471278,49.7215375 76.2632438,47.7422248 C76.0552097,45.7629121 74.1553393,44.0662131 72.2223166,43.6376267 C69.4505879,43.0230838 67.6655482,43.2106991 65.0821591,44.3880875 C62.4987699,45.565476 60.1978901,49.4307616 60.1978901,49.4307616 L62.057596,49.9535512 C66.0688485,45.1902456 68.934747,46.7007542 69.1230866,48.4926855 C69.3311208,50.4719982 71.0981444,51.9085519 73.0698444,51.7013178 Z M39.1825942,55.5841657 C41.1542942,55.3769316 42.5840278,53.6043853 42.3759937,51.6250726 C42.1679595,49.6457599 40.2680891,47.949061 38.3350665,47.5204745 C35.5633378,46.9059317 33.7782981,47.0935469 31.1949089,48.2709354 C28.6115197,49.4483238 26.31064,53.3136094 26.31064,53.3136094 L28.1703458,53.836399 C32.1815984,49.0730935 35.0474969,50.583602 35.2358365,52.3755334 C35.4438706,54.3548461 37.2108942,55.7913997 39.1825942,55.5841657 Z" stroke="#33534D" fill="#33534D"></path>
+							    </g>
+							</svg>
+							<svg class="j2" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M15.7565244,51.8158462 C16.1862694,53.4186684 18.0340055,57.2248215 21.0958076,59.1219975 C24.2197679,61.0576884 28.5772711,61.066193 30.9030943,60.8217391 C35.5084631,60.3376954 42.0354935,59.2947064 45.2004788,54.4583071 C46.8046058,52.0070481 47.3997677,49.1748604 47.4458732,46.8388979 M85.9348855,43.5973856 C85.8423079,46.9365526 84.9979706,50.9725025 82.9411745,53.0298407 C80.8843783,55.087179 76.01463,55.9871852 72.1449908,56.3939007 C68.2753515,56.8006163 62.7227553,57.0272472 59.2018057,52.8935679 C57.4172633,50.7984724 56.3873387,48.1370883 55.9026462,45.8569148 M16.0158624,51.0892631 C14.8589705,46.2786149 48.8438821,43.0332019 47.5326946,46.8160534 C47.7796249,46.7901001 55.8750401,45.9392377 56.1219709,45.9132842 C55.4476578,41.8729665 85.6367981,37.8789084 85.505377,42.8249637" stroke="#8D9699" stroke-width="3"></path>
+							        <path d="M73.0698444,51.7013178 C75.0415443,51.4940838 76.471278,49.7215375 76.2632438,47.7422248 C76.0552097,45.7629121 74.1553393,44.0662131 72.2223166,43.6376267 C69.4505879,43.0230838 67.6655482,43.2106991 65.0821591,44.3880875 C62.4987699,45.565476 60.1978901,49.4307616 60.1978901,49.4307616 L62.057596,49.9535512 C66.0688485,45.1902456 68.934747,46.7007542 69.1230866,48.4926855 C69.3311208,50.4719982 71.0981444,51.9085519 73.0698444,51.7013178 Z M39.1825942,55.5841657 C41.1542942,55.3769316 42.5840278,53.6043853 42.3759937,51.6250726 C42.1679595,49.6457599 40.2680891,47.949061 38.3350665,47.5204745 C35.5633378,46.9059317 33.7782981,47.0935469 31.1949089,48.2709354 C28.6115197,49.4483238 26.31064,53.3136094 26.31064,53.3136094 L28.1703458,53.836399 C32.1815984,49.0730935 35.0474969,50.583602 35.2358365,52.3755334 C35.4438706,54.3548461 37.2108942,55.7913997 39.1825942,55.5841657 Z" stroke="#33534D" fill="#33534D"></path>
+							    </g>
+							</svg>
+							<svg class="j3" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+						            <path d="M34.3596198,57.229793 C36.9168269,56.9568901 38.7719691,54.6307807 38.5031958,52.0342823 C38.2344225,49.4377839 35.9435127,47.5541376 33.3863056,47.8270406 C30.8290985,48.0999436 28.9739563,50.426053 29.2427296,53.0225514 C29.5115029,55.6190498 31.8024127,57.502696 34.3596198,57.229793 L34.3596198,57.229793 L34.3596198,57.229793 L34.3596198,57.229793 Z M66.2767935,44.5657474 C64.8454931,45.3721782 63.8767649,46.9222771 63.8767649,48.7021111 C63.8767649,51.3129117 65.9612096,53.4293838 68.5325026,53.4293838 C71.1037955,53.4293838 73.1882403,51.3129117 73.1882403,48.7021111 C73.1882403,46.9222771 72.219512,45.3721782 70.7882117,44.5657474 L74.987048,44.5657474 L74.987048,43.3839293 L64.405826,43.3839293 L64.405826,44.5657474 L66.2767935,44.5657474 L66.2767935,44.5657474 Z M27.027951,49.0997628 L37.551208,47.9767297 L37.4295437,46.8013856 L26.9062867,47.9244187 L27.027951,49.0997628 L27.027951,49.0997628 Z" stroke="#744041" stroke-width="1.5" fill="#744041"></path>
+						            <path d="M54.7235033,47.1869257 C54.6848896,47.0885635 54.5658224,47.0385049 54.4574255,47.0751619 L53.768687,47.3080752 C53.2799702,47.4733464 53.0246112,47.966053 53.1984971,48.4090002 L54.9482672,52.8662654 C55.1220768,53.3090183 55.6590532,53.5339979 56.1478775,53.3686904 L56.8366159,53.1357771 C56.944953,53.0991404 57.0013862,52.9894757 56.9628614,52.8913399 L54.7235033,47.1869257 L54.7235033,47.1869257 L54.7235033,47.1869257 Z M46.2179067,47.7908335 C46.2426623,47.687972 46.3537094,47.621575 46.4660759,47.6425576 L47.1800363,47.7758775 C47.6866502,47.870479 48.007058,48.3223055 47.8955777,48.785514 L46.7737807,53.446664 C46.6623493,53.9096693 46.1614361,54.2083405 45.6547108,54.1137181 L44.9407503,53.9803982 C44.8284459,53.9594273 44.7575305,53.8588045 44.7822292,53.7561798 L46.2179067,47.7908335 L46.2179067,47.7908335 L46.2179067,47.7908335 Z" stroke="#A29A9A" stroke-width="2.5" fill="#FFFFFF"></path>
+						            <path d="M15.0004151,50.0149371 C14.9931975,49.9101356 15.080969,49.8185298 15.1961742,49.8103501 L19.3614455,49.5146107 C19.4767779,49.506422 19.5761621,49.5852931 19.5833417,49.6895437 L19.7074277,51.4913211 C19.7146452,51.5961227 19.6268738,51.6877284 19.5116685,51.6959082 L15.3463972,51.9916475 C15.2310649,51.9998363 15.1316807,51.9209651 15.1245011,51.8167146 L15.0004151,50.0149371 L15.0004151,50.0149371 L15.0004151,50.0149371 Z M81.2445361,45.3115229 C81.2373185,45.2067214 81.32509,45.1151156 81.4402952,45.1069359 L85.6055665,44.8111965 C85.7208988,44.8030078 85.8202831,44.881879 85.8274627,44.9861295 L85.9515486,46.787907 C85.9587662,46.8927085 85.8709947,46.9843143 85.7557895,46.992494 L81.5905182,47.2882334 C81.4751859,47.2964221 81.3758016,47.2175509 81.368622,47.1133004 L81.2445361,45.3115229 L81.2445361,45.3115229 L81.2445361,45.3115229 Z" stroke="#C8C0C0" stroke-width="2.5" fill="#F6C64E"></path>
+						            <path d="M44.8086812,46.6594953 L47.1679925,45.7571475 C47.3859036,45.6738047 47.7451763,45.5932757 47.972511,45.5771346 L51.9609298,45.293952 C52.187342,45.2778764 52.5579036,45.2976811 52.7974156,45.3397344 L55.849368,45.8755929" stroke="#C8C0C0" stroke-width="2.5"></path>
+						            <path d="M33.8372679,61.9841467 C40.8625364,61.234416 46.0646801,55.8643581 45.4565812,49.9897867 C44.8484822,44.1152153 38.6604153,39.960711 31.6351468,40.7104417 C24.6098784,41.4601724 19.4077346,46.8302303 20.0158336,52.7048017 C20.6239325,58.5793731 26.8119995,62.7338774 33.8372679,61.9841467 L33.8372679,61.9841467 L33.8372679,61.9841467 L33.8372679,61.9841467 Z M69.5777288,58.3611435 C76.6029972,57.6114128 81.805141,52.2413549 81.197042,46.3667835 C80.5889431,40.4922121 74.4008761,36.3377079 67.3756077,37.0874386 C60.3503392,37.8371693 55.1481955,43.2072272 55.7562944,49.0817986 C56.3643934,54.95637 62.5524603,59.1108742 69.5777288,58.3611435 L69.5777288,58.3611435 L69.5777288,58.3611435 L69.5777288,58.3611435 Z" stroke="#C8C0C0" stroke-width="2.5" fill-opacity="0.2" fill="#93C0FA"></path>
+							    </g>
+							</svg>
+							<svg class="j4" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M52.6096136,45.851871 C52.5651647,45.7468567 52.444395,45.6977971 52.3397378,45.7423484 L51.6747612,46.0254209 C51.2029053,46.2262842 50.9824964,46.7721044 51.1826601,47.2450078 L53.1968566,52.0037152 C53.3969325,52.4764112 53.941537,52.6968193 54.4134966,52.4959119 L55.0784732,52.2128394 C55.1830726,52.1683127 55.2317318,52.046844 55.1873852,51.9420714 L52.6096136,45.851871 L52.6096136,45.851871 L52.6096136,45.851871 Z M44.2512806,46.8821926 C44.2691038,46.769502 44.3744642,46.6925677 44.4867482,46.7103769 L45.2001846,46.8235341 C45.7064266,46.9038284 46.0518157,47.3799034 45.971554,47.8873745 L45.163901,52.9939279 C45.0836745,53.5011764 44.6083591,53.8473088 44.1020058,53.7669968 L43.3885694,53.6538396 C43.2763474,53.6360402 43.199863,53.5299978 43.2176452,53.4175667 L44.2512806,46.8821926 L44.2512806,46.8821926 L44.2512806,46.8821926 Z" stroke="#8A9EA3" fill="#FFFFFF"></path>
+							        <path d="M13.5902591,50.7986201 C13.5678378,50.6152933 13.6416632,50.4553366 13.7548738,50.4413813 L17.8480287,49.9368231 C17.9613642,49.9228523 18.0715347,50.0611064 18.0938381,50.2434694 L18.4793111,53.3952756 C18.5017324,53.5786024 18.4279069,53.7385591 18.3146964,53.7525144 L14.2215414,54.2570726 C14.1082059,54.2710434 13.9980354,54.1327893 13.975732,53.9504263 L13.5902591,50.7986201 L13.5902591,50.7986201 L13.5902591,50.7986201 Z M78.6874472,42.7741691 C78.6650259,42.5908422 78.7388514,42.4308855 78.8520619,42.4169302 L82.9452169,41.912372 C83.0585524,41.8984012 83.1687229,42.0366554 83.1910263,42.2190184 L83.5764992,45.3708245 C83.5989205,45.5541513 83.5250951,45.714108 83.4118845,45.7280634 L79.3187296,46.2326216 C79.2053941,46.2465923 79.0952236,46.1083382 79.0729202,45.9259752 L78.6874472,42.7741691 L78.6874472,42.7741691 L78.6874472,42.7741691 Z" stroke="#8A9EA3" fill="#8A9EA3"></path>
+							        <path d="M42.7872402,45.7169058 L45.0240369,44.6502612 C45.2528051,44.5411702 45.6412892,44.427707 45.891319,44.3968862 L49.7102776,43.9261278 C49.960496,43.8952837 50.3702152,43.9006085 50.6174289,43.9368509 L53.6367715,44.3794973" stroke="#8A9EA3" stroke-width="1.5"></path>
+							        <path d="M32.0812924,58.8472142 C39.0060448,57.9936084 44.1456135,53.4255513 43.5608402,48.6441732 C42.9760669,43.862795 36.8883935,40.6787064 29.963641,41.5323122 C23.0388886,42.385918 17.8993199,46.953975 18.4840932,51.7353532 C19.0688665,56.5167314 25.1565399,59.70082 32.0812924,58.8472142 L32.0812924,58.8472142 L32.0812924,58.8472142 Z M67.3099158,54.6608553 C74.2346683,53.8072495 79.3742369,49.2391924 78.7894636,44.4578143 C78.2046904,39.6764361 72.1170169,36.4923475 65.1922645,37.3459533 C58.267512,38.1995591 53.1279434,42.7676162 53.7127166,47.5489943 C54.2974899,52.3303725 60.3851633,55.5144611 67.3099158,54.6608553 L67.3099158,54.6608553 L67.3099158,54.6608553 Z" stroke="#8A9EA3" stroke-width="1.5" fill-opacity="0.305140399" fill="#FFFFFF"></path>
+							        <path d="M67.4069006,50.8171597 C69.1351808,50.6347938 70.3884041,49.074953 70.2060532,47.3331578 C70.0237023,45.5913626 68.3583838,44.0982676 66.6640059,43.7211115 C64.2344659,43.1803138 62.6698015,43.3454152 60.4053493,44.381517 C58.1408971,45.4176189 56.1240765,48.8190702 56.1240765,48.8190702 L57.7541891,49.2791251 C61.2702252,45.0874162 63.7823091,46.4166637 63.9473969,47.9935633 C64.1297478,49.7353585 65.6786204,50.9995256 67.4069006,50.8171597 Z M37.7032616,54.2340658 C39.4315418,54.0516998 40.6847651,52.4918591 40.5024142,50.7500639 C40.3200633,49.0082687 38.6547448,47.5151736 36.9603669,47.1380176 C34.5308269,46.5972199 32.9661625,46.7623213 30.7017103,47.7984231 C28.437258,48.8345249 26.4204375,52.2359763 26.4204375,52.2359763 L28.05055,52.6960312 C31.5665862,48.5043222 34.0786701,49.8335698 34.2437579,51.4104694 C34.4261088,53.1522645 35.9749814,54.4164317 37.7032616,54.2340658 Z" stroke="#3C3353" fill="#3C3353"></path>
+							    </g>
+							</svg>
+							<svg class="j5" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M30.1598136,60.8101251 C38.5805266,60.3688143 44.9968102,52.1867819 44.490984,42.5350443 C44.490984,42.5350443 13.9968848,44.1331723 13.9968848,44.1331723 C14.5027109,53.7849099 21.7391006,61.251436 30.1598136,60.8101251 Z M72.2707126,58.2805539 C80.6914256,57.839243 87.1077091,49.6572106 86.601883,40.005473 C86.601883,40.005473 56.1077837,41.6036011 56.1077837,41.6036011 C56.6136099,51.2553387 63.8499996,58.7218648 72.2707126,58.2805539 Z M44.7832583,47.3668757 C44.7832583,47.3668757 47.6704258,45.5466117 50.5682445,45.3947435 C53.4660633,45.2428752 56.400058,46.758065 56.400058,46.758065" stroke="#E1B7DE" stroke-width="2.5"></path>
+							        <path d="M63.5681572,51.3272794 C63.5680823,51.3277752 63.5696537,51.3184296 63.5731055,51.2999068 C63.5800784,51.2624897 63.5894042,51.2171748 63.6013116,51.1646263 C63.6369572,51.0073186 63.6856998,50.8286889 63.7492859,50.634019 C63.9331081,50.0712433 64.1972347,49.5036392 64.5543783,48.9709757 C65.5780663,47.4441913 67.1490671,46.4902249 69.4509032,46.398092 C71.7527394,46.3059591 73.3779711,47.1319935 74.4920847,48.5732107 C74.8807759,49.0760215 75.1788032,49.621125 75.3964279,50.1678324 C75.4717065,50.3569441 75.5312017,50.5312415 75.5763341,50.685316 C75.5914106,50.7367844 75.6034715,50.7812433 75.6127046,50.8180118 C75.6172753,50.8362135 75.6194116,50.8454106 75.6193067,50.844922 C75.7202791,51.315343 76.1348457,51.6028739 76.5452672,51.4871404 C76.9556886,51.3714068 77.2065466,50.8962347 77.1055742,50.4258137 C77.0588954,50.2083418 76.9585141,49.8656572 76.7889226,49.4396167 C76.5114177,48.7424807 76.133352,48.050984 75.6376741,47.4097751 C74.225019,45.5823647 72.1626278,44.5341412 69.3974865,44.6448183 C66.6323453,44.7554954 64.6387722,45.9660623 63.3407734,47.9019689 C62.8853266,48.5812473 62.5502659,49.3012875 62.3158643,50.018913 C62.1726146,50.4574752 62.0933333,50.807351 62.0600035,51.0280253 C61.9879066,51.5053735 62.2670723,51.959331 62.6835374,52.0419677 C63.1000025,52.1246045 63.4960603,51.8046276 63.5681572,51.3272794 L63.5681572,51.3272794 Z M26.2378753,54.0126571 C26.2378004,54.0131529 26.2393718,54.0038073 26.2428236,53.9852845 C26.2497965,53.9478674 26.2591223,53.9025525 26.2710297,53.850004 C26.3066753,53.6926963 26.355418,53.5140666 26.419004,53.3193967 C26.6028262,52.756621 26.8669529,52.1890169 27.2240964,51.6563534 C28.2477844,50.1295689 29.8187852,49.1756026 32.1206214,49.0834697 C34.4224575,48.9913368 36.0476893,49.8173712 37.1618028,51.2585884 C37.550494,51.7613992 37.8485213,52.3065027 38.066146,52.8532101 C38.1414246,53.0423218 38.2009198,53.2166192 38.2460523,53.3706937 C38.2611287,53.4221621 38.2731896,53.466621 38.2824227,53.5033895 C38.2869935,53.5215912 38.2891297,53.5307883 38.2890249,53.5302997 C38.3899973,54.0007207 38.8045639,54.2882516 39.2149853,54.1725181 C39.6254067,54.0567845 39.8762647,53.5816124 39.7752923,53.1111914 C39.7286136,52.8937195 39.6282322,52.5510349 39.4586408,52.1249944 C39.1811359,51.4278584 38.8030701,50.7363617 38.3073923,50.0951528 C36.8947372,48.2677424 34.832346,47.2195189 32.0672047,47.330196 C29.3020634,47.4408731 27.3084904,48.65144 26.0104916,50.5873466 C25.5550448,51.266625 25.2199841,51.9866652 24.9855825,52.7042907 C24.8423327,53.1428529 24.7630515,53.4927287 24.7297217,53.713403 C24.6576248,54.1907512 24.9367904,54.6447087 25.3532555,54.7273454 C25.7697207,54.8099822 26.1657784,54.4900053 26.2378753,54.0126571 L26.2378753,54.0126571 Z" stroke="#366797" stroke-width="1.5" fill="#366797"></path>
+							    </g>
+							</svg>
+						</div>
+					</div>
 					<h1>glasses</h1>
 				</div>
 			</li>
@@ -937,15 +1923,238 @@
 				<div class="guru-switch-button">
 					<nav>
 						<div>
-							<button class="button"
-								u on-click="s:[left-prop-move:public]">&#8701;</button>
+							<button class="g1 button"
+								u init-with="p:[z-index:10]"
+								when-left-prop-move-back-1="p:[z-index:10]"
+								when-left-prop-move-9="p:[z-index:10]"
+								when-left-prop-move-1="p:[z-index:-1]"
+								on-click="s:[left-prop-move-back-9:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="g2 button"
+								u init-with="p:[z-index:-1]"
+								when-left-prop-move-back-9="p:[z-index:10]"
+								when-left-prop-move-8="p:[z-index:10]"
+								when-left-prop-move-9="p:[z-index:-1]"
+								on-click="s:[left-prop-move-back-8:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="g3 button"
+								u init-with="p:[z-index:-1]"
+								when-left-prop-move-back-8="p:[z-index:10]"
+								when-left-prop-move-7="p:[z-index:10]"
+								when-left-prop-move-8="p:[z-index:-1]"
+								on-click="s:[left-prop-move-back-7:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="g4 button"
+								u init-with="p:[z-index:-1]"
+								when-left-prop-move-back-7="p:[z-index:10]"
+								when-left-prop-move-6="p:[z-index:10]"
+								when-left-prop-move-7="p:[z-index:-1]"
+								on-click="s:[left-prop-move-back-6:public] | p:[z-index:-1]">&#8701;</button>
+
+							<button class="j1 button"
+								u init-with="p:[z-index:-1]"
+								when-left-prop-move-back-6="p:[z-index:10]"
+								when-left-prop-move-5="p:[z-index:10]"
+								when-left-prop-move-6="p:[z-index:-1]"
+								on-click="s:[left-prop-move-back-5:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j2 button"
+								u init-with="p:[z-index:-1]"
+								when-left-prop-move-back-5="p:[z-index:10]"
+								when-left-prop-move-4="p:[z-index:10]"
+								when-left-prop-move-5="p:[z-index:-1]"
+								on-click="s:[left-prop-move-back-4:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j3 button"
+								u init-with="p:[z-index:-1]"
+								when-left-prop-move-back-4="p:[z-index:10]"
+								when-left-prop-move-3="p:[z-index:10]"
+								when-left-prop-move-4="p:[z-index:-1]"
+								on-click="s:[left-prop-move-back-3:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j4 button"
+								u init-with="p:[z-index:-1]"
+								when-left-prop-move-back-3="p:[z-index:10]"
+								when-left-prop-move-2="p:[z-index:10]"
+								when-left-prop-move-3="p:[z-index:-1]"
+								on-click="s:[left-prop-move-back-2:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j5 button"
+								u init-with="p:[z-index:-1]"
+								when-left-prop-move-back-2="p:[z-index:10]"
+								when-left-prop-move-1="p:[z-index:10]"
+								when-left-prop-move-2="p:[z-index:-1]"
+								on-click="s:[left-prop-move-back-1:public] | p:[z-index:-1]">&#8701;</button>
 						</div>
 						<div>
-							<button class="button"
-								u on-click="s:[left-prop-move:public]">&#8702;</button>
+							<button class="g1 button"
+								u init-with="p:[z-index:10]"
+								when-left-prop-move-9="p:[z-index:10]"
+								when-left-prop-move-back-1="p:[z-index:10]"
+								when-left-prop-move-back-9="p:[z-index:-1]"
+								on-click="s:[left-prop-move-1:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="g2 button"
+								u init-with="p:[z-index:-1]"
+								when-left-prop-move-1="p:[z-index:10]"
+								when-left-prop-move-back-2="p:[z-index:10]"
+								when-left-prop-move-back-1="p:[z-index:-1]"
+								on-click="s:[left-prop-move-2:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="g3 button"
+								u init-with="p:[z-index:-1]"
+								when-left-prop-move-2="p:[z-index:10]"
+								when-left-prop-move-back-3="p:[z-index:10]"
+								when-left-prop-move-back-2="p:[z-index:-1]"
+								on-click="s:[left-prop-move-3:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="g4 button"
+								u init-with="p:[z-index:-1]"
+								when-left-prop-move-3="p:[z-index:10]"
+								when-left-prop-move-back-4="p:[z-index:10]"
+								when-left-prop-move-back-3="p:[z-index:-1]"
+								on-click="s:[left-prop-move-4:public] | p:[z-index:-1]">&#8702;</button>
+
+							<button class="j1 button"
+								u init-with="p:[z-index:-1]"
+								when-left-prop-move-4="p:[z-index:10]"
+								when-left-prop-move-back-5="p:[z-index:10]"
+								when-left-prop-move-back-4="p:[z-index:-1]"
+								on-click="s:[left-prop-move-5:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j2 button"
+								u init-with="p:[z-index:-1]"
+								when-left-prop-move-5="p:[z-index:10]"
+								when-left-prop-move-back-6="p:[z-index:10]"
+								when-left-prop-move-back-5="p:[z-index:-1]"
+								on-click="s:[left-prop-move-6:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j3 button"
+								u init-with="p:[z-index:-1]"
+								when-left-prop-move-6="p:[z-index:10]"
+								when-left-prop-move-back-7="p:[z-index:10]"
+								when-left-prop-move-back-6="p:[z-index:-1]"
+								on-click="s:[left-prop-move-7:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j4 button"
+								u init-with="p:[z-index:-1]"
+								when-left-prop-move-7="p:[z-index:10]"
+								when-left-prop-move-back-8="p:[z-index:10]"
+								when-left-prop-move-back-7="p:[z-index:-1]"
+								on-click="s:[left-prop-move-8:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j5 button"
+								u init-with="p:[z-index:-1]"
+								when-left-prop-move-8="p:[z-index:10]"
+								when-left-prop-move-back-9="p:[z-index:10]"
+								when-left-prop-move-back-8="p:[z-index:-1]"
+								on-click="s:[left-prop-move-9:public] | p:[z-index:-1]">&#8702;</button>
 						</div>
 					</nav>
-					<h1>left prop</h1>
+					<div class="thumbnail left-prop">
+						<div u init-with="p:[transform:translateX(0px)]"
+							when-left-prop-move-1="a:[translateX:0px:-137px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-left-prop-move-2="a:[translateX:-137px:-274px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-left-prop-move-3="a:[translateX:-274px:-411px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-left-prop-move-4="a:[translateX:-411px:-548px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-left-prop-move-5="a:[translateX:-548px:-685px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-left-prop-move-6="a:[translateX:-685px:-822px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-left-prop-move-7="a:[translateX:-822px:-959px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-left-prop-move-8="a:[translateX:-959px:-1096px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-left-prop-move-9="a:[translateX:-1096px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-left-prop-move-back-9="a:[translateX:0px:-1096px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-left-prop-move-back-8="a:[translateX:-1096px:-959px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-left-prop-move-back-7="a:[translateX:-959px:-822px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-left-prop-move-back-6="a:[translateX:-822px:-685px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-left-prop-move-back-5="a:[translateX:-685px:-548px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-left-prop-move-back-4="a:[translateX:-548px:-411px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-left-prop-move-back-3="a:[translateX:-411px:-274px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-left-prop-move-back-2="a:[translateX:-274px:-137px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-left-prop-move-back-1="a:[translateX:-137px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]">
+							<svg class="g1" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M56.6869061,28.8553291 L59.6181844,28.1785902 C60.6839276,27.932544 61.3564693,26.8543719 61.1069354,25.7735221 L59.3111648,17.9951847 C59.0622385,16.9169665 57.9905201,16.2387168 56.9187718,16.4861494 L31.5688139,22.3386483 C30.5030707,22.5846945 29.830529,23.6628666 30.0800628,24.7437164 L31.8758335,32.5220537 C32.1247598,33.600272 33.1964782,34.2785217 34.2682265,34.0310891 L37.1995048,33.3543502 L36.0766684,28.4908114 C35.8271346,27.4099616 36.5000387,26.3317059 37.5646186,26.0859283 L53.1724775,22.4825701 C54.2437836,22.2352396 55.3151434,22.9135721 55.5640697,23.9917903 L56.6869061,28.8553291 L56.6869061,28.8553291 Z" stroke="#514551" fill="#514551"></path>
+							        <path d="M22.9609358,56.1431501 C22.7122451,55.0659525 23.3757186,53.9929925 24.4559628,53.7435985 L77.0787839,41.594663 C78.1531552,41.3466248 79.2241456,42.0120202 79.4743995,43.0959889 L85.7722447,70.3749535 C86.0209354,71.452151 85.3574619,72.525111 84.2772177,72.774505 L31.6543966,84.9234406 C30.5800253,85.1714787 29.5090349,84.5060834 29.258781,83.4221146 L22.9609358,56.1431501 L22.9609358,56.1431501 Z" stroke="#514551" fill="#696269"></path>
+							        <path d="M28.1344179,78.5519629 L84.6478816,65.5048018 L85.7713054,70.3708847 C86.0205148,71.4503294 85.3574619,72.525111 84.2772177,72.774505 L31.6543966,84.9234406 C30.5800253,85.1714787 29.5096438,84.5087209 29.2578416,83.4180459 L28.1344179,78.5519629 L28.1344179,78.5519629 Z" stroke="#514551" fill="#514551"></path>
+							        <path d="M15.76214,38.2979742 C15.5143416,37.2246414 16.1949974,36.1510146 17.2654155,35.9038891 L75.7211912,22.4083099 C76.7992258,22.159426 77.8761286,22.8368825 78.1218241,23.9011067 L81.9484389,40.4759961 C82.1962373,41.549329 81.5681551,42.7819406 80.5648318,43.2206917 L52.5669818,55.4640912 L22.0355279,56.7332463 C20.9320108,56.7791181 19.8344502,55.9370879 19.5887547,54.8728636 L15.76214,38.2979742 L15.76214,38.2979742 Z" stroke="#504550" fill="#696269"></path>
+							        <path d="M43.0440532,31.9974015 C42.7965025,30.9251419 43.4700468,29.8540733 44.5386378,29.6073696 L48.2739922,28.7449951 C49.3469791,28.4972765 50.4184183,29.169736 50.665037,30.2379587 L61.3842313,76.6678902 C61.6317819,77.7401498 60.9582376,78.8112184 59.8896466,79.0579221 L56.1542922,79.9202966 C55.0813053,80.1680151 54.0098661,79.4955556 53.7632475,78.427333 L43.0440532,31.9974015 L43.0440532,31.9974015 Z" stroke="#709D59" fill="#81B566"></path>
+							        <path d="M45.0711111,54.1137884 C44.8228729,53.0385507 45.4957046,51.9651037 46.5760847,51.7156783 L56.3083684,49.4688036 C57.3877805,49.2196016 58.4622825,49.8815637 58.712292,50.9644737 L59.6129504,54.8656539 C59.8611886,55.9408917 59.1883569,57.0143387 58.1079768,57.2637641 L48.3756932,59.5106388 C47.296281,59.7598407 46.221779,59.0978787 45.9717695,58.0149687 L45.0711111,54.1137884 L45.0711111,54.1137884 Z" stroke="#E8C480" fill="#EED6A9"></path>
+							    </g>
+							</svg>
+							<svg class="g2" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M56.6869061,28.8553291 L59.6181844,28.1785902 C60.6839276,27.932544 61.3564693,26.8543719 61.1069354,25.7735221 L59.3111648,17.9951847 C59.0622385,16.9169665 57.9905201,16.2387168 56.9187718,16.4861494 L31.5688139,22.3386483 C30.5030707,22.5846945 29.830529,23.6628666 30.0800628,24.7437164 L31.8758335,32.5220537 C32.1247598,33.600272 33.1964782,34.2785217 34.2682265,34.0310891 L37.1995048,33.3543502 L36.0766684,28.4908114 C35.8271346,27.4099616 36.5000387,26.3317059 37.5646186,26.0859283 L53.1724775,22.4825701 C54.2437836,22.2352396 55.3151434,22.9135721 55.5640697,23.9917903 L56.6869061,28.8553291 L56.6869061,28.8553291 Z" stroke="#7F583B" fill="#7F583C"></path>
+							        <path d="M22.9609358,56.1431501 C22.7122451,55.0659525 23.3757186,53.9929925 24.4559628,53.7435985 L77.0787839,41.594663 C78.1531552,41.3466248 79.2241456,42.0120202 79.4743995,43.0959889 L85.7722447,70.3749535 C86.0209354,71.452151 85.3574619,72.525111 84.2772177,72.774505 L31.6543966,84.9234406 C30.5800253,85.1714787 29.5090349,84.5060834 29.258781,83.4221146 L22.9609358,56.1431501 L22.9609358,56.1431501 Z" stroke="#7F583C" fill="#CEBCAF"></path>
+							        <path d="M28.1344179,78.5519629 L84.6478816,65.5048018 L85.7713054,70.3708847 C86.0205148,71.4503294 85.3574619,72.525111 84.2772177,72.774505 L31.6543966,84.9234406 C30.5800253,85.1714787 29.5096438,84.5087209 29.2578416,83.4180459 L28.1344179,78.5519629 L28.1344179,78.5519629 Z" stroke="#7F583C" fill="#7F583C"></path>
+							        <path d="M15.76214,38.2979742 C15.5143416,37.2246414 16.1949974,36.1510146 17.2654155,35.9038891 L75.7211912,22.4083099 C76.7992258,22.159426 77.8761286,22.8368825 78.1218241,23.9011067 L81.9484389,40.4759961 C82.1962373,41.549329 81.5681551,42.7819406 80.5648318,43.2206917 L52.5669818,55.4640912 L22.0355279,56.7332463 C20.9320108,56.7791181 19.8344502,55.9370879 19.5887547,54.8728636 L15.76214,38.2979742 L15.76214,38.2979742 Z" stroke="#7F583C" fill="#CEBCAF"></path>
+							        <path d="M43.0440532,31.9974015 C42.7965025,30.9251419 43.4700468,29.8540733 44.5386378,29.6073696 L48.2739922,28.7449951 C49.3469791,28.4972765 50.4184183,29.169736 50.665037,30.2379587 L61.3842313,76.6678902 C61.6317819,77.7401498 60.9582376,78.8112184 59.8896466,79.0579221 L56.1542922,79.9202966 C55.0813053,80.1680151 54.0098661,79.4955556 53.7632475,78.427333 L43.0440532,31.9974015 L43.0440532,31.9974015 Z" stroke="#D1363B" fill="#F04F54"></path>
+							        <path d="M45.0711111,54.1137884 C44.8228729,53.0385507 45.4957046,51.9651037 46.5760847,51.7156783 L56.3083684,49.4688036 C57.3877805,49.2196016 58.4622825,49.8815637 58.712292,50.9644737 L59.6129504,54.8656539 C59.8611886,55.9408917 59.1883569,57.0143387 58.1079768,57.2637641 L48.3756932,59.5106388 C47.296281,59.7598407 46.221779,59.0978787 45.9717695,58.0149687 L45.0711111,54.1137884 L45.0711111,54.1137884 Z" stroke="#E8C480" fill="#EED6A9"></path>
+							    </g>
+							</svg>
+							<svg class="g3" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M79.1594164,48.4694915 L82.9069338,67.6075124 C83.166192,68.9315078 82.2865715,70.2151015 80.9483401,70.4733236 L78.0582477,71.0145802 L73.8413013,49.4792536 L79.1594164,48.4694915 L79.1594164,48.4694915 L79.1594164,48.4694915 L79.1594164,48.4694915 Z M19.9156661,59.9010204 L25.2337812,58.8912583 L29.4507277,80.4265849 L26.5606352,80.9678416 C25.2196751,81.22659 23.9234934,80.3684066 23.6631836,79.0390413 L19.9156661,59.9010204 L19.9156661,59.9010204 L19.9156661,59.9010204 L19.9156661,59.9010204 L19.9156661,59.9010204 L19.9156661,59.9010204 L19.9156661,59.9010204 Z" stroke="#B34445" fill="#122A4B"></path>
+							        <path d="M48.6263787,22.0215239 L53.1455009,21.1319086 C51.27598,16.4381928 46.4911613,13.5515552 41.6139364,14.4926526 C36.7120203,15.4385143 33.3557931,19.9347022 33.4283684,25.0133404 L37.9474089,24.1237412 C38.2794064,21.6521391 40.0530512,19.5875396 42.5184409,19.111824 C44.9695975,18.6388549 47.3794606,19.8763851 48.6263787,22.0215239 L48.6263787,22.0215239 L48.6263787,22.0215239 L48.6263787,22.0215239 L48.6263787,22.0215239 L48.6263787,22.0215239 Z" stroke="#BF8B74" fill="#8A6352"></path>
+							        <path d="M71.9520793,39.97241 L77.4723727,68.163739 C78.5075084,73.4500264 74.9945001,78.5751896 69.6364314,79.6090695 L40.4964218,85.2318545 C35.1336149,86.2666486 29.9478785,82.8243241 28.9119214,77.5338444 L23.3916281,49.3425159 L71.9520793,39.97241 L71.9520793,39.97241 L71.9520793,39.97241 Z M18.1609389,32.9246015 C17.6433455,30.2813272 19.3939398,27.719776 22.075384,27.2023711 L64.8174087,18.9549747 C67.4968906,18.4379484 70.0887937,20.162437 70.606226,22.8048874 L73.6993482,38.6010094 C73.8024256,39.1274104 73.4483466,39.6385886 72.9195808,39.740618 L22.4071053,49.4873814 C21.8733742,49.5903688 21.3564642,49.2436802 21.2540615,48.7207235 L18.1609389,32.9246015 L18.1609389,32.9246015 L18.1609389,32.9246015 Z" stroke="#F25A5B" fill="#122A4B"></path>
+							        <path d="M43.7305104,28.1754196 C44.033813,27.7325222 44.6442784,27.6156942 45.0915057,27.9128055 L51.5859928,32.227353 C52.0343469,32.5252124 52.1511724,33.1268285 51.8486317,33.5686126 L47.4552415,39.9840586 C47.1519389,40.4269561 46.5414735,40.543784 46.0942461,40.2466728 L39.5997591,35.9321252 C39.1514049,35.6342653 39.0345795,35.0326498 39.3371202,34.5908657 L43.7305104,28.1754196 L43.7305104,28.1754196 L43.7305104,28.1754196 L43.7305104,28.1754196 L43.7305104,28.1754196 L43.7305104,28.1754196 Z" stroke="#F25A5B" fill="#BF8B74"></path>
+							        <path d="M43.4013131,33.1428865 C43.3367804,32.8133293 43.5538951,32.4941823 43.8914728,32.4290442 C44.2267124,32.3643574 44.5513045,32.581693 44.6153243,32.9086338 L45.0844567,35.3044231 C45.148989,35.6339804 44.9318742,35.9531273 44.594297,36.0182654 C44.259057,36.0829527 43.9344654,35.865617 43.8704451,35.5386759 L43.4013131,33.1428865 L43.4013131,33.1428865 L43.4013131,33.1428865 L43.4013131,33.1428865 L43.4013131,33.1428865 L43.4013131,33.1428865 L43.4013131,33.1428865 L43.4013131,33.1428865 L43.4013131,33.1428865 Z M46.31494,32.5806804 C46.2504077,32.2511232 46.4675225,31.9319762 46.8050996,31.8668377 C47.1403397,31.8021508 47.4649313,32.0194865 47.5289516,32.3464277 L47.9980835,34.7422166 C48.0626157,35.0717739 47.8455011,35.3909213 47.5079238,35.4560593 C47.1726842,35.5207461 46.8480921,35.3034105 46.7840723,34.9764693 L46.31494,32.5806804 L46.31494,32.5806804 L46.31494,32.5806804 L46.31494,32.5806804 L46.31494,32.5806804 L46.31494,32.5806804 L46.31494,32.5806804 L46.31494,32.5806804 L46.31494,32.5806804 Z" fill="#122A4B"></path>
+							        <path d="M28.5434069,75.8087079 L29.3106283,80.6240897 L26.6366816,81.0450953 C25.1599014,81.2776103 23.7905555,80.385435 23.5791243,79.0584099 L23.1955137,76.650719 L28.5434069,75.8087079 L28.5434069,75.8087079 L28.5434069,75.8087079 Z M82.4690416,65.3869411 L82.8526523,67.794632 C83.0645146,69.1243631 82.139789,70.3749598 80.7933514,70.5869527 L77.8883697,71.0443341 L77.1211483,66.2289522 L82.4690416,65.3869411 L82.4690416,65.3869411 L82.4690416,65.3869411 Z" stroke="#7C5B4D" fill="#6B4839"></path>
+							        <path d="M76.5438651,63.4219879 L77.4723727,68.163739 C78.5075084,73.4500264 74.9945001,78.5751896 69.6364314,79.6090695 L40.4964218,85.2318545 C35.1336149,86.2666486 29.9478785,82.8243241 28.9119214,77.5338444 L27.9111655,72.8034691 L35.2625504,71.3875295 L69.7454019,64.7338027 L76.5438651,63.4219879 L76.5438651,63.4219879 L76.5438651,63.4219879 L76.5438651,63.4219879 Z" stroke="#BF8B74" fill="#8A6352"></path>
+							        <path d="M34.2283252,66.0797579 C34.1247259,65.550691 34.4766707,65.037682 35.0079428,64.9351692 L67.5514615,58.6556516 C68.0856319,58.5525792 68.6019951,58.8945903 68.7062455,59.4269828 L71.3297965,72.825073 C71.4333958,73.3541399 71.0814514,73.8671488 70.5501793,73.9696616 L38.0066602,80.2491797 C37.4724902,80.3522516 36.956127,80.0102405 36.8518761,79.4778481 L34.2283252,66.0797579 L34.2283252,66.0797579 L34.2283252,66.0797579 L34.2283252,66.0797579 L34.2283252,66.0797579 L34.2283252,66.0797579 Z" stroke="#F25A5B" fill="#D54344"></path>
+							        <path d="M34.9158059,68.4612143 L68.9081217,61.9021402" stroke="#F25A5B" fill="#122A4B"></path>
+							    </g>
+							</svg>
+							<svg class="g4" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M79.1594164,48.4694915 L82.9069338,67.6075124 C83.166192,68.9315078 82.2865715,70.2151015 80.9483401,70.4733236 L78.0582477,71.0145802 L73.8413013,49.4792536 L79.1594164,48.4694915 L79.1594164,48.4694915 L79.1594164,48.4694915 L79.1594164,48.4694915 Z M19.9156661,59.9010204 L25.2337812,58.8912583 L29.4507277,80.4265849 L26.5606352,80.9678416 C25.2196751,81.22659 23.9234934,80.3684066 23.6631836,79.0390413 L19.9156661,59.9010204 L19.9156661,59.9010204 L19.9156661,59.9010204 L19.9156661,59.9010204 L19.9156661,59.9010204 L19.9156661,59.9010204 L19.9156661,59.9010204 Z" stroke="#B34445" fill="#122A4B"></path>
+							        <path d="M48.6263787,22.0215239 L53.1455009,21.1319086 C51.27598,16.4381928 46.4911613,13.5515552 41.6139364,14.4926526 C36.7120203,15.4385143 33.3557931,19.9347022 33.4283684,25.0133404 L37.9474089,24.1237412 C38.2794064,21.6521391 40.0530512,19.5875396 42.5184409,19.111824 C44.9695975,18.6388549 47.3794606,19.8763851 48.6263787,22.0215239 L48.6263787,22.0215239 L48.6263787,22.0215239 L48.6263787,22.0215239 L48.6263787,22.0215239 L48.6263787,22.0215239 Z" stroke="#BF8B74" fill="#8A6352"></path>
+							        <path d="M71.9520793,39.97241 L77.4723727,68.163739 C78.5075084,73.4500264 74.9945001,78.5751896 69.6364314,79.6090695 L40.4964218,85.2318545 C35.1336149,86.2666486 29.9478785,82.8243241 28.9119214,77.5338444 L23.3916281,49.3425159 L71.9520793,39.97241 L71.9520793,39.97241 L71.9520793,39.97241 Z M18.1609389,32.9246015 C17.6433455,30.2813272 19.3939398,27.719776 22.075384,27.2023711 L64.8174087,18.9549747 C67.4968906,18.4379484 70.0887937,20.162437 70.606226,22.8048874 L73.6993482,38.6010094 C73.8024256,39.1274104 73.4483466,39.6385886 72.9195808,39.740618 L22.4071053,49.4873814 C21.8733742,49.5903688 21.3564642,49.2436802 21.2540615,48.7207235 L18.1609389,32.9246015 L18.1609389,32.9246015 L18.1609389,32.9246015 Z" stroke="#F25A5B" fill="#122A4B"></path>
+							        <path d="M43.7305104,28.1754196 C44.033813,27.7325222 44.6442784,27.6156942 45.0915057,27.9128055 L51.5859928,32.227353 C52.0343469,32.5252124 52.1511724,33.1268285 51.8486317,33.5686126 L47.4552415,39.9840586 C47.1519389,40.4269561 46.5414735,40.543784 46.0942461,40.2466728 L39.5997591,35.9321252 C39.1514049,35.6342653 39.0345795,35.0326498 39.3371202,34.5908657 L43.7305104,28.1754196 L43.7305104,28.1754196 L43.7305104,28.1754196 L43.7305104,28.1754196 L43.7305104,28.1754196 L43.7305104,28.1754196 Z" stroke="#F25A5B" fill="#BF8B74"></path>
+							        <path d="M43.4013131,33.1428865 C43.3367804,32.8133293 43.5538951,32.4941823 43.8914728,32.4290442 C44.2267124,32.3643574 44.5513045,32.581693 44.6153243,32.9086338 L45.0844567,35.3044231 C45.148989,35.6339804 44.9318742,35.9531273 44.594297,36.0182654 C44.259057,36.0829527 43.9344654,35.865617 43.8704451,35.5386759 L43.4013131,33.1428865 L43.4013131,33.1428865 L43.4013131,33.1428865 L43.4013131,33.1428865 L43.4013131,33.1428865 L43.4013131,33.1428865 L43.4013131,33.1428865 L43.4013131,33.1428865 L43.4013131,33.1428865 Z M46.31494,32.5806804 C46.2504077,32.2511232 46.4675225,31.9319762 46.8050996,31.8668377 C47.1403397,31.8021508 47.4649313,32.0194865 47.5289516,32.3464277 L47.9980835,34.7422166 C48.0626157,35.0717739 47.8455011,35.3909213 47.5079238,35.4560593 C47.1726842,35.5207461 46.8480921,35.3034105 46.7840723,34.9764693 L46.31494,32.5806804 L46.31494,32.5806804 L46.31494,32.5806804 L46.31494,32.5806804 L46.31494,32.5806804 L46.31494,32.5806804 L46.31494,32.5806804 L46.31494,32.5806804 L46.31494,32.5806804 Z" fill="#122A4B"></path>
+							        <path d="M28.5434069,75.8087079 L29.3106283,80.6240897 L26.6366816,81.0450953 C25.1599014,81.2776103 23.7905555,80.385435 23.5791243,79.0584099 L23.1955137,76.650719 L28.5434069,75.8087079 L28.5434069,75.8087079 L28.5434069,75.8087079 Z M82.4690416,65.3869411 L82.8526523,67.794632 C83.0645146,69.1243631 82.139789,70.3749598 80.7933514,70.5869527 L77.8883697,71.0443341 L77.1211483,66.2289522 L82.4690416,65.3869411 L82.4690416,65.3869411 L82.4690416,65.3869411 Z" stroke="#7C5B4D" fill="#6B4839"></path>
+							        <path d="M76.5438651,63.4219879 L77.4723727,68.163739 C78.5075084,73.4500264 74.9945001,78.5751896 69.6364314,79.6090695 L40.4964218,85.2318545 C35.1336149,86.2666486 29.9478785,82.8243241 28.9119214,77.5338444 L27.9111655,72.8034691 L35.2625504,71.3875295 L69.7454019,64.7338027 L76.5438651,63.4219879 L76.5438651,63.4219879 L76.5438651,63.4219879 L76.5438651,63.4219879 Z" stroke="#BF8B74" fill="#8A6352"></path>
+							        <path d="M34.2283252,66.0797579 C34.1247259,65.550691 34.4766707,65.037682 35.0079428,64.9351692 L67.5514615,58.6556516 C68.0856319,58.5525792 68.6019951,58.8945903 68.7062455,59.4269828 L71.3297965,72.825073 C71.4333958,73.3541399 71.0814514,73.8671488 70.5501793,73.9696616 L38.0066602,80.2491797 C37.4724902,80.3522516 36.956127,80.0102405 36.8518761,79.4778481 L34.2283252,66.0797579 L34.2283252,66.0797579 L34.2283252,66.0797579 L34.2283252,66.0797579 L34.2283252,66.0797579 L34.2283252,66.0797579 Z" stroke="#F25A5B" fill="#D54344"></path>
+							        <path d="M34.9158059,68.4612143 L68.9081217,61.9021402" stroke="#F25A5B" fill="#122A4B"></path>
+							    </g>
+							</svg>
+
+							<svg class="j1" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M56.6869061,28.8553291 L59.6181844,28.1785902 C60.6839276,27.932544 61.3564693,26.8543719 61.1069354,25.7735221 L59.3111648,17.9951847 C59.0622385,16.9169665 57.9905201,16.2387168 56.9187718,16.4861494 L31.5688139,22.3386483 C30.5030707,22.5846945 29.830529,23.6628666 30.0800628,24.7437164 L31.8758335,32.5220537 C32.1247598,33.600272 33.1964782,34.2785217 34.2682265,34.0310891 L37.1995048,33.3543502 L36.0766684,28.4908114 C35.8271346,27.4099616 36.5000387,26.3317059 37.5646186,26.0859283 L53.1724775,22.4825701 C54.2437836,22.2352396 55.3151434,22.9135721 55.5640697,23.9917903 L56.6869061,28.8553291 L56.6869061,28.8553291 Z" stroke="#724D31" fill="#724D31"></path>
+							        <path d="M22.9609358,56.1431501 C22.7122451,55.0659525 23.3757186,53.9929925 24.4559628,53.7435985 L77.0787839,41.594663 C78.1531552,41.3466248 79.2241456,42.0120202 79.4743995,43.0959889 L85.7722447,70.3749535 C86.0209354,71.452151 85.3574619,72.525111 84.2772177,72.774505 L31.6543966,84.9234406 C30.5800253,85.1714787 29.5090349,84.5060834 29.258781,83.4221146 L22.9609358,56.1431501 L22.9609358,56.1431501 Z" stroke="#724D31" fill="#875F44"></path>
+							        <path d="M28.1344179,78.5519629 L84.6478816,65.5048018 L85.7713054,70.3708847 C86.0205148,71.4503294 85.3574619,72.525111 84.2772177,72.774505 L31.6543966,84.9234406 C30.5800253,85.1714787 29.5096438,84.5087209 29.2578416,83.4180459 L28.1344179,78.5519629 L28.1344179,78.5519629 Z" stroke="#724D31" fill="#724D31"></path>
+							        <path d="M15.76214,38.2979742 C15.5143416,37.2246414 16.1949974,36.1510146 17.2654155,35.9038891 L75.7211912,22.4083099 C76.7992258,22.159426 77.8761286,22.8368825 78.1218241,23.9011067 L81.9484389,40.4759961 C82.1962373,41.549329 81.5681551,42.7819406 80.5648318,43.2206917 L52.5669818,55.4640912 L22.0355279,56.7332463 C20.9320108,56.7791181 19.8344502,55.9370879 19.5887547,54.8728636 L15.76214,38.2979742 L15.76214,38.2979742 Z" stroke="#724D31" fill="#875F44"></path>
+							        <path d="M43.0440532,31.9974015 C42.7965025,30.9251419 43.4700468,29.8540733 44.5386378,29.6073696 L48.2739922,28.7449951 C49.3469791,28.4972765 50.4184183,29.169736 50.665037,30.2379587 L61.3842313,76.6678902 C61.6317819,77.7401498 60.9582376,78.8112184 59.8896466,79.0579221 L56.1542922,79.9202966 C55.0813053,80.1680151 54.0098661,79.4955556 53.7632475,78.427333 L43.0440532,31.9974015 L43.0440532,31.9974015 Z" stroke="#757575" fill="#757575"></path>
+							        <path d="M44.398003,51.1982367 C44.148801,50.1188246 44.8208515,49.0419935 45.9012316,48.7925681 L55.6335152,46.5456934 C56.7129274,46.2964914 57.7897585,46.9685419 58.0391839,48.048922 L60.2860586,57.7812056 C60.5352605,58.8606178 59.8632101,59.9374489 58.78283,60.1868743 L49.0505463,62.433749 C47.9711342,62.6829509 46.8943031,62.0109005 46.6448777,60.9305204 L44.398003,51.1982367 L44.398003,51.1982367 Z" stroke="#F6C64E" fill="#F8D47A"></path>
+							    </g>
+							</svg>
+							<svg class="j2" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M56.6869061,28.8553291 L59.6181844,28.1785902 C60.6839276,27.932544 61.3564693,26.8543719 61.1069354,25.7735221 L59.3111648,17.9951847 C59.0622385,16.9169665 57.9905201,16.2387168 56.9187718,16.4861494 L31.5688139,22.3386483 C30.5030707,22.5846945 29.830529,23.6628666 30.0800628,24.7437164 L31.8758335,32.5220537 C32.1247598,33.600272 33.1964782,34.2785217 34.2682265,34.0310891 L37.1995048,33.3543502 L36.0766684,28.4908114 C35.8271346,27.4099616 36.5000387,26.3317059 37.5646186,26.0859283 L53.1724775,22.4825701 C54.2437836,22.2352396 55.3151434,22.9135721 55.5640697,23.9917903 L56.6869061,28.8553291 L56.6869061,28.8553291 Z" stroke="#4A1E1A" fill="#4A1E1A"></path>
+							        <path d="M22.9609358,56.1431501 C22.7122451,55.0659525 23.3757186,53.9929925 24.4559628,53.7435985 L77.0787839,41.594663 C78.1531552,41.3466248 79.2241456,42.0120202 79.4743995,43.0959889 L85.7722447,70.3749535 C86.0209354,71.452151 85.3574619,72.525111 84.2772177,72.774505 L31.6543966,84.9234406 C30.5800253,85.1714787 29.5090349,84.5060834 29.258781,83.4221146 L22.9609358,56.1431501 L22.9609358,56.1431501 Z" stroke="#4A1E1A" fill="#5E5063"></path>
+							        <path d="M28.1344179,78.5519629 L84.6478816,65.5048018 L85.7713054,70.3708847 C86.0205148,71.4503294 85.3574619,72.525111 84.2772177,72.774505 L31.6543966,84.9234406 C30.5800253,85.1714787 29.5096438,84.5087209 29.2578416,83.4180459 L28.1344179,78.5519629 L28.1344179,78.5519629 Z" stroke="#4A1E1A" fill="#4A1E1A"></path>
+							        <path d="M15.76214,38.2979742 C15.5143416,37.2246414 16.1949974,36.1510146 17.2654155,35.9038891 L75.7211912,22.4083099 C76.7992258,22.159426 77.8761286,22.8368825 78.1218241,23.9011067 L81.9484389,40.4759961 C82.1962373,41.549329 81.5681551,42.7819406 80.5648318,43.2206917 L52.5669818,55.4640912 L22.0355279,56.7332463 C20.9320108,56.7791181 19.8344502,55.9370879 19.5887547,54.8728636 L15.76214,38.2979742 L15.76214,38.2979742 Z" stroke="#4A1E1A" fill="#5E5063"></path>
+							        <path d="M29.8854409,33.9662817 C29.7696611,33.4215803 30.1094678,32.8878343 30.6631147,32.770153 L32.6010816,32.3582254 C33.1463588,32.2423232 33.681205,32.5850103 33.7980313,33.134635 L44.1145591,81.6700819 C44.2303389,82.2147833 43.8905322,82.7485293 43.3368853,82.8662106 L41.3989184,83.2781382 C40.8536412,83.3940405 40.318795,83.0513534 40.2019687,82.5017287 L29.8854409,33.9662817 L29.8854409,33.9662817 Z" stroke="#4A1E1A" fill="#45353F"></path>
+							        <path d="M32.4630571,55.894299 C32.3485716,55.3556874 32.6988992,54.8248648 33.2310055,54.7117621 L39.105701,53.4630571 C39.6443126,53.3485716 40.1751352,53.6988992 40.2882379,54.2310055 L41.5369429,60.105701 C41.6514284,60.6443126 41.3011008,61.1751352 40.7689945,61.2882379 L34.894299,62.5369429 C34.3556874,62.6514284 33.8248648,62.3011008 33.7117621,61.7689945 L32.4630571,55.894299 L32.4630571,55.894299 Z" stroke="#7E8E92" fill="#9CAEAE"></path>
+							        <path d="M60.8854409,26.9662817 C60.7696611,26.4215803 61.1094678,25.8878343 61.6631147,25.770153 L63.6010816,25.3582254 C64.1463588,25.2423232 64.681205,25.5850103 64.7980313,26.134635 L75.1145591,74.6700819 C75.2303389,75.2147833 74.8905322,75.7485293 74.3368853,75.8662106 L72.3989184,76.2781382 C71.8536412,76.3940405 71.318795,76.0513534 71.2019687,75.5017287 L60.8854409,26.9662817 L60.8854409,26.9662817 Z" stroke="#4A1E1A" fill="#45353F"></path>
+							        <path d="M63.4630571,48.894299 C63.3485716,48.3556874 63.6988992,47.8248648 64.2310055,47.7117621 L70.105701,46.4630571 C70.6443126,46.3485716 71.1751352,46.6988992 71.2882379,47.2310055 L72.5369429,53.105701 C72.6514284,53.6443126 72.3011008,54.1751352 71.7689945,54.2882379 L65.894299,55.5369429 C65.3556874,55.6514284 64.8248648,55.3011008 64.7117621,54.7689945 L63.4630571,48.894299 L63.4630571,48.894299 Z" stroke="#7E8E92" fill="#9CAEAE"></path>
+								</g>
+							</svg>
+							<svg class="j3" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M56.6869061,28.8553291 L59.6181844,28.1785902 C60.6839276,27.932544 61.3564693,26.8543719 61.1069354,25.7735221 L59.3111648,17.9951847 C59.0622385,16.9169665 57.9905201,16.2387168 56.9187718,16.4861494 L31.5688139,22.3386483 C30.5030707,22.5846945 29.830529,23.6628666 30.0800628,24.7437164 L31.8758335,32.5220537 C32.1247598,33.600272 33.1964782,34.2785217 34.2682265,34.0310891 L37.1995048,33.3543502 L36.0766684,28.4908114 C35.8271346,27.4099616 36.5000387,26.3317059 37.5646186,26.0859283 L53.1724775,22.4825701 C54.2437836,22.2352396 55.3151434,22.9135721 55.5640697,23.9917903 L56.6869061,28.8553291 L56.6869061,28.8553291 Z" stroke="#6E382C" fill="#6E382C"></path>
+							        <path d="M22.9609358,56.1431501 C22.7122451,55.0659525 23.3757186,53.9929925 24.4559628,53.7435985 L77.0787839,41.594663 C78.1531552,41.3466248 79.2241456,42.0120202 79.4743995,43.0959889 L85.7722447,70.3749535 C86.0209354,71.452151 85.3574619,72.525111 84.2772177,72.774505 L31.6543966,84.9234406 C30.5800253,85.1714787 29.5090349,84.5060834 29.258781,83.4221146 L22.9609358,56.1431501 L22.9609358,56.1431501 Z" stroke="#6E382C" fill="#76554A"></path>
+							        <path d="M28.1344179,78.5519629 L84.6478816,65.5048018 L85.7713054,70.3708847 C86.0205148,71.4503294 85.3574619,72.525111 84.2772177,72.774505 L31.6543966,84.9234406 C30.5800253,85.1714787 29.5096438,84.5087209 29.2578416,83.4180459 L28.1344179,78.5519629 L28.1344179,78.5519629 Z" stroke="#6E382C" fill="#6E382C"></path>
+							        <path d="M15.76214,38.2979742 C15.5143416,37.2246414 16.1949974,36.1510146 17.2654155,35.9038891 L75.7211912,22.4083099 C76.7992258,22.159426 77.8761286,22.8368825 78.1218241,23.9011067 L81.9484389,40.4759961 C82.1962373,41.549329 81.5681551,42.7819406 80.5648318,43.2206917 L52.5669818,55.4640912 L22.0355279,56.7332463 C20.9320108,56.7791181 19.8344502,55.9370879 19.5887547,54.8728636 L15.76214,38.2979742 L15.76214,38.2979742 Z" stroke="#6E382C" fill="#76554A"></path>
+							        <path d="M44.398003,51.1982367 C44.148801,50.1188246 44.8208515,49.0419935 45.9012316,48.7925681 L55.6335152,46.5456934 C56.7129274,46.2964914 57.7897585,46.9685419 58.0391839,48.048922 L60.2860586,57.7812056 C60.5352605,58.8606178 59.8632101,59.9374489 58.78283,60.1868743 L49.0505463,62.433749 C47.9711342,62.6829509 46.8943031,62.0109005 46.6448777,60.9305204 L44.398003,51.1982367 L44.398003,51.1982367 Z" stroke="#757575" fill="#8A9EA3"></path>
+							    </g>
+							</svg>
+							<svg class="j4" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M56.6869061,28.8553291 L59.6181844,28.1785902 C60.6839276,27.932544 61.3564693,26.8543719 61.1069354,25.7735221 L59.3111648,17.9951847 C59.0622385,16.9169665 57.9905201,16.2387168 56.9187718,16.4861494 L31.5688139,22.3386483 C30.5030707,22.5846945 29.830529,23.6628666 30.0800628,24.7437164 L31.8758335,32.5220537 C32.1247598,33.600272 33.1964782,34.2785217 34.2682265,34.0310891 L37.1995048,33.3543502 L36.0766684,28.4908114 C35.8271346,27.4099616 36.5000387,26.3317059 37.5646186,26.0859283 L53.1724775,22.4825701 C54.2437836,22.2352396 55.3151434,22.9135721 55.5640697,23.9917903 L56.6869061,28.8553291 L56.6869061,28.8553291 Z" stroke="#404042" fill="#404042"></path>
+							        <path d="M22.9609358,56.1431501 C22.7122451,55.0659525 23.3757186,53.9929925 24.4559628,53.7435985 L77.0787839,41.594663 C78.1531552,41.3466248 79.2241456,42.0120202 79.4743995,43.0959889 L85.7722447,70.3749535 C86.0209354,71.452151 85.3574619,72.525111 84.2772177,72.774505 L31.6543966,84.9234406 C30.5800253,85.1714787 29.5090349,84.5060834 29.258781,83.4221146 L22.9609358,56.1431501 L22.9609358,56.1431501 Z" stroke="#404042" fill="#686868"></path>
+							        <path d="M28.1344179,78.5519629 L84.6478816,65.5048018 L85.7713054,70.3708847 C86.0205148,71.4503294 85.3574619,72.525111 84.2772177,72.774505 L31.6543966,84.9234406 C30.5800253,85.1714787 29.5096438,84.5087209 29.2578416,83.4180459 L28.1344179,78.5519629 L28.1344179,78.5519629 Z" stroke="#404042" fill="#404042"></path>
+							        <path d="M15.76214,38.2979742 C15.5143416,37.2246414 16.1949974,36.1510146 17.2654155,35.9038891 L75.7211912,22.4083099 C76.7992258,22.159426 77.8761286,22.8368825 78.1218241,23.9011067 L81.9484389,40.4759961 C82.1962373,41.549329 81.5681551,42.7819406 80.5648318,43.2206917 L52.5669818,55.4640912 L22.0355279,56.7332463 C20.9320108,56.7791181 19.8344502,55.9370879 19.5887547,54.8728636 L15.76214,38.2979742 L15.76214,38.2979742 Z" stroke="#404042" fill="#686868"></path>
+							        <path d="M43.0440532,31.9974015 C42.7965025,30.9251419 43.4700468,29.8540733 44.5386378,29.6073696 L48.2739922,28.7449951 C49.3469791,28.4972765 50.4184183,29.169736 50.665037,30.2379587 L61.3842313,76.6678902 C61.6317819,77.7401498 60.9582376,78.8112184 59.8896466,79.0579221 L56.1542922,79.9202966 C55.0813053,80.1680151 54.0098661,79.4955556 53.7632475,78.427333 L43.0440532,31.9974015 L43.0440532,31.9974015 Z" stroke="#757575" fill="#757575"></path>
+							        <path d="M44.398003,51.1982367 C44.148801,50.1188246 44.8208515,49.0419935 45.9012316,48.7925681 L55.6335152,46.5456934 C56.7129274,46.2964914 57.7897585,46.9685419 58.0391839,48.048922 L60.2860586,57.7812056 C60.5352605,58.8606178 59.8632101,59.9374489 58.78283,60.1868743 L49.0505463,62.433749 C47.9711342,62.6829509 46.8943031,62.0109005 46.6448777,60.9305204 L44.398003,51.1982367 L44.398003,51.1982367 Z" stroke="#757575" fill="#8A9EA3"></path>
+							    </g>
+							</svg>
+							<svg class="j5" viewBox="0 0 100 100">
+							    <g stroke-width="3" stroke="#405635" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M67.720239,41.3531686 L66.7553936,33.887584 C66.6055255,32.7279651 65.5569091,32.0214013 64.41262,32.3046068 L34.617921,39.6786371 C33.4537761,39.9667568 32.8827021,41.0764137 33.2980423,42.1681014 L35.9772698,49.21023 C36.0553912,49.1799573 36.1365503,49.1542382 36.2205151,49.1334574 L67.4690196,41.3996179 C67.553306,41.3787574 67.6371558,41.3633442 67.720239,41.3531686 L67.720239,41.3531686 Z M70.375536,61.8987863 L71.5282166,70.8177648 C71.6778057,71.9752244 70.8686718,73.1437999 69.7104673,73.4304494 L49.3906309,78.4595014 C48.2371267,78.7449876 46.9661017,78.0934687 46.5499866,76.9997445 L43.3495201,68.5875822 L70.375536,61.8987863 L70.375536,61.8987863 Z M27.4501423,35.2202647 C27.4521828,34.0580366 28.3964403,32.8825751 29.5332821,32.6012128 L65.0915254,23.8007358 C66.2399712,23.5165015 67.6248971,24.1299671 68.169507,25.1424374 L70.1295063,28.7862219 C70.6809828,29.8114575 70.2155391,30.868415 69.0502301,31.1568228 L29.5170083,40.941086 C28.3694641,41.2250972 27.4408752,40.4986905 27.4428903,39.3509335 L27.4501423,35.2202647 L27.4501423,35.2202647 Z M32.115782,29.9344372 C32.2273345,28.9340341 33.1238395,27.9235482 34.1080769,27.6799546 L58.4680083,21.6510005 C59.4567699,21.4062872 60.730505,21.8945984 61.2933559,22.713142 L61.4497927,22.9406452 C62.0214275,23.771963 61.6663113,24.6484581 60.7072889,24.8858111 L33.6608103,31.5796714 C32.679102,31.822639 31.9754155,31.1932439 32.0852539,30.2082132 L32.115782,29.9344372 L32.115782,29.9344372 Z" fill="#FFFFFF"></path>
+							        <path d="M34.8954954,51.6522278 C34.4930539,50.5418652 35.112496,49.4076862 36.2205151,49.1334574 L67.4690196,41.3996179 C68.6032492,41.118902 69.6584151,41.8246063 69.8301928,43.0060751 L72.1931298,59.2581064 C72.3629401,60.426044 71.5645585,61.6045095 70.4484677,61.8807361 L43.2763452,68.6056927 C42.1429845,68.8861934 40.9026335,68.2263215 40.4955296,67.1030947 L34.8954954,51.6522278 L34.8954954,51.6522278 Z" fill="#896A5A"></path>
+							    </g>
+							</svg>
+
+						</div>
+					</div>
+					<h1>left-prop</h1>
 				</div>
 			</li>
 			<li u init-with="p:[op:0]"
@@ -953,15 +2162,187 @@
 				<div class="guru-switch-button">
 					<nav>
 						<div>
-							<button class="button"
-								u on-click="s:[right-prop-move:public]">&#8701;</button>
+							<button class="g1 button"
+								u init-with="p:[z-index:10]"
+								when-right-prop-move-back-1="p:[z-index:10]"
+								when-right-prop-move-9="p:[z-index:10]"
+								when-right-prop-move-1="p:[z-index:-1]"
+								on-click="s:[right-prop-move-back-9:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="g2 button"
+								u init-with="p:[z-index:-1]"
+								when-right-prop-move-back-9="p:[z-index:10]"
+								when-right-prop-move-8="p:[z-index:10]"
+								when-right-prop-move-9="p:[z-index:-1]"
+								on-click="s:[right-prop-move-back-8:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="g3 button"
+								u init-with="p:[z-index:-1]"
+								when-right-prop-move-back-8="p:[z-index:10]"
+								when-right-prop-move-7="p:[z-index:10]"
+								when-right-prop-move-8="p:[z-index:-1]"
+								on-click="s:[right-prop-move-back-7:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="g4 button"
+								u init-with="p:[z-index:-1]"
+								when-right-prop-move-back-7="p:[z-index:10]"
+								when-right-prop-move-6="p:[z-index:10]"
+								when-right-prop-move-7="p:[z-index:-1]"
+								on-click="s:[right-prop-move-back-6:public] | p:[z-index:-1]">&#8701;</button>
+
+							<button class="j1 button"
+								u init-with="p:[z-index:-1]"
+								when-right-prop-move-back-6="p:[z-index:10]"
+								when-right-prop-move-5="p:[z-index:10]"
+								when-right-prop-move-6="p:[z-index:-1]"
+								on-click="s:[right-prop-move-back-5:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j2 button"
+								u init-with="p:[z-index:-1]"
+								when-right-prop-move-back-5="p:[z-index:10]"
+								when-right-prop-move-4="p:[z-index:10]"
+								when-right-prop-move-5="p:[z-index:-1]"
+								on-click="s:[right-prop-move-back-4:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j3 button"
+								u init-with="p:[z-index:-1]"
+								when-right-prop-move-back-4="p:[z-index:10]"
+								when-right-prop-move-3="p:[z-index:10]"
+								when-right-prop-move-4="p:[z-index:-1]"
+								on-click="s:[right-prop-move-back-3:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j4 button"
+								u init-with="p:[z-index:-1]"
+								when-right-prop-move-back-3="p:[z-index:10]"
+								when-right-prop-move-2="p:[z-index:10]"
+								when-right-prop-move-3="p:[z-index:-1]"
+								on-click="s:[right-prop-move-back-2:public] | p:[z-index:-1]">&#8701;</button>
+							<button class="j5 button"
+								u init-with="p:[z-index:-1]"
+								when-right-prop-move-back-2="p:[z-index:10]"
+								when-right-prop-move-1="p:[z-index:10]"
+								when-right-prop-move-2="p:[z-index:-1]"
+								on-click="s:[right-prop-move-back-1:public] | p:[z-index:-1]">&#8701;</button>
 						</div>
 						<div>
-							<button class="button"
-								u on-click="s:[right-prop-move:public]">&#8702;</button>
+							<button class="g1 button"
+								u init-with="p:[z-index:10]"
+								when-right-prop-move-9="p:[z-index:10]"
+								when-right-prop-move-back-1="p:[z-index:10]"
+								when-right-prop-move-back-9="p:[z-index:-1]"
+								on-click="s:[right-prop-move-1:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="g2 button"
+								u init-with="p:[z-index:-1]"
+								when-right-prop-move-1="p:[z-index:10]"
+								when-right-prop-move-back-2="p:[z-index:10]"
+								when-right-prop-move-back-1="p:[z-index:-1]"
+								on-click="s:[right-prop-move-2:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="g3 button"
+								u init-with="p:[z-index:-1]"
+								when-right-prop-move-2="p:[z-index:10]"
+								when-right-prop-move-back-3="p:[z-index:10]"
+								when-right-prop-move-back-2="p:[z-index:-1]"
+								on-click="s:[right-prop-move-3:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="g4 button"
+								u init-with="p:[z-index:-1]"
+								when-right-prop-move-3="p:[z-index:10]"
+								when-right-prop-move-back-4="p:[z-index:10]"
+								when-right-prop-move-back-3="p:[z-index:-1]"
+								on-click="s:[right-prop-move-4:public] | p:[z-index:-1]">&#8702;</button>
+
+							<button class="j1 button"
+								u init-with="p:[z-index:-1]"
+								when-right-prop-move-4="p:[z-index:10]"
+								when-right-prop-move-back-5="p:[z-index:10]"
+								when-right-prop-move-back-4="p:[z-index:-1]"
+								on-click="s:[right-prop-move-5:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j2 button"
+								u init-with="p:[z-index:-1]"
+								when-right-prop-move-5="p:[z-index:10]"
+								when-right-prop-move-back-6="p:[z-index:10]"
+								when-right-prop-move-back-5="p:[z-index:-1]"
+								on-click="s:[right-prop-move-6:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j3 button"
+								u init-with="p:[z-index:-1]"
+								when-right-prop-move-6="p:[z-index:10]"
+								when-right-prop-move-back-7="p:[z-index:10]"
+								when-right-prop-move-back-6="p:[z-index:-1]"
+								on-click="s:[right-prop-move-7:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j4 button"
+								u init-with="p:[z-index:-1]"
+								when-right-prop-move-7="p:[z-index:10]"
+								when-right-prop-move-back-8="p:[z-index:10]"
+								when-right-prop-move-back-7="p:[z-index:-1]"
+								on-click="s:[right-prop-move-8:public] | p:[z-index:-1]">&#8702;</button>
+							<button class="j5 button"
+								u init-with="p:[z-index:-1]"
+								when-right-prop-move-8="p:[z-index:10]"
+								when-right-prop-move-back-9="p:[z-index:10]"
+								when-right-prop-move-back-8="p:[z-index:-1]"
+								on-click="s:[right-prop-move-9:public] | p:[z-index:-1]">&#8702;</button>
 						</div>
 					</nav>
-					<h1>right prop</h1>
+					<div class="thumbnail right-prop">
+						<div u init-with="p:[transform:translateX(0px)]"
+							when-right-prop-move-1="a:[translateX:0px:-137px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-right-prop-move-2="a:[translateX:-137px:-274px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-right-prop-move-3="a:[translateX:-274px:-411px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-right-prop-move-4="a:[translateX:-411px:-548px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-right-prop-move-5="a:[translateX:-548px:-685px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-right-prop-move-6="a:[translateX:-685px:-822px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-right-prop-move-7="a:[translateX:-822px:-959px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-right-prop-move-8="a:[translateX:-959px:-1096px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-right-prop-move-9="a:[translateX:-1096px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-right-prop-move-back-9="a:[translateX:0px:-1096px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-right-prop-move-back-8="a:[translateX:-1096px:-959px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-right-prop-move-back-7="a:[translateX:-959px:-822px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-right-prop-move-back-6="a:[translateX:-822px:-685px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-right-prop-move-back-5="a:[translateX:-685px:-548px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-right-prop-move-back-4="a:[translateX:-548px:-411px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-right-prop-move-back-3="a:[translateX:-411px:-274px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-right-prop-move-back-2="a:[translateX:-274px:-137px:300:(0.17,0.67,0.83,0.67):0:1:f]"
+							when-right-prop-move-back-1="a:[translateX:-137px:0px:300:(0.17,0.67,0.83,0.67):0:1:f]">
+							<svg class="g1" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="3" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M34.6497544,34.3917859 C34.6978217,33.9520561 35.0827386,33.6758251 35.5147425,33.776025 L66.7383931,41.0181008 C67.1680455,41.1177553 67.3998458,41.5248405 67.2471571,41.9524925 L54.309424,78.1886232 C54.1607542,78.6050191 53.7057614,78.8649965 53.2530067,78.7599836 L31.166972,73.6373047 C30.7321987,73.5364625 30.4174121,73.1101292 30.4667788,72.6585125 L34.6497544,34.3917859 L34.6497544,34.3917859 Z" stroke="#60544E" fill="#A0938C"></path>
+							        <path d="M39.3918813,23.7721125 C39.6356415,23.4012507 40.1744561,23.1797482 40.6117952,23.2811855 L66.041105,29.1793104 C66.4710847,29.2790407 66.8647743,29.7071099 66.9233445,30.157815 L67.2049034,32.3244491 C67.2621712,32.765132 66.9766621,33.0453866 66.5180298,32.9390106 L38.5426243,26.4503391 C38.1060067,26.3490692 37.9441212,25.9747651 38.1934251,25.5954689 L39.3918813,23.7721125 L39.3918813,23.7721125 Z M33.1086247,25.9890695 C33.3103535,25.5945264 33.8291488,25.3570862 34.240159,25.4524167 L71.0684369,33.9944411 C71.4916373,34.092599 71.8418662,34.518784 71.8512893,34.9751204 L71.9846989,41.4358364 C71.993856,41.8792928 71.6616176,42.1600034 71.2328519,42.0605546 L30.5728025,32.6297816 C30.1484118,32.5313475 29.9620495,32.1431701 30.1696375,31.7371676 L33.1086247,25.9890695 L33.1086247,25.9890695 Z" stroke="#E4E0E0" fill="#FFFFFF"></path>
+							        <path d="M31.8816421,43.2473477 C31.9372138,42.80384 32.3202435,42.5226978 32.7596644,42.624618 L65.3533966,50.1844733 C65.7827433,50.2840568 66.0192207,50.693591 65.8708349,51.1308689 L59.9623628,68.5425413 C59.8187894,68.9656377 59.3631466,69.2299379 58.9253166,69.1283867 L30.2711656,62.4822857 C29.8419942,62.3827428 29.5372691,61.9573791 29.5947034,61.4990058 L31.8816421,43.2473477 L31.8816421,43.2473477 Z" stroke="#69B3A5" fill="#96C5BC"></path>
+							    </g>
+							</svg>
+							<svg class="g2" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="3" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M34.6497544,34.3917859 C34.6978217,33.9520561 35.0827386,33.6758251 35.5147425,33.776025 L66.7383931,41.0181008 C67.1680455,41.1177553 67.3998458,41.5248405 67.2471571,41.9524925 L54.309424,78.1886232 C54.1607542,78.6050191 53.7057614,78.8649965 53.2530067,78.7599836 L31.166972,73.6373047 C30.7321987,73.5364625 30.4174121,73.1101292 30.4667788,72.6585125 L34.6497544,34.3917859 L34.6497544,34.3917859 Z" stroke="#60544E" fill="#A0938C"></path>
+							        <path d="M39.3918813,23.7721125 C39.6356415,23.4012507 40.1744561,23.1797482 40.6117952,23.2811855 L66.041105,29.1793104 C66.4710847,29.2790407 66.8647743,29.7071099 66.9233445,30.157815 L67.2049034,32.3244491 C67.2621712,32.765132 66.9766621,33.0453866 66.5180298,32.9390106 L38.5426243,26.4503391 C38.1060067,26.3490692 37.9441212,25.9747651 38.1934251,25.5954689 L39.3918813,23.7721125 L39.3918813,23.7721125 Z M33.1086247,25.9890695 C33.3103535,25.5945264 33.8291488,25.3570862 34.240159,25.4524167 L71.0684369,33.9944411 C71.4916373,34.092599 71.8418662,34.518784 71.8512893,34.9751204 L71.9846989,41.4358364 C71.993856,41.8792928 71.6616176,42.1600034 71.2328519,42.0605546 L30.5728025,32.6297816 C30.1484118,32.5313475 29.9620495,32.1431701 30.1696375,31.7371676 L33.1086247,25.9890695 L33.1086247,25.9890695 Z" stroke="#E4E0E0" fill="#FFFFFF"></path>
+							        <path d="M31.8816421,43.2473477 C31.9372138,42.80384 32.3202435,42.5226978 32.7596644,42.624618 L65.3533966,50.1844733 C65.7827433,50.2840568 66.0192207,50.693591 65.8708349,51.1308689 L59.9623628,68.5425413 C59.8187894,68.9656377 59.3631466,69.2299379 58.9253166,69.1283867 L30.2711656,62.4822857 C29.8419942,62.3827428 29.5372691,61.9573791 29.5947034,61.4990058 L31.8816421,43.2473477 L31.8816421,43.2473477 Z" stroke="#AED09C" fill="#81B566"></path>
+							    </g>
+							</svg>
+							<svg class="g3" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="3" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M34.6497544,34.3917859 C34.6978217,33.9520561 35.0827386,33.6758251 35.5147425,33.776025 L66.7383931,41.0181008 C67.1680455,41.1177553 67.3998458,41.5248405 67.2471571,41.9524925 L54.309424,78.1886232 C54.1607542,78.6050191 53.7057614,78.8649965 53.2530067,78.7599836 L31.166972,73.6373047 C30.7321987,73.5364625 30.4174121,73.1101292 30.4667788,72.6585125 L34.6497544,34.3917859 L34.6497544,34.3917859 Z" stroke="#60544E" fill="#A0938C"></path>
+							        <path d="M39.3918813,23.7721125 C39.6356415,23.4012507 40.1744561,23.1797482 40.6117952,23.2811855 L66.041105,29.1793104 C66.4710847,29.2790407 66.8647743,29.7071099 66.9233445,30.157815 L67.2049034,32.3244491 C67.2621712,32.765132 66.9766621,33.0453866 66.5180298,32.9390106 L38.5426243,26.4503391 C38.1060067,26.3490692 37.9441212,25.9747651 38.1934251,25.5954689 L39.3918813,23.7721125 L39.3918813,23.7721125 Z M33.1086247,25.9890695 C33.3103535,25.5945264 33.8291488,25.3570862 34.240159,25.4524167 L71.0684369,33.9944411 C71.4916373,34.092599 71.8418662,34.518784 71.8512893,34.9751204 L71.9846989,41.4358364 C71.993856,41.8792928 71.6616176,42.1600034 71.2328519,42.0605546 L30.5728025,32.6297816 C30.1484118,32.5313475 29.9620495,32.1431701 30.1696375,31.7371676 L33.1086247,25.9890695 L33.1086247,25.9890695 Z" stroke="#E4E0E0" fill="#FFFFFF"></path>
+							        <path d="M31.8816421,43.2473477 C31.9372138,42.80384 32.3202435,42.5226978 32.7596644,42.624618 L65.3533966,50.1844733 C65.7827433,50.2840568 66.0192207,50.693591 65.8708349,51.1308689 L59.9623628,68.5425413 C59.8187894,68.9656377 59.3631466,69.2299379 58.9253166,69.1283867 L30.2711656,62.4822857 C29.8419942,62.3827428 29.5372691,61.9573791 29.5947034,61.4990058 L31.8816421,43.2473477 L31.8816421,43.2473477 Z" stroke="#D3242C" fill="#CC5B61"></path>
+							    </g>
+							</svg>
+							<svg class="g4" viewBox="0 0 100 100">
+							    <g stroke="none" stroke-width="3" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M34.6497544,34.3917859 C34.6978217,33.9520561 35.0827386,33.6758251 35.5147425,33.776025 L66.7383931,41.0181008 C67.1680455,41.1177553 67.3998458,41.5248405 67.2471571,41.9524925 L54.309424,78.1886232 C54.1607542,78.6050191 53.7057614,78.8649965 53.2530067,78.7599836 L31.166972,73.6373047 C30.7321987,73.5364625 30.4174121,73.1101292 30.4667788,72.6585125 L34.6497544,34.3917859 L34.6497544,34.3917859 Z" stroke="#60544E" fill="#A0938C"></path>
+							        <path d="M39.3918813,23.7721125 C39.6356415,23.4012507 40.1744561,23.1797482 40.6117952,23.2811855 L66.041105,29.1793104 C66.4710847,29.2790407 66.8647743,29.7071099 66.9233445,30.157815 L67.2049034,32.3244491 C67.2621712,32.765132 66.9766621,33.0453866 66.5180298,32.9390106 L38.5426243,26.4503391 C38.1060067,26.3490692 37.9441212,25.9747651 38.1934251,25.5954689 L39.3918813,23.7721125 L39.3918813,23.7721125 Z M33.1086247,25.9890695 C33.3103535,25.5945264 33.8291488,25.3570862 34.240159,25.4524167 L71.0684369,33.9944411 C71.4916373,34.092599 71.8418662,34.518784 71.8512893,34.9751204 L71.9846989,41.4358364 C71.993856,41.8792928 71.6616176,42.1600034 71.2328519,42.0605546 L30.5728025,32.6297816 C30.1484118,32.5313475 29.9620495,32.1431701 30.1696375,31.7371676 L33.1086247,25.9890695 L33.1086247,25.9890695 Z" stroke="#E4E0E0" fill="#FFFFFF"></path>
+							        <path d="M31.8816421,43.2473477 C31.9372138,42.80384 32.3202435,42.5226978 32.7596644,42.624618 L65.3533966,50.1844733 C65.7827433,50.2840568 66.0192207,50.693591 65.8708349,51.1308689 L59.9623628,68.5425413 C59.8187894,68.9656377 59.3631466,69.2299379 58.9253166,69.1283867 L30.2711656,62.4822857 C29.8419942,62.3827428 29.5372691,61.9573791 29.5947034,61.4990058 L31.8816421,43.2473477 L31.8816421,43.2473477 Z" stroke="#78667A" fill="#C8BBC9"></path>
+							    </g>
+							</svg>
+
+							<span class="j1">none</span>
+							<span class="j2">none</span>
+							<span class="j3">none</span>
+							<span class="j4">none</span>
+							<svg class="j5" viewBox="0 0 100 100">
+								<g stroke="none" stroke-width="2.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <path d="M25.765912,39.0555759 L73.0034722,39.0555759 C73.0034722,39.0555759 32.2584728,77.0047947 19.4237239,77.0047947 C6.58897493,77.0047947 25.765912,39.0555759 25.765912,39.0555759 Z" stroke="#A32728"></path>
+							        <path d="M26.9762069,38.5757582 L76.7471232,38.5757582 C76.7471232,38.5757582 80.8286192,49.8279937 82.7150247,60.9090915 C84.6014303,71.9901893 84.3510132,83.2424249 84.3510132,83.2424249 L19.3723169,83.2424249 C19.3723169,83.2424249 19.092766,72.1613271 21.0083054,60.9090915 C22.9238448,49.656856 26.9762069,38.5757582 26.9762069,38.5757582 Z" stroke="#C42122" fill="#E35455"></path>
+							        <path d="M69.639485,48.3760349 L65.1950406,26.2908756 C63.3439121,21.5760349 59.2105201,17.3590915 51.8617072,17.3590915 C44.4979106,17.3590915 40.8536777,21.0286065 38.5283739,26.2908756 C38.5283739,26.2908756 34.0839295,48.3760349 38.5283739,48.3760349 L69.639485,48.3760349 Z" stroke="#A32728"></path>
+							        <polygon stroke="#C42122" fill="#E35455" points="26.3297924 38.5757582 77.3936221 38.5757582 80.9068461 83.2424249 22.9033739 83.2424249"></polygon>
+							        <polygon stroke="#C42122" fill="#A32727" points="40.7505961 45.2757582 45.1950406 45.2757582 46.3061517 55.3257582 39.639485 55.3257582"></polygon>
+							        <polygon stroke="#C42122" fill="#A32727" points="57.4172628 45.2757582 61.8617072 45.2757582 62.9728184 55.3257582 56.3061517 55.3257582"></polygon>
+							        <path d="M60.7505961,49.4927016 L60.7505961,27.4075423 C60.7505961,22.4746541 56.5115608,18.4757582 51.3061517,18.4757582 C46.0901291,18.4757582 41.8617072,22.4717767 41.8617072,27.4075423 L41.8617072,49.4927016" stroke="#A32728"></path>
+							    </g>
+							</svg>
+						</div>
+					</div>
+					<h1>right-prop</h1>
 				</div>
 			</li>
 		</ul>
