@@ -719,6 +719,29 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
+    .directive("publicAttr", [function() {
+        return {
+            restrict: 'A',
+            scope: false,
+            link: {
+                post: function(scope, elem, attr) {
+                    if (!(elem[0].id in scope.root.publicAttr)) {
+                        scope.root.publicAttr[elem[0].id] = [];
+                    }
+                    if (attr.publicAttr && attr.publicAttr.length) {
+                        attr.publicAttr.split(' ').forEach(function(attr_str, i) {
+                            if (attr_str === 'coords') {
+                                scope.root.publicAttr[elem[0].id].push(elem[0].getBoundingClientRect());
+                                console.log(scope.root.publicAttr)
+                            }
+                        })
+                    }
+
+
+                }
+            }
+        }
+    }])
     .directive("image", [function() {
         return {
             restrict: 'E',
@@ -941,7 +964,7 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
-    .directive("view", ["CompService", "$compile", function(CompService, $compile) {
+    .directive("view", ["CompService", "$compile", "$rootScope", "$parse", function(CompService, $compile, $rootScope, $parse) {
         return {
             restrict: 'E',
             replace:true,

@@ -1,1 +1,1 @@
-<span class="block" on-init="p:[transform:scale(0) rotate(-180deg):scale(1) rotate(0deg):500:easeOutElastic]"></span>
+<span class="block"  init-with='p:[transform:scale(0)]' on-init="a:[scale:0:1:500:easeOutElastic:0:1:f,rotate:-180deg:0deg:500:easeOutElastic:0:1:f]"></span>

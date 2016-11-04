@@ -16,6 +16,7 @@ angular.module('uguru.shared.controllers', [])
     var root = this;
     root.scope = $rootScope;
     root.scope.public = {customStates: {when: {}}};
+    root.publicAttr = {};
     root.window = getBodyDimensions($window);
     root.mainViews = [];
     _window = root.window;
