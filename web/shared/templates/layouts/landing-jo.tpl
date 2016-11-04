@@ -1,9 +1,9 @@
 <main-view class='full-xy block overflow-auto absolute top-0 left-0 flex-wrap-center no-scrollbar flex-wrap bg-smoke' u link-data access-code='71ab4' on-init='s:[init-view-1:depth(>1):2500]'>
 
 
-    <!-- <view layer="3" type='row' bg="smoke" width='100' height='100' align='center center'>
+    <view layer="3" type='row' bg="smoke" width='100' height='100' align='center center'>
         <item width='50' height='30' align='center top' class="border-2 border-taupe">
-			<item width='20' height='50' align='center center' class="border-2-bottom border-taupe">
+			<item width='20' height='50' align='center bottom' class="border-2-bottom border-taupe">
 				<graphic
 					class='relative svg-stroke-5 stroke-cerise fill-cerise' height='72' url='shared/templates/components/svg/main/heart.html'></graphic>
 			</item>
@@ -13,10 +13,13 @@
 					Welcome To Cycle City
 				</text>
 			</item>
+			<text class='weight-700 uppercase txt-center txt-charcoal absolute txt-64' align="center bottom" letter-spacing='2em' line-height='1.2'>
+				Active
+			</text>
         </item>
-    </view> -->
+    </view>
 
-    <tabs layer='5' fixed init-with="p:[opacity:0]" u when-init-view-1="a:[fadeInDown:1250:easeOutCirc:500:1:f]" height='10' import="shared/templates/components/base/tabs.tpl" on-click='s:[modal-lead-init-requested:public]'> </tabs>
+    <!-- <tabs layer='5' fixed init-with="p:[opacity:0]" u when-init-view-1="a:[fadeInDown:1250:easeOutCirc:500:1:f]" height='10' import="shared/templates/components/base/tabs.tpl" on-click='s:[modal-lead-init-requested:public]'> </tabs>
 
 
     <view layer='4'  type='row' ng-class='{"bg-slate-20p":!vData.classes,  "bg-smoke": !vData.classes && index % 2 === 1}' bg="smoke" class='relative' width='100' height='100' align='center center' u init-with="p:[opacity:0]" when-init-view-1="a:[fadeInUp:1250:easeOutCirc:500:1:f]" align='center top'>
@@ -66,5 +69,5 @@
                 <u-input type='light'> </u-input>
             </item>
         </item>
-    </modal>
+    </modal> -->
 </main-view>
