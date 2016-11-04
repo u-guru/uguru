@@ -15,7 +15,7 @@
             </txt>
 	    </item>
 
-		<item width='50' height="55" align='center top' class="p30xy absolute" style="bottom:14%;" bg="smoke"
+		<!-- <item width='50' height="55" align='center top' class="p30xy absolute" style="bottom:14%;" bg="smoke"
 			init-after="details-enter"
 			init-with="p-op"
 			on-init="s:[receipt-fade:self, request-enter:depth(1)]"
@@ -165,7 +165,7 @@
 				<span></span>
 				<span>Back to Receipt</span>
 			</button>
-		</item>
+		</item> -->
 
 		<item width='50' height="39" align='center top' class="p30xy absolute" style="bottom:14%;" bg="white"
 			u init-with="p:[op:0, tr:rotateX(-90deg), tro:50% 0%]"
@@ -276,7 +276,7 @@
 		</item>
 	</view>
 
-	<!-- <view layer="1" type='row' bg="robin"
+	<view layer="1" type='row' bg="robin"
 		when-receipt-enter="p:[z-index:10]">
 		<item width='100' height='20' align='center top' class="absolute top-0">
 			<graphic width="100" height="110" url='shared/templates/components/svg/logo/ui-guru-receipt.html'>
@@ -434,5 +434,5 @@
 				<span>Back to Receipt</span>
 			</button>
 		</item>
-	</view> -->
+	</view>
 </div>
