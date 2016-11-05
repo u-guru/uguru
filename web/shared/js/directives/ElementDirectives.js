@@ -508,7 +508,7 @@ angular.module('uguru.shared.directives')
                         if (state.name === 'init' && state.type === 'on') {
                           states.on.push(state);
                         } else if (state.exec ) {
-                          console.log('executing', state.actions.prop, state.exec)
+                          // console.log('executing', state.actions.prop, state.exec)
                           state.exec(element, null, attr)
                         }
                       })

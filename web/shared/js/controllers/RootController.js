@@ -19,6 +19,7 @@ angular.module('uguru.shared.controllers', [])
     root.publicAttr = {};
     root.window = getBodyDimensions($window);
     root.mainViews = [];
+    root.linkElemCache = {};
     _window = root.window;
     root.window.elemInfo = getElemWindowInfo(root.window);
     root.base_url = RootService.getBaseUrl();

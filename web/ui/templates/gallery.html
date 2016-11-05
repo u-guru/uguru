@@ -1,6 +1,6 @@
 <view layer="2" type='row' bg="#fadab0">
 	<item width="100" height="100" class="overflow-auto">
-		<nav class="flex-space-between p15-grid">
+		<nav class="flex-space-between p15-grid" u on-click='s:[sidebar-modal-requested:public]'>
 			<item>
 				<svg width="140px" height="50px" viewBox="0 0 482 166">
 					<g fill="white" fill-rule="evenodd">
@@ -21,6 +21,7 @@
 					when-search-bar-clicked="a:[width:48px:500px:250:easeOutBack:0:1:f]"
 					on-click="s:[search-bar-clicked:self, search-bar-icon:children:250]"
 					on-exit="p:[opacity:1:0:250:easeOutSine]">
+
 					<div>
 						<label for="search-bar">
 							<svg viewBox="0 0 100 100">
@@ -84,4 +85,10 @@
 			</div>
 		</main>
 	</item>
+	<modal u fixed name='sidebar' m-width='80%' m-height='100%' right class='right-0 top-0 bg-smoke bg-charcoal-50p full-xy' bg='cerise-80p' init-with='p:[opacity:0]' when-sidebar-modal-requested='a:[slideInDown-subtle:1000:linear:0:1:f,z-index:10:100:50:linear:0:1:f]' when-sidebar-closed="a:[slideOutUp-subtle:1000:linear:0:1:f]">
+		<graphic u absolute  on-click='s:[modal-close:public]' class="flex-grow svg-stroke-10 top-0 right-0 stroke-white round" init-with='p:[transform:rotate(45deg)]' margin='2.5%' url="shared/templates/components/svg/main/plus.html"> </graphic>
+		Modal
+	</modal>
 </view>
+
+

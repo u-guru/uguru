@@ -131,7 +131,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (!(stateObj.type in states)) states[stateObj.type] = [];
           states[stateObj.type].push(stateObj);
         }
-        states.init && states.init.length && console.log(states.init[0])
+        // states.init && states.init.length && console.log(states.init[0])
         return states
       }
 
@@ -168,7 +168,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
       function getStateFunc(type, name, actions, shortcuts) {
         var context = {name: name, type: type}
-        console.log(shortcuts)
+        // console.log(shortcuts)
           if (type === 'init' && name == 'with') {
             return function(element, scope, attr) {
               shortcuts = shortcuts || RootService.animations;
