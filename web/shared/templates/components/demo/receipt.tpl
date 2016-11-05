@@ -1,13 +1,13 @@
 <div class='full-xy perspective-container'>
 	<view layer="2" type='row' bg="robin">
-	    <item width='100' height='20' align='center top' class="absolute top-0"
+	    <item width='100' height='20' align='center top'
 			u init-with="p:[op:0, tro:center center]"
 			on-init="a:[bounceInUp-subtle:1000:linear:0:1:f] | s:[header-enter:depth(0):450, receipt-enter:depth(0):1650]">
 			<graphic width="100" height="110" url='shared/templates/components/svg/logo/ui-guru-receipt.html'>
 			</graphic>
 	    </item>
 
-		<item width='100' align='center top' class="absolute" style="top:20%;"
+		<item width='100' align='center top'
 			u init-with="p-op"
 			when-header-enter="a:[scoop-enter:1000:linear:0:1:f]">
             <txt class='weight-700 margin-0 txt-center' font-size="60px" line-height='1.2'>
@@ -15,7 +15,7 @@
             </txt>
 	    </item>
 
-		<item width='50' height="55" align='center top' class="p30xy absolute" style="bottom:14%;" bg="smoke"
+		<!-- <item width='50' height="55" align='center top' class="p30xy absolute" style="bottom:14%;" bg="smoke"
 			init-after="details-enter"
 			init-with="p-op"
 			on-init="s:[receipt-fade:self, request-enter:depth(1)]"
@@ -165,103 +165,119 @@
 				<span></span>
 				<span>Back to Receipt</span>
 			</button>
-		</item>
+		</item> -->
 
-		<item width='50' height="39" align='center top' class="p30xy absolute" style="bottom:14%;" bg="white"
-			u init-with="p:[op:0, tr:rotateX(-90deg), tro:50% 0%]"
-			when-receipt-enter="p:[op:1] | a:[rotateX:-90deg:0deg:1000:easeOutExpo:0:1:f]"
-			when-receipt-exit="a:[rotateX:0deg:-90deg:500:easeInExpo:0:1:f,opacity:1:0:500:linear:0:1:f]">
-
-			<item height="15" width="100" style="top:0%" class="absolute p15xy" align="center center" bg="smoke"
-				u init-with="p:[op:0, tr:translateY(30px)]"
-				on-init="s:[receipt-item-enter:depth(0):easeOutSine-1500]:+2000"
-				when-receipt-item-enter="a:[opacity:0:1:500:easeInOutExpo:0:1:f, translateY:30px:0px:500:easeOutExpo:150:1:f]">
-				<txt class='weight-600 txt-charcoal p10x absolute' style="left:5%;" font-size="20px" line-height='1.2'>
-					Description
-				</txt>
-				<txt class='weight-900 txt-taupe p10x absolute' style="right:5%;"font-size="20px" line-height='1.2'>
-					Price
-				</txt>
+		<item width="50" align="center center" class="flex-wrap m15top">
+			<item width='100' class="p30x-p15y" bg="white"
+				u init-with="p:[op:0, tr:scaleY(0), tro:center top]"
+				when-header-enter="a:[bounceIn-subtle:1500:easeOutQuad:500:1:f]"
+				when-receipt-exit="a:[bounceOut-subtle:1000:linear:0:1:f]:delay-1500">
+				<item width="100" bg="white">
+					<txt class='weight-600 txt-center txt-charcoal' font-size="36px" line-height='1.2' bg="white">
+						Your Receipt
+					</txt>
+				</item>
+				<item width="100" align="center center" class="m05top">
+					<txt class='weight-600 txt-charcoal p10x uppercase' font-size="20px" line-height='1.2' bg="white">
+						ORDER:
+					</txt>
+					<txt class='weight-900 txt-taupe p10x uppercase' font-size="20px" line-height='1.2' bg="white">
+						EMN45E0OM0
+					</txt>
+				</item>
 			</item>
 
-			<item height="15" width="100" style="top:20%;" class="absolute" align="center top" bg="white" pointer>
-				<txt class='weight-900 txt-shamrock p10x absolute' style="left:5%;" font-size="20px" line-height='1.2' bg="white"
-					u init-with="p:[op:0, tr:translateX(-15px)]"
-					when-receipt-item-enter="a:[opacity:0:1:500:easeInOutExpo:0:1:f, translateX:-15px:0px:500:easeOutExpo:150:1:f]">
-					Weekly Special
-				</txt>
-				<txt class='weight-600 txt-taupe p10xy absolute' style="left:5%; margin-top:2%" font-size="18px" line-height='1.2'
-					u init-with="p:[op:0, tr:translateX(-15px)]"
-					when-receipt-item-enter="a:[opacity:0:1:500:easeInOutExpo:0:1:f, translateX:-15px:0px:500:easeOutExpo:150:1:f]">
-					100 Credits on 02/23/16
-				</txt>
-				<txt class='weight-900 txt-taupe p10xy uppercase absolute bottom-0' style="right:5%; " font-size="20px" line-height='1.2'
-					u init-with="p:[op:0, tr:translateX(-90px)]"
-					when-receipt-item-enter="a:[opacity:0:1:500:easeInOutExpo:0:1:f, translateX:-90px:0px:500:easeOutCubic:150:1:f]">
-					$90.00
-				</txt>
-			</item>
+			<item width='100' class="p20y" bg="white"
+				u init-with="p:[op:0, tr:rotateX(-90deg), tro:50% 0%]"
+				when-receipt-enter="p:[op:1] | a:[rotateX:-90deg:0deg:1000:easeOutExpo:0:1:f]"
+				when-receipt-exit="a:[rotateX:0deg:-90deg:500:easeInExpo:0:1:f,opacity:1:0:500:linear:0:1:f]">
 
-			<item height="15" width="100" style="top:40%;" class="absolute" align="center center" bg="white" pointer>
-				<item class="absolute p15y" style="border-top:dashed 3px #EDEEEF;" width="88"
+				<item width="100" align="center center" class="flex-space-between p30x-p05y" bg="smoke"
+					u init-with="p:[op:0, tr:translateY(30px)]"
+					on-init="s:[receipt-item-enter:depth(0):easeOutSine-1500]:+2000"
+					when-receipt-item-enter="a:[opacity:0:1:500:easeInOutExpo:0:1:f, translateY:30px:0px:500:easeOutExpo:150:1:f]">
+					<txt class='weight-600 txt-charcoal p10x' font-size="20px" line-height='1.2'>
+						Description
+					</txt>
+					<txt class='weight-900 txt-taupe p10x' font-size="20px" line-height='1.2'>
+						Price
+					</txt>
+				</item>
+
+				<item width="100" align="center top" bg="white" class="flex-space-between p30x-p15top" pointer>
+					<item width="75" align="left top" class="flex-wrap">
+						<txt class='block full-x weight-900 txt-shamrock p10x' font-size="20px" line-height='1.2'
+							u init-with="p:[op:0, tr:translateX(-15px)]"
+							when-receipt-item-enter="a:[opacity:0:1:500:easeInOutExpo:0:1:f, translateX:-15px:0px:500:easeOutExpo:150:1:f]">
+							Weekly Special
+						</txt>
+						<txt class='block full-x weight-600 txt-taupe p10x' font-size="18px" line-height='1.2'
+							u init-with="p:[op:0, tr:translateX(-15px)]"
+							when-receipt-item-enter="a:[opacity:0:1:500:easeInOutExpo:0:1:f, translateX:-15px:0px:500:easeOutExpo:150:1:f]">
+							100 Credits on 02/23/16
+						</txt>
+					</item>
+					<item width="25" align="right top">
+						<txt class='weight-900 txt-taupe p10xy uppercase' font-size="20px" line-height='1.2'
+							u init-with="p:[op:0, tr:translateX(-90px)]"
+							when-receipt-item-enter="a:[opacity:0:1:500:easeInOutExpo:0:1:f, translateX:-90px:0px:500:easeOutCubic:150:1:f]">
+							$90.00
+						</txt>
+					</item>
+				</item>
+
+				<item width="100"
 					u init-with="p:[op:0, tr:translateY(30px)]"
 					when-receipt-item-enter="a:[opacity:0:1:500:easeInOutExpo:0:1:f, translateY:30px:0px:500:easeOutExpo:150:1:f]">
+					<div class="p15y-p30x full-x">
+						<div class="p10x">
+							<div class="full-x border-3-top border-dashed" style="border-color: #EDEEEF"></div>
+						</div>
+					</div>
 				</item>
-				<txt class='weight-900 txt-cerise p10xy absolute' style="left:5%; top:3%;" font-size="20px" line-height='1.2'
-					u init-with="p:[op:0, tr:translateX(-15px)]"
-					when-receipt-item-enter="a:[opacity:0:1:500:easeInOutExpo:0:1:f, translateX:-15px:0px:500:easeOutExpo:150:1:f]">
-					Academic Request
-				</txt>
-				<txt class='weight-600 txt-taupe p10xy absolute' style="left:5%; margin-top:4%" font-size="18px" line-height='1.2'
-					u init-with="p:[op:0, tr:translateX(-15px)]"
-					when-receipt-item-enter="a:[opacity:0:1:500:easeInOutExpo:0:1:f, translateX:-15px:0px:500:easeOutExpo:150:1:f]">
-					In Person Tutoring on 02/23/16
-				</txt>
-				<txt class='weight-900 txt-taupe p10xy uppercase absolute bottom-0' style="right:5%; " font-size="20px" line-height='1.2'
-					u init-with="p:[op:0, tr:translateX(-90px)]"
-					when-receipt-item-enter="a:[opacity:0:1:500:easeInOutExpo:0:1:f, translateX:-90px:0px:500:easeOutCubic:150:1:f]">
-					$25.00
-				</txt>
-			</item>
 
-			<item height="25" width="100" class="absolute" style="bottom:10%;" align="center center" bg="white">
-				<item class="absolute" style="border-top:solid 3px #EDEEEF; top:10%;" width="100"
-					u init-with="p:[op:0, tr:translateY(30px)]"
-					when-receipt-item-enter="a:[opacity:0:1:500:easeInOutExpo:0:1:f, translateY:30px:0px:500:easeOutExpo:150:1:f]">
+				<item width="100" align="center top" bg="white" class="flex-space-between p30x" pointer>
+					<item width="75" align="left top" class="flex-wrap">
+						<txt class='block full-x weight-900 txt-cerise p10x' font-size="20px" line-height='1.2'
+							u init-with="p:[op:0, tr:translateX(-15px)]"
+							when-receipt-item-enter="a:[opacity:0:1:500:easeInOutExpo:0:1:f, translateX:-15px:0px:500:easeOutExpo:150:1:f]">
+							Academic Request
+						</txt>
+						<txt class='block full-x weight-600 txt-taupe p10x' font-size="18px" line-height='1.2'
+							u init-with="p:[op:0, tr:translateX(-15px)]"
+							when-receipt-item-enter="a:[opacity:0:1:500:easeInOutExpo:0:1:f, translateX:-15px:0px:500:easeOutExpo:150:1:f]">
+							In Person Tutoring on 02/23/16
+						</txt>
+					</item>
+					<item width="25" align="right top">
+						<txt class='weight-900 txt-taupe p10xy uppercase' font-size="20px" line-height='1.2'
+							u init-with="p:[op:0, tr:translateX(-90px)]"
+							when-receipt-item-enter="a:[opacity:0:1:500:easeInOutExpo:0:1:f, translateX:-90px:0px:500:easeOutCubic:150:1:f]">
+							$25.00
+						</txt>
+					</item>
 				</item>
-				<txt class='weight-900 txt-slate p10x absolute uppercase' style="left:5%;" font-size="20px" line-height='1.2'
-					u init-with="p:[op:0, tr:translateX(-90px)]"
-					when-receipt-item-enter="a:[opacity:0:1:500:easeInOutExpo:0:1:f, translateX:-90px:0px:500:easeOutCubic:150:1:f]">
-					Total
-				</txt>
-				<txt class='weight-900 txt-moxie p10x absolute' style="right:5%;" font-size="28px" line-height='1.2'
-					u init-with="p:[op:0, tr:translateX(-90px)]"
-					when-receipt-item-enter="a:[opacity:0:1:500:easeInOutExpo:0:1:f, translateX:-90px:0px:500:easeOutCubic:150:1:f]">
-					$115.00
-				</txt>
-			</item>
-	    </item>
 
-		<item width='50' height="16" align='center center' class="p30xy absolute" style="top:32%;" bg="white"
-			u init-with="p:[op:0, tr:scaleY(0), tro:center top]"
-			when-header-enter="a:[bounceIn-subtle:1500:easeOutQuad:500:1:f]"
-			when-receipt-exit="a:[bounceOut-subtle:1000:linear:0:1:f]:delay-1500">
-			<item width="100" height="5" class="absolute" style="top:15%" bg="white">
-				<txt class='weight-600 txt-center txt-charcoal' font-size="36px" line-height='1.2' bg="white">
-					Your Receipt
-				</txt>
-			</item>
-			<item height="30" width="100" style="top:55%;" class="absolute" align="center top">
-				<txt class='weight-600 txt-charcoal p10x uppercase' font-size="20px" line-height='1.2' bg="white">
-					ORDER:
-				</txt>
-				<txt class='weight-900 txt-taupe p10x uppercase' font-size="20px" line-height='1.2' bg="white">
-					EMN45E0OM0
-				</txt>
+				<item width="100" bg="white">
+					<item class="border-3-top border-solid" style="border-color:#EDEEEF" width="100"
+						u init-with="p:[op:0, tr:translateY(30px)]"
+						when-receipt-item-enter="a:[opacity:0:1:500:easeInOutExpo:0:1:f, translateY:30px:0px:500:easeOutExpo:150:1:f]">
+					</item>
+					<txt class='weight-900 txt-slate p10x uppercase' font-size="20px" line-height='1.2'
+						u init-with="p:[op:0, tr:translateX(-90px)]"
+						when-receipt-item-enter="a:[opacity:0:1:500:easeInOutExpo:0:1:f, translateX:-90px:0px:500:easeOutCubic:150:1:f]">
+						Total
+					</txt>
+					<txt class='weight-900 txt-moxie p10x' font-size="28px" line-height='1.2'
+						u init-with="p:[op:0, tr:translateX(-90px)]"
+						when-receipt-item-enter="a:[opacity:0:1:500:easeInOutExpo:0:1:f, translateX:-90px:0px:500:easeOutCubic:150:1:f]">
+						$115.00
+					</txt>
+				</item>
 			</item>
 		</item>
 
-		<item height="5" class="absolute p15xy" style="bottom:9%;"
+		<!-- <item height="5" class="absolute p15xy" style="bottom:9%;"
 			u init-with="p-op"
 			when-receipt-enter="a:[bounceIn-subtle:800:linear:0:1:f]"
 			on-click="s:[receipt-exit:depth(0), details-enter:public:2000]">
@@ -273,10 +289,10 @@
 				<span></span>
 				<span>View Receipt Details</span>
 			</button>
-		</item>
+		</item> -->
 	</view>
 
-	<!-- <view layer="1" type='row' bg="robin"
+	<view layer="1" type='row' bg="robin"
 		when-receipt-enter="p:[z-index:10]">
 		<item width='100' height='20' align='center top' class="absolute top-0">
 			<graphic width="100" height="110" url='shared/templates/components/svg/logo/ui-guru-receipt.html'>
@@ -434,5 +450,5 @@
 				<span>Back to Receipt</span>
 			</button>
 		</item>
-	</view> -->
+	</view>
 </div>

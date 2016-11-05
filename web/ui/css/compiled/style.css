@@ -1,3 +1,107 @@
-
+.bg.bg-aero, button.bg-aero {
+  background: #9cbdbe; }
+  .bg.bg-aero.reverse, button.bg-aero.reverse {
+    background: white;
+    color: #9cbdbe; }
+    .bg.bg-aero.reverse svg *, button.bg-aero.reverse svg * {
+      stroke: #9cbdbe; }
+  .bg.bg-aero:hover, .bg.bg-aero:focus, button.bg-aero:hover, button.bg-aero:focus {
+    background: #cededf;
+    color: #6e8385; }
+    .bg.bg-aero:hover svg *, .bg.bg-aero:focus svg *, button.bg-aero:hover svg *, button.bg-aero:focus svg * {
+      stroke: #6e8385; }
+  .bg.bg-aero:active, button.bg-aero:active {
+    background: #6e8385;
+    color: white; }
+    .bg.bg-aero:active svg *, button.bg-aero:active svg * {
+      stroke: white; }
+.bg.bg-copper, button.bg-copper {
+  background: #975357; }
+  .bg.bg-copper.reverse, button.bg-copper.reverse {
+    background: white;
+    color: #975357; }
+  .bg.bg-copper:hover, .bg.bg-copper:focus, button.bg-copper:hover, button.bg-copper:focus {
+    background: #cba9ab;
+    color: #6c4e51; }
+  .bg.bg-copper:active, button.bg-copper:active {
+    background: #6c4e51;
+    color: white; }
+.bg.bg-sienna, button.bg-sienna {
+  background: #ee7361; }
+  .bg.bg-sienna.reverse, button.bg-sienna.reverse {
+    background: white;
+    color: #ee7361; }
+  .bg.bg-sienna:hover, .bg.bg-sienna:focus, button.bg-sienna:hover, button.bg-sienna:focus {
+    background: #f7b9b0;
+    color: #975e56; }
+  .bg.bg-sienna:active, button.bg-sienna:active {
+    background: #975e56;
+    color: white; }
+.bg.bg-cream, button.bg-cream {
+  background: #fadab0; }
+  .bg.bg-cream.reverse, button.bg-cream.reverse {
+    background: white;
+    color: #fadab0; }
+  .bg.bg-cream:hover, .bg.bg-cream:focus, button.bg-cream:hover, button.bg-cream:focus {
+    background: #fdedd8;
+    color: #9d917e; }
+  .bg.bg-cream:active, button.bg-cream:active {
+    background: #9d917e;
+    color: white; }
+.bg.bg-olive, button.bg-olive {
+  background: #98855d; }
+  .bg.bg-olive.reverse, button.bg-olive.reverse {
+    background: white;
+    color: #98855d; }
+  .bg.bg-olive:hover, .bg.bg-olive:focus, button.bg-olive:hover, button.bg-olive:focus {
+    background: #ccc2ae;
+    color: #6c6754; }
+  .bg.bg-olive:active, button.bg-olive:active {
+    background: #6c6754;
+    color: white; }
+.bg.bg-neptune, button.bg-neptune {
+  background: #76a3ab; }
+  .bg.bg-neptune.reverse, button.bg-neptune.reverse {
+    background: white;
+    color: #76a3ab; }
+  .bg.bg-neptune:hover, .bg.bg-neptune:focus, button.bg-neptune:hover, button.bg-neptune:focus {
+    background: #bbd1d5;
+    color: #5b767b; }
+  .bg.bg-neptune:active, button.bg-neptune:active {
+    background: #5b767b;
+    color: white; }
+.bg.bg-stone, button.bg-stone {
+  background: #555f7b; }
+  .bg.bg-stone.reverse, button.bg-stone.reverse {
+    background: white;
+    color: #555f7b; }
+  .bg.bg-stone:hover, .bg.bg-stone:focus, button.bg-stone:hover, button.bg-stone:focus {
+    background: #aaafbd;
+    color: #4b5463; }
+  .bg.bg-stone:active, button.bg-stone:active {
+    background: #4b5463;
+    color: white; }
+.bg.bg-cosmic, button.bg-cosmic {
+  background: #6d4266; }
+  .bg.bg-cosmic.reverse, button.bg-cosmic.reverse {
+    background: white;
+    color: #6d4266; }
+  .bg.bg-cosmic:hover, .bg.bg-cosmic:focus, button.bg-cosmic:hover, button.bg-cosmic:focus {
+    background: #b6a1b3;
+    color: #574559; }
+  .bg.bg-cosmic:active, button.bg-cosmic:active {
+    background: #574559;
+    color: white; }
+.bg.bg-rose, button.bg-rose {
+  background: #e28797; }
+  .bg.bg-rose.reverse, button.bg-rose.reverse {
+    background: white;
+    color: #e28797; }
+  .bg.bg-rose:hover, .bg.bg-rose:focus, button.bg-rose:hover, button.bg-rose:focus {
+    background: #f1c3cb;
+    color: #916871; }
+  .bg.bg-rose:active, button.bg-rose:active {
+    background: #916871;
+    color: white; }
 
 /*# sourceMappingURL=style.css.map */

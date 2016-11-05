@@ -926,9 +926,9 @@
 	</div>
 	<div class="guru-switch-controls">
 		<!-- minimal controls added to at least move to the second set -->
-		<ul u on-init="s:[button-enter:children:1000]">
+		<ul u on-init="s:[button-enter:children:linear-350]:+1000">
 			<li u init-with="p:[op:0]"
-				when-button-enter="a:[bounceIn-subtle:1000:linear:0:1:f]:delay-50">
+				when-button-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 				<div class="guru-switch-button">
 					<nav>
 						<div>
@@ -1159,7 +1159,7 @@
 				</div>
 			</li>
 			<li u init-with="p:[op:0]"
-				when-button-enter="a:[bounceIn-subtle:1000:linear:0:1:f]:delay-100">
+				when-button-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 				<div class="guru-switch-button">
 					<nav>
 						<div>
@@ -1382,7 +1382,7 @@
 				</div>
 			</li>
 			<li u init-with="p:[op:0]"
-				when-button-enter="a:[bounceIn-subtle:1000:linear:0:1:f]:delay-150">
+				when-button-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 				<div class="guru-switch-button">
 					<nav>
 						<div>
@@ -1595,7 +1595,7 @@
 				</div>
 			</li>
 			<li u init-with="p:[op:0]"
-				when-button-enter="a:[bounceIn-subtle:1000:linear:0:1:f]:delay-200">
+				when-button-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 				<div class="guru-switch-button">
 					<nav>
 						<div>
@@ -1797,7 +1797,7 @@
 				</div>
 			</li>
 			<li u init-with="p:[op:0]"
-				when-button-enter="a:[bounceIn-subtle:1000:linear:0:1:f]:delay-250">
+				when-button-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 				<div class="guru-switch-button">
 					<nav>
 						<div>
@@ -2004,7 +2004,7 @@
 				</div>
 			</li>
 			<li u init-with="p:[op:0]"
-				when-button-enter="a:[bounceIn-subtle:1000:linear:0:1:f]:delay-300">
+				when-button-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 				<div class="guru-switch-button">
 					<nav>
 						<div>
@@ -2243,7 +2243,7 @@
 				</div>
 			</li>
 			<li u init-with="p:[op:0]"
-				when-button-enter="a:[bounceIn-subtle:1000:linear:0:1:f]:delay-350">
+				when-button-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 				<div class="guru-switch-button">
 					<nav>
 						<div>
