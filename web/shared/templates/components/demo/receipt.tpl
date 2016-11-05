@@ -1,5 +1,5 @@
 <div class='full-xy perspective-container'>
-	<view layer="2" type='row' bg="robin">
+	<view layer="2" type='row' bg="#B7D2CA">
 	    <item width='100' height='20' align='center top'
 			u init-with="p:[op:0, tro:center center]"
 			on-init="a:[bounceInUp-subtle:1000:linear:0:1:f] | s:[header-enter:depth(0):450, receipt-enter:depth(0):1650]">
@@ -292,7 +292,7 @@
 		</item> -->
 	</view>
 
-	<view layer="1" type='row' bg="robin"
+	<view layer="1" type='row' bg="#B7D2CA"
 		when-receipt-enter="p:[z-index:10]">
 		<item width='100' height='20' align='center top' class="absolute top-0">
 			<graphic width="100" height="110" url='shared/templates/components/svg/logo/ui-guru-receipt.html'>
