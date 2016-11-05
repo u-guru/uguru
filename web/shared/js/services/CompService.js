@@ -19,7 +19,62 @@ function CompService($timeout, $compile) {
     parseSrcUrl: parseSrcUrl,
     getMediaElemOfType: getMediaElemOfType,
     renderAlign: renderAlign,
-    renderAllStyleAttributes: renderAllStyleAttributes
+    renderAllStyleAttributes: renderAllStyleAttributes,
+    initializeModalAttr: initializeModalAttr
+  }
+
+  function initializeModalAttr(p_elem, attr, _window) {
+    validDirections = ['top', 'bottom', 'left', 'under'];
+
+    // if (validDirections.indexOf(attr) > -1) {
+      // 'top' in attr && p_elem.css('transform', ('translateY(-' + _window.height + 'px'))
+      // 'bottom' in attr && p_elem.css('transform', ( 'translateY('+ _window.height + 'px'))
+      // 'left' in attr && p_elem.css('transform', ('translateX(' + _window.width + 'px'))
+      // 'right' in attr  && p_elem.css('transform', ('translateX(-' + _window.width + 'px'))
+    // }
+
+    // if (attr.linkCoordsWith && attr.linkCoordsWith.length) {
+    //   scope.root.
+    // }
+
+    if (attr.name && attr.name.length) {
+      var statePrecursor = 'when-' + attr.name.toLowerCase() + '-requested';
+      for (key in attr.$attr) {
+        if (key.indexOf('when') === 0) {
+          var whenStateNameContents = attr[key];
+          if (key.toLowerCase().indexOf('requested')>-1) {
+
+            if (whenStateNameContents.toLowerCase().indexOf('z-index') === -1) {
+              var postAnimationStr = whenStateNameContents.split('a:[')[1];
+              var animationStr = postAnimationStr.split(']')
+              var newContents = "a:[" +  animationStr[0] + ',' + "z-index:-10:100:50:linear:0:1:f]" + animationStr.slice(1).join("]")
+              attr.$set(key, newContents)
+            }
+          }
+          if (key.toLowerCase().indexOf('close')>-1) {
+            if (whenStateNameContents.toLowerCase().indexOf('z-index') === -1) {
+              var postAnimationStr = whenStateNameContents.split('a:[')[1];
+              var animationStr = postAnimationStr.split(']')
+              var newContents = "a:[" +  animationStr[0] + ',' + "z-index:100:-10:1000:linear:0:1:f]" + animationStr.slice(1).join("]")
+              attr.$set(key, newContents)
+            }
+          }
+          // console.log(whenStateNameContents)
+        }
+        // "when-modal-" + attr.name  + "-requested=a:[z-index:-10:100:50:linear:0:1:f]|p:[opacity:0]"
+        // "when-modal-" + attr.name  + "-closed=a:[z-index:-10:100:50:linear:0:1:f]"
+      }
+
+    }
+
+    // for (_attr in attr) {
+    //   console.log(attr, _attr)
+    // }
+    // else if (_window.mobile) {
+    //     p_elem.css('transform', 'translateY(' + _window.height + 'px)');
+    // } else if (){
+    //     p_elem.css('transform', 'translateY(-' + _window.height + 'px');
+    // }
   }
 
 

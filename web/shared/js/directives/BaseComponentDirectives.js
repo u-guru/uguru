@@ -913,48 +913,57 @@ angular.module('uguru.shared.directives.base.components')
     .directive("modal", ["CompService", "$compile", '$timeout', function(CompService, $compile, $timeout) {
         return {
             restrict: 'E',
-            priority: -1,
-            scope: false,
-            transclude:true,
-            terminal:true,
+            priority: 100000,
+            scope: true,
+            // transclude:true,
+            // terminal:true,
+            // priority: -1,
             replace:true,
-            template: '<view fixed></view>',
-            compile: function(elem, attr, transclude) {
+            compile: function(elem, attr) {
+                CompService.renderAllStyleAttributes(elem, attr);
+
                 elem[0].style.zIndex = -1;
                 elem[0].style.opacity = 0;
                 elem[0].style.position = 'fixed';
 
+                var children = elem[0].innerHTML
+                CompService.initializeModalAttr(elem, attr, _window);
                 return {
-                    pre: function postLink(scope, p_elem, attr) {
+                    pre: function preLink(scope, p_elem, _attr) {
+
+
 
                         var _window = scope.root.window;
+                        var windowWidth = scope.root.window.width;
 
-                        var width = scope.root.window.width;
-                        if (_window.mobile) {
-                            p_elem.css('transform', 'translateY(' + _window.height + 'px)');
-                        } else {
-                            p_elem.css('transform', 'translateY(-' + _window.height + 'px');
-                        }
+
+
+
                         $timeout(function() {
                             if (scope.root.mainViews && scope.root.mainViews.length) {
                                 scope.root.mainViews.forEach(function(parent, i) {
-                                    if (parent[0].contains(p_elem[0])) {
-                                        transclude(scope, function(clone, innerScope) {
 
-                                            p_elem.append(clone);
+                                    // p_elem.append(clone);
+                                    parent.parent().append(p_elem);
 
-                                            parent.parent().append(p_elem);
+                                    // $compile(p_elem)(scope)
+                                    // p_elem.attr('u', '')
+                                    // $compile(p_elem)(scope.$parent)
+                                    // if (parent[0].contains(p_elem[0])) {
+                                    //     transclude(scope, function(clone, innerScope) {
 
-                                            p_elem.attr('u', '')
+                                    //         p_elem.append(clone);
 
-                                            $compile(p_elem)(scope.$parent)
-                                            p_elem[0].className = '';
-                                            attr.bg && p_elem[0].classList.add('bg-' + attr.bg)
+                                    //         parent.parent().append(p_elem);
 
+                                    //         p_elem.attr('u', '')
 
+                                    //         $compile(p_elem)(scope.$parent)
+                                    //         p_elem[0].className = '';
+                                    //         attr.bg && p_elem[0].classList.add('bg-' + attr.bg)
 
-                                        })
-                                    }
+                                    //     })
+                                    // }
                                 })
                             }
                         })

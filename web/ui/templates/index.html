@@ -3,7 +3,7 @@
     <!--  Stage One: Loader Dont render + import internally-->
 	<!-- <div ng-include="root.base_url + 'ui/templates/loader.html'"</div> -->
 
-    <main-view class='absolute full-xy' u init-with='p:[z-index:-1000]'>
+    <main-view class='absolute full-xy' u init-with='p:[z-index:0]'>
         <import class='absolute top-0 left-0 full-xy' url="ui.app.loader.url" ng-if='ui.app.loader.url'></import>
 
         <import url="ui.app.views.home.url" ng-if='ui.app.views.home'></import>
