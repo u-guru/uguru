@@ -6,7 +6,6 @@
         "views": {
             "home": {
                 "url": "ui/templates/home.html",
-                "skip": true,
                 "data": {
                     "courseCards": [
                         {

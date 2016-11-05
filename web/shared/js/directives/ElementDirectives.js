@@ -495,6 +495,25 @@ angular.module('uguru.shared.directives')
 
               var states = this.states;
 
+
+                  if (states.init) {
+                      states.init.forEach(function(state, i) {
+                        // if (state.actions.send) {
+                        //   state.actions.send.parsed.split(',').forEach(function(message_str, i) {
+                        //     var msgNameCamel = ElementService.toCamelCaseBridge(message_str.split(':')[0]);
+                        //     SendService.prepareToSendMessage(msgNameCamel, message_str, scope);
+                        //   })
+                        // }
+
+                        if (state.name === 'init' && state.type === 'on') {
+                          states.on.push(state);
+                        } else if (state.exec ) {
+                          console.log('executing', state.actions.prop, state.exec)
+                          state.exec(element, null, attr)
+                        }
+                      })
+                    }
+
               var postStates = [];
               return {
                   pre: function (scope, lElem, lAttr) {
@@ -508,22 +527,6 @@ angular.module('uguru.shared.directives')
                     SendService.precompileSendActionArgs(states, scope, lElem, lAttr)
                     scope.whenCallbacks = {};
 
-                    if (states.init) {
-                      states.init.forEach(function(state, i) {
-                        // if (state.actions.send) {
-                        //   state.actions.send.parsed.split(',').forEach(function(message_str, i) {
-                        //     var msgNameCamel = ElementService.toCamelCaseBridge(message_str.split(':')[0]);
-                        //     SendService.prepareToSendMessage(msgNameCamel, message_str, scope);
-                        //   })
-                        // }
-
-                        if (state.name === 'init' && state.type === 'on') {
-                          states.on.push(state);
-                        } else if (state.exec) {
-                          state.exec(element, scope, lAttr, true)
-                        }
-                      })
-                    }
 
                       if (states.on) {
 

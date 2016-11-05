@@ -13,8 +13,6 @@
             </item>
 
             <!-- <span class='txt-1'>{{track.description}}</span> -->
-
-
         </li>
     </ul>
 </view>
