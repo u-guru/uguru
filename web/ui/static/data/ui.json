@@ -7,11 +7,24 @@
         "views": {
             "home": {
                 "url": "ui/templates/home.html",
-                "skip":true
+                "skip":true,
+                "data": {
+                    "courseCards": [
+                        {
+                            "color": ""
+                        }
+                    ]
+                }
             },
             "gallery": {
                 "url": "ui/templates/gallery.html"
             }
+        }
+    },
+    "components": {
+        "course-card": {
+            "template_url": "shared/templates/components/demo/custom-course-card.tpl",
+            "fields": ["color", "width", "height"]
         }
     }
 }
