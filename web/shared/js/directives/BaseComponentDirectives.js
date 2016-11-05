@@ -123,6 +123,7 @@ angular.module('uguru.shared.directives.base.components')
             $document.bind('keydown', function(e) {
 
               $rootScope.$broadcast('keydown', e);
+              console.log('keydown', e.which)
               $rootScope.$broadcast('keydown:' + e.which || e.keyCode, e);
             });
             $document.bind('keyup', function(e) {
