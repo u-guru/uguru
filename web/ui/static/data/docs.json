@@ -1,0 +1,11 @@
+{
+    "elements": {
+        "modal": {
+            "attr": {
+                "name": "the name of the modal",
+                "when-name-modal-requested": "name of message to send publicly by any element ot activate the modal",
+                "when-name-modal-closed": "closes the name of the modal"
+            }
+        }
+    }
+}
