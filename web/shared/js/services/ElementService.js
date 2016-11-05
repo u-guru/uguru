@@ -123,12 +123,15 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
       function renderElementStates(element, attr) {
         var states = {}
+
         for (var key in attr.$attr) {
           var stateObj = renderState(element, attr.$attr[key], attr[key], key)
+
           if (!stateObj) continue;
           if (!(stateObj.type in states)) states[stateObj.type] = [];
           states[stateObj.type].push(stateObj);
         }
+        states.init && states.init.length && console.log(states.init[0])
         return states
       }
 
@@ -142,7 +145,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         state.actions = parsedArgs.actions;
 
         state.nameCamel = parsedArgs.fullNameCamel;
-        state.exec = getStateFunc(state.type, state.name, parsedArgs.actions);
+        state.exec = getStateFunc(state.type, state.name, parsedArgs.actions, rShortcuts);
         return state;
       }
 
@@ -163,11 +166,11 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         }
       }
 
-      function getStateFunc(type, name, actions) {
+      function getStateFunc(type, name, actions, shortcuts) {
         var context = {name: name, type: type}
-
+        console.log(shortcuts)
           if (type === 'init' && name == 'with') {
-            return function(element, scope, attr, shortcuts) {
+            return function(element, scope, attr) {
               shortcuts = shortcuts || RootService.animations;
               rShortcuts.animations = shortcuts;
               if (!rShortcuts.animations && rShortcuts.animations.customShortcuts) {
