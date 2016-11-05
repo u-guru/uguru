@@ -1,1 +1,154 @@
 @import '../../../shared/css/scss/partials/mixin';
+
+.bg, button {
+	&.bg-aero {
+		background: $aero;
+		&.reverse {
+			background: white;
+			color: $aero;
+			svg {
+				* {
+					stroke: $aero;
+				}
+			}
+		}
+		&:hover, &:focus {
+			background: mix($aero, white);
+			color: mix($aero, $slate);
+			svg {
+				* {
+					stroke: mix($aero, $slate);
+				}
+			}
+		}
+		&:active {
+			background: mix($aero, $slate);
+			color: white;
+			svg {
+				* {
+					stroke: white;
+				}
+			}
+		}
+	}
+	&.bg-copper {
+		background: $copper;
+		&.reverse {
+			background: white;
+			color: $copper;
+		}
+		&:hover, &:focus {
+			background: mix($copper, white);
+			color: mix($copper, $slate);
+		}
+		&:active {
+			background: mix($copper, $slate);
+			color: white;
+		}
+	}
+	&.bg-sienna {
+		background: $sienna;
+		&.reverse {
+			background: white;
+			color: $sienna;
+		}
+		&:hover, &:focus {
+			background: mix($sienna, white);
+			color: mix($sienna, $slate);
+		}
+		&:active {
+			background: mix($sienna, $slate);
+			color: white;
+		}
+	}
+	&.bg-cream {
+		background: $cream;
+		&.reverse {
+			background: white;
+			color: $cream;
+		}
+		&:hover, &:focus {
+			background: mix($cream, white);
+			color: mix($cream, $slate);
+		}
+		&:active {
+			background: mix($cream, $slate);
+			color: white;
+		}
+	}
+	&.bg-olive {
+		background: $olive;
+		&.reverse {
+			background: white;
+			color: $olive;
+		}
+		&:hover, &:focus {
+			background: mix($olive, white);
+			color: mix($olive, $slate);
+		}
+		&:active {
+			background: mix($olive, $slate);
+			color: white;
+		}
+	}
+	&.bg-neptune {
+		background: $neptune;
+		&.reverse {
+			background: white;
+			color: $neptune;
+		}
+		&:hover, &:focus {
+			background: mix($neptune, white);
+			color: mix($neptune, $slate);
+		}
+		&:active {
+			background: mix($neptune, $slate);
+			color: white;
+		}
+	}
+	&.bg-stone {
+		background: $stone;
+		&.reverse {
+			background: white;
+			color: $stone;
+		}
+		&:hover, &:focus {
+			background: mix($stone, white);
+			color: mix($stone, $slate);
+		}
+		&:active {
+			background: mix($stone, $slate);
+			color: white;
+		}
+	}
+	&.bg-cosmic {
+		background: $cosmic;
+		&.reverse {
+			background: white;
+			color: $cosmic;
+		}
+		&:hover, &:focus {
+			background: mix($cosmic, white);
+			color: mix($cosmic, $slate);
+		}
+		&:active {
+			background: mix($cosmic, $slate);
+			color: white;
+		}
+	}
+	&.bg-rose {
+		background: $rose;
+		&.reverse {
+			background: white;
+			color: $rose;
+		}
+		&:hover, &:focus {
+			background: mix($rose, white);
+			color: mix($rose, $slate);
+		}
+		&:active {
+			background: mix($rose, $slate);
+			color: white;
+		}
+	}
+}

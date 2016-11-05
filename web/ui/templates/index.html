@@ -1,22 +1,15 @@
-<div class='ui-guru-loader loader-portal-outer flex-vertical-center absolute flex-wrap top-0 left-0' link-src-data="/ui/static/data/ui.json" link-data-name='ui' >
-
+<div class='ui-guru-loader loader-portal-outer flex-vertical-center absolute flex-wrap top-0 left-0' link-src-data="/ui/static/data/ui.json" link-data-name='ui'>
 
     <!--  Stage One: Loader Dont render + import internally-->
 	<!-- <div ng-include="root.base_url + 'ui/templates/loader.html'"</div> -->
 
-
-
-
     <main-view class='absolute full-xy' u init-with='p:[z-index:-1000]'>
-        <import class='absolute top-0 left-0 full-xy' url="ui.app.loader.url" ng-if='ui.app.loader.url'>
-        </import>
-        <import  url="ui.app.views.home.url" ng-if='ui.app.views.home'>
-        </import>
+        <import class='absolute top-0 left-0 full-xy' url="ui.app.loader.url" ng-if='ui.app.loader.url'></import>
+        <import url="ui.app.views.home.url" ng-if='ui.app.views.home'></import>
 
-
-        <!-- <view  init-after='page-enter' u on-init='p:[z-index:-1000]'>asdasdas </view> -->
-
+        <!-- <view init-after='page-enter' u on-init='p:[z-index:-1000]'>asdasdas </view> -->
     </main-view>
+	
     <!-- <ext-views> -->
         <!-- <modal ng-repeat='ext_view in ui.views.external'> </modal> -->
     <!-- <ext-views> -->

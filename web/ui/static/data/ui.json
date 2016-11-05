@@ -1,9 +1,8 @@
 {
     "app": {
-        "loader":
-            {
-                "url": "ui/templates/loader.html"
-            },
+        "loader": {
+            "url": "ui/templates/loader.html"
+        },
 
         "views": {
             "home": {
@@ -11,6 +10,9 @@
             },
             "samir": {
                 "landing_url": "shared/templates/layouts/landing-sm.tpl"
+            },
+			"gabrie": {
+                "landing_url": "shared/templates/layouts/landing-gw.tpl"
             }
         }
     }
