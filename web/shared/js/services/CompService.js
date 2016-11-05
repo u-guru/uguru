@@ -96,14 +96,14 @@ function CompService($timeout, $compile) {
       elem.css('cursor', 'pointer')
     }
 
-    if (attr.width) {
+    if (attr.width && elem[0].nodeName.toLowerCase() !== 'svg') {
         if (attr.width.indexOf('%') === -1 && attr.width.indexOf('px') === -1) {
             elem.css('width', attr.width + '%')
         } else {
             elem.css('width', attr.width)
         }
     }
-    if (attr.height) {
+    if (attr.height && elem[0].nodeName.toLowerCase() !== 'svg') {
         if (attr.height.indexOf('%') === -1 && attr.height.indexOf('px') === -1) {
             elem.css('height', attr.height + '%')
         } else {
