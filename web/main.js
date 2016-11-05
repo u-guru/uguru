@@ -65,6 +65,14 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp', 'u
     url:'/ui',
     templateUrl: 'ui/templates/index.html'
   })
+  .state('root.ui-view', {
+    name: 'root.ui-view',
+    parent: 'root',
+    url:'/ui/:viewName',
+    templateProvider: function($stateParams) {
+      return '<div link-src-data="/ui/static/data/ui.json" link-data-name="ui"> <import url="ui.app.views.' + $stateParams.viewName + '"></import> </div>';
+    }
+  })
   .state('root.ui.scene', {
     name: 'root.ui',
     parent: 'root',

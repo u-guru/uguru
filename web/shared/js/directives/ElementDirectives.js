@@ -45,17 +45,30 @@ angular.module('uguru.shared.directives')
   return {
     restrict: 'E',
     replace:true,
-    scope: false,
+    scope: true,
     templateUrl: function(element, attr) {
 
       var urlSplit = attr.url.replace('ui.','').split('.');
       var ptr = $rootScope.ui.data;
+      var hasSkip = false;
       urlSplit.forEach(function(url_split, i) {
-         ptr = ptr[url_split]
-      })
-      console.log(ptr)
-      return  ptr
 
+         ptr = ptr[url_split]
+         if (typeof ptr === 'object' && 'skip' in ptr) {
+          hasSkip = true;
+         }
+      })
+      if (hasSkip) {
+        return 404
+      }
+      return  ptr
+    },
+    compile: function compile(element, attr) {
+      return {
+        pre: function preLink(scope, element, attr) {
+          // scope.
+        }
+      }
     }
   }
 }])

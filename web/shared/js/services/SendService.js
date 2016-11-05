@@ -404,7 +404,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
       if (options.stagger && options.stagger.delays.length) {
         stagger_delay = options.stagger.delays[i]
       }
-      console.log(state_ref.actions.send)
+
       state_ref.func(state_ref.actions, scope, total_delay + stagger_delay, final_depth);
     })
 

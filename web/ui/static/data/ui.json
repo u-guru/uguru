@@ -1,16 +1,16 @@
 {
     "app": {
-        "loader":
-            {
-                "url": "ui/templates/loader.html"
-            },
-
+        "loader": {
+            "url": "ui/templates/loader.html",
+            "skip": true
+        },
         "views": {
             "home": {
-                "url": "ui/templates/home.html"
+                "url": "ui/templates/home.html",
+                "skip":true
             },
-            "samir": {
-                "landing_url": "shared/templates/layouts/landing-sm.tpl"
+            "gallery": {
+                "url": "ui/templates/gallery.html"
             }
         }
     }
