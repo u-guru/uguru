@@ -1,8 +1,7 @@
 <div class="loader-portal-outer"
 	u on-init='s:[loader-init:public]'>
 	<div class="loader-portal states"
-		init-after="loader-init"
-		on-init="s:[portal-open:public]">
+		u when-loader-init="s:[portal-open:public]">
 		<!-- when-transition-start="p:[op:0]:delay-2000" -->
 		<div class="loader-portal-inside"
 			u init-with="p:[tr:scale(0), tro:50% 90%]"

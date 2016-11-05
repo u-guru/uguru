@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-   "app":{
-      "loader":{
-         "url":"ui/templates/loader.html"
-      },
-      "views":{
-         "home":{
-            "url":"ui/templates/home.html"
-         },
-         "samir":{
-            "landing_url":"shared/templates/layouts/landing-sm.tpl"
-         }
-      }
-   }
-=======
     "app": {
         "loader": {
             "url": "ui/templates/loader.html"
@@ -35,9 +20,6 @@
             },
             "samir": {
                 "landing_url": "shared/templates/layouts/landing-sm.tpl"
-            },
-			"gabrie": {
-                "landing_url": "shared/templates/layouts/landing-gw.tpl"
             }
         }
     },
@@ -47,5 +29,4 @@
             "fields": ["color", "width", "height"]
         }
     }
->>>>>>> 0507ac0ee5f8f3a81cfe8a02bec0c92fe895c674
 }
