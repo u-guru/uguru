@@ -26,7 +26,46 @@ angular.module('uguru.shared.directives.base.components')
     .directive('setTrueOnLoad', ['$compile',  function($compile) {
         return {
             restrict: 'A',
+        }
+    }])
+    .directive('custom', ['$compile', '$rootScope',  function($compile, $rootScope) {
+        return {
+            restrict: 'A',
+            replace:true,
+            terminal:true,
+            priority: 100000,
+            scope: {data: '=data'},
+            templateUrl: function(element, attr) {
+                // console.log()
+                var elemName = element[0].nodeName.toLowerCase();
+                // $rootScope.components[elemName]
+                return $rootScope.components[elemName]['template_url']
+            },
+            link: {
+                pre: function preLink(scope, p_elem, p_attr) {
 
+                    if (scope.data) {
+                        for (key in scope.data) {
+                            console.log('setting', key, scope.data[key])
+                            scope[key] = scope.data[key];
+                        }
+                    } else {
+                        for (attr in p_attr.$attr) {
+                            var camelAttrName = p_attr.$normalize(attr);
+                            if (p_attr[camelAttrName].length) {
+                                scope[camelAttrName] = p_attr[camelAttrName];
+                            }
+                        }
+                    }
+
+
+                    p_elem.removeAttr('custom')
+                    $compile(p_elem)(scope)
+
+                    },
+                post: angular.noop
+
+            }
         }
     }])
 
@@ -406,23 +445,7 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
-    .directive("data", ["$compile", 'XHRService', function($compile, XHRService) {
-        return {
-            restrict: 'A',
-            replace: true,
-            compile: function(lElem, lAttr) {
-                return {
-                    pre: function(scope, elem, attr) {
-                        var dataSets = ['api'];
-                        var callback = function(data) {scope.$parent[attr.data] = data; console.log(data); $compile(elem.contents())(scope)};
-                        XHRService.getJSONFile('get', 'admin/spec/' + attr.data + '.json', callback);
-
-                    },
-                    post: angular.noop
-                }
-            }
-        }
-    }])
+          n
     .directive("l", ["CompService", "$compile", function(CompService, $compile) {
         return {
             restrict: 'E',
@@ -655,6 +678,7 @@ angular.module('uguru.shared.directives.base.components')
             priority: 102,
             compile: function(element, attr, transclude) {
                 CompService.renderAllStyleAttributes(element, attr);
+
             }
         }
     }])

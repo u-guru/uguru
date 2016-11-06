@@ -9,7 +9,9 @@
 // - replace trigger scope.watch for 'on' states with a class that initiates the watcher (to prevent future watchers)
 
 
+// var customModule = angular.module('uguru.shared.directives.custom', [])
 angular.module('uguru.shared.directives')
+
 // todo now
 // - animName: in, out, set, before, after, send, setTemp
 // - anim
@@ -66,7 +68,9 @@ angular.module('uguru.shared.directives')
     compile: function compile(element, attr) {
       return {
         pre: function preLink(scope, element, attr) {
-          // scope.
+          if (attr.let) {
+            console.log(attr.let)
+          }
         }
       }
     }
@@ -106,6 +110,11 @@ angular.module('uguru.shared.directives')
                 ptr = ptr[var_name];
               })
               ptr.data = data;
+
+
+              $rootScope.components = data.components;
+              console.log($rootScope.components)
+
               // console.log(ptr.data)
               // varName = varName || 'app';
 
@@ -117,13 +126,54 @@ angular.module('uguru.shared.directives')
         return {pre:
           function preLink(scope, p_elem, attr) {
 
-            $rootScope.$watch(mainUrl + '.data', function(obj) {
+            var watcherFuncCancel = $rootScope.$watch(mainUrl + '.data', function(obj) {
+              var data = obj;
 
               scope[mainUrl] = obj;
+              if (!obj || !mainUrl) return
 
-              $timeout(function() {
-                scope.$apply();
-              })
+              if ('components' in scope[mainUrl] && scope[mainUrl].components)  {
+                var dataComponents = scope[mainUrl].components;
+                for (component in scope[mainUrl].components) {
+                    scope.root.customComponents.push({name: component, data: scope[mainUrl].components[component]});
+                }
+
+                for (component in dataComponents) {
+
+                  var template_url = dataComponents[component].template_url
+                  var fields = dataComponents[component].fields
+                  var comp_scope = {};
+                  if (fields && fields.length) {
+                    fields.forEach(function(field_name) {
+                      comp_scope[field_name] = '=' + field_name
+                    })
+                  }
+                  angular.module('uguru.shared.directives').directive(component, ['$compile', function($compile) {
+                    return {
+                      restrict: 'E',
+                      templateUrl: template_url,
+                      scope: {background: '=background'},
+                      replace: true,
+                      link: {
+                        pre: function preLink(_scope, _element, _attr) {
+                          console.log('it gets pre linked')
+                          for (attr_name in attr) {
+                            console.log(attr_name, attr)
+                            if (fields.indexOf(attr_name) > -1) {
+                              scope[attr_name] = attr[attr_name]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }])
+
+
+                }
+
+              }
+
+
 
 
 

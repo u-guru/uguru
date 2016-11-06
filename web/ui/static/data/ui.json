@@ -5,14 +5,7 @@
         },
         "views": {
             "home": {
-                "url": "ui/templates/home.html",
-                "data": {
-                    "courseCards": [
-                        {
-                            "color": ""
-                        }
-                    ]
-                }
+                "url": "ui/templates/home.html"
             },
             "gallery": {
                 "url": "ui/templates/gallery.html",
@@ -40,17 +33,21 @@
 						"onHover": "Item border and background turn dark + parallax hover",
 						"onClick": "Item moves to center top and box expands to cover screen"
 					}
-				}
-            },
-            "samir": {
-                "landing_url": "shared/templates/layouts/landing-sm.tpl"
+				},
+                "data": {
+                    "rectangles": [
+                        {"background": "cerise"},
+                        {"background": "transparent"}
+                    ]
+                }
             }
         }
     },
     "components": {
-        "course-card": {
-            "template_url": "shared/templates/components/demo/custom-course-card.tpl",
-            "fields": ["color", "width", "height"]
+        "rectangle": {
+            "template_url": "ui/templates/components/custom/rectangle.tpl",
+            "fields": ["background"]
+
         }
     }
 }

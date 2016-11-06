@@ -60,8 +60,9 @@
 		</nav>
 
 		<main class="p15-grid max-1030 flex-wrap">
-			<div class="width-50p">
-				<div class="border-2 radius-2 full-x" style="height:calc(300px - 7.5px); border-color:rgba(255,255,255,0.5)"></div>
+			<div class="width-50p" ng-if='ui.app.views.gallery.data.rectangles'>
+
+				<rectangle custom  data='ui.app.views.gallery.data.rectangles[0]'> </rectangle>
 				<div class="border-2 radius-2 full-x m15top" style="height:calc(200px - 7.5px); border-color:rgba(255,255,255,0.5)"></div>
 			</div>
 			<div class="flex-wrap width-50p">
@@ -76,8 +77,8 @@
 			</div>
 		</main>
 	</item>
-	<modal u fixed name='sidebar' m-width='80%' m-height='100%' right class='right-0 top-0 bg-smoke bg-charcoal-50p full-xy' bg='cerise-80p' init-with='p:[opacity:0]' when-sidebar-modal-requested='a:[slideInDown-subtle:1000:linear:0:1:f,z-index:10:100:50:linear:0:1:f]' when-sidebar-closed="a:[slideOutUp-subtle:1000:linear:0:1:f]">
-		<graphic u absolute  on-click='s:[modal-close:public]' class="flex-grow svg-stroke-10 top-0 right-0 stroke-white round" init-with='p:[transform:rotate(45deg)]' margin='2.5%' url="shared/templates/components/svg/main/plus.html"> </graphic>
+	<modal u fixed name='sidebar' m-width='80%' m-height='100%' right class='right-0 top-0 bg-smoke bg-charcoal-50p full-xy' bg='cerise-80p' init-with='p:[opacity:0]' when-sidebar-modal-requested='a:[slideInDown-subtle:1000:linear:0:1:f,z-index:10:100:50:linear:0:1:f]' when-sidebar-modal-closed="a:[slideOutUp-subtle:1000:linear:0:1:f]">
+		<graphic u absolute height='50px' width='50px'  on-click='s:[sidebar-modal-closed:public]' class="flex-grow svg-stroke-10 top-0 right-0 stroke-white round" init-with='p:[transform:rotate(45deg)]' margin='2.5%' url="shared/templates/components/svg/main/plus.html"> </graphic>
 		Modal
 	</modal>
 </view>
