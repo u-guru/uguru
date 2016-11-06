@@ -1,9 +1,8 @@
 <view layer="2" type='row' bg="#fadab0">
 	<item width="100" height="100" class="overflow-auto">
-		<nav class="flex-space-between p15-grid" u on-click='s:[sidebar-modal-requested:public]'>
+		<nav class="flex-space-between p15-grid">
 			<item>
-				<graphic  url='ui/templates/components/svg/nav-logo.html'> </graphic>
-
+				<graphic url='ui/templates/components/svg/nav-logo.html' u on-click='s:[sidebar-modal-requested:public]'></graphic>
 			</item>
 			<item>
 				<fieldset class="search-bar"
@@ -77,10 +76,8 @@
 			</div>
 		</main>
 	</item>
+
 	<modal u fixed name='sidebar' m-width='80%' m-height='100%' right class='right-0 top-0 bg-smoke bg-charcoal-50p full-xy' bg='cerise-80p' init-with='p:[opacity:0]' when-sidebar-modal-requested='a:[slideInDown-subtle:1000:linear:0:1:f,z-index:10:100:50:linear:0:1:f]' when-sidebar-modal-closed="a:[slideOutUp-subtle:1000:linear:0:1:f]">
 		<graphic u absolute height='50px' width='50px'  on-click='s:[sidebar-modal-closed:public]' class="flex-grow svg-stroke-10 top-0 right-0 stroke-white round" init-with='p:[transform:rotate(45deg)]' margin='2.5%' url="shared/templates/components/svg/main/plus.html"> </graphic>
-		Modal
 	</modal>
 </view>
-
-
