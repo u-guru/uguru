@@ -13,7 +13,6 @@
 					when-search-bar-clicked="a:[width:48px:500px:250:easeOutBack:0:1:f]"
 					on-click="s:[search-bar-clicked:depth(0), search-bar-icon:children:250]"
 					on-exit="a:[opacity:1:0:250:easeOutSine:0:1:f]">
-
 					<div>
 						<label for="search-bar">
 							<svg viewBox="0 0 100 100">
@@ -80,13 +79,13 @@
 			when-bot-left="a:[rotateX:0deg:10deg:100:easeOutSine:0:1:f, rotateY:0deg:-5deg:100:easeOutSine:0:1:f]"
 			when-bot-left-leave="a:[rotateX:10deg:0deg:100:easeInSine:0:1:f, rotateY:-5deg:0deg:100:easeInSine:0:1:f]">
 			<div class="width-50p">
-				<div class="border-2 radius-2 full-x" style="height:calc(300px - 7.5px); border-color:rgba(255,255,255,0.5);"
+				<div class="ui-gallery-item" style="height:calc(300px - 7.5px)"
 					u init-with="p:[op:0, tr:translateX(-50px)]"
 					when-gallery-enter="a:[opacity:0:1:500:linear:0:1:f, translateX:-50px:0px:300:easeOutExpo:500:1:f]:delay-250"
 					on-mouseenter="s:[top-left:public] | a:[border-color:rgba(255,255,255,0.5):rgba(255,255,255,1):100:linear:0:1:f]"
 					on-mouseleave="s:[top-left-leave:public]"
 					on-click='s:[popup-modal-requested:public]'></div>
-				<div class="border-2 radius-2 full-x m15top" style="height:calc(200px - 7.5px); border-color:rgba(255,255,255,0.5)"
+				<div class="ui-gallery-item m15top" style="height:calc(200px - 7.5px)"
 					u init-with="p:[transform-origin:left bottom, transform:translateX(-50px) scale(0)]"
 					when-gallery-enter="a:[translateX:-50px:0px:300:easeInExpo:0:1:f, scale:0:1:350:easeOutCubic:0:1:f]:delay-550"
 					on-mouseenter="s:[bot-left:public]"
@@ -94,15 +93,15 @@
 			</div>
 			<div class="flex-wrap width-50p">
 				<div class="width-60p p15right">
-					<div class="border-2 radius-2 full-x" style="height:calc(200px - 7.5px); border-color:rgba(255,255,255,0.5)"
+					<div class="ui-gallery-item" style="height:calc(200px - 7.5px)"
 						u init-with="p:[transform-origin:right top, transform:scale(0)]"
 						when-gallery-enter="a:[scale:0:1:550:easeOutCubic:0:1:f]:delay-450"></div>
-					<div class="border-2 radius-2 full-x m15top" style="height:calc(200px - 7.5px); border-color:rgba(255,255,255,0.5)"
+					<div class="ui-gallery-item m15top" style="height:calc(200px - 7.5px)"
 						u init-with="p:[op:0, tr:translateY(-50px) translateX(50px)]"
 						when-gallery-enter="a:[opacity:0:1:500:linear:0:1:f, translateY:-50px:0px:300:easeOutExpo:500:1:f, translateX:50px:0px:500:easeOutExpo:500:1:f]"></div>
 				</div>
 				<div class="width-40p">
-					<div class="border-2 radius-2 full-x" style="height:400px; border-color:rgba(255,255,255,0.5)"
+					<div class="ui-gallery-item" style="height:400px"
 						u init-with="p:[op:0, tro:left top, tr:rotate(-15deg)]"
 						when-gallery-enter="a:[opacity:0:1:500:linear:0:1:f, rotate:-15deg:0deg:300:easeInCirc:0:1:f]:delay-1050"
 						on-mouseenter="s:[top-right:public]"
@@ -110,7 +109,7 @@
 						<!-- on-mouseenter="s:[top-right:parent]" -->
 						</div>
 				</div>
-				<div class="border-2 radius-2 full-x m15top" style="height:calc(200px - 7.5px); border-color:rgba(255,255,255,0.5)"
+				<div class="ui-gallery-item m15top" style="height:calc(200px - 7.5px)"
 					u init-with="p:[op:0, tr:translateY(50px)]"
 					when-gallery-enter="a:[opacity:0:1:500:linear:0:1:f, translateY:50px:0px:300:easeOutExpo:500:1:f]:delay-550"
 					on-mouseenter="s:[bot-right:public]"
@@ -135,7 +134,6 @@
 					when-search-bar-clicked="a:[width:48px:500px:250:easeOutBack:0:1:f]"
 					on-click="s:[search-bar-clicked:depth(0), search-bar-icon:deoth(1):250]"
 					on-exit="p:[opacity:1:0:250:easeOutSine]">
-
 					<div>
 						<label for="search-bar">
 							<svg viewBox="0 0 100 100">
