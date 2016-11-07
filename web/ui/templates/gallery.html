@@ -207,16 +207,22 @@
 					u init-with="p:[transform-origin:left bottom, transform:translateX(-50px) scale(0)]"
 					when-gallery-enter="a:[translateX:-50px:0px:300:easeInExpo:0:1:f, scale:0:1:350:easeOutCubic:0:1:f]:delay-550"
 					on-mouseenter="s:[bot-left:public]"
-					on-mouseleave="s:[bot-left-leave:public]"></div>
+					on-mouseleave="s:[bot-left-leave:public]">
+					<div class="full-xy"></div>
+				</div>
 			</div>
 			<div class="flex-wrap width-50p">
 				<div class="width-60p p15right">
 					<div class="ui-gallery-item" style="height:calc(200px - 7.5px)"
 						u init-with="p:[transform-origin:right top, transform:scale(0)]"
-						when-gallery-enter="a:[scale:0:1:550:easeOutCubic:0:1:f]:delay-450"></div>
+						when-gallery-enter="a:[scale:0:1:550:easeOutCubic:0:1:f]:delay-450">
+						<div class="full-xy"></div>
+					</div>
 					<div class="ui-gallery-item m15top" style="height:calc(200px - 7.5px)"
 						u init-with="p:[op:0, tr:translateY(-50px) translateX(50px)]"
-						when-gallery-enter="a:[opacity:0:1:500:linear:0:1:f, translateY:-50px:0px:300:easeOutExpo:500:1:f, translateX:50px:0px:500:easeOutExpo:500:1:f]"></div>
+						when-gallery-enter="a:[opacity:0:1:500:linear:0:1:f, translateY:-50px:0px:300:easeOutExpo:500:1:f, translateX:50px:0px:500:easeOutExpo:500:1:f]">
+						<div class="full-xy"></div>
+					</div>
 				</div>
 				<div class="width-40p">
 					<div class="ui-gallery-item" style="height:400px"
@@ -225,13 +231,16 @@
 						on-mouseenter="s:[top-right:public]"
 						on-mouseleave="s:[top-right-leave:public]">
 						<!-- on-mouseenter="s:[top-right:parent]" -->
+						<div class="full-xy"></div>
 						</div>
 				</div>
 				<div class="ui-gallery-item m15top" style="height:calc(200px - 7.5px)"
 					u init-with="p:[op:0, tr:translateY(50px)]"
 					when-gallery-enter="a:[opacity:0:1:500:linear:0:1:f, translateY:50px:0px:300:easeOutExpo:500:1:f]:delay-550"
 					on-mouseenter="s:[bot-right:public]"
-					on-mouseleave="s:[bot-right-leave:public]"></div>
+					on-mouseleave="s:[bot-right-leave:public]">
+					<div class="full-xy"></div>
+				</div>
 			</div>
 		</main>
 	</item>
