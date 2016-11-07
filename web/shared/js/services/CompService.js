@@ -10,6 +10,7 @@ function CompService($timeout, $compile) {
   var genOptionSpec = ['type', 'when-*', 'as*', '']
   var flexAlignMapping = {'bottom': 'flex-end', 'left': 'flex-start', 'right': 'flex-end', 'top': 'flex-start'}
   var itemSpec = [];
+  var globals= {attr: {}, attrWithValue:{}, _class:{}}
   return {
     getBaseSpec: getBaseSpec,
     getOptions: getOptions,
@@ -20,7 +21,8 @@ function CompService($timeout, $compile) {
     getMediaElemOfType: getMediaElemOfType,
     renderAlign: renderAlign,
     renderAllStyleAttributes: renderAllStyleAttributes,
-    initializeModalAttr: initializeModalAttr
+    initializeModalAttr: initializeModalAttr,
+    globals: globals
   }
 
   function initializeModalAttr(p_elem, attr, _window) {

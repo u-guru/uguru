@@ -26,7 +26,73 @@ angular.module('uguru.shared.directives.base.components')
     .directive('setTrueOnLoad', ['$compile',  function($compile) {
         return {
             restrict: 'A',
+        }
+    }])
+    .directive('custom', ['$compile', '$rootScope', '$parse',  function($compile, $rootScope, $parse) {
+        return {
+            restrict: 'A',
+            replace:true,
+            transclude: true,
+            priority: 100000,
+            terminal: true,
+            scope: {data:'='},
+            templateUrl: function(element, attr) {
 
+                var elemName = element[0].nodeName.toLowerCase();
+
+                // $rootScope.components[elemName]
+                return $rootScope.components[elemName]['template_url']
+            },
+
+            compile:function(element, attr, transclude) {
+                return {
+
+                pre: function preLink(scope, p_elem, p_attr) {
+
+                    scope.public = scope.$parent.public
+                    scope.root = scope.$parent.root
+                    // scope.data = $parse(p_attr.data)(scope);
+                    console.log(scope.data)
+
+                    if (scope.data) {
+                        for (key in scope.data) {
+                            console.log('setting', key, scope.data[key])
+                            scope[key] = scope.data[key];
+                        }
+                    } else {
+                        for (attr in p_attr.$attr) {
+                            var camelAttrName = p_attr.$normalize(attr);
+
+                            if (p_attr[camelAttrName].length) {
+                                scope[camelAttrName] = p_attr[camelAttrName];
+                            }
+                        }
+                    }
+
+
+
+                    p_elem.removeAttr('custom');
+                    $compile(p_elem)(scope)
+
+                    transclude(scope, function(clone, innerScope) {
+                        console.log(clone)
+
+                        $compile(clone)(innerScope);
+
+                        // p_elem.contents(clone)
+
+                        // $compile(p_elem)(scope.$parent)
+                        // p_elem.removeAttr('custom')
+                        // p_elem.contents(clone)
+
+                    })
+
+
+                    },
+                post: angular.noop
+
+            }
+        }
         }
     }])
 
@@ -167,30 +233,6 @@ angular.module('uguru.shared.directives.base.components')
             replace:true
         }
     }])
-    // .directive('ignore', ['$compile', function($compile) {
-    //     return {
-    //         restrict: 'A',
-    //         replace:true,
-    //         priority:10000,
-    //         compile: function compile(element, attr)  {
-    //             var elem = element.clone(true);
-    //             elem.attr('ng-if', false);
-
-    //             // console.log()
-    //             // element[0].setAttribute('ng-if', "false");
-    //             console.log()
-
-    //             // element.attr('ng-if', false);
-    //         },
-    //         link: {pre: function(scope, _element, attr) {
-    //             element.parent().contents(elem)
-    //             // element.replaceWith(elem)
-    //             $compile(elem)(scope)
-    //             }
-
-    //         }
-    //     }
-    // }])
     .directive('graphic', ['$compile', 'CompService', function($compile, CompService) {
         return {
             restrict: 'E',
@@ -246,8 +288,6 @@ angular.module('uguru.shared.directives.base.components')
                             // scope.chart.elem = document.querySelector('#chart-elem');
                             // console.log(scope.chart.elem)
                         })
-
-
                     }
                 };
              }
@@ -406,23 +446,7 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
-    .directive("data", ["$compile", 'XHRService', function($compile, XHRService) {
-        return {
-            restrict: 'A',
-            replace: true,
-            compile: function(lElem, lAttr) {
-                return {
-                    pre: function(scope, elem, attr) {
-                        var dataSets = ['api'];
-                        var callback = function(data) {scope.$parent[attr.data] = data; console.log(data); $compile(elem.contents())(scope)};
-                        XHRService.getJSONFile('get', 'admin/spec/' + attr.data + '.json', callback);
 
-                    },
-                    post: angular.noop
-                }
-            }
-        }
-    }])
     .directive("l", ["CompService", "$compile", function(CompService, $compile) {
         return {
             restrict: 'E',
@@ -655,6 +679,7 @@ angular.module('uguru.shared.directives.base.components')
             priority: 102,
             compile: function(element, attr, transclude) {
                 CompService.renderAllStyleAttributes(element, attr);
+
             }
         }
     }])

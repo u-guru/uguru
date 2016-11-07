@@ -1,4 +1,5 @@
 {
+    "version": 0.1,
     "elements": {
         "modal": {
             "attr": {
@@ -7,5 +8,42 @@
                 "when-name-modal-closed": "closes the name of the modal"
             }
         }
+    },
+    "attr":{
+        "set": {
+            "_about": "a way to shorten nested data paths and re-name more relevant to local elements",
+            "tags": ["data-related"],
+            "examples": [{"syntax": "<view name='' set='gallery' = 'ui.app.views.gallery'"}
+            ]
+        },
+        "x": {
+            "_about": "horizontal flex indicator",
+            "_mapping": "display:flex;[..other flex properties specified by value]",
+            "values": ["start", "center", "end", "space-between", "space-around"],
+            "shortcuts": {
+                "attr-only": {
+                    "x-start": "start",
+                    "x-center": "center"
+                }
+            }
+        },
+        "y": {
+            "_about": "vertical flex indicator",
+            "_mapping": "display: flex;[...other flex properties specified by value",
+            "values": ["start", "center", "end", "space-between", "space-around"],
+            "shortcuts": {
+                "attr-only": {
+                    "y-start": "display:flex; justify-content: flex-start"
+                }
+            }
+        },
+        "start": {
+            "_about": "align myself"
+        }
+    },
+    "classes": {},
+    "style": {
+        "_about": "in regards to the appearance/layout of all elements",
+        "attr  ": ""
     }
 }

@@ -5,52 +5,61 @@
         },
         "views": {
             "home": {
-                "url": "ui/templates/home.html",
-                "data": {
-                    "courseCards": [
-                        {
-                            "color": ""
-                        }
-                    ]
-                }
+                "url": "ui/templates/home.html"
             },
             "gallery": {
                 "url": "ui/templates/gallery.html",
-				"spec": {
-					"visual": {
-						"depth 1": [
-							"Vertical grid that behaves like http://isotope.metafizzy.co/",
-							"Three to four different sizes for items i.e. small, medium, large",
-							"Parallax hover similar to http://www.adultswim.com/music/singles-2016/"
-						],
-						"depth 2": [
-							"Component is centered on the top",
-							"Details including tags and related items go underneath",
-							"Bottom left corner has navigation details like https://www.etq-amsterdam.com/shop/derby-alloy/",
-							"Bottom right corner has a menu (dropdown or bar) with the different versions of each component"
-						]
-					},
-					"onEnter": [
-						"Gallery items come in similar to http://codepen.io/teamuguru/pen/58460c8c0fe2c6d785741a3ce224eda6",
-						"Items enter in order of size",
-						"First row comes in from the top, second from the sides, everything else comes in from the bottom"
-					],
-					"Other": {
-						"onScroll": "Item enter direction alternates between sides and bottom",
-						"onHover": "Item border and background turn dark + parallax hover",
-						"onClick": "Item moves to center top and box expands to cover screen"
-					}
-				}
-            },
-            "samir": {
-                "landing_url": "shared/templates/layouts/landing-sm.tpl"
+                "data": {
+                    "rectangles": [
+                        {"background": "cerise"},
+                        {"background": "transparent"}
+                    ],
+                    "filterTags": [
+                        {"name":"base", "background": "bg-shamrock-80p"},
+                        {"name": "cards", "background": "bg-shamrock-80p"},
+                        {"name": "icons", "background": "bg-cerise-80p"},
+                        {"name": "graphics", "background": "bg-moxie-80p"},
+                        {"name": "animation",  "background": "bg-azure-80p"},
+                        {"name": "interactive"}
+                    ]
+                }
             }
         }
     },
     "components": {
-        "course-card": {
-            "template_url": "shared/templates/components/demo/custom-course-card.tpl",
-            "fields": ["color", "width", "height"]
+        "rectangle": {
+            "template_url": "ui/templates/components/custom/rectangle.tpl",
+            "fields": ["background"],
+            "size": "[opacity:0]"
+        },
+        "filter-tag": {
+            "template_url":"ui/templates/components/custom/filter-tag.tpl",
+            "fields": ["name", "background"]
+        }
+    },
+    "spec": {
+        "visual": {
+            "depth 1": [
+                "Vertical grid that behaves like http://isotope.metafizzy.co/",
+                "Three to four different sizes for items i.e. small, medium, large",
+                "Parallax hover similar to http://www.adultswim.com/music/singles-2016/"
+            ],
+            "depth 2": [
+                "Component is centered on the top",
+                "Details including tags and related items go underneath",
+                "Bottom left corner has navigation details like https://www.etq-amsterdam.com/shop/derby-alloy/",
+                "Bottom right corner has a menu (dropdown or bar) with the different versions of each component"
+            ]
+        },
+        "onEnter": [
+            "Gallery items come in similar to http://codepen.io/teamuguru/pen/58460c8c0fe2c6d785741a3ce224eda6",
+            "Items enter in order of size",
+            "First row comes in from the top, second from the sides, everything else comes in from the bottom"
+        ],
+        "Other": {
+            "onScroll": "Item enter direction alternates between sides and bottom",
+            "onHover": "Item border and background turn dark + parallax hover",
+            "onClick": "Item moves to center top and box expands to cover screen"
         }
     }
 }
