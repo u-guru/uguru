@@ -262,7 +262,7 @@
 		</nav>
 	</modal>
 
-	<modal fixed name='popup' class='ui-gallery-item top-0 left-0 full-xy perspective-container' bg='#C6DDD6'
+	<modal fixed name='popup' class='ui-gallery-single top-0 left-0 full-xy perspective-container' bg='#C6DDD6'
 		u init-with='p:[opacity:0]'
 		when-popup-modal-requested='a:[scaleIn-subtle:1000:linear:0:1:f, z-index:-1:100:50:linear:0:1:f] | s:[popup-enter:public:1000]'
 		when-popup-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:100:-1:50:linear:0:1:f]">
@@ -297,7 +297,7 @@
 				</fieldset>
 
 				<a class="ui-gallery-menu-icon"
-					u on-click='s:[sidebar-modal-requested:public]'>
+					u on-click='s:[sidebar-modal-requested:public, popup-closed:public]'>
 					<graphic url="shared/templates/components/svg/main/menu.html"> </graphic>
 				</a>
 			</item>
