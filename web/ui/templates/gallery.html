@@ -158,7 +158,7 @@
 		</nav>
 
 		<div class="full-xy max-830">
-			<div class="full-x p15xy bg-white-25p radius-2">
+			<div class="full-x p15xy border-2 border-white bg-charcoal-25p">
 				<div class="pf-tile-container margin-auto"
 					u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 					on-init="s:[academic-tile-init:public, aca-border:children:500, aca-top:children:500]"
@@ -254,8 +254,8 @@
 				</div>
 			</div>
 			<div class="flex full-x bg-white-80p"
-				u init-with="p:[tro:top center, tr:rotateX(90deg)]"
-				when-popup-enter="a:[rotateX:-90deg:0deg:1000:easeOutExpo:0:1:f]">
+				u init-with="p:[tro:top center, transform:rotateX(90deg), op:0]"
+				when-popup-enter="a:[rotateX:90deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:100:linear:0:1:f]">
 				<header class="width-40p">
 					<h1 class="p15top-p15x txt-36 black txt-slate"
 						u init-with="p:[op:0]"
