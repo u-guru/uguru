@@ -1,5 +1,287 @@
 @import '../../../shared/css/scss/partials/mixin';
 
+.txt-aero {
+	color: $aero!important;
+}
+.txt-copper {
+	color: $copper!important;
+}
+.txt-sienna {
+	color: $sienna!important;
+}
+.txt-cream {
+	color: $cream!important;
+}
+.txt-olive {
+	color: $olive!important;
+}
+.txt-neptune {
+	color: $neptune!important;
+}
+.txt-stone {
+	color: $stone!important;
+}
+.txt-cosmic {
+	color: $cosmic!important;
+}
+.txt-rose {
+	color: $rose!important;
+}
+
+[class*="bg-aero"] {
+	background: $aero;
+	color: white;
+	&[class*="-05p"] {
+		background: rgba($aero, .05);
+	}
+	&[class*="-10p"] {
+		background: rgba($aero, .1);
+	}
+	&[class*="-20p"] {
+		background: rgba($aero, .2);
+	}
+	&[class*="-25p"] {
+		background: rgba($aero, .25);
+	}
+	&[class*="-50p"] {
+		background: rgba($aero, .5);
+	}
+	&[class*="-75p"] {
+		background: rgba($aero, .75);
+	}
+	&[class*="-80p"] {
+		background: rgba($aero, .8);
+	}
+	&[class*="-90p"] {
+		background: rgba($aero, .9);
+	}
+}
+
+[class*="bg-copper"] {
+	background: $copper;
+	color: white;
+	&[class*="-05p"] {
+		background: rgba($copper, .05);
+	}
+	&[class*="-10p"] {
+		background: rgba($copper, .1);
+	}
+	&[class*="-20p"] {
+		background: rgba($copper, .2);
+	}
+	&[class*="-25p"] {
+		background: rgba($copper, .25);
+	}
+	&[class*="-50p"] {
+		background: rgba($copper, .5);
+	}
+	&[class*="-75p"] {
+		background: rgba($copper, .75);
+	}
+	&[class*="-80p"] {
+		background: rgba($copper, .8);
+	}
+	&[class*="-90p"] {
+		background: rgba($copper, .9);
+	}
+}
+[class*="bg-sienna"] {
+	background: $sienna;
+	color: white;
+	&[class*="-05p"] {
+		background: rgba($sienna, .05);
+	}
+	&[class*="-10p"] {
+		background: rgba($sienna, .1);
+	}
+	&[class*="-20p"] {
+		background: rgba($sienna, .2);
+	}
+	&[class*="-25p"] {
+		background: rgba($sienna, .25);
+	}
+	&[class*="-50p"] {
+		background: rgba($sienna, .5);
+	}
+	&[class*="-75p"] {
+		background: rgba($sienna, .75);
+	}
+	&[class*="-80p"] {
+		background: rgba($sienna, .8);
+	}
+	&[class*="-90p"] {
+		background: rgba($sienna, .9);
+	}
+}
+[class*="bg-cream"] {
+	background: $cream;
+	color: white;
+	&[class*="-05p"] {
+		background: rgba($cream, .05);
+	}
+	&[class*="-10p"] {
+		background: rgba($cream, .1);
+	}
+	&[class*="-20p"] {
+		background: rgba($cream, .2);
+	}
+	&[class*="-25p"] {
+		background: rgba($cream, .25);
+	}
+	&[class*="-50p"] {
+		background: rgba($cream, .5);
+	}
+	&[class*="-75p"] {
+		background: rgba($cream, .75);
+	}
+	&[class*="-80p"] {
+		background: rgba($cream, .8);
+	}
+	&[class*="-90p"] {
+		background: rgba($cream, .9);
+	}
+}
+[class*="bg-olive"] {
+	background: $olive;
+	color: white;
+	&[class*="-05p"] {
+		background: rgba($olive, .05);
+	}
+	&[class*="-10p"] {
+		background: rgba($olive, .1);
+	}
+	&[class*="-20p"] {
+		background: rgba($olive, .2);
+	}
+	&[class*="-25p"] {
+		background: rgba($olive, .25);
+	}
+	&[class*="-50p"] {
+		background: rgba($olive, .5);
+	}
+	&[class*="-75p"] {
+		background: rgba($olive, .75);
+	}
+	&[class*="-80p"] {
+		background: rgba($olive, .8);
+	}
+	&[class*="-90p"] {
+		background: rgba($olive, .9);
+	}
+}
+[class*="bg-neptune"] {
+	background: $neptune;
+	color: white;
+	&[class*="-05p"] {
+		background: rgba($neptune, .05);
+	}
+	&[class*="-10p"] {
+		background: rgba($neptune, .1);
+	}
+	&[class*="-20p"] {
+		background: rgba($neptune, .2);
+	}
+	&[class*="-25p"] {
+		background: rgba($neptune, .25);
+	}
+	&[class*="-50p"] {
+		background: rgba($neptune, .5);
+	}
+	&[class*="-75p"] {
+		background: rgba($neptune, .75);
+	}
+	&[class*="-80p"] {
+		background: rgba($neptune, .8);
+	}
+	&[class*="-90p"] {
+		background: rgba($neptune, .9);
+	}
+}
+[class*="bg-stone"] {
+	background: $stone;
+	color: white;
+	&[class*="-05p"] {
+		background: rgba($stone, .05);
+	}
+	&[class*="-10p"] {
+		background: rgba($stone, .1);
+	}
+	&[class*="-20p"] {
+		background: rgba($stone, .2);
+	}
+	&[class*="-25p"] {
+		background: rgba($stone, .25);
+	}
+	&[class*="-50p"] {
+		background: rgba($stone, .5);
+	}
+	&[class*="-75p"] {
+		background: rgba($stone, .75);
+	}
+	&[class*="-80p"] {
+		background: rgba($stone, .8);
+	}
+	&[class*="-90p"] {
+		background: rgba($stone, .9);
+	}
+}
+[class*="bg-cosmic"] {
+	background: $cosmic;
+	color: white;
+	&[class*="-05p"] {
+		background: rgba($cosmic, .05);
+	}
+	&[class*="-10p"] {
+		background: rgba($cosmic, .1);
+	}
+	&[class*="-20p"] {
+		background: rgba($cosmic, .2);
+	}
+	&[class*="-25p"] {
+		background: rgba($cosmic, .25);
+	}
+	&[class*="-50p"] {
+		background: rgba($cosmic, .5);
+	}
+	&[class*="-75p"] {
+		background: rgba($cosmic, .75);
+	}
+	&[class*="-80p"] {
+		background: rgba($cosmic, .8);
+	}
+	&[class*="-90p"] {
+		background: rgba($cosmic, .9);
+	}
+}
+[class*="bg-rose"] {
+	background: $rose;
+	color: white;
+	&[class*="-05p"] {
+		background: rgba($rose, .05);
+	}
+	&[class*="-10p"] {
+		background: rgba($rose, .1);
+	}
+	&[class*="-20p"] {
+		background: rgba($rose, .2);
+	}
+	&[class*="-25p"] {
+		background: rgba($rose, .25);
+	}
+	&[class*="-50p"] {
+		background: rgba($rose, .5);
+	}
+	&[class*="-75p"] {
+		background: rgba($rose, .75);
+	}
+	&[class*="-80p"] {
+		background: rgba($rose, .8);
+	}
+	&[class*="-90p"] {
+		background: rgba($rose, .9);
+	}
+}
+
 .bg, button {
 	&.bg-aero {
 		background: $aero;
@@ -151,4 +433,32 @@
 			color: white;
 		}
 	}
+}
+
+.stroke-aero * {
+	stroke: $aero!important;
+}
+.stroke-copper * {
+	stroke: $copper!important;
+}
+.stroke-sienna * {
+	stroke: $sienna!important;
+}
+.stroke-cream * {
+	stroke: $cream!important;
+}
+.stroke-olive * {
+	stroke: $olive!important;
+}
+.stroke-neptune * {
+	stroke: $neptune!important;
+}
+.stroke-stone * {
+	stroke: $stone!important;
+}
+.stroke-cosmic * {
+	stroke: $cosmic!important;
+}
+.stroke-rose * {
+	stroke: $rose!important;
 }
