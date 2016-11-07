@@ -6,8 +6,8 @@
 	border: 2px solid rgba(white, .5);
 	transition: border 300ms ease-in-out, background 300ms ease-in-out;
 	&:hover, &:focus {
-		border: 2px solid rgba($slate, .5);
-		background: rgba($slate, .5);
+		border: 2px solid rgba($charcoal, .25);
+		background: rgba($charcoal, .25);
 	}
 }
 
