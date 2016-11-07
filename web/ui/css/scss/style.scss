@@ -1,5 +1,66 @@
 @import '../../../shared/css/scss/partials/mixin';
 
+.ui-gallery-item-footer {
+	@include flex;
+	justify-content: space-between;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+.ui-gallery-nav {
+	@include flex;
+	@include flex-center-vertical;
+	justify-content: space-between;
+	padding: 7.5px;
+	> * {
+		padding: 7.5px;
+	}
+}
+
+.ui-gallery-menu-icon {
+	@include flex;
+	@include flex-center;
+	width: 48px;
+	height: 48px;
+	background: white;
+	border-radius: 1000px;
+	margin-left: 15px;
+	border: 2px solid transparent;
+	transition: border 300ms ease-in-out, background 300ms ease-in-out;
+	svg {
+		width: 24px;
+		height: 24px;
+		* {
+			fill: none;
+			stroke: rgba($slate, .5);
+			stroke-width: 6px;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+			transition: stroke 300ms ease-in-out;
+		}
+	}
+	&:hover, &:focus {
+		background: rgba($slate, .5);
+		border-color: rgba($slate, .5);
+		svg {
+			* {
+				stroke: white;
+			}
+		}
+	}
+	&:active {
+		background: $aero;
+		border-color: $neptune;
+		svg {
+			* {
+				stroke: white;
+			}
+		}
+	}
+}
+
 .ui-gallery-filter-bar {
 	max-width: 1030px;
 	margin-left: auto;
