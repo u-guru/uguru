@@ -28,21 +28,31 @@ angular.module('uguru.shared.directives.base.components')
             restrict: 'A',
         }
     }])
-    .directive('custom', ['$compile', '$rootScope',  function($compile, $rootScope) {
+    .directive('custom', ['$compile', '$rootScope', '$parse',  function($compile, $rootScope, $parse) {
         return {
             restrict: 'A',
             replace:true,
-            terminal:true,
+            transclude: true,
             priority: 100000,
-            scope: {data: '=data'},
+            terminal: true,
+            scope: {data:'='},
             templateUrl: function(element, attr) {
-                // console.log()
+
                 var elemName = element[0].nodeName.toLowerCase();
+
                 // $rootScope.components[elemName]
                 return $rootScope.components[elemName]['template_url']
             },
-            link: {
+
+            compile:function(element, attr, transclude) {
+                return {
+
                 pre: function preLink(scope, p_elem, p_attr) {
+
+                    scope.public = scope.$parent.public
+                    scope.root = scope.$parent.root
+                    // scope.data = $parse(p_attr.data)(scope);
+                    console.log(scope.data)
 
                     if (scope.data) {
                         for (key in scope.data) {
@@ -52,6 +62,7 @@ angular.module('uguru.shared.directives.base.components')
                     } else {
                         for (attr in p_attr.$attr) {
                             var camelAttrName = p_attr.$normalize(attr);
+
                             if (p_attr[camelAttrName].length) {
                                 scope[camelAttrName] = p_attr[camelAttrName];
                             }
@@ -59,13 +70,29 @@ angular.module('uguru.shared.directives.base.components')
                     }
 
 
-                    p_elem.removeAttr('custom')
+
+                    p_elem.removeAttr('custom');
                     $compile(p_elem)(scope)
+
+                    transclude(scope, function(clone, innerScope) {
+                        console.log(clone)
+
+                        $compile(clone)(innerScope);
+
+                        // p_elem.contents(clone)
+
+                        // $compile(p_elem)(scope.$parent)
+                        // p_elem.removeAttr('custom')
+                        // p_elem.contents(clone)
+
+                    })
+
 
                     },
                 post: angular.noop
 
             }
+        }
         }
     }])
 
@@ -261,8 +288,6 @@ angular.module('uguru.shared.directives.base.components')
                             // scope.chart.elem = document.querySelector('#chart-elem');
                             // console.log(scope.chart.elem)
                         })
-
-
                     }
                 };
              }

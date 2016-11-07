@@ -1,5 +1,6 @@
-<view layer="2" type='row' bg="#fadab0">
+<view layer="2" type='row' bg="#fadab0" set="gallery = ui.app.views.gallery.data">
 	<item width="100" height="100" class="overflow-auto">
+		{{gallery}}
 		<nav class="flex-space-between p15-grid">
 			<item u init-with="p:[transform:translateY(-500px)]"
 				on-init="a:[translateY:-500px:0px:500:easeInOutElastic:0:1:f]:delay-8500">
@@ -13,7 +14,7 @@
 					when-search-bar-clicked="a:[width:48px:500px:250:easeOutBack:0:1:f]"
 					on-click="s:[search-bar-clicked:self, search-bar-icon:children:250]"
 					on-exit="a:[opacity:1:0:250:easeOutSine:0:1:f]">
-
+					jn76c
 					<div>
 						<label for="search-bar">
 							<svg viewBox="0 0 100 100">
@@ -36,11 +37,9 @@
 		</nav>
 		<nav style="margin-top:-15px;">
 			<ul class="flex-center-wrap p15-grid"
-				u on-init="s:[filter-enter:children:easeInCirc-1250]:+10000">
-				<li u on-init="p:[op:0, tro:center center]"
-					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
-					<button class="normal height-36 txt-18 radius-2 bg-aero">Filter</button>
-				</li>
+				u on-init="s:[filter-enter:children:easeInCirc-1250]:+1000">
+				<filter-tag custom data='gallery.filterTags[0]'></filter-tag>
+
 				<li u on-init="p:[op:0, tro:center center]"
 					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 					<button class="normal height-36 txt-18 radius-2 bg-aero">Filter</button>

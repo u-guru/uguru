@@ -43,6 +43,32 @@ angular.module('uguru.shared.directives')
      };
 
 })
+.directive('start', ['CompService', function(CompService) {
+  return {
+    restrict: 'A',
+    compile: function(element, attr) {
+      element.css('justify-content', 'flex-start');
+    }
+  }
+}])
+.directive('center', [function() {
+  return {
+    restrict: 'A',
+    compile: function(element, attr) {
+      element.css('justify-content', 'center');
+    }
+  }
+}])
+.directive('end', [function() {
+  return {
+    restrict: 'A',
+    compile: function(element, attr) {
+      element.css('justify-content', 'center');
+    }
+  }
+}])
+
+
 .directive('import', ['$parse', '$compile', '$timeout', '$rootScope', function($parse, $compile, $timeout, $rootScope) {
   return {
     restrict: 'E',
@@ -111,9 +137,8 @@ angular.module('uguru.shared.directives')
               })
               ptr.data = data;
 
-
               $rootScope.components = data.components;
-              console.log($rootScope.components)
+              console.log('registering', data.components)
 
               // console.log(ptr.data)
               // varName = varName || 'app';
@@ -198,6 +223,26 @@ angular.module('uguru.shared.directives')
         }
         url && url.length && XHRService.getJSONFile('GET', url, function(data) {$rootScope.app = data; console.log($rootScope.app)}, {});
       }
+  }
+}])
+.directive('set', ['$parse', function($parse) {
+  return {
+    restrict: 'A',
+    replace:true,
+    scope: true,
+    link: function preLink(scope, element, attr) {
+
+      if (attr.set && attr.set.length) {
+
+        var setVars = attr.set.split('=');
+
+        if (setVars.length > 1 && setVars[0].length > 1) {
+          // console.log(setVars[0].trim(),
+          scope[setVars[0].trim()] = $parse(setVars[1].trim())(scope)
+        }
+      }
+    }
+
   }
 }])
 .directive('syncWith', ['UtilitiesService', '$timeout', function(UtilitiesService, $timeout) {
