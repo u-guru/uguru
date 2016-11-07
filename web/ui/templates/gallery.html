@@ -8,7 +8,7 @@
 			<item>
 				<fieldset class="search-bar"
 					u init-with="p:[tr:translateX(500px), width:48px]"
-					on-init="s:[search-bar-init:children, search-bar-enter:depth(0)]:delay-10000"
+					on-init="s:[search-bar-init:children, search-bar-enter:depth(0):1000]:delay-10000"
 					when-search-bar-enter="a:[translateX:500px:0px:250:easeInOutElastic:0:1:f]"
 					when-search-bar-clicked="a:[width:48px:500px:250:easeOutBack:0:1:f]"
 					on-click="s:[search-bar-clicked:depth(0), search-bar-icon:children:250]"
@@ -20,7 +20,7 @@
 									u init-with="p:[sda:32.06, sdo:32.06]"
 									when-search-bar-init="a:[stroke-dashoffset:32.06:0:200:easeOutSine:750:1:f]"></path>
 								<circle cx="42.5" cy="42.5" r="28.5"
-									u on-init="s:[init-with:self:700]"
+									u on-init="s:[init-with:depth(0):700]"
 									init-with="p:[sda:179.07, sdo:179.07]"
 									when-search-bar-init="a:[stroke-dashoffset:179.07:0:200:easeOutSine:0:1:f]:delay-500"></circle>
 							</svg>
@@ -79,10 +79,10 @@
 			when-bot-left="a:[rotateX:0deg:10deg:100:easeOutSine:0:1:f, rotateY:0deg:-5deg:100:easeOutSine:0:1:f]"
 			when-bot-left-leave="a:[rotateX:10deg:0deg:100:easeInSine:0:1:f, rotateY:-5deg:0deg:100:easeInSine:0:1:f]">
 			<div class="width-50p">
-				<div class="border-2 radius-2 full-x" style="height:calc(300px - 7.5px); border-color:rgba(255,255,255,0.5)"
+				<div class="border-2 radius-2 full-x" style="height:calc(300px - 7.5px); border-color:rgba(255,255,255,0.5);"
 					u init-with="p:[op:0, tr:translateX(-50px)]"
 					when-gallery-enter="a:[opacity:0:1:500:linear:0:1:f, translateX:-50px:0px:300:easeOutExpo:500:1:f]:delay-250"
-					on-mouseenter="s:[top-left:public]"
+					on-mouseenter="s:[top-left:public] | a:[border-color:rgba(255,255,255,0.5):rgba(255,255,255,1):100:linear:0:1:f]"
 					on-mouseleave="s:[top-left-leave:public]"
 					on-click='s:[popup-modal-requested:public]'></div>
 				<div class="border-2 radius-2 full-x m15top" style="height:calc(200px - 7.5px); border-color:rgba(255,255,255,0.5)"
@@ -132,7 +132,7 @@
 					u init-with="p:[op:1, width:48px]"
 					on-init="s:[search-bar-init:children] | a:[opacity:0:1:1500:easeOutQuint:0:1:f, translateX:500px:0px:250:easeInOutElastic:0:1:f]"
 					when-search-bar-clicked="a:[width:48px:500px:250:easeOutBack:0:1:f]"
-					on-click="s:[search-bar-clicked:depth(0), search-bar-icon:children:250]"
+					on-click="s:[search-bar-clicked:depth(0), search-bar-icon:deoth(1):250]"
 					on-exit="p:[opacity:1:0:250:easeOutSine]">
 					<div>
 						<label for="search-bar">
