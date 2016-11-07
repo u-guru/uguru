@@ -1,12 +1,59 @@
 @import '../../../shared/css/scss/partials/mixin';
 
+.ui-gallery-filter-bar {
+	max-width: 1030px;
+	margin-left: auto;
+	margin-right: auto;
+	ul {
+		@include flex;
+		@include flex-wrap;
+		padding: 7.5px;
+		li {
+			padding: 7.5px;
+			// button {
+			// 	 class="normal height-36 txt-18 radius-2 bg-aero"
+			// }
+		}
+	}
+}
+
+.ui-gallery-filter-header {
+	@include flex;
+	@include flex-center-vertical;
+	height: 36px;
+	font-size: 24px;
+	font-weight: 600;
+}
+
+.ui-gallery-filter-btn {
+	display: block;
+	width: auto;
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 36px;
+	font-size: 18px;
+	border: 2px solid white;
+	border-radius: 2px;
+	background: $cream;
+	transition: all 300ms ease-in-out;
+	&:hover, &:focus {
+		border-color: rgba($charcoal, .25);
+		background: rgba($charcoal, .25);
+		color: white;
+	}
+	&.selected, &:active {
+		background: $aero;
+		border-color: $neptune;
+	}
+}
+
 .ui-gallery-item {
 	width: 100%;
 	border-radius: 2px;
 	border: 2px solid rgba(white, .5);
 	transition: border 300ms ease-in-out, background 300ms ease-in-out;
 	&:hover, &:focus {
-		border: 2px solid rgba($charcoal, .25);
+		border-color: rgba($charcoal, .25);
 		background: rgba($charcoal, .25);
 	}
 }

@@ -33,36 +33,39 @@
 				</fieldset>
 			</item>
 		</nav>
-		<nav style="margin-top:-15px;">
-			<ul class="flex-center-wrap p15-grid"
-				u on-init="s:[filter-enter:children:easeInCirc-1250]:+10000">
+		<nav class="ui-gallery-filter-bar" style="margin-top:-15px;">
+			<ul u on-init="s:[filter-enter:children:easeInCirc-1250]:+10000">
 				<li u on-init="p:[op:0, tro:center center]"
 					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
-					<button class="normal height-36 txt-18 radius-2 bg-aero">Filter</button>
+					<h3 class="ui-gallery-filter-header">Filters:</h3>
 				</li>
 				<li u on-init="p:[op:0, tro:center center]"
 					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
-					<button class="normal height-36 txt-18 radius-2 bg-aero">Filter</button>
+					<button class="ui-gallery-filter-btn selected">Cards</button>
 				</li>
 				<li u on-init="p:[op:0, tro:center center]"
 					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
-					<button class="normal height-36 txt-18 radius-2 bg-aero">Filter</button>
+					<button class="ui-gallery-filter-btn">Collections</button>
 				</li>
 				<li u on-init="p:[op:0, tro:center center]"
 					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
-					<button class="normal height-36 txt-18 radius-2 bg-aero">Filter</button>
+					<button class="ui-gallery-filter-btn">Graphic</button>
 				</li>
 				<li u on-init="p:[op:0, tro:center center]"
 					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
-					<button class="normal height-36 txt-18 radius-2 bg-aero">Filter</button>
+					<button class="ui-gallery-filter-btn">Input</button>
 				</li>
 				<li u on-init="p:[op:0, tro:center center]"
 					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
-					<button class="normal height-36 txt-18 radius-2 bg-aero">Filter</button>
+					<button class="ui-gallery-filter-btn">Map</button>
 				</li>
 				<li u on-init="p:[op:0, tro:center center]"
 					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
-					<button class="normal height-36 txt-18 radius-2 bg-aero">Filter</button>
+					<button class="ui-gallery-filter-btn">Media</button>
+				</li>
+				<li u on-init="p:[op:0, tro:center center]"
+					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
+					<button class="ui-gallery-filter-btn">Navigation</button>
 				</li>
 			</ul>
 		</nav>

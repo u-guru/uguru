@@ -1,10 +1,64 @@
+.ui-gallery-filter-bar {
+  max-width: 1030px;
+  margin-left: auto;
+  margin-right: auto; }
+  .ui-gallery-filter-bar ul {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    padding: 7.5px; }
+    .ui-gallery-filter-bar ul li {
+      padding: 7.5px; }
+
+.ui-gallery-filter-header {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 36px;
+  font-size: 24px;
+  font-weight: 600; }
+
+.ui-gallery-filter-btn {
+  display: block;
+  width: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 36px;
+  font-size: 18px;
+  border: 2px solid white;
+  border-radius: 2px;
+  background: #fadab0;
+  transition: all 300ms ease-in-out; }
+  .ui-gallery-filter-btn:hover, .ui-gallery-filter-btn:focus {
+    border-color: rgba(43, 50, 52, 0.25);
+    background: rgba(43, 50, 52, 0.25);
+    color: white; }
+  .ui-gallery-filter-btn.selected, .ui-gallery-filter-btn:active {
+    background: #9cbdbe;
+    border-color: #76a3ab; }
+
 .ui-gallery-item {
   width: 100%;
   border-radius: 2px;
   border: 2px solid rgba(255, 255, 255, 0.5);
   transition: border 300ms ease-in-out, background 300ms ease-in-out; }
   .ui-gallery-item:hover, .ui-gallery-item:focus {
-    border: 2px solid rgba(43, 50, 52, 0.25);
+    border-color: rgba(43, 50, 52, 0.25);
     background: rgba(43, 50, 52, 0.25); }
 
 .txt-aero {
