@@ -250,7 +250,8 @@
 		</main>
 	</item>
 
-	<modal u fixed name='sidebar' class='right-0 top-0 full-xy' bg='bg-stone-90p' init-with='p:[op:0, tro:right top]' when-sidebar-modal-requested='a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:100:50:linear:0:1:f]' when-sidebar-modal-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:100:-1:50:linear:0:1:f]">
+	<modal name='sidebar' class='ui-gallery-menu'
+		u init-with='p:[op:0, tro:right top]' when-sidebar-modal-requested='a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:100:50:linear:0:1:f]' when-sidebar-modal-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:100:-1:50:linear:0:1:f]">
 		<!-- <graphic u absolute height='50px' width='50px' on-click='s:[sidebar-modal-closed:public]' class="flex-grow svg-stroke-10 top-0 right-0 stroke-white round" init-with='p:[transform:rotate(45deg)]' margin='2.5%' url="shared/templates/components/svg/main/plus.html"> </graphic> -->
 		<nav class="ui-gallery-nav">
 			<item>
@@ -290,7 +291,10 @@
 		</nav>
 	</modal>
 
-	<modal u fixed name='gallery-item' class='top-0 left-0 full-xy perspective-container' bg='#C6DDD6'init-with='p:[opacity:0]' when-popup-modal-requested='a:[scaleIn-subtle:1000:linear:0:1:f, z-index:-1:100:50:linear:0:1:f] | s:[popup-enter:public:1000]' when-popup-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:100:-1:50:linear:0:1:f]">
+	<modal fixed name='popup' class='ui-gallery-item top-0 left-0 full-xy perspective-container' bg='#C6DDD6'
+		u init-with='p:[opacity:0]'
+		when-popup-modal-requested='a:[scaleIn-subtle:1000:linear:0:1:f, z-index:-1:100:50:linear:0:1:f] | s:[popup-enter:public:1000]'
+		when-popup-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:100:-1:50:linear:0:1:f]">
 		<nav class="ui-gallery-nav">
 			<item>
 				<graphic url='ui/templates/components/svg/nav-logo.html' u on-click='s:[sidebar-modal-requested:public]'></graphic>

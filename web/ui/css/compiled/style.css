@@ -1,3 +1,11 @@
+.ui-gallery-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(85, 95, 123, 0.95); }
+
 .ui-gallery-item-footer {
   -ms-box-orient: horizontal;
   display: -webkit-box;
