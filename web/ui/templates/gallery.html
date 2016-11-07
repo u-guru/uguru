@@ -123,7 +123,7 @@
 		Modal
 	</modal>
 
-	<modal u fixed name='popup' m-width='100%' m-height='100%' class='top-0 left-0 full-xy perspective-container' bg='#C6DDD6' init-with='p:[opacity:0]' when-popup-modal-requested='a:[scaleIn-subtle:1000:linear:0:1:f,z-index:10:100:50:linear:0:1:f] | s:[popup-enter:public:1000]' when-popup-closed="a:[slideOutUp-subtle:1000:linear:0:1:f]">
+	<modal u fixed name='popup' m-width='100%' m-height='100%' class='top-0 left-0 full-xy perspective-container' bg='#C6DDD6'init-with='p:[opacity:0]' when-popup-modal-requested='a:[scaleIn-subtle:1000:linear:0:1:f,z-index:10:100:50:linear:0:1:f] | s:[popup-enter:public:1000]' when-popup-closed="a:[slideOutUp-subtle:1000:linear:0:1:f]">
 		<nav class="flex-space-between p15-grid">
 			<item>
 				<graphic url='ui/templates/components/svg/nav-logo.html' u on-click='s:[sidebar-modal-requested:public]'></graphic>
@@ -260,7 +260,25 @@
 					<h1 class="p15top-p15x txt-36 black txt-slate"
 						u init-with="p:[op:0]"
 						when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">Profile Tile</h1>
-					<ul class="flex-wrap p15-grid"
+					<ul class="flex-wrap p15-grid">
+						<li u init-with="p:[op:0]"
+							when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]:delay-100">
+							<a class="chip bg bg-rose">profile</a>
+						</li>
+						<li u init-with="p:[op:0]"
+							when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]:delay-150">
+							<a class="chip bg bg-rose">tile</a>
+						</li>
+						<li u init-with="p:[op:0]"
+							when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]:delay-200">
+							<a class="chip bg bg-rose">card</a>
+						</li>
+						<li u init-with="p:[op:0]"
+							when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]:delay-250">
+							<a class="chip bg bg-rose">user</a>
+						</li>
+					</ul>
+					<!-- <ul class="flex-wrap p15-grid"
 						u when-popup-enter="s:[tag-enter:children:linear-200]:+100">
 						<li u init-with="p:[op:0]"
 							when-tag-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
@@ -278,7 +296,7 @@
 							when-tag-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 							<a class="chip bg bg-rose">user</a>
 						</li>
-					</ul>
+					</ul> -->
 				</header>
 				<aside class="width-60p"
 					u init-with="p:[op:0]"
@@ -289,7 +307,33 @@
 		</div>
 
 		<footer class="fixed full-x bottom-0 left-0 flex-space-between">
-			<ul class="flex" style="padding:1px"
+			<ul class="flex" style="padding:1px">
+				<li style="padding:1px"
+					u init-with="p:[op:0]"
+					when-popup-enter="a:[slideInUp-subtle:1000:linear:0:1:f]:delay-1000">
+					<a class="bg-white svg-48-36 svg-stroke-8 stroke-aero radius-2"
+						u on-click='s:[popup-closed:public]'>
+						<graphic url="shared/templates/components/svg/main/more.html"> </graphic>
+					</a>
+				</li>
+				<li style="padding:1px"
+					u init-with="p:[op:0]"
+					when-popup-enter="a:[slideInUp-subtle:1000:linear:0:1:f]:delay-1050">
+					<a class="bg-white svg-48-36 svg-stroke-8 stroke-aero radius-2"
+						u on-click='s:[popup-closed:public]'>
+						<graphic url="shared/templates/components/svg/main/up.html"> </graphic>
+					</a>
+				</li>
+				<li style="padding:1px"
+					u init-with="p:[op:0]"
+					when-popup-enter="a:[slideInUp-subtle:1000:linear:0:1:f]:delay-1100">
+					<a class="bg-white svg-48-36 svg-stroke-8 stroke-aero radius-2"
+						u on-click='s:[popup-closed:public]'>
+						<graphic url="shared/templates/components/svg/main/down.html"> </graphic>
+					</a>
+				</li>
+			</ul>
+			<!-- <ul class="flex" style="padding:1px"
 				u when-popup-enter="s:[nav-enter:children:linear-150]:+1000">
 				<li style="padding:1px"
 					u init-with="p:[op:0]"
@@ -315,7 +359,7 @@
 						<graphic url="shared/templates/components/svg/main/down.html"> </graphic>
 					</a>
 				</li>
-			</ul>
+			</ul> -->
 
 			<div style="padding:2px">
 				<div class="height-48 flex-center p10x bg-white radius-2 txt-24 semibold" style="color:#9cbdbe"
