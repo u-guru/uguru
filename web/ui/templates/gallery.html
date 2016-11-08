@@ -1,4 +1,4 @@
-<view class="ui-gallery" layer="2" type='row' bg="cream" set="gallery = ui.app.views.gallery.data">
+<view class="ui-gallery" layer="2" type='row' bg="cream" set="gallery = ui.app.views.gallery.data" u on-init="s:[popup-modal-requested:public:1000]">
 	<!-- u on-init="s:[popup-modal-requested:public:1000]" -->
 
 	<!-- {{gallery}} -->
@@ -374,8 +374,28 @@
 				<div class="ui-gallery-single-info">
 					<div class="ui-gallery-related">
 						<div>
-							<h2 class="txt-28 semibold txt-stone p15x-p15top">Related</h2>
+							<h2>Related</h2>
 							<ul class="p15-grid ugrid-2">
+								<li>
+									<a class="block radius-2 border-2 border-stone">
+										<figure class="bg-stone-25p margin-none p15xy">
+											<svg></svg>
+										</figure>
+										<div class="bg-white border-2-top border-stone">
+											<h4 class="txt-18 txt-stone semibold p10xy txt-center">Request Tile</h4>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a class="block radius-2 border-2 border-stone">
+										<figure class="bg-stone-25p margin-none p15xy">
+											<svg></svg>
+										</figure>
+										<div class="bg-white border-2-top border-stone">
+											<h4 class="txt-18 txt-stone semibold p10xy txt-center">Request Tile</h4>
+										</div>
+									</a>
+								</li>
 								<li>
 									<a class="block radius-2 border-2 border-stone">
 										<figure class="bg-stone-25p margin-none p15xy">
@@ -401,7 +421,7 @@
 					</div>
 					<aside class="ui-gallery-styles">
 						<div>
-							<h2 class="txt-28 semibold txt-stone p15x-p15top">Styles</h2>
+							<h2>Styles</h2>
 							<ul>
 								<li class="ui-gallery-colors">
 									<ul>
@@ -423,16 +443,34 @@
 									</ul>
 									<h3>Color Palette: <span>Academic</span></h3>
 								</li>
-								<li>
+								<li class="ui-gallery-fonts">
+									<h1>Aa Bb Cc</h1>
 									<h3>Font: <span>Source Sans Pro</span></h3>
 								</li>
-								<li>
+								<li class="ui-gallery-icon">
+									<ul>
+										<li>
+											<graphic url="shared/templates/components/svg/categories/academic-simple.html"></graphic>
+										</li>
+										<li>
+											<graphic url="shared/templates/components/svg/categories/academic.html"></graphic>
+										</li>
+										<li>
+											<graphic url="shared/templates/components/svg/categories/academic-bottom.html"></graphic>
+										</li>
+									</ul>
 									<h3>Icon: <span>Academic</span></h3>
 								</li>
-								<li>
+								<li class="ui-gallery-stroke-width">
+									<graphic class="svg-stroke-3 stroke-slate" url="shared/templates/components/svg/other/shapes.html"></graphic>
 									<h3>Stroke Width: <span>3px</span></h3>
 								</li>
-								<li>
+								<li class="ui-gallery-padding">
+									<div class="p15xy">
+										<span u init-with="p:[height:15px]">15</span>
+										<div></div>
+										<span u init-with="p:[width:15px]">15</span>
+									</div>
 									<h3>Padding: <span>15px</span></h3>
 								</li>
 							</ul>
