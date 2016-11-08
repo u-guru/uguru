@@ -42,6 +42,7 @@
 .ui-gallery-single-desc {
 	@include flex;
 	@include flex-wrap;
+	align-content: stretch;
 	width: 100%;
 	background: rgba(white, .8);
 	border-radius: 0 0 2px 2px;
@@ -124,6 +125,66 @@
 	&:active, &.liked {
 		svg * {
 			fill: $rose!important;
+		}
+	}
+}
+
+.ui-gallery-single-info {
+	@include flex;
+	padding: 7.5px;
+	> * {
+		padding: 7.5px;
+	}
+}
+
+.ui-gallery-related, .ui-gallery-styles {
+	> div {
+		background: rgba(white, .3);
+		border-radius: 2px;
+	}
+}
+
+.ui-gallery-related {
+	width: calc(100% / 3 * 2);
+}
+
+.ui-gallery-styles {
+	width: calc(100% / 3);
+	h3 {
+		padding: 5px 10px;
+		background: rgba(white, .5);
+		border-radius: 2px;
+		color: $slate;
+		font-size: 16px;
+		font-weight: 600;
+		span {
+			font-weight: 700;
+		}
+	}
+	> div {
+		> ul {
+			padding: 7.5px;
+			> li {
+				padding: 7.5px;
+			}
+		}
+	}
+}
+
+.ui-gallery-colors {
+	ul {
+		@include flex;
+		@include flex-center-vertical;
+		padding: 7.5px;
+		margin: -15px -15px 0;
+		li {
+			padding: 7.5px;
+			div {
+				width: 30px;
+				height: 30px;
+				border-radius: 1000px;
+				border: 2px solid white;
+			}
 		}
 	}
 }

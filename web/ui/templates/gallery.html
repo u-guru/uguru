@@ -1,4 +1,4 @@
-<view class="ui-gallery" layer="2" type='row' bg="#fadab0" set="gallery = ui.app.views.gallery.data">
+<view class="ui-gallery" layer="2" type='row' bg="cream" set="gallery = ui.app.views.gallery.data" u on-init="s:[popup-modal-requested:public:1000]">
 	<!-- u on-init="s:[popup-modal-requested:public:1000]" -->
 
 	<!-- {{gallery}} -->
@@ -321,14 +321,10 @@
 
 		<div class="ui-gallery-single-main">
 			<article>
-				<div>
+				<div ng-if="false">
 					<a class="ui-gallery-likes"
-						u on-click="s:[liked-item:children]">
-						<svg viewBox="0 0 100 100">
-							<path d="M30.5307935,20.4928007 C26.3063917,20.4928007 22.0809823,22.1374151 18.849194,25.3409869 C12.383602,31.8055712 12.383602,42.2385939 18.849194,48.6749618 L27.2425724,57.0663247 L49.4146352,79.2948203 C49.7270313,79.5779923 50.2661665,79.5779923 50.5493385,79.2948203 L72.7788419,57.065317 L81.1712125,48.673954 C87.6095958,42.2375862 87.6095958,31.8045635 81.1712125,25.3399792 C74.707636,18.9046191 64.301822,18.9046191 57.83623,25.3399792 L50.0102033,33.1932146 L42.1841765,25.3399792 C38.9523883,22.1374151 34.756203,20.4928007 30.5307935,20.4928007 L30.5307935,20.4928007 L30.5307935,20.4928007 Z" stroke-linecap="round" stroke-linejoin="round"
-								u init-with="p:[fill:none]"
-								when-liked-item="a:[fill:rgba(228,135,151,0):rgba(228,135,151,1):400:easeOutExpo:0:1:f]"></path>
-						</svg>
+						u on-click="c:[liked:add]">
+						<graphic url='shared/templates/components/svg/main/heart.html'></graphic>
 						<span class="block m05left txt-slate txt-18 semibold">2831</span>
 					</a>
 					<figure>
@@ -485,9 +481,9 @@
 						</footer>
 					</div>
 				</div>
-				<div class="ui-gallery-single-info p15-grid flex">
-					<div class="ui-gallery-related width-66p">
-						<div class="bg-white-50p radius-2">
+				<div class="ui-gallery-single-info">
+					<div class="ui-gallery-related">
+						<div>
 							<h2 class="txt-28 semibold txt-stone p15x-p15top">Related</h2>
 							<ul class="p15-grid ugrid-2">
 								<li>
@@ -513,9 +509,43 @@
 							</ul>
 						</div>
 					</div>
-					<aside class="ui-gallery-styles width-33p">
-						<div class="bg-white-50p radius-2">
+					<aside class="ui-gallery-styles">
+						<div>
 							<h2 class="txt-28 semibold txt-stone p15x-p15top">Styles</h2>
+							<ul>
+								<li class="ui-gallery-colors">
+									<ul>
+										<li>
+											<div class="bg-cerise"></div>
+										</li>
+										<li>
+											<div class="bg-slate"></div>
+										</li>
+										<li>
+											<div class="bg-taupe"></div>
+										</li>
+										<li>
+											<div class="bg-gold"></div>
+										</li>
+										<li>
+											<div class="bg-white border-taupe"></div>
+										</li>
+									</ul>
+									<h3>Color Palette: <span>Academic</span></h3>
+								</li>
+								<li>
+									<h3>Font: <span>Source Sans Pro</span></h3>
+								</li>
+								<li>
+									<h3>Icon: <span>Academic</span></h3>
+								</li>
+								<li>
+									<h3>Stroke Width: <span>3px</span></h3>
+								</li>
+								<li>
+									<h3>Padding: <span>15px</span></h3>
+								</li>
+							</ul>
 						</div>
 					</aside>
 				</div>
