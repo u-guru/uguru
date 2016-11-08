@@ -1,10 +1,9 @@
 @import '../../../shared/css/scss/partials/mixin';
 
 .ui-gallery-single-main {
-	height: calc(100% - 80px);
+	height: 100%;
 	width: 100%;
-	max-width: 830px;
-	margin: 0 auto;
+	padding-top: 80px;
 	overflow: auto;
 	&::-webkit-scrollbar {
 		display: none;
@@ -13,6 +12,8 @@
 		display: none;
 	}
 	> article {
+		max-width: 830px;
+		margin: 0 auto;
 		> div:first-child {
 			padding: 15px 15px 0;
 			> figure {
@@ -100,10 +101,26 @@
 	}
 }
 
+.ui-gallery-main {
+	@include flex;
+	@include flex-wrap;
+	@include flex-center;
+	max-width: 930px;
+	margin: 0 auto;
+	padding: 7.5px;
+	> * {
+		padding: 7.5px;
+	}
+}
+
 .ui-gallery-nav {
 	@include flex;
 	@include flex-center-vertical;
 	justify-content: space-between;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
 	padding: 7.5px;
 	> * {
 		padding: 7.5px;
@@ -170,9 +187,10 @@
 }
 
 .ui-gallery-filter-bar {
-	max-width: 1030px;
+	max-width: 930px;
 	margin-left: auto;
 	margin-right: auto;
+	padding-top: 80px;
 	ul {
 		@include flex;
 		@include flex-wrap;

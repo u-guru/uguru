@@ -43,6 +43,7 @@
 				</a>
 			</item>
 		</nav>
+
 		<nav class="ui-gallery-filter-bar" style="margin-top:-15px;">
 			<ul u on-init="s:[filter-enter:children:easeInCirc-1250]">
 				<li u on-init="p:[op:0, tro:center center]"
@@ -84,17 +85,17 @@
 <!--
 				<rectangle custom  data='ui.app.views.gallery.data.rectangles[0]'> </rectangle>
 				<div class="border-2 radius-2 full-x m15top" style="height:calc(200px - 7.5px); border-color:rgba(255,255,255,0.5)"></div> -->
-		<main class="p15-grid max-1030 flex-wrap"
+		<main class="ui-gallery-main"
 			u init-with="p:[tro:center center]"
-			on-init="s:[gallery-enter:children]"
-			when-top-right="a:[rotateX:0deg:-5deg:100:easeOutSine:0:1:f, rotateY:0deg:-10deg:100:easeOutSine:0:1:f]"
+			on-init="s:[gallery-enter:children]">
+			<!-- when-top-right="a:[rotateX:0deg:-5deg:100:easeOutSine:0:1:f, rotateY:0deg:-10deg:100:easeOutSine:0:1:f]"
 			when-top-right-leave="a:[rotateX:-5deg:0deg:100:easeInSine:0:1:f, rotateY:-10deg:0deg:100:easeInSine:0:1:f]"
 			when-top-left="a:[rotateX:0deg:-5deg:100:easeOutSine:0:1:f, rotateY:0deg:10deg:100:easeOutSine:0:1:f]"
 			when-top-left-leave="a:[rotateX:-5deg:0deg:100:easeInSine:0:1:f, rotateY:10deg:0deg:100:easeInSine:0:1:f]"
 			when-bot-right="a:[rotateX:0deg:10deg:100:easeOutSine:0:1:f, rotateY:0deg:-5deg:100:easeOutSine:0:1:f]"
 			when-bot-right-leave="a:[rotateX:10deg:0deg:100:easeInSine:0:1:f, rotateY:-5deg:0deg:100:easeInSine:0:1:f]"
 			when-bot-left="a:[rotateX:0deg:10deg:100:easeOutSine:0:1:f, rotateY:0deg:-5deg:100:easeOutSine:0:1:f]"
-			when-bot-left-leave="a:[rotateX:10deg:0deg:100:easeInSine:0:1:f, rotateY:-5deg:0deg:100:easeInSine:0:1:f]">
+			when-bot-left-leave="a:[rotateX:10deg:0deg:100:easeInSine:0:1:f, rotateY:-5deg:0deg:100:easeInSine:0:1:f]" -->
 			<div class="width-50p">
 				<div class="ui-gallery-item"
 					u init-with="p:[op:0, tr:translateX(-750px)]"
@@ -222,7 +223,7 @@
 	</item>
 
 	<modal name='sidebar' class='ui-gallery-menu'
-		u init-with='p:[op:0, tro:right top]' when-sidebar-modal-requested='a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:100:50:linear:0:1:f]' when-sidebar-modal-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:100:-1:50:linear:0:1:f]">
+		u init-with='p:[op:0, tro:right top]' when-sidebar-modal-requested='a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:1000:50:linear:0:1:f]' when-sidebar-modal-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:1000:-1:50:linear:0:1:f]">
 		<!-- <graphic u absolute height='50px' width='50px' on-click='s:[sidebar-modal-closed:public]' class="flex-grow svg-stroke-10 top-0 right-0 stroke-white round" init-with='p:[transform:rotate(45deg)]' margin='2.5%' url="shared/templates/components/svg/main/plus.html"> </graphic> -->
 		<nav class="ui-gallery-nav">
 			<item>
@@ -297,7 +298,7 @@
 				</fieldset>
 
 				<a class="ui-gallery-menu-icon"
-					u on-click='s:[sidebar-modal-requested:public, popup-closed:public]'>
+					u on-click='s:[sidebar-modal-requested:public]'>
 					<graphic url="shared/templates/components/svg/main/menu.html"> </graphic>
 				</a>
 			</item>
