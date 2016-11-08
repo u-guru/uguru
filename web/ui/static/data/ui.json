@@ -7,6 +7,9 @@
             "home": {
                 "url": "ui/templates/home.html"
             },
+            "nav": {
+                "url": "ui/templates/components/nav.html"
+            },
             "gallery": {
                 "url": "ui/templates/gallery.html",
                 "data": {
@@ -19,11 +22,16 @@
                         {"name": "collections", "background": "bg-cerise-80p"},
                         {"name": "asdsad", "background": "bg-slate-50p"},
                         {"name": "map", "background": "bg-shamrock-20p"},
-                        {"name": "map", "media": "bg-olive-20p"},
+                        {"name": "media", "background": "bg-olive-20p"},
                         {"name": "icons", "background": "bg-gold-80p", "textColor":"charcoal"},
                         {"name": "graphics", "background": "bg-moxie-80p"},
                         {"name": "animation",  "background": "bg-azure-80p"},
                         {"name": "interactive"}
+                    ],
+                    "tiles": [
+                        {
+                            "url": "ui/templates/components/cards/profile-tile.tpl"
+                        }
                     ]
                 }
             },

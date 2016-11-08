@@ -614,8 +614,10 @@ angular.module('uguru.shared.directives')
               var postStates = [];
               return {
                   pre: function (scope, lElem, lAttr) {
-                    if (lAttr.data) {
-                      scope.data = $parse(lAttr.data)(scope)
+                    if (attr.data) {
+
+                      $compile(lElem.contents())($parse(attr.data)(scope))
+                      console.log()
                     }
                     scope.states = states || {};
                     scope.hasInitAfter = hasInitAfter;
@@ -759,57 +761,37 @@ angular.module('uguru.shared.directives')
                       }
 
                       // scope.states = states;
-                      var elemHasCustom = elemName in $rootScope.components
+                      // var elemHasCustom = elemName in $rootScope.components
 
                       !scope.hasInitAfter  && transclude(scope, function(clone, innerScope) {
-                          for (key in scope.data) {
-                            innerScope[key] = scope.data[key]
-                          }
-                          if (elemHasCustom) {
-                            // $compile(clone)(innerScope);
-                            $compile(lElem)(innerScope);
-                            for (key in scope.data) {
-                              delete scope.data[key]
-                            }
-                          }
-                          else {
-                            $compile(lElem.contents())(scope);
-                          }
+
+
+                            lElem.removeAttr('custom')
+
+
+                          $compile(lElem.contents())(scope);
 
                           lElem.append(clone);
                       });
-                      // if (elemHasCustom) {
-                      //   console.log(lElem)
-
-                      //   transclude(scope, function(clone, innerScope) {
-
-
-                      //     $compile(lElem.contents())(scope);
-                      //     lElem.append(clone);
-
-                      //     lElem.removeAttr('u')
-                      //     lElem[0].setAttribute('custom', '');
-                      //     // $compile(lElem.contents())(innerScope)
-
-                      //   });
-                        // $compile(lElem)(scope);
-
-                        // $compile(lElem)(scope);
-
-
-                      //   console.log(elemName, 'is custom')
+                      // if (attr.data) {
+                      //   console.log('yo')
+                      //   scope.data = $parse(attr.data)(scope);
+                      //   $compile(lElem.html())(scope);
                       // }
 
+
+
                   },
-                  post: function(scope, element, attr) {
+                  post: function(scope, p_element, attr) {
+
                     scope.states = states
                     if (postStates.length) {
                       postStates.forEach(function(state, i) {
                       if (state.name.indexOf('init') > -1 && !scope.hasInitAfter) {
-                          state.exec(element, scope, attr);
+                          state.exec(p_element, scope, attr);
 
                             if (state.name.indexOf('debug') > -1) {
-                              ElementService.launchExternalWindow(state.actions.anim.parsed, element);
+                              ElementService.launchExternalWindow(state.actions.anim.parsed, p_element);
                             }
                         }
                       });

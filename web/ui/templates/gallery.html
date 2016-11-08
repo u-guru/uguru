@@ -1,66 +1,28 @@
-<view layer="2" type='row' bg="#fadab0" set="gallery = ui.app.views.gallery.data">
+<view layer="2" type='row' bg="#fadab0" set="gallery = ui.app.views.gallery.data" >
 	<!--@gabrielle, @jeselle, how you can print data that you just locally set above, check console to see all-->
-	<!-- {{gallery}} -->
-	<item width="100" height="100" class="overflow-auto">
+
+	<item width="100" height="100" class="overflow-auto" ng-if='gallery.filterTags'>
 
 		<!--removed this for faster load [:delay-9500] -->
-		<nav class="ui-gallery-nav">
-			<item u init-with="p:[transform:translateY(-500px)]"
-				on-init="a:[translateY:-500px:0px:500:easeInOutElastic:0:1:f]">
-				<graphic url='ui/templates/components/svg/nav-logo.html' u on-click='s:[sidebar-modal-requested-left:public]'></graphic>
-			</item>
-			<item class="flex">
-				<!-- took out the on-init :delay-10000 -->
-				<fieldset class="search-bar"
-					u init-with="p:[tr:translateX(500px), width:48px]"
-					on-init="s:[search-bar-init:children, search-bar-enter:depth(0):1000]"
-					when-search-bar-enter="a:[translateX:500px:0px:250:easeInOutElastic:0:1:f]"
-					on-click="s:[search-bar-clicked:depth(0), search-bar-icon:children:250]"
-					when-search-bar-clicked="a:[width:48px:500px:250:easeOutBack:0:1:f]"
-					on-exit="a:[opacity:1:0:250:easeOutSine:0:1:f]">
-					<div>
-						<label for="search-bar">
-							<svg viewBox="0 0 100 100">
-								<path d="M62.994485,62.994485 L85.6624699,85.6624699"
-									u init-with="p:[sda:32.06, sdo:32.06]"
-									when-search-bar-init="a:[stroke-dashoffset:32.06:0:200:easeOutSine:750:1:f]"></path>
-								<circle cx="42.5" cy="42.5" r="28.5"
-									u on-init="s:[init-with:self:700]"
-									init-with="p:[sda:179.07, sdo:179.07]"
-									when-search-bar-init="a:[stroke-dashoffset:179.07:0:200:easeOutSine:0:1:f]:delay-500"></circle>
-							</svg>
-						</label>
 
-						<input id="search-bar" placeholder="Filter" value=""
-							u init-with="p:[op:0]"
-							when-search-bar-icon="a:[opacity:0:1:250:easeOutSine:0:1:f]"/>
-					</div>
-				</fieldset>
-
-				<a class="ui-gallery-menu-icon"
-					u on-click='s:[sidebar-modal-requested:public]'>
-					<graphic url="shared/templates/components/svg/main/menu.html"> </graphic>
-				</a>
-			</item>
-		</nav>
-
-		<nav class="ui-gallery-filter-bar" style="margin-top:-15px;">
+		<import class='z-index-100' url="ui.app.views.nav.url"></import>
+		<nav class="ui-gallery-filter-bar" style="margin-top:-15px;" ng-if='gallery.filterTags'>
 			<ul u on-init="s:[filter-enter:children:easeInCirc-1250]">
 				<li u on-init="p:[op:0, tro:center center]"
 					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 					<h3 class="ui-gallery-filter-header">Filters:</h3>
 				</li>
-				<filter-tag custom data="gallery.filterTags[0]">
-				</filter-tag>
-				<filter-tag custom data="gallery.filterTags[1]">
-				</filter-tag>
-				<filter-tag custom data="gallery.filterTags[2]">
-				</filter-tag>
-
-
-				<li u on-init="p:[op:0, tro:center center]"
+				<filter-tag custom data="gallery.filterTags[0]"> </filter-tag>
+				<filter-tag custom data="gallery.filterTags[1]"> </filter-tag>
+				<filter-tag custom data="gallery.filterTags[2]"> </filter-tag>
+				<filter-tag custom data="gallery.filterTags[3]"> </filter-tag>
+				<filter-tag custom data="gallery.filterTags[4]"> </filter-tag>
+				<filter-tag custom data="gallery.filterTags[5]"> </filter-tag>
+				<filter-tag custom data="gallery.filterTags[6]"> </filter-tag>
+				<filter-tag custom data="gallery.filterTags[7]"> </filter-tag>
+				<!-- <li u on-init="p:[op:0, tro:center center]"
 					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
-					<button class="ui-gallery-filter-btn">Collections</button>
+					<button class="ui-gallery-filter-btn">Collection</button>
 				</li>
 				<li u on-init="p:[op:0, tro:center center]"
 					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
@@ -81,7 +43,7 @@
 				<li u on-init="p:[op:0, tro:center center]"
 					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 					<button class="ui-gallery-filter-btn">Navigation</button>
-				</li>
+				</li> -->
 			</ul>
 		</nav>
 
@@ -107,82 +69,7 @@
 					on-mouseenter="s:[top-left:public] | a:[border-color:rgba(255,255,255,0.5):rgba(255,255,255,1):100:linear:0:1:f]"
 					on-mouseleave="s:[top-left-leave:public]">
 					<a u on-click='s:[popup-modal-requested:public]'></a>
-					<div>
-						<figure>
-							<div class="pf-tile-container">
-								<a></a><a></a><a></a><a></a>
-								<div class="pf-tile bg-academic">
-									<div class="pf-tile-border">
-										<div class="top"></div>
-										<div class="right"></div>
-										<div class="bot"></div>
-										<div class="left"></div>
-									</div>
-									<div class="pf-tile-top">
-										<div class="pf-pricing">$10/hr</div>
-										<div>
-											<div class="pf-tile-icon">
-												<svg viewBox="0 0 100 100">
-													<g>
-														<path d="M61.993,18 L25.006,18 C23.334,18 22,19.344 22,21.001 L22,30 L25.002,30 C26.658,30 28,31.346 28,33 C28,34.657 26.658,36 25.002,36 L22,36 L22,47 L25.002,47 C26.658,47 28,48.346 28,50 C28,51.657 26.658,53 25.002,53 L22,53 L22,64 L25.002,64 C26.658,64 28,65.346 28,67 C28,68.657 26.658,70 25.002,70 L22,70 L22,78.999 C22,80.663 23.346,82 25.006,82 L61.993,82 C63.666,82 65,80.656 65,78.999 L65,21.001 C65,19.337 63.654,18 61.993,18 L61.993,18 Z"></path>
-														<path d="M70,70 L74,77 L78,70 L78,17.9999998 L70,17.9999998 L70,70 Z"></path>
-														<path d="M70.4117647,81 L83.5882353,81"></path>
-														<rect x="16" y="64" width="12" height="6" rx="3"></rect>
-														<rect x="16" y="47" width="12" height="6" rx="3"></rect>
-														<rect x="16" y="30" width="12" height="6" rx="3"></rect>
-													</g>
-												</svg>
-											</div>
-										</div>
-										<h1>Chem 133</h1>
-										<h2>Organic Chemistry</h2>
-									</div>
-									<div class="pf-tile-bottom">
-										<ul class="rating-stars" data-rating="4" data-half="true">
-											<li>
-												<svg viewBox="0 0 100 100">
-													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-												</svg>
-											</li>
-											<li>
-												<svg viewBox="0 0 100 100">
-													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-												</svg>
-											</li>
-											<li>
-												<svg viewBox="0 0 100 100">
-													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-												</svg>
-											</li>
-											<li>
-												<svg viewBox="0 0 100 100">
-													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-												</svg>
-											</li>
-											<li>
-												<svg viewBox="0 0 100 100">
-													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-												</svg>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</figure>
-						<aside>
-							<h2>Profile Tile</h2>
-							<ul>
-								<li><a class="chip bg bg-stone">profile</a></li>
-								<li><a class="chip bg bg-stone">tile</a></li>
-								<li><a class="chip bg bg-stone">card</a></li>
-							</ul>
-						</aside>
-					</div>
+					<tile custom data="tiles[0]"> </tile>
 				</div>
 				<div class="ui-gallery-item m15top" style="height:calc(200px - 7.5px)"
 					u init-with="p:[transform-origin:left bottom, transform:translateX(-50px) scale(0)]"
