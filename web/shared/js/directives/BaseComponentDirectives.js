@@ -189,7 +189,7 @@ angular.module('uguru.shared.directives.base.components')
             $document.bind('keydown', function(e) {
 
               $rootScope.$broadcast('keydown', e);
-              console.log('keydown', e.which)
+
               $rootScope.$broadcast('keydown:' + e.which || e.keyCode, e);
             });
             $document.bind('keyup', function(e) {
@@ -943,26 +943,23 @@ angular.module('uguru.shared.directives.base.components')
             scope: true,
             // transclude:true,
             // terminal:true,
-            // priority: -1,
             replace:true,
             compile: function(elem, attr) {
                 CompService.renderAllStyleAttributes(elem, attr);
 
-                elem[0].style.zIndex = -1;
+                elem[0].style.zIndex = -100;
                 elem[0].style.opacity = 0;
                 elem[0].style.position = 'fixed';
-
-                var children = elem[0].innerHTML
                 CompService.initializeModalAttr(elem, attr, _window);
+                var children = elem[0].innerHTML
+
                 return {
-                    pre: function preLink(scope, p_elem, _attr) {
-
-
+                    pre: function preLink(scope, p_elem, attr) {
 
                         var _window = scope.root.window;
                         var windowWidth = scope.root.window.width;
 
-
+                        // $compile(p_elem)(scope)
 
 
                         $timeout(function() {
@@ -971,8 +968,7 @@ angular.module('uguru.shared.directives.base.components')
 
                                     // p_elem.append(clone);
                                     parent.parent().append(p_elem);
-
-                                    // $compile(p_elem)(scope)
+                                    // $compile(p_elem.contents)(scope)
                                     // p_elem.attr('u', '')
                                     // $compile(p_elem)(scope.$parent)
                                     // if (parent[0].contains(p_elem[0])) {
@@ -1247,3 +1243,306 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
+    .directive('x', ['CompService', function(CompService) {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+            if (element[0].nodeName.toLowerCase() === 'SVG' || element[0].ownerSVGElement) return;
+            var mappings = {
+                'center': 'center',
+                'end': 'flex-end',
+                'space-between': 'space-between',
+                'sb': 'space-between',
+                'sa': 'space-around',
+                'space-around': 'space-around',
+                'top': 'flex-start'
+            }
+            var value = (attr.x && attr.x.length && attr.x in mappings && mappings[attr.x]) || 'center'
+          element.css('justify-content', value);
+        }
+      }
+    }])
+    .directive('y', ['CompService', function(CompService) {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+            if (element[0].nodeName.toLowerCase() === 'SVG' || element[0].ownerSVGElement) return;
+            var mappings = {
+                'center': 'center',
+                'end': 'flex-end',
+                'space-between': 'space-between',
+                'sb': 'space-between',
+                'sa': 'space-around',
+                'space-around': 'space-around',
+                'top': 'flex-start'
+            }
+            var value = (attr.y && attr.y.length && attr.y in mappings && mappings[attr.y]) || 'center'
+          element.css('align-content', value);
+          if (['space-between', 'space-around'].indexOf(value) === -1) {
+            element.css('align-items', value);
+          }
+        }
+      }
+    }])
+    .directive('end', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('align-self', 'flex-end');
+        }
+      }
+    }])
+    .directive('start', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('align-self', 'center');
+        }
+      }
+    }])
+    .directive('center', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('align-self', 'center');
+        }
+      }
+    }])
+    .directive('stretch', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('align-self', 'stretch');
+        }
+      }
+    }])
+    .directive('spaceBetween', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('align-self', 'space-between');
+        }
+      }
+    }])
+    .directive('spaceAround', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('align-self', 'space-around');
+        }
+      }
+    }])
+    .directive('xCenter', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('justify-content', 'center');
+        }
+      }
+    }])
+    .directive('xEnd', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('justify-content', 'flex-end');
+        }
+      }
+    }])
+    .directive('xSpaceBetween', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('justify-content', 'space-between');
+        }
+      }
+    }])
+    .directive('xSa', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('justify-content', 'space-around');
+        }
+      }
+    }])
+    .directive('xSb', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('justify-content', 'space-between');
+        }
+      }
+    }])
+    .directive('xSpaceAround', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('justify-content', 'space-around');
+        }
+      }
+    }])
+    .directive('yEnd', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('align-content', 'flex-end');
+          element.css('align-items', 'flex-end');
+        }
+      }
+    }])
+    .directive('yStretch', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('align-content', 'stretch');
+          element.css('align-items', 'stretch');
+        }
+      }
+    }])
+    .directive('yStart', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('align-content', 'flex-start');
+          element.css('align-items', 'flex-start');
+        }
+      }
+    }])
+    .directive('yCenter', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('align-content', 'center');
+          element.css('align-items', 'center');
+        }
+      }
+    }])
+    .directive('xEnd', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('justify-content', 'flex-end');
+        }
+      }
+    }])
+    .directive('ySpaceBetween', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('align-content', 'space-between');
+        }
+      }
+    }])
+    .directive('ySpaceAround', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('align-content', 'space-around');
+        }
+      }
+    }])
+    .directive('ySa', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('align-content', 'space-around');
+        }
+      }
+    }])
+    .directive('ySb', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('justify-content', 'space-between');
+        }
+      }
+    }])
+     .directive('row', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('flex-direction', 'row');
+        }
+      }
+    }])
+    .directive('rowReverse', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('flex-direction', 'row-reverse');
+        }
+      }
+    }])
+    .directive('column', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('flex-direction', 'column');
+        }
+      }
+    }])
+    .directive('columnReverse', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('flex-direction', 'row-reverse');
+        }
+      }
+    }])
+    .directive('wrap', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('flex-wrap', 'wrap');
+        }
+      }
+    }])
+    .directive('nowrap', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('flex-wrap', 'nowrap');
+        }
+      }
+    }])
+     .directive('wrapReverse', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('flex-wrap', 'wrap-reverse');
+        }
+      }
+    }])
+     .directive('order', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('order', parseInt(attr.order));
+        }
+      }
+    }])
+     .directive('grow', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('flex-grow', parseInt(attr.grow));
+        }
+      }
+    }])
+    .directive('shrink', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('flex-shrink', parseInt(attr.shrink));
+        }
+      }
+    }])
+    .directive('basis', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('flex-basis', attr.basis);
+        }
+      }
+    }])
+
+
