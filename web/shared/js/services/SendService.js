@@ -466,7 +466,6 @@ function SendService($timeout, $parse, RootService, TweenService) {
 
               var depthParsed = parseDepthString(msg_info.sendScope)
               var depthNum = parseInt(depthParsed);
-              console.log('executing', depthParsed, depthNum, msg_info.sendScope)
               if (depthParsed === 'self') {
                 if (currentMsgContext.elements && currentMsgContext.elements.length) {
                   currentMsgContext.depth = 'self';

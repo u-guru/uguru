@@ -262,7 +262,7 @@
 .ui-gallery-main {
 	@include flex;
 	@include flex-wrap;
-	@include flex-center;
+	justify-content: center;
 	max-width: 930px;
 	margin: 0 auto;
 	padding: 7.5px;

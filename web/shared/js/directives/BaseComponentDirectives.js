@@ -33,14 +33,31 @@ angular.module('uguru.shared.directives.base.components')
             restrict: 'A',
             replace:true,
             // transclude: true,
-            priority: 100000,
-            terminal: true,
+            scope:true,
+            priority: 10000,
             templateUrl: function(element, attr) {
 
                 var elemName = element[0].nodeName.toLowerCase();
                 // element.removeAttr('custom')
                 // $rootScope.components[elemName]
-                return $rootScope.components[elemName]['template_url']
+
+                if ($rootScope.components) {
+                    return $rootScope.components[elemName]['template_url']
+                }
+            },
+            link: function(scope, elem, attr) {
+
+                var attrValue = $parse(attr.data)(scope)
+                for (attr_name in attrValue) {
+                    scope[attr_name] = attrValue[attr_name]
+                }
+                $compile(elem.html())(scope)
+                console.log('its linked', attrValue);
+                // for (key in ) {
+                //     scope[key] =
+                // }
+                // $compile(elem)()
+                // console.log()
             }
 
             // compile:function(element, attr, transclude) {
@@ -939,7 +956,7 @@ angular.module('uguru.shared.directives.base.components')
         return {
             restrict: 'E',
             priority: 100000,
-            scope: true,
+            scope: false,
             // transclude:true,
             // terminal:true,
             replace:true,

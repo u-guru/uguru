@@ -4,7 +4,7 @@ angular.module('uguru.shared.services')
 ]);
 
 function TweenService() {
-    var specialPropertyTypes = ['background-color', 'background', 'fill', 'color', 'stroke']
+    var specialPropertyTypes = ['background-color', 'background', 'fill', 'color', 'stroke', 'border-color', 'border']
     return  {
         getKeyframeValues: getKeyframeValues,
         getAllEasing: getAllEasing,

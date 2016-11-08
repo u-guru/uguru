@@ -8,16 +8,20 @@
 		on-key-up="s:[modal-docs-closed:public]">
         <import class='absolute top-0 left-0 full-xy' url="ui.app.loader.url" ng-if='ui.app.loader.url'></import>
 
-        <import url="ui.app.views.home.url" ng-if='ui.app.views.home'></import>
-
-		<import url="ui.app.views.gallery.url" ng-if='ui.app.views.gallery'></import>
+        <import url="ui.app.views.home.url" ng-if='ui.app.views.home'>
 
 
+        </import>
 
-        <modal u name="docs" class='bg-cerise' on-key-press="send:[modal-docs-requested:public]" when-modal-docs-requested="a:[slideInUp-subtle:500:easeOutCirc:0:1:f]" when-modal-docs-closed="a:[fadeOut:500:easeOutCirc:0:1:f]" ng-attr-accept-keys="d" link-src-data="ui/static/data/docs.json" link-data-name="docs">
+		<!-- <import url="ui.app.views.gallery.url" ng-if='ui.app.views.gallery'></import> -->
+
+
+
+        <!-- <modal u name="docs" class='bg-cerise' on-key-press="send:[modal-docs-requested:public]" when-modal-docs-requested="a:[slideInUp-subtle:500:easeOutCirc:0:1:f]" when-modal-docs-closed="a:[fadeOut:500:easeOutCirc:0:1:f]" ng-attr-accept-keys="d" link-src-data="ui/static/data/docs.json" link-data-name="docs">
             {{docs}}
-        </modal>
+        </modal> -->
     </main-view>
+
     <!-- <ext-views> -->
         <!-- <modal ng-repeat='ext_view in ui.views.external'> </modal> -->
     <!-- <ext-views> -->

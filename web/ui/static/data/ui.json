@@ -8,7 +8,7 @@
                 "url": "ui/templates/home.html"
             },
             "nav": {
-                "url": "ui/templates/nav.html"
+                "url": "ui/templates/components/nav.html"
             },
             "gallery": {
                 "url": "ui/templates/gallery.html",
@@ -22,11 +22,32 @@
                         {"name": "collections", "background": "bg-cerise-80p"},
                         {"name": "asdsad", "background": "bg-slate-50p"},
                         {"name": "map", "background": "bg-shamrock-20p"},
-                        {"name": "map", "media": "bg-olive-20p"},
+                        {"name": "media", "background": "bg-olive-20p"},
                         {"name": "icons", "background": "bg-gold-80p", "textColor":"charcoal"},
                         {"name": "graphics", "background": "bg-moxie-80p"},
                         {"name": "animation",  "background": "bg-azure-80p"},
                         {"name": "interactive"}
+                    ],
+                    "tiles": [
+                        {
+                            "import_url": "ui/templates/components/custom/cards/profile-tile.html",
+                            "name": "Profile Tile",
+                            "chips": [
+                                {
+                                    "bg": "rose",
+                                    "name": "profile"
+                                },
+                                {
+                                    "bg": "rose",
+                                    "name": "tile"
+                                },
+                                {
+                                    "bg": "rose",
+                                    "name": "card"
+                                }
+                            ]
+
+                        }
                     ]
                 }
             },
@@ -45,6 +66,10 @@
         "filter-tag": {
             "template_url":"ui/templates/components/custom/filter-tag.tpl",
             "fields": ["name", "background"]
+        },
+        "tile": {
+            "template_url": "ui/templates/components/custom/tile.tpl",
+            "fields": ["import_url"]
         }
     },
     "spec": {
