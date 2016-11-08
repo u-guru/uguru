@@ -466,12 +466,30 @@
 									<h3>Stroke Width: <span>3px</span></h3>
 								</li>
 								<li class="ui-gallery-padding">
-									<div class="p15xy">
-										<span u init-with="p:[height:15px]">15</span>
-										<div></div>
-										<span u init-with="p:[width:15px]">15</span>
+									<div>
+										<svg viewbox="0 0 400 270">
+											<rect x="0" y="0" width="400" height="270" fill="none"></rect>
+										</svg>
+										<div class="margin" u init-with="p:[padding:5px, border-color:#40484b]"
+											when-padding-select="p:[border-color:#aaaaaa]"
+											when-padding-deselect="p:[border-color:#40484b]">
+											<div class="normal" u init-with="p:[padding:15px, border-color:#40484b]"
+												when-margin-select="p:[border-color:#aaaaaa]"
+												when-margin-deselect="p:[border-color:#40484b]"
+												when-padding-select="p:[border-color:#aaaaaa]"
+												when-padding-deselect="p:[border-color:#40484b]">
+												<span u init-with="p:[height:15px]">15</span>
+												<div class="padding" u init-with="p:[border-color:#40484b]"
+													u when-margin-select="p:[border-color:#aaaaaa]"
+													when-margin-deselect="p:[border-color:#40484b]"></div>
+												<span u init-with="p:[width:15px]">15</span>
+											</div>
+										</div>
 									</div>
-									<h3>Padding: <span>15px</span></h3>
+									<h3 u on-mouseenter="s:[padding-select:public]"
+										on-mouseleave="s:[padding-deselect:public]">Padding: <span>15px</span></h3>
+									<h3 u on-mouseenter="s:[margin-select:public]"
+										on-mouseleave="s:[margin-deselect:public]">Margin: <span>5px</span></h3>
 								</li>
 							</ul>
 						</div>
