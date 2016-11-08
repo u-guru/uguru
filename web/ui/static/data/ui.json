@@ -15,14 +15,21 @@
                         {"background": "transparent"}
                     ],
                     "filterTags": [
-                        {"name":"base", "background": "bg-shamrock-80p"},
-                        {"name": "cards", "background": "bg-shamrock-80p"},
-                        {"name": "icons", "background": "bg-cerise-80p"},
+                        {"name": "cards", "background": "bg-cerise-80p"},
+                        {"name": "collections", "background": "bg-cerise-80p"},
+                        {"name": "asdsad", "background": "bg-slate-50p"},
+                        {"name": "map", "background": "bg-shamrock-20p"},
+                        {"name": "map", "media": "bg-olive-20p"},
+                        {"name": "icons", "background": "bg-gold-80p", "textColor":"charcoal"},
                         {"name": "graphics", "background": "bg-moxie-80p"},
                         {"name": "animation",  "background": "bg-azure-80p"},
                         {"name": "interactive"}
                     ]
                 }
+            },
+            "docs": {
+                "url": "ui/templates/docs.html",
+                "data": {}
             }
         }
     },

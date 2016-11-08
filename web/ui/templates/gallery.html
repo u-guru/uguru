@@ -7,7 +7,7 @@
 		<nav class="ui-gallery-nav">
 			<item u init-with="p:[transform:translateY(-500px)]"
 				on-init="a:[translateY:-500px:0px:500:easeInOutElastic:0:1:f]">
-				<graphic url='ui/templates/components/svg/nav-logo.html' u on-click='s:[sidebar-modal-requested:public]'></graphic>
+				<graphic url='ui/templates/components/svg/nav-logo.html' u on-click='s:[sidebar-modal-requested-left:public]'></graphic>
 			</item>
 			<item class="flex">
 				<!-- took out the on-init :delay-10000 -->
@@ -50,10 +50,14 @@
 					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 					<h3 class="ui-gallery-filter-header">Filters:</h3>
 				</li>
-				<li u on-init="p:[op:0, tro:center center]"
-					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
-					<button class="ui-gallery-filter-btn selected">Cards</button>
-				</li>
+				<filter-tag custom data="gallery.filterTags[0]">
+				</filter-tag>
+				<filter-tag custom data="gallery.filterTags[1]">
+				</filter-tag>
+				<filter-tag custom data="gallery.filterTags[2]">
+				</filter-tag>
+
+
 				<li u on-init="p:[op:0, tro:center center]"
 					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 					<button class="ui-gallery-filter-btn">Collections</button>
@@ -223,7 +227,10 @@
 	</item>
 
 	<modal name='sidebar' class='ui-gallery-menu'
-		u init-with='p:[op:0, tro:right top]' when-sidebar-modal-requested='a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:1000:50:linear:0:1:f]' when-sidebar-modal-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:1000:-1:50:linear:0:1:f]">
+		u init-with='p:[op:0]'
+		when-sidebar-modal-requested='p:[tro:right top] | a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:1000:50:linear:0:1:f]'
+		when-sidebar-modal-requested-left='p:[tro:left top] | a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:1000:50:linear:0:1:f]'
+		when-sidebar-modal-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:1000:-1:50:linear:0:1:f]">
 		<!-- <graphic u absolute height='50px' width='50px' on-click='s:[sidebar-modal-closed:public]' class="flex-grow svg-stroke-10 top-0 right-0 stroke-white round" init-with='p:[transform:rotate(45deg)]' margin='2.5%' url="shared/templates/components/svg/main/plus.html"> </graphic> -->
 		<nav class="ui-gallery-nav">
 			<item>
@@ -269,7 +276,7 @@
 		when-popup-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:100:-1:50:linear:0:1:f]">
 		<nav class="ui-gallery-nav">
 			<item>
-				<graphic url='ui/templates/components/svg/nav-logo.html' u on-click='s:[sidebar-modal-requested:public]'></graphic>
+				<graphic url='ui/templates/components/svg/nav-logo.html' u on-click='s:[sidebar-modal-requested-left:public]'></graphic>
 			</item>
 			<item class="flex">
 				<fieldset class="search-bar"

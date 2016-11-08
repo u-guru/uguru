@@ -323,7 +323,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             var charPressed = RootService.keyMap.toChar[keypressEvent.which];
             charPressed = charPressed && charPressed.toLowerCase() || '';
             if (scope.validKeys.indexOf(charPressed) > -1 ) {
-
+              console.log('sending...')
               applySendAnimProp(scope, element, actions, context);
             }
           });
