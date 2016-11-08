@@ -559,17 +559,19 @@ angular.module('uguru.shared.directives')
           }
         }
 }])
-.directive("u", ["$compile", "ElementService", "$timeout", "$rootScope", "SendService", "CompService", function($compile, ElementService, $timeout, $rootScope, SendService, CompService) {
+.directive("u", ["$compile", "ElementService", "$timeout", "$rootScope", "SendService", "CompService", "$parse", function($compile, ElementService, $timeout, $rootScope, SendService, CompService, $parse) {
       return {
           restrict: 'A',
           replace: true,
           transclude: true,
-          priority:100,
+          priority:1000000,
           scope:true,
-
           compile: function(element, attr, transclude) {
             // attr.$set('public', 'public');
             // attr.$set('root', 'root');
+            var elemName = element[0].nodeName.toLowerCase();
+
+
             var hasInitAfter = false;
               if (attr.initAfter && attr.initAfter.length) {
                 hasInitAfter = ElementService.toCamelCaseBridge(attr.initAfter)
@@ -612,6 +614,9 @@ angular.module('uguru.shared.directives')
               var postStates = [];
               return {
                   pre: function (scope, lElem, lAttr) {
+                    if (lAttr.data) {
+                      scope.data = $parse(lAttr.data)(scope)
+                    }
                     scope.states = states || {};
                     scope.hasInitAfter = hasInitAfter;
                     scope.elem = lElem;
@@ -754,11 +759,46 @@ angular.module('uguru.shared.directives')
                       }
 
                       // scope.states = states;
-                      !scope.hasInitAfter && transclude(scope, function(clone, innerScope) {
-                          $compile(lElem.contents())(scope);
+                      var elemHasCustom = elemName in $rootScope.components
+
+                      !scope.hasInitAfter  && transclude(scope, function(clone, innerScope) {
+                          for (key in scope.data) {
+                            innerScope[key] = scope.data[key]
+                          }
+                          if (elemHasCustom) {
+                            // $compile(clone)(innerScope);
+                            $compile(lElem)(innerScope);
+                            for (key in scope.data) {
+                              delete scope.data[key]
+                            }
+                          }
+                          else {
+                            $compile(lElem.contents())(scope);
+                          }
 
                           lElem.append(clone);
                       });
+                      // if (elemHasCustom) {
+                      //   console.log(lElem)
+
+                      //   transclude(scope, function(clone, innerScope) {
+
+
+                      //     $compile(lElem.contents())(scope);
+                      //     lElem.append(clone);
+
+                      //     lElem.removeAttr('u')
+                      //     lElem[0].setAttribute('custom', '');
+                      //     // $compile(lElem.contents())(innerScope)
+
+                      //   });
+                        // $compile(lElem)(scope);
+
+                        // $compile(lElem)(scope);
+
+
+                      //   console.log(elemName, 'is custom')
+                      // }
 
                   },
                   post: function(scope, element, attr) {

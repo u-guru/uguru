@@ -42,10 +42,14 @@
 					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 					<h3 class="ui-gallery-filter-header">Filters:</h3>
 				</li>
-				<li u on-init="p:[op:0, tro:center center]"
-					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
-					<button class="ui-gallery-filter-btn selected">Cards</button>
-				</li>
+				<filter-tag custom data="gallery.filterTags[0]">
+				</filter-tag>
+				<filter-tag custom data="gallery.filterTags[1]">
+				</filter-tag>
+				<filter-tag custom data="gallery.filterTags[2]">
+				</filter-tag>
+
+
 				<li u on-init="p:[op:0, tro:center center]"
 					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 					<button class="ui-gallery-filter-btn">Collections</button>

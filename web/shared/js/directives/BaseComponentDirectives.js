@@ -32,67 +32,66 @@ angular.module('uguru.shared.directives.base.components')
         return {
             restrict: 'A',
             replace:true,
-            transclude: true,
+            // transclude: true,
             priority: 100000,
             terminal: true,
-            scope: {data:'='},
             templateUrl: function(element, attr) {
 
                 var elemName = element[0].nodeName.toLowerCase();
-
+                // element.removeAttr('custom')
                 // $rootScope.components[elemName]
                 return $rootScope.components[elemName]['template_url']
-            },
-
-            compile:function(element, attr, transclude) {
-                return {
-
-                pre: function preLink(scope, p_elem, p_attr) {
-
-                    scope.public = scope.$parent.public
-                    scope.root = scope.$parent.root
-                    // scope.data = $parse(p_attr.data)(scope);
-                    console.log(scope.data)
-
-                    if (scope.data) {
-                        for (key in scope.data) {
-                            console.log('setting', key, scope.data[key])
-                            scope[key] = scope.data[key];
-                        }
-                    } else {
-                        for (attr in p_attr.$attr) {
-                            var camelAttrName = p_attr.$normalize(attr);
-
-                            if (p_attr[camelAttrName].length) {
-                                scope[camelAttrName] = p_attr[camelAttrName];
-                            }
-                        }
-                    }
-
-
-
-                    p_elem.removeAttr('custom');
-                    $compile(p_elem)(scope)
-
-                    transclude(scope, function(clone, innerScope) {
-                        console.log(clone)
-
-                        $compile(clone)(innerScope);
-
-                        // p_elem.contents(clone)
-
-                        // $compile(p_elem)(scope.$parent)
-                        // p_elem.removeAttr('custom')
-                        // p_elem.contents(clone)
-
-                    })
-
-
-                    },
-                post: angular.noop
-
             }
-        }
+
+            // compile:function(element, attr, transclude) {
+            //     return {
+
+            //     pre: function preLink(scope, p_elem, p_attr) {
+
+            //         // scope.public = scope.$parent.public
+            //         // scope.root = scope.$parent.root
+            //         // scope.data = $parse(p_attr.data)(scope);
+            //         console.log(scope.data)
+
+            //         if (scope.data) {
+            //             for (key in scope.data) {
+            //                 console.log('setting', key, scope.data[key])
+            //                 scope[key] = scope.data[key];
+            //             }
+            //         } else {
+            //             for (attr in p_attr.$attr) {
+            //                 var camelAttrName = p_attr.$normalize(attr);
+
+            //                 if (p_attr[camelAttrName].length) {
+            //                     scope[camelAttrName] = p_attr[camelAttrName];
+            //                 }
+            //             }
+            //         }
+
+
+
+            //         p_elem.removeAttr('custom');
+            //         $compile(p_elem)(scope)
+
+            //         transclude(scope, function(clone, innerScope) {
+            //             console.log(clone)
+
+            //             $compile(clone)(innerScope);
+
+            //             // p_elem.contents(clone)
+
+            //             // $compile(p_elem)(scope.$parent)
+            //             // p_elem.removeAttr('custom')
+            //             // p_elem.contents(clone)
+
+            //         })
+
+
+            //         },
+            //     post: angular.noop
+
+            // }
+        // }
         }
     }])
 
