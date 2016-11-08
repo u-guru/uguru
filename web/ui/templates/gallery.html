@@ -1,9 +1,12 @@
-<view layer="2" type='row' bg="#fadab0" set="gallery = ui.app.views.gallery.data">
-	<!--@gabrielle, @jeselle, how you can print data that you just locally set above, check console to see all-->
+<view class="ui-gallery" layer="2" type='row' bg="#fadab0" set="gallery = ui.app.views.gallery.data">
+	<!-- u on-init="s:[popup-modal-requested:public:1000]" -->
+
 	<!-- {{gallery}} -->
 	<item width="100" height="100" class="overflow-auto">
 
-		<!--removed this for faster load [:delay-9500] -->
+		<!-- <import url="ui.app.views.nav.url"></import> -->
+
+		<!-- removed this for faster load [:delay-9500] -->
 		<nav class="ui-gallery-nav">
 			<item u init-with="p:[transform:translateY(-500px)]"
 				on-init="a:[translateY:-500px:0px:500:easeInOutElastic:0:1:f]">
@@ -39,7 +42,7 @@
 
 				<a class="ui-gallery-menu-icon"
 					u on-click='s:[sidebar-modal-requested:public]'>
-					<graphic url="shared/templates/components/svg/main/menu.html"> </graphic>
+					<graphic url="shared/templates/components/svg/main/menu.html"></graphic>
 				</a>
 			</item>
 		</nav>
@@ -50,14 +53,15 @@
 					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 					<h3 class="ui-gallery-filter-header">Filters:</h3>
 				</li>
-				<filter-tag custom data="gallery.filterTags[0]">
-				</filter-tag>
-				<filter-tag custom data="gallery.filterTags[1]">
-				</filter-tag>
-				<filter-tag custom data="gallery.filterTags[2]">
-				</filter-tag>
 
+				<!-- <filter-tag custom data="gallery.filterTags[0]"></filter-tag>
+				<filter-tag custom data="gallery.filterTags[1]"></filter-tag>
+				<filter-tag custom data="gallery.filterTags[2]"></filter-tag> -->
 
+				<li u on-init="p:[op:0, tro:center center]"
+					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
+					<button class="ui-gallery-filter-btn">Cards</button>
+				</li>
 				<li u on-init="p:[op:0, tro:center center]"
 					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 					<button class="ui-gallery-filter-btn">Collections</button>
@@ -85,10 +89,9 @@
 			</ul>
 		</nav>
 
-			<!-- <div class="width-50p" ng-if='ui.app.views.gallery.data.rectangles'> -->
-<!--
-				<rectangle custom  data='ui.app.views.gallery.data.rectangles[0]'> </rectangle>
-				<div class="border-2 radius-2 full-x m15top" style="height:calc(200px - 7.5px); border-color:rgba(255,255,255,0.5)"></div> -->
+		<!-- <div class="width-50p" ng-if='ui.app.views.gallery.data.rectangles'> -->
+		<!-- <rectangle custom  data='ui.app.views.gallery.data.rectangles[0]'> </rectangle>
+			<div class="border-2 radius-2 full-x m15top" style="height:calc(200px - 7.5px); border-color:rgba(255,255,255,0.5)"></div> -->
 		<main class="ui-gallery-main"
 			u init-with="p:[tro:center center]"
 			on-init="s:[gallery-enter:children]">
@@ -107,6 +110,11 @@
 					on-mouseenter="s:[top-left:public] | a:[border-color:rgba(255,255,255,0.5):rgba(255,255,255,1):100:linear:0:1:f]"
 					on-mouseleave="s:[top-left-leave:public]">
 					<a u on-click='s:[popup-modal-requested:public]'></a>
+					<a class="ui-gallery-likes"
+						u on-click="c:[liked:add]">
+						<graphic url='shared/templates/components/svg/main/heart.html'></graphic>
+						<span class="block m05left txt-slate txt-18 semibold">2831</span>
+					</a>
 					<div>
 						<figure>
 							<div class="pf-tile-container">
@@ -231,7 +239,7 @@
 		when-sidebar-modal-requested='p:[tro:right top] | a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:1000:50:linear:0:1:f]'
 		when-sidebar-modal-requested-left='p:[tro:left top] | a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:1000:50:linear:0:1:f]'
 		when-sidebar-modal-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:1000:-1:50:linear:0:1:f]">
-		<!-- <graphic u absolute height='50px' width='50px' on-click='s:[sidebar-modal-closed:public]' class="flex-grow svg-stroke-10 top-0 right-0 stroke-white round" init-with='p:[transform:rotate(45deg)]' margin='2.5%' url="shared/templates/components/svg/main/plus.html"> </graphic> -->
+		<!-- <graphic u absolute height='50px' width='50px' on-click='s:[sidebar-modal-closed:public]' class="flex-grow svg-stroke-10 top-0 right-0 stroke-white round" init-with='p:[transform:rotate(45deg)]' margin='2.5%' url="shared/templates/components/svg/main/plus.html"></graphic> -->
 		<nav class="ui-gallery-nav">
 			<item>
 				<graphic url='ui/templates/components/svg/nav-logo.html' u on-click='s:[sidebar-modal-closed:public]'></graphic>
@@ -264,7 +272,7 @@
 
 				<a class="ui-gallery-menu-icon"
 					u on-click='s:[sidebar-modal-closed:public]'>
-					<graphic url="shared/templates/components/svg/main/times.html"> </graphic>
+					<graphic url="shared/templates/components/svg/main/times.html"></graphic>
 				</a>
 			</item>
 		</nav>
@@ -306,7 +314,7 @@
 
 				<a class="ui-gallery-menu-icon"
 					u on-click='s:[sidebar-modal-requested:public]'>
-					<graphic url="shared/templates/components/svg/main/menu.html"> </graphic>
+					<graphic url="shared/templates/components/svg/main/menu.html"></graphic>
 				</a>
 			</item>
 		</nav>
@@ -314,13 +322,16 @@
 		<div class="ui-gallery-single-main">
 			<article>
 				<div>
+					<a class="ui-gallery-likes"
+						u on-click="s:[liked-item:children]">
+						<svg viewBox="0 0 100 100">
+							<path d="M30.5307935,20.4928007 C26.3063917,20.4928007 22.0809823,22.1374151 18.849194,25.3409869 C12.383602,31.8055712 12.383602,42.2385939 18.849194,48.6749618 L27.2425724,57.0663247 L49.4146352,79.2948203 C49.7270313,79.5779923 50.2661665,79.5779923 50.5493385,79.2948203 L72.7788419,57.065317 L81.1712125,48.673954 C87.6095958,42.2375862 87.6095958,31.8045635 81.1712125,25.3399792 C74.707636,18.9046191 64.301822,18.9046191 57.83623,25.3399792 L50.0102033,33.1932146 L42.1841765,25.3399792 C38.9523883,22.1374151 34.756203,20.4928007 30.5307935,20.4928007 L30.5307935,20.4928007 L30.5307935,20.4928007 Z" stroke-linecap="round" stroke-linejoin="round"
+								u init-with="p:[fill:none]"
+								when-liked-item="a:[fill:rgba(228,135,151,0):rgba(228,135,151,1):400:easeOutExpo:0:1:f]"></path>
+						</svg>
+						<span class="block m05left txt-slate txt-18 semibold">2831</span>
+					</a>
 					<figure>
-						<div class="absolute top-0 right-0 bg-white flex-center-vertical p05xy" style="border-bottom-left-radius:2px">
-							<span class="stroke-rose svg-24 svg-stroke-6">
-								<graphic url="shared/templates/components/svg/main/heart.html"> </graphic>
-							</span>
-							<span class="block m05left txt-slate txt-18 semibold">2831</span>
-						</div>
 						<div class="pf-tile-container"
 							u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 							on-init="s:[academic-tile-init:public, aca-border:children:500, aca-top:children:500]"
@@ -415,28 +426,26 @@
 							</div>
 						</div>
 					</figure>
-					<div class="flex-wrap full-x bg-white-80p"
+					<div class="ui-gallery-single-desc"
 						u init-with="p:[tro:top center, transform:rotateX(90deg), op:0]"
 						when-popup-enter="a:[rotateX:90deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:100:linear:0:1:f]">
-						<header class="width-40p">
-							<h1 class="p15top-p15x txt-36 black txt-slate"
-								u init-with="p:[op:0]"
+						<header>
+							<h1 u init-with="p:[op:0]"
 								when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">Profile Tile</h1>
-							<h4 class="flex-center-vertical p15x">
-								<span class="txt-18 txt-slate semibold">by <a class="bold txt-stone">Jeselle Obina</a></span>
-								<span class="user-icon-24 border-stone margin-none m10left"></span>
+							<h4>
+								<span>by <a>Jeselle Obina</a></span>
+								<span class="user-icon-24 border-stone"></span>
 							</h4>
-							<h4 class="flex-center-vertical p15x">
-								<span class="txt-18 txt-slate semibold">Last updated 11/07/16, <a class="bold txt-stone">#028</a></span>
+							<h4>
+								<span>Last updated 11/07/16, <a>#028</a></span>
 							</h4>
 						</header>
-						<aside class="width-60p"
-							u init-with="p:[op:0]"
+						<aside u init-with="p:[op:0]"
 							when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]:delay-400">
-							<p class="txt-18 semibold p15x-p15top txt-slate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 						</aside>
-						<footer class="width-100p">
-							<ul class="flex-wrap p15-grid">
+						<footer>
+							<ul>
 								<li u init-with="p:[op:0]"
 									when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]:delay-100">
 									<a class="chip bg bg-stone">profile</a>
@@ -491,6 +500,16 @@
 										</div>
 									</a>
 								</li>
+								<li>
+									<a class="block radius-2 border-2 border-stone">
+										<figure class="bg-stone-25p margin-none p15xy">
+											<svg></svg>
+										</figure>
+										<div class="bg-white border-2-top border-stone">
+											<h4 class="txt-18 txt-stone semibold p10xy txt-center">Request Tile</h4>
+										</div>
+									</a>
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -508,28 +527,28 @@
 				<li u init-with="p:[op:0]"
 					when-popup-enter="a:[slideInUp-subtle:1000:linear:0:1:f]:delay-1000">
 					<a u on-click='s:[popup-closed:public]'>
-						<graphic url="shared/templates/components/svg/main/grid.html"> </graphic>
+						<graphic url="shared/templates/components/svg/main/grid.html"></graphic>
 					</a>
 				</li>
 				<li u init-with="p:[op:0]"
 					when-popup-enter="a:[slideInUp-subtle:1000:linear:0:1:f]:delay-1050">
 					<a u on-click='s:[popup-closed:public]'>
-						<graphic url="shared/templates/components/svg/main/left.html"> </graphic>
+						<graphic url="shared/templates/components/svg/main/left.html"></graphic>
 					</a>
 				</li>
 				<li class="double" u init-with="p:[op:0]"
 					when-popup-enter="a:[slideInUp-subtle:1000:linear:0:1:f]:delay-1100">
 					<a u on-click='s:[popup-closed:public]'>
-						<graphic url="shared/templates/components/svg/main/up.html"> </graphic>
+						<graphic url="shared/templates/components/svg/main/up.html"></graphic>
 					</a>
 					<a u on-click='s:[popup-closed:public]'>
-						<graphic url="shared/templates/components/svg/main/down.html"> </graphic>
+						<graphic url="shared/templates/components/svg/main/down.html"></graphic>
 					</a>
 				</li>
 				<li u init-with="p:[op:0]"
 					when-popup-enter="a:[slideInUp-subtle:1000:linear:0:1:f]:delay-1150">
 					<a u on-click='s:[popup-closed:public]'>
-						<graphic url="shared/templates/components/svg/main/right.html"> </graphic>
+						<graphic url="shared/templates/components/svg/main/right.html"></graphic>
 					</a>
 				</li>
 			</ul>
@@ -537,28 +556,28 @@
 				<li u init-with="p:[op:0]"
 					when-nav-enter="a:[slideInUp-subtle:1000:linear:0:1:f]">
 					<a u on-click='s:[popup-closed:public]'>
-						<graphic url="shared/templates/components/svg/main/more.html"> </graphic>
+						<graphic url="shared/templates/components/svg/main/more.html"></graphic>
 					</a>
 				</li>
 				<li u init-with="p:[op:0]"
 					when-nav-enter="a:[slideInUp-subtle:1000:linear:0:1:f]">
 					<a u on-click='s:[popup-closed:public]'>
-						<graphic url="shared/templates/components/svg/main/left.html"> </graphic>
+						<graphic url="shared/templates/components/svg/main/left.html"></graphic>
 					</a>
 				</li>
 				<li u init-with="p:[op:0]"
 					when-nav-enter="a:[slideInUp-subtle:1000:linear:0:1:f]">
 					<a u on-click='s:[popup-closed:public]'>
-						<graphic url="shared/templates/components/svg/main/up.html"> </graphic>
+						<graphic url="shared/templates/components/svg/main/up.html"></graphic>
 					</a>
 					<a u on-click='s:[popup-closed:public]'>
-						<graphic url="shared/templates/components/svg/main/down.html"> </graphic>
+						<graphic url="shared/templates/components/svg/main/down.html"></graphic>
 					</a>
 				</li>
 				<li u init-with="p:[op:0]"
 					when-nav-enter="a:[slideInUp-subtle:1000:linear:0:1:f]">
 					<a u on-click='s:[popup-closed:public]'>
-						<graphic url="shared/templates/components/svg/main/right.html"> </graphic>
+						<graphic url="shared/templates/components/svg/main/right.html"></graphic>
 					</a>
 				</li>
 			</ul> -->
@@ -571,7 +590,7 @@
 					<span class="block m10x">Academic</span>
 					<a class="flex-center svg-24 svg-stroke-6 stroke-aero"
 						u on-click='s:[popup-closed:public]'>
-						<graphic url="shared/templates/components/svg/main/down.html"> </graphic>
+						<graphic url="shared/templates/components/svg/main/down.html"></graphic>
 					</a>
 				</div>
 			</div>

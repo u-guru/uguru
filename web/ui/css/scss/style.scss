@@ -16,17 +16,114 @@
 		margin: 0 auto;
 		> div:first-child {
 			padding: 15px 15px 0;
+			position: relative;
+			.ui-gallery-likes {
+				top: 17px!important;
+				right: 17px!important;
+			}
 			> figure {
 				@include flex;
 				@include flex-center;
 				position: relative;
 				width: 100%;
 				padding: 30px 15px;
-				border: 2px solid white;
+				border: 2px solid rgba(white, .8);
 				border-bottom: 0;
 				border-radius: 2px 2px 0 0;
 				background: rgba($charcoal, .25);
+				.fixed {
+					position: absolute!important;
+				}
 			}
+		}
+	}
+}
+
+.ui-gallery-single-desc {
+	@include flex;
+	@include flex-wrap;
+	width: 100%;
+	background: rgba(white, .8);
+	border-radius: 0 0 2px 2px;
+	color: $slate;
+	header, aside {
+		a {
+			font-weight: 700;
+			color: $stone;
+			&:hover, &:focus {
+				color: $neptune;
+			}
+			&:active {
+				color: mix($stone, $neptune);
+			}
+		}
+	}
+	header {
+		width: 40%;
+		h1 {
+			padding: 15px 15px 0;
+			font-size: 36px;
+			font-weight: 900;
+		}
+		h4 {
+			@include flex;
+			@include flex-center-vertical;
+			padding: 0 15px;
+			font-size: 18px;
+			font-weight: 600;
+		}
+		.user-icon-24 {
+			margin-left: 10px;
+		}
+	}
+	aside {
+		width: 60%;
+		font-size: 18px;
+		font-weight: 600;
+		p {
+			padding: 15px 15px 0;
+		}
+	}
+	footer {
+		width: 100%;
+		ul {
+			@include flex;
+			@include flex-wrap;
+			padding: 7.5px;
+			li {
+				padding: 7.5px;
+			}
+		}
+	}
+}
+
+.ui-gallery-likes {
+	@include flex;
+	@include flex-center-vertical;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 3;
+	background: rgba(white, .8);
+	padding: 5px;
+	border-bottom-left-radius: 2px;
+	svg {
+		width: 24px;
+		height: 24px;
+		* {
+			stroke: $rose;
+			stroke-width: 6px;
+		}
+	}
+	&:hover, &:focus {
+		background: white;
+		svg * {
+			fill: rgba($rose, .5)!important;
+		}
+	}
+	&:active, &.liked {
+		svg * {
+			fill: $rose!important;
 		}
 	}
 }
@@ -262,7 +359,7 @@
 			}
 		}
 	}
-	> a {
+	> a:first-child:empty {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -284,6 +381,9 @@
 				}
 			}
 		}
+	}
+	.ui-gallery-likes {
+		z-index: 3;
 	}
 }
 
