@@ -63,14 +63,9 @@
 			when-bot-left="a:[rotateX:0deg:10deg:100:easeOutSine:0:1:f, rotateY:0deg:-5deg:100:easeOutSine:0:1:f]"
 			when-bot-left-leave="a:[rotateX:10deg:0deg:100:easeInSine:0:1:f, rotateY:-5deg:0deg:100:easeInSine:0:1:f]" -->
 			<div class="width-50p">
-				<div class="ui-gallery-item"
-					u init-with="p:[op:0, tr:translateX(-750px)]"
-					when-gallery-enter="a:[opacity:0:1:500:linear:0:1:f, translateX:-750px:0px:300:easeOutExpo:0:1:f]:delay-250"
-					on-mouseenter="s:[top-left:public] | a:[border-color:rgba(255,255,255,0.5):rgba(255,255,255,1):100:linear:0:1:f]"
-					on-mouseleave="s:[top-left-leave:public]">
-					<a u on-click='s:[popup-modal-requested:public]'></a>
-					<tile custom data="tiles[0]"> </tile>
-				</div>
+
+					<tile custom data="gallery.tiles[0]"> </tile>
+
 				<div class="ui-gallery-item m15top" style="height:calc(200px - 7.5px)"
 					u init-with="p:[transform-origin:left bottom, transform:translateX(-50px) scale(0)]"
 					when-gallery-enter="a:[translateX:-50px:0px:300:easeInExpo:0:1:f, scale:0:1:350:easeOutCubic:0:1:f]:delay-550"

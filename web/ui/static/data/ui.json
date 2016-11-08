@@ -30,7 +30,23 @@
                     ],
                     "tiles": [
                         {
-                            "url": "ui/templates/components/cards/profile-tile.tpl"
+                            "import_url": "ui/templates/components/custom/cards/profile-tile.html",
+                            "name": "Profile Tile",
+                            "chips": [
+                                {
+                                    "bg": "rose",
+                                    "name": "profile"
+                                },
+                                {
+                                    "bg": "rose",
+                                    "name": "tile"
+                                },
+                                {
+                                    "bg": "rose",
+                                    "name": "card"
+                                }
+                            ]
+
                         }
                     ]
                 }
@@ -50,6 +66,10 @@
         "filter-tag": {
             "template_url":"ui/templates/components/custom/filter-tag.tpl",
             "fields": ["name", "background"]
+        },
+        "tile": {
+            "template_url": "ui/templates/components/custom/tile.tpl",
+            "fields": ["import_url"]
         }
     },
     "spec": {

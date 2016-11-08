@@ -75,8 +75,13 @@ angular.module('uguru.shared.directives')
     replace:true,
     scope: true,
     templateUrl: function(element, attr) {
+      var attrUrl = $parse(attr.url)
 
       var urlSplit = attr.url.replace('ui.','').split('.');
+
+      if (urlSplit.length === 2) {
+        return attr.url
+      }
       var ptr = $rootScope.ui.data;
       var hasSkip = false;
       urlSplit.forEach(function(url_split, i) {
