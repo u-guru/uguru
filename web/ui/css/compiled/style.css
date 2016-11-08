@@ -1,12 +1,35 @@
-.ui-gallery-menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
+.ui-gallery-single-main {
   height: 100%;
-  background: rgba(85, 95, 123, 0.95); }
+  width: 100%;
+  max-width: 830px;
+  margin: 0 auto; }
+  .ui-gallery-single-main > article {
+    padding: 15px; }
+    .ui-gallery-single-main > article > figure {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+      padding: 30px 15px;
+      border: 2px solid white;
+      border-bottom: 0;
+      border-radius: 2px 2px 0 0;
+      background: rgba(43, 50, 52, 0.25); }
 
-.ui-gallery-item-footer {
+.ui-gallery-single-footer {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -19,6 +42,67 @@
   bottom: 0;
   left: 0;
   width: 100%; }
+  .ui-gallery-single-footer ul {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    padding: 1px; }
+    .ui-gallery-single-footer ul li {
+      padding: 1px; }
+      .ui-gallery-single-footer ul li a {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        background: white;
+        border: 2px solid transparent;
+        border-radius: 2px;
+        transition: border 300ms ease-in-out, background 300ms ease-in-out; }
+        .ui-gallery-single-footer ul li a svg {
+          width: 24px;
+          height: 24px; }
+          .ui-gallery-single-footer ul li a svg * {
+            fill: none;
+            stroke: #9cbdbe;
+            stroke-width: 6px;
+            stroke-linecap: round;
+            stroke-linejoin: round; }
+        .ui-gallery-single-footer ul li a:hover, .ui-gallery-single-footer ul li a:focus {
+          background: rgba(64, 72, 75, 0.5);
+          border-color: rgba(64, 72, 75, 0.5); }
+          .ui-gallery-single-footer ul li a:hover svg *, .ui-gallery-single-footer ul li a:focus svg * {
+            stroke: white; }
+        .ui-gallery-single-footer ul li a:active {
+          background: #9cbdbe;
+          border-color: #76a3ab; }
+          .ui-gallery-single-footer ul li a:active svg * {
+            stroke: white; }
+      .ui-gallery-single-footer ul li.double a {
+        height: 23px; }
+        .ui-gallery-single-footer ul li.double a:first-child {
+          margin-bottom: 2px; }
+      .ui-gallery-single-footer ul li:first-child a svg {
+        width: 36px;
+        height: 36px; }
+        .ui-gallery-single-footer ul li:first-child a svg * {
+          stroke-width: 4px; }
 
 .ui-gallery-nav {
   -ms-box-orient: horizontal;
@@ -81,6 +165,30 @@
     .ui-gallery-menu-icon:active svg * {
       stroke: white; }
 
+.ui-gallery-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(85, 95, 123, 0.95); }
+
+.ui-gallery-filter-header {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 36px;
+  font-size: 24px;
+  font-weight: 600; }
+
 .ui-gallery-filter-bar {
   max-width: 1030px;
   margin-left: auto;
@@ -99,22 +207,6 @@
     padding: 7.5px; }
     .ui-gallery-filter-bar ul li {
       padding: 7.5px; }
-
-.ui-gallery-filter-header {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-align-items: center;
-  align-items: center;
-  height: 36px;
-  font-size: 24px;
-  font-weight: 600; }
 
 .ui-gallery-filter-btn {
   display: block;

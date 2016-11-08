@@ -1,21 +1,94 @@
 @import '../../../shared/css/scss/partials/mixin';
 
-.ui-gallery-menu {
-	position: fixed;
-	top: 0;
-	right: 0;
-	width: 100%;
+.ui-gallery-single-main {
 	height: 100%;
-	background: rgba($stone, .95);
+	width: 100%;
+	max-width: 830px;
+	margin: 0 auto;
+	> article {
+		padding: 15px;
+		> figure {
+			@include flex;
+			@include flex-center;
+			position: relative;
+			width: 100%;
+			padding: 30px 15px;
+			border: 2px solid white;
+			border-bottom: 0;
+			border-radius: 2px 2px 0 0;
+			background: rgba($charcoal, .25);
+		}
+	}
 }
 
-.ui-gallery-item-footer {
+.ui-gallery-single-footer {
 	@include flex;
 	justify-content: space-between;
 	position: fixed;
 	bottom: 0;
 	left: 0;
 	width: 100%;
+	ul {
+		@include flex;
+		padding: 1px;
+		li {
+			padding: 1px;
+			a {
+				@include flex;
+				@include flex-center;
+				width: 48px;
+				height: 48px;
+				background: white;
+				border: 2px solid transparent;
+				border-radius: 2px;
+				transition: border 300ms ease-in-out, background 300ms ease-in-out;
+				svg {
+					width: 24px;
+					height: 24px;
+					* {
+						@include svg-stroke($aero, 6);
+					}
+				}
+				&:hover, &:focus {
+					background: rgba($slate, .5);
+					border-color: rgba($slate, .5);
+					svg {
+						* {
+							stroke: white;
+						}
+					}
+				}
+				&:active {
+					background: $aero;
+					border-color: $neptune;
+					svg {
+						* {
+							stroke: white;
+						}
+					}
+				}
+			}
+			&.double {
+				a {
+					height: 23px;
+					&:first-child {
+						margin-bottom: 2px;
+					}
+				}
+			}
+			&:first-child {
+				a {
+					svg {
+						width: 36px;
+						height: 36px;
+						* {
+							stroke-width: 4px;
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 .ui-gallery-nav {
@@ -70,6 +143,23 @@
 	}
 }
 
+.ui-gallery-menu {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba($stone, .95);
+}
+
+.ui-gallery-filter-header {
+	@include flex;
+	@include flex-center-vertical;
+	height: 36px;
+	font-size: 24px;
+	font-weight: 600;
+}
+
 .ui-gallery-filter-bar {
 	max-width: 1030px;
 	margin-left: auto;
@@ -82,14 +172,6 @@
 			padding: 7.5px;
 		}
 	}
-}
-
-.ui-gallery-filter-header {
-	@include flex;
-	@include flex-center-vertical;
-	height: 36px;
-	font-size: 24px;
-	font-weight: 600;
 }
 
 .ui-gallery-filter-btn {
