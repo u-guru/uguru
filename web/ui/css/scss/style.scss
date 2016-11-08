@@ -1,22 +1,31 @@
 @import '../../../shared/css/scss/partials/mixin';
 
 .ui-gallery-single-main {
-	height: 100%;
+	height: calc(100% - 80px);
 	width: 100%;
 	max-width: 830px;
 	margin: 0 auto;
+	overflow: auto;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+	&::-moz-scrollbar {
+		display: none;
+	}
 	> article {
-		padding: 15px;
-		> figure {
-			@include flex;
-			@include flex-center;
-			position: relative;
-			width: 100%;
-			padding: 30px 15px;
-			border: 2px solid white;
-			border-bottom: 0;
-			border-radius: 2px 2px 0 0;
-			background: rgba($charcoal, .25);
+		> div:first-child {
+			padding: 15px 15px 0;
+			> figure {
+				@include flex;
+				@include flex-center;
+				position: relative;
+				width: 100%;
+				padding: 30px 15px;
+				border: 2px solid white;
+				border-bottom: 0;
+				border-radius: 2px 2px 0 0;
+				background: rgba($charcoal, .25);
+			}
 		}
 	}
 }
@@ -721,4 +730,32 @@
 }
 .stroke-rose * {
 	stroke: $rose!important;
+}
+
+.border-aero {
+	border-color: $aero!important;
+}
+.border-copper {
+	border-color: $copper!important;
+}
+.border-sienna {
+	border-color: $sienna!important;
+}
+.border-cream {
+	border-color: $cream!important;
+}
+.border-olive {
+	border-color: $olive!important;
+}
+.border-neptune {
+	border-color: $neptune!important;
+}
+.border-stone {
+	border-color: $stone!important;
+}
+.border-cosmic {
+	border-color: $cosmic!important;
+}
+.border-rose {
+	border-color: $rose!important;
 }
