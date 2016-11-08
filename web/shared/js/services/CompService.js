@@ -40,10 +40,13 @@ function CompService($timeout, $compile) {
     // }
 
     if (attr.name && attr.name.length) {
-      var statePrecursor = 'when-' + attr.name.toLowerCase() + '-requested';
+
+      var statePrecursor = 'when-modal-' + attr.name.toLowerCase() + '-requested';
+
       for (key in attr.$attr) {
         if (key.indexOf('when') === 0) {
           var whenStateNameContents = attr[key];
+
           if (key.toLowerCase().indexOf('requested')>-1) {
 
             if (whenStateNameContents.toLowerCase().indexOf('z-index') === -1) {
@@ -51,6 +54,7 @@ function CompService($timeout, $compile) {
               var animationStr = postAnimationStr.split(']')
               var newContents = "a:[" +  animationStr[0] + ',' + "z-index:-10:100:50:linear:0:1:f]" + animationStr.slice(1).join("]")
               attr.$set(key, newContents)
+              console.log(attr)
             }
           }
           if (key.toLowerCase().indexOf('close')>-1) {

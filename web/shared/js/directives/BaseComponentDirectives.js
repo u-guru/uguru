@@ -968,9 +968,21 @@ angular.module('uguru.shared.directives.base.components')
                 elem[0].style.position = 'fixed';
                 CompService.initializeModalAttr(elem, attr, _window);
                 var children = elem[0].innerHTML
+                if (attr.scaleTo && attr.scaleTo.length) {
+                    var elemToScale = document.querySelector(attr.scaleTo);
+                    if (elemToScale) {
+                        var elemRect = elemToScale.getBoundingClientRect();
+                        console.log(elemRect)
+                        for (key in elemRect) {
+                            elem.css(key, elemRect[key] + 'px');
+                        }
+                    }
+
+                }
+
 
                 return {
-                    pre: function preLink(scope, p_elem, attr) {
+                    pre: function preLink(scope, p_elem, p_attr) {
 
                         var _window = scope.root.window;
                         var windowWidth = scope.root.window.width;
@@ -985,6 +997,32 @@ angular.module('uguru.shared.directives.base.components')
                                     // p_elem.append(clone);
                                     parent.parent().append(p_elem);
                                     // $compile(p_elem.contents)(scope)
+                                    p_elem.addClass('full-xy absolute')
+                                    if (attr.scaleTo && attr.scaleTo.length) {
+                                        var elemToScale = document.querySelector(attr.scaleTo);
+                                        if (elemToScale) {
+                                            var elemRect = elemToScale.getBoundingClientRect();
+                                            var ratioWidth;
+                                            var ratioHeight;
+                                            for (key in elemRect) {
+                                                if (key === 'width') {
+                                                    ratioWidth = _window.width/elemRect[key];
+                                                    console.log(key, 'width:' +  _window.width, 'ratio:' + ratioWidth, 'inverse:' + 1/ratioWidth, p_elem)
+
+                                                }
+                                                else if (key === 'height') {
+                                                    ratioHeight = _window.height/elemRect[key];
+                                                    console.log(key, 'width:' +  _window.height, 'ratio:' + ratioHeight, 'inverse:' + 1/ratioHeight, p_elem)
+                                                }
+
+                                            }
+                                            if (ratioHeight && ratioWidth) {
+                                                elem.css('transform', 'scaleX(' + 1/ratioWidth +  ') scaleY(' +  1/ratioHeight  + ')' )
+                                            }
+                                        }
+
+                                    }
+
                                     // p_elem.attr('u', '')
                                     // $compile(p_elem)(scope.$parent)
                                     // if (parent[0].contains(p_elem[0])) {
