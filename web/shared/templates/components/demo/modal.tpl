@@ -1,5 +1,6 @@
 <div class="full-xy flex-center">
     <main-view>
+
         <ul class="flex-wrap-center p15-grid">
 
             <li u on-click='send:[modal-green-tile-requested:public]'>
@@ -19,6 +20,7 @@
             </div>
         </ul>
          <modal u name="green-tile" scale-to='#green-tile' class='bg-cerise full-xy' when-modal-green-tile-requested="a:[slideInUp-subtle:500:easeOutCirc:0:1:f,scaleX:0.133:1:1000:easeOutCirc:0:1:f,scaleY:0.1000787:1:1000:easeOutCirc:0:1:f,zIndex:-100:5:20:linear:0:1:f]" ng-attr-accept-keys="esc"   on-key-up="send:[modal-green-tile-closed:self]"  when-modal-green-tile-closed="a:[scaleX:1:0.133:1000:easeOutCirc:0:1:f,scaleY:1:0.10070:1000:easeOutCirc:0:1:f, zIndex:5:-100:20:linear:500:1:f]">
+
 
         </modal>
 

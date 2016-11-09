@@ -1,17 +1,75 @@
-<view layer="2" type='row' bg="#fadab0" set="gallery = ui.app.views.gallery.data" >
-	<!--@gabrielle, @jeselle, how you can print data that you just locally set above, check console to see all-->
+<view class="ui-gallery" layer="2" type='row' bg="cream" set="gallery = ui.app.views.gallery.data">
+	<!-- u on-init="s:[login-modal-requested:public:1000]" -->
+	<!-- u on-init="s:[sidebar-modal-requested:public:1000]" -->
+	<!-- u on-init="s:[popup-modal-requested:public:1000]" -->
 
-	<item width="100" height="100" class="overflow-auto" ng-if='gallery.filterTags'>
+	<!-- {{gallery}} -->
+	<item width="100" height="100" class="overflow-auto">
+		<!-- <import class="z-index-100" url="ui.app.views.nav.url"></import> -->
 
-		<!--removed this for faster load [:delay-9500] -->
+		<!-- removed this for faster load [:delay-9500] -->
+		<nav class="ui-nav">
+			<item u init-with="p:[transform:translateY(-500px)]"
+				on-init="a:[translateY:-500px:0px:500:easeInOutElastic:0:1:f]">
+				<graphic url='ui/templates/components/svg/nav-logo.html' u on-click='s:[sidebar-modal-requested-left:public]'></graphic>
+			</item>
+			<item class="flex">
+				<!-- took out the on-init :delay-10000 -->
+				<fieldset class="search-bar"
+					u init-with="p:[tr:translateX(500px), width:48px]"
+					on-init="s:[search-bar-init:children, search-bar-enter:depth(0):1000]"
+					when-search-bar-enter="a:[translateX:500px:0px:250:easeInOutElastic:0:1:f]"
+					on-click="s:[search-bar-clicked:depth(0), search-bar-icon:children:250]"
+					when-search-bar-clicked="a:[width:48px:500px:250:easeOutBack:0:1:f]"
+					on-exit="a:[opacity:1:0:250:easeOutSine:0:1:f]">
+					<div>
+						<label for="search-bar">
+							<svg viewBox="0 0 100 100">
+								<path d="M62.994485,62.994485 L85.6624699,85.6624699"
+									u init-with="p:[sda:32.06, sdo:32.06]"
+									when-search-bar-init="a:[stroke-dashoffset:32.06:0:200:easeOutSine:750:1:f]"></path>
+								<circle cx="42.5" cy="42.5" r="28.5"
+									u on-init="s:[init-with:self:700]"
+									init-with="p:[sda:179.07, sdo:179.07]"
+									when-search-bar-init="a:[stroke-dashoffset:179.07:0:200:easeOutSine:0:1:f]:delay-500"></circle>
+							</svg>
+						</label>
 
-		<import class='z-index-100' url="ui.app.views.nav.url"></import>
-		<nav class="ui-gallery-filter-bar" style="margin-top:-15px;" ng-if='gallery.filterTags'>
+						<input id="search-bar" placeholder="Filter" value=""
+							u init-with="p:[op:0]"
+							when-search-bar-icon="a:[opacity:0:1:250:easeOutSine:0:1:f]"/>
+					</div>
+				</fieldset>
+
+				<div class="ui-menu-container"
+					u init-with="p:[op:1]"
+					when-login-modal-requested="a:[opacity:1:0:250:linear:0:1:f]"
+					when-login-modal-closed="a:[opacity:0:1:250:linear:0:1:f]">
+					<a class="ui-menu-icon"
+						u init-with="p:[z-index:-1, op:0]"
+						on-click='s:[sidebar-modal-requested:public]'
+						when-login-enter="p:[z-index:1, op:1]"
+						when-logout-exit="p:[z-index:-1, op:0]">
+						<graphic url="shared/templates/components/svg/main/menu.html"></graphic>
+					</a>
+					<a class="ui-menu-icon"
+						u init-with="p:[z-index:1, op:1]"
+						on-click='s:[login-modal-requested:public]'
+						when-login-enter="p:[z-index:-1, op:0]"
+						when-logout-exit="p:[z-index:1, op:1]">
+						<graphic url="shared/templates/components/svg/main/user.html"></graphic>
+					</a>
+				</div>
+			</item>
+		</nav>
+
+		<nav class="ui-gallery-filter-bar" style="margin-top:-15px;">
 			<ul u on-init="s:[filter-enter:children:easeInCirc-1250]">
 				<li u on-init="p:[op:0, tro:center center]"
 					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 					<h3 class="ui-gallery-filter-header">Filters:</h3>
 				</li>
+
 				<filter-tag custom data="gallery.filterTags[0]"> </filter-tag>
 				<filter-tag custom data="gallery.filterTags[1]"> </filter-tag>
 				<filter-tag custom data="gallery.filterTags[2]"> </filter-tag>
@@ -20,37 +78,9 @@
 				<filter-tag custom data="gallery.filterTags[5]"> </filter-tag>
 				<filter-tag custom data="gallery.filterTags[6]"> </filter-tag>
 				<filter-tag custom data="gallery.filterTags[7]"> </filter-tag>
-				<!-- <li u on-init="p:[op:0, tro:center center]"
-					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
-					<button class="ui-gallery-filter-btn">Collection</button>
-				</li>
-				<li u on-init="p:[op:0, tro:center center]"
-					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
-					<button class="ui-gallery-filter-btn">Graphic</button>
-				</li>
-				<li u on-init="p:[op:0, tro:center center]"
-					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
-					<button class="ui-gallery-filter-btn">Input</button>
-				</li>
-				<li u on-init="p:[op:0, tro:center center]"
-					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
-					<button class="ui-gallery-filter-btn">Map</button>
-				</li>
-				<li u on-init="p:[op:0, tro:center center]"
-					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
-					<button class="ui-gallery-filter-btn">Media</button>
-				</li>
-				<li u on-init="p:[op:0, tro:center center]"
-					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
-					<button class="ui-gallery-filter-btn">Navigation</button>
-				</li> -->
 			</ul>
 		</nav>
 
-			<!-- <div class="width-50p" ng-if='ui.app.views.gallery.data.rectangles'> -->
-<!--
-				<rectangle custom  data='ui.app.views.gallery.data.rectangles[0]'> </rectangle>
-				<div class="border-2 radius-2 full-x m15top" style="height:calc(200px - 7.5px); border-color:rgba(255,255,255,0.5)"></div> -->
 		<main class="ui-gallery-main"
 			u init-with="p:[tro:center center]"
 			on-init="s:[gallery-enter:children]">
@@ -63,10 +93,34 @@
 			when-bot-left="a:[rotateX:0deg:10deg:100:easeOutSine:0:1:f, rotateY:0deg:-5deg:100:easeOutSine:0:1:f]"
 			when-bot-left-leave="a:[rotateX:10deg:0deg:100:easeInSine:0:1:f, rotateY:-5deg:0deg:100:easeInSine:0:1:f]" -->
 			<div class="width-50p">
-
-					<tile custom data="gallery.tiles[0]"> </tile>
-
-				<div class="ui-gallery-item m15top" style="height:calc(200px - 7.5px)"
+				<tile custom data="gallery.tiles[0]"> </tile>
+			</div>
+			<div class="width-25p">
+				<div class="ui-gallery-item" style="height:calc(200px - 7.5px)"
+					u init-with="p:[op:0, tr:translateY(-50px) translateX(50px)]"
+					when-gallery-enter="a:[opacity:0:1:500:linear:0:1:f, translateY:-50px:0px:300:easeOutExpo:500:1:f, translateX:50px:0px:500:easeOutExpo:500:1:f]">
+					<div class="full-xy"></div>
+				</div>
+			</div>
+			<div class="width-25p">
+				<div class="ui-gallery-item" style="height:400px"
+					u init-with="p:[op:0, tro:left top, tr:rotate(-15deg)]"
+					when-gallery-enter="a:[opacity:0:1:500:linear:0:1:f, rotate:-15deg:0deg:300:easeInCirc:0:1:f]:delay-1050"
+					on-mouseenter="s:[top-right:public]"
+					on-mouseleave="s:[top-right-leave:public]">
+					<!-- on-mouseenter="s:[top-right:parent]" -->
+					<div class="full-xy"></div>
+				</div>
+			</div>
+			<div class="width-25p">
+				<div class="ui-gallery-item" style="height:calc(200px - 7.5px)"
+					u init-with="p:[transform-origin:right top, transform:scale(0)]"
+					when-gallery-enter="a:[scale:0:1:550:easeOutCubic:0:1:f]:delay-450">
+					<div class="full-xy"></div>
+				</div>
+			</div>
+			<div class="width-50p">
+				<div class="ui-gallery-item" style="height:calc(200px - 7.5px)"
 					u init-with="p:[transform-origin:left bottom, transform:translateX(-50px) scale(0)]"
 					when-gallery-enter="a:[translateX:-50px:0px:300:easeInExpo:0:1:f, scale:0:1:350:easeOutCubic:0:1:f]:delay-550"
 					on-mouseenter="s:[bot-left:public]"
@@ -74,30 +128,8 @@
 					<div class="full-xy"></div>
 				</div>
 			</div>
-			<div class="flex-wrap width-50p">
-				<div class="width-60p p15right">
-					<div class="ui-gallery-item" style="height:calc(200px - 7.5px)"
-						u init-with="p:[transform-origin:right top, transform:scale(0)]"
-						when-gallery-enter="a:[scale:0:1:550:easeOutCubic:0:1:f]:delay-450">
-						<div class="full-xy"></div>
-					</div>
-					<div class="ui-gallery-item m15top" style="height:calc(200px - 7.5px)"
-						u init-with="p:[op:0, tr:translateY(-50px) translateX(50px)]"
-						when-gallery-enter="a:[opacity:0:1:500:linear:0:1:f, translateY:-50px:0px:300:easeOutExpo:500:1:f, translateX:50px:0px:500:easeOutExpo:500:1:f]">
-						<div class="full-xy"></div>
-					</div>
-				</div>
-				<div class="width-40p">
-					<div class="ui-gallery-item" style="height:400px"
-						u init-with="p:[op:0, tro:left top, tr:rotate(-15deg)]"
-						when-gallery-enter="a:[opacity:0:1:500:linear:0:1:f, rotate:-15deg:0deg:300:easeInCirc:0:1:f]:delay-1050"
-						on-mouseenter="s:[top-right:public]"
-						on-mouseleave="s:[top-right-leave:public]">
-						<!-- on-mouseenter="s:[top-right:parent]" -->
-						<div class="full-xy"></div>
-						</div>
-				</div>
-				<div class="ui-gallery-item m15top" style="height:calc(200px - 7.5px)"
+			<div class="width-25p">
+				<div class="ui-gallery-item" style="height:calc(200px - 7.5px)"
 					u init-with="p:[op:0, tr:translateY(50px)]"
 					when-gallery-enter="a:[opacity:0:1:500:linear:0:1:f, translateY:50px:0px:300:easeOutExpo:500:1:f]:delay-550"
 					on-mouseenter="s:[bot-right:public]"
@@ -108,13 +140,239 @@
 		</main>
 	</item>
 
-	<modal name='sidebar' class='ui-gallery-menu'
+	<modal name='login' class='ui-login'
 		u init-with='p:[op:0]'
-		when-sidebar-modal-requested='p:[tro:right top] | a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:1000:50:linear:0:1:f]'
-		when-sidebar-modal-requested-left='p:[tro:left top] | a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:1000:50:linear:0:1:f]'
-		when-sidebar-modal-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:1000:-1:50:linear:0:1:f]">
-		<!-- <graphic u absolute height='50px' width='50px' on-click='s:[sidebar-modal-closed:public]' class="flex-grow svg-stroke-10 top-0 right-0 stroke-white round" init-with='p:[transform:rotate(45deg)]' margin='2.5%' url="shared/templates/components/svg/main/plus.html"> </graphic> -->
-		<nav class="ui-gallery-nav">
+		when-login-modal-requested='p:[op:1, z-index:201]'
+		when-login-modal-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:201:-1:50:linear:450:1:f]">
+		<div class="ui-login-bg"
+			u init-with="p:[op:0]"
+			when-login-modal-requested="a:[opacity:0:1:500:easeInExpo:0:1:f]"></div>
+		<div class="ui-login-modal perspective-container">
+			<header>
+				<a u init-with="p:[left:100%]"
+					when-login-modal-requested="a:[left:100%:50%:250:linear:0:1:f]"
+					when-login-modal-closed="a:[left:50%:100%:250:linear:0:1:f]"
+					on-click='s:[login-modal-closed:public]'>
+					<graphic url="shared/templates/components/svg/main/user.html"></graphic>
+				</a>
+			</header>
+			<section u init-with="p:[op:0, tro:center top, transform:rotateX(-90deg)]"
+				when-login-modal-requested="a:[opacity:0:1:500:easeOutSine:0:1:f, rotateX:-90deg:0deg:500:easeOutExpo:0:1:f]:delay-250">
+				<h2>Login to save likes, submit, &amp; more!</h2>
+				<ul>
+					<li>
+						<div class="input-border no-label"
+							u on-init="s:[input-border-enter:depth(>2)]"
+							when-input-invalid="a:[translateY:0px:10px:100:linear:0:6:a]">
+							<input class="input-border dark" type="email" required placeholder=""
+								u on-valid="s:[input-valid:>children]"
+								on-invalid="s:[input-invalid:>children]"/>
+							<label u init-with="p:[opacity:0]"
+								on-init="a:[opacity:0.0:1.0:1000:linear:0:1:f]">
+								<svg class="input-icon email-icon" viewBox="0 0 100 100">
+									<g fill="none" stroke-linecap="round" stroke-linejoin="round" u
+										when-input-valid="s:[input-valid-stroke:self]"
+										when-input-invalid="s:[input-invalid-stroke:self]"
+										when-input-valid-stroke="p:[s:#43cb9d]:delay-125"
+										when-input-invalid-stroke="p:[s:#d3242c]:delay-125">
+										<path d="M63.9709069,63.9709069 C60.39544,67.5463738 55.4559785,69.757846 50,69.757846 C39.088043,69.757846 30.242154,60.911957 30.242154,50 C30.242154,39.088043 39.088043,30.242154 50,30.242154 C55.4732289,30.242154 60.4266694,32.4676325 64.00478,36.063048 C66.4130625,38.4829778 68.1983075,41.5235021 69.0996581,44.9237641 C69.5290494,46.5436031 69.757846,48.2450824 69.757846,50 C69.757846,53.9347216 69.2262746,59.3417259 73.4417381,62.5812267 C77.4282262,65.6447644 82.9286479,65.1002753 85.6110917,62.5812267 C88.2935356,60.0621781 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="email"
+											u init-with="p:[sdo:365.6]"
+											when-input-border-enter="a:[stroke-dashoffset:365.6:0:150:easeOutExpo:0:1:f]:delay-100"
+											when-input-valid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"
+											when-input-invalid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"></path>
+										<path d="M24.18272,71.5721092 C24.4439592,69.3159316 24.9647013,67.1463112 25.7181261,65.1010462 C26.4973699,62.9856927 27.5255171,61.0033636 28.7728947,59.1958778 C31.3054434,55.5261424 34.7416842,52.5771306 38.83328,50.6988292 C35.65568,47.7151492 33.65696,43.4911492 33.65696,38.7986692 C33.65696,29.7871492 40.98848,22.4556292 50,22.4556292 C59.01152,22.4556292 66.34304,29.7871492 66.34304,38.7986692 C66.34304,43.4911492 64.34432,47.7151492 61.16672,50.6988292 C63.2270545,51.6446532 65.2045108,52.7827477 66.8690034,54.2723156 C70.4316406,57.4605484 70.9115219,61.4646492 75.1875,63.7439461 C78.8737891,65.708911 83.2367172,64.6296883 85.6110917,62.5812267 C88.397258,60.177497 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="name"
+											u init-with="p:[sdo:365.6]"
+											when-input-border-enter="a:[stroke-dashoffset:365.6:0:150:easeOutExpo:0:1:f]:delay-100"
+											when-input-valid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"
+											when-input-invalid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"></path>
+										<path d="M47,61 L81.5,24.5" class="success-2"
+											u init-with="p:[op:0, sdo:50.3]"
+											when-input-valid="p:[op:1, sdo:4]:delay-375"
+											when-input-invalid="p:[op:0:delay-250, sdo:50.3]"></path>
+										<path d="M32.5,47.5 L47,61" class="success-1"
+											u init-with="p:[op:0, sdo:19.9]"
+											when-input-valid="p:[op:1, sdo:0]:delay-250"
+											when-input-invalid="p:[op:0:delay-125, sdo:19.8]:delay-250"></path>
+										<path d="M36,36 L64,64" class="error-1"
+											u init-with="p:[op:0, sdo:39.6]"
+											when-input-invalid="p:[op:1, sdo:0]:delay-250"
+											when-input-valid="p:[op:0:delay-175, sdo:39.6]"></path>
+										<path d="M64,36 L36,64" class="error-2"
+											u init-with="p:[op:0, sdo:39.6]"
+											when-input-invalid="p:[op:1, sdo:0]:delay-375"
+											when-input-valid="p:[op:0:delay-175, sdo:39.6]:delay-250"></path>
+									</g>
+								</svg>
+								<span class="label"
+									u init-with="p:[op:0, tr:rotateX(90deg), tro:bottom center]"
+									when-input-border-enter="a:[opacity:0:1:250:easeOutExpo:0:1:f, rotateX:90deg:0deg:250:easeOutExpo:0:1:f]:delay-200">Email</span>
+								<span class="input"
+									u init-with="p:[op:0]">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+								<div class="underline">
+									<div u init-with="p:[tr:scaleX(0)]"
+										when-input-border-enter="a:[scaleX:0:1:250:easeOutExpo:0:1:f]"></div>
+									<div></div>
+								</div>
+								<div class="borders">
+									<div>
+										<div u when-input-valid="p:[bg:#43cb9d]:delay-500"
+											when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+										<div u when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
+											when-input-invalid="p:[bg:#d3242c, tr:scale(1), op:1]"></div>
+									</div>
+									<div>
+										<div u when-input-valid="p:[bg:#43cb9d]:delay-500"
+											when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+										<div u when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
+											when-input-invalid="p:[bg:#d3242c, tr:scale(1), op:1]"></div>
+									</div>
+									<div>
+										<div u when-input-valid="p:[bg:#43cb9d]:delay-500"
+											when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+										<div u when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
+											when-input-invalid="p:[bg:#d3242c, tr:scale(1), op:1]"></div>
+									</div>
+									<div>
+										<div u when-input-valid="p:[bg:#43cb9d]:delay-500"
+											when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+										<div u when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
+											when-input-invalid="p:[bg:#d3242c, tr:scale(1), op:1]"></div>
+									</div>
+								</div>
+								<a>
+									<svg viewBox="0 0 100 100">
+										<circle cx="50" cy="50" r="36"
+											u when-input-valid="p:[s:#43cb9d, f:#43cb9d]:delay-500"
+											when-input-invalid="p:[s:#d3242c, f:#d3242c]:delay-500"></circle>
+										<path d="M62.7279221,37.2720779 L37.2720779,62.7279221"
+											u when-input-valid="p:[s:white]:delay-500"
+											when-input-invalid="p:[s:white]:delay-500"></path>
+										<path d="M37.2720779,37.2720779 L62.7279221,62.7279221"
+											u when-input-valid="p:[s:white]:delay-500"
+											when-input-invalid="p:[s:white]:delay-500"></path>
+									</svg>
+								</a>
+							</label>
+						</div>
+					</li>
+					<li>
+						<div class="input-border no-label"
+							u on-init="s:[input-border-enter:depth(>2)]"
+							when-input-invalid="a:[translateY:0px:10px:100:linear:0:6:a]">
+							<input class="input-border dark" type="email" required placeholder=""
+								u on-valid="s:[input-valid:>children]"
+								on-invalid="s:[input-invalid:>children]"/>
+							<label u init-with="p:[opacity:0]"
+								on-init="a:[opacity:0.0:1.0:1000:linear:0:1:f]">
+								<svg class="input-icon email-icon" viewBox="0 0 100 100">
+									<g fill="none" stroke-linecap="round" stroke-linejoin="round" u
+										when-input-valid="s:[input-valid-stroke:self]"
+										when-input-invalid="s:[input-invalid-stroke:self]"
+										when-input-valid-stroke="p:[s:#43cb9d]:delay-125"
+										when-input-invalid-stroke="p:[s:#d3242c]:delay-125">
+										<path d="M63.9709069,63.9709069 C60.39544,67.5463738 55.4559785,69.757846 50,69.757846 C39.088043,69.757846 30.242154,60.911957 30.242154,50 C30.242154,39.088043 39.088043,30.242154 50,30.242154 C55.4732289,30.242154 60.4266694,32.4676325 64.00478,36.063048 C66.4130625,38.4829778 68.1983075,41.5235021 69.0996581,44.9237641 C69.5290494,46.5436031 69.757846,48.2450824 69.757846,50 C69.757846,53.9347216 69.2262746,59.3417259 73.4417381,62.5812267 C77.4282262,65.6447644 82.9286479,65.1002753 85.6110917,62.5812267 C88.2935356,60.0621781 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="email"
+											u init-with="p:[sdo:365.6]"
+											when-input-border-enter="a:[stroke-dashoffset:365.6:0:150:easeOutExpo:0:1:f]:delay-100"
+											when-input-valid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"
+											when-input-invalid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"></path>
+										<path d="M24.18272,71.5721092 C24.4439592,69.3159316 24.9647013,67.1463112 25.7181261,65.1010462 C26.4973699,62.9856927 27.5255171,61.0033636 28.7728947,59.1958778 C31.3054434,55.5261424 34.7416842,52.5771306 38.83328,50.6988292 C35.65568,47.7151492 33.65696,43.4911492 33.65696,38.7986692 C33.65696,29.7871492 40.98848,22.4556292 50,22.4556292 C59.01152,22.4556292 66.34304,29.7871492 66.34304,38.7986692 C66.34304,43.4911492 64.34432,47.7151492 61.16672,50.6988292 C63.2270545,51.6446532 65.2045108,52.7827477 66.8690034,54.2723156 C70.4316406,57.4605484 70.9115219,61.4646492 75.1875,63.7439461 C78.8737891,65.708911 83.2367172,64.6296883 85.6110917,62.5812267 C88.397258,60.177497 89.2868458,57.3718152 89.8060548,53.9347216 C91.7706634,31.4800197 75.4920198,12.0798877 53.4860197,10.1546122 C31.4800197,8.22933664 12.0798877,24.5079802 10.1546122,46.5139803 C8.22933664,68.5199803 24.5079802,87.9201123 46.5139803,89.8453878 C57.5169803,90.8080256 67.8685133,87.2196836 75.7099557,80.6399321" class="name"
+											u init-with="p:[sdo:365.6]"
+											when-input-border-enter="a:[stroke-dashoffset:365.6:0:150:easeOutExpo:0:1:f]:delay-100"
+											when-input-valid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"
+											when-input-invalid="p:[sdo:-145.3, tr:rotate(-67.5deg)]"></path>
+										<path d="M47,61 L81.5,24.5" class="success-2"
+											u init-with="p:[op:0, sdo:50.3]"
+											when-input-valid="p:[op:1, sdo:4]:delay-375"
+											when-input-invalid="p:[op:0:delay-250, sdo:50.3]"></path>
+										<path d="M32.5,47.5 L47,61" class="success-1"
+											u init-with="p:[op:0, sdo:19.9]"
+											when-input-valid="p:[op:1, sdo:0]:delay-250"
+											when-input-invalid="p:[op:0:delay-125, sdo:19.8]:delay-250"></path>
+										<path d="M36,36 L64,64" class="error-1"
+											u init-with="p:[op:0, sdo:39.6]"
+											when-input-invalid="p:[op:1, sdo:0]:delay-250"
+											when-input-valid="p:[op:0:delay-175, sdo:39.6]"></path>
+										<path d="M64,36 L36,64" class="error-2"
+											u init-with="p:[op:0, sdo:39.6]"
+											when-input-invalid="p:[op:1, sdo:0]:delay-375"
+											when-input-valid="p:[op:0:delay-175, sdo:39.6]:delay-250"></path>
+									</g>
+								</svg>
+								<span class="label"
+									u init-with="p:[op:0, tr:rotateX(90deg), tro:bottom center]"
+									when-input-border-enter="a:[opacity:0:1:250:easeOutExpo:0:1:f, rotateX:90deg:0deg:250:easeOutExpo:0:1:f]:delay-200">Password</span>
+								<span class="input"
+									u init-with="p:[op:0]">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+								<div class="underline">
+									<div u init-with="p:[tr:scaleX(0)]"
+										when-input-border-enter="a:[scaleX:0:1:250:easeOutExpo:0:1:f]"></div>
+									<div></div>
+								</div>
+								<div class="borders">
+									<div>
+										<div u when-input-valid="p:[bg:#43cb9d]:delay-500"
+											when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+										<div u when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
+											when-input-invalid="p:[bg:#d3242c, tr:scale(1), op:1]"></div>
+									</div>
+									<div>
+										<div u when-input-valid="p:[bg:#43cb9d]:delay-500"
+											when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+										<div u when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
+											when-input-invalid="p:[bg:#d3242c, tr:scale(1), op:1]"></div>
+									</div>
+									<div>
+										<div u when-input-valid="p:[bg:#43cb9d]:delay-500"
+											when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+										<div u when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
+											when-input-invalid="p:[bg:#d3242c, tr:scale(1), op:1]"></div>
+									</div>
+									<div>
+										<div u when-input-valid="p:[bg:#43cb9d]:delay-500"
+											when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
+										<div u when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
+											when-input-invalid="p:[bg:#d3242c, tr:scale(1), op:1]"></div>
+									</div>
+								</div>
+								<a>
+									<svg viewBox="0 0 100 100">
+										<circle cx="50" cy="50" r="36"
+											u when-input-valid="p:[s:#43cb9d, f:#43cb9d]:delay-500"
+											when-input-invalid="p:[s:#d3242c, f:#d3242c]:delay-500"></circle>
+										<path d="M62.7279221,37.2720779 L37.2720779,62.7279221"
+											u when-input-valid="p:[s:white]:delay-500"
+											when-input-invalid="p:[s:white]:delay-500"></path>
+										<path d="M37.2720779,37.2720779 L62.7279221,62.7279221"
+											u when-input-valid="p:[s:white]:delay-500"
+											when-input-invalid="p:[s:white]:delay-500"></path>
+									</svg>
+								</a>
+							</label>
+						</div>
+					</li>
+				</ul>
+				<a class="forgot-pw-link">Forgot password?</a>
+				<a class="signup-link">Signup</a>
+			</section>
+			<footer u init-with="p:[op:0, tro:center center, tr:scaleX(0)]"
+				when-login-modal-requested="a:[opacity:0:1:250:easeOutSine:0:1:f, scaleX:0:1:250:easeOutBack:0:1:f]:delay-750">
+				<button class="bg-aero"
+					u on-click="s:[login-modal-closed:public, login-enter:public]">Login</button>
+			</footer>
+		</div>
+	</modal>
+
+	<modal name='sidebar' class='ui-menu'
+		u init-with='p:[op:0]'
+		when-sidebar-modal-requested='p:[tro:right top] | a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:200:50:linear:0:1:f]'
+		when-sidebar-modal-requested-left='p:[tro:left top] | a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:200:50:linear:450:1:f]'
+		when-sidebar-modal-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:200:-1:50:linear:0:1:f] | p:[background:#555f7b]"
+		when-submissions-link-hover="p:[background:#76a3ab]"
+		when-collections-link-hover="p:[background:#fadab0]"
+		when-reset-bg="p:[background:#555f7b]">
+		<!-- <graphic u absolute height='50px' width='50px' on-click='s:[sidebar-modal-closed:public]' class="flex-grow svg-stroke-10 top-0 right-0 stroke-white round" init-with='p:[transform:rotate(45deg)]' margin='2.5%' url="shared/templates/components/svg/main/plus.html"></graphic> -->
+		<nav class="ui-nav"
+			u on-mouseenter="s:[reset-bg:public]">
 			<item>
 				<graphic url='ui/templates/components/svg/nav-logo.html' u on-click='s:[sidebar-modal-closed:public]'></graphic>
 			</item>
@@ -139,24 +397,90 @@
 						</label>
 
 						<input id="search-bar" placeholder="Filter" value=""
-							u init-with="p-op"
+							u init-with="p:[op:0]"
 							when-search-bar-icon="p:[opacity:0:1:250:easeOutSine:0:1:f]"/>
 					</div>
 				</fieldset>
 
-				<a class="ui-gallery-menu-icon"
+				<a class="ui-menu-icon"
 					u on-click='s:[sidebar-modal-closed:public]'>
-					<graphic url="shared/templates/components/svg/main/times.html"> </graphic>
+					<graphic url="shared/templates/components/svg/main/times.html"></graphic>
 				</a>
 			</item>
 		</nav>
+		<nav class="ui-menu-grid">
+			<ul>
+				<div class="ui-menu-border"></div>
+				<li class="ui-menu-item">
+					<a u on-mouseenter="s:[submissions-link-hover:public]"
+						on-mouseleave="s:[submissions-link-leave:public]">
+						<div u init-with="p:[op:0]"
+							when-submissions-link-hover="a:[opacity:0:1:250:easeOutSine:0:1:f]"
+							when-submissions-link-leave="a:[opacity:1:0:250:easeInSine:0:1:f]"></div>
+						<h1>Submissions</h1>
+						<div class="ui-menu-item-border"></div>
+					</a>
+				</li>
+				<li class="ui-menu-item">
+					<a u on-mouseenter="s:[collections-link-hover:public]"
+						on-mouseleave="s:[collections-link-leave:public]">
+						<div u init-with="p:[op:0]"
+							when-collections-link-hover="a:[opacity:0:1:250:easeOutSine:0:1:f]"
+							when-collections-link-leave="a:[opacity:1:0:250:easeInSine:0:1:f]"></div>
+						<h1>Collections</h1>
+						<div class="ui-menu-item-border"></div>
+					</a>
+				</li>
+				<li class="ui-menu-item">
+					<a u on-mouseenter="s:[settings-link-hover:public]"
+						on-mouseleave="s:[settings-link-leave:public]">
+						<div u init-with="p:[op:0]"
+							when-settings-link-hover="a:[opacity:0:1:250:easeOutSine:0:1:f]"
+							when-settings-link-leave="a:[opacity:1:0:250:easeInSine:0:1:f]"></div>
+						<h1>Settings</h1>
+						<div class="ui-menu-item-border"></div>
+					</a>
+				</li>
+				<li class="ui-menu-item">
+					<a u on-mouseenter="s:[showcase-link-hover:public]"
+						on-mouseleave="s:[showcase-link-leave:public]">
+						<div u init-with="p:[op:0]"
+							when-showcase-link-hover="a:[opacity:0:1:250:easeOutSine:0:1:f]"
+							when-showcase-link-leave="a:[opacity:1:0:250:easeInSine:0:1:f]"></div>
+						<h1>Showcase</h1>
+						<div class="ui-menu-item-border"></div>
+					</a>
+				</li>
+				<li class="ui-menu-item">
+					<a u on-mouseenter="s:[logout-link-hover:public]"
+						on-mouseleave="s:[logout-link-leave:public]"
+						on-click="s:[logout-exit:public, sidebar-modal-closed:public]">
+						<div u init-with="p:[op:0]"
+							when-logout-link-hover="a:[opacity:0:1:250:easeOutSine:0:1:f]"
+							when-logout-link-leave="a:[opacity:1:0:250:easeInSine:0:1:f]"></div>
+						<h1>Logout</h1>
+						<div class="ui-menu-item-border"></div>
+					</a>
+				</li>
+				<li class="ui-menu-item">
+					<a u on-mouseenter="s:[submit-link-hover:public]"
+						on-mouseleave="s:[submit-link-leave:public]">
+						<div u init-with="p:[op:0]"
+							when-submit-link-hover="a:[opacity:0:1:250:easeOutSine:0:1:f]"
+							when-submit-link-leave="a:[opacity:1:0:250:easeInSine:0:1:f]"></div>
+						<h1>Submit</h1>
+						<div class="ui-menu-item-border"></div>
+					</a>
+				</li>
+			</ul>
+		</nav>
 	</modal>
 
-	<modal fixed name='popup' class='ui-gallery-single top-0 left-0 full-xy perspective-container' bg='#C6DDD6'
+	<modal fixed name='popup' scale-to='#profile-tile-id' class='ui-gallery-single top-0 left-0 full-xy perspective-container' bg='#C6DDD6'
 		u init-with='p:[opacity:0]'
 		when-popup-modal-requested='a:[scaleIn-subtle:1000:linear:0:1:f, z-index:-1:100:50:linear:0:1:f] | s:[popup-enter:public:1000]'
-		when-popup-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:100:-1:50:linear:0:1:f]">
-		<nav class="ui-gallery-nav">
+		when-popup-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:100:-1:50:linear:450:1:f]">
+		<nav class="ui-nav">
 			<item>
 				<graphic url='ui/templates/components/svg/nav-logo.html' u on-click='s:[sidebar-modal-requested-left:public]'></graphic>
 			</item>
@@ -181,22 +505,42 @@
 						</label>
 
 						<input id="search-bar" placeholder="Filter"
-							u init-with="p-op"
+							u init-with="p:[op:0]"
 							ng-model="searchText"
 							when-search-bar-icon="p:[opacity:0:1:250:easeOutSine:0:1:f]"/>
 					</div>
 				</fieldset>
 
-				<a class="ui-gallery-menu-icon"
-					u on-click='s:[sidebar-modal-requested:public]'>
-					<graphic url="shared/templates/components/svg/main/menu.html"> </graphic>
-				</a>
+				<div class="ui-menu-container"
+					u init-with="p:[op:1]"
+					when-login-modal-requested="a:[opacity:1:0:250:linear:0:1:f]"
+					when-login-modal-closed="a:[opacity:0:1:250:linear:0:1:f]">
+					<a class="ui-menu-icon"
+						u init-with="p:[z-index:-1, op:0]"
+						on-click='s:[sidebar-modal-requested:public]'
+						when-login-enter="p:[z-index:1, op:1]"
+						when-logout-exit="p:[z-index:-1, op:0]">
+						<graphic url="shared/templates/components/svg/main/menu.html"></graphic>
+					</a>
+					<a class="ui-menu-icon"
+						u init-with="p:[z-index:1, op:1]"
+						on-click='s:[login-modal-requested:public]'
+						when-login-enter="p:[z-index:-1, op:0]"
+						when-logout-exit="p:[z-index:1, op:1]">
+						<graphic url="shared/templates/components/svg/main/user.html"></graphic>
+					</a>
+				</div>
 			</item>
 		</nav>
 
 		<div class="ui-gallery-single-main">
 			<article>
 				<div>
+					<a class="ui-likes"
+						u on-click="c:[liked:add]">
+						<graphic url='shared/templates/components/svg/main/heart.html'></graphic>
+						<span class="block m05left txt-slate txt-18 semibold">2831</span>
+					</a>
 					<figure>
 						<div class="absolute top-0 right-0 bg-white flex-center-vertical p05xy" style="border-bottom-left-radius:2px">
 							<span class="stroke-rose svg-24 svg-stroke-6">
@@ -204,6 +548,7 @@
 							</span>
 							<span u when-academic-tile-init="a:[counter:0:2831:2500:easeOutCirc:0:1:f, portal-progress-color:5000:linear:250:1:f, fill:#69B3A5:#F6C64E:5000:easeOutCirc:250:1:f]" class="block m05left txt-slate txt-18 semibold"></span>
 						</div>
+
 						<div class="pf-tile-container"
 							u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 							on-init="s:[academic-tile-init:public, aca-border:children:500, aca-top:children:500]"
@@ -298,28 +643,27 @@
 							</div>
 						</div>
 					</figure>
-					<div class="flex-wrap full-x bg-white-80p"
+					<div class="ui-gallery-single-desc"
 						u init-with="p:[tro:top center, transform:rotateX(90deg), op:0]"
 						when-popup-enter="a:[rotateX:90deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:100:linear:0:1:f]">
-						<header class="width-40p">
-							<h1 class="p15top-p15x txt-36 black txt-slate"
-								u init-with="p:[op:0]"
+						<header>
+							<h1 u init-with="p:[op:0]"
 								when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">Profile Tile</h1>
-							<h4 class="flex-center-vertical p15x">
-								<span class="txt-18 txt-slate semibold">by <a class="bold txt-stone">Jeselle Obina</a></span>
-								<span class="user-icon-24 border-stone margin-none m10left"></span>
+							<h4>
+								<span>by <a>Jeselle Obina</a></span>
+								<span class="user-icon-24 border-stone"></span>
 							</h4>
-							<h4 class="flex-center-vertical p15x">
-								<span class="txt-18 txt-slate semibold">Last updated 11/07/16, <a class="bold txt-stone">#028</a></span>
+							<h4>
+								<span>Last updated 11/07/16, <a>#028</a></span>
 							</h4>
 						</header>
-						<aside class="width-60p"
-							u init-with="p:[op:0]"
-							when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]:delay-400">
-							<p class="txt-18 semibold p15x-p15top txt-slate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+						<aside>
+							<hr/>
+							<pe u init-with="p:[op:0]"
+								when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]:delay-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 						</aside>
 						<footer class="width-100p">
-							<!-- <ul class="flex-wrap p15-grid">
+<!--					<ul class="flex-wrap p15-grid">
 								<li u init-with="p:[op:0]"
 									when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]:delay-100">
 									<a class="chip bg bg-stone">profile</a>
@@ -359,11 +703,41 @@
 						</footer>
 					</div>
 				</div>
-				<div class="ui-gallery-single-info p15-grid flex">
-					<div class="ui-gallery-related width-66p">
-						<div class="bg-white-50p radius-2">
-							<h2 class="txt-28 semibold txt-stone p15x-p15top">Related</h2>
+				<div class="ui-gallery-single-info">
+					<div class="ui-gallery-related">
+						<div>
+							<h2>Related</h2>
 							<ul class="p15-grid ugrid-2">
+								<li>
+									<a class="block radius-2 border-2 border-stone">
+										<figure class="bg-stone-25p margin-none p15xy">
+											<svg></svg>
+										</figure>
+										<div class="bg-white border-2-top border-stone">
+											<h4 class="txt-18 txt-stone semibold p10xy txt-center">Request Tile</h4>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a class="block radius-2 border-2 border-stone">
+										<figure class="bg-stone-25p margin-none p15xy">
+											<svg></svg>
+										</figure>
+										<div class="bg-white border-2-top border-stone">
+											<h4 class="txt-18 txt-stone semibold p10xy txt-center">Request Tile</h4>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a class="block radius-2 border-2 border-stone">
+										<figure class="bg-stone-25p margin-none p15xy">
+											<svg></svg>
+										</figure>
+										<div class="bg-white border-2-top border-stone">
+											<h4 class="txt-18 txt-stone semibold p10xy txt-center">Request Tile</h4>
+										</div>
+									</a>
+								</li>
 								<li>
 									<a class="block radius-2 border-2 border-stone">
 										<figure class="bg-stone-25p margin-none p15xy">
@@ -377,9 +751,79 @@
 							</ul>
 						</div>
 					</div>
-					<aside class="ui-gallery-styles width-33p">
-						<div class="bg-white-50p radius-2">
-							<h2 class="txt-28 semibold txt-stone p15x-p15top">Styles</h2>
+					<aside class="ui-gallery-styles">
+						<div>
+							<h2>Styles</h2>
+							<ul>
+								<li class="ui-gallery-colors">
+									<ul>
+										<li>
+											<div class="bg-cerise"></div>
+										</li>
+										<li>
+											<div class="bg-slate"></div>
+										</li>
+										<li>
+											<div class="bg-taupe"></div>
+										</li>
+										<li>
+											<div class="bg-gold"></div>
+										</li>
+										<li>
+											<div class="bg-white border-taupe"></div>
+										</li>
+									</ul>
+									<h3>Color Palette: <span>Academic</span></h3>
+								</li>
+								<li class="ui-gallery-fonts">
+									<h1>Aa Bb Cc</h1>
+									<h3>Font: <span>Source Sans Pro</span></h3>
+								</li>
+								<li class="ui-gallery-icon">
+									<ul>
+										<li>
+											<graphic url="shared/templates/components/svg/categories/academic-simple.html"></graphic>
+										</li>
+										<li>
+											<graphic url="shared/templates/components/svg/categories/academic.html"></graphic>
+										</li>
+										<li>
+											<graphic url="shared/templates/components/svg/categories/academic-bottom.html"></graphic>
+										</li>
+									</ul>
+									<h3>Icon: <span>Academic</span></h3>
+								</li>
+								<li class="ui-gallery-stroke-width">
+									<graphic class="svg-stroke-3 stroke-slate" url="shared/templates/components/svg/other/shapes.html"></graphic>
+									<h3>Stroke Width: <span>3px</span></h3>
+								</li>
+								<li class="ui-gallery-padding">
+									<div>
+										<svg viewbox="0 0 400 270">
+											<rect x="0" y="0" width="400" height="270" fill="none"></rect>
+										</svg>
+										<div class="margin" u init-with="p:[padding:5px, border-color:#40484b]"
+											when-padding-select="p:[border-color:#aaaaaa]"
+											when-padding-deselect="p:[border-color:#40484b]">
+											<div class="normal" u init-with="p:[padding:15px, border-color:#40484b]"
+												when-margin-select="p:[border-color:#aaaaaa]"
+												when-margin-deselect="p:[border-color:#40484b]"
+												when-padding-select="p:[border-color:#aaaaaa]"
+												when-padding-deselect="p:[border-color:#40484b]">
+												<span u init-with="p:[height:15px]">15</span>
+												<div class="padding" u init-with="p:[border-color:#40484b]"
+													u when-margin-select="p:[border-color:#aaaaaa]"
+													when-margin-deselect="p:[border-color:#40484b]"></div>
+												<span u init-with="p:[width:15px]">15</span>
+											</div>
+										</div>
+									</div>
+									<h3 u on-mouseenter="s:[padding-select:public]"
+										on-mouseleave="s:[padding-deselect:public]">Padding: <span>15px</span></h3>
+									<h3 u on-mouseenter="s:[margin-select:public]"
+										on-mouseleave="s:[margin-deselect:public]">Margin: <span>5px</span></h3>
+								</li>
+							</ul>
 						</div>
 					</aside>
 				</div>
@@ -391,28 +835,28 @@
 				<li u init-with="p:[op:0]"
 					when-popup-enter="a:[slideInUp-subtle:1000:linear:0:1:f]:delay-1000">
 					<a u on-click='s:[popup-closed:public]'>
-						<graphic url="shared/templates/components/svg/main/grid.html"> </graphic>
+						<graphic url="shared/templates/components/svg/main/grid.html"></graphic>
 					</a>
 				</li>
 				<li u init-with="p:[op:0]"
 					when-popup-enter="a:[slideInUp-subtle:1000:linear:0:1:f]:delay-1050">
 					<a u on-click='s:[popup-closed:public]'>
-						<graphic url="shared/templates/components/svg/main/left.html"> </graphic>
+						<graphic url="shared/templates/components/svg/main/left.html"></graphic>
 					</a>
 				</li>
 				<li class="double" u init-with="p:[op:0]"
 					when-popup-enter="a:[slideInUp-subtle:1000:linear:0:1:f]:delay-1100">
 					<a u on-click='s:[popup-closed:public]'>
-						<graphic url="shared/templates/components/svg/main/up.html"> </graphic>
+						<graphic url="shared/templates/components/svg/main/up.html"></graphic>
 					</a>
 					<a u on-click='s:[popup-closed:public]'>
-						<graphic url="shared/templates/components/svg/main/down.html"> </graphic>
+						<graphic url="shared/templates/components/svg/main/down.html"></graphic>
 					</a>
 				</li>
 				<li u init-with="p:[op:0]"
 					when-popup-enter="a:[slideInUp-subtle:1000:linear:0:1:f]:delay-1150">
 					<a u on-click='s:[popup-closed:public]'>
-						<graphic url="shared/templates/components/svg/main/right.html"> </graphic>
+						<graphic url="shared/templates/components/svg/main/right.html"></graphic>
 					</a>
 				</li>
 			</ul>
@@ -420,28 +864,28 @@
 				<li u init-with="p:[op:0]"
 					when-nav-enter="a:[slideInUp-subtle:1000:linear:0:1:f]">
 					<a u on-click='s:[popup-closed:public]'>
-						<graphic url="shared/templates/components/svg/main/more.html"> </graphic>
+						<graphic url="shared/templates/components/svg/main/more.html"></graphic>
 					</a>
 				</li>
 				<li u init-with="p:[op:0]"
 					when-nav-enter="a:[slideInUp-subtle:1000:linear:0:1:f]">
 					<a u on-click='s:[popup-closed:public]'>
-						<graphic url="shared/templates/components/svg/main/left.html"> </graphic>
+						<graphic url="shared/templates/components/svg/main/left.html"></graphic>
 					</a>
 				</li>
 				<li u init-with="p:[op:0]"
 					when-nav-enter="a:[slideInUp-subtle:1000:linear:0:1:f]">
 					<a u on-click='s:[popup-closed:public]'>
-						<graphic url="shared/templates/components/svg/main/up.html"> </graphic>
+						<graphic url="shared/templates/components/svg/main/up.html"></graphic>
 					</a>
 					<a u on-click='s:[popup-closed:public]'>
-						<graphic url="shared/templates/components/svg/main/down.html"> </graphic>
+						<graphic url="shared/templates/components/svg/main/down.html"></graphic>
 					</a>
 				</li>
 				<li u init-with="p:[op:0]"
 					when-nav-enter="a:[slideInUp-subtle:1000:linear:0:1:f]">
 					<a u on-click='s:[popup-closed:public]'>
-						<graphic url="shared/templates/components/svg/main/right.html"> </graphic>
+						<graphic url="shared/templates/components/svg/main/right.html"></graphic>
 					</a>
 				</li>
 			</ul> -->
@@ -454,7 +898,7 @@
 					<span class="block m10x">Academic</span>
 					<a class="flex-center svg-24 svg-stroke-6 stroke-aero"
 						u on-click='s:[popup-closed:public]'>
-						<graphic url="shared/templates/components/svg/main/down.html"> </graphic>
+						<graphic url="shared/templates/components/svg/main/down.html"></graphic>
 					</a>
 				</div>
 			</div>

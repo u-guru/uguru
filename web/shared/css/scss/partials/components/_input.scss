@@ -831,6 +831,15 @@ div.input-border {
 		}
 	}
 	@media screen and (min-width: 768px) {
+		&.no-label {
+			input.input-border:focus {
+				+ label:not(:empty) {
+					.label {
+						opacity: 0;
+					}
+				}
+			}
+		}
 		&.large {
 			min-height: 70px;
 			max-width: 800px;
