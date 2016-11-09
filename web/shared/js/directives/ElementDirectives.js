@@ -623,6 +623,40 @@ angular.module('uguru.shared.directives')
               this.states = ElementService.renderElementStates(element, attr);
               // console.log(element, this.states)
               var states = this.states;
+              console.log(states)
+              var filterStates =  [];
+              for (var state in states) {
+                states[state].length && states[state].forEach(function(_state) {
+                  if (_state.actions && _state.actions.reverse && _state.actions.stateName && _state.actions.stateName.length) {
+                    var stateSplit = _state.actions.stateName.split('-');
+                    if (stateSplit.length >= 2) {
+                      var stateType = stateSplit[0];
+                      var stateArgName = stateSplit[1]
+                      if (stateType in states) {
+                        var stateToCopy = stateArgName;
+                        if (states[stateType]) {
+                          states[stateType].forEach(function(to_copy_state) {
+                            if (to_copy_state.name.indexOf(stateArgName) > -1 && to_copy_state.actions.anim) {
+
+                              var animSplit = (to_copy_state.actions.anim.parsed + "").split(':')
+                              var animParsed = [animSplit[0], animSplit[2], animSplit[1]].join(':') + ':' + animSplit.slice(3).join(":");
+                              _state.actions.anim = {};
+                              for (key in to_copy_state.actions.anim) {
+                                _state.actions.anim[key] = to_copy_state.actions.anim[key]
+                              }
+                              _state.actions.anim.parsed = animParsed;
+                              // _state.actions.anim.parsed = animParsed;
+
+                            }
+                          })
+                        }
+                      }
+                    }
+
+                  }
+                })
+              }
+              console.log(filterStates)
 
 
                   if (states.init) {
