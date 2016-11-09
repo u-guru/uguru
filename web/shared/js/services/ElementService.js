@@ -257,7 +257,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
                 var msgSplit =msg.split(':')
                 var msgName = msgSplit[0];
-                console.log(msgName)
+                // console.log(msgName)
 
                 var delay = msgSplit[2];
                 result[msgName] = parseInt(delay);
@@ -275,7 +275,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                     }
 
                     result.stagger[msgName] = {ease: easeFunc, duration: duration, delays:[]}
-                    console.log('stagger detected for', msgName, result.stagger[msgName])
+                    // console.log('stagger detected for', msgName, result.stagger[msgName])
                   }
                 }
               }

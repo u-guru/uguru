@@ -75,14 +75,26 @@ angular.module('uguru.shared.directives')
     replace:true,
     scope: true,
     templateUrl: function(element, attr) {
-      var attrUrl = $parse(attr.url)
 
-      var urlSplit = attr.url.replace('ui.','').split('.');
+      var attrUrl = attr.url;
+      if ($rootScope.ui && $rootScope.ui.data && 'set' in $rootScope.ui.data) {
+        for (var setVar in $rootScope.ui.data.set) {
+          var extended = $rootScope.ui.data.set[setVar];
+          if (extended !== attr.url && attr.url.indexOf(extended) === -1) {
+            attrUrl = attrUrl.replace(setVar, extended);
+          }
+        }
+      }
+
+
+      var urlSplit = attrUrl.split('.').splice(1)
 
       if (urlSplit.length === 2) {
         return attr.url
       }
-      var ptr = $rootScope.ui.data;
+
+      var ptr = $rootScope.ui.data
+      // console.log(ptr, urlSplit)
       var hasSkip = false;
       urlSplit.forEach(function(url_split, i) {
 
@@ -143,7 +155,7 @@ angular.module('uguru.shared.directives')
               ptr.data = data;
 
               $rootScope.components = data.components;
-              console.log('registering', data.components)
+              // console.log('registering', data.components)
 
               // console.log(ptr.data)
               // varName = varName || 'app';
@@ -230,22 +242,37 @@ angular.module('uguru.shared.directives')
       }
   }
 }])
-.directive('set', ['$parse', function($parse) {
+.directive('set', ['$parse', '$rootScope', function($parse, $rootScope) {
   return {
     restrict: 'A',
     replace:true,
-    scope: true,
+    scope: false,
+    compile: function(elem, attr) {
+      var setVars = attr.set && attr.set.length && attr.set.split('=');
+      varName = setVars[0].trim();
+      varVal = setVars[1].trim();
+      if (!('set' in $rootScope.ui.data)) {
+
+            $rootScope.ui.data.set = {};
+        }
+      $rootScope.ui.data.set[varName] = varVal
+      // console.log($rootScope.ui.data)
+    },
     link: function preLink(scope, element, attr) {
 
-      if (attr.set && attr.set.length) {
+      console.log('var', varName)
 
-        var setVars = attr.set.split('=');
 
-        if (setVars.length > 1 && setVars[0].length > 1) {
+
+        if (setVars && setVars.length > 1 && setVars[0].length > 1) {
+
+          scope[varName] = $parse(varVal)(scope)
           // console.log(setVars[0].trim(),
-          scope[setVars[0].trim()] = $parse(setVars[1].trim())(scope)
+
+
+
+
         }
-      }
     }
 
   }
@@ -564,7 +591,7 @@ angular.module('uguru.shared.directives')
           }
         }
 }])
-.directive("u", ["$compile", "ElementService", "$timeout", "$rootScope", "SendService", "CompService", "$parse", function($compile, ElementService, $timeout, $rootScope, SendService, CompService, $parse) {
+.directive("u", ["$compile", "ElementService", "$timeout", "$rootScope", "SendService", "CompService", "$parse", "$rootScope", function($compile, ElementService, $timeout, $rootScope, SendService, CompService, $parse, $rootScope) {
       return {
           restrict: 'A',
           replace: true,
@@ -594,7 +621,7 @@ angular.module('uguru.shared.directives')
                 CompService.renderAllStyleAttributes(element, attr);
               }
               this.states = ElementService.renderElementStates(element, attr);
-              console.log(element, this.states)
+              // console.log(element, this.states)
               var states = this.states;
 
 
@@ -620,9 +647,22 @@ angular.module('uguru.shared.directives')
               return {
                   pre: function (scope, lElem, lAttr) {
                     if (attr.data) {
+                      var attrData = attr.data;
+                      if ($rootScope.ui && $rootScope.ui.data && 'set' in $rootScope.ui.data) {
+                        for (var setVar in $rootScope.ui.data.set) {
+                          var extended = $rootScope.ui.data.set[setVar];
+                          if (extended !== attr.data && attr.data.indexOf(extended) === -1) {
+                            attrData = attrData.replace(setVar, extended);
+                            scope[setVar] = $parse(extended)(scope);
+                            // var ptr = scope;
 
-                      $compile(lElem.contents())($parse(attr.data)(scope))
-                      console.log()
+                            // parseSetAttributeUrl(extended, scope, setVar)
+                          }
+                        }
+                      }
+                      // console.log(attrData, scope.ui.app.views.gallery)
+                      $compile(lElem.contents())($parse(attrData)(scope))
+
                     }
                     scope.states = states || {};
                     scope.hasInitAfter = hasInitAfter;

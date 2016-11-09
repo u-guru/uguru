@@ -1,67 +1,15 @@
-<view class="ui-gallery" layer="2" type='row' bg="cream" set="gallery = ui.app.views.gallery.data">
+<view class="ui-gallery" layer="2" type='row' bg="cream" set="gallery = ui.app.views.gallery">
 	<!-- u on-init="s:[login-modal-requested:public:1000]" -->
 	<!-- u on-init="s:[sidebar-modal-requested:public:1000]" -->
 	<!-- u on-init="s:[popup-modal-requested:public:1000]" -->
 
 	<!-- {{gallery}} -->
 	<item width="100" height="100" class="overflow-auto">
-		<!-- <import class="z-index-100" url="ui.app.views.nav.url"></import> -->
+		<!-- @gabrielle notice I set galllery=ui.app.views.gallery above & check the modified json file-->
+		<import class="z-index-100" url="gallery.components.nav.url"></import>
 
 		<!-- removed this for faster load [:delay-9500] -->
-		<nav class="ui-nav">
-			<item u init-with="p:[transform:translateY(-500px)]"
-				on-init="a:[translateY:-500px:0px:500:easeInOutElastic:0:1:f]">
-				<graphic url='ui/templates/components/svg/nav-logo.html' u on-click='s:[sidebar-modal-requested-left:public]'></graphic>
-			</item>
-			<item class="flex">
-				<!-- took out the on-init :delay-10000 -->
-				<fieldset class="search-bar"
-					u init-with="p:[tr:translateX(500px), width:48px]"
-					on-init="s:[search-bar-init:children, search-bar-enter:depth(0):1000]"
-					when-search-bar-enter="a:[translateX:500px:0px:250:easeInOutElastic:0:1:f]"
-					on-click="s:[search-bar-clicked:depth(0), search-bar-icon:children:250]"
-					when-search-bar-clicked="a:[width:48px:500px:250:easeOutBack:0:1:f]"
-					on-exit="a:[opacity:1:0:250:easeOutSine:0:1:f]">
-					<div>
-						<label for="search-bar">
-							<svg viewBox="0 0 100 100">
-								<path d="M62.994485,62.994485 L85.6624699,85.6624699"
-									u init-with="p:[sda:32.06, sdo:32.06]"
-									when-search-bar-init="a:[stroke-dashoffset:32.06:0:200:easeOutSine:750:1:f]"></path>
-								<circle cx="42.5" cy="42.5" r="28.5"
-									u on-init="s:[init-with:self:700]"
-									init-with="p:[sda:179.07, sdo:179.07]"
-									when-search-bar-init="a:[stroke-dashoffset:179.07:0:200:easeOutSine:0:1:f]:delay-500"></circle>
-							</svg>
-						</label>
 
-						<input id="search-bar" placeholder="Filter" value=""
-							u init-with="p:[op:0]"
-							when-search-bar-icon="a:[opacity:0:1:250:easeOutSine:0:1:f]"/>
-					</div>
-				</fieldset>
-
-				<div class="ui-menu-container"
-					u init-with="p:[op:1]"
-					when-login-modal-requested="a:[opacity:1:0:250:linear:0:1:f]"
-					when-login-modal-closed="a:[opacity:0:1:250:linear:0:1:f]">
-					<a class="ui-menu-icon"
-						u init-with="p:[z-index:-1, op:0]"
-						on-click='s:[sidebar-modal-requested:public]'
-						when-login-enter="p:[z-index:1, op:1]"
-						when-logout-exit="p:[z-index:-1, op:0]">
-						<graphic url="shared/templates/components/svg/main/menu.html"></graphic>
-					</a>
-					<a class="ui-menu-icon"
-						u init-with="p:[z-index:1, op:1]"
-						on-click='s:[login-modal-requested:public]'
-						when-login-enter="p:[z-index:-1, op:0]"
-						when-logout-exit="p:[z-index:1, op:1]">
-						<graphic url="shared/templates/components/svg/main/user.html"></graphic>
-					</a>
-				</div>
-			</item>
-		</nav>
 
 		<nav class="ui-gallery-filter-bar" style="margin-top:-15px;">
 			<ul u on-init="s:[filter-enter:children:easeInCirc-1250]">
@@ -70,14 +18,14 @@
 					<h3 class="ui-gallery-filter-header">Filters:</h3>
 				</li>
 
-				<filter-tag custom data="gallery.filterTags[0]"> </filter-tag>
-				<filter-tag custom data="gallery.filterTags[1]"> </filter-tag>
-				<filter-tag custom data="gallery.filterTags[2]"> </filter-tag>
-				<filter-tag custom data="gallery.filterTags[3]"> </filter-tag>
-				<filter-tag custom data="gallery.filterTags[4]"> </filter-tag>
-				<filter-tag custom data="gallery.filterTags[5]"> </filter-tag>
-				<filter-tag custom data="gallery.filterTags[6]"> </filter-tag>
-				<filter-tag custom data="gallery.filterTags[7]"> </filter-tag>
+				<filter-tag custom data="gallery.data.filterTags[0]"> </filter-tag>
+				<filter-tag custom data="gallery.data.filterTags[1]"> </filter-tag>
+				<filter-tag custom data="gallery.data.filterTags[2]"> </filter-tag>
+				<filter-tag custom data="gallery.data.filterTags[3]"> </filter-tag>
+				<filter-tag custom data="gallery.data.filterTags[4]"> </filter-tag>
+				<filter-tag custom data="gallery.data.filterTags[5]"> </filter-tag>
+				<filter-tag custom data="gallery.data.filterTags[6]"> </filter-tag>
+				<filter-tag custom data="gallery.data.filterTags[7]"> </filter-tag>
 			</ul>
 		</nav>
 
@@ -93,7 +41,7 @@
 			when-bot-left="a:[rotateX:0deg:10deg:100:easeOutSine:0:1:f, rotateY:0deg:-5deg:100:easeOutSine:0:1:f]"
 			when-bot-left-leave="a:[rotateX:10deg:0deg:100:easeInSine:0:1:f, rotateY:-5deg:0deg:100:easeInSine:0:1:f]" -->
 			<div class="width-50p">
-				<tile custom data="gallery.tiles[0]"> </tile>
+				<tile custom data="gallery.data.tiles[0]"> </tile>
 			</div>
 			<div class="width-25p">
 				<div class="ui-gallery-item" style="height:calc(200px - 7.5px)"

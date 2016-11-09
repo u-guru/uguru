@@ -411,7 +411,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
   }
 
   function processStaggerDelayedMessages(stagger_info, item_count) {
-    console.log('processing', stagger_info, item_count)
+    // console.log('processing', stagger_info, item_count)
     var tempDuration = item_count * (1000/60.0);
     var duration = stagger_info.duration
 
@@ -434,7 +434,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
 
 
 
-          console.log(msg_info.name, msg_info.nameCamel, msg_info)
+          // console.log(msg_info.name, msg_info.nameCamel, msg_info)
 
 
 
@@ -460,7 +460,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
           } else {
 
               var currentMsgContext = scope.public.customStates.when[msg_info.nameCamel] || scope.$parent.public.customStates.when[msg_info.nameCamel];
-              console.log('entering local scope', currentMsgContext)
+              // console.log('entering local scope', currentMsgContext)
               //if elements exists
               if (currentMsgContext && currentMsgContext.elements) {
                   var numChildren = currentMsgContext.elements.length;
@@ -469,7 +469,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
 
                   var depthParsed = parseDepthString(msg_info.sendScope)
                   var depthNum = parseInt(depthParsed);
-                  console.log(msg_info.name, depthParsed, depthNum, 'depthNumType:', typeof depthNum)
+                  // console.log(msg_info.name, depthParsed, depthNum, 'depthNumType:', typeof depthNum)
 
 
                   //self
@@ -523,7 +523,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
                     if (elem_info.depth && !msg_info.greaterThan && !msg_info.lessThan && elem_info.depth === depthNum) {
                       elements.push(elem_info);
                     } else if (msg_info.greaterThan && elem_info.depth >= depthNum) {
-                      console.log(elem_info, depthNum, elem_info.depth, msg_info.greaterThan)
+                      // console.log(elem_info, depthNum, elem_info.depth, msg_info.greaterThan)
                       elements.push(elem_info);
                     } else if (msg_info.lessThan && elem_info.depth <= depthNum) {
                       elements.push(elem_info);
@@ -535,7 +535,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
                   if (elements.length !== currentMsgContext.elements.length) {
                     currentMsgContext = {elements: elements, depth: currentMsgContext.depth, options: currentMsgContext.options};
                   }
-                  console.log(elements.length, currentMsgContext)
+                  // console.log(elements.length, currentMsgContext)
                   var numChildren = currentMsgContext.elements.length
                   if ('stagger' in delay_dict.internal && msg_info.name in delay_dict.internal.stagger) {
 

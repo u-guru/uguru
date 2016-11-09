@@ -52,7 +52,7 @@ angular.module('uguru.shared.directives.base.components')
                     scope[attr_name] = attrValue[attr_name]
                 }
                 $compile(elem.html())(scope)
-                console.log('its linked', attrValue);
+                // console.log('its linked', attrValue);
                 // for (key in ) {
                 //     scope[key] =
                 // }
