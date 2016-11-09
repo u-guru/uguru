@@ -635,7 +635,7 @@
 							<ul class="flex-wrap p15-grid"
 								u when-popup-enter="s:[tag-enter:public:linear-200]:+100">
 								<li u init-with="p:[op:0]"
-									when-tag-enter=":[bounceIn-subtle:1000:linear:0:1:f]">
+									when-tag-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="chip bg bg-stone">profile</a>
 								</li>
 								<li u init-with="p:[op:0]"
@@ -782,7 +782,7 @@
 		</div>
 
 		<footer class="ui-gallery-single-footer">
-			<ul>
+			<!-- <ul>
 				<li u init-with="p:[op:0]"
 					when-popup-enter="a:[slideInUp-subtle:1000:linear:0:1:f]:delay-1000">
 					<a u on-click='s:[popup-closed:public]'>
@@ -810,8 +810,8 @@
 						<graphic url="shared/templates/components/svg/main/right.html"></graphic>
 					</a>
 				</li>
-			</ul>
-			<!-- <ul u when-popup-enter="s:[nav-enter:children:linear-150]:+1000">
+			</ul> -->
+			<ul u when-popup-enter="s:[nav-enter:public:linear-150]:+1000">
 				<li u init-with="p:[op:0]"
 					when-nav-enter="a:[slideInUp-subtle:1000:linear:0:1:f]">
 					<a u on-click='s:[popup-closed:public]'>
@@ -824,7 +824,7 @@
 						<graphic url="shared/templates/components/svg/main/left.html"></graphic>
 					</a>
 				</li>
-				<li u init-with="p:[op:0]"
+				<li class="double" u init-with="p:[op:0]"
 					when-nav-enter="a:[slideInUp-subtle:1000:linear:0:1:f]">
 					<a u on-click='s:[popup-closed:public]'>
 						<graphic url="shared/templates/components/svg/main/up.html"></graphic>
@@ -839,7 +839,7 @@
 						<graphic url="shared/templates/components/svg/main/right.html"></graphic>
 					</a>
 				</li>
-			</ul> -->
+			</ul>
 
 			<div style="padding:2px">
 				<div class="height-48 flex-center p10x bg-white radius-2 txt-24 semibold" style="color:#9cbdbe"
