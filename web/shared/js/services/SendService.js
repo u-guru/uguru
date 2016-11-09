@@ -411,9 +411,12 @@ function SendService($timeout, $parse, RootService, TweenService) {
   }
 
   function processStaggerDelayedMessages(stagger_info, item_count) {
+    console.log('processing', stagger_info, item_count)
     var tempDuration = item_count * (1000/60.0);
     var duration = stagger_info.duration
+
     var values = TweenService.preComputeValues("send", tempDuration, {send: 0}, {send:1}, stagger_info.ease, stagger_info.delays, 60).cache;
+
     stagger_info.delays = values.slice(0, values.length - 2);
     stagger_info.delays.forEach(function(delay_val, i) {
       stagger_info.delays[i] = stagger_info.delays[i] * duration;
@@ -429,89 +432,125 @@ function SendService($timeout, $parse, RootService, TweenService) {
         msgArr.forEach(function(msg_info, i) {
           var staggerExists = false;
 
-          // console.log('executing', msg_info.nameCamel)
 
+
+          console.log(msg_info.name, msg_info.nameCamel, msg_info)
 
 
 
           var statesToExecute = [];
+          //public scope
           if (msg_info.nameCamel in scope.root.scope.public.customStates.when && msg_info.sendScope === 'depth(*)') {
-            var currentMsgContext = scope.root.scope.public.customStates.when[msg_info.nameCamel];
+
+              var currentMsgContext = scope.root.scope.public.customStates.when[msg_info.nameCamel];
 
 
-            var numChildren = currentMsgContext.elements.length;
-            if (delay_dict.internal.stagger && msg_info.name in delay_dict.internal.stagger) {
-              var staggerDetails = delay_dict.internal.stagger[msg_info.name];
-              staggerExists = true;
-              delay_dict.internal.stagger[msg_info.name] = processStaggerDelayedMessages(staggerDetails,numChildren)
-              msg_info.stagger = delay_dict.internal.stagger[msg_info.name]
-            }
+              var numChildren = currentMsgContext.elements.length;
+              if ('stagger' in delay_dict.internal &&  msg_info.name in delay_dict.internal.stagger) {
+                var staggerDetails = delay_dict.internal.stagger[msg_info.name];
+                staggerExists = true;
+                delay_dict.internal.stagger[msg_info.name] = processStaggerDelayedMessages(staggerDetails,numChildren)
+                msg_info.stagger = delay_dict.internal.stagger[msg_info.name]
+              }
 
-            if (currentMsgContext.elements.length) {
+              if (currentMsgContext.elements.length) {
 
-              execSingleMsgArg(scope, currentMsgContext.elements, msg_info)
-            }
+                execSingleMsgArg(scope, currentMsgContext.elements, msg_info)
+              }
           } else {
 
-            var currentMsgContext = scope.public.customStates.when[msg_info.nameCamel] || scope.$parent.public.customStates.when[msg_info.nameCamel];
-            if (currentMsgContext && currentMsgContext.elements) {
-            var numChildren = currentMsgContext.elements.length;
+              var currentMsgContext = scope.public.customStates.when[msg_info.nameCamel] || scope.$parent.public.customStates.when[msg_info.nameCamel];
+              console.log('entering local scope', currentMsgContext)
+              //if elements exists
+              if (currentMsgContext && currentMsgContext.elements) {
+                  var numChildren = currentMsgContext.elements.length;
 
-            if (delay_dict.internal.stagger && msg_info.name in delay_dict.internal.stagger) {
-              var staggerDetails = delay_dict.internal.stagger[msg_info.name];
-              staggerExists = true;
-              delay_dict.internal.stagger[msg_info.name] = processStaggerDelayedMessages(staggerDetails,numChildren)
-              msg_info.stagger = delay_dict.internal.stagger[msg_info.name]
-            }
 
-              var depthParsed = parseDepthString(msg_info.sendScope)
-              var depthNum = parseInt(depthParsed);
-              if (depthParsed === 'self') {
-                if (currentMsgContext.elements && currentMsgContext.elements.length) {
-                  currentMsgContext.depth = 'self';
-                  execSingleMsgArg(scope, currentMsgContext.elements, msg_info)
-                }
-              }
-              else if (depthParsed === 'siblings') {
-                var elements = [];
 
-                var intendedDepth = scope.$parent.public.customStates.when[msg_info.nameCamel].depth + 0.5;
+                  var depthParsed = parseDepthString(msg_info.sendScope)
+                  var depthNum = parseInt(depthParsed);
+                  console.log(msg_info.name, depthParsed, depthNum, 'depthNumType:', typeof depthNum)
 
-                currentMsgContext.elements.forEach(function(elem_info) {
-                  if (elem_info.depth === intendedDepth && element[0].parentNode === elem_info.elem.parentNode) {
 
-                    if (msg_info.sendScope === 'depth(0)' || element[0] !== elem_info.elem) {
-                      elements.push(elem_info)
+                  //self
+                  if (depthParsed === 'self') {
+                    if (currentMsgContext.elements && currentMsgContext.elements.length) {
+                      currentMsgContext.depth = 'self';
+                      execSingleMsgArg(scope, currentMsgContext.elements, msg_info)
                     }
                   }
-                })
-                console.log(elements)
-                if (elements.length) {
-                  currentMsgContext = {elements: elements, depth: currentMsgContext.depth, options: currentMsgContext.options};
-                }
-                execSingleMsgArg(scope, currentMsgContext.elements, msg_info)
-              }
-              else
-              if (typeof depthNum === "number" && depthNum > 0) {
 
-                var elements = [];
-                currentMsgContext.elements.forEach(function(elem_info) {
+                  //siblings
+                  else if (depthParsed === 'siblings') {
+                    var elements = [];
 
-                  if (elem_info.depth && !msg_info.greaterThan && !msg_info.lessThan && elem_info.depth === depthNum) {
-                    elements.push(elem_info);
-                  } else if (msg_info.greaterThan && elem_info.depth >= depthNum) {
-                    console.log(elem_info, depthNum, elem_info.depth, msg_info.greaterThan)
-                    elements.push(elem_info);
-                  } else if (msg_info.lessThan && elem_info.depth <= depthNum) {
-                    elements.push(elem_info);
+                    var intendedDepth = scope.$parent.public.customStates.when[msg_info.nameCamel].depth + 0.5;
+
+                    currentMsgContext.elements.forEach(function(elem_info) {
+                      if (elem_info.depth === intendedDepth && element[0].parentNode === elem_info.elem.parentNode) {
+
+                        if (msg_info.sendScope === 'depth(0)' || element[0] !== elem_info.elem) {
+                          elements.push(elem_info)
+                        }
+                      }
+                    })
+
+                    if (elements.length) {
+                      currentMsgContext = {elements: elements, depth: currentMsgContext.depth, options: currentMsgContext.options};
+                    }
+                    var numChildren = currentMsgContext.elements.length;
+                    if ('stagger' in delay_dict.internal && msg_info.name in delay_dict.internal.stagger) {
+
+                      var staggerDetails = delay_dict.internal.stagger[msg_info.name];
+
+                      staggerExists = true;
+                      if (msg_info.name) {
+                        delay_dict.internal.stagger[msg_info.name] = processStaggerDelayedMessages(staggerDetails,numChildren)
+
+                        msg_info.stagger = delay_dict.internal.stagger[msg_info.name]
+                      }
+                    }
+                    execSingleMsgArg(scope, currentMsgContext.elements, msg_info)
                   }
 
-                })
+                //depthNum > 0
+              else
+                if (typeof depthNum === "number" && depthNum > 0) {
 
-                if (elements.length !== currentMsgContext.length) {
-                  currentMsgContext = {elements: elements, depth: currentMsgContext.depth, options: currentMsgContext.options};
-                }
-                execSingleMsgArg(scope, currentMsgContext.elements, msg_info)
+                  var elements = [];
+                  currentMsgContext.elements.forEach(function(elem_info) {
+
+                    if (elem_info.depth && !msg_info.greaterThan && !msg_info.lessThan && elem_info.depth === depthNum) {
+                      elements.push(elem_info);
+                    } else if (msg_info.greaterThan && elem_info.depth >= depthNum) {
+                      console.log(elem_info, depthNum, elem_info.depth, msg_info.greaterThan)
+                      elements.push(elem_info);
+                    } else if (msg_info.lessThan && elem_info.depth <= depthNum) {
+                      elements.push(elem_info);
+                    }
+
+                  })
+
+
+                  if (elements.length !== currentMsgContext.elements.length) {
+                    currentMsgContext = {elements: elements, depth: currentMsgContext.depth, options: currentMsgContext.options};
+                  }
+                  console.log(elements.length, currentMsgContext)
+                  var numChildren = currentMsgContext.elements.length
+                  if ('stagger' in delay_dict.internal && msg_info.name in delay_dict.internal.stagger) {
+
+                    var staggerDetails = delay_dict.internal.stagger[msg_info.name];
+                    staggerExists = true;
+                    if (msg_info.name && msg_info.name.length) {
+                      delay_dict.internal.stagger[msg_info.name] = processStaggerDelayedMessages(staggerDetails,numChildren)
+                      msg_info.stagger = delay_dict.internal.stagger[msg_info.name]
+                    }
+
+
+
+                  }
+
+                  execSingleMsgArg(scope, currentMsgContext.elements, msg_info)
               } else if (typeof depthNum === "number" && depthNum < 0) {
                 var depthScope = scope;
                 for (var i = depthNum; i < 0; i++) {

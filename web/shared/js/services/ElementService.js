@@ -254,8 +254,11 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             var msgArr = int_str.split(',');
             msgArr.forEach(function(msg, i) {
               if (msg.split(':').length > 2) {
+
                 var msgSplit =msg.split(':')
                 var msgName = msgSplit[0];
+                console.log(msgName)
+
                 var delay = msgSplit[2];
                 result[msgName] = parseInt(delay);
                 if (!result[msgName] && delay.indexOf('-') > -1) {
@@ -265,12 +268,14 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                   var duration = parseInt(staggerSplit[1]);
 
                   if (easeFunc.length > -1 && duration) {
+
                     var staggerDelays = [];
                     if (!result.stagger) {
                       result.stagger = {};
                     }
-                    result.stagger[msgName] = {ease: easeFunc, duration: duration, delays:[]}
 
+                    result.stagger[msgName] = {ease: easeFunc, duration: duration, delays:[]}
+                    console.log('stagger detected for', msgName, result.stagger[msgName])
                   }
                 }
               }
@@ -694,7 +699,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           resultDict[arg].raw = extractRelevantValueFromArg(arg, full_value, true);
 
           resultDict[arg].delays = {internal: getInternalDelay(arg, resultDict[arg].raw, delayMatchStr), external: getExternalDelay(resultDict[arg].parsed)};
-
 
         })
 

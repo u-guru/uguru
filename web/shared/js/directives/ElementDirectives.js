@@ -594,7 +594,7 @@ angular.module('uguru.shared.directives')
                 CompService.renderAllStyleAttributes(element, attr);
               }
               this.states = ElementService.renderElementStates(element, attr);
-
+              console.log(element, this.states)
               var states = this.states;
 
 
