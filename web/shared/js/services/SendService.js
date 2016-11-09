@@ -495,7 +495,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
                       }
                     })
 
-                    if (elements.length) {
+                    if (elements.length !== currentMsgContext.elements.length) {
                       currentMsgContext = {elements: elements, depth: currentMsgContext.depth, options: currentMsgContext.options};
                     }
                     var numChildren = currentMsgContext.elements.length;
