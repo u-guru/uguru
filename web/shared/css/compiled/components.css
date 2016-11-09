@@ -2389,7 +2389,7 @@ div.input-border {
       div.input-border input.input-border.light + label:not(:empty) .input span:after {
         background: white; }
       div.input-border input.input-border.light + label:not(:empty) .input-icon g {
-        stroke: #637074; }
+        stroke: rgba(255, 255, 255, 0.2); }
       div.input-border input.input-border.light + label:not(:empty) a svg circle {
         stroke: white;
         fill: white; }
@@ -2440,7 +2440,7 @@ div.input-border {
       div.input-border input.input-border.dark + label:not(:empty) .input span:after {
         background: #40484B; }
       div.input-border input.input-border.dark + label:not(:empty) .input-icon g {
-        stroke: #89969b; }
+        stroke: rgba(64, 72, 75, 0.2); }
       div.input-border input.input-border.dark + label:not(:empty) a svg circle {
         stroke: #40484B;
         fill: #40484B; }

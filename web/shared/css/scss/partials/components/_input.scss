@@ -622,7 +622,7 @@ div.input-border {
 				}
 				.input-icon {
 					g {
-						stroke: lighten($slate, 15%);
+						stroke: rgba(white, .2);
 					}
 				}
 				a {
@@ -711,7 +711,7 @@ div.input-border {
 				}
 				.input-icon {
 					g {
-						stroke: lighten($slate, 30%);
+						stroke: rgba($slate, .2);
 					}
 				}
 				a {
