@@ -1,0 +1,44 @@
+<footer class="ui-gallery-single-footer">
+	<ul u when-popup-enter="s:[nav-enter:public:linear-150]:+1000">
+		<li u init-with="p:[op:0]"
+			when-nav-enter="a:[slideInUp-subtle:1000:linear:0:1:f]">
+			<a u on-click='s:[popup-closed:public]'>
+				<graphic url="shared/templates/components/svg/main/grid.html"></graphic>
+			</a>
+		</li>
+		<li u init-with="p:[op:0]"
+			when-nav-enter="a:[slideInUp-subtle:1000:linear:0:1:f]">
+			<a u on-click='s:[popup-closed:public]'>
+				<graphic url="shared/templates/components/svg/main/left.html"></graphic>
+			</a>
+		</li>
+		<li class="double" u init-with="p:[op:0]"
+			when-nav-enter="a:[slideInUp-subtle:1000:linear:0:1:f]">
+			<a u on-click='s:[popup-closed:public]'>
+				<graphic url="shared/templates/components/svg/main/up.html"></graphic>
+			</a>
+			<a u on-click='s:[popup-closed:public]'>
+				<graphic url="shared/templates/components/svg/main/down.html"></graphic>
+			</a>
+		</li>
+		<li u init-with="p:[op:0]"
+			when-nav-enter="a:[slideInUp-subtle:1000:linear:0:1:f]">
+			<a u on-click='s:[popup-closed:public]'>
+				<graphic url="shared/templates/components/svg/main/right.html"></graphic>
+			</a>
+		</li>
+	</ul>
+
+	<div style="padding:2px">
+		<div class="height-48 flex-center p10x bg-white radius-2 txt-24 semibold" style="color:#9cbdbe"
+			u init-with="p:[op:0]"
+			when-popup-enter="a:[slideInUp-subtle:1000:linear:0:1:f]:delay-1200">
+			<span class="block height-24 width-24 round bg-cerise"></span>
+			<span class="block m10x">Academic</span>
+			<a class="flex-center svg-24 svg-stroke-6 stroke-aero"
+				u on-click='s:[popup-closed:public]'>
+				<graphic url="shared/templates/components/svg/main/down.html"></graphic>
+			</a>
+		</div>
+	</div>
+</footer>

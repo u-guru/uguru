@@ -18,6 +18,15 @@
                 "components": {
                     "nav": {
                         "url": "ui/templates/components/nav.html"
+                    },
+                    "login": {
+                        "url": "ui/templates/components/login.html"
+                    },
+                    "sidebar": {
+                        "url": "ui/templates/components/sidebar.html"
+                    },
+                    "footer": {
+                        "url": "ui/templates/components/footer.html"
                     }
                 },
                 "data": {
