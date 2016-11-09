@@ -639,7 +639,14 @@ angular.module('uguru.shared.directives')
                             if (to_copy_state.name.indexOf(stateArgName) > -1 && to_copy_state.actions.anim) {
 
                               var animSplit = (to_copy_state.actions.anim.parsed + "").split(':')
-                              var animParsed = [animSplit[0], animSplit[2], animSplit[1]].join(':') + ':' + animSplit.slice(3).join(":");
+                              if (animSplit.length > 7) {
+                                var animParsed = [animSplit[0], animSplit[2], animSplit[1]].join(':') + ':' + animSplit.slice(3).join(":");
+                              } else {
+                                var reverseDict = {'f': 'r', 'r': 'f', 'a': 'ar', 'ar': 'a'};
+                                var lastArg = animSplit[animSplit.length - 1];
+                                var animParsed = animSplit.slice(0, animSplit.length - 1).join(':') + ":" + reverseDict[lastArg]
+                                console.log(animParsed)
+                              }
                               _state.actions.anim = {};
                               for (key in to_copy_state.actions.anim) {
                                 _state.actions.anim[key] = to_copy_state.actions.anim[key]
