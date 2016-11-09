@@ -1,5 +1,5 @@
 <!-- removed this for faster load [:delay-9500] -->
-<nav class="ui-gallery-nav">
+<nav class="ui-nav">
 	<item u init-with="p:[transform:translateY(-500px)]"
 		on-init="a:[translateY:-500px:0px:500:easeInOutElastic:0:1:f]">
 		<graphic url='ui/templates/components/svg/nav-logo.html' u on-click='s:[sidebar-modal-requested-left:public]'></graphic>
@@ -32,9 +32,24 @@
 			</div>
 		</fieldset>
 
-		<a class="ui-gallery-menu-icon"
-			u on-click='s:[sidebar-modal-requested:public]'>
-			<graphic url="shared/templates/components/svg/main/menu.html"></graphic>
-		</a>
+		<div class="ui-gallery-menu-container"
+			u init-with="p:[op:1]"
+			when-login-modal-requested="a:[opacity:1:0:250:linear:0:1:f]"
+			when-login-modal-closed="a:[opacity:0:1:250:linear:0:1:f]">
+			<a class="ui-gallery-menu-icon"
+				u init-with="p:[z-index:-1, op:0]"
+				on-click='s:[sidebar-modal-requested:public]'
+				when-login-enter="p:[z-index:1, op:1]"
+				when-logout-exit="p:[z-index:-1, op:0]">
+				<graphic url="shared/templates/components/svg/main/menu.html"></graphic>
+			</a>
+			<a class="ui-gallery-menu-icon"
+				u init-with="p:[z-index:1, op:1]"
+				on-click='s:[login-modal-requested:public]'
+				when-login-enter="p:[z-index:-1, op:0]"
+				when-logout-exit="p:[z-index:1, op:1]">
+				<graphic url="shared/templates/components/svg/main/user.html"></graphic>
+			</a>
+		</div>
 	</item>
 </nav>

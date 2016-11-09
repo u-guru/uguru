@@ -15,7 +15,8 @@
   .ui-gallery-login .ui-gallery-login-modal {
     position: absolute;
     top: 15px;
-    right: 15px; }
+    right: 15px;
+    max-width: 320px; }
     .ui-gallery-login .ui-gallery-login-modal header {
       position: relative;
       z-index: 2;
@@ -57,9 +58,36 @@
       position: relative;
       z-index: 1;
       margin-top: 24px;
-      padding: 54px 15px;
+      padding: 39px 15px;
       background: white;
       border-radius: 2px; }
+      .ui-gallery-login .ui-gallery-login-modal section h2 {
+        color: #40484B;
+        font-size: 16px;
+        font-weight: 600; }
+      .ui-gallery-login .ui-gallery-login-modal section ul {
+        padding: 5px 0; }
+        .ui-gallery-login .ui-gallery-login-modal section ul li {
+          padding: 5px 0; }
+      .ui-gallery-login .ui-gallery-login-modal section > a {
+        display: block;
+        margin-top: 5px;
+        font-size: 16px;
+        text-align: center; }
+      .ui-gallery-login .ui-gallery-login-modal section .forgot-pw-link {
+        color: #757575;
+        font-weight: 600; }
+        .ui-gallery-login .ui-gallery-login-modal section .forgot-pw-link:hover, .ui-gallery-login .ui-gallery-login-modal section .forgot-pw-link:focus {
+          color: #9cbdbe; }
+        .ui-gallery-login .ui-gallery-login-modal section .forgot-pw-link:active {
+          color: #555f7b; }
+      .ui-gallery-login .ui-gallery-login-modal section .signup-link {
+        font-weight: 700;
+        color: #9cbdbe; }
+        .ui-gallery-login .ui-gallery-login-modal section .signup-link:hover, .ui-gallery-login .ui-gallery-login-modal section .signup-link:focus {
+          color: #98855d; }
+        .ui-gallery-login .ui-gallery-login-modal section .signup-link:active {
+          color: #555f7b; }
     .ui-gallery-login .ui-gallery-login-modal footer {
       -ms-box-orient: horizontal;
       display: -webkit-box;
@@ -80,8 +108,14 @@
       z-index: 2;
       width: 100%;
       margin-top: -24px; }
+      .ui-gallery-login .ui-gallery-login-modal footer button {
+        height: 48px;
+        font-size: 18px;
+        border-radius: 1000px;
+        padding: 0 30px;
+        width: auto; }
 
-.ui-gallery-nav {
+.ui-nav {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -100,7 +134,7 @@
   z-index: 10;
   width: 100%;
   padding: 7.5px; }
-  .ui-gallery-nav > * {
+  .ui-nav > * {
     padding: 7.5px; }
 
 .ui-gallery-menu-icon {
