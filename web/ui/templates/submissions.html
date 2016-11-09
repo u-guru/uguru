@@ -1,4 +1,4 @@
-<view class="ui-collections" layer="2" type='row' bg="neptune">
+<view class="ui-submissions" layer="2" type='row' bg="rose">
 	<item width="100" height="100" class="overflow-auto">
 		<!-- removed this for faster load [:delay-9500] -->
 		<nav class="ui-nav">
@@ -38,18 +38,31 @@
 					u on-click='s:[sidebar-modal-requested:public]'>
 					<graphic url="shared/templates/components/svg/main/menu.html"></graphic>
 				</a>
+
+				<a class="ui-menu-icon submit">
+					<graphic url="shared/templates/components/svg/main/plus.html"></graphic>
+				</a>
 			</item>
 		</nav>
 
 		<main class="ui-collections-main">
+			<header class="ui-pf-header">
+				<div class="ui-pf-info">
+					<span class="user-icon-72"></span>
+					<h1>Jeselle Obina</h1>
+					<span>San Francisco, CA</span>
+					<a>jeselleobina.com</a>
+				</div>
+				<div class="ui-pf-desc">
+					<hr/>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient.</p>
+				</div>
+			</header>
 			<ul class="ui-collections-lists">
 				<li class="ui-collections-list">
 					<header>
 						<a>
-							<h1>
-								<graphic url="shared/templates/components/svg/main/heart.html"></graphic>
-								<span>Likes</span>
-							</h1>
+							<h1>Drafts</h1>
 							<span>View All</span>
 							<hr/>
 						</a>
@@ -73,7 +86,7 @@
 				<li class="ui-collections-list">
 					<header>
 						<a>
-							<h1>Collections</h1>
+							<h1>Daily UI Challenge 📱</h1>
 							<span>View All</span>
 							<hr/>
 						</a>
@@ -97,7 +110,7 @@
 				<li class="ui-collections-list">
 					<header>
 						<a>
-							<h1>Graphic</h1>
+							<h1>For My Portfolio</h1>
 							<span>View All</span>
 							<hr/>
 						</a>

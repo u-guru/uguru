@@ -41,18 +41,18 @@
 					</div>
 				</fieldset>
 
-				<div class="ui-gallery-menu-container"
+				<div class="ui-menu-container"
 					u init-with="p:[op:1]"
 					when-login-modal-requested="a:[opacity:1:0:250:linear:0:1:f]"
 					when-login-modal-closed="a:[opacity:0:1:250:linear:0:1:f]">
-					<a class="ui-gallery-menu-icon"
+					<a class="ui-menu-icon"
 						u init-with="p:[z-index:-1, op:0]"
 						on-click='s:[sidebar-modal-requested:public]'
 						when-login-enter="p:[z-index:1, op:1]"
 						when-logout-exit="p:[z-index:-1, op:0]">
 						<graphic url="shared/templates/components/svg/main/menu.html"></graphic>
 					</a>
-					<a class="ui-gallery-menu-icon"
+					<a class="ui-menu-icon"
 						u init-with="p:[z-index:1, op:1]"
 						on-click='s:[login-modal-requested:public]'
 						when-login-enter="p:[z-index:-1, op:0]"
@@ -140,14 +140,14 @@
 		</main>
 	</item>
 
-	<modal name='login' class='ui-gallery-login'
+	<modal name='login' class='ui-login'
 		u init-with='p:[op:0]'
 		when-login-modal-requested='p:[op:1, z-index:201]'
 		when-login-modal-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:201:-1:50:linear:450:1:f]">
-		<div class="ui-gallery-login-bg"
+		<div class="ui-login-bg"
 			u init-with="p:[op:0]"
 			when-login-modal-requested="a:[opacity:0:1:500:easeInExpo:0:1:f]"></div>
-		<div class="ui-gallery-login-modal perspective-container">
+		<div class="ui-login-modal perspective-container">
 			<header>
 				<a u init-with="p:[left:100%]"
 					when-login-modal-requested="a:[left:100%:50%:250:linear:0:1:f]"
@@ -362,7 +362,7 @@
 		</div>
 	</modal>
 
-	<modal name='sidebar' class='ui-gallery-menu'
+	<modal name='sidebar' class='ui-menu'
 		u init-with='p:[op:0]'
 		when-sidebar-modal-requested='p:[tro:right top] | a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:200:50:linear:0:1:f]'
 		when-sidebar-modal-requested-left='p:[tro:left top] | a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:200:50:linear:450:1:f]'
@@ -402,56 +402,56 @@
 					</div>
 				</fieldset>
 
-				<a class="ui-gallery-menu-icon"
+				<a class="ui-menu-icon"
 					u on-click='s:[sidebar-modal-closed:public]'>
 					<graphic url="shared/templates/components/svg/main/times.html"></graphic>
 				</a>
 			</item>
 		</nav>
-		<nav class="ui-gallery-menu-grid">
+		<nav class="ui-menu-grid">
 			<ul>
-				<div class="ui-gallery-menu-border"></div>
-				<li class="ui-gallery-menu-item">
+				<div class="ui-menu-border"></div>
+				<li class="ui-menu-item">
 					<a u on-mouseenter="s:[submissions-link-hover:public]"
 						on-mouseleave="s:[submissions-link-leave:public]">
 						<div u init-with="p:[op:0]"
 							when-submissions-link-hover="a:[opacity:0:1:250:easeOutSine:0:1:f]"
 							when-submissions-link-leave="a:[opacity:1:0:250:easeInSine:0:1:f]"></div>
 						<h1>Submissions</h1>
-						<div class="ui-gallery-menu-item-border"></div>
+						<div class="ui-menu-item-border"></div>
 					</a>
 				</li>
-				<li class="ui-gallery-menu-item">
+				<li class="ui-menu-item">
 					<a u on-mouseenter="s:[collections-link-hover:public]"
 						on-mouseleave="s:[collections-link-leave:public]">
 						<div u init-with="p:[op:0]"
 							when-collections-link-hover="a:[opacity:0:1:250:easeOutSine:0:1:f]"
 							when-collections-link-leave="a:[opacity:1:0:250:easeInSine:0:1:f]"></div>
 						<h1>Collections</h1>
-						<div class="ui-gallery-menu-item-border"></div>
+						<div class="ui-menu-item-border"></div>
 					</a>
 				</li>
-				<li class="ui-gallery-menu-item">
+				<li class="ui-menu-item">
 					<a u on-mouseenter="s:[settings-link-hover:public]"
 						on-mouseleave="s:[settings-link-leave:public]">
 						<div u init-with="p:[op:0]"
 							when-settings-link-hover="a:[opacity:0:1:250:easeOutSine:0:1:f]"
 							when-settings-link-leave="a:[opacity:1:0:250:easeInSine:0:1:f]"></div>
 						<h1>Settings</h1>
-						<div class="ui-gallery-menu-item-border"></div>
+						<div class="ui-menu-item-border"></div>
 					</a>
 				</li>
-				<li class="ui-gallery-menu-item">
+				<li class="ui-menu-item">
 					<a u on-mouseenter="s:[showcase-link-hover:public]"
 						on-mouseleave="s:[showcase-link-leave:public]">
 						<div u init-with="p:[op:0]"
 							when-showcase-link-hover="a:[opacity:0:1:250:easeOutSine:0:1:f]"
 							when-showcase-link-leave="a:[opacity:1:0:250:easeInSine:0:1:f]"></div>
 						<h1>Showcase</h1>
-						<div class="ui-gallery-menu-item-border"></div>
+						<div class="ui-menu-item-border"></div>
 					</a>
 				</li>
-				<li class="ui-gallery-menu-item">
+				<li class="ui-menu-item">
 					<a u on-mouseenter="s:[logout-link-hover:public]"
 						on-mouseleave="s:[logout-link-leave:public]"
 						on-click="s:[logout-exit:public, sidebar-modal-closed:public]">
@@ -459,17 +459,17 @@
 							when-logout-link-hover="a:[opacity:0:1:250:easeOutSine:0:1:f]"
 							when-logout-link-leave="a:[opacity:1:0:250:easeInSine:0:1:f]"></div>
 						<h1>Logout</h1>
-						<div class="ui-gallery-menu-item-border"></div>
+						<div class="ui-menu-item-border"></div>
 					</a>
 				</li>
-				<li class="ui-gallery-menu-item">
+				<li class="ui-menu-item">
 					<a u on-mouseenter="s:[submit-link-hover:public]"
 						on-mouseleave="s:[submit-link-leave:public]">
 						<div u init-with="p:[op:0]"
 							when-submit-link-hover="a:[opacity:0:1:250:easeOutSine:0:1:f]"
 							when-submit-link-leave="a:[opacity:1:0:250:easeInSine:0:1:f]"></div>
 						<h1>Submit</h1>
-						<div class="ui-gallery-menu-item-border"></div>
+						<div class="ui-menu-item-border"></div>
 					</a>
 				</li>
 			</ul>
@@ -511,18 +511,18 @@
 					</div>
 				</fieldset>
 
-				<div class="ui-gallery-menu-container"
+				<div class="ui-menu-container"
 					u init-with="p:[op:1]"
 					when-login-modal-requested="a:[opacity:1:0:250:linear:0:1:f]"
 					when-login-modal-closed="a:[opacity:0:1:250:linear:0:1:f]">
-					<a class="ui-gallery-menu-icon"
+					<a class="ui-menu-icon"
 						u init-with="p:[z-index:-1, op:0]"
 						on-click='s:[sidebar-modal-requested:public]'
 						when-login-enter="p:[z-index:1, op:1]"
 						when-logout-exit="p:[z-index:-1, op:0]">
 						<graphic url="shared/templates/components/svg/main/menu.html"></graphic>
 					</a>
-					<a class="ui-gallery-menu-icon"
+					<a class="ui-menu-icon"
 						u init-with="p:[z-index:1, op:1]"
 						on-click='s:[login-modal-requested:public]'
 						when-login-enter="p:[z-index:-1, op:0]"
@@ -536,7 +536,7 @@
 		<div class="ui-gallery-single-main">
 			<article>
 				<div>
-					<a class="ui-gallery-likes"
+					<a class="ui-likes"
 						u on-click="c:[liked:add]">
 						<graphic url='shared/templates/components/svg/main/heart.html'></graphic>
 						<span class="block m05left txt-slate txt-18 semibold">2831</span>
@@ -650,9 +650,10 @@
 								<span>Last updated 11/07/16, <a>#028</a></span>
 							</h4>
 						</header>
-						<aside u init-with="p:[op:0]"
-							when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]:delay-400">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+						<aside>
+							<hr/>
+							<pe u init-with="p:[op:0]"
+								when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]:delay-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 						</aside>
 						<footer>
 							<ul>
