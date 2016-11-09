@@ -25,6 +25,12 @@
 				"components": {
                     "nav": {
                         "url": "ui/templates/components/nav/private.html"
+                    },
+                    "account": {
+                        "url": "ui/templates/components/settings/account.html"
+                    },
+                    "customize": {
+                        "url": "ui/templates/components/settings/customize.html"
                     }
                 }
             },

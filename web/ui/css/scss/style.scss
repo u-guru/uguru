@@ -650,6 +650,7 @@
 			font-size: 24px;
 			font-weight: 600;
 			padding: 0 15px;
+			white-space: nowrap;
 		}
 	}
 	.borders {
@@ -720,6 +721,27 @@
 			font-size: 18px;
 			font-weight: 600;
 		}
+	}
+}
+
+.ui-settings-themes {
+	@include flex;
+	@include flex-wrap;
+	margin-top: -5px!important;
+	> li {
+		width: 50%;
+	}
+}
+.ui-settings-theme {
+	text-align: center;
+	svg {
+		width: 100%;
+		border-radius: 2px;
+	}
+	h3 {
+		margin-top: 5px;
+		font-size: 18px;
+		font-weight: 600;
 	}
 }
 
