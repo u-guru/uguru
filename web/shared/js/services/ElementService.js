@@ -597,6 +597,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           // var shortCutDict = getShortcutDict(elem, arg_value);
 
         argDict.actions = getArgActions(state_args, arg_value);
+        console.log(argDict)
         return argDict;
       }
 
@@ -643,6 +644,10 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
         //trigger
         full_value.split('|').forEach(function(stream) {
+
+
+
+
           if (!rShortcuts.cmds && !RootService.animations.customShortcuts) {
             $timeout(function() {
               getArgActions(state_args, full_value, shortcuts);
@@ -661,6 +666,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (stream && stream.length && stream in rShortcuts.cmds) {
             stream = rShortcuts.cmds[stream];
           }
+
           if (stream.indexOf('t:[') > -1 || stream.indexOf('trigger:[') > -1) {
             param_value = stream.trim();
             var hasDelay = (param_value + '').split(']')[1];
@@ -684,6 +690,15 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
 
         state_args.forEach(function(arg_dict, i) {
+          if (!arg_dict.argName.length) {
+            if (full_value.indexOf('reverse:') > -1) {
+              resultDict['reverse'] = true;
+              resultDict['stateName'] = full_value.split(':')[1]
+              resultDict['raw'] = full_value
+              return;
+           }
+          }
+
 
           // var extDelay = arg_dict.delays.external || 0;
           //to elimiate
