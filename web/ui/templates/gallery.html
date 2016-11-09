@@ -1,4 +1,5 @@
-<view class="ui-gallery" layer="2" type='row' bg="cream" set="gallery = ui.app.views.gallery.data" u on-init="s:[sidebar-modal-requested:public:1000]">
+<view class="ui-gallery" layer="2" type='row' bg="cream" set="gallery = ui.app.views.gallery.data">
+	<!-- u on-init="s:[sidebar-modal-requested:public:1000]" -->
 	<!-- u on-init="s:[popup-modal-requested:public:1000]" -->
 
 	<!-- {{gallery}} -->
@@ -129,6 +130,7 @@
 		when-sidebar-modal-requested='p:[tro:right top] | a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:1000:50:linear:0:1:f]'
 		when-sidebar-modal-requested-left='p:[tro:left top] | a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:1000:50:linear:0:1:f]'
 		when-sidebar-modal-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:1000:-1:50:linear:0:1:f]"
+		when-submissions-link-hover="p:[background:#76a3ab]"
 		when-collections-link-hover="p:[background:#fadab0]">
 		<!-- <graphic u absolute height='50px' width='50px' on-click='s:[sidebar-modal-closed:public]' class="flex-grow svg-stroke-10 top-0 right-0 stroke-white round" init-with='p:[transform:rotate(45deg)]' margin='2.5%' url="shared/templates/components/svg/main/plus.html"></graphic> -->
 		<nav class="ui-gallery-nav">
@@ -171,37 +173,61 @@
 			<ul>
 				<div class="ui-gallery-menu-border"></div>
 				<li class="ui-gallery-menu-item">
-					<a u on-mouse-enter="s:[submissions-link-hover:public]">
+					<a u on-mouseenter="s:[submissions-link-hover:public]"
+						on-mouseleave="s:[submissions-link-leave:public]">
+						<div u init-with="p:[op:0]"
+							when-submissions-link-hover="a:[opacity:0:1:250:easeOutSine:0:1:f]"
+							when-submissions-link-leave="a:[opacity:1:0:250:easeInSine:0:1:f]"></div>
 						<h1>Submissions</h1>
 						<div class="ui-gallery-menu-item-border"></div>
 					</a>
 				</li>
 				<li class="ui-gallery-menu-item">
-					<a u on-mouse-enter="s:[collections-link-hover:public]">
+					<a u on-mouseenter="s:[collections-link-hover:public]"
+						on-mouseleave="s:[collections-link-leave:public]">
+						<div u init-with="p:[op:0]"
+							when-collections-link-hover="a:[opacity:0:1:250:easeOutSine:0:1:f]"
+							when-collections-link-leave="a:[opacity:1:0:250:easeInSine:0:1:f]"></div>
 						<h1>Collections</h1>
 						<div class="ui-gallery-menu-item-border"></div>
 					</a>
 				</li>
 				<li class="ui-gallery-menu-item">
-					<a u on-mouse-enter="s:[settings-link-hover:public]">
+					<a u on-mouseenter="s:[settings-link-hover:public]"
+						on-mouseleave="s:[settings-link-leave:public]">
+						<div u init-with="p:[op:0]"
+							when-settings-link-hover="a:[opacity:0:1:250:easeOutSine:0:1:f]"
+							when-settings-link-leave="a:[opacity:1:0:250:easeInSine:0:1:f]"></div>
 						<h1>Settings</h1>
 						<div class="ui-gallery-menu-item-border"></div>
 					</a>
 				</li>
 				<li class="ui-gallery-menu-item">
-					<a u on-mouse-enter="s:[showcase-link-hover:public]">
+					<a u on-mouseenter="s:[showcase-link-hover:public]"
+						on-mouseleave="s:[showcase-link-leave:public]">
+						<div u init-with="p:[op:0]"
+							when-showcase-link-hover="a:[opacity:0:1:250:easeOutSine:0:1:f]"
+							when-showcase-link-leave="a:[opacity:1:0:250:easeInSine:0:1:f]"></div>
 						<h1>Showcase</h1>
 						<div class="ui-gallery-menu-item-border"></div>
 					</a>
 				</li>
 				<li class="ui-gallery-menu-item">
-					<a u on-mouse-enter="s:[logout-link-hover:public]">
+					<a u on-mouseenter="s:[logout-link-hover:public]"
+						on-mouseleave="s:[logout-link-leave:public]">
+						<div u init-with="p:[op:0]"
+							when-logout-link-hover="a:[opacity:0:1:250:easeOutSine:0:1:f]"
+							when-logout-link-leave="a:[opacity:1:0:250:easeInSine:0:1:f]"></div>
 						<h1>Logout</h1>
 						<div class="ui-gallery-menu-item-border"></div>
 					</a>
 				</li>
 				<li class="ui-gallery-menu-item">
-					<a u on-mouse-enter="s:[submit-link-hover:public]">
+					<a u on-mouseenter="s:[submit-link-hover:public]"
+						on-mouseleave="s:[submit-link-leave:public]">
+						<div u init-with="p:[op:0]"
+							when-submit-link-hover="a:[opacity:0:1:250:easeOutSine:0:1:f]"
+							when-submit-link-leave="a:[opacity:1:0:250:easeInSine:0:1:f]"></div>
 						<h1>Submit</h1>
 						<div class="ui-gallery-menu-item-border"></div>
 					</a>
