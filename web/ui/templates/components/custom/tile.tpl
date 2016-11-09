@@ -16,7 +16,7 @@
 		<aside>
 			<h2>{{name}}</h2>
 			<ul>
-				<li><a ng-repeat='chip in chips' class="chip bg bg-{{chip.bg}}">{{chip.name}}</a></li>
+				<li ng-repeat='chip in chips'><a class="chip bg bg-{{chip.bg}}">{{chip.name}}</a></li>
 			</ul>
 		</aside>
 	</div>

@@ -4,7 +4,6 @@
 
 	<!-- {{gallery}} -->
 	<item width="100" height="100" class="overflow-auto">
-
 		<!-- <import class="z-index-100" url="ui.app.views.nav.url"></import> -->
 
 		<!-- removed this for faster load [:delay-9500] -->
@@ -129,11 +128,13 @@
 		u init-with='p:[op:0]'
 		when-sidebar-modal-requested='p:[tro:right top] | a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:1000:50:linear:0:1:f]'
 		when-sidebar-modal-requested-left='p:[tro:left top] | a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:1000:50:linear:0:1:f]'
-		when-sidebar-modal-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:1000:-1:50:linear:0:1:f]"
+		when-sidebar-modal-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:1000:-1:50:linear:0:1:f] | p:[background:#555f7b]"
 		when-submissions-link-hover="p:[background:#76a3ab]"
-		when-collections-link-hover="p:[background:#fadab0]">
+		when-collections-link-hover="p:[background:#fadab0]"
+		when-reset-bg="p:[background:#555f7b]">
 		<!-- <graphic u absolute height='50px' width='50px' on-click='s:[sidebar-modal-closed:public]' class="flex-grow svg-stroke-10 top-0 right-0 stroke-white round" init-with='p:[transform:rotate(45deg)]' margin='2.5%' url="shared/templates/components/svg/main/plus.html"></graphic> -->
-		<nav class="ui-gallery-nav">
+		<nav class="ui-gallery-nav"
+			u on-mouseenter="s:[reset-bg:public]">
 			<item>
 				<graphic url='ui/templates/components/svg/nav-logo.html' u on-click='s:[sidebar-modal-closed:public]'></graphic>
 			</item>
