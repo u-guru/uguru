@@ -5,19 +5,34 @@
         },
         "views": {
             "collections": {
-                "url": "ui/templates/collections.html"
+                "url": "ui/templates/collections.html",
+				"components": {
+                    "nav": {
+                        "url": "ui/templates/components/nav/private.html"
+                    }
+                }
             },
             "submissions": {
-                "url": "ui/templates/submissions.html"
+                "url": "ui/templates/submissions.html",
+				"components": {
+                    "nav": {
+                        "url": "ui/templates/components/nav/private.html"
+                    }
+                }
             },
             "settings": {
-                "url": "ui/templates/settings.html"
+                "url": "ui/templates/settings.html",
+				"components": {
+                    "nav": {
+                        "url": "ui/templates/components/nav/private.html"
+                    }
+                }
             },
             "gallery": {
                 "url": "ui/templates/gallery.html",
                 "components": {
                     "nav": {
-                        "url": "ui/templates/components/nav.html"
+                        "url": "ui/templates/components/nav/switch.html"
                     },
                     "login": {
                         "url": "ui/templates/components/login.html"
