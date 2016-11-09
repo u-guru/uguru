@@ -32,6 +32,7 @@
                         {
                             "import_url": "ui/templates/components/custom/cards/profile-tile.html",
                             "name": "Profile Tile",
+							"id": "profile-tile",
                             "chips": [
                                 {
                                     "bg": "rose",
@@ -69,7 +70,7 @@
         },
         "tile": {
             "template_url": "ui/templates/components/custom/tile.tpl",
-            "fields": ["import_url"]
+            "fields": ["import_url", "id"]
         }
     },
     "spec": {

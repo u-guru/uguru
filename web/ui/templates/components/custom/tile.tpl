@@ -9,7 +9,7 @@
 		<graphic url='shared/templates/components/svg/main/heart.html'></graphic>
 		<span class="block m05left txt-slate txt-18 semibold">2831</span>
 	</a>
-	<div>
+	<div id="{{id}}-id">
 		<figure>
 			<div ng-include="import_url"> </div>
 		</figure>
