@@ -629,6 +629,7 @@
 
 .ui-settings-tile {
 	position: relative;
+	margin-bottom: 15px;
 	header {
 		@include flex;
 		@include flex-center-vertical;
@@ -684,17 +685,40 @@
 			}
 		}
 	}
-	> ul {
-		position: relative;
-		z-index: 2;
-		padding: 7.5px;
-		margin-top: -10px;
-		li {
+	.ui-settings-tile-content {
+		@include flex;
+		@include flex-wrap;
+		justify-content: center;
+		> ul {
+			position: relative;
+			z-index: 2;
 			padding: 7.5px;
-			.input-border {
-				width: 100%;
-				max-width: none!important;
+			margin-top: -10px;
+			width: 100%;
+			> li {
+				padding: 7.5px;
+				.input-border {
+					width: 100%;
+					max-width: none!important;
+				}
 			}
+		}
+		.ui-settings-avatar-upload {
+			display: block;
+			width: 128px;
+			height: 128px;
+			svg {
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
+		}
+		h2 {
+			width: 100%;
+			padding: 15px;
+			text-align: center;
+			font-size: 18px;
+			font-weight: 600;
 		}
 	}
 }
