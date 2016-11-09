@@ -4,9 +4,6 @@
             "url": "ui/templates/loader.html"
         },
         "views": {
-            "nav": {
-                "url": "ui/templates/components/nav.html"
-            },
             "collections": {
                 "url": "ui/templates/collections.html"
             },
@@ -18,6 +15,11 @@
             },
             "gallery": {
                 "url": "ui/templates/gallery.html",
+                "components": {
+                    "nav": {
+                        "url": "ui/templates/components/nav.html"
+                    }
+                },
                 "data": {
                     "rectangles": [
                         {"background": "cerise"},
