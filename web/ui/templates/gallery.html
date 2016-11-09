@@ -1,4 +1,4 @@
-<view class="ui-gallery" layer="2" type='row' bg="cream" set="gallery = ui.app.views.gallery.data">
+<view class="ui-gallery" layer="2" type='row' bg="cream" set="gallery = ui.app.views.gallery.data" u on-init="s:[login-modal-requested:public:1000]">
 	<!-- u on-init="s:[login-modal-requested:public:1000]" -->
 	<!-- u on-init="s:[sidebar-modal-requested:public:1000]" -->
 	<!-- u on-init="s:[popup-modal-requested:public:1000]" -->
@@ -41,7 +41,10 @@
 					</div>
 				</fieldset>
 
-				<div class="ui-gallery-menu-container">
+				<div class="ui-gallery-menu-container"
+					u init-with="p:[op:1]"
+					when-login-modal-requested="a:[opacity:1:0:250:linear:0:1:f]"
+					when-login-modal-closed="a:[opacity:0:1:250:linear:0:1:f]">
 					<a class="ui-gallery-menu-icon"
 						u init-with="p:[z-index:-1, op:0]"
 						on-click='s:[sidebar-modal-requested:public]'
@@ -140,7 +143,7 @@
 	<modal name='login' class='ui-gallery-login'
 		u init-with='p:[op:0]'
 		when-login-modal-requested='p:[op:1, z-index:201]'
-		when-login-modal-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:201:-1:50:linear:0:1:f]">
+		when-login-modal-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:201:-1:50:linear:450:1:f]">
 		<div class="ui-gallery-login-bg"
 			u init-with="p:[op:0]"
 			when-login-modal-requested="a:[opacity:0:1:500:easeInExpo:0:1:f]"></div>
@@ -148,6 +151,7 @@
 			<header>
 				<a u init-with="p:[left:100%]"
 					when-login-modal-requested="a:[left:100%:50%:250:linear:0:1:f]"
+					when-login-modal-closed="a:[left:50%:100%:250:linear:0:1:f]"
 					on-click='s:[login-modal-closed:public]'>
 					<graphic url="shared/templates/components/svg/main/user.html"></graphic>
 				</a>
@@ -155,18 +159,15 @@
 			<section u init-with="p:[op:0, tro:center top, transform:rotateX(-90deg)]"
 				when-login-modal-requested="a:[opacity:0:1:500:easeOutSine:0:1:f, rotateX:-90deg:0deg:500:easeOutExpo:0:1:f]:delay-250">
 				<div class="input-border"
-					u
-					on-init="s:[input-border-enter:depth(>2)]"
+					u on-init="s:[input-border-enter:depth(>2)]"
 					when-input-invalid="a:[translateY:0px:10px:100:linear:0:6:a]">
 					<input class="input-border dark" type="email" required placeholder=""
-						u
-						on-valid="s:[input-valid:>children]"
+						u on-valid="s:[input-valid:>children]"
 						on-invalid="s:[input-invalid:>children]"/>
 					<label u init-with="p:[opacity:0]"
 						on-init="a:[opacity:0.0:1.0:1000:linear:0:1:f]">
 						<svg class="input-icon email-icon" viewBox="0 0 100 100">
-							<g fill="none" stroke-linecap="round" stroke-linejoin="round"
-								u
+							<g fill="none" stroke-linecap="round" stroke-linejoin="round" u
 								when-input-valid="s:[input-valid-stroke:self]"
 								when-input-invalid="s:[input-invalid-stroke:self]"
 								when-input-valid-stroke="p:[s:#43cb9d]:delay-125"
@@ -211,69 +212,55 @@
 						</div>
 						<div class="borders">
 							<div>
-								<div u
-									when-input-valid="p:[bg:#43cb9d]:delay-500"
+								<div u when-input-valid="p:[bg:#43cb9d]:delay-500"
 									when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
-								<div u
-									when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
+								<div u when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
 									when-input-invalid="p:[bg:#d3242c, tr:scale(1), op:1]"></div>
 							</div>
 							<div>
-								<div u
-									when-input-valid="p:[bg:#43cb9d]:delay-500"
+								<div u when-input-valid="p:[bg:#43cb9d]:delay-500"
 									when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
-								<div u
-									when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
+								<div u when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
 									when-input-invalid="p:[bg:#d3242c, tr:scale(1), op:1]"></div>
 							</div>
 							<div>
-								<div u
-									when-input-valid="p:[bg:#43cb9d]:delay-500"
+								<div u when-input-valid="p:[bg:#43cb9d]:delay-500"
 									when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
-								<div u
-									when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
+								<div u when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
 									when-input-invalid="p:[bg:#d3242c, tr:scale(1), op:1]"></div>
 							</div>
 							<div>
-								<div u
-									when-input-valid="p:[bg:#43cb9d]:delay-500"
+								<div u when-input-valid="p:[bg:#43cb9d]:delay-500"
 									when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
-								<div u
-									when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
+								<div u when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
 									when-input-invalid="p:[bg:#d3242c, tr:scale(1), op:1]"></div>
 							</div>
 						</div>
 						<a>
 							<svg viewBox="0 0 100 100">
 								<circle cx="50" cy="50" r="36"
-									u
-									when-input-valid="p:[s:#43cb9d, f:#43cb9d]:delay-500"
+									u when-input-valid="p:[s:#43cb9d, f:#43cb9d]:delay-500"
 									when-input-invalid="p:[s:#d3242c, f:#d3242c]:delay-500"></circle>
 								<path d="M62.7279221,37.2720779 L37.2720779,62.7279221"
-									u
-									when-input-valid="p:[s:white]:delay-500"
+									u when-input-valid="p:[s:white]:delay-500"
 									when-input-invalid="p:[s:white]:delay-500"></path>
 								<path d="M37.2720779,37.2720779 L62.7279221,62.7279221"
-									u
-									when-input-valid="p:[s:white]:delay-500"
+									u when-input-valid="p:[s:white]:delay-500"
 									when-input-invalid="p:[s:white]:delay-500"></path>
 							</svg>
 						</a>
 					</label>
 				</div>
 				<div class="input-border"
-					u
-					on-init="s:[input-border-enter:depth(>3)]"
+					u on-init="s:[input-border-enter:depth(>2)]"
 					when-input-invalid="a:[translateY:0px:10px:100:linear:0:6:a]">
 					<input class="input-border dark" type="email" required placeholder=""
-						u
-						on-valid="s:[input-valid:>children]"
+						u on-valid="s:[input-valid:>children]"
 						on-invalid="s:[input-invalid:>children]"/>
 					<label u init-with="p:[opacity:0]"
 						on-init="a:[opacity:0.0:1.0:1000:linear:0:1:f]">
 						<svg class="input-icon email-icon" viewBox="0 0 100 100">
-							<g fill="none" stroke-linecap="round" stroke-linejoin="round"
-								u
+							<g fill="none" stroke-linecap="round" stroke-linejoin="round" u
 								when-input-valid="s:[input-valid-stroke:self]"
 								when-input-invalid="s:[input-invalid-stroke:self]"
 								when-input-valid-stroke="p:[s:#43cb9d]:delay-125"
@@ -318,51 +305,40 @@
 						</div>
 						<div class="borders">
 							<div>
-								<div u
-									when-input-valid="p:[bg:#43cb9d]:delay-500"
+								<div u when-input-valid="p:[bg:#43cb9d]:delay-500"
 									when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
-								<div u
-									when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
+								<div u when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
 									when-input-invalid="p:[bg:#d3242c, tr:scale(1), op:1]"></div>
 							</div>
 							<div>
-								<div u
-									when-input-valid="p:[bg:#43cb9d]:delay-500"
+								<div u when-input-valid="p:[bg:#43cb9d]:delay-500"
 									when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
-								<div u
-									when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
+								<div u when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
 									when-input-invalid="p:[bg:#d3242c, tr:scale(1), op:1]"></div>
 							</div>
 							<div>
-								<div u
-									when-input-valid="p:[bg:#43cb9d]:delay-500"
+								<div u when-input-valid="p:[bg:#43cb9d]:delay-500"
 									when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
-								<div u
-									when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
+								<div u when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
 									when-input-invalid="p:[bg:#d3242c, tr:scale(1), op:1]"></div>
 							</div>
 							<div>
-								<div u
-									when-input-valid="p:[bg:#43cb9d]:delay-500"
+								<div u when-input-valid="p:[bg:#43cb9d]:delay-500"
 									when-input-invalid="p:[bg:#d3242c]:delay-500"></div>
-								<div u
-									when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
+								<div u when-input-valid="p:[bg:#43cb9d, tr:scale(1), op:1]"
 									when-input-invalid="p:[bg:#d3242c, tr:scale(1), op:1]"></div>
 							</div>
 						</div>
 						<a>
 							<svg viewBox="0 0 100 100">
 								<circle cx="50" cy="50" r="36"
-									u
-									when-input-valid="p:[s:#43cb9d, f:#43cb9d]:delay-500"
+									u when-input-valid="p:[s:#43cb9d, f:#43cb9d]:delay-500"
 									when-input-invalid="p:[s:#d3242c, f:#d3242c]:delay-500"></circle>
 								<path d="M62.7279221,37.2720779 L37.2720779,62.7279221"
-									u
-									when-input-valid="p:[s:white]:delay-500"
+									u when-input-valid="p:[s:white]:delay-500"
 									when-input-invalid="p:[s:white]:delay-500"></path>
 								<path d="M37.2720779,37.2720779 L62.7279221,62.7279221"
-									u
-									when-input-valid="p:[s:white]:delay-500"
+									u when-input-valid="p:[s:white]:delay-500"
 									when-input-invalid="p:[s:white]:delay-500"></path>
 							</svg>
 						</a>
@@ -380,7 +356,7 @@
 	<modal name='sidebar' class='ui-gallery-menu'
 		u init-with='p:[op:0]'
 		when-sidebar-modal-requested='p:[tro:right top] | a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:200:50:linear:0:1:f]'
-		when-sidebar-modal-requested-left='p:[tro:left top] | a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:200:50:linear:0:1:f]'
+		when-sidebar-modal-requested-left='p:[tro:left top] | a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:200:50:linear:450:1:f]'
 		when-sidebar-modal-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:200:-1:50:linear:0:1:f] | p:[background:#555f7b]"
 		when-submissions-link-hover="p:[background:#76a3ab]"
 		when-collections-link-hover="p:[background:#fadab0]"
@@ -494,7 +470,7 @@
 	<modal fixed name='popup' scale-to='#profile-tile-id' class='ui-gallery-single top-0 left-0 full-xy perspective-container' bg='#C6DDD6'
 		u init-with='p:[opacity:0]'
 		when-popup-modal-requested='a:[scaleIn-subtle:1000:linear:0:1:f, z-index:-1:100:50:linear:0:1:f] | s:[popup-enter:public:1000]'
-		when-popup-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:100:-1:50:linear:0:1:f]">
+		when-popup-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:100:-1:50:linear:450:1:f]">
 		<nav class="ui-gallery-nav">
 			<item>
 				<graphic url='ui/templates/components/svg/nav-logo.html' u on-click='s:[sidebar-modal-requested-left:public]'></graphic>
