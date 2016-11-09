@@ -1,5 +1,288 @@
 @import '../../../shared/css/scss/partials/mixin';
 
+/*-- GALLERY NAVIGATION */
+// top bar
+.ui-gallery-nav {
+	@include flex;
+	@include flex-center-vertical;
+	justify-content: space-between;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 7.5px;
+	> * {
+		padding: 7.5px;
+	}
+}
+.ui-gallery-menu-icon {
+	@include flex;
+	@include flex-center;
+	width: 48px;
+	height: 48px;
+	background: white;
+	border-radius: 1000px;
+	margin-left: 15px;
+	border: 2px solid transparent;
+	transition: border 300ms ease-in-out, background 300ms ease-in-out;
+	svg {
+		width: 24px;
+		height: 24px;
+		* {
+			fill: none;
+			stroke: rgba($slate, .5);
+			stroke-width: 6px;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+			transition: stroke 300ms ease-in-out;
+		}
+	}
+	&:hover, &:focus {
+		background: rgba($slate, .5);
+		border-color: rgba($slate, .5);
+		svg {
+			* {
+				stroke: white;
+			}
+		}
+	}
+	&:active {
+		background: $aero;
+		border-color: $neptune;
+		svg {
+			* {
+				stroke: white;
+			}
+		}
+	}
+}
+// filters
+.ui-gallery-filter-header {
+	@include flex;
+	@include flex-center-vertical;
+	height: 36px;
+	font-size: 24px;
+	font-weight: 600;
+}
+.ui-gallery-filter-bar {
+	max-width: 930px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 80px;
+	ul {
+		@include flex;
+		@include flex-wrap;
+		padding: 7.5px;
+		li {
+			padding: 7.5px;
+		}
+	}
+}
+.ui-gallery-filter-btn {
+	display: block;
+	width: auto;
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 36px;
+	font-size: 18px;
+	border: 2px solid white;
+	border-radius: 2px;
+	background: $cream;
+	transition: all 300ms ease-in-out;
+	&:hover, &:focus {
+		border-color: rgba($charcoal, .25);
+		background: rgba($charcoal, .25);
+		color: white;
+	}
+	&.selected, &:active {
+		background: $aero;
+		border-color: $neptune;
+	}
+}
+// likes
+.ui-gallery-likes {
+	@include flex;
+	@include flex-center-vertical;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 3;
+	background: rgba(white, .8);
+	padding: 5px;
+	border-bottom-left-radius: 2px;
+	svg {
+		width: 24px;
+		height: 24px;
+		* {
+			stroke: $rose;
+			stroke-width: 6px;
+		}
+	}
+	&:hover, &:focus {
+		background: white;
+		svg * {
+			fill: rgba($rose, .5)!important;
+		}
+	}
+	&:active, &.liked {
+		svg * {
+			fill: $rose!important;
+		}
+	}
+}
+// sidebar
+.ui-gallery-menu {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	background: $stone;
+}
+.ui-gallery-menu-grid {
+	padding: 80px 15px 15px;
+	width: 100%;
+	height: 100%;
+	ul {
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		position: relative;
+		width: 100%;
+		height: 100%;
+		.ui-gallery-menu-border {
+			position: absolute;
+			top: 50%;
+			margin-top: -1px;
+			left: 0;
+			width: 100%;
+			height: 2px;
+			border-radius: 4px;
+			background: mix($stone, white, 75%);
+		}
+		.ui-gallery-menu-item-border {
+			position: absolute;
+			z-index: 10;
+			top: 0;
+			right: -1px;
+			height: 100%;
+			width: 2px;
+			background: mix($stone, white, 75%);
+			border-radius: 4px;
+		}
+		.ui-gallery-menu-item {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			@media screen and (orientation:landscape) {
+				width: calc(100% / 3);
+				height: 50%;
+			}
+			@media screen and (orientation:portrait) {
+				width: 50%;
+				height: calc(100% / 3);
+			}
+			&:nth-of-type(3n) {
+				.ui-gallery-menu-item-border {
+					display: none;
+				}
+			}
+			a {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				width: 100%;
+				height: 100%;
+				h1 {
+					font-size: 48px;
+					font-weight: 900;
+				}
+			}
+		}
+	}
+}
+
+/*-- GALLERY */
+.ui-gallery-main {
+	@include flex;
+	@include flex-wrap;
+	justify-content: center;
+	max-width: 930px;
+	margin: 0 auto;
+	padding: 7.5px;
+	> * {
+		padding: 7.5px;
+	}
+}
+.ui-gallery-item {
+	position: relative;
+	width: 100%;
+	> div {
+		position: relative;
+		z-index: 1;
+		border-radius: 2px;
+		border: 2px solid rgba(white, .5);
+		transition: border 300ms ease-in-out;
+		> figure {
+			@include flex;
+			@include flex-center;
+			margin: 0;
+			padding: 15px;
+			background: rgba(white, 0.25);
+			transition: background 300ms ease-in-out;
+		}
+		> aside {
+			@include flex;
+			@include flex-center-vertical;
+			justify-content: space-between;
+			border-top: 2px solid rgba(white, 0.5);
+			transition: border 300ms ease-in-out, background 300ms ease-in-out;
+			h2 {
+				padding: 15px;
+				font-size: 20px;
+				font-weight: 600;
+				transition: color 300ms ease-in-out;
+			}
+			ul {
+				@include flex;
+				@include flex-wrap;
+				padding: 7.5px;
+				li {
+					padding: 7.5px;
+				}
+			}
+		}
+	}
+	> a:first-child:empty {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+		&:hover, &:focus {
+			+ div {
+				border-color: rgba($charcoal, .5);
+				> figure {
+					background: rgba($charcoal, .25);
+				}
+				> aside {
+					border-color: rgba($charcoal, .5);
+					background: rgba(white, 0.25);
+					h2 {
+						color: rgba($charcoal, .5);
+					}
+				}
+			}
+		}
+	}
+	.ui-gallery-likes {
+		z-index: 3;
+	}
+}
+
+/*-- GALLERY ITEM MODAL */
+// main
 .ui-gallery-single-main {
 	position: relative;
 	height: 100%;
@@ -39,7 +322,6 @@
 		}
 	}
 }
-
 .ui-gallery-single-desc {
 	@include flex;
 	@include flex-wrap;
@@ -98,38 +380,7 @@
 		}
 	}
 }
-
-.ui-gallery-likes {
-	@include flex;
-	@include flex-center-vertical;
-	position: absolute;
-	top: 0;
-	right: 0;
-	z-index: 3;
-	background: rgba(white, .8);
-	padding: 5px;
-	border-bottom-left-radius: 2px;
-	svg {
-		width: 24px;
-		height: 24px;
-		* {
-			stroke: $rose;
-			stroke-width: 6px;
-		}
-	}
-	&:hover, &:focus {
-		background: white;
-		svg * {
-			fill: rgba($rose, .5)!important;
-		}
-	}
-	&:active, &.liked {
-		svg * {
-			fill: $rose!important;
-		}
-	}
-}
-
+// related and styles
 .ui-gallery-single-info {
 	@include flex;
 	padding: 7.5px;
@@ -137,7 +388,6 @@
 		padding: 7.5px;
 	}
 }
-
 .ui-gallery-related, .ui-gallery-styles {
 	> div {
 		background: rgba(white, .3);
@@ -151,11 +401,9 @@
 		}
 	}
 }
-
 .ui-gallery-related {
 	width: calc(100% / 3 * 2);
 }
-
 .ui-gallery-styles {
 	width: calc(100% / 3);
 	color: $slate;
@@ -179,7 +427,6 @@
 		}
 	}
 }
-
 .ui-gallery-padding {
 	> div {
 		position: relative;
@@ -231,13 +478,11 @@
 		}
 	}
 }
-
 .ui-gallery-stroke-width {
 	svg {
 		margin-left: -15px;
 	}
 }
-
 .ui-gallery-icon {
 	ul {
 		@include flex;
@@ -265,7 +510,6 @@
 		}
 	}
 }
-
 .ui-gallery-fonts {
 	h1 {
 		font-size: 48px;
@@ -273,7 +517,6 @@
 		line-height: 1;
 	}
 }
-
 .ui-gallery-colors {
 	ul {
 		@include flex;
@@ -291,7 +534,6 @@
 		}
 	}
 }
-
 .ui-gallery-single-footer {
 	@include flex;
 	justify-content: space-between;
@@ -362,195 +604,8 @@
 	}
 }
 
-.ui-gallery-main {
-	@include flex;
-	@include flex-wrap;
-	justify-content: center;
-	max-width: 930px;
-	margin: 0 auto;
-	padding: 7.5px;
-	> * {
-		padding: 7.5px;
-	}
-}
 
-.ui-gallery-nav {
-	@include flex;
-	@include flex-center-vertical;
-	justify-content: space-between;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	padding: 7.5px;
-	> * {
-		padding: 7.5px;
-	}
-}
-
-.ui-gallery-menu-icon {
-	@include flex;
-	@include flex-center;
-	width: 48px;
-	height: 48px;
-	background: white;
-	border-radius: 1000px;
-	margin-left: 15px;
-	border: 2px solid transparent;
-	transition: border 300ms ease-in-out, background 300ms ease-in-out;
-	svg {
-		width: 24px;
-		height: 24px;
-		* {
-			fill: none;
-			stroke: rgba($slate, .5);
-			stroke-width: 6px;
-			stroke-linecap: round;
-			stroke-linejoin: round;
-			transition: stroke 300ms ease-in-out;
-		}
-	}
-	&:hover, &:focus {
-		background: rgba($slate, .5);
-		border-color: rgba($slate, .5);
-		svg {
-			* {
-				stroke: white;
-			}
-		}
-	}
-	&:active {
-		background: $aero;
-		border-color: $neptune;
-		svg {
-			* {
-				stroke: white;
-			}
-		}
-	}
-}
-
-.ui-gallery-menu {
-	position: fixed;
-	top: 0;
-	right: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba($stone, .95);
-}
-
-.ui-gallery-filter-header {
-	@include flex;
-	@include flex-center-vertical;
-	height: 36px;
-	font-size: 24px;
-	font-weight: 600;
-}
-
-.ui-gallery-filter-bar {
-	max-width: 930px;
-	margin-left: auto;
-	margin-right: auto;
-	padding-top: 80px;
-	ul {
-		@include flex;
-		@include flex-wrap;
-		padding: 7.5px;
-		li {
-			padding: 7.5px;
-		}
-	}
-}
-
-.ui-gallery-filter-btn {
-	display: block;
-	width: auto;
-	padding-left: 10px;
-	padding-right: 10px;
-	height: 36px;
-	font-size: 18px;
-	border: 2px solid white;
-	border-radius: 2px;
-	background: $cream;
-	transition: all 300ms ease-in-out;
-	&:hover, &:focus {
-		border-color: rgba($charcoal, .25);
-		background: rgba($charcoal, .25);
-		color: white;
-	}
-	&.selected, &:active {
-		background: $aero;
-		border-color: $neptune;
-	}
-}
-
-.ui-gallery-item {
-	position: relative;
-	width: 100%;
-	> div {
-		position: relative;
-		z-index: 1;
-		border-radius: 2px;
-		border: 2px solid rgba(white, .5);
-		transition: border 300ms ease-in-out;
-		> figure {
-			@include flex;
-			@include flex-center;
-			margin: 0;
-			padding: 15px;
-			background: rgba(white, 0.25);
-			transition: background 300ms ease-in-out;
-		}
-		> aside {
-			@include flex;
-			@include flex-center-vertical;
-			justify-content: space-between;
-			border-top: 2px solid rgba(white, 0.5);
-			transition: border 300ms ease-in-out, background 300ms ease-in-out;
-			h2 {
-				padding: 15px;
-				font-size: 20px;
-				font-weight: 600;
-				transition: color 300ms ease-in-out;
-			}
-			ul {
-				@include flex;
-				@include flex-wrap;
-				padding: 7.5px;
-				li {
-					padding: 7.5px;
-				}
-			}
-		}
-	}
-	> a:first-child:empty {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: 2;
-		&:hover, &:focus {
-			+ div {
-				border-color: rgba($charcoal, .5);
-				> figure {
-					background: rgba($charcoal, .25);
-				}
-				> aside {
-					border-color: rgba($charcoal, .5);
-					background: rgba(white, 0.25);
-					h2 {
-						color: rgba($charcoal, .5);
-					}
-				}
-			}
-		}
-	}
-	.ui-gallery-likes {
-		z-index: 3;
-	}
-}
-
+/*-- STYLES */
 .txt-aero {
 	color: $aero!important;
 }
