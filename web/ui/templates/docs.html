@@ -34,8 +34,8 @@
                         <div width='70'>
                             <div width='100' class='flex-vertical-center'>
                                 <div class='border-1 border-solid p20x p05y txt-1' ng-repeat='(example_name, html) in attr_data.examples'>          {{$index + 1}}, {{example_name}}
-                                    <span ng-bind-html="html"> </span>
-                                    <span ng-non-bindable="html"> </span>
+                                    <div m-x="20px" ng-bind-html="html"> </div>
+                                    <span ng-bind="html"> </span>
                                 </div>
                             </div>
 
