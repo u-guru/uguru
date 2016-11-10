@@ -7,7 +7,7 @@
 	<!-- {{gallery}} -->
 	<item width="100" height="100" class="overflow-auto">
 		<!-- @gabrielle notice I set gallery=ui.app.views.gallery above & check the modified json file-->
-		<import url="gallery.components.nav.url"></import>
+		<import url="gallery.components.nav.url" class="gradient-cream-top"></import>
 
 		<nav class="ui-gallery-filter-bar" style="margin-top:-15px;"
 			u init-with="p:[op:0]"
@@ -86,17 +86,19 @@
 				</div>
 			</div>
 		</main>
+
+		<footer class="ui-gradient-footer gradient-cream-bottom"></footer>
 	</item>
 
 	<import url="gallery.components.login.url"></import>
 
 	<import url="gallery.components.sidebar.url"></import>
 
-	<modal fixed name='popup' scale-to='#profile-tile-id' class='ui-gallery-single top-0 left-0 full-xy perspective-container' bg='#C6DDD6'
+	<modal fixed name='popup' scale-to='#profile-tile-id' class='ui-gallery-single top-0 left-0 full-xy perspective-container' bg='vista'
 		u init-with="p:[op:0, tro:center center, tr:scale(0)]"
 		when-popup-modal-requested="a:[scale:0:1:500:easeOutSine:0:1:f, z-index:-1:100:50:linear:0:1:f] | p:[op:1] | s:[popup-enter:public:1000]"
 		when-popup-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:100:-1:50:linear:450:1:f]">
-		<import url="gallery.components.nav.url"></import>
+		<import url="gallery.components.nav.url" class="gradient-vista-top"></import>
 
 		<div class="ui-gallery-single-main">
 			<article>
@@ -425,6 +427,6 @@
 			</article>
 		</div>
 
-		<import url="gallery.components.footer.url"></import>
+		<import url="gallery.components.footer.url" class="gradient-vista-bottom"></import>
 	</modal>
 </view>

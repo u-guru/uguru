@@ -1,6 +1,6 @@
 <view class="ui-collections" layer="2" type='row' bg="neptune" set="collections = ui.app.views.collections">
 	<item width="100" height="100" class="overflow-auto">
-		<import url="collections.components.nav.url"></import>
+		<import url="collections.components.nav.url" class="gradient-neptune-top"></import>
 
 		<main class="ui-collections-main"
 			u on-init="s:[collections-enter:public:500]">
@@ -19,24 +19,28 @@
 								when-collections-enter="a:[slideInUp-subtle:1000:linear:0:1:f]">View All</span>
 						</a>
 					</header>
-					<ul u when-collections-enter="s:[collections-list-enter:children:easeOutSine-400]">
-						<li u init-with="p:[op:0]"
-							when-collections-list-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
-							<a class="ui-collections-list-item"></a>
-						</li>
-						<li u init-with="p:[op:0]"
-							when-collections-list-enter="a:[bounceInLeft-subtle:1000:linear:0:1:f]">
-							<a class="ui-collections-list-item"></a>
-						</li>
-						<li u init-with="p:[op:0]"
-							when-collections-list-enter="a:[bounceInLeft-subtle:1000:linear:0:1:f]">
-							<a class="ui-collections-list-item"></a>
-						</li>
-						<li u init-with="p:[op:0]"
-							when-collections-list-enter="a:[bounceInLeft-subtle:1000:linear:0:1:f]">
-							<a class="ui-collections-list-item"></a>
-						</li>
-					</ul>
+					<div>
+						<!-- <div class="gradient-neptune-left"></div> -->
+						<ul u when-collections-enter="s:[collections-list-enter:children:easeOutSine-400]">
+							<li u init-with="p:[op:0]"
+								when-collections-list-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
+								<a class="ui-collections-list-item"></a>
+							</li>
+							<li u init-with="p:[op:0]"
+								when-collections-list-enter="a:[bounceInLeft-subtle:1000:linear:0:1:f]">
+								<a class="ui-collections-list-item"></a>
+							</li>
+							<li u init-with="p:[op:0]"
+								when-collections-list-enter="a:[bounceInLeft-subtle:1000:linear:0:1:f]">
+								<a class="ui-collections-list-item"></a>
+							</li>
+							<li u init-with="p:[op:0]"
+								when-collections-list-enter="a:[bounceInLeft-subtle:1000:linear:0:1:f]">
+								<a class="ui-collections-list-item"></a>
+							</li>
+						</ul>
+						<div class="gradient-neptune-right"></div>
+					</div>
 				</li>
 
 				<li class="ui-collections-list">
@@ -47,20 +51,24 @@
 							<hr/>
 						</a>
 					</header>
-					<ul>
-						<li>
-							<a class="ui-collections-list-item"></a>
-						</li>
-						<li>
-							<a class="ui-collections-list-item"></a>
-						</li>
-						<li>
-							<a class="ui-collections-list-item"></a>
-						</li>
-						<li>
-							<a class="ui-collections-list-item"></a>
-						</li>
-					</ul>
+					<div>
+						<!-- <div class="gradient-neptune-left"></div> -->
+						<ul>
+							<li>
+								<a class="ui-collections-list-item"></a>
+							</li>
+							<li>
+								<a class="ui-collections-list-item"></a>
+							</li>
+							<li>
+								<a class="ui-collections-list-item"></a>
+							</li>
+							<li>
+								<a class="ui-collections-list-item"></a>
+							</li>
+						</ul>
+						<div class="gradient-neptune-right"></div>
+					</div>
 				</li>
 
 				<li class="ui-collections-list">
@@ -71,22 +79,28 @@
 							<hr/>
 						</a>
 					</header>
-					<ul>
-						<li>
-							<a class="ui-collections-list-item"></a>
-						</li>
-						<li>
-							<a class="ui-collections-list-item"></a>
-						</li>
-						<li>
-							<a class="ui-collections-list-item"></a>
-						</li>
-						<li>
-							<a class="ui-collections-list-item"></a>
-						</li>
-					</ul>
+					<div>
+						<!-- <div class="gradient-neptune-left"></div> -->
+						<ul>
+							<li>
+								<a class="ui-collections-list-item"></a>
+							</li>
+							<li>
+								<a class="ui-collections-list-item"></a>
+							</li>
+							<li>
+								<a class="ui-collections-list-item"></a>
+							</li>
+							<li>
+								<a class="ui-collections-list-item"></a>
+							</li>
+						</ul>
+						<div class="gradient-neptune-right"></div>
+					</div>
 				</li>
 			</ul>
 		</main>
+
+		<footer class="ui-gradient-footer gradient-neptune-bottom"></footer>
 	</item>
 </view>
