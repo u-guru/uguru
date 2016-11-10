@@ -423,24 +423,37 @@
         color: rgba(255, 255, 255, 0.5); }
       .ui-collections-list > header a:hover hr, .ui-collections-list > header a:focus hr {
         background: rgba(255, 255, 255, 0.25); }
-  .ui-collections-list > ul {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    overflow: auto;
-    padding: 7.5px; }
-    .ui-collections-list > ul::-webkit-scrollbar {
-      display: none; }
-    .ui-collections-list > ul::-moz-scrollbar {
-      display: none; }
-    .ui-collections-list > ul > li {
+  .ui-collections-list > div {
+    position: relative; }
+    .ui-collections-list > div > ul {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      overflow: auto;
       padding: 7.5px; }
-      .ui-collections-list > ul > li:first-child {
-        margin-left: -15px; }
+      .ui-collections-list > div > ul::-webkit-scrollbar {
+        display: none; }
+      .ui-collections-list > div > ul::-moz-scrollbar {
+        display: none; }
+      .ui-collections-list > div > ul > li {
+        padding: 7.5px; }
+        .ui-collections-list > div > ul > li:first-child {
+          margin-left: -15px; }
+        .ui-collections-list > div > ul > li:last-child {
+          padding-right: 0; }
+    .ui-collections-list > div div:empty {
+      position: absolute;
+      bottom: 0;
+      width: 50px;
+      height: 100%; }
+      .ui-collections-list > div div:empty:first-child {
+        left: 0; }
+      .ui-collections-list > div div:empty:last-child {
+        right: 0; }
 
 .ui-collections-list-item {
   -ms-box-orient: horizontal;

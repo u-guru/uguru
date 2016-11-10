@@ -405,20 +405,38 @@
 			}
 		}
 	}
-	> ul {
-		@include flex;
-		overflow: auto;
-		padding: 7.5px;
-		&::-webkit-scrollbar {
-			display: none;
-		}
-		&::-moz-scrollbar {
-			display: none;
-		}
-		> li {
+	> div {
+		position: relative;
+		> ul {
+			@include flex;
+			overflow: auto;
 			padding: 7.5px;
+			&::-webkit-scrollbar {
+				display: none;
+			}
+			&::-moz-scrollbar {
+				display: none;
+			}
+			> li {
+				padding: 7.5px;
+				&:first-child {
+					margin-left: -15px;
+				}
+				&:last-child {
+					padding-right: 0;
+				}
+			}
+		}
+		div:empty {
+			position: absolute;
+			bottom: 0;
+			width: 50px;
+			height: 100%;
 			&:first-child {
-				margin-left: -15px;
+				left: 0;
+			}
+			&:last-child {
+				right: 0;
 			}
 		}
 	}
