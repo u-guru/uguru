@@ -1598,19 +1598,38 @@ angular.module('uguru.shared.directives.base.components')
         }
       }
     }])
-    .directive('width', [function() {
+    .directive('width', ['$parse', '$rootScope', function($parse, $rootScope) {
       return {
         restrict: 'A',
         compile: function(element, attr) {
-          element.css('width', attr.width);
+            var extraUnit = ((attr.width.indexOf('%')>-1 || attr.width.indexOf('px')>-1 || attr.width.indexOf('em')>-1 )&& '') || '%';
+            var attrWidth = attr.width;
+            ['%', 'px', 'em', 'vw', 'vh'].forEach(function(unit) {
+                if (attrWidth.indexOf(unit) > 0) {
+                    extraUnit = unit;
+                    attrWidth = attrWidth.replace(unit, '')
+                }
+            })
+            attrWidth = $parse(attrWidth)($rootScope);
+            console.log(attrWidth)
+            element.css('width', attrWidth + extraUnit);
         }
       }
     }])
-    .directive('height', [function() {
+    .directive('height', ['$parse', '$rootScope', function($parse, $rootScope) {
       return {
         restrict: 'A',
         compile: function(element, attr) {
-          element.css('height', attr.width);
+            var extraUnit = ((attr.height.indexOf('%')>-1 || attr.height.indexOf('px')>-1 || attr.height.indexOf('em')>-1 )&& '') || '%'
+            var attrHeight = attr.height;
+            ['%', 'px', 'em', 'vw', 'vh'].forEach(function(unit) {
+                if (attrHeight.indexOf(unit) > 0) {
+                    extraUnit = unit;
+                    attrHeight = attrHeight.replace(unit, '')
+                }
+            })
+            attrHeight = $parse(attrHeight)($rootScope);
+          element.css('height', attrHeight + extraUnit);
         }
       }
     }])

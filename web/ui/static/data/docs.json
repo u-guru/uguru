@@ -33,11 +33,11 @@
             "_about": "vertical flex indicator",
             "_mapping": "display: flex;[...other flex properties specified by value",
             "values": ["start", "center", "end", "space-between", "space-around"],
-            "shortcuts": {
-                "attr-only": {
-                    "y-start": "display:flex; justify-content: flex-start"
-                }
-            }
+            "mapping": "y-start: 'display:flex; justify-content: flex-start'",
+            "alias": ["y='start'"]
+        },
+        "basis": {
+
         },
         "start": {
             "_about": "align myself"
