@@ -17,6 +17,9 @@
 				"components": {
                     "nav": {
                         "url": "ui/templates/components/nav/private.html"
+                    },
+					"header": {
+                        "url": "ui/templates/components/profile/header.html"
                     }
                 }
             },
