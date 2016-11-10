@@ -584,6 +584,9 @@
 	}
 }
 .ui-settings-nav {
+	@include flex;
+	@include flex-center-vertical;
+	justify-content: space-between;
 	width: 100%;
 	max-width: 930px;
 	margin: 0 auto;
@@ -606,6 +609,12 @@
 				}
 			}
 		}
+	}
+	button {
+		width: auto;
+		height: 48px;
+		border-radius: 2px;
+		font-size: 18px;
 	}
 }
 .ui-settings-container {

@@ -595,6 +595,18 @@
     display: none; }
 
 .ui-settings-nav {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   max-width: 930px;
   margin: 0 auto; }
@@ -620,6 +632,11 @@
           height: 2px;
           border-radius: 2px;
           background: #aaafbd; }
+  .ui-settings-nav button {
+    width: auto;
+    height: 48px;
+    border-radius: 2px;
+    font-size: 18px; }
 
 .ui-settings-container {
   position: relative;
