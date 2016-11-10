@@ -69,11 +69,16 @@ function TweenService() {
     function preComputeValues(property, duration, start, end, ease, result_arr) {
         duration = parseFloat(duration)
         result_arr.cache = [];
-        var iterations = (duration/1000 * 60);//fps
+
+
+
+
         var startDict = {};
         startDict[property] = start;
         var endDict = {};
         endDict[property] = end;
+
+
         var t = new Tweenable();
         if (specialPropertyTypes.indexOf(property) > -1) {
             start = parseSpecialPropertyType(property, start);
@@ -107,20 +112,42 @@ function TweenService() {
             var end = {};
             end[property] = tempEnd
         }
+
+        var iterations = (duration/1000 * 60);//fps
+
         t.tween({
           from: start,
           to:   end,
           duration: duration,
           easing: ease
         }).seek(0).pause()
+        var appendLastValueAtEnd = false;
+        if (t.get()[property] !== start[property]) {
+            appendLastValueAtEnd = true;
+
+            var newDuration = iterations/62 * 1000;
+            result_arr.cache.push(start[property]);
+            t.tween({
+              from: start,
+              to:   end,
+              duration: newDuration,
+              easing: ease
+            }).seek(0).pause();
+            iterations = iterations - 2;
+        }
+
+
         for (var i = 0; i < iterations; i++) {
             var seekValue = duration/iterations * i;
             var value = t.seek(seekValue).resume().pause().get()[property]
-
-            result_arr.cache.push(value);
+            result_arr.cache.push(round(value, 15));
         }
         t.stop(true);
-        result_arr.cache.push(t.get()[property]);
+
+        result_arr.cache.push(round(t.get()[property], 15));
+        if (appendLastValueAtEnd) {
+            result_arr.cache.push(end[property])
+        }
         // if (result_arr.cache[result_arr.cache.length - 2] !== end[property]) {
         //     console.log(property[end])
         //     result_arr.cache.push(end[property]);
@@ -131,7 +158,9 @@ function TweenService() {
         if (property === 'counter') {
             formatCounterValues(start.counter, end.counter, result_arr.cache);
         }
-        // console.log(result_arr.cache)
+        // console.log('\n')
+        // console.log(ease, '<>', property)
+        // console.log('START 3 values: \n' + result_arr.cache.slice(0,3).join(",\n") +'\n' + '\nEND 3 values:\n' + result_arr.cache.slice(result_arr.cache.length - 4,result_arr.cache.length).join(",\n") + '\n')
         return result_arr
         // t.dispose();
     }
@@ -149,6 +178,21 @@ function TweenService() {
                 arr[i] = replaceStart + arr[i].replace(replaceStart, '');
             }
         })
+    }
+
+    function precision(a) {
+      if (!isFinite(a)) return 0;
+      var e = 1, p = 0;
+      while (Math.round(a * e) / e !== a) { e *= 10; p++; }
+      return p;
+    }
+
+    function round(value, decimals) {
+        if (typeof value !== 'number') return value
+        if (precision(value) > 18) {
+            return Number(value.toFixed(15));
+        }
+      return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
     }
 
     function getKeyframeValuesByProperty(property, start_val, end_val, duration, easeFunc, max_keyframe) {
@@ -194,7 +238,7 @@ function TweenService() {
         // kf_arr.forEach(function(kf, i) {console.log(kf.percentage, kf[Object.keys(start_dict)[0]])})
         kf_arr.forEach(function(kf, i) {kf_arr[i].percentage = i/(kf_arr.length - 1) * 100})
 
-        console.log(kf_arr[0], kf_arr[kf_arr.length - 1])
+
         return kf_arr;
 
     }

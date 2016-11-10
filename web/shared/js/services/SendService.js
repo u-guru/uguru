@@ -330,6 +330,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
 
 
     msgStates.incoming.forEach(function(i_state) {
+      // console.log(i_state)
       if (i_state.actions.send && !i_state.parsedObj) {
         i_state.parsedObj = parseStateMsgContents(i_state.actions.send)
       }
@@ -439,8 +440,9 @@ function SendService($timeout, $parse, RootService, TweenService) {
 
 
           var statesToExecute = [];
+
           //public scope
-          if (msg_info.nameCamel in scope.root.scope.public.customStates.when && msg_info.sendScope === 'depth(*)') {
+          if (scope.root && msg_info.nameCamel in scope.root.scope.public.customStates.when && msg_info.sendScope === 'depth(*)') {
 
               var currentMsgContext = scope.root.scope.public.customStates.when[msg_info.nameCamel];
 

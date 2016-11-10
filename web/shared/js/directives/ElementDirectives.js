@@ -626,7 +626,7 @@ angular.module('uguru.shared.directives')
               this.states = ElementService.renderElementStates(element, attr);
               // console.log(element, this.states)
               var states = this.states;
-              console.log(states)
+              // console.log(states)
               var filterStates =  [];
               for (var state in states) {
                 states[state].length && states[state].forEach(function(_state) {
@@ -666,7 +666,7 @@ angular.module('uguru.shared.directives')
                   }
                 })
               }
-              console.log(filterStates)
+              // console.log(filterStates)
 
 
                   if (states.init) {
