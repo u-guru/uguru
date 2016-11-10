@@ -852,7 +852,10 @@ angular.module('uguru.shared.directives')
                       !scope.hasInitAfter  && transclude(scope, function(clone, innerScope) {
 
 
-                            lElem.removeAttr('custom')
+
+                            if ('custom' in lAttr) {
+                              lElem.removeAttr('custom')
+                            }
 
 
                           $compile(lElem.contents())(scope);
