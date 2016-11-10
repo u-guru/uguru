@@ -7,26 +7,40 @@
         <div height='90%' class='overflow-auto' bg="cerise" width='100%' class='left-0 bottom-0'>
             <div ng-repeat='(component_name, data) in docs.components' class='full-x'>
                 <ul class='flex-vertical-center full-x'>
-                    <li class='weight-900' width='20%'>
-                        {{component_name}}
+                    <li class='weight-900'>
+                        <div width='20'>{{component_name}}</div>
+                        <div width='80'>{{data}} </div>
                         <span class='opacity-50p'>
-                            [component]
+
                         </span>
                     </li>
-
-                    <li width='20%'> {{data}} </li>
                 </ul>
             </div>
             <div ng-repeat='(attr_name, attr_data) in docs.attr' class='full-x bg-cerise-80p'>
                 <ul class='flex-vertical-center full-x'>
-                    <li class='weight-900' width='20%'>
+                    <li class='weight-900 full-x flex-vertical-center p20y p15-grid border-1-bottom border-smoke border-solid'>
+                        <div width='30' class='p15-grid'>
+                            <div width='100' class='txt-36'>
+                                {{attr_name}}
+                            </div>
+                            <div width='100'>
+                                <small class='opacity-50p'>{{attr_data.info}}</small>
+                            </div>
+                            <div width='100'>
+                                <span class='border-1 border-solid p20x p05y txt-1' ng-repeat='tag in attr_data.tags'>          {{tag}}
+                                </span>
+                            </div>
+                        </div>
+                        <div width='70'>
+                            <div width='100' class='flex-vertical-center'>
+                                <div class='border-1 border-solid p20x p05y txt-1' ng-repeat='ex in attr_data.examples'>          {{$index + 1}}
+                                    <span ng-bind-html-unsafe="{{ex}}"> </span>
+                                    <span ng-non-bindable="ex"> </span>
+                                </div>
+                            </div>
 
-                        {{attr_name}}
-                        <span class='opacity-50p'>
-                            [attr]
-                        </span>
+                        </div>
                     </li>
-                    <li width='20%'> {{attr_data}} </li>
                 </ul>
             </div>
         </div>

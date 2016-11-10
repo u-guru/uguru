@@ -10,47 +10,52 @@
         }
     },
     "attr":{
-        "css-related": {
-            "x": {
-                "info": "horizontal flex indicator",
-                "_mapping": "display:flex;[..other flex properties specified by value]",
-                "values": ["start", "center", "end", "space-between", "space-around"],
-                "examples": {
-                    "": {
-                        "x-start": "start",
-                        "x-center": "center"
-                    }
-                }
-            },
-            "y": {
-                "info": "vertical flex indicator",
-                "_mapping": "display: flex;[...other flex properties specified by value",
-                "values": ["start", "center", "end", "space-between", "space-around"],
-                "mapping": "y-start: 'display:flex; justify-content: flex-start'",
-                "alias": ["y='start'"]
-            },
-            "basis": {
-                "info": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-basics"
-            },
-            "start": {
-                "info": "align myself"
-            },
-            "pointer": {
-                "info": "a shorter way to declare cursor:pointer",
-                "examples": {
-                    "general": "<div pointer width='50px' height='50px' class='bg-cerise'></div>"
+        "margin": {
+            "info": "margin css",
+            "tags": ["css-related", "position"],
+            "examples": {
+                "general": "<div margin='50px 50px'></div>",
+                "condensed": "<div m='50px 50px'></div>",
+                "x-only": "<div margin-x='50px'></div>",
+                "x-only-condensed": "<div m-x='50px'></div>",
+                "y-only": "<div margin-y='50px'></div>"
+            }
+        },
+        "x": {
+            "info": "horizontal flex indicator",
+            "examples": {
+                "": {
+                    "x-start": "start",
+                    "x-center": "center"
                 }
             }
         },
-        "data": {
-            "set": {
-                "info": "a way to shorten nested data paths and re-name more relevant to local elements",
-                "tags": ["data-related"],
-                "examples": [
-                    {"syntax": "<view name='' set='gallery' = 'ui.app.views.gallery'"},
-                    {"url": "<view name='' set='gallery' = 'ui.app.views.gallery'"}
-                ]
+        "y": {
+            "info": "vertical flex indicator",
+            "values": ["start", "center", "end", "space-between", "space-around"],
+            "mapping": "y-start: 'display:flex; justify-content: flex-start'",
+            "alias": ["y='start'"]
+        },
+        "basis": {
+            "info": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-basics"
+        },
+        "start": {
+            "info": "align myself"
+        },
+        "pointer": {
+            "info": "a shorter way to declare cursor:pointer",
+            "examples": {
+                "general": "<div pointer width='50px' height='50px' class='bg-cerise'></div>"
             }
+        },
+
+        "set": {
+            "info": "a way to shorten nested data paths and re-name more relevant to local elements",
+            "tags": ["data-related"],
+            "examples": [
+                {"syntax": "<view name='' set='gallery' = 'ui.app.views.gallery'"},
+                {"url": "<view name='' set='gallery' = 'ui.app.views.gallery'"}
+            ]
         }
     },
     "best practices": {
@@ -60,6 +65,7 @@
         }
     },
     "upcoming": {
-        "mobile": ["mobile-general", "mobile-specific"]
+        "mobile": ["mobile-general", "mobile-specific"],
+        "platform": []
     }
 }

@@ -1597,10 +1597,68 @@ angular.module('uguru.shared.directives.base.components')
           element.css('flex-basis', attr.basis);
         }
       }
-    }]);
+    }])
+    .directive('margin', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('margin', attr.margin);
+        }
+      }
+    }])
+    .directive('marginX', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('margin-left', attr.marginX);
+          element.css('margin-Right', attr.marginX);
+        }
+      }
+    }])
+    .directive('mX', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('margin-left', attr.mX);
+          element.css('margin-Right', attr.mX);
+        }
+      }
+    }])
+    .directive('marginY', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('margin-top', attr.marginTop);
+          element.css('margin-bottom', attr.marginBottom);
+        }
+      }
+    }])
+    .directive('mY', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('margin-top', attr.mY);
+          element.css('margin-bottom', attr.mY);
+        }
+      }
+    }])
 
+    var directiveShortcuts = {
+        'm': 'margin',
+        'mX': 'marginX',//
+        'mY': 'marginY',
+        'mTop': 'marginTop',
+        'mBottom': 'marginBottom',
+        'mLeft': 'marginLeft',
+        'mRight': 'marginRight',
+
+    }
+
+    // var directiveShortcuts = {
+    //     'm': 'margin',
+    // }
     var modulePointer = angular.module('uguru.shared.directives.base.components');
-    ['width', 'height'].forEach(function(propName) {
+    ['width', 'height', 'margin'].forEach(function(propName) {
         modulePointer = modulePointer.directive(propName, ['CompService', function(CompService) {
           return {
             restrict: 'A',
