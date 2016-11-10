@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+
+=======
+>>>>>>> f83d422460a9844e3d1f8780d71c3692bc34de6d
 <view class="ui-gallery" layer="2" type='row' bg="cream" set="gallery = ui.app.views.gallery">
 
 	<!-- u on-init="s:[login-modal-requested:public:1000]" -->
@@ -309,12 +313,12 @@
 					</div>
 					<aside class="ui-gallery-styles"
 						u init-with="p:[tr:scale(0), tro:center top]"
-						when-popup-modal-requested="a:[scale:0:1:500:easeOutBack:0:1:f]:delay-2000 | s:[ui-styles:public:linear-5000]:+2500">
+						when-popup-modal-requested="s:[ui-styles:public:linear-4000]:+2500 | a:[scale:0:1:500:easeOutBack:0:1:f]:delay-2000">
 						<div>
 							<h2>Styles</h2>
 							<ul>
 								<li class="ui-gallery-colors"
-									u init-with="p:[op:0]"
+									u style="opacity:0;"
 									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[color-slide:public:500]">
 									<ul>
 										<li>
@@ -341,12 +345,12 @@
 												when-color-slide="a:[translateX:-600%:0%:250:easeOutSine:0:1:f]"></div>
 										</li>
 									</ul>
-									<h3 u init-with="p:[op:0]"
+									<h3 u style="opacity:0;"
 										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Color Palette: <span>Academic</span></h3>
 								</li>
 								<li class="ui-gallery-fonts"
 									u init-with="p:[op:0]"
-									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[letter-slide:public:500]">
+									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[letter-slide:public:1050]">
 									<h1 class="flex">
 										<span>Aa</span>
 										<span class="m10x"
