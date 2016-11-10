@@ -2266,6 +2266,9 @@ button, input, textarea {
 .bg-in {
   background: #517fa4; }
 
+.border-0 {
+  border-width: 0px !important; }
+
 .border-1 {
   border-width: 1px !important;
   border-style: solid; }

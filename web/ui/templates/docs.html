@@ -1,52 +1,48 @@
-<view layer="2" type='row' bg="#fadab0" link-src-data="ui/static/data/docs.json" link-data-name="docs" class='txt-white' class='full-xy'>
-    <div absolute bg="cerise" class='absolute left-0 bottom-0'>v{{docs.version}}</div>
-    <div class='full-xy absolute top-0 left-0'>
-        <ul class='full-x p15-grid flex-wrap-center' height='10%'>
-            <li ng-repeat='(field, data) in docs' class='bg-slate m20x p10y p20x'> {{field}} </li>
-        </ul>
-        <div height='90%' class='overflow-auto' bg="cerise" width='100%' class='left-0 bottom-0'>
-            <div ng-repeat='(component_name, data) in docs.components' class='full-x'>
-                <ul class='flex-vertical-center full-x'>
-                    <li class='weight-900'>
-                        <div width='20'>{{component_name}}</div>
-                        <div width='80'>{{data}} </div>
-                        <span class='opacity-50p'>
-
-                        </span>
+<view layer="2" type='row' bg="#fadab0" link-src-data="ui/static/data/docs.json" link-data-name="docs" class='full-xy'>
+    <item width="100" height="100" class="overflow-auto">
+		<div bg="sienna" width="100" class="txt-center p05xy txt-16 semibold">v{{docs.version}}</div>
+	    <div>
+	        <ul class='full-x p15-grid flex-wrap-center'>
+	            <li ng-repeat='(field, data) in docs'><div class="bg-stone p10y-p15x radius-2 txt-20 semibold">{{field}}</div></li>
+	        </ul>
+	        <div bg="stone" width='100'>
+				<ul class="p15-grid">
+                    <li class='flex-center-vertical' ng-repeat='(component_name, data) in docs.components'>
+                        <div width='20' class="txt-20 semibold">{{component_name}}</div>
+                        <div width='80' class="txt-16 semibold">{{data}}</div>
                     </li>
-                </ul>
-            </div>
-            <div ng-repeat='(attr_name, attr_data) in docs.attr' class='full-x bg-cerise-80p'>
-                <ul class='flex-vertical-center full-x'>
-                    <li class='weight-900 full-x flex-vertical-center p20y p15-grid border-1-bottom border-smoke border-solid'>
-                        <div width='30' class='p15-grid'>
-                            <div width='100' class='txt-36'>
-                                {{attr_name}}
-                            </div>
-                            <div width='100'>
-                                <small class='opacity-50p'>{{attr_data.info}}</small>
-                            </div>
-                            <div width='100'>
-                                <span class='border-1 border-solid p20x p05y txt-1' ng-repeat='tag in attr_data.tags'>          {{tag}}
-                                </span>
-                            </div>
-                        </div>
-                        <div width='70'>
-                            <div width='100' class='flex-vertical-center'>
-                                <div class='border-1 border-solid p20x p05y txt-1' ng-repeat='(example_name, html) in attr_data.examples'>          {{$index + 1}}, {{example_name}}
-                                    <div m-x="20px" ng-bind-html="html"> </div>
-                                    <span ng-bind="html"> </span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-
-
-    </div>
-
+				</ul>
+				<div class="p15x">
+					<hr class="margin-none border-0 round" width="100%" height="2px" bg="white-50p"/>
+				</div>
+	            <div ng-repeat='(attr_name, attr_data) in docs.attr' bg="stone">
+	                <ul class="p15-grid">
+	                    <li class='full-x flex-vertical-center-wrap'>
+	                        <div width='30'>
+	                            <div width='100' class='txt-36'>
+	                                {{attr_name}}
+	                            </div>
+	                            <div width='100'>
+	                                <small class='opacity-50p'>{{attr_data.info}}</small>
+	                            </div>
+	                            <div width='100'>
+	                                <span class='border-1 border-solid p20x p05y txt-1' ng-repeat='tag in attr_data.tags'>          {{tag}}
+	                                </span>
+	                            </div>
+	                        </div>
+	                        <div width='70'>
+	                            <div width='100' class='flex-vertical-center'>
+	                                <div class='border-1 border-solid p20x p05y txt-1' ng-repeat='(example_name, html) in attr_data.examples'>          {{$index + 1}}, {{example_name}}
+	                                    <div m-x="20px" ng-bind-html="html"> </div>
+	                                    <span ng-bind="html"> </span>
+	                                </div>
+	                            </div>
+	                        </div>
+							<hr class="margin-none border-0 round" width="100%" height="2px" bg="white-50p"/>
+	                    </li>
+	                </ul>
+	            </div>
+	        </div>
+	    </div>
+	</item>
 </view>
