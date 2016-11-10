@@ -1,7 +1,7 @@
 
     <div class="full-xy flex-center">
     <main-view>
-
+    <!--@gabrielle, @jeselle uncomment the console.log on TweenService.js on line 161-163 to view the logs clearly printing the start/end values -->
         <ul class="flex-vertical-center p15-grid">
 
 
