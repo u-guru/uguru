@@ -42,6 +42,15 @@
 				    <button class="ui-gallery-filter-btn">media</button>
 				</li>
 
+				<!-- appear before they're supposed to -->
+				<!-- <filter-tag custom data="gallery.data.filterTags[0]"> </filter-tag>
+				<filter-tag custom data="gallery.data.filterTags[1]"> </filter-tag>
+				<filter-tag custom data="gallery.data.filterTags[2]"> </filter-tag>
+				<filter-tag custom data="gallery.data.filterTags[3]"> </filter-tag>
+				<filter-tag custom data="gallery.data.filterTags[4]"> </filter-tag>
+				<filter-tag custom data="gallery.data.filterTags[5]"> </filter-tag>
+				<filter-tag custom data="gallery.data.filterTags[6]"> </filter-tag>
+				<filter-tag custom data="gallery.data.filterTags[7]"> </filter-tag> -->
 			</ul>
 		</nav>
 
@@ -110,7 +119,7 @@
 
 	<modal fixed name='popup' scale-to='#profile-tile-id' class='ui-gallery-single top-0 left-0 full-xy perspective-container' bg='#C6DDD6'
 		u init-with='p:[opacity:0]'
-		when-popup-modal-requested='a:[scaleIn-subtle:1000:linear:0:1:f, z-index:-1:100:50:linear:0:1:f] | s:[popup-enter:public:1000]'
+		when-popup-modal-requested='a:[scaleIn-subtle:500:linear:0:1:f, z-index:-1:100:50:linear:0:1:f] | s:[popup-enter:public:1000]'
 		when-popup-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:100:-1:50:linear:450:1:f]">
 		<import url="gallery.components.nav.url"></import>
 
