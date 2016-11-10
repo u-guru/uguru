@@ -5,90 +5,25 @@
   left: 0;
   width: 100%;
   height: 100%; }
-  .ui-login .ui-login-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(250, 218, 176, 0.8); }
-  .ui-login .ui-login-modal {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    max-width: 320px; }
-    .ui-login .ui-login-modal header {
-      position: relative;
-      z-index: 2;
-      width: calc(100% - 48px); }
-      .ui-login .ui-login-modal header a {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-align-content: center;
-        align-content: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        position: absolute;
-        width: 48px;
-        height: 48px;
-        background: #a0a4a5;
-        border-radius: 1000px;
-        border: 2px solid white;
-        transition: border 300ms ease-in-out, background 300ms ease-in-out; }
-        .ui-login .ui-login-modal header a svg {
-          width: 24px;
-          height: 24px; }
-          .ui-login .ui-login-modal header a svg * {
-            fill: none;
-            stroke: white;
-            stroke-width: 6px;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            transition: stroke 300ms ease-in-out; }
-    .ui-login .ui-login-modal section {
-      position: relative;
-      z-index: 1;
-      margin-top: 24px;
-      padding: 39px 15px;
-      background: white;
-      border-radius: 2px; }
-      .ui-login .ui-login-modal section h2 {
-        color: #40484B;
-        font-size: 16px;
-        font-weight: 600; }
-      .ui-login .ui-login-modal section ul {
-        padding: 5px 0; }
-        .ui-login .ui-login-modal section ul li {
-          padding: 5px 0; }
-      .ui-login .ui-login-modal section > a {
-        display: block;
-        margin-top: 5px;
-        font-size: 16px;
-        text-align: center; }
-      .ui-login .ui-login-modal section .forgot-pw-link {
-        color: #757575;
-        font-weight: 600; }
-        .ui-login .ui-login-modal section .forgot-pw-link:hover, .ui-login .ui-login-modal section .forgot-pw-link:focus {
-          color: #9cbdbe; }
-        .ui-login .ui-login-modal section .forgot-pw-link:active {
-          color: #555f7b; }
-      .ui-login .ui-login-modal section .signup-link {
-        font-weight: 700;
-        color: #9cbdbe; }
-        .ui-login .ui-login-modal section .signup-link:hover, .ui-login .ui-login-modal section .signup-link:focus {
-          color: #98855d; }
-        .ui-login .ui-login-modal section .signup-link:active {
-          color: #555f7b; }
-    .ui-login .ui-login-modal footer {
+
+.ui-login-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(250, 218, 176, 0.8); }
+
+.ui-login-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  max-width: 320px; }
+  .ui-login-modal header {
+    position: relative;
+    z-index: 2;
+    width: calc(100% - 48px); }
+    .ui-login-modal header a {
       -ms-box-orient: horizontal;
       display: -webkit-box;
       display: -moz-box;
@@ -104,16 +39,83 @@
       align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      margin-top: -24px; }
-      .ui-login .ui-login-modal footer button {
-        height: 48px;
-        font-size: 18px;
-        border-radius: 1000px;
-        padding: 0 30px;
-        width: auto; }
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      background: #a0a4a5;
+      border-radius: 1000px;
+      border: 2px solid white;
+      transition: border 300ms ease-in-out, background 300ms ease-in-out; }
+      .ui-login-modal header a svg {
+        width: 24px;
+        height: 24px; }
+        .ui-login-modal header a svg * {
+          fill: none;
+          stroke: white;
+          stroke-width: 6px;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          transition: stroke 300ms ease-in-out; }
+  .ui-login-modal section {
+    position: relative;
+    z-index: 1;
+    margin-top: 24px;
+    padding: 39px 15px;
+    background: white;
+    border-radius: 2px; }
+    .ui-login-modal section h2 {
+      color: #40484B;
+      font-size: 16px;
+      font-weight: 600; }
+    .ui-login-modal section ul {
+      padding: 5px 0; }
+      .ui-login-modal section ul li {
+        padding: 5px 0; }
+    .ui-login-modal section > a {
+      display: block;
+      margin-top: 5px;
+      font-size: 16px;
+      text-align: center; }
+    .ui-login-modal section .forgot-pw-link {
+      color: #757575;
+      font-weight: 600; }
+      .ui-login-modal section .forgot-pw-link:hover, .ui-login-modal section .forgot-pw-link:focus {
+        color: #9cbdbe; }
+      .ui-login-modal section .forgot-pw-link:active {
+        color: #555f7b; }
+    .ui-login-modal section .signup-link {
+      font-weight: 700;
+      color: #9cbdbe; }
+      .ui-login-modal section .signup-link:hover, .ui-login-modal section .signup-link:focus {
+        color: #98855d; }
+      .ui-login-modal section .signup-link:active {
+        color: #555f7b; }
+  .ui-login-modal footer {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    margin-top: -24px; }
+    .ui-login-modal footer button {
+      height: 48px;
+      font-size: 18px;
+      border-radius: 1000px;
+      padding: 0 30px;
+      width: auto; }
 
 .ui-nav {
   -ms-box-orient: horizontal;
@@ -351,7 +353,7 @@
     display: none; }
   .ui-collections-main .ui-pf-header {
     width: 100%;
-    max-width: 900px;
+    max-width: 930px;
     margin: 0 auto 15px; }
 
 .ui-collections-lists {
@@ -376,7 +378,7 @@
       align-content: center;
       -webkit-align-items: center;
       align-items: center;
-      font-size: 36px;
+      font-size: 28px;
       font-weight: 600;
       line-height: 1; }
       .ui-collections-list > header h1 svg {
@@ -498,16 +500,22 @@
 
 /*-- PROFILE */
 .ui-pf-header {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  align-content: stretch;
-  border: 2px solid rgba(255, 255, 255, 0.5);
   padding: 15px; }
+  .ui-pf-header > div {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    align-content: stretch;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    padding: 15px;
+    overflow: hidden; }
   .ui-pf-header .ui-pf-info {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -527,20 +535,20 @@
     align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
-    width: 40%;
-    padding-right: 15px; }
+    width: 100%;
+    padding-bottom: 15px; }
     .ui-pf-header .ui-pf-info .user-icon-72 {
       border-width: 2px; }
     .ui-pf-header .ui-pf-info h1 {
       width: 100%;
       text-align: center;
-      font-size: 36px;
+      font-size: 28px;
       font-weight: 900; }
-    .ui-pf-header .ui-pf-info span, .ui-pf-header .ui-pf-info a {
+    .ui-pf-header .ui-pf-info > span, .ui-pf-header .ui-pf-info a {
       display: block;
       padding: 0 5px;
-      font-size: 18px; }
-    .ui-pf-header .ui-pf-info span {
+      font-size: 16px; }
+    .ui-pf-header .ui-pf-info > span {
       font-weight: 600; }
     .ui-pf-header .ui-pf-info a {
       font-weight: 700; }
@@ -564,20 +572,20 @@
     -webkit-align-items: center;
     align-items: center;
     position: relative;
-    width: 60%;
-    padding-left: 15px; }
+    width: 100%;
+    padding-top: 15px; }
     .ui-pf-header .ui-pf-desc hr {
       position: absolute;
-      left: -1px;
-      top: 0;
-      width: 2px;
-      height: 100%;
+      top: -1px;
+      left: 0;
+      width: 100%;
+      height: 2px;
       border: 0;
       border-radius: 4px;
       margin: 0;
       background: rgba(255, 255, 255, 0.5); }
     .ui-pf-header .ui-pf-desc p {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600; }
 
 /*-- SETTINGS */
@@ -593,6 +601,18 @@
     display: none; }
 
 .ui-settings-nav {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   max-width: 930px;
   margin: 0 auto; }
@@ -618,6 +638,17 @@
           height: 2px;
           border-radius: 2px;
           background: #aaafbd; }
+  .ui-settings-nav > div {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    padding: 5px; }
+    .ui-settings-nav > div button {
+      height: 48px;
+      border-radius: 2px;
+      font-size: 18px; }
 
 .ui-settings-container {
   position: relative;
@@ -642,11 +673,13 @@
   padding: 7.5px; }
   .ui-settings-tiles > li {
     padding: 7.5px;
-    width: 50%; }
+    width: 100%; }
 
 .ui-settings-tile {
   position: relative;
   margin-bottom: 15px; }
+  .ui-settings-tile:not(:first-child) {
+    margin-bottom: 0; }
   .ui-settings-tile header {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -759,7 +792,8 @@
   position: relative; }
   .ui-settings-theme > div > svg {
     width: 100%;
-    border-radius: 2px; }
+    border-radius: 2px;
+    border: 2px solid transparent; }
   .ui-settings-theme > div > div {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -811,6 +845,12 @@
     height: 100%;
     opacity: 0;
     cursor: pointer; }
+    .ui-settings-theme input:hover + div > svg {
+      border-color: white; }
+    .ui-settings-theme input:active + div > svg {
+      border-color: rgba(255, 255, 255, 0.5); }
+    .ui-settings-theme input:checked + div > svg, .ui-settings-theme input.checked + div > svg {
+      border-color: white; }
     .ui-settings-theme input:checked + div > div .theme-input svg .border, .ui-settings-theme input.checked + div > div .theme-input svg .border {
       stroke: white; }
     .ui-settings-theme input:checked + div > div .theme-input svg .bg, .ui-settings-theme input.checked + div > div .theme-input svg .bg {
@@ -937,6 +977,8 @@
     padding: 7.5px; }
     .ui-gallery-filter-bar ul li {
       padding: 7.5px; }
+      .ui-gallery-filter-bar ul li:first-child {
+        display: none; }
 
 .ui-gallery-filter-btn {
   display: block;
@@ -1095,7 +1137,7 @@
         justify-content: center;
         position: relative;
         width: 100%;
-        padding: 30px 15px;
+        padding: 15px;
         border: 2px solid rgba(255, 255, 255, 0.8);
         border-bottom: 0;
         border-radius: 2px 2px 0 0;
@@ -1127,10 +1169,11 @@
     .ui-gallery-single-desc header a:active, .ui-gallery-single-desc aside a:active {
       color: #668193; }
   .ui-gallery-single-desc header {
-    width: 40%; }
+    width: 100%;
+    padding-bottom: 15px; }
     .ui-gallery-single-desc header h1 {
       padding: 15px 15px 0;
-      font-size: 36px;
+      font-size: 28px;
       font-weight: 900; }
     .ui-gallery-single-desc header h4 {
       -ms-box-orient: horizontal;
@@ -1145,22 +1188,22 @@
       -webkit-align-items: center;
       align-items: center;
       padding: 0 15px;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600; }
     .ui-gallery-single-desc header .user-icon-24 {
-      margin-left: 10px; }
+      margin-left: 5px; }
   .ui-gallery-single-desc aside {
     position: relative;
-    width: 60%;
-    font-size: 18px;
+    width: 100%;
+    font-size: 16px;
     font-weight: 600;
     padding: 15px 15px 0; }
     .ui-gallery-single-desc aside hr {
       position: absolute;
-      left: -1px;
-      top: 15px;
-      width: 2px;
-      height: calc(100% - 15px);
+      left: 15px;
+      top: -1px;
+      width: calc(100% - 30px);
+      height: 2px;
       border: 0;
       border-radius: 4px;
       margin: 0;
@@ -1190,6 +1233,9 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
   padding: 7.5px; }
   .ui-gallery-single-info > * {
     padding: 7.5px; }
@@ -1205,10 +1251,12 @@
     line-height: 1; }
 
 .ui-gallery-related {
-  width: calc(100% / 3 * 2); }
+  order: 2;
+  width: 100%; }
 
 .ui-gallery-styles {
-  width: calc(100% / 3);
+  order: 1;
+  width: 100%;
   color: #40484B; }
   .ui-gallery-styles h3 {
     padding: 5px 10px;
@@ -1409,6 +1457,74 @@
         .ui-gallery-single-footer ul li:first-child a svg * {
           stroke-width: 4px; }
 
+/*-- RESPONSIVE */
+@media screen and (max-width: 768px) {
+  .ui-gallery-main > * {
+    width: 100% !important; } }
+@media screen and (min-width: 768px) {
+  .ui-gallery-filter-bar ul li:first-child {
+    display: block; }
+
+  .ui-gallery-single-desc header {
+    width: 40%;
+    padding-bottom: 0; }
+    .ui-gallery-single-desc header h1 {
+      font-size: 36px; }
+    .ui-gallery-single-desc header h4 {
+      font-size: 18px; }
+    .ui-gallery-single-desc header .user-icon-24 {
+      margin-left: 10px; }
+  .ui-gallery-single-desc aside {
+    width: 60%;
+    font-size: 18px; }
+    .ui-gallery-single-desc aside hr {
+      left: -1px;
+      top: 15px;
+      width: 2px;
+      height: calc(100% - 15px); }
+
+  .ui-gallery-related {
+    order: 1;
+    width: calc(100% / 3 * 2); }
+
+  .ui-gallery-styles {
+    order: 2;
+    width: calc(100% / 3); }
+
+  .ui-collections-list > header h1 {
+    font-size: 36px; }
+
+  .ui-pf-header .ui-pf-info {
+    width: 40%;
+    padding-bottom: 0;
+    padding-right: 15px; }
+    .ui-pf-header .ui-pf-info h1 {
+      font-size: 36px; }
+    .ui-pf-header .ui-pf-info > span, .ui-pf-header .ui-pf-info a {
+      font-size: 18px; }
+  .ui-pf-header .ui-pf-desc {
+    width: 60%;
+    padding-top: 0;
+    padding-left: 15px; }
+    .ui-pf-header .ui-pf-desc hr {
+      left: -1px;
+      top: 0;
+      width: 2px;
+      height: 100%; }
+    .ui-pf-header .ui-pf-desc p {
+      font-size: 18px; }
+
+  .ui-settings-tiles > li {
+    width: 50%; }
+
+  .ui-settings-nav > div {
+    position: static;
+    left: auto;
+    bottom: auto;
+    width: auto;
+    padding: 0 15px 0 0; }
+    .ui-settings-nav > div button {
+      width: auto; } }
 /*-- STYLES */
 .txt-aero {
   color: #9cbdbe !important; }

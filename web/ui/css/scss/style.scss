@@ -8,106 +8,106 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	.ui-login-bg {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: rgba($cream, .8);
-	}
-	.ui-login-modal {
-		position: absolute;
-		top: 15px;
-		right: 15px;
-		max-width: 320px;
-		header {
-			position: relative;
-			z-index: 2;
-			width: calc(100% - 48px);
-			a {
-				@include flex;
-				@include flex-center;
-				position: absolute;
-				width: 48px;
-				height: 48px;
-				background: mix($slate, white);
-				border-radius: 1000px;
-				border: 2px solid white;
-				transition: border 300ms ease-in-out, background 300ms ease-in-out;
-				svg {
-					width: 24px;
-					height: 24px;
-					* {
-						fill: none;
-						stroke: white;
-						stroke-width: 6px;
-						stroke-linecap: round;
-						stroke-linejoin: round;
-						transition: stroke 300ms ease-in-out;
-					}
-				}
-			}
-		}
-		section {
-			position: relative;
-			z-index: 1;
-			margin-top: 24px;
-			padding: 39px 15px;
-			background: white;
-			border-radius: 2px;
-			h2 {
-				color: $slate;
-				font-size: 16px;
-				font-weight: 600;
-			}
-			ul {
-				padding: 5px 0;
-				li {
-					padding: 5px 0;
-				}
-			}
-			> a {
-				display: block;
-				margin-top: 5px;
-				font-size: 16px;
-				text-align: center;
-			}
-			.forgot-pw-link {
-				color: $taupe;
-				font-weight: 600;
-				&:hover, &:focus {
-					color: $aero;
-				}
-				&:active {
-					color: $stone;
-				}
-			}
-			.signup-link {
-				font-weight: 700;
-				color: $aero;
-				&:hover, &:focus {
-					color: $olive;
-				}
-				&:active {
-					color: $stone;
-				}
-			}
-		}
-		footer {
+}
+.ui-login-bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba($cream, .8);
+}
+.ui-login-modal {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	max-width: 320px;
+	header {
+		position: relative;
+		z-index: 2;
+		width: calc(100% - 48px);
+		a {
 			@include flex;
 			@include flex-center;
-			position: relative;
-			z-index: 2;
-			width: 100%;
-			margin-top: -24px;
-			button {
-				height: 48px;
-				font-size: 18px;
-				border-radius: 1000px;
-				padding: 0 30px;
-				width: auto;
+			position: absolute;
+			width: 48px;
+			height: 48px;
+			background: mix($slate, white);
+			border-radius: 1000px;
+			border: 2px solid white;
+			transition: border 300ms ease-in-out, background 300ms ease-in-out;
+			svg {
+				width: 24px;
+				height: 24px;
+				* {
+					fill: none;
+					stroke: white;
+					stroke-width: 6px;
+					stroke-linecap: round;
+					stroke-linejoin: round;
+					transition: stroke 300ms ease-in-out;
+				}
 			}
+		}
+	}
+	section {
+		position: relative;
+		z-index: 1;
+		margin-top: 24px;
+		padding: 39px 15px;
+		background: white;
+		border-radius: 2px;
+		h2 {
+			color: $slate;
+			font-size: 16px;
+			font-weight: 600;
+		}
+		ul {
+			padding: 5px 0;
+			li {
+				padding: 5px 0;
+			}
+		}
+		> a {
+			display: block;
+			margin-top: 5px;
+			font-size: 16px;
+			text-align: center;
+		}
+		.forgot-pw-link {
+			color: $taupe;
+			font-weight: 600;
+			&:hover, &:focus {
+				color: $aero;
+			}
+			&:active {
+				color: $stone;
+			}
+		}
+		.signup-link {
+			font-weight: 700;
+			color: $aero;
+			&:hover, &:focus {
+				color: $olive;
+			}
+			&:active {
+				color: $stone;
+			}
+		}
+	}
+	footer {
+		@include flex;
+		@include flex-center;
+		position: relative;
+		z-index: 2;
+		width: 100%;
+		margin-top: -24px;
+		button {
+			height: 48px;
+			font-size: 18px;
+			border-radius: 1000px;
+			padding: 0 30px;
+			width: auto;
 		}
 	}
 }
@@ -336,7 +336,7 @@
 	}
 	.ui-pf-header {
 		width: 100%;
-		max-width: 900px;
+		max-width: 930px;
 		margin: 0 auto 15px;
 	}
 }
@@ -353,7 +353,7 @@
 		h1 {
 			@include flex;
 			@include flex-center-vertical;
-			font-size: 36px;
+			font-size: 28px;
 			font-weight: 600;
 			line-height: 1;
 			svg {
@@ -507,31 +507,36 @@
 
 /*-- PROFILE */
 .ui-pf-header {
-	@include flex;
-	align-content: stretch;
-	border: 2px solid rgba(white, .5);
 	padding: 15px;
+	> div {
+		@include flex;
+		@include flex-wrap;
+		align-content: stretch;
+		border: 2px solid rgba(white, .5);
+		padding: 15px;
+		overflow: hidden;
+	}
 	.ui-pf-info {
 		@include flex;
 		@include flex-wrap;
 		@include flex-center;
-		width: 40%;
-		padding-right: 15px;
+		width: 100%;
+		padding-bottom: 15px;
 		.user-icon-72 {
 			border-width: 2px;
 		}
 		h1 {
 			width: 100%;
 			text-align: center;
-			font-size: 36px;
+			font-size: 28px;
 			font-weight: 900;
 		}
-		span, a {
+		> span, a {
 			display: block;
 			padding: 0 5px;
-			font-size: 18px;
+			font-size: 16px;
 		}
-		span {
+		> span {
 			font-weight: 600;
 		}
 		a {
@@ -549,21 +554,21 @@
 		@include flex-wrap;
 		@include flex-center-vertical;
 		position: relative;
-		width: 60%;
-		padding-left: 15px;
+		width: 100%;
+		padding-top: 15px;
 		hr {
 			position: absolute;
-			left: -1px;
-			top: 0;
-			width: 2px;
-			height: 100%;
+			top: -1px;
+			left: 0;
+			width: 100%;
+			height: 2px;
 			border: 0;
 			border-radius: 4px;
 			margin: 0;
 			background: rgba(white, .5);
 		}
 		p {
-			font-size: 18px;
+			font-size: 16px;
 			font-weight: 600;
 		}
 	}
@@ -584,6 +589,9 @@
 	}
 }
 .ui-settings-nav {
+	@include flex;
+	@include flex-center-vertical;
+	justify-content: space-between;
 	width: 100%;
 	max-width: 930px;
 	margin: 0 auto;
@@ -607,6 +615,19 @@
 			}
 		}
 	}
+	> div {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		z-index: 10;
+		padding: 5px;
+		button {
+			height: 48px;
+			border-radius: 2px;
+			font-size: 18px;
+		}
+	}
 }
 .ui-settings-container {
 	position: relative;
@@ -623,12 +644,15 @@
 	padding: 7.5px;
 	> li {
 		padding: 7.5px;
-		width: 50%;
+		width: 100%;
 	}
 }
 .ui-settings-tile {
 	position: relative;
 	margin-bottom: 15px;
+	&:not(:first-child) {
+		margin-bottom: 0;
+	}
 	header {
 		@include flex;
 		@include flex-center-vertical;
@@ -722,7 +746,7 @@
 		}
 	}
 }
-
+// themes
 .ui-settings-themes {
 	@include flex;
 	@include flex-wrap;
@@ -737,6 +761,7 @@
 		> svg {
 			width: 100%;
 			border-radius: 2px;
+			border: 2px solid transparent;
 		}
 		> div {
 			@include flex;
@@ -780,8 +805,25 @@
 		height: 100%;
 		opacity: 0;
 		cursor: pointer;
+		&:hover {
+			+ div {
+				> svg {
+					border-color: white;
+				}
+			}
+		}
+		&:active {
+			+ div {
+				> svg {
+					border-color: rgba(white, .5);
+				}
+			}
+		}
 		&:checked, &.checked {
 			+ div {
+				> svg {
+					border-color: white;
+				}
 				> div {
 					.theme-input {
 						svg {
@@ -801,6 +843,7 @@
 		}
 	}
 }
+// colors
 .ui-settings-colors {
 	@include flex;
 	@include flex-wrap;
@@ -871,6 +914,9 @@
 		padding: 7.5px;
 		li {
 			padding: 7.5px;
+			&:first-child {
+				display: none;
+			}
 		}
 	}
 }
@@ -1003,7 +1049,7 @@
 				@include flex-center;
 				position: relative;
 				width: 100%;
-				padding: 30px 15px;
+				padding: 15px;
 				border: 2px solid rgba(white, .8);
 				border-bottom: 0;
 				border-radius: 2px 2px 0 0;
@@ -1036,35 +1082,36 @@
 		}
 	}
 	header {
-		width: 40%;
+		width: 100%;
+		padding-bottom: 15px;
 		h1 {
 			padding: 15px 15px 0;
-			font-size: 36px;
+			font-size: 28px;
 			font-weight: 900;
 		}
 		h4 {
 			@include flex;
 			@include flex-center-vertical;
 			padding: 0 15px;
-			font-size: 18px;
+			font-size: 16px;
 			font-weight: 600;
 		}
 		.user-icon-24 {
-			margin-left: 10px;
+			margin-left: 5px;
 		}
 	}
 	aside {
 		position: relative;
-		width: 60%;
-		font-size: 18px;
+		width: 100%;
+		font-size: 16px;
 		font-weight: 600;
 		padding: 15px 15px 0;
 		hr {
 			position: absolute;
-			left: -1px;
-			top: 15px;
-			width: 2px;
-			height: calc(100% - 15px);
+			left: 15px;
+			top: -1px;
+			width: calc(100% - 30px);
+			height: 2px;
 			border: 0;
 			border-radius: 4px;
 			margin: 0;
@@ -1086,6 +1133,7 @@
 // related and styles
 .ui-gallery-single-info {
 	@include flex;
+	@include flex-wrap;
 	padding: 7.5px;
 	> * {
 		padding: 7.5px;
@@ -1105,10 +1153,12 @@
 	}
 }
 .ui-gallery-related {
-	width: calc(100% / 3 * 2);
+	order: 2;
+	width: 100%;
 }
 .ui-gallery-styles {
-	width: calc(100% / 3);
+	order: 1;
+	width: 100%;
 	color: $slate;
 	h3 {
 		padding: 5px 10px;
@@ -1237,6 +1287,7 @@
 		}
 	}
 }
+// footer
 .ui-gallery-single-footer {
 	@include flex;
 	justify-content: space-between;
@@ -1302,6 +1353,106 @@
 						}
 					}
 				}
+			}
+		}
+	}
+}
+
+/*-- RESPONSIVE */
+@media screen and (max-width: 768px) {
+	.ui-gallery-main {
+		> * {
+			width: 100%!important;
+		}
+	}
+}
+@media screen and (min-width: 768px) {
+	.ui-gallery-filter-bar {
+		ul li:first-child {
+			display: block;
+		}
+	}
+	.ui-gallery-single-desc {
+		header {
+			width: 40%;
+			padding-bottom: 0;
+			h1 {
+				font-size: 36px;
+			}
+			h4 {
+				font-size: 18px;
+			}
+			.user-icon-24 {
+				margin-left: 10px;
+			}
+		}
+		aside {
+			width: 60%;
+			font-size: 18px;
+			hr {
+				left: -1px;
+				top: 15px;
+				width: 2px;
+				height: calc(100% - 15px);
+			}
+		}
+	}
+	.ui-gallery-related {
+		order: 1;
+		width: calc(100% / 3 * 2);
+	}
+	.ui-gallery-styles {
+		order: 2;
+		width: calc(100% / 3);
+	}
+	.ui-collections-list {
+		> header {
+			h1 {
+				font-size: 36px;
+			}
+		}
+	}
+	.ui-pf-header {
+		.ui-pf-info {
+			width: 40%;
+			padding-bottom: 0;
+			padding-right: 15px;
+			h1 {
+				font-size: 36px;
+			}
+			> span, a {
+				font-size: 18px;
+			}
+		}
+		.ui-pf-desc {
+			width: 60%;
+			padding-top: 0;
+			padding-left: 15px;
+			hr {
+				left: -1px;
+				top: 0;
+				width: 2px;
+				height: 100%;
+			}
+			p {
+				font-size: 18px;
+			}
+		}
+	}
+	.ui-settings-tiles {
+		> li {
+			width: 50%;
+		}
+	}
+	.ui-settings-nav {
+		> div {
+			position: static;
+			left: auto;
+			bottom: auto;
+			width: auto;
+			padding: 0 15px 0 0;
+			button {
+				width: auto;
 			}
 		}
 	}
