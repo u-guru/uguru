@@ -8,8 +8,10 @@
 		<!-- @gabrielle notice I set gallery=ui.app.views.gallery above & check the modified json file-->
 		<import url="gallery.components.nav.url"></import>
 
-		<nav class="ui-gallery-filter-bar" style="margin-top:-15px;">
-			<ul u on-init="s:[filter-enter:children:easeInCirc-1250]">
+		<nav class="ui-gallery-filter-bar" style="margin-top:-15px;"
+			u init-with="p:[op:0]"
+			on-init="p:[op:1]:delay-100">
+			<ul u on-init="s:[filter-enter:children:easeInCirc-2000]">
 				<li u on-init="p:[op:0, tro:center center]"
 					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 					<h3 class="ui-gallery-filter-header">Filters:</h3>
@@ -43,14 +45,14 @@
 			<div class="width-25p">
 				<div class="ui-gallery-item" style="height:calc(200px - 7.5px)"
 					u init-with="p:[op:0, tr:translateY(-50px) translateX(50px)]"
-					when-gallery-enter="a:[opacity:0:1:500:linear:0:1:f, translateY:-50px:0px:300:easeOutExpo:500:1:f, translateX:50px:0px:500:easeOutExpo:500:1:f]">
+					when-gallery-enter="a:[opacity:0:1:500:linear:0:1:f, translateY:-50px:0px:300:easeOutExpo:300:1:f, translateX:50px:0px:500:easeOutExpo:300:1:f]">
 					<div class="full-xy"></div>
 				</div>
 			</div>
 			<div class="width-25p">
 				<div class="ui-gallery-item" style="height:400px"
 					u init-with="p:[op:0, tro:left top, tr:rotate(-15deg)]"
-					when-gallery-enter="a:[opacity:0:1:500:linear:0:1:f, rotate:-15deg:0deg:300:easeInCirc:0:1:f]:delay-1050"
+					when-gallery-enter="a:[opacity:0:1:500:linear:0:1:f, rotate:-15deg:0deg:300:easeInCirc:0:1:f]:delay-150"
 					on-mouseenter="s:[top-right:public]"
 					on-mouseleave="s:[top-right-leave:public]">
 					<!-- on-mouseenter="s:[top-right:parent]" -->
@@ -91,7 +93,7 @@
 
 	<modal fixed name='popup' scale-to='#profile-tile-id' class='ui-gallery-single top-0 left-0 full-xy perspective-container' bg='#C6DDD6'
 		u init-with='p:[opacity:0]'
-		when-popup-modal-requested='a:[scaleIn-subtle:1000:linear:0:1:f, z-index:-1:100:50:linear:0:1:f] | s:[popup-enter:public:1000]'
+		when-popup-modal-requested='a:[scaleIn-subtle:500:linear:0:1:f, z-index:-1:100:50:linear:0:1:f] | s:[popup-enter:public:1000]'
 		when-popup-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:100:-1:50:linear:450:1:f]">
 		<import url="gallery.components.nav.url"></import>
 

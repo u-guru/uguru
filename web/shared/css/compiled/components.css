@@ -5346,7 +5346,7 @@ a.credit-card {
     width: 100%;
     font-size: 16px;
     font-weight: 400;
-    font-family: "Source Code Pro", monospace !important; }
+    font-family: "Source Code Pro", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, Courier, monospace !important; }
     .student-card .school-id-access div:empty {
       position: absolute;
       top: 0;

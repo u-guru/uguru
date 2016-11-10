@@ -556,7 +556,7 @@
     -webkit-justify-content: center;
     justify-content: center;
     height: 34px;
-    font-family: "Source Code Pro", monospace !important;
+    font-family: "Source Code Pro", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, Courier, monospace !important;
     font-size: 14px;
     font-weight: 600; }
   .admin-html ul.border li span:not(.inside) {
@@ -606,7 +606,7 @@
           font-weight: 600; }
     .admin-html ul li input {
       background: none;
-      font-family: "Source Code Pro", monospace !important;
+      font-family: "Source Code Pro", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, Courier, monospace !important;
       cursor: text; }
 
 .admin-definition-list dl div {

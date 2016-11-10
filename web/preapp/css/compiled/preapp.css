@@ -4080,8 +4080,6 @@
 @keyframes hiw-minute-hand {
   0% {
     transform: rotateZ(0deg); }
-    50% {
-    transform: rotateZ(180deg); }
   100% {
     transform: rotateZ(360deg); } }
 /* http://goo.gl/8Wzkzj */
@@ -5411,7 +5409,7 @@ a[class*="-container"]:hover .map-enter {
       align-items: center;
       position: relative;
       z-index: 2;
-      font-family: "Source Code Pro", monospace !important;
+      font-family: "Source Code Pro", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, Courier, monospace !important;
       background: none;
       height: 64px;
       font-size: 28px;
@@ -7725,4 +7723,4 @@ a[class*="-container"]:hover .map-enter {
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
     opacity: 1; } }
 
-
+/*# sourceMappingURL=preapp.css.map */

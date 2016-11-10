@@ -10,42 +10,58 @@
         }
     },
     "attr":{
-        "set": {
-            "_about": "a way to shorten nested data paths and re-name more relevant to local elements",
-            "tags": ["data-related"],
-            "examples": [
-                {"syntax": "<view name='' set='gallery' = 'ui.app.views.gallery'"},
-                {"url": "<view name='' set='gallery' = 'ui.app.views.gallery'"}
-            ]
+        "margin": {
+            "info": "margin css",
+            "tags": ["css-related", "position"],
+            "examples": {
+                "general": "<div class='bg-neptune radius-2 width-96 height-96' margin='50px 50px'></div>",
+                "condensed": "<div class='bg-neptune radius-2 width-96 height-96' m='50px 50px'></div>",
+                "x-only": "<div class='bg-neptune radius-2 width-96 height-96' margin-x='50px'></div>",
+                "x-only-condensed": "<div class='bg-neptune radius-2 width-96 height-96' m-x='50px'></div>",
+                "y-only": "<div class='bg-neptune radius-2 width-96 height-96' margin-y='50px'></div>"
+            }
         },
         "x": {
-            "_about": "horizontal flex indicator",
-            "_mapping": "display:flex;[..other flex properties specified by value]",
-            "values": ["start", "center", "end", "space-between", "space-around"],
-            "shortcuts": {
-                "attr-only": {
+            "info": "horizontal flex indicator",
+            "examples": {
+                "": {
                     "x-start": "start",
                     "x-center": "center"
                 }
             }
         },
         "y": {
-            "_about": "vertical flex indicator",
-            "_mapping": "display: flex;[...other flex properties specified by value",
+            "info": "vertical flex indicator",
             "values": ["start", "center", "end", "space-between", "space-around"],
-            "shortcuts": {
-                "attr-only": {
-                    "y-start": "display:flex; justify-content: flex-start"
-                }
-            }
+            "mapping": "y-start: 'display:flex; justify-content: flex-start'",
+            "alias": ["y='start'"]
+        },
+        "basis": {
+            "info": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-basics"
         },
         "start": {
-            "_about": "align myself"
+            "info": "align myself"
+        },
+        "pointer": {
+            "info": "a shorter way to declare cursor:pointer",
+            "examples": {
+                "general": "<div pointer width='50px' height='50px' class='bg-cerise'></div>"
+            }
+        },
+
+        "set": {
+            "info": "a way to shorten nested data paths and re-name more relevant to local elements",
+            "tags": ["data-related"]
         }
     },
-    "classes": {},
-    "style": {
-        "_about": "in regards to the appearance/layout of all elements",
-        "attr  ": ""
+    "best practices": {
+        "docs model": {
+            "examples": "examples come in a dictionary {} format because it forces you to think of a name/purpose of that example that distinguishes it from the rest.",
+            "info": "if you dont have time to write the docs, the writee should at least provide an external link for more info"
+        }
+    },
+    "upcoming": {
+        "mobile": ["mobile-general", "mobile-specific"],
+        "platform": []
     }
 }

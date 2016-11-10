@@ -618,10 +618,12 @@
           height: 2px;
           border-radius: 2px;
           background: #aaafbd; }
-        .ui-settings-nav ul li a.selected {
-          font-weight: 700; }
-          .ui-settings-nav ul li a.selected hr {
-            opacity: 1; }
+
+.ui-settings-container {
+  position: relative;
+  width: 100%;
+  max-width: 930px;
+  margin: 0 auto; }
 
 .ui-settings-tiles {
   -ms-box-orient: horizontal;
@@ -754,14 +756,150 @@
     width: 50%; }
 
 .ui-settings-theme {
-  text-align: center; }
-  .ui-settings-theme svg {
+  position: relative; }
+  .ui-settings-theme > div > svg {
     width: 100%;
     border-radius: 2px; }
-  .ui-settings-theme h3 {
-    margin-top: 5px;
+  .ui-settings-theme > div > div {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin-top: 5px; }
+  .ui-settings-theme > div .theme-input {
+    margin-right: 5px; }
+    .ui-settings-theme > div .theme-input svg {
+      border-radius: 1000px;
+      display: block;
+      width: 16px;
+      height: 16px; }
+      .ui-settings-theme > div .theme-input svg .border {
+        fill: none;
+        stroke: #80879c;
+        stroke-width: 5px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        transform-origin: center center;
+        transform: rotate(-90deg); }
+      .ui-settings-theme > div .theme-input svg .bg {
+        fill: #6a738c;
+        transform-origin: center center; }
+      .ui-settings-theme > div .theme-input svg .check {
+        fill: #ee7361;
+        transform-origin: center center;
+        transform: scale(0) translateZ(0);
+        transition: all 250ms cubic-bezier(0.8, 0.1, 1, 0.05); }
+  .ui-settings-theme > div h3 {
     font-size: 18px;
     font-weight: 600; }
+  .ui-settings-theme input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer; }
+    .ui-settings-theme input:checked + div > div .theme-input svg .border, .ui-settings-theme input.checked + div > div .theme-input svg .border {
+      stroke: white; }
+    .ui-settings-theme input:checked + div > div .theme-input svg .bg, .ui-settings-theme input.checked + div > div .theme-input svg .bg {
+      fill: white; }
+    .ui-settings-theme input:checked + div > div .theme-input svg .check, .ui-settings-theme input.checked + div > div .theme-input svg .check {
+      transform: scale(1) translateZ(0); }
+
+.ui-settings-colors {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  padding: 7.5px; }
+  .ui-settings-colors > li {
+    padding: 7.5px;
+    width: 50%; }
+
+.ui-settings-color {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center; }
+  .ui-settings-color h3 {
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5px; }
+  .ui-settings-color > div {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    border-radius: 1000px;
+    border: 2px solid white;
+    padding: 5px; }
+    .ui-settings-color > div .color {
+      width: 30px;
+      min-width: 30px;
+      height: 30px;
+      border-radius: 1000px;
+      border: 2px solid white; }
+    .ui-settings-color > div fieldset {
+      padding: 0 10px; }
+      .ui-settings-color > div fieldset div {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-align-items: center;
+        align-items: center;
+        height: 30px;
+        font-family: "Source Code Pro", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, Courier, monospace !important; }
+        .ui-settings-color > div fieldset div input {
+          background: none;
+          font-family: "Source Code Pro", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, Courier, monospace !important;
+          color: white; }
 
 /*-- GALLERY */
 .ui-gallery-filter-header {

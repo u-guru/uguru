@@ -3,14 +3,17 @@ angular
     .factory('CompService', [
     '$timeout',
     '$compile',
+    '$parse',
+    '$rootScope',
     CompService
     ]);
 
-function CompService($timeout, $compile) {
+function CompService($timeout, $compile, $parse, $rootScope) {
   var genOptionSpec = ['type', 'when-*', 'as*', '']
   var flexAlignMapping = {'bottom': 'flex-end', 'left': 'flex-start', 'right': 'flex-end', 'top': 'flex-start'}
   var itemSpec = [];
   var globals= {attr: {}, attrWithValue:{}, _class:{}}
+  var css = initCSSObj();
   return {
     getBaseSpec: getBaseSpec,
     getOptions: getOptions,
@@ -22,7 +25,59 @@ function CompService($timeout, $compile) {
     renderAlign: renderAlign,
     renderAllStyleAttributes: renderAllStyleAttributes,
     initializeModalAttr: initializeModalAttr,
-    globals: globals
+    globals: globals,
+    css: css
+  }
+
+  function isSVGElement(name) {
+    name = name.toLowerCase();
+    return ['path', 'g', 'rect', 'svg', 'polygon', 'line', 'circle'].indexOf(name) > -1;
+  }
+
+  function initCSSObj() {
+    return {
+      render: {
+        width: renderWidthFunc,
+        height: renderHeightFunc,
+        margin: renderMarginFunc
+      }
+    }
+  }
+
+  function renderMarginFunc() {
+
+  }
+
+  function renderHeightFunc(elem, attr, scope) {
+    if (attr.height && !isSVGElement(elem[0].nodeName.toLowerCase())) {
+        if (attr.height.indexOf('%') === -1 && attr.height.indexOf('px') === -1) {
+            elem.css('height', attr.height + '%')
+        } else {
+            elem.css('height', attr.height)
+        }
+    }
+  }
+
+  function renderWidthFunc(elem, attr, scope) {
+    if (attr.width && !isSVGElement(elem[0].nodeName.toLowerCase())) {
+      if (attr.width.indexOf('%') === -1 && attr.width.indexOf('px') === -1) {
+          elem.css('width', attr.width + '%')
+      } else {
+          elem.css('width', attr.width)
+      }
+    }
+    //ideal
+    // var extraUnit = ((attr.width.indexOf('%')>-1 || attr.width.indexOf('px')>-1 || attr.width.indexOf('em')>-1 )&& '') || '%';
+    //         var attrWidth = attr.width;
+    //         ['%', 'px', 'em', 'vw', 'vh'].forEach(function(unit) {
+    //             if (attrWidth.indexOf(unit) > 0) {
+    //                 extraUnit = unit;
+    //                 attrWidth = attrWidth.replace(unit, '')
+    //             }
+    //         })
+    //         attrWidth = $parse(attrWidth)($rootScope);
+    //         console.log(attrWidth)
+    //         element.css('width', attrWidth + extraUnit);
   }
 
   function initializeModalAttr(p_elem, attr, _window) {
@@ -102,23 +157,27 @@ function CompService($timeout, $compile) {
       elem.css('cursor', 'pointer')
     }
 
-    if (attr.width && elem[0].nodeName.toLowerCase() !== 'svg') {
-        if (attr.width.indexOf('%') === -1 && attr.width.indexOf('px') === -1) {
-            elem.css('width', attr.width + '%')
-        } else {
-            elem.css('width', attr.width)
-        }
-    }
-    if (attr.height && elem[0].nodeName.toLowerCase() !== 'svg') {
-        if (attr.height.indexOf('%') === -1 && attr.height.indexOf('px') === -1) {
-            elem.css('height', attr.height + '%')
-        } else {
-            elem.css('height', attr.height)
-        }
-    }
+
+
     if (attr.type && attr.type === 'row') {
         elem.addClass('flex-wrap-center', 'flex-wrap')
     }
+
+    // if (attr.width && elem[0].nodeName.toLowerCase() !== 'svg') {
+    //   if (attr.width.indexOf('%') === -1 && attr.width.indexOf('px') === -1) {
+    //       elem.css('width', attr.width + '%')
+    //   } else {
+    //       elem.css('width', attr.width)
+    //   }
+    // }
+
+    // if (attr.height && elem[0].nodeName.toLowerCase() !== 'svg') {
+    //     if (attr.height.indexOf('%') === -1 && attr.height.indexOf('px') === -1) {
+    //         elem.css('height', attr.height + '%')
+    //     } else {
+    //         elem.css('height', attr.height)
+    //     }
+    // }
 
     if ((attr.layer && attr.layer.length) || (attr.depth && attr.depth.length))  {
       var intLayer = 0;

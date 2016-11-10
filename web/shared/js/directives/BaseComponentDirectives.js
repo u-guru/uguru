@@ -1598,21 +1598,119 @@ angular.module('uguru.shared.directives.base.components')
         }
       }
     }])
-    .directive('width', [function() {
+    .directive('margin', [function() {
       return {
         restrict: 'A',
         compile: function(element, attr) {
-          element.css('width', attr.width);
+          element.css('margin', attr.margin);
         }
       }
     }])
-    .directive('height', [function() {
+    .directive('marginX', [function() {
       return {
         restrict: 'A',
         compile: function(element, attr) {
-          element.css('height', attr.width);
+          element.css('margin-left', attr.marginX);
+          element.css('margin-Right', attr.marginX);
         }
       }
     }])
+    .directive('mX', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('margin-left', attr.mX);
+          element.css('margin-Right', attr.mX);
+        }
+      }
+    }])
+    .directive('marginY', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('margin-top', attr.marginTop);
+          element.css('margin-bottom', attr.marginBottom);
+        }
+      }
+    }])
+    .directive('htmlSnippet', ['$compile',function($compile) {
+      return {
+        restrict: 'E',
+        scope: {html: '=html'},
+        transclude: true,
+        replace:true,
+        compile: function(element, attr, transclude) {
+
+            return {
+                pre: function preLink(scope, pre_elem, pre_attr) {
+                    if (!scope.html || !scope.html.length || scope.html.indexOf('>') === -1) return;
+                    var e = $compile(scope.html)(scope)
+
+                    pre_elem.replaceWith(angular.element(e));
+                    pre_attr.compile && transclude(scope, function(clone, innerScope) {
+
+                    })
+                }
+            }
+        }
+
+      }
+    }])
+    .directive('mY', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('margin-top', attr.mY);
+          element.css('margin-bottom', attr.mY);
+        }
+      }
+    }])
+
+    var directiveShortcuts = {
+        'm': 'margin',
+        'mX': 'marginX',//
+        'mY': 'marginY',
+        'mTop': 'marginTop',
+        'mBottom': 'marginBottom',
+        'mLeft': 'marginLeft',
+        'mRight': 'marginRight',
+
+    }
+
+    // var directiveShortcuts = {
+    //     'm': 'margin',
+    // }
+    var modulePointer = angular.module('uguru.shared.directives.base.components');
+    ['width', 'height'].forEach(function(propName) {
+        modulePointer = modulePointer.directive(propName, ['CompService', function(CompService) {
+          return {
+            restrict: 'A',
+            compile: function(element, attr) {
+                CompService.css.render[propName](element, attr);
+            }
+          }
+        }])
+    })
+
+
+    // .directive('height', ['CompService', function(CompService) {
+    //   return {
+    //     restrict: 'A',
+    //     compile: function(element, attr) {
+    //         console.log(CompService.css)
+    //         CompService.css.render.height(element, attr);
+    //       //   var extraUnit = ((attr.height.indexOf('%')>-1 || attr.height.indexOf('px')>-1 || attr.height.indexOf('em')>-1 )&& '') || '%'
+    //       //   var attrHeight = attr.height;
+    //       //   ['%', 'px', 'em', 'vw', 'vh'].forEach(function(unit) {
+    //       //       if (attrHeight.indexOf(unit) > 0) {
+    //       //           extraUnit = unit;
+    //       //           attrHeight = attrHeight.replace(unit, '')
+    //       //       }
+    //       //   })
+    //       //   attrHeight = $parse(attrHeight)($rootScope);
+    //       // element.css('height', attrHeight + extraUnit);
+    //     }
+    //   }
+    // }])
 
 
