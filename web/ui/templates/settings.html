@@ -6,19 +6,48 @@
 			<nav class="ui-settings-nav">
 				<ul>
 					<li>
-						<a class="selected"><span>Account</span><hr/></a>
+						<a u on-click="s:[account-link-clicked:public]">
+							<span u init-with="p:[font-weight:700]"
+								when-account-link-clicked="p:[font-weight:700]"
+								when-editor-link-clicked="p:[font-weight:600]"
+								when-customize-link-clicked="p:[font-weight:600]">Account</span>
+							<hr u init-with="p:[op:1]"
+								when-account-link-clicked="p:[op:1]"
+								when-editor-link-clicked="p:[op:0]"
+								when-customize-link-clicked="p:[op:0]"/>
+						</a>
 					</li>
 					<li>
-						<a><span>Editor</span><hr/></a>
+						<a u on-click="s:[editor-link-clicked:public]">
+							<span u init-with="p:[font-weight:600]"
+								when-account-link-clicked="p:[font-weight:600]"
+								when-editor-link-clicked="p:[font-weight:700]"
+								when-customize-link-clicked="p:[font-weight:600]">Editor</span>
+							<hr u init-with="p:[op:0]"
+								when-account-link-clicked="p:[op:0]"
+								when-editor-link-clicked="p:[op:1]"
+								when-customize-link-clicked="p:[op:0]"/>
+						</a>
 					</li>
 					<li>
-						<a><span>Customize</span><hr/></a>
+						<a u on-click="s:[customize-link-clicked:public]">
+							<span u init-with="p:[font-weight:600]"
+								when-account-link-clicked="p:[font-weight:600]"
+								when-editor-link-clicked="p:[font-weight:600]"
+								when-customize-link-clicked="p:[font-weight:700]">Customize</span>
+							<hr u init-with="p:[op:0]"
+								when-account-link-clicked="p:[op:0]"
+								when-editor-link-clicked="p:[op:0]"
+								when-customize-link-clicked="p:[op:1]"/>
+						</a>
 					</li>
 				</ul>
 			</nav>
 
-			<import url="settings.components.customize.url"></import>
-			<import url="settings.components.account.url"></import>
+			<div class="ui-settings-container">
+				<import url="settings.components.customize.url"></import>
+				<import url="settings.components.account.url"></import>
+			</div>
 		</main>
 	</item>
 </view>

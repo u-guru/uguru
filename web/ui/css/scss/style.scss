@@ -604,15 +604,15 @@
 					border-radius: 2px;
 					background: mix($stone, white);
 				}
-				&.selected {
-					font-weight: 700;
-					hr {
-						opacity: 1;
-					}
-				}
 			}
 		}
 	}
+}
+.ui-settings-container {
+	position: relative;
+	width: 100%;
+	max-width: 930px;
+	margin: 0 auto;
 }
 .ui-settings-tiles {
 	@include flex;
@@ -626,7 +626,6 @@
 		width: 50%;
 	}
 }
-
 .ui-settings-tile {
 	position: relative;
 	margin-bottom: 15px;

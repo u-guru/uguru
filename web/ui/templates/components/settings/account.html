@@ -1,5 +1,7 @@
 <ul class="ui-settings-tiles ui-settings-section"
-	u init-with="p:[position:relative, z-index:1]">
+	u init-with="p:[position:relative, left:0, top:0, z-index:1, op:1]"
+	when-account-link-clicked="p:[position:relative, top:auto, left:auto] | a:[z-index:-1:1:50:linear:0:1:f, opacity:0:1:500:easeOutSine:0:1:f]"
+	when-customize-link-clicked="p:[position:absolute, left:0, top:0] | a:[z-index:1:-1:50:linear:450:1:f, opacity:1:0:500:easeInSine:0:1:f]">
 	<li>
 		<div class="ui-settings-tile">
 			<header>

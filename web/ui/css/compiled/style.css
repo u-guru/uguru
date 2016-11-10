@@ -618,10 +618,12 @@
           height: 2px;
           border-radius: 2px;
           background: #aaafbd; }
-        .ui-settings-nav ul li a.selected {
-          font-weight: 700; }
-          .ui-settings-nav ul li a.selected hr {
-            opacity: 1; }
+
+.ui-settings-container {
+  position: relative;
+  width: 100%;
+  max-width: 930px;
+  margin: 0 auto; }
 
 .ui-settings-tiles {
   -ms-box-orient: horizontal;
