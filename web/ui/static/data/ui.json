@@ -17,6 +17,9 @@
 				"components": {
                     "nav": {
                         "url": "ui/templates/components/nav/private.html"
+                    },
+					"header": {
+                        "url": "ui/templates/components/profile/header.html"
                     }
                 }
             },
@@ -25,6 +28,12 @@
 				"components": {
                     "nav": {
                         "url": "ui/templates/components/nav/private.html"
+                    },
+                    "account": {
+                        "url": "ui/templates/components/settings/account.html"
+                    },
+                    "customize": {
+                        "url": "ui/templates/components/settings/customize.html"
                     }
                 }
             },

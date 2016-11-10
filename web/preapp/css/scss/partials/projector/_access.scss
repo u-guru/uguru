@@ -110,7 +110,7 @@
 			@include flex-center-vertical;
 			position: relative;
 			z-index: 2;
-			font-family: "Source Code Pro", monospace!important;
+			font-family: $monospace;
 			background: none;
 			height: 64px;
 			font-size: 28px;
