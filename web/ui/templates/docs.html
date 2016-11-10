@@ -1,4 +1,39 @@
-<view layer="2" type='row' bg="#fadab0" link-src-data="ui/static/data/docs.json" link-data-name="docs" class='txt-white'>
+<view layer="2" type='row' bg="#fadab0" link-src-data="ui/static/data/docs.json" link-data-name="docs" class='txt-white' class='full-xy'>
     <!-- <div row> </row> -->
-    {{docs}}
+    <div absolute bg="cerise" class='absolute left-0 bottom-0'>v{{docs.version}}</div>
+    <div class='full-xy absolute top-0 left-0'>
+        <ul class='full-x p15-grid flex-wrap-center' height='10%'>
+            <li ng-repeat='(field, data) in docs' class='bg-slate m20x p10y p20x'> {{field}} </li>
+        </ul>
+        <div height='90%' class='overflow-auto' bg="cerise" width='100%' class='left-0 bottom-0'>
+            <div ng-repeat='(component_name, data) in docs.components' class='full-x'>
+                <ul class='flex-vertical-center full-x'>
+                    <li class='weight-900' width='20%'>
+                        {{component_name}}
+                        <span class='opacity-50p'>
+                            [component]
+                        </span>
+                    </li>
+
+                    <li width='20%'> {{data}} </li>
+                </ul>
+            </div>
+            <div ng-repeat='(attr_name, attr_data) in docs.attr' class='full-x bg-cerise-80p'>
+                <ul class='flex-vertical-center full-x'>
+                    <li class='weight-900' width='20%'>
+
+                        {{attr_name}}
+                        <span class='opacity-50p'>
+                            [attr]
+                        </span>
+                    </li>
+                    <li width='20%'> {{attr_data}} </li>
+                </ul>
+            </div>
+        </div>
+
+
+
+    </div>
+
 </view>
