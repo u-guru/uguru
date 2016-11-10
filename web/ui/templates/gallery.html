@@ -251,16 +251,16 @@
 						</footer>
 					</div>
 				</div>
-				<div class="ui-gallery-single-info"
-					u when-popup-modal-requested="s:[ui-related:public:2000]">
+				<div class="ui-gallery-single-info">
 					<!-- u when-popup-modal-requested="s:[ui-related:children:2000, ui-styles:children:2500]" -->
 					<div class="ui-gallery-related"
 						u init-with="p:[tr:scale(0), tro:center top]"
-						when-ui-related="a:[scale:0:1:500:easeOutBack:0:1:f]">
+						when-popup-modal-requested="a:[scale:0:1:500:easeOutBack:0:1:f]:delay-1000 | s:[ui-related:public:easeInCirc-400]:+2000">
 						<div>
 							<h2>Related</h2>
 							<ul class="p15-grid ugrid-2">
-								<li>
+								<li  u init-with="p:[op:0, tro:center center]"
+									when-ui-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="block radius-2 border-2 border-stone">
 										<figure class="bg-stone-25p margin-none p15xy">
 											<svg></svg>
@@ -270,7 +270,8 @@
 										</div>
 									</a>
 								</li>
-								<li>
+								<li u init-with="p:[op:0, tro:center center]"
+									when-ui-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="block radius-2 border-2 border-stone">
 										<figure class="bg-stone-25p margin-none p15xy">
 											<svg></svg>
@@ -280,7 +281,8 @@
 										</div>
 									</a>
 								</li>
-								<li>
+								<li u init-with="p:[op:0, tro:center center]"
+									when-ui-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="block radius-2 border-2 border-stone">
 										<figure class="bg-stone-25p margin-none p15xy">
 											<svg></svg>
@@ -290,7 +292,8 @@
 										</div>
 									</a>
 								</li>
-								<li>
+								<li u init-with="p:[op:0, tro:center center]"
+									when-ui-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="block radius-2 border-2 border-stone">
 										<figure class="bg-stone-25p margin-none p15xy">
 											<svg></svg>
@@ -305,7 +308,7 @@
 					</div>
 					<aside class="ui-gallery-styles"
 						u init-with="p:[tr:scale(0), tro:center top]"
-						when-popup-modal-requested="a:[scale:0:1:500:easeOutBack:0:1:f]:delay-2500 | s:[ui-styles:public:linear-3500]:+2500">
+						when-popup-modal-requested="a:[scale:0:1:500:easeOutBack:0:1:f]:delay-2000 | s:[ui-styles:public:linear-5000]:+2500">
 						<div>
 							<h2>Styles</h2>
 							<ul>
