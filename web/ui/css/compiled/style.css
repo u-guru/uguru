@@ -5,90 +5,25 @@
   left: 0;
   width: 100%;
   height: 100%; }
-  .ui-login .ui-login-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(250, 218, 176, 0.8); }
-  .ui-login .ui-login-modal {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    max-width: 320px; }
-    .ui-login .ui-login-modal header {
-      position: relative;
-      z-index: 2;
-      width: calc(100% - 48px); }
-      .ui-login .ui-login-modal header a {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-align-content: center;
-        align-content: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        position: absolute;
-        width: 48px;
-        height: 48px;
-        background: #a0a4a5;
-        border-radius: 1000px;
-        border: 2px solid white;
-        transition: border 300ms ease-in-out, background 300ms ease-in-out; }
-        .ui-login .ui-login-modal header a svg {
-          width: 24px;
-          height: 24px; }
-          .ui-login .ui-login-modal header a svg * {
-            fill: none;
-            stroke: white;
-            stroke-width: 6px;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            transition: stroke 300ms ease-in-out; }
-    .ui-login .ui-login-modal section {
-      position: relative;
-      z-index: 1;
-      margin-top: 24px;
-      padding: 39px 15px;
-      background: white;
-      border-radius: 2px; }
-      .ui-login .ui-login-modal section h2 {
-        color: #40484B;
-        font-size: 16px;
-        font-weight: 600; }
-      .ui-login .ui-login-modal section ul {
-        padding: 5px 0; }
-        .ui-login .ui-login-modal section ul li {
-          padding: 5px 0; }
-      .ui-login .ui-login-modal section > a {
-        display: block;
-        margin-top: 5px;
-        font-size: 16px;
-        text-align: center; }
-      .ui-login .ui-login-modal section .forgot-pw-link {
-        color: #757575;
-        font-weight: 600; }
-        .ui-login .ui-login-modal section .forgot-pw-link:hover, .ui-login .ui-login-modal section .forgot-pw-link:focus {
-          color: #9cbdbe; }
-        .ui-login .ui-login-modal section .forgot-pw-link:active {
-          color: #555f7b; }
-      .ui-login .ui-login-modal section .signup-link {
-        font-weight: 700;
-        color: #9cbdbe; }
-        .ui-login .ui-login-modal section .signup-link:hover, .ui-login .ui-login-modal section .signup-link:focus {
-          color: #98855d; }
-        .ui-login .ui-login-modal section .signup-link:active {
-          color: #555f7b; }
-    .ui-login .ui-login-modal footer {
+
+.ui-login-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(250, 218, 176, 0.8); }
+
+.ui-login-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  max-width: 320px; }
+  .ui-login-modal header {
+    position: relative;
+    z-index: 2;
+    width: calc(100% - 48px); }
+    .ui-login-modal header a {
       -ms-box-orient: horizontal;
       display: -webkit-box;
       display: -moz-box;
@@ -104,16 +39,83 @@
       align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      margin-top: -24px; }
-      .ui-login .ui-login-modal footer button {
-        height: 48px;
-        font-size: 18px;
-        border-radius: 1000px;
-        padding: 0 30px;
-        width: auto; }
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      background: #a0a4a5;
+      border-radius: 1000px;
+      border: 2px solid white;
+      transition: border 300ms ease-in-out, background 300ms ease-in-out; }
+      .ui-login-modal header a svg {
+        width: 24px;
+        height: 24px; }
+        .ui-login-modal header a svg * {
+          fill: none;
+          stroke: white;
+          stroke-width: 6px;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          transition: stroke 300ms ease-in-out; }
+  .ui-login-modal section {
+    position: relative;
+    z-index: 1;
+    margin-top: 24px;
+    padding: 39px 15px;
+    background: white;
+    border-radius: 2px; }
+    .ui-login-modal section h2 {
+      color: #40484B;
+      font-size: 16px;
+      font-weight: 600; }
+    .ui-login-modal section ul {
+      padding: 5px 0; }
+      .ui-login-modal section ul li {
+        padding: 5px 0; }
+    .ui-login-modal section > a {
+      display: block;
+      margin-top: 5px;
+      font-size: 16px;
+      text-align: center; }
+    .ui-login-modal section .forgot-pw-link {
+      color: #757575;
+      font-weight: 600; }
+      .ui-login-modal section .forgot-pw-link:hover, .ui-login-modal section .forgot-pw-link:focus {
+        color: #9cbdbe; }
+      .ui-login-modal section .forgot-pw-link:active {
+        color: #555f7b; }
+    .ui-login-modal section .signup-link {
+      font-weight: 700;
+      color: #9cbdbe; }
+      .ui-login-modal section .signup-link:hover, .ui-login-modal section .signup-link:focus {
+        color: #98855d; }
+      .ui-login-modal section .signup-link:active {
+        color: #555f7b; }
+  .ui-login-modal footer {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    margin-top: -24px; }
+    .ui-login-modal footer button {
+      height: 48px;
+      font-size: 18px;
+      border-radius: 1000px;
+      padding: 0 30px;
+      width: auto; }
 
 .ui-nav {
   -ms-box-orient: horizontal;
@@ -759,7 +761,8 @@
   position: relative; }
   .ui-settings-theme > div > svg {
     width: 100%;
-    border-radius: 2px; }
+    border-radius: 2px;
+    border: 2px solid transparent; }
   .ui-settings-theme > div > div {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -811,6 +814,12 @@
     height: 100%;
     opacity: 0;
     cursor: pointer; }
+    .ui-settings-theme input:hover + div > svg {
+      border-color: white; }
+    .ui-settings-theme input:active + div > svg {
+      border-color: rgba(255, 255, 255, 0.5); }
+    .ui-settings-theme input:checked + div > svg, .ui-settings-theme input.checked + div > svg {
+      border-color: white; }
     .ui-settings-theme input:checked + div > div .theme-input svg .border, .ui-settings-theme input.checked + div > div .theme-input svg .border {
       stroke: white; }
     .ui-settings-theme input:checked + div > div .theme-input svg .bg, .ui-settings-theme input.checked + div > div .theme-input svg .bg {
