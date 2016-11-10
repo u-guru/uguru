@@ -14,11 +14,11 @@
             "info": "margin css",
             "tags": ["css-related", "position"],
             "examples": {
-                "general": "<div margin='50px 50px'></div>",
-                "condensed": "<div m='50px 50px'></div>",
-                "x-only": "<div margin-x='50px'></div>",
-                "x-only-condensed": "<div m-x='50px'></div>",
-                "y-only": "<div margin-y='50px'></div>"
+                "general": "<div class='bg-neptune radius-2 width-96 height-96' margin='50px 50px'></div>",
+                "condensed": "<div class='bg-neptune radius-2 width-96 height-96' m='50px 50px'></div>",
+                "x-only": "<div class='bg-neptune radius-2 width-96 height-96' margin-x='50px'></div>",
+                "x-only-condensed": "<div class='bg-neptune radius-2 width-96 height-96' m-x='50px'></div>",
+                "y-only": "<div class='bg-neptune radius-2 width-96 height-96' margin-y='50px'></div>"
             }
         },
         "x": {
@@ -51,11 +51,7 @@
 
         "set": {
             "info": "a way to shorten nested data paths and re-name more relevant to local elements",
-            "tags": ["data-related"],
-            "examples": [
-                {"syntax": "<view name='' set='gallery' = 'ui.app.views.gallery'"},
-                {"url": "<view name='' set='gallery' = 'ui.app.views.gallery'"}
-            ]
+            "tags": ["data-related"]
         }
     },
     "best practices": {

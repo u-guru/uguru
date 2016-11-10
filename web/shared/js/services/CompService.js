@@ -38,9 +38,14 @@ function CompService($timeout, $compile, $parse, $rootScope) {
     return {
       render: {
         width: renderWidthFunc,
-        height: renderHeightFunc
+        height: renderHeightFunc,
+        margin: renderMarginFunc
       }
     }
+  }
+
+  function renderMarginFunc() {
+
   }
 
   function renderHeightFunc(elem, attr, scope) {
