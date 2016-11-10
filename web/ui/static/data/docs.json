@@ -51,11 +51,7 @@
 
         "set": {
             "info": "a way to shorten nested data paths and re-name more relevant to local elements",
-            "tags": ["data-related"],
-            "examples": [
-                {"syntax": "<view name='' set='gallery' = 'ui.app.views.gallery'"},
-                {"url": "<view name='' set='gallery' = 'ui.app.views.gallery'"}
-            ]
+            "tags": ["data-related"]
         }
     },
     "best practices": {

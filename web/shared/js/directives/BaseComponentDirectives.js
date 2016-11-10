@@ -1633,6 +1633,29 @@ angular.module('uguru.shared.directives.base.components')
         }
       }
     }])
+    .directive('htmlSnippet', ['$compile',function($compile) {
+      return {
+        restrict: 'E',
+        scope: {html: '=html'},
+        transclude: true,
+        replace:true,
+        compile: function(element, attr, transclude) {
+
+            return {
+                pre: function preLink(scope, pre_elem, pre_attr) {
+                    if (!scope.html || !scope.html.length || scope.html.indexOf('>') === -1) return;
+                    var e = $compile(scope.html)(scope)
+
+                    pre_elem.replaceWith(angular.element(e));
+                    pre_attr.compile && transclude(scope, function(clone, innerScope) {
+
+                    })
+                }
+            }
+        }
+
+      }
+    }])
     .directive('mY', [function() {
       return {
         restrict: 'A',
@@ -1658,7 +1681,7 @@ angular.module('uguru.shared.directives.base.components')
     //     'm': 'margin',
     // }
     var modulePointer = angular.module('uguru.shared.directives.base.components');
-    ['width', 'height', 'margin'].forEach(function(propName) {
+    ['width', 'height'].forEach(function(propName) {
         modulePointer = modulePointer.directive(propName, ['CompService', function(CompService) {
           return {
             restrict: 'A',
