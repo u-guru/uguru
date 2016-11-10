@@ -853,7 +853,9 @@ angular.module('uguru.shared.directives')
 
 
 
-                            if 'custom' in lAttr && lElem.removeAttr('custom')
+                            if ('custom' in lAttr) {
+                              lElem.removeAttr('custom')
+                            }
 
 
                           $compile(lElem.contents())(scope);
