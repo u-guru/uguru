@@ -1598,5 +1598,21 @@ angular.module('uguru.shared.directives.base.components')
         }
       }
     }])
+    .directive('width', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('width', attr.width);
+        }
+      }
+    }])
+    .directive('height', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('height', attr.width);
+        }
+      }
+    }])
 
 
