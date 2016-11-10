@@ -10,7 +10,8 @@ function XHRService($timeout) {
 
   return {
     getJSONFile: getJSONFile,
-    getFileWithProgress: getFileWithProgress
+    getFileWithProgress: getFileWithProgress,
+    updateJSONFile: updateJSONFile
   }
 
   function getFileWithProgress(url, progress, params, callback) {
@@ -68,9 +69,17 @@ function XHRService($timeout) {
   }
 
 
+  function updateJSONFile(test_url, data, post_success_callback) {
+      function callback(resp ) {
 
-  function getJSONFile(request_type, url, callback, params) {
-
+        if (resp.status === 200 && resp.readyState === 4 && resp.statusText === "OK") {
+          getJSONFile('GET', test_url, post_success_callback)
+        }
+      }
+      getJSONFile('PUT', test_url, callback, JSON.stringify(data), true)
+  }
+  function getJSONFile(request_type, url, callback, params, skip_parse) {
+    skip_parse = skip_parse || false;
 
     var xhr = new XMLHttpRequest();
     XHRQueue.push({xhrObj: xhr, type: request_type, url:url, func: callback, params: params});
@@ -80,10 +89,16 @@ function XHRService($timeout) {
       frontQueue.xhrObj.open(frontQueue.type, frontQueue.url, true);
       xhr.onload = function () {
 
-          var responseDict = JSON.parse(frontQueue.xhrObj.responseText);
-          callback && callback(responseDict);
+          if (!skip_parse) {
+            var responseDict = JSON.parse(frontQueue.xhrObj.responseText);
+            callback && callback(responseDict);
+          } else {
+            callback && callback(frontQueue.xhrObj);
+          }
       };
-      xhr.send();
+      ['POST', 'PUT'].indexOf(request_type) > -1 && xhr.setRequestHeader("Content-type", "application/json");
+      console.log('sending', frontQueue.type, frontQueue.url, request_type)
+      xhr.send(params);
 
     } else {
       if (XHRQueue.length && XHRQueue.length >= XHR_THRESHOLD) {
