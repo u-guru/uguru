@@ -51,13 +51,13 @@ angular.module('uguru.shared.controllers', [])
     function putSuccessCallback(data) {
       console.log(data);
     }
-    XHRService.getJSONFile('GET', testURL, function(data) {
-      data.testKey = 'yo this is a test key';
-      XHRService.updateJSONFile(testURL, data, putSuccessCallback)
+    // XHRService.getJSONFile('GET', testURL, function(data) {
+    //   data.testKey = 'yo this is a test key';
+    //   XHRService.updateJSONFile(testURL, data, putSuccessCallback)
 
-      // $rootScope.app = data; console.log('data received', $rootScope.app);
+    //   // $rootScope.app = data; console.log('data received', $rootScope.app);
 
-    })
+    // })
 
 
 

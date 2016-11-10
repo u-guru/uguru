@@ -747,7 +747,7 @@ angular.module('uguru.shared.directives')
                           if (w_state.nameCamel === scope.hasInitAfter) {
                             w_state.exec = function(a1, a2, a3, a4) {
                               transclude(scope, function(clone, innerScope) {
-                                    // $compile(clone)(innerScope)
+                                    $compile(clone)(innerScope)
 
                                     lElem.append(clone);
                                     // $compile(clone)(scope)

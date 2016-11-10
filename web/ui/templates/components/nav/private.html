@@ -32,7 +32,19 @@
 			u init-with="p:[op:1, tr:translateX(500px)]"
 			on-init="a:[translateX:250px:0px:250:easeOutBack:250:1:f]"
 			on-click='s:[sidebar-modal-requested:public]'>
-			<graphic url="shared/templates/components/svg/main/menu.html"></graphic>
+			<svg viewBox="0 0 100 100">
+			    <g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+			        <path d="M14,23 L86,23"
+						u init-with="p:[sdo:72, sda:72]"
+						on-init="a:[stroke-dashoffset:72:0:200:easeOutSine:1000:1:f]"></path>
+			        <path d="M14,50 L86,50"
+						u init-with="p:[sdo:72, sda:72]"
+						on-init="a:[stroke-dashoffset:72:0:200:easeOutSine:1050:1:f]"></path>
+			        <path d="M14,77 L86,77"
+						u init-with="p:[sdo:72, sda:72]"
+						on-init="a:[stroke-dashoffset:72:0:200:easeOutSine:1100:1:f]"></path>
+			    </g>
+			</svg>
 		</a>
 	</div>
 </nav>
