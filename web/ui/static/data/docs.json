@@ -18,29 +18,67 @@
                 "condensed": "<div class='bg-neptune radius-2 width-96 height-96' m='50px 50px'></div>",
                 "x-only": "<div class='bg-neptune radius-2 width-96 height-96' margin-x='50px'></div>",
                 "x-only-condensed": "<div class='bg-neptune radius-2 width-96 height-96' m-x='50px'></div>",
-                "y-only": "<div class='bg-neptune radius-2 width-96 height-96' margin-y='50px'></div>"
+                "y-only": "<div class='bg-neptune radius-2 width-96 height-96' margin-y='50px'></div>",
+                "y-only-condensed": "<div class='bg-neptune radius-2 width-96 height-96' m-y='50px'></div>"
             }
         },
-        "x": {
-            "info": "horizontal flex indicator",
+        "padding": {
+            "info": "padding css",
+            "tags": ["css-related", "position"],
             "examples": {
-                "": {
-                    "x-start": "start",
-                    "x-center": "center"
-                }
+                "general": "<div class='bg-neptune radius-2' padding='50px 50px'></div>",
+                "condensed": "<div class='bg-neptune radius-2' p='50px 50px'></div>",
+                "x-only": "<div class='bg-neptune radius-2 border-1 border-neptune border-solid' padding-x='50px'></div>",
+                "x-only-condensed": "<div class='bg-neptune radius-2 border-1 border-neptune border-solid' p-x='50px'></div>",
+                "y-only": "<div class='bg-neptune radius-2  border-1 border-neptune border-solid' padding-y='50px'></div>",
+                "y-only-condensed": "<div class='bg-neptune radius-2 border-1 border-neptune border-solid' p-y='50px'></div>"
             }
         },
-        "y": {
-            "info": "vertical flex indicator",
-            "values": ["start", "center", "end", "space-between", "space-around"],
-            "mapping": "y-start: 'display:flex; justify-content: flex-start'",
-            "alias": ["y='start'"]
+        "align-self": {
+            "info": "align-self properties",
+            "examples": {
+                "space-between": "<div class='bg-neptune radius-2' space-between padding='50px 50px'></div>",
+                "space-between condensed": "<div class='bg-neptune radius-2' sb padding='50px 50px'></div>",
+                "space-around": "<div class='bg-neptune radius-2' space-around padding='50px 50px'></div>",
+                "space-around condensed": "<div class='bg-neptune radius-2' sa padding='50px 50px'></div>",
+                "stretch[flex-stretch]": "<div class='bg-neptune radius-2' stretch padding='50px 50px'></div>",
+                "center[flex-center]": "<div class='bg-neptune radius-2' center padding='50px 50px'></div>",
+                "start[flex-start]": "<div class='bg-neptune radius-2' start padding='50px 50px'></div>",
+                "end[flex-end]": "<div class='bg-neptune radius-2' end padding='50px 50px'></div>",
+                "left[flex-start]": "<div class='bg-neptune radius-2' left padding='50px 50px'></div>",
+                "right[flex-end]": "<div class='bg-neptune radius-2' right padding='50px 50px'></div>"
+            }
+        },
+        "wrap": {
+            "info": "flex-wrap",
+            "examples": {
+                "wrap": "<div class='bg-neptune radius-2' wrap padding='50px 50px'></div>",
+                "nowrap": "<div class='bg-neptune radius-2' nowrap padding='50px 50px'></div>",
+                "wrap-reverse": "<div class='bg-neptune radius-2' wrap-reverse padding='50px 50px'></div>"
+            }
+        },
+        "column": {
+            "info": "flex-direction",
+            "examples": {
+                "column": "<div class='bg-neptune radius-2' column padding='50px 50px'></div>",
+                "column-reverse": "<div class='bg-neptune radius-2' column-reverse padding='50px 50px'></div>"
+            }
+        },
+        "row": {
+            "info": "flex-direction",
+            "examples": {
+                "column": "<div class='bg-neptune radius-2' row padding='50px 50px'></div>",
+                "column-reverse": "<div class='bg-neptune radius-2' row-reverse padding='50px 50px'></div>"
+            }
         },
         "basis": {
             "info": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-basics"
         },
-        "start": {
-            "info": "align myself"
+        "grow": {
+            "info": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-basics"
+        },
+        "shrink": {
+            "info": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-basics"
         },
         "pointer": {
             "info": "a shorter way to declare cursor:pointer",
@@ -48,7 +86,6 @@
                 "general": "<div pointer width='50px' height='50px' class='bg-cerise'></div>"
             }
         },
-
         "set": {
             "info": "a way to shorten nested data paths and re-name more relevant to local elements",
             "tags": ["data-related"]
