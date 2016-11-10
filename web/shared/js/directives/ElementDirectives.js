@@ -144,7 +144,7 @@ angular.module('uguru.shared.directives')
             'GET',
             url,
             function(data) {
-
+              console.log('data received!', data)
 
 
               var ptr = $rootScope;
@@ -238,7 +238,10 @@ angular.module('uguru.shared.directives')
         } else if (attr.accessCode) {
           url = 'https://s3-us-west-1.amazonaws.com/ui-coach/users/' + attr.accessCode + '/app.json'
         }
-        url && url.length && XHRService.getJSONFile('GET', url, function(data) {$rootScope.app = data; console.log($rootScope.app)}, {});
+        url && url.length && XHRService.getJSONFile('GET', url, function(data) {
+          $rootScope.app = data; console.log('data received', $rootScope.app);
+
+        }, {});
       }
   }
 }])

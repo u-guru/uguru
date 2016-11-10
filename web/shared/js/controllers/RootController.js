@@ -46,6 +46,23 @@ angular.module('uguru.shared.controllers', [])
     RootService.setGetInspector(getInspectorPrefs(root.inspector));
     RootService.setInspectableElements(pushElemPlayer(root.inspector));
     RootService.getCustomEasingAnimations(root)();
+
+    var testURL = 'https://s3-us-west-1.amazonaws.com/ui-coach/users/' + '71ab4' + '/app.json'
+    function putSuccessCallback(data) {
+      console.log(data);
+    }
+    XHRService.getJSONFile('GET', testURL, function(data) {
+      data.testKey = 'yo this is a test key';
+      XHRService.updateJSONFile(testURL, data, putSuccessCallback)
+
+      // $rootScope.app = data; console.log('data received', $rootScope.app);
+
+    })
+
+
+
+    // XHRService.updateJSONFile()
+
     $timeout(function() {
       RootService.animations = root.public;
       $scope.$apply();

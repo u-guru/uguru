@@ -1313,6 +1313,7 @@ angular.module('uguru.shared.directives.base.components')
             }
             var value = (attr.x && attr.x.length && attr.x in mappings && mappings[attr.x]) || 'center'
           element.css('justify-content', value);
+          element.css('align items', value);
         }
       }
     }])
@@ -1350,7 +1351,23 @@ angular.module('uguru.shared.directives.base.components')
       return {
         restrict: 'A',
         compile: function(element, attr) {
-          element.css('align-self', 'center');
+          element.css('align-self', 'flex-start');
+        }
+      }
+    }])
+    .directive('left', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('align-self', 'flex-start');
+        }
+      }
+    }])
+    .directive('right', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('align-self', 'flex-end');
         }
       }
     }])
@@ -1386,14 +1403,6 @@ angular.module('uguru.shared.directives.base.components')
         }
       }
     }])
-    .directive('xCenter', [function() {
-      return {
-        restrict: 'A',
-        compile: function(element, attr) {
-          element.css('justify-content', 'center');
-        }
-      }
-    }])
     .directive('xEnd', [function() {
       return {
         restrict: 'A',
@@ -1402,15 +1411,8 @@ angular.module('uguru.shared.directives.base.components')
         }
       }
     }])
-    .directive('xSpaceBetween', [function() {
-      return {
-        restrict: 'A',
-        compile: function(element, attr) {
-          element.css('justify-content', 'space-between');
-        }
-      }
-    }])
-    .directive('xSa', [function() {
+
+    .directive('sA', [function() {
       return {
         restrict: 'A',
         compile: function(element, attr) {
@@ -1418,19 +1420,11 @@ angular.module('uguru.shared.directives.base.components')
         }
       }
     }])
-    .directive('xSb', [function() {
+    .directive('sB', [function() {
       return {
         restrict: 'A',
         compile: function(element, attr) {
           element.css('justify-content', 'space-between');
-        }
-      }
-    }])
-    .directive('xSpaceAround', [function() {
-      return {
-        restrict: 'A',
-        compile: function(element, attr) {
-          element.css('justify-content', 'space-around');
         }
       }
     }])
@@ -1606,6 +1600,66 @@ angular.module('uguru.shared.directives.base.components')
         }
       }
     }])
+    .directive('padding', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('padding', attr.padding);
+        }
+      }
+    }])
+    .directive('p', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('padding', attr.p);
+        }
+      }
+    }])
+    .directive('paddingX', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('padding-left', attr.paddingX);
+          element.css('padding-Right', attr.paddingX);
+        }
+      }
+    }])
+    .directive('pX', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('padding-left', attr.pX);
+          element.css('padding-right', attr.pX);
+        }
+      }
+    }])
+    .directive('pY', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('padding-top', attr.pY);
+          element.css('padding-bottom', attr.pY);
+        }
+      }
+    }])
+    .directive('paddingY', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('padding-top', attr.paddingY);
+          element.css('padding-bottom', attr.paddingY);
+        }
+      }
+    }])
+     .directive('m', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('margin', attr.m);
+        }
+      }
+    }])
     .directive('marginX', [function() {
       return {
         restrict: 'A',
@@ -1620,7 +1674,16 @@ angular.module('uguru.shared.directives.base.components')
         restrict: 'A',
         compile: function(element, attr) {
           element.css('margin-left', attr.mX);
-          element.css('margin-Right', attr.mX);
+          element.css('margin-right', attr.mX);
+        }
+      }
+    }])
+    .directive('mY', [function() {
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          element.css('margin-top', attr.mY);
+          element.css('margin-bottom', attr.mY);
         }
       }
     }])
@@ -1628,8 +1691,8 @@ angular.module('uguru.shared.directives.base.components')
       return {
         restrict: 'A',
         compile: function(element, attr) {
-          element.css('margin-top', attr.marginTop);
-          element.css('margin-bottom', attr.marginBottom);
+          element.css('margin-top', attr.marginY);
+          element.css('margin-bottom', attr.marginY);
         }
       }
     }])
@@ -1691,26 +1754,3 @@ angular.module('uguru.shared.directives.base.components')
           }
         }])
     })
-
-
-    // .directive('height', ['CompService', function(CompService) {
-    //   return {
-    //     restrict: 'A',
-    //     compile: function(element, attr) {
-    //         console.log(CompService.css)
-    //         CompService.css.render.height(element, attr);
-    //       //   var extraUnit = ((attr.height.indexOf('%')>-1 || attr.height.indexOf('px')>-1 || attr.height.indexOf('em')>-1 )&& '') || '%'
-    //       //   var attrHeight = attr.height;
-    //       //   ['%', 'px', 'em', 'vw', 'vh'].forEach(function(unit) {
-    //       //       if (attrHeight.indexOf(unit) > 0) {
-    //       //           extraUnit = unit;
-    //       //           attrHeight = attrHeight.replace(unit, '')
-    //       //       }
-    //       //   })
-    //       //   attrHeight = $parse(attrHeight)($rootScope);
-    //       // element.css('height', attrHeight + extraUnit);
-    //     }
-    //   }
-    // }])
-
-
