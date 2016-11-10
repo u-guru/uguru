@@ -2575,10 +2575,12 @@ fieldset.search-bar {
     -webkit-justify-content: center;
     justify-content: center;
     width: 48px;
-    height: 48px; }
+    height: 48px;
+    cursor: pointer; }
     fieldset.search-bar label svg {
       width: 24px;
-      height: 24px; }
+      height: 24px;
+      cursor: pointer; }
       fieldset.search-bar label svg * {
         fill: none;
         stroke: rgba(64, 72, 75, 0.5);
