@@ -253,7 +253,7 @@
 					</div>
 				</div>
 				<div class="ui-gallery-single-info"
-					u when-popup-modal-requested="s:[ui-related:public:2000, ui-styles:public:2500]">
+					u when-popup-modal-requested="s:[ui-related:public:2000]">
 					<!-- u when-popup-modal-requested="s:[ui-related:children:2000, ui-styles:children:2500]" -->
 					<div class="ui-gallery-related"
 						u init-with="p:[tr:scale(0), tro:center top]"
@@ -306,77 +306,116 @@
 					</div>
 					<aside class="ui-gallery-styles"
 						u init-with="p:[tr:scale(0), tro:center top]"
-						when-ui-styles="a:[scale:0:1:500:easeOutBack:0:1:f]">
+						when-popup-modal-requested="a:[scale:0:1:500:easeOutBack:0:1:f]:delay-2500 | s:[ui-styles:public:linear-3500]:+2500">
 						<div>
 							<h2>Styles</h2>
 							<ul>
-								<li class="ui-gallery-colors">
+								<li class="ui-gallery-colors"
+									u init-with="p:[op:0]"
+									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[color-slide:public:500]">
 									<ul>
 										<li>
 											<div class="bg-cerise"></div>
 										</li>
 										<li>
-											<div class="bg-slate"></div>
+											<div class="bg-slate"
+												u init-with="p:[tr:translateX(-150%)]"
+												when-color-slide="a:[translateX:-150%:0%:250:easeOutSine:0:1:f]"></div>
 										</li>
 										<li>
-											<div class="bg-taupe"></div>
+											<div class="bg-taupe"
+												u init-with="p:[tr:translateX(-300%)]"
+												when-color-slide="a:[translateX:-300%:0%:250:easeOutSine:0:1:f]"></div>
 										</li>
 										<li>
-											<div class="bg-gold"></div>
+											<div class="bg-gold"
+												u init-with="p:[tr:translateX(-450%)]"
+												when-color-slide="a:[translateX:-450%:0%:250:easeOutSine:0:1:f]"></div>
 										</li>
 										<li>
-											<div class="bg-white border-taupe"></div>
+											<div class="bg-white border-taupe"
+												u init-with="p:[tr:translateX(-600%)]"
+												when-color-slide="a:[translateX:-600%:0%:250:easeOutSine:0:1:f]"></div>
 										</li>
 									</ul>
-									<h3>Color Palette: <span>Academic</span></h3>
+									<h3 u init-with="p:[op:0]"
+										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Color Palette: <span>Academic</span></h3>
 								</li>
-								<li class="ui-gallery-fonts">
-									<h1>Aa Bb Cc</h1>
-									<h3>Font: <span>Source Sans Pro</span></h3>
+								<li class="ui-gallery-fonts"
+									u init-with="p:[op:0]"
+									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[letter-slide:public:500]">
+									<h1 class="flex">
+										<span>Aa</span>
+										<span class="m10x"
+											u init-with="p:[tr:translateX(-115%)]"
+											when-letter-slide="a:[translateX:-115%:0%:250:easeOutExpo:0:1:f]">Bb</span>
+										<span
+											u init-with="p:[tr:translateX(-250%)]"
+											when-letter-slide="a:[translateX:-250%:0%:250:easeOutExpo:0:1:f]">Cc</span>
+									</h1>
+									<h3 u init-with="p:[op:0]"
+										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Font: <span>Source Sans Pro</span></h3>
 								</li>
-								<li class="ui-gallery-icon">
+								<li class="ui-gallery-icon"
+									u init-with="p:[op:0]"
+									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] |s:[icon-slide:public:500]">
 									<ul>
 										<li>
 											<graphic url="shared/templates/components/svg/categories/academic-simple.html"></graphic>
 										</li>
-										<li>
+										<li u init-with="p:[tr:translateX(-100%)]"
+											when-icon-slide="a:[translateX:-100%:0%:250:easeOutExpo:0:1:f]">
 											<graphic url="shared/templates/components/svg/categories/academic.html"></graphic>
 										</li>
-										<li>
+										<li u init-with="p:[tr:translateX(-200%)]"
+											when-icon-slide="a:[translateX:-200%:0%:250:easeOutExpo:0:1:f]">
 											<graphic url="shared/templates/components/svg/categories/academic-bottom.html"></graphic>
 										</li>
 									</ul>
-									<h3>Icon: <span>Academic</span></h3>
+									<h3 u init-with="p:[op:0]"
+										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Icon: <span>Academic</span></h3>
 								</li>
-								<li class="ui-gallery-stroke-width">
+								<li class="ui-gallery-stroke-width"
+									u init-with="p:[op:0]"
+									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[shapes-slide:public:500]">
 									<graphic class="svg-stroke-3 stroke-slate" url="shared/templates/components/svg/other/shapes.html"></graphic>
-									<h3>Stroke Width: <span>3px</span></h3>
+									<h3  u init-with="p:[op:0]"
+										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Stroke Width: <span>3px</span></h3>
 								</li>
-								<li class="ui-gallery-padding">
+								<li class="ui-gallery-padding"
+									u init-with="p:[op:0]"
+									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[padding-enter:public:500]">
 									<div>
 										<svg viewbox="0 0 400 270">
 											<rect x="0" y="0" width="400" height="270" fill="none"></rect>
 										</svg>
-										<div class="margin" u init-with="p:[padding:5px, border-color:#40484b]"
+										<div class="margin" u init-with="p:[padding:5px, border-color:#40484b, tr:scale(0), tro:center center]"
 											when-padding-select="p:[border-color:#aaaaaa]"
-											when-padding-deselect="p:[border-color:#40484b]">
-											<div class="normal" u init-with="p:[padding:15px, border-color:#40484b]"
+											when-padding-deselect="p:[border-color:#40484b]"
+											when-padding-enter="a:[scale:0:1:250:easeOutCubic:0:1:f]">
+											<div class="normal" u init-with="p:[padding:15px, border-color:#40484b, tr:scale(0), tro:center center]"
 												when-margin-select="p:[border-color:#aaaaaa]"
 												when-margin-deselect="p:[border-color:#40484b]"
 												when-padding-select="p:[border-color:#aaaaaa]"
-												when-padding-deselect="p:[border-color:#40484b]">
+												when-padding-deselect="p:[border-color:#40484b]"
+												when-padding-enter="a:[scale:0:1:250:easeOutCubic:150:1:f]">
 												<span u init-with="p:[height:15px]">15</span>
-												<div class="padding" u init-with="p:[border-color:#40484b]"
-													u when-margin-select="p:[border-color:#aaaaaa]"
-													when-margin-deselect="p:[border-color:#40484b]"></div>
+												<div class="padding" u init-with="p:[border-color:#40484b, tr:scale(0), tro:center center]"
+													when-margin-select="p:[border-color:#aaaaaa]"
+													when-margin-deselect="p:[border-color:#40484b]"
+													when-padding-enter="a:[scale:0:1:250:easeOutCubic:200:1:f]"></div>
 												<span u init-with="p:[width:15px]">15</span>
 											</div>
 										</div>
 									</div>
 									<h3 u on-mouseenter="s:[padding-select:public]"
-										on-mouseleave="s:[padding-deselect:public]">Padding: <span>15px</span></h3>
+										on-mouseleave="s:[padding-deselect:public]"
+										init-with="p:[op:0]"
+										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Padding: <span>15px</span></h3>
 									<h3 u on-mouseenter="s:[margin-select:public]"
-										on-mouseleave="s:[margin-deselect:public]">Margin: <span>5px</span></h3>
+										on-mouseleave="s:[margin-deselect:public]"
+										init-with="p:[op:0]"
+									  when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Margin: <span>5px</span></h3>
 								</li>
 							</ul>
 						</div>
