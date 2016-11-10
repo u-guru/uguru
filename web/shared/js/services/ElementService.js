@@ -35,7 +35,8 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         toCamelCaseBridge: UtilitiesService.camelCase,
         renderAnimationStr: applyAnimArgs,
         constructImportUrlFromObj: UtilitiesService.constructImportUrlFromObj,
-        initGraphicElement: initElement
+        initGraphicElement: initElement,
+        applySendAnimProp: applySendAnimProp
       }
 
       function initElement(obj_url) {
@@ -597,7 +598,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           // var shortCutDict = getShortcutDict(elem, arg_value);
 
         argDict.actions = getArgActions(state_args, arg_value);
-        console.log(argDict)
+        // console.log(argDict)
         return argDict;
       }
 
