@@ -8,106 +8,106 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	.ui-login-bg {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: rgba($cream, .8);
-	}
-	.ui-login-modal {
-		position: absolute;
-		top: 15px;
-		right: 15px;
-		max-width: 320px;
-		header {
-			position: relative;
-			z-index: 2;
-			width: calc(100% - 48px);
-			a {
-				@include flex;
-				@include flex-center;
-				position: absolute;
-				width: 48px;
-				height: 48px;
-				background: mix($slate, white);
-				border-radius: 1000px;
-				border: 2px solid white;
-				transition: border 300ms ease-in-out, background 300ms ease-in-out;
-				svg {
-					width: 24px;
-					height: 24px;
-					* {
-						fill: none;
-						stroke: white;
-						stroke-width: 6px;
-						stroke-linecap: round;
-						stroke-linejoin: round;
-						transition: stroke 300ms ease-in-out;
-					}
-				}
-			}
-		}
-		section {
-			position: relative;
-			z-index: 1;
-			margin-top: 24px;
-			padding: 39px 15px;
-			background: white;
-			border-radius: 2px;
-			h2 {
-				color: $slate;
-				font-size: 16px;
-				font-weight: 600;
-			}
-			ul {
-				padding: 5px 0;
-				li {
-					padding: 5px 0;
-				}
-			}
-			> a {
-				display: block;
-				margin-top: 5px;
-				font-size: 16px;
-				text-align: center;
-			}
-			.forgot-pw-link {
-				color: $taupe;
-				font-weight: 600;
-				&:hover, &:focus {
-					color: $aero;
-				}
-				&:active {
-					color: $stone;
-				}
-			}
-			.signup-link {
-				font-weight: 700;
-				color: $aero;
-				&:hover, &:focus {
-					color: $olive;
-				}
-				&:active {
-					color: $stone;
-				}
-			}
-		}
-		footer {
+}
+.ui-login-bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba($cream, .8);
+}
+.ui-login-modal {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	max-width: 320px;
+	header {
+		position: relative;
+		z-index: 2;
+		width: calc(100% - 48px);
+		a {
 			@include flex;
 			@include flex-center;
-			position: relative;
-			z-index: 2;
-			width: 100%;
-			margin-top: -24px;
-			button {
-				height: 48px;
-				font-size: 18px;
-				border-radius: 1000px;
-				padding: 0 30px;
-				width: auto;
+			position: absolute;
+			width: 48px;
+			height: 48px;
+			background: mix($slate, white);
+			border-radius: 1000px;
+			border: 2px solid white;
+			transition: border 300ms ease-in-out, background 300ms ease-in-out;
+			svg {
+				width: 24px;
+				height: 24px;
+				* {
+					fill: none;
+					stroke: white;
+					stroke-width: 6px;
+					stroke-linecap: round;
+					stroke-linejoin: round;
+					transition: stroke 300ms ease-in-out;
+				}
 			}
+		}
+	}
+	section {
+		position: relative;
+		z-index: 1;
+		margin-top: 24px;
+		padding: 39px 15px;
+		background: white;
+		border-radius: 2px;
+		h2 {
+			color: $slate;
+			font-size: 16px;
+			font-weight: 600;
+		}
+		ul {
+			padding: 5px 0;
+			li {
+				padding: 5px 0;
+			}
+		}
+		> a {
+			display: block;
+			margin-top: 5px;
+			font-size: 16px;
+			text-align: center;
+		}
+		.forgot-pw-link {
+			color: $taupe;
+			font-weight: 600;
+			&:hover, &:focus {
+				color: $aero;
+			}
+			&:active {
+				color: $stone;
+			}
+		}
+		.signup-link {
+			font-weight: 700;
+			color: $aero;
+			&:hover, &:focus {
+				color: $olive;
+			}
+			&:active {
+				color: $stone;
+			}
+		}
+	}
+	footer {
+		@include flex;
+		@include flex-center;
+		position: relative;
+		z-index: 2;
+		width: 100%;
+		margin-top: -24px;
+		button {
+			height: 48px;
+			font-size: 18px;
+			border-radius: 1000px;
+			padding: 0 30px;
+			width: auto;
 		}
 	}
 }
@@ -584,6 +584,9 @@
 	}
 }
 .ui-settings-nav {
+	@include flex;
+	@include flex-center-vertical;
+	justify-content: space-between;
 	width: 100%;
 	max-width: 930px;
 	margin: 0 auto;
@@ -606,6 +609,13 @@
 				}
 			}
 		}
+	}
+	button {
+		width: auto;
+		height: 48px;
+		border-radius: 2px;
+		font-size: 18px;
+		margin-right: 15px;
 	}
 }
 .ui-settings-container {
@@ -737,6 +747,7 @@
 		> svg {
 			width: 100%;
 			border-radius: 2px;
+			border: 2px solid transparent;
 		}
 		> div {
 			@include flex;
@@ -780,8 +791,25 @@
 		height: 100%;
 		opacity: 0;
 		cursor: pointer;
+		&:hover {
+			+ div {
+				> svg {
+					border-color: white;
+				}
+			}
+		}
+		&:active {
+			+ div {
+				> svg {
+					border-color: rgba(white, .5);
+				}
+			}
+		}
 		&:checked, &.checked {
 			+ div {
+				> svg {
+					border-color: white;
+				}
 				> div {
 					.theme-input {
 						svg {
