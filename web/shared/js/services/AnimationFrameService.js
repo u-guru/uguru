@@ -86,7 +86,9 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
     }
 
     function executeActiveStreams(player, frame) {
+      // console.log(player.schedule.streams)
       return function(time) {
+
         if (player.tick.current > -2 && player.active) {
           player.schedule.lastTimeDelta = time - player.time.delta;
           player.stepForward(player.schedule);
@@ -285,6 +287,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           player.tick = {start: 0, end:0, current:0};
         }
 
+
         // if (debug && state_obj.playerProps) {
 
 
@@ -301,14 +304,16 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         var shallowCopyStreams = [];
         var currentMax = 0;
         for (var i = 0; i < streams.length; i++) {
-
+          // console.log(streams[i].values)
           var globalOffsetTicks = calculateStreamTickLength({duration: 0, offset:offset});
           var totalDurationAndDelayTicks = calculateStreamTickLength(streams[i]);
           var durationOnlyTicks = calculateStreamTickLength(streams[i], 0, 60, true);
           var delayOnlyTicks = calculateStreamTickLength({duration:0, offset:streams[i].offset})
 
           values = streams[i].values
+
           if (values[values.length - 1] === null) {
+
             values = values.slice(0, values.length - 1);
           }
 
@@ -751,7 +756,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           if (stream.tick.current <= stream.tick.end && stream.active) {
 
             if (stream.tick.current <= stream.values.length && stream.tick.current >= 0) {
-
+              // console.log(stream.values[stream.tick.current])
               stream.applyProp  && stream.applyProp(stream.values[stream.tick.current]);
               // player.debug && player.debug.propStreamValueUpdate[stream.name](stream.name, stream.values[stream.tick.current], stream.tick.current, stream.tick.cycleIndex)
             }
@@ -1161,24 +1166,24 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
 
         // timeline.events.slice(1).forEach(function(_event, i) {
-        compareAndMergeWithPrevious(timeline);
-        if (debug) {
-          timeline.events.forEach(function(result, i) {
+        timeline = compareAndMergeWithPrevious(timeline);
+        // if (debug) {
+        //   timeline.events.forEach(function(result, i) {
 
-              if (result.name === 'transform' && result.values[0].indexOf('matrix3d') === -1) {
-
-
-                delete timeline.props['transform'];
-                addIndependentTransformPropsToTimeline(result, timeline);
-
-                // timeline.props[iPropObj.property].push(result);
-              } else {
-                timeline.props[iPropObj.property].push(result);
-              }
+        //       if (result.name === 'transform' && result.values[0].indexOf('matrix3d') === -1) {
 
 
-          })
-        }
+        //         delete timeline.props['transform'];
+        //         addIndependentTransformPropsToTimeline(result, timeline);
+
+        //         // timeline.props[iPropObj.property].push(result);
+        //       } else {
+        //         timeline.props[iPropObj.property].push(result);
+        //       }
+
+
+        //   })
+        // }
 
         // })
         // if (streams.length) {
@@ -1236,7 +1241,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           streamArr.forEach(function(stream, i) {
             // var filteredValues = [];
             stream.values = stream.values.filter(function(val, j) {
-              if (!val) return;
+              if (!val && val !== 0) return;
               if ( j > 1 && val === stream.values[j - 2] && stream.values[j - 1] === null) {
                   return false;
               }
@@ -1248,7 +1253,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             timeline.events.push(stream);
           })
         }
-
+        return timeline
       }
 
       function convertStreamEventIntoCounter(elem, result) {

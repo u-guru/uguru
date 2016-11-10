@@ -71,7 +71,6 @@ function XHRService($timeout) {
 
   function updateJSONFile(test_url, data, post_success_callback) {
       function callback(resp ) {
-
         if (resp.status === 200 && resp.readyState === 4 && resp.statusText === "OK") {
           getJSONFile('GET', test_url, post_success_callback)
         }

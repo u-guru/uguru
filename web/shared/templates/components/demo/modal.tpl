@@ -20,20 +20,20 @@
             </div>
         </ul>
          <modal u name="green-tile" scale-to='#green-tile' class='bg-cerise full-xy' when-modal-green-tile-requested="a:[slideInUp-subtle:500:easeOutCirc:0:1:f,scaleX:0.133:1:1000:easeOutCirc:0:1:f,scaleY:0.1000787:1:1000:easeOutCirc:0:1:f,zIndex:-100:5:20:linear:0:1:f]" ng-attr-accept-keys="esc"   on-key-up="send:[modal-green-tile-closed:self]" class='flex-vertical-center' when-modal-green-tile-closed="a:[scaleX:1:0.133:1000:easeOutCirc:0:1:f,scaleY:1:0.10070:1000:easeOutCirc:0:1:f, zIndex:5:-100:20:linear:500:1:f]">
-            <div class='relative full-xy flex-wrap-center' u on-init="s:[init-modal-children:children:linear-3000]:+1250">
-                <div u on-init='a:[translateY:-1000%:0%:5000:easeOutQuint:0:1:f]' when-init-modal-children="a:[scale:1:2:1000:elastic:0:1:f]" class='width-128 height-128' u>
+            <div class='relative full-xy flex-wrap-center' u init-after="modal-green-tile-requested" on-init="s:[init-modal-children:children:linear-3000]:+1250">
+                <div u on-init='a:[translateY:-1000%:0%:3000:easeOutQuint:1250:1:f]' when-init-modal-children="a:[scale:1:2:1000:elastic:0:1:f]" class='width-128 height-128' u>
                     Test
                 </div>
-                <div u on-init='a:[translateY:-1000%:0%:5000:easeOutQuint:0:1:f]' when-init-modal-children="a:[scale:1:2:1000:elastic:0:1:f]" class='width-128 height-128' u>
+                <div u on-init='a:[translateY:-1000%:0%:3000:easeOutQuint:1250:1:f]' when-init-modal-children="a:[scale:1:2:1000:elastic:0:1:f]" class='width-128 height-128' u>
                     Test
                 </div>
-                <div u on-init='a:[translateY:-1000%:0%:5000:easeOutQuint:0:1:f]' when-init-modal-children="a:[scale:1:2:1000:elastic:0:1:f]" class='width-128 height-128' u>
+                <div u on-init='a:[translateY:-1000%:0%:3000:easeOutQuint:1250:1:f]' when-init-modal-children="a:[scale:1:2:1000:elastic:0:1:f]" class='width-128 height-128' u>
                     Test
                 </div>
-                <div u on-init='a:[translateY:-1000%:0%:5000:easeOutQuint:0:1:f]' when-init-modal-children="a:[scale:1:2:1000:elastic:0:1:f]" class='width-128 height-128' u>
+                <div u on-init='a:[translateY:-1000%:0%:3000:easeOutQuint:1250:1:f]' when-init-modal-children="a:[scale:1:2:1000:elastic:0:1:f]" class='width-128 height-128' u>
                     Test
                 </div>
-                <div u on-init='a:[translateY:-1000%:0%:5000:easeOutQuint:0:1:f]' when-init-modal-children="a:[scale:1:2:1000:elastic:0:1:f]" class='width-128 height-128' u>
+                <div u on-init='a:[translateY:-1000%:0%:3000:easeOutQuint:1250:1:f]' when-init-modal-children="a:[scale:1:2:1000:elastic:0:1:f]" class='width-128 height-128' u>
                     Test
                 </div>
             </div>
