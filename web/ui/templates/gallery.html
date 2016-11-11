@@ -1,8 +1,14 @@
-<view class="ui-gallery" layer="2" type='row' bg="cream" set="gallery = ui.app.views.gallery">
+<view class="ui-gallery" layer="2" type='row' bg="cream" set="gallery = ui.app.views.gallery"
+	u on-init="s:[sidebar-modal-requested:public:1000]">
 
 	<!-- u on-init="s:[login-modal-requested:public:1000]" -->
 	<!-- u on-init="s:[sidebar-modal-requested:public:1000]" -->
 	<!-- u on-init="s:[popup-modal-requested:public:1000]" -->
+
+	<!-- @gabrielle self-note, check these when samir pushes just in case -->
+	<!-- modified:   web/shared/js/directives/BaseComponentDirectives.js
+	modified:   web/shared/js/directives/ElementDirectives.js
+	modified:   web/shared/js/services/SendService.js -->
 
 	<!-- {{gallery}} -->
 	<item width="100" height="100" class="overflow-auto">
@@ -222,9 +228,9 @@
 							</h4>
 							<h4 class="ui-versions-link">
 								<span>Last updated 11/07/16,&nbsp;</span>
-								<div>
-									<a u on-mouseenter="s:[version-enter:public]"
-										on-mouseleave="s:[version-exit:public]">
+								<div u on-mouseenter="s:[version-enter:children]"
+										on-mouseleave="s:[version-exit:children]">
+									<a>
 										<span>#028</span>
 										<graphic url="shared/templates/components/svg/main/down.html"></graphic>
 									</a>
