@@ -73,7 +73,7 @@ angular.module('uguru.shared.directives')
   return {
     restrict: 'E',
     replace:true,
-    scope: true,
+    scope: false,
     templateUrl: function(element, attr) {
 
       var attrUrl = attr.url;

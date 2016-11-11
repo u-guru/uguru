@@ -227,12 +227,12 @@
 							</h4>
 							<h4 class="ui-versions-link">
 								<span>Last updated 11/07/16,&nbsp;</span>
-								<div>
-									<a u on-mouseenter="s:[version-enter:public]"
-										on-mouseleave="s:[version-exit:public]">
+								<div u on-mouseenter="s:[version-enter:children]"
+										on-mouseleave="s:[version-exit:children]">
+									<div>
 										<span>#028</span>
 										<graphic url="shared/templates/components/svg/main/down.html"></graphic>
-									</a>
+									</div>
 									<div class="ui-versions"
 										u init-with="p:[op:0, z-index:-10, left:0, bottom:30px]"
 										when-version-enter="a:[slideInUp-subtle:1000:linear:0:1:f, z-index:-10:10:20:linear:0:1:f]"
