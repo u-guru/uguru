@@ -93,14 +93,20 @@ function SendService($timeout, $parse, RootService, TweenService) {
       }
     }
 
-  function parseStateMsgContents(state) {
+  function parseStateMsgContents(state, sender_context) {
     var msgResultArr = [];
+    state.parsed = state.parsed.trim();
     var msgArr = state.parsed.split(',');
+
     msgArr.forEach(function(msg, i) {
       msgObj = {raw: msg.trim()}
       msgSplit = msgObj.raw.split(':');
+      if (sender_context) {
+        msgObj.sender = sender_context
+      }
       msgObj.name = msgSplit[0];
       msgObj.nameCamel = RootService.camelCase(msgObj.name)
+
       msgObj.type = getMsgType(msgSplit[0]);
       msgObj.delay = calcTotalDelay(state, msgObj.name);
       msgObj.greaterThan = msgSplit[1].indexOf('>') > -1 && true;
@@ -151,6 +157,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
     }
 
 
+
     if (depth === 0.5) {
       if (!(msg_obj.nameCamel in scope.$parent.public.customStates.when)) {
         scope.public.customStates.when[msg_obj.nameCamel] = {elements:[], depth: depth, siblings:true}
@@ -174,8 +181,15 @@ function SendService($timeout, $parse, RootService, TweenService) {
         scope.root.scope.public.customStates.when[msg_obj.nameCamel] = {elements:[], depth: depth}
       }
       else {
-        scope.public.customStates.when[msg_obj.nameCamel] = {elements:[], depth: depth}
-        scope.$parent.public.customStates.when[msg_obj.nameCamel] = scope.public.customStates.when[msg_obj.nameCamel]
+        if (msg_obj.sender.type === 'when') {
+
+          scope.public.customStates.when[msg_obj.nameCamel] = {elements:[], depth: depth, sendType: msg_obj.sender.type}
+          scope.$parent.$parent.public.customStates.when[msg_obj.nameCamel] = scope.public.customStates.when[msg_obj.nameCamel]//scope.$parent.public.customStates.when[msg_obj.nameCamel]
+        } else {
+          scope.public.customStates.when[msg_obj.nameCamel] = {elements:[], depth: depth, sendType: msg_obj.sender.type}
+          scope.$parent.public.customStates.when[msg_obj.nameCamel] = scope.public.customStates.when[msg_obj.nameCamel]
+        }
+
       }
       // console.log('registered', msg_obj.nameCamel, depth);
     }
@@ -263,6 +277,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
             break;
           case('positive'):
 
+
             registerFutureMessageToScope(msg_obj, scope, intDepth)
             // registerFutureMessageToScope(msg_obj, scope.public.customStates.when, intDepth)
             break
@@ -319,8 +334,14 @@ function SendService($timeout, $parse, RootService, TweenService) {
     scope.outgoing_parsed = [];
     //outgoing step #1
     msgStates.outgoing.forEach(function(o_state) {
-      o_state.parsedMsgArr = parseStateMsgContents(o_state.actions.send);
+      var senderContext = {};
+      senderContext.name = o_state.name;
+      senderContext.nameCamel = o_state.nameCamel;
+      senderContext.type = o_state.type;
+      o_state.parsedMsgArr = parseStateMsgContents(o_state.actions.send, senderContext);
       o_state.parsedMsgArr.forEach(function(msg_obj, i) {
+
+
         scope.outgoing_parsed.push(msg_obj.nameCamel)
         // console.log('registering message contents', msg_obj.nameCamel, 'from', o_state.nameCamel)
         registerOutgoingMessageToScope(msg_obj, scope, element, elem_attr);
@@ -338,8 +359,12 @@ function SendService($timeout, $parse, RootService, TweenService) {
       if (i_state.parsedObj) {
         expectedDepth = parseDepthString(i_state.parsedObj[0].sendScope);
       }
+      //siblings
       if (i_state.nameCamel in scope.$parent.public.customStates.when && scope.$parent.public.customStates.when[i_state.nameCamel].siblings) {
         parseMessageAndStoreToExecuteLater(scope, i_state, scope.$parent.public.customStates.when[i_state.nameCamel].depth - 0.5, element, elem_attr)
+      }
+      if (i_state.nameCamel === 'uiRelated') {
+        console.log('found it', scope.public.customStates.when.uiRelated, expectedDepth)
       }
       parseMessageAndStoreToExecuteLater(scope, i_state, expectedDepth, element, elem_attr)
 
@@ -402,6 +427,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
     var final_depth = options.sendScope in depthMappings && depthMappings[options.sendScope] || 0;
 
     element_arr.forEach(function(state_ref, i) {
+
       if (options.stagger && options.stagger.delays.length) {
         stagger_delay = options.stagger.delays[i]
       }
@@ -436,7 +462,12 @@ function SendService($timeout, $parse, RootService, TweenService) {
 
 
           // console.log(msg_info.name, msg_info.nameCamel, msg_info)
+          if (msg_info.nameCamel === 'uiRelated') {
 
+              console.log('executing', msg_info.nameCamel, scope.public.customStates.when)
+
+
+            }
 
 
           var statesToExecute = [];
@@ -554,6 +585,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
 
                   execSingleMsgArg(scope, currentMsgContext.elements, msg_info)
               } else if (typeof depthNum === "number" && depthNum < 0) {
+
                 var depthScope = scope;
                 for (var i = depthNum; i < 0; i++) {
                   depthScope = depthScope.$parent;
