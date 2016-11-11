@@ -729,16 +729,13 @@ angular.module('uguru.shared.directives')
                           // })
                           // }
                           if (state.name.indexOf('init') > -1) {
+
                             postStates.push(state);
                             return;
                           }
-                          if (state.actions.debug) {
-                            ElementService.launchExternalWindow(state.actions.debug, element);
-                          }
+
                           state.exec(lElem, scope, lAttr);
-                          if (state.name.indexOf('debug') > -1) {
-                            ElementService.launchExternalWindow(state.actions.anim.parsed, element);
-                          }
+
                         })
                       }
                       if (states.when && scope.hasInitAfter) {
@@ -880,11 +877,15 @@ angular.module('uguru.shared.directives')
                     if (postStates.length) {
                       postStates.forEach(function(state, i) {
                       if (state.name.indexOf('init') > -1 && !scope.hasInitAfter) {
+
+                          if (state.name.indexOf('debug') > -1) {
+                              ElementService.launchExternalWindow(state.actions.anim.parsed, element);
+                          }
                           state.exec(p_element, scope, attr);
 
-                            if (state.name.indexOf('debug') > -1) {
-                              ElementService.launchExternalWindow(state.actions.anim.parsed, p_element);
-                            }
+                            // if (state.name.indexOf('debug') > -1) {
+                            //   ElementService.launchExternalWindow(state.actions.anim.parsed, p_element);
+                            // }
                         }
                       });
                     } else {
