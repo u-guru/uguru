@@ -93,7 +93,7 @@
 			<li class="ui-menu-item">
 				<a u on-mouseenter="s:[logout-link-hover:public]"
 					on-mouseleave="s:[logout-link-leave:public]"
-					on-click="s:[logout-exit:public, sidebar-modal-closed:public]">
+					on-click="s:[logout-enter:public]">
 					<div u init-with="p:[op:0]"
 						when-logout-link-hover="a:[opacity:0:1:250:easeOutSine:0:1:f]"
 						when-logout-link-leave="a:[opacity:1:0:250:easeInSine:0:1:f]"></div>
@@ -114,7 +114,9 @@
 		</ul>
 	</nav>
 	<div class="ui-logout" bg="copper"
-		u init-with="p:[z-index:10]">
+		u init-with="p:[z-index:-1, op:0, tro:bottom center, tr:scale(0)]"
+		when-logout-enter="p:[z-index:10, op:1] | a:[scale:0:1:500:easeOutSine:0:1:f]"
+		on-click="s:[logout-exit:public, sidebar-modal-closed:public]">
 		<svg width="920px" height="670px" viewBox="0 0 920 670" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 		    <defs>
 		        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="glasses-gradient">
