@@ -36,7 +36,7 @@
 			<a class="ui-menu-icon"
 				u init-with="p:[z-index:-1, op:0]"
 				on-click='s:[sidebar-modal-requested:public]'
-				when-login-enter="p:[z-index:1, op:1]"
+				when-login-enter="p:[z-index:1] | a:[bounceInRight-subtle:1000:linear:1250:1:f]"
 				when-logout-exit="p:[z-index:-1, op:0]">
 				<graphic url="shared/templates/components/svg/main/menu.html"></graphic>
 			</a>
@@ -44,7 +44,7 @@
 				u init-with="p:[z-index:1, op:1]"
 				on-click='s:[login-modal-requested:public]'
 				when-login-enter="p:[z-index:-1, op:0]"
-				when-logout-exit="p:[z-index:1, op:1]">
+				when-logout-exit="p:[z-index:1] | a:[bounceInRight-subtle:1000:linear:1250:1:f]">
 				<svg viewBox="0 0 100 100">
 					<path d="M12.25,86.0083097 C13.8333581,72.3337258 21.9190399,60.8279905 33.7287799,55.4065725 C29.0701886,51.032282 26.1399206,44.8395927 26.1399206,37.9600779 C26.1399206,24.7485382 36.8884588,14 50.0999985,14 C63.3115381,14 74.0600763,24.7485382 74.0600763,37.9600779 C74.0600763,44.8395927 71.1298084,51.032282 66.4712171,55.4065725 C78.2809571,60.8279905 86.3666389,72.3337258 87.9499969,86.0083097" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
 						u init-with="p:[sdo:192.575, sda:192.575]"
