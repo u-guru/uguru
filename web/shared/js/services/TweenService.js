@@ -158,9 +158,9 @@ function TweenService() {
         if (property === 'counter') {
             formatCounterValues(start.counter, end.counter, result_arr.cache);
         }
-        console.log('\n')
-        console.log(ease, '<>', property)
-        console.log('START 3 values: \n' + result_arr.cache.slice(0,3).join(",\n") +'\n' + '\nEND 3 values:\n' + result_arr.cache.slice(result_arr.cache.length - 4,result_arr.cache.length).join(",\n") + '\n')
+        // console.log('\n')
+        // console.log(ease, '<>', property)
+        // console.log('START 3 values: \n' + result_arr.cache.slice(0,3).join(",\n") +'\n' + '\nEND 3 values:\n' + result_arr.cache.slice(result_arr.cache.length - 4,result_arr.cache.length).join(",\n") + '\n')
         return result_arr
         // t.dispose();
     }

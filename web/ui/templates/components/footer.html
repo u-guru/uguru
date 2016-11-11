@@ -29,15 +29,63 @@
 		</li>
 	</ul>
 
-	<div style="padding:2px">
-		<div class="height-48 flex-center p10x bg-white radius-2 txt-24 semibold" style="color:#9cbdbe"
-			u init-with="p:[op:0]"
-			when-popup-enter="a:[slideInUp-subtle:1000:linear:0:1:f]:delay-1200">
-			<span class="block height-24 width-24 round bg-cerise"></span>
-			<span class="block m10x">Academic</span>
-			<a class="flex-center svg-24 svg-stroke-6 stroke-aero"
-				u on-click='s:[popup-closed:public]'>
-				<graphic url="shared/templates/components/svg/main/down.html"></graphic>
+	<div class="ui-gallery-single-switcher">
+		<div class="switcher-options"
+			u init-with="p:[op:0, tro:center bottom, tr:rotateX(-90deg), z-index:-1]"
+			when-option-switcher-open="p:[op:1, z-index:1] | a:[rotateX:-90deg:0deg:500:linear:0:1:f]"
+			when-option-switcher-close="a:[rotateX:0deg:-90deg:500:linear:0:1:f]">
+			<ul>
+				<li u init-with="p:[op:0]"
+					when-option-switcher-open="a:[slideInUp-subtle:1000:linear:0:1:f]:delay-50"
+					when-option-switcher-close="a:[opacity:1:0:50:linear:0:1:f]:delay-500">
+					<a u on-click='s:[option-switcher-close:public]'>
+						<span class="color"><span class="bg-cerise border-glacier"></span></span>
+						<span>Academic</span>
+					</a>
+				</li>
+				<li u init-with="p:[op:0]"
+					when-option-switcher-open="a:[slideInUp-subtle:1000:linear:0:1:f]:delay-100"
+					when-option-switcher-close="a:[opacity:1:0:50:linear:0:1:f]:delay-500">
+					<a u on-click='s:[option-switcher-close:public]'>
+						<span class="color"><span class="bg-gold border-glacier"></span></span>
+						<span>Baking</span>
+					</a>
+				</li>
+				<li u init-with="p:[op:0]"
+					when-option-switcher-open="a:[slideInUp-subtle:1000:linear:0:1:f]:delay-150"
+					when-option-switcher-close="a:[opacity:1:0:50:linear:0:1:f]:delay-500">
+					<a u on-click='s:[option-switcher-close:public]'>
+						<span class="color"><span class="bg-moola border-glacier"></span></span>
+						<span>Photography</span>
+					</a>
+				</li>
+				<li u init-with="p:[op:0]"
+					when-option-switcher-open="a:[slideInUp-subtle:1000:linear:0:1:f]:delay-200"
+					when-option-switcher-close="a:[opacity:1:0:50:linear:0:1:f]:delay-500">
+					<a u on-click='s:[option-switcher-close:public]'>
+						<span class="color"><span class="bg-azure border-glacier"></span></span>
+						<span>Tech</span>
+					</a>
+				</li>
+				<li u init-with="p:[op:0]"
+					when-option-switcher-open="a:[slideInUp-subtle:1000:linear:0:1:f]:delay-250"
+					when-option-switcher-close="a:[opacity:1:0:50:linear:0:1:f]:delay-500">
+					<a u on-click='s:[option-switcher-close:public]'>
+						<span class="color"><span class="bg-cobalt border-glacier"></span></span>
+						<span>Household</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div>
+			<a u init-with="p:[op:0]"
+				on-click='s:[option-switcher-open:public]'
+				when-popup-enter="a:[slideInUp-subtle:1000:linear:0:1:f]:delay-1200">
+				<span class="color"><span class="bg-cerise border-glacier"></span></span>
+				<graphic url="shared/templates/components/svg/main/down.html"
+					u init-with="p:[tro:center center]"
+					when-option-switcher-open="a:[rotate:0deg:180deg:200:easeOutSine:0:1:f]"
+					when-option-switcher-close="a:[rotate:180deg:0deg:200:easeInSine:0:1:f]"></graphic>
 			</a>
 		</div>
 	</div>
