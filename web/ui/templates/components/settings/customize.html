@@ -1,23 +1,30 @@
 <ul class="ui-settings-tiles ui-settings-section"
 	u init-with="p:[position:absolute, z-index:-1, top:0, left:0, op:0]"
 	when-account-link-clicked="a:[z-index:1:-1:50:linear:450:1:f, opacity:1:0:500:easeInSine:0:1:f] | p:[position:absolute, left:0, top:0]"
-	when-customize-link-clicked="a:[z-index:-1:1:50:linear:0:1:f, opacity:0:1:500:easeOutSine:0:1:f] | p:[position:relative, top:auto, left:auto] | s:[custom-p-theme:depth(1)]">
+	when-customize-link-clicked="a:[z-index:-1:1:50:linear:0:1:f, opacity:0:1:500:easeOutSine:0:1:f] | p:[position:relative, top:auto, left:auto] | s:[custom-p-theme:children:300]">
 	<li>
 		<div class="ui-settings-tile">
 			<header>
 				<hr u init-with="p:[tr:scaleX(0), tro:left center]"
-					when-custom-p-them="a:[scaleX:0:1:150:easeOutCubic:200:1:f]"/>
+					when-custom-p-theme="a:[scaleX:0:1:150:easeOutCubic:200:1:f]"/>
 				<h1 u init-with="p:[tr:rotateX(90deg) translateY(-10px), op:0]"
-				when-custom-p-them="a:[rotateX:90deg:0deg:250:easeOutCirc:100:1:f, translateY:-10px:0px:250:easeInCirc:150:1:f]:delay-200 | p:[op:1:900]">Public Theme</h1>
+					when-custom-p-theme="a:[rotateX:90deg:0deg:250:easeOutCirc:100:1:f, translateY:-10px:0px:250:easeInCirc:150:1:f]:delay-200 | p:[op:1:900]">Public Theme</h1>
 				<hr u init-with="p:[tr:scaleX(0), tro:left center]"
-					when-custom-p-them="a:[scaleX:0:1:150:easeOutCubic:200:1:f]"/>
+					when-custom-p-theme="a:[scaleX:0:1:150:easeOutCubic:200:1:f]"/>
 			</header>
 			<div class="borders">
-				<hr/><hr/><hr/>
+				<hr u init-with="p:[tr:scaleY(0), tro:bottom center]"
+					when-custom-p-theme="a:[scaleY:0:1:150:easeOutCubic:50:1:f]"/>
+				<hr u init-with="p:[tr:scaleX(0), tro:center center]"
+					when-custom-p-theme="a:[scaleX:0:1:150:easeOutCubic:0:1:f]"/>
+				<hr u init-with="p:[tr:scaleY(0), tro:bottom center]"
+					when-custom-p-theme="a:[scaleY:0:1:150:easeOutCubic:50:1:f]"/>
 			</div>
 			<div class="ui-settings-tile-content">
-				<ul class="ui-settings-themes">
-					<li>
+				<ul class="ui-settings-themes"
+					u when-custom-p-theme="s:[theme-options:public:linear-1000]:+500">
+					<li u init-with="p:[op:0]"
+						when-theme-options="a:[bounceIn-subtle:400:linear:0:1:f]">
 						<div class="ui-settings-theme">
 							<input type="radio" name="theme" checked/>
 							<div>
@@ -37,7 +44,8 @@
 							</div>
 						</div>
 					</li>
-					<li>
+					<li u init-with="p:[op:0]"
+						when-theme-options="a:[fadeInDown:400:easeOutQuad:0:1:f]">
 						<div class="ui-settings-theme">
 							<input type="radio" name="theme"/>
 							<div>
@@ -57,7 +65,8 @@
 							</div>
 						</div>
 					</li>
-					<li>
+					<li u init-with="p:[op:0]"
+						when-theme-options="a:[fadeInDown:400:easeOutQuad:0:1:f]">
 						<div class="ui-settings-theme">
 							<input type="radio" name="theme"/>
 							<div>
@@ -77,7 +86,8 @@
 							</div>
 						</div>
 					</li>
-					<li>
+					<li u init-with="p:[op:0]"
+						when-theme-options="a:[fadeInDown:400:easeOutQuad:0:1:f]">
 						<div class="ui-settings-theme">
 							<input type="radio" name="theme"/>
 							<div>
@@ -97,7 +107,8 @@
 							</div>
 						</div>
 					</li>
-					<li>
+					<li u init-with="p:[op:0]"
+						when-theme-options="a:[fadeInDown:400:easeOutQuad:0:1:f]">
 						<div class="ui-settings-theme">
 							<input type="radio" name="theme"/>
 							<div>
