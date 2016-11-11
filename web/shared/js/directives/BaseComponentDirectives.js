@@ -955,7 +955,7 @@ angular.module('uguru.shared.directives.base.components')
     .directive("modal", ["CompService", "$compile", '$timeout', function(CompService, $compile, $timeout) {
         return {
             restrict: 'E',
-            priority: 100000000,
+            priority: 100000,
             scope: false,
             // transclude:true,
             // terminal:true,
@@ -995,7 +995,7 @@ angular.module('uguru.shared.directives.base.components')
                                 scope.root.mainViews.forEach(function(parent, i) {
 
                                     // p_elem.append(clone);
-                                    parent.append(p_elem);
+                                    parent.parent().append(p_elem);
                                     // $compile(p_elem.contents)(scope)
                                     p_elem.addClass('full-xy absolute')
                                     if (attr.scaleTo && attr.scaleTo.length) {
