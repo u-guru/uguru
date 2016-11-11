@@ -380,7 +380,7 @@
 		> div {
 			margin: 0!important;
 			padding: 0;
-			background: lighten($slate, 15%);
+			background: $light-slate;
 			a {
 				position: relative;
 				z-index: 10;
@@ -398,7 +398,7 @@
 								border-color: $shamrock;
 							}
 							&:after {
-								border-color: lighten($slate, 15%);
+								border-color: $light-slate;
 								border-left-color: $shamrock;
 							}
 						}
@@ -410,10 +410,10 @@
 							@include prefix(transform, translateX(100%), webkit moz ms o);
 							&:before {
 								border-color: $shamrock;
-								border-left-color: lighten($slate, 15%);
+								border-left-color: $light-slate;
 							}
 							&:after {
-								border-color: lighten($slate, 15%);
+								border-color: $light-slate;
 								border-left-color: $shamrock;
 							}
 						}
@@ -425,10 +425,10 @@
 							@include prefix(transform, translateX(200%), webkit moz ms o);
 							&:before {
 								border-color: $shamrock;
-								border-left-color: lighten($slate, 15%);
+								border-left-color: $light-slate;
 							}
 							&:after {
-								border-color: lighten($slate, 15%);
+								border-color: $light-slate;
 								border-left-color: $shamrock;
 							}
 						}
@@ -440,10 +440,10 @@
 							@include prefix(transform, translateX(300%), webkit moz ms o);
 							&:before {
 								border-color: $shamrock;
-								border-left-color: lighten($slate, 15%);
+								border-left-color: $light-slate;
 							}
 							&:after {
-								border-color: lighten($slate, 15%);
+								border-color: $light-slate;
 								border-left-color: $shamrock;
 							}
 						}
@@ -455,10 +455,10 @@
 							@include prefix(transform, translateX(400%), webkit moz ms o);
 							&:before {
 								border-color: $shamrock;
-								border-left-color: lighten($slate, 15%);
+								border-left-color: $light-slate;
 							}
 							&:after {
-								border-color: lighten($slate, 15%);
+								border-color: $light-slate;
 								border-left-color: $shamrock;
 							}
 						}
@@ -470,7 +470,7 @@
 							@include prefix(transform, translateX(500%), webkit moz ms o);
 							&:before {
 								border-color: $shamrock;
-								border-left-color: lighten($slate, 15%);
+								border-left-color: $light-slate;
 							}
 							&:after {
 								border-color: $shamrock;
@@ -486,7 +486,7 @@
 								border-color: $shamrock;
 							}
 							&:after {
-								border-color: lighten($slate, 15%);
+								border-color: $light-slate;
 								border-left-color: $shamrock;
 							}
 						}
@@ -498,10 +498,10 @@
 							@include prefix(transform, translateX(100%), webkit moz ms o);
 							&:before {
 								border-color: $shamrock;
-								border-left-color: lighten($slate, 15%);
+								border-left-color: $light-slate;
 							}
 							&:after {
-								border-color: lighten($slate, 15%);
+								border-color: $light-slate;
 								border-left-color: $shamrock;
 							}
 						}
@@ -513,10 +513,10 @@
 							@include prefix(transform, translateX(200%), webkit moz ms o);
 							&:before {
 								border-color: $shamrock;
-								border-left-color: lighten($slate, 15%);
+								border-left-color: $light-slate;
 							}
 							&:after {
-								border-color: lighten($slate, 15%);
+								border-color: $light-slate;
 								border-left-color: $shamrock;
 							}
 						}
@@ -528,10 +528,10 @@
 							@include prefix(transform, translateX(300%), webkit moz ms o);
 							&:before {
 								border-color: $shamrock;
-								border-left-color: lighten($slate, 15%);
+								border-left-color: $light-slate;
 							}
 							&:after {
-								border-color: lighten($slate, 15%);
+								border-color: $light-slate;
 								border-left-color: $shamrock;
 							}
 						}
@@ -543,10 +543,10 @@
 							@include prefix(transform, translateX(400%), webkit moz ms o);
 							&:before {
 								border-color: $shamrock;
-								border-left-color: lighten($slate, 15%);
+								border-left-color: $light-slate;
 							}
 							&:after {
-								border-color: lighten($slate, 15%);
+								border-color: $light-slate;
 								border-left-color: $shamrock;
 							}
 						}
@@ -558,7 +558,7 @@
 							@include prefix(transform, translateX(500%), webkit moz ms o);
 							&:before {
 								border-color: $shamrock;
-								border-left-color: lighten($slate, 15%);
+								border-left-color: $light-slate;
 							}
 							&:after {
 								border-color: $shamrock;
@@ -594,11 +594,11 @@
 				&:before {
 					left: -15px;
 					border-color: $shamrock;
-					border-left-color: lighten($slate, 15%);
+					border-left-color: $light-slate;
 				}
 				&:after {
 					right: -15px;
-					border-color: lighten($slate, 15%);
+					border-color: $light-slate;
 					border-left-color: $shamrock;
 				}
 			}
@@ -638,7 +638,7 @@
 					font-weight: 600;
 					text-transform: uppercase;
 					&:hover, &:focus {
-						background: lighten($slate, 15%)!important;
+						background: $light-slate!important;
 					}
 					&:active {
 						background: $slate!important;

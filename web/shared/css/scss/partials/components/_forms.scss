@@ -386,7 +386,7 @@
 				+ span {
 					svg {
 						.bg {
-							fill: lighten($slate, 15%);
+							fill: $light-slate;
 						}
 					}
 				}
@@ -1804,7 +1804,7 @@
 						background: lighten($slate, 20%);
 					}
 					&:nth-child(2) span {
-						background: lighten($slate, 15%);
+						background: $light-slate;
 					}
 					&:nth-child(3) span {
 						background: lighten($slate, 10%);

@@ -1666,7 +1666,7 @@ button, input, textarea {
 	color: $slate!important;
 }
 .txt-slate-light {
-	color: lighten($slate, 15%)!important;
+	color: $light-slate!important;
 }
 .txt-taupe {
 	color: $taupe!important;
@@ -2558,7 +2558,7 @@ button, input, textarea {
 }
 
 .bg-light-slate {
-	background: lighten($slate, 15%);
+	background: $light-slate;
 }
 .bg-fb {
 	background: $facebook;

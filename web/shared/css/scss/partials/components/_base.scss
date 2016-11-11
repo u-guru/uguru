@@ -659,7 +659,7 @@
 				left: 13px;
 				* {
 					stroke-width: 8px;
-					stroke: lighten($slate, 15%);
+					stroke: $light-slate;
 				}
 				.template {
 					stroke-dasharray: 220.3;
@@ -1105,7 +1105,7 @@
 			+ label:not(:empty) {
 				.input-icon {
 					* {
-						stroke: lighten($slate, 15%);
+						stroke: $light-slate;
 					}
 				}
 				.label {
@@ -1299,7 +1299,7 @@
 				}
 				.input-icon {
 					* {
-						stroke: lighten($slate, 15%);
+						stroke: $light-slate;
 						transition: all 500ms ease 700ms;
 					}
 				}
@@ -1392,7 +1392,7 @@
 					position: relative;
 					span {
 						background: white;
-						color: lighten($slate, 15%);
+						color: $light-slate;
 						&:last-child {
 							opacity: 0;
 							animation: none;
@@ -1527,7 +1527,7 @@
 				}
 				.input-icon {
 					* {
-						stroke: lighten($slate, 15%);
+						stroke: $light-slate;
 						transition: all 500ms ease 700ms;
 					}
 				}
@@ -2294,7 +2294,7 @@
 				width: 10px;
 				height: 10px;
 				border-radius: 1000px;
-				background: lighten($slate, 15%);
+				background: $light-slate;
 				transform-origin: center center;
 				transform: scale(0) translateZ(0);
 			}
@@ -2450,7 +2450,7 @@
 			}
 		}
 		&.state-active {
-			background: lighten($slate, 15%);
+			background: $light-slate;
 			color: white;
 			span {
 				&:nth-child(5) {
@@ -3359,7 +3359,7 @@
 			> div:not(.visible) {
 				a {
 					&.bg-household {
-						background: mix($cobalt,lighten($slate, 15%), 20%);
+						background: mix($cobalt,$light-slate, 20%);
 						color: rgba(white, 0.5);
 					}
 				}

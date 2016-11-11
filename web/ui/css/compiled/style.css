@@ -1197,9 +1197,9 @@ view {
   color: #40484B; }
   .ui-gallery-single-desc header a, .ui-gallery-single-desc aside a {
     font-weight: 700;
-    color: #555f7b; }
+    color: #76a3ab; }
     .ui-gallery-single-desc header a:hover, .ui-gallery-single-desc header a:focus, .ui-gallery-single-desc aside a:hover, .ui-gallery-single-desc aside a:focus {
-      color: #76a3ab; }
+      color: #555f7b; }
     .ui-gallery-single-desc header a:active, .ui-gallery-single-desc aside a:active {
       color: #668193; }
   .ui-gallery-single-desc header {
@@ -1258,6 +1258,71 @@ view {
       padding: 7.5px; }
       .ui-gallery-single-desc footer ul li {
         padding: 7.5px; }
+
+.ui-versions-link {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center; }
+  .ui-versions-link > div {
+    position: relative; }
+    .ui-versions-link > div a svg {
+      margin-left: -2px;
+      width: 12px;
+      height: 12px; }
+      .ui-versions-link > div a svg * {
+        stroke: #76a3ab;
+        stroke-width: 10px; }
+    .ui-versions-link > div a:hover svg *, .ui-versions-link > div a:focus svg * {
+      stroke: #555f7b; }
+    .ui-versions-link > div a:active svg * {
+      stroke: #668193; }
+
+.ui-versions {
+  position: absolute;
+  z-index: 10;
+  background: #637074;
+  border: 2px solid white;
+  border-radius: 2px;
+  max-width: 500px; }
+  .ui-versions ul {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    padding: 7.5px;
+    width: 100%;
+    overflow: auto; }
+    .ui-versions ul li {
+      padding: 7.5px; }
+      .ui-versions ul li:last-child {
+        padding-right: 15px; }
+  .ui-versions .gradient-left, .ui-versions .gradient-right {
+    position: absolute;
+    top: 0;
+    width: 15px;
+    height: 100%; }
+  .ui-versions .gradient-left {
+    left: 0; }
+  .ui-versions .gradient-right {
+    right: 0; }
+
+.ui-version {
+  height: 100px;
+  background: rgba(64, 72, 75, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 2px;
+  padding: 10px; }
 
 .ui-gallery-single-info {
   -ms-box-orient: horizontal;
@@ -1654,6 +1719,30 @@ view {
     .ui-settings-nav > div button {
       width: auto; } }
 /*-- bg */
+.gradient-light-slate-top {
+  background: -moz-linear-gradient(top, #637074 0%, rgba(99, 112, 116, 0) 100%);
+  background: -webkit-linear-gradient(top, #637074 0%, rgba(99, 112, 116, 0) 100%);
+  background: linear-gradient(to bottom, #637074 0%, rgba(99, 112, 116, 0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#637074', endColorstr='#00637074',GradientType=0 ); }
+
+.gradient-light-slate-bottom {
+  background: -moz-linear-gradient(top, rgba(99, 112, 116, 0) 0%, #637074 100%);
+  background: -webkit-linear-gradient(top, rgba(99, 112, 116, 0) 0%, #637074 100%);
+  background: linear-gradient(to bottom, rgba(99, 112, 116, 0) 0%, #637074 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00637074', endColorstr='#637074',GradientType=0 ); }
+
+.gradient-light-slate-left {
+  background: -moz-linear-gradient(left, #637074 0%, rgba(99, 112, 116, 0) 100%);
+  background: -webkit-linear-gradient(left, #637074 0%, rgba(99, 112, 116, 0) 100%);
+  background: linear-gradient(to right, #637074 0%, rgba(99, 112, 116, 0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#637074', endColorstr='#00637074',GradientType=1 ); }
+
+.gradient-light-slate-right {
+  background: -moz-linear-gradient(left, rgba(99, 112, 116, 0) 0%, #637074 100%);
+  background: -webkit-linear-gradient(left, rgba(99, 112, 116, 0) 0%, #637074 100%);
+  background: linear-gradient(to right, rgba(99, 112, 116, 0) 0%, #637074 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00637074', endColorstr='#637074',GradientType=1 ); }
+
 .gradient-aero-top {
   background: -moz-linear-gradient(top, #9cbdbe 0%, rgba(156, 189, 190, 0) 100%);
   background: -webkit-linear-gradient(top, #9cbdbe 0%, rgba(156, 189, 190, 0) 100%);

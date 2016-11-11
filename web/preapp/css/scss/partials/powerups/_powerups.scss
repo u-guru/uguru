@@ -223,7 +223,7 @@
 						}
 					}
 					h2 {
-						color: lighten($slate, 15%);
+						color: $light-slate;
 						width: 100%;
 						font-size: 20px;
 						font-weight: 600;
@@ -312,14 +312,14 @@
 	.landing-demo {
 		> svg:not(.coach) {
 			* {
-				stroke: lighten($slate, 15%);
+				stroke: $light-slate;
 			}
 			circle {
-				fill: mix(mix(white, $gpa, 30%), lighten($slate, 15%), 40%);
+				fill: mix(mix(white, $gpa, 30%), $light-slate, 40%);
 			}
 			rect {
 				&:first-child {
-					fill: mix(mix(white, $gpa, 30%), lighten($slate, 15%), 70%);
+					fill: mix(mix(white, $gpa, 30%), $light-slate, 70%);
 				}
 				&:last-child {
 					fill: white;
@@ -369,15 +369,15 @@
 			width: calc(318px * 0.75);
 			height: calc(651px * 0.75);
 			* {
-				stroke: lighten($slate, 15%);
+				stroke: $light-slate;
 				stroke-width: 3px;
 			}
 			circle {
-				fill: mix(mix(white, $gpa, 30%), lighten($slate, 15%), 40%);
+				fill: mix(mix(white, $gpa, 30%), $light-slate, 40%);
 			}
 			rect {
 				&:first-child {
-					fill: mix(mix(white, $gpa, 30%), lighten($slate, 15%), 70%);
+					fill: mix(mix(white, $gpa, 30%), $light-slate, 70%);
 				}
 				&:last-child {
 					fill: white;
@@ -386,7 +386,7 @@
 		}
 	}
 	.landing-action {
-		background: mix(mix(white, $gpa, 30%), lighten($slate, 15%), 40%);
+		background: mix(mix(white, $gpa, 30%), $light-slate, 40%);
 		ul {
 			li {
 				div {
@@ -419,14 +419,14 @@
 	.landing-demo {
 		> svg:not(.coach) {
 			* {
-				stroke: lighten($slate, 15%);
+				stroke: $light-slate;
 			}
 			circle {
-				fill: mix(mix(white, $transit, 30%), lighten($slate, 15%), 40%);
+				fill: mix(mix(white, $transit, 30%), $light-slate, 40%);
 			}
 			rect {
 				&:first-child {
-					fill: mix(mix(white, $transit, 30%), lighten($slate, 15%), 70%);
+					fill: mix(mix(white, $transit, 30%), $light-slate, 70%);
 				}
 				&:last-child {
 					fill: white;
@@ -583,14 +583,14 @@
 	.landing-demo {
 		> svg:not(.coach) {
 			* {
-				stroke: lighten($slate, 15%);
+				stroke: $light-slate;
 			}
 			circle {
-				fill: mix(mix(white, $sound, 30%), lighten($slate, 15%), 40%);
+				fill: mix(mix(white, $sound, 30%), $light-slate, 40%);
 			}
 			rect {
 				&:first-child {
-					fill: mix(mix(white, $sound, 30%), lighten($slate, 15%), 70%);
+					fill: mix(mix(white, $sound, 30%), $light-slate, 70%);
 				}
 				&:last-child {
 					fill: white;
@@ -869,8 +869,8 @@
 			background: white;
 		}
 		&:active {
-			background: lighten($slate, 15%);
-			border: lighten($slate, 15%);
+			background: $light-slate;
+			border: $light-slate;
 		}
 	}
 }

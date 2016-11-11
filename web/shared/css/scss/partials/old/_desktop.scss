@@ -516,7 +516,7 @@
 				padding: 7.5px;
 				.ranking-tile {
 					position: relative;
-					background: rgba(lighten($slate, 15%), .5);
+					background: rgba($light-slate, .5);
 					padding: 15px;
 					border-radius: 2px;
 					h2 {
@@ -678,7 +678,7 @@
 							.ranking-next-steps-check {
 								position: relative;
 								z-index: 10;
-								background: lighten($slate, 15%);
+								background: $light-slate;
 								svg {
 									display: block;
 									width: 48px;
@@ -894,7 +894,7 @@
 							.ranking-next-steps-check {
 								position: relative;
 								z-index: 10;
-								background: lighten($slate, 15%);
+								background: $light-slate;
 								svg {
 									display: block;
 									width: 64px;

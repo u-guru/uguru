@@ -58,7 +58,7 @@
 	right: 15px;
 	width: 36px;
 	height: 36px;
-	color: lighten($slate, 15%);
+	color: $light-slate;
 	font-size: 16px;
 	font-weight: 600;
 	// background: rgba($slate, 0.2);
@@ -109,7 +109,7 @@
 	position: relative;
 	border-radius: 2px;
 	background: white;
-	color: lighten($slate, 15%);
+	color: $light-slate;
 	font-size: 16px;
 	font-weight: 600;
 	padding: 5px 5px 5px 8px;

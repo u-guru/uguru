@@ -63,7 +63,7 @@
 							// height: 30px;
 							padding: 10px;
 							width: 100%;
-							background: lighten($slate, 15%);
+							background: $light-slate;
 							.cal-date-num {
 								display: block;
 								width: 100%;
@@ -135,7 +135,7 @@
 									display: block;
 									font-size: 14px;
 									line-height: 1.1;
-									color: lighten($slate, 15%)!important;
+									color: $light-slate!important;
 								}
 							}
 							> span {
@@ -194,7 +194,7 @@
 										left: 1px;
 										width: calc(100% - 2px);
 										height: calc(100% - 2px);
-										background: rgba(lighten($slate, 15%), .95);
+										background: rgba($light-slate, .95);
 										border-radius: 2px;
 										opacity: 0;
 										svg {
@@ -619,7 +619,7 @@
 							li {
 								> span, > a {
 									background: mix(white, $smoke, 70%);
-									color: lighten($slate, 15%)!important;
+									color: $light-slate!important;
 								}
 								&:not(.has-event), &:not(.match), &:not(.guru-available), &:not(.student-available), &:not(.not-available) {
 									> a {

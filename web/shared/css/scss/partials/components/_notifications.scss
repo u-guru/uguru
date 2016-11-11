@@ -567,7 +567,7 @@
 		background: rgba(white, .3);
 		&:hover, &:focus {
 			background: white;
-			color: lighten($slate, 15%);
+			color: $light-slate;
 		}
 		&:active {
 			background: $charcoal!important;
@@ -670,7 +670,7 @@
 			padding: 5px;
 			svg {
 				* {
-					@include svg-stroke(lighten($slate, 15%), 5);
+					@include svg-stroke($light-slate, 5);
 				}
 			}
 		}

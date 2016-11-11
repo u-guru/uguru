@@ -230,7 +230,7 @@
 					white-space: normal;
 					top: 0;
 					background: white;
-					color: lighten($slate, 15%);
+					color: $light-slate;
 					&:before {
 						content: "";
 						display: block;

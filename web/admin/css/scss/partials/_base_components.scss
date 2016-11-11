@@ -436,7 +436,7 @@
 //     width: 24px;
 //     height: 24px;
 //     path {
-//         stroke: lighten($slate, 15%);
+//         stroke: $light-slate;
 //     }
 //     .template {
 //         stroke-dasharray: 220.3;
@@ -609,12 +609,12 @@
 // }
 //
 // @keyframes input-icon-crimson {
-//     0% { stroke: lighten($slate, 15%); }
+//     0% { stroke: $light-slate; }
 //     100% { stroke: $crimson; }
 // }
 //
 // @keyframes input-icon-moxie {
-//     0% { stroke: lighten($slate, 15%); }
+//     0% { stroke: $light-slate; }
 //     100% { stroke: $moxie; }
 // }
 //

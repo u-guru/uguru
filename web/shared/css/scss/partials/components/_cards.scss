@@ -1384,13 +1384,13 @@
 					}
 				}
 				&.default {
-					background: lighten($slate, 15%);
+					background: $light-slate;
 					&:hover, &:focus {
-						background: mix(lighten($slate, 15%), white);
-						color: mix(lighten($slate, 15%), $slate);
+						background: mix($light-slate, white);
+						color: mix($light-slate, $slate);
 					}
 					&:active {
-						background: mix(lighten($slate, 15%), $slate);
+						background: mix($light-slate, $slate);
 						color: white;
 					}
 				}
@@ -2251,7 +2251,7 @@ a.credit-card {
 	width: 100%;
 	max-width: 400px;
 	min-height: 100px;
-	background: rgba(lighten($slate, 15%), .3);
+	background: rgba($light-slate, .3);
 	text-align: center;
 	div:empty {
 		position: absolute;
@@ -2782,7 +2782,7 @@ a.credit-card {
 		transform: translateZ(-20px);
 		// transition: all 150ms ease-in;
 		.color-background {
-			fill: lighten($slate, 15%);
+			fill: $light-slate;
 		}
 	}
 }
@@ -3050,7 +3050,7 @@ a.course-card {
 	}
 	&:active {
 		.course-card-hover {
-			background: lighten($slate, 15%)!important;
+			background: $light-slate!important;
 		}
 	}
 }
@@ -3797,7 +3797,7 @@ a.course-card {
 	}
 	&.upcoming {
 		.chip {
-			background: lighten($slate, 15%);
+			background: $light-slate;
 		}
 	}
 	&.complete {

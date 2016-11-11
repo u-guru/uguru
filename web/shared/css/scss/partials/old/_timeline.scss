@@ -101,7 +101,7 @@
 							}
 							&:hover, &:focus {
 								+ label {
-									background: lighten($slate, 15%);
+									background: $light-slate;
 								}
 							}
 						}

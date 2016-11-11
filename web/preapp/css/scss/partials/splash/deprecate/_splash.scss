@@ -207,11 +207,11 @@
 	}
 	&:active {
 		&:before {
-			background: lighten($slate, 15%);
+			background: $light-slate;
 		}
 		svg {
 			circle {
-				stroke: lighten($slate, 15%);
+				stroke: $light-slate;
 			}
 			path {
 				stroke: white;
@@ -1154,7 +1154,7 @@
 			@include prefix(align-content, space-between, webkit);
 			height: 100%;
 			width: 100%;
-			background: rgba(lighten($slate, 15%), .2);
+			background: rgba($light-slate, .2);
 			header {
 				@include flex;
 				@include flex-center-vertical;
@@ -1345,7 +1345,7 @@
 				color: white;
 			}
 			&:active, &.activated {
-				background: lighten($slate, 15%);
+				background: $light-slate;
 			}
 		}
 		.main {
@@ -2938,7 +2938,7 @@
 					}
 				}
 				.splash-zoom {
-					@include tri-down(15, rgba(lighten($slate, 15%),.9), 0, 10px 15px);
+					@include tri-down(15, rgba($light-slate,.9), 0, 10px 15px);
 					@include center-x;
 					top: 40px;
 					z-index: 2;
@@ -3019,7 +3019,7 @@
 					@include prefix(align-content, space-between, webkit);
 					width: 100%;
 					height: 100%;
-					background: lighten($slate, 15%);
+					background: $light-slate;
 					padding: 15px;
 				}
 				ul {
@@ -4025,7 +4025,7 @@
 						}
 						&:hover {
 							svg {
-								background: lighten($slate, 15%);
+								background: $light-slate;
 							}
 						}
 					}
@@ -4424,7 +4424,7 @@
 				@include opacity(1);
 			}
 			.hour-hand, .minute-hand, .clock-base {
-				fill: lighten($slate, 15%);
+				fill: $light-slate;
 			}
 			.minute-hand {
 				@include prefix(animation, 2000ms hiw-minute-hand ease-in 500ms infinite forwards, webkit moz ms o);
@@ -4467,7 +4467,7 @@
 		// instant and in person
 		.hiw-instant-container {
 			.boom {
-				fill: lighten($slate, 15%);
+				fill: $light-slate;
 			}
 			.grip {
 				@include prefix(animation, 1000ms hiw-grip ease-in infinite alternate forwards, webkit moz ms o);
@@ -4477,7 +4477,7 @@
 		.hiw-student-run-container {
 			.hiw-student-run {
 				path[class*="person-"] {
-					fill: lighten($slate, 15%);
+					fill: $light-slate;
 				}
 				.hat {
 					@include prefix(animation, 1000ms hiw-student-run-hat 1000ms ease-in infinite alternate forwards, webkit moz ms o);
@@ -4488,7 +4488,7 @@
 		.hiw-everyone-container {
 			.hiw-everyone-wins {
 				.platform {
-					fill: lighten($slate, 15%);
+					fill: $light-slate;
 				}
 				.platform-3-110 {
 					@include prefix(transform, translateY(0), webkit moz ms o);
@@ -4609,7 +4609,7 @@
 						}
 						&:hover {
 							svg {
-								background: lighten($slate, 15%);
+								background: $light-slate;
 							}
 						}
 					}
@@ -4836,7 +4836,7 @@
 				font-size: 18px;
 				text-transform: uppercase;
 				&:hover, &:focus {
-					background: lighten($slate, 15%)!important;
+					background: $light-slate!important;
 				}
 				&:active {
 					background: lighten($shamrock, 15%)!important;
@@ -5045,7 +5045,7 @@
 					}
 				}
 				.btn-access-skip {
-					background: lighten($slate, 15%);
+					background: $light-slate;
 					&:hover, &:focus {
 						background: white;
 						color: $shamrock;
@@ -5059,7 +5059,7 @@
 				+ div {
 					.splash-access-bubble {
 						path {
-							fill: lighten($slate, 15%);
+							fill: $light-slate;
 						}
 					}
 				}
@@ -5230,7 +5230,7 @@
 		}
 	}
 	.btn-forgot-pw {
-		background: lighten($slate, 15%);
+		background: $light-slate;
 		&:hover, &:focus {
 			background: white;
 		}
@@ -5599,9 +5599,9 @@
 						}
 					}
 					&.demo-other {
-						background: rgba(lighten($slate, 15%), .5);
+						background: rgba($light-slate, .5);
 						&:hover, &:focus {
-							background: lighten($slate, 15%);
+							background: $light-slate;
 						}
 						&:active {
 							background: lighten($slate, 20%);

@@ -1,4 +1,4 @@
-<view class="ui-gallery" layer="2" type='row' bg="cream" set="gallery = ui.app.views.gallery">
+<view class="ui-gallery" layer="2" type='row' bg="cream" set="gallery = ui.app.views.gallery" u on-init="s:[popup-modal-requested:public:1000]">
 
 	<!-- u on-init="s:[login-modal-requested:public:1000]" -->
 	<!-- u on-init="s:[sidebar-modal-requested:public:1000]" -->
@@ -220,8 +220,40 @@
 								<span>by <a>Jeselle Obina</a></span>
 								<span class="user-icon-24 border-stone"></span>
 							</h4>
-							<h4>
-								<span>Last updated 11/07/16, <a>#028</a></span>
+							<h4 class="ui-versions-link">
+								<span>Last updated 11/07/16,&nbsp;</span>
+								<div>
+									<a u on-mouseenter="s:[version-enter:public]"
+										on-mouseleave="s:[version-exit:public]">
+										<span>#028</span>
+										<graphic url="shared/templates/components/svg/main/down.html"></graphic>
+									</a>
+									<div class="ui-versions"
+										u init-with="p:[op:0, z-index:-10, left:0, bottom:30px]"
+										when-version-enter="a:[slideInUp-subtle:1000:linear:0:1:f, z-index:-10:10:20:linear:0:1:f]"
+										when-version-exit="a:[slideOutDown-subtle:1000:linear:0:1:f, z-index:10:-10:20:linear:980:1:f]">
+										<div class="gradient-left gradient-light-slate-left"></div>
+										<ul>
+											<li>
+												<div class="ui-version"
+													u init-with="p:[width:130px]"></div>
+											</li>
+											<li>
+												<div class="ui-version"
+													u init-with="p:[width:130px]"></div>
+											</li>
+											<li>
+												<div class="ui-version"
+													u init-with="p:[width:130px]"></div>
+											</li>
+											<li>
+												<div class="ui-version"
+													u init-with="p:[width:130px]"></div>
+											</li>
+										</ul>
+										<div class="gradient-right gradient-light-slate-right"></div>
+									</div>
+								</div>
 							</h4>
 						</header>
 						<aside>

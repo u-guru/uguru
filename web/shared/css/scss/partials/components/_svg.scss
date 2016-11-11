@@ -108,11 +108,11 @@
 	}
 	&:active {
 		&:before {
-			background: lighten($slate, 15%);
+			background: $light-slate;
 		}
 		svg {
 			circle {
-				stroke: lighten($slate, 15%);
+				stroke: $light-slate;
 			}
 			path, polyline {
 				stroke: white;
