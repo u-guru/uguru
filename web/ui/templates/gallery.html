@@ -1,4 +1,4 @@
-<view class="ui-gallery" layer="2" type='row' bg="cream" set="gallery = ui.app.views.gallery">
+<view class="ui-gallery" layer="2" type='row' bg="cream" set="gallery = ui.app.views.gallery" u on-init="s:[popup-modal-requested:public:1000]">
 
 	<!-- u on-init="s:[login-modal-requested:public:1000]" -->
 	<!-- u on-init="s:[sidebar-modal-requested:public:1000]" -->
@@ -13,7 +13,7 @@
 			u init-with="p:[op:0]"
 			on-init="p:[op:1]:delay-100">
 			<ul u on-init="s:[filter-enter:children:easeInCirc-2000]">
-				<li u on-init="p:[op:0, tro:center center]"
+				<li u init-with="p:[op:0, tro:center center]"
 					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 					<h3 class="ui-gallery-filter-header">Filters:</h3>
 				</li>
@@ -94,11 +94,11 @@
 
 	<import url="gallery.components.sidebar.url"></import>
 
-	<modal fixed name='popup' scale-to='#profile-tile-id' class='ui-gallery-single top-0 left-0 full-xy perspective-container' bg='vista'
+	<modal fixed name='popup' scale-to='#profile-tile-id' class='ui-gallery-single top-0 left-0 full-xy perspective-container' bg='glacier'
 		u init-with="p:[op:0, tro:center center, tr:scale(0)]"
 		when-popup-modal-requested="a:[scale:0:1:500:easeOutSine:0:1:f, z-index:-1:100:50:linear:0:1:f] | p:[op:1] | s:[popup-enter:public:1000]"
 		when-popup-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:100:-1:50:linear:450:1:f]">
-		<import url="gallery.components.nav.url" class="gradient-vista-top"></import>
+		<import url="gallery.components.nav.url" class="gradient-glacier-top"></import>
 
 		<div class="ui-gallery-single-main">
 			<article>
@@ -427,6 +427,6 @@
 			</article>
 		</div>
 
-		<import url="gallery.components.footer.url" class="gradient-vista-bottom"></import>
+		<import url="gallery.components.footer.url" class="gradient-glacier-bottom"></import>
 	</modal>
 </view>
