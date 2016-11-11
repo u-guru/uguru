@@ -55,13 +55,16 @@ view {
 			}
 		}
 	}
-	section {
+	> div {
 		position: relative;
 		z-index: 1;
 		margin-top: 24px;
-		padding: 39px 15px;
 		background: white;
 		border-radius: 2px;
+		overflow: hidden;
+	}
+	section {
+		padding: 39px 15px;
 		h2 {
 			color: $slate;
 			font-size: 16px;
@@ -98,6 +101,20 @@ view {
 			&:active {
 				color: $stone;
 			}
+		}
+	}
+	.login-success {
+		@include flex;
+		@include flex-center;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		h1 {
+			color: $aero;
+			font-size: 24px;
+			font-weight: 600;
 		}
 	}
 	footer {
