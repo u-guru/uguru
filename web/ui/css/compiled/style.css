@@ -1273,17 +1273,21 @@ view {
   align-items: center; }
   .ui-versions-link > div {
     position: relative; }
-    .ui-versions-link > div a svg {
-      margin-left: -2px;
-      width: 12px;
-      height: 12px; }
-      .ui-versions-link > div a svg * {
-        stroke: #76a3ab;
-        stroke-width: 10px; }
-    .ui-versions-link > div a:hover svg *, .ui-versions-link > div a:focus svg * {
-      stroke: #555f7b; }
-    .ui-versions-link > div a:active svg * {
-      stroke: #668193; }
+    .ui-versions-link > div a {
+      display: block;
+      border-radius: 2px;
+      background: #404958; }
+      .ui-versions-link > div a svg {
+        margin-left: -2px;
+        width: 12px;
+        height: 12px; }
+        .ui-versions-link > div a svg * {
+          stroke: #76a3ab;
+          stroke-width: 10px; }
+      .ui-versions-link > div a:hover svg *, .ui-versions-link > div a:focus svg * {
+        stroke: #555f7b; }
+      .ui-versions-link > div a:active svg * {
+        stroke: #668193; }
 
 .ui-versions {
   position: absolute;
