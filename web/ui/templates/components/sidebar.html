@@ -117,7 +117,7 @@
 		u init-with="p:[z-index:-1, op:0, tro:bottom center, tr:scale(0)]"
 		when-logout-enter="p:[z-index:10, op:1] | a:[scale:0:1:500:easeOutSine:0:1:f]"
 		on-click="s:[logout-exit:public, sidebar-modal-closed:public]">
-		<svg width="920px" height="670px" viewBox="0 0 920 670" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<svg width="920px" height="294px" viewBox="0 126 920 420" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 		    <defs>
 		        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="glasses-gradient">
 		            <stop stop-color="#FA9394" offset="0%"></stop>
@@ -220,5 +220,21 @@
 		        <path d="M60,530 L860,530" class="ground" stroke="#F5E2CB" stroke-width="5"></path>
 		    </g>
 		</svg>
+		<div>
+			<h1>You are being logged out</h1>
+			<button>
+				<svg viewBox="0 0 100 100">
+				    <g fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+				        <path d="M82,53.2642213 C79.9534323,71.1801707 64.0565422,83.791982 46.4524656,81.7915084 C28.8483891,79.7910349 16.2034317,63.935815 18.2091629,46.3778837 C20.214894,28.8199524 36.1117842,16.208141 53.7158607,18.2086146 C62.517899,19.2088514 70.0801575,23.6727748 75.19119,30.0813803 L47.7253869,58.7705881 L35.7178978,47.6701341"
+							u init-with="p:[sda:232.582, sdo:56.069]"></path>
+							<!-- 176.513 : checkmark only -->
+							<!-- 56.069 : arrow only-->
+				        <polyline points="30.404581 40.1717569 17.5912773 47.2658178 10.9355156 34.2194662" style="opacity:0"></polyline>
+				        <polyline points="69.5999861 59.8287232 82.4132898 52.7346622 89.0690515 65.7810138"
+							init-with="p:[ada:29.3]"></polyline>
+				    </g>
+				</svg>
+			</button>
+		</div>
 	</div>
 </modal>
