@@ -221,7 +221,10 @@
 				u init-with="p:[tr:translateX(100%)]"
 				when-login-enter="a:[translateX:100%:0%:250:easeOutBack:250:1:f] | s:[login-modal-closed:public:1500]"
 				when-login-modal-closed="p:[tr:translateX(100%)]:delay-500">
-				<h1>Welcome back!</h1>
+				<div>
+					<graphic url="ui/templates/components/svg/guru-head.html"></graphic>
+					<h1>Welcome back!</h1>
+				</div>
 			</section>
 		</div>
 		<footer u init-with="p:[op:0, tro:center center, tr:scaleX(0)]"
