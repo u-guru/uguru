@@ -132,10 +132,10 @@
 	margin-left: -125px;
 	width: 250px;
 	&:before {
-		border-bottom-color: rgba(lighten($slate, 15%), .95);
+		border-bottom-color: rgba($light-slate, .95);
 	}
 	> div:not(.ugrid-2) {
-		background: rgba(lighten($slate, 15%), .95);
+		background: rgba($light-slate, .95);
 		border-top-left-radius: 2px;
 		border-top-right-radius: 2px;
 		padding: 15px;
@@ -328,10 +328,10 @@
 	margin-left: -125px;
 	width: 250px;
 	&:before {
-		border-bottom-color: rgba(lighten($slate, 15%), .95);
+		border-bottom-color: rgba($light-slate, .95);
 	}
 	> div:not(.ugrid-2) {
-		background: rgba(lighten($slate, 15%), .95);
+		background: rgba($light-slate, .95);
 		border-top-left-radius: 2px;
 		border-top-right-radius: 2px;
 		padding: 15px;

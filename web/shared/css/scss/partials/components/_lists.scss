@@ -132,7 +132,7 @@
 				}
 				> a {
 					&:hover, &:focus {
-						background: lighten($slate, 15%);
+						background: $light-slate;
 						color: white;
 					}
 					&:active {
@@ -152,7 +152,7 @@
 		ul {
 			li {
 				> a, > span {
-					background: lighten($slate, 15%);
+					background: $light-slate;
 					color: white;
 				}
 				> a {
@@ -164,7 +164,7 @@
 						background: $shamrock;
 					}
 					div:empty {
-						background: lighten($slate, 15%);
+						background: $light-slate;
 						&:nth-child(5) {
 							background: $shamrock;
 						}

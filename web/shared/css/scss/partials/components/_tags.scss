@@ -533,7 +533,7 @@ a.chip, input.chip {
 		}
 	}
 	a.chip:hover {
-		background: lighten($slate, 15%);
+		background: $light-slate;
 	}
 	ul {
 		@include flex;

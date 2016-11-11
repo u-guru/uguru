@@ -126,27 +126,27 @@ button.disabled {
 		}
 	}
 	&.bg-light-slate {
-		background: lighten($slate, 15%);
+		background: $light-slate;
 		&.reverse {
 			background: white;
-			color: lighten($slate, 15%);
+			color: $light-slate;
 			svg {
 				* {
-					stroke: lighten($slate, 15%);
+					stroke: $light-slate;
 				}
 			}
 		}
 		&:hover, &:focus {
-			background: mix(lighten($slate, 15%), white);
-			color: lighten($slate, 15%);
+			background: mix($light-slate, white);
+			color: $light-slate;
 			svg {
 				* {
-					stroke: lighten($slate, 15%);
+					stroke: $light-slate;
 				}
 			}
 		}
 		&:active {
-			background: mix(lighten($slate, 15%), white, 75%);
+			background: mix($light-slate, white, 75%);
 			color: white;
 			svg {
 				* {
@@ -830,8 +830,8 @@ button.disabled {
 		color: $charcoal;
 	}
 	&:active {
-		border-color: lighten($slate, 15%);
-		background: lighten($slate, 15%);
+		border-color: $light-slate;
+		background: $light-slate;
 		color: white;
 	}
 	&.bg-charcoal {
@@ -899,8 +899,8 @@ button.disabled {
 			color: white;
 		}
 		&:active {
-			border-color: lighten($slate, 15%);
-			background: lighten($slate, 15%);
+			border-color: $light-slate;
+			background: $light-slate;
 			color: white;
 		}
 	}
@@ -913,8 +913,8 @@ button.disabled {
 			color: $charcoal;
 		}
 		&:active {
-			border-color: lighten($slate, 15%);
-			background: lighten($slate, 15%);
+			border-color: $light-slate;
+			background: $light-slate;
 			color: white;
 		}
 	}
@@ -1189,7 +1189,7 @@ button.disabled {
 			width: 10px;
 			height: 10px;
 			border-radius: 1000px;
-			background: lighten($slate, 15%);
+			background: $light-slate;
 			transform-origin: center center;
 			transform: scale(0) translateZ(0);
 			transition: transform 250ms ease-in-out, opacity 50ms ease 260ms;
@@ -1209,7 +1209,7 @@ button.disabled {
 		}
 	}
 	&:active {
-		background: lighten($slate, 15%);
+		background: $light-slate;
 		transition: background 10ms ease 250ms, color 250ms ease-in-out;
 		span {
 			&:nth-child(5) {
@@ -1296,7 +1296,7 @@ button.disabled {
 		}
 		&:active {
 			> span {
-				background: lighten($slate, 15%);
+				background: $light-slate;
 				color: white;
 			}
 		}
@@ -1314,7 +1314,7 @@ button.disabled {
 		}
 		&:active {
 			> span {
-				background: lighten($slate, 15%);
+				background: $light-slate;
 				color: white;
 			}
 		}

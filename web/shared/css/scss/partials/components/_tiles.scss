@@ -102,7 +102,7 @@
 			// transition: all 150ms ease-in;
 		}
 		> div {
-			background: rgba(lighten($slate, 15%), .95)!important;
+			background: rgba($light-slate, .95)!important;
 		}
 	}
 	.border-bottom {
@@ -1497,7 +1497,7 @@
 		}
 	}
 	&.bg-academic {
-		background: lighten($slate, 15%);
+		background: $light-slate;
 		transform-origin: left top;
 		.pf-tile-border {
 			position: absolute;
@@ -1538,7 +1538,7 @@
 			}
 		}
 		.pf-tile-top {
-			background: lighten($slate, 15%);
+			background: $light-slate;
 			border-radius: 2px;
 			.pf-pricing {
 				position: absolute;
@@ -2058,7 +2058,7 @@
 		width: calc(100% - 15px);
 		height: calc(100% - 15px);
 		border-radius: 2px;
-		background-color: lighten($slate, 15%);
+		background-color: $light-slate;
 		background-position: center center;
 		background-size: cover;
 	}
@@ -2085,7 +2085,7 @@
 			font-size: 24px;
 			font-weight: 700;
 			text-align: center;
-			text-shadow: 0 0 20px rgba(lighten($slate, 15%), .5);
+			text-shadow: 0 0 20px rgba($light-slate, .5);
 			@media screen and (min-width:1280px) {
 				font-size: 28px;
 			}
@@ -2093,7 +2093,7 @@
 		> div:not(:empty) {
 			margin-top: 5px;
 			text-align: center;
-			text-shadow: 0 0 20px rgba(lighten($slate, 15%), .5);
+			text-shadow: 0 0 20px rgba($light-slate, .5);
 			h2 {
 				margin-top: 0;
 				font-size: 16px;
@@ -2129,7 +2129,7 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background: rgba(lighten($slate, 15%), .4);
+			background: rgba($light-slate, .4);
 		}
 		* {
 			position: relative;
@@ -2718,7 +2718,7 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background: rgba(lighten($slate, 15%), .7);
+		background: rgba($light-slate, .7);
 		border-radius: 2px;
 		// border-top: 5px solid transparent;
 		// border-bottom: 5px solid white;
@@ -2762,7 +2762,7 @@
 		width: 32px;
 		height: 32px;
 		background: white;
-		color: lighten($slate, 15%);
+		color: $light-slate;
 		font-size: 18px;
 		font-weight: 600;
 		border-radius: 0 2px 0 16px;
@@ -2772,7 +2772,7 @@
 			height: 100%;
 			padding: 6px;
 			* {
-				@include svg-stroke(lighten($slate, 15%), 10);
+				@include svg-stroke($light-slate, 10);
 			}
 		}
 	}
@@ -2862,9 +2862,9 @@
 			background: $auburn;
 		}
 		.category-tile-count {
-			color: mix($auburn, lighten($slate, 15%));
+			color: mix($auburn, $light-slate);
 			svg * {
-				@include svg-stroke(mix($auburn, lighten($slate, 15%)), 10);
+				@include svg-stroke(mix($auburn, $light-slate), 10);
 			}
 		}
 	}
@@ -2874,9 +2874,9 @@
 			background: $orange;
 		}
 		.category-tile-count {
-			color: mix($orange, lighten($slate, 15%));
+			color: mix($orange, $light-slate);
 			svg * {
-				@include svg-stroke(mix($orange, lighten($slate, 15%)), 10);
+				@include svg-stroke(mix($orange, $light-slate), 10);
 			}
 		}
 	}
@@ -2886,9 +2886,9 @@
 			background: $gold;
 		}
 		.category-tile-count {
-			color: mix($gold, lighten($slate, 15%));
+			color: mix($gold, $light-slate);
 			svg * {
-				@include svg-stroke(mix($gold, lighten($slate, 15%)), 10);
+				@include svg-stroke(mix($gold, $light-slate), 10);
 			}
 		}
 	}
@@ -2898,9 +2898,9 @@
 			background: $moola;
 		}
 		.category-tile-count {
-			color: mix($moola, lighten($slate, 15%));
+			color: mix($moola, $light-slate);
 			svg * {
-				@include svg-stroke(mix($moola, lighten($slate, 15%)), 10);
+				@include svg-stroke(mix($moola, $light-slate), 10);
 			}
 		}
 	}
@@ -2910,9 +2910,9 @@
 			background: $azure;
 		}
 		.category-tile-count {
-			color: mix($azure, lighten($slate, 15%));
+			color: mix($azure, $light-slate);
 			svg * {
-				@include svg-stroke(mix($azure, lighten($slate, 15%)), 10);
+				@include svg-stroke(mix($azure, $light-slate), 10);
 			}
 		}
 	}
@@ -2922,9 +2922,9 @@
 			background: $cobalt;
 		}
 		.category-tile-count {
-			color: mix($cobalt, lighten($slate, 15%));
+			color: mix($cobalt, $light-slate);
 			svg * {
-				@include svg-stroke(mix($cobalt, lighten($slate, 15%)), 10);
+				@include svg-stroke(mix($cobalt, $light-slate), 10);
 			}
 		}
 	}
@@ -2934,9 +2934,9 @@
 			background: $eggplant;
 		}
 		.category-tile-count {
-			color: mix($eggplant, lighten($slate, 15%));
+			color: mix($eggplant, $light-slate);
 			svg * {
-				@include svg-stroke(mix($eggplant, lighten($slate, 15%)), 10);
+				@include svg-stroke(mix($eggplant, $light-slate), 10);
 			}
 		}
 	}
@@ -2946,15 +2946,15 @@
 			background: $cerise;
 		}
 		.category-tile-count {
-			color: mix($cerise, lighten($slate, 15%));
+			color: mix($cerise, $light-slate);
 			svg * {
-				@include svg-stroke(mix($cerise, lighten($slate, 15%)), 10);
+				@include svg-stroke(mix($cerise, $light-slate), 10);
 			}
 		}
 	}
 	&.no-photo {
 		&:not([class*="bg-"]) {
-			background-color: lighten($slate, 15%);
+			background-color: $light-slate;
 		}
 		.category-tile-inside {
 			background: none;
@@ -3623,7 +3623,7 @@ a.category-tile {
 	}
 	h2 {
 		margin: 0!important;
-		color: lighten($slate, 15%);
+		color: $light-slate;
 		font-size: 20px;
 		font-weight: 600;
 	}
@@ -3769,7 +3769,7 @@ a.category-tile {
 	// transition: all 150ms ease-in;
 	background: lighten($slate, 5%);
 	&:hover, &:focus {
-		background: lighten($slate, 15%);
+		background: $light-slate;
 		transform: translateZ(20px);
 		// transition: all 600ms cubic-bezier(.6,0,.1,2);
 	}
@@ -3814,7 +3814,7 @@ a.category-tile {
 }
 .ranking-tile {
 	position: relative;
-	background: lighten($slate, 15%);
+	background: $light-slate;
 	border-radius: 2px;
 	h1 {
 		font-size: 32px;
@@ -3932,7 +3932,7 @@ a.category-tile {
 /*---------- FEATURE TILES */
 .feature-tile {
 	@include flex;
-	background: lighten($slate, 15%);
+	background: $light-slate;
 	border-radius: 2px;
 	padding: 7.5px;
 	max-width: 500px;
@@ -4320,19 +4320,19 @@ a.category-tile {
 					}
 				}
 				.tile {
-					color: lighten($slate, 15%);
+					color: $light-slate;
 				}
 				a.tile {
 					svg {
 						* {
-							stroke: lighten($slate, 15%);
+							stroke: $light-slate;
 							&:not(.line) {
-								fill: rgba(lighten($slate, 15%), .3);
+								fill: rgba($light-slate, .3);
 							}
 						}
 					}
 					h1, h2 {
-						color: lighten($slate, 15%);
+						color: $light-slate;
 					}
 					&:active {
 						color: white;
@@ -4895,7 +4895,7 @@ a.category-tile {
 			}
 			.record-tile-bg {
 				z-index: 0;
-				background-color: mix($sound, lighten($slate, 15%), 75%);
+				background-color: mix($sound, $light-slate, 75%);
 				border-radius: 4px;
 			}
 			.record-art {

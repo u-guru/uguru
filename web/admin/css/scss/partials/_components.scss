@@ -149,7 +149,7 @@
 		a {
 			background: lighten($slate, 20%);
 			&:hover, &:focus {
-				background: lighten($slate, 15%);
+				background: $light-slate;
 			}
 			&:active, &.active {
 				background: $robin;

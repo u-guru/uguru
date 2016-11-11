@@ -794,7 +794,7 @@
 					}
 				}
 				.splash-zoom {
-					@include tri-down(15, rgba(lighten($slate, 15%),.9), 0, 10px 15px);
+					@include tri-down(15, rgba($light-slate,.9), 0, 10px 15px);
 					@include center-x;
 					top: 40px;
 					z-index: 2;

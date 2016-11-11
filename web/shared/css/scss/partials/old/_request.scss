@@ -33,12 +33,12 @@
 	&.guru-mode {
 		&.mobile-mode {
 			.rating-container {
-				background: lighten($slate, 15%);
+				background: $light-slate;
 			}
 		}
 		.rating-container {
 			> ul {
-				background: lighten($slate, 15%);
+				background: $light-slate;
 				> li {
 					&.rating-charge {
 						&:after {
@@ -144,7 +144,7 @@
 									border-color: $lake;
 								}
 								&:after {
-									border-color: lighten($slate, 15%);
+									border-color: $light-slate;
 									border-left-color: $lake;
 								}
 							}
@@ -155,10 +155,10 @@
 							~ div {
 								&:before {
 									border-color: $lake;
-									border-left-color: lighten($slate, 15%);
+									border-left-color: $light-slate;
 								}
 								&:after {
-									border-color: lighten($slate, 15%);
+									border-color: $light-slate;
 									border-left-color: $lake;
 								}
 							}
@@ -169,10 +169,10 @@
 							~ div {
 								&:before {
 									border-color: $lake;
-									border-left-color: lighten($slate, 15%);
+									border-left-color: $light-slate;
 								}
 								&:after {
-									border-color: lighten($slate, 15%);
+									border-color: $light-slate;
 									border-left-color: $lake;
 								}
 							}
@@ -183,10 +183,10 @@
 							~ div {
 								&:before {
 									border-color: $lake;
-									border-left-color: lighten($slate, 15%);
+									border-left-color: $light-slate;
 								}
 								&:after {
-									border-color: lighten($slate, 15%);
+									border-color: $light-slate;
 									border-left-color: $lake;
 								}
 							}
@@ -197,10 +197,10 @@
 							~ div {
 								&:before {
 									border-color: $lake;
-									border-left-color: lighten($slate, 15%);
+									border-left-color: $light-slate;
 								}
 								&:after {
-									border-color: lighten($slate, 15%);
+									border-color: $light-slate;
 									border-left-color: $lake;
 								}
 							}
@@ -211,7 +211,7 @@
 							~ div {
 								&:before {
 									border-color: $lake;
-									border-left-color: lighten($slate, 15%);
+									border-left-color: $light-slate;
 								}
 								&:after {
 									border-color: $lake;
@@ -226,7 +226,7 @@
 									border-color: $lake;
 								}
 								&:after {
-									border-color: lighten($slate, 15%);
+									border-color: $light-slate;
 									border-left-color: $lake;
 								}
 							}
@@ -237,10 +237,10 @@
 							~ div {
 								&:before {
 									border-color: $lake;
-									border-left-color: lighten($slate, 15%);
+									border-left-color: $light-slate;
 								}
 								&:after {
-									border-color: lighten($slate, 15%);
+									border-color: $light-slate;
 									border-left-color: $lake;
 								}
 							}
@@ -251,10 +251,10 @@
 							~ div {
 								&:before {
 									border-color: $lake;
-									border-left-color: lighten($slate, 15%);
+									border-left-color: $light-slate;
 								}
 								&:after {
-									border-color: lighten($slate, 15%);
+									border-color: $light-slate;
 									border-left-color: $lake;
 								}
 							}
@@ -265,10 +265,10 @@
 							~ div {
 								&:before {
 									border-color: $lake;
-									border-left-color: lighten($slate, 15%);
+									border-left-color: $light-slate;
 								}
 								&:after {
-									border-color: lighten($slate, 15%);
+									border-color: $light-slate;
 									border-left-color: $lake;
 								}
 							}
@@ -279,10 +279,10 @@
 							~ div {
 								&:before {
 									border-color: $lake;
-									border-left-color: lighten($slate, 15%);
+									border-left-color: $light-slate;
 								}
 								&:after {
-									border-color: lighten($slate, 15%);
+									border-color: $light-slate;
 									border-left-color: $lake;
 								}
 							}
@@ -293,7 +293,7 @@
 							~ div {
 								&:before {
 									border-color: $lake;
-									border-left-color: lighten($slate, 15%);
+									border-left-color: $light-slate;
 								}
 								&:after {
 									border-color: $lake;
@@ -308,11 +308,11 @@
 					}
 					&:before {
 						border-color: $lake;
-						border-left-color: lighten($slate, 15%);
+						border-left-color: $light-slate;
 					}
 					&:after {
 						right: -15px;
-						border-color: lighten($slate, 15%);
+						border-color: $light-slate;
 						border-left-color: $lake;
 					}
 				}
@@ -345,7 +345,7 @@
 										border-color: $auburn;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $auburn;
 									}
 								}
@@ -356,10 +356,10 @@
 								~ div {
 									&:before {
 										border-color: $auburn;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $auburn;
 									}
 								}
@@ -370,10 +370,10 @@
 								~ div {
 									&:before {
 										border-color: $auburn;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $auburn;
 									}
 								}
@@ -384,10 +384,10 @@
 								~ div {
 									&:before {
 										border-color: $auburn;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $auburn;
 									}
 								}
@@ -398,10 +398,10 @@
 								~ div {
 									&:before {
 										border-color: $auburn;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $auburn;
 									}
 								}
@@ -412,7 +412,7 @@
 								~ div {
 									&:before {
 										border-color: $auburn;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
 										border-color: $auburn;
@@ -427,7 +427,7 @@
 										border-color: $auburn;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $auburn;
 									}
 								}
@@ -438,10 +438,10 @@
 								~ div {
 									&:before {
 										border-color: $auburn;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $auburn;
 									}
 								}
@@ -452,10 +452,10 @@
 								~ div {
 									&:before {
 										border-color: $auburn;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $auburn;
 									}
 								}
@@ -466,10 +466,10 @@
 								~ div {
 									&:before {
 										border-color: $auburn;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $auburn;
 									}
 								}
@@ -480,10 +480,10 @@
 								~ div {
 									&:before {
 										border-color: $auburn;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $auburn;
 									}
 								}
@@ -494,7 +494,7 @@
 								~ div {
 									&:before {
 										border-color: $auburn;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
 										border-color: $auburn;
@@ -509,10 +509,10 @@
 						}
 						&:before {
 							border-color: $auburn;
-							border-left-color: lighten($slate, 15%);
+							border-left-color: $light-slate;
 						}
 						&:after {
-							border-color: lighten($slate, 15%);
+							border-color: $light-slate;
 							border-left-color: $auburn;
 						}
 					}
@@ -532,7 +532,7 @@
 										border-color: $orange;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $orange;
 									}
 								}
@@ -543,10 +543,10 @@
 								~ div {
 									&:before {
 										border-color: $orange;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $orange;
 									}
 								}
@@ -557,10 +557,10 @@
 								~ div {
 									&:before {
 										border-color: $orange;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $orange;
 									}
 								}
@@ -571,10 +571,10 @@
 								~ div {
 									&:before {
 										border-color: $orange;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $orange;
 									}
 								}
@@ -585,10 +585,10 @@
 								~ div {
 									&:before {
 										border-color: $orange;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $orange;
 									}
 								}
@@ -599,7 +599,7 @@
 								~ div {
 									&:before {
 										border-color: $orange;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
 										border-color: $orange;
@@ -614,7 +614,7 @@
 										border-color: $orange;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $orange;
 									}
 								}
@@ -625,10 +625,10 @@
 								~ div {
 									&:before {
 										border-color: $orange;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $orange;
 									}
 								}
@@ -639,10 +639,10 @@
 								~ div {
 									&:before {
 										border-color: $orange;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $orange;
 									}
 								}
@@ -653,10 +653,10 @@
 								~ div {
 									&:before {
 										border-color: $orange;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $orange;
 									}
 								}
@@ -667,10 +667,10 @@
 								~ div {
 									&:before {
 										border-color: $orange;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $orange;
 									}
 								}
@@ -681,7 +681,7 @@
 								~ div {
 									&:before {
 										border-color: $orange;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
 										border-color: $orange;
@@ -696,10 +696,10 @@
 						}
 						&:before {
 							border-color: $orange;
-							border-left-color: lighten($slate, 15%);
+							border-left-color: $light-slate;
 						}
 						&:after {
-							border-color: lighten($slate, 15%);
+							border-color: $light-slate;
 							border-left-color: $orange;
 						}
 					}
@@ -719,7 +719,7 @@
 										border-color: $gold;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $gold;
 									}
 								}
@@ -730,10 +730,10 @@
 								~ div {
 									&:before {
 										border-color: $gold;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $gold;
 									}
 								}
@@ -744,10 +744,10 @@
 								~ div {
 									&:before {
 										border-color: $gold;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $gold;
 									}
 								}
@@ -758,10 +758,10 @@
 								~ div {
 									&:before {
 										border-color: $gold;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $gold;
 									}
 								}
@@ -772,10 +772,10 @@
 								~ div {
 									&:before {
 										border-color: $gold;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $gold;
 									}
 								}
@@ -786,7 +786,7 @@
 								~ div {
 									&:before {
 										border-color: $gold;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
 										border-color: $gold;
@@ -801,7 +801,7 @@
 										border-color: $gold;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $gold;
 									}
 								}
@@ -812,10 +812,10 @@
 								~ div {
 									&:before {
 										border-color: $gold;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $gold;
 									}
 								}
@@ -826,10 +826,10 @@
 								~ div {
 									&:before {
 										border-color: $gold;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $gold;
 									}
 								}
@@ -840,10 +840,10 @@
 								~ div {
 									&:before {
 										border-color: $gold;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $gold;
 									}
 								}
@@ -854,10 +854,10 @@
 								~ div {
 									&:before {
 										border-color: $gold;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $gold;
 									}
 								}
@@ -868,7 +868,7 @@
 								~ div {
 									&:before {
 										border-color: $gold;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
 										border-color: $gold;
@@ -883,10 +883,10 @@
 						}
 						&:before {
 							border-color: $gold;
-							border-left-color: lighten($slate, 15%);
+							border-left-color: $light-slate;
 						}
 						&:after {
-							border-color: lighten($slate, 15%);
+							border-color: $light-slate;
 							border-left-color: $gold;
 						}
 					}
@@ -906,7 +906,7 @@
 										border-color: $moola;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $moola;
 									}
 								}
@@ -917,10 +917,10 @@
 								~ div {
 									&:before {
 										border-color: $moola;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $moola;
 									}
 								}
@@ -931,10 +931,10 @@
 								~ div {
 									&:before {
 										border-color: $moola;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $moola;
 									}
 								}
@@ -945,10 +945,10 @@
 								~ div {
 									&:before {
 										border-color: $moola;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $moola;
 									}
 								}
@@ -959,10 +959,10 @@
 								~ div {
 									&:before {
 										border-color: $moola;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $moola;
 									}
 								}
@@ -973,7 +973,7 @@
 								~ div {
 									&:before {
 										border-color: $moola;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
 										border-color: $moola;
@@ -988,7 +988,7 @@
 										border-color: $moola;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $moola;
 									}
 								}
@@ -999,10 +999,10 @@
 								~ div {
 									&:before {
 										border-color: $moola;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $moola;
 									}
 								}
@@ -1013,10 +1013,10 @@
 								~ div {
 									&:before {
 										border-color: $moola;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $moola;
 									}
 								}
@@ -1027,10 +1027,10 @@
 								~ div {
 									&:before {
 										border-color: $moola;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $moola;
 									}
 								}
@@ -1041,10 +1041,10 @@
 								~ div {
 									&:before {
 										border-color: $moola;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $moola;
 									}
 								}
@@ -1055,7 +1055,7 @@
 								~ div {
 									&:before {
 										border-color: $moola;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
 										border-color: $moola;
@@ -1070,10 +1070,10 @@
 						}
 						&:before {
 							border-color: $moola;
-							border-left-color: lighten($slate, 15%);
+							border-left-color: $light-slate;
 						}
 						&:after {
-							border-color: lighten($slate, 15%);
+							border-color: $light-slate;
 							border-left-color: $moola;
 						}
 					}
@@ -1093,7 +1093,7 @@
 										border-color: $azure;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $azure;
 									}
 								}
@@ -1104,10 +1104,10 @@
 								~ div {
 									&:before {
 										border-color: $azure;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $azure;
 									}
 								}
@@ -1118,10 +1118,10 @@
 								~ div {
 									&:before {
 										border-color: $azure;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $azure;
 									}
 								}
@@ -1132,10 +1132,10 @@
 								~ div {
 									&:before {
 										border-color: $azure;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $azure;
 									}
 								}
@@ -1146,10 +1146,10 @@
 								~ div {
 									&:before {
 										border-color: $azure;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $azure;
 									}
 								}
@@ -1160,7 +1160,7 @@
 								~ div {
 									&:before {
 										border-color: $azure;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
 										border-color: $azure;
@@ -1175,7 +1175,7 @@
 										border-color: $azure;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $azure;
 									}
 								}
@@ -1186,10 +1186,10 @@
 								~ div {
 									&:before {
 										border-color: $azure;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $azure;
 									}
 								}
@@ -1200,10 +1200,10 @@
 								~ div {
 									&:before {
 										border-color: $azure;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $azure;
 									}
 								}
@@ -1214,10 +1214,10 @@
 								~ div {
 									&:before {
 										border-color: $azure;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $azure;
 									}
 								}
@@ -1228,10 +1228,10 @@
 								~ div {
 									&:before {
 										border-color: $azure;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $azure;
 									}
 								}
@@ -1242,7 +1242,7 @@
 								~ div {
 									&:before {
 										border-color: $azure;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
 										border-color: $azure;
@@ -1257,10 +1257,10 @@
 						}
 						&:before {
 							border-color: $azure;
-							border-left-color: lighten($slate, 15%);
+							border-left-color: $light-slate;
 						}
 						&:after {
-							border-color: lighten($slate, 15%);
+							border-color: $light-slate;
 							border-left-color: $azure;
 						}
 					}
@@ -1280,7 +1280,7 @@
 										border-color: $cobalt;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $cobalt;
 									}
 								}
@@ -1291,10 +1291,10 @@
 								~ div {
 									&:before {
 										border-color: $cobalt;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $cobalt;
 									}
 								}
@@ -1305,10 +1305,10 @@
 								~ div {
 									&:before {
 										border-color: $cobalt;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $cobalt;
 									}
 								}
@@ -1319,10 +1319,10 @@
 								~ div {
 									&:before {
 										border-color: $cobalt;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $cobalt;
 									}
 								}
@@ -1333,10 +1333,10 @@
 								~ div {
 									&:before {
 										border-color: $cobalt;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $cobalt;
 									}
 								}
@@ -1347,7 +1347,7 @@
 								~ div {
 									&:before {
 										border-color: $cobalt;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
 										border-color: $cobalt;
@@ -1362,7 +1362,7 @@
 										border-color: $cobalt;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $cobalt;
 									}
 								}
@@ -1373,10 +1373,10 @@
 								~ div {
 									&:before {
 										border-color: $cobalt;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $cobalt;
 									}
 								}
@@ -1387,10 +1387,10 @@
 								~ div {
 									&:before {
 										border-color: $cobalt;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $cobalt;
 									}
 								}
@@ -1401,10 +1401,10 @@
 								~ div {
 									&:before {
 										border-color: $cobalt;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $cobalt;
 									}
 								}
@@ -1415,10 +1415,10 @@
 								~ div {
 									&:before {
 										border-color: $cobalt;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $cobalt;
 									}
 								}
@@ -1429,7 +1429,7 @@
 								~ div {
 									&:before {
 										border-color: $cobalt;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
 										border-color: $cobalt;
@@ -1444,10 +1444,10 @@
 						}
 						&:before {
 							border-color: $cobalt;
-							border-left-color: lighten($slate, 15%);
+							border-left-color: $light-slate;
 						}
 						&:after {
-							border-color: lighten($slate, 15%);
+							border-color: $light-slate;
 							border-left-color: $cobalt;
 						}
 					}
@@ -1467,7 +1467,7 @@
 										border-color: $eggplant;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $eggplant;
 									}
 								}
@@ -1478,10 +1478,10 @@
 								~ div {
 									&:before {
 										border-color: $eggplant;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $eggplant;
 									}
 								}
@@ -1492,10 +1492,10 @@
 								~ div {
 									&:before {
 										border-color: $eggplant;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $eggplant;
 									}
 								}
@@ -1506,10 +1506,10 @@
 								~ div {
 									&:before {
 										border-color: $eggplant;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $eggplant;
 									}
 								}
@@ -1520,10 +1520,10 @@
 								~ div {
 									&:before {
 										border-color: $eggplant;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $eggplant;
 									}
 								}
@@ -1534,7 +1534,7 @@
 								~ div {
 									&:before {
 										border-color: $eggplant;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
 										border-color: $eggplant;
@@ -1549,7 +1549,7 @@
 										border-color: $eggplant;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $eggplant;
 									}
 								}
@@ -1560,10 +1560,10 @@
 								~ div {
 									&:before {
 										border-color: $eggplant;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $eggplant;
 									}
 								}
@@ -1574,10 +1574,10 @@
 								~ div {
 									&:before {
 										border-color: $eggplant;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $eggplant;
 									}
 								}
@@ -1588,10 +1588,10 @@
 								~ div {
 									&:before {
 										border-color: $eggplant;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $eggplant;
 									}
 								}
@@ -1602,10 +1602,10 @@
 								~ div {
 									&:before {
 										border-color: $eggplant;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $eggplant;
 									}
 								}
@@ -1616,7 +1616,7 @@
 								~ div {
 									&:before {
 										border-color: $eggplant;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
 										border-color: $eggplant;
@@ -1631,10 +1631,10 @@
 						}
 						&:before {
 							border-color: $eggplant;
-							border-left-color: lighten($slate, 15%);
+							border-left-color: $light-slate;
 						}
 						&:after {
-							border-color: lighten($slate, 15%);
+							border-color: $light-slate;
 							border-left-color: $eggplant;
 						}
 					}
@@ -1654,7 +1654,7 @@
 										border-color: $cerise;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $cerise;
 									}
 								}
@@ -1665,10 +1665,10 @@
 								~ div {
 									&:before {
 										border-color: $cerise;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $cerise;
 									}
 								}
@@ -1679,10 +1679,10 @@
 								~ div {
 									&:before {
 										border-color: $cerise;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $cerise;
 									}
 								}
@@ -1693,10 +1693,10 @@
 								~ div {
 									&:before {
 										border-color: $cerise;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $cerise;
 									}
 								}
@@ -1707,10 +1707,10 @@
 								~ div {
 									&:before {
 										border-color: $cerise;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $cerise;
 									}
 								}
@@ -1721,7 +1721,7 @@
 								~ div {
 									&:before {
 										border-color: $cerise;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
 										border-color: $cerise;
@@ -1736,7 +1736,7 @@
 										border-color: $cerise;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $cerise;
 									}
 								}
@@ -1747,10 +1747,10 @@
 								~ div {
 									&:before {
 										border-color: $cerise;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $cerise;
 									}
 								}
@@ -1761,10 +1761,10 @@
 								~ div {
 									&:before {
 										border-color: $cerise;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $cerise;
 									}
 								}
@@ -1775,10 +1775,10 @@
 								~ div {
 									&:before {
 										border-color: $cerise;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $cerise;
 									}
 								}
@@ -1789,10 +1789,10 @@
 								~ div {
 									&:before {
 										border-color: $cerise;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
-										border-color: lighten($slate, 15%);
+										border-color: $light-slate;
 										border-left-color: $cerise;
 									}
 								}
@@ -1803,7 +1803,7 @@
 								~ div {
 									&:before {
 										border-color: $cerise;
-										border-left-color: lighten($slate, 15%);
+										border-left-color: $light-slate;
 									}
 									&:after {
 										border-color: $cerise;
@@ -1818,10 +1818,10 @@
 						}
 						&:before {
 							border-color: $cerise;
-							border-left-color: lighten($slate, 15%);
+							border-left-color: $light-slate;
 						}
 						&:after {
-							border-color: lighten($slate, 15%);
+							border-color: $light-slate;
 							border-left-color: $cerise;
 						}
 					}
@@ -2440,7 +2440,7 @@
 						}
 						&:hover {
 							background: rgba(white, .7);
-							border-color: lighten($slate, 15%);
+							border-color: $light-slate;
 							color: $slate;
 						}
 						&:focus, &.active {
@@ -2594,7 +2594,7 @@
 						border-left-width: 5px;
 						border-radius: 2px;
 						padding: 10px 15px;
-						color: lighten($slate, 15%);
+						color: $light-slate;
 						font-weight: 600;
 						span {
 							display: block;
@@ -2904,7 +2904,7 @@
 					}
 					h2 {
 						margin: 0!important;
-						color: lighten($slate, 15%);
+						color: $light-slate;
 						font-size: 20px;
 						font-weight: 600;
 					}
@@ -2941,7 +2941,7 @@
 						font-weight: 600;
 					}
 					p {
-						color: lighten($slate, 15%);
+						color: $light-slate;
 						font-size: 18px;
 						font-weight: 400;
 					}
