@@ -1,6 +1,4 @@
-
-<view class="ui-gallery" layer="2" type='row' bg="cream" set="gallery = ui.app.views.gallery"
-	u on-init="s:[popup-modal-requested:public:1000]">
+<view class="ui-gallery" layer="2" type='row' bg="cream" set="gallery = ui.app.views.gallery" u on-init="s:[popup-modal-requested:public:1000]">
 
 	<!-- u on-init="s:[login-modal-requested:public:1000]" -->
 	<!-- u on-init="s:[sidebar-modal-requested:public:1000]" -->
@@ -9,13 +7,13 @@
 	<!-- {{gallery}} -->
 	<item width="100" height="100" class="overflow-auto">
 		<!-- @gabrielle notice I set gallery=ui.app.views.gallery above & check the modified json file-->
-		<import url="gallery.components.nav.url"></import>
+		<import url="gallery.components.nav.url" class="gradient-cream-top"></import>
 
 		<nav class="ui-gallery-filter-bar" style="margin-top:-15px;"
 			u init-with="p:[op:0]"
 			on-init="p:[op:1]:delay-100">
 			<ul u on-init="s:[filter-enter:children:easeInCirc-2000]">
-				<li u on-init="p:[op:0, tro:center center]"
+				<li u init-with="p:[op:0, tro:center center]"
 					when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 					<h3 class="ui-gallery-filter-header">Filters:</h3>
 				</li>
@@ -88,19 +86,19 @@
 				</div>
 			</div>
 		</main>
+
+		<footer class="ui-gradient-footer gradient-cream-bottom"></footer>
 	</item>
 
 	<import url="gallery.components.login.url"></import>
 
 	<import url="gallery.components.sidebar.url"></import>
 
-	<modal fixed name='popup' scale-to='#profile-tile-id' class='ui-gallery-single top-0 left-0 full-xy perspective-container' bg='#C6DDD6'
-		u init-with="p:[opacity:0, tro:center center]"
-		when-popup-modal-requested="a:[scaleIn-subtle:300:linear:0:1:f, z-index:-1:100:50:linear:0:1:f] | s:[popup-enter:public:1000]"
+	<modal fixed name='popup' scale-to='#profile-tile-id' class='ui-gallery-single top-0 left-0 full-xy perspective-container' bg='glacier'
+		u init-with="p:[op:0, tro:center center, tr:scale(0)]"
+		when-popup-modal-requested="a:[scale:0:1:500:easeOutSine:0:1:f, z-index:-1:100:50:linear:0:1:f] | p:[op:1] | s:[popup-enter:public:1000]"
 		when-popup-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:100:-1:50:linear:450:1:f]">
-		<!-- u init-with="p:[transform:scale(0), transform-origin:center center]"
-		when-popup-modal-requested="a:[scale:0:1:500:easeOutSine:0:1:f, z-index:-1:100:50:linear:0:1:f] | s:[popup-enter:public:1000]" -->
-		<import url="gallery.components.nav.url"></import>
+		<import url="gallery.components.nav.url" class="gradient-glacier-top"></import>
 
 		<div class="ui-gallery-single-main">
 			<article>
@@ -254,16 +252,16 @@
 						</footer>
 					</div>
 				</div>
-				<div class="ui-gallery-single-info"
-					u when-popup-modal-requested="s:[ui-related:public:2000, ui-styles:public:2500]">
+				<div class="ui-gallery-single-info">
 					<!-- u when-popup-modal-requested="s:[ui-related:children:2000, ui-styles:children:2500]" -->
 					<div class="ui-gallery-related"
 						u init-with="p:[tr:scale(0), tro:center top]"
-						when-ui-related="a:[scale:0:1:500:easeOutBack:0:1:f]">
+						when-popup-modal-requested="a:[scale:0:1:500:easeOutBack:0:1:f]:delay-1000 | s:[ui-related:public:easeInCirc-400]:+2000">
 						<div>
 							<h2>Related</h2>
 							<ul class="p15-grid ugrid-2">
-								<li>
+								<li  u init-with="p:[op:0, tro:center center]"
+									when-ui-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="block radius-2 border-2 border-stone">
 										<figure class="bg-stone-25p margin-none p15xy">
 											<svg></svg>
@@ -273,7 +271,8 @@
 										</div>
 									</a>
 								</li>
-								<li>
+								<li u init-with="p:[op:0, tro:center center]"
+									when-ui-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="block radius-2 border-2 border-stone">
 										<figure class="bg-stone-25p margin-none p15xy">
 											<svg></svg>
@@ -283,7 +282,8 @@
 										</div>
 									</a>
 								</li>
-								<li>
+								<li u init-with="p:[op:0, tro:center center]"
+									when-ui-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="block radius-2 border-2 border-stone">
 										<figure class="bg-stone-25p margin-none p15xy">
 											<svg></svg>
@@ -293,7 +293,8 @@
 										</div>
 									</a>
 								</li>
-								<li>
+								<li u init-with="p:[op:0, tro:center center]"
+									when-ui-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="block radius-2 border-2 border-stone">
 										<figure class="bg-stone-25p margin-none p15xy">
 											<svg></svg>
@@ -308,77 +309,116 @@
 					</div>
 					<aside class="ui-gallery-styles"
 						u init-with="p:[tr:scale(0), tro:center top]"
-						when-ui-styles="a:[scale:0:1:500:easeOutBack:0:1:f]">
+						when-popup-modal-requested="s:[ui-styles:public:linear-4000]:+2500 | a:[scale:0:1:500:easeOutBack:0:1:f]:delay-2000">
 						<div>
 							<h2>Styles</h2>
 							<ul>
-								<li class="ui-gallery-colors">
+								<li class="ui-gallery-colors"
+									u style="opacity:0;"
+									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[color-slide:public:500]">
 									<ul>
 										<li>
 											<div class="bg-cerise"></div>
 										</li>
 										<li>
-											<div class="bg-slate"></div>
+											<div class="bg-slate"
+												u init-with="p:[tr:translateX(-150%)]"
+												when-color-slide="a:[translateX:-150%:0%:250:easeOutSine:0:1:f]"></div>
 										</li>
 										<li>
-											<div class="bg-taupe"></div>
+											<div class="bg-taupe"
+												u init-with="p:[tr:translateX(-300%)]"
+												when-color-slide="a:[translateX:-300%:0%:250:easeOutSine:0:1:f]"></div>
 										</li>
 										<li>
-											<div class="bg-gold"></div>
+											<div class="bg-gold"
+												u init-with="p:[tr:translateX(-450%)]"
+												when-color-slide="a:[translateX:-450%:0%:250:easeOutSine:0:1:f]"></div>
 										</li>
 										<li>
-											<div class="bg-white border-taupe"></div>
+											<div class="bg-white border-taupe"
+												u init-with="p:[tr:translateX(-600%)]"
+												when-color-slide="a:[translateX:-600%:0%:250:easeOutSine:0:1:f]"></div>
 										</li>
 									</ul>
-									<h3>Color Palette: <span>Academic</span></h3>
+									<h3 u style="opacity:0;"
+										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Color Palette: <span>Academic</span></h3>
 								</li>
-								<li class="ui-gallery-fonts">
-									<h1>Aa Bb Cc</h1>
-									<h3>Font: <span>Source Sans Pro</span></h3>
+								<li class="ui-gallery-fonts"
+									u init-with="p:[op:0]"
+									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[letter-slide:public:1050]">
+									<h1 class="flex">
+										<span>Aa</span>
+										<span class="m10x"
+											u init-with="p:[tr:translateX(-115%)]"
+											when-letter-slide="a:[translateX:-115%:0%:250:easeOutExpo:0:1:f]">Bb</span>
+										<span
+											u init-with="p:[tr:translateX(-250%)]"
+											when-letter-slide="a:[translateX:-250%:0%:250:easeOutExpo:0:1:f]">Cc</span>
+									</h1>
+									<h3 u init-with="p:[op:0]"
+										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Font: <span>Source Sans Pro</span></h3>
 								</li>
-								<li class="ui-gallery-icon">
+								<li class="ui-gallery-icon"
+									u init-with="p:[op:0]"
+									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] |s:[icon-slide:public:500]">
 									<ul>
 										<li>
 											<graphic url="shared/templates/components/svg/categories/academic-simple.html"></graphic>
 										</li>
-										<li>
+										<li u init-with="p:[tr:translateX(-100%)]"
+											when-icon-slide="a:[translateX:-100%:0%:250:easeOutExpo:0:1:f]">
 											<graphic url="shared/templates/components/svg/categories/academic.html"></graphic>
 										</li>
-										<li>
+										<li u init-with="p:[tr:translateX(-200%)]"
+											when-icon-slide="a:[translateX:-200%:0%:250:easeOutExpo:0:1:f]">
 											<graphic url="shared/templates/components/svg/categories/academic-bottom.html"></graphic>
 										</li>
 									</ul>
-									<h3>Icon: <span>Academic</span></h3>
+									<h3 u init-with="p:[op:0]"
+										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Icon: <span>Academic</span></h3>
 								</li>
-								<li class="ui-gallery-stroke-width">
+								<li class="ui-gallery-stroke-width"
+									u init-with="p:[op:0]"
+									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[shapes-slide:public:500]">
 									<graphic class="svg-stroke-3 stroke-slate" url="shared/templates/components/svg/other/shapes.html"></graphic>
-									<h3>Stroke Width: <span>3px</span></h3>
+									<h3  u init-with="p:[op:0]"
+										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Stroke Width: <span>3px</span></h3>
 								</li>
-								<li class="ui-gallery-padding">
+								<li class="ui-gallery-padding"
+									u init-with="p:[op:0]"
+									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[padding-enter:public:500]">
 									<div>
 										<svg viewbox="0 0 400 270">
 											<rect x="0" y="0" width="400" height="270" fill="none"></rect>
 										</svg>
-										<div class="margin" u init-with="p:[padding:5px, border-color:#40484b]"
+										<div class="margin" u init-with="p:[padding:5px, border-color:#40484b, tr:scale(0), tro:center center]"
 											when-padding-select="p:[border-color:#aaaaaa]"
-											when-padding-deselect="p:[border-color:#40484b]">
-											<div class="normal" u init-with="p:[padding:15px, border-color:#40484b]"
+											when-padding-deselect="p:[border-color:#40484b]"
+											when-padding-enter="a:[scale:0:1:250:easeOutCubic:0:1:f]">
+											<div class="normal" u init-with="p:[padding:15px, border-color:#40484b, tr:scale(0), tro:center center]"
 												when-margin-select="p:[border-color:#aaaaaa]"
 												when-margin-deselect="p:[border-color:#40484b]"
 												when-padding-select="p:[border-color:#aaaaaa]"
-												when-padding-deselect="p:[border-color:#40484b]">
+												when-padding-deselect="p:[border-color:#40484b]"
+												when-padding-enter="a:[scale:0:1:250:easeOutCubic:150:1:f]">
 												<span u init-with="p:[height:15px]">15</span>
-												<div class="padding" u init-with="p:[border-color:#40484b]"
-													u when-margin-select="p:[border-color:#aaaaaa]"
-													when-margin-deselect="p:[border-color:#40484b]"></div>
+												<div class="padding" u init-with="p:[border-color:#40484b, tr:scale(0), tro:center center]"
+													when-margin-select="p:[border-color:#aaaaaa]"
+													when-margin-deselect="p:[border-color:#40484b]"
+													when-padding-enter="a:[scale:0:1:250:easeOutCubic:200:1:f]"></div>
 												<span u init-with="p:[width:15px]">15</span>
 											</div>
 										</div>
 									</div>
 									<h3 u on-mouseenter="s:[padding-select:public]"
-										on-mouseleave="s:[padding-deselect:public]">Padding: <span>15px</span></h3>
+										on-mouseleave="s:[padding-deselect:public]"
+										init-with="p:[op:0]"
+										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Padding: <span>15px</span></h3>
 									<h3 u on-mouseenter="s:[margin-select:public]"
-										on-mouseleave="s:[margin-deselect:public]">Margin: <span>5px</span></h3>
+										on-mouseleave="s:[margin-deselect:public]"
+										init-with="p:[op:0]"
+									  when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Margin: <span>5px</span></h3>
 								</li>
 							</ul>
 						</div>
@@ -387,6 +427,6 @@
 			</article>
 		</div>
 
-		<import url="gallery.components.footer.url"></import>
+		<import url="gallery.components.footer.url" class="gradient-glacier-bottom"></import>
 	</modal>
 </view>

@@ -930,9 +930,11 @@ fieldset.search-bar {
 		@include flex-center;
 		width: 48px;
 		height: 48px;
+		cursor: pointer;
 		svg {
 			width: 24px;
 			height: 24px;
+			cursor: pointer;
 			* {
 				fill: none;
 				stroke: rgba($slate, .5);

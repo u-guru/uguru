@@ -1,18 +1,31 @@
 <ul class="ui-settings-tiles ui-settings-section"
 	u init-with="p:[position:relative, left:0, top:0, z-index:1, op:1]"
 	when-account-link-clicked="a:[z-index:-1:1:50:linear:0:1:f, opacity:0:1:500:easeOutSine:0:1:f] | p:[position:relative, top:auto, left:auto]"
-	when-customize-link-clicked="a:[z-index:1:-1:50:linear:450:1:f, opacity:1:0:500:easeInSine:0:1:f] | p:[position:absolute, left:0, top:0]">
+	when-customize-link-clicked="a:[z-index:1:-1:50:linear:450:1:f, opacity:1:0:500:easeInSine:0:1:f] | p:[position:absolute, left:0, top:0]"
+	on-init="s:[account-email:depth(1), account-pword:depth(1):500, account-avatar:depth(1):1000]">
 	<li>
 		<div class="ui-settings-tile">
 			<header>
-				<hr/><h1>Email</h1><hr/>
+				<hr u init-with="p:[tr:scaleX(0), tro:left center]"
+					when-account-email="a:[scaleX:0:1:150:easeOutCubic:200:1:f]"/>
+				<h1 u init-with="p:[tr:rotateX(90deg) translateY(-10px), op:0]"
+				when-account-email="a:[rotateX:90deg:0deg:250:easeOutCirc:100:1:f, translateY:-10px:0px:250:easeInCirc:150:1:f]:delay-200 | p:[op:1:900]">Email</h1>
+				<!-- Want to hide init with -->
+				<hr u init-with="p:[tr:scaleX(0), tro:right center]"
+					when-account-email="a:[scaleX:0:1:150:easeOutCubic:200:1:f]"/>
 			</header>
 			<div class="borders">
-				<hr/><hr/><hr/>
+				<hr u init-with="p:[tr:scaleY(0), tro:bottom center]"
+					when-account-email="a:[scaleY:0:1:150:easeOutCubic:50:1:f]"/>
+				<hr u init-with="p:[tr:scaleX(0), tro:center center]"
+					when-account-email="a:[scaleX:0:1:150:easeOutCubic:0:1:f]"/>
+				<hr u init-with="p:[tr:scaleY(0), tro:bottom center]"
+					when-account-email="a:[scaleY:0:1:150:easeOutCubic:50:1:f]"/>
 			</div>
 			<div class="ui-settings-tile-content">
 				<ul>
-					<li>
+					<li u init-with="p:[op:0]"
+						when-account-email="a:[fadeInDown:750:easeOutCubic:500:1:f]">
 						<div class="input-border no-label"
 							u on-init="s:[input-border-enter:depth(>2)]"
 							when-input-invalid="a:[translateY:0px:10px:100:linear:0:6:a]">
@@ -107,7 +120,8 @@
 							</label>
 						</div>
 					</li>
-					<li>
+					<li u init-with="p:[op:0]"
+						when-account-email="a:[fadeInDown:750:easeOutCubic:650:1:f]">
 						<div class="input-border no-label"
 							u on-init="s:[input-border-enter:depth(>2)]"
 							when-input-invalid="a:[translateY:0px:10px:100:linear:0:6:a]">
@@ -208,14 +222,25 @@
 
 		<div class="ui-settings-tile">
 			<header>
-				<hr/><h1>Password</h1><hr/>
+				<hr u init-with="p:[tr:scaleX(0), tro:left center]"
+					when-account-pword="a:[scaleX:0:1:150:easeOutCubic:200:1:f]"/>
+				<h1 u init-with="p:[tr:rotateX(90deg) translateY(-10px), op:0]"
+				when-account-pword="a:[rotateX:90deg:0deg:250:easeOutCirc:100:1:f, translateY:-10px:0px:250:easeInCirc:150:1:f]:delay-200 | p:[op:1:900]">Password</h1>
+				<hr u init-with="p:[tr:scaleX(0), tro:right center]"
+					when-account-pword="a:[scaleX:0:1:150:easeOutCubic:200:1:f]"/>
 			</header>
 			<div class="borders">
-				<hr/><hr/><hr/>
+				<hr u init-with="p:[tr:scaleY(0), tro:bottom center]"
+					when-account-pword="a:[scaleY:0:1:150:easeOutCubic:50:1:f]"/>
+				<hr u init-with="p:[tr:scaleX(0), tro:center center]"
+					when-account-pword="a:[scaleX:0:1:150:easeOutCubic:0:1:f]"/>
+				<hr u init-with="p:[tr:scaleY(0), tro:bottom center]"
+					when-account-pword="a:[scaleY:0:1:150:easeOutCubic:50:1:f]"/>
 			</div>
 			<div class="ui-settings-tile-content">
 				<ul>
-					<li>
+					<li u init-with="p:[op:0]"
+						when-account-pword="a:[fadeInDown:750:easeOutCubic:500:1:f]">
 						<div class="input-border no-label"
 							u on-init="s:[input-border-enter:depth(>2)]"
 							when-input-invalid="a:[translateY:0px:10px:100:linear:0:6:a]">
@@ -310,7 +335,8 @@
 							</label>
 						</div>
 					</li>
-					<li>
+					<li u init-with="p:[op:0]"
+						when-account-pword="a:[fadeInDown:750:easeOutCubic:650:1:f]">
 						<div class="input-border no-label"
 							u on-init="s:[input-border-enter:depth(>2)]"
 							when-input-invalid="a:[translateY:0px:10px:100:linear:0:6:a]">
@@ -405,7 +431,8 @@
 							</label>
 						</div>
 					</li>
-					<li>
+					<li u init-with="p:[op:0]"
+						when-account-pword="a:[fadeInDown:750:easeOutCubic:750:1:f]">
 						<div class="input-border no-label"
 							u on-init="s:[input-border-enter:depth(>2)]"
 							when-input-invalid="a:[translateY:0px:10px:100:linear:0:6:a]">
@@ -507,16 +534,27 @@
 	<li>
 		<div class="ui-settings-tile">
 			<header>
-				<hr/><h1>Avatar</h1><hr/>
+				<hr u init-with="p:[tr:scaleX(0), tro:left center]"
+					when-account-avatar="a:[scaleX:0:1:150:easeOutCubic:200:1:f]"/>
+				<h1 u init-with="p:[tr:rotateX(90deg) translateY(-10px), op:0]"
+				when-account-avatar="a:[rotateX:90deg:0deg:250:easeOutCirc:100:1:f, translateY:-10px:0px:250:easeInCirc:150:1:f]:delay-200 | p:[op:1:900]">Avatar</h1>
+				<hr u init-with="p:[tr:scaleX(0), tro:right center]"
+					when-account-avatar="a:[scaleX:0:1:150:easeOutCubic:200:1:f]"/>
 			</header>
 			<div class="borders">
-				<hr/><hr/><hr/>
+				<hr u init-with="p:[tr:scaleY(0), tro:bottom center]"
+					when-account-avatar="a:[scaleY:0:1:150:easeOutCubic:50:1:f]"/>
+				<hr u init-with="p:[tr:scaleX(0), tro:center center]"
+					when-account-avatar="a:[scaleX:0:1:150:easeOutCubic:0:1:f]"/>
+				<hr u init-with="p:[tr:scaleY(0), tro:bottom center]"
+					when-account-avatar="a:[scaleY:0:1:150:easeOutCubic:50:1:f]"/>
 			</div>
 			<div class="ui-settings-tile-content">
 				<a class="ui-settings-avatar-upload">
 					<graphic url='ui/templates/components/svg/upload-avatar.html'></graphic>
 				</a>
-				<h2>We suggest a 400 x 400 px jpeg.</h2>
+				<h2 u style="opacity:0"
+					when-account-avatar="a:[opacity:0:1:450:linear:300:1:f]">We suggest a 400 x 400 px jpeg.</h2>
 			</div>
 		</div>
 	</li>
