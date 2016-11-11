@@ -70,7 +70,7 @@ function TweenService() {
         duration = parseFloat(duration)
         result_arr.cache = [];
 
-
+        property = property.trim();
 
 
         var startDict = {};
