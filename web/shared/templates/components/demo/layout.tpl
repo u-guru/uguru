@@ -7,13 +7,13 @@
             </div>
             <div width='100' x="center" y="center" grow="10">
                 <span stretch grow="1" x="center">
-                    Scroll Reveal
+                    1/4 column size, stretched, center
                 </span>
-                <span stretch grow="2" x="center" y-start>
-                    Scroll Reveal
+                <span stretch grow="2" x="center" y-start bg='slate'>
+                    2X column size, stretched top
                 </span>
                 <span stretch grow="1" x="center" y-end>
-                    Scroll Reveal
+                    1/4 column size, stretched, at end
                 </span>
             </div>
         </div>
