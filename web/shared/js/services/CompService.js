@@ -14,6 +14,12 @@ function CompService($timeout, $compile, $parse, $rootScope) {
   var itemSpec = [];
   var globals= {attr: {}, attrWithValue:{}, _class:{}}
   var css = initCSSObj();
+  var cssDirectiveShortcuts = getCSSDirectiveShortcuts();
+  var cssDefaultPropValues = getCSSDefaultPropValues();
+  var platformSpecificProperties = getPlatformSpecificProperties()
+  var specialProperties = {
+    'display': 'flex'
+  }
   return {
     getBaseSpec: getBaseSpec,
     getOptions: getOptions,
@@ -34,36 +40,178 @@ function CompService($timeout, $compile, $parse, $rootScope) {
     return ['path', 'g', 'rect', 'svg', 'polygon', 'line', 'circle'].indexOf(name) > -1;
   }
 
+  function getCrossPlatformProperty(property, platform) {
+
+    return property;
+  }
+
+  function getCSSDefaultPropValues() {
+    return {
+      "end": "flex-end",
+      "start": "flex-start",
+      "left": "flex-start",
+      "right": "flex-end",
+      "center": "center",
+      "stretch": "stretch",
+      "space-between": "space-between",
+      "space-around": "space-around",
+      "sA": "space-around",
+      "sB": "space-between",
+      "yEnd": "flex-end",
+      "yStretch": "stretch",
+      "yStart": "flex-start",
+      "yCenter": "center",
+      "xEnd": "flex-end",
+      "ySpaceBetween": "space-between",
+      "ySpaceAround": "space-around",
+      "spaceBetween": "space-between",
+      "spaceAround": "space-around",
+      "ySa": "space-around",
+      "ySB": "space-between",
+      "row": "row",
+      "rowReverse": "row-reverse",
+      "column": "column",
+      "columnReverse": "column-reverse",
+      "rR": "row-reverse",
+      "cR": "column-reverse",
+      "wrap": "wrap",
+      "nowrap": "nowrap",
+      "wrapReverse": "wrap-reverse"
+    }
+  }
+
+  function getPlatformSpecificProperties() {
+    return {
+      "flex-direction": {},
+      "flex": {},
+      "order": {},
+      "flex-grow": {},
+      "flex-shrink": {},
+      "flex-wrap": {},
+      "justify-content": {},
+      "align-content": {},
+      "align-items": {},
+      "flex-basis": {},
+      "flex-flow": {},
+      "align-self": {}
+    }
+  }
+
+  function getCSSDirectiveShortcuts() {
+    return {
+        'm': 'margin',
+        'mX': 'margin-left margin-right',//
+        'mY': 'margin-top margin-bottom',
+        'mTop': 'margin-top',
+        'mBottom': 'margin-bottom',
+        'mLeft': 'margin-left',
+        'mRight': 'margin-right',
+        "marginX": "margin-left margin-right",
+        "marginY": "margin-top margin-bottom",
+        "p": "padding",
+        "padding": "padding",
+        "margin": "margin",
+        "pX": "padding-left padding-right",
+        "pY": "padding-bottom padding-top",
+        "pTop": "padding-top",
+        "pBottom": "padding-bottom",
+        "pLeft": "padding-left",
+        "pRight": "padding-right",
+        "paddingX": "padding-left padding-right",
+        "paddingY": "padding-top padding-bottom",
+        "basis": "flex-basis",
+        "shrink": "flex-shrink",
+        "grow": "flex-grow",
+        "order": "order",
+        "wrapReverse": "flex-wrap",
+        "wrap": "flex-wrap",
+        "nowrap": "flex-wrap",
+        "end": "align-self",
+        "start": "align-self",
+        "left": "align-self",
+        "right": "align-self",
+        "center": "align-self",
+        "stretch": "align-self",
+        "spaceBetween": "align-self",
+        "spaceAround": "align-self",
+        "sA": "justify-content",
+        "sB": "justify-content",
+        "xEnd": "justify-content",
+        "yEnd": "align-content align-items",
+        "yStretch": "align-content align-items",
+        "yStart": "align-content align-items",
+        "yCenter": "align-content align-items",
+        "xEnd": "justify-content",
+        "ySpaceBetween": "align-content",
+        "ySpaceAround": "align-content",
+        "ySa": "align-content",
+        "ySb": "justify-content",
+        "row": "flex-direction",
+        "rowReverse": "flex-direction",
+        "rR": "flex-direction",
+        "column": "flex-direction",
+        "cR": "flex-direction",
+        "x": "display justify-content",
+        "y": "display align-content align-items"
+
+    }
+  }
+
   function initCSSObj() {
     return {
       render: {
         width: renderWidthFunc,
         height: renderHeightFunc,
-        margin: renderMarginFunc
+        general: renderGeneralFunc
       }
     }
   }
 
-  function renderMarginFunc() {
-
+  function getPlatformSpecificPropName(prop_name, browser) {
+    // console.log('detected platform specific', prop_name)
+    return prop_name
   }
 
-  function renderHeightFunc(elem, attr, scope) {
-    if (attr.height && !isSVGElement(elem[0].nodeName.toLowerCase())) {
-        if (attr.height.indexOf('%') === -1 && attr.height.indexOf('px') === -1) {
-            elem.css('height', attr.height + '%')
+
+
+  function renderGeneralFunc(elem, value, options) {
+
+    if (options.propName && options.propName in cssDirectiveShortcuts) {
+      var propNames = cssDirectiveShortcuts[options.propName];
+      propNames.split(" ").forEach(function(property) {
+        var currentValue = value;
+        if (value.length === 0 && options.propName in cssDefaultPropValues) {
+          currentValue = cssDefaultPropValues[options.propName];
+        }
+        if (property in specialProperties) {
+          currentValue = specialProperties[property]
+        }
+        if (property in platformSpecificProperties) {
+          property = getPlatformSpecificPropName(property, options.browser);
+        }
+        console.log('setting', property, currentValue)
+        elem.css(property, currentValue)
+      })
+    }
+  }
+
+  function renderHeightFunc(elem, value, scope) {
+
+    if (value && !isSVGElement(elem[0].nodeName.toLowerCase())) {
+        if (value.indexOf('%') === -1 && value.indexOf('px') === -1) {
+            elem.css('height', value + '%')
         } else {
-            elem.css('height', attr.height)
+            elem.css('height', value)
         }
     }
   }
 
-  function renderWidthFunc(elem, attr, scope) {
-    if (attr.width && !isSVGElement(elem[0].nodeName.toLowerCase())) {
-      if (attr.width.indexOf('%') === -1 && attr.width.indexOf('px') === -1) {
-          elem.css('width', attr.width + '%')
+  function renderWidthFunc(elem, value, scope) {
+    if (value && !isSVGElement(elem[0].nodeName.toLowerCase())) {
+      if (value.indexOf('%') === -1 && value.indexOf('px') === -1) {
+          elem.css('width', value + '%')
       } else {
-          elem.css('width', attr.width)
+          elem.css('width', value)
       }
     }
     //ideal
