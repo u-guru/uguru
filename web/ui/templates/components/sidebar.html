@@ -130,14 +130,24 @@
 		    <g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 		    	<g class="doorway" clip-path="url(#door-clip)">
 					<rect class="dark" fill="#40484B" x="335" y="132" width="250" height="400"></rect>
-					<rect class="door" fill="#F9D9B2" x="411" y="60" width="170" height="550"></rect>
-					<polygon class="door-shadow" stroke="#8B755B" fill="#8B755A" opacity="0.4" points="411 192 411 137 581 137"></polygon>
+					<g class="door-in"
+						u init-with="p:[tro:right center, tr:skewY(0deg) scale(1)]"
+						when-logout-enter="s:[door-shut:public:5750]"
+						when-door-shut="a:[skewY:0deg:15deg:700:easeInCubic:0:1:f, scale:1:1.5:700:easeInCubic:0:1:f]">
+						<!--  @samir error desired scope
+						when-logout-enter="s:[door-shut:children:4000]" -->
+						<rect class="door" fill="#F9D9B2" x="411" y="60" width="170" height="550"></rect>
+						<polygon class="door-shadow" stroke="#8B755B" fill="#8B755A" opacity="0.4" points="411 192 411 137 581 137"></polygon>
+					</g>
 					<path d="M580,138.5 L580,532.5" class="door-spacing" stroke="#816A4E" stroke-width="2" opacity="0.4"></path>
-					<ellipse class="knob" stroke="#A29CA2" stroke-width="2" fill="#696269" cx="430.388889" cy="379" rx="10.3888889" ry="11"></ellipse>
+					<ellipse class="knob" stroke="#A29CA2" stroke-width="2" fill="#696269" cx="430.388889" cy="379" rx="10.3888889" ry="11"
+						u init-with="p:[tr:translateX(0px)]"
+						when-door-shut="a:[translateX:0px:-75px:700:easeInCubic:0:1:f]"></ellipse>
 					<rect class="frame-back" stroke="#F9D9B2" stroke-width="10" x="335" y="132" width="250" height="394"></rect>
 					<g class="ui-guru" u init-with="p:[tr:translateY(-800px) translateX(0px), op:0]"
 						when-logout-enter="a:[translateY:-800px:0px:650:easeInOutBack:500:1:f] | s:[guru-hover-in:public, guru-to-door-in:public:1500]"
-						when-guru-to-door-in="a:[translateX:0px:-425px:4000:easeOutExpo:0:1:f] | p:[op:1]">
+						when-guru-to-door-in="a:[translateX:0px:-425px:4000:easeOutExpo:0:1:f] | p:[op:1] | s:[guru-bye:public:4500]"
+						when-guru-bye="a:[translateX:-425px:-500px:250:easeOutCirc:0:1:f]">
 						<!--  @samir error desired scope
 						when-logout-enter="a:[translateY:-800px:0px:650:easeInOutBack:500:1:f] | s:[guru-hover-in:children, guru-to-door-in:self:1500]" -->
 						<g u when-guru-hover-in="a:[window-guru-hover:1000:easeInOutQuad:0:10:a]">
