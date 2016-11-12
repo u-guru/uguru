@@ -5,15 +5,16 @@
             <div width='100' x="center" grow="1" class='txt-64' bg="azure">
                 Height = 10%
             </div>
-            <div width='100' x="center" y="center" grow="10">
-                <span stretch grow="1" x="center">
-                    1/4 column size, stretched, center
+            <div width='100' x="center" y="center" grow="10" row-reverse>
+                <!-- stretch vertically -->
+                <span stretch  x="center" wrap>
+                    1/4 column size, stretched, y-pos: center[default]
                 </span>
-                <span stretch grow="2" x="center" y-start bg='slate'>
-                    2X column size, stretched top
+                <span stretch  x="center" y-start bg='slate'>
+                    2X column size, stretched, y-pos: top
                 </span>
-                <span stretch grow="1" x="center" y-end>
-                    1/4 column size, stretched, at end
+                <span stretch  x="center" y-end>
+                    1/4 column size, stretched, y-pos: end[default]
                 </span>
             </div>
         </div>
