@@ -25,8 +25,9 @@ view {
 .ui-login-modal {
 	position: absolute;
 	top: 15px;
-	right: 15px;
-	max-width: 320px;
+	right: 0;
+	width: 100%;
+	padding: 0 15px;
 	header {
 		position: relative;
 		z-index: 2;
@@ -130,6 +131,17 @@ view {
 			border-radius: 1000px;
 			padding: 0 30px;
 			width: auto;
+			background: $aero;
+			border: 2px solid $neptune;
+			color: white;
+			&:hover, &:focus {
+				background: mix($cream, $slate);
+				border: 2px solid rgba($slate, .5);
+			}
+			&:active {
+				background: mix(mix($slate, $aero), $cream, 70%);
+				border: 2px solid mix($slate, $neptune);
+			}
 		}
 	}
 }
@@ -325,65 +337,37 @@ view {
 		position: relative;
 		width: 100%;
 		height: 100%;
-		.ui-menu-border {
-			position: absolute;
-			z-index: 5;
-			top: 50%;
-			margin-top: -1px;
-			left: 0;
-			width: 100%;
-			height: 2px;
-			border-radius: 4px;
-			background: white;
-		}
-		.ui-menu-item-border {
-			position: absolute;
-			z-index: 5;
-			top: 0;
-			right: -1px;
-			height: 100%;
-			width: 2px;
-			background: white;
-			border-radius: 4px;
-		}
-		.ui-menu-item {
+	}
+	.ui-menu-border, .ui-menu-item-border {
+		position: absolute;
+		z-index: 5;
+		background: white;
+		border-radius: 4px;
+	}
+	.ui-menu-item {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		a {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
 			position: relative;
 			width: 100%;
 			height: 100%;
-			@media screen and (orientation:landscape) {
-				width: calc(100% / 3);
-				height: 50%;
-			}
-			@media screen and (orientation:portrait) {
-				width: 50%;
-				height: calc(100% / 3);
-			}
-			&:nth-of-type(3n) {
-				.ui-menu-item-border {
-					display: none;
-				}
-			}
-			a {
-				@include flex;
-				@include flex-wrap;
-				@include flex-center;
-				position: relative;
+			div:first-child:empty {
+				position: absolute;
+				top: 0;
+				left: 0;
 				width: 100%;
 				height: 100%;
-				div:first-child:empty {
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					background: rgba($slate, .2);
-				}
-				h1 {
-					position: relative;
-					z-index: 2;
-					font-size: 48px;
-					font-weight: 900;
-				}
+				background: rgba($slate, .2);
+			}
+			h1 {
+				position: relative;
+				z-index: 2;
+				font-size: 20px;
+				font-weight: 700;
 			}
 		}
 	}
@@ -1616,6 +1600,60 @@ view {
 }
 
 /*-- RESPONSIVE */
+@media screen and (orientation:portrait) {
+	.ui-menu-grid {
+		.ui-menu-border {
+			top: 0;
+			left: 50%;
+			margin-left: -1px;
+			width: 2px;
+			height: 100%;
+		}
+		.ui-menu-item-border {
+			left: 0;
+			bottom: -1px;
+			height: 2px;
+			width: 100%;
+		}
+		.ui-menu-item {
+			width: 50%;
+			height: calc(100% / 3);
+			&:nth-last-of-type(1), &:nth-last-of-type(2) {
+				.ui-menu-item-border {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (orientation:landscape) {
+	.ui-menu-grid {
+		.ui-menu-border {
+			top: 50%;
+			margin-top: -1px;
+			left: 0;
+			width: 100%;
+			height: 2px;
+		}
+		.ui-menu-item-border {
+			bottom: 0;
+			right: -1px;
+			height: 100%;
+			width: 2px;
+		}
+		.ui-menu-item {
+			width: calc(100% / 3);
+			height: 50%;
+			&:nth-of-type(3n) {
+				.ui-menu-item-border {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
 @media screen and (max-width: 768px) {
 	.ui-gallery-main {
 		> * {
@@ -1623,7 +1661,36 @@ view {
 		}
 	}
 }
+
+@media screen and (min-width: 375px) {
+	.ui-menu-grid {
+		.ui-menu-item {
+			a {
+				h1 {
+					font-size: 24px;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 500px) {
+	.ui-login-modal {
+		max-width: 320px;
+	}
+}
+
 @media screen and (min-width: 768px) {
+	.ui-menu-grid {
+		.ui-menu-item {
+			a {
+				h1 {
+					font-size: 48px;
+					font-weight: 900;
+				}
+			}
+		}
+	}
 	.ui-gallery-filter-bar {
 		ul li:first-child {
 			display: block;
