@@ -172,6 +172,10 @@ view {
   left: 0;
   width: 100%;
   height: 100%; }
+  .ui-logout svg {
+    width: 100%;
+    max-width: 920px;
+    height: auto; }
   .ui-logout div {
     width: 100%; }
     .ui-logout div h1 {
