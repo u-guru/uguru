@@ -1,19 +1,20 @@
 <modal name='sidebar' class='ui-menu'
-	u init-with='p:[op:0]'
-	when-sidebar-modal-requested='p:[tro:right top] | a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:200:50:linear:0:1:f]'
-	when-sidebar-modal-requested-left='p:[tro:left top] | a:[bounceIn-subtle:1000:linear:0:1:f, z-index:-1:200:50:linear:450:1:f]'
-	when-sidebar-modal-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:200:-1:50:linear:0:1:f] | p:[background:#555f7b]"
-	when-submissions-link-hover="p:[background:#76a3ab]"
-	when-collections-link-hover="p:[background:#e28797]"
-	when-showcase-link-hover="p:[background:#fadab0]"
-	when-logout-link-hover="p:[background:#975357]"
-	when-settings-link-hover="p:[background:#555f7b]"
-	when-reset-bg="p:[background:#555f7b]">
+	u init-with='p:[op:0, tr:scale(0)]'
+	when-sidebar-modal-requested='p:[tro:right top, op:1] | a:[scale:0:1:500:easeOutExpo:0:1:f, z-index:-1:200:50:linear:0:1:f]'
+	when-sidebar-modal-requested-left='p:[tro:left top, op:1] | a:[scale:0:1:500:easeOutExpo:0:1:f, z-index:-1:200:50:linear:450:1:f]'
+	when-sidebar-modal-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:200:-1:50:linear:0:1:f] | p:[background:#555f7b, t:none]"
+	when-submissions-link-hover="p:[background:#76a3ab, t:all 150ms ease-out]"
+	when-collections-link-hover="p:[background:#e28797, t:all 150ms ease-out]"
+	when-showcase-link-hover="p:[background:#fadab0, t:all 150ms ease-out]"
+	when-logout-link-hover="p:[background:#975357, t:all 150ms ease-out]"
+	when-settings-link-hover="p:[background:#555f7b, t:all 150ms ease-out]"
+	when-submit-link-hover="p:[background:#ee7361, t:all 150ms ease-out]"
+	when-reset-bg="p:[background:#555f7b, t:all 150ms ease-out]">
 	<!-- <graphic u absolute height='50px' width='50px' on-click='s:[sidebar-modal-closed:public]' class="flex-grow svg-stroke-10 top-0 right-0 stroke-white round" init-with='p:[transform:rotate(45deg)]' margin='2.5%' url="shared/templates/components/svg/main/plus.html"></graphic> -->
 	<nav class="ui-nav"
 		u on-mouseenter="s:[reset-bg:public]">
 		<item>
-			<graphic url='ui/templates/components/svg/nav-logo.html' u on-click='s:[sidebar-modal-closed:public]'></graphic>
+			<graphic url='ui/templates/components/svg/nav-logo.html'></graphic>
 		</item>
 		<item class="flex">
 			<fieldset class="search-bar"
@@ -116,7 +117,8 @@
 	<div class="ui-logout" bg="copper"
 		u init-with="p:[z-index:-1, op:0, tro:bottom center, tr:scale(0)]"
 		when-logout-enter="p:[z-index:10, op:1] | a:[scale:0:1:500:easeOutSine:0:1:f]"
-		on-click="s:[logout-exit:public, sidebar-modal-closed:public]">
+		on-click="s:[logout-exit:public, sidebar-modal-closed:public, logout-reset:public:1000]"
+		when-logout-reset="p:[z-index:-1, op:0, tr:scale(0)]">
 		<svg viewBox="0 126 920 420">
 		    <defs>
 		        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="glasses-gradient">
