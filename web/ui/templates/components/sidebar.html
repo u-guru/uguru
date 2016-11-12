@@ -117,8 +117,7 @@
 	<div class="ui-logout" bg="copper"
 		u init-with="p:[z-index:-1, op:0, tro:bottom center, tr:scale(0)]"
 		when-logout-enter="p:[z-index:10, op:1] | a:[scale:0:1:500:easeOutSine:0:1:f]"
-		on-click="s:[logout-exit:public, sidebar-modal-closed:public, logout-reset:public:1000]"
-		when-logout-reset="p:[z-index:-1, op:0, tr:scale(0)]">
+		on-click="s:[logout-exit:public, sidebar-modal-closed:public]">
 		<svg viewBox="0 126 920 420">
 		    <defs>
 		        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="glasses-gradient">
@@ -135,7 +134,7 @@
 					<g class="door-in"
 						u init-with="p:[tro:right center, tr:skewY(0deg) scale(1)]"
 						when-logout-enter="s:[door-shut:public:4500]"
-						when-door-shut="a:[skewY:0deg:15deg:450:easeInCubic:0:1:f, scale:1:1.5:450:easeInCubic:0:1:f]">
+						when-door-shut="a:[skewY:0deg:15deg:250:easeInCubic:0:1:f, scale:1:1.5:250:easeInCubic:0:1:f]">
 						<!--  @samir error desired scope
 						when-logout-enter="s:[door-shut:children:4000]" -->
 						<rect class="door" fill="#F9D9B2" x="411" y="60" width="170" height="550"></rect>
@@ -144,7 +143,7 @@
 					<path d="M580,138.5 L580,532.5" class="door-spacing" stroke="#816A4E" stroke-width="3" opacity="0.4"></path>
 					<ellipse class="knob" stroke="#A29CA2" stroke-width="2" fill="#696269" cx="430.388889" cy="379" rx="10.3888889" ry="11"
 						u init-with="p:[tr:translateX(0px)]"
-						when-door-shut="a:[translateX:0px:-75px:700:easeInCubic:0:1:f]"></ellipse>
+						when-door-shut="a:[translateX:0px:-75px:250:easeInCubic:0:1:f]"></ellipse>
 					<rect class="frame-back" stroke="#F4DEC4" stroke-width="10" x="335" y="132" width="250" height="394"></rect>
 					<g class="ui-guru" u init-with="p:[tr:translateY(-500px) translateX(0px), op:0]"
 						when-logout-enter="a:[translateY:-500px:0px:650:easeInOutBack:500:1:f] | s:[guru-hover-in:public:500, guru-to-door-in:public:1000]"
@@ -253,14 +252,18 @@
 			<h1>You are being logged out</h1>
 			<button>
 				<svg viewBox="0 0 100 100">
-				    <g fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+				    <g fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+						u init-with="p:[tro:center center, tr:rotate(900deg)]"
+						when-logout-enter="a:[rotate:900deg:0deg:2000:linear:0:1:f]">
 				        <path d="M82,53.2642213 C79.9534323,71.1801707 64.0565422,83.791982 46.4524656,81.7915084 C28.8483891,79.7910349 16.2034317,63.935815 18.2091629,46.3778837 C20.214894,28.8199524 36.1117842,16.208141 53.7158607,18.2086146 C62.517899,19.2088514 70.0801575,23.6727748 75.19119,30.0813803 L47.7253869,58.7705881 L35.7178978,47.6701341"
-							u init-with="p:[sda:232.582, sdo:56.069]"></path>
-							<!-- 176.513 : checkmark only -->
-							<!-- 56.069 : arrow only-->
-				        <polyline points="30.404581 40.1717569 17.5912773 47.2658178 10.9355156 34.2194662" style="opacity:0"></polyline>
+							u init-with="p:[sda:232.582, sdo:56.069]"
+							when-logout-enter="s:[check-morph:public:1000]"
+							when-check-morph="a:[stroke-dashoffset:56.069:0:450:easeOutCubic:0:1:f] | s:[check-final:public:500]"
+							when-check-final="a:[stroke-dashoffset:0:-176.513:450:easeOutCubic:0:1:f]"></path>
+				        <polyline points="30.404581 40.1717569 17.5912773 47.2658178 10.9355156 34.2194662"  style="opacity:0"></polyline>
 				        <polyline points="69.5999861 59.8287232 82.4132898 52.7346622 89.0690515 65.7810138"
-							init-with="p:[ada:29.3]"></polyline>
+							u init-with="p:[sda:29.3]"
+							when-check-morph="a:[stroke-dashoffset:0:29.3:250:linear:0:1:f]"></polyline>
 				    </g>
 				</svg>
 			</button>
