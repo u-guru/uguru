@@ -14,61 +14,63 @@
             "info": "margin css",
             "tags": ["css-related", "position"],
             "examples": {
-                "general": "<div class='bg-neptune radius-2 width-96 height-96' margin='50px 50px'></div>",
-                "condensed": "<div class='bg-neptune radius-2 width-96 height-96' m='50px 50px'></div>",
-                "x-only": "<div class='bg-neptune radius-2 width-96 height-96' margin-x='50px'></div>",
-                "x-only-condensed": "<div class='bg-neptune radius-2 width-96 height-96' m-x='50px'></div>",
-                "y-only": "<div class='bg-neptune radius-2 width-96 height-96' margin-y='50px'></div>",
-                "y-only-condensed": "<div class='bg-neptune radius-2 width-96 height-96' m-y='50px'></div>"
+                "general": "<div class='bg-white-10p radius-2'><div class='bg-sienna radius-2 width-96 height-96' margin='50px 50px'></div></div>",
+                "condensed": "<div class='bg-white-10p radius-2'><div class='bg-sienna radius-2 width-96 height-96' m='60px 10px'></div></div>",
+                "x-only": "<div class='bg-white-10p radius-2'><div class='bg-sienna radius-2 width-96 height-96' margin-x='50px'></div></div>",
+                "x-only-condensed": "<div class='bg-white-10p radius-2'><div class='bg-sienna radius-2 width-96 height-96' m-x='20px'></div></div>",
+                "y-only": "<div class='bg-white-10p radius-2'><div class='bg-sienna radius-2 width-96 height-96' margin-y='30px'></div></div>",
+                "y-only-condensed": "<div class='bg-white-10p radius-2'><div class='bg-sienna radius-2 width-96 height-96' m-y='15px'></div></div>"
             }
         },
         "padding": {
             "info": "padding css",
             "tags": ["css-related", "position"],
             "examples": {
-                "general": "<div class='bg-neptune radius-2' padding='50px 50px'></div>",
-                "condensed": "<div class='bg-neptune radius-2' p='50px 50px'></div>",
-                "x-only": "<div class='bg-neptune radius-2 border-1 border-neptune border-solid' padding-x='50px'></div>",
-                "x-only-condensed": "<div class='bg-neptune radius-2 border-1 border-neptune border-solid' p-x='50px'></div>",
-                "y-only": "<div class='bg-neptune radius-2  border-1 border-neptune border-solid' padding-y='50px'></div>",
-                "y-only-condensed": "<div class='bg-neptune radius-2 border-1 border-neptune border-solid' p-y='50px'></div>"
+                "general": "<div class='bg-white-10p radius-2 full-xy' padding='50px 50px'><div class='bg-sienna radius-2 full-xy'></div></div>",
+                "condensed": "<div class='bg-white-10p radius-2 full-xy' p='60px 10px'><div class='bg-sienna radius-2 full-xy'></div></div>",
+                "x-only": "<div class='bg-white-10p radius-2 full-xy' padding-x='50px'><div class='bg-sienna radius-2 full-xy'></div></div>",
+                "x-only-condensed": "<div class='bg-white-10p radius-2 full-xy' p-x='20px'><div class='bg-sienna radius-2 full-xy'></div></div>",
+                "y-only": "<div class='bg-white-10p radius-2 full-xy' padding-y='30px'><div class='bg-sienna radius-2 full-xy'></div></div>",
+                "y-only-condensed": "<div class='bg-white-10p radius-2 full-xy' p-y='15px'><div class='bg-sienna radius-2 full-xy'></div></div>"
             }
         },
         "align-self": {
             "info": "align-self properties",
             "examples": {
-                "space-between": "<div class='bg-neptune radius-2' space-between padding='50px 50px'></div>",
-                "space-between condensed": "<div class='bg-neptune radius-2' sb padding='50px 50px'></div>",
-                "space-around": "<div class='bg-neptune radius-2' space-around padding='50px 50px'></div>",
-                "space-around condensed": "<div class='bg-neptune radius-2' sa padding='50px 50px'></div>",
-                "stretch[flex-stretch]": "<div class='bg-neptune radius-2' stretch padding='50px 50px'></div>",
-                "center[flex-center]": "<div class='bg-neptune radius-2' center padding='50px 50px'></div>",
-                "start[flex-start]": "<div class='bg-neptune radius-2' start padding='50px 50px'></div>",
-                "end[flex-end]": "<div class='bg-neptune radius-2' end padding='50px 50px'></div>",
-                "left[flex-start]": "<div class='bg-neptune radius-2' left padding='50px 50px'></div>",
-                "right[flex-end]": "<div class='bg-neptune radius-2' right padding='50px 50px'></div>"
-            }
+				"stretch[flex-stretch]": "<div class='bg-sienna radius-2 width-96' stretch></div>",
+				"center[flex-center]": "<div class='bg-sienna radius-2 width-96 height-96' center></div>",
+				"start[flex-start]": "<div class='bg-sienna radius-2 width-96 height-96' start></div>",
+				"end[flex-end]": "<div class='bg-sienna radius-2 width-96 height-96' end></div>"
+            },
+			"non-functional": {
+				"space-between": "<div class='bg-sienna radius-2 width-96 height-96' space-between></div>",
+				"space-between condensed": "<div class='bg-sienna radius-2 width-96 height-96' sb></div>",
+				"space-around": "<div class='bg-sienna radius-2 width-96 height-96' space-around></div>",
+				"space-around condensed": "<div class='bg-sienna radius-2 width-96 height-96' sa></div>",
+				"left[flex-start]": "<div class='bg-sienna radius-2 width-96 height-96' left></div>",
+				"right[flex-end]": "<div class='bg-sienna radius-2 width-96 height-96' right></div>"
+			}
         },
         "wrap": {
             "info": "flex-wrap",
             "examples": {
-                "wrap": "<div class='bg-neptune radius-2' wrap padding='50px 50px'></div>",
-                "nowrap": "<div class='bg-neptune radius-2' nowrap padding='50px 50px'></div>",
-                "wrap-reverse": "<div class='bg-neptune radius-2' wrap-reverse padding='50px 50px'></div>"
+                "wrap": "<div class='full-x wrap'><div class='bg-sienna radius-2 width-24 height-24'></div></div>",
+                "nowrap": "<div class='bg-sienna radius-2' nowrap padding='50px 50px'></div>",
+                "wrap-reverse": "<div class='bg-sienna radius-2' wrap-reverse padding='50px 50px'></div>"
             }
         },
         "column": {
             "info": "flex-direction",
             "examples": {
-                "column": "<div class='bg-neptune radius-2' column padding='50px 50px'></div>",
-                "column-reverse": "<div class='bg-neptune radius-2' column-reverse padding='50px 50px'></div>"
+                "column": "<div class='bg-sienna radius-2' column padding='50px 50px'></div>",
+                "column-reverse": "<div class='bg-sienna radius-2' column-reverse padding='50px 50px'></div>"
             }
         },
         "row": {
             "info": "flex-direction",
             "examples": {
-                "column": "<div class='bg-neptune radius-2' row padding='50px 50px'></div>",
-                "column-reverse": "<div class='bg-neptune radius-2' row-reverse padding='50px 50px'></div>"
+                "column": "<div class='bg-sienna radius-2' row padding='50px 50px'></div>",
+                "column-reverse": "<div class='bg-sienna radius-2' row-reverse padding='50px 50px'></div>"
             }
         },
         "basis": {
