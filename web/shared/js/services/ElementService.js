@@ -574,7 +574,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
 
         propertyArr.forEach(function(kv, i) {
-          console.log(kv)
           CompService.css.apply(elem, kv.key, kv.value);
           // elem.css(kv.key, kv.value);
         })

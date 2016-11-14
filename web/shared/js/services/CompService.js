@@ -175,7 +175,6 @@ function CompService($timeout, $compile, $parse, $rootScope) {
     return function(element, prop, value) {
 
       if (prop in cssPrefixedProperties) {
-        console.log(browserPlatform)
         prop = formatPrefixedCSSByEngine(prop, browserPlatform);
       }
 
@@ -185,7 +184,7 @@ function CompService($timeout, $compile, $parse, $rootScope) {
           value = formatPrefixedCSSByEngine(value, browserPlatform)
         }
       }
-      console.log('applying', element, prop, value)
+
       element.css(prop, value)
 
     }
