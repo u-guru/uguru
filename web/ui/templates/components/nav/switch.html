@@ -6,7 +6,7 @@
 	<div class="flex">
 		<fieldset class="search-bar"
 			u init-with="p:[tr:translateX(250px), width:48px]"
-			on-init="a:[translateX:250px:0px:250:easeOutBack:0:1:f] | s:[search-bar-init:children, search-bar-enter:depth(0):1000]"
+			on-init="a:[translateX:250px:0px:250:easeOutBack:0:1:f] | s:[search-bar-init:children, search-bar-enter:public:1000]"
 			on-click="a:[width:48px:300px:250:easeOutBack:0:1:f] | s:[search-bar-clicked:depth(0), search-bar-icon:children:250]"
 			on-exit="a:[opacity:1:0:250:easeOutSine:0:1:f]">
 			<div>

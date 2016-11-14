@@ -1,4 +1,4 @@
-var _window;
+
 angular.module('uguru.shared.controllers', [])
 // angular.module('uguru.shared.controllers')
 .controller('RootController', [
@@ -17,11 +17,15 @@ angular.module('uguru.shared.controllers', [])
     root.scope = $rootScope;
     root.scope.public = {customStates: {when: {}}};
     root.publicAttr = {};
-    root.window = getBodyDimensions($window);
+    root.window = getBodyDimensions(_window);
+
     root.mainViews = [];
     root.customComponents = [];
     root.linkElemCache = {};
-    _window = root.window;
+    console.log('initializing window')
+    // _window = root.window;
+    _window.browser = _browser;
+    _window.tablet = _window.browser.size.tablet
     root.window.elemInfo = getElemWindowInfo(root.window);
     root.base_url = RootService.getBaseUrl();
     root.local = window.location.href.split(':8100').length > 1 || window.location.href.split(':8101').length > 1;;
@@ -72,6 +76,7 @@ angular.module('uguru.shared.controllers', [])
     })
 
     function getElemWindowInfo(window) {
+
       return function(elem) {
         var eRect = elem.getBoundingClientRect();
         var result = {};
@@ -80,6 +85,8 @@ angular.module('uguru.shared.controllers', [])
         result.right =window.width - eRect.right;
         result.left = eRect.left * -1;
         result.rect = eRect;
+        result.browser = bowser.bowser();
+
         return result;
       }
     }
@@ -145,16 +152,4 @@ function pauseElement(scope) {
   }
 }
 
-function getBodyDimensions(window_obj) {
-    var desktopHeightLimit = 690;
-    var desktopWidthLimit= 767;
-    var bodyRect = document.body.getBoundingClientRect();
-    var isDesktop = (bodyRect.height >= desktopHeightLimit && bodyRect.width >= desktopWidthLimit);
-    return {height:bodyRect.height, width: bodyRect.width, desktop: isDesktop, mobile: !isDesktop, open: openWindowFunc(window_obj)}
 
-    function openWindowFunc(window_obj) {
-      return function(url, is_external) {
-        window_obj.open(url, is_external && '_blank');
-      }
-    }
-};

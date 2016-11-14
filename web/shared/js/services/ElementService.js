@@ -12,10 +12,11 @@ angular.module('uguru.shared.services')
     'SendService',
     'TweenService',
     '$compile',
+    'CompService',
     ElementService
         ]);
 
-function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window, RootService, SVGService, $parse, SendService, TweenService, $compile) {
+function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window, RootService, SVGService, $parse, SendService, TweenService, $compile, CompService) {
       var rShortcuts = {special: getSpecialAnimShortcuts(), animations:null, propValues: {}, props: {}, values:{}};
       var stateShortcuts = {};
       var rAnimations;
@@ -573,7 +574,9 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
 
         propertyArr.forEach(function(kv, i) {
-          elem.css(kv.key, kv.value);
+          console.log(kv)
+          CompService.css.apply(elem, kv.key, kv.value);
+          // elem.css(kv.key, kv.value);
         })
       }
 

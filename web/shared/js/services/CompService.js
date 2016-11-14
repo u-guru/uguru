@@ -16,7 +16,8 @@ function CompService($timeout, $compile, $parse, $rootScope) {
   var css = initCSSObj();
   var cssDirectiveShortcuts = getCSSDirectiveShortcuts();
   var cssDefaultPropValues = getCSSDefaultPropValues();
-  var platformSpecificProperties = getPlatformSpecificProperties()
+  var platformSpecificProperties = getPlatformSpecificProperties();
+  var browserPlatform;
   var specialProperties = {
     'display': 'flex'
   }
@@ -163,8 +164,43 @@ function CompService($timeout, $compile, $parse, $rootScope) {
         width: renderWidthFunc,
         height: renderHeightFunc,
         general: renderGeneralFunc
-      }
+      },
+      apply: applyCrossPlatformCSSFunc(_browser)
     }
+  }
+
+  function applyCrossPlatformCSSFunc(browser) {
+    browserPlatform = browser.engine.replace('blink', 'webkit');
+
+    return function(element, prop, value) {
+
+      if (prop in cssPrefixedProperties) {
+        console.log(browserPlatform)
+        prop = formatPrefixedCSSByEngine(prop, browserPlatform);
+      }
+
+      if (prop in cssPrefixedPropertyValues) {
+        var valueFilter = cssPrefixedPropertyValues[prop];
+        if (value.indexOf(valueFilter) > -1) {
+          value = formatPrefixedCSSByEngine(value, browserPlatform)
+        }
+      }
+      console.log('applying', element, prop, value)
+      element.css(prop, value)
+
+    }
+  }
+
+  // $timeout(function() {
+  //   css.apply()
+  // })
+
+  function formatPrefixedCSSByEngine(value, browserPlatform) {
+    var supportedPlatforms = ["blink", "moz", "ms", "webkit"];
+    if (supportedPlatforms.indexOf(browserPlatform) > -1 ) {
+      return "-" + browserPlatform + "-" + value;
+    }
+    return value;
   }
 
   function getPlatformSpecificPropName(prop_name, browser) {
@@ -175,10 +211,14 @@ function CompService($timeout, $compile, $parse, $rootScope) {
 
 
   function renderGeneralFunc(elem, value, options) {
-
+    var svgOnlyProps = ['x', 'y', 'width', 'height'];
     if (options.propName && options.propName in cssDirectiveShortcuts) {
       var propNames = cssDirectiveShortcuts[options.propName];
+      if (svgOnlyProps.indexOf(options.propName.toLowerCase()) > -1 && isSVGElement(elem[0].nodeName)) {
+        return;
+      }
       propNames.split(" ").forEach(function(property) {
+
         var currentValue = value;
         if (value.length === 0 && options.propName in cssDefaultPropValues) {
           currentValue = cssDefaultPropValues[options.propName];
@@ -186,11 +226,12 @@ function CompService($timeout, $compile, $parse, $rootScope) {
         if (property in specialProperties) {
           currentValue = specialProperties[property]
         }
+
         if (property in platformSpecificProperties) {
-          property = getPlatformSpecificPropName(property, options.browser);
+          property = getPlatformSpecificPropName(property);
         }
-        console.log('setting', property, currentValue)
-        elem.css(property, currentValue)
+        // console.log('setting', property, currentValue)
+        css.apply(elem, property, value);
       })
     }
   }

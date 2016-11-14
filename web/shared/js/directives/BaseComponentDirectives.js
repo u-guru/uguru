@@ -52,12 +52,6 @@ angular.module('uguru.shared.directives.base.components')
                     scope[attr_name] = attrValue[attr_name]
                 }
                 $compile(elem.html())(scope)
-                // console.log('its linked', attrValue);
-                // for (key in ) {
-                //     scope[key] =
-                // }
-                // $compile(elem)()
-                // console.log()
             }
 
             // compile:function(element, attr, transclude) {
@@ -1615,19 +1609,7 @@ angular.module('uguru.shared.directives.base.components')
 
       }
     }])
-    // .directive('mY', [function() {
-    //   return {
-    //     restrict: 'A',
-    //     compile: function(element, attr) {
-    //       element.css('margin-top', attr.mY);
-    //       element.css('margin-bottom', attr.mY);
-    //     }
-    //   }
-    // }])
 
-    // var directiveShortcuts = {
-    //     'm': 'margin',
-    // }
     var propDirectives = [
         'width',
         'height',
@@ -1687,22 +1669,38 @@ angular.module('uguru.shared.directives.base.components')
         "y",
         "xCenter"
         ]
-    var modulePointer = angular.module('uguru.shared.directives.base.components');
-    propDirectives.forEach(function(propName) {
-        var propNameRender = propName
 
-        modulePointer = modulePointer.directive(propName, ['CompService', function(CompService) {
-          return {
-            restrict: 'A',
-            compile: function(element, attr) {
-                var options = {
-                    propName: propName
-                }
-                if (!(propNameRender in CompService.css.render)) {
-                    propNameRender = 'general'
-                }
-                CompService.css.render[propNameRender](element, attr[propName], options);
+    var modulePointer = angular.module('uguru.shared.directives.base.components');
+    if (_browser.size.tablet) {
+        renderPropDirectives(propDirectives, 't');
+
+    }
+    if (_browser.size.mobile) {
+
+        renderPropDirectives(propDirectives, 'm');
+    }
+    renderPropDirectives(propDirectives);
+
+    function renderPropDirectives(props, prefix) {
+        propDirectives.forEach(function(propName) {
+            if (prefix) {
+                propName = prefix + '-' + propName.replace(/\W+/g, '-')
+                .replace(/([a-z\d])([A-Z])/g, '$1-$2').toLowerCase();
             }
-          }
-        }])
-    })
+        var propNameRender = propName
+            modulePointer = modulePointer.directive(propName, ['CompService', function(CompService) {
+              return {
+                restrict: 'A',
+                compile: function(element, attr) {
+                    var options = {
+                        propName: propName
+                    }
+                    if (!(propNameRender in CompService.css.render)) {
+                        propNameRender = 'general'
+                    }
+                    CompService.css.render[propNameRender](element, attr[propName], options);
+                }
+              }
+            }])
+        })
+    }
