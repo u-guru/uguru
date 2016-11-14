@@ -3,7 +3,7 @@
 	when-gallery-enter="a:[opacity:0:1:500:linear:0:1:f, translateX:-750px:0px:300:easeOutExpo:0:1:f]:delay-250"
 	on-mouseenter="s:[top-left:public] | a:[border-color:rgba(255,255,255,0.5):rgba(255,255,255,1):100:linear:0:1:f]"
 	on-mouseleave="s:[top-left-leave:public]">
-	<a u on-click='s:[popup-modal-requested:public]'></a>
+	<a u on-click='s:[popup-open:public]'></a>
 	<a class="ui-likes"
 		u on-click="c:[liked:add]">
 		<graphic url='shared/templates/components/svg/main/heart.html'></graphic>

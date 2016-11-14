@@ -305,6 +305,13 @@ view {
 			stroke-width: 6px;
 		}
 	}
+	span {
+		display: block;
+		margin-left: 5px;
+		color: $slate;
+		font-size: 18px;
+		font-weight: 600;
+	}
 	&:hover, &:focus {
 		background: white;
 		svg * {
@@ -1111,7 +1118,9 @@ view {
 /*-- GALLERY ITEM MODAL */
 // main
 .ui-gallery-single-main {
-	position: relative;
+	position: absolute;
+	top: 0;
+	left: 0;
 	height: 100%;
 	width: 100%;
 	padding: 80px 0 50px;

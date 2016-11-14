@@ -322,6 +322,12 @@ view {
     .ui-likes svg * {
       stroke: #e28797;
       stroke-width: 6px; }
+  .ui-likes span {
+    display: block;
+    margin-left: 5px;
+    color: #40484B;
+    font-size: 18px;
+    font-weight: 600; }
   .ui-likes:hover, .ui-likes:focus {
     background: white; }
     .ui-likes:hover svg *, .ui-likes:focus svg * {
@@ -1198,7 +1204,9 @@ view {
 
 /*-- GALLERY ITEM MODAL */
 .ui-gallery-single-main {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 100%;
   padding: 80px 0 50px;
