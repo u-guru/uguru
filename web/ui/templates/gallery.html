@@ -107,7 +107,7 @@
 
 		<div class="ui-gallery-single-main current"
 			u init-with="p:[op:1, z-index:10, tr:none]"
-			when-poup-prev="p:[op:0, z-index:-10, tr:translateX(100%)]"
+			when-popup-prev="p:[op:0, z-index:-10, tr:translateX(100%)]"
 			when-popup-next="p:[op:0, z-index:-10, tr:translateX(-100%)]"
 			when-popup-current="p:[op:1, z-index:10, tr:none]">
 			<article>
@@ -463,7 +463,7 @@
 
 		<div class="ui-gallery-single-main previous"
 			u init-with="p:[op:0, z-index:-10, tr:translateX(-100%)]"
-			when-popup-prev="p:[op:1, z-index:10, tr:none]"
+			when-popup-prev="p:[op:1, z-index:10, tr:none] | s:[prev-init:public, popup-prev-open:public, popup-prev-enter:public:1000]"
 			when-popup-next="p:[op:0, z-index:-10, tr:translateX(-200%)]"
 			when-popup-current="p:[op:0, z-index:-10, tr:translateX(-100%)]">
 			<article>
@@ -471,12 +471,12 @@
 					<a class="ui-likes"
 						u on-click="c:[liked:add]">
 						<graphic url='shared/templates/components/svg/main/heart.html'></graphic>
-						<span u when-popup-open="a:[counter:0:2831:2500:easeOutCirc:0:1:f]">2831</span>
+						<span u when-popup-prev-open="a:[counter:0:2831:2831:easeOutCirc:0:1:f]">2831</span>
 					</a>
 					<figure>
 						<div class="pf-tile-container"
 							u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							on-init="s:[household-cardlet-init:public, hh-bot:depth(>1):250, household-ribbon:children:500]"
+							when-prev-init="s:[household-cardlet-init:public, hh-bot:depth(>1):250, household-ribbon:children:500]"
 							when-household-cardlet-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f, translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
 							when-household-cardlet-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]">
 							<a></a><a></a><a></a><a></a>
@@ -529,10 +529,10 @@
 					</figure>
 					<div class="ui-gallery-single-desc"
 						u init-with="p:[tro:top center, transform:rotateX(90deg), op:0]"
-						when-popup-enter="a:[rotateX:90deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:100:linear:0:1:f]">
+						when-popup-prev-enter="a:[rotateX:90deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:100:linear:0:1:f]">
 						<header>
 							<h1 u init-with="p:[op:0]"
-								when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">Profile Cardlet</h1>
+								when-popup-prev-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">Profile Cardlet</h1>
 							<h4>
 								<span>by <a>Jeselle Obina</a></span>
 								<span class="user-icon-24 border-stone"></span>
@@ -576,25 +576,25 @@
 						<aside>
 							<hr/>
 							<pe u init-with="p:[op:0]"
-								when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]:delay-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+								when-popup-prev-enter="a:[bounceIn-subtle:1000:linear:0:1:f]:delay-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 						</aside>
 						<footer class="width-100p">
 							<ul class="flex-wrap p15-grid"
-								u when-popup-enter="s:[tag-enter:public:linear-200]:+100">
+								u when-popup-prev-enter="s:[tag-prev-enter:public:linear-200]:+100">
 								<li u init-with="p:[op:0]"
-									when-tag-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									when-tag-prev-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="chip bg bg-stone">profile</a>
 								</li>
 								<li u init-with="p:[op:0]"
-									when-tag-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									when-tag-prev-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="chip bg bg-stone">tile</a>
 								</li>
 								<li u init-with="p:[op:0]"
-									when-tag-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									when-tag-prev-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="chip bg bg-stone">card</a>
 								</li>
 								<li u init-with="p:[op:0]"
-									when-tag-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									when-tag-prev-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="chip bg bg-stone">user</a>
 								</li>
 							</ul>
@@ -605,12 +605,12 @@
 					<!-- u when-popup-open="s:[ui-related:children:2000, ui-styles:children:2500]" -->
 					<div class="ui-gallery-related"
 						u init-with="p:[tr:scale(0), tro:center top]"
-						when-popup-open="a:[scale:0:1:500:easeOutBack:0:1:f]:delay-1000 | s:[ui-related:public:easeInCirc-400]:+1000">
+						when-popup-prev-open="a:[scale:0:1:500:easeOutBack:0:1:f]:delay-1000 | s:[ui-prev-related:public:easeInCirc-400]:+1000">
 						<div>
 							<h2>Related</h2>
 							<ul class="p15-grid ugrid-2">
 								<li u init-with="p:[op:0, tro:center center]"
-									when-ui-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									when-ui-prev-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="block radius-2 border-2 border-stone">
 										<figure class="bg-stone-25p margin-none p15xy">
 											<svg></svg>
@@ -621,7 +621,7 @@
 									</a>
 								</li>
 								<li u init-with="p:[op:0, tro:center center]"
-									when-ui-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									when-ui-prev-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="block radius-2 border-2 border-stone">
 										<figure class="bg-stone-25p margin-none p15xy">
 											<svg></svg>
@@ -632,7 +632,7 @@
 									</a>
 								</li>
 								<li u init-with="p:[op:0, tro:center center]"
-									when-ui-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									when-ui-prev-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="block radius-2 border-2 border-stone">
 										<figure class="bg-stone-25p margin-none p15xy">
 											<svg></svg>
@@ -643,7 +643,7 @@
 									</a>
 								</li>
 								<li u init-with="p:[op:0, tro:center center]"
-									when-ui-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									when-ui-prev-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="block radius-2 border-2 border-stone">
 										<figure class="bg-stone-25p margin-none p15xy">
 											<svg></svg>
@@ -658,13 +658,13 @@
 					</div>
 					<aside class="ui-gallery-styles"
 						u init-with="p:[tr:scale(0), tro:center top]"
-						when-popup-open="s:[ui-styles:public:linear-3000]:+1500 | a:[scale:0:1:500:easeOutBack:0:1:f]:delay-1500">
+						when-popup-prev-open="s:[ui-prev-styles:public:linear-3000]:+1500 | a:[scale:0:1:500:easeOutBack:0:1:f]:delay-1500">
 						<div>
 							<h2>Styles</h2>
 							<ul>
 								<li class="ui-gallery-colors"
 									u style="opacity:0;"
-									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[color-slide:public:500]">
+									when-ui-prev-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[color-prev-slide:public:500]">
 									<ul>
 										<li>
 											<div class="bg-cerise"></div>
@@ -672,71 +672,71 @@
 										<li>
 											<div class="bg-slate"
 												u init-with="p:[tr:translateX(-150%)]"
-												when-color-slide="a:[translateX:-150%:0%:250:easeOutSine:0:1:f]"></div>
+												when-color-prev-slide="a:[translateX:-150%:0%:250:easeOutSine:0:1:f]"></div>
 										</li>
 										<li>
 											<div class="bg-taupe"
 												u init-with="p:[tr:translateX(-300%)]"
-												when-color-slide="a:[translateX:-300%:0%:250:easeOutSine:0:1:f]"></div>
+												when-color-prev-slide="a:[translateX:-300%:0%:250:easeOutSine:0:1:f]"></div>
 										</li>
 										<li>
 											<div class="bg-gold"
 												u init-with="p:[tr:translateX(-450%)]"
-												when-color-slide="a:[translateX:-450%:0%:250:easeOutSine:0:1:f]"></div>
+												when-color-prev-slide="a:[translateX:-450%:0%:250:easeOutSine:0:1:f]"></div>
 										</li>
 										<li>
 											<div class="bg-white border-taupe"
 												u init-with="p:[tr:translateX(-600%)]"
-												when-color-slide="a:[translateX:-600%:0%:250:easeOutSine:0:1:f]"></div>
+												when-color-prev-slide="a:[translateX:-600%:0%:250:easeOutSine:0:1:f]"></div>
 										</li>
 									</ul>
 									<h3 u style="opacity:0;"
-										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Color Palette: <span>Academic</span></h3>
+										when-ui-prev-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Color Palette: <span>Academic</span></h3>
 								</li>
 								<li class="ui-gallery-fonts"
 									u init-with="p:[op:0]"
-									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[letter-slide:public:1050]">
+									when-ui-prev-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[letter-prev-slide:public:1050]">
 									<h1 class="flex">
 										<span>Aa</span>
 										<span class="m10x"
 											u init-with="p:[tr:translateX(-115%)]"
-											when-letter-slide="a:[translateX:-115%:0%:250:easeOutExpo:0:1:f]">Bb</span>
+											when-letter-prev-slide="a:[translateX:-115%:0%:250:easeOutExpo:0:1:f]">Bb</span>
 										<span
 											u init-with="p:[tr:translateX(-250%)]"
-											when-letter-slide="a:[translateX:-250%:0%:250:easeOutExpo:0:1:f]">Cc</span>
+											when-letter-prev-slide="a:[translateX:-250%:0%:250:easeOutExpo:0:1:f]">Cc</span>
 									</h1>
 									<h3 u init-with="p:[op:0]"
-										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Font: <span>Source Sans Pro</span></h3>
+										when-ui-prev-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Font: <span>Source Sans Pro</span></h3>
 								</li>
 								<li class="ui-gallery-icon"
 									u init-with="p:[op:0]"
-									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] |s:[icon-slide:public:500]">
+									when-ui-prev-styles="a:[bounceIn-subtle:1000:linear:0:1:f] |s:[icon-prev-slide:public:500]">
 									<ul>
 										<li>
 											<graphic url="shared/templates/components/svg/categories/academic-simple.html"></graphic>
 										</li>
 										<li u init-with="p:[tr:translateX(-100%)]"
-											when-icon-slide="a:[translateX:-100%:0%:250:easeOutExpo:0:1:f]">
+											when-icon-prev-slide="a:[translateX:-100%:0%:250:easeOutExpo:0:1:f]">
 											<graphic url="shared/templates/components/svg/categories/academic.html"></graphic>
 										</li>
 										<li u init-with="p:[tr:translateX(-200%)]"
-											when-icon-slide="a:[translateX:-200%:0%:250:easeOutExpo:0:1:f]">
+											when-icon-prev-slide="a:[translateX:-200%:0%:250:easeOutExpo:0:1:f]">
 											<graphic url="shared/templates/components/svg/categories/academic-bottom.html"></graphic>
 										</li>
 									</ul>
 									<h3 u init-with="p:[op:0]"
-										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Icon: <span>Academic</span></h3>
+										when-ui-prev-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Icon: <span>Academic</span></h3>
 								</li>
 								<li class="ui-gallery-stroke-width"
 									u init-with="p:[op:0]"
-									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[shapes-slide:public:500]">
+									when-ui-prev-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[shapes-prev-slide:public:500]">
 									<graphic class="svg-stroke-3 stroke-slate" url="shared/templates/components/svg/other/shapes.html"></graphic>
-									<h3  u init-with="p:[op:0]"
-										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Stroke Width: <span>3px</span></h3>
+									<h3 u init-with="p:[op:0]"
+										when-ui-prev-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Stroke Width: <span>3px</span></h3>
 								</li>
 								<li class="ui-gallery-padding"
 									u init-with="p:[op:0]"
-									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[padding-enter:public:500]">
+									when-ui-prev-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[padding-prev-enter:public:500]">
 									<div>
 										<svg viewbox="0 0 400 270">
 											<rect x="0" y="0" width="400" height="270" fill="none"></rect>
@@ -744,18 +744,18 @@
 										<div class="margin" u init-with="p:[padding:5px, border-color:#40484b, tr:scale(0), tro:center center]"
 											when-padding-select="p:[border-color:#aaaaaa]"
 											when-padding-deselect="p:[border-color:#40484b]"
-											when-padding-enter="a:[scale:0:1:250:easeOutCubic:0:1:f]">
+											when-padding-prev-enter="a:[scale:0:1:250:easeOutCubic:0:1:f]">
 											<div class="normal" u init-with="p:[padding:15px, border-color:#40484b, tr:scale(0), tro:center center]"
 												when-margin-select="p:[border-color:#aaaaaa]"
 												when-margin-deselect="p:[border-color:#40484b]"
 												when-padding-select="p:[border-color:#aaaaaa]"
 												when-padding-deselect="p:[border-color:#40484b]"
-												when-padding-enter="a:[scale:0:1:250:easeOutCubic:150:1:f]">
+												when-padding-prev-enter="a:[scale:0:1:250:easeOutCubic:150:1:f]">
 												<span u init-with="p:[height:15px]">15</span>
 												<div class="padding" u init-with="p:[border-color:#40484b, tr:scale(0), tro:center center]"
 													when-margin-select="p:[border-color:#aaaaaa]"
 													when-margin-deselect="p:[border-color:#40484b]"
-													when-padding-enter="a:[scale:0:1:250:easeOutCubic:200:1:f]"></div>
+													when-padding-prev-enter="a:[scale:0:1:250:easeOutCubic:200:1:f]"></div>
 												<span u init-with="p:[width:15px]">15</span>
 											</div>
 										</div>
@@ -763,11 +763,11 @@
 									<h3 u on-mouseenter="s:[padding-select:public]"
 										on-mouseleave="s:[padding-deselect:public]"
 										init-with="p:[op:0]"
-										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Padding: <span>15px</span></h3>
+										when-ui-prev-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Padding: <span>15px</span></h3>
 									<h3 u on-mouseenter="s:[margin-select:public]"
 										on-mouseleave="s:[margin-deselect:public]"
 										init-with="p:[op:0]"
-									  when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Margin: <span>5px</span></h3>
+									  when-ui-prev-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Margin: <span>5px</span></h3>
 								</li>
 							</ul>
 						</div>
@@ -778,9 +778,10 @@
 
 		<div class="ui-gallery-single-main next"
 			u init-with="p:[op:0, z-index:-10, tr:translateX(100%)]"
-			when-poup-prev="p:[op:0, z-index:-10, tr:translateX(200%)]"
-			when-popup-next="p:[op:1, z-index:10, tr:none]"
+			when-popup-prev="p:[op:0, z-index:-10, tr:translateX(200%)]"
+			when-popup-next="p:[op:1, z-index:10, tr:none] | s:[next-init:public, popup-next-open:public, popup-next-enter:public:1000]"
 			when-popup-current="p:[op:0, z-index:-10, tr:translateX(100%)]">
+			<!-- @Samir All send scopes for this component page was changed to public -->
 			<article>
 				<div>
 					<a class="ui-likes"
@@ -791,7 +792,7 @@
 					<figure>
 						<a class="request-card bg-household complete"
 							u init-with="p:[op:0]"
-							on-init="s:[request-card:self, request-card-init:>children:350]"
+							when-next-init="s:[request-card:public, request-card-init:public:350]"
 							when-request-card="a:[bounceIn-subtle:1000:linear:0:1:f]">
 							<div class="map">
 								<div class="map-marker" style="bottom: 15px; left: 50%; margin-left: -6px;">
@@ -815,7 +816,7 @@
 							<div class="info">
 								<hr class="info-border"
 									u init-with="p:[tr:scaleX(0), tro:center center]"
-									when-request-card-init="a:[scaleX:0:1:250:easeOutSine:0:1:f] |s:[request-card-info:children]"/>
+									when-request-card-init="a:[scaleX:0:1:250:easeOutSine:0:1:f] |s:[request-card-info:public]"/>
 								<ul class="ugrid-2">
 									<li u init-with="p:[tr:scaleX(0), tro:center center]"
 										when-request-card-info="a:[icon-enter:900:linear:0:1:f]">
@@ -849,10 +850,10 @@
 					</figure>
 					<div class="ui-gallery-single-desc"
 						u init-with="p:[tro:top center, transform:rotateX(90deg), op:0]"
-						when-popup-enter="a:[rotateX:90deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:100:linear:0:1:f]">
+						when-popup-next-enter="a:[rotateX:90deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:100:linear:0:1:f]">
 						<header>
 							<h1 u init-with="p:[op:0]"
-								when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">Request Tile</h1>
+								when-popup-next-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">Request Tile</h1>
 							<h4>
 								<span>by <a>Jeselle Obina</a></span>
 								<span class="user-icon-24 border-stone"></span>
@@ -896,25 +897,25 @@
 						<aside>
 							<hr/>
 							<pe u init-with="p:[op:0]"
-								when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]:delay-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+								when-popup-next-enter="a:[bounceIn-subtle:1000:linear:0:1:f]:delay-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 						</aside>
 						<footer class="width-100p">
 							<ul class="flex-wrap p15-grid"
-								u when-popup-enter="s:[tag-enter:public:linear-200]:+100">
+								u when-popup-next-enter="s:[tag-next-enter:public:linear-200]:+100">
 								<li u init-with="p:[op:0]"
-									when-tag-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									when-tag-next-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="chip bg bg-stone">profile</a>
 								</li>
 								<li u init-with="p:[op:0]"
-									when-tag-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									when-tag-next-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="chip bg bg-stone">tile</a>
 								</li>
 								<li u init-with="p:[op:0]"
-									when-tag-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									when-tag-next-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="chip bg bg-stone">card</a>
 								</li>
 								<li u init-with="p:[op:0]"
-									when-tag-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									when-tag-next-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="chip bg bg-stone">user</a>
 								</li>
 							</ul>
@@ -925,12 +926,12 @@
 					<!-- u when-popup-open="s:[ui-related:children:2000, ui-styles:children:2500]" -->
 					<div class="ui-gallery-related"
 						u init-with="p:[tr:scale(0), tro:center top]"
-						when-popup-open="a:[scale:0:1:500:easeOutBack:0:1:f]:delay-1000 | s:[ui-related:public:easeInCirc-400]:+1000">
+						when-popup-next-open="a:[scale:0:1:500:easeOutBack:0:1:f]:delay-1000 | s:[ui-next-related:public:easeInCirc-400]:+1000">
 						<div>
 							<h2>Related</h2>
 							<ul class="p15-grid ugrid-2">
 								<li u init-with="p:[op:0, tro:center center]"
-									when-ui-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									when-ui-next-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="block radius-2 border-2 border-stone">
 										<figure class="bg-stone-25p margin-none p15xy">
 											<svg></svg>
@@ -941,7 +942,7 @@
 									</a>
 								</li>
 								<li u init-with="p:[op:0, tro:center center]"
-									when-ui-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									when-ui-next-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="block radius-2 border-2 border-stone">
 										<figure class="bg-stone-25p margin-none p15xy">
 											<svg></svg>
@@ -952,7 +953,7 @@
 									</a>
 								</li>
 								<li u init-with="p:[op:0, tro:center center]"
-									when-ui-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									when-ui-next-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="block radius-2 border-2 border-stone">
 										<figure class="bg-stone-25p margin-none p15xy">
 											<svg></svg>
@@ -963,7 +964,7 @@
 									</a>
 								</li>
 								<li u init-with="p:[op:0, tro:center center]"
-									when-ui-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									when-ui-next-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
 									<a class="block radius-2 border-2 border-stone">
 										<figure class="bg-stone-25p margin-none p15xy">
 											<svg></svg>
@@ -978,13 +979,13 @@
 					</div>
 					<aside class="ui-gallery-styles"
 						u init-with="p:[tr:scale(0), tro:center top]"
-						when-popup-open="s:[ui-styles:public:linear-3000]:+1500 | a:[scale:0:1:500:easeOutBack:0:1:f]:delay-1500">
+						when-popup-next-open="s:[ui-next-styles:public:linear-3000]:+1500 | a:[scale:0:1:500:easeOutBack:0:1:f]:delay-1500">
 						<div>
 							<h2>Styles</h2>
 							<ul>
 								<li class="ui-gallery-colors"
 									u style="opacity:0;"
-									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[color-slide:public:500]">
+									when-ui-next-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[color-next-slide:public:500]">
 									<ul>
 										<li>
 											<div class="bg-cerise"></div>
@@ -992,71 +993,71 @@
 										<li>
 											<div class="bg-slate"
 												u init-with="p:[tr:translateX(-150%)]"
-												when-color-slide="a:[translateX:-150%:0%:250:easeOutSine:0:1:f]"></div>
+												when-color-next-slide="a:[translateX:-150%:0%:250:easeOutSine:0:1:f]"></div>
 										</li>
 										<li>
 											<div class="bg-taupe"
 												u init-with="p:[tr:translateX(-300%)]"
-												when-color-slide="a:[translateX:-300%:0%:250:easeOutSine:0:1:f]"></div>
+												when-color-next-slide="a:[translateX:-300%:0%:250:easeOutSine:0:1:f]"></div>
 										</li>
 										<li>
 											<div class="bg-gold"
 												u init-with="p:[tr:translateX(-450%)]"
-												when-color-slide="a:[translateX:-450%:0%:250:easeOutSine:0:1:f]"></div>
+												when-color-next-slide="a:[translateX:-450%:0%:250:easeOutSine:0:1:f]"></div>
 										</li>
 										<li>
 											<div class="bg-white border-taupe"
 												u init-with="p:[tr:translateX(-600%)]"
-												when-color-slide="a:[translateX:-600%:0%:250:easeOutSine:0:1:f]"></div>
+												when-color-next-slide="a:[translateX:-600%:0%:250:easeOutSine:0:1:f]"></div>
 										</li>
 									</ul>
 									<h3 u style="opacity:0;"
-										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Color Palette: <span>Academic</span></h3>
+										when-ui-next-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Color Palette: <span>Academic</span></h3>
 								</li>
 								<li class="ui-gallery-fonts"
 									u init-with="p:[op:0]"
-									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[letter-slide:public:1050]">
+									when-ui-next-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[letter-next-slide:public:1050]">
 									<h1 class="flex">
 										<span>Aa</span>
 										<span class="m10x"
 											u init-with="p:[tr:translateX(-115%)]"
-											when-letter-slide="a:[translateX:-115%:0%:250:easeOutExpo:0:1:f]">Bb</span>
+											when-letter-next-slide="a:[translateX:-115%:0%:250:easeOutExpo:0:1:f]">Bb</span>
 										<span
 											u init-with="p:[tr:translateX(-250%)]"
-											when-letter-slide="a:[translateX:-250%:0%:250:easeOutExpo:0:1:f]">Cc</span>
+											when-letter-next-slide="a:[translateX:-250%:0%:250:easeOutExpo:0:1:f]">Cc</span>
 									</h1>
 									<h3 u init-with="p:[op:0]"
-										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Font: <span>Source Sans Pro</span></h3>
+										when-ui-next-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Font: <span>Source Sans Pro</span></h3>
 								</li>
 								<li class="ui-gallery-icon"
 									u init-with="p:[op:0]"
-									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] |s:[icon-slide:public:500]">
+									when-ui-next-styles="a:[bounceIn-subtle:1000:linear:0:1:f] |s:[icon-next-slide:public:500]">
 									<ul>
 										<li>
 											<graphic url="shared/templates/components/svg/categories/academic-simple.html"></graphic>
 										</li>
 										<li u init-with="p:[tr:translateX(-100%)]"
-											when-icon-slide="a:[translateX:-100%:0%:250:easeOutExpo:0:1:f]">
+											when-icon-next-slide="a:[translateX:-100%:0%:250:easeOutExpo:0:1:f]">
 											<graphic url="shared/templates/components/svg/categories/academic.html"></graphic>
 										</li>
 										<li u init-with="p:[tr:translateX(-200%)]"
-											when-icon-slide="a:[translateX:-200%:0%:250:easeOutExpo:0:1:f]">
+											when-icon-next-slide="a:[translateX:-200%:0%:250:easeOutExpo:0:1:f]">
 											<graphic url="shared/templates/components/svg/categories/academic-bottom.html"></graphic>
 										</li>
 									</ul>
 									<h3 u init-with="p:[op:0]"
-										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Icon: <span>Academic</span></h3>
+										when-ui-next-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Icon: <span>Academic</span></h3>
 								</li>
 								<li class="ui-gallery-stroke-width"
 									u init-with="p:[op:0]"
-									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[shapes-slide:public:500]">
+									when-ui-next-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[shapes-next-slide:public:500]">
 									<graphic class="svg-stroke-3 stroke-slate" url="shared/templates/components/svg/other/shapes.html"></graphic>
-									<h3  u init-with="p:[op:0]"
-										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Stroke Width: <span>3px</span></h3>
+									<h3 u init-with="p:[op:0]"
+										when-ui-next-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Stroke Width: <span>3px</span></h3>
 								</li>
 								<li class="ui-gallery-padding"
 									u init-with="p:[op:0]"
-									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[padding-enter:public:500]">
+									when-ui-next-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[padding-next-enter:public:500]">
 									<div>
 										<svg viewbox="0 0 400 270">
 											<rect x="0" y="0" width="400" height="270" fill="none"></rect>
@@ -1064,18 +1065,18 @@
 										<div class="margin" u init-with="p:[padding:5px, border-color:#40484b, tr:scale(0), tro:center center]"
 											when-padding-select="p:[border-color:#aaaaaa]"
 											when-padding-deselect="p:[border-color:#40484b]"
-											when-padding-enter="a:[scale:0:1:250:easeOutCubic:0:1:f]">
+											when-padding-next-enter="a:[scale:0:1:250:easeOutCubic:0:1:f]">
 											<div class="normal" u init-with="p:[padding:15px, border-color:#40484b, tr:scale(0), tro:center center]"
 												when-margin-select="p:[border-color:#aaaaaa]"
 												when-margin-deselect="p:[border-color:#40484b]"
 												when-padding-select="p:[border-color:#aaaaaa]"
 												when-padding-deselect="p:[border-color:#40484b]"
-												when-padding-enter="a:[scale:0:1:250:easeOutCubic:150:1:f]">
+												when-padding-next-enter="a:[scale:0:1:250:easeOutCubic:150:1:f]">
 												<span u init-with="p:[height:15px]">15</span>
 												<div class="padding" u init-with="p:[border-color:#40484b, tr:scale(0), tro:center center]"
 													when-margin-select="p:[border-color:#aaaaaa]"
 													when-margin-deselect="p:[border-color:#40484b]"
-													when-padding-enter="a:[scale:0:1:250:easeOutCubic:200:1:f]"></div>
+													when-padding-next-enter="a:[scale:0:1:250:easeOutCubic:200:1:f]"></div>
 												<span u init-with="p:[width:15px]">15</span>
 											</div>
 										</div>
@@ -1083,11 +1084,11 @@
 									<h3 u on-mouseenter="s:[padding-select:public]"
 										on-mouseleave="s:[padding-deselect:public]"
 										init-with="p:[op:0]"
-										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Padding: <span>15px</span></h3>
+										when-ui-next-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Padding: <span>15px</span></h3>
 									<h3 u on-mouseenter="s:[margin-select:public]"
 										on-mouseleave="s:[margin-deselect:public]"
 										init-with="p:[op:0]"
-									  when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Margin: <span>5px</span></h3>
+									  when-ui-next-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Margin: <span>5px</span></h3>
 								</li>
 							</ul>
 						</div>
