@@ -105,7 +105,11 @@
 		when-popup-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:100:-1:50:linear:450:1:f]">
 		<import url="gallery.components.nav.url" class="gradient-glacier-top"></import>
 
-		<div class="ui-gallery-single-main current">
+		<div class="ui-gallery-single-main current"
+			u init-with="p:[op:1, z-index:10, tr:none]"
+			when-poup-prev="p:[op:0, z-index:-10, tr:translateX(100%)]"
+			when-popup-next="p:[op:0, z-index:-10, tr:translateX(-100%)]"
+			when-popup-current="p:[op:1, z-index:10, tr:none]">
 			<article>
 				<div>
 					<a class="ui-likes"
@@ -458,7 +462,10 @@
 		</div>
 
 		<div class="ui-gallery-single-main previous"
-			u init-with="p:[op:0, z-index:-10, tr:translateX(-100%)]">
+			u init-with="p:[op:0, z-index:-10, tr:translateX(-100%)]"
+			when-poup-prev="p:[op:1, z-index:10, tr:none]"
+			when-popup-next="p:[op:0, z-index:-10, tr:translateX(-200%)]"
+			when-popup-current="p:[op:0, z-index:-10, tr:translateX(-100%)]">
 			<article>
 				<div>
 					<a class="ui-likes"
@@ -525,7 +532,7 @@
 						when-popup-enter="a:[rotateX:90deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:100:linear:0:1:f]">
 						<header>
 							<h1 u init-with="p:[op:0]"
-								when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">Profile Tile</h1>
+								when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">Profile Cardlet</h1>
 							<h4>
 								<span>by <a>Jeselle Obina</a></span>
 								<span class="user-icon-24 border-stone"></span>
@@ -770,7 +777,10 @@
 		</div>
 
 		<div class="ui-gallery-single-main next"
-			u init-with="p:[op:0, z-index:-10, tr:translateX(100%)]">
+			u init-with="p:[op:0, z-index:-10, tr:translateX(100%)]"
+			when-poup-prev="p:[op:0, z-index:-10, tr:translateX(200%)]"
+			when-popup-next="p:[op:1, z-index:10, tr:none]"
+			when-popup-current="p:[op:0, z-index:-10, tr:translateX(100%)]">
 			<article>
 				<div>
 					<a class="ui-likes"
@@ -842,7 +852,7 @@
 						when-popup-enter="a:[rotateX:90deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:100:linear:0:1:f]">
 						<header>
 							<h1 u init-with="p:[op:0]"
-								when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">Profile Tile</h1>
+								when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">Request Tile</h1>
 							<h4>
 								<span>by <a>Jeselle Obina</a></span>
 								<span class="user-icon-24 border-stone"></span>

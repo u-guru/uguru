@@ -1568,6 +1568,7 @@ view {
   position: fixed;
   bottom: 0;
   left: 0;
+  z-index: 11;
   width: 100%; }
   .ui-gallery-single-footer a {
     background: white;
