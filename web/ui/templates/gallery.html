@@ -109,7 +109,9 @@
 			u init-with="p:[op:1, z-index:10, tr:none]"
 			when-popup-prev="p:[op:0, z-index:-10, tr:translateX(100%)]"
 			when-popup-next="p:[op:0, z-index:-10, tr:translateX(-100%)]"
-			when-popup-current="p:[op:1, z-index:10, tr:none]">
+			when-popup-current="p:[op:1, z-index:10, tr:none]"
+			when-popup-down="p:[op:1, z-index:10, tr:translateY(-100%)]"
+			when-popup-up="p:[op:1, z-index:10, tr:none]">
 			<article>
 				<div>
 					<a class="ui-likes"
@@ -853,6 +855,311 @@
 						<header>
 							<h1 u init-with="p:[op:0]"
 								when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">Request Tile</h1>
+							<h4>
+								<span>by <a>Jeselle Obina</a></span>
+								<span class="user-icon-24 border-stone"></span>
+							</h4>
+							<h4 class="ui-versions-link">
+								<span>Last updated 11/07/16,&nbsp;</span>
+								<div u on-mouseenter="s:[version-enter:children]"
+										on-mouseleave="s:[version-exit:children]">
+									<a>
+										<span>#028</span>
+										<graphic url="shared/templates/components/svg/main/down.html"></graphic>
+									</a>
+									<div class="ui-versions"
+										u init-with="p:[op:0, z-index:-10, left:0, bottom:30px]"
+										when-version-enter="a:[slideInUp-subtle:1000:linear:0:1:f, z-index:-10:10:20:linear:0:1:f]"
+										when-version-exit="a:[slideOutDown-subtle:1000:linear:0:1:f, z-index:10:-10:20:linear:980:1:f]">
+										<div class="gradient-left gradient-light-slate-left"></div>
+										<ul>
+											<li>
+												<div class="ui-version"
+													u init-with="p:[width:130px]"></div>
+											</li>
+											<li>
+												<div class="ui-version"
+													u init-with="p:[width:130px]"></div>
+											</li>
+											<li>
+												<div class="ui-version"
+													u init-with="p:[width:130px]"></div>
+											</li>
+											<li>
+												<div class="ui-version"
+													u init-with="p:[width:130px]"></div>
+											</li>
+										</ul>
+										<div class="gradient-right gradient-light-slate-right"></div>
+									</div>
+								</div>
+							</h4>
+						</header>
+						<aside>
+							<hr/>
+							<pe u init-with="p:[op:0]"
+								when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]:delay-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+						</aside>
+						<footer class="width-100p">
+							<ul class="flex-wrap p15-grid"
+								u when-popup-enter="s:[tag-enter:public:linear-200]:+100">
+								<li u init-with="p:[op:0]"
+									when-tag-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									<a class="chip bg bg-stone">profile</a>
+								</li>
+								<li u init-with="p:[op:0]"
+									when-tag-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									<a class="chip bg bg-stone">tile</a>
+								</li>
+								<li u init-with="p:[op:0]"
+									when-tag-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									<a class="chip bg bg-stone">card</a>
+								</li>
+								<li u init-with="p:[op:0]"
+									when-tag-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									<a class="chip bg bg-stone">user</a>
+								</li>
+							</ul>
+						</footer>
+					</div>
+				</div>
+				<div class="ui-gallery-single-info">
+					<!-- u when-popup-open="s:[ui-related:children:2000, ui-styles:children:2500]" -->
+					<div class="ui-gallery-related"
+						u init-with="p:[tr:scale(0), tro:center top]"
+						when-popup-open="a:[scale:0:1:500:easeOutBack:0:1:f]:delay-1000 | s:[ui-related:public:easeInCirc-400]:+1000">
+						<div>
+							<h2>Related</h2>
+							<ul class="p15-grid ugrid-2">
+								<li u init-with="p:[op:0, tro:center center]"
+									when-ui-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									<a class="block radius-2 border-2 border-stone">
+										<figure class="bg-stone-25p margin-none p15xy">
+											<svg></svg>
+										</figure>
+										<div class="bg-white border-2-top border-stone">
+											<h4 class="txt-18 txt-stone semibold p10xy txt-center">Request Tile</h4>
+										</div>
+									</a>
+								</li>
+								<li u init-with="p:[op:0, tro:center center]"
+									when-ui-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									<a class="block radius-2 border-2 border-stone">
+										<figure class="bg-stone-25p margin-none p15xy">
+											<svg></svg>
+										</figure>
+										<div class="bg-white border-2-top border-stone">
+											<h4 class="txt-18 txt-stone semibold p10xy txt-center">Request Tile</h4>
+										</div>
+									</a>
+								</li>
+								<li u init-with="p:[op:0, tro:center center]"
+									when-ui-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									<a class="block radius-2 border-2 border-stone">
+										<figure class="bg-stone-25p margin-none p15xy">
+											<svg></svg>
+										</figure>
+										<div class="bg-white border-2-top border-stone">
+											<h4 class="txt-18 txt-stone semibold p10xy txt-center">Request Tile</h4>
+										</div>
+									</a>
+								</li>
+								<li u init-with="p:[op:0, tro:center center]"
+									when-ui-related="a:[bounceIn-subtle:1000:linear:0:1:f]">
+									<a class="block radius-2 border-2 border-stone">
+										<figure class="bg-stone-25p margin-none p15xy">
+											<svg></svg>
+										</figure>
+										<div class="bg-white border-2-top border-stone">
+											<h4 class="txt-18 txt-stone semibold p10xy txt-center">Request Tile</h4>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<aside class="ui-gallery-styles"
+						u init-with="p:[tr:scale(0), tro:center top]"
+						when-popup-open="s:[ui-styles:public:linear-3000]:+1500 | a:[scale:0:1:500:easeOutBack:0:1:f]:delay-1500">
+						<div>
+							<h2>Styles</h2>
+							<ul>
+								<li class="ui-gallery-colors"
+									u style="opacity:0;"
+									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[color-slide:public:500]">
+									<ul>
+										<li>
+											<div class="bg-cerise"></div>
+										</li>
+										<li>
+											<div class="bg-slate"
+												u init-with="p:[tr:translateX(-150%)]"
+												when-color-slide="a:[translateX:-150%:0%:250:easeOutSine:0:1:f]"></div>
+										</li>
+										<li>
+											<div class="bg-taupe"
+												u init-with="p:[tr:translateX(-300%)]"
+												when-color-slide="a:[translateX:-300%:0%:250:easeOutSine:0:1:f]"></div>
+										</li>
+										<li>
+											<div class="bg-gold"
+												u init-with="p:[tr:translateX(-450%)]"
+												when-color-slide="a:[translateX:-450%:0%:250:easeOutSine:0:1:f]"></div>
+										</li>
+										<li>
+											<div class="bg-white border-taupe"
+												u init-with="p:[tr:translateX(-600%)]"
+												when-color-slide="a:[translateX:-600%:0%:250:easeOutSine:0:1:f]"></div>
+										</li>
+									</ul>
+									<h3 u style="opacity:0;"
+										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Color Palette: <span>Academic</span></h3>
+								</li>
+								<li class="ui-gallery-fonts"
+									u init-with="p:[op:0]"
+									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[letter-slide:public:1050]">
+									<h1 class="flex">
+										<span>Aa</span>
+										<span class="m10x"
+											u init-with="p:[tr:translateX(-115%)]"
+											when-letter-slide="a:[translateX:-115%:0%:250:easeOutExpo:0:1:f]">Bb</span>
+										<span
+											u init-with="p:[tr:translateX(-250%)]"
+											when-letter-slide="a:[translateX:-250%:0%:250:easeOutExpo:0:1:f]">Cc</span>
+									</h1>
+									<h3 u init-with="p:[op:0]"
+										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Font: <span>Source Sans Pro</span></h3>
+								</li>
+								<li class="ui-gallery-icon"
+									u init-with="p:[op:0]"
+									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] |s:[icon-slide:public:500]">
+									<ul>
+										<li>
+											<graphic url="shared/templates/components/svg/categories/academic-simple.html"></graphic>
+										</li>
+										<li u init-with="p:[tr:translateX(-100%)]"
+											when-icon-slide="a:[translateX:-100%:0%:250:easeOutExpo:0:1:f]">
+											<graphic url="shared/templates/components/svg/categories/academic.html"></graphic>
+										</li>
+										<li u init-with="p:[tr:translateX(-200%)]"
+											when-icon-slide="a:[translateX:-200%:0%:250:easeOutExpo:0:1:f]">
+											<graphic url="shared/templates/components/svg/categories/academic-bottom.html"></graphic>
+										</li>
+									</ul>
+									<h3 u init-with="p:[op:0]"
+										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Icon: <span>Academic</span></h3>
+								</li>
+								<li class="ui-gallery-stroke-width"
+									u init-with="p:[op:0]"
+									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[shapes-slide:public:500]">
+									<graphic class="svg-stroke-3 stroke-slate" url="shared/templates/components/svg/other/shapes.html"></graphic>
+									<h3  u init-with="p:[op:0]"
+										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Stroke Width: <span>3px</span></h3>
+								</li>
+								<li class="ui-gallery-padding"
+									u init-with="p:[op:0]"
+									when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[padding-enter:public:500]">
+									<div>
+										<svg viewbox="0 0 400 270">
+											<rect x="0" y="0" width="400" height="270" fill="none"></rect>
+										</svg>
+										<div class="margin" u init-with="p:[padding:5px, border-color:#40484b, tr:scale(0), tro:center center]"
+											when-padding-select="p:[border-color:#aaaaaa]"
+											when-padding-deselect="p:[border-color:#40484b]"
+											when-padding-enter="a:[scale:0:1:250:easeOutCubic:0:1:f]">
+											<div class="normal" u init-with="p:[padding:15px, border-color:#40484b, tr:scale(0), tro:center center]"
+												when-margin-select="p:[border-color:#aaaaaa]"
+												when-margin-deselect="p:[border-color:#40484b]"
+												when-padding-select="p:[border-color:#aaaaaa]"
+												when-padding-deselect="p:[border-color:#40484b]"
+												when-padding-enter="a:[scale:0:1:250:easeOutCubic:150:1:f]">
+												<span u init-with="p:[height:15px]">15</span>
+												<div class="padding" u init-with="p:[border-color:#40484b, tr:scale(0), tro:center center]"
+													when-margin-select="p:[border-color:#aaaaaa]"
+													when-margin-deselect="p:[border-color:#40484b]"
+													when-padding-enter="a:[scale:0:1:250:easeOutCubic:200:1:f]"></div>
+												<span u init-with="p:[width:15px]">15</span>
+											</div>
+										</div>
+									</div>
+									<h3 u on-mouseenter="s:[padding-select:public]"
+										on-mouseleave="s:[padding-deselect:public]"
+										init-with="p:[op:0]"
+										when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Padding: <span>15px</span></h3>
+									<h3 u on-mouseenter="s:[margin-select:public]"
+										on-mouseleave="s:[margin-deselect:public]"
+										init-with="p:[op:0]"
+									  when-ui-styles="a:[bounceIn-subtle:1000:linear:0:1:f]">Margin: <span>5px</span></h3>
+								</li>
+							</ul>
+						</div>
+					</aside>
+				</div>
+			</article>
+		</div>
+
+		<div class="ui-gallery-single-main down"
+			u init-with="p:[op:0, z-index:-10, tr:translateY(100%)]"
+			when-popup-down="p:[op:1, z-index:10, tr:none]"
+			when-popup-up="p:[op:0, z-index:-10, tr:translateY(100%)]">
+			<article>
+				<div>
+					<a class="ui-likes"
+						u on-click="c:[liked:add]">
+						<graphic url='shared/templates/components/svg/main/heart.html'></graphic>
+						<span u when-popup-open="a:[counter:0:2831:2500:easeOutCirc:0:1:f]">2831</span>
+					</a>
+					<figure>
+						<ul class="pf-rating rating-stars" data-rating="4" data-half="true"
+							u on-init='s:[rating-star:children:easeInCirc-700]'>
+							<li rating class="rating"
+								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
+								when-rating-star="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+							<li rating class="rating"
+								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
+								when-rating-star="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+							<li rating class="rating"
+								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
+								when-rating-star="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+							<li rating class="rating"
+								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
+								when-rating-star="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+							<li rating class="rating"
+								u init-with="p:[opacity:0, transform:scale(0) rotate(-90deg)]"
+								when-rating-star="a:[opacity:0:1:300:easeOutSine:0:1:f, scale:0:1:500:easeOutBack:0:1:f, rotate:-90deg:0deg:500:easeOutExpo:0:1:f]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+						</ul>
+					</figure>
+					<div class="ui-gallery-single-desc"
+						u init-with="p:[tro:top center, transform:rotateX(90deg), op:0]"
+						when-popup-enter="a:[rotateX:90deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:100:linear:0:1:f]">
+						<header>
+							<h1 u init-with="p:[op:0]"
+								when-popup-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">Rating</h1>
 							<h4>
 								<span>by <a>Jeselle Obina</a></span>
 								<span class="user-icon-24 border-stone"></span>
