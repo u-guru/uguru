@@ -6,7 +6,16 @@
 			"flex-direction": {},
 			"flex-wrap": {
 				"summary": "By default, flex items will all try to fit onto one line. You can change that and allow the items to wrap as needed with this property. Direction also plays a role here, determining the direction new lines are stacked in.",
-				"options": []
+				"require": ["flex", "flex-direction"],
+				"options": {
+					"nowrap": {
+						"default": true,
+						"HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+						"CSS": "ul { display: flex; flex-direction: row; flex-wrap: wrap; }"
+					},
+					"wrap": {},
+					"wrap-reverse": {}
+				}
 			},
 			"flex-flow": {},
 			"justify-content": {},
