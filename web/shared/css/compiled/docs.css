@@ -1,0 +1,98 @@
+.docs-nav nav {
+  padding: 10px 0; }
+.docs-nav ul {
+  padding: 2.5px 0 2.5px 7.5px; }
+  .docs-nav ul > li {
+    padding: 2.5px 0 2.5px 7.5px; }
+.docs-nav h1, .docs-nav h2, .docs-nav h3 {
+  line-height: 1; }
+.docs-nav h1 {
+  font-size: 28px;
+  font-weight: 800; }
+.docs-nav h2 {
+  font-size: 20px;
+  font-weight: 700; }
+.docs-nav h3 {
+  font-size: 18px;
+  font-weight: 600; }
+.docs-nav a {
+  display: inline-block;
+  border-radius: 2px;
+  padding: 0 3px 3px; }
+  .docs-nav a:hover, .docs-nav a:focus {
+    background: rgba(255, 255, 255, 0.25); }
+  .docs-nav a:active, .docs-nav a.selected {
+    background: #ee7361; }
+
+.docs-omnibar {
+  padding: 15px 15px 0; }
+  .docs-omnibar div {
+    display: flex;
+    align-content: stretch;
+    position: relative;
+    background: white;
+    border-radius: 2px;
+    padding: 5px; }
+    .docs-omnibar div input {
+      background: none;
+      font-size: 36px;
+      color: #40484B; }
+      .docs-omnibar div input::-webkit-input-placeholder {
+        font-size: 36px;
+        color: #8d99a5; }
+      .docs-omnibar div input:-moz-placeholder {
+        font-size: 36px;
+        color: #8d99a5; }
+      .docs-omnibar div input::-moz-placeholder {
+        font-size: 36px;
+        color: #8d99a5; }
+      .docs-omnibar div input:-ms-input-placeholder {
+        font-size: 36px;
+        color: #8d99a5; }
+    .docs-omnibar div span {
+      display: flex;
+      align-items: center;
+      font-size: 36px;
+      color: #8d99a5; }
+    .docs-omnibar div > * {
+      padding: 0 5px; }
+
+.docs-omnibar-actions {
+  display: flex;
+  align-content: stretch; }
+  .docs-omnibar-actions > a {
+    display: flex;
+    align-items: center; }
+    .docs-omnibar-actions > a svg {
+      width: 48px;
+      height: 48px; }
+      .docs-omnibar-actions > a svg * {
+        stroke: #707f8f;
+        stroke-width: 4px; }
+
+.docs-actions {
+  display: flex;
+  width: 100%;
+  padding: 7.5px 7.5px 0; }
+  .docs-actions li {
+    flex-grow: 1;
+    padding: 7.5px 7.5px 0; }
+
+.docs-action-link {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.25); }
+  .docs-action-link svg {
+    display: block;
+    width: 24px;
+    height: 24px; }
+    .docs-action-link svg * {
+      stroke: white;
+      stroke-width: 6px; }
+  .docs-action-link h2 {
+    width: 100%;
+    font-size: 28px;
+    font-weight: 600; }
+
+/*# sourceMappingURL=docs.css.map */

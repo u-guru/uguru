@@ -4,6 +4,9 @@
             "url": "ui/templates/loader.html"
         },
         "views": {
+            "documentation": {
+                "url": "ui/templates/documentation.html"
+			},
             "collections": {
                 "url": "ui/templates/collections.html",
 				"components": {

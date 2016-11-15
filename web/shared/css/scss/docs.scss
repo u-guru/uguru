@@ -1,0 +1,119 @@
+@import 'partials/mixin';
+
+.docs-nav {
+	nav {
+		padding: 10px 0;
+	}
+	ul {
+		padding: 2.5px 0 2.5px 7.5px;
+		> li {
+			padding: 2.5px 0 2.5px 7.5px;
+		}
+	}
+	h1, h2, h3 {
+		line-height: 1;
+	}
+	h1 {
+		font-size: 28px;
+		font-weight: 800;
+	}
+	h2 {
+		font-size: 20px;
+		font-weight: 700;
+	}
+	h3 {
+		font-size: 18px;
+		font-weight: 600;
+	}
+	a {
+		display: inline-block;
+		border-radius: 2px;
+		padding: 0 3px 3px;
+		&:hover, &:focus {
+			background: rgba(white, .25);
+		}
+		&:active, &.selected {
+			background: $sienna;
+		}
+	}
+}
+
+// .docs-main {
+// 	padding: 15px;
+// }
+
+.docs-omnibar {
+	padding: 15px 15px 0;
+	div {
+		display: flex;
+		align-content: stretch;
+		position: relative;
+		background: white;
+		border-radius: 2px;
+		padding: 5px;
+		input {
+			background: none;
+			font-size: 36px;
+			color: $slate;
+			@include placeholder {
+				font-size: 36px;
+				color: lighten(mix($stone, $campus), 10%);
+			}
+		}
+		span {
+			display: flex;
+			align-items: center;
+			font-size: 36px;
+			color: lighten(mix($stone, $campus), 10%);
+		}
+		> * {
+			padding: 0 5px;
+		}
+	}
+}
+.docs-omnibar-actions {
+	display: flex;
+	align-content: stretch;
+	> a {
+		display: flex;
+		align-items: center;
+		svg {
+			width: 48px;
+			height: 48px;
+			* {
+				stroke: mix($stone, $campus);
+				stroke-width: 4px;
+			}
+		}
+	}
+}
+
+.docs-actions {
+	display: flex;
+	width: 100%;
+	padding: 7.5px 7.5px 0;
+	li {
+		flex-grow: 1;
+		padding: 7.5px 7.5px 0;
+	}
+}
+.docs-action-link {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	background: rgba(white, .25);
+	svg {
+		display: block;
+		width: 24px;
+		height: 24px;
+		* {
+			stroke: white;
+			stroke-width: 6px;
+		}
+	}
+	h2 {
+		width: 100%;
+		font-size: 28px;
+		font-weight: 600;
+	}
+}
