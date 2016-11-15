@@ -93,6 +93,22 @@
             "tags": ["data-related"]
         }
     },
+    "platform": {
+        "elements": {
+            "desktop-only": {
+                "syntax": "desktop",
+                "info": "add the attr desktop for desktop-specific cases"
+            },
+            "mobile-only": {
+                "syntax": "mobile",
+                "info": "add the attr mobile for mobile-specific cases"
+            },
+            "tablet-only": {
+                "syntax": "tablet",
+                "info": "add the attr tablet"
+            }
+        }
+    },
     "best practices": {
         "docs model": {
             "examples": "examples come in a dictionary {} format because it forces you to think of a name/purpose of that example that distinguishes it from the rest.",
