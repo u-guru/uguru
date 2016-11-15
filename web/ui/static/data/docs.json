@@ -10,6 +10,15 @@
         }
     },
     "attr":{
+		"jeselle": {
+			"info": "Jeselle's tests",
+			"tags": ["css-related"],
+			"examples": {
+                "jeselle-margin": "<div class='bg-white-20p radius-2'><div class='bg-cosmic radius-2 width-96 height-96' m-x='20px' m-y='60px'></div></div>",
+				"jeselle-stretch-friends": "<div class='bg-sienna radius-2 width-96' stretch></div> <div class='bg-cosmic radius-2 width-96' stretch></div>",
+				"jeselle-row": "<ul class='full-x txt-16 semibold' p='5px' space-around row align-items='flex-start'><li p='5px'><div class='flex-center bg-cosmic radius-2 width-24 height-24'>1</div></li><li p='5px' end><div class='flex-center bg-sienna radius-2 width-24 height-24'>2</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>3</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>4</div></li></ul>"
+			}
+		},
         "margin": {
             "info": "margin css",
             "tags": ["css-related", "position"],
@@ -19,8 +28,7 @@
                 "x-only": "<div class='bg-white-10p radius-2'><div class='bg-sienna radius-2 width-96 height-96' margin-x='50px'></div></div>",
                 "x-only-condensed": "<div class='bg-white-10p radius-2'><div class='bg-sienna radius-2 width-96 height-96' m-x='20px'></div></div>",
                 "y-only": "<div class='bg-white-10p radius-2'><div class='bg-sienna radius-2 width-96 height-96' margin-y='30px'></div></div>",
-                "y-only-condensed": "<div class='bg-white-10p radius-2'><div class='bg-sienna radius-2 width-96 height-96' m-y='15px'></div></div>",
-                "jeselle-margin": "<div class='bg-white-20p radius-2'><div class='bg-sienna radius-2 width-96 height-96' m-x='20px' m-y='60px'></div></div>"
+                "y-only-condensed": "<div class='bg-white-10p radius-2'><div class='bg-sienna radius-2 width-96 height-96' m-y='15px'></div></div>"
             }
         },
         "padding": {
@@ -41,8 +49,7 @@
 				"stretch[flex-stretch]": "<div class='bg-sienna radius-2 width-96' stretch></div>",
 				"center[flex-center]": "<div class='bg-sienna radius-2 width-96 height-96' center></div>",
 				"start[flex-start]": "<div class='bg-sienna radius-2 width-96 height-96' start></div>",
-				"end[flex-end]": "<div class='bg-sienna radius-2 width-96 height-96' end></div>",
-				"jeselle-1": "<div class='bg-sienna radius-2 width-96' stretch></div> <div class='bg-cosmic radius-2 width-96' stretch></div>"
+				"end[flex-end]": "<div class='bg-sienna radius-2 width-96 height-96' end></div>"
             },
 			"non-functional": {
 				"space-between": "<div class='bg-sienna radius-2 width-96 height-96' space-between></div>",
@@ -72,8 +79,7 @@
             "info": "flex-direction",
             "examples": {
                 "row": "<ul class='full-x flex-start txt-16 semibold' p='5px' wrap row><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>1</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>2</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>3</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>4</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>5</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>6</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>7</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>8</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>9</div></li></ul>",
-                "row-reverse": "<ul class='full-x flex-start txt-16 semibold' p='5px' wrap row-reverse><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>1</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>2</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>3</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>4</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>5</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>6</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>7</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>8</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>9</div></li></ul>",
-				"jeselle-row": "<ul class='full-x txt-16 semibold' p='5px' space-around row align-items='flex-start'><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>1</div></li><li p='5px' end><div class='flex-center bg-sienna radius-2 width-24 height-24'>2</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>3</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>4</div></li></ul>"
+                "row-reverse": "<ul class='full-x flex-start txt-16 semibold' p='5px' wrap row-reverse><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>1</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>2</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>3</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>4</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>5</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>6</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>7</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>8</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>9</div></li></ul>"
             }
         },
         "basis": {
