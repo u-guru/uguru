@@ -83,13 +83,23 @@
             }
         },
         "basis": {
-            "info": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-basics"
+            "info": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-basics",
+			"examples": {
+				"25%": "<ul class='full-x flex-start txt-16 semibold' p='5px' wrap row><li p='5px' basis='25%'><div class='flex-center bg-sienna radius-2 height-24' width='100'>1</div></li><li p='5px' basis='25%'><div class='flex-center bg-sienna radius-2 height-24' width='100'>2</div></li><li p='5px' basis='25%'><div class='flex-center bg-sienna radius-2 height-24' width='100'>3</div></li><li p='5px' basis='25%'><div class='flex-center bg-sienna radius-2 height-24' width='100'>4</div></li></ul>",
+				"50%": "<ul class='full-x flex-start txt-16 semibold' p='5px' wrap row><li p='5px' basis='50%'><div class='flex-center bg-sienna radius-2 height-24' width='100'>1</div></li><li p='5px' basis='50%'><div class='flex-center bg-sienna radius-2 height-24' width='100'>2</div></li><li p='5px' basis='50%'><div class='flex-center bg-sienna radius-2 height-24' width='100'>3</div></li><li p='5px' basis='50%'><div class='flex-center bg-sienna radius-2 height-24' width='100'>4</div></li></ul>"
+			}
         },
         "grow": {
-            "info": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-basics"
+            "info": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-basics",
+			"examples": {
+				"example": "<ul class='full-x flex-start txt-16 semibold' p='5px' wrap row><li p='5px' grow='1'><div class='flex-center bg-sienna radius-2 height-24' width='100'>1</div></li><li p='5px' grow='2'><div class='flex-center bg-sienna radius-2 height-24' width='100'>2</div></li><li p='5px' grow='3'><div class='flex-center bg-sienna radius-2 height-24' width='100'>3</div></li><li p='5px' grow='4'><div class='flex-center bg-sienna radius-2 height-24' width='100'>4</div></li></ul>"
+			}
         },
         "shrink": {
-            "info": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-basics"
+            "info": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-basics",
+			"examples": {
+				"example": "<ul class='full-x flex-start txt-16 semibold' p='5px' wrap row><li p='5px' shrink='1'><div class='flex-center bg-sienna radius-2 height-24' width='100'>1</div></li><li p='5px' shrink='2'><div class='flex-center bg-sienna radius-2 height-24' width='100'>2</div></li><li p='5px' shrink='3'><div class='flex-center bg-sienna radius-2 height-24' width='100'>3</div></li><li p='5px' shrink='4'><div class='flex-center bg-sienna radius-2 height-24' width='100'>4</div></li></ul>"
+			}
         },
         "pointer": {
             "info": "a shorter way to declare cursor:pointer",
