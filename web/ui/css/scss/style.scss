@@ -33,8 +33,8 @@ view {
 		z-index: 2;
 		width: calc(100% - 48px);
 		a {
-			@include flex;
-			@include flex-center;
+			display: flex;
+			align-items: center; align-content: center; justify-content: center;
 			position: absolute;
 			width: 48px;
 			height: 48px;
@@ -105,8 +105,8 @@ view {
 		}
 	}
 	.login-success {
-		@include flex;
-		@include flex-center;
+		display: flex;
+		align-items: center; align-content: center; justify-content: center;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -119,8 +119,8 @@ view {
 		}
 	}
 	footer {
-		@include flex;
-		@include flex-center;
+		display: flex;
+		align-items: center; align-content: center; justify-content: center;
 		position: relative;
 		z-index: 2;
 		width: 100%;
@@ -147,9 +147,9 @@ view {
 }
 // logout
 .ui-logout {
-	@include flex;
-	@include flex-wrap;
-	@include flex-center;
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center; align-content: center; justify-content: center;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -193,8 +193,8 @@ view {
 }
 // top bar
 .ui-nav {
-	@include flex;
-	@include flex-center-vertical;
+	display: flex;
+	align-items: center; align-content: center;
 	justify-content: space-between;
 	position: fixed;
 	top: 0;
@@ -207,8 +207,8 @@ view {
 	}
 }
 .ui-menu-icon {
-	@include flex;
-	@include flex-center;
+	display: flex;
+	align-items: center; align-content: center; justify-content: center;
 	width: 48px;
 	height: 48px;
 	background: white;
@@ -288,8 +288,8 @@ view {
 }
 // likes
 .ui-likes {
-	@include flex;
-	@include flex-center-vertical;
+	display: flex;
+	align-items: center; align-content: center;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -338,9 +338,9 @@ view {
 	width: 100%;
 	height: 100%;
 	ul {
-		@include flex;
-		@include flex-wrap;
-		@include flex-center;
+		display: flex;
+		flex-flow: row wrap;
+		align-items: center; align-content: center; justify-content: center;
 		position: relative;
 		width: 100%;
 		height: 100%;
@@ -356,9 +356,9 @@ view {
 		width: 100%;
 		height: 100%;
 		a {
-			@include flex;
-			@include flex-wrap;
-			@include flex-center;
+			display: flex;
+			flex-flow: row wrap;
+			align-items: center; align-content: center; justify-content: center;
 			position: relative;
 			width: 100%;
 			height: 100%;
@@ -410,8 +410,8 @@ view {
 		position: relative;
 		padding-bottom: 15px;
 		h1 {
-			@include flex;
-			@include flex-center-vertical;
+			display: flex;
+			align-items: center; align-content: center;
 			font-size: 28px;
 			font-weight: 600;
 			line-height: 1;
@@ -438,7 +438,7 @@ view {
 			background: rgba(white, .5);
 		}
 		a {
-			@include flex;
+			display: flex;
 			justify-content: space-between;
 			align-content: flex-end;
 			align-items: flex-end;
@@ -467,7 +467,7 @@ view {
 	> div {
 		position: relative;
 		> ul {
-			@include flex;
+			display: flex;
 			overflow: auto;
 			padding: 7.5px;
 			&::-webkit-scrollbar {
@@ -501,8 +501,8 @@ view {
 	}
 }
 .ui-collections-list-item {
-	@include flex;
-	@include flex-center;
+	display: flex;
+	align-items: center; align-content: center; justify-content: center;
 	height: 200px;
 	width: 250px;
 	background: rgba(white, .25);
@@ -586,17 +586,17 @@ view {
 .ui-pf-header {
 	padding: 15px;
 	> div {
-		@include flex;
-		@include flex-wrap;
+		display: flex;
+		flex-flow: row wrap;
 		align-content: stretch;
 		border: 2px solid rgba(white, .5);
 		padding: 15px;
 		overflow: hidden;
 	}
 	.ui-pf-info {
-		@include flex;
-		@include flex-wrap;
-		@include flex-center;
+		display: flex;
+		flex-flow: row wrap;
+		align-items: center; align-content: center; justify-content: center;
 		width: 100%;
 		padding-bottom: 15px;
 		.user-icon-72 {
@@ -627,9 +627,9 @@ view {
 		}
 	}
 	.ui-pf-desc {
-		@include flex;
-		@include flex-wrap;
-		@include flex-center-vertical;
+		display: flex;
+		flex-flow: row wrap;
+		align-items: center; align-content: center;
 		position: relative;
 		width: 100%;
 		padding-top: 15px;
@@ -666,14 +666,14 @@ view {
 	}
 }
 .ui-settings-nav {
-	@include flex;
-	@include flex-center-vertical;
+	display: flex;
+	align-items: center; align-content: center;
 	justify-content: space-between;
 	width: 100%;
 	max-width: 930px;
 	margin: 0 auto;
 	ul {
-		@include flex;
+		display: flex;
 		padding: 7.5px;
 		li {
 			padding: 7.5px;
@@ -723,8 +723,8 @@ view {
 	margin: 0 auto;
 }
 .ui-settings-tiles {
-	@include flex;
-	@include flex-wrap;
+	display: flex;
+	flex-flow: row wrap;
 	width: 100%;
 	max-width: 930px;
 	margin: 0 auto;
@@ -741,8 +741,8 @@ view {
 		margin-bottom: 0;
 	}
 	header {
-		@include flex;
-		@include flex-center-vertical;
+		display: flex;
+		align-items: center; align-content: center;
 		hr {
 			border: 0;
 			margin: 0;
@@ -797,8 +797,8 @@ view {
 		}
 	}
 	.ui-settings-tile-content {
-		@include flex;
-		@include flex-wrap;
+		display: flex;
+		flex-flow: row wrap;
 		justify-content: center;
 		> ul {
 			position: relative;
@@ -835,8 +835,8 @@ view {
 }
 // themes
 .ui-settings-themes {
-	@include flex;
-	@include flex-wrap;
+	display: flex;
+	flex-flow: row wrap;
 	margin-top: -5px!important;
 	> li {
 		width: 50%;
@@ -851,8 +851,8 @@ view {
 			border: 2px solid transparent;
 		}
 		> div {
-			@include flex;
-			@include flex-center;
+			display: flex;
+			align-items: center; align-content: center; justify-content: center;
 			margin-top: 5px;
 		}
 		.theme-input {
@@ -932,8 +932,8 @@ view {
 }
 // colors
 .ui-settings-colors {
-	@include flex;
-	@include flex-wrap;
+	display: flex;
+	flex-flow: row wrap;
 	padding: 7.5px;
 	> li {
 		padding: 7.5px;
@@ -941,9 +941,9 @@ view {
 	}
 }
 .ui-settings-color {
-	@include flex;
-	@include flex-wrap;
-	@include flex-center;
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center; align-content: center; justify-content: center;
 	h3 {
 		font-size: 16px;
 		font-weight: 600;
@@ -952,8 +952,8 @@ view {
 		margin-bottom: 5px;
 	}
 	> div {
-		@include flex;
-		@include flex-center-vertical;
+		display: flex;
+		align-items: center; align-content: center;
 		border-radius: 1000px;
 		border: 2px solid white;
 		padding: 5px;
@@ -967,8 +967,8 @@ view {
 		fieldset {
 			padding: 0 10px;
 			div {
-				@include flex;
-				@include flex-center-vertical;
+				display: flex;
+				align-items: center; align-content: center;
 				height: 30px;
 				font-family: $monospace;
 				input {
@@ -984,8 +984,8 @@ view {
 /*-- GALLERY */
 // filters
 .ui-gallery-filter-header {
-	@include flex;
-	@include flex-center-vertical;
+	display: flex;
+	align-items: center; align-content: center;
 	height: 36px;
 	font-size: 24px;
 	font-weight: 600;
@@ -996,8 +996,8 @@ view {
 	margin-right: auto;
 	padding-top: 80px;
 	ul {
-		@include flex;
-		@include flex-wrap;
+		display: flex;
+		flex-flow: row wrap;
 		padding: 7.5px;
 		li {
 			padding: 7.5px;
@@ -1030,8 +1030,8 @@ view {
 }
 // main
 .ui-gallery-main {
-	@include flex;
-	@include flex-wrap;
+	display: flex;
+	flex-flow: row wrap;
 	justify-content: center;
 	max-width: 930px;
 	margin: 0 auto;
@@ -1058,16 +1058,16 @@ view {
 		border: 2px solid rgba(white, .5);
 		transition: border 300ms ease-in-out;
 		> figure {
-			@include flex;
-			@include flex-center;
+			display: flex;
+			align-items: center; align-content: center; justify-content: center;
 			margin: 0;
 			padding: 15px;
 			background: rgba(white, 0.25);
 			transition: background 300ms ease-in-out;
 		}
 		> aside {
-			@include flex;
-			@include flex-center-vertical;
+			display: flex;
+			align-items: center; align-content: center;
 			justify-content: space-between;
 			border-top: 2px solid rgba(white, 0.5);
 			transition: border 300ms ease-in-out, background 300ms ease-in-out;
@@ -1078,8 +1078,8 @@ view {
 				transition: color 300ms ease-in-out;
 			}
 			ul {
-				@include flex;
-				@include flex-wrap;
+				display: flex;
+				flex-flow: row wrap;
 				padding: 7.5px;
 				li {
 					padding: 7.5px;
@@ -1142,8 +1142,8 @@ view {
 				right: 17px!important;
 			}
 			> figure {
-				@include flex;
-				@include flex-center;
+				display: flex;
+				align-items: center; align-content: center; justify-content: center;
 				position: relative;
 				width: 100%;
 				padding: 15px;
@@ -1159,8 +1159,8 @@ view {
 	}
 }
 .ui-gallery-single-variant {
-	@include flex;
-	@include flex-center;
+	display: flex;
+	align-items: center; align-content: center; justify-content: center;
 	&:first-child {
 		position: relative;
 		height: auto;
@@ -1174,8 +1174,8 @@ view {
 	}
 }
 .ui-gallery-single-desc {
-	@include flex;
-	@include flex-wrap;
+	display: flex;
+	flex-flow: row wrap;
 	align-content: stretch;
 	width: 100%;
 	background: rgba(white, .8);
@@ -1202,8 +1202,8 @@ view {
 			font-weight: 900;
 		}
 		h4 {
-			@include flex;
-			@include flex-center-vertical;
+			display: flex;
+			align-items: center; align-content: center;
 			padding: 0 15px;
 			font-size: 16px;
 			font-weight: 600;
@@ -1233,8 +1233,8 @@ view {
 	footer {
 		width: 100%;
 		ul {
-			@include flex;
-			@include flex-wrap;
+			display: flex;
+			flex-flow: row wrap;
 			padding: 7.5px;
 			li {
 				padding: 7.5px;
@@ -1243,8 +1243,8 @@ view {
 	}
 }
 .ui-versions-link {
-	@include flex;
-	@include flex-center-vertical;
+	display: flex;
+	align-items: center; align-content: center;
 	> div {
 		position: relative;
 		a {
@@ -1279,7 +1279,7 @@ view {
 	border-radius: 2px;
 	max-width: 500px;
 	ul {
-		@include flex;
+		display: flex;
 		padding: 7.5px;
 		width: 100%;
 		overflow: auto;
@@ -1312,8 +1312,8 @@ view {
 }
 // related and styles
 .ui-gallery-single-info {
-	@include flex;
-	@include flex-wrap;
+	display: flex;
+	flex-flow: row wrap;
 	padding: 7.5px;
 	> * {
 		padding: 7.5px;
@@ -1370,8 +1370,8 @@ view {
 			height: auto;
 		}
 		span {
-			@include flex;
-			@include flex-center;
+			display: flex;
+			align-items: center; align-content: center; justify-content: center;
 			position: absolute;
 			font-size: 10px;
 			font-weight: 600;
@@ -1418,7 +1418,7 @@ view {
 }
 .ui-gallery-icon {
 	ul {
-		@include flex;
+		display: flex;
 		padding: 7.5px;
 		margin: -15px -15px 0;
 		overflow: hidden;
@@ -1452,8 +1452,8 @@ view {
 }
 .ui-gallery-colors {
 	ul {
-		@include flex;
-		@include flex-center-vertical;
+		display: flex;
+		align-items: center; align-content: center;
 		padding: 7.5px;
 		margin: -15px -15px 0;
 		li {
@@ -1469,7 +1469,7 @@ view {
 }
 // footer
 .ui-gallery-single-footer {
-	@include flex;
+	display: flex;
 	justify-content: space-between;
 	align-content: flex-end;
 	align-items: flex-end;
@@ -1508,13 +1508,13 @@ view {
 		}
 	}
 	> ul {
-		@include flex;
+		display: flex;
 		padding: 1px;
 		> li {
 			padding: 1px;
 			a {
-				@include flex;
-				@include flex-center;
+				display: flex;
+				align-items: center; align-content: center; justify-content: center;
 				width: 48px;
 				height: 48px;
 				svg {
@@ -1550,8 +1550,8 @@ view {
 .ui-gallery-single-switcher {
 	position: relative;
 	a {
-		@include flex;
-		@include flex-center;
+		display: flex;
+		align-items: center; align-content: center; justify-content: center;
 		height: 48px;
 		padding: 0 10px;
 		background: white;
@@ -1600,7 +1600,7 @@ view {
 
 	}
 	> div:last-child {
-		@include flex;
+		display: flex;
 		justify-content: flex-end;
 		padding: 0 2px 2px;
 		position: relative;
@@ -1612,11 +1612,11 @@ view {
 		right: 0;
 		z-index: 1;
 		ul {
-			@include flex;
+			display: flex;
 			flex-direction: column-reverse;
 			padding: 1px;
 			li {
-				@include flex;
+				display: flex;
 				justify-content: flex-end;
 				padding: 1px;
 			}

@@ -1,0 +1,281 @@
+@import 'partials/mixin';
+
+.docs-nav {
+	nav {
+		padding: 10px 0;
+	}
+	ul {
+		padding: 2.5px 0 2.5px 7.5px;
+		> li {
+			padding: 2.5px 0 2.5px 7.5px;
+		}
+	}
+	h1, h2, h3 {
+		line-height: 1;
+	}
+	h1 {
+		font-size: 28px;
+		font-weight: 800;
+	}
+	h2 {
+		font-size: 20px;
+		font-weight: 700;
+	}
+	h3 {
+		font-size: 18px;
+		font-weight: 600;
+	}
+	a {
+		display: inline-block;
+		border-radius: 2px;
+		padding: 0 3px 3px;
+		&:hover, &:focus {
+			background: white;
+			color: $sienna;
+		}
+		&:active, &.selected {
+			background: $sienna;
+			color: white;
+		}
+	}
+}
+
+// .docs-main {
+// 	padding: 15px;
+// }
+
+.docs-omnibar {
+	padding: 15px 15px 0;
+	div {
+		display: flex;
+		align-content: stretch;
+		position: relative;
+		background: white;
+		border-radius: 2px;
+		padding: 5px;
+		input {
+			background: none;
+			font-size: 36px;
+			color: $slate;
+			@include placeholder {
+				font-size: 36px;
+				color: lighten(mix($stone, $campus), 10%);
+			}
+		}
+		span {
+			display: flex;
+			align-items: center;
+			font-size: 36px;
+			color: lighten(mix($stone, $campus), 10%);
+		}
+		> * {
+			padding: 0 5px;
+		}
+	}
+}
+.docs-omnibar-actions {
+	display: flex;
+	align-content: stretch;
+	> a {
+		display: flex;
+		align-items: center;
+		svg {
+			width: 48px;
+			height: 48px;
+			* {
+				stroke: mix($stone, $campus);
+				stroke-width: 4px;
+			}
+		}
+	}
+}
+
+.docs-actions {
+	display: flex;
+	width: 100%;
+	padding: 7.5px 7.5px 0;
+	li {
+		flex-grow: 1;
+		padding: 7.5px 7.5px 0;
+	}
+}
+.docs-action-link {
+	display: block;
+	background: rgba(white, .25);
+	border-radius: 2px;
+	text-align: center;
+	padding:  10px 15px 15px;
+	svg {
+		display: block;
+		margin: 0 auto;
+		width: 36px;
+		height: 36px;
+		* {
+			stroke: white;
+			stroke-width: 6px;
+		}
+	}
+	h2 {
+		margin-bottom: 10px;
+		font-size: 28px;
+		font-weight: 600;
+	}
+	div {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 16px;
+		kbd {
+			display: block;
+			padding: 3px;
+			border: 1px solid;
+			border-radius: 2px;
+			font-family: $monospace;
+			font-size: 12px;
+			line-height: 1;
+		}
+	}
+	&:hover, &:focus {
+		background: white;
+		color: $sienna;
+		svg * {
+			stroke: $sienna;
+		}
+	}
+	&:active, &.selected {
+		background: $sienna;
+		color: white;
+		svg * {
+			stroke: white;
+		}
+	}
+}
+
+.docs-articles {
+	height: auto;
+}
+.docs-article {
+	header {
+		display: flex;
+		padding: 15px 15px 5px;
+		h1 {
+			font-size: 48px;
+			font-weight: 900;
+			&.code {
+				background: rgba(white, .25);
+				border-radius: 2px;
+				padding: 2px 5px;
+				font-family: $monospace;
+				font-size: 40px;
+				font-weight: 600;
+			}
+		}
+	}
+}
+.docs-article-main {
+	padding: 0 15px;
+	p, ul, ol {
+		margin-top: 10px!important;
+		font-size: 16px;
+		line-height: 1.3;
+	}
+	p {
+		font-size: 16px;
+	}
+}
+.docs-options {
+	ul {
+		display: flex;
+		align-items: center;
+		flex-flow: row wrap;
+		width: 100%;
+		padding: 7.5px;
+		li {
+			padding: 7.5px;
+			h3 {
+				font-size: 18px;
+				font-weight: 600;
+			}
+		}
+	}
+}
+.docs-example {
+	padding: 0 15px 15px;
+	> div {
+		border: 2px solid white;
+		border-radius: 2px;
+		> nav {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			border-bottom: 2px solid white;
+			background: rgba(white, .25);
+			ul {
+				display: flex;
+				a {
+					border-right: 2px solid white;
+				}
+			}
+			a {
+				display: block;
+				padding: 10px 15px;
+				font-size: 16px;
+				font-weight: 600;
+				&:hover, &:focus {
+					background: white;
+					color: $sienna;
+				}
+				&:active, &.selected {
+					background: $sienna;
+					color: white;
+				}
+			}
+			.docs-example-run {
+				border-left: 2px solid white;
+				background: $moxie;
+				&:hover, &:focus {
+					background: white;
+					color: $moxie;
+				}
+				&:active {
+					background: mix($moxie, $stone);
+					color: white;
+				}
+			}
+		}
+		> section {
+			position: relative;
+			height: auto;
+			min-height: 204px;
+		}
+	}
+}
+.docs-example-preview {
+	position: relative;
+	background: lighten($slate, 15%);
+	min-height: 204px;
+	.fixed {
+		position: absolute!important;
+	}
+}
+.docs-example-html, .docs-example-css {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #263238;
+	pre, textarea {
+		// position: absolute;
+		// top: 0;
+		// left: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+		padding: 15px;
+		font-size: 14px;
+		font-family: $monospace;
+		background: none;
+		color: white;
+	}
+}
