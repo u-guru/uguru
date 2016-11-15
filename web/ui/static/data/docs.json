@@ -54,7 +54,7 @@
         "wrap": {
             "info": "flex-wrap",
             "examples": {
-                "wrap": "<div class='full-x wrap'><div class='bg-sienna radius-2 width-24 height-24'></div></div>",
+                "wrap": "<div class='full-x' wrap><div class='bg-sienna radius-2 width-24 height-24'></div></div>",
                 "nowrap": "<div class='bg-sienna radius-2' nowrap padding='50px 50px'></div>",
                 "wrap-reverse": "<div class='bg-sienna radius-2' wrap-reverse padding='50px 50px'></div>"
             }
