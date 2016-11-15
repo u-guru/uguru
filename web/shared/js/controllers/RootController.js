@@ -18,14 +18,15 @@ angular.module('uguru.shared.controllers', [])
     root.scope.public = {customStates: {when: {}}};
     root.publicAttr = {};
     root.window = getBodyDimensions(_window);
-
+    root.window.browser = _browser;
+    root.window.tablet = root.window.browser.size.tablet
     root.mainViews = [];
     root.customComponents = [];
     root.linkElemCache = {};
     console.log('initializing window')
-    // _window = root.window;
-    _window.browser = _browser;
-    _window.tablet = _window.browser.size.tablet
+    _window = root.window;
+
+
     root.window.elemInfo = getElemWindowInfo(root.window);
     root.base_url = RootService.getBaseUrl();
     root.local = window.location.href.split(':8100').length > 1 || window.location.href.split(':8101').length > 1;;
