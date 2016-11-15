@@ -1,0 +1,58 @@
+{
+    "vars": {
+        "searchText": "",
+        "activeTab": "attr"
+    },
+    "config": {
+        "pathParams": {
+            "content": 1,
+            "subcategory": 2,
+            "property": 3,
+            "attribute": 3
+        },
+        "base_url": "^",
+        "scripts": {
+            "base": "./shared/static/data/docs/",
+            "queue": [
+                {
+                    "path": "attributes.json",
+                    "name": "attr"
+                },
+                {
+                    "path": "css.json",
+                    "name": "css"
+                },
+                {
+                    "path": "directives.json",
+                    "name": "directives"
+                },
+                {
+                    "path": "html.json",
+                    "name": "html"
+                },
+                {
+                    "path": "style-guide.json",
+                    "name": "style"
+                }
+            ]
+        }
+    },
+    "content": {},
+    "components": {
+        "rectangle": {
+            "template_url": "ui/templates/components/custom/rectangle.tpl",
+            "fields": ["background"],
+            "size": "[opacity:0]"
+        },
+        "filter-tag": {
+            "template_url":"ui/templates/components/custom/filter-tag.tpl",
+            "fields": ["name", "background"]
+        },
+        "tile": {
+            "template_url": "ui/templates/components/custom/tile.tpl",
+            "fields": ["import_url", "id"]
+        }
+
+    }
+
+}
