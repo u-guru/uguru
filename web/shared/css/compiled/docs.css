@@ -166,22 +166,62 @@
     border: 2px solid white;
     border-radius: 2px; }
     .docs-example > div > nav {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
       border-bottom: 2px solid white;
       background: rgba(255, 255, 255, 0.25); }
       .docs-example > div > nav ul {
         display: flex; }
-        .docs-example > div > nav ul li a {
-          display: block;
-          padding: 10px 15px;
-          font-size: 16px;
-          font-weight: 600;
+        .docs-example > div > nav ul a {
           border-right: 2px solid white; }
+      .docs-example > div > nav a {
+        display: block;
+        padding: 10px 15px;
+        font-size: 16px;
+        font-weight: 600; }
+        .docs-example > div > nav a:hover, .docs-example > div > nav a:focus {
+          background: white;
+          color: #ee7361; }
+        .docs-example > div > nav a:active, .docs-example > div > nav a.selected {
+          background: #ee7361;
+          color: white; }
+      .docs-example > div > nav .docs-example-run {
+        border-left: 2px solid white;
+        background: #43cb9d; }
+        .docs-example > div > nav .docs-example-run:hover, .docs-example > div > nav .docs-example-run:focus {
+          background: white;
+          color: #43cb9d; }
+        .docs-example > div > nav .docs-example-run:active {
+          background: #4c958c;
+          color: white; }
     .docs-example > div > section {
-      height: auto; }
+      position: relative;
+      height: auto;
+      min-height: 204px; }
 
 .docs-example-preview {
-  background: #637074; }
+  position: relative;
+  background: #637074;
+  min-height: 204px; }
   .docs-example-preview .fixed {
     position: absolute !important; }
+
+.docs-example-html, .docs-example-css {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #263238; }
+  .docs-example-html pre, .docs-example-html textarea, .docs-example-css pre, .docs-example-css textarea {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding: 15px;
+    font-size: 14px;
+    font-family: "Source Code Pro", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, Courier, monospace !important;
+    background: none;
+    color: white; }
 
 /*# sourceMappingURL=docs.css.map */
