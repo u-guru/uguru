@@ -205,29 +205,77 @@
 		border: 2px solid white;
 		border-radius: 2px;
 		> nav {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
 			border-bottom: 2px solid white;
 			background: rgba(white, .25);
 			ul {
 				display: flex;
-				li {
-					a {
-						display: block;
-						padding: 10px 15px;
-						font-size: 16px;
-						font-weight: 600;
-						border-right: 2px solid white;
-					}
+				a {
+					border-right: 2px solid white;
+				}
+			}
+			a {
+				display: block;
+				padding: 10px 15px;
+				font-size: 16px;
+				font-weight: 600;
+				&:hover, &:focus {
+					background: white;
+					color: $sienna;
+				}
+				&:active, &.selected {
+					background: $sienna;
+					color: white;
+				}
+			}
+			.docs-example-run {
+				border-left: 2px solid white;
+				background: $moxie;
+				&:hover, &:focus {
+					background: white;
+					color: $moxie;
+				}
+				&:active {
+					background: mix($moxie, $stone);
+					color: white;
 				}
 			}
 		}
 		> section {
+			position: relative;
 			height: auto;
+			min-height: 204px;
 		}
 	}
 }
 .docs-example-preview {
+	position: relative;
 	background: lighten($slate, 15%);
+	min-height: 204px;
 	.fixed {
 		position: absolute!important;
+	}
+}
+.docs-example-html, .docs-example-css {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #263238;
+	pre, textarea {
+		// position: absolute;
+		// top: 0;
+		// left: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+		padding: 15px;
+		font-size: 14px;
+		font-family: $monospace;
+		background: none;
+		color: white;
 	}
 }
