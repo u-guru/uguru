@@ -1699,7 +1699,7 @@ angular.module('uguru.shared.directives.base.components')
                 propName = camelCase((prefix + '-' + propName.replace(/\W+/g, '-')
                 .replace(/([a-z\d])([A-Z])/g, '$1-$2').toLowerCase()).toLowerCase());
             }
-            console.log(propName)
+
         var propNameRender = propName
             modulePointer = modulePointer.directive(propName, ['CompService', function(CompService) {
               return {

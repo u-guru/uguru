@@ -71,9 +71,17 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp', 'u
     parent: 'root',
     url:'/ui/:viewName',
     template: function templateProvider($stateParams) {
-      console.log('gallery has been rendered')
-      return "<div class='ui-guru-loader loader-portal-outer flex-vertical-center absolute flex-wrap top-0 left-0' link-src-data='/ui/static/data/ui.json' link-data-name='ui'><import url='ui.app.views." + $stateParams.viewName + ".url' ng-if='ui.app.views." + $stateParams.viewName + "'></import></div>"
+      return "<div class='ui-guru-loader loader-portal-outer flex-vertical-center absolute flex-wrap top-0 left-0' link-src-data='ui/static/data/ui.json' link-data-name='ui'><import url='ui.app.views." + $stateParams.viewName + ".url' ng-if='ui.app.views." + $stateParams.viewName + "'></import></div>"
     }
+  })
+
+  .state('root.ui-docs', {
+    name: 'root.ui-docs',
+    parent: 'root',
+    url:'/ui/docs/*path',
+    templateUrl: 'ui/templates/docs2.html',
+    controller: 'AdminDocsController',
+    controllerAs: 'docs'
   })
 
   .state('root.ui.scene', {

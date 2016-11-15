@@ -3,7 +3,7 @@
 
         <div  width='100' height='100' column x='center' wrap>
             <ul  y='center' row width='100' x="center" grow="1" class='txt-32'  bg="azure">
-                <li grow='1' x='center' m-font-size="10px">
+                <li grow='1' x='center' >
                     {{root.window.browser.name}}:
                     {{root.window.browser.size.orientation}}
                 </li>

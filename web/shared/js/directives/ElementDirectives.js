@@ -120,10 +120,11 @@ angular.module('uguru.shared.directives')
   }
 }])
 
-.directive('linkSrcData', ['XHRService', '$compile', '$timeout', '$rootScope', function(XHRService, $compile, $timeout, $rootScope) {
+.directive('linkSrcData', ['XHRService', '$compile', '$timeout', '$rootScope', '$parse', function(XHRService, $compile, $timeout, $rootScope, $parse) {
   return {
     restrict: 'A',
     replace:true,
+    scope:true,
     compile: function compile(element, attr) {
 
         var url;
@@ -225,24 +226,46 @@ angular.module('uguru.shared.directives')
       }
   }
 }])
-.directive('linkData', ['XHRService', '$compile', '$timeout', '$rootScope', function(XHRService, $compile, $timeout, $rootScope) {
+.directive('linkData', ['XHRService', '$compile', '$timeout', '$rootScope', '$parse', function(XHRService, $compile, $timeout, $rootScope, $parse) {
   return {
     restrict: 'A',
-    replace:true,
+    replace: true,
+    scope: false,
     compile: function compile(element, attr) {
-
-        var url;
-        if (attr.uSrc || window.location.href.split('8100').length > 1) {
-
-          url = attr.linkSrcData || attr.uSrc || 'coach/static/data/site.json';
-        } else if (attr.accessCode) {
-          url = 'https://s3-us-west-1.amazonaws.com/ui-coach/users/' + attr.accessCode + '/app.json'
-        }
-        url && url.length && XHRService.getJSONFile('GET', url, function(data) {
-          $rootScope.app = data; console.log('data received', $rootScope.app);
-
-        }, {});
+      var scopeRef = null;
+      if ('renderAfterExtScripts' in attr) {
+        element[0].style.opacity = 0;
       }
+      XHRService.getJSONFile(
+            'GET',
+        attr.linkData,
+        function(data) {
+          if (scopeRef) {
+            scopeRef[attr.setDataName || 'data'] = data;
+          } else {
+            $timeout(function() {
+              scopeRef[attr.setDataName || 'data'] = data;
+            },1)
+          }
+        },
+      {});
+
+      return {
+        pre: function(scope, p_element, p_attr) {
+          scopeRef = scope;
+          if ('renderAfterExtScripts' in attr) {
+            scope.$watch('data.config.processed.scriptStatus.complete', function(value) {
+              if (value) {
+                p_element[0].style.opacity = 1;
+              }
+            })
+          }
+
+        },
+        post: angular.noop
+      }
+
+    }
   }
 }])
 .directive('set', ['$parse', '$rootScope', function($parse, $rootScope) {
