@@ -31,11 +31,11 @@ a.chip, input.chip {
 	transform-origin: center center;
 	transition: all 150ms ease-in;
 	&:hover, &:focus {
-		transform: translateZ(20px);
+		transform: translateZ(5px);
 		transition: all 600ms cubic-bezier(.6,0,.1,2);
 	}
 	&:active {
-		transform: translateZ(-20px);
+		transform: translateZ(-5px);
 		transition: all 150ms ease-in;
 	}
 }

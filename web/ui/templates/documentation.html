@@ -3,41 +3,41 @@
 		<nav>
 			<ul class="docs-nav-list">
 				<li>
-					<h1><a>Attributes</a></h1>
+					<h1><a u on-click="c:[selected:add]">Attributes</a></h1>
 				</li>
 				<li>
-					<h1><a>Directives</a></h1>
+					<h1><a u on-click="c:[selected:add]">Directives</a></h1>
 					<ul>
 						<li>
-							<h2><a>Send</a></h2>
+							<h2><a u on-click="c:[selected:add]">Send</a></h2>
 							<ul>
 								<li>
-									<h3><a>Structure</a></h3>
+									<h3><a u on-click="c:[selected:add]">Structure</a></h3>
 								</li>
 								<li>
-									<h3><a>:public</a></h3>
+									<h3><a u on-click="c:[selected:add]">:public</a></h3>
 								</li>
 								<li>
-									<h3><a>:self</a></h3>
+									<h3><a u on-click="c:[selected:add]">:self</a></h3>
 								</li>
 								<li>
-									<h3><a>:children</a></h3>
+									<h3><a u on-click="c:[selected:add]">:children</a></h3>
 								</li>
 							</ul>
 						</li>
 					</ul>
 				</li>
 				<li>
-					<h1><a>CSS</a></h1>
+					<h1><a u on-click="c:[selected:add]">CSS</a></h1>
 				</li>
 				<li>
-					<h1><a>HTML</a></h1>
+					<h1><a u on-click="c:[selected:add]">HTML</a></h1>
 				</li>
 				<li>
-					<h1><a>Bug List</a></h1>
+					<h1><a u on-click="c:[selected:add]">Bug List</a></h1>
 				</li>
 				<li>
-					<h1><a>Style Guide</a></h1>
+					<h1><a u on-click="c:[selected:add]">Style Guide</a></h1>
 				</li>
 			</ul>
 		</nav>
@@ -57,7 +57,7 @@
 			</fieldset>
 			<ul class="docs-actions">
 				<li>
-					<a class="docs-action-link">
+					<a class="docs-action-link" u on-click="c:[selected:add]">
 						<graphic url='shared/templates/components/svg/main/search-circle.html'></graphic>
 						<h2>Search</h2>
 						<div>
@@ -68,7 +68,7 @@
 					</a>
 				</li>
 				<li>
-					<a class="docs-action-link">
+					<a class="docs-action-link" u on-click="c:[selected:add]">
 						<graphic url='shared/templates/components/svg/main/search-circle.html'></graphic>
 						<h2>Search</h2>
 						<div>
@@ -79,7 +79,7 @@
 					</a>
 				</li>
 				<li>
-					<a class="docs-action-link">
+					<a class="docs-action-link" u on-click="c:[selected:add]">
 						<graphic url='shared/templates/components/svg/main/search-circle.html'></graphic>
 						<h2>Search</h2>
 						<div>
@@ -90,7 +90,7 @@
 					</a>
 				</li>
 				<li>
-					<a class="docs-action-link">
+					<a class="docs-action-link" u on-click="c:[selected:add]">
 						<graphic url='shared/templates/components/svg/main/search-circle.html'></graphic>
 						<h2>Search</h2>
 						<div>
@@ -102,5 +102,80 @@
 				</li>
 			</ul>
 		</header>
+		<section class="docs-articles">
+			<article class="docs-article">
+				<header><h1 class="code">flex-direction</h1></header>
+				<div class="docs-article-main">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					<!-- <ol>
+						<li>Lorem ipsum dolor sit amet</li>
+						<li>Lorem ipsum dolor sit amet</li>
+						<li>Lorem ipsum dolor sit amet</li>
+					</ol>
+					<p>Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+					<ul>
+						<li>Lorem ipsum dolor sit amet</li>
+						<li>Lorem ipsum dolor sit amet</li>
+						<li>Lorem ipsum dolor sit amet</li>
+					</ul> -->
+				</div>
+				<aside class="docs-options">
+					<ul>
+						<li>
+							<h3>Options:</h3>
+						</li>
+						<li>
+							<a class="chip bg bg-robin"
+								u on-click="s:[flex-direction-r:public]">row</a>
+						</li>
+						<li>
+							<a class="chip bg bg-robin"
+								u on-click="s:[flex-direction-rr:public]">row-reverse</a>
+						</li>
+						<li>
+							<a class="chip bg bg-sienna"
+								u on-click="s:[flex-direction-c:public]">column</a>
+						</li>
+						<li>
+							<a class="chip bg bg-robin"
+								u on-click="s:[flex-direction-cr:public]">column-reverse</a>
+						</li>
+					</ul>
+				</aside>
+				<div class="docs-example">
+					<div>
+						<nav>
+							<ul>
+								<li>
+									<a class="bg-sienna">Example</a>
+								</li>
+								<li>
+									<a>HTML</a>
+								</li>
+								<li>
+									<a>CSS</a>
+								</li>
+							</ul>
+						</nav>
+						<section>
+							<div class="docs-example-preview">
+								<ul class="p15-grid" style="display:flex"
+									u init-with="p:[flex-direction:column]"
+									when-flex-direction-r="p:[flex-direction:row]"
+									when-flex-direction-rr="p:[flex-direction:row-reverse]"
+									when-flex-direction-c="p:[flex-direction:column]"
+									when-flex-direction-cr="p:[flex-direction:column-reverse]">
+									<li><div class="flex-center width-48 height-48 bg-stone border-2 radius-2 txt-24 semibold">1</div></li>
+									<li><div class="flex-center width-48 height-48 bg-cobalt border-2 radius-2 txt-24 semibold">2</div></li>
+									<li><div class="flex-center width-48 height-48 bg-eggplant border-2 radius-2 txt-24 semibold">3</div></li>
+								</ul>
+							</div>
+							<div class="docs-example-html"></div>
+							<div class="docs-example-css"></div>
+						</section>
+					</div>
+				</div>
+			</article>
+		</section>
 	</main>
 </view>
