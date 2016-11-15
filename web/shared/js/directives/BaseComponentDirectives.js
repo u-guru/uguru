@@ -1665,6 +1665,7 @@ angular.module('uguru.shared.directives.base.components')
         "rowReverse",
         "rR",
         "column",
+        "columnReverse",
         "cR",
         "x",
         "y",
