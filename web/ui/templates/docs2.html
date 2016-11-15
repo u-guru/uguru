@@ -1,7 +1,7 @@
 
 <view bg="stone" link-data="ui/static/data/docs2.json" render-after-ext-scripts link-data-name="docs" row class='full-xy'>
     <div grow='1' bg='azure'>
-        <ul column x='center' y='center' width='100'>
+        <ul column-reverse x='center' y='center' width='100'>
             <li stretch grow='1' width='100' x='center' ng-repeat='(sectionName, value) in docs.data.content track by $index' ng-click='docs.data.vars.activeTab = sectionName'>
                 {{sectionName}}
             </li>

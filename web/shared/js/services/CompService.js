@@ -175,6 +175,7 @@ function CompService($timeout, $compile, $parse, $rootScope) {
         "rowReverse": "display flex-direction",
         "rR": "display flex-direction",
         "column": "display flex-direction",
+        "columnReverse": "display flex-direction",
         "cR": "display flex-direction",
         "x": "display justify-content",
         "y": "display align-content align-items",
