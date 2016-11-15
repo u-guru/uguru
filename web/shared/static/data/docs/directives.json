@@ -5,7 +5,24 @@
 			"Structure": {},
 			":public": {},
 			":self": {},
-			":children": {},
+			":children": {
+				"summary": "Sends state to chlidren of selected elements",
+				"examples": [
+					{
+						"default": true,
+						"HTML": "<ul class='p15-grid bg-white-10p' u when-send-parent='s:[send-children:children]'><li u init-with='p:[op:0]' when-send-children='a:[bounceIn-subtle:1000:linear:0:1:f]'><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li u init-with='p:[op:0]' when-send-children='a:[bounceIn-subtle:1000:linear:0:1:f]'><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li u init-with='p:[op:0]' when-send-children='a:[bounceIn-subtle:1000:linear:0:1:f]'><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>"
+					}
+				],
+				"bugs": [
+					{
+						"title": "Stagger doesn't work with children",
+						"description": "",
+						"file": "/ui/templates/gallery.html",
+						"line": 123,
+						"snippet": ""
+					}
+				]
+			},
 			":grandchildren": {},
 			":siblings": {},
 			":parent": {},
