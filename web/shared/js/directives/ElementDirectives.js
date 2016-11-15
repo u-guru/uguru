@@ -972,6 +972,30 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
+.directive('tablet', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
+  return {
+    restrict: 'A',
+    priority: 1,
+    require: '^?RootController',
+      link: {
+        pre: function(scope, element, attr) {
+          if (!_browser.size.tablet) {
+            attr.$set('ngIf', scope.root.window.desktop);
+            $compile(element[0])(scope);
+          } else {
+            attr.$set('tablet', null);
+          }
+          // console.log(_browser)
+          // if (!scope.root.window.desktop) {
+          //   attr.$set('ngIf', scope.root.window.desktop);
+          //   $compile(element[0])(scope);
+          // } else {
+          //   attr.$set('desktop', null);
+          // }
+      }
+    }
+  }
+}])
 .directive('mobile', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
   return {
     restrict: 'A',

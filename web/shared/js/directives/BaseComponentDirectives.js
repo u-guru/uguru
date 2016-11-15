@@ -1613,6 +1613,7 @@ angular.module('uguru.shared.directives.base.components')
     var propDirectives = [
         'width',
         'height',
+        'fontSize',
         "m",
         "mX",
         "mY",
@@ -1676,17 +1677,29 @@ angular.module('uguru.shared.directives.base.components')
 
     }
     if (_browser.size.mobile) {
-
         renderPropDirectives(propDirectives, 'm');
     }
+    if (_browser.size.orientation === 'landscape') {
+        renderPropDirectives(propDirectives, 'l');
+    }
+    if (_browser.size.orientation === 'portrait') {
+        renderPropDirectives(propDirectives, 'p');
+    }
     renderPropDirectives(propDirectives);
+
+    function camelCase(input) {
+        return input.toLowerCase().replace(/-(.)/g, function(match, group1) {
+          return group1.toUpperCase();
+        });
+      }
 
     function renderPropDirectives(props, prefix) {
         propDirectives.forEach(function(propName) {
             if (prefix) {
-                propName = prefix + '-' + propName.replace(/\W+/g, '-')
-                .replace(/([a-z\d])([A-Z])/g, '$1-$2').toLowerCase();
+                propName = camelCase((prefix + '-' + propName.replace(/\W+/g, '-')
+                .replace(/([a-z\d])([A-Z])/g, '$1-$2').toLowerCase()).toLowerCase());
             }
+            console.log(propName)
         var propNameRender = propName
             modulePointer = modulePointer.directive(propName, ['CompService', function(CompService) {
               return {

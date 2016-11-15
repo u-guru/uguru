@@ -14,8 +14,11 @@ function CompService($timeout, $compile, $parse, $rootScope) {
   var itemSpec = [];
   var globals= {attr: {}, attrWithValue:{}, _class:{}}
   var css = initCSSObj();
-  var cssDirectiveShortcuts = getCSSDirectiveShortcuts();
-  var cssDefaultPropValues = getCSSDefaultPropValues();
+  var cssDirectiveShortcuts = getCSSDirectiveShortcuts(_browser);
+  var cssDefaultPropValues = getCSSDefaultPropValues(_browser);
+
+
+
   var platformSpecificProperties = getPlatformSpecificProperties();
   var browserPlatform;
   var specialProperties = {
@@ -46,8 +49,14 @@ function CompService($timeout, $compile, $parse, $rootScope) {
     return property;
   }
 
-  function getCSSDefaultPropValues() {
-    return {
+  function getCSSDefaultPropValues(browser) {
+    var prefixes = [];
+    browser.size.tablet && prefixes.push('t');
+    browser.size.mobile && prefixes.push('m');
+    browser.size.orientation === 'l' && prefixes.push('l');
+    browser.size.orientation === 'p' && prefixes.push('p');
+
+    var baseProps = {
       "end": "flex-end",
       "start": "flex-start",
       "left": "flex-start",
@@ -79,6 +88,15 @@ function CompService($timeout, $compile, $parse, $rootScope) {
       "nowrap": "nowrap",
       "wrapReverse": "wrap-reverse"
     }
+    prefixes.forEach(function(p) {
+      var basePropKeys = Object.keys(baseProps);
+      basePropKeys.forEach(function(key) {
+        var preStr = camelCase(p + '-' + toDashed(key));
+        baseProps[preStr] = baseProps[key];
+      })
+    })
+    console.log(baseProps)
+    return baseProps
   }
 
   function getPlatformSpecificProperties() {
@@ -98,13 +116,19 @@ function CompService($timeout, $compile, $parse, $rootScope) {
     }
   }
 
-  function getCSSDirectiveShortcuts() {
-    return {
+  function getCSSDirectiveShortcuts(browser) {
+    var prefixes = [];
+    browser.size.tablet && prefixes.push('t');
+    browser.size.mobile && prefixes.push('m');
+    browser.size.orientation === 'l' && prefixes.push('l');
+    browser.size.orientation === 'p' && prefixes.push('p');
+    var baseProps = {
         'm': 'margin',
         'mX': 'margin-left margin-right',//
         'mY': 'margin-top margin-bottom',
         'mTop': 'margin-top',
         'mBottom': 'margin-bottom',
+        'flexFlow': 'display',
         'mLeft': 'margin-left',
         'mRight': 'margin-right',
         "marginX": "margin-left margin-right",
@@ -120,42 +144,52 @@ function CompService($timeout, $compile, $parse, $rootScope) {
         "pRight": "padding-right",
         "paddingX": "padding-left padding-right",
         "paddingY": "padding-top padding-bottom",
-        "basis": "flex-basis",
-        "shrink": "flex-shrink",
-        "grow": "flex-grow",
-        "order": "order",
-        "wrapReverse": "flex-wrap",
-        "wrap": "flex-wrap",
-        "nowrap": "flex-wrap",
-        "end": "align-self",
-        "start": "align-self",
-        "left": "align-self",
-        "right": "align-self",
-        "center": "align-self",
-        "stretch": "align-self",
-        "spaceBetween": "align-self",
-        "spaceAround": "align-self",
-        "sA": "justify-content",
-        "sB": "justify-content",
-        "xEnd": "justify-content",
-        "yEnd": "align-content align-items",
-        "yStretch": "align-content align-items",
-        "yStart": "align-content align-items",
-        "yCenter": "align-content align-items",
-        "xEnd": "justify-content",
-        "ySpaceBetween": "align-content",
-        "ySpaceAround": "align-content",
-        "ySa": "align-content",
-        "ySb": "justify-content",
-        "row": "flex-direction",
-        "rowReverse": "flex-direction",
-        "rR": "flex-direction",
-        "column": "flex-direction",
-        "cR": "flex-direction",
+        "basis": "display flex-basis",
+        "shrink": "display flex-shrink",
+        "grow": "display flex-grow",
+        "order": "display order",
+        "wrapReverse": "display flex-wrap",
+        "wrap": "display flex-wrap",
+        "nowrap": "display flex-wrap",
+        "end": "display align-self",
+        "start": "display align-self",
+        "left": "display align-self",
+        "right": "display align-self",
+        "center": "display align-self",
+        "stretch": "display align-content",
+        "spaceBetween": "display justify-content",
+        "spaceAround": "display justify-content",
+        "sA": "display justify-content",
+        "sB": "display justify-content",
+        "xEnd": "display justify-content",
+        "yEnd": "display align-content align-items",
+        "yStretch": "display align-content align-items",
+        "yStart": "display align-content align-items",
+        "yCenter": "display align-content align-items",
+        "xEnd": "display justify-content",
+        "ySpaceBetween": "display align-content",
+        "ySpaceAround": "display align-content",
+        "ySa": "display align-content",
+        "ySb": "display justify-content",
+        "row": "display flex-direction",
+        "rowReverse": "display flex-direction",
+        "rR": "display flex-direction",
+        "column": "display flex-direction",
+        "cR": "display flex-direction",
         "x": "display justify-content",
-        "y": "display align-content align-items"
-
+        "y": "display align-content align-items",
+        "fontSize": "font-size"
     }
+    prefixes.forEach(function(p) {
+      var basePropKeys = Object.keys(baseProps);
+      basePropKeys.forEach(function(key) {
+        var preStr = camelCase(p + '-' + toDashed(key));
+        baseProps[preStr] = baseProps[key];
+      })
+    })
+    console.log(baseProps)
+
+    return baseProps;
   }
 
   function initCSSObj() {
@@ -173,11 +207,10 @@ function CompService($timeout, $compile, $parse, $rootScope) {
     browserPlatform = browser.engine.replace('blink', 'webkit');
 
     return function(element, prop, value) {
-
+      // console.log(prop, value)
       if (prop in cssPrefixedProperties) {
         prop = formatPrefixedCSSByEngine(prop, browserPlatform);
-      }
-
+      } else
       if (prop in cssPrefixedPropertyValues) {
         var valueFilter = cssPrefixedPropertyValues[prop];
         if (value.indexOf(valueFilter) > -1) {
@@ -185,10 +218,27 @@ function CompService($timeout, $compile, $parse, $rootScope) {
         }
       }
 
-      element.css(prop, value)
+      prop = camelCase(prop);
+      if (prop.toLowerCase().indexOf('size') > -1) {
+        console.log(prop, value)
+      }
+
+      element[0].style[prop] = value;
 
     }
   }
+
+  function toDashed(str) {
+    return (str.replace(/\W+/g, '-')
+                .replace(/([a-z\d])([A-Z])/g, '$1-$2')).toLowerCase();
+  }
+
+  function camelCase(input) {
+    return input.toLowerCase().replace(/-(.)/g, function(match, group1) {
+      return group1.toUpperCase();
+    });
+  }
+
 
   // $timeout(function() {
   //   css.apply()
@@ -197,7 +247,7 @@ function CompService($timeout, $compile, $parse, $rootScope) {
   function formatPrefixedCSSByEngine(value, browserPlatform) {
     var supportedPlatforms = ["blink", "moz", "ms", "webkit"];
     if (supportedPlatforms.indexOf(browserPlatform) > -1 ) {
-      return "-" + browserPlatform + "-" + value;
+      return  browserPlatform + "-" + value;
     }
     return value;
   }
@@ -229,8 +279,8 @@ function CompService($timeout, $compile, $parse, $rootScope) {
         if (property in platformSpecificProperties) {
           property = getPlatformSpecificPropName(property);
         }
-        // console.log('setting', property, currentValue)
-        css.apply(elem, property, value);
+
+        css.apply(elem, property, currentValue);
       })
     }
   }
