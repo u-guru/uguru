@@ -183,16 +183,76 @@
 
 .docs-form-grid {
   display: flex;
-  width: 100%; }
+  width: 100%;
+  padding: 7.5px; }
   .docs-form-grid > ul {
-    width: 50%;
-    padding: 7.5px; }
+    width: 50%; }
     .docs-form-grid > ul > li {
       padding: 7.5px; }
+      .docs-form-grid > ul > li.double {
+        display: flex; }
+        .docs-form-grid > ul > li.double fieldset:first-chlid {
+          width: calc(75% - 7.5px); }
+        .docs-form-grid > ul > li.double fieldset:last-child {
+          margin-left: 15px;
+          width: calc(25% - 7.5px); }
 
 .docs-form-section {
   border: 2px solid white;
   border-radius: 2px; }
+  .docs-form-section > div input, .docs-form-section > div textarea {
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+    border: 0;
+    border-radius: 0; }
+    .docs-form-section > div input::-webkit-input-placeholder, .docs-form-section > div textarea::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.25) !important; }
+    .docs-form-section > div input:-moz-placeholder, .docs-form-section > div textarea:-moz-placeholder {
+      color: rgba(255, 255, 255, 0.25) !important; }
+    .docs-form-section > div input::-moz-placeholder, .docs-form-section > div textarea::-moz-placeholder {
+      color: rgba(255, 255, 255, 0.25) !important; }
+    .docs-form-section > div input:-ms-input-placeholder, .docs-form-section > div textarea:-ms-input-placeholder {
+      color: rgba(255, 255, 255, 0.25) !important; }
+    .docs-form-section > div input:hover, .docs-form-section > div textarea:hover {
+      background: rgba(255, 255, 255, 0.5) !important; }
+      .docs-form-section > div input:hover::-webkit-input-placeholder, .docs-form-section > div textarea:hover::-webkit-input-placeholder {
+        color: rgba(255, 255, 255, 0.25) !important; }
+      .docs-form-section > div input:hover:-moz-placeholder, .docs-form-section > div textarea:hover:-moz-placeholder {
+        color: rgba(255, 255, 255, 0.25) !important; }
+      .docs-form-section > div input:hover::-moz-placeholder, .docs-form-section > div textarea:hover::-moz-placeholder {
+        color: rgba(255, 255, 255, 0.25) !important; }
+      .docs-form-section > div input:hover:-ms-input-placeholder, .docs-form-section > div textarea:hover:-ms-input-placeholder {
+        color: rgba(255, 255, 255, 0.25) !important; }
+    .docs-form-section > div input:focus, .docs-form-section > div textarea:focus {
+      background: white !important;
+      color: #757575 !important; }
+      .docs-form-section > div input:focus::-webkit-input-placeholder, .docs-form-section > div textarea:focus::-webkit-input-placeholder {
+        color: rgba(117, 117, 117, 0.5) !important; }
+      .docs-form-section > div input:focus:-moz-placeholder, .docs-form-section > div textarea:focus:-moz-placeholder {
+        color: rgba(117, 117, 117, 0.5) !important; }
+      .docs-form-section > div input:focus::-moz-placeholder, .docs-form-section > div textarea:focus::-moz-placeholder {
+        color: rgba(117, 117, 117, 0.5) !important; }
+      .docs-form-section > div input:focus:-ms-input-placeholder, .docs-form-section > div textarea:focus:-ms-input-placeholder {
+        color: rgba(117, 117, 117, 0.5) !important; }
+  .docs-form-section > div input {
+    font-size: 28px; }
+    .docs-form-section > div input::-webkit-input-placeholder {
+      font-size: 28px; }
+    .docs-form-section > div input:-moz-placeholder {
+      font-size: 28px; }
+    .docs-form-section > div input::-moz-placeholder {
+      font-size: 28px; }
+    .docs-form-section > div input:-ms-input-placeholder {
+      font-size: 28px; }
+
+.docs-form-section-title {
+  background: rgba(255, 255, 255, 0.25);
+  border-bottom: 2px solid white;
+  color: white;
+  font-size: 12px;
+  font-weight: 600 !important;
+  padding: 3px 15px; }
 
 .docs-articles {
   height: auto; }

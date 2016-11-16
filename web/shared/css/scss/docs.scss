@@ -232,17 +232,71 @@
 .docs-form-grid {
 	display: flex;
 	width: 100%;
+	padding: 7.5px;
 	> ul {
 		width: 50%;
-		padding: 7.5px;
 		> li {
 			padding: 7.5px;
+			&.double {
+				display: flex;
+				fieldset {
+					&:first-chlid {
+						width: calc(75% - 7.5px);
+					}
+					&:last-child {
+						margin-left: 15px;
+						width: calc(25% - 7.5px);
+					}
+				}
+			}
 		}
 	}
 }
 .docs-form-section {
 	border: 2px solid white;
 	border-radius: 2px;
+	> div {
+		input, textarea {
+			padding: 10px 15px;
+			background: rgba(white, .1)!important;
+			color: white!important;
+			border: 0;
+			border-radius: 0;
+			@include placeholder {
+				color: rgba(white, .25)!important;
+			}
+			&:hover {
+				background: rgba(white, .5)!important;
+				@include placeholder {
+					color: rgba(white, .25)!important;
+				}
+			}
+			&:focus {
+				background: white!important;
+				color: $taupe!important;
+				@include placeholder {
+					color: rgba($taupe, .5)!important;
+				}
+			}
+		}
+		input {
+			font-size: 28px;
+			@include placeholder {
+				font-size: 28px;
+			}
+		}
+		textarea {
+
+		}
+	}
+}
+.docs-form-section-title {
+	background: rgba(white, .25);
+	border-bottom: 2px solid white;
+	color: white;
+	font-size: 12px;
+	font-weight: 600!important;
+	padding: 3px 15px;
 }
 
 .docs-articles {
