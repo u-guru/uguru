@@ -1,49 +1,58 @@
 {
-	"category": "CSS",
-	"subcategories": {
-		"Flexbox": {
-			"display: flex": {},
-			"flex-direction": {},
-			"flex-wrap": {
-				"summary": "By default, flex items will all try to fit onto one line. You can change that and allow the items to wrap as needed with this property. Direction also plays a role here, determining the direction new lines are stacked in.",
-				"require": ["flex", "flex-direction"],
-				"options": {
-					"nowrap": {
-						"default": true,
-						"HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
-						"CSS": "ul { display: flex; flex-direction: row; flex-wrap: wrap; }"
-					},
-					"wrap": {},
-					"wrap-reverse": {}
-				}
-			},
-			"flex-flow": {},
-			"justify-content": {},
-			"align-items": {},
-			"align-content": {},
-			"order": {},
-			"flex-grow": {},
-			"flex-shrink": {},
-			"flex-basis": {},
-			"flex": {},
-			"align-self": {}
+    "category": "CSS",
+    "subcategories": [
+        {
+            "title": "Flexbox",
+            "topics": [
+				{
+                    "title": "display: flex",
+                    "summary": "Flex summary goes here"
+                },
+                {
+                    "title": "flex-wrap",
+                    "summary": "By default, flex items will all try to fit onto one line. You can change that and allow the items to wrap as needed with this property. Direction also plays a role here, determining the direction new lines are stacked in.",
+                    "require": ["flex", "flex-direction"],
+                    "options": [
+                        {
+                            "name": "nowrap",
+                            "default": true,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-direction: row; flex-wrap: wrap; }"
+                        },
+                        {
+                            "name": "wrap",
+                            "default": true,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-direction: row; flex-wrap: wrap; }"
+                        },
+                        {
+                            "name": "wrap-reverse",
+                            "default": true,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-direction: row; flex-wrap: wrap; }"
+                        }
+                    ]
+                },
+                {
+                    "title": "flex-direction",
+                    "summary": "Flex-direction summary goes here"
+                }
+            ]
+        },
+		{
+			"title": "CSS/SASS vs. Attributes"
 		},
-		"When to Use CSS/SASS vs. Attributes": {
-			"Colors & Mixes": {},
-			"CSS for Components": {}
+		{
+			"title": "CSS/SASS vs. Directives"
 		},
-		"When to use CSS/SASS vs. Directives": {
-			"Keyframe Animations": {},
-			":hover vs. on-mouseenter + on-mouseleave": {},
-			":focus vs. on-focus + on-blur": {},
-			":active vs. on-click": {}
+		{
+			"title": "Best Practices for Structure"
 		},
-		"Best practices for CSS and SASS Structure": {
-			"SASS File Organization": {},
-			"Property Order": {},
-			"Nesting Limitations": {}
+		{
+			"title": "Vendor Prefixes"
 		},
-		"Vendor Prefixes": {},
-		"Dimension Breakpoints": {}
-	}
+		{
+			"title": "Dimension Breakpoints"
+		}
+    ]
 }
