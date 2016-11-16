@@ -23,7 +23,7 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
-    .directive('list', ['$compile', '$rootScope',  function($compile, $rootScope) {
+    .directive('list', ['$compile', '$rootScope', '$parse',  function($compile, $rootScope, $parse) {
         return {
             restrict: 'A',
             priority: 100000,
@@ -32,22 +32,66 @@ angular.module('uguru.shared.directives.base.components')
             compile: function(element, attr) {
 
 
-                element[0].removeAttribute('list');
-                element[0].setAttribute('custom', '');
 
-                attr.$set('data', '');
                 var elemName = element[0].nodeName.toLowerCase().replace(/-(.)/g, function(match, group1) {
                   return group1.toUpperCase();
                 });
+                console.log(elemName)
                 var resultHtml = '';
                 if ($rootScope.activeView && elemName in $rootScope.activeView.data.vars.components) {
+                    element[0].removeAttribute('list');
+                    element[0].setAttribute('custom', '');
+
+                    attr.$set('data', '');
                     $rootScope.activeView.data.vars.components[elemName].forEach(function(data, i) {
                         var dataStr = JSON.stringify(data)
-                        resultHtml += element[0].outerHTML.replace('data=""', "data='" + $rootScope.activeView.name + ".data.vars.components.actionLink[" + i + "]'").replace('custom=""', 'custom');
+                        resultHtml += element[0].outerHTML.replace('data=""', "data='" + $rootScope.activeView.name + ".data.vars.components." + elemName + "[" + i + "]'").replace('custom=""', 'custom');
                     })
                 }
-                var elem = angular.element(resultHtml);
-                element.replaceWith(elem)
+                if (resultHtml.length) {
+                    var elem = angular.element(resultHtml);
+                    element.replaceWith(elem)
+                } else if (attr.list.length) {
+
+                    // var listAttr = attr.list.replace('}}', '').replace('{{','')
+                    return {
+                        pre: function preLink(scope, p_elem, p_attr) {
+                            var listAttrStr = p_attr.list.replace('{{', '').replace('}}', '');
+                            var listAttr = $parse(listAttrStr)(scope)
+                            if (listAttr && listAttr.length) {
+                                var resultHtml = ''
+                                listAttr.forEach(function(data, i) {
+                                    var dataStr = JSON.stringify(data)
+                                    p_elem[0].removeAttribute('list');
+                                    element[0].setAttribute('custom', '');
+                                    p_attr.$set('data', '');
+                                    resultHtml += p_elem[0].outerHTML.replace('data=""', "data='" + listAttrStr +  "[" + i + "]'").replace('custom=""', 'custom');
+                                })
+                                if (resultHtml.length) {
+                                    var elem = angular.element(resultHtml)
+
+
+                                    p_elem.contents(elem)
+                                    $compile(p_elem.contents())(scope)
+                                    console.log(p_elem[0])
+                                    // console.log(p_elem.parent())
+                                }
+                            }
+
+                            // console.log(listAttr)
+                            // console.log($parse(listAttr)(scope))
+                            // p_attr.$set('custom', '');
+                            // p_attr.$set('data', '');
+                            // if (listAttr in scope) {
+
+                            // } else {
+
+                            // }
+                            // p_elem.removeAttr('list')
+                        }
+                    }
+                }
+
             }
         }
     }])
@@ -70,12 +114,21 @@ angular.module('uguru.shared.directives.base.components')
             },
             link: function(scope, elem, attr) {
                 if ('data' in attr) {
+
                     var attrValue = $parse(attr.data)(scope)
+                    console.log(attrValue)
                     for (attr_name in attrValue) {
+                        // console.log(attr_name, attrValue[attr_name])
                         scope[attr_name] = attrValue[attr_name]
+
                     }
+
+                    // elem = angular.elem($parse(elem[0].innerHTML.substring(0,1)))
                     // console.log(attr.dataArr)
                     $compile(elem.html())(scope)
+
+                    // console.log($parse(angular.element(elem[0].innerHTML.trim())[0].innerHTML.trim())(scope))
+                    // console.log($parse(angular.element(elem[0].innerHTML)[0].innerHTML + '')(scope))
                 }
 
             }
@@ -274,19 +327,21 @@ angular.module('uguru.shared.directives.base.components')
             restrict: 'E',
             scope:false,
             replace:true,
+            transclude: true,
             templateUrl: function(element, attr) {
                 return attr.src || attr.url;
             },
-            compile: function compile(element, attr)  {
+            compile: function compile(element, attr, transclude)  {
                 CompService.renderAllStyleAttributes(element, attr);
-            },
-            link: {
-                post: function(scope, element, attr) {
-                    if (scope.chart) scope.chart.elem = element;
+                return {
+                    pre:angular.noop,
+                    post: function(post_scope, post_element, post_attr) {
 
+                        if (post_scope.chart) post_scope.chart.elem = post_element;
+
+                    }
                 }
             }
-
         }
     }])
 
