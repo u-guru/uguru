@@ -54,6 +54,10 @@
                     "name": "CSS"
                 },
                 {
+                    "path": "css2.json",
+                    "name": "css_two"
+                },
+                {
                     "path": "html.json",
                     "name": "HTML"
                 },
@@ -85,7 +89,8 @@
             "fields": ["", "name"]
         },
         "article-topic": {
-            "template_url": "./ui/templates/docs/article-topic.tpl"
+            "template_url": "./ui/templates/docs/article-topic.tpl",
+            "fields": ["topicName"]
         },
         "article-main": {
             "template_url": "./ui/templates/docs/article-main.tpl"

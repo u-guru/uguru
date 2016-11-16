@@ -730,9 +730,9 @@ angular.module('uguru.shared.directives')
               var postStates = [];
               return {
                   pre: function (scope, lElem, lAttr) {
-
                     if (attr.data) {
                       var attrData = attr.data;
+
                       if ($rootScope.ui && $rootScope.ui.data && 'set' in $rootScope.ui.data) {
                         for (var setVar in $rootScope.ui.data.set) {
                           var extended = $rootScope.ui.data.set[setVar];
@@ -746,7 +746,6 @@ angular.module('uguru.shared.directives')
                         }
                       }
 
-                      // console.log(attrData, scope.ui.app.views.gallery)
                       $compile(lElem.contents())($parse(attrData)(scope))
 
                     }
@@ -765,7 +764,9 @@ angular.module('uguru.shared.directives')
 
                       if (states.on) {
 
+
                         states.on.forEach(function(state, i) {
+                          if (!('actions' in state) || !state.actions) return;
                           // if (state.actions.send) {
                           //   state.actions.send.parsed.split(',').forEach(function(message_str, i) {
                           //   var msgNameCamel = ElementService.toCamelCaseBridge(message_str.split(':')[0]);
