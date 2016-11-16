@@ -130,6 +130,17 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
       executeExternalScripts(data_scope);
     }
 
+    if ('components' in data_scope) {
+
+      if (!$rootScope.components) {
+        $rootScope.components = {};
+      }
+      for (compName in data_scope.components) {
+        $rootScope.components[compName] = data_scope.components[compName]
+      }
+
+    }
+
   }
 
 }
