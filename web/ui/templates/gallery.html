@@ -108,8 +108,8 @@
 
 		<div class="ui-gallery-single-main current"
 			u init-with="p:[op:1, z-index:10, tr:none]"
-			when-popup-prev="p:[op:0, z-index:-10, tr:translateX(100%)]"
-			when-popup-next="p:[op:0, z-index:-10, tr:translateX(-100%)]"
+			when-popup-prev="p:[z-index:-10] | a:[translateX:0%:100%:1000:(0.18, 0.89, 0.32, 1.3):0:1:f, opacity:1:0:500:linear:1000:1:f]"
+			when-popup-next="p:[z-index:-10] | a:[translateX:0%:-100%:1000:(0.18, 0.89, 0.32, 1.3):0:1:f, opacity:1:0:500:linear:1000:1:f]"
 			when-popup-current="p:[op:1, z-index:10, tr:none]"
 			when-popup-down="p:[op:1, z-index:10, tr:translateY(-100%)]"
 			when-popup-up="p:[op:1, z-index:10, tr:none]">
@@ -656,8 +656,8 @@
 		 <div class="ui-gallery-single-main previous"
 			u init-with="p:[op:0, z-index:-10, tr:translateX(-100%)]"
 			when-popup-prev="p:[op:1, z-index:10, tr:none] | s:[prev-init:public, popup-prev-open:public, popup-prev-enter:public:1000]"
-			when-popup-next="p:[op:0, z-index:-10, tr:translateX(-200%)]"
-			when-popup-current="p:[op:0, z-index:-10, tr:translateX(-100%)]">
+			when-popup-next="p:[z-index:-10] | a:[translateX:0%:-200%:1000:(0.18, 0.89, 0.32, 1.3):0:1:f, opacity:1:0:500:linear:1000:1:f]"
+			when-popup-current="p:[op:0, z-index:-10] | a:[translateX:0%:-100%:300:(0.18, 0.89, 0.32, 1.3):0:1:f]">
 			<article>
 				<div>
 					<a class="ui-likes"
@@ -668,7 +668,7 @@
 					<figure>
 						<div class="pf-tile-container"
 							u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							when-prev-init="s:[household-cardlet-init:public, hh-bot:depth(>1):250, household-ribbon:children:500]"
+							when-prev-init="s:[household-cardlet-init:public, hh-bot:public:250, household-ribbon:public:500]"
 							when-household-cardlet-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f, translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
 							when-household-cardlet-exit="p:[transform-origin:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]">
 							<a></a><a></a><a></a><a></a>
@@ -970,7 +970,7 @@
 		<div class="ui-gallery-single-main next"
 			u init-with="p:[op:0, z-index:-10, tr:translateX(100%)]"
 			when-popup-prev="p:[op:0, z-index:-10, tr:translateX(200%)]"
-			when-popup-next="p:[op:1, z-index:10, tr:none] | s:[next-init:public, popup-next-open:public, popup-next-enter:public:1000]"
+			when-popup-next="p:[op:1, z-index:10, tr:none] | s:[next-init:public:300, popup-next-open:public:300, popup-next-enter:public:1300]"
 			when-popup-current="p:[op:0, z-index:-10, tr:translateX(100%)]">
 			<!-- @Samir All send scopes for this component page was changed to public -->
 			<article>

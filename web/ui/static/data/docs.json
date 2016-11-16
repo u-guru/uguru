@@ -10,6 +10,18 @@
         }
     },
     "attr":{
+		"jeselle": {
+			"info": "Jeselle's tests",
+			"tags": ["css-related"],
+			"examples": {
+                "margin": "<div class='bg-white-20p radius-2'><div class='bg-cosmic radius-2 width-96 height-96' m-x='20px' m-y='60px'></div></div>",
+				"stretch-friends": "<div class='bg-sienna radius-2 width-96' stretch></div> <div class='bg-cosmic radius-2 width-96' stretch></div>",
+				"row": "<ul class='full-x txt-16 semibold' p='5px' space-around row align-items='flex-start'><li p='5px'><div class='flex-center bg-cosmic radius-2 width-24 height-24'>1</div></li><li p='5px' end><div class='flex-center bg-olive radius-2 width-24 height-24'>2</div></li><li p='5px'><div class='flex-center bg-cosmic radius-2 width-24 height-24'>3</div></li><li p='5px'><div class='flex-center bg-cosmic radius-2 width-24 height-24'>4</div></li></ul>",
+				"corners": "<ul class='full-x txt-16 semibold' p='5px' space-around align-items='flex-start'><li p='5px'><div class='flex-center bg-cosmic radius-2 width-24 height-24'>1</div></li><li p='5px' end><div class='flex-center bg-olive radius-2 width-24 height-24'>2</div></li><li p='5px' margin='0px -60px 0px 0px'><div class='flex-center bg-rose radius-2 width-24 height-24'>3</div></li><li p='5px' end><div class='flex-center bg-neptune radius-2 width-24 height-24'>4</div></li></ul>",
+				"33-100 basis": "<ul class='full-x flex-start txt-16 semibold' p='5px' wrap row><li p='5px' basis='33%'><div class='flex-center bg-white-10p radius-2 height-24' width='100'>1</div></li><li p='5px' basis='33%'><div class='flex-center bg-white-20p radius-2 height-24' width='100'>2</div></li><li p='5px' basis='33%'><div class='flex-center bg-white-50p radius-2 height-24' width='100'>3</div></li><li p='5px' basis='100%'><div class='flex-center bg-cosmic radius-2 height-24' width='100'>4</div></li></ul>",
+				"grow": "<ul class='full-x flex-start txt-16 semibold' p='5px' wrap column><li p='5px' grow='1'><div class='flex-center bg-sienna radius-2 width-24'>1</div></li><li p='5px' grow='2'><div class='flex-center bg-sienna radius-2 width-24'>2</div></li><li p='5px' grow='3'><div class='flex-center bg-sienna radius-2 width-24'>3</div></li><li p='5px' grow='4'><div class='flex-center bg-sienna radius-2 width-24'>4</div></li></ul>"
+			}
+		},
         "margin": {
             "info": "margin css",
             "tags": ["css-related", "position"],
@@ -54,33 +66,43 @@
         "wrap": {
             "info": "flex-wrap",
             "examples": {
-                "wrap": "<div class='full-x wrap'><div class='bg-sienna radius-2 width-24 height-24'></div></div>",
-                "nowrap": "<div class='bg-sienna radius-2' nowrap padding='50px 50px'></div>",
-                "wrap-reverse": "<div class='bg-sienna radius-2' wrap-reverse padding='50px 50px'></div>"
+                "wrap": "<ul class='full-x flex-start txt-16 semibold' p='5px' wrap><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>1</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>2</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>3</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>4</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>5</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>6</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>7</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>8</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>9</div></li></ul>",
+                "nowrap": "<ul class='full-x flex-start txt-16 semibold' p='5px' nowrap><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>1</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>2</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>3</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>4</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>5</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>6</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>7</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>8</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>9</div></li></ul>",
+                "wrap-reverse": "<ul class='full-x flex-start txt-16 semibold' p='5px' wrap-reverse><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>1</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>2</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>3</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>4</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>5</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>6</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>7</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>8</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>9</div></li></ul>"
             }
         },
         "column": {
             "info": "flex-direction",
             "examples": {
-                "column": "<div class='bg-sienna radius-2' column padding='50px 50px'></div>",
-                "column-reverse": "<div class='bg-sienna radius-2' column-reverse padding='50px 50px'></div>"
+                "column": "<ul class='full-x flex-start txt-16 semibold' p='5px' wrap column><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>1</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>2</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>3</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>4</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>5</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>6</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>7</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>8</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>9</div></li></ul>",
+                "column-reverse": "<ul class='full-x flex-start txt-16 semibold' p='5px' wrap column-reverse><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>1</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>2</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>3</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>4</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>5</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>6</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>7</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>8</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>9</div></li></ul>"
             }
         },
         "row": {
             "info": "flex-direction",
             "examples": {
-                "column": "<div class='bg-sienna radius-2' row padding='50px 50px'></div>",
-                "column-reverse": "<div class='bg-sienna radius-2' row-reverse padding='50px 50px'></div>"
+                "row": "<ul class='full-x flex-start txt-16 semibold' p='5px' wrap row><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>1</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>2</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>3</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>4</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>5</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>6</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>7</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>8</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>9</div></li></ul>",
+                "row-reverse": "<ul class='full-x flex-start txt-16 semibold' p='5px' wrap row-reverse><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>1</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>2</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>3</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>4</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>5</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>6</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>7</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>8</div></li><li p='5px'><div class='flex-center bg-sienna radius-2 width-24 height-24'>9</div></li></ul>"
             }
         },
         "basis": {
-            "info": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-basics"
+            "info": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-basics",
+			"examples": {
+				"25%": "<ul class='full-x flex-start txt-16 semibold' p='5px' wrap row><li p='5px' basis='25%'><div class='flex-center bg-sienna radius-2 height-24' width='100'>1</div></li><li p='5px' basis='25%'><div class='flex-center bg-sienna radius-2 height-24' width='100'>2</div></li><li p='5px' basis='25%'><div class='flex-center bg-sienna radius-2 height-24' width='100'>3</div></li><li p='5px' basis='25%'><div class='flex-center bg-sienna radius-2 height-24' width='100'>4</div></li></ul>",
+				"50%": "<ul class='full-x flex-start txt-16 semibold' p='5px' wrap row><li p='5px' basis='50%'><div class='flex-center bg-sienna radius-2 height-24' width='100'>1</div></li><li p='5px' basis='50%'><div class='flex-center bg-sienna radius-2 height-24' width='100'>2</div></li><li p='5px' basis='50%'><div class='flex-center bg-sienna radius-2 height-24' width='100'>3</div></li><li p='5px' basis='50%'><div class='flex-center bg-sienna radius-2 height-24' width='100'>4</div></li></ul>"
+			}
         },
         "grow": {
-            "info": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-basics"
+            "info": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-basics",
+			"examples": {
+				"example": "<ul class='full-x flex-start txt-16 semibold' p='5px' wrap row><li p='5px' grow='1'><div class='flex-center bg-sienna radius-2 height-24' width='100'>1</div></li><li p='5px' grow='2'><div class='flex-center bg-sienna radius-2 height-24' width='100'>2</div></li><li p='5px' grow='3'><div class='flex-center bg-sienna radius-2 height-24' width='100'>3</div></li><li p='5px' grow='4'><div class='flex-center bg-sienna radius-2 height-24' width='100'>4</div></li></ul>"
+			}
         },
         "shrink": {
-            "info": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-basics"
+            "info": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-basics",
+			"examples": {
+				"example": "<ul class='full-x flex-start txt-16 semibold' p='5px' wrap row><li p='5px' shrink='1'><div class='flex-center bg-sienna radius-2 height-24' width='100'>1</div></li><li p='5px' shrink='2'><div class='flex-center bg-sienna radius-2 height-24' width='100'>2</div></li><li p='5px' shrink='3'><div class='flex-center bg-sienna radius-2 height-24' width='100'>3</div></li><li p='5px' shrink='4'><div class='flex-center bg-sienna radius-2 height-24' width='100'>4</div></li></ul>"
+			}
         },
         "pointer": {
             "info": "a shorter way to declare cursor:pointer",
