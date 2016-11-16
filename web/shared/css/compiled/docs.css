@@ -206,50 +206,50 @@
 .docs-form-section {
   border: 2px solid white;
   border-radius: 2px; }
-  .docs-form-section > div input, .docs-form-section > div textarea {
+  .docs-form-section > div input[type="text"], .docs-form-section > div textarea {
     padding: 10px 15px;
     background: rgba(255, 255, 255, 0.1) !important;
     color: white !important;
     border: 0;
     border-radius: 0; }
-    .docs-form-section > div input::-webkit-input-placeholder, .docs-form-section > div textarea::-webkit-input-placeholder {
+    .docs-form-section > div input[type="text"]::-webkit-input-placeholder, .docs-form-section > div textarea::-webkit-input-placeholder {
       color: rgba(255, 255, 255, 0.25) !important; }
-    .docs-form-section > div input:-moz-placeholder, .docs-form-section > div textarea:-moz-placeholder {
+    .docs-form-section > div input[type="text"]:-moz-placeholder, .docs-form-section > div textarea:-moz-placeholder {
       color: rgba(255, 255, 255, 0.25) !important; }
-    .docs-form-section > div input::-moz-placeholder, .docs-form-section > div textarea::-moz-placeholder {
+    .docs-form-section > div input[type="text"]::-moz-placeholder, .docs-form-section > div textarea::-moz-placeholder {
       color: rgba(255, 255, 255, 0.25) !important; }
-    .docs-form-section > div input:-ms-input-placeholder, .docs-form-section > div textarea:-ms-input-placeholder {
+    .docs-form-section > div input[type="text"]:-ms-input-placeholder, .docs-form-section > div textarea:-ms-input-placeholder {
       color: rgba(255, 255, 255, 0.25) !important; }
-    .docs-form-section > div input:hover, .docs-form-section > div textarea:hover {
+    .docs-form-section > div input[type="text"]:hover, .docs-form-section > div textarea:hover {
       background: rgba(255, 255, 255, 0.5) !important; }
-      .docs-form-section > div input:hover::-webkit-input-placeholder, .docs-form-section > div textarea:hover::-webkit-input-placeholder {
+      .docs-form-section > div input[type="text"]:hover::-webkit-input-placeholder, .docs-form-section > div textarea:hover::-webkit-input-placeholder {
         color: rgba(255, 255, 255, 0.25) !important; }
-      .docs-form-section > div input:hover:-moz-placeholder, .docs-form-section > div textarea:hover:-moz-placeholder {
+      .docs-form-section > div input[type="text"]:hover:-moz-placeholder, .docs-form-section > div textarea:hover:-moz-placeholder {
         color: rgba(255, 255, 255, 0.25) !important; }
-      .docs-form-section > div input:hover::-moz-placeholder, .docs-form-section > div textarea:hover::-moz-placeholder {
+      .docs-form-section > div input[type="text"]:hover::-moz-placeholder, .docs-form-section > div textarea:hover::-moz-placeholder {
         color: rgba(255, 255, 255, 0.25) !important; }
-      .docs-form-section > div input:hover:-ms-input-placeholder, .docs-form-section > div textarea:hover:-ms-input-placeholder {
+      .docs-form-section > div input[type="text"]:hover:-ms-input-placeholder, .docs-form-section > div textarea:hover:-ms-input-placeholder {
         color: rgba(255, 255, 255, 0.25) !important; }
-    .docs-form-section > div input:focus, .docs-form-section > div textarea:focus {
+    .docs-form-section > div input[type="text"]:focus, .docs-form-section > div textarea:focus {
       background: white !important;
       color: #757575 !important; }
-      .docs-form-section > div input:focus::-webkit-input-placeholder, .docs-form-section > div textarea:focus::-webkit-input-placeholder {
+      .docs-form-section > div input[type="text"]:focus::-webkit-input-placeholder, .docs-form-section > div textarea:focus::-webkit-input-placeholder {
         color: rgba(117, 117, 117, 0.5) !important; }
-      .docs-form-section > div input:focus:-moz-placeholder, .docs-form-section > div textarea:focus:-moz-placeholder {
+      .docs-form-section > div input[type="text"]:focus:-moz-placeholder, .docs-form-section > div textarea:focus:-moz-placeholder {
         color: rgba(117, 117, 117, 0.5) !important; }
-      .docs-form-section > div input:focus::-moz-placeholder, .docs-form-section > div textarea:focus::-moz-placeholder {
+      .docs-form-section > div input[type="text"]:focus::-moz-placeholder, .docs-form-section > div textarea:focus::-moz-placeholder {
         color: rgba(117, 117, 117, 0.5) !important; }
-      .docs-form-section > div input:focus:-ms-input-placeholder, .docs-form-section > div textarea:focus:-ms-input-placeholder {
+      .docs-form-section > div input[type="text"]:focus:-ms-input-placeholder, .docs-form-section > div textarea:focus:-ms-input-placeholder {
         color: rgba(117, 117, 117, 0.5) !important; }
-  .docs-form-section > div input {
+  .docs-form-section > div input[type="text"] {
     font-size: 28px; }
-    .docs-form-section > div input::-webkit-input-placeholder {
+    .docs-form-section > div input[type="text"]::-webkit-input-placeholder {
       font-size: 28px; }
-    .docs-form-section > div input:-moz-placeholder {
+    .docs-form-section > div input[type="text"]:-moz-placeholder {
       font-size: 28px; }
-    .docs-form-section > div input::-moz-placeholder {
+    .docs-form-section > div input[type="text"]::-moz-placeholder {
       font-size: 28px; }
-    .docs-form-section > div input:-ms-input-placeholder {
+    .docs-form-section > div input[type="text"]:-ms-input-placeholder {
       font-size: 28px; }
 
 .docs-form-section-title {
@@ -259,6 +259,64 @@
   font-size: 12px;
   font-weight: 600 !important;
   padding: 3px 15px; }
+
+.docs-form-severity hr {
+  margin: 0;
+  border: 0;
+  height: 19px;
+  background: #81b566;
+  background: -moz-linear-gradient(left, #81b566 0%, #f6c64e 50%, #f04f54 100%);
+  background: -webkit-linear-gradient(left, #81b566 0%, #f6c64e 50%, #f04f54 100%);
+  background: linear-gradient(to right, #81b566 0%, #f6c64e 50%, #f04f54 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#81b566', endColorstr='#f04f54',GradientType=1 ); }
+.docs-form-severity ul {
+  display: flex; }
+  .docs-form-severity ul li {
+    width: 20%;
+    position: relative; }
+    .docs-form-severity ul li input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      cursor: pointer; }
+    .docs-form-severity ul li > svg rect {
+      fill: none; }
+    .docs-form-severity ul li > div {
+      display: flex;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+    .docs-form-severity ul li:nth-child(1) .docs-radio div {
+      background: #81B566; }
+    .docs-form-severity ul li:nth-child(2) .docs-radio div {
+      background: #bcbe5a; }
+    .docs-form-severity ul li:nth-child(3) .docs-radio div {
+      background: #F6C64E; }
+    .docs-form-severity ul li:nth-child(4) .docs-radio div {
+      background: #f38b51; }
+    .docs-form-severity ul li:nth-child(5) .docs-radio div {
+      background: #F04F54; }
+
+.docs-radio {
+  border-radius: 100%;
+  background: white;
+  width: 24px;
+  height: 24px;
+  padding: 3px; }
+  .docs-radio div {
+    transform-origin: center center;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background: #2BB3B8; }
 
 .docs-articles {
   height: auto; }
