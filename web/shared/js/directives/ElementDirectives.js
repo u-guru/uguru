@@ -231,7 +231,8 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
     replace: true,
     scope: false,
-    compile: function compile(element, attr) {
+    transclude: true,
+    compile: function compile(element, attr, transclude) {
       var scopeRef = null;
       if ('renderAfterExtScripts' in attr) {
         element[0].style.opacity = 0;
@@ -253,13 +254,29 @@ angular.module('uguru.shared.directives')
       return {
         pre: function(scope, p_element, p_attr) {
           scopeRef = scope;
-          if ('renderAfterExtScripts' in attr) {
+          // if ('renderAfterExtScripts' in attr) {
             scope.$watch('data.config.processed.scriptStatus.complete', function(value) {
               if (value) {
-                p_element[0].style.opacity = 1;
+
+                  if (!$rootScope.activeView) {
+                    $rootScope.activeView = {name: attr.linkDataName, data: scope.data};
+                    // scope.$watch(attr.linkDataName + '.data', function(value) {
+                        // if (value) {
+                            transclude(scope, function(clone, innerScope) {
+                                $compile(clone)(innerScope);
+
+                                element.append(clone);
+                                p_element[0].style.opacity = 1;
+
+                            })
+                        // }
+                    // })
+                }
               }
             })
-          }
+            // if ('linkData' in attr && 'linkDataName' in attr) {
+
+          // }
 
         },
         post: angular.noop
@@ -713,6 +730,7 @@ angular.module('uguru.shared.directives')
               var postStates = [];
               return {
                   pre: function (scope, lElem, lAttr) {
+
                     if (attr.data) {
                       var attrData = attr.data;
                       if ($rootScope.ui && $rootScope.ui.data && 'set' in $rootScope.ui.data) {
@@ -727,10 +745,13 @@ angular.module('uguru.shared.directives')
                           }
                         }
                       }
+
                       // console.log(attrData, scope.ui.app.views.gallery)
                       $compile(lElem.contents())($parse(attrData)(scope))
 
                     }
+
+
                     scope.states = states || {};
                     scope.hasInitAfter = hasInitAfter;
                     scope.elem = lElem;
