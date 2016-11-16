@@ -43,27 +43,23 @@
             "queue": [
                 {
                     "path": "attributes.json",
-                    "name": "Attributes"
+                    "name": "attributes"
                 },
                 {
                     "path": "directives.json",
-                    "name": "Directives"
+                    "name": "directives"
                 },
                 {
                     "path": "css.json",
-                    "name": "CSS"
-                },
-                {
-                    "path": "css2.json",
-                    "name": "css_two"
+                    "name": "css"
                 },
                 {
                     "path": "html.json",
-                    "name": "HTML"
+                    "name": "html"
                 },
                 {
                     "path": "style-guide.json",
-                    "name": "Style Guide"
+                    "name": "guide"
                 }
             ]
         }
