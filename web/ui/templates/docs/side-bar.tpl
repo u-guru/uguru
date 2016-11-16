@@ -1,7 +1,9 @@
 <aside class="docs-nav overflow-y no-scrollbar">
 	<nav>
 	    <ul class="docs-nav-list">
-	        <side-bar-item ng-repeat='(sectionName, value) in docs.data.content track by $index' custom> </side-bar-item>
+	        <side-bar-item ng-repeat='(sectionName, value) in docs.data.content track by $index' custom>
+				<!-- error with links, see side-bar-item.tpl -->
+			</side-bar-item>
 
 	        <!-- <li>
 	            <h1><a u on-click="c:[selected:add]">Directives</a></h1>
@@ -24,18 +26,6 @@
 	                    </ul>
 	                </li>
 	            </ul>
-	        </li>
-	        <li>
-	            <h1><a u on-click="c:[selected:add]">CSS</a></h1>
-	        </li>
-	        <li>
-	            <h1><a u on-click="c:[selected:add]">HTML</a></h1>
-	        </li>
-	        <li>
-	            <h1><a u on-click="c:[selected:add]">Bug List</a></h1>
-	        </li>
-	        <li>
-	            <h1><a u on-click="c:[selected:add]">Style Guide</a></h1>
 	        </li> -->
 	    </ul>
 	</nav>
