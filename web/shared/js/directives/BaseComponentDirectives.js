@@ -1669,7 +1669,11 @@ angular.module('uguru.shared.directives.base.components')
         "cR",
         "x",
         "y",
-        "xCenter"
+        "xCenter",
+        "top",
+        "left",
+        "right",
+        "bottom"
         ]
 
     var modulePointer = angular.module('uguru.shared.directives.base.components');
