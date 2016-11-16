@@ -151,6 +151,63 @@
 	}
 }
 
+.docs-results {
+	height: auto;
+	> ul {
+		padding: 7.5px;
+		> li {
+			padding: 7.5px;
+		}
+	}
+}
+.docs-result {
+	position: relative;
+	> div {
+		display: flex;
+		border-radius: 2px;
+		overflow: hidden;
+		> h1 {
+			background: mix($stone, white, 25%);
+			color: $stone;
+			padding: 15px;
+			width: 25%;
+			font-size: 24px;
+			font-weight: 600;
+		}
+		> div {
+			position: relative;
+			width: 75%;
+			height: 256px;
+			overflow: auto;
+			background: mix($stone, white, 95%);
+		}
+		.docs-article {
+			height: 100%;
+			overflow: auto;
+		}
+		.docs-article-gradient {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 25px;
+			margin: 0;
+			border: 0;
+			background: -moz-linear-gradient(top, rgba(94,103,130,0.65) 0%, rgba(94,103,130,0) 100%);
+			background: -webkit-linear-gradient(top, rgba(94,103,130,0.65) 0%,rgba(94,103,130,0) 100%);
+			background: linear-gradient(to bottom, rgba(94,103,130,0.65) 0%,rgba(94,103,130,0) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a65e6782', endColorstr='#005e6782',GradientType=0 );
+		}
+	}
+	b.highlight {
+		display: inline-block;
+		border-radius: 2px;
+		background: $cream;
+		font-weight: 600;
+		color: $slate;
+	}
+}
+
 .docs-articles {
 	height: auto;
 }
