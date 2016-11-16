@@ -180,6 +180,8 @@
 			height: 256px;
 			overflow: hidden;
 			background: mix($stone, white, 95%);
+			border: 2px solid mix($stone, white, 25%);
+			border-left: 0;
 		}
 		.docs-article-gradient {
 			position: absolute;
@@ -207,12 +209,18 @@
 				> h1 {
 					background: white;
 				}
+				> div {
+					border-color: white;
+				}
 			}
 		}
 		&:active {
 			+ div {
 				> h1 {
 					background: mix($stone, white, 50%);
+				}
+				> div {
+					border-color: mix($stone, white, 50%);
 				}
 			}
 		}

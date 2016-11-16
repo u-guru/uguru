@@ -147,7 +147,9 @@
       width: 75%;
       height: 256px;
       overflow: hidden;
-      background: #5e6782; }
+      background: #5e6782;
+      border: 2px solid #d5d7de;
+      border-left: 0; }
     .docs-result > div .docs-article-gradient {
       position: absolute;
       top: 0;
@@ -169,8 +171,12 @@
     z-index: 10; }
     .docs-result > a:hover + div > h1, .docs-result > a:focus + div > h1 {
       background: white; }
+    .docs-result > a:hover + div > div, .docs-result > a:focus + div > div {
+      border-color: white; }
     .docs-result > a:active + div > h1 {
       background: #aaafbd; }
+    .docs-result > a:active + div > div {
+      border-color: #aaafbd; }
   .docs-result .highlight {
     display: inline-block;
     border-radius: 2px;
