@@ -6,16 +6,24 @@
             },
             "actionLink": [
                 {
-                    "name": "search",
-                    "keyMapping": "S"
+                    "name": "Search",
+                    "keyMapping": "s",
+					"icon": "shared/templates/components/svg/docs/search-circle.html"
                 },
                 {
-                    "name": "delete",
-                    "keyMapping": "d"
+                    "name": "Report Bug",
+                    "keyMapping": "b",
+					"icon": "shared/templates/components/svg/docs/bug.html"
                 },
                 {
-                    "name": "pinch",
-                    "keyMapping": "p"
+                    "name": "Add Doc",
+                    "keyMapping": "d",
+					"icon": "shared/templates/components/svg/docs/add-doc.html"
+                },
+                {
+                    "name": "Add Feature",
+                    "keyMapping": "f",
+					"icon": "shared/templates/components/svg/docs/add-ft.html"
                 }
             ]
         },
@@ -35,23 +43,23 @@
             "queue": [
                 {
                     "path": "attributes.json",
-                    "name": "attr"
-                },
-                {
-                    "path": "css.json",
-                    "name": "css"
+                    "name": "Attributes"
                 },
                 {
                     "path": "directives.json",
-                    "name": "directives"
+                    "name": "Directives"
+                },
+                {
+                    "path": "css.json",
+                    "name": "CSS"
                 },
                 {
                     "path": "html.json",
-                    "name": "html"
+                    "name": "HTML"
                 },
                 {
                     "path": "style-guide.json",
-                    "name": "style"
+                    "name": "Style Guide"
                 }
             ]
         }
@@ -75,7 +83,32 @@
         "action-link": {
             "template_url": "./ui/templates/docs/action-link.tpl",
             "fields": ["", "name"]
+        },
+        "article-topic": {
+            "template_url": "./ui/templates/docs/article-topic.tpl"
+        },
+        "article-main": {
+            "template_url": "./ui/templates/docs/article-main.tpl"
+        },
+        "article-options": {
+            "template_url": "./ui/templates/docs/article-options.tpl"
+        },
+        "article-example": {
+            "template_url": "./ui/templates/docs/article-example.tpl"
+        },
+        "search-result": {
+            "template_url": "./ui/templates/docs/search-result.tpl"
+        },
+        "example-preview": {
+            "template_url": "./ui/templates/docs/example-preview.tpl"
+        },
+        "example-html": {
+            "template_url": "./ui/templates/docs/example-html.tpl"
+        },
+        "example-css": {
+            "template_url": "./ui/templates/docs/example-css.tpl"
         }
+
 
     }
 
