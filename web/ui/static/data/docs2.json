@@ -98,7 +98,17 @@
         },
         "search-result": {
             "template_url": "./ui/templates/docs/search-result.tpl"
+        },
+        "example-preview": {
+            "template_url": "./ui/templates/docs/example-preview.tpl"
+        },
+        "example-html": {
+            "template_url": "./ui/templates/docs/example-html.tpl"
+        },
+        "example-css": {
+            "template_url": "./ui/templates/docs/example-css.tpl"
         }
+
 
     }
 
