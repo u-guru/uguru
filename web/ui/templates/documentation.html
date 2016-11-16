@@ -102,6 +102,90 @@
 				</li>
 			</ul>
 		</header>
+		<section class="docs-form">
+			<form>
+				<div class="docs-form-grid">
+					<ul>
+						<li>
+							<fieldset class="docs-form-section">
+								<label class="docs-form-section-title">Title</label>
+								<div>
+									<input value="Lorem Ipsum"/>
+								</div>
+							</fieldset>
+						</li>
+						<li>
+							<fieldset class="docs-form-section">
+								<label class="docs-form-section-title">Description</label>
+								<div>
+									<textarea value="Describe your problem"/>
+								</div>
+							</fieldset>
+						</li>
+						<li>
+							<fieldset class="docs-form-section">
+								<div>
+									<input type="checkbox"/>
+									<ul>
+										<li>Jeselle Obina</li>
+										<li>Samir Makhani</li>
+										<li>Gabrielle Wee</li>
+									</ul>
+								</div>
+							</fieldset>
+						</li>
+						<li>
+							<fieldset class="docs-form-section">
+								<label class="docs-form-section-title">Severity</label>
+								<div>
+									<ul>
+										<li><input type="radio"/></li>
+										<li><input type="radio"/></li>
+										<li><input type="radio"/></li>
+									</ul>
+								</div>
+							</fieldset>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<fieldset class="docs-form-section">
+								<label class="docs-form-section-title">File</label>
+								<div>
+									<input value="lorem.html"/>
+								</div>
+							</fieldset>
+							<fieldset class="docs-form-section">
+								<label class="docs-form-section-title">Line</label>
+								<div>
+									<input placeholder="01"/>
+								</div>
+							</fieldset>
+						</li>
+						<li>
+							<fieldset class="docs-form-section">
+								<label class="docs-form-section-title">Snippet</label>
+								<div>
+									<textarea value="Describe your problem"/>
+								</div>
+							</fieldset>
+						</li>
+						<li>
+							<div class="docs-form-section">
+								<div>
+									<ul>
+										<li><a class="chip bg bg-robin">tag</a></li>
+										<li><a class="chip bg bg-robin">tag</a></li>
+										<li><a class="chip bg bg-robin">tag</a></li>
+										<li><a class="chip bg bg-robin">tag</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</form>
+		</section>
 		<section class="docs-results">
 			<ul>
 				<li>
@@ -188,10 +272,10 @@
 													when-docs-html="p:[z-index:10, op:1]"
 													when-docs-css="p:[z-index:-10, op:0]">
 													<textarea>&lt;ul class="p15-grid"&gt;
-	&lt;li&gt;&lt;div class="bg-stone"&gt;1&lt;/div&gt;&lt;/li&gt;
-	&lt;li&gt;&lt;div class="bg-cobalt"&gt;1&lt;/div&gt;&lt;/li&gt;
-	&lt;li&gt;&lt;div class="bg-eggplant"&gt;1&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;</textarea>
+														&lt;li&gt;&lt;div class="bg-stone"&gt;1&lt;/div&gt;&lt;/li&gt;
+														&lt;li&gt;&lt;div class="bg-cobalt"&gt;1&lt;/div&gt;&lt;/li&gt;
+														&lt;li&gt;&lt;div class="bg-eggplant"&gt;1&lt;/div&gt;&lt;/li&gt;
+													&lt;/ul&gt;</textarea>
 												</div>
 												<div class="docs-example-css"
 													u init-with="p:[z-index:10, op:1]"
@@ -199,9 +283,9 @@
 													when-docs-html="p:[z-index:-10, op:0]"
 													when-docs-css="p:[z-index:10, op:1]">
 													<pre>ul {
-	<b class="highlight">display: flex;</b>
-	flex-direction: column;
-}</pre>
+														<b class="highlight">display: flex;</b>
+														flex-direction: column;
+													}</pre>
 													<!-- u init-with="p:[z-index:10, op:1]"
 													when-flex-dir-r="p:[z-index:-10, op:0]"
 													when-flex-dir-rr="p:[z-index:-10, op:0]"
@@ -297,10 +381,10 @@
 								when-docs-html="p:[z-index:10, op:1]"
 								when-docs-css="p:[z-index:-10, op:0]">
 								<textarea>&lt;ul class="p15-grid"&gt;
-	&lt;li&gt;&lt;div class="bg-stone"&gt;1&lt;/div&gt;&lt;/li&gt;
-	&lt;li&gt;&lt;div class="bg-cobalt"&gt;1&lt;/div&gt;&lt;/li&gt;
-	&lt;li&gt;&lt;div class="bg-eggplant"&gt;1&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;</textarea>
+									&lt;li&gt;&lt;div class="bg-stone"&gt;1&lt;/div&gt;&lt;/li&gt;
+									&lt;li&gt;&lt;div class="bg-cobalt"&gt;1&lt;/div&gt;&lt;/li&gt;
+									&lt;li&gt;&lt;div class="bg-eggplant"&gt;1&lt;/div&gt;&lt;/li&gt;
+								&lt;/ul&gt;</textarea>
 							</div>
 							<div class="docs-example-css"
 								u init-with="p:[z-index:-10, op:0]"
@@ -308,9 +392,9 @@
 								when-docs-html="p:[z-index:-10, op:0]"
 								when-docs-css="p:[z-index:10, op:1]">
 								<pre>ul {
-	display: flex;
-	flex-direction: column;
-}</pre>
+									display: flex;
+									flex-direction: column;
+								}</pre>
 								<!-- u init-with="p:[z-index:10, op:1]"
 								when-flex-dir-r="p:[z-index:-10, op:0]"
 								when-flex-dir-rr="p:[z-index:-10, op:0]"

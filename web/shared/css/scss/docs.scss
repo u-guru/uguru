@@ -178,12 +178,8 @@
 			position: relative;
 			width: 75%;
 			height: 256px;
-			overflow: auto;
+			overflow: hidden;
 			background: mix($stone, white, 95%);
-		}
-		.docs-article {
-			height: 100%;
-			overflow: auto;
 		}
 		.docs-article-gradient {
 			position: absolute;
@@ -228,6 +224,25 @@
 		font-weight: 600;
 		color: $slate;
 	}
+}
+
+.docs-form {
+	height: auto;
+}
+.docs-form-grid {
+	display: flex;
+	width: 100%;
+	> ul {
+		width: 50%;
+		padding: 7.5px;
+		> li {
+			padding: 7.5px;
+		}
+	}
+}
+.docs-form-section {
+	border: 2px solid white;
+	border-radius: 2px;
 }
 
 .docs-articles {

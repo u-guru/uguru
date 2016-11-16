@@ -146,11 +146,8 @@
       position: relative;
       width: 75%;
       height: 256px;
-      overflow: auto;
+      overflow: hidden;
       background: #5e6782; }
-    .docs-result > div .docs-article {
-      height: 100%;
-      overflow: auto; }
     .docs-result > div .docs-article-gradient {
       position: absolute;
       top: 0;
@@ -180,6 +177,22 @@
     background: #fadab0;
     font-weight: 600;
     color: #40484B; }
+
+.docs-form {
+  height: auto; }
+
+.docs-form-grid {
+  display: flex;
+  width: 100%; }
+  .docs-form-grid > ul {
+    width: 50%;
+    padding: 7.5px; }
+    .docs-form-grid > ul > li {
+      padding: 7.5px; }
+
+.docs-form-section {
+  border: 2px solid white;
+  border-radius: 2px; }
 
 .docs-articles {
   height: auto; }
