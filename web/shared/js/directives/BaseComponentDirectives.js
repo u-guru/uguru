@@ -23,9 +23,32 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
-    .directive('setTrueOnLoad', ['$compile',  function($compile) {
+    .directive('list', ['$compile', '$rootScope',  function($compile, $rootScope) {
         return {
             restrict: 'A',
+            priority: 100000,
+            replace:true,
+            scope:true,
+            compile: function(element, attr) {
+
+
+                element[0].removeAttribute('list');
+                element[0].setAttribute('custom', '');
+
+                attr.$set('data', '');
+                var elemName = element[0].nodeName.toLowerCase().replace(/-(.)/g, function(match, group1) {
+                  return group1.toUpperCase();
+                });
+                var resultHtml = '';
+                if ($rootScope.activeView && elemName in $rootScope.activeView.data.vars.components) {
+                    $rootScope.activeView.data.vars.components[elemName].forEach(function(data, i) {
+                        var dataStr = JSON.stringify(data)
+                        resultHtml += element[0].outerHTML.replace('data=""', "data='" + $rootScope.activeView.name + ".data.vars.components.actionLink[" + i + "]'").replace('custom=""', 'custom');
+                    })
+                }
+                var elem = angular.element(resultHtml);
+                element.replaceWith(elem)
+            }
         }
     }])
     .directive('custom', ['$compile', '$rootScope', '$parse',  function($compile, $rootScope, $parse) {
@@ -46,12 +69,15 @@ angular.module('uguru.shared.directives.base.components')
                 }
             },
             link: function(scope, elem, attr) {
-
-                var attrValue = $parse(attr.data)(scope)
-                for (attr_name in attrValue) {
-                    scope[attr_name] = attrValue[attr_name]
+                if ('data' in attr) {
+                    var attrValue = $parse(attr.data)(scope)
+                    for (attr_name in attrValue) {
+                        scope[attr_name] = attrValue[attr_name]
+                    }
+                    // console.log(attr.dataArr)
+                    $compile(elem.html())(scope)
                 }
-                $compile(elem.html())(scope)
+
             }
 
             // compile:function(element, attr, transclude) {
@@ -1057,8 +1083,11 @@ angular.module('uguru.shared.directives.base.components')
                 if (attr.type && attr.type === 'row') {
                     element.addClass('flex flex-wrap');
                 }
-                // return {
-                //     // pre: function preLink(lScope, lElem, lAttr, transcludeFn) {
+
+
+
+                    // pre: function preLink(lScope, lElem, lAttr, transcludeFn) {
+
                 //     //     lScope.isView = true;
                 //     //     lScope.viewType = attr.type;
                 //     //         transclude(lScope, function(clone, innerScope) {
