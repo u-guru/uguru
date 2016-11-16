@@ -3,7 +3,21 @@
         "components": {
             "searchBar": {
                 "text": ""
-            }
+            },
+            "actionLinks": [
+                {
+                    "name": "search",
+                    "keyMapping": "S"
+                },
+                {
+                    "name": "delete",
+                    "keyMapping": "d"
+                },
+                {
+                    "name": "pinch",
+                    "keyMapping": "p"
+                }
+            ]
         },
         "searchText": "",
         "searchText": "Get Started",
@@ -55,6 +69,13 @@
         },
         "side-bar-item": {
             "template_url": "./ui/templates/docs/side-bar-item.tpl"
+        },
+        "omnibar": {
+            "template_url": "./ui/templates/docs/omnibar.tpl"
+        },
+        "action-link": {
+            "template_url": "./ui/templates/docs/action-link.tpl",
+            "fields": ["", "name"]
         }
 
     }

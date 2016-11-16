@@ -1,28 +1,17 @@
+<view link-data="ui/static/data/docs2.json" render-after-ext-scripts link-data-name="docs" row  class="docs" type='row' bg="stone" width="100" height="100">
 
-<view bg="stone" link-data="ui/static/data/docs2.json" render-after-ext-scripts link-data-name="docs" row class='full-xy'>
-    <div grow='1' bg='azure' ng-if='docs.data'>
-        <side-bar custom> </side-bar>
-    </div>
-
-
-    <div grow='3' bg='slate' column ng-if='docs.data'>
-        <div stretch x='center' grow='1'>
-            <!--TO be modularized, temporary-->
-            <search-bar custom data="docs.data.vars.components.searchBar"> </search-bar>
-
-        </div>
-        <div stretch x='center' grow='6'>
-
-            <div ng-show='docs.data.vars.activeTab === sectionName' ng-repeat='(sectionName, categoryData) in docs.data.content'>
-                {{categoryData}}
-            </div>
-        </div>
-
-    </div>
-
-    <!-- <sidebar custom data="docs.sections">
-    </sidebar> -->
-
-
+        <aside class="docs-nav overflow-y no-scrollbar" width="25" height="100" ng-if='docs.data'>
+            <side-bar custom> </side-bar>
+        </aside>
+        <main class="docs-main overflow-y no-scrollbar" width="75" height="100" ng-if='docs.data'>
+            <header>
+                <omnibar custom> </omnibar>
+                <ul class="docs-actions">
+                    <action-link custom data="docs.data.vars.components.actionLinks[0]"> </action-link>
+                    <action-link custom data="docs.data.vars.components.actionLinks[1]"> </action-link>
+                    <action-link custom data="docs.data.vars.components.actionLinks[2]"> </action-link>
+                </ul>
+            </header>
+        </main>
 
 </view>
