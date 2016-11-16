@@ -28,7 +28,7 @@
             ]
         },
         "searchText": "Get Started",
-        "activeTab": "attr"
+        "activeTab": "Attributes"
     },
     "config": {
         "pathParams": {
@@ -90,7 +90,7 @@
         },
         "article-topic": {
             "template_url": "./ui/templates/docs/article-topic.tpl",
-            "fields": ["topicName"]
+            "fields": ["title"]
         },
         "article-main": {
             "template_url": "./ui/templates/docs/article-main.tpl"

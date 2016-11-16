@@ -110,7 +110,7 @@
 							<fieldset class="docs-form-section">
 								<label class="docs-form-section-title">Title</label>
 								<div>
-									<input value="Lorem Ipsum"/>
+									<input type="text" value="Lorem Ipsum"/>
 								</div>
 							</fieldset>
 						</li>
@@ -123,25 +123,146 @@
 							</fieldset>
 						</li>
 						<li>
-							<fieldset class="docs-form-section">
-								<div>
-									<input type="checkbox"/>
-									<ul>
-										<li>Jeselle Obina</li>
-										<li>Samir Makhani</li>
-										<li>Gabrielle Wee</li>
+							<div class="docs-form-section">
+								<div class="dropdown auto">
+									<div u on-init="s:[dropdown-draw:children:linear-1500, dropdown-load-end:children:1500]">
+										<span class="txt-20"
+											u init-with="p-op"
+											when-dropdown-draw="a:[opacity:0:1:500:easeOutSine:0:1:f]">Gabrielle Wee</span>
+										<a init-with="p-op"
+											u when-dropdown-draw="a:[opacity:0:1:500:easeOutSine:0:1:f]"
+											on-click="s:[dropdown-open:public]">
+											<svg viewBox="0 0 100 50">
+												<path d="M14,32 L50,68 L86,32"
+													u init-with="p:[op:0, tr:none, sdo:102, sda:102]"
+													on-init="a:[opacity:0:1:150:linear:0:1:f] | s:[draw-arrow:depth(0):1000]"
+													when-draw-arrow="a:[stroke-dashoffset:102:0:450:easeInQuint:0:1:f]"
+													when-dropdown-open="a:[rotate:0deg:180deg:150:easeOutBack:0:1:f]"
+													when-dropdown-close="a:[rotate:180deg:0deg:150:easeOutBack:0:1:f]"></path>
+													<!-- When state bug -->
+											</svg>
+										</a>
+									</div>
+									<ul class="perspective-container"
+										u init-with="p:[z-index:-1]"
+										when-dropdown-open="p:[z-index:99]"
+										when-dropdown-close="p:[z-index:-1]">
+										<li tabindex
+											u init-with="p:[op:0, tr:rotateX(90deg) translateZ(0px)]"
+											when-dropdown-open="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]:delay-150"
+											when-dropdown-close="a:[opacity:1:0:250:easeInOutSine:250:1:f, rotateX:0deg:90deg:250:easeInOutCubic:0:1:f,translateZ:0px:0px:250:easeInOutCubic:0:1:f]:delay-450"
+											on-click="s:[dropdown-close:public]">
+											<span>Jeselle Obina</span>
+										</li>
+										<li tabindex
+											u init-with="p:[op:0, tr:rotateX(-90deg) translateZ(0)]"
+											when-dropdown-open="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:-90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]:delay-300"
+											when-dropdown-close="a:[opacity:1:0:250:easeInOutSine:250:1:f, rotateX:0deg:90deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]:delay-300"
+											on-click="s:[dropdown-close:public]">
+											<span>Samir Makhani</span>
+										</li>
+										<li tabindex
+											u init-with="p:[op:0, tr:rotateX(90deg) translateZ(0)]"
+											when-dropdown-open="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]:delay-450"
+											when-dropdown-close="a:[opacity:1:0:250:easeInOutSine:0:1:f, rotateX:0deg:90deg:250:easeInOutCubic:250:1:f,translateZ:0px:0px:250:easeInOutCubic:0:1:f]:delay-150"
+											on-click="s:[dropdown-close:public]">
+											<span>Gabrielle Wee</span>
+										</li>
 									</ul>
 								</div>
-							</fieldset>
+							</div>
 						</li>
 						<li>
 							<fieldset class="docs-form-section">
 								<label class="docs-form-section-title">Severity</label>
-								<div>
+								<div class="docs-form-severity">
+									<hr/>
 									<ul>
-										<li><input type="radio"/></li>
-										<li><input type="radio"/></li>
-										<li><input type="radio"/></li>
+										<li>
+											<input type="radio"
+												u on-click="s:[sev-1:public]"/>
+											<svg viewBox="0 0 100 50">
+												<rect x="0" y="0" width="100" height="50"></rect>
+											</svg>
+											<div>
+												<div class="docs-radio">
+													<div u init-with="p:[tr:scale(0)]"
+														when-sev-2="p:[tr:scale(0)]"
+														when-sev-3="p:[tr:scale(0)]"
+														when-sev-4="p:[tr:scale(0)]"
+														when-sev-5="p:[tr:scale(0)]"
+														when-sev-1="p:[tr:scale(1)]"></div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<input type="radio"
+												u on-click="s:[sev-2:public]"/>
+											<svg viewBox="0 0 100 50">
+												<rect x="0" y="0" width="100" height="50"></rect>
+											</svg>
+											<div>
+												<div class="docs-radio">
+													<div u init-with="p:[tr:scale(0)]"
+														when-sev-1="p:[tr:scale(0)]"
+														when-sev-3="p:[tr:scale(0)]"
+														when-sev-4="p:[tr:scale(0)]"
+														when-sev-5="p:[tr:scale(0)]"
+														when-sev-2="p:[tr:scale(1)]"></div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<input type="radio"
+												u on-click="s:[sev-3:public]"/>
+											<svg viewBox="0 0 100 50">
+												<rect x="0" y="0" width="100" height="50"></rect>
+											</svg>
+											<div>
+												<div class="docs-radio">
+													<div u init-with="p:[tr:scale(0)]"
+														when-sev-1="p:[tr:scale(0)]"
+														when-sev-2="p:[tr:scale(0)]"
+														when-sev-4="p:[tr:scale(0)]"
+														when-sev-5="p:[tr:scale(0)]"
+														when-sev-3="p:[tr:scale(1)]"></div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<input type="radio"
+												u on-click="s:[sev-4:public]"/>
+											<svg viewBox="0 0 100 50">
+												<rect x="0" y="0" width="100" height="50"></rect>
+											</svg>
+											<div>
+												<div class="docs-radio">
+													<div u init-with="p:[tr:scale(0)]"
+														when-sev-1="p:[tr:scale(0)]"
+														when-sev-2="p:[tr:scale(0)]"
+														when-sev-3="p:[tr:scale(0)]"
+														when-sev-5="p:[tr:scale(0)]"
+														when-sev-4="p:[tr:scale(1)]"></div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<input type="radio"
+												u on-click="s:[sev-5:public]"/>
+											<svg viewBox="0 0 100 50">
+												<rect x="0" y="0" width="100" height="50"></rect>
+											</svg>
+											<div>
+												<div class="docs-radio">
+													<div u init-with="p:[tr:scale(0)]"
+														when-sev-1="p:[tr:scale(0)]"
+														when-sev-2="p:[tr:scale(0)]"
+														when-sev-3="p:[tr:scale(0)]"
+														when-sev-4="p:[tr:scale(0)]"
+														when-sev-5="p:[tr:scale(1)]"></div>
+												</div>
+											</div>
+										</li>
 									</ul>
 								</div>
 							</fieldset>
@@ -152,13 +273,13 @@
 							<fieldset class="docs-form-section">
 								<label class="docs-form-section-title">File</label>
 								<div>
-									<input value="lorem.html"/>
+									<input type="text" value="lorem.html"/>
 								</div>
 							</fieldset>
 							<fieldset class="docs-form-section">
 								<label class="docs-form-section-title">Line</label>
 								<div>
-									<input placeholder="01"/>
+									<input type="text" placeholder="01"/>
 								</div>
 							</fieldset>
 						</li>
