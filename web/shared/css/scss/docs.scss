@@ -178,12 +178,8 @@
 			position: relative;
 			width: 75%;
 			height: 256px;
-			overflow: auto;
+			overflow: hidden;
 			background: mix($stone, white, 95%);
-		}
-		.docs-article {
-			height: 100%;
-			overflow: auto;
 		}
 		.docs-article-gradient {
 			position: absolute;

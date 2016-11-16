@@ -146,11 +146,8 @@
       position: relative;
       width: 75%;
       height: 256px;
-      overflow: auto;
+      overflow: hidden;
       background: #5e6782; }
-    .docs-result > div .docs-article {
-      height: 100%;
-      overflow: auto; }
     .docs-result > div .docs-article-gradient {
       position: absolute;
       top: 0;
