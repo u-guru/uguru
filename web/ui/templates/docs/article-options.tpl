@@ -3,11 +3,11 @@
 		<li>
 			<h3>Options:</h3>
 		</li>
-		<li>
+		<li ng-repeat='option in docs.data.content.css.subcategories[0].topics[1].options track by $index'>
 			<a class="chip bg bg-robin"
-				u on-click="s:[flex-dir-r:public]">row</a>
+				u on-click="s:[flex-dir-r:public]">{{option.name}}</a>
 		</li>
-		<li>
+		<!-- <li>
 			<a class="chip bg bg-robin"
 				u on-click="s:[flex-dir-rr:public]">row-reverse</a>
 		</li>
@@ -18,6 +18,6 @@
 		<li>
 			<a class="chip bg bg-robin"
 				u on-click="s:[flex-dir-cr:public]">column-reverse</a>
-		</li>
+		</li> -->
 	</ul>
 </aside>
