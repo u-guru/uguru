@@ -1,5 +1,5 @@
 <article class="docs-article">
-	<header><h1 class="code">{{title}}</h1></header>
+	<header><h1 class="code">{{topic.title}}</h1></header>
 	<article-main custom>
 		<!-- seems that putting "body" into the custom tag doesn't work -->
 	</article-main>

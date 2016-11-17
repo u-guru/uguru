@@ -3,7 +3,7 @@
 		<li>
 			<h3>Options:</h3>
 		</li>
-		<li ng-repeat='option in docs.data.content.css.subcategories[0].topics[1].options track by $index'>
+		<li ng-repeat='option in options track by $index'>
 			<a class="chip bg bg-robin"
 				u on-click="c:[bg-sienna:add]">{{option.name}}</a>
 		</li>
