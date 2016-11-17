@@ -350,6 +350,10 @@ angular.module('uguru.shared.directives.base.components')
             scope:false,
             priority: 10000,
             compile: function(element, attr) {
+                console.log(element[0].nodeName)
+                if (element[0].nodeName.toLowerCase() !== 'graphic') {
+                    return;
+                }
                 if (attr.url.indexOf('/') === -1) {
                     element.removeAttr('url');
                     attr.$set('ngInclude', attr.url);
