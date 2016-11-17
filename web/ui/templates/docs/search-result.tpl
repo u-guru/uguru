@@ -3,7 +3,7 @@
 		<div class="docs-result">
 			<a></a>
 			<div>
-				<h1> {{docs.data.content.css.subcategories[0].topics[2].title}}</h1>
+				<h1>{{title}}</h1>
 				<div>
 					<hr class="docs-article-gradient"/>
 					<article class="docs-article">
