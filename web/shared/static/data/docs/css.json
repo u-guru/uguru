@@ -42,7 +42,223 @@
                             "name": "row",
                             "default": true,
                             "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
-                            "CSS": "ul { display: flex; flex-direction: row; }"
+                            "CSS": "ul { display: flex; flex-direction: row; flex-wrap: wrap; }"
+                        },
+						{
+                            "name": "row-reverse",
+                            "default": true,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-direction: row; flex-wrap: wrap; }"
+                        }
+					]
+                },
+                {
+                    "title": "flex-flow",
+                    "summary": "This is a shorthand flex-direction and flex-wrap properties, which together define the flex container's main and cross axes. Default is row nowrap.",
+					"require": ["flex; flex-direction; flex-wrap"],
+					"applies": "parent flex container",
+					"options": [
+						{
+                            "name": "flex-direction flex-flow",
+                            "default": true,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-flow: row nowrap; }"
+                        }
+					]
+                },
+                {
+                    "title": "justify-content",
+                    "summary": "This defines the alignment along the main axis. It helps distribute extra free space left over when either all the flex items on a line are inflexible, or are flexible but have reached their maximum size. It also exerts some control over the alignment of items when they overflow the line.",
+					"require": ["flex;"],
+					"options": [
+						{
+                            "name": "flex-start",
+                            "default": true,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-flow: row nowrap; }"
+                        },
+						{
+                            "name": "flex-end",
+                            "default": false,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-flow: row nowrap; }"
+                        },
+						{
+                            "name": "center",
+                            "default": false,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-flow: row nowrap; }"
+                        },
+						{
+                            "name": "space-between",
+                            "default": false,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-flow: row nowrap; }"
+                        },
+						{
+                            "name": "space-around",
+                            "default": false,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-flow: row nowrap; }"
+                        }
+					]
+                },
+                {
+                    "title": "align-items",
+                    "summary": "This defines the default behaviour for how flex items are laid out along the cross axis on the current line. Think of it as the justify-content version for the cross-axis (perpendicular to the main-axis).",
+					"require": ["flex;"],
+					"options": [
+						{
+                            "name": "flex-start",
+                            "default": false,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-flow: row nowrap; }"
+                        },
+						{
+                            "name": "flex-end",
+                            "default": false,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-flow: row nowrap; }"
+                        },
+						{
+                            "name": "center",
+                            "default": false,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-flow: row nowrap; }"
+                        },
+						{
+                            "name": "baseline",
+                            "default": false,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-flow: row nowrap; }"
+                        },
+						{
+                            "name": "stretch",
+                            "default": true,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-flow: row nowrap; }"
+                        }
+					]
+                },
+                {
+                    "title": "align-content",
+                    "summary": "This aligns a flex container's lines within when there is extra space in the cross-axis, similar to how justify-content aligns individual items within the main-axis. Note: this property has no effect when there is only one line of flex items.",
+					"require": ["flex;"],
+					"options": [
+						{
+                            "name": "flex-start",
+                            "default": false,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-flow: row nowrap; }"
+                        },
+						{
+                            "name": "flex-end",
+                            "default": false,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-flow: row nowrap; }"
+                        },
+						{
+                            "name": "center",
+                            "default": false,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-flow: row nowrap; }"
+                        },
+						{
+                            "name": "space-between",
+                            "default": false,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-flow: row nowrap; }"
+                        },
+						{
+                            "name": "space-around",
+                            "default": false,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-flow: row nowrap; }"
+                        },
+						{
+                            "name": "stretch",
+                            "default": true,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-flow: row nowrap; }"
+                        }
+					]
+                },
+                {
+                    "title": "order",
+                    "summary": "By default, flex items are laid out in the source order. However, the order property controls the order in which they appear in the flex container.",
+					"require": ["flex;"],
+					"options": [
+						{
+                            "name": "flex-start",
+                            "default": false,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-flow: row nowrap; }"
+                        }
+					]
+                },
+                {
+                    "title": "flex-grow",
+                    "summary": "This defines the ability for a flex item to grow if necessary. It accepts a unitless value that serves as a proportion. It dictates what amount of the available space inside the flex container the item should take up.  If all items have flex-grow set to 1, the remaining space in the container will be distributed equally to all children. If one of the children has a value of 2, the remaining space would take up twice as much space as the others (or it will try to, at least).  Negative numbers are invalid",
+					"require": ["flex;"],
+					"options": [
+						{
+                            "name": "flex-start",
+                            "default": false,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-flow: row nowrap; }"
+                        }
+					]
+                },
+                {
+                    "title": "flex-shrink",
+                    "summary": "This defines the ability for a flex item to shrink if necessary.",
+					"require": ["flex;"],
+					"options": [
+						{
+                            "name": "flex-start",
+                            "default": false,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-flow: row nowrap; }"
+                        }
+					]
+                },
+                {
+                    "title": "flex-basis",
+                    "summary": "This defines the default size of an element before the remaining space is distributed. It can be a length (e.g. 20%, 5rem, etc.) or a keyword. The auto keyword means 'look at my width or height property' (which was temporarily done by the main-size keyword until deprecated). The content keyword means 'size it based on the item's content' - this keyword isn't well supported yet, so it's hard to test and harder to know what its brethren max-content, min-content, and fit-content do.  If set to 0, the extra space around content isn't factored in. If set to auto, the extra space is distributed based on its flex-grow value. ",
+					"require": ["flex;"],
+					"options": [
+						{
+                            "name": "flex-start",
+                            "default": false,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-flow: row nowrap; }"
+                        }
+					]
+                },
+                {
+                    "title": "flex",
+                    "summary": "This is the shorthand for flex-grow, flex-shrink and flex-basis combined. The second and third parameters (flex-shrink and flex-basis) are optional. Default is 0 1 auto.  It is recommended that you use this shorthand property rather than set the individual properties. The short hand sets the other values intelligently.",
+					"require": ["flex;"],
+					"options": [
+						{
+                            "name": "flex-start",
+                            "default": false,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-flow: row nowrap; }"
+                        }
+					]
+                },
+                {
+                    "title": "align-self",
+                    "summary": "This allows the default alignment (or the one specified by align-items) to be overridden for individual flex items.  Please see the align-items explanation to understand the available values.  Note that float, clear and vertical-align have no effect on a flex item.",
+					"require": ["flex;"],
+					"options": [
+						{
+                            "name": "flex-start",
+                            "default": false,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-flow: row nowrap; }"
+>>>>>>> 4019bcdb7ca8012a4a495fe572b7b551bd61bed8
                         }
 					]
                 }
