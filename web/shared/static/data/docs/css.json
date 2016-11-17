@@ -264,13 +264,46 @@
             ]
         },
 		{
-			"title": "CSS/SASS vs. Attributes"
+			"title": "CSS/SASS vs. Attributes",
+			"topics": [
+				{
+					"title": "Colors & Mixes",
+				},
+				{
+					"title": "CSS for Components",
+				}
+			]
 		},
 		{
-			"title": "CSS/SASS vs. Directives"
+			"title": "CSS/SASS vs. Directives",
+			"topics": [
+				{
+					"title": "Keyframe Animations",
+				},
+				{
+					"title": ":hover vs. on-mouseenter + on-mouseleave",
+				},
+				{
+					"title": ":focus vs. on-focus + on-blur (check for correct names)",
+				},
+				{
+					"title": ":active vs. on-click",
+				}
+			]
 		},
 		{
-			"title": "Best Practices for Structure"
+			"title": "Best Practices for Structure",
+			"topics": [
+				{
+					"title": "SASS File Organization",
+				},
+				{
+					"title": "Property Order",
+				},
+				{
+					"title": "Nesting Limitations"
+				}
+			]
 		},
 		{
 			"title": "Vendor Prefixes"
