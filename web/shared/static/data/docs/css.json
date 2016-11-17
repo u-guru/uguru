@@ -35,7 +35,16 @@
                 },
                 {
                     "title": "flex-direction",
-                    "summary": "Flex-direction summary goes here"
+                    "summary": "This establishes the main-axis, thus defining the direction flex items are placed in the flex container. Flexbox is (aside from optional wrapping) a single-direction layout concept. Think of flex items as primarily laying out either in horizontal rows or vertical columns.",
+					"require": ["flex"],
+					"options": [
+						{
+                            "name": "row",
+                            "default": true,
+                            "HTML": "<ul class='p15-grid bg-white-10p'><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li><li><div class='height-128 width-128 radius-2 bg-sienna'></div></li></ul>",
+                            "CSS": "ul { display: flex; flex-direction: row; flex-wrap: wrap; }"
+                        },
+					]
                 }
             ]
         },
