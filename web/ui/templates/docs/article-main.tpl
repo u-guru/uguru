@@ -1,5 +1,5 @@
 <div class="docs-article-main">
-	<p>{{topic.summary}}</p>
+	<p>{{summary}}</p>
 	<!-- <ol>
 		<li>Lorem ipsum dolor sit amet</li>
 		<li>Lorem ipsum dolor sit amet</li>
