@@ -745,8 +745,8 @@ angular.module('uguru.shared.directives')
                           }
                         }
                       }
-
-                      $compile(lElem.contents())($parse(attrData)(scope))
+                      // console.log(scope.options, lElem[0])
+                      // $compile(lElem.contents())($parse(attrData)(scope))
 
                     }
 
@@ -897,11 +897,12 @@ angular.module('uguru.shared.directives')
                       // scope.states = states;
                       // var elemHasCustom = elemName in $rootScope.components
 
-                      !scope.hasInitAfter  && transclude(scope, function(clone, innerScope) {
+                      !scope.hasInitAfter && lElem && transclude(scope, function(clone, innerScope) {
 
 
 
-                            if ('custom' in lAttr) {
+                            if ('custom' in lAttr && lElem[0].innerHTML) {
+                              console.log(lElem)
                               lElem.removeAttr('custom')
                             }
 

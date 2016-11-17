@@ -6,6 +6,6 @@
             </a>
         </nav>
         <!-- <span>Bug:</span> -->
-        <input placeholder="Get Started"/>
+        <input placeholder="Get Started"></input>
     </div>
 </fieldset>

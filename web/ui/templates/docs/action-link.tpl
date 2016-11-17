@@ -1,8 +1,7 @@
 <li>
     <a class="docs-action-link" u on-click="c:[selected:add]">
-        <!-- <graphic url="icon">
-
-		</graphic> -->
+        <graphic url="icon">
+		</graphic>
         <h2>{{name}}</h2>
         <div>
             <kbd>Ctrl</kbd>

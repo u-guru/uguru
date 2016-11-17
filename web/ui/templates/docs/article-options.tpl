@@ -4,8 +4,8 @@
 			<h3>Options:</h3>
 		</li>
 		<li>
-			<article-option-item custom data="options[0]">
-			</article-option-item>
+			<!-- <article-option-item custom data="options[0]">
+			</article-option-item> -->
 			<article-option-item list="options">
 			</article-option-item>
 		</li>

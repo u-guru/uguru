@@ -26,7 +26,6 @@ angular.module('uguru.shared.directives.base.components')
     .directive('list', ['$compile', '$rootScope', '$parse',  function($compile, $rootScope, $parse) {
         return {
             restrict: 'A',
-            priority: 100000,
             replace:true,
             scope:false,
             compile: function(element, attr, transclude) {
@@ -53,13 +52,48 @@ angular.module('uguru.shared.directives.base.components')
                     var elem = angular.element(resultHtml);
                     element.replaceWith(elem)
                 } else if (attr.list.length) {
-                    // console.log(element[0], attr.list)
-                    var elem = angular.element('<article-option-item  data="options[0]" custom></article-option-item>');
 
-                    // console.log(elem[0])
-                    element[0].removeAttribute('list');
+                    // var varNameSplit = attr.list.split('.');
+                    // var varName = varNameSplit[varNameSplit.length - 1];
+                    // if (varName.charAt(varName.length - 1) === 's') {
+                    //     varName = varName.substring(0, varName.length -1);
+                    // } else {
+                    //     varName = 'data';
+                    // }
+                    // attr.$set('ngRepeat', varName + ' in ' + attr.list);
 
-                    element.replaceWith(elem)
+                    // attr.$set('data', varName )
+                    // element[0].setAttribute('custom', '')
+                    // element.replaceWith(angular.element(element[0].outerHTML))
+                    element.removeAttr('list');
+
+                    return function(scope, elem, _attr) {
+                        if (attr.list in scope) {
+                            var listData = scope[attr.list];
+                            listData.forEach(function(listData, i) {
+                                // console.log(i, elem[0].outerHTML)
+                                resultHtml += '<article-option-item  data="options[' + i + ']" custom></article-option-item>';
+
+
+                                // element[0].removeAttribute('list');
+
+                                // element.replaceWith(elem)
+                            })
+                        }
+                        // console.log(scope.options);
+
+
+                        elem.replaceWith(angular.element(resultHtml))
+                        // $compile(elem)(scope)
+                    }
+
+                    // previous functioning
+                    // var elem = angular.element('<article-option-item  data="options[0]" custom></article-option-item>');
+
+
+                    // element[0].removeAttribute('list');
+
+                    // element.replaceWith(elem)
 
 
                 }
@@ -93,18 +127,31 @@ angular.module('uguru.shared.directives.base.components')
                     else if (!attr.keepName) {
                         var attrValue = $parse(attr.data)(scope)
                         for (attr_name in attrValue) {
+                            // if (attrValue[attr_name].split('/').length > 3) {
+                            //     attrValue[attr_name] = '"' + attrValue[attr_name].split('/').join(".") +
+                            //     console.log(attrValue[attr_name] + '"')
+                            // }
 
                             scope[attr_name] = attrValue[attr_name]
                         }
                     }
+                    if (!elem[0].outerHTML) {
+                        return;
+                    }
                     elem.removeAttr('custom');
-                    elem.replaceWith($compile(angular.element(elem[0].outerHTML))(scope))
 
 
+
+
+                    var newElem = $compile(angular.element(elem[0].outerHTML))(scope);
+                    elem.replaceWith(newElem)
 
                     // console.log($parse(angular.element(elem[0].innerHTML.trim())[0].innerHTML.trim())(scope))
                     // console.log($parse(angular.element(elem[0].innerHTML)[0].innerHTML + '')(scope))
                 }
+
+
+
 
             }
 
@@ -297,21 +344,40 @@ angular.module('uguru.shared.directives.base.components')
             replace:true
         }
     }])
-    .directive('graphic', ['$compile', 'CompService', function($compile, CompService) {
+    .directive('url', [function() {
+        return {
+            restrict: 'A',
+            scope:false,
+            priority: 10000,
+            compile: function(element, attr) {
+                if (attr.url.indexOf('/') === -1) {
+                    element.removeAttr('url');
+                    attr.$set('ngInclude', attr.url);
+                } else {
+                    attr.$set('ngInclude', "'" +  attr.url + "'");
+                }
+
+            }
+        }
+    }])
+    .directive('graphic', ['$compile', 'CompService',  function($compile, CompService) {
         return {
             restrict: 'E',
             scope:false,
             replace:true,
-            transclude: true,
-            templateUrl: function(element, attr) {
-                return attr.src || attr.url;
-            },
             compile: function compile(element, attr, transclude)  {
-                CompService.renderAllStyleAttributes(element, attr);
-                return {
-                    pre:angular.noop,
-                    post: function(post_scope, post_element, post_attr) {
 
+                CompService.renderAllStyleAttributes(element, attr);
+                var url = attr.url;
+
+                return {
+                    pre: function(post_scope, post_element, post_attr) {
+                        if (url && url.indexOf('/') > -1) {
+                            post_element.removeAttr('url')
+                            $compile(post_element)(post_scope)
+
+                            console.log(url, post_element[0])
+                        }
                         if (post_scope.chart) post_scope.chart.elem = post_element;
 
                     }
