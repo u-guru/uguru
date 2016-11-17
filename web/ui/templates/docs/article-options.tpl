@@ -5,9 +5,13 @@
 		</li>
 		<li ng-repeat='option in docs.data.content.css.subcategories[0].topics[1].options track by $index'>
 			<a class="chip bg bg-robin"
-				u on-click="s:[flex-dir-r:public]">{{option.name}}</a>
+				u on-click="c:[bg-sienna:add]">{{option.name}}</a>
 		</li>
 		<!-- <li>
+			<a class="chip bg bg-robin"
+				u on-click="s:[flex-dir-r:public]">row</a>
+		</li>
+		<li>
 			<a class="chip bg bg-robin"
 				u on-click="s:[flex-dir-rr:public]">row-reverse</a>
 		</li>
