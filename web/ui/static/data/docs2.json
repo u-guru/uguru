@@ -94,6 +94,10 @@
         "article-options": {
             "template_url": "./ui/templates/docs/article-options.tpl"
         },
+        "article-option-item": {
+            "template_url": "./ui/templates/docs/article-option-item.tpl",
+            "fields": ["name"]
+        },
         "article-example": {
             "template_url": "./ui/templates/docs/article-example.tpl"
         },

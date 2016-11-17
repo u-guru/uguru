@@ -3,9 +3,11 @@
 		<li>
 			<h3>Options:</h3>
 		</li>
-		<li ng-repeat='option in options track by $index'>
-			<a class="chip bg bg-robin"
-				u on-click="c:[bg-sienna:add]">{{option.name}}</a>
+		<li>
+			<article-option-item custom data="options[0]">
+			</article-option-item>
+			<article-option-item list="options">
+			</article-option-item>
 		</li>
 		<!-- <li>
 			<a class="chip bg bg-robin"

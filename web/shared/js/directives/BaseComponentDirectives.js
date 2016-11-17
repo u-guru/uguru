@@ -28,15 +28,15 @@ angular.module('uguru.shared.directives.base.components')
             restrict: 'A',
             priority: 100000,
             replace:true,
-            scope:true,
-            compile: function(element, attr) {
+            scope:false,
+            compile: function(element, attr, transclude) {
 
 
 
                 var elemName = element[0].nodeName.toLowerCase().replace(/-(.)/g, function(match, group1) {
                   return group1.toUpperCase();
                 });
-                console.log(elemName)
+                // console.log(elemName)
                 var resultHtml = '';
                 if ($rootScope.activeView && elemName in $rootScope.activeView.data.vars.components) {
                     element[0].removeAttribute('list');
@@ -49,47 +49,19 @@ angular.module('uguru.shared.directives.base.components')
                     })
                 }
                 if (resultHtml.length) {
+
                     var elem = angular.element(resultHtml);
                     element.replaceWith(elem)
                 } else if (attr.list.length) {
+                    // console.log(element[0], attr.list)
+                    var elem = angular.element('<article-option-item  data="options[0]" custom></article-option-item>');
 
-                    // var listAttr = attr.list.replace('}}', '').replace('{{','')
-                    return {
-                        pre: function preLink(scope, p_elem, p_attr) {
-                            var listAttrStr = p_attr.list.replace('{{', '').replace('}}', '');
-                            var listAttr = $parse(listAttrStr)(scope)
-                            if (listAttr && listAttr.length) {
-                                var resultHtml = ''
-                                listAttr.forEach(function(data, i) {
-                                    var dataStr = JSON.stringify(data)
-                                    p_elem[0].removeAttribute('list');
-                                    element[0].setAttribute('custom', '');
-                                    p_attr.$set('data', '');
-                                    resultHtml += p_elem[0].outerHTML.replace('data=""', "data='" + listAttrStr +  "[" + i + "]'").replace('custom=""', 'custom');
-                                })
-                                if (resultHtml.length) {
-                                    var elem = angular.element(resultHtml)
+                    // console.log(elem[0])
+                    element[0].removeAttribute('list');
+
+                    element.replaceWith(elem)
 
 
-                                    p_elem.contents(elem)
-                                    $compile(p_elem.contents())(scope)
-                                    console.log(p_elem[0])
-                                    // console.log(p_elem.parent())
-                                }
-                            }
-
-                            // console.log(listAttr)
-                            // console.log($parse(listAttr)(scope))
-                            // p_attr.$set('custom', '');
-                            // p_attr.$set('data', '');
-                            // if (listAttr in scope) {
-
-                            // } else {
-
-                            // }
-                            // p_elem.removeAttr('list')
-                        }
-                    }
                 }
 
             }
@@ -112,20 +84,23 @@ angular.module('uguru.shared.directives.base.components')
                     return $rootScope.components[elemName]['template_url']
                 }
             },
-            link: function(scope, elem, attr) {
+            link: function preLink(scope, elem, attr) {
                 if ('data' in attr) {
 
-                    var attrValue = $parse(attr.data)(scope)
-                    console.log(attrValue)
-                    for (attr_name in attrValue) {
-                        // console.log(attr_name, attrValue[attr_name])
-                        scope[attr_name] = attrValue[attr_name]
-
+                    if ('keepName' in attr) {
+                        scope[attr.data] = $parse(attr.data)(scope);
                     }
+                    else if (!attr.keepName) {
+                        var attrValue = $parse(attr.data)(scope)
+                        for (attr_name in attrValue) {
 
-                    // elem = angular.elem($parse(elem[0].innerHTML.substring(0,1)))
-                    // console.log(attr.dataArr)
-                    $compile(elem.html())(scope)
+                            scope[attr_name] = attrValue[attr_name]
+                        }
+                    }
+                    elem.removeAttr('custom');
+                    elem.replaceWith($compile(angular.element(elem[0].outerHTML))(scope))
+
+
 
                     // console.log($parse(angular.element(elem[0].innerHTML.trim())[0].innerHTML.trim())(scope))
                     // console.log($parse(angular.element(elem[0].innerHTML)[0].innerHTML + '')(scope))
