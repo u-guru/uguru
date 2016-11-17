@@ -1,29 +1,30 @@
 <view link-data="ui/static/data/docs2.json" render-after-ext-scripts link-data-name="docs" row  class="docs" type='row' bg="stone" width="100" height="100">
-    <!--
-        Updates since you left at 6pm
-        #1. you no longer need to worry about ng-if="data.docs", remove it entirely if the merge includes it (as i did already). Or stash your changes
-        #2. See below
-	-->
 	<side-bar custom width="25" height="100"></side-bar>
     <main class="docs-main overflow-y no-scrollbar" width="75" height="100">
         <header>
             <omnibar custom> </omnibar>
             <ul class="docs-actions">
-                <!-- update #2  -->
+
                 <action-link list="docs.data.vars.components.actionLinks">
-					<!-- error with icons, see action-link.tpl -->
+					<!-- Update #1, [11/17]: error with icons fixed, should work as expected so nothing to worry about! -->
 				</action-link>
-                <!-- <action-link custom data="docs.data.vars.components.actionLinks[0]"> </action-link> -->
-                <!-- <action-link custom data="docs.data.vars.components.actionLinks[1]"> </action-link>
-                <action-link custom data="docs.data.vars.components.actionLinks[2]"> </action-link> -->
+
             </ul>
         </header>
-		<section class="docs-results">
-			<search-result custom data='docs.data.content.css.subcategories[0].topics[2]'> </search-result>
-		</section>
+        <section class="docs-results">
+            <search-result custom data='docs.data.content.css.subcategories[0].topics[2]'> </search-result>
+        </section>
 		<section class="docs-articles">
-			<!-- <article-topic custom data='docs.data.content["CSS"].subcategories["Flexbox"]'> </article-topic> -->
+
+            <!-- [Update #2, [11/17]: Before is what you had yesterday early evening & is commented as BEFORE. AFTER is the simpler, more general, + also functioning w/o the repeat -->
+
+            <!--
+                AFTER
+            -->
             <article-topic custom data='docs.data.content.css.subcategories[0].topics[1]'> </article-topic>
+            <!-- BEFORE
+            <article-topic custom ng-repeat='topic in docs.data.content.css.subcategories[0].topics track by $index'> </article-topic>
+            -->
 		</section>
     </main>
 </view>
