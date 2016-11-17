@@ -1834,14 +1834,14 @@ fieldset {
   padding: 0;
   border: 0;
   font-size: 18px;
-  font-weight: 400 !important;
+  font-weight: 400;
   width: 100%;
   min-height: 30px; }
   fieldset.full-x {
     max-width: none; }
   fieldset * {
     transition: all 150ms ease-in-out;
-    font-weight: 400 !important; }
+    font-weight: 400; }
     fieldset *::-webkit-input-placeholder {
       transition: all 150ms ease-in-out; }
     fieldset *:-moz-placeholder {
@@ -10362,7 +10362,7 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   display: inline-block;
   position: relative;
   height: 32px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   color: white;
   line-height: 32px;

@@ -307,20 +307,32 @@
 	padding: 3px 15px;
 }
 .docs-form-severity {
+	padding: 15px;
+	> div {
+		position: relative;
+	}
 	hr {
-		margin: 0;
+		position: absolute;
+		z-index: 0;
+		top: 50%;
+		margin-top: -1px;
+		margin-bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 2px;
+		background: white;
 		border: 0;
-		height: 19px;
-		background: rgb(129,181,102);
-		background: -moz-linear-gradient(left,  rgba(129,181,102,1) 0%, rgba(246,198,78,1) 50%, rgba(240,79,84,1) 100%);
-		background: -webkit-linear-gradient(left,  rgba(129,181,102,1) 0%,rgba(246,198,78,1) 50%,rgba(240,79,84,1) 100%);
-		background: linear-gradient(to right,  rgba(129,181,102,1) 0%,rgba(246,198,78,1) 50%,rgba(240,79,84,1) 100%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#81b566', endColorstr='#f04f54',GradientType=1 );
+		border-radius: 4px;
 	}
 	ul {
+		position: relative;
+		z-index: 1;
 		display: flex;
+		justify-content: space-between;
+		align-content: center;
+		align-items: center;
+		width: 100%;
 		li {
-			width: 20%;
 			position: relative;
 			input {
 				position: absolute;
@@ -331,63 +343,126 @@
 				z-index: 10;
 				cursor: pointer;
 			}
-			> svg {
-				rect {
-					fill: none;
-				}
-			}
 			> div {
 				display: flex;
 				align-items: center;
 				align-content: center;
 				justify-content: center;
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
 			}
 			&:nth-child(1) {
-				.docs-radio div {
-					background: $moola;
+				.docs-radio {
+					width: 32px;
+					height: 32px;
+					font-size: 18px;
+					color: mix($slate, $moola, 15%);
+					div {
+						background: rgba($moola, .25);
+						div {
+							background: $moola;
+						}
+					}
 				}
 			}
 			&:nth-child(2) {
-				.docs-radio div {
-					background: mix($moola, $gold);
+				.docs-radio {
+					width: 28px;
+					height: 28px;
+					font-size: 16px;
+					color: mix($slate, mix($moola, $gold), 15%);
+					div {
+						background: rgba(mix($moola, $gold), .25);
+						div {
+							background: mix($moola, $gold);
+						}
+					}
 				}
 			}
 			&:nth-child(3) {
-				.docs-radio div {
-					background: $gold;
+				.docs-radio {
+					width: 26px;
+					height: 26px;
+					font-size: 14px;
+					color: mix($slate, $gold, 15%);
+					div {
+						background: rgba($gold, .25);
+						div {
+							background: $gold;
+						}
+					}
 				}
 			}
 			&:nth-child(4) {
-				.docs-radio div {
-					background: mix($gold, $auburn);
+				.docs-radio {
+					width: 28px;
+					height: 28px;
+					font-size: 16px;
+					color: mix($slate, mix($gold, $auburn), 15%);
+					div {
+						background: rgba(mix($gold, $auburn), .25);
+						div {
+							background: mix($gold, $auburn);
+						}
+					}
 				}
 			}
 			&:nth-child(5) {
-				.docs-radio div {
-					background: $auburn;
+				.docs-radio {
+					width: 32px;
+					height: 32px;
+					font-size: 18px;
+					color: mix($slate, $auburn, 15%);
+					div {
+						background: rgba($auburn, .25);
+						div {
+							background: $auburn;
+						}
+					}
 				}
 			}
 		}
 	}
 }
-
 .docs-radio {
 	border-radius: 100%;
 	background: white;
 	width: 24px;
 	height: 24px;
 	padding: 3px;
+	font-size: 14px;
+	color: $robin;
 	div {
+		position: relative;
 		transform-origin: center center;
 		width: 100%;
 		height: 100%;
 		border-radius: 100%;
-		background: $robin;
+		background: rgba($robin, .25);
+		div {
+			z-index: 1;
+			background: $robin;
+		}
+		span {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			z-index: 0;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			font-weight: 700!important;
+		}
+	}
+}
+.docs-form-tags {
+	ul {
+		padding: 7.5px;
+		display: flex;
+		flex-flow: row wrap;
+		li {
+			padding: 7.5px;
+		}
 	}
 }
 
