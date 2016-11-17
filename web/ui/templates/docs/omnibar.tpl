@@ -5,7 +5,7 @@
                 <graphic url='shared/templates/components/svg/main/search-circle.html'></graphic>
             </a>
         </nav>
-        <!-- <span>Bug:</span> -->
+
         <input placeholder="Get Started"></input>
     </div>
 </fieldset>
