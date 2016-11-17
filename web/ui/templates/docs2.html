@@ -18,12 +18,12 @@
                 <action-link custom data="docs.data.vars.components.actionLinks[2]"> </action-link> -->
             </ul>
         </header>
-		<section class="docs-results">
-			<search-result custom data='docs.data.content.css.subcategories[0].topics[2]'> </search-result>
-		</section>
+		<!-- <section class="docs-results">
+			<search-result custom ng-repeat='topic in docs.data.content.css.subcategories[0].topics track by $index'> </search-result>
+		</section> -->
 		<section class="docs-articles">
 			<!-- <article-topic custom data='docs.data.content["CSS"].subcategories["Flexbox"]'> </article-topic> -->
-            <article-topic custom data='docs.data.content.css.subcategories[0].topics[1]' ng-repeat='topic in docs.data.content.css.subcategories[0].topics track by $index'> </article-topic>
+            <article-topic custom ng-repeat='topic in docs.data.content.css.subcategories[0].topics track by $index'> </article-topic>
 		</section>
     </main>
 </view>

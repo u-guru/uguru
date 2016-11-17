@@ -3,7 +3,7 @@
 		<div class="docs-result">
 			<a></a>
 			<div>
-				<h1>{{title}}</h1>
+				<h1>{{topic.title}}</h1>
 				<div>
 					<hr class="docs-article-gradient"/>
 					<article class="docs-article">
