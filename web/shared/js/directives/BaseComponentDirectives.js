@@ -86,16 +86,22 @@ angular.module('uguru.shared.directives.base.components')
 
                                 // element.replaceWith(elem)
                             })
+                            scope[attr.list] = listData;
                             elem.replaceWith(angular.element(resultHtml));
                         } else {
                             var watcherCancel = scope.$watch(attr.list, function(value) {
                                 if (value) {
                                     if (value.length) {
                                         replaceElementAfterListInScope(elem, value, attr.list, scope)
+                                        scope[attr.list] = value;
+                                        watcherCancel();
+
                                     }
                                 }
                             })
                         }
+
+
 
                         function replaceElementAfterListInScope(elem, list_elements, data_name, scope) {
                             var resultHtml = '';
@@ -372,6 +378,50 @@ angular.module('uguru.shared.directives.base.components')
             scope: {'player':'='},
             templateUrl: 'admin/templates/animations/chart.player.tpl',
             replace:true
+        }
+    }])
+    .directive('inspectData', ['$rootScope', '$timeout', function($rootScope, $timeout) {
+        return {
+            restrict: 'E',
+            scope:false,
+            priority: 10000,
+            link: function postLink(scope, element, attr) {
+                if (element[0] && element[0].outerHTML) element[0].outerHTML = '';
+                if (!$rootScope.inspected) {
+                    $rootScope.inspected = true;
+
+                    $timeout(function() {
+                        _scope = scope;
+                        var dataFields = Object.keys(attr.$attr);
+                        var index = 1;
+                        if (!dataFields.length) {
+                            dataFields = Object.keys(_scope).filter(function(key) {return key.indexOf('$') === -1})
+                        }
+
+
+
+
+
+                        console.log('\n\nDATA AUDIT - ' + dataFields.length + ' fields found\n\n');
+
+
+                        var fields = 'fields' in attr && attr.fields.split(',') || [];
+
+                        dataFields.forEach(function(field_name) {
+                            var obj = {};
+                            if (field_name in _scope) {
+                                obj[field_name] = _scope[field_name]
+                                console.log('#' + index + ':', field_name, obj);
+                            } else {
+                                console.log('#' + index + ':', 'does not exist in current environment');
+                            }
+                            index++;
+                        })
+                        var parentDataFields = Object.keys(scope.$parent).filter(function(key) {return key.indexOf('$') === -1})
+                        console.log('parent reference', parentDataFields);
+                    }, 100)
+                }
+            }
         }
     }])
     .directive('url', [function() {
