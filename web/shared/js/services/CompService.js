@@ -220,6 +220,7 @@ function CompService($timeout, $compile, $parse, $rootScope) {
         "b": "position bottom",
         "radius": "border-radius",
         "rad": "border-radius",
+        "bR": "border-radius",
         "o": "opacity",
         "opacity": "opacity",
         "w": "width",
@@ -234,7 +235,13 @@ function CompService($timeout, $compile, $parse, $rootScope) {
         "relative": "position",
         "rel": "position",
         "z": "z-index",
-        "border": "border"
+        "border": "border",
+        "borderWidth": "border-width",
+        "bW": "border-width",
+        "bC": "border-color",
+        "borderColor": "border-color",
+        "borderStyle": "border-style",
+        "bS": "border-style"
 
     }
     prefixes.forEach(function(p) {
