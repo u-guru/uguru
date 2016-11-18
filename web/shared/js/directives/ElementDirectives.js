@@ -634,11 +634,12 @@ angular.module('uguru.shared.directives')
           }
         }
 }])
+
+
 .directive("u", ["$compile", "ElementService", "$timeout", "$rootScope", "SendService", "CompService", "$parse", "$rootScope", function($compile, ElementService, $timeout, $rootScope, SendService, CompService, $parse, $rootScope) {
       return {
           restrict: 'A',
-          replace: true,
-          transclude: true,
+          replace: false,
           priority:1000000,
           scope:true,
           compile: function(element, attr, transclude) {
@@ -660,7 +661,7 @@ angular.module('uguru.shared.directives')
                 // attr.$set();
               }
 
-              if (element[0].nodeName.toLowerCase() === 'griditem') {
+              if (element[0].nodeName.toLowerCase() === 'grid') {
                 CompService.renderAllStyleAttributes(element, attr);
               }
               this.states = ElementService.renderElementStates(element, attr);
@@ -897,20 +898,30 @@ angular.module('uguru.shared.directives')
                       // scope.states = states;
                       // var elemHasCustom = elemName in $rootScope.components
 
-                      !scope.hasInitAfter && lElem && transclude(scope, function(clone, innerScope) {
+                      // !scope.hasInitAfter && lElem && transclude(scope, function(clone, innerScope) {
 
 
 
-                            if ('custom' in lAttr && lElem[0].innerHTML) {
-                              console.log(lElem)
-                              lElem.removeAttr('custom')
-                            }
+                      //       if ('custom' in lAttr && lElem[0].innerHTML) {
+                      //         console.log(lElem)
+                      //         lElem.removeAttr('custom')
+                      //       }
+
+                      //       $compile(lElem.contents())(scope);
+                      //       lElem.append(clone);
 
 
-                          $compile(lElem.contents())(scope);
 
-                          lElem.append(clone);
-                      });
+
+
+
+
+
+
+
+
+
+                      // });
                       // if (attr.data) {
                       //   console.log('yo')
                       //   scope.data = $parse(attr.data)(scope);
