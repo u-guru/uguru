@@ -384,11 +384,14 @@
 								</ul>
 							</div>
 							<div relative rad="2px" w="calc(50% - 7.5px)" m-left="7.5px">
-								<a stretch s-b bg="white-10p" border="2px solid white"
-									u on-mouseenter="p:[background:#777E93]"
+								<a stretch s-b relative bg="white-10p" border="2px solid white"
+									u init-with="p:[z-index:1, op:1]"
+									on-mouseenter="p:[background:#777E93]"
 									on-mouseleave="p:[background:#5D657E]"
 									on-click="s:[vp-dd-open:public]"
-									on-blur="s:[vp-report-dd-blur:public]">
+									on-blur="s:[vp-report-dd-blur:public]"
+									when-vp-dd-custom-open="p:[z-index:-1, op:0]"
+									when-vp-dd-custom-close="p:[z-index:1, op:1]">
 									<span y-center p-x="15px" f-w="600">
 										<span u init-with="p:[op:0.5]"
 										when-vp-dd-open="p:[op:1]">Viewport</span>
@@ -402,40 +405,43 @@
 									</div>
 								</a>
 								<span stretch s-b abs top="0" left="0" width="100" height="100" bg="#5D657E" border="2px solid white"
-									u on-mouseenter="p:[background:#777E93]"
+									u init-with="p:[z-index:-1, op:0]"
+									on-mouseenter="p:[background:#777E93]"
 									on-mouseleave="p:[background:#5D657E]"
-									on-click="s:[vp-dd-open:public]"
-									on-blur="s:[vp-report-dd-blur:public]">
-									<span y-center p-x="15px" f-w="600">
-										<span y-center width="calc(50% - 11px)">
-											<input bg="transparent" value="1280" type="tel" width="calc(100% - 24px)" font-size="24" f-w="600" color="white" class="txt-white weight-600"/>
-											<span f-w="600">px</span>
+									when-vp-dd-custom-open="p:[z-index:1, op:1]"
+									when-vp-dd-custom-close="p:[z-index:-1, op:0]">
+									<span y-center p-x="15px" f-w="600" width="calc(100% - 48px)">
+										<span class="block" width="calc(100% - 11px)">
+											<input bg="transparent" value="1280" type="tel" font-size="24" f-w="600" color="white" class="txt-white txt-center" width="100"/>
+											<hr m="0" border="0" width="100" height="2px" r="4px" bg="white"/>
 										</span>
-										<span f-w="600">&nbsp;&times;&nbsp;</span>
-										<span y-center width="calc(50% - 11px)">
-											<input bg="transparent" value="800" type="tel" width="calc(100% - 24px)" font-size="24" f-w="600" color="white" class="txt-white weight-600"/>
-											<span>px</span>
+										<span>&nbsp;&times;&nbsp;</span>
+										<span class="block" width="calc(100% - 11px)">
+											<input bg="transparent" value="800" type="tel" font-size="24" f-w="600" color="white" class="txt-white txt-center" width="100"/>
+											<hr m="0" border="0" width="100" height="2px" r="4px" bg="white"/>
 										</span>
+										<!-- <span>px</span> -->
 									</span>
-									<div border-left="2px solid white" bg="white-20p" class="svg-48-36 border-2-left border-white">
+									<a border-left="2px solid white" bg="white-20p" class="svg-48-36 border-2-left border-white"
+										u on-click="s:[vp-dd-custom-close:public]">
 										<svg viewBox="0 0 100 100"
 											u init-with="p:[tro:center center, tr:rotateX(0deg)]"
 											when-vp-dd-open="a:[rotateX:0deg:180deg:150:easeOutBack:0:1:f]">
-											<path d="M14,32 L50,68 L86,32" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+											<path d="M50,50 L75.4558441,24.5441559 L50,50 L24.5441559,24.5441559 L50,50 L50,50 Z M50,50 L24.5441559,75.4558441 L50,50 L75.4558441,75.4558441 L50,50 L50,50 Z" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
 										</svg>
-									</div>
+									</a>
 								</span>
 								<ul absolute left="0" width="calc(100% - 48px)"
 									u init-with="p:[z-index:-1, op:0]"
 									when-vp-dd-open="p:[z-index:11, op:1] | s:[vp-stagger:children:linear-400]"
 									when-vp-dd-blur="p:[z-index:-1, op:0]">
-									<li border="1px solid white"
+									<li bg="stone" border="2px solid white" m-top="-2px"
 										u init-with="p:[tro:center top, op:0, tr:rotateX(90deg) translateZ(0px)]"
 										when-vp-stagger="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]">
 										<a x-center y-center p-x="15px" p-y="10px" f-w="600" bg="white-20p"
 											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
 											on-mouseleave="p:[background:#777E93, color:#ffffff]">
-											<span>1440</span><span margin-x="7.5">x</span><span>1024</span>
+											<span>1440 &times; 1024</span>
 										</a>
 									</li>
 									<li bg="stone" border="2px solid white" m-top="-2px"
@@ -444,7 +450,7 @@
 										<a x-center y-center p-x="15px" p-y="10px" f-w="600" bg="white-20p"
 											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
 											on-mouseleave="p:[background:#777E93, color:#ffffff]">
-											<span>1280</span><span margin-x="7.5">x</span><span>800</span>
+											<span>1280 &times; 800</span>
 										</a>
 									</li>
 									<li bg="stone" border="2px solid white" m-top="-2px"
@@ -453,7 +459,7 @@
 										<a x-center y-center p-x="15px" p-y="10px" f-w="600" bg="white-20p"
 											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
 											on-mouseleave="p:[background:#777E93, color:#ffffff]">
-											<span>414</span><span margin-x="7.5">x</span><span>736</span>
+											<span>414 &times; 736</span>
 										</a>
 									</li>
 									<li bg="stone" border="2px solid white" m-top="-2px"
@@ -461,7 +467,8 @@
 										when-vp-stagger="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:-90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]">
 										<a x-center y-center p-x="15px" p-y="10px" f-w="600" bg="white-20p"
 											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
-											on-mouseleave="p:[background:#777E93, color:#ffffff]">
+											on-mouseleave="p:[background:#777E93, color:#ffffff]"
+											on-click="s:[vp-dd-custom-open:public]">
 											<span>Custom</span>
 										</a>
 									</li>
