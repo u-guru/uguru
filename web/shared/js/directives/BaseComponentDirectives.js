@@ -1894,7 +1894,24 @@ angular.module('uguru.shared.directives.base.components')
         "top",
         "left",
         "right",
-        "bottom"
+        "bottom",
+        "t",
+        "l",
+        "r",
+        "b",
+        "bot",
+        "rad",
+        "radius",
+        "zIndex",
+        "maxHeight",
+        "minHeight",
+        "minWidth",
+        "maxWidth",
+        "w",
+        "h",
+        "fS",
+        "fontWeight",
+        "flex"
         ]
 
     var modulePointer = angular.module('uguru.shared.directives.base.components');
