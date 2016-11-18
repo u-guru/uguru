@@ -104,9 +104,9 @@
 		</header>
 		<section class="docs-form">
 			<form>
-				<div class="docs-form-grid">
-					<ul>
-						<li>
+				<div flex w="100%" p="7.5px">
+					<ul w="50%">
+						<li p="7.5px">
 							<fieldset rad="2px" border="2px solid white">
 								<label p="3px 15px" font-size="12" font-weight="600" bg="white-25p" border-bottom="2px solid white" class="border-white border-2-bottom">Title</label>
 								<div>
@@ -118,7 +118,7 @@
 								</div>
 							</fieldset>
 						</li>
-						<li>
+						<li p="7.5px">
 							<fieldset rad="2px" border="2px solid white">
 								<label p="3px 15px" font-size="12" font-weight="600" bg="white-25p" border-bottom="2px solid white" class="border-white border-2-bottom">Description</label>
 								<div>
@@ -130,7 +130,66 @@
 								</div>
 							</fieldset>
 						</li>
-						<li>
+						<li p="7.5px">
+							<div relative rad="2px">
+								<a stretch s-b bg="white-10p" border="2px solid white"
+									u on-mouseenter="p:[background:#777E93]"
+									on-mouseleave="p:[background:#5D657E]"
+									on-click="s:[report-dd-open:public]">
+									<span y-center p-x="15px" font-weight="600">
+										<span u init-with="p:[op:0.5]"
+											when-dd-open="p:[op:1]">Reported By</span>
+									</span>
+									<div border-left="2px solid white" bg="white-20p" class="svg-48-36 border-2-left border-white">
+										<svg viewBox="0 0 100 100"
+											u init-with="p:[tro:center center, tr:rotateX(0deg)]"
+											when-report-dd-open="a:[rotateX:0deg:180deg:150:easeOutBack:0:1:f]"
+											when-report-dd-blur="a:[rotateX:180deg:0deg:150:easeInBack:0:1:f]">
+											<path d="M14,32 L50,68 L86,32" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+										</svg>
+									</div>
+								</a>
+								<ul absolute left="0" width="calc(100% - 48px)"
+									u init-with="p:[z-index:-1, op:0]"
+									when-report-dd-open="p:[z-index:11, op:1] | s:[report-dd-stagger:children:linear-400]"
+									when-report-dd-blur="p:[z-index:-1, op:0]">
+									<li bg="stone" border="2px solid white" m-top="-2px"
+										u init-with="p:[tro:center top, op:0, tr:rotateX(90deg) translateZ(0px)]"
+										when-report-dd-stagger="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]"
+										on-click="s:[report-dd-blur:public]">
+										<span y-center p-x="15px" p-y="10px" font-weight="600" bg="white-20p"
+											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
+											on-mouseleave="p:[background:#777E93, color:#ffffff]">
+											<span class="user-icon-28" m-right="10"></span>
+											<span>Jeselle Obina</span>
+										</span>
+									</li>
+									<li bg="stone" border="2px solid white" m-top="-2px"
+										u init-with="p:[tro:center top, op:0, tr:rotateX(-90deg) translateZ(0px)]"
+										when-report-dd-stagger="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:-90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]"
+										on-click="s:[report-dd-blur:public]">
+										<span y-center p-x="15px" p-y="10px" font-weight="600" bg="white-20p"
+											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
+											on-mouseleave="p:[background:#777E93, color:#ffffff]">
+											<span class="user-icon-28" m-right="10"></span>
+											<span>Samir Makhani</span>
+										</span>
+									</li>
+									<li bg="stone" border="2px solid white" m-top="-2px" rad="0 0 2px 2px"
+										u init-with="p:[tro:center top, op:0, tr:rotateX(90deg) translateZ(0px)]"
+										when-report-dd-stagger="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]"
+										on-click="s:[report-dd-blur:public]">
+										<span y-center p-x="15px" p-y="10px" font-weight="600" bg="white-20p"
+											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
+											on-mouseleave="p:[background:#777E93, color:#ffffff]">
+											<span class="user-icon-28" m-right="10"></span>
+											<span>Gabrielle Wee</span>
+										</span>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li p="7.5px">
 							<fieldset rad="2px" border="2px solid white">
 								<label p="3px 15px" font-size="12" font-weight="600" bg="white-25p" border-bottom="2px solid white" class="border-white border-2-bottom">Severity</label>
 								<div p="15px">
@@ -237,6 +296,158 @@
 								</div>
 							</fieldset>
 						</li>
+					</ul>
+					<ul w="50%">
+						<li p="7.5px" flex>
+							<fieldset rad="2px" border="2px solid white" w="calc(75% - 7.5px)" m-right="7.5px">
+								<label p="3px 15px" font-size="12" font-weight="600" bg="white-25p" border-bottom="2px solid white" class="border-white border-2-bottom">File</label>
+								<div>
+									<input type="text" value="lorem.html" p="10px 15px" font-size="28" bg="white-10p" color="white"
+										u on-mouseenter="p:[background:#777E93]"
+										on-mouseleave="p:[background:#5D657E]"
+										on-focus="p:[background:#ffffff, color:#757575]"
+										on-blur="p:[background:#5D657E, color:#ffffff]"/>
+								</div>
+							</fieldset>
+							<fieldset rad="2px" border="2px solid white" w="calc(25% - 7.5px)" m-left="7.5px">
+								<label p="3px 15px" font-size="12" font-weight="600" bg="white-25p" border-bottom="2px solid white" class="border-white border-2-bottom">Line</label>
+								<div>
+									<input type="text" placeholder="01" p="10px 15px" font-size="28" bg="white-10p" color="white"
+										u on-mouseenter="p:[background:#777E93]"
+										on-mouseleave="p:[background:#5D657E]"
+										on-focus="p:[background:#ffffff, color:#757575]"
+										on-blur="p:[background:#5D657E, color:#ffffff]"/>
+								</div>
+							</fieldset>
+						</li>
+						<li p="7.5px">
+							<fieldset rad="2px" border="2px solid white">
+								<label p="3px 15px" font-size="12" font-weight="600" bg="white-25p" border-bottom="2px solid white" class="border-white border-2-bottom">Snippet</label>
+								<div>
+									<textarea placeholder="Describe your problem" p="10px 15px" font-size="16" bg="white-10p" color="white" border="0" rad="0"
+										u on-mouseenter="p:[background:#777E93]"
+										on-mouseleave="p:[background:#5D657E]"
+										on-focus="p:[background:#ffffff, color:#757575]"
+										on-blur="p:[background:#5D657E, color:#ffffff]"></textarea>
+								</div>
+							</fieldset>
+						</li>
+						<li p="7.5px" flex>
+							<div relative rad="2px" w="calc(50% - 7.5px)" m-right="7.5px">
+								<a stretch s-b bg="white-10p" border="2px solid white"
+									u on-mouseenter="p:[background:#777E93]"
+									on-mouseleave="p:[background:#5D657E]"
+									on-click="s:[browser-dd-open:public:linear-400]"
+									on-blur="s:[browser-report-dd-blur:public]">
+									<span y-center p-x="15px" font-weight="600">
+										<span u init-with="p:[op:0.5]">Browser</span>
+									</span>
+									<div border-left="2px solid white" bg="white-20p" class="svg-48-36 border-2-left border-white">
+										<svg viewBox="0 0 100 100"
+											u init-with="p:[tro:center center, tr:rotateX(0deg)]"
+											when-browser-dd-open="a:[rotateX:0deg:180deg:150:easeOutBack:0:1:f]">
+											<path d="M14,32 L50,68 L86,32" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+										</svg>
+									</div>
+								</a>
+								<ul absolute left="0" width="calc(100% - 48px)" m-top="-2px" bg="stone" border="1px solid white"
+									u init-with="p:[z-index:-1, op:0]"
+									when-browser-dd-open="p:[z-index:11, op:1]"
+									when-browser-dd-blur="p:[z-index:-1, op:0]">
+									<li border="1px solid white"
+										u init-with="p:[tro:center top, op:0, tr:rotateX(90deg) translateZ(0px)]"
+										when-browser-dd-open="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]">
+										<span y-center p-x="15px" p-y="10px" font-weight="600" bg="white-20p"
+											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
+											on-mouseleave="p:[background:#777E93, color:#ffffff]">
+											<span>Chrome</span>
+										</span>
+									</li>
+									<li border="1px solid white"
+										u init-with="p:[tro:center top, op:0, tr:rotateX(-90deg) translateZ(0px)]"
+										when-browser-dd-open="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:-90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]">
+										<span y-center p-x="15px" p-y="10px" font-weight="600" bg="white-20p"
+											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
+											on-mouseleave="p:[background:#777E93, color:#ffffff]">
+											<span>IE 7</span>
+										</span>
+									</li>
+									<li border="1px solid white"
+										u init-with="p:[tro:center top, op:0, tr:rotateX(90deg) translateZ(0px)]"
+										when-browser-dd-open="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]">
+										<span y-center p-x="15px" p-y="10px" font-weight="600" bg="white-20p"
+											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
+											on-mouseleave="p:[background:#777E93, color:#ffffff]">
+											<span>Safari</span>
+										</span>
+									</li>
+								</ul>
+							</div>
+							<div relative rad="2px" w="calc(50% - 7.5px)" m-left="7.5px">
+								<a stretch s-b bg="white-10p" border="2px solid white"
+									u on-mouseenter="p:[background:#777E93]"
+									on-mouseleave="p:[background:#5D657E]"
+									on-click="s:[vp-dd-open:public]"
+									on-blur="s:[vp-report-dd-blur:public]">
+									<span y-center p-x="15px" font-weight="600">
+										<span u init-with="p:[op:0.5]"
+										when-vp-dd-open="p:[op:1]">Viewport</span>
+									</span>
+									<div border-left="2px solid white" bg="white-20p" class="svg-48-36 border-2-left border-white">
+										<svg viewBox="0 0 100 100"
+											u init-with="p:[tro:center center, tr:rotateX(0deg)]"
+											when-vp-dd-open="a:[rotateX:0deg:180deg:150:easeOutBack:0:1:f]">
+											<path d="M14,32 L50,68 L86,32" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+										</svg>
+									</div>
+								</a>
+								<ul absolute left="0" width="calc(100% - 48px)" m-top="-2px" bg="stone" border="1px solid white"
+									u init-with="p:[z-index:-1, op:0]"
+									when-vp-dd-open="p:[z-index:11, op:1] | s:[vp-stagger:children:linear-400]"
+									when-vp-dd-blur="p:[z-index:-1, op:0]">
+									<li border="1px solid white"
+										u init-with="p:[tro:center top, op:0, tr:rotateX(90deg) translateZ(0px)]"
+										when-vp-stagger="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]">
+										<span x-center y-center p-x="15px" p-y="10px" font-weight="600" bg="white-20p"
+											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
+											on-mouseleave="p:[background:#777E93, color:#ffffff]">
+											<span>1440</span><span margin-x="7.5">x</span><span>1024</span>
+										</span>
+									</li>
+									<li border="1px solid white"
+										u init-with="p:[tro:center top, op:0, tr:rotateX(-90deg) translateZ(0px)]"
+										when-vp-stagger="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:-90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]">
+										<span x-center y-center p-x="15px" p-y="10px" font-weight="600" bg="white-20p"
+											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
+											on-mouseleave="p:[background:#777E93, color:#ffffff]">
+											<span>1280</span><span margin-x="7.5">x</span><span>800</span>
+										</span>
+									</li>
+									<li border="1px solid white"
+										u init-with="p:[tro:center top, op:0, tr:rotateX(90deg) translateZ(0px)]"
+										when-vp-stagger="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]">
+										<span x-center y-center p-x="15px" p-y="10px" font-weight="600" bg="white-20p"
+											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
+											on-mouseleave="p:[background:#777E93, color:#ffffff]">
+											<span>414</span><span margin-x="7.5">x</span><span>736</span>
+										</span>
+									</li>
+									<li border="1px solid white"
+										u init-with="p:[tro:center top, op:0, tr:rotateX(-90deg) translateZ(0px)]"
+										when-vp-stagger="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:-90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]">
+										<span x-center y-center p-x="15px" p-y="10px" font-weight="600" bg="white-20p"
+											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
+											on-mouseleave="p:[background:#777E93, color:#ffffff]">
+											<span>Custom</span>
+										</span>
+									</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="docs-form-grid">
+					<ul>
 						<li>
 							<fieldset class="docs-form-section">
 								<label class="docs-form-section-title">Title</label>
