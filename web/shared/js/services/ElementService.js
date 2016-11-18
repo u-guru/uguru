@@ -531,7 +531,21 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
         // properties.split(',').forEach(function() )
         var propertyArr = [];
-
+        var specialProps = false;
+        if (properties.indexOf('rgba') > -1) {
+          specialProps = true;
+          var propSplit = properties.split('rgba(');
+          var propStrArr = [];
+          propSplit.forEach(function(rgba_string) {
+            if (rgba_string.indexOf(')') > -1) {
+              var endParenthical = rgba_string.split(')');
+              endParenthical[0] = endParenthical[0].split(',').join('|');
+              rgba_string = endParenthical.join(")")
+            }
+            propStrArr.push(rgba_string)
+          })
+          properties = propStrArr.join('rgba(');
+        }
         properties = UtilitiesService.replaceAll(properties, ', ', ',');
         var propertySplit = properties.split(',');
         if (!rShortcuts.cssPropValues && RootService.animations.customShortcuts) {
@@ -575,6 +589,10 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
 
         propertyArr.forEach(function(kv, i) {
+          if (specialProps && kv.value.indexOf('|') > -1) {
+            kv.value = kv.value.split('|').join(',');
+            console.log(kv.value)
+          }
           CompService.css.apply(elem, kv.key, kv.value);
           // elem.css(kv.key, kv.value);
         })
