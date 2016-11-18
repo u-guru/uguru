@@ -5,12 +5,14 @@
             <omnibar custom> </omnibar>
             <ul class="docs-actions">
 
+				<!-- @samir -->
                 <action-link list="docs.data.vars.components.actionLinks">
 					<!-- Update #1, [11/17]: error with icons fixed, should work as expected so nothing to worry about! -->
 				</action-link>
 
             </ul>
         </header>
+
         <section class="docs-results">
             <search-result custom data='docs.data.content.css.subcategories[0].topics[2]'> </search-result>
         </section>
@@ -21,7 +23,10 @@
             <!--
                 AFTER
             -->
-            <article-topic custom data='docs.data.content.css.subcategories[0].topics[1]'> </article-topic>
+			<!-- @samir article-topic, article-example, example-html.tpl -->
+            <article-topic list='docs.data.content.css.subcategories[0].topics'>
+            </article-topic>
+
             <!-- BEFORE
             <article-topic custom ng-repeat='topic in docs.data.content.css.subcategories[0].topics track by $index'> </article-topic>
             -->

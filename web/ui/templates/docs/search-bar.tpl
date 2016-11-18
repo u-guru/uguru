@@ -21,4 +21,5 @@
             ng-model='docs.data.vars.searchText'
             when-search-bar-icon="a:[opacity:0:1:250:easeOutSine:0:1:f]"/>
     </div>
+
 </fieldset>

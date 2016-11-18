@@ -28,15 +28,17 @@ angular.module('uguru.shared.directives.base.components')
             restrict: 'A',
             replace:true,
             scope:false,
+            priority:10000,
             compile: function(element, attr, transclude) {
 
 
 
-                var elemName = element[0].nodeName.toLowerCase().replace(/-(.)/g, function(match, group1) {
+                var elemName = (element[0].nodeName.toLowerCase() + "").replace(/-(.)/g, function(match, group1) {
                   return group1.toUpperCase();
                 });
-                // console.log(elemName)
+                this.elemNameDashed = element[0].nodeName.toLowerCase();
                 var resultHtml = '';
+
                 if ($rootScope.activeView && elemName in $rootScope.activeView.data.vars.components) {
                     element[0].removeAttribute('list');
                     element[0].setAttribute('custom', '');
@@ -65,25 +67,59 @@ angular.module('uguru.shared.directives.base.components')
                     // attr.$set('data', varName )
                     // element[0].setAttribute('custom', '')
                     // element.replaceWith(angular.element(element[0].outerHTML))
-                    element.removeAttr('list');
 
+                    element.removeAttr('list');
                     return function(scope, elem, _attr) {
+                        var elemNameDashed = elem[0].nodeName.toLowerCase();
+
                         if (attr.list in scope) {
                             var listData = scope[attr.list];
+
+
                             listData.forEach(function(listData, i) {
                                 // console.log(i, elem[0].outerHTML)
-                                resultHtml += '<article-option-item  data="options[' + i + ']" custom></article-option-item>';
+
+                                resultHtml += '<' + elemNameDashed  + '  data="options[' + i + ']" custom></' + elemNameDashed + '>';
 
 
                                 // element[0].removeAttribute('list');
 
                                 // element.replaceWith(elem)
                             })
+                            scope[attr.list] = listData;
+                            elem.replaceWith(angular.element(resultHtml));
+                        } else {
+                            var watcherCancel = scope.$watch(attr.list, function(value) {
+                                if (value) {
+                                    if (value.length) {
+                                        replaceElementAfterListInScope(elem, value, attr.list, scope)
+                                        scope[attr.list] = value;
+                                        watcherCancel();
+
+                                    }
+                                }
+                            })
+                        }
+
+
+
+                        function replaceElementAfterListInScope(elem, list_elements, data_name, scope) {
+                            var resultHtml = '';
+                            var elemNameDashed = elem[0].nodeName.toLowerCase();
+                            list_elements.forEach(function(list_item, i) {
+                                resultHtml += '<' + elemNameDashed  + '  data="' + data_name + '[' + i + ']" custom></' + elemNameDashed + '>';
+                            })
+                            if (resultHtml.length) {
+                                elem.replaceWith($compile(angular.element(resultHtml))(scope))
+                            }
+
                         }
                         // console.log(scope.options);
 
 
-                        elem.replaceWith(angular.element(resultHtml))
+
+
+
                         // $compile(elem)(scope)
                     }
 
@@ -344,13 +380,57 @@ angular.module('uguru.shared.directives.base.components')
             replace:true
         }
     }])
+    .directive('inspectData', ['$rootScope', '$timeout', function($rootScope, $timeout) {
+        return {
+            restrict: 'E',
+            scope:false,
+            priority: 10000,
+            link: function postLink(scope, element, attr) {
+                if (element[0] && element[0].outerHTML) element[0].outerHTML = '';
+                if (!$rootScope.inspected) {
+                    $rootScope.inspected = true;
+
+                    $timeout(function() {
+                        _scope = scope;
+                        var dataFields = Object.keys(attr.$attr);
+                        var index = 1;
+                        if (!dataFields.length) {
+                            dataFields = Object.keys(_scope).filter(function(key) {return key.indexOf('$') === -1})
+                        }
+
+
+
+
+
+                        console.log('\n\nDATA AUDIT - ' + dataFields.length + ' fields found\n\n');
+
+
+                        var fields = 'fields' in attr && attr.fields.split(',') || [];
+
+                        dataFields.forEach(function(field_name) {
+                            var obj = {};
+                            if (field_name in _scope) {
+                                obj[field_name] = _scope[field_name]
+                                console.log('#' + index + ':', field_name, obj);
+                            } else {
+                                console.log('#' + index + ':', 'does not exist in current environment');
+                            }
+                            index++;
+                        })
+                        var parentDataFields = Object.keys(scope.$parent).filter(function(key) {return key.indexOf('$') === -1})
+                        console.log('parent reference', parentDataFields);
+                    }, 100)
+                }
+            }
+        }
+    }])
     .directive('url', [function() {
         return {
             restrict: 'A',
             scope:false,
             priority: 10000,
             compile: function(element, attr) {
-                console.log(element[0].nodeName)
+                // console.log(element[0].nodeName)
                 if (element[0].nodeName.toLowerCase() !== 'graphic') {
                     return;
                 }
