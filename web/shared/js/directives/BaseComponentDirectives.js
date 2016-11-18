@@ -381,6 +381,23 @@ angular.module('uguru.shared.directives.base.components')
             replace:true
         }
     }])
+    .directive('childGrow', ['$compile', function($compile) {
+    return {
+        restrict: 'A',
+        scope:true,
+        replace: false,
+        transclude:true,
+        compile: function(element, attr, transclude) {
+            return function preLink(scope, p_element, p_attr) {
+                transclude(scope, function(clone, inner_scope) {
+                    p_element.append(clone);
+                    p_element.removeAttr('child-grow')
+                    p_element = $compile(p_element.contents())(scope)
+                })
+            }
+        }
+    }
+    }])
     .directive('size', ['$compile', function($compile) {
         return {
             restrict: 'A',
@@ -1975,7 +1992,8 @@ angular.module('uguru.shared.directives.base.components')
         "hideX",
         "hideY",
         "scroll",
-        "fW"
+        "fW",
+        "fontWeight"
         ]
 
     var modulePointer = angular.module('uguru.shared.directives.base.components');
