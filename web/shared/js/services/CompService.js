@@ -219,7 +219,7 @@ function CompService($timeout, $compile, $parse, $rootScope) {
         "r": "position right",
         "b": "position bottom",
         "radius": "border-radius",
-        "rad": "radius",
+        "rad": "border-radius",
         "o": "opacity",
         "opacity": "opacity",
         "w": "width",
@@ -232,7 +232,8 @@ function CompService($timeout, $compile, $parse, $rootScope) {
         "abs": "position",
         "absolute": "position",
         "relative": "position",
-        "rel": "position"
+        "rel": "position",
+        "z": "zIndex"
     }
     prefixes.forEach(function(p) {
       var basePropKeys = Object.keys(baseProps);
