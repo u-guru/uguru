@@ -1918,7 +1918,15 @@ angular.module('uguru.shared.directives.base.components')
         "abs",
         "absolute",
         "border",
-        "z"
+        "z",
+        "bWidth",
+        "borderWidth",
+        "bW",
+        "bS",
+        "borderStyle",
+        "borderColor",
+        "bC",
+        "bR"
         ]
 
     var modulePointer = angular.module('uguru.shared.directives.base.components');
