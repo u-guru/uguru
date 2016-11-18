@@ -38,7 +38,7 @@ fieldset {
 	padding: 0;
 	border: 0;
 	font-size: 18px;
-	font-weight: 400!important;
+	font-weight: 400;
 	width: 100%;
 	min-height: 30px;
 	&.full-x {
@@ -46,7 +46,7 @@ fieldset {
 	}
 	* {
 		transition: all 150ms ease-in-out;
-		font-weight: 400!important;
+		font-weight: 400;
 		@include placeholder {
 			transition: all 150ms ease-in-out;
 		}
