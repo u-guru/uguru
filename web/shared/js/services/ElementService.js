@@ -13,10 +13,11 @@ angular.module('uguru.shared.services')
     'TweenService',
     '$compile',
     'CompService',
+    'KeyboardService',
     ElementService
         ]);
 
-function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window, RootService, SVGService, $parse, SendService, TweenService, $compile, CompService) {
+function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window, RootService, SVGService, $parse, SendService, TweenService, $compile, CompService, KeyboardService) {
       var rShortcuts = {special: getSpecialAnimShortcuts(), animations:null, propValues: {}, props: {}, values:{}};
       var stateShortcuts = {};
       var rAnimations;
@@ -327,7 +328,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           //keyboardservice
           scope.$on('key' + name[1], function(onEvent, keypressEvent) {
 
-            var charPressed = RootService.keyMap.toChar[keypressEvent.which];
+            var charPressed = KeyboardService.keyMap.toChar[keypressEvent.which];
             charPressed = charPressed && charPressed.toLowerCase() || '';
             if (scope.validKeys.indexOf(charPressed) > -1 ) {
               console.log('sending...')

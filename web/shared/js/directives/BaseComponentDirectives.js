@@ -329,12 +329,13 @@ angular.module('uguru.shared.directives.base.components')
     .directive('keypressEvents', [
       '$document',
       '$rootScope',
-      function($document, $rootScope) {
+      'KeyboardService',
+      function($document, $rootScope, KeyboardService) {
         return {
           restrict: 'A',
           link: function() {
             $document.bind('keydown', function(e) {
-
+            KeyboardService.record(e);
               $rootScope.$broadcast('keydown', e);
 
               $rootScope.$broadcast('keydown:' + e.which || e.keyCode, e);
@@ -378,6 +379,43 @@ angular.module('uguru.shared.directives.base.components')
             scope: {'player':'='},
             templateUrl: 'admin/templates/animations/chart.player.tpl',
             replace:true
+        }
+    }])
+    .directive('size', ['$compile', function($compile) {
+        return {
+            restrict: 'A',
+            scope:false,
+            replace:false,
+            transclude:true,
+            compile: function(element, attr, transclude) {
+
+                if (!attr.size.length || element[0].nodeName.toLowerCase() !== 'svg') return;
+                var units = ['px', '%'];
+                var sizeSplit = attr.size.split(' ')
+                if (sizeSplit.length === 1) {
+                    sizeSplit.push(sizeSplit[0]);
+                }
+                sizeSplit.forEach(function(size_str, i) {
+                    if (size_str.indexOf(units[0]) === -1 && size_str.indexOf(units[1]) === -1) {
+                        sizeSplit[i] = sizeSplit[i] + 'px';
+                    }
+                })
+                var size = {height: sizeSplit[0], width: sizeSplit[1]};
+
+                var e = angular.element('<div style="height:' + size.height + ';width:' + size.width + ';">', '</div>')
+                element.replaceWith(e);
+                element.removeAttr('size');
+                e.append(element)
+                return function(scope, _element, attr) {
+                    $compile(_element.contents())(scope)
+                    console.log(_element[0].innerHTML)
+                    transclude(scope, function(clone, inner_scope) {
+                        $compile(clone)(inner_scope)
+                        element.append(clone)
+                    })
+                }
+                // e.append(element)
+            }
         }
     }])
     .directive('inspectData', ['$rootScope', '$timeout', function($rootScope, $timeout) {
@@ -1894,7 +1932,52 @@ angular.module('uguru.shared.directives.base.components')
         "top",
         "left",
         "right",
-        "bottom"
+        "bottom",
+        "t",
+        "l",
+        "r",
+        "b",
+        "bot",
+        "rad",
+        "radius",
+        "zIndex",
+        "maxHeight",
+        "minHeight",
+        "minWidth",
+        "maxWidth",
+        "w",
+        "h",
+        "fS",
+        "fontWeight",
+        "flex",
+        "rel",
+        "relative",
+        "abs",
+        "absolute",
+        "border",
+        "z",
+        "bWidth",
+        "borderWidth",
+        "bW",
+        "bS",
+        "borderStyle",
+        "borderColor",
+        "bC",
+        "bR",
+        "static",
+        "fixed",
+        "fix",
+        "op",
+        "overflow",
+        "oFlow",
+        "scrollX",
+        "scrollY",
+        "scrollXY",
+        "scrollable",
+        "noScroll",
+        "hideX",
+        "hideY",
+        "scroll"
         ]
 
     var modulePointer = angular.module('uguru.shared.directives.base.components');
