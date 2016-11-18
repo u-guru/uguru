@@ -407,8 +407,6 @@ angular.module('uguru.shared.directives.base.components')
                 element.removeAttr('size');
                 e.append(element)
                 return function(scope, _element, attr) {
-                    $compile(_element.contents())(scope)
-                    console.log(_element[0].innerHTML)
                     transclude(scope, function(clone, inner_scope) {
                         $compile(clone)(inner_scope)
                         element.append(clone)
