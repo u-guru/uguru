@@ -91,7 +91,18 @@ function CompService($timeout, $compile, $parse, $rootScope) {
       "rel": "relative",
       "relative": "relative",
       "abs": "absolute",
-      "absolute": "absolute"
+      "absolute": "absolute",
+      "static": "static",
+      "fix": "fixed",
+      "fixed": "fixed",
+      "scrollX": "auto",
+      "scrollXy": "auto",
+      "noScroll": "hidden",
+      "hideX": "hidden",
+      "hideY": "hidden",
+      "overflow": "visible",
+      "oFlow": "visible",
+      "scroll": "visible"
     }
     prefixes.forEach(function(p) {
       var basePropKeys = Object.keys(baseProps);
@@ -241,7 +252,20 @@ function CompService($timeout, $compile, $parse, $rootScope) {
         "bC": "border-color",
         "borderColor": "border-color",
         "borderStyle": "border-style",
-        "bS": "border-style"
+        "bS": "border-style",
+        "static": "position",
+        "fixed": "position",
+        "fix": "position",
+        "op": "opacity",
+        "overflow": "overflow",
+        "oFlow": "overflow",
+        "hideX": "overflow",
+        "hideY": "overflow",
+        "scrollX": "overflow-x",
+        "scrollY": "overflow-y",
+        "scrollXy": "overflow-x overflow-y",
+        "scrollable": "overflow-x overflow-y",
+        "scroll": "overflow"
 
     }
     prefixes.forEach(function(p) {
