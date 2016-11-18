@@ -124,11 +124,11 @@
 								<div p="15px">
 									<div relative>
 										<hr absolute top="50%" left="0" m="-1px 0 0" width="100" height="2px" border="0" bg="white" rad="4px"/>
-										<ul s-b nowrap>
+										<ul s-b nowrap y-center>
 											<li relative>
-												<input type="radio" absolute top="0" left="0" z-index="10"
+												<input type="radio" absolute top="0" left="0" z-index="10" w="100" h="100" pointer style="cursor:pointer;"
 													u on-click="s:[sev-1:public]"/>
-												<div x-center y-center>
+												<div x-center y-center relative z="9">
 													<div bg="white" rad="100%" width="32px" height="32px" p="3px">
 														<div bg="moola-25p" width="100" height="100" rad="100%">
 															<div bg="moola" width="100" height="100" rad="100%"
@@ -139,25 +139,26 @@
 																when-sev-5="p:[tr:scale(0)]"
 																when-sev-1="p:[tr:scale(1)]">
 															</div>
-															<span absolute top="0" left="0" width="100" height="100" x-center y-center font-size="18" color="#77a562" class="txt-moola">1</span>
+															<span absolute top="0" left="0" width="100" height="100" x-center y-center font-size="18" font-weight="600" color="#77a562" class="txt-moola">1</span>
 														</div>
 													</div>
 												</div>
 											</li>
-											<li>
-												<input type="radio"
+											<li relative>
+												<input type="radio" absolute top="0" left="0" z-index="10" w="100" h="100" pointer style="cursor:pointer;"
 													u on-click="s:[sev-2:public]"/>
-												<div>
-													<div >
-														<div>
-															<div u init-with="p:[tr:scale(0)]"
+												<div x-center y-center relative z="9">
+													<div bg="white" rad="100%" width="28px" height="28px" p="3px">
+														<div bg="rgba(188,190,90,0.25)" width="100" height="100" rad="100%">
+															<div bg="#bcbe5a" width="100" height="100" rad="100%"
+																u init-with="p:[tr:scale(0)]"
 																when-sev-1="p:[tr:scale(0)]"
 																when-sev-3="p:[tr:scale(0)]"
 																when-sev-4="p:[tr:scale(0)]"
 																when-sev-5="p:[tr:scale(0)]"
 																when-sev-2="p:[tr:scale(1)]">
 															</div>
-															<span>2</span>
+															<span absolute top="0" left="0" width="100" height="100" x-center y-center font-size="16" font-weight="700" color="#a9ac58" style="color:#a9ac58;">2</span>
 														</div>
 													</div>
 												</div>
