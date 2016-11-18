@@ -1,4 +1,4 @@
-<li>
+<li s-b>
     <a class="docs-action-link" u on-click="c:[selected:add]">
         <graphic url="icon">
 		</graphic>
