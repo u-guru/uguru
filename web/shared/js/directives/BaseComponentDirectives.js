@@ -1911,7 +1911,11 @@ angular.module('uguru.shared.directives.base.components')
         "h",
         "fS",
         "fontWeight",
-        "flex"
+        "flex",
+        "rel",
+        "relative",
+        "abs",
+        "absolute"
         ]
 
     var modulePointer = angular.module('uguru.shared.directives.base.components');

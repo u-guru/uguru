@@ -22,8 +22,7 @@ function CompService($timeout, $compile, $parse, $rootScope) {
   var platformSpecificProperties = getPlatformSpecificProperties();
   var browserPlatform;
   var specialProperties = {
-    'display': 'flex',
-    'position': 'absolute'
+    'display': 'flex'
   }
   return {
     getBaseSpec: getBaseSpec,
@@ -88,7 +87,11 @@ function CompService($timeout, $compile, $parse, $rootScope) {
       "wrap": "wrap",
       "nowrap": "nowrap",
       "wrapReverse": "wrap-reverse",
-      "flex": "flex"
+      "flex": "flex",
+      "rel": "relative",
+      "relative": "relative",
+      "abs": "absolute",
+      "absolute": "absolute"
     }
     prefixes.forEach(function(p) {
       var basePropKeys = Object.keys(baseProps);
@@ -225,7 +228,11 @@ function CompService($timeout, $compile, $parse, $rootScope) {
         "bot": "bottom",
         "fontWeight": "font-weight",
         "fW": "font-weight",
-        "flex": "display"
+        "flex": "display",
+        "abs": "position",
+        "absolute": "position",
+        "relative": "position",
+        "rel": "position"
     }
     prefixes.forEach(function(p) {
       var basePropKeys = Object.keys(baseProps);
