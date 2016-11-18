@@ -22,7 +22,8 @@ function CompService($timeout, $compile, $parse, $rootScope) {
   var platformSpecificProperties = getPlatformSpecificProperties();
   var browserPlatform;
   var specialProperties = {
-    'display': 'flex'
+    'display': 'flex',
+    'position': 'absolute'
   }
   return {
     getBaseSpec: getBaseSpec,
@@ -86,7 +87,8 @@ function CompService($timeout, $compile, $parse, $rootScope) {
       "cR": "column-reverse",
       "wrap": "wrap",
       "nowrap": "nowrap",
-      "wrapReverse": "wrap-reverse"
+      "wrapReverse": "wrap-reverse",
+      "flex": "flex"
     }
     prefixes.forEach(function(p) {
       var basePropKeys = Object.keys(baseProps);
@@ -196,7 +198,10 @@ function CompService($timeout, $compile, $parse, $rootScope) {
         "y": "display align-content align-items",
         "fontSize": "font-size",
         "fS": "font-size",
-        "top": "top",
+        "top": "position top",
+        "left": "position left",
+        "bottom": "position bottom",
+        "right": "position right",
         "zIndex": "z-index",
         "maxHeight": "max-height",
         "maxH": "max-height",
@@ -206,10 +211,10 @@ function CompService($timeout, $compile, $parse, $rootScope) {
         "minHeight": "min-height",
         "maxWidth": "max-width",
         "minWidth": "min-width",
-        "t": "top",
-        "l": "left",
-        "r": "right",
-        "b": "bottom",
+        "t": "position top",
+        "l": "position left",
+        "r": "position right",
+        "b": "position bottom",
         "radius": "border-radius",
         "rad": "radius",
         "o": "opacity",
@@ -219,7 +224,8 @@ function CompService($timeout, $compile, $parse, $rootScope) {
         "bottom": "bottom",
         "bot": "bottom",
         "fontWeight": "font-weight",
-        "fW": "font-weight"
+        "fW": "font-weight",
+        "flex": "display"
     }
     prefixes.forEach(function(p) {
       var basePropKeys = Object.keys(baseProps);
