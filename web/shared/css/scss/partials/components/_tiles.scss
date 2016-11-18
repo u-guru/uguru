@@ -538,7 +538,7 @@
 		}
 		// transitions
 		~ .pf-tile, ~ .pf-cardlet {
-			transition: all 500ms ease-out;
+			// transition: all 500ms ease-out;
 			transform-style: preserve-3d;
 			.rating-stars {
 				// transition: all 500ms ease-out;
