@@ -104,9 +104,9 @@
 		</header>
 		<section class="docs-form">
 			<form>
-				<div class="docs-form-grid">
-					<ul>
-						<li>
+				<div flex w="100%" p="7.5px">
+					<ul w="50%">
+						<li p="7.5px">
 							<fieldset rad="2px" border="2px solid white">
 								<label p="3px 15px" font-size="12" font-weight="600" bg="white-25p" border-bottom="2px solid white" class="border-white border-2-bottom">Title</label>
 								<div>
@@ -118,7 +118,7 @@
 								</div>
 							</fieldset>
 						</li>
-						<li>
+						<li p="7.5px">
 							<fieldset rad="2px" border="2px solid white">
 								<label p="3px 15px" font-size="12" font-weight="600" bg="white-25p" border-bottom="2px solid white" class="border-white border-2-bottom">Description</label>
 								<div>
@@ -130,7 +130,33 @@
 								</div>
 							</fieldset>
 						</li>
-						<li>
+						<li p="7.5px">
+							<div relative rad="2px" border="2px solid white">
+								<a stretch s-b border-bottom="2px solid white" bg="white-10p" class="border-2-bottom border-white">
+									<span y-center p-x="15px" font-weight="600">
+										<span class="user-icon-28" m-right="10"></span>
+										<span>Gabrielle Wee</span>
+									</span>
+									<div border-left="2px solid white" bg="white-20p" class="svg-48-36 border-2-left border-white">
+										<svg viewBox="0 0 100 100">
+											<path d="M14,32 L50,68 L86,32" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+										</svg>
+									</div>
+								</a>
+								<ul>
+									<li>
+										<span>Jeselle Obina</span>
+									</li>
+									<li>
+										<span>Samir Makhani</span>
+									</li>
+									<li>
+										<span>Gabrielle Wee</span>
+									</li>
+								</ul>
+						</div>
+						</li>
+						<li p="7.5px">
 							<fieldset rad="2px" border="2px solid white">
 								<label p="3px 15px" font-size="12" font-weight="600" bg="white-25p" border-bottom="2px solid white" class="border-white border-2-bottom">Severity</label>
 								<div p="15px">
@@ -237,6 +263,46 @@
 								</div>
 							</fieldset>
 						</li>
+					</ul>
+					<ul w="50%">
+						<li p="7.5px" flex>
+							<fieldset rad="2px" border="2px solid white" w="calc(75% - 7.5px)" m-right="7.5px">
+								<label p="3px 15px" font-size="12" font-weight="600" bg="white-25p" border-bottom="2px solid white" class="border-white border-2-bottom">File</label>
+								<div>
+									<input type="text" value="lorem.html" p="10px 15px" font-size="28" bg="white-10p" color="white"
+										u on-mouseenter="p:[background:#777E93]"
+										on-mouseleave="p:[background:#5D657E]"
+										on-focus="p:[background:#ffffff, color:#757575]"
+										on-blur="p:[background:#5D657E, color:#ffffff]"/>
+								</div>
+							</fieldset>
+							<fieldset rad="2px" border="2px solid white" w="calc(25% - 7.5px)" m-left="7.5px">
+								<label p="3px 15px" font-size="12" font-weight="600" bg="white-25p" border-bottom="2px solid white" class="border-white border-2-bottom">Line</label>
+								<div>
+									<input type="text" placeholder="01" p="10px 15px" font-size="28" bg="white-10p" color="white"
+										u on-mouseenter="p:[background:#777E93]"
+										on-mouseleave="p:[background:#5D657E]"
+										on-focus="p:[background:#ffffff, color:#757575]"
+										on-blur="p:[background:#5D657E, color:#ffffff]"/>
+								</div>
+							</fieldset>
+						</li>
+						<li p="7.5px">
+							<fieldset rad="2px" border="2px solid white">
+								<label p="3px 15px" font-size="12" font-weight="600" bg="white-25p" border-bottom="2px solid white" class="border-white border-2-bottom">Snippet</label>
+								<div>
+									<textarea placeholder="Describe your problem" p="10px 15px" font-size="16" bg="white-10p" color="white" border="0" rad="0"
+										u on-mouseenter="p:[background:#777E93]"
+										on-mouseleave="p:[background:#5D657E]"
+										on-focus="p:[background:#ffffff, color:#757575]"
+										on-blur="p:[background:#5D657E, color:#ffffff]"></textarea>
+								</div>
+							</fieldset>
+						</li>
+					</ul>
+				</div>
+				<div class="docs-form-grid">
+					<ul>
 						<li>
 							<fieldset class="docs-form-section">
 								<label class="docs-form-section-title">Title</label>
