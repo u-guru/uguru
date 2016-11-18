@@ -329,7 +329,8 @@ angular.module('uguru.shared.directives.base.components')
     .directive('keypressEvents', [
       '$document',
       '$rootScope',
-      function($document, $rootScope) {
+      'KeyboardService',
+      function($document, $rootScope, KeyboardService) {
         return {
           restrict: 'A',
           link: function() {
@@ -1915,7 +1916,9 @@ angular.module('uguru.shared.directives.base.components')
         "rel",
         "relative",
         "abs",
-        "absolute"
+        "absolute",
+        "border",
+        "z"
         ]
 
     var modulePointer = angular.module('uguru.shared.directives.base.components');
