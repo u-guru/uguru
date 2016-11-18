@@ -133,36 +133,51 @@
 						<li p="7.5px">
 							<div relative rad="2px">
 								<a stretch s-b bg="white-10p" border="2px solid white"
-									u on-click="s:[report-dd:public]"
+									u on-mouseenter="p:[background:#777E93]"
+									on-mouseleave="p:[background:#5D657E]"
+									on-click="s:[report-dd-open:public]"
 									on-blur="s:[report-dd-blur:public]">
 									<span y-center p-x="15px" font-weight="600">
-										<span class="user-icon-28" m-right="10"></span>
-										<span>Gabrielle Wee</span>
+										<span u init-with="p:[op:0.5]">Reported By</span>
 									</span>
 									<div border-left="2px solid white" bg="white-20p" class="svg-48-36 border-2-left border-white">
-										<svg viewBox="0 0 100 100">
+										<svg viewBox="0 0 100 100"
+											u init-with="p:[tro:center center, tr:rotateX(0deg)]"
+											when-report-dd-open="a:[rotateX:0deg:180deg:150:easeOutBack:0:1:f]">
 											<path d="M14,32 L50,68 L86,32" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
 										</svg>
 									</div>
 								</a>
 								<ul absolute left="0" width="calc(100% - 48px)" m-top="-2px" bg="stone" border="1px solid white"
 									u init-with="p:[z-index:-1, op:0]"
-									when-report-dd="p:[z-index:10, op:1]"
+									when-report-dd-open="p:[z-index:11, op:1]"
 									when-report-dd-blur="p:[z-index:-1, op:0]">
-									<li border="1px solid white">
-										<span y-center p-x="15px" p-y="10px" font-weight="600" bg="white-20p">
+									<li border="1px solid white"
+										u init-with="p:[tro:center top, op:0, tr:rotateX(90deg) translateZ(0px)]"
+										when-report-dd-open="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]">
+										<span y-center p-x="15px" p-y="10px" font-weight="600" bg="white-20p"
+											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
+											on-mouseleave="p:[background:#777E93, color:#ffffff]">
 											<span class="user-icon-28" m-right="10"></span>
 											<span>Jeselle Obina</span>
 										</span>
 									</li>
-									<li border="1px solid white">
-										<span y-center p-x="15px" p-y="10px" font-weight="600" bg="white-20p">
+									<li border="1px solid white"
+										u init-with="p:[tro:center top, op:0, tr:rotateX(-90deg) translateZ(0px)]"
+										when-report-dd-open="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:-90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]:delay-150">
+										<span y-center p-x="15px" p-y="10px" font-weight="600" bg="white-20p"
+											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
+											on-mouseleave="p:[background:#777E93, color:#ffffff]">
 											<span class="user-icon-28" m-right="10"></span>
 											<span>Samir Makhani</span>
 										</span>
 									</li>
-									<li border="1px solid white">
-										<span y-center p-x="15px" p-y="10px" font-weight="600" bg="white-20p">
+									<li border="1px solid white"
+										u init-with="p:[tro:center top, op:0, tr:rotateX(90deg) translateZ(0px)]"
+										when-report-dd-open="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]:delay-300">
+										<span y-center p-x="15px" p-y="10px" font-weight="600" bg="white-20p"
+											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
+											on-mouseleave="p:[background:#777E93, color:#ffffff]">
 											<span class="user-icon-28" m-right="10"></span>
 											<span>Gabrielle Wee</span>
 										</span>
@@ -312,6 +327,114 @@
 										on-blur="p:[background:#5D657E, color:#ffffff]"></textarea>
 								</div>
 							</fieldset>
+						</li>
+						<li p="7.5px" flex>
+							<div relative rad="2px" w="calc(50% - 7.5px)" m-right="7.5px">
+								<a stretch s-b bg="white-10p" border="2px solid white"
+									u on-mouseenter="p:[background:#777E93]"
+									on-mouseleave="p:[background:#5D657E]"
+									on-click="s:[report-dd-open:public]"
+									on-blur="s:[report-dd-blur:public]">
+									<span y-center p-x="15px" font-weight="600">
+										<span>Browser</span>
+									</span>
+									<div border-left="2px solid white" bg="white-20p" class="svg-48-36 border-2-left border-white">
+										<svg viewBox="0 0 100 100"
+											u init-with="p:[tro:center center, tr:rotateX(0deg)]"
+											when-report-dd-open="a:[rotateX:0deg:180deg:150:easeOutBack:0:1:f]">
+											<path d="M14,32 L50,68 L86,32" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+										</svg>
+									</div>
+								</a>
+								<ul absolute left="0" width="calc(100% - 48px)" m-top="-2px" bg="stone" border="1px solid white"
+									u init-with="p:[z-index:-1, op:0]"
+									when-report-dd-open="p:[z-index:11, op:1]"
+									when-report-dd-blur="p:[z-index:-1, op:0]">
+									<li border="1px solid white"
+										u init-with="p:[tro:center top, op:0, tr:rotateX(90deg) translateZ(0px)]"
+										when-report-dd-open="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]">
+										<span y-center p-x="15px" p-y="10px" font-weight="600" bg="white-20p"
+											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
+											on-mouseleave="p:[background:#777E93, color:#ffffff]">
+											<span class="user-icon-28" m-right="10"></span>
+											<span>Jeselle Obina</span>
+										</span>
+									</li>
+									<li border="1px solid white"
+										u init-with="p:[tro:center top, op:0, tr:rotateX(-90deg) translateZ(0px)]"
+										when-report-dd-open="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:-90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]:delay-150">
+										<span y-center p-x="15px" p-y="10px" font-weight="600" bg="white-20p"
+											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
+											on-mouseleave="p:[background:#777E93, color:#ffffff]">
+											<span class="user-icon-28" m-right="10"></span>
+											<span>Samir Makhani</span>
+										</span>
+									</li>
+									<li border="1px solid white"
+										u init-with="p:[tro:center top, op:0, tr:rotateX(90deg) translateZ(0px)]"
+										when-report-dd-open="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]:delay-300">
+										<span y-center p-x="15px" p-y="10px" font-weight="600" bg="white-20p"
+											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
+											on-mouseleave="p:[background:#777E93, color:#ffffff]">
+											<span class="user-icon-28" m-right="10"></span>
+											<span>Gabrielle Wee</span>
+										</span>
+									</li>
+								</ul>
+							</div>
+							<div relative rad="2px" w="calc(50% - 7.5px)" m-left="7.5px">
+								<a stretch s-b bg="white-10p" border="2px solid white"
+									u on-mouseenter="p:[background:#777E93]"
+									on-mouseleave="p:[background:#5D657E]"
+									on-click="s:[report-dd-open:public]"
+									on-blur="s:[report-dd-blur:public]">
+									<span y-center p-x="15px" font-weight="600">
+										<span>Viewport</span>
+									</span>
+									<div border-left="2px solid white" bg="white-20p" class="svg-48-36 border-2-left border-white">
+										<svg viewBox="0 0 100 100"
+											u init-with="p:[tro:center center, tr:rotateX(0deg)]"
+											when-report-dd-open="a:[rotateX:0deg:180deg:150:easeOutBack:0:1:f]">
+											<path d="M14,32 L50,68 L86,32" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+										</svg>
+									</div>
+								</a>
+								<ul absolute left="0" width="calc(100% - 48px)" m-top="-2px" bg="stone" border="1px solid white"
+									u init-with="p:[z-index:-1, op:0]"
+									when-report-dd-open="p:[z-index:11, op:1]"
+									when-report-dd-blur="p:[z-index:-1, op:0]">
+									<li border="1px solid white"
+										u init-with="p:[tro:center top, op:0, tr:rotateX(90deg) translateZ(0px)]"
+										when-report-dd-open="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]">
+										<span y-center p-x="15px" p-y="10px" font-weight="600" bg="white-20p"
+											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
+											on-mouseleave="p:[background:#777E93, color:#ffffff]">
+											<span class="user-icon-28" m-right="10"></span>
+											<span>Jeselle Obina</span>
+										</span>
+									</li>
+									<li border="1px solid white"
+										u init-with="p:[tro:center top, op:0, tr:rotateX(-90deg) translateZ(0px)]"
+										when-report-dd-open="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:-90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]:delay-150">
+										<span y-center p-x="15px" p-y="10px" font-weight="600" bg="white-20p"
+											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
+											on-mouseleave="p:[background:#777E93, color:#ffffff]">
+											<span class="user-icon-28" m-right="10"></span>
+											<span>Samir Makhani</span>
+										</span>
+									</li>
+									<li border="1px solid white"
+										u init-with="p:[tro:center top, op:0, tr:rotateX(90deg) translateZ(0px)]"
+										when-report-dd-open="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]:delay-300">
+										<span y-center p-x="15px" p-y="10px" font-weight="600" bg="white-20p"
+											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
+											on-mouseleave="p:[background:#777E93, color:#ffffff]">
+											<span class="user-icon-28" m-right="10"></span>
+											<span>Gabrielle Wee</span>
+										</span>
+									</li>
+								</ul>
+							</div>
 						</li>
 					</ul>
 				</div>
