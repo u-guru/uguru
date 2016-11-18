@@ -1946,7 +1946,6 @@ angular.module('uguru.shared.directives.base.components')
         "w",
         "h",
         "fS",
-        "fontWeight",
         "flex",
         "rel",
         "relative",
@@ -1975,7 +1974,8 @@ angular.module('uguru.shared.directives.base.components')
         "noScroll",
         "hideX",
         "hideY",
-        "scroll"
+        "scroll",
+        "fW"
         ]
 
     var modulePointer = angular.module('uguru.shared.directives.base.components');
