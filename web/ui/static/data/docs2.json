@@ -21,11 +21,13 @@
 			"formTextarea": [
 				{
 					"title": "Description",
-					"placeholder": "Describe your problem"
+					"placeholder": "Describe your problem",
+					"custom": ""
 				},
 				{
 					"title": "Snippet",
-					"placeholder": "<h1>Hello Gabri</h1>"
+					"placeholder": "<h1>Hello Gabri</h1>",
+					"custom": "source-code"
 				}
 			],
             "actionLink": [
@@ -143,7 +145,7 @@
         },
         "form-textarea": {
             "template_url": "./ui/templates/docs/form-textarea.tpl",
-            "fields": ["title", "placeholder"]
+            "fields": ["title", "placeholder", "custom"]
         },
         "form-tags": {
             "template_url": "./ui/templates/docs/form-tags.tpl"
