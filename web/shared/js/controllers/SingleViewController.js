@@ -10,7 +10,7 @@ angular.module('uguru.shared.controllers')
   'DataService',
   function($scope,  $state, $timeout, $filter, $stateParams, XHRService, DataService) {
     var pfx = $stateParams.prefix;
-    eval('var ' + $stateParams.prefix  + '=this;');
+    eval('var ' + $stateParams.prefix.split('-').join("_")  + '=this;');
     eval('var pfx=this');
 
 
