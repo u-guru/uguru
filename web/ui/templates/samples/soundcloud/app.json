@@ -8,10 +8,9 @@
             "queue": [
                 {
                     "path": "soundcloud.json",
-                    "name": "sc",
-
                     "mapping": {
-                        "to":"content.sc"
+                        "from": "collection[2].track",
+                        "to":"content.track"
                     }
                 }
             ]
