@@ -72,9 +72,9 @@
   font-family: "Impact Label" !important; }
 
 .source-code {
-  font-family: "Source Code Pro", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, Courier, monospace !important !important; }
+  font-family: "Source Code Pro", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, Courier, monospace !important; }
   .source-code * {
-    font-family: "Source Code Pro", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, Courier, monospace !important !important; }
+    font-family: "Source Code Pro", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, Courier, monospace !important; }
 
 @media screen and (max-width: 768px) {
   .desktop-only {

@@ -35,6 +35,8 @@
   font-size: 28px; }
 .placeholder-stone-white input[type="text"]:-ms-input-placeholder {
   font-size: 28px; }
+.placeholder-stone-white textarea.source-code {
+  font-size: 12px !important; }
 
 .docs-nav nav {
   padding: 10px 0; }
