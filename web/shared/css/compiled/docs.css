@@ -1,3 +1,43 @@
+.placeholder-stone-white input[type="text"]::-webkit-input-placeholder, .placeholder-stone-white textarea::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.25) !important; }
+.placeholder-stone-white input[type="text"]:-moz-placeholder, .placeholder-stone-white textarea:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.25) !important; }
+.placeholder-stone-white input[type="text"]::-moz-placeholder, .placeholder-stone-white textarea::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.25) !important; }
+.placeholder-stone-white input[type="text"]:-ms-input-placeholder, .placeholder-stone-white textarea:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.25) !important; }
+.placeholder-stone-white input[type="text"]:hover, .placeholder-stone-white textarea:hover {
+  background: rgba(255, 255, 255, 0.25) !important; }
+  .placeholder-stone-white input[type="text"]:hover::-webkit-input-placeholder, .placeholder-stone-white textarea:hover::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.25) !important; }
+  .placeholder-stone-white input[type="text"]:hover:-moz-placeholder, .placeholder-stone-white textarea:hover:-moz-placeholder {
+    color: rgba(255, 255, 255, 0.25) !important; }
+  .placeholder-stone-white input[type="text"]:hover::-moz-placeholder, .placeholder-stone-white textarea:hover::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.25) !important; }
+  .placeholder-stone-white input[type="text"]:hover:-ms-input-placeholder, .placeholder-stone-white textarea:hover:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.25) !important; }
+.placeholder-stone-white input[type="text"]:focus, .placeholder-stone-white textarea:focus {
+  background: white !important;
+  color: #757575 !important; }
+  .placeholder-stone-white input[type="text"]:focus::-webkit-input-placeholder, .placeholder-stone-white textarea:focus::-webkit-input-placeholder {
+    color: rgba(117, 117, 117, 0.5) !important; }
+  .placeholder-stone-white input[type="text"]:focus:-moz-placeholder, .placeholder-stone-white textarea:focus:-moz-placeholder {
+    color: rgba(117, 117, 117, 0.5) !important; }
+  .placeholder-stone-white input[type="text"]:focus::-moz-placeholder, .placeholder-stone-white textarea:focus::-moz-placeholder {
+    color: rgba(117, 117, 117, 0.5) !important; }
+  .placeholder-stone-white input[type="text"]:focus:-ms-input-placeholder, .placeholder-stone-white textarea:focus:-ms-input-placeholder {
+    color: rgba(117, 117, 117, 0.5) !important; }
+.placeholder-stone-white input[type="text"]::-webkit-input-placeholder {
+  font-size: 28px; }
+.placeholder-stone-white input[type="text"]:-moz-placeholder {
+  font-size: 28px; }
+.placeholder-stone-white input[type="text"]::-moz-placeholder {
+  font-size: 28px; }
+.placeholder-stone-white input[type="text"]:-ms-input-placeholder {
+  font-size: 28px; }
+.placeholder-stone-white textarea.source-code {
+  font-size: 12px !important; }
+
 .docs-nav nav {
   padding: 10px 0; }
 .docs-nav ul {

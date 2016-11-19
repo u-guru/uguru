@@ -1,5 +1,34 @@
 @import 'partials/mixin';
 
+.placeholder-stone-white {
+	input[type="text"], textarea {
+		@include placeholder {
+			color: rgba(white, .25)!important;
+		}
+		&:hover {
+			background: rgba(white, .25)!important;
+			@include placeholder {
+				color: rgba(white, .25)!important;
+			}
+		}
+		&:focus {
+			background: white!important;
+			color: $taupe!important;
+			@include placeholder {
+				color: rgba($taupe, .5)!important;
+			}
+		}
+	}
+	input[type="text"] {
+		@include placeholder {
+			font-size: 28px;
+		}
+	}
+	textarea.source-code {
+		font-size: 12px!important;
+	}
+}
+
 .docs-nav {
 	nav {
 		padding: 10px 0;
