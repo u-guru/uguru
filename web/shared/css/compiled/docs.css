@@ -1,3 +1,36 @@
+.placeholder-stone-white input::-webkit-input-placeholder, .placeholder-stone-white textarea::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.25) !important; }
+.placeholder-stone-white input:-moz-placeholder, .placeholder-stone-white textarea:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.25) !important; }
+.placeholder-stone-white input::-moz-placeholder, .placeholder-stone-white textarea::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.25) !important; }
+.placeholder-stone-white input:-ms-input-placeholder, .placeholder-stone-white textarea:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.25) !important; }
+.placeholder-stone-white input:hover::-webkit-input-placeholder, .placeholder-stone-white textarea:hover::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.25) !important; }
+.placeholder-stone-white input:hover:-moz-placeholder, .placeholder-stone-white textarea:hover:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.25) !important; }
+.placeholder-stone-white input:hover::-moz-placeholder, .placeholder-stone-white textarea:hover::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.25) !important; }
+.placeholder-stone-white input:hover:-ms-input-placeholder, .placeholder-stone-white textarea:hover:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.25) !important; }
+.placeholder-stone-white input:focus::-webkit-input-placeholder, .placeholder-stone-white textarea:focus::-webkit-input-placeholder {
+  color: rgba(117, 117, 117, 0.5) !important; }
+.placeholder-stone-white input:focus:-moz-placeholder, .placeholder-stone-white textarea:focus:-moz-placeholder {
+  color: rgba(117, 117, 117, 0.5) !important; }
+.placeholder-stone-white input:focus::-moz-placeholder, .placeholder-stone-white textarea:focus::-moz-placeholder {
+  color: rgba(117, 117, 117, 0.5) !important; }
+.placeholder-stone-white input:focus:-ms-input-placeholder, .placeholder-stone-white textarea:focus:-ms-input-placeholder {
+  color: rgba(117, 117, 117, 0.5) !important; }
+.placeholder-stone-white input::-webkit-input-placeholder {
+  font-size: 28px; }
+.placeholder-stone-white input:-moz-placeholder {
+  font-size: 28px; }
+.placeholder-stone-white input::-moz-placeholder {
+  font-size: 28px; }
+.placeholder-stone-white input:-ms-input-placeholder {
+  font-size: 28px; }
+
 .docs-nav nav {
   padding: 10px 0; }
 .docs-nav ul {

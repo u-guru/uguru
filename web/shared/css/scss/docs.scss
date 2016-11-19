@@ -1,5 +1,28 @@
 @import 'partials/mixin';
 
+.placeholder-stone-white {
+	input, textarea {
+		@include placeholder {
+			color: rgba(white, .25)!important;
+		}
+		&:hover {
+			@include placeholder {
+				color: rgba(white, .25)!important;
+			}
+		}
+		&:focus {
+			@include placeholder {
+				color: rgba($taupe, .5)!important;
+			}
+		}
+	}
+	input {
+		@include placeholder {
+			font-size: 28px;
+		}
+	}
+}
+
 .docs-nav {
 	nav {
 		padding: 10px 0;
