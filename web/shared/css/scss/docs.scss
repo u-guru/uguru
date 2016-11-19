@@ -1,7 +1,7 @@
 @import 'partials/mixin';
 
 .placeholder-stone-white {
-	input, textarea {
+	input[type="text"], textarea {
 		@include placeholder {
 			color: rgba(white, .25)!important;
 		}
@@ -19,7 +19,7 @@
 			}
 		}
 	}
-	input {
+	input[type="text"] {
 		@include placeholder {
 			font-size: 28px;
 		}
