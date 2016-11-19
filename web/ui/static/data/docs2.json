@@ -18,6 +18,16 @@
 					"placeholder": "01"
 				}
 			],
+			"formTextarea": [
+				{
+					"title": "Description",
+					"placeholder": "Describe your problem"
+				},
+				{
+					"title": "Snippet",
+					"placeholder": "<h1>Hello Gabri</h1>"
+				}
+			],
             "actionLink": [
                 {
                     "name": "Search",
@@ -129,7 +139,11 @@
         },
         "form-input": {
             "template_url": "./ui/templates/docs/form-input.tpl",
-            "fields": ["title"]
+            "fields": ["title", "placeholder"]
+        },
+        "form-textarea": {
+            "template_url": "./ui/templates/docs/form-textarea.tpl",
+            "fields": ["title", "placeholder"]
         }
 
 
