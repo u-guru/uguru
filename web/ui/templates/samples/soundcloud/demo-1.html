@@ -3,6 +3,19 @@
         {{data.content.sc.collection[0].track}}
     </div> -->
 
+	<view layer="1" type='row' bg="#CA004E"
+	    u on-init="s:[record-start:children:4400]">
+	    <item class='uppercase' width='100' height='100' align='center center' align-self="center center"
+	        u init-with="p:[tro:center center]"
+	        when-record-start="a:[rotate:0deg:360deg:10000:linear:0:i:f]">
+	        <svg class="absolute" width="640px" height="640px" viewBox="0 0 640 640">
+	            <circle stroke="none" fill="#2D2D2D" fill-rule="evenodd" cx="320" cy="320" r="320"></circle>
+	            <circle fill="#FFFFFF" opacity="0.2" cx="319.665001" cy="319.665001" r="106.665001"></circle>
+	        </svg>
+	        <item class='relative round' width="213px" height="213px" bg-url='{{data.content.sc.collection[3].track.artwork_url}}'> </item>
+	    </item>
+	</view>
+
 	<view layer="2" type='row'>
 	    <div x-center y-center wrap width="100" height="100">
 			<h2 p="20px 30px" border="5px solid white" font-size="36px" f-w="900" letter-spacing='0.3em' line-height='1.2' class="line-height-1-2" style="letter-spacing:0.3em">VIBES.CLUB</h2>
@@ -54,21 +67,6 @@
 		    </item>
 		</div>
 	</view>
-
-	<view layer="1" type='row' bg="auburn"
-	    u on-init="s:[record-start:children:4400]">
-	     <!-- bg="#CA004E" -->
-	    <item m-bg="gold" class='uppercase' width='100' height='100' align='center center' align-self="center center"
-	        u init-with="p:[tro:center center]"
-	        when-record-start="a:[rotate:0deg:360deg:10000:linear:0:i:f]">
-	        <svg class="absolute" width="640px" height="640px" viewBox="0 0 640 640">
-	            <circle stroke="none" fill="#2D2D2D" fill-rule="evenodd" cx="320" cy="320" r="320"></circle>
-	            <circle id="Oval-Copy" fill="#FFFFFF" opacity="0.2" cx="319.665001" cy="319.665001" r="106.665001"></circle>
-	        </svg>
-	        <item class='relative round' width="213px" height="213px" bg-url='http://www.etonline.com/news/2016/09/24271863/1280_theweeknd_album_twitter.jpg'> </item>
-	    </item>
-	</view>
-
 
     <inspect-data data/>
 </view>
