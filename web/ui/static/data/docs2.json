@@ -4,6 +4,20 @@
             "searchBar": {
                 "text": ""
             },
+			"formInput": [
+				{
+					"title": "Title",
+					"placeholder": "Lorem Ipsum"
+				},
+				{
+					"title": "File",
+					"placeholder": "lorem.html"
+				},
+				{
+					"title": "Line",
+					"placeholder": "01"
+				}
+			],
             "actionLink": [
                 {
                     "name": "Search",
@@ -112,6 +126,10 @@
         },
         "example-css": {
             "template_url": "./ui/templates/docs/example-css.tpl"
+        },
+        "form-input": {
+            "template_url": "./ui/templates/docs/form-input.tpl",
+            "fields": ["title"]
         }
 
 
