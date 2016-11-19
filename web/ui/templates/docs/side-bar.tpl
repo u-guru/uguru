@@ -1,7 +1,8 @@
 <aside class="docs-nav overflow-y no-scrollbar">
 	<nav>
 	    <ul class="docs-nav-list">
-	        <side-bar-item ng-repeat='(sectionName, value) in docs.data.content track by $index' custom></side-bar-item>
+
+	        <side-bar-item list="docs.data.content"></side-bar-item>
 
 	        <!-- <li>
 	            <h1><a u on-click="c:[selected:add]">Directives</a></h1>

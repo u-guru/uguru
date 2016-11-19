@@ -1,5 +1,8 @@
 <view link-data="ui/static/data/docs2.json" render-after-ext-scripts link-data-name="docs" row  class="docs" type='row' bg="stone" width="100" height="100">
-	<side-bar custom width="25" height="100"></side-bar>
+
+    <!-- Ex#1: try removing keep-name here and see what happens -->
+    <side-bar custom data="docs.data.content" keep-name width="25" height="100"></side-bar>
+
     <main class="docs-main overflow-y no-scrollbar" width="75" height="100">
         <header>
             <omnibar custom> </omnibar>

@@ -12,7 +12,6 @@
 				<!--
 					AFTER -->
 					<h1>{{title}}</h1>
-					<inspect-data/>
 				<div>
 					<hr class="docs-article-gradient"/>
 					<article class="docs-article">
