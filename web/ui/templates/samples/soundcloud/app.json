@@ -9,8 +9,8 @@
                 {
                     "path": "soundcloud.json",
                     "mapping": {
-                        "from": "collection[3].track",
-                        "to":"content.single.track"
+                        "from": "collection[2].track",
+                        "to":"content.track"
                     }
                 }
             ]
