@@ -55,6 +55,7 @@ angular.module('uguru.shared.directives.base.components')
                     element.replaceWith(elem)
                 } else if (attr.list.length) {
 
+
                     // var varNameSplit = attr.list.split('.');
                     // var varName = varNameSplit[varNameSplit.length - 1];
                     // if (varName.charAt(varName.length - 1) === 's') {
@@ -70,30 +71,86 @@ angular.module('uguru.shared.directives.base.components')
 
                     element.removeAttr('list');
                     return function(scope, elem, _attr) {
-                        var elemNameDashed = elem[0].nodeName.toLowerCase();
 
+                        var elemNameDashed = elem[0].nodeName.toLowerCase();
+                        var listData = [];
+                        console.log(attr.list, scope)
+                        if (attr.list.indexOf('.') > -1) {
+                            attrListSplit = attr.list.split('.');
+
+                            listData = $parse(attr.list)(scope);
+
+
+                                if (isArray(listData)) {
+                                    listData.forEach(function(item, i) {
+                                        // console.log(i, elem[0].outerHTML)
+
+                                        resultHtml += '<' + elemNameDashed  + '  data="' + attr.list + '[' + i + ']" custom></' + elemNameDashed + '>';
+
+
+                                        // element[0].removeAttribute('list');
+
+                                        // element.replaceWith(elem)
+                                    })
+                                    replaceElementAfterListInScope(elem, listData, attr.list, scope, true)
+                                }
+
+                                else if (isObject(listData)) {
+                                    var scopePtr = scope[attr.list.split('.')[0]];
+                                    var newArray = [];
+                                    var splitList = attr.list.split('.').splice(1);
+                                    var lastKey = splitList.pop();
+                                    splitList.forEach(function(scope_var, i) {
+                                        scopePtr = scopePtr[scope_var]
+                                    })
+                                    scopePtr[lastKey] = [];
+                                    for (key in listData) {
+                                        var _dict = listData[key];
+                                        _dict.name = key;
+                                        scopePtr[lastKey].push(_dict)
+                                    }
+                                    replaceElementAfterListInScope(elem, scopePtr[lastKey], attr.list, scope)
+                                    // for (key in listData) {
+                                    //     scopePtr = scopePtr[key];
+                                    //     listData.push(scopePtr[key]);
+                                    // }
+                                    console.log(scopePtr, listData)
+                                }
+                                //     if (listData.length) {
+
+                                //         scopePtr = listData;
+
+                                //         // replaceElementAfterListInScope(elem, value, attr.list, scope)
+                                //     }
+                                // }
+                            // }
+                        }
                         if (attr.list in scope) {
-                            var listData = scope[attr.list];
+
+                            listData = scope[attr.list];
 
 
                             listData.forEach(function(listData, i) {
                                 // console.log(i, elem[0].outerHTML)
 
-                                resultHtml += '<' + elemNameDashed  + '  data="options[' + i + ']" custom></' + elemNameDashed + '>';
+                                resultHtml += '<' + elemNameDashed  + '  data="' + attr.list + '[' + i + ']" custom></' + elemNameDashed + '>';
 
 
                                 // element[0].removeAttribute('list');
 
                                 // element.replaceWith(elem)
                             })
-                            scope[attr.list] = listData;
+                            // scope[attr.list] = listData;
                             elem.replaceWith(angular.element(resultHtml));
                         } else {
                             var watcherCancel = scope.$watch(attr.list, function(value) {
                                 if (value) {
                                     if (value.length) {
-                                        replaceElementAfterListInScope(elem, value, attr.list, scope)
+
                                         scope[attr.list] = value;
+
+                                        replaceElementAfterListInScope(elem, value, attr.list, scope)
+
                                         watcherCancel();
 
                                     }
@@ -103,14 +160,17 @@ angular.module('uguru.shared.directives.base.components')
 
 
 
-                        function replaceElementAfterListInScope(elem, list_elements, data_name, scope) {
+                        function replaceElementAfterListInScope(elem, list_elements, data_name, scope, skip_compile) {
                             var resultHtml = '';
                             var elemNameDashed = elem[0].nodeName.toLowerCase();
                             list_elements.forEach(function(list_item, i) {
                                 resultHtml += '<' + elemNameDashed  + '  data="' + data_name + '[' + i + ']" custom></' + elemNameDashed + '>';
                             })
-                            if (resultHtml.length) {
+                            console.log(resultHtml)
+                            if (resultHtml.length && !skip_compile) {
                                 elem.replaceWith($compile(angular.element(resultHtml))(scope))
+                            } else {
+                                $compile(angular.element(resultHtml))(scope)
                             }
 
                         }
@@ -121,6 +181,14 @@ angular.module('uguru.shared.directives.base.components')
 
 
                         // $compile(elem)(scope)
+                    }
+
+                    function isObject ( obj ) {
+                       return obj && (typeof obj  === "object");
+                    }
+
+                    function isArray ( obj ) {
+                      return isObject(obj) && (obj instanceof Array);
                     }
 
                     // previous functioning
@@ -158,7 +226,23 @@ angular.module('uguru.shared.directives.base.components')
                 if ('data' in attr) {
 
                     if ('keepName' in attr) {
-                        scope[attr.data] = $parse(attr.data)(scope);
+                        var attrName = attr.data;
+                        // if (attr.data.indexOf('.') > -1) {
+                        //     var dataAttrSplit = attr.data.split('.');
+                        //      attrName = dataAttrSplit[dataAttrSplit.length - 1];
+
+                        // }
+
+                        scope[attrName] = $parse(attr.data)(scope);
+                        // if (isObject(scope[attrName]) && !isArray(scope[attrName])) {
+                        //     var newArray = [];
+                        //     var _dict = scope[attrName];
+                        //     for (key in _dict) {
+                        //         _dict[key].name = key;
+                        //         newArray.push(_dict[key]);
+                        //     }
+                        //     scope[attrName] = newArray;
+                        // }
                     }
                     else if (!attr.keepName) {
                         var attrValue = $parse(attr.data)(scope)
@@ -185,6 +269,8 @@ angular.module('uguru.shared.directives.base.components')
                     // console.log($parse(angular.element(elem[0].innerHTML.trim())[0].innerHTML.trim())(scope))
                     // console.log($parse(angular.element(elem[0].innerHTML)[0].innerHTML + '')(scope))
                 }
+
+
 
 
 
@@ -380,6 +466,23 @@ angular.module('uguru.shared.directives.base.components')
             templateUrl: 'admin/templates/animations/chart.player.tpl',
             replace:true
         }
+    }])
+    .directive('childGrow', ['$compile', function($compile) {
+    return {
+        restrict: 'A',
+        scope:true,
+        replace: false,
+        transclude:true,
+        compile: function(element, attr, transclude) {
+            return function preLink(scope, p_element, p_attr) {
+                transclude(scope, function(clone, inner_scope) {
+                    p_element.append(clone);
+                    p_element.removeAttr('child-grow')
+                    p_element = $compile(p_element.contents())(scope)
+                })
+            }
+        }
+    }
     }])
     .directive('size', ['$compile', function($compile) {
         return {
@@ -1975,7 +2078,8 @@ angular.module('uguru.shared.directives.base.components')
         "hideX",
         "hideY",
         "scroll",
-        "fW"
+        "fW",
+        "fontWeight"
         ]
 
     var modulePointer = angular.module('uguru.shared.directives.base.components');

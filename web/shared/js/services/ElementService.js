@@ -248,7 +248,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           int_str = int_str.split('[')[1];
           int_str = int_str.split(']')[0];
           var result = {};
-          var argTypeStr = {'a': 'anim', 's': 'send', 'p': 'prop'};
+          var argTypeStr = {'a': 'anim', 's': 'send', 'p': 'prop', 'e': 'eval'};
           if (key.length === 1) {
             key = argTypeStr[key]
           }
@@ -263,6 +263,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                 // console.log(msgName)
 
                 var delay = msgSplit[2];
+                //staggers
                 result[msgName] = parseInt(delay);
                 if (!result[msgName] && delay.indexOf('-') > -1) {
                   result[msgName] = 0;
@@ -591,7 +592,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         propertyArr.forEach(function(kv, i) {
           if (specialProps && kv.value.indexOf('|') > -1) {
             kv.value = kv.value.split('|').join(',');
-            console.log(kv.value)
           }
           CompService.css.apply(elem, kv.key, kv.value);
           // elem.css(kv.key, kv.value);
@@ -645,6 +645,9 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           }
           if (param_value.indexOf('a:[') > -1 || param_value.indexOf('anim:[') > -1) {
             resultDict.argName = 'anim';
+          }
+          if (param_value.indexOf('e:[') > -1 || param_value.indexOf('eval:[') > -1) {
+            resultDict.argName = 'eval';
           }
           resultArr.push(resultDict)
         })
