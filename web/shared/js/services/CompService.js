@@ -265,7 +265,11 @@ function CompService($timeout, $compile, $parse, $rootScope) {
         "scrollY": "overflow-y",
         "scrollXy": "overflow-x overflow-y",
         "scrollable": "overflow-x overflow-y",
-        "scroll": "overflow"
+        "scroll": "overflow",
+        "lineHeight": "line-height",
+        "lH": "line-height",
+        "lS": "letter-spacing",
+        "letterSpacing": "letter-spacing"
 
     }
     prefixes.forEach(function(p) {

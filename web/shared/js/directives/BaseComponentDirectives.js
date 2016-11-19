@@ -2077,7 +2077,11 @@ angular.module('uguru.shared.directives.base.components')
         "hideY",
         "scroll",
         "fW",
-        "fontWeight"
+        "fontWeight",
+        "lineHeight",
+        "lH",
+        "lS",
+        "letterSpacing"
         ]
 
     var modulePointer = angular.module('uguru.shared.directives.base.components');
