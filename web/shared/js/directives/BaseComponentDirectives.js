@@ -27,7 +27,7 @@ angular.module('uguru.shared.directives.base.components')
         return {
             restrict: 'A',
             replace:true,
-            scope:false,
+            scope:true,
             priority:10000,
             compile: function(element, attr, transclude) {
 
@@ -74,7 +74,6 @@ angular.module('uguru.shared.directives.base.components')
 
                         var elemNameDashed = elem[0].nodeName.toLowerCase();
                         var listData = [];
-                        console.log(attr.list, scope)
                         if (attr.list.indexOf('.') > -1) {
                             attrListSplit = attr.list.split('.');
 
@@ -166,7 +165,6 @@ angular.module('uguru.shared.directives.base.components')
                             list_elements.forEach(function(list_item, i) {
                                 resultHtml += '<' + elemNameDashed  + '  data="' + data_name + '[' + i + ']" custom></' + elemNameDashed + '>';
                             })
-                            console.log(resultHtml)
                             if (resultHtml.length && !skip_compile) {
                                 elem.replaceWith($compile(angular.element(resultHtml))(scope))
                             } else {
@@ -525,7 +523,7 @@ angular.module('uguru.shared.directives.base.components')
             scope:false,
             priority: 10000,
             link: function postLink(scope, element, attr) {
-                if (element[0] && element[0].outerHTML) element[0].outerHTML = '';
+                // if (element[0] && element[0].outerHTML) element[0].outerHTML = '';
                 if (!$rootScope.inspected) {
                     $rootScope.inspected = true;
 
@@ -599,7 +597,7 @@ angular.module('uguru.shared.directives.base.components')
                             post_element.removeAttr('url')
                             $compile(post_element)(post_scope)
 
-                            console.log(url, post_element[0])
+                            // console.log(url, post_element[0])
                         }
                         if (post_scope.chart) post_scope.chart.elem = post_element;
 

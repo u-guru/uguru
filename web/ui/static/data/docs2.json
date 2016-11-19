@@ -69,23 +69,38 @@
             "queue": [
                 {
                     "path": "attributes.json",
-                    "name": "attributes"
+                    "name": "attributes",
+                    "mapping": {
+                        "to":"content.attributes"
+                    }
                 },
                 {
                     "path": "directives.json",
-                    "name": "directives"
+                    "name": "directives",
+                    "mapping": {
+                        "to" : "content.dir"
+                    }
                 },
                 {
                     "path": "css.json",
-                    "name": "css"
+                    "name": "css",
+                    "mapping": {
+                        "to" : "content.css"
+                    }
                 },
                 {
                     "path": "html.json",
-                    "name": "html"
+                    "name": "html",
+                    "mapping": {
+                            "to": "content.html"
+                    }
                 },
                 {
                     "path": "style-guide.json",
-                    "name": "guide"
+                    "name": "guide",
+                    "mapping": {
+                        "to":"content.style_guide"
+                    }
                 }
             ]
         }
