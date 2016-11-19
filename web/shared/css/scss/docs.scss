@@ -6,11 +6,14 @@
 			color: rgba(white, .25)!important;
 		}
 		&:hover {
+			background: rgba(white, .25)!important;
 			@include placeholder {
 				color: rgba(white, .25)!important;
 			}
 		}
 		&:focus {
+			background: white!important;
+			color: $taupe!important;
 			@include placeholder {
 				color: rgba($taupe, .5)!important;
 			}
