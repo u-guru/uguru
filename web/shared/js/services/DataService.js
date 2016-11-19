@@ -77,7 +77,6 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
 
     var url = script_info.base_url  + script_info.path;
     var name = script_info.name || '';
-    console.log(url)
     XHRService.getJSONFile('GET', url, generatePostExternalScriptCallback(data_scope, name, script_info.mapping), {})
   }
 
@@ -98,7 +97,6 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
         mapPostDataToDataScope(data_scope, response, mapping)
       }
       data_scope.config.processed.scripts[name] = true;
-      console.log(data_scope)
       checkExtScriptStatus(data_scope)
     }
   }
@@ -106,7 +104,10 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
   function mapPostDataToDataScope(source, incoming, spec) {
     // source['content'][spec.name] = incoming;
     if ('from' in spec) {
-      retrieveDataFromNestedPath(incoming, spec);
+      var incomingFormatted = retrieveDataFromNestedPath(incoming, spec);
+      if (incomingFormatted) {
+        incoming = incomingFormatted
+      }
     }
     if ('to' in spec) {
       setDataToNestedPath(source, incoming, spec)
@@ -121,32 +122,43 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
 
 
   function retrieveDataFromNestedPath(incoming, spec) {
-    if ('from' in spec && 'name' in spec)  {
+
+    if ('from' in spec)  {
+      var path = spec.from.split('.');
+      var ptr = incoming;
+      var nestingNumber = 0;
+      var lastVarName;
+      var resp = $parse(spec.from)(incoming);
+      if (typeof resp === 'object') {
+        return resp;
+      }
+
 
     }
   }
 
   function setDataToNestedPath(source, incoming, spec) {
     // console.log(source, incoming, spec)
-    if ('to' in spec && 'name' in spec)  {
+    if ('to' in spec)  {
       var path = spec.to.split('.');
       var ptr = source;
       var nestingNumber = 0;
       var lastVarName;
+      var previousPtr;
       path.forEach(function(var_name) {
         nestingNumber += 1;
-        if (var_name in source) {
-
-          ptr = source[var_name]
+        if (var_name in ptr) {
+          previousPtr = ptr;
+          ptr = ptr[var_name]
           // console.log(nestingNumber, var_name, ptr)
         } else {
           ptr[var_name] = {};
+          previousPtr = ptr;
+          ptr = ptr[var_name]
         }
         lastVarName = var_name
       })
-      if (lastVarName && lastVarName.length && typeof ptr === 'object') {
-          ptr[lastVarName] = incoming;
-      }
+      previousPtr[lastVarName] = incoming
 
 
 
@@ -158,7 +170,6 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
   function checkExtScriptStatus(data_scope) {
 
     var script_scope = data_scope.config.processed.scripts;
-    console.log(data_scope.config.processed.scripts)
     if (!('scriptStatus' in data_scope.config.processed)) {
       data_scope.config.processed.scriptStatus = {
         remaining: Object.keys(script_scope).length,

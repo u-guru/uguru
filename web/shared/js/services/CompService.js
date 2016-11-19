@@ -279,7 +279,6 @@ function CompService($timeout, $compile, $parse, $rootScope) {
         baseProps[preStr] = baseProps[key];
       })
     })
-    console.log(baseProps)
 
     return baseProps;
   }
@@ -311,9 +310,6 @@ function CompService($timeout, $compile, $parse, $rootScope) {
       }
 
       prop = camelCase(prop);
-      if (prop.toLowerCase().indexOf('size') > -1) {
-        console.log(prop, value)
-      }
 
       element[0].style[prop] = value;
 
@@ -545,7 +541,6 @@ function CompService($timeout, $compile, $parse, $rootScope) {
 
   function renderAlignSelf(elem, align_args) {
     var selfAlignArgSplit = align_args.split(' ');
-    console.log(selfAlignArgSplit)
     align_args = selfAlignArgSplit[0];
     if (selfAlignArgSplit.length > 1 && ['top', 'bottom', 'right', 'left'].indexOf(selfAlignArgSplit[1])) {
       elem.css(selfAlignArgSplit[1], 0)
@@ -576,7 +571,6 @@ function CompService($timeout, $compile, $parse, $rootScope) {
     var horizArg = alignArgSplit[1];
     if (horizArg in flexAlignMapping) horizArg = flexAlignMapping[horizArg];
     if (vertArg in flexAlignMapping) vertArg = flexAlignMapping[vertArg];
-    console.log(horizArg, vertArg)
     elem.css('display', 'flex');
     elem.css('align-items', horizArg);
     elem.css('justify-content',vertArg);
