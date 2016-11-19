@@ -337,44 +337,47 @@
 								<a stretch s-b bg="white-10p" border="2px solid white"
 									u on-mouseenter="p:[background:#777E93]"
 									on-mouseleave="p:[background:#5D657E]"
-									on-click="s:[browser-dd-open:public:linear-400]"
-									on-blur="s:[browser-report-dd-blur:public]">
+									on-click="s:[browser-dd-open:public]">
 									<span y-center p-x="15px" f-w="600">
 										<span u init-with="p:[op:0.5]">Browser</span>
 									</span>
 									<div border-left="2px solid white" bg="white-20p" class="svg-48-36 border-2-left border-white">
 										<svg viewBox="0 0 100 100"
 											u init-with="p:[tro:center center, tr:rotateX(0deg)]"
-											when-browser-dd-open="a:[rotateX:0deg:180deg:150:easeOutBack:0:1:f]">
+											when-browser-dd-open="a:[rotateX:0deg:180deg:150:easeOutBack:0:1:f]"
+											when-browser-dd-blur="a:[rotateX:180deg:0deg:150:easeOutBack:0:1:f]">
 											<path d="M14,32 L50,68 L86,32" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
 										</svg>
 									</div>
 								</a>
-								<ul absolute left="0" width="calc(100% - 48px)" m-top="-2px" bg="stone" border="1px solid white"
+								<ul absolute left="0" width="calc(100% - 48px)"
 									u init-with="p:[z-index:-1, op:0]"
-									when-browser-dd-open="p:[z-index:11, op:1]"
+									when-browser-dd-open="p:[z-index:11, op:1] | s:[browser-dd-stagger:children:linear-400]"
 									when-browser-dd-blur="p:[z-index:-1, op:0]">
-									<li border="1px solid white"
+									<li m-top="-2px" bg="stone" border="2px solid white"
 										u init-with="p:[tro:center top, op:0, tr:rotateX(90deg) translateZ(0px)]"
-										when-browser-dd-open="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]">
+										when-browser-dd-stagger="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]"
+										on-click="s:[browser-dd-blur:public]">
 										<span y-center p-x="15px" p-y="10px" f-w="600" bg="white-20p"
 											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
 											on-mouseleave="p:[background:#777E93, color:#ffffff]">
 											<span>Chrome</span>
 										</span>
 									</li>
-									<li border="1px solid white"
+									<li m-top="-2px" bg="stone" border="2px solid white"
 										u init-with="p:[tro:center top, op:0, tr:rotateX(-90deg) translateZ(0px)]"
-										when-browser-dd-open="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:-90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]">
+										when-browser-dd-stagger="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:-90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]"
+										on-click="s:[browser-dd-blur:public]">
 										<span y-center p-x="15px" p-y="10px" f-w="600" bg="white-20p"
 											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
 											on-mouseleave="p:[background:#777E93, color:#ffffff]">
 											<span>IE 7</span>
 										</span>
 									</li>
-									<li border="1px solid white"
+									<li m-top="-2px" bg="stone" border="2px solid white"
 										u init-with="p:[tro:center top, op:0, tr:rotateX(90deg) translateZ(0px)]"
-										when-browser-dd-open="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]">
+										when-browser-dd-stagger="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]"
+										on-click="s:[browser-dd-blur:public]">
 										<span y-center p-x="15px" p-y="10px" f-w="600" bg="white-20p"
 											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
 											on-mouseleave="p:[background:#777E93, color:#ffffff]">
@@ -389,7 +392,6 @@
 									on-mouseenter="p:[background:#777E93]"
 									on-mouseleave="p:[background:#5D657E]"
 									on-click="s:[vp-dd-open:public]"
-									on-blur="s:[vp-report-dd-blur:public]"
 									when-vp-dd-custom-open="p:[z-index:-1, op:0]"
 									when-vp-dd-custom-close="p:[z-index:1, op:1]">
 									<span y-center p-x="15px" f-w="600">
@@ -399,7 +401,8 @@
 									<div border-left="2px solid white" bg="white-20p" class="svg-48-36 border-2-left border-white">
 										<svg viewBox="0 0 100 100"
 											u init-with="p:[tro:center center, tr:rotateX(0deg)]"
-											when-vp-dd-open="a:[rotateX:0deg:180deg:150:easeOutBack:0:1:f]">
+											when-vp-dd-open="a:[rotateX:0deg:180deg:150:easeOutBack:0:1:f]"
+											when-vp-dd-blur="a:[rotateX:180deg:0deg:150:easeOutBack:0:1:f]">
 											<path d="M14,32 L50,68 L86,32" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
 										</svg>
 									</div>
@@ -437,7 +440,8 @@
 									when-vp-dd-blur="p:[z-index:-1, op:0]">
 									<li bg="stone" border="2px solid white" m-top="-2px"
 										u init-with="p:[tro:center top, op:0, tr:rotateX(90deg) translateZ(0px)]"
-										when-vp-stagger="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]">
+										when-vp-stagger="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]"
+										on-click="s:[vp-dd-blur:public]">
 										<a x-center y-center p-x="15px" p-y="10px" f-w="600" bg="white-20p"
 											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
 											on-mouseleave="p:[background:#777E93, color:#ffffff]">
@@ -446,7 +450,8 @@
 									</li>
 									<li bg="stone" border="2px solid white" m-top="-2px"
 										u init-with="p:[tro:center top, op:0, tr:rotateX(-90deg) translateZ(0px)]"
-										when-vp-stagger="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:-90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]">
+										when-vp-stagger="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:-90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]"
+										on-click="s:[vp-dd-blur:public]">
 										<a x-center y-center p-x="15px" p-y="10px" f-w="600" bg="white-20p"
 											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
 											on-mouseleave="p:[background:#777E93, color:#ffffff]">
@@ -455,7 +460,8 @@
 									</li>
 									<li bg="stone" border="2px solid white" m-top="-2px"
 										u init-with="p:[tro:center top, op:0, tr:rotateX(90deg) translateZ(0px)]"
-										when-vp-stagger="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]">
+										when-vp-stagger="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]"
+										on-click="s:[vp-dd-blur:public]">
 										<a x-center y-center p-x="15px" p-y="10px" f-w="600" bg="white-20p"
 											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
 											on-mouseleave="p:[background:#777E93, color:#ffffff]">
@@ -464,7 +470,8 @@
 									</li>
 									<li bg="stone" border="2px solid white" m-top="-2px"
 										u init-with="p:[tro:center top, op:0, tr:rotateX(-90deg) translateZ(0px)]"
-										when-vp-stagger="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:-90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]">
+										when-vp-stagger="a:[opacity:0:1:250:easeInOutSine:0:1:f, rotateX:-90deg:0deg:250:easeInOutCubic:0:1:f, translateZ:0px:0px:250:easeInOutCubic:0:1:f]"
+										on-click="s:[vp-dd-blur:public]">
 										<a x-center y-center p-x="15px" p-y="10px" f-w="600" bg="white-20p"
 											u on-mouseenter="p:[background:#C4C7D0, color:#4A556F]"
 											on-mouseleave="p:[background:#777E93, color:#ffffff]"
@@ -473,6 +480,26 @@
 										</a>
 									</li>
 								</ul>
+							</div>
+						</li>
+						<li p="7.5px">
+							<div rad="2px" border="2px solid white" w="100%">
+								<header p="3px 15px" font-size="12" f-w="600" bg="white-25p" border-bottom="2px solid white" class="border-white border-2-bottom">Tags</header>
+								<div>
+									<ul flex wrap p="7.5px">
+										<li p="7.5px"><a x-center y-center height="32px" p-x="15px" rad="32px" bg="robin" font-size="14" f-w="600">tag</a></li>
+										<li p="7.5px"><a x-center y-center height="32px" p-x="15px" rad="32px" bg="robin" font-size="14" f-w="600">tag</a></li>
+										<li p="7.5px"><a x-center y-center height="32px" p-x="15px" rad="32px" bg="robin" font-size="14" f-w="600">tag</a></li>
+										<li p="7.5px">
+											<span x-center y-center height="32px" p-left="13px" p-right="15px" rad="32px" bg="robin" font-size="14" f-w="600">
+												<div w="14px" h="14px" p-right="3px" class="svg-white svg-stroke-9">
+													<graphic url='shared/templates/components/svg/main/plus.html'></graphic>
+												</div>
+												<input placeholder="add tag" value="add tag" size="8" bg="transparent" color="white" class="txt-white"/>
+											</span>
+										</li>
+									</ul>
+								</div>
 							</div>
 						</li>
 					</ul>
