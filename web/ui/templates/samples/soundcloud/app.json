@@ -9,7 +9,7 @@
                 {
                     "path": "soundcloud.json",
                     "mapping": {
-                        "from": "collection[0].track",
+                        "from": "collection[3].track",
                         "to":"content.single.track"
                     }
                 }

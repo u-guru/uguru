@@ -12,7 +12,7 @@
 	            <circle stroke="none" fill="#2D2D2D" fill-rule="evenodd" cx="320" cy="320" r="320"></circle>
 	            <circle fill="#FFFFFF" opacity="0.2" cx="319.665001" cy="319.665001" r="106.665001"></circle>
 	        </svg>
-	        <item class='relative round' width="213px" height="213px" bg-url='{{data.content.sc.collection[3].track.artwork_url}}'> </item>
+	        <item class='relative round' width="213px" height="213px" bg-url='{{data.content.single.track.artwork_url}}'> </item>
 	    </item>
 	</view>
 
@@ -30,7 +30,8 @@
 		            <h3 font-size="28px" f-w='600' line-height="1.2" class='line-height-1-2'>Now Playing:</h3>
 		            <h3 font-size="28px" f-w='600' line-height="1.2" t-d="underline" class='line-height-1-2' style='text-decoration:underline'
 						u on-click="p:[launch:youtu.be/34Na4j8AVgA]">
-		                The Weeknd - Starboy ft. Daft Punk
+
+		                {{data.content.single.track.title}}
 		            </h3>
 		        </div>
 		    </div>
