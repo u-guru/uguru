@@ -23,41 +23,32 @@
 			<h2 p="20px 30px" border="5px solid white" font-size="36px" f-w="900" letter-spacing='0.3em' line-height='1.2' class="line-height-1-2" style="letter-spacing:0.3em">VIBES.CLUB</h2>
 
 		    <div width="100" m-top="100px" class="txt-center">
-		        <h3 font-size="28px" f-w='600' line-height="1.2" class="line-height-1-2">LIVE</h3>
-
-				<!-- @warning line-height-1-2 has important attributes so itll override these attributes since I dont do important when I apply attr-->
+		        <h3 font-size="28px" f-w='600' line-height="1.2">LIVE</h3>
 				<h1 font-size="72px" f-w="700" l-h="1.2" l-s='0.3em' class="caps">{{data.content.sc.collection[2].track.genre}}</h1>
-
 				<div y-center x-center wrap>
-		            <h3 font-size="28px" f-w='600' line-height="1.2" class='line-height-1-2'>Now Playing: {{data.content.sc.collection[2].track.publisher_metadata.artist}} -
+		            <h3 font-size="28px" f-w='600' line-height="1.2">Now Playing: {{data.content.sc.collection[2].track.publisher_metadata.artist}} -
 			            <a t-d="underline" style='text-decoration:underline' href="{{data.content.sc.collection[2].track.permalink_url}} ">{{data.content.sc.collection[2].track.title}}
 			            </a>
 					</h3>
 		        </div>
 		    </div>
 
-		    <item m-bg="gold" class='uppercase' width='100' height='15' align='center top'>
-		        <item align="center top" padding="15" class='border-2-top border-2-left border-2-bottom border-1-right'
+		    <div flex border="1px solid white" m-top="100px">
+		        <a flex padding="10" border="1px solid white"
 		            u on-mouseenter="s:[ff-hover:self]"
 		            init-with="p:[fill:none]"
 		            when-ff-hover="p:[fill:RGBA(1, 47, 161, 1.00)]">
-		            <svg class="absolute" width="90px" height="90px" viewBox="0 0 90 90">
-		                <rect x="550" y="500" width="90" height="90"/>
-		            </svg>
-		            <graphic class='relative svg-stroke-3 stroke-white' height="60"
+		            <graphic class='stroke-white svg-64'
 						url='shared/templates/components/svg/main/play-basic.html'> </graphic>
-		        </item>
-		        <item align="center top" padding="15" class='border-2-top border-2-right border-2-bottom border-1-left'
+		        </a>
+		        <a flex padding="10" border="1px solid white"
 		            u on-mouseenter="s:[ff-hover:self]"
 		            init-with="p:[fill:none]"
 		            when-ff-hover="p:[fill:RGBA(1, 47, 161, 1.00)]">
-		            <svg class="absolute" width="90px" height="90px" viewBox="0 0 90 90">
-		                <rect x="550" y="500" width="90" height="90"/>
-		            </svg>
-		            <graphic class='relative svg-stroke-3 stroke-white' height="60"
+		            <graphic class='stroke-white svg-64'
 						url='shared/templates/components/svg/main/fast-forward.html'> </graphic>
-		        </item>
-		    </item>
+		        </a>
+		    </div>
 
 		    <item m-bg="gold" class='uppercase' width='100' height='15' align='center center' align-self="bottom center">
 		        <item align="center center" padding="15" class='border-2 radius-2' u on-click="s:[switch-vibes:public]" id='switch-vibes-btn' public-attr="coords">
