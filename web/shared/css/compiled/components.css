@@ -866,14 +866,10 @@ button {
   width: 100%;
   height: 64px;
   border: 0;
-  color: white;
   font-size: 24px;
   font-weight: 600;
   padding-left: 15px;
-  padding-right: 15px;
-  background: #69B3A5; }
-  button svg * {
-    stroke: white; }
+  padding-right: 15px; }
   button.normal {
     width: auto; }
   button.width-300 {
@@ -886,16 +882,6 @@ button {
     height: 48px; }
   button.height-36 {
     height: 36px; }
-  button:hover, button:focus {
-    background: #b4d9d2;
-    color: #557e78; }
-    button:hover svg *, button:focus svg * {
-      stroke: #557e78; }
-  button:active {
-    background: #557e78;
-    color: white; }
-    button:active svg * {
-      stroke: white; }
 
 button.disabled {
   filter: alpha(opacity=70);
@@ -6940,7 +6926,6 @@ a.course-card:active .course-card-hover {
       bottom: 0;
       left: 0; }
     .pf-tile-container a ~ .pf-tile, .pf-tile-container a ~ .pf-cardlet {
-      transition: all 500ms ease-out;
       transform-style: preserve-3d; }
       .pf-tile-container a ~ .pf-tile *, .pf-tile-container a ~ .pf-cardlet * {
         transform-style: preserve-3d; }
