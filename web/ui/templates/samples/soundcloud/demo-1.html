@@ -1,0 +1,82 @@
+<view link-data="ui/templates/samples/soundcloud/app.json" render-after-ext-scripts row class="docs" type='row' bg="stone" width="100" height="100">
+    <!-- <div>
+        {{data.content.sc.collection[0].track}}
+    </div> -->
+
+	<view layer="2" type='row'>
+	    <div x-center y-center wrap width="100" height="100">
+			<h2 p="20px 30px" border="5px solid white" font-size="36px" f-w="900" letter-spacing='0.3em' line-height='1.2' class="line-height-1-2" style="letter-spacing:0.3em">VIBES.CLUB</h2>
+
+		    <div width="100" m-top="100px">
+		        <h3 font-size="28px" f-w='600' line-height="1.2" class="line-height-1-2">LIVE</h3>
+
+				<item width='100' align='center center'>
+		            <txt font-size="72px" letter-spacing='0.3em' width='100' line-height="1.2" class='weight-700 flex-vertical-center'>
+		                PLAYLIST NAME
+		            </txt>
+		        </item>
+
+				<item width='15'  align='right bottom' class="p10x">
+		            <txt font-size="28px" weight='500' line-height="1.2">
+		                Now Playing:
+		            </txt>
+		        </item>
+		        <item width='30' align='left bottom' class="p10x">
+		            <txt font-size="28px" weight='500' line-height="1.2" t-d="underline"
+						u on-click="p:[launch:youtu.be/34Na4j8AVgA]">
+		                The Weeknd - Starboy ft. Daft Punk
+		            </txt>
+		        </item>
+		    </div>
+
+		    <item m-bg="gold" class='uppercase' width='100' height='15' align='center top'>
+		        <item align="center top" padding="15" class='border-2-top border-2-left border-2-bottom border-1-right'
+		            u on-mouseenter="s:[ff-hover:self]"
+		            init-with="p:[fill:none]"
+		            when-ff-hover="p:[fill:RGBA(1, 47, 161, 1.00)]">
+		            <svg class="absolute" width="90px" height="90px" viewBox="0 0 90 90">
+		                <rect x="550" y="500" width="90" height="90"/>
+		            </svg>
+		            <graphic class='relative svg-stroke-3 stroke-white' height="60"
+						url='shared/templates/components/svg/main/play-basic.html'> </graphic>
+		        </item>
+		        <item align="center top" padding="15" class='border-2-top border-2-right border-2-bottom border-1-left'
+		            u on-mouseenter="s:[ff-hover:self]"
+		            init-with="p:[fill:none]"
+		            when-ff-hover="p:[fill:RGBA(1, 47, 161, 1.00)]">
+		            <svg class="absolute" width="90px" height="90px" viewBox="0 0 90 90">
+		                <rect x="550" y="500" width="90" height="90"/>
+		            </svg>
+		            <graphic class='relative svg-stroke-3 stroke-white' height="60"
+						url='shared/templates/components/svg/main/fast-forward.html'> </graphic>
+		        </item>
+		    </item>
+
+		    <item m-bg="gold" class='uppercase' width='100' height='15' align='center center' align-self="bottom center">
+		        <item align="center center" padding="15" class='border-2 radius-2' u on-click="s:[switch-vibes:public]" id='switch-vibes-btn' public-attr="coords">
+					<!-- " -->
+		            <txt class='weight-500 margin-0 txt-center' font-size="28px" letter-spacing='1px' line-height='1.2'>
+		                Switch Vibes
+		            </txt>
+		        </item>
+		    </item>
+		</div>
+	</view>
+
+	<view layer="1" type='row' bg="auburn"
+	    u on-init="s:[record-start:children:4400]">
+	     <!-- bg="#CA004E" -->
+	    <item m-bg="gold" class='uppercase' width='100' height='100' align='center center' align-self="center center"
+	        u init-with="p:[tro:center center]"
+	        when-record-start="a:[rotate:0deg:360deg:10000:linear:0:i:f]">
+	        <svg class="absolute" width="640px" height="640px" viewBox="0 0 640 640">
+	            <circle stroke="none" fill="#2D2D2D" fill-rule="evenodd" cx="320" cy="320" r="320"></circle>
+	            <circle id="Oval-Copy" fill="#FFFFFF" opacity="0.2" cx="319.665001" cy="319.665001" r="106.665001"></circle>
+	        </svg>
+	        <item class='relative round' width="213px" height="213px" bg-url='http://www.etonline.com/news/2016/09/24271863/1280_theweeknd_album_twitter.jpg'> </item>
+	    </item>
+	</view>
+
+
+    <inspect-data data/>
+</view>
