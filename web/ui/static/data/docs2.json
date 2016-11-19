@@ -144,6 +144,12 @@
         "form-textarea": {
             "template_url": "./ui/templates/docs/form-textarea.tpl",
             "fields": ["title", "placeholder"]
+        },
+        "form-tags": {
+            "template_url": "./ui/templates/docs/form-tags.tpl"
+        },
+        "form-severity": {
+            "template_url": "./ui/templates/docs/form-severity.tpl"
         }
 
 
