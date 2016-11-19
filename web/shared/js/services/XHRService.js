@@ -96,7 +96,7 @@ function XHRService($timeout) {
           }
       };
       ['POST', 'PUT'].indexOf(request_type) > -1 && xhr.setRequestHeader("Content-type", "application/json");
-      console.log('sending', frontQueue.type, frontQueue.url, request_type)
+      // console.log('sending', frontQueue.type, frontQueue.url, request_type)
       xhr.send(params);
 
     } else {

@@ -257,7 +257,7 @@ angular.module('uguru.shared.directives')
           // if ('renderAfterExtScripts' in attr) {
             scope.$watch('data.config.processed.scriptStatus.complete', function(value) {
               if (value) {
-
+                console.log(value)
                   if (!$rootScope.activeView) {
                     $rootScope.activeView = {name: attr.linkDataName, data: scope.data};
                     // scope.$watch(attr.linkDataName + '.data', function(value) {

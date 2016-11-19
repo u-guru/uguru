@@ -75,15 +75,27 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp', 'u
     }
   })
 
-  .state('root.ui-docs', {
+
+.state('root.ui-docs', {
     name: 'root.ui-docs',
     parent: 'root',
     url:'/ui/docs/*path',
-    templateUrl: 'ui/templates/docs2.html',
+    templateUrl: function templateProvider($stateParams) {
+      return 'ui/templates/' + $stateParams.prefix + '.html'
+    },
     controller: 'AdminDocsController',
     controllerAs: 'docs'
   })
-
+  .state('root.ui-samples', {
+    name: 'root.ui-samples',
+    parent: 'root',
+    url:'/ui/samples/{folder}/{prefix}/*path',
+    templateUrl: function templateProvider($stateParams) {
+      return 'ui/templates/samples/' + $stateParams.folder + '/' + $stateParams.prefix  + '.html'
+    },
+    controller: 'SingleViewController',
+    controllerAs: 'docs'
+  })
   .state('root.ui.scene', {
     name: 'root.ui',
     parent: 'root',
