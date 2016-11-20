@@ -4,26 +4,33 @@
     </div> -->
 
 	<view layer="1" type='row' bg="#619BB4"
-	    u on-init="s:[record-start:children:4400]">
-	    <div x-center y-center width='100' height='100'
-			u init-with="p:[tro:center center]"
-			when-record-start="a:[rotate:0deg:360deg:10000:linear:0:i:f]">
-	        <svg class="absolute" width="640px" height="640px" viewBox="0 0 640 640">
-	            <circle stroke="none" fill="#2D2D2D" fill-rule="evenodd" cx="320" cy="320" r="320"></circle>
-	            <circle fill="#FFFFFF" opacity="0.2" cx="319.665001" cy="319.665001" r="106.665001"></circle>
-	        </svg>
+	    u on-init="s:[record-start:children]">
+		<div x-center y-center wrap width='512px' height='100' m="0 auto">
+			<h2 p="20px 30px" border="5px solid white" rad="2px" font-size="36px" f-w="900" letter-spacing='0.3em' line-height='1.2' class="line-height-1-2" style="letter-spacing:0.3em">VIBES.CLUB</h2>
 
-	        <div relative x-center y-center rad="100%" width="215px" height="215px" bg="#619BB4" style="overflow:hidden">
-				<img flex m-left="362px" m-top="-60px" ng-src="{{content.track.visuals.visuals[0].visual_url}}" u init-with="p:[op:0.3]"/>
+		    <div x-center y-center width='512px' height='512px' m-y="15px"
+				u init-with="p:[tro:center center]"
+				when-record-start="a:[rotate:0deg:720deg:20000:linear:0:i:f]">
+		        <svg width="512px" height="512px" viewBox="0 0 640 640">
+		            <circle stroke="none" fill="#2D2D2D" fill-rule="evenodd" cx="320" cy="320" r="320"></circle>
+		            <circle fill="#FFFFFF" opacity="0.2" cx="319.665001" cy="319.665001" r="106.665001"></circle>
+		        </svg>
+
+		        <div abs x-center y-center rad="100%" width="215px" height="215px" bg="#619BB4" style="overflow:hidden">
+					<img flex m-left="362px" m-top="-60px" ng-src="{{content.track.visuals.visuals[0].visual_url}}" u init-with="p:[op:0.3]"/>
+				</div>
+		    </div>
+
+			<div x-center width="100">
+				<button id='switch-vibes-btn' bg="transparent" width="auto" padding="15" border="2px solid white" rad="2px" color="white" font-size="28px" f-w="600" letter-spacing='1px' line-height='1.2' class="txt-white" style="width:auto;"
+					u on-click="s:[switch-vibes:public]" public-attr="coords">Switch Vibes</button>
 			</div>
-	    </div>
+		</div>
 	</view>
 
 	<view layer="2" type='row'>
 	    <div x-center y-center wrap width="100" height="100">
-			<h2 p="20px 30px" border="5px solid white" rad="2px" font-size="36px" f-w="900" letter-spacing='0.3em' line-height='1.2' class="line-height-1-2" style="letter-spacing:0.3em">VIBES.CLUB</h2>
-
-		    <div width="100" m-top="100px" class="txt-center">
+		    <div width="100" class="txt-center">
 		        <h3 font-size="28px" f-w='600' line-height="1.2">LIVE</h3>
 				<h1 font-size="72px" f-w="700" l-h="1.2" l-s='0.3em' class="caps">{{data.content.track.genre}}</h1>
 				<div y-center x-center wrap>
@@ -34,14 +41,20 @@
 		    </div>
 
 		    <div m-top="75px">
-				<div>
-					<div>
-						<hr border="0" m="0" />
-						<hr border="0" m="0"/>
+				<div width="100">
+					<div relative width="100">
+						<hr border="0" m="0" w="100%" h="4px" bg="white-50p" rad="8px"/>
+						<hr absolute top="0" left="0" border="0" m="0" w="46%" h="4px" bg="white" rad="8px"/>
+						<span abs top="50%" left="46%" m-top="-5px" w="10px" h="10px" bg="white" rad="100%"></span>
+					</div>
+					<div s-b font-size="14">
+						<span>0:56</span>
+						<span>3:44</span>
+						<!-- {{content.track.duration}} -->
 					</div>
 				</div>
 
-				<div flex border="1px solid white" rad="2px">
+				<div flex m-top="15px" border="1px solid white" rad="2px">
 					<a wrap x-center y-center w="84px" h="84px" padding="10" border="1px solid white" rad="2px" class="stroke-white"
 						u on-click="s:[heart-it:public]">
 						<!-- <graphic url='shared/templates/components/svg/main/heart.html'
@@ -59,11 +72,6 @@
 						<graphic url='shared/templates/components/svg/main/fast-forward.html'> </graphic>
 					</a>
 				</div>
-			</div>
-
-			<div x-center width="100" m-top="25px">
-				<button id='switch-vibes-btn' bg="transparent" m-top="50px" width="auto" padding="15" border="2px solid white" rad="2px" color="white" font-size="28px" f-w="600" letter-spacing='1px' line-height='1.2' class="txt-white" style="width:auto;"
-					u on-click="s:[switch-vibes:public]" public-attr="coords">Switch Vibes</button>
 			</div>
 		</div>
 	</view>
