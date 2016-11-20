@@ -1,5 +1,5 @@
 <div abs x-center y-center top="0" left="0" width="100%" height="100%"
-	u init-with="p:[op:0, z-index:-10]">
+	u init-with="p:[op:1, z-index:10]">
 	<!-- u init-with="p:[tro:center bottom, tr:scale(0)]"
 	when-switch-vibes="s:[playlist:depth(>1):800] | a:[scale:0:1:800:easeOutBack:0:1:f]"
 	when-exit-vibes="a:[scale:1:0:200:easeInBack:0:1:f]" -->
