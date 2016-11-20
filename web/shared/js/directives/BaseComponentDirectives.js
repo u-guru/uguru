@@ -555,7 +555,7 @@ angular.module('uguru.shared.directives.base.components')
                             index++;
                         })
                         var parentDataFields = Object.keys(scope.$parent).filter(function(key) {return key.indexOf('$') === -1})
-                        console.log('parent reference', parentDataFields);
+
                     }, 100)
                 }
             }
@@ -1209,7 +1209,6 @@ angular.module('uguru.shared.directives.base.components')
                     element.css('text-align', 'center');
                 }
                 if (attr.lineHeight) {
-                    console.log('has line height')
                     element.css('line-height', parseFloat(attr.lineHeight));
                 }
             }
@@ -2077,7 +2076,11 @@ angular.module('uguru.shared.directives.base.components')
         "hideY",
         "scroll",
         "fW",
-        "fontWeight"
+        "fontWeight",
+        "lineHeight",
+        "lH",
+        "lS",
+        "letterSpacing"
         ]
 
     var modulePointer = angular.module('uguru.shared.directives.base.components');

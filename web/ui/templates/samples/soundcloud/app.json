@@ -1,0 +1,21 @@
+{
+    "vars": {},
+    "config": {
+        "pathParams": {},
+        "base_url": "^",
+        "scripts": {
+            "base": "https://s3-us-west-1.amazonaws.com/ui-guru/samples/",
+            "queue": [
+                {
+                    "path": "soundcloud.json",
+                    "mapping": {
+                        "from": "collection[2].track",
+                        "to":"content.track"
+                    }
+                }
+            ]
+        }
+    },
+    "content": {},
+    "components": {}
+}
