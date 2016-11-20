@@ -77,10 +77,10 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
 
     var url = script_info.base_url  + script_info.path;
     var name = script_info.name || '';
-    XHRService.getJSONFile('GET', url, generatePostExternalScriptCallback(data_scope, name, script_info.mapping), {})
+    XHRService.getJSONFile('GET', url, generatePostExternalScriptCallback(data_scope, name, script_info), {})
   }
 
-  function generatePostExternalScriptCallback(data_scope, name, mapping) {
+  function generatePostExternalScriptCallback(data_scope, name, script_info) {
     // console.log(mapping)
     if (!('content') in data_scope) data_scope.content = {};
     if (!name || !name.length) {
@@ -90,11 +90,12 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
     data_scope.config.processed.scripts[name] = false;
 
     return function(response) {
-      if (mapping) {
-        if (name && name.length && typeof mapping === 'object') {
-          mapping.name = name
-        }
-        mapPostDataToDataScope(data_scope, response, mapping)
+      if (script_info.mapping) {
+        mapPostDataToDataScope(data_scope, response, script_info.mapping)
+      } else if (script_info.mappings) {
+        script_info.mappings.forEach(function(mapping) {
+          mapPostDataToDataScope(data_scope, response, mapping)
+        })
       }
       data_scope.config.processed.scripts[name] = true;
       checkExtScriptStatus(data_scope)

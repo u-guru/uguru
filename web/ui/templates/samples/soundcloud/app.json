@@ -8,10 +8,16 @@
             "queue": [
                 {
                     "path": "soundcloud.json",
-                    "mapping": {
-                        "from": "collection[2].track",
+                    "mappings": [
+                    {
+                        "from": "collection[3].track",
                         "to":"content.track"
+                    },
+                    {
+                        "from": "collection[2].track",
+                        "to": "content.track"
                     }
+                    ]
                 }
             ]
         }
