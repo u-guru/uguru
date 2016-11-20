@@ -241,6 +241,7 @@ angular.module('uguru.shared.directives')
             'GET',
         attr.linkData,
         function(data) {
+          console.log(data)
           if (scopeRef) {
             scopeRef[attr.setDataName || 'data'] = data;
           } else {
