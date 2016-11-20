@@ -84,18 +84,11 @@
 	    </item>
 	</view>
 	<!-- @samir error for the playlist children-->
-<<<<<<< HEAD
-	<modal link-size-to="#switch-vibes-btn"
-		u init-with="p:[tro:center bottom, tr:scale(0)]"
-		when-switch-vibes="s:[playlist:children:800] |a:[scale:0:1:800:easeOutBack:0:1:f]"
-		 when-exit-vibes="a:[scale:1:0:200:easeInBack:0:1:f]">
-=======
 	<view depth="3" type='row'
 		u
 		init-with="p:[tro:center bottom, tr:scale(0)]"
 		when-switch-vibes="s:[playlist:depth(>1):800] | a:[scale:0:1:800:easeOutBack:0:1:f]"
 		when-exit-vibes="a:[scale:1:0:200:easeInBack:0:1:f]">
->>>>>>> 2a9151cdf8c8b26e6add2a3dfabb2f58af07ee50
 
 		<item bg="eggplant" width="90" height="90" align="center center">
 			<item class="absolute" style="top:10%; right:8%;" height="8">
