@@ -1,109 +1,21 @@
 {
-    "vars": {
-        "components": {
-            "searchBar": {
-                "text": ""
-            },
-            "actionLink": [
-                {
-                    "name": "Search",
-                    "keyMapping": "s",
-                    "icon": "shared/templates/components/svg/docs/search-circle.html"
-                },
-                {
-                    "name": "Report Bug",
-                    "keyMapping": "b",
-                    "icon": "shared/templates/components/svg/docs/bug.html"
-                },
-                {
-                    "name": "Add Doc",
-                    "keyMapping": "d",
-                    "icon": "shared/templates/components/svg/docs/add-doc.html"
-                },
-                {
-                    "name": "Add Feature",
-                    "keyMapping": "f",
-                    "icon": "shared/templates/components/svg/docs/add-ft.html"
-                }
-            ]
-        },
-        "searchText": "Get Started",
-        "activeTab": "Attributes"
-    },
-    "config": {
-        "pathParams": {
-            "content": 1,
-            "subcategory": 2,
-            "property": 3,
-            "attribute": 3
-        },
-        "base_url": "^",
-        "scripts": {
-            "base": "https://s3-us-west-1.amazonaws.com/ui-guru/samples/",
-            "queue": [
-                {
-                    "path": "soundcloud.json",
-                    "name": "sc",
-
-                    "mapping": {
-                        "to":"content.sc"
-                    }
-                }
-
-            ]
-        }
-    },
-    "content": {},
-    "components": {
-        "search-bar": {
-            "template_url": "./ui/templates/docs/search-bar.tpl",
-            "fields": ["background"],
-            "size": "[opacity:0]"
-        },
-        "side-bar": {
-            "template_url": "./ui/templates/docs/side-bar.tpl"
-        },
-        "side-bar-item": {
-            "template_url": "./ui/templates/docs/side-bar-item.tpl"
-        },
-        "omnibar": {
-            "template_url": "./ui/templates/docs/omnibar.tpl"
-        },
-        "action-link": {
-            "template_url": "./ui/templates/docs/action-link.tpl",
-            "fields": ["", "name"]
-        },
-        "article-topic": {
-            "template_url": "./ui/templates/docs/article-topic.tpl",
-            "fields": ["title"]
-        },
-        "article-main": {
-            "template_url": "./ui/templates/docs/article-main.tpl"
-        },
-        "article-options": {
-            "template_url": "./ui/templates/docs/article-options.tpl"
-        },
-        "article-option-item": {
-            "template_url": "./ui/templates/docs/article-option-item.tpl",
-            "fields": ["name"]
-        },
-        "article-example": {
-            "template_url": "./ui/templates/docs/article-example.tpl"
-        },
-        "search-result": {
-            "template_url": "./ui/templates/docs/search-result.tpl"
-        },
-        "example-preview": {
-            "template_url": "./ui/templates/docs/example-preview.tpl"
-        },
-        "example-html": {
-            "template_url": "./ui/templates/docs/example-html.tpl"
-        },
-        "example-css": {
-            "template_url": "./ui/templates/docs/example-css.tpl"
-        }
-
-
-    }
-
+   "vars":{},
+   "config":{
+      "pathParams":{},
+      "base_url":"^",
+      "scripts":{
+         "base":"https://s3-us-west-1.amazonaws.com/ui-guru/samples/",
+         "queue":[
+            {
+               "path":"soundcloud.json",
+               "name":"sc",
+               "mapping":{
+                  "to":"data.vars.soundcloud"
+               }
+            }
+         ]
+      }
+   },
+   "content":{ },
+   "components":{  }
 }
