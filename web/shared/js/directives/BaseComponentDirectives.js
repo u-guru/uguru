@@ -23,6 +23,7 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
+
     .directive('list', ['$compile', '$rootScope', '$parse',  function($compile, $rootScope, $parse) {
         return {
             restrict: 'A',

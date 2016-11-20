@@ -262,6 +262,10 @@ angular.module('uguru.shared.directives')
                     // scope.$watch(attr.linkDataName + '.data', function(value) {
                         // if (value) {
                             transclude(scope, function(clone, innerScope) {
+                                if (attr.let && attr.let.length) {
+                                  var letAttrSplit = attr.let.split('=');
+                                  innerScope[letAttrSplit[0]] = $parse(letAttrSplit[1])(scope)
+                                }
                                 $compile(clone)(innerScope);
 
                                 element.append(clone);
