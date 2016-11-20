@@ -9,22 +9,23 @@
 			u on-click="s:[exit-vibes:public]">
 			<graphic class='svg-64 svg-stroke-5 stroke-white' url='shared/templates/components/svg/main/times.html'></graphic>
 		</a>
-		<div flex>
-			<item class="p30x"
+		<div flex p="15px">
+			<ul p="15px"
 				u when-playlist="s:[playlist-enter-left:children:linear-1000]:+400">
-				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'
+				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-right"
 					u init-with="p-op"
 					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 					on-mouseenter="s:[av-scale:children]"
 					on-mouseleave="s:[av-shrink:children]">
-					All the Vibes
-					<item class="absolute bottom-0" style="border-bottom:solid 3px white;" width="100"
-						u init-with="p:[tr:scaleX(0), tro:right center]"
-						when-av-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
-						when-av-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
-					</item>
-				</txt>
-				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'
+					<a flex relative>
+						All the Vibes
+						<hr abs bottom="0" left="0" width="100" height="2px" m="0" rad="4px" border="0" bg="white"
+							u init-with="p:[tr:scaleX(0), tro:right center]"
+							when-av-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
+							when-av-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]"/>
+					</a>
+				</li>
+				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-right"
 					u init-with="p-op"
 					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 					on-mouseenter="s:[sd-scale:children]"
@@ -35,8 +36,8 @@
 						when-sd-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
 						when-sd-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
 					</item>
-				</txt>
-				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'
+				</li>
+				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-right"
 					u init-with="p-op"
 					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 					on-mouseenter="s:[h-scale:children]"
@@ -47,8 +48,8 @@
 						when-h-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
 						when-h-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
 					</item>
-				</txt>
-				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'
+				</li>
+				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-right"
 					u init-with="p-op"
 					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 					on-mouseenter="s:[tn-scale:children]"
@@ -60,8 +61,8 @@
 						when-tn-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
 						when-tn-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
 					</item>
-				</txt>
-				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'
+				</li>
+				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-right"
 					u init-with="p-op"
 					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 					on-mouseenter="s:[co-scale:children]"
@@ -72,11 +73,11 @@
 						when-co-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
 						when-co-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
 					</item>
-				</txt>
-			</item>
-			<item class="p30x"
+				</li>
+			</ul>
+			<ul p="15px"
 				u when-playlist="s:[playlist-enter-right:children:linear-1000]:+300">
-				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'
+				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-left"
 					u init-with="p:[op:0]"
 					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 					on-mouseenter="s:[sg-scale:children]"
@@ -87,8 +88,8 @@
 						when-sg-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
 						when-sg-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
 					</item>
-				</txt>
-				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'
+				</li>
+				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-left"
 					u init-with="p-op"
 					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 					on-mouseenter="s:[gu-scale:children]"
@@ -99,8 +100,8 @@
 						when-gu-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
 						when-gu-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
 					</item>
-				</txt>
-				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'
+				</li>
+				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-left"
 					u init-with="p-op"
 					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 					on-mouseenter="s:[wl-scale:children]"
@@ -111,8 +112,8 @@
 						when-wl-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
 						when-wl-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
 					</item>
-				</txt>
-				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'
+				</li>
+				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-left"
 					u init-with="p-op"
 					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 					on-mouseenter="s:[an-scale:children]"
@@ -123,8 +124,8 @@
 						when-an-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
 						when-an-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
 					</item>
-				</txt>
-				<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'
+				</li>
+				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-left"
 					u init-with="p-op"
 					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 					on-mouseenter="s:[gh-scale:children]"
@@ -135,8 +136,8 @@
 						when-gh-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
 						when-gh-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
 					</item>
-				</txt>
-			</item>
+				</li>
+			</ul>
 		</div>
 	</div>
 </div>
