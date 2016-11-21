@@ -1,10 +1,14 @@
 <div class="perspective-container full-xy flex-center-wrap p15xy" types='link-no-photo, photo, photo-price, photo-price-moxie, photo-price-crimson, link-color, link-square, check-square'>
+	<!-- types='link-no-photo, photo, photo-price, photo-price-moxie, photo-price-crimson, link-color, link-square, check-square' -->
 
 	<a ng-if='activeType === "link-no-photo"' class="category-tile bg-household no-photo"
 		u init-with="p:[opacity:0, tro:center center]"
 		on-init="s:[link-no-photo-init:children:100, link-no-photo-card:self]"
 		when-link-no-photo-card="a:[bounceIn-subtle:1000:linear:0:1:f]"
-		on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]">
+		on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]"
+		on-mouseenter="p:[transform:translateZ(20px)]"
+		on-mouseover="p:[transform:translateZ(20px)]">
+		<!-- ng-if='activeType === "link-no-photo"' -->
 		<svg width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 		</svg>
@@ -24,7 +28,7 @@
 		</div>
 	</a>
 
-	<div ng-if='activeType === "photo"' class="category-tile bg-household" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
+	<!-- <div ng-if='activeType === "photo"' class="category-tile bg-household" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
 		u init-with="p:[opacity:0, tro:center center]"
 		on-init="s:[category-photo-init:depth(>1):100, category-photo-card:self]"
 		when-category-photo-card="a:[bounceIn-subtle:1000:linear:0:1:f]"
@@ -214,6 +218,6 @@
 				<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
 			</svg>
 		</span>
-	</div>
+	</div> -->
 
 </div>
