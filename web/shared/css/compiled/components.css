@@ -8841,30 +8841,6 @@ a.category-tile.bg-tech.no-photo:active .category-tile-inside .category-tile-bor
   background: white; }
 a.category-tile.bg-tech.no-photo:active .category-tile-inside .category-tile-icon svg * {
   stroke: white; }
-a.category-tile.bg-household:hover .category-tile-inside, a.category-tile.bg-household:focus .category-tile-inside {
-  background: #bcb9f1; }
-  a.category-tile.bg-household:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-household:hover .category-tile-inside .category-tile-border, a.category-tile.bg-household:focus .category-tile-inside .category-tile-icon, a.category-tile.bg-household:focus .category-tile-inside .category-tile-border {
-    background: #5c5d97; }
-  a.category-tile.bg-household:hover .category-tile-inside h1, a.category-tile.bg-household:focus .category-tile-inside h1 {
-    color: #5c5d97; }
-a.category-tile.bg-household:active .category-tile-inside {
-  background: #5c5d97; }
-  a.category-tile.bg-household:active .category-tile-inside .category-tile-icon, a.category-tile.bg-household:active .category-tile-inside .category-tile-border {
-    background: white; }
-    a.category-tile.bg-household:active .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-household:active .category-tile-inside .category-tile-border svg * {
-      stroke: #7872e3; }
-  a.category-tile.bg-household:active .category-tile-inside h1 {
-    color: white; }
-a.category-tile.bg-household.no-photo:hover .category-tile-inside .category-tile-border, a.category-tile.bg-household.no-photo:focus .category-tile-inside .category-tile-border {
-  background: #5c5d97; }
-a.category-tile.bg-household.no-photo:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-household.no-photo:focus .category-tile-inside .category-tile-icon {
-  background: none; }
-  a.category-tile.bg-household.no-photo:hover .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-household.no-photo:focus .category-tile-inside .category-tile-icon svg * {
-    stroke: #5c5d97; }
-a.category-tile.bg-household.no-photo:active .category-tile-inside .category-tile-border {
-  background: white; }
-a.category-tile.bg-household.no-photo:active .category-tile-inside .category-tile-icon svg * {
-  stroke: white; }
 a.category-tile.bg-athletic:hover .category-tile-inside, a.category-tile.bg-athletic:focus .category-tile-inside {
   background: #cdade2; }
   a.category-tile.bg-athletic:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-athletic:hover .category-tile-inside .category-tile-border, a.category-tile.bg-athletic:focus .category-tile-inside .category-tile-icon, a.category-tile.bg-athletic:focus .category-tile-inside .category-tile-border {

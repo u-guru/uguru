@@ -1,15 +1,16 @@
 <div class="perspective-container full-xy flex-center-wrap p15xy" types='link-no-photo, photo, photo-price, photo-price-moxie, photo-price-crimson, link-color, link-square, check-square'>
 
 	<a class="category-tile bg-household no-photo" ng-show='activeType === "link-no-photo"'
-		u init-with="p:[opacity:0, tro:center center]"
+		u init-with="p:[op:0, tro:center center, bg:rgba(120#114#227#1)]"
 		on-init="s:[link-no-photo-init:children:100, link-no-photo-card:self]"
 		when-link-no-photo-card="a:[bounceIn-subtle:1000:linear:0:1:f]"
 		on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]"
 		on-mouseenter="a:[translateZ:0px:20px:600:(.6,0,.1,2):0:1:f]"
 		on-mouseover="a:[translateZ:0px:20px:600:(.6,0,.1,2):0:1:f]"
-		on-mouseleave="a:[translateZ:20px:0px:easeInSine:0:1:f]"
+		on-mouseleave="a:[translateZ:20px:0px:150:easeInSine:0:1:f]"
 		on-mousedown="a:[translateZ:20px:-20px:150:easeInSine:0:1:f]"
 		on-mouseup="a:[translateZ:-20px:0px:easeInSine:0:1:f]">
+		<!-- category-tile-count { rgba(110, 113, 172, 0.99) } -->
 		<svg width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 		</svg>
