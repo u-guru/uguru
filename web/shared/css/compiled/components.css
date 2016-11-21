@@ -866,10 +866,14 @@ button {
   width: 100%;
   height: 64px;
   border: 0;
+  color: white;
   font-size: 24px;
   font-weight: 600;
   padding-left: 15px;
-  padding-right: 15px; }
+  padding-right: 15px;
+  background: #69B3A5; }
+  button svg * {
+    stroke: white; }
   button.normal {
     width: auto; }
   button.width-300 {
@@ -882,6 +886,16 @@ button {
     height: 48px; }
   button.height-36 {
     height: 36px; }
+  button:hover, button:focus {
+    background: #b4d9d2;
+    color: #557e78; }
+    button:hover svg *, button:focus svg * {
+      stroke: #557e78; }
+  button:active {
+    background: #557e78;
+    color: white; }
+    button:active svg * {
+      stroke: white; }
 
 button.disabled {
   filter: alpha(opacity=70);
@@ -4501,7 +4515,6 @@ fieldset.no-border * {
       width: 50%;
       padding: 7.5px; }
       .credit-card-back ul li button {
-        opacity: 0;
         height: 36px;
         width: 100%;
         border-radius: 2px;
@@ -5641,10 +5654,6 @@ a.credit-card {
   position: relative;
   text-align: center;
   transform-origin: center center; }
-  .course-card:hover, .course-card:focus {
-    transform: translateZ(20px); }
-  .course-card:active {
-    transform: translateZ(-20px); }
   .course-card > svg {
     background: white;
     border-radius: 2px; }
@@ -5820,78 +5829,6 @@ a.credit-card {
     width: 100%;
     height: 100%;
     cursor: pointer; }
-    .course-card input ~ .course-card-count, .course-card input ~ .course-card-count-container .course-card-count {
-      opacity: 0; }
-      .course-card input ~ .course-card-count span, .course-card input ~ .course-card-count-container .course-card-count span {
-        opacity: 0.5; }
-    .course-card input:hover ~ .course-card-count, .course-card input:hover ~ .course-card-count-container .course-card-count {
-      opacity: 1; }
-      .course-card input:hover ~ .course-card-count span, .course-card input:hover ~ .course-card-count-container .course-card-count span {
-        opacity: 0.5; }
-    .course-card input:active ~ .course-card-count, .course-card input:active ~ .course-card-count-container .course-card-count, .course-card input:checked ~ .course-card-count, .course-card input:checked ~ .course-card-count-container .course-card-count {
-      opacity: 1; }
-      .course-card input:active ~ .course-card-count span, .course-card input:active ~ .course-card-count-container .course-card-count span, .course-card input:checked ~ .course-card-count span, .course-card input:checked ~ .course-card-count-container .course-card-count span {
-        opacity: 1; }
-  .course-card.with-hover .course-card-hover {
-    opacity: 0;
-    display: block;
-    position: absolute;
-    z-index: 7;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; }
-    .course-card.with-hover .course-card-hover:hover, .course-card.with-hover .course-card-hover:focus {
-      opacity: 1; }
-    .course-card.with-hover .course-card-hover > span {
-      opacity: .95;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: 2px;
-      color: white; }
-    .course-card.with-hover .course-card-hover > div {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-align-content: center;
-      align-content: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      position: relative;
-      width: 100%;
-      height: 100%;
-      padding: 15px;
-      font-size: 18px;
-      font-weight: 600;
-      color: white; }
-
-a.course-card .course-card-hover {
-  opacity: 0;
-  display: block; }
-a.course-card:hover .course-card-inside h1, a.course-card:hover .course-card-inside h2, a.course-card:focus .course-card-inside h1, a.course-card:focus .course-card-inside h2 {
-  color: white !important; }
-a.course-card:hover .course-card-count span, a.course-card:focus .course-card-count span {
-  background: rgba(255, 255, 255, 0.6) !important; }
-a.course-card:hover .course-card-hover, a.course-card:focus .course-card-hover {
-  opacity: .95; }
-a.course-card:hover .course-card-border, a.course-card:focus .course-card-border {
-  background: white !important; }
-a.course-card:active .course-card-hover {
-  background: #637074 !important; }
 
 .timeline-card {
   width: 100%;
@@ -8570,15 +8507,9 @@ a.course-card:active .course-card-hover {
     width: 100%;
     height: 100%; }
     .category-tile input ~ .category-tile-count {
-      filter: alpha(opacity=0);
-      opacity: 0;
       background: rgba(255, 255, 255, 0.5); }
-    .category-tile input:hover ~ .category-tile-count {
-      filter: alpha(opacity=100);
-      opacity: 1; }
-    .category-tile input:active ~ .category-tile-count, .category-tile input:checked ~ .category-tile-count {
-      filter: alpha(opacity=100);
-      opacity: 1;
+    .category-tile input:checked ~ .category-tile-count {
+      opacity: 1 !important;
       background: white; }
   .category-tile.mini > svg {
     width: auto;

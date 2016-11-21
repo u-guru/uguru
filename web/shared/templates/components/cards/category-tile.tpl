@@ -1,5 +1,5 @@
 <div class="perspective-container full-xy flex-center-wrap p15xy" types='link-no-photo, photo, photo-price, photo-price-moxie, photo-price-crimson, link-color, link-square, check-square'>
-
+	<!-- needs color directives -->
 	<a class="category-tile bg-household no-photo" ng-show='activeType === "link-no-photo"'
 		u init-with="p:[op:0, tro:center center, bg:rgba(120#114#227#1)]"
 		on-init="s:[link-no-photo-init:children:100, link-no-photo-card:self]"
@@ -203,7 +203,12 @@
 	<div ng-show='activeType === "check-square"' class="category-tile bg-household no-photo"
 		u init-with="p:[opacity:0]"
 		on-init="s:[category-check-square-init:depth(>1)] | a:[bounceIn-subtle:1000:linear:0:1:f]"
-		on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]">
+		on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]"
+		on-mouseenter="s:[cat-tile-enter:children] | a:[translateZ:0px:20px:600:(.6,0,.1,2):0:1:f]"
+		on-mouseover="s:[cat-tile-enter:children] | a:[translateZ:0px:20px:600:(.6,0,.1,2):0:1:f]"
+		on-mouseleave="s:[cat-tile-leave:children] | a:[translateZ:20px:0px:150:easeInSine:0:1:f]"
+		on-mousedown="s:[cat-tile-down:children] | a:[translateZ:20px:-20px:150:easeInSine:0:1:f]"
+		on-mouseup="s:[cat-tile-up:children] | a:[translateZ:-20px:0px:easeInSine:0:1:f]">
 		<svg width="150px" height="150px" viewBox="0 0 150 150">
 			<rect x="0" y="0" width="150" height="150" fill="none"></rect>
 		</svg>
@@ -224,7 +229,10 @@
 				u init-with="p:[transform-origin:center center, transform:scaleX(0)]"
 				when-category-check-square-init="a:[scaleX:0:1:450:easeOutSine:200:1:f]"></div>
 		</div>
-		<span class="category-tile-count">
+		<span class="category-tile-count"
+			u init-with="p:[op:0]"
+			when-cat-tile-enter="a:[opacity:0:1:150:easeOutSine:0:1:f]"
+			when-cat-tile-leave="a:[opacity:1:0:150:easeInSine:0:1:f]">
 			<svg viewBox="0 0 100 100">
 				<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
 			</svg>
