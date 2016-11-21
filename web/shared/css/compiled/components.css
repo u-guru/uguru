@@ -4797,7 +4797,6 @@ a.credit-card {
       -webkit-transform: translateX(-50%);
       -moz-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
-      -o-transform: translateX(-50%);
       transform: translateX(-50%);
       bottom: 0;
       z-index: 2;
@@ -5535,7 +5534,6 @@ a.credit-card {
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
     transform: translateX(-50%);
     z-index: 10;
     top: -36px;
@@ -6195,7 +6193,6 @@ a.course-card:active .course-card-hover {
         -webkit-transform: translateX(-50%);
         -moz-transform: translateX(-50%);
         -ms-transform: translateX(-50%);
-        -o-transform: translateX(-50%);
         transform: translateX(-50%);
         top: -55px; }
         .request-card .map .map-marker > div > div {
@@ -6618,7 +6615,6 @@ a.course-card:active .course-card-hover {
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
     transform: translateX(-50%);
     margin-top: 3px;
     width: 10px;
@@ -8435,10 +8431,6 @@ a.course-card:active .course-card-hover {
   background-position: center center;
   background-size: cover;
   transform-origin: center center; }
-  .category-tile:hover, .category-tile:focus {
-    transform: translateZ(20px); }
-  .category-tile:active {
-    transform: translateZ(-20px); }
   .category-tile .category-tile-price {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -10026,14 +10018,12 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   max-width: 256px;
   position: relative; }
   .album-tile .album-echo {
-    opacity: 0;
     position: absolute;
     top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
@@ -10188,7 +10178,6 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     font-size: 20px;
     font-weight: 700;
@@ -10415,10 +10404,6 @@ a.chip, input.chip {
       height: 38px;
       font-size: 20px; } }
   .tag-adlib svg {
-    -webkit-transition: all 150ms ease-in-out;
-    -moz-transition: all 150ms ease-in-out;
-    -ms-transition: all 150ms ease-in-out;
-    -o-transition: all 150ms ease-in-out;
     transition: all 150ms ease-in-out;
     position: absolute;
     top: 0;
@@ -10670,11 +10655,7 @@ a.chip, input.chip {
   width: 100%;
   text-align: center; }
   .tag-list .chip, .pf-tags .chip {
-    -webkit-transition: all 0.15s ease-in-out;
-    -o-transition: all 0.15s ease-in-out;
-    -ms-transition: all 0.15s ease-in-out;
-    -moz-transition: all 0.15s ease-in-out;
-    transition: all 0.15s ease-in-out;
+    transition: all .15s ease-in-out;
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -11695,11 +11676,7 @@ a.chip, input.chip {
         width: calc(100% / 3);
         padding: 5px; }
         .color-picker ul:nth-child(2) li span {
-          -webkit-transition: all 0.15s ease-in-out;
-          -o-transition: all 0.15s ease-in-out;
-          -ms-transition: all 0.15s ease-in-out;
-          -moz-transition: all 0.15s ease-in-out;
-          transition: all 0.15s ease-in-out;
+          transition: all .15s ease-in-out;
           display: block;
           width: 100%;
           height: 36px; }
@@ -12117,49 +12094,42 @@ a.chip, input.chip {
         -webkit-transform: translateX(0);
         -moz-transform: translateX(0);
         -ms-transform: translateX(0);
-        -o-transform: translateX(0);
         transform: translateX(0);
         border-color: white; }
       .tab-bar > div a:nth-child(2).active ~ hr {
         -webkit-transform: translateX(165px);
         -moz-transform: translateX(165px);
         -ms-transform: translateX(165px);
-        -o-transform: translateX(165px);
         transform: translateX(165px);
         border-color: white; }
       .tab-bar > div a:nth-child(3).active ~ hr {
         -webkit-transform: translateX(330px);
         -moz-transform: translateX(330px);
         -ms-transform: translateX(330px);
-        -o-transform: translateX(330px);
         transform: translateX(330px);
         border-color: white; }
       .tab-bar > div a:nth-child(4).active ~ hr {
         -webkit-transform: translateX(495px);
         -moz-transform: translateX(495px);
         -ms-transform: translateX(495px);
-        -o-transform: translateX(495px);
         transform: translateX(495px);
         border-color: white; }
       .tab-bar > div a:nth-child(5).active ~ hr {
         -webkit-transform: translateX(660px);
         -moz-transform: translateX(660px);
         -ms-transform: translateX(660px);
-        -o-transform: translateX(660px);
         transform: translateX(660px);
         border-color: white; }
       .tab-bar > div a:nth-child(6).active ~ hr {
         -webkit-transform: translateX(825px);
         -moz-transform: translateX(825px);
         -ms-transform: translateX(825px);
-        -o-transform: translateX(825px);
         transform: translateX(825px);
         border-color: white; }
       .tab-bar > div a:nth-child(1):hover ~ hr, .tab-bar > div a:nth-child(1):focus ~ hr {
         -webkit-transform: translateX(0);
         -moz-transform: translateX(0);
         -ms-transform: translateX(0);
-        -o-transform: translateX(0);
         transform: translateX(0);
         border-color: rgba(255, 255, 255, 0.7); }
       .tab-bar > div a:nth-child(1):active ~ hr {
@@ -12168,7 +12138,6 @@ a.chip, input.chip {
         -webkit-transform: translateX(165px);
         -moz-transform: translateX(165px);
         -ms-transform: translateX(165px);
-        -o-transform: translateX(165px);
         transform: translateX(165px);
         border-color: rgba(255, 255, 255, 0.7); }
       .tab-bar > div a:nth-child(2):active ~ hr {
@@ -12177,7 +12146,6 @@ a.chip, input.chip {
         -webkit-transform: translateX(330px);
         -moz-transform: translateX(330px);
         -ms-transform: translateX(330px);
-        -o-transform: translateX(330px);
         transform: translateX(330px);
         border-color: rgba(255, 255, 255, 0.7); }
       .tab-bar > div a:nth-child(3):active ~ hr {
@@ -12186,7 +12154,6 @@ a.chip, input.chip {
         -webkit-transform: translateX(495px);
         -moz-transform: translateX(495px);
         -ms-transform: translateX(495px);
-        -o-transform: translateX(495px);
         transform: translateX(495px);
         border-color: rgba(255, 255, 255, 0.7); }
       .tab-bar > div a:nth-child(4):active ~ hr {
@@ -12195,7 +12162,6 @@ a.chip, input.chip {
         -webkit-transform: translateX(660px);
         -moz-transform: translateX(660px);
         -ms-transform: translateX(660px);
-        -o-transform: translateX(660px);
         transform: translateX(660px);
         border-color: rgba(255, 255, 255, 0.7); }
       .tab-bar > div a:nth-child(5):active ~ hr {
@@ -12204,17 +12170,12 @@ a.chip, input.chip {
         -webkit-transform: translateX(825px);
         -moz-transform: translateX(825px);
         -ms-transform: translateX(825px);
-        -o-transform: translateX(825px);
         transform: translateX(825px);
         border-color: rgba(255, 255, 255, 0.7); }
       .tab-bar > div a:nth-child(6):active ~ hr {
         border-color: white; }
     .tab-bar > div hr {
-      -webkit-transition: all 0.15s ease-in-out;
-      -o-transition: all 0.15s ease-in-out;
-      -ms-transition: all 0.15s ease-in-out;
-      -moz-transition: all 0.15s ease-in-out;
-      transition: all 0.15s ease-in-out;
+      transition: all .15s ease-in-out;
       position: absolute;
       bottom: 0;
       left: 0;
@@ -12256,7 +12217,6 @@ a.chip, input.chip {
           -webkit-transform: translateX(0);
           -moz-transform: translateX(0);
           -ms-transform: translateX(0);
-          -o-transform: translateX(0);
           transform: translateX(0); }
           .tab-bar[class*="arrow-bar"] > div a:nth-child(1).active ~ div:before {
             border-color: #69B3A5; }
@@ -12326,7 +12286,6 @@ a.chip, input.chip {
           -webkit-transform: translateX(0);
           -moz-transform: translateX(0);
           -ms-transform: translateX(0);
-          -o-transform: translateX(0);
           transform: translateX(0); }
           .tab-bar[class*="arrow-bar"] > div a:nth-child(1):hover ~ div:before, .tab-bar[class*="arrow-bar"] > div a:nth-child(1):focus ~ div:before {
             border-color: #69B3A5; }
@@ -12526,11 +12485,7 @@ a.chip, input.chip {
 
 /* ---------- PROGRESS BARS */
 progress, div[class*="progress"] {
-  -webkit-transition: all 0.15s ease-in-out;
-  -o-transition: all 0.15s ease-in-out;
-  -ms-transition: all 0.15s ease-in-out;
-  -moz-transition: all 0.15s ease-in-out;
-  transition: all 0.15s ease-in-out;
+  transition: all .15s ease-in-out;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -12554,10 +12509,6 @@ progress, div[class*="progress"] {
       background: transparent; }
     progress.white-round::-webkit-progress-value, progress.white-round span, div[class*="progress"].white-round::-webkit-progress-value, div[class*="progress"].white-round span {
       border-radius: 1000px;
-      -webkit-transition: all 1s ease-in;
-      -o-transition: all 1s ease-in;
-      -ms-transition: all 1s ease-in;
-      -moz-transition: all 1s ease-in;
       transition: all 1s ease-in;
       display: block;
       height: 100%;
@@ -12567,11 +12518,7 @@ progress, div[class*="progress"] {
       width: 0; }
     progress.white-round::-moz-progress-bar, div[class*="progress"].white-round::-moz-progress-bar {
       border-radius: 1000px;
-      -webkit-transition: all 0.15s ease-in-out;
-      -o-transition: all 0.15s ease-in-out;
-      -ms-transition: all 0.15s ease-in-out;
-      -moz-transition: all 0.15s ease-in-out;
-      transition: all 0.15s ease-in-out;
+      transition: all .15s ease-in-out;
       overflow: hidden;
       background: white; }
   progress.white, div[class*="progress"].white {
@@ -12582,11 +12529,7 @@ progress, div[class*="progress"] {
     progress.white::-webkit-progress-value,
     progress.white span, div[class*="progress"].white::-webkit-progress-value,
     div[class*="progress"].white span {
-      -webkit-transition: all 0.15s ease-in-out;
-      -o-transition: all 0.15s ease-in-out;
-      -ms-transition: all 0.15s ease-in-out;
-      -moz-transition: all 0.15s ease-in-out;
-      transition: all 0.15s ease-in-out;
+      transition: all .15s ease-in-out;
       display: block;
       border-top-right-radius: 10px;
       border-bottom-right-radius: 10px;
@@ -12595,11 +12538,7 @@ progress, div[class*="progress"] {
     progress.white span, div[class*="progress"].white span {
       width: 0; }
     progress.white::-moz-progress-bar, div[class*="progress"].white::-moz-progress-bar {
-      -webkit-transition: all 0.15s ease-in-out;
-      -o-transition: all 0.15s ease-in-out;
-      -ms-transition: all 0.15s ease-in-out;
-      -moz-transition: all 0.15s ease-in-out;
-      transition: all 0.15s ease-in-out;
+      transition: all .15s ease-in-out;
       background: white; }
   progress.height-10, div[class*="progress"].height-10 {
     height: 10px; }
@@ -12610,20 +12549,12 @@ progress, div[class*="progress"] {
   progress::-webkit-progress-value,
   progress span, div[class*="progress"]::-webkit-progress-value,
   div[class*="progress"] span {
-    -webkit-transition: all 0.15s ease-in-out;
-    -o-transition: all 0.15s ease-in-out;
-    -ms-transition: all 0.15s ease-in-out;
-    -moz-transition: all 0.15s ease-in-out;
-    transition: all 0.15s ease-in-out;
+    transition: all .15s ease-in-out;
     display: block;
     height: 100%;
     background: #69B3A5; }
   progress::-moz-progress-bar, div[class*="progress"]::-moz-progress-bar {
-    -webkit-transition: all 0.15s ease-in-out;
-    -o-transition: all 0.15s ease-in-out;
-    -ms-transition: all 0.15s ease-in-out;
-    -moz-transition: all 0.15s ease-in-out;
-    transition: all 0.15s ease-in-out;
+    transition: all .15s ease-in-out;
     background: #69B3A5; }
   progress[class*="bg-white"]::-webkit-progress-bar, div[class*="progress"][class*="bg-white"]::-webkit-progress-bar {
     background: white; }
@@ -12872,7 +12803,6 @@ progress, div[class*="progress"] {
       -webkit-transform: translateX(-50%);
       -moz-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
-      -o-transform: translateX(-50%);
       transform: translateX(-50%);
       bottom: -23px;
       text-align: center;
@@ -15695,7 +15625,6 @@ input[type=range] {
           -webkit-transform: rotate(45deg);
           -moz-transform: rotate(45deg);
           -ms-transform: rotate(45deg);
-          -o-transform: rotate(45deg);
           transform: rotate(45deg);
           fill: none;
           stroke: white;
@@ -15711,7 +15640,6 @@ input[type=range] {
         -webkit-transform: translate(-50%, -50%);
         -moz-transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
-        -o-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
         display: block;
         width: 100%;
@@ -15729,11 +15657,7 @@ input[type=range] {
         .attachment-list ul li .attach-upload-img .doc-info {
           filter: alpha(opacity=0);
           opacity: 0;
-          -webkit-transition: all 0.15s ease-in-out;
-          -o-transition: all 0.15s ease-in-out;
-          -ms-transition: all 0.15s ease-in-out;
-          -moz-transition: all 0.15s ease-in-out;
-          transition: all 0.15s ease-in-out;
+          transition: all .15s ease-in-out;
           -ms-box-orient: horizontal;
           display: -webkit-box;
           display: -moz-box;
@@ -15765,7 +15689,6 @@ input[type=range] {
             -webkit-transform: rotate(45deg);
             -moz-transform: rotate(45deg);
             -ms-transform: rotate(45deg);
-            -o-transform: rotate(45deg);
             transform: rotate(45deg);
             fill: none;
             stroke: white;

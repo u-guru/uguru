@@ -2681,15 +2681,6 @@
 	background-position: center center;
 	background-size: cover;
 	transform-origin: center center;
-	// transition: all 150ms ease-in;
-	&:hover, &:focus {
-		transform: translateZ(20px);
-		// transition: all 600ms cubic-bezier(.6,0,.1,2);
-	}
-	&:active {
-		transform: translateZ(-20px);
-		// transition: all 150ms ease-in;
-	}
 	.category-tile-price {
 		@include flex;
 		@include flex-center;
@@ -2720,8 +2711,6 @@
 		height: 100%;
 		background: rgba($light-slate, .7);
 		border-radius: 2px;
-		// border-top: 5px solid transparent;
-		// border-bottom: 5px solid white;
 		.category-tile-border {
 			position: absolute;
 			bottom: 0;

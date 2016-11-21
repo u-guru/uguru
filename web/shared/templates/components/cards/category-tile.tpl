@@ -1,13 +1,16 @@
-<div class="perspective-container full-xy flex-center-wrap p15xy" types='link-no-photo, photo, photo-price, photo-price-moxie, photo-price-crimson, link-color, link-square, check-square'>
+<div class="perspective-container full-xy flex-center-wrap p15xy">
 	<!-- types='link-no-photo, photo, photo-price, photo-price-moxie, photo-price-crimson, link-color, link-square, check-square' -->
 
-	<a ng-if='activeType === "link-no-photo"' class="category-tile bg-household no-photo"
+	<a class="category-tile bg-household no-photo"
 		u init-with="p:[opacity:0, tro:center center]"
 		on-init="s:[link-no-photo-init:children:100, link-no-photo-card:self]"
 		when-link-no-photo-card="a:[bounceIn-subtle:1000:linear:0:1:f]"
 		on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]"
-		on-mouseenter="p:[transform:translateZ(20px)]"
-		on-mouseover="p:[transform:translateZ(20px)]">
+		on-mouseenter="a:[translateZ:0px:20px:600:(0.6,0,0.1,2):0:1:f]"
+		on-mouseover="a:[translateZ:0px:20px:600:(0.6,0,0.1,2):0:1:f]"
+		on-mouseleave="a:[translateZ:20px:0px:easeInSine:0:1:f]"
+		on-mousedown="a:[translateZ:20px:-20px:150:easeInSine:0:1:f]"
+		on-mouseup="a:[translateZ:-20px:0px:easeInSine:0:1:f]">
 		<!-- ng-if='activeType === "link-no-photo"' -->
 		<svg width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
