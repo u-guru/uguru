@@ -1,5 +1,6 @@
 <div class="perspective-container full-xy flex-center-wrap p15xy" types='link-no-photo, photo, photo-price, photo-price-moxie, photo-price-crimson, link-color, link-square, check-square'>
 	<!-- needs color directives -->
+	<!-- errors with checkbox -->
 	<a class="category-tile bg-household no-photo" ng-show='activeType === "link-no-photo"'
 		u init-with="p:[op:0, tro:center center, bg:rgba(120#114#227#1)]"
 		on-init="s:[link-no-photo-init:children:100, link-no-photo-card:self]"

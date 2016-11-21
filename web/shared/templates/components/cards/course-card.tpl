@@ -1,4 +1,5 @@
 <div class="perspective-container full-xy flex-center p15xy" types='default, link, overlay, checkbox, checkbox-short, checkbox-tiny, checkbox-mini, badge'>
+	<!-- errors with checkbox -->
 	<div ng-show='activeType === "default"' class="course-card"
 		u init-with="p:[op:0]"
 		on-init="s:[course-card-init:children:150, course-scoop:self]"
@@ -9,11 +10,11 @@
 		<div class="course-card-inside"
 			u init-with="p:[op:0, tro:center center]"
 			when-course-card-init="a:[bounceInUp-subtle:1000:linear:150:1:f]">
-			<h2 style="color: #003262;">BIO 1A</h2>
-			<h1 style="color: #003262;">Introduction to Biology</h1>
+			<h2 u init-with="p:[color:#003262]">BIO 1A</h2>
+			<h1 u init-with="p:[color:#003262]">Introduction to Biology</h1>
 		</div>
-		<div class="course-card-border" style="background: #003262;"
-			u init-with="p:[tr:scaleX(0), tro:center center]"
+		<div class="course-card-border"
+			u init-with="p:[bg:#003262, tr:scaleX(0), tro:center center]"
 			when-course-card-init="a:[scaleX:0:1:250:easeOutSine:0:1:f]"></div>
 	</div>
 
@@ -33,11 +34,11 @@
 		<div class="course-card-inside"
 			u init-with="p:[op:0]"
 			when-course-link-init="a:[bounceInUp-subtle:1000:linear:150:1:f]">
-			<h2 style="color: #003262;">BIO 1A</h2>
-			<h1 style="color: #003262;">Introduction to Biology</h1>
+			<h2 u init-with="p:[color:#003262]">BIO 1A</h2>
+			<h1 u init-with="p:[color:#003262]">Introduction to Biology</h1>
 		</div>
-		<div class="course-card-hover" style="background: #003262;"></div>
-		<div class="course-card-border" style="background: #003262;"
+		<div class="course-card-hover" u init-with="p:[bg:#003262]"></div>
+		<div class="course-card-border"
 			u init-with="p:[bg:#003262, tr:scaleX(0), tro:center center]"
 			when-course-link-init="a:[scaleX:0:1:250:easeOutSine:0:1:f]"></div>
 	</a>
@@ -52,8 +53,8 @@
 		<div class="course-card-inside"
 			u init-with="p:[op:0]"
 			when-course-overlay-init="a:[bounceIn-subtle:1000:linear:150:1:f]">
-			<h2 style="color: #003262;">BIO 1A</h2>
-			<h1 style="color: #003262;">Introduction to Biology</h1>
+			<h2 u init-with="p:[color:#003262]">BIO 1A</h2>
+			<h1 u init-with="p:[color:#003262]">Introduction to Biology</h1>
 		</div>
 		<div class="course-card-hover" tabindex>
 			<span u init-with="p:[bg:#003262]"></span>
@@ -120,17 +121,17 @@
 		<div class="course-card-inside"
 			u init-with="p:[op:0]"
 			when-checkbox-short-init="a:[bounceInUp-subtle:1000:linear:150:1:f]">
-			<h2 style="color: #003262;">BIO 1A</h2>
-			<h1 style="color: #003262;">Introduction to Biology</h1>
+			<h2 u init-with="p:[color:#003262]">BIO 1A</h2>
+			<h1 u init-with="p:[color:#003262]">Introduction to Biology</h1>
 		</div>
-		<div class="course-card-border" style="background: #003262;"
-			u init-with="p:[tr:scaleY(0)]"
+		<div class="course-card-border"
+			u init-with="p:[bg:#003262, tr:scaleY(0)]"
 			when-checkbox-short-init="a:[scaleY:0:1:500:easeOutSine:0:1:f]"></div>
 		<div class="course-card-count-container"
 			u init-with="p:[op:0, tro:right top]"
 			when-checkbox-short-init="a:[bounceIn-subtle:1000:linear:250:1:f]">
 			<span class="course-card-count">
-				<span style="background: #003262;"></span>
+				<span u init-with="p:[bg:#003262]"></span>
 				<svg viewBox="0 0 100 100">
 					<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
 				</svg>
@@ -151,14 +152,14 @@
 		<div class="course-card-inside"
 			u init-with="p:[op:0]"
 			when-checkbox-tiny-init="a:[bounceIn-subtle:1000:linear:0:1:f]">
-			<div class="course-card-border" style="background: #003262;"></div>
-			<h2 style="color: #003262;">BIO 1A</h2>
+			<div class="course-card-border" u init-with="p:[bg:#003262]"></div>
+			<h2 u init-with="p:[color:#003262]">BIO 1A</h2>
 		</div>
 		<div class="course-card-count-container"
 			u init-with="p:[op:0, tro:right top]"
 			when-checkbox-tiny-init="a:[bounceIn-subtle:1000:linear:100:1:f]">
 			<span class="course-card-count">
-				<span style="background: #003262;"></span>
+				<span u init-with="p:[bg:#003262]"></span>
 				<svg viewBox="0 0 100 100">
 					<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
 				</svg>
@@ -181,17 +182,17 @@
 		<div class="course-card-inside"
 			u init-with="p:[op:0]"
 			when-checkbox-mini-init="a:[bounceInUp-subtle:1000:linear:150:1:f]">
-			<h2 style="color: #003262;">BIO 1A</h2>
-			<h1 style="color: #003262;">Introduction to Biology</h1>
+			<h2 u init-with="p:[color:#003262]">BIO 1A</h2>
+			<h1 u init-with="p:[color:#003262]">Introduction to Biology</h1>
 		</div>
-		<div class="course-card-border" style="background: #003262;"
-			u init-with="p:[tr:scaleX(0), tro:center center]"
+		<div class="course-card-border"
+			u init-with="p:[bg:#003262, tr:scaleX(0), tro:center center]"
 			when-checkbox-mini-init="a:[scaleX:0:1:500:easeOutBounce:150:1:f]"></div>
 		<div class="course-card-count-container"
 			u init-with="p:[op:0, tro:right top]"
 			when-checkbox-mini-init="a:[bounceIn-subtle:1000:linear:250:1:f]">
 			<span class="course-card-count">
-				<span style="background: #003262;"></span>
+				<span u init-with="p:[bg:#003262]"></span>
 				<svg viewBox="0 0 100 100">
 					<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
 				</svg>
@@ -213,19 +214,19 @@
 		<div class="course-card-inside"
 			u init-with="p:[op:0]"
 			when-course-badge-init="a:[bounceInUp-subtle:1000:linear:150:1:f]">
-			<h2 style="color: #003262;">BIO 1A</h2>
-			<h1 style="color: #003262;">Introduction to Biology</h1>
+			<h2 u init-with="p:[color:#003262]">BIO 1A</h2>
+			<h1 u init-with="p:[color:#003262]">Introduction to Biology</h1>
 		</div>
-		<div class="course-card-border" style="background: #003262;"
-			u init-with="p:[scaleX:0, tro:center center]"
+		<div class="course-card-border"
+			u init-with="p:[bg:#003262, scaleX:0, tro:center center]"
 			when-course-badge-init="a:[scaleX:0:1:250:easeOutSine:0:1:f]"></div>
 		<span class="course-card-count"
 			u init-with="p:[op:0, tro:right top]"
 			when-course-badge-init="a:[bounceIn-subtle:1000:linear:250:1:f]">
-			<span style="background: #003262;">2</span>
+			<span u init-with="p:[bg:#003262]">2</span>
 		</span>
-		<div class="course-card-hover" style="background: #003262;"></div>
-		<div class="course-card-border" style="background: #003262;"></div>
+		<div class="course-card-hover" u init-with="p:[bg:#003262]"></div>
+		<div class="course-card-border" u init-with="p:[bg:#003262]"></div>
 	</a>
 
 </div>

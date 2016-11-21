@@ -2947,82 +2947,82 @@ a.credit-card {
 		width: 100%;
 		height: 100%;
 		cursor: pointer;
-		// &:active, &:checked {
-		// 	~ .course-card-count, ~ .course-card-count-container .course-card-count {
-		// 		opacity: 1!important;
-		// 		span {
-		// 			opacity: 1!important;
-		// 		}
-		// 	}
-		// }
+		&:active, &:checked {
+			~ .course-card-count, ~ .course-card-count-container .course-card-count {
+				opacity: 1!important;
+				span {
+					opacity: 1!important;
+				}
+			}
+		}
 	}
-	// &.with-hover {
-	// 	.course-card-hover {
-	// 		opacity: 0;
-	// 		display: block;
-	// 		position: absolute;
-	// 		z-index: 7;
-	// 		top: 0;
-	// 		left: 0;
-	// 		width: 100%;
-	// 		height: 100%;
-	// 		&:hover, &:focus {
-	// 			opacity: 1;
-	// 		}
-	// 		> span {
-	// 			opacity: .95;
-	// 			position: absolute;
-	// 			top: 0;
-	// 			left: 0;
-	// 			width: 100%;
-	// 			height: 100%;
-	// 			border-radius: 2px;
-	// 			color: white;
-	// 		}
-	// 		> div {
-	// 			@include flex;
-	// 			@include flex-wrap;
-	// 			@include flex-center;
-	// 			position: relative;
-	// 			width: 100%;
-	// 			height: 100%;
-	// 			padding: 15px;
-	// 			font-size: 18px;
-	// 			font-weight: 600;
-	// 			color: white;
-	// 		}
-	// 	}
-	// }
+	&.with-hover {
+		.course-card-hover {
+			opacity: 0;
+			display: block;
+			position: absolute;
+			z-index: 7;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			&:hover, &:focus {
+				opacity: 1;
+			}
+			> span {
+				opacity: .95;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				border-radius: 2px;
+				color: white;
+			}
+			> div {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				position: relative;
+				width: 100%;
+				height: 100%;
+				padding: 15px;
+				font-size: 18px;
+				font-weight: 600;
+				color: white;
+			}
+		}
+	}
 }
-// a.course-card {
-// 	.course-card-hover {
-// 		opacity: 0;
-// 		display: block;
-// 	}
-// 	&:hover, &:focus {
-// 		.course-card-inside {
-// 			h1, h2 {
-// 				color: white!important;
-// 			}
-// 		}
-// 		.course-card-count {
-// 			span {
-// 				background: rgba(white, .6)!important;
-// 			}
-// 		}
-// 		.course-card-hover {
-// 			opacity: .95;
-// 		}
-// 		.course-card-border {
-// 			background: white!important;
-// 		}
-// 	}
-// 	&:active {
-// 		.course-card-hover {
-// 			background: $light-slate!important;
-// 		}
-// 	}
-// }
+a.course-card {
+	.course-card-hover {
+		opacity: 0;
+		display: block;
+	}
+	&:hover, &:focus {
+		.course-card-inside {
+			h1, h2 {
+				color: white!important;
+			}
+		}
+		.course-card-count {
+			span {
+				background: rgba(white, .6)!important;
+			}
+		}
+		.course-card-hover {
+			opacity: .95;
+		}
+		.course-card-border {
+			background: white!important;
+		}
+	}
+	&:active {
+		.course-card-hover {
+			background: $light-slate!important;
+		}
+	}
+}
 
 // timeline card
 .timeline-card {
