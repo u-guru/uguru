@@ -3263,64 +3263,64 @@ a.category-tile {
 		}
 	}
 	&.bg-household {
-		// &:hover, &:focus {
-		// 	.category-tile-inside {
-		// 		background: rgba(mix($cobalt, white), .99);
-		// 		.category-tile-icon, .category-tile-border {
-		// 			background: rgba(mix($cobalt, $slate), .99);
-		// 		}
-		// 		h1 {
-		// 			color: mix($cobalt, $slate);
-		// 		}
-		// 	}
-		// }
-		// &:active {
-		// 	.category-tile-inside {
-		// 		background: mix($cobalt, $slate);
-		// 		.category-tile-icon, .category-tile-border {
-		// 			background: white;
-		// 			svg {
-		// 				* {
-		// 					stroke: $cobalt;
-		// 				}
-		// 			}
-		// 		}
-		// 		h1 {
-		// 			color: white;
-		// 		}
-		// 	}
-		// }
-		// &.no-photo {
-		// 	&:hover, &:focus {
-		// 		.category-tile-inside {
-		// 			.category-tile-border {
-		// 				background: mix($cobalt, $slate);
-		// 			}
-		// 			.category-tile-icon {
-		// 				background: none;
-		// 				svg {
-		// 					* {
-		// 						stroke: mix($cobalt, $slate);
-		// 					}
-		// 				}
-		// 			}
-		// 		}
-		// 	}
-		// 	&:active {
-		// 		.category-tile-inside {
-		// 			.category-tile-border {
-		// 				background: white;
-		// 			}
-		// 			.category-tile-icon {
-		// 				svg {
-		// 					* {
-		// 						stroke: white;
-		// 					}
-		// 				}
-		// 			}
-		// 		}
-		// 	}
-		// }
+		&:hover, &:focus {
+			.category-tile-inside {
+				background: mix($cobalt, white);
+				.category-tile-icon, .category-tile-border {
+					background: mix($cobalt, $slate);
+				}
+				h1 {
+					color: mix($cobalt, $slate);
+				}
+			}
+		}
+		&:active {
+			.category-tile-inside {
+				background: mix($cobalt, $slate);
+				.category-tile-icon, .category-tile-border {
+					background: white;
+					svg {
+						* {
+							stroke: $cobalt;
+						}
+					}
+				}
+				h1 {
+					color: white;
+				}
+			}
+		}
+		&.no-photo {
+			&:hover, &:focus {
+				.category-tile-inside {
+					.category-tile-border {
+						background: mix($cobalt, $slate);
+					}
+					.category-tile-icon {
+						background: none;
+						svg {
+							* {
+								stroke: mix($cobalt, $slate);
+							}
+						}
+					}
+				}
+			}
+			&:active {
+				.category-tile-inside {
+					.category-tile-border {
+						background: white;
+					}
+					.category-tile-icon {
+						svg {
+							* {
+								stroke: white;
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 	&.bg-athletic {
 		&:hover, &:focus {
