@@ -1,6 +1,6 @@
 <div class="perspective-container full-xy flex-center p15xy">
-	<div class="calendar-tile bg-moxie" u
-		init-with="p:[op:0, tro:center center]"
+	<div class="calendar-tile bg-moxie"
+		u init-with="p:[op:0, tro:center center]"
 		on-init="s:[cal-card:self:100, cal-info:children:350]"
 		when-cal-card="a:[bounceInDown-subtle:1000:linear:0:1:f]">
 		<!-- on-click is to demonstrate drag state-->
