@@ -226,6 +226,38 @@ angular.module('uguru.shared.directives')
       }
   }
 }])
+.directive('listData', ['XHRService', 'DataService', function(XHRService, DataService) {
+  return {
+    restrict: 'A',
+    replace:true,
+    compile: function compile(element, attr, transclude) {
+
+      var dataParams = attr.listData;
+
+      if (!dataParams || !dataParams.length) return;
+
+      var dataGetAttr = attr.listData;
+      if (dataParams.indexOf('=') > -1) {
+        dataGetAttr = dataParams.split('=')[1];
+      }
+
+      var dataObj = DataService.detectDataType(element, dataGetAttr);
+
+      var resultHtml = '';
+      attr.$set('listData', '')
+      var outerHtml = element[0].outerHTML;
+      dataObj.data.forEach(function(_, i) {
+        var extHtml = outerHtml + '';
+        extHtml = extHtml.replace('list-data=""', 'data="' + dataObj.name + '[' + i + ']" custom');
+        resultHtml += extHtml
+      })
+      var elem = angular.element(resultHtml);
+      element.replaceWith(elem)
+
+    }
+  }
+}])
+
 .directive('linkData', ['XHRService', '$compile', '$timeout', '$rootScope', '$parse', function(XHRService, $compile, $timeout, $rootScope, $parse) {
   return {
     restrict: 'A',
@@ -237,11 +269,15 @@ angular.module('uguru.shared.directives')
       if ('renderAfterExtScripts' in attr) {
         element[0].style.opacity = 0;
       }
+      if ('let' in attr && attr.let && attr.let.split('=').length > 1) {
+        var letSplit = attr.let.split('=');
+        $rootScope.dataMappings[letSplit[0]] = {name: letSplit[1], view: attr.linkData};
+      }
       XHRService.getJSONFile(
             'GET',
         attr.linkData,
         function(data) {
-          console.log(data)
+          $rootScope.dataCache.views[attr.linkData] = {data: data, name: attr.name || attr.linkData };
           if (scopeRef) {
             scopeRef[attr.setDataName || 'data'] = data;
           } else {
