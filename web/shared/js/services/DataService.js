@@ -16,11 +16,54 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
     base_url: "",
     scripts: []
   };
+  var dataMappings = {};
+  var dataCache = {views: {}}
   return {
     parseAppDataJson: parseAppDataJson,
     parseDataParams: parseDataParams,
     registerMappingFunc: registerMappingFunc,
-    registerDirectives: registerDirectives
+    registerDirectives: registerDirectives,
+    detectDataType: detectDataType,
+    dataMappings: dataMappings,
+    dataCache: dataCache
+
+  }
+
+  function detectDataType(element, data_attr) {
+    var data_attr_parsed = parseDataAttr(data_attr);
+    // if (typeof data_attr_parsed === 'string') {
+    //   return $parse(data_attr_parsed['name'])(parsedData)
+    // }
+    if ('view' in data_attr_parsed && data_attr_parsed['view'] in dataCache.views) {
+      var parsedData = dataCache.views[data_attr_parsed['view']];
+      return {name: data_attr_parsed['name'], data: $parse(data_attr_parsed['name'])(parsedData)}
+      // if (data_attr_parsed.split('.')[0] in parsedData) {
+
+      //   // var data_attr = $parse()(parsedData);
+      //   // console.log(data_attr)
+      // }
+    }
+    console.log(data_attr_parsed, dataCache.views[data_attr_parsed.view])
+
+  }
+
+  function parseDataAttr(data_attr) {
+      var isVar = data_attr.indexOf(".") > -1;
+      if (isVar) {
+        var varSplit = data_attr.split('.');
+        var ptr = dataMappings;
+        varSplit.forEach(function(data_var) {
+          if (data_var in ptr) {
+            ptr = ptr[data_var]
+            data_attr = data_attr.replace(data_var, ptr["name"])
+          }
+        })
+        var result = {view: ptr['view'], name: data_attr};
+        return result;
+      } else
+      if (data_attr in dataMappings) {
+        return dataMappings[data_attr];
+      }
   }
 
   function camelCase(input) {
