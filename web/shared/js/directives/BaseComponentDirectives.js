@@ -442,7 +442,7 @@ angular.module('uguru.shared.directives.base.components')
                 scope.activeType = $stateParams.type || scope.types[0];
 
                 var d = angular.element('<div></div>')
-                d.attr('ng-include', '"shared/templates/types.tpl"');
+                d.attr('ng-include', '"admin/templates/types.tpl"');
                 element.parent().append(d);
                 $compile(d)(scope)
                 scope.activateType = function($event, type) {

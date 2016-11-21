@@ -18,7 +18,56 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
   };
   return {
     parseAppDataJson: parseAppDataJson,
-    parseDataParams: parseDataParams
+    parseDataParams: parseDataParams,
+    registerMappingFunc: registerMappingFunc,
+    registerDirectives: registerDirectives
+  }
+
+  function camelCase(input) {
+        return input.toLowerCase().replace(/-(.)/g, function(match, group1) {
+            return group1.toUpperCase();
+        });
+  }
+
+  function registerDirectives(component_dict) {
+
+    for (component in component_dict) {
+      var compSpec = component_dict[component];
+      var templateUrl = 'template_url' in compSpec && compSpec['template_url']
+      var scope = 'fields' in compSpec || {};
+      var camelName = camelCase(component.toLowerCase());
+
+        registerOneDirective(camelName, scope, templateUrl)
+    }
+
+  }
+
+  function registerOneDirective(name, scope, template_url) {
+    console.log('registering', name, scope, template_url)
+     angular.module('uguru.shared.directives').directive(name, ['$compile', function($compile) {
+      return {
+        restrict: 'E',
+        templateUrl: template_url,
+        scope: _scope,
+        replace: true,
+        link: function(scope, element, attr) {
+          console.log(elemento)
+        }
+      }
+    }])
+
+  }
+
+  function registerMappingFunc(root_scope) {
+
+    return function(attr_name, value) {
+      console.log(attr_name, value)
+      if (root_scope.activeView) {
+        console.log(root_scope.activeView.name)
+      }
+    }
+
+
   }
 
   function initDataScopeAndConfig(data_scope) {

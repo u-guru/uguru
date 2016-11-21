@@ -1,17 +1,15 @@
-<div class="perspective-container full-xy flex-center-wrap p15xy">
-	<!-- types='link-no-photo, photo, photo-price, photo-price-moxie, photo-price-crimson, link-color, link-square, check-square' -->
+<div class="perspective-container full-xy flex-center-wrap p15xy" types='link-no-photo, photo, photo-price, photo-price-moxie, photo-price-crimson, link-color, link-square, check-square'>
 
-	<a class="category-tile bg-household no-photo"
+	<a class="category-tile bg-household no-photo" ng-show='activeType === "link-no-photo"'
 		u init-with="p:[opacity:0, tro:center center]"
 		on-init="s:[link-no-photo-init:children:100, link-no-photo-card:self]"
 		when-link-no-photo-card="a:[bounceIn-subtle:1000:linear:0:1:f]"
 		on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]"
-		on-mouseenter="a:[translateZ:0px:20px:600:(0.6,0,0.1,2):0:1:f]"
-		on-mouseover="a:[translateZ:0px:20px:600:(0.6,0,0.1,2):0:1:f]"
+		on-mouseenter="a:[translateZ:0px:20px:600:(.6,0,.1,2):0:1:f]"
+		on-mouseover="a:[translateZ:0px:20px:600:(.6,0,.1,2):0:1:f]"
 		on-mouseleave="a:[translateZ:20px:0px:easeInSine:0:1:f]"
 		on-mousedown="a:[translateZ:20px:-20px:150:easeInSine:0:1:f]"
 		on-mouseup="a:[translateZ:-20px:0px:easeInSine:0:1:f]">
-		<!-- ng-if='activeType === "link-no-photo"' -->
 		<svg width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 		</svg>
@@ -31,7 +29,7 @@
 		</div>
 	</a>
 
-	<!-- <div ng-if='activeType === "photo"' class="category-tile bg-household" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
+	<div ng-show='activeType === "photo"' class="category-tile bg-household" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
 		u init-with="p:[opacity:0, tro:center center]"
 		on-init="s:[category-photo-init:depth(>1):100, category-photo-card:self]"
 		when-category-photo-card="a:[bounceIn-subtle:1000:linear:0:1:f]"
@@ -57,7 +55,7 @@
 		</div>
 	</div>
 
-	<div  ng-if='activeType === "photo-price"' class="category-tile bg-household with-price" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
+	<div  ng-show='activeType === "photo-price"' class="category-tile bg-household with-price" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
 		u init-with="p:[opacity:0]"
 		on-init="s:[category-photo-price-init:depth(>1)] | a:[bounceIn-subtle:1000:linear:1:f]"
 		on-exit="a:[bounceOut-subtle:1000:linear:1:f]">
@@ -85,7 +83,7 @@
 			when-category-photo-price-init="a:[scaleInX-subtle:1000:linear:650:1:f]"><div>$25/hr AVG</div></div>
 	</div>
 
-	<div ng-if='activeType === "photo-price-moxie"'  class="category-tile bg-household with-price price-moxie" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
+	<div ng-show='activeType === "photo-price-moxie"'  class="category-tile bg-household with-price price-moxie" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
 		u init-with="p:[opacity:0]"
 		on-init="s:[category-price-moxie-init:depth(>1)] | a:[bounceIn-subtle:1000:linear:0:1:f]"
 		on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]">
@@ -113,7 +111,7 @@
 			when-category-price-moxie-init="a:[scaleInX-subtle:1000:linear:650:1:f]"><div>$25/hr AVG</div></div>
 	</div>
 
-	<div ng-if='activeType === "photo-price-crimson"' class="category-tile bg-household with-price price-crimson" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
+	<div ng-show='activeType === "photo-price-crimson"' class="category-tile bg-household with-price price-crimson" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
 		u init-with="p:[opacity:0]"
 		on-init="s:[category-price-crimson-init:depth(>1) | a:[bounceIn-subtle:1000:linear:0:1:f]"
 		on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]">
@@ -141,7 +139,7 @@
 			when-category-price-crimson-init="a:[scaleInX-subtle:1000:linear:650:1:f]"><div>$25/hr AVG</div></div>
 	</div>
 
-	<a ng-if='activeType === "link-color"' class="category-tile bg-household no-photo"
+	<a ng-show='activeType === "link-color"' class="category-tile bg-household no-photo"
 		u init-with="p:[opacity:0]"
 		on-init="s:[category-link-color-init:depth(>1) | a:[bounceIn-subtle:1000:linear:0:1:f]"
 		on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]">
@@ -166,7 +164,7 @@
 		</div>
 	</a>
 
-	<a ng-if='activeType === "link-square"' class="category-tile bg-household" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
+	<a ng-show='activeType === "link-square"' class="category-tile bg-household" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');"
 		u init-with="p:[opacity:0]"
 		on-init="s:[category-link-square-init:depth(>1) | a:[bounceIn-subtle:1000:linear:0:1:f]"
 		on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]">
@@ -192,7 +190,7 @@
 		<span class="category-tile-count">6</span>
 	</a>
 
-	<div ng-if='activeType === "check-square"' class="category-tile bg-household no-photo"
+	<div ng-show='activeType === "check-square"' class="category-tile bg-household no-photo"
 		u init-with="p:[opacity:0]"
 		on-init="s:[category-check-square-init:depth(>1)] | a:[bounceIn-subtle:1000:linear:0:1:f]"
 		on-exit="a:[bounceOut-subtle:1000:linear:0:1:f]">
@@ -221,6 +219,6 @@
 				<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
 			</svg>
 		</span>
-	</div> -->
+	</div>
 
 </div>

@@ -1,5 +1,5 @@
 <div class="perspective-container full-xy flex-center p15xy" types="academic, baking, photo, tech, household">
-	<div class="pf-tile-container" ng-if="activeType ===  'academic'"
+	<div class="pf-tile-container" ng-show="activeType ===  'academic'"
 		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		error
 		on-init="s:[academic-tile-init:public, aca-border:children:500, aca-top:children:500]"
@@ -94,7 +94,7 @@
 		</div>
 	</div>
 
-	<div class="pf-tile-container" ng-if='activeType === "baking"'
+	<div class="pf-tile-container" ng-show='activeType === "baking"'
 		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[baking-tile-init:public, bk-tile-top:depth(>1)]"
 		when-baking-tile-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f, translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
@@ -171,7 +171,7 @@
 		</div>
 	</div>
 
-	<div class="pf-tile-container" ng-if='activeType === "photo"'
+	<div class="pf-tile-container" ng-show='activeType === "photo"'
 		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[photo-tile-init:public, ph-info:c:500]"
 		when-photo-tile-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f, translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
@@ -256,7 +256,7 @@
 		</div>
 	</div>
 
-	<div class="pf-tile-container" ng-if='activeType === "tech"'
+	<div class="pf-tile-container" ng-show='activeType === "tech"'
 		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[tech-tile-init:public, tech-borders-init:depth(>2):1000, tech-top:depth(>2):250]"
 		when-tech-tile-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f, translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
@@ -365,7 +365,7 @@
 		</div>
 	</div>
 
-	<div class="pf-tile-container" ng-if='activeType === "household"'
+	<div class="pf-tile-container" ng-show='activeType === "household"'
 		u init-with="p:[opacity:0, transform-origin:left top, transform:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[household-tile-init:public]"
 		when-household-tile-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f, translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
