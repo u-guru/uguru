@@ -11951,36 +11951,36 @@ a.chip, input.chip {
         opacity: 0;
         stroke-width: 0;
         fill: #F6C64E; }
-  .rating-stars[data-rating*="1"] li:nth-child(1) svg polygon, .pf-rating[data-rating*="1"] li:nth-child(1) svg polygon {
+  .rating-stars[data-rating^="1"] li:nth-child(1) svg polygon, .pf-rating[data-rating^="1"] li:nth-child(1) svg polygon {
     fill: #F6C64E; }
-  .rating-stars[data-rating*="1"][data-half="true"] li:nth-child(2) svg polygon:nth-child(2), .rating-stars[data-rating*="1"][data-rating*="."] li:nth-child(2) svg polygon:nth-child(2), .pf-rating[data-rating*="1"][data-half="true"] li:nth-child(2) svg polygon:nth-child(2), .pf-rating[data-rating*="1"][data-rating*="."] li:nth-child(2) svg polygon:nth-child(2) {
+  .rating-stars[data-rating^="1"][data-half="true"] li:nth-child(2) svg polygon:nth-child(2), .rating-stars[data-rating^="1"][data-rating*="."] li:nth-child(2) svg polygon:nth-child(2), .pf-rating[data-rating^="1"][data-half="true"] li:nth-child(2) svg polygon:nth-child(2), .pf-rating[data-rating^="1"][data-rating*="."] li:nth-child(2) svg polygon:nth-child(2) {
     filter: alpha(opacity=100);
     opacity: 1; }
-  .rating-stars[data-rating*="2"] li:nth-child(1) svg polygon,
-  .rating-stars[data-rating*="2"] li:nth-child(2) svg polygon, .pf-rating[data-rating*="2"] li:nth-child(1) svg polygon,
-  .pf-rating[data-rating*="2"] li:nth-child(2) svg polygon {
+  .rating-stars[data-rating^="2"] li:nth-child(1) svg polygon,
+  .rating-stars[data-rating^="2"] li:nth-child(2) svg polygon, .pf-rating[data-rating^="2"] li:nth-child(1) svg polygon,
+  .pf-rating[data-rating^="2"] li:nth-child(2) svg polygon {
     fill: #F6C64E; }
-  .rating-stars[data-rating*="2"][data-half="true"] li:nth-child(3) svg polygon:nth-child(2), .rating-stars[data-rating*="2"][data-rating*="."] li:nth-child(3) svg polygon:nth-child(2), .pf-rating[data-rating*="2"][data-half="true"] li:nth-child(3) svg polygon:nth-child(2), .pf-rating[data-rating*="2"][data-rating*="."] li:nth-child(3) svg polygon:nth-child(2) {
+  .rating-stars[data-rating^="2"][data-half="true"] li:nth-child(3) svg polygon:nth-child(2), .rating-stars[data-rating^="2"][data-rating*="."] li:nth-child(3) svg polygon:nth-child(2), .pf-rating[data-rating^="2"][data-half="true"] li:nth-child(3) svg polygon:nth-child(2), .pf-rating[data-rating^="2"][data-rating*="."] li:nth-child(3) svg polygon:nth-child(2) {
     filter: alpha(opacity=100);
     opacity: 1; }
-  .rating-stars[data-rating*="3"] li:nth-child(1) svg polygon,
-  .rating-stars[data-rating*="3"] li:nth-child(2) svg polygon,
-  .rating-stars[data-rating*="3"] li:nth-child(3) svg polygon, .pf-rating[data-rating*="3"] li:nth-child(1) svg polygon,
-  .pf-rating[data-rating*="3"] li:nth-child(2) svg polygon,
-  .pf-rating[data-rating*="3"] li:nth-child(3) svg polygon {
+  .rating-stars[data-rating^="3"] li:nth-child(1) svg polygon,
+  .rating-stars[data-rating^="3"] li:nth-child(2) svg polygon,
+  .rating-stars[data-rating^="3"] li:nth-child(3) svg polygon, .pf-rating[data-rating^="3"] li:nth-child(1) svg polygon,
+  .pf-rating[data-rating^="3"] li:nth-child(2) svg polygon,
+  .pf-rating[data-rating^="3"] li:nth-child(3) svg polygon {
     fill: #F6C64E; }
-  .rating-stars[data-rating*="3"][data-half="true"] li:nth-child(4) svg polygon:nth-child(2), .rating-stars[data-rating*="3"][data-rating*="."] li:nth-child(4) svg polygon:nth-child(2), .pf-rating[data-rating*="3"][data-half="true"] li:nth-child(4) svg polygon:nth-child(2), .pf-rating[data-rating*="3"][data-rating*="."] li:nth-child(4) svg polygon:nth-child(2) {
+  .rating-stars[data-rating^="3"][data-half="true"] li:nth-child(4) svg polygon:nth-child(2), .rating-stars[data-rating^="3"][data-rating*="."] li:nth-child(4) svg polygon:nth-child(2), .pf-rating[data-rating^="3"][data-half="true"] li:nth-child(4) svg polygon:nth-child(2), .pf-rating[data-rating^="3"][data-rating*="."] li:nth-child(4) svg polygon:nth-child(2) {
     filter: alpha(opacity=100);
     opacity: 1; }
-  .rating-stars[data-rating*="4"] li:nth-child(1) svg polygon,
-  .rating-stars[data-rating*="4"] li:nth-child(2) svg polygon,
-  .rating-stars[data-rating*="4"] li:nth-child(3) svg polygon,
-  .rating-stars[data-rating*="4"] li:nth-child(4) svg polygon, .pf-rating[data-rating*="4"] li:nth-child(1) svg polygon,
-  .pf-rating[data-rating*="4"] li:nth-child(2) svg polygon,
-  .pf-rating[data-rating*="4"] li:nth-child(3) svg polygon,
-  .pf-rating[data-rating*="4"] li:nth-child(4) svg polygon {
+  .rating-stars[data-rating^="4"] li:nth-child(1) svg polygon,
+  .rating-stars[data-rating^="4"] li:nth-child(2) svg polygon,
+  .rating-stars[data-rating^="4"] li:nth-child(3) svg polygon,
+  .rating-stars[data-rating^="4"] li:nth-child(4) svg polygon, .pf-rating[data-rating^="4"] li:nth-child(1) svg polygon,
+  .pf-rating[data-rating^="4"] li:nth-child(2) svg polygon,
+  .pf-rating[data-rating^="4"] li:nth-child(3) svg polygon,
+  .pf-rating[data-rating^="4"] li:nth-child(4) svg polygon {
     fill: #F6C64E; }
-  .rating-stars[data-rating*="4"][data-half="true"] li:nth-child(5) svg polygon:nth-child(2), .rating-stars[data-rating*="4"][data-rating*="."] li:nth-child(5) svg polygon:nth-child(2), .pf-rating[data-rating*="4"][data-half="true"] li:nth-child(5) svg polygon:nth-child(2), .pf-rating[data-rating*="4"][data-rating*="."] li:nth-child(5) svg polygon:nth-child(2) {
+  .rating-stars[data-rating^="4"][data-half="true"] li:nth-child(5) svg polygon:nth-child(2), .rating-stars[data-rating^="4"][data-rating*="."] li:nth-child(5) svg polygon:nth-child(2), .pf-rating[data-rating^="4"][data-half="true"] li:nth-child(5) svg polygon:nth-child(2), .pf-rating[data-rating^="4"][data-rating*="."] li:nth-child(5) svg polygon:nth-child(2) {
     filter: alpha(opacity=100);
     opacity: 1; }
   .rating-stars[data-rating*="5"] li svg polygon, .pf-rating[data-rating*="5"] li svg polygon {

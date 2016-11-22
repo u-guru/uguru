@@ -1,5 +1,9 @@
 {
-    "vars": {},
+    "vars": {
+		"kicksItem": {
+			"thumbnail": "test"
+		}
+	},
     "config": {
         "pathParams": {},
         "base_url": "^",
@@ -24,7 +28,8 @@
             "template_url": "./ui/templates/samples/kicks/components/rating.tpl"
         },
 		"kicks-item": {
-            "template_url": "./ui/templates/samples/kicks/components/kicks-item.tpl"
+            "template_url": "./ui/templates/samples/kicks/components/kicks-item.tpl",
+			"fields": ["thumbnail"]
     	}
 	}
 }
