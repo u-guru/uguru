@@ -2,16 +2,21 @@
 	<div width="100" height="100">
 		<hr relative z="100" m="0" width="100%" height="5px" bg="sienna" border="0"/>
 	    <div height='calc(100% - 5px)' width='100' bg="charcoal">
-			<div x-start y-end abs z="0" top="0" left="0" width="100" height="100" scroll-x hide-y
+			<div x-start y-end abs z="0" top="0" left="0" width="100" height="100" hide-x hide-y
 				u init-with="p:[tr:translateX(0%)]">
-				<div absolute top="0" left="0" width='100' height='100' z='0' bg-image="content.track.artwork_url|top left|cover|repeat"> </div>
+				<div absolute top="0" left="0" width='150' height='100' z='0' bg-image="content.track.artwork_url|top left|cover|repeat"
+					u init-with="p:[tr:none]"
+					on-init="a:[translateX:0%:-100%:50000:linear:0:1:f]"></div>
                 <!-- on-init="a:[translateX:0%:-100%:6000:linear:0:1:f]" -->
 				<!-- <img absolute top="0" left="0" z="0" width='100' ng-src="{{content.track.artwork_url}}"/> -->
-	            <div relative z="1" p-left="100px">
-					<div row y-end relative>
+	            <div relative z="1" p-left="100px"
+					u init-with="p:[tr:none]"
+					on-init="a:[translateX:0%:-100%:50000:linear:0:1:f]">
+					<div row y-end relative
+						u on-init="s:[bar-play:public:linear-500000]">
 						<viz-bar width='2px' rad="4px" m-x="1px" list-data="samples=content.viz.samples.slice(0,500)" list-item="sample" class="overflow-hidden"
 							u init-with="p:[bg:rgba(255,255,255,1)]"
-							on-init="a:[background:rgba(255,255,255,1):rgba(238,115,97,1):100:linear:0:1:f]"></viz-bar>
+							when-bar-play="a:[background:rgba(255,255,255,1):rgba(238,115,97,1):250:easeOutExpo:0:1:f]"></viz-bar>
 						<div abs bottom="0" left="0" bg="charcoal" flex p="2px 5px" f-s="14px" rad="2px">
 							<span>0:00</span>
 							<span>&nbsp;|&nbsp;</span>
