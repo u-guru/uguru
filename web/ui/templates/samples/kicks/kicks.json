@@ -21,7 +21,10 @@
     "content": {},
     "components": {
 		"rating-stars": {
-            "template_url": "./ui/templates/samples/kicks/rating.tpl"
-        }
+            "template_url": "./ui/templates/samples/kicks/components/rating.tpl"
+        },
+		"kicks-item": {
+            "template_url": "./ui/templates/samples/kicks/components/kicks-item.tpl"
+    	}
 	}
 }
