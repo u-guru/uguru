@@ -6,7 +6,7 @@
 			<div x-start y-end abs z="0" top="0" left="0" width="100" height="100" scroll-x on-init="p:[background:url({{content.track.artwork_url}} top left cover)]">
 				<img absolute top="0" left="0" z="0" width='100' ng-src="{{content.track.artwork_url}}"/>
 	            <div relative z="1" row>
-					<viz-bar bg="white" width='2px' rad="4px" m-x="1px" list-data="samples=content.viz.samples" list-item="sample" class="overflow-hidden"></viz-bar>
+					<viz-bar bg="white" width='2px' rad="4px" m-x="1px" list-data="samples=content.viz.samples.slice(0,250)" list-item="sample" class="overflow-hidden"></viz-bar>
 				</div>
 	        </div>
 
