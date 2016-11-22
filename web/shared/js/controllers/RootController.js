@@ -12,9 +12,12 @@ angular.module('uguru.shared.controllers', [])
   '$compile',
   '$rootScope',
   '$window',
-  function($scope, $state, $timeout, RootService, XHRService, $compile, $rootScope, $window) {
+  'DataService',
+  function($scope, $state, $timeout, RootService, XHRService, $compile, $rootScope, $window, DataService) {
     var root = this;
     root.scope = $rootScope;
+    $rootScope.dataMappings = DataService.dataMappings;
+    $rootScope.dataCache = DataService.dataCache;
     root.scope.public = {customStates: {when: {}}};
     root.publicAttr = {};
     root.window = getBodyDimensions(_window);
@@ -23,7 +26,6 @@ angular.module('uguru.shared.controllers', [])
     root.mainViews = [];
     root.customComponents = [];
     root.linkElemCache = {};
-    console.log('initializing window')
     _window = root.window;
 
 

@@ -62,7 +62,7 @@ a.chip, input.chip {
 		font-size: 20px;
 	}
 	svg {
-		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		transition: all 150ms ease-in-out;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -508,7 +508,7 @@ a.chip, input.chip {
 	width: 100%;
 	text-align: center;
 	.chip {
-		@include transition(.15s ease-in-out);
+		transition: all .15s ease-in-out;
 		@include flex;
 		@include flex-center-vertical;
 		margin-right: 15px;

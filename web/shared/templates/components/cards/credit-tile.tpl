@@ -2,9 +2,9 @@
 	u on-init="s:[credit-tile-load:depth(>1)]">
 	<div class="credit-tile bg-cobalt"
 		u init-with="p:[opacity:0, tro:center center]"
-		on-mouse-leave="s:[credit-tile-load:self]"
-		when-credit-tile-load="a:[bounceIn-subtle:1000:linear:0:1:f]"
-		on-mouse-enter="s:[icon-wiggle:public]">
+		on-mouseenter="s:[icon-wiggle:public]"
+		on-mouseover="s:[icon-wiggle:public]"
+		when-credit-tile-load="a:[bounceIn-subtle:1000:linear:0:1:f]">
 		<ul>
 			<li class="top">
 				<h2 u init-with="p:[opacity:0]"

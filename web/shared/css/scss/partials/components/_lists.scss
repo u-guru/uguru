@@ -311,7 +311,7 @@
 				background-size: cover;
 				.doc-info {
 					@include opacity(0);
-					@include transition(.15s ease-in-out);
+					transition: all .15s ease-in-out;
 					@include flex;
 					@include flex-wrap;
 					@include flex-center;

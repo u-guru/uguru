@@ -2681,15 +2681,6 @@
 	background-position: center center;
 	background-size: cover;
 	transform-origin: center center;
-	// transition: all 150ms ease-in;
-	&:hover, &:focus {
-		transform: translateZ(20px);
-		// transition: all 600ms cubic-bezier(.6,0,.1,2);
-	}
-	&:active {
-		transform: translateZ(-20px);
-		// transition: all 150ms ease-in;
-	}
 	.category-tile-price {
 		@include flex;
 		@include flex-center;
@@ -2720,8 +2711,6 @@
 		height: 100%;
 		background: rgba($light-slate, .7);
 		border-radius: 2px;
-		// border-top: 5px solid transparent;
-		// border-bottom: 5px solid white;
 		.category-tile-border {
 			position: absolute;
 			bottom: 0;
@@ -2784,17 +2773,11 @@
 		width: 100%;
 		height: 100%;
 		~ .category-tile-count {
-			@include opacity(0);
 			background: rgba(white, .5);
 		}
-		&:hover {
+		&:checked {
 			~ .category-tile-count {
-				@include opacity(1);
-			}
-		}
-		&:active, &:checked {
-			~ .category-tile-count {
-				@include opacity(1);
+				opacity: 1!important;
 				background: white;
 			}
 		}
@@ -5031,36 +5014,13 @@ a.category-tile {
 	width: 100%;
 	max-width: 256px;
 	position: relative;
-	// * {
-	// 	// transition: all 150ms ease-in-out;
-	// }
-	// &:hover, &:focus {
-	// 	.album-art {
-	// 		div.overlay {
-	// 			opacity: 0.95;
-	// 		}
-	// 		svg.overlay {
-	// 			opacity: 1;
-	// 		}
-	// 	}
-	// }
-	// &:active {
-	// 	.album-echo {
-	// 		opacity: 1;
-	// 		width: calc(100% + 30px);
-	// 		height: calc(100% + 30px);
-	// 		// transition: opacity 300ms ease-out, width 300ms ease-out, height 300ms ease-out;
-	// 	}
-	// }
 	.album-echo {
-		opacity: 0;
 		@include center-xy;
 		width: 100%;
 		height: 100%;
 		border: 2px solid white;
 		border-radius: 2px;
 		z-index: -1;
-		// transition: opacity 300ms ease-out, width 300ms ease-out 300ms, height 150ms ease-out 300ms;
 		div {
 			@include opacity(.3);
 			width: 100%;
@@ -5070,9 +5030,6 @@ a.category-tile {
 	.album-art {
 		position: relative;
 		z-index: 2;
-		// .overlay {
-		// 	opacity: 0;
-		// }
 		> svg {
 			max-width: 100%;
 			&:last-child {

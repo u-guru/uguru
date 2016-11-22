@@ -16,9 +16,101 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
     base_url: "",
     scripts: []
   };
+  var dataMappings = {};
+  var dataCache = {views: {}}
   return {
     parseAppDataJson: parseAppDataJson,
-    parseDataParams: parseDataParams
+    parseDataParams: parseDataParams,
+    registerMappingFunc: registerMappingFunc,
+    registerDirectives: registerDirectives,
+    detectDataType: detectDataType,
+    dataMappings: dataMappings,
+    dataCache: dataCache
+
+  }
+
+  function detectDataType(element, data_attr) {
+    var data_attr_parsed = parseDataAttr(data_attr);
+    // if (typeof data_attr_parsed === 'string') {
+    //   return $parse(data_attr_parsed['name'])(parsedData)
+    // }
+    if ('view' in data_attr_parsed && data_attr_parsed['view'] in dataCache.views) {
+      var parsedData = dataCache.views[data_attr_parsed['view']];
+      return {name: data_attr_parsed['name'], data: $parse(data_attr_parsed['name'])(parsedData)}
+      // if (data_attr_parsed.split('.')[0] in parsedData) {
+
+      //   // var data_attr = $parse()(parsedData);
+      //   // console.log(data_attr)
+      // }
+    }
+    console.log(data_attr_parsed, dataCache.views[data_attr_parsed.view])
+
+  }
+
+  function parseDataAttr(data_attr) {
+      var isVar = data_attr.indexOf(".") > -1;
+      if (isVar) {
+        var varSplit = data_attr.split('.');
+        var ptr = dataMappings;
+        varSplit.forEach(function(data_var) {
+          if (data_var in ptr) {
+            ptr = ptr[data_var]
+            data_attr = data_attr.replace(data_var, ptr["name"])
+          }
+        })
+        var result = {view: ptr['view'], name: data_attr};
+        return result;
+      } else
+      if (data_attr in dataMappings) {
+        return dataMappings[data_attr];
+      }
+  }
+
+  function camelCase(input) {
+        return input.toLowerCase().replace(/-(.)/g, function(match, group1) {
+            return group1.toUpperCase();
+        });
+  }
+
+  function registerDirectives(component_dict) {
+
+    for (component in component_dict) {
+      var compSpec = component_dict[component];
+      var templateUrl = 'template_url' in compSpec && compSpec['template_url']
+      var scope = 'fields' in compSpec || {};
+      var camelName = camelCase(component.toLowerCase());
+
+        registerOneDirective(camelName, scope, templateUrl)
+    }
+
+  }
+
+  function registerOneDirective(name, scope, template_url) {
+    console.log('registering', name, scope, template_url)
+     angular.module('uguru.shared.directives').directive(name, ['$compile', function($compile) {
+      return {
+        restrict: 'E',
+        templateUrl: template_url,
+        scope: _scope,
+        replace: true,
+        link: function(scope, element, attr) {
+          console.log(elemento)
+        }
+      }
+    }])
+
+  }
+
+  function registerMappingFunc(root_scope) {
+
+    return function(attr_name, value) {
+      console.log(attr_name, value)
+      if (root_scope.activeView) {
+        console.log(root_scope.activeView.name)
+      }
+    }
+
+
   }
 
   function initDataScopeAndConfig(data_scope) {

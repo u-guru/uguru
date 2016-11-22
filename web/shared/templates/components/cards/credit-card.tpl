@@ -1,14 +1,12 @@
 <div class="perspective-container full-xy flex-center" types='flip, edit, short, mini'>
-	<!-- types='flip, edit, short, mini' -->
-
-	<div class="card-container" ng-if='activeType === "flip"'>
+	<!-- needs color directives -->
+	<div class="card-container" ng-show='activeType === "flip"'>
 		<div class="credit-card-flip"
 			u init-with="p:[opacity:0, tro:center center]"
 			on-init="s:[credit-flip-init:public:1500, credit-flip-enter:self]"
 			when-credit-flip-enter="a:[scoop-enter:1000:linear:0:1:f]"
 			on-mouseenter="s:[flip-enter:public]"
-			on-mouse-leave="s:[flip-leave:public]">
-			<!-- on-mouse-enter="s:[flip-enter:public]" -->
+			on-mouseleave="s:[flip-leave:public]">
 	        <div class="credit-card"
 				u when-flip-enter="a:[rotateY:0deg:180deg:300:easeInOutSine:0:1:f]"
 				when-flip-leave="a:[rotateY:180deg:0deg:300:easeInOutSine:0:1:f]">
@@ -89,13 +87,13 @@
 	            <ul>
 	                <li>
 	                    <button class="remove"
-							u init-with="p-op"
+							u init-with="p:[op:0]"
 							when-flip-enter="a:[opacity:0:1:250:easeOutSine:0:1:f]:delay-300"
 							when-flip-leave="a:[opacity:1:0:250:easeOutSine:0:1:f]">Remove</button>
 	                </li>
 	                <li>
 	                    <button class="default"
-							u init-with="p-op"
+							u init-with="p:[op:0]"
 							when-flip-enter="a:[opacity:0:1:250:easeOutSine:0:1:f]:delay-300"
 							when-flip-leave="a:[opacity:1:0:250:easeOutSine:0:1:f]">Set Default</button>
 	                </li>
@@ -104,8 +102,7 @@
 	    </div>
 	</div>
 
-
-	<div class="card-container" ng-if='activeType === "edit"'>
+	<div class="card-container" ng-show='activeType === "edit"'>
 	    <div class="credit-card edit"
 			u init-with="p:[op:0, tro:center center]"
 			on-init="s:[credit-edit-init:children] | a:[zoom-enter:1000:easeOutSine:0:1:f]">
@@ -114,7 +111,7 @@
 	        </svg>
 	        <div class="credit-card-inside">
 	            <a class="edit"
-					u on-mouse-enter="send:[logo-wiggle:public]">Edit</a>
+					u on-mouseenter="s:[logo-wiggle:public]">Edit</a>
 	            <div class="flex">
 	                <div class="credit-card-logo"
 						u init-with="p:[tro:center center]"
@@ -143,12 +140,11 @@
 	    </div>
 	</div>
 
-
-	<div class="card-container" ng-if='activeType === "short"'>
+	<div class="card-container" ng-show='activeType === "short"'>
 		<a class="credit-card short"
 			u init-with="p:[op:0, tro:center center]"
 			on-init="a:[zoom-enter:1000:easeOutSine:0:1:f] | s:[credit-short-init:public:1000]"
-			on-mouseenter="send:[logo-wiggle:public]">
+			on-mouseenter="s:[logo-wiggle:public]">
 	        <svg width="240px" height="50px" viewBox="0 0 240 50">
 	            <rect fill="none" x="0" y="0" width="240" height="50"></rect>
 	        </svg>
@@ -180,7 +176,7 @@
 	    </a>
 	</div>
 
-	<div class="card-container" ng-if='activeType === "mini"'>
+	<div class="card-container" ng-show='activeType === "mini"'>
 	    <a class="credit-card x-short"
 			u init-with="p:[op:0, tro:center center]"
 			on-init="a:[zoom-enter:1000:easeOutSine:0:1:f] | s:[credit-mini-init:public:1000]"

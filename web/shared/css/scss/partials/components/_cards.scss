@@ -1208,9 +1208,6 @@
 	backface-visibility: hidden;
 	position: relative;
 	display: block;
-	// * {
-	// 	// transition: all 150ms ease-in-out;
-	// }
 	&:hover, &:focus {
 		.credit-card .credit-card-inside, .credit-card-back {
 			background: lighten(#394851, 5%);
@@ -1364,7 +1361,6 @@
 			width: 50%;
 			padding: 7.5px;
 			button {
-				opacity: 0;
 				height: 36px;
 				width: 100%;
 				border-radius: 2px;
@@ -2791,15 +2787,6 @@ a.credit-card {
 	position: relative;
 	text-align: center;
 	transform-origin: center center;
-	// transition: all 150ms ease-in;
-	&:hover, &:focus {
-		transform: translateZ(20px);
-		// transition: all 600ms cubic-bezier(.6,0,.1,2);
-	}
-	&:active {
-		transform: translateZ(-20px);
-		// transition: all 150ms ease-in;
-	}
 	> svg {
 		background: white;
 		border-radius: 2px;
@@ -2891,7 +2878,6 @@ a.credit-card {
 		}
 	}
 	.course-card-hover {
-		// transition: all 150ms ease-in-out;
 		display: none;
 		position: absolute;
 		z-index: 1;
@@ -2902,7 +2888,6 @@ a.credit-card {
 		border-radius: 2px;
 	}
 	.course-card-border {
-		// transition: all 150ms ease-in-out;
 		position: absolute;
 		bottom: 0;
 		left: 0;
@@ -2922,7 +2907,6 @@ a.credit-card {
 	.course-card-count {
 		@include flex;
 		@include flex-center;
-		// transition: all 150ms ease-in-out;
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -2963,25 +2947,11 @@ a.credit-card {
 		width: 100%;
 		height: 100%;
 		cursor: pointer;
-		~ .course-card-count, ~ .course-card-count-container .course-card-count {
-			opacity: 0;
-			span {
-				opacity: 0.5;
-			}
-		}
-		&:hover {
-			~ .course-card-count, ~ .course-card-count-container .course-card-count {
-				opacity: 1;
-				span {
-					opacity: 0.5;
-				}
-			}
-		}
 		&:active, &:checked {
 			~ .course-card-count, ~ .course-card-count-container .course-card-count {
-				opacity: 1;
+				opacity: 1!important;
 				span {
-					opacity: 1;
+					opacity: 1!important;
 				}
 			}
 		}
@@ -2989,7 +2959,6 @@ a.credit-card {
 	&.with-hover {
 		.course-card-hover {
 			opacity: 0;
-			// transition: all 150ms ease-in-out;
 			display: block;
 			position: absolute;
 			z-index: 7;

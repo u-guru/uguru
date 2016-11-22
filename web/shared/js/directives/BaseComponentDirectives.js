@@ -243,8 +243,15 @@ angular.module('uguru.shared.directives.base.components')
                         //     scope[attrName] = newArray;
                         // }
                     }
+                    else if ('listItem' in attr) {
+                        var attrName = attr.listItem;
+                        var attrValue = $parse(attr.data)(scope);
+
+                        scope[attrName] = attrValue;
+                    }
                     else if (!attr.keepName) {
                         var attrValue = $parse(attr.data)(scope)
+
                         for (attr_name in attrValue) {
                             // if (attrValue[attr_name].split('/').length > 3) {
                             //     attrValue[attr_name] = '"' + attrValue[attr_name].split('/').join(".") +
@@ -442,7 +449,7 @@ angular.module('uguru.shared.directives.base.components')
                 scope.activeType = $stateParams.type || scope.types[0];
 
                 var d = angular.element('<div></div>')
-                d.attr('ng-include', '"shared/templates/types.tpl"');
+                d.attr('ng-include', '"admin/templates/types.tpl"');
                 element.parent().append(d);
                 $compile(d)(scope)
                 scope.activateType = function($event, type) {
