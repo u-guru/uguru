@@ -9,7 +9,7 @@
             "queue": [
                 {
                     "path": "192.168.20.165:5000/static/shoes.json",
-                    "mapping": [
+                    "mappings": [
 						{
 							"to":"content.shoes"
 						}
