@@ -1,11 +1,4 @@
-<div
-    width='2px'
-    rad="4px"
-    m-x="1px"
-    class="overflow-hidden"
-    u
-    on-init="p:[tro:top left, tr:scaleY(0.5), op:0.3, background:rgba(255,255,255,1)]">
-
-    <div style="height:{{sample}}px">&nbsp;</div>
-
+<div u init-with="p:[bg:rgba(255,255,255,1), tro:bottom center]"
+                            when-bar-play="a:[background:rgba(255,255,255,1):rgba(238,115,97,1):250:easeOutExpo:0:1:f, scaleY:1:0.8:125:easeOutExpo:0:1000:a]">
+    <div style="height:{{::sample}}px">&nbsp;</div>
 </div>

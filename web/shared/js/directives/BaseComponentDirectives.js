@@ -575,7 +575,7 @@ angular.module('uguru.shared.directives.base.components')
             scope:false,
             priority: 10000,
             compile: function(element, attr) {
-                // console.log(element[0].nodeName)
+
                 if (element[0].nodeName.toLowerCase() !== 'graphic') {
                     return;
                 }
@@ -594,24 +594,34 @@ angular.module('uguru.shared.directives.base.components')
             restrict: 'E',
             scope:false,
             replace:true,
-            compile: function compile(element, attr, transclude)  {
-
-                CompService.renderAllStyleAttributes(element, attr);
-                var url = attr.url;
-
-                return {
-                    pre: function(post_scope, post_element, post_attr) {
-                        if (url && url.indexOf('/') > -1) {
-                            post_element.removeAttr('url')
-                            $compile(post_element)(post_scope)
-
-                            // console.log(url, post_element[0])
-                        }
-                        if (post_scope.chart) post_scope.chart.elem = post_element;
-
-                    }
-                }
+            templateUrl: function(element, attr) {
+                return attr.url
             }
+            // compile: function compile(element, attr, transclude)  {
+
+            //     // CompService.renderAllStyleAttributes(element, attr);
+            //     var url = attr.url;
+            //     console.log('it gets here', 2)
+            //     return {
+            //         pre: function(post_scope, post_element, post_attr) {
+            //             if (url && url.indexOf('/') > -1 && post_element[0].outerHTML) {
+            //                 post_element.removeAttr('ngInclude')
+            //                 post_element.removeAttr('url')
+            //                 $compile(post_element)(post_scope)
+            //                 // if (post_attr.ngInclude) {
+            //                 //     if (post_element[0].outerHTML) {
+            //                 //         post_element.removeAttr('ngInclude')
+            //                 //     }
+
+            //                 // }
+
+            //                 // console.log(url, post_element[0])
+            //             }
+            //             if (post_scope.chart) post_scope.chart.elem = post_element;
+
+            //         }
+            //     }
+            // }
         }
     }])
 

@@ -2,20 +2,66 @@
 	<div width="100" height="100">
 		<hr relative z="100" m="0" width="100%" height="5px" bg="sienna" border="0"/>
 	    <div height='calc(100% - 5px)' width='100' bg="charcoal">
-			<div x-start y-end abs z="0" top="0" left="0" width="100" height="100" scroll-x hide-y
-				u init-with="p:[tr:translateX(0%)]">
-				<div absolute top="0" left="0" width='100' height='100' z='0' bg-image="content.track.artwork_url|top left|cover|repeat"> </div>
-                <!-- on-init="a:[translateX:0%:-100%:6000:linear:0:1:f]" -->
+			<div x-start y-end abs z="0" top="0" left="0" width="100" height="100" hide-x hide-y
+				u on-init="s:[viz-play:public]">
+				<div absolute top="0" left="0" width='calc(150% + 180px)' height='100' z='0' bg-image="content.track.artwork_url|top left|cover|repeat"
+					u init-with="p:[tr:none]"
+					when-viz-play="a:[translateX:0%:-39%:50000:linear:0:1:f]"></div>
 				<!-- <img absolute top="0" left="0" z="0" width='100' ng-src="{{content.track.artwork_url}}"/> -->
-	            <div relative z="1" p-left="100px">
-					<div row y-end relative>
-						<viz-bar list-data="samples=content.viz.samples" list-limit="500" list-item="sample"></viz-bar>
-						<!-- <viz-timer> </viz-timer> -->
+	            <div relative z="1"
+					u init-with="p:[tr:none]"
+					when-viz-play="a:[translateX:0%:-39%:50000:linear:0:1:f]">
+					<div row y-end relative m-left="100px"
+						u when-viz-play="s:[bar-play:public:linear-500000]">
+						<viz-bar width='2px' rad="4px" m-x="1px" hide-x hide-y
+							list-data="samples=content.viz.samples" list-limit="500" list-item="sample"
+							></viz-bar>
+						<div abs bottom="0" left="-32px" bg="charcoal" flex p="2px 5px" f-s="14px" rad="2px"
+							u init-with="p:[tr:none]"
+							when-viz-play="a:[translateX:0px:10000px:50000:0:1:f]">
+							<span u when-viz-play="a:[counter:0:100:{{content.track.duration}}:easeOutCirc:0:1:f]">0:00</span>
+							<span>&nbsp;|&nbsp;</span>
+
+                            <span>4:31</span>
+						</div>
 					</div>
-					<div row y-start >
-						<viz-bar list-data="samples=content.viz.samples" list-limit='500' list-item="sample" class="overflow-hidden"></viz-bar>
+                    <!-- u init-with="p:[bg:rgba(255,255,255,1), tro:top center]"
+                            when-bar-play-2="a:[background:rgba(255,255,255,1):rgba(242,150,137,1):250:easeOutExpo:0:1:f, scaleY:1:1.2:125:easeOutExpo:0:1000:a]" -->
+					<div row y-start m-left="100px"
+						u on-init="p:[tro:top left, tr:scaleY(0.5), op:0.3]"
+						when-viz-play="s:[bar-play-2:public:linear-500000]">
+						<viz-bar  width='2px' rad="4px" m-x="1px" hide-x hide-y
+							list-data="samples=content.viz.samples" list-limit="500" list-item="sample"
+							></viz-bar>
 					</div>
 				</div>
+				<footer s-b y-center fixed z="100" bottom="0" left="0" width="100%">
+					<ul row p="13px">
+						<li p="1px">
+							<a flex y-center rad="2px" p="2px 5px" bg="charcoal-90p" class="svg-24 svg-white svg-stroke-6"
+								u on-click="s:[heart-it:public]">
+								<!-- <graphic url='shared/templates/components/svg/main/heart.html'
+									u when-heart-it="p:[fill:#e28797]"> </graphic> -->
+								<svg viewBox="0 0 100 100">
+									<path d="M30.5307935,20.4928007 C26.3063917,20.4928007 22.0809823,22.1374151 18.849194,25.3409869 C12.383602,31.8055712 12.383602,42.2385939 18.849194,48.6749618 L27.2425724,57.0663247 L49.4146352,79.2948203 C49.7270313,79.5779923 50.2661665,79.5779923 50.5493385,79.2948203 L72.7788419,57.065317 L81.1712125,48.673954 C87.6095958,42.2375862 87.6095958,31.8045635 81.1712125,25.3399792 C74.707636,18.9046191 64.301822,18.9046191 57.83623,25.3399792 L50.0102033,33.1932146 L42.1841765,25.3399792 C38.9523883,22.1374151 34.756203,20.4928007 30.5307935,20.4928007 L30.5307935,20.4928007 L30.5307935,20.4928007 Z" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"
+										u when-heart-it="p:[fill:#e28797]"></path>
+								</svg>
+								<span f-s="16" f-w="600" m-left="2px">{{content.track.likes_count}}</span>
+							</a>
+						</li>
+						<li p="1px">
+							<a flex y-center rad="2px" p="2px 5px" bg="charcoal-90p" class="svg-24 svg-white svg-stroke-6">
+								<graphic url="shared/templates/components/svg/main/share.html"> </graphic>
+							</a>
+						</li>
+						<li p="1px">
+							<a flex y-center rad="2px" p="2px 5px" bg="charcoal-90p" class="svg-24 svg-white svg-stroke-6">
+								<graphic url='shared/templates/components/svg/main/more.html'> </graphic>
+							</a>
+						</li>
+					</ul>
+					<a flex f-s="16px" f-w="600" m-right="15px">Hide</a>
+				</footer>
 	        </div>
 
 	        <ul relative z="1" p="10px">
@@ -26,7 +72,8 @@
 				</li>
 	            <li p="5px">
 					<h1 bg="charcoal" z="1" f-s="28px" rad="2px" p="2px 5px" class='inline-block'>
-		                {{content.track.title}}
+		                <!-- {{content.track.title}} -->
+						<a href="{{content.track.permalink_url}}">{{content.track.title}}</a>
 		            </h1>
 				</li>
 	        </ul>

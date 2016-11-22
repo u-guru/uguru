@@ -244,31 +244,9 @@ angular.module('uguru.shared.directives')
       var dataObj = DataService.detectDataType(element, dataGetAttr);
       var limitTo = attr.listLimit && parseInt(attr.listLimit) || dataObj.data.length;
 
-
-      var dataList = dataObj.data;
-      if ('listLimit' in attr && attr.listLimit) {
-        var limit = parseInt(attr.listLimit);
-        dataList = dataList.slice(0, limit);
-      }
-
-
-      var resultHtml = '';
-      element[0].removeAttribute('list-data');
-      element[0].removeAttribute('list-limit');
-      element[0].removeAttribute('list-item');
-      element[0].setAttribute('data', dataObj.name);
-
-      var outerHtml = element[0].outerHTML;
-      dataList.forEach(function(_, i) {
-        var outerHtmlCp = outerHtml + '';
-        outerHtmlCp = outerHtmlCp.replace('<' + element[0].nodeName.toLowerCase(), '<' + element[0].nodeName.toLowerCase().replace('data.', '') + ' custom ').replace(dataObj.name, dataObj.name + '[' + i + ']');
-        resultHtml += outerHtmlCp;
-      });
-      var e = angular.element(resultHtml);
-      element.replaceWith(e)
-
-      // dataObj.name + ' [' + i + '] track by $index');
-      // attr.$set('ngInclude', '"' +  $rootScope.components[element[0].nodeName.toLowerCase()].template_url + '"');
+      element.removeAttr('listData')
+      attr.$set('ngRepeat', attr.listItem + ' in ::' +  JSON.stringify(dataObj.data.slice(0, limitTo)) + ' track by $index');
+      attr.$set('ngInclude', '"' +  $rootScope.components[element[0].nodeName.toLowerCase()].template_url + '"');
 
 
 
@@ -745,9 +723,6 @@ angular.module('uguru.shared.directives')
                 // attr.$set();
               }
 
-              if (element[0].nodeName.toLowerCase() === 'grid') {
-                CompService.renderAllStyleAttributes(element, attr);
-              }
               this.states = ElementService.renderElementStates(element, attr);
               // console.log(element, this.states)
               var states = this.states;
@@ -842,8 +817,10 @@ angular.module('uguru.shared.directives')
                     scope.parentCompiled = false;
                     scope.inheritedFromParent = [];
                     // scope.public = scope._public
+                    element.ready(function() {
+                      SendService.precompileSendActionArgs(states, scope, lElem, lAttr)
+                    })
 
-                    SendService.precompileSendActionArgs(states, scope, lElem, lAttr)
                     scope.whenCallbacks = {};
 
 
@@ -871,7 +848,9 @@ angular.module('uguru.shared.directives')
                           }
                         })
                       }
+
                       if (states.when && scope.hasInitAfter) {
+
                         states.when.forEach(function(w_state, i) {
                           console.log(w_state, scope.hasInitAfter)
                           if (w_state.nameCamel === scope.hasInitAfter) {
@@ -889,115 +868,7 @@ angular.module('uguru.shared.directives')
                             }
                           }
                         })
-
-                        // return
-                        // states.when.forEach(function(state, i) {
-
-
-                        //   state.cancelCallback = null;
-                        //   // if (state.actions && state.actions.send) {
-                        //   //   console.log(state.actions.send, state.nameCamel, element)
-                        //   // }
-
-                        //   var whenCallback = function(current_depth) {
-
-                        //     return function(actions, scope, delay, depth) {
-
-                        //       if (depth && depth.inclusive && depth.num >= 0 && current_depth < 0) return;
-                        //       if (depth && depth.inclusive && depth.num <= 0 && current_depth > 0) return;
-                        //       if (depth && !depth.inclusive && depth.num !== current_depth) return;
-
-
-
-                        //       if (delay) {
-                        //         $timeout(function() {
-                        //           state.exec(lElem, scope, lAttr, actions);
-                        //         }, delay)
-                        //         return;
-                        //       }
-                        //       state.exec(lElem, scope, lAttr, actions);
-                        //     }
-                        //   }
-
-
-
-                          // scope.public.customStates.when[state.nameCamel] = {elements: [whenMetadata], depth:0};
-
-
-
-                          // if (scope.$parent.public.customStates) {
-
-                            // if (!(state.nameCamel in scope.public.customStates.when)) {
-                            //   scope.public.customStates.when[state.nameCamel] = {elements: [], depth: 0};
-                            // }
-
-
-                            // if (typeof scope.$parent.public.customStates.when[state.nameCamel] === 'object' && scope.$parent.public.customStates.when[state.nameCamel] !== [] && !scope.$parent.public.customStates.when[state.nameCamel].length) {
-                            //   scope.$parent.public.customStates.when[state.nameCamel] = {elements: [whenMetadata], depth: 0};
-                            // } else {
-
-                            // console.log('pushing', whenMetadata.name, scope.public.customStates.when[state.nameCamel].depth)
-                            // var currentDepth = scope.public.customStates.when[state.nameCamel].depth;
-
-                            // var whenMetadata = {actions: state.actions, func: whenCallback(currentDepth), name:state.name};
-                            // scope.public.customStates.when[state.nameCamel].elements.push(whenMetadata)
-
-                            // }
-                          // }
-
-
-
-                          // if (scope.public.customStates.whenElements.indexOf(element[0]) === -1) {
-                          //   scope.public.customStates.whenElements.push(element[0]);
-                          // }
-
-
-                          // var whenStateName = state.type + '-' + state.name;
-
-                          // if (!(whenStateName in scope.root.scope.public.customStates)) {
-                          //   scope.root.scope.public.customStates[whenStateName] = []
-                          // }
-                          // scope.root.scope.public.customStates[whenStateName].push(whenMetadata)
-                          // if (state.name.indexOf('debug') > -1) {
-                          //   ElementService.launchExternalWindow(state.actions.anim.parsed, element);
-                          // }
-
-                          // if (state.actions.send) {
-                          //   state.actions.send.parsed.split(',').forEach(function(message_str, i) {
-                          //     var msgNameCamel = ElementService.toCamelCaseBridge(message_str.split(':')[0]);
-                          //     SendService.prepareToSendMessage(msgNameCamel, message_str, scope);
-                          //     // console.log('prepping..', msgNameCamel, scope.public.customStates)
-                          //   })
-                          // }
-
-                          // console.log('registering my', state.nameCamel, state.actions.send);
-                          // if (state.nameCamel === 'startCounter') {
-                          //   console.log(scope.public.customStates.when)
-                          // }
-
-
-                        // })
                       }
-
-                      // scope.states = states;
-                      // var elemHasCustom = elemName in $rootScope.components
-
-                      // !scope.hasInitAfter && lElem && transclude(scope, function(clone, innerScope) {
-
-
-
-                      //       if ('custom' in lAttr && lElem[0].innerHTML) {
-                      //         console.log(lElem)
-                      //         lElem.removeAttr('custom')
-                      //       }
-
-                      //       $compile(lElem.contents())(scope);
-                      //       lElem.append(clone);
-
-
-
-
-
 
 
 
