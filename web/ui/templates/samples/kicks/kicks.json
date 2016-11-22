@@ -1,0 +1,27 @@
+{
+    "vars": {},
+    "config": {
+        "pathParams": {},
+        "base_url": "^",
+        "parse": {},
+        "scripts": {
+            "base": "http://192.168.20.165:5000/",
+            "queue": [
+                {
+                    "path": "static/shoes.json",
+                    "mappings": [
+						{
+							"to":"content.shoes"
+						}
+					]
+                }
+            ]
+        }
+    },
+    "content": {},
+    "components": {
+		"rating-stars": {
+            "template_url": "./ui/templates/samples/kicks/rating.tpl"
+        }
+	}
+}
