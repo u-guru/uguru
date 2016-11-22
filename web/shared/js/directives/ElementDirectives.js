@@ -244,9 +244,31 @@ angular.module('uguru.shared.directives')
       var dataObj = DataService.detectDataType(element, dataGetAttr);
       var limitTo = attr.listLimit && parseInt(attr.listLimit) || dataObj.data.length;
 
-      element.removeAttr('listData')
-      attr.$set('ngRepeat', attr.listItem + ' in ::' +  JSON.stringify(dataObj.data.slice(0, limitTo)) + ' track by $index');
-      attr.$set('ngInclude', '"' +  $rootScope.components[element[0].nodeName.toLowerCase()].template_url + '"');
+
+      var dataList = dataObj.data;
+      if ('listLimit' in attr && attr.listLimit) {
+        var limit = parseInt(attr.listLimit);
+        dataList = dataList.slice(0, limit);
+      }
+
+
+      var resultHtml = '';
+      element[0].removeAttribute('list-data');
+      element[0].removeAttribute('list-limit');
+      element[0].removeAttribute('list-item');
+      element[0].setAttribute('data', dataObj.name);
+
+      var outerHtml = element[0].outerHTML;
+      dataList.forEach(function(_, i) {
+        var outerHtmlCp = outerHtml + '';
+        outerHtmlCp = outerHtmlCp.replace('<' + element[0].nodeName.toLowerCase(), '<' + element[0].nodeName.toLowerCase().replace('data.', '') + ' custom ').replace(dataObj.name, dataObj.name + '[' + i + ']');
+        resultHtml += outerHtmlCp;
+      });
+      var e = angular.element(resultHtml);
+      element.replaceWith(e)
+
+      // dataObj.name + ' [' + i + '] track by $index');
+      // attr.$set('ngInclude', '"' +  $rootScope.components[element[0].nodeName.toLowerCase()].template_url + '"');
 
 
 
