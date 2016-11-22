@@ -712,9 +712,9 @@
 		@include prefix(transition, all .3s ease-in-out, webkit moz ms o);
 		@include opacity(1);
 		@include prefix(transform, translateY(0), webkit moz ms o);
-		@include animation-name(toast-pop);
-		@include animation-duration(.4s);
-		@include animation-iteration-count(1);
+		// @include animation-name(toast-pop);
+		// @include animation-duration(.4s);
+		// @include animation-iteration-count(1);
 		margin-top: 94px;
 	}
 	.splash-hero-nav {
