@@ -40,6 +40,9 @@
     "components": {
         "viz-bar": {
             "template_url": "./ui/templates/samples/visualizer/components/viz-bar.html"
+        },
+        "viz-timer": {
+            "template_url": "./ui/templates/samples/visualizer/components/viz-timer.html"
         }
     }
 }

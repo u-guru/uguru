@@ -9,21 +9,11 @@
 				<!-- <img absolute top="0" left="0" z="0" width='100' ng-src="{{content.track.artwork_url}}"/> -->
 	            <div relative z="1" p-left="100px">
 					<div row y-end relative>
-						<viz-bar width='2px' rad="4px" m-x="1px" list-data="samples=content.viz.samples.slice(0,500)" list-item="sample" class="overflow-hidden"
-							u init-with="p:[bg:rgba(255,255,255,1)]"
-							on-init="a:[background:rgba(255,255,255,1):rgba(238,115,97,1):100:linear:0:1:f]"></viz-bar>
-						<div abs bottom="0" left="0" bg="charcoal" flex p="2px 5px" f-s="14px" rad="2px">
-							<span>0:00</span>
-							<span>&nbsp;|&nbsp;</span>
-							<span opacity="0.5" class="opacity-50p">{{(content.track.duration/60000).toFixed(0)}}</span>
-                            <span u
-                                on-init="a:[counter:0:100:{{content.track.duration}}:easeOutCirc:0:1:f]">
-                            </span>
-							<!-- {{content.track.duration}} -->
-						</div>
+						<viz-bar list-data="samples=content.viz.samples" list-limit="500" list-item="sample"></viz-bar>
+						<!-- <viz-timer> </viz-timer> -->
 					</div>
 					<div row y-start u init-with="p:[tro:top left, tr:scaleY(0.5), op:0.3]">
-						<viz-bar bg="white" width='2px' rad="4px" m-x="1px" list-data="samples=content.viz.samples.slice(0, 500)" list-item="sample" class="overflow-hidden"></viz-bar>
+						<viz-bar bg="white" width='2px' rad="4px" m-x="1px" list-data="samples=content.viz.samples" list-limit='500' list-item="sample" class="overflow-hidden"></viz-bar>
 					</div>
 				</div>
 	        </div>
