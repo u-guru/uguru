@@ -245,8 +245,9 @@ angular.module('uguru.shared.directives')
       var limitTo = attr.listLimit && parseInt(attr.listLimit) || dataObj.data.length;
 
       element.removeAttr('listData')
-      attr.$set('ngRepeat', attr.listItem + ' in ::' +  JSON.stringify(dataObj.data.slice(0, limitTo)) + ' track by $index');
+      attr.$set('ngRepeat', attr.listItem + ' in ::' +  dataObj.name + ' track by $index');
       attr.$set('ngInclude', '"' +  $rootScope.components[element[0].nodeName.toLowerCase()].template_url + '"');
+
 
 
 
@@ -2096,7 +2097,7 @@ directive("evalOnReady", ["$timeout", '$parse', function($timeout, $parse) {
             var bgAttrValues = value.split('|');
 
             element.css({
-                'background-image': 'url(' + $parse(bgAttrValues[0])(scope)  +')',
+                'background-image': 'url(' + bgAttrValues[0]  +')',
                 'background-position': bgAttrValues[1],
                 'background-size' : bgAttrValues[2],
                 'background-repeat': bgAttrValues.length > 3 && bgAttrValues[3] || 'no-repeat',
