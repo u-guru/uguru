@@ -2173,17 +2173,22 @@ directive("evalOnReady", ["$timeout", '$parse', function($timeout, $parse) {
       }
     }
 }])
-.directive('backImg', function(){
+.directive('bgImage', ['$parse',function($parse){
     return function(scope, element, attrs){
-        attrs.$observe('backImg', function(value) {
+        attrs.$observe('bgImage', function(value) {
+            var bgAttrValues = value.split('|');
+
             element.css({
-                'background-image': 'url(' + value +')',
-                'background-size' : 'cover'
+                'background-image': 'url(' + $parse(bgAttrValues[0])(scope)  +')',
+                'background-position': bgAttrValues[1],
+                'background-size' : bgAttrValues[2],
+                'background-repeat': bgAttrValues.length > 3 && bgAttrValues[3] || 'no-repeat',
+                'background-color': bgAttrValues.length > 4 && bgAttrValues[4] || 'none',
             });
 
         });
     };
-})
+}])
 .directive('swiperBack', [function () {
     return {
       restrict: 'E',
