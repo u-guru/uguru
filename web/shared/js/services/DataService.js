@@ -277,6 +277,7 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
   function checkExtScriptStatus(data_scope) {
 
     var script_scope = data_scope.config.processed.scripts;
+
     if (!('scriptStatus' in data_scope.config.processed)) {
       data_scope.config.processed.scriptStatus = {
         remaining: Object.keys(script_scope).length,
@@ -301,7 +302,10 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
         total: count,
         complete: false
       }
-      console.log('remaining', numFalse);
+      $timeout(function() {
+        checkExtScriptStatus(data_scope)
+      }, 100)
+
     }
     else {
 

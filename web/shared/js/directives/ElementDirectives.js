@@ -299,6 +299,7 @@ angular.module('uguru.shared.directives')
             'GET',
         attr.linkData,
         function(data) {
+
           $rootScope.dataCache.views[attr.linkData] = {data: data, name: attr.name || attr.linkData };
           if (scopeRef) {
             scopeRef[attr.setDataName || 'data'] = data;
@@ -320,6 +321,7 @@ angular.module('uguru.shared.directives')
                     $rootScope.activeView = {name: attr.linkDataName, data: scope.data};
                     // scope.$watch(attr.linkDataName + '.data', function(value) {
                         // if (value) {
+
                             transclude(scope, function(clone, innerScope) {
                                 if (attr.let && attr.let.length) {
                                   var letAttrSplit = attr.let.split('=');
