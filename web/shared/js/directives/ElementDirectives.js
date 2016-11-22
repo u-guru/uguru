@@ -226,12 +226,12 @@ angular.module('uguru.shared.directives')
       }
   }
 }])
-.directive('listData', ['XHRService', 'DataService', function(XHRService, DataService) {
+.directive('listData', ['XHRService', 'DataService', '$compile', '$parse', '$rootScope', function(XHRService, DataService, $compile, $parse, $rootScope) {
   return {
     restrict: 'A',
-    replace:true,
-    compile: function compile(element, attr, transclude) {
-
+    priority: 10000,
+    scope: false,
+    compile: function(element, attr) {
       var dataParams = attr.listData;
 
       if (!dataParams || !dataParams.length) return;
@@ -242,17 +242,39 @@ angular.module('uguru.shared.directives')
       }
 
       var dataObj = DataService.detectDataType(element, dataGetAttr);
+      var limitTo = attr.listLimit && parseInt(attr.listLimit) || dataObj.data.length;
 
-      var resultHtml = '';
-      attr.$set('listData', '')
-      var outerHtml = element[0].outerHTML;
-      dataObj.data.forEach(function(_, i) {
-        var extHtml = outerHtml + '';
-        extHtml = extHtml.replace('list-data=""', 'data="' + dataObj.name + '[' + i + ']" custom');
-        resultHtml += extHtml
-      })
-      var elem = angular.element(resultHtml);
-      element.replaceWith(elem)
+      element.removeAttr('listData')
+      attr.$set('ngRepeat', attr.listItem + ' in ::' +  JSON.stringify(dataObj.data.slice(0, limitTo)) + ' track by $index');
+      attr.$set('ngInclude', '"' +  $rootScope.components[element[0].nodeName.toLowerCase()].template_url + '"');
+
+
+
+      // var resultHtml = '';
+      // attr.$set('listData', '')
+      // var outerHtml = element[0].outerHTML;
+
+
+
+      // // var elem = angular.element(resultHtml);
+      // // element.contents(elem);
+
+      // return function(scope, _element, _attr, ctrl) {
+      //   transclude(scope, function(clone, inner_scope) {
+      //     var result = [];
+      //     dataObj.data.forEach(function(_, i) {
+      //       if (i >= listBounds.start && i < listBounds.end) {
+      //         var extHtml = outerHtml + '';
+      //         extHtml = extHtml.replace('list-data=""', 'data="' + dataObj.data[i] + '" custom');
+      //         console.log($compile(angular.element(extHtml))(scope)[0])
+      //         // console.log($compile(extHtml)(scope)[0]);
+      //         result.push(angular.element(extHtml));
+      //       }
+      //     });
+      //     _element.replaceWith(result)
+
+      //   })
+      // }
 
     }
   }

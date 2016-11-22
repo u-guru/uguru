@@ -7,6 +7,9 @@
     "config": {
         "pathParams": {},
         "base_url": "^",
+        "parse": {
+            "float": ["content.track.duration"]
+        },
         "scripts": {
             "base": "https://",
             "queue": [
@@ -26,6 +29,9 @@
                             "to":"content.viz"
                         }
                     ]
+                },
+                {
+
                 }
             ]
         }
@@ -34,6 +40,9 @@
     "components": {
         "viz-bar": {
             "template_url": "./ui/templates/samples/visualizer/components/viz-bar.html"
+        },
+        "viz-timer": {
+            "template_url": "./ui/templates/samples/visualizer/components/viz-timer.html"
         }
     }
 }
