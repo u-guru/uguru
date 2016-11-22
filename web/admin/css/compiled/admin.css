@@ -190,49 +190,41 @@
     -webkit-transform: translateX(0);
     -moz-transform: translateX(0);
     -ms-transform: translateX(0);
-    -o-transform: translateX(0);
     transform: translateX(0); }
   #keys #keys-aside-menu.tab-bar.slide a:nth-child(2).active ~ hr {
     -webkit-transform: translateX(100%);
     -moz-transform: translateX(100%);
     -ms-transform: translateX(100%);
-    -o-transform: translateX(100%);
     transform: translateX(100%); }
   #keys #keys-aside-menu.tab-bar.slide a:nth-child(3).active ~ hr {
     -webkit-transform: translateX(200%);
     -moz-transform: translateX(200%);
     -ms-transform: translateX(200%);
-    -o-transform: translateX(200%);
     transform: translateX(200%); }
   #keys #keys-aside-menu.tab-bar.slide a:nth-child(4).active ~ hr {
     -webkit-transform: translateX(300%);
     -moz-transform: translateX(300%);
     -ms-transform: translateX(300%);
-    -o-transform: translateX(300%);
     transform: translateX(300%); }
   #keys #keys-aside-menu.tab-bar.slide a:nth-child(1):hover ~ hr, #keys #keys-aside-menu.tab-bar.slide a:nth-child(1):focus ~ hr {
     -webkit-transform: translateX(0);
     -moz-transform: translateX(0);
     -ms-transform: translateX(0);
-    -o-transform: translateX(0);
     transform: translateX(0); }
   #keys #keys-aside-menu.tab-bar.slide a:nth-child(2):hover ~ hr, #keys #keys-aside-menu.tab-bar.slide a:nth-child(2):focus ~ hr {
     -webkit-transform: translateX(100%);
     -moz-transform: translateX(100%);
     -ms-transform: translateX(100%);
-    -o-transform: translateX(100%);
     transform: translateX(100%); }
   #keys #keys-aside-menu.tab-bar.slide a:nth-child(3):hover ~ hr, #keys #keys-aside-menu.tab-bar.slide a:nth-child(3):focus ~ hr {
     -webkit-transform: translateX(200%);
     -moz-transform: translateX(200%);
     -ms-transform: translateX(200%);
-    -o-transform: translateX(200%);
     transform: translateX(200%); }
   #keys #keys-aside-menu.tab-bar.slide a:nth-child(4):hover ~ hr, #keys #keys-aside-menu.tab-bar.slide a:nth-child(4):focus ~ hr {
     -webkit-transform: translateX(300%);
     -moz-transform: translateX(300%);
     -ms-transform: translateX(300%);
-    -o-transform: translateX(300%);
     transform: translateX(300%); }
 #keys #keys-toolbar a {
   color: white !important; }

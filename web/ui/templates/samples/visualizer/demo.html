@@ -3,8 +3,7 @@
 		<hr m="0" width="100%" height="5px" bg="sienna" border="0"/>
 	    <div height='calc(100% - 5px)' width='100' bg="charcoal">
 			<!-- <img absolute top="0" left="0" z="0" width='100' ng-src="{{content.track.artwork_url}}"/> -->
-			<div x-start y-end abs z="0" top="0" left="0" width="100" height="100" scroll-x>
-				<!-- style="background:url('{{content.track.artwork_url}}') top left / cover" -->
+			<div x-start y-end abs z="0" top="0" left="0" width="100" height="100" scroll-x on-init="p:[background:url({{content.track.artwork_url}} top left cover)]">
 				<img absolute top="0" left="0" z="0" width='100' ng-src="{{content.track.artwork_url}}"/>
 	            <div relative z="1" row>
 					<viz-bar bg="white" width='2px' rad="4px" m-x="1px" list-data="samples=content.viz.samples" list-item="sample" class="overflow-hidden"></viz-bar>
