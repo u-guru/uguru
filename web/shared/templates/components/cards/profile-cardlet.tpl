@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='household, default, academic, baking, photo, tech' default-type="default">
+<div class="perspective-container full-xy flex-center p15xy" types='default, academic, baking, photo, tech, household' default-type="default">
 
 	<div class="pf-tile-container" ng-show='activeType === "default"'
 		u init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
