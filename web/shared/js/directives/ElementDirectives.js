@@ -229,31 +229,34 @@ angular.module('uguru.shared.directives')
 // templateUrl: function(element, attr) {
 //       return $rootScope.components[element[0].nodeName.toLowerCase]
 //     },
-.directive('listData', ['$rootScope', 'DataService', function($rootScope, DataService) {
+.directive('listData', ['$rootScope', 'DataService', '$compile', function($rootScope, DataService, $compile) {
   return {
     restrict: 'A',
-    scope: false,
-    transclude: true,
     replace:true,
-    templateUrl: function(element, attr) {
-      return $rootScope.components[element[0].nodeName.toLowerCase()]['template_url']
-    },
-    compile: function(element, attr, transclude) {
-        return {
-          pre: function preLink(scope, p_elem, p_attr) {
-            var dataParams = attr.listData;
+    priority: 100000,
+    compile: function(element, attr) {
+      var dataParams = attr.listData;
 
-            if (!dataParams || !dataParams.length) return;
+      if (!dataParams || !dataParams.length) return;
 
-            var dataGetAttr = attr.listData;
-            if (dataParams.indexOf('=') > -1) {
-              dataGetAttr = dataParams.split('=')[1];
-            }
-            var dataObj = DataService.detectDataType(element, dataGetAttr);
-
-            console.log(dataObj)
-          }
+      var dataGetAttr = attr.listData;
+      if (dataParams.indexOf('=') > -1) {
+        dataGetAttr = dataParams.split('=')[1];
       }
+
+      var dataObj = DataService.detectDataType(element, dataGetAttr);
+      var limitTo = attr.listLimit && parseInt(attr.listLimit) || dataObj.data.length;
+      var resultHtml = '';
+      element[0].removeAttribute('list-data');
+      element[0].removeAttribute('list-limit');
+      element[0].setAttribute('data', dataObj.name);
+      var outerHtml = element[0].outerHTML;
+      var elem_name = element[0].nodeName.toLowerCase();
+      for (var i = 0; i < limitTo; i++) {
+        var outerHtmlCp = outerHtml + '';
+        resultHtml += outerHtmlCp.replace(dataObj.name, dataObj.name + '[' + i + ']').replace('<' + elem_name, '<' + elem_name + ' custom');
+      }
+      element.replaceWith(angular.element(resultHtml))
     }
 
   }
