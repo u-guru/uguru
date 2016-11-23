@@ -7029,15 +7029,6 @@ a.course-card:active .course-card-hover {
       color: white; }
     .pf-tile-container a:hover ~ .pf-tile.bg-household .bub-front-9, .pf-tile-container a:focus ~ .pf-tile.bg-household .bub-front-9 {
       transform: scale(18); }
-    .pf-tile-container a:hover ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) > div, .pf-tile-container a:focus ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) > div {
-      background: #fbe1f0;
-      color: #e6389b; }
-    .pf-tile-container a:hover ~ .pf-cardlet.bg-academic .pf-cardlet-bottom .pf-cardlet-bg, .pf-tile-container a:focus ~ .pf-cardlet.bg-academic .pf-cardlet-bottom .pf-cardlet-bg {
-      background: rgba(230, 56, 155, 0.2); }
-    .pf-tile-container a:hover ~ .pf-cardlet.bg-academic .pf-cardlet-bottom .pf-cardlet-border div:empty, .pf-tile-container a:focus ~ .pf-cardlet.bg-academic .pf-cardlet-bottom .pf-cardlet-border div:empty {
-      background: #fbe1f0; }
-    .pf-tile-container a:hover ~ .pf-cardlet.bg-baking .pf-cardlet-front, .pf-tile-container a:focus ~ .pf-cardlet.bg-baking .pf-cardlet-front {
-      background: #fceeca; }
     .pf-tile-container a:active ~ .pf-tile.bg-academic {
       background: #97a2a6; }
       .pf-tile-container a:active ~ .pf-tile.bg-academic .pf-tile-border > div {
@@ -7072,32 +7063,7 @@ a.course-card:active .course-card-hover {
       background: #4b7681; }
       .pf-tile-container a:active ~ .pf-tile.bg-tech .pf-tile-bottom h1 {
         color: #55A4B7; }
-    .pf-tile-container a:active ~ .pf-cardlet .pf-cardlet-overlay {
-      opacity: 0.4; }
-    .pf-tile-container a:active ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) > div {
-      background: #cd3a8f;
-      color: white; }
-    .pf-tile-container a:active ~ .pf-cardlet.bg-academic .pf-cardlet-bottom .pf-cardlet-bg {
-      background: rgba(255, 255, 255, 0.2); }
-    .pf-tile-container a:active ~ .pf-cardlet.bg-academic .pf-cardlet-bottom .pf-cardlet-border div:empty {
-      background: #cd3a8f; }
-    .pf-tile-container a:active ~ .pf-cardlet.bg-baking .pf-cardlet-front {
-      background: #fadd95; }
-    .pf-tile-container a:active ~ .pf-cardlet.bg-baking .pf-cardlet-bottom * {
-      color: white; }
-    .pf-tile-container a:active ~ .pf-cardlet.bg-tech .pf-cardlet-bottom > div:empty {
-      background: white; }
-    .pf-tile-container a:active ~ .pf-cardlet.bg-tech .pf-cardlet-bottom > div:not(:empty) > div {
-      background: white; }
   @media screen and (min-width: 768px) {
-    .pf-tile-container:not(.mobile) a:hover ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco), .pf-tile-container:not(.mobile) a:focus ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) {
-      transform: rotate(-90deg) !important; }
-      .pf-tile-container:not(.mobile) a:hover ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) h2, .pf-tile-container:not(.mobile) a:focus ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) h2 {
-        transform: translateZ(10px) !important; }
-    .pf-tile-container:not(.mobile) a:hover ~ .pf-cardlet.bg-household .pf-cardlet-bottom div, .pf-tile-container:not(.mobile) a:focus ~ .pf-cardlet.bg-household .pf-cardlet-bottom div {
-      transform: none !important; }
-      .pf-tile-container:not(.mobile) a:hover ~ .pf-cardlet.bg-household .pf-cardlet-bottom div h2, .pf-tile-container:not(.mobile) a:focus ~ .pf-cardlet.bg-household .pf-cardlet-bottom div h2 {
-        transform: translateZ(10px) !important; }
     .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-border, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-border {
       transform: translateZ(20px) !important; }
     .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-top h1, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-top h2, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-top h1, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-top h2, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing {
@@ -7124,16 +7090,6 @@ a.course-card:active .course-card-hover {
       transform: translate3d(10px, -10px, 30px) !important; }
     .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-household .pf-tile-bottom .pf-pricing, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-household .pf-tile-bottom .pf-pricing {
       transform: translate3d(-10px, -10px, 30px) !important; }
-    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) {
-      transform: rotate(-90deg) !important; }
-      .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) h2 {
-        transform: translateZ(0) !important; }
-    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet.bg-photography .pf-cardlet-bottom {
-      transform: translateZ(10px) !important; }
-    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet.bg-household .pf-cardlet-bottom div {
-      transform: none !important; }
-      .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet.bg-household .pf-cardlet-bottom div h2 {
-        transform: translateZ(0) !important; }
     .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-academic .pf-tile-border {
       transform: translateZ(0) !important; }
     .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-academic .pf-tile-top h1, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-academic .pf-tile-top h2, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing {
@@ -18441,5 +18397,7 @@ input[type=range] {
     transform: rotate(8deg); }
   100% {
     transform: rotate(0deg); } }
+.test {
+  color: #a7cb94; }
 
 /*# sourceMappingURL=components.css.map */

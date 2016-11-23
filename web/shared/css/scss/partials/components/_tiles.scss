@@ -538,16 +538,9 @@
 		}
 		// transitions
 		~ .pf-tile, ~ .pf-cardlet {
-			// transition: all 500ms ease-out;
 			transform-style: preserve-3d;
-			.rating-stars {
-				// transition: all 500ms ease-out;
-			}
 			* {
 				transform-style: preserve-3d;
-			}
-			.pf-cardlet-overlay {
-				// transition: all 500ms ease-out;
 			}
 		}
 		// profile tile // transitions
@@ -658,71 +651,6 @@
 				}
 				.pf-tile-bottom {
 					div {
-						// transition: all 500ms ease-out;
-					}
-				}
-			}
-		}
-		// profile cardlet // transitions
-		~ .pf-cardlet {
-			.pf-cardlet-front, .pf-cardlet-back, .pf-cardlet-bottom, .pf-cardlet-ribbon, .pf-cardlet-ribbon-edge {
-				// transition: all 500ms ease-out;
-			}
-			.pf-cardlet-bottom {
-				h1 {
-					// transition: all 500ms ease-out;
-				}
-				> div:not(:empty) {
-					// transition: transform 500ms ease-out;
-					h2, h3 {
-						// transition: all 500ms ease-out;
-					}
-				}
-			}
-			// profile cardlet // transitions academic
-			&.bg-academic {
-				.pf-cardlet-bottom {
-					.deco {
-						// transition: all 500ms ease-out;
-					}
-				}
-			}
-			// profile cardlet // transitions baking
-			&.bg-baking {
-				.pf-cardlet-bottom {
-					.pf-cardlet-icon {
-						// transition: all 500ms ease-out;
-					}
-				}
-			}
-			// profile cardlet // transitions photography
-			&.bg-photography {
-				.pf-cardlet-front {
-					// borders
-					div:empty {
-						// transition: all 500ms ease-out;
-					}
-				}
-			}
-			// profile cardlet // transitions tech
-			&.bg-tech {
-				.pf-cardlet-bottom {
-					// borders
-					> div:empty {
-						// transition: all 500ms ease-out;
-					}
-					> div:not(:empty) {
-						div {
-							// transition: all 500ms ease-out;
-						}
-					}
-				}
-			}
-			// profile cardlet // transitions household
-			&.bg-household {
-				.pf-cardlet-front {
-					// borders
-					div:empty {
 						// transition: all 500ms ease-out;
 					}
 				}
@@ -940,55 +868,9 @@
 					}
 				}
 			}
-			// profile cardlet hover
-			~ .pf-cardlet {
-				// .pf-cardlet-overlay {
-				// 	opacity: 0.2;
-				// }
-				// profile cardlet hover academic
-				&.bg-academic {
-					.pf-cardlet-bottom {
-						> div:not(.deco) {
-							> div {
-								background: mix($cerise, white, 15%);
-								color: $cerise;
-							}
-						}
-						.pf-cardlet-bg {
-							background: rgba($cerise, .2);
-						}
-						.pf-cardlet-border {
-							div:empty {
-								background: mix($cerise, white, 15%);
-							}
-						}
-					}
-				}
-				// profile cardlet hover baking
-				&.bg-baking {
-					.pf-cardlet-front {
-						background: mix($gold, white, 30%);
-					}
-				}
-				// profile cardlet hover photography
-				&.bg-photography {
-
-				}
-				// profile cardlet hover tech
-				&.bg-tech {
-
-				}
-				// profile cardlet hover household
-				&.bg-household {
-
-				}
-			}
 		}
 		// click
 		&:active {
-			* {
-				// transition: all 250ms ease-in!important;
-			}
 			// profile tile click
 			~ .pf-tile {
 				// profile tile click academic
@@ -1064,66 +946,6 @@
 
 				}
 			}
-			// profile cardlet click
-			~ .pf-cardlet {
-				* {
-					// transition: all 250ms ease-in!important;
-				}
-				.pf-cardlet-overlay {
-					opacity: 0.4;
-				}
-				// profile cardlet click academic
-				&.bg-academic {
-					.pf-cardlet-bottom {
-						> div:not(.deco) {
-							> div {
-								background: mix($cerise, $slate, 85%);
-								color: white;
-							}
-						}
-						.pf-cardlet-bg {
-							background: rgba(white, .2);
-						}
-						.pf-cardlet-border {
-							div:empty {
-								background: mix($cerise, $slate, 85%);
-							}
-						}
-					}
-				}
-				// profile cardlet click baking
-				&.bg-baking {
-					.pf-cardlet-front {
-						background: mix($gold, white, 60%);
-					}
-					.pf-cardlet-bottom {
-						* {
-							color: white;
-						}
-					}
-				}
-				// profile cardlet click photography
-				&.bg-photography {
-
-				}
-				// profile cardlet click tech
-				&.bg-tech {
-					.pf-cardlet-bottom {
-						> div:empty {
-							background: white;
-						}
-						> div:not(:empty) {
-							> div {
-								background: white;
-							}
-						}
-					}
-				}
-				// profile cardlet click household
-				&.bg-household {
-
-				}
-			}
 		}
 	}
 	// parallax - leave this alone
@@ -1131,52 +953,6 @@
 		&:not(.mobile) {
 			a {
 				&:hover, &:focus {
-					~ .pf-cardlet {
-						// .pf-cardlet-front {
-						// 	transform: translateZ(10px)!important;
-						// 	div:empty:not(.pf-cardlet-overlay) {
-						// 		transform: translateZ(10px)!important;
-						// 	}
-						// }
-						// .pf-cardlet-ribbon-edge {
-						// 	transform: translateZ(10px) rotate(45deg)!important;
-						// }
-						// .pf-cardlet-ribbon {
-						// 	transform: translateZ(20px)!important;
-						// }
-						// .pf-cardlet-back {
-						// 	transform: translateZ(-10px)!important;
-						// }
-						// .pf-cardlet-bottom {
-						// 	transform: translateZ(20px)!important;
-						// 	h1, > div:not(.deco) {
-						// 		transform: translateZ(10px)!important;
-						// 	}
-						// 	.pf-cardlet-icon {
-						// 		transform: translateZ(15px)!important;
-						// 	}
-						// }
-						&.bg-academic {
-							.pf-cardlet-bottom {
-								> div:not(.deco) {
-									transform: rotate(-90deg)!important;
-									h2 {
-										transform: translateZ(10px)!important;
-									}
-								}
-							}
-						}
-						&.bg-household {
-							.pf-cardlet-bottom {
-								div {
-									transform: none!important;
-									h2 {
-										transform: translateZ(10px)!important;
-									}
-								}
-							}
-						}
-					}
 					~ .pf-tile {
 						&.bg-academic {
 							.pf-tile-border {
@@ -1242,57 +1018,6 @@
 					}
 				}
 				&:active {
-					~ .pf-cardlet {
-						// .pf-cardlet-front {
-						// 	transform: translateZ(10px)!important;
-						// 	div:empty:not(.pf-cardlet-overlay) {
-						// 		transform: translateZ(0)!important;
-						// 	}
-						// }
-						// .pf-cardlet-ribbon-edge {
-						// 	transform: translateZ(10px) rotate(45deg)!important;
-						// }
-						// .pf-cardlet-ribbon {
-						// 	transform: translateZ(20px)!important;
-						// }
-						// .pf-cardlet-back {
-						// 	transform: translateZ(-10px)!important;
-						// }
-						// .pf-cardlet-bottom {
-						// 	transform: translateZ(20px)!important;
-						// 	h1, > div:not(.deco) {
-						// 		transform: translateZ(0)!important;
-						// 	}
-						// 	.pf-cardlet-icon {
-						// 		transform: translateZ(0)!important;
-						// 	}
-						// }
-						&.bg-academic {
-							.pf-cardlet-bottom {
-								> div:not(.deco) {
-									transform: rotate(-90deg)!important;
-									h2 {
-										transform: translateZ(0)!important;
-									}
-								}
-							}
-						}
-						&.bg-photography {
-							.pf-cardlet-bottom {
-								transform: translateZ(10px)!important;
-							}
-						}
-						&.bg-household {
-							.pf-cardlet-bottom {
-								div {
-									transform: none!important;
-									h2 {
-										transform: translateZ(0)!important;
-									}
-								}
-							}
-						}
-					}
 					~ .pf-tile {
 						* {
 							// transition: all 250ms ease-in;
@@ -1360,58 +1085,6 @@
 						}
 					}
 				}
-				// &:nth-child(1) {
-				// 	&:hover, &:focus {
-				// 		~ .pf-tile, ~ .pf-cardlet {
-				// 			transform-origin: bottom right!important;
-				// 			transform: rotateX(5deg) rotateY(-5deg)!important;
-				// 		}
-				// 		~ .pf-cardlet {
-				// 			.pf-cardlet-ribbon-edge {
-				// 				transform: translate3d(2px,-2px,10px) rotate(45deg)!important;
-				// 			}
-				// 		}
-				// 	}
-				// }
-				// &:nth-child(2) {
-				// 	&:hover, &:focus {
-				// 		~ .pf-tile, ~ .pf-cardlet {
-				// 			transform-origin: bottom left!important;
-				// 			transform: rotateX(5deg) rotateY(5deg)!important;
-				// 		}
-				// 		~ .pf-cardlet {
-				// 			.pf-cardlet-ribbon-edge {
-				// 				transform: translate3d(2px,-2px,10px) rotate(45deg)!important;
-				// 			}
-				// 		}
-				// 	}
-				// }
-				// &:nth-child(3) {
-				// 	&:hover, &:focus {
-				// 		~ .pf-tile, ~ .pf-cardlet {
-				// 			transform-origin: top left!important;
-				// 			transform: rotateX(-5deg) rotateY(5deg)!important;
-				// 		}
-				// 		~ .pf-cardlet {
-				// 			.pf-cardlet-ribbon-edge {
-				// 				transform: translate3d(4px,-1px,10px) rotate(45deg)!important;
-				// 			}
-				// 		}
-				// 	}
-				// }
-				// &:nth-child(4) {
-				// 	&:hover, &:focus {
-				// 		~ .pf-tile, ~ .pf-cardlet {
-				// 			transform-origin: top right!important;
-				// 			transform: rotateX(-5deg) rotateY(-5deg)!important;
-				// 		}
-				// 		~ .pf-cardlet {
-				// 			.pf-cardlet-ribbon-edge {
-				// 				transform: translate3d(2px,-1px,10px) rotate(45deg)!important;
-				// 			}
-				// 		}
-				// 	}
-				// }
 			}
 		}
 	}

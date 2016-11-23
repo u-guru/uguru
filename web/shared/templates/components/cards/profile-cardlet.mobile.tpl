@@ -1,7 +1,7 @@
 <!-- @samir I only looked and flagged the first two types for errors -->
 
 <div class="perspective-container full-xy flex-center p15xy" types='default, academic, baking, photo, tech, household' default-type="photo">
-	<div class="pf-tile-container mobile" ng-if='activeType === "default"'
+	<div class="pf-tile-container mobile" ng-show='activeType === "default"'
 		u init-with="p:[transform-origin:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
 		error
 		on-init="s:[default-cardlet-init:depth(1), default-info:depth(2)]"
@@ -41,7 +41,7 @@
 		</div>
 	</div>
 
-	<div class="pf-tile-container mobile" ng-if='activeType === "academic"'
+	<div class="pf-tile-container mobile" ng-show='activeType === "academic"'
 		u init-with="p:[transform-origin:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
 		error
 		on-init="s:[academic-cardlet-init:depth(-), aca-info:depth(>1):450, aca-borders:depth(>1)]"
@@ -91,7 +91,7 @@
 		</div>
 	</div>
 
-	<div class="pf-tile-container mobile" ng-if='activeType === "baking"'
+	<div class="pf-tile-container mobile" ng-show='activeType === "baking"'
 		u init-with="p:[transform-origin:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
 		on-init="s:[baking-cardlet-init:public, bk-info:depth(>2):500]"
 		when-baking-cardlet-init="a:[rotateX:-30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:500:easeOutSine:0:1:f]"
@@ -134,7 +134,7 @@
 		</div>
 	</div>
 
-	<div class="pf-tile-container mobile" ng-if='activeType === "photo"'
+	<div class="pf-tile-container mobile" ng-show='activeType === "photo"'
 		u init-with="p:[transform-origin:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
 		on-init="s:[photo-cardlet-init:public]"
 		when-photo-cardlet-init="a:[rotateX:-30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:500:easeOutSine:0:1:f]"
@@ -175,7 +175,7 @@
 		</div>
 	</div>
 
-	<div class="pf-tile-container mobile" ng-if='activeType === "tech"'
+	<div class="pf-tile-container mobile" ng-show='activeType === "tech"'
 		u init-with="p:[transform-origin:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
 		on-init="send:[tech-cardlet-init:public, tech-surge:depth(>2):1000]"
 		when-tech-cardlet-init="a:[rotateX:-30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:500:easeOutSine:0:1:f]"
@@ -227,7 +227,7 @@
 		</div>
 	</div>
 
-	<div class="pf-tile-container mobile" ng-if='activeType === "household"'
+	<div class="pf-tile-container mobile" ng-show='activeType === "household"'
 		u init-with="p:[transform-origin:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
 		on-init="s:[household-cardlet-init:public, hh-info:children:300]"
 		when-household-cardlet-init="a:[rotateX:-30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutExpo:0:1:f, opacity:0:1:500:easeOutSine:0:1:f]"
