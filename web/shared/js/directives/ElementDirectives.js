@@ -226,7 +226,39 @@ angular.module('uguru.shared.directives')
       }
   }
 }])
-.directive('listData', ['XHRService', 'DataService', '$compile', '$parse', '$rootScope', function(XHRService, DataService, $compile, $parse, $rootScope) {
+// templateUrl: function(element, attr) {
+//       return $rootScope.components[element[0].nodeName.toLowerCase]
+//     },
+.directive('listData', ['$rootScope', 'DataService', function($rootScope, DataService) {
+  return {
+    restrict: 'A',
+    scope: false,
+    transclude: true,
+    replace:true,
+    templateUrl: function(element, attr) {
+      return $rootScope.components[element[0].nodeName.toLowerCase()]['template_url']
+    },
+    compile: function(element, attr, transclude) {
+        return {
+          pre: function preLink(scope, p_elem, p_attr) {
+            var dataParams = attr.listData;
+
+            if (!dataParams || !dataParams.length) return;
+
+            var dataGetAttr = attr.listData;
+            if (dataParams.indexOf('=') > -1) {
+              dataGetAttr = dataParams.split('=')[1];
+            }
+            var dataObj = DataService.detectDataType(element, dataGetAttr);
+
+            console.log(dataObj)
+          }
+      }
+    }
+
+  }
+}])
+.directive('listDataArchive', ['XHRService', 'DataService', '$compile', '$parse', '$rootScope', function(XHRService, DataService, $compile, $parse, $rootScope) {
   return {
     restrict: 'A',
     priority: 10000,
@@ -342,7 +374,7 @@ angular.module('uguru.shared.directives')
           } else {
             if (!$rootScope.activeView) {
                     $rootScope.activeView = {name: attr.linkDataName, data: scope.data};
-                }
+            }
             transclude(scope, function(clone, innerScope) {
 
                 $compile(clone)(innerScope);
