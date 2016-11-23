@@ -1949,6 +1949,20 @@ angular.module('uguru.shared.directives.base.components')
     //     }
     //   }
     // }])
+    .directive('vizData', [function() {
+      return {
+        transclude: 'element',
+        link: function(scope, el, attrs, ctrl, transclude) {
+          var coll = scope.$eval(attrs.vizData);
+          coll.forEach(function(each) {
+            transclude(function(transEl, transScope) {
+              transScope.sample = each;
+              el.after(transEl);
+            });
+          });
+        }
+      };
+    }])
     .directive('htmlSnippet', ['$compile',function($compile) {
       return {
         restrict: 'E',
