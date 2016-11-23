@@ -942,9 +942,9 @@
 			}
 			// profile cardlet hover
 			~ .pf-cardlet {
-				.pf-cardlet-overlay {
-					opacity: 0.2;
-				}
+				// .pf-cardlet-overlay {
+				// 	opacity: 0.2;
+				// }
 				// profile cardlet hover academic
 				&.bg-academic {
 					.pf-cardlet-bottom {
@@ -1132,30 +1132,30 @@
 			a {
 				&:hover, &:focus {
 					~ .pf-cardlet {
-						.pf-cardlet-front {
-							transform: translateZ(10px)!important;
-							div:empty:not(.pf-cardlet-overlay) {
-								transform: translateZ(10px)!important;
-							}
-						}
-						.pf-cardlet-ribbon-edge {
-							transform: translateZ(10px) rotate(45deg)!important;
-						}
-						.pf-cardlet-ribbon {
-							transform: translateZ(20px)!important;
-						}
-						.pf-cardlet-back {
-							transform: translateZ(-10px)!important;
-						}
-						.pf-cardlet-bottom {
-							transform: translateZ(20px)!important;
-							h1, > div:not(.deco) {
-								transform: translateZ(10px)!important;
-							}
-							.pf-cardlet-icon {
-								transform: translateZ(15px)!important;
-							}
-						}
+						// .pf-cardlet-front {
+						// 	transform: translateZ(10px)!important;
+						// 	div:empty:not(.pf-cardlet-overlay) {
+						// 		transform: translateZ(10px)!important;
+						// 	}
+						// }
+						// .pf-cardlet-ribbon-edge {
+						// 	transform: translateZ(10px) rotate(45deg)!important;
+						// }
+						// .pf-cardlet-ribbon {
+						// 	transform: translateZ(20px)!important;
+						// }
+						// .pf-cardlet-back {
+						// 	transform: translateZ(-10px)!important;
+						// }
+						// .pf-cardlet-bottom {
+						// 	transform: translateZ(20px)!important;
+						// 	h1, > div:not(.deco) {
+						// 		transform: translateZ(10px)!important;
+						// 	}
+						// 	.pf-cardlet-icon {
+						// 		transform: translateZ(15px)!important;
+						// 	}
+						// }
 						&.bg-academic {
 							.pf-cardlet-bottom {
 								> div:not(.deco) {
@@ -1243,30 +1243,30 @@
 				}
 				&:active {
 					~ .pf-cardlet {
-						.pf-cardlet-front {
-							transform: translateZ(10px)!important;
-							div:empty:not(.pf-cardlet-overlay) {
-								transform: translateZ(0)!important;
-							}
-						}
-						.pf-cardlet-ribbon-edge {
-							transform: translateZ(10px) rotate(45deg)!important;
-						}
-						.pf-cardlet-ribbon {
-							transform: translateZ(20px)!important;
-						}
-						.pf-cardlet-back {
-							transform: translateZ(-10px)!important;
-						}
-						.pf-cardlet-bottom {
-							transform: translateZ(20px)!important;
-							h1, > div:not(.deco) {
-								transform: translateZ(0)!important;
-							}
-							.pf-cardlet-icon {
-								transform: translateZ(0)!important;
-							}
-						}
+						// .pf-cardlet-front {
+						// 	transform: translateZ(10px)!important;
+						// 	div:empty:not(.pf-cardlet-overlay) {
+						// 		transform: translateZ(0)!important;
+						// 	}
+						// }
+						// .pf-cardlet-ribbon-edge {
+						// 	transform: translateZ(10px) rotate(45deg)!important;
+						// }
+						// .pf-cardlet-ribbon {
+						// 	transform: translateZ(20px)!important;
+						// }
+						// .pf-cardlet-back {
+						// 	transform: translateZ(-10px)!important;
+						// }
+						// .pf-cardlet-bottom {
+						// 	transform: translateZ(20px)!important;
+						// 	h1, > div:not(.deco) {
+						// 		transform: translateZ(0)!important;
+						// 	}
+						// 	.pf-cardlet-icon {
+						// 		transform: translateZ(0)!important;
+						// 	}
+						// }
 						&.bg-academic {
 							.pf-cardlet-bottom {
 								> div:not(.deco) {
@@ -1360,58 +1360,58 @@
 						}
 					}
 				}
-				&:nth-child(1) {
-					&:hover, &:focus {
-						~ .pf-tile, ~ .pf-cardlet {
-							transform-origin: bottom right!important;
-							transform: rotateX(5deg) rotateY(-5deg)!important;
-						}
-						~ .pf-cardlet {
-							.pf-cardlet-ribbon-edge {
-								transform: translate3d(2px,-2px,10px) rotate(45deg)!important;
-							}
-						}
-					}
-				}
-				&:nth-child(2) {
-					&:hover, &:focus {
-						~ .pf-tile, ~ .pf-cardlet {
-							transform-origin: bottom left!important;
-							transform: rotateX(5deg) rotateY(5deg)!important;
-						}
-						~ .pf-cardlet {
-							.pf-cardlet-ribbon-edge {
-								transform: translate3d(2px,-2px,10px) rotate(45deg)!important;
-							}
-						}
-					}
-				}
-				&:nth-child(3) {
-					&:hover, &:focus {
-						~ .pf-tile, ~ .pf-cardlet {
-							transform-origin: top left!important;
-							transform: rotateX(-5deg) rotateY(5deg)!important;
-						}
-						~ .pf-cardlet {
-							.pf-cardlet-ribbon-edge {
-								transform: translate3d(4px,-1px,10px) rotate(45deg)!important;
-							}
-						}
-					}
-				}
-				&:nth-child(4) {
-					&:hover, &:focus {
-						~ .pf-tile, ~ .pf-cardlet {
-							transform-origin: top right!important;
-							transform: rotateX(-5deg) rotateY(-5deg)!important;
-						}
-						~ .pf-cardlet {
-							.pf-cardlet-ribbon-edge {
-								transform: translate3d(2px,-1px,10px) rotate(45deg)!important;
-							}
-						}
-					}
-				}
+				// &:nth-child(1) {
+				// 	&:hover, &:focus {
+				// 		~ .pf-tile, ~ .pf-cardlet {
+				// 			transform-origin: bottom right!important;
+				// 			transform: rotateX(5deg) rotateY(-5deg)!important;
+				// 		}
+				// 		~ .pf-cardlet {
+				// 			.pf-cardlet-ribbon-edge {
+				// 				transform: translate3d(2px,-2px,10px) rotate(45deg)!important;
+				// 			}
+				// 		}
+				// 	}
+				// }
+				// &:nth-child(2) {
+				// 	&:hover, &:focus {
+				// 		~ .pf-tile, ~ .pf-cardlet {
+				// 			transform-origin: bottom left!important;
+				// 			transform: rotateX(5deg) rotateY(5deg)!important;
+				// 		}
+				// 		~ .pf-cardlet {
+				// 			.pf-cardlet-ribbon-edge {
+				// 				transform: translate3d(2px,-2px,10px) rotate(45deg)!important;
+				// 			}
+				// 		}
+				// 	}
+				// }
+				// &:nth-child(3) {
+				// 	&:hover, &:focus {
+				// 		~ .pf-tile, ~ .pf-cardlet {
+				// 			transform-origin: top left!important;
+				// 			transform: rotateX(-5deg) rotateY(5deg)!important;
+				// 		}
+				// 		~ .pf-cardlet {
+				// 			.pf-cardlet-ribbon-edge {
+				// 				transform: translate3d(4px,-1px,10px) rotate(45deg)!important;
+				// 			}
+				// 		}
+				// 	}
+				// }
+				// &:nth-child(4) {
+				// 	&:hover, &:focus {
+				// 		~ .pf-tile, ~ .pf-cardlet {
+				// 			transform-origin: top right!important;
+				// 			transform: rotateX(-5deg) rotateY(-5deg)!important;
+				// 		}
+				// 		~ .pf-cardlet {
+				// 			.pf-cardlet-ribbon-edge {
+				// 				transform: translate3d(2px,-1px,10px) rotate(45deg)!important;
+				// 			}
+				// 		}
+				// 	}
+				// }
 			}
 		}
 	}

@@ -7029,8 +7029,6 @@ a.course-card:active .course-card-hover {
       color: white; }
     .pf-tile-container a:hover ~ .pf-tile.bg-household .bub-front-9, .pf-tile-container a:focus ~ .pf-tile.bg-household .bub-front-9 {
       transform: scale(18); }
-    .pf-tile-container a:hover ~ .pf-cardlet .pf-cardlet-overlay, .pf-tile-container a:focus ~ .pf-cardlet .pf-cardlet-overlay {
-      opacity: 0.2; }
     .pf-tile-container a:hover ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) > div, .pf-tile-container a:focus ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) > div {
       background: #fbe1f0;
       color: #e6389b; }
@@ -7092,22 +7090,6 @@ a.course-card:active .course-card-hover {
     .pf-tile-container a:active ~ .pf-cardlet.bg-tech .pf-cardlet-bottom > div:not(:empty) > div {
       background: white; }
   @media screen and (min-width: 768px) {
-    .pf-tile-container:not(.mobile) a:hover ~ .pf-cardlet .pf-cardlet-front, .pf-tile-container:not(.mobile) a:focus ~ .pf-cardlet .pf-cardlet-front {
-      transform: translateZ(10px) !important; }
-      .pf-tile-container:not(.mobile) a:hover ~ .pf-cardlet .pf-cardlet-front div:empty:not(.pf-cardlet-overlay), .pf-tile-container:not(.mobile) a:focus ~ .pf-cardlet .pf-cardlet-front div:empty:not(.pf-cardlet-overlay) {
-        transform: translateZ(10px) !important; }
-    .pf-tile-container:not(.mobile) a:hover ~ .pf-cardlet .pf-cardlet-ribbon-edge, .pf-tile-container:not(.mobile) a:focus ~ .pf-cardlet .pf-cardlet-ribbon-edge {
-      transform: translateZ(10px) rotate(45deg) !important; }
-    .pf-tile-container:not(.mobile) a:hover ~ .pf-cardlet .pf-cardlet-ribbon, .pf-tile-container:not(.mobile) a:focus ~ .pf-cardlet .pf-cardlet-ribbon {
-      transform: translateZ(20px) !important; }
-    .pf-tile-container:not(.mobile) a:hover ~ .pf-cardlet .pf-cardlet-back, .pf-tile-container:not(.mobile) a:focus ~ .pf-cardlet .pf-cardlet-back {
-      transform: translateZ(-10px) !important; }
-    .pf-tile-container:not(.mobile) a:hover ~ .pf-cardlet .pf-cardlet-bottom, .pf-tile-container:not(.mobile) a:focus ~ .pf-cardlet .pf-cardlet-bottom {
-      transform: translateZ(20px) !important; }
-      .pf-tile-container:not(.mobile) a:hover ~ .pf-cardlet .pf-cardlet-bottom h1, .pf-tile-container:not(.mobile) a:hover ~ .pf-cardlet .pf-cardlet-bottom > div:not(.deco), .pf-tile-container:not(.mobile) a:focus ~ .pf-cardlet .pf-cardlet-bottom h1, .pf-tile-container:not(.mobile) a:focus ~ .pf-cardlet .pf-cardlet-bottom > div:not(.deco) {
-        transform: translateZ(10px) !important; }
-      .pf-tile-container:not(.mobile) a:hover ~ .pf-cardlet .pf-cardlet-bottom .pf-cardlet-icon, .pf-tile-container:not(.mobile) a:focus ~ .pf-cardlet .pf-cardlet-bottom .pf-cardlet-icon {
-        transform: translateZ(15px) !important; }
     .pf-tile-container:not(.mobile) a:hover ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco), .pf-tile-container:not(.mobile) a:focus ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) {
       transform: rotate(-90deg) !important; }
       .pf-tile-container:not(.mobile) a:hover ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) h2, .pf-tile-container:not(.mobile) a:focus ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) h2 {
@@ -7142,22 +7124,6 @@ a.course-card:active .course-card-hover {
       transform: translate3d(10px, -10px, 30px) !important; }
     .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-household .pf-tile-bottom .pf-pricing, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-household .pf-tile-bottom .pf-pricing {
       transform: translate3d(-10px, -10px, 30px) !important; }
-    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-front {
-      transform: translateZ(10px) !important; }
-      .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-front div:empty:not(.pf-cardlet-overlay) {
-        transform: translateZ(0) !important; }
-    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-ribbon-edge {
-      transform: translateZ(10px) rotate(45deg) !important; }
-    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-ribbon {
-      transform: translateZ(20px) !important; }
-    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-back {
-      transform: translateZ(-10px) !important; }
-    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-bottom {
-      transform: translateZ(20px) !important; }
-      .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-bottom h1, .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-bottom > div:not(.deco) {
-        transform: translateZ(0) !important; }
-      .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-bottom .pf-cardlet-icon {
-        transform: translateZ(0) !important; }
     .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) {
       transform: rotate(-90deg) !important; }
       .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) h2 {
@@ -7193,27 +7159,7 @@ a.course-card:active .course-card-hover {
     .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-household .pf-tile-bottom div:not(.pf-pricing) {
       transform: translate3d(10px, -10px, 0) !important; }
     .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-household .pf-tile-bottom .pf-pricing {
-      transform: translate3d(-10px, -10px, 0) !important; }
-    .pf-tile-container:not(.mobile) a:nth-child(1):hover ~ .pf-tile, .pf-tile-container:not(.mobile) a:nth-child(1):hover ~ .pf-cardlet, .pf-tile-container:not(.mobile) a:nth-child(1):focus ~ .pf-tile, .pf-tile-container:not(.mobile) a:nth-child(1):focus ~ .pf-cardlet {
-      transform-origin: bottom right !important;
-      transform: rotateX(5deg) rotateY(-5deg) !important; }
-    .pf-tile-container:not(.mobile) a:nth-child(1):hover ~ .pf-cardlet .pf-cardlet-ribbon-edge, .pf-tile-container:not(.mobile) a:nth-child(1):focus ~ .pf-cardlet .pf-cardlet-ribbon-edge {
-      transform: translate3d(2px, -2px, 10px) rotate(45deg) !important; }
-    .pf-tile-container:not(.mobile) a:nth-child(2):hover ~ .pf-tile, .pf-tile-container:not(.mobile) a:nth-child(2):hover ~ .pf-cardlet, .pf-tile-container:not(.mobile) a:nth-child(2):focus ~ .pf-tile, .pf-tile-container:not(.mobile) a:nth-child(2):focus ~ .pf-cardlet {
-      transform-origin: bottom left !important;
-      transform: rotateX(5deg) rotateY(5deg) !important; }
-    .pf-tile-container:not(.mobile) a:nth-child(2):hover ~ .pf-cardlet .pf-cardlet-ribbon-edge, .pf-tile-container:not(.mobile) a:nth-child(2):focus ~ .pf-cardlet .pf-cardlet-ribbon-edge {
-      transform: translate3d(2px, -2px, 10px) rotate(45deg) !important; }
-    .pf-tile-container:not(.mobile) a:nth-child(3):hover ~ .pf-tile, .pf-tile-container:not(.mobile) a:nth-child(3):hover ~ .pf-cardlet, .pf-tile-container:not(.mobile) a:nth-child(3):focus ~ .pf-tile, .pf-tile-container:not(.mobile) a:nth-child(3):focus ~ .pf-cardlet {
-      transform-origin: top left !important;
-      transform: rotateX(-5deg) rotateY(5deg) !important; }
-    .pf-tile-container:not(.mobile) a:nth-child(3):hover ~ .pf-cardlet .pf-cardlet-ribbon-edge, .pf-tile-container:not(.mobile) a:nth-child(3):focus ~ .pf-cardlet .pf-cardlet-ribbon-edge {
-      transform: translate3d(4px, -1px, 10px) rotate(45deg) !important; }
-    .pf-tile-container:not(.mobile) a:nth-child(4):hover ~ .pf-tile, .pf-tile-container:not(.mobile) a:nth-child(4):hover ~ .pf-cardlet, .pf-tile-container:not(.mobile) a:nth-child(4):focus ~ .pf-tile, .pf-tile-container:not(.mobile) a:nth-child(4):focus ~ .pf-cardlet {
-      transform-origin: top right !important;
-      transform: rotateX(-5deg) rotateY(-5deg) !important; }
-    .pf-tile-container:not(.mobile) a:nth-child(4):hover ~ .pf-cardlet .pf-cardlet-ribbon-edge, .pf-tile-container:not(.mobile) a:nth-child(4):focus ~ .pf-cardlet .pf-cardlet-ribbon-edge {
-      transform: translate3d(2px, -1px, 10px) rotate(45deg) !important; } }
+      transform: translate3d(-10px, -10px, 0) !important; } }
 
 .pf-tile {
   position: relative;
@@ -11983,7 +11929,7 @@ a.chip, input.chip {
   .rating-stars[data-rating^="4"][data-half="true"] li:nth-child(5) svg polygon:nth-child(2), .rating-stars[data-rating^="4"][data-rating*="."] li:nth-child(5) svg polygon:nth-child(2), .pf-rating[data-rating^="4"][data-half="true"] li:nth-child(5) svg polygon:nth-child(2), .pf-rating[data-rating^="4"][data-rating*="."] li:nth-child(5) svg polygon:nth-child(2) {
     filter: alpha(opacity=100);
     opacity: 1; }
-  .rating-stars[data-rating*="5"] li svg polygon, .pf-rating[data-rating*="5"] li svg polygon {
+  .rating-stars[data-rating^="5"] li svg polygon, .pf-rating[data-rating^="5"] li svg polygon {
     fill: #F6C64E; }
 
 /* ---------- PRICE RANGE */
