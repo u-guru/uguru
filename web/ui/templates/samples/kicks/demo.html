@@ -1,18 +1,12 @@
-<view width="100" height="100" wrap y-start class="gradient-sienna-stone" link-data="ui/templates/samples/kicks/kicks.json" >
-	<!-- let="content=data.content" -->
-	<header x-center y-center width="100" p="12px 12px 0">
-		<h1 f-s="32px" f-w="900" letter-spacing="2px" caps class="caps">Release Dates</h1>
-	</header>
-	<ul wrap y-start width="100" p="6px">
-		<li>
-			{{content.shoes}}
-		</li>
-		<!-- <kicks-item custom></kicks-item>
-		<kicks-item custom></kicks-item>
-		<kicks-item custom></kicks-item>
-		<kicks-item custom></kicks-item>
-		<kicks-item custom></kicks-item> -->
-		<!-- list-data="samples=content.viz.samples" list-limit="500" list-item="sample" -->
-	</ul>
-	<inspect-data/>
+<view class="gradient-sienna-stone" link-data="ui/templates/samples/kicks/kicks.json" render-after-ext-scripts let="content=data.content">
+	<div width="100" height="100" wrap y-start scroll-y class="overflow-auto">
+		<header x-center y-center width="100" p="12px 12px 0">
+			<h1 f-s="32px" f-w="900" letter-spacing="2px" caps class="caps">Release Dates</h1>
+		</header>
+		<main wrap y-start width="100" p="6px">
+			<kicks-item p="6px" w="20%"
+				list-data="shoes=content.shoes" list-limit="20" list-item="shoes">
+			</kicks-item>
+		</main>
+	</div>
 </view>
