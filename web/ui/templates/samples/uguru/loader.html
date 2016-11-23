@@ -41,71 +41,8 @@
 				u init-with="p:[bg:#16293A, -webkit-clip-path:circle(90px at 50% 50%)]"
 				when-warp-open="a:[-webkit-clip-path:circle(90px at 50% 50%):circle(1500px at 50% 50%):750:(1,0,1,0):0:1:f]"
 				when-warp-transition="p:[-webkit-clip-path:none]">
-				<div u when-warp-open="s:[warp-transition:public:1000]"
-					when-warp-transition="s:[warp-end:public:700]"
-					when-warp-end="s:[transition-start:public:500]">
-					<div class="warp" style="background: #16293A;">
-						<div class="wrap"
-							u init-with="p:[tr:translateZ(-500px)]"
-							when-warp-speed="s:[warp-zoom-2:public:6000]"
-							when-warp-zoom-2="a:[translateZ:-500px:500px:12000:linear:2000:i:f, rotate:180deg:0deg:12000:linear:2000:i:f] | s:[warp-fade-in-2:public:3000]"
-							when-warp-fade-in-2="s:[warp-fade-out-2:public:3000]"
-							when-warp-fade-out-2="s:[warp-fade-in-2:public:4500]">
-							<div class="wall wall-right"
-								style="background-image: url('/preapp/images/stars.svg')"
-								u when-warp-fade-in-2="a:[opacity:0:1:3000:linear:0:1:f]"
-								when-warp-fade-out-2="a:[opacity:1:0:3000:linear:0:1:f]"></div>
-							<div class="wall wall-left"
-								style="background-image: url('/preapp/images/stars.svg')"
-								u when-warp-fade-in-2="a:[opacity:0:1:3000:linear:0:1:f]"
-								when-warp-fade-out-2="a:[opacity:1:0:3000:linear:0:1:f]"></div>
-							<div class="wall wall-top"
-								style="background-image: url('/preapp/images/stars.svg')"
-								u when-warp-fade-in-2="a:[opacity:0:1:3000:linear:0:1:f]"
-								when-warp-fade-out-2="a:[opacity:1:0:3000:linear:0:1:f]"></div>
-							<div class="wall wall-bottom"
-								style="background-image: url('/preapp/images/stars.svg')"
-								u when-warp-fade-in-2="a:[opacity:0:1:3000:linear:0:1:f]"
-								when-warp-fade-out-2="a:[opacity:1:0:3000:linear:0:1:f]"></div>
-							<div class="wall wall-back"
-								style="background-image: url('/preapp/images/stars.svg')"
-								u when-warp-fade-in-2="a:[opacity:0:1:3000:linear:0:1:f]"
-								when-warp-fade-out-2="a:[opacity:1:0:3000:linear:0:1:f]"></div>
-						</div>
-						<div class="wrap"
-							u init-with="p:[tr:translateZ(-500px)]"
-							when-warp-speed="s:[warp-zoom:public]"
-							when-warp-zoom="a:[translateZ:-500px:500px:12000:linear:2000:i:f, rotate:180deg:0deg:12000:linear:2000:i:f] | s:[warp-fade-in:public:3000]"
-							when-warp-fade-in="s:[warp-fade-out:public:3000]"
-							when-warp-fade-out="s:[warp-fade-in:public:4500]">
-							<div class="wall wall-right"
-								style="background-image: url('/preapp/images/stars.svg')"
-								u when-warp-fade-in="a:[opacity:0:1:3000:linear:0:1:f]"
-								when-warp-fade-out="a:[opacity:1:0:3000:linear:0:1:f]"></div>
-							<div class="wall wall-left"
-								style="background-image: url('/preapp/images/stars.svg')"
-								u when-warp-fade-in="a:[opacity:0:1:3000:linear:0:1:f]"
-								when-warp-fade-out="a:[opacity:1:0:3000:linear:0:1:f]"></div>
-							<div class="wall wall-top"
-								style="background-image: url('/preapp/images/stars.svg')"
-								u when-warp-fade-in="a:[opacity:0:1:3000:linear:0:1:f]"
-								when-warp-fade-out="a:[opacity:1:0:3000:linear:0:1:f]"></div>
-							<div class="wall wall-bottom"
-								style="background-image: url('/preapp/images/stars.svg')"
-								u when-warp-fade-in="a:[opacity:0:1:3000:linear:0:1:f]"
-								when-warp-fade-out="a:[opacity:1:0:3000:linear:0:1:f]"></div>
-							<div class="wall wall-back"
-								style="background-image: url('/preapp/images/stars.svg')"
-								u when-warp-fade-in="a:[opacity:0:1:3000:linear:0:1:f]"
-								when-warp-fade-out="a:[opacity:1:0:3000:linear:0:1:f]"></div>
-						</div>
-					</div>
-				</div>
-				<div class="warp-items"
-					u when-portal-open="s:[warp-speed:public, warp-objects-init:public, warp-vehicles-init:public]">
-					<!-- <div ng-include="'preapp/templates/loaders/props/warp-objects.html'"></div> -->
-					<div></div>
-				</div>
+				<warp-tunnel custom></warp-tunnel>
+				<warp-items custom></warp-items>
 			</div>
 		</div>
 	</div>
