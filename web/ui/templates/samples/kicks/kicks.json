@@ -3,20 +3,7 @@
     "config": {
         "pathParams": {},
         "base_url": "^",
-        "parse": {},
-        "scripts": {
-            "base": "http://",
-            "queue": [
-                {
-                    "path": "192.168.20.165:5000/static/shoes.json",
-                    "mappings": [
-						{
-							"to":"content.shoes"
-						}
-					]
-                }
-            ]
-        }
+        "parse": {}
     },
     "content": {},
     "components": {

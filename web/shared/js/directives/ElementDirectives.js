@@ -315,7 +315,7 @@ angular.module('uguru.shared.directives')
       return {
         pre: function(scope, p_element, p_attr) {
           scopeRef = scope;
-          // if ('renderAfterExtScripts' in attr) {
+          if ('renderAfterExtScripts' in attr) {
             scope.$watch('data.config.processed.scriptStatus.complete', function(value) {
               if (value) {
                   if (!$rootScope.activeView) {
@@ -339,6 +339,19 @@ angular.module('uguru.shared.directives')
                 }
               }
             })
+          } else {
+            if (!$rootScope.activeView) {
+                    $rootScope.activeView = {name: attr.linkDataName, data: scope.data};
+                }
+            transclude(scope, function(clone, innerScope) {
+
+                $compile(clone)(innerScope);
+
+                element.append(clone);
+                p_element[0].style.opacity = 1;
+
+            })
+          }
             // if ('linkData' in attr && 'linkDataName' in attr) {
 
           // }
