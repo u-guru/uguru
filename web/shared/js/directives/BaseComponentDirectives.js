@@ -1,5 +1,5 @@
 angular.module('uguru.shared.directives.base.components', []);
-angular.module('uguru.shared.directives.base.components')
+var ptr = angular.module('uguru.shared.directives.base.components')
     .directive("letter", ["CompService", "$compile", function(CompService, $compile) {
         return {
             restrict: 'E',
@@ -1941,15 +1941,16 @@ angular.module('uguru.shared.directives.base.components')
     //     }
     //   }
     // }])
-    // .directive('basis', [function() {
-    //   return {
-    //     restrict: 'A',
-    //     compile: function(element, attr) {
-    //       element.css('flex-basis', attr.basis);
-    //     }
-    //   }
-    // }])
-    .directive('vizData', [function() {
+    angular.module('uguru.shared.directives.base.components').directive('vizBar', ['$rootScope',function($rootScope) {
+      return {
+        restrict: 'E',
+        replace:true,
+        templateUrl: function(element, attr) {
+            return $rootScope.components[element[0].nodeName.toLowerCase()]['template_url']
+        }
+      }
+    }])
+    .directive('vizData', ['$rootScope', '$compile', function($rootScope, $compile) {
       return {
         transclude: 'element',
         link: function(scope, el, attrs, ctrl, transclude) {
@@ -1957,7 +1958,7 @@ angular.module('uguru.shared.directives.base.components')
           coll.forEach(function(each) {
             transclude(function(transEl, transScope) {
               transScope.sample = each;
-              el.after(transEl);
+              el.parent().append(transEl);
             });
           });
         }

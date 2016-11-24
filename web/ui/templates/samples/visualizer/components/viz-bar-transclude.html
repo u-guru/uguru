@@ -1,5 +1,5 @@
-
-<div width='2px' rad="4px" m-x="1px" u on-init="p:[bg:rgba(255,255,255,1), tro:bottom center]"  bg='white'>
-    <!-- when-bar-play="a:[background:rgba(255,255,255,1)::250:easeOutExpo:0:1:f, scaleY:1:0.8:125:easeOutExpo:0:1000:a]" -->
-    <div style="height:{{sample}}px">&nbsp;</div>
+<div width='4px' p-x="1px">
+    <div u style="height:{{::sample}}px;background:white;transition:all 250ms cubic-bezier(0.19,1,0.22,1)" width="2px" rad="4px"
+		init-with="p:[tro:bottom center]"
+		on-mouseenter="p:[transform:scaleY(2)]" on-mouseleave="p:[transform:scaleY(1)]">&nbsp;</div>
 </div>
