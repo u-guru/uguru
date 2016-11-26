@@ -1,5 +1,5 @@
 <div class="perspective-container full-xy flex-center p15xy" types='default, academic, baking, photo, tech, household' default-type="default">
-
+	<!-- needs color directives -->
 	<div class="pf-tile-container" ng-show='activeType === "default"'
 		u init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[default-cardlet-init:self, default-ribbon:depth(2):500, default-cardlet-back:depth(2):500]"
@@ -45,7 +45,7 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-back-container"
-				u init-with="p:[transform:translateX(-7.5px) translateY(-7.5px)]"
+				u init-with="p:[tr:translateX(-7.5px) translateY(-7.5px)]"
 				when-default-cardlet-back="a:[translateX:-7.5px:0px:450:easeOutSine:0:1:f, translateY:-7.5px:0px:450:easeOutSine:0:1:f]">
 				<div class="pf-cardlet-back" bg-image="http://cdn1.pri.org/sites/default/files/styles/story_main/public/story/images/leonardo_da_vinci_studi_di_carri_dassalto_falcati_0.jpg?itok=V1_nRmK3"
 					u when-corner-leave="p:[tr:none]"
@@ -128,21 +128,21 @@
 			when-corner-3-enter="p:[t:all 500ms ease-out, tro:top left, tr:rotateX(-5deg) rotateY(5deg)]"
 			when-corner-4-enter="p:[t:all 500ms ease-out, tro:top right, tr:rotateX(-5deg) rotateY(-5deg)]">
 			<div class="pf-cardlet-front-container"
-				u init-with="p:[transform:translateX(7.5px) translateY(7.5px)]"
+				u init-with="p:[tr:translateX(7.5px) translateY(7.5px)]"
 				when-aca-front="a:[translateX:7.5px:0px:450:easeOutSine:0:1:f, translateY:7.5px:0px:450:easeOutSine:0:1:f]">
 				<div class="pf-cardlet-front" bg-image="http://i1-news.softpedia-static.com/images/news2/no-two-brains-are-alike-investigation-reveals-494462-2.jpg"
 					u when-corner-leave="p:[tr:none]"
 					when-corner-enter="p:[t:all 500ms ease-out, tr:translateZ(10px)]"></div>
 			</div>
 			<div class="pf-cardlet-back-container"
-				u init-with="p:[transform:translateX(-7.5px) translateY(-7.5px)]"
+				u init-with="p:[tr:translateX(-7.5px) translateY(-7.5px)]"
 				when-aca-cardlet-back="a:[translateX:-7.5px:0px:450:easeOutSine:0:1:f, translateY:-7.5px:0px:450:easeOutSine:0:1:f]">
 				<div class="pf-cardlet-back" bg-image="http://i1-news.softpedia-static.com/images/news2/no-two-brains-are-alike-investigation-reveals-494462-2.jpg"
 					u when-corner-leave="p:[tr:none]"
 					when-corner-enter="p:[t:all 500ms ease-out, tr:translateZ(-10px)]"></div>
 			</div>
 			<div class="pf-cardlet-bottom-container"
-				u init-with="p:[transform:translateX(7.5px) translateY(7.5px)]"
+				u init-with="p:[tr:translateX(7.5px) translateY(7.5px)]"
 				when-aca-cardlet-back="a:[translateX:7.5px:0px:450:easeOutSine:250:1:f, translateY:7.5px:0px:450:easeOutSine:250:1:f]">
 				<div class="pf-cardlet-bottom"
 					u on-init="s:[aca-info:depth(>1):450]"
@@ -157,25 +157,25 @@
 					</div>
 					<div class="pf-cardlet-border deco"
 					 	u on-init="s:[aca-border:children]">
-						<div u init-with="p:[transform:scaleX(0)]"
+						<div u init-with="p:[tr:scaleX(0)]"
 							when-aca-border="a:[scaleX:0:1:1450:easeOutSine:0:1:f]"
 							when-corner-enter="p:[t:all 500ms ease-out, bg:#fbe1f0]"
 							when-corner-leave="p:[bg:#fff]"
 							when-corner-down="p:[t:all 250ms ease-in, bg:#cd3a8f]"
 							when-corner-up="p:[t:all 500ms ease-out, bg:#fbe1f0]"></div>
-						<div u init-with="p:[transform:scaleY(0)]"
+						<div u init-with="p:[tr:scaleY(0)]"
 							when-aca-border="a:[scaleY:0:1:1450:easeOutSine:0:1:f]"
 							when-corner-enter="p:[t:all 500ms ease-out, bg:#fbe1f0]"
 							when-corner-leave="p:[bg:#fff]"
 							when-corner-down="p:[t:all 250ms ease-in, bg:#cd3a8f]"
 							when-corner-up="p:[t:all 500ms ease-out, bg:#fbe1f0]"></div>
-						<div u init-with="p:[transform:scaleY(0)"]
+						<div u init-with="p:[tr:scaleY(0)"]
 							when-aca-border="a:[scaleY:0:1:1450:easeOutSine:0:1:f]"
 							when-corner-enter="p:[t:all 500ms ease-out, bg:#fbe1f0]"
 							when-corner-leave="p:[bg:#fff]"
 							when-corner-down="p:[t:all 250ms ease-in, bg:#cd3a8f]"
 							when-corner-up="p:[t:all 500ms ease-out, bg:#fbe1f0]"></div>
-						<div u init-with="p:[transform:scaleX(0)]"
+						<div u init-with="p:[tr:scaleX(0)]"
 							when-aca-border="a:[scaleX:0:1:1450:easeOutSine:0:1:f]"
 							when-corner-enter="p:[t:all 500ms ease-out, bg:#fbe1f0]"
 							when-corner-leave="p:[bg:#fff]"
@@ -286,7 +286,7 @@
 					u when-corner-leave="p:[tr:none]"
 					when-corner-enter="p:[t:all 500ms ease-out, tr:translateZ(20px)]">
 					<div class="pf-cardlet-icon" bg-image="http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg"
-						u init-with="p:[transform:scale(0), tro:center center]"
+						u init-with="p:[tr:scale(0), tro:center center]"
 						when-bk-info="a:[icon-rotate-enter:1000:linear:0:1:f]"
 						when-bk-info-reset="p:[t:all 500ms ease-out, tr:none]"
 						when-corner-leave="p:[tr:none]"
@@ -365,7 +365,7 @@
 			when-corner-3-enter="p:[t:all 500ms ease-out, tro:top left, tr:rotateX(-5deg) rotateY(5deg)]"
 			when-corner-4-enter="p:[t:all 500ms ease-out, tro:top right, tr:rotateX(-5deg) rotateY(-5deg)]">
 			<div class="pf-cardlet-front-container"
-				u init-with="p:[transform:translateX(7.5px) translateY(7.5px)]"
+				u init-with="p:[tr:translateX(7.5px) translateY(7.5px)]"
 				when-photo-front="a:[translateX:7.5px:0px:450:easeOutSine:250:1:f, translateY:7.5px:0px:450:easeOutSine:250:1:f]">
 				<div class="pf-cardlet-front"
 					u when-corner-enter="p:[t:all 500ms ease-out, tr:translateZ(10px)]"
@@ -388,19 +388,17 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-bottom-container"
-				u init-with="p:[transform:translateX(7.5px) translateY(7.5px)]"
+				u init-with="p:[tr:translateX(7.5px) translateY(7.5px)]"
 				when-photo-front="a:[translateX:7.5px:0px:450:easeOutSine:250:1:f, translateY:7.5px:0px:450:easeOutSine:250:1:f]" on-init="s:[ph-info:depth(2):450]">
 				<div class="pf-cardlet-bottom"
 					u when-corner-enter="p:[t:all 500ms ease-out, tr:translateZ(20px)]"
 					when-corner-leave="p:[tr:none]">
-					<!-- mix(white, $moola, 60%) -->
 					<h1 u init-with="p:[op:0]"
 						when-ph-info="a:[opacity:0:1:650:easeOutSine:0:1:f]"
 						when-corner-enter="p:[t:all 500ms ease-out, tr:translateZ(15px)]"
 						when-corner-leave="p:[tr:none]"
 						when-corner-down="p:[t:all 250ms ease-in, tr:none]"
 						when-corner-up="p:[t:all 500ms ease-out, tr:translateZ(15px)]">2016 Camera Models</h1>
-						<!-- $moola -->
 					<div u init-with="p:[op:0, tro:center center]"
 						when-ph-info="a:[scaleInX-subtle:1000:linear:0:1:f]"
 						when-corner-enter="p:[t:all 500ms ease-out, tr:translateZ(15px)]"
@@ -495,23 +493,23 @@
 				<div class="pf-cardlet-bottom"
 					u when-corner-leave="p:[tr:none]"
 					when-corner-enter="p:[t:all 500ms ease-out, tr:translateZ(20px)]">
-					<div u init-with="p:[transform:scaleX(0)]"
+					<div u init-with="p:[tr:scaleX(0)]"
 					 	when-tech-border-draw="a:[scaleX:0:1:250:easeOutSine:0:1:f]"
 						when-corner-down="p:[t:all 250ms ease-in, bg:#fff]"
 						when-corner-up="p:[t:all 500ms ease-out, bg:#55A4B7]"></div>
-					<div u init-with="p:[transform:scaleY(0), tro:center top]"
+					<div u init-with="p:[tr:scaleY(0), tro:center top]"
 						when-tech-border-draw="a:[scaleY:0:1:250:easeOutSine:0:1:f]:delay-250"
 						when-corner-down="p:[t:all 250ms ease-in, bg:#fff]"
 						when-corner-up="p:[t:all 500ms ease-out, bg:#55A4B7]"></div>
-					<div u init-with="p:[transform:scaleX(0)]"
+					<div u init-with="p:[tr:scaleX(0)]"
 					 	when-tech-border-draw="a:[scaleX:0:1:250:easeOutSine:0:1:f]:delay-500"
 						when-corner-down="p:[t:all 250ms ease-in, bg:#fff]"
 						when-corner-up="p:[t:all 500ms ease-out, bg:#55A4B7]"></div>
-					<div u init-with="p:[transform:scaleY(0), tro:center top]"
+					<div u init-with="p:[tr:scaleY(0), tro:center top]"
 						when-tech-border-draw="a:[scaleY:0:1:250:easeOutSine:0:1:f]:delay-250"
 						when-corner-down="p:[t:all 250ms ease-in, bg:#fff]"
 						when-corner-up="p:[t:all 500ms ease-out, bg:#55A4B7]"></div>
-					<div u init-with="p:[transform:scaleX(0)]"
+					<div u init-with="p:[tr:scaleX(0)]"
 					 	when-tech-border-draw="a:[scaleX:0:1:250:easeOutSine:0:1:f]:delay-500"
 						when-corner-down="p:[t:all 250ms ease-in, bg:#fff]"
 						when-corner-up="p:[t:all 500ms ease-out, bg:#55A4B7]"></div>
@@ -611,7 +609,7 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-back-container"
-				u init-with="p:[transform:translateX(-7.5px) translateY(-7.5px)]"
+				u init-with="p:[tr:translateX(-7.5px) translateY(-7.5px)]"
 				when-household-cardlet-init="a:[translateX:-7.5px:0px:450:easeOutSine:500:1:f, translateY:-7.5px:0px:450:easeOutSine:500:1:f]">
 				<div class="pf-cardlet-back"
 					u when-corner-leave="p:[tr:none]"
@@ -629,12 +627,9 @@
 						when-corner-up="p:[t:all 500ms ease-out, tr:translateZ(10px)]">How to Make Your Plants Live Longer</h1>
 					<div>
 						<div class="pf-cardlet-border"
-							u init-with="p:[transform:scale(0), tro:right bottom]"
+							u init-with="p:[tr:scale(0), tro:right bottom]"
 							when-hh-bot="a:[scale:0:1:1000:easeOutBack:0:1:f]">
-							<div></div>
-							<div></div>
-							<div></div>
-							<div></div>
+							<div></div><div></div><div></div><div></div>
 						</div>
 						<h2 u init-with="p:[op:0]"
 							when-hh-bot="a:[opacity:0:1:250:linear:0:1:f]"

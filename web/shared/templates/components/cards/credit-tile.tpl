@@ -1,5 +1,6 @@
 <div class="perspective-container full-xy flex-center p15xy"
 	u on-init="s:[credit-tile-load:depth(>1)]">
+	<!--- needs color directives -->
 	<div class="credit-tile bg-cobalt"
 		u init-with="p:[opacity:0, tro:center center]"
 		on-mouseenter="s:[icon-wiggle:public]"
