@@ -1972,74 +1972,97 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
     //         }
     //     }
     // }])
-    .directive('uList', ['$rootScope', '$compile', '$parse', function($rootScope, $compile, $parse) {
-      return {
-        transclude: 'element',
-        restrict: 'A',
-        replace:true,
-        link: function(scope, el, attrs, ctrl, transclude) {
-
-            var attrSplit = attrs.uList.split('in');
-            var varName;
-            attrSplit.forEach(function(str, i) {attrSplit[i] = attrSplit[i].trim()});
-            if (attrSplit.length === 2) {
-                varName = attrSplit[0];
+    .directive('uList', ['$compile',function($compile) {
+        return {
+            restrict: 'A',
+            priority: 10000,
+            replace:true,
+            template: function(element, attr) {
+                element[0].removeAttribute('u-list');
+                element[0].setAttribute('ng-repeat', attr.uList)
+                return element[0].outerHTML;
             }
-            if (attrSplit.length < 2 || !varName.length) {
-                varName = 'item';
-            }
-            var coll = scope.$eval(attrSplit[1]);
-
-          if ('start' in attrs && 'end' in attrs) {
-            coll = coll.slice(parseInt(attrs.start), parseInt(attrs.end))
-          }
-          console.log(coll)
-          if (!coll) {
-            console.log(scope.data)
-            scope.$watch(attrSplit[1], function(value) {
-                console.log(value)
-            })
-          } else {
-                    var children = [];
-
-                    coll.forEach(function(each, i) {
-                        transclude(function(transEl, transScope) {
-                        transScope[varName] = each;
-                        transScope['index'] = i + 1;
-                        transEl[0].removeAttribute('u-list');
-
-                        // for (attr in attrs) {
-                        //     if (attr.charAt(0) === 'u') {
-                        //         var varName = attr.substring(1, attr.length)
-                        //         varName = varName[0].toLowerCase() + varName.substring(1, varName.length)
-                        //         console.log('setting', varName, $parse(attrs[attr])($parse))
-                        //         transScope[varName] = scope.$eval(attrs[attr])
-                        //     }
+            // compile: function(element, attr) {
 
 
-                        // }
 
-                      // for (attr in el.attributes) {
+            //         attr.$set('ngRepeat',   attr.uList + " track by $index");
 
-                      // }
-                        $compile(transEl)(transScope)
-                        el.parent().append(transEl)
-
-                        });
-                     });
-                    el.replaceWith(el.contents())
-          }
-
+            //         return function(scope, elem, attr, ctrl, trans) {
+            //             $compile(elem.contents())(scope)
+            //         }
+            // }
 
         }
-      };
     }])
+    // .directive('uList', ['$rootScope', '$compile', '$parse', function($rootScope, $compile, $parse) {
+    //   return {
+    //     transclude: 'element',
+    //     restrict: 'A',
+    //     replace:true,
+    //     link: function(scope, el, attrs, ctrl, transclude) {
+
+    //         var attrSplit = attrs.uList.split('in');
+    //         var varName;
+    //         attrSplit.forEach(function(str, i) {attrSplit[i] = attrSplit[i].trim()});
+    //         if (attrSplit.length === 2) {
+    //             varName = attrSplit[0];
+    //         }
+    //         if (attrSplit.length < 2 || !varName.length) {
+    //             varName = 'item';
+    //         }
+    //         var coll = scope.$eval(attrSplit[1]);
+
+    //       if ('start' in attrs && 'end' in attrs) {
+    //         coll = coll.slice(parseInt(attrs.start), parseInt(attrs.end))
+    //       }
+    //       console.log(coll)
+    //       if (!coll) {
+    //         console.log(scope.data)
+    //         scope.$watch(attrSplit[1], function(value) {
+    //             console.log(value)
+    //         })
+    //       } else {
+    //                 var children = [];
+
+    //                 coll.forEach(function(each, i) {
+    //                     transclude(function(transEl, transScope) {
+    //                     transScope[varName] = each;
+    //                     transScope['index'] = i + 1;
+    //                     transEl[0].removeAttribute('u-list');
+
+    //                     // for (attr in attrs) {
+    //                     //     if (attr.charAt(0) === 'u') {
+    //                     //         var varName = attr.substring(1, attr.length)
+    //                     //         varName = varName[0].toLowerCase() + varName.substring(1, varName.length)
+    //                     //         console.log('setting', varName, $parse(attrs[attr])($parse))
+    //                     //         transScope[varName] = scope.$eval(attrs[attr])
+    //                     //     }
+
+
+    //                     // }
+
+    //                   // for (attr in el.attributes) {
+
+    //                   // }
+    //                     $compile(transEl)(transScope)
+    //                     el.parent().append(transEl)
+
+    //                     });
+    //                  });
+    //                 el.replaceWith(el.contents())
+    //       }
+
+
+    //     }
+    //   };
+    // }])
     .directive('htmlSnippet', ['$compile',function($compile) {
       return {
         restrict: 'E',
         scope: {html: '=html'},
         transclude: true,
-        replace:true,
+        replace:false,
         compile: function(element, attr, transclude) {
 
             return {
@@ -2224,8 +2247,9 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             modulePointer = modulePointer.directive(propName, ['CompService', function(CompService) {
               return {
                 restrict: 'A',
+                templateNamespace: 'html',
                 priority: 0,
-                link: function preLink(scope, element, attr) {
+                link: function(scope, element, attr) {
                     var options = {
                         propName: propName,
                         scope: scope
@@ -2233,7 +2257,9 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
                     if (!(propNameRender in CompService.css.render)) {
                         propNameRender = 'general'
                     }
-                    CompService.css.render[propNameRender](element, attr[propName], options);
+                    if (element[0].nodeType === 1) {
+                        CompService.css.render[propNameRender](element, attr[propName], options);
+                    }
                 }
               }
             }])
