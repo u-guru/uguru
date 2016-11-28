@@ -1,8 +1,14 @@
 {
     "vars": {
-        "vizBar": {
-                "text": ""
+        "vizTypes": {
+            "topCenter": {
+                "animation":"a:[scale:1:2:1000:linear:0:1:5]"
+            },
+            "bottomCenter": {
+                "animation":"a:[scale:1:1.5:1000:linear:0:1:5]"
             }
+        },
+        "sampleVizData": []
     },
     "config": {
         "pathParams": {},
@@ -36,7 +42,13 @@
     "content": {},
     "components": {
         "viz-bar": {
-            "template_url": "./ui/templates/samples/visualizer/components/viz-bar-transclude.html"
+            "template_url": "./ui/templates/samples/visualizer/components/viz-bar-transclude.html",
+            "data": {
+                "external": {
+                    "sample": "scope"
+                }
+            },
+            "replace": false
         },
         "viz-timer": {
             "template_url": "./ui/templates/samples/visualizer/components/viz-timer.html"
