@@ -1,6 +1,6 @@
 <div class="perspective-container full-xy flex-center p15xy bg-smoke" types='default, alert' default-type="alert">
 	<div class="pricing-tile" ng-show='activeType === "default"'
-		u init-with="p:[opacity:0, transform-origin:center center]"
+		u init-with="p:[op:0, tro:center center]"
 		on-init="s:[pricing-tile-init:children, start-counter:public:1500] | a:[frame-enter:1000:linear:0:1:f]">
 		<!-- on-init="s:[pricing-tile-init:public] | a:[frame-enter:1000:linear:0:1:f]" -->
 		<h3>Our Fees</h3>
@@ -20,7 +20,7 @@
 	</div>
 
 	<div class="pricing-tile alert" ng-show='activeType === "alert"'
-		u init-with="p:[opacity:0, transform-origin:center center]"
+		u init-with="p:[op:0, tro:center center]"
 		on-init="s:[pricing-tile-init:children, alert-counter:public:1000] | a:[frame-enter:1000:linear:0:1:f]">
 		<h3>Our Fees</h3>
 		<h2 u init-with="p:[op:0, tro:center center]"

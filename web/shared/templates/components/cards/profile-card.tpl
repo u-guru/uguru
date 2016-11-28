@@ -1,7 +1,7 @@
 <div class="perspective-container full-xy flex-center p15xy" types='single, stack'>
 
-	<div style="min-width: 300px" ng-show='activeType === "single"'
-		u init-with="p:[op:0, tro:center bottom]"
+	<div ng-show='activeType === "single"'
+		u init-with="p:[min-width:300px, op:0, tro:center bottom]"
 		on-init="s:[pf-card-init:self, pf-card-single-init:children:500]"
 		when-pf-card-init="a:[zoom-enter:800:linear:0:1:f]">
 		<div class="pf-card pf-card-photography">
@@ -90,8 +90,7 @@
 
 	<ul class="pf-card-stack slate" ng-show='activeType === "stack"'>
 		<li u init-with="p:[tr:translateY(-30px) scale(0.8)]">
-			<div style="min-width: 300px"
-				u init-with="p:[tr:scale(0), tro:center bottom]"
+			<div u init-with="p:[min-width:300px, tr:scale(0), tro:center bottom]"
 				when-pf-card-3-init="a:[back-stack:1000:linear:0:1:f]">
 				<!-- pf-card-3-init:depth(0) -->
 				<div class="pf-card pf-card-household"
@@ -164,8 +163,7 @@
 		</li>
 
 		<li u init-with="p:[tr:translateY(-18px) scale(0.9)]">
-			<div style="min-width: 300px"
-				u init-with="p:[tr:scale(0), tro:center bottom]"
+			<div u init-with="p:[min-width:300px, tr:scale(0), tro:center bottom]"
 				when-pf-card-2-init="a:[back-stack:1000:linear:0:1:f]">
 				<!-- pf-card-2-init:depth(0) -->
 				<div class="pf-card pf-card-athletic"
@@ -237,8 +235,7 @@
 		</li>
 
 		<li>
-			<div style="min-width: 300px"
-				u init-with="p:[op:0, tro:center bottom]"
+			<div u init-with="p:[min-width:300px, op:0, tro:center bottom]"
 				on-init="s:[pf-card-1:self, pf-card-1-init:children, pf-card-2-init:public:1000, pf-card-3-init:public:1500]"
 				when-pf-card-1="a:[zoom-enter:800:linear:0:1:f]">
 				<div class="pf-card pf-card-photography">

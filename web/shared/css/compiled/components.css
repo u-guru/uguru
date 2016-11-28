@@ -6928,19 +6928,6 @@ a.course-card:active .course-card-hover {
         transform-style: preserve-3d; }
     .pf-tile-container a ~ .pf-tile.bg-photography .pf-tile-bottom {
       transform-style: preserve-3d; }
-    .pf-tile-container a:hover ~ .pf-tile.bg-academic .pf-tile-border > div, .pf-tile-container a:focus ~ .pf-tile.bg-academic .pf-tile-border > div {
-      background: #fbe1f0; }
-    .pf-tile-container a:hover ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing, .pf-tile-container a:focus ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing {
-      background: #fbe1f0; }
-      .pf-tile-container a:hover ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing:before, .pf-tile-container a:focus ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing:before {
-        border-color: #fbe1f0;
-        border-right-color: transparent; }
-    .pf-tile-container a:hover ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon, .pf-tile-container a:focus ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon {
-      background: #fbe1f0; }
-      .pf-tile-container a:hover ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon svg *, .pf-tile-container a:focus ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon svg * {
-        stroke: #97a2a6; }
-    .pf-tile-container a:hover ~ .pf-tile.bg-academic .pf-tile-top h1, .pf-tile-container a:hover ~ .pf-tile.bg-academic .pf-tile-top h2, .pf-tile-container a:focus ~ .pf-tile.bg-academic .pf-tile-top h1, .pf-tile-container a:focus ~ .pf-tile.bg-academic .pf-tile-top h2 {
-      color: #fbe1f0; }
     .pf-tile-container a:hover ~ .pf-tile.bg-baking .pf-pricing, .pf-tile-container a:focus ~ .pf-tile.bg-baking .pf-pricing {
       color: #F6C64E; }
       .pf-tile-container a:hover ~ .pf-tile.bg-baking .pf-pricing svg, .pf-tile-container a:focus ~ .pf-tile.bg-baking .pf-pricing svg {
@@ -7029,28 +7016,6 @@ a.course-card:active .course-card-hover {
       color: white; }
     .pf-tile-container a:hover ~ .pf-tile.bg-household .bub-front-9, .pf-tile-container a:focus ~ .pf-tile.bg-household .bub-front-9 {
       transform: scale(18); }
-    .pf-tile-container a:active ~ .pf-tile.bg-academic {
-      background: #97a2a6; }
-      .pf-tile-container a:active ~ .pf-tile.bg-academic .pf-tile-border > div {
-        background: #594657; }
-      .pf-tile-container a:active ~ .pf-tile.bg-academic .pf-tile-top {
-        background: #97a2a6; }
-        .pf-tile-container a:active ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing {
-          background: #594657;
-          color: white !important; }
-          .pf-tile-container a:active ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing:before {
-            border-color: #594657;
-            border-right-color: transparent; }
-        .pf-tile-container a:active ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon {
-          background: rgba(89, 70, 87, 0.2); }
-          .pf-tile-container a:active ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon svg * {
-            fill: none;
-            stroke: #594657;
-            stroke-width: 4px;
-            stroke-linecap: round;
-            stroke-linejoin: round; }
-        .pf-tile-container a:active ~ .pf-tile.bg-academic .pf-tile-top h1, .pf-tile-container a:active ~ .pf-tile.bg-academic .pf-tile-top h2 {
-          color: #594657; }
     .pf-tile-container a:active ~ .pf-tile.bg-baking .pf-pricing {
       color: #c9a74d; }
       .pf-tile-container a:active ~ .pf-tile.bg-baking .pf-pricing svg {
@@ -7064,10 +7029,6 @@ a.course-card:active .course-card-hover {
       .pf-tile-container a:active ~ .pf-tile.bg-tech .pf-tile-bottom h1 {
         color: #55A4B7; }
   @media screen and (min-width: 768px) {
-    .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-border, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-border {
-      transform: translateZ(20px) !important; }
-    .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-top h1, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-top h2, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-top h1, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-top h2, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing {
-      transform: translateZ(20px) !important; }
     .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-bottom .rating-stars, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-bottom .rating-stars {
       transform: translateZ(20px) !important; }
     .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-baking .pf-tile-top h1, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-baking .pf-tile-top div, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-baking .pf-tile-top h1, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-baking .pf-tile-top div {
@@ -7174,7 +7135,7 @@ a.course-card:active .course-card-hover {
         display: block;
         width: 48px;
         height: 48px; }
-        .pf-tile .pf-tile-top .pf-tile-icon svg * {
+        .pf-tile .pf-tile-top .pf-tile-icon svg g {
           fill: none;
           stroke: white;
           stroke-width: 4px;
@@ -7278,8 +7239,8 @@ a.course-card:active .course-card-hover {
         color: #e6389b;
         font-size: 16px;
         font-weight: 700; }
-        .pf-tile.bg-academic .pf-tile-top .pf-pricing:before {
-          content: "";
+        .pf-tile.bg-academic .pf-tile-top .pf-pricing .pf-pricing-ribbon {
+          display: block;
           position: absolute;
           top: 0;
           right: -20px;
