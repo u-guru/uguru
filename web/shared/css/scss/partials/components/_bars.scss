@@ -26,7 +26,7 @@
 			}
 		}
 	}
-	&[data-rating*="1"] {
+	&[data-rating^="1"] {
 		li:nth-child(1) {
 			svg {
 				polygon {
@@ -45,7 +45,7 @@
 			}
 		}
 	}
-	&[data-rating*="2"] {
+	&[data-rating^="2"] {
 		li:nth-child(1),
 		li:nth-child(2) {
 			svg {
@@ -65,7 +65,7 @@
 			}
 		}
 	}
-	&[data-rating*="3"] {
+	&[data-rating^="3"] {
 		li:nth-child(1),
 		li:nth-child(2),
 		li:nth-child(3) {
@@ -86,7 +86,7 @@
 			}
 		}
 	}
-	&[data-rating*="4"] {
+	&[data-rating^="4"] {
 		li:nth-child(1),
 		li:nth-child(2),
 		li:nth-child(3),
@@ -108,7 +108,7 @@
 			}
 		}
 	}
-	&[data-rating*="5"] {
+	&[data-rating^="5"] {
 		li {
 			svg {
 				polygon {

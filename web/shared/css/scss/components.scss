@@ -29,3 +29,8 @@
 
 // demo
 @import 'partials/demo';
+
+
+.test {
+	color: mix(white, $moola, 30%);
+}

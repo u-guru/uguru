@@ -1,0 +1,49 @@
+<view link-data="ui/templates/samples/visualizer/viz.sm.json" render-after-ext-scripts width="100" height="100" let="content=data.content">
+    <div width="100" height="100">
+        <hr relative z="100" m="0" width="100%" height="5px" bg="sienna" border="0"/>
+        <div height='calc(100% - 5px)' width='100' bg="charcoal">
+            <div x-start y-end abs z="0" top="0" left="0" width="100" height="100" hide-x hide-y
+                u on-init="s:[viz-play:public]">
+                <div absolute top="0" left="0" width='calc(150% + 180px)' height='100' z='0' bg-image="{{content.track.artwork_url}}|top left|cover|repeat"
+                    u init-with="p:[tr:none]"
+                    when-viz-play="a:[translateX:0%:-39%:50000:linear:0:1:f]"></div>
+                <!-- <img absolute top="0" left="0" z="0" width='100' ng-src="{{content.track.artwork_url}}"/> -->
+                <div relative z="1"
+                    u init-with="p:[tr:none]"
+                    when-viz-play="a:[translateX:0%:-39%:50000:linear:0:1:f]">
+                    <div row y-end relative m-left="100px"
+                        u when-viz-play="s:[bar-play:public:linear-500000]">
+                        <viz-bar
+                            list-data="samples=content.viz.samples" list-limit="500" list-item="sample"></viz-bar>
+
+
+                        <viz-play-status> </viz-play-status>
+
+                    </div>
+                    <!-- <div row y-start m-left="100px"
+                        u on-init="p:[tro:top left, tr:scaleY(0.5), op:0.3]"
+                        when-viz-play="s:[bar-play-2:public:linear-500000]">
+                        <viz-bar  width='2px' rad="4px" m-x="1px" hide-x hide-y
+                            list-data="samples=content.viz.samples" list-limit="500" list-item="sample"
+                            ></viz-bar>
+                    </div> -->
+                </div>
+                <viz-footer custom ng-if='false'> </viz-footer>
+            </div>
+
+            <ul relative z="1" p="10px">
+                <li p="5px">
+                    <h2 bg="charcoal" z="1" f-s="18px" rad="2px" p="2px 5px" class='inline-block'>
+                        {{content.track.publisher_metadata.artist}}
+                    </h2>
+                </li>
+                <li p="5px">
+                    <h1 bg="charcoal" z="1" f-s="28px" rad="2px" p="2px 5px" class='inline-block'>
+                        <!-- {{content.track.title}} -->
+                        <a href="{{content.track.permalink_url}}">{{content.track.title}}</a>
+                    </h1>
+                </li>
+            </ul>
+        </div>
+    </div>
+</view>

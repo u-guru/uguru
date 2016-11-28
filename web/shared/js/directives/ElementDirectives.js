@@ -226,12 +226,15 @@ angular.module('uguru.shared.directives')
       }
   }
 }])
-.directive('listData', ['XHRService', 'DataService', function(XHRService, DataService) {
+// templateUrl: function(element, attr) {
+//       return $rootScope.components[element[0].nodeName.toLowerCase]
+//     },
+.directive('listData', ['$rootScope', 'DataService', '$compile', function($rootScope, DataService, $compile) {
   return {
     restrict: 'A',
     replace:true,
-    compile: function compile(element, attr, transclude) {
-
+    priority: 100000,
+    compile: function(element, attr) {
       var dataParams = attr.listData;
 
       if (!dataParams || !dataParams.length) return;
@@ -242,17 +245,72 @@ angular.module('uguru.shared.directives')
       }
 
       var dataObj = DataService.detectDataType(element, dataGetAttr);
-
+      var limitTo = attr.listLimit && parseInt(attr.listLimit) || dataObj.data.length;
       var resultHtml = '';
-      attr.$set('listData', '')
+      element[0].removeAttribute('list-data');
+      element[0].removeAttribute('list-limit');
+      element[0].setAttribute('data', dataObj.name);
       var outerHtml = element[0].outerHTML;
-      dataObj.data.forEach(function(_, i) {
-        var extHtml = outerHtml + '';
-        extHtml = extHtml.replace('list-data=""', 'data="' + dataObj.name + '[' + i + ']" custom');
-        resultHtml += extHtml
-      })
-      var elem = angular.element(resultHtml);
-      element.replaceWith(elem)
+      var elem_name = element[0].nodeName.toLowerCase();
+      for (var i = 0; i < limitTo; i++) {
+        var outerHtmlCp = outerHtml + '';
+        resultHtml += outerHtmlCp.replace(dataObj.name, dataObj.name + '[' + i + ']').replace('<' + elem_name, '<' + elem_name + ' custom');
+      }
+      element.replaceWith(angular.element(resultHtml))
+    }
+
+  }
+}])
+.directive('listDataArchive', ['XHRService', 'DataService', '$compile', '$parse', '$rootScope', function(XHRService, DataService, $compile, $parse, $rootScope) {
+  return {
+    restrict: 'A',
+    priority: 10000,
+    scope: false,
+    compile: function(element, attr) {
+      var dataParams = attr.listData;
+
+      if (!dataParams || !dataParams.length) return;
+
+      var dataGetAttr = attr.listData;
+      if (dataParams.indexOf('=') > -1) {
+        dataGetAttr = dataParams.split('=')[1];
+      }
+
+      var dataObj = DataService.detectDataType(element, dataGetAttr);
+      var limitTo = attr.listLimit && parseInt(attr.listLimit) || dataObj.data.length;
+
+      element.removeAttr('listData')
+      attr.$set('ngRepeat', attr.listItem + ' in ::' +  dataObj.name + ' track by $index');
+      attr.$set('ngInclude', '"' +  $rootScope.components[element[0].nodeName.toLowerCase()].template_url + '"');
+
+
+
+
+      // var resultHtml = '';
+      // attr.$set('listData', '')
+      // var outerHtml = element[0].outerHTML;
+
+
+
+      // // var elem = angular.element(resultHtml);
+      // // element.contents(elem);
+
+      // return function(scope, _element, _attr, ctrl) {
+      //   transclude(scope, function(clone, inner_scope) {
+      //     var result = [];
+      //     dataObj.data.forEach(function(_, i) {
+      //       if (i >= listBounds.start && i < listBounds.end) {
+      //         var extHtml = outerHtml + '';
+      //         extHtml = extHtml.replace('list-data=""', 'data="' + dataObj.data[i] + '" custom');
+      //         console.log($compile(angular.element(extHtml))(scope)[0])
+      //         // console.log($compile(extHtml)(scope)[0]);
+      //         result.push(angular.element(extHtml));
+      //       }
+      //     });
+      //     _element.replaceWith(result)
+
+      //   })
+      // }
 
     }
   }
@@ -277,6 +335,7 @@ angular.module('uguru.shared.directives')
             'GET',
         attr.linkData,
         function(data) {
+
           $rootScope.dataCache.views[attr.linkData] = {data: data, name: attr.name || attr.linkData };
           if (scopeRef) {
             scopeRef[attr.setDataName || 'data'] = data;
@@ -291,13 +350,14 @@ angular.module('uguru.shared.directives')
       return {
         pre: function(scope, p_element, p_attr) {
           scopeRef = scope;
-          // if ('renderAfterExtScripts' in attr) {
+          if ('renderAfterExtScripts' in attr) {
             scope.$watch('data.config.processed.scriptStatus.complete', function(value) {
               if (value) {
                   if (!$rootScope.activeView) {
                     $rootScope.activeView = {name: attr.linkDataName, data: scope.data};
                     // scope.$watch(attr.linkDataName + '.data', function(value) {
                         // if (value) {
+
                             transclude(scope, function(clone, innerScope) {
                                 if (attr.let && attr.let.length) {
                                   var letAttrSplit = attr.let.split('=');
@@ -314,6 +374,19 @@ angular.module('uguru.shared.directives')
                 }
               }
             })
+          } else {
+            if (!$rootScope.activeView) {
+                    $rootScope.activeView = {name: attr.linkDataName, data: scope.data};
+            }
+            transclude(scope, function(clone, innerScope) {
+
+                $compile(clone)(innerScope);
+
+                element.append(clone);
+                p_element[0].style.opacity = 1;
+
+            })
+          }
             // if ('linkData' in attr && 'linkDataName' in attr) {
 
           // }
@@ -701,9 +774,6 @@ angular.module('uguru.shared.directives')
                 // attr.$set();
               }
 
-              if (element[0].nodeName.toLowerCase() === 'grid') {
-                CompService.renderAllStyleAttributes(element, attr);
-              }
               this.states = ElementService.renderElementStates(element, attr);
               // console.log(element, this.states)
               var states = this.states;
@@ -798,8 +868,10 @@ angular.module('uguru.shared.directives')
                     scope.parentCompiled = false;
                     scope.inheritedFromParent = [];
                     // scope.public = scope._public
+                    element.ready(function() {
+                      SendService.precompileSendActionArgs(states, scope, lElem, lAttr)
+                    })
 
-                    SendService.precompileSendActionArgs(states, scope, lElem, lAttr)
                     scope.whenCallbacks = {};
 
 
@@ -827,7 +899,9 @@ angular.module('uguru.shared.directives')
                           }
                         })
                       }
+
                       if (states.when && scope.hasInitAfter) {
+
                         states.when.forEach(function(w_state, i) {
                           console.log(w_state, scope.hasInitAfter)
                           if (w_state.nameCamel === scope.hasInitAfter) {
@@ -845,115 +919,7 @@ angular.module('uguru.shared.directives')
                             }
                           }
                         })
-
-                        // return
-                        // states.when.forEach(function(state, i) {
-
-
-                        //   state.cancelCallback = null;
-                        //   // if (state.actions && state.actions.send) {
-                        //   //   console.log(state.actions.send, state.nameCamel, element)
-                        //   // }
-
-                        //   var whenCallback = function(current_depth) {
-
-                        //     return function(actions, scope, delay, depth) {
-
-                        //       if (depth && depth.inclusive && depth.num >= 0 && current_depth < 0) return;
-                        //       if (depth && depth.inclusive && depth.num <= 0 && current_depth > 0) return;
-                        //       if (depth && !depth.inclusive && depth.num !== current_depth) return;
-
-
-
-                        //       if (delay) {
-                        //         $timeout(function() {
-                        //           state.exec(lElem, scope, lAttr, actions);
-                        //         }, delay)
-                        //         return;
-                        //       }
-                        //       state.exec(lElem, scope, lAttr, actions);
-                        //     }
-                        //   }
-
-
-
-                          // scope.public.customStates.when[state.nameCamel] = {elements: [whenMetadata], depth:0};
-
-
-
-                          // if (scope.$parent.public.customStates) {
-
-                            // if (!(state.nameCamel in scope.public.customStates.when)) {
-                            //   scope.public.customStates.when[state.nameCamel] = {elements: [], depth: 0};
-                            // }
-
-
-                            // if (typeof scope.$parent.public.customStates.when[state.nameCamel] === 'object' && scope.$parent.public.customStates.when[state.nameCamel] !== [] && !scope.$parent.public.customStates.when[state.nameCamel].length) {
-                            //   scope.$parent.public.customStates.when[state.nameCamel] = {elements: [whenMetadata], depth: 0};
-                            // } else {
-
-                            // console.log('pushing', whenMetadata.name, scope.public.customStates.when[state.nameCamel].depth)
-                            // var currentDepth = scope.public.customStates.when[state.nameCamel].depth;
-
-                            // var whenMetadata = {actions: state.actions, func: whenCallback(currentDepth), name:state.name};
-                            // scope.public.customStates.when[state.nameCamel].elements.push(whenMetadata)
-
-                            // }
-                          // }
-
-
-
-                          // if (scope.public.customStates.whenElements.indexOf(element[0]) === -1) {
-                          //   scope.public.customStates.whenElements.push(element[0]);
-                          // }
-
-
-                          // var whenStateName = state.type + '-' + state.name;
-
-                          // if (!(whenStateName in scope.root.scope.public.customStates)) {
-                          //   scope.root.scope.public.customStates[whenStateName] = []
-                          // }
-                          // scope.root.scope.public.customStates[whenStateName].push(whenMetadata)
-                          // if (state.name.indexOf('debug') > -1) {
-                          //   ElementService.launchExternalWindow(state.actions.anim.parsed, element);
-                          // }
-
-                          // if (state.actions.send) {
-                          //   state.actions.send.parsed.split(',').forEach(function(message_str, i) {
-                          //     var msgNameCamel = ElementService.toCamelCaseBridge(message_str.split(':')[0]);
-                          //     SendService.prepareToSendMessage(msgNameCamel, message_str, scope);
-                          //     // console.log('prepping..', msgNameCamel, scope.public.customStates)
-                          //   })
-                          // }
-
-                          // console.log('registering my', state.nameCamel, state.actions.send);
-                          // if (state.nameCamel === 'startCounter') {
-                          //   console.log(scope.public.customStates.when)
-                          // }
-
-
-                        // })
                       }
-
-                      // scope.states = states;
-                      // var elemHasCustom = elemName in $rootScope.components
-
-                      // !scope.hasInitAfter && lElem && transclude(scope, function(clone, innerScope) {
-
-
-
-                      //       if ('custom' in lAttr && lElem[0].innerHTML) {
-                      //         console.log(lElem)
-                      //         lElem.removeAttr('custom')
-                      //       }
-
-                      //       $compile(lElem.contents())(scope);
-                      //       lElem.append(clone);
-
-
-
-
-
 
 
 
@@ -2173,17 +2139,22 @@ directive("evalOnReady", ["$timeout", '$parse', function($timeout, $parse) {
       }
     }
 }])
-.directive('backImg', function(){
+.directive('bgImage', ['$parse',function($parse){
     return function(scope, element, attrs){
-        attrs.$observe('backImg', function(value) {
+        attrs.$observe('bgImage', function(value) {
+            var bgAttrValues = value.split('|');
+
             element.css({
-                'background-image': 'url(' + value +')',
-                'background-size' : 'cover'
+                'background-image': 'url(' + bgAttrValues[0]  +')',
+                'background-position': bgAttrValues[1],
+                'background-size' : bgAttrValues[2],
+                'background-repeat': bgAttrValues.length > 3 && bgAttrValues[3] || 'no-repeat',
+                'background-color': bgAttrValues.length > 4 && bgAttrValues[4] || 'none',
             });
 
         });
     };
-})
+}])
 .directive('swiperBack', [function () {
     return {
       restrict: 'E',

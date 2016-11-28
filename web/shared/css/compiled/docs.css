@@ -1,3 +1,10 @@
+.gradient-sienna-stone {
+  background: #555f7b;
+  background: -moz-linear-gradient(top, #ee7361 0%, #555f7b 100%);
+  background: -webkit-linear-gradient(top, #ee7361 0%, #555f7b 100%);
+  background: linear-gradient(to bottom, #ee7361 0%, #555f7b 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$sienna', endColorstr='$stone',GradientType=0 ); }
+
 .placeholder-stone-white input[type="text"]::-webkit-input-placeholder, .placeholder-stone-white textarea::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.25) !important; }
 .placeholder-stone-white input[type="text"]:-moz-placeholder, .placeholder-stone-white textarea:-moz-placeholder {

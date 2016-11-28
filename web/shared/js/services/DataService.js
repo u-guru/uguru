@@ -159,8 +159,6 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
         single_script_dict.base_url = baseURL
         fetchAndOrganizeExternalJson(data_scope, single_script_dict);
 
-
-
       })
     }
   }
@@ -189,8 +187,24 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
           mapPostDataToDataScope(data_scope, response, mapping)
         })
       }
-      data_scope.config.processed.scripts[name] = true;
+
+
+
+
       checkExtScriptStatus(data_scope)
+
+      if ('parse' in data_scope.config) {
+        applyAndUpdateParseData(data_scope, data_scope.config.parse)
+      }
+
+      data_scope.config.processed.scripts[name] = true;
+
+    }
+  }
+
+  function applyAndUpdateParseData(scope, parse_fields) {
+    for (key in parse_fields) {
+      console.log(key, parse_fields[key][0], $parse(parse_fields[key][0])(scope));
     }
   }
 
@@ -263,6 +277,7 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
   function checkExtScriptStatus(data_scope) {
 
     var script_scope = data_scope.config.processed.scripts;
+
     if (!('scriptStatus' in data_scope.config.processed)) {
       data_scope.config.processed.scriptStatus = {
         remaining: Object.keys(script_scope).length,
@@ -287,7 +302,10 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
         total: count,
         complete: false
       }
-      console.log('remaining', numFalse);
+      $timeout(function() {
+        checkExtScriptStatus(data_scope)
+      }, 100)
+
     }
     else {
 
@@ -310,6 +328,8 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
       data_scope.config.processed.path = parseDataParams(data_scope, $stateParams.path)
     }
 
+
+
     if ('scripts' in data_scope.config) {
       executeExternalScripts(data_scope);
     }
@@ -319,9 +339,9 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
       }
       for (compName in data_scope.components) {
         $rootScope.components[compName] = data_scope.components[compName]
-
       }
     }
+
 
   }
 
