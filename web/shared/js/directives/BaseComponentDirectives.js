@@ -1942,63 +1942,95 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
     //     }
     //   }
     // }])
-    .directive('uList', [function() {
-        return {
-            restrict: 'A',
-            priority: 100000,
-            compile: function(element, attr) {
+    // .directive('uList', ['$compile', function($compile) {
+    //     return {
+    //         restrict: 'A',
+    //         priority: 100000,
+    //         transclude:true,
+    //         compile: function(element, attr) {
 
-                if (!attr.uList || !attr.uList.length) return;
+    //             if (!attr.uList || !attr.uList.length) return;
 
-                var listParams = attr.uList + ' track by $index';
-                if (listParams.indexOf('in') === -1 && listParams.charAt(0) === '[' && listParams.charAt(listParams.length - 1) === ']') {
-                    var e = angular.element(element[0].outerHTML)
-                    listParams = 'item in ' + listParams;
+    //             var listParams = attr.uList + ' track by $index';
+    //             if (listParams.indexOf('in') === -1 && listParams.charAt(0) === '[' && listParams.charAt(listParams.length - 1) === ']') {
+    //                 var e = angular.element(element[0].outerHTML)
+    //                 listParams = 'item in ' + listParams;
 
-                    e[0].setAttribute('ng-repeat', listParams);
-                    e[0].removeAttribute('u-list')
-                    element.replaceWith(e);
-                } else {
-                    element[0].setAttribute('ng-repeat', listParams);
-                }
-                console.log(listParams)
+    //                 e[0].setAttribute('ng-repeat', listParams);
 
+    //                 element.replaceWith(e);
+    //             } else {
+    //                 element[0].setAttribute('ng-repeat', listParams);
+    //             }
+    //             element.removeAttr('uList');
+    //             return function preLink(scope, p_element, p_attrs, ctrl, transclude) {
+    //                 transclude(function(transEl, transScope) {
+    //                     console.log(transEl[0])
+    //                 })
 
-            }
-        }
-    }])
-    .directive('listData', ['$rootScope', '$compile', '$parse', function($rootScope, $compile, $parse) {
+    //             }
+    //         }
+    //     }
+    // }])
+    .directive('uList', ['$rootScope', '$compile', '$parse', function($rootScope, $compile, $parse) {
       return {
         transclude: 'element',
+        restrict: 'A',
+        replace:true,
         link: function(scope, el, attrs, ctrl, transclude) {
 
+            var attrSplit = attrs.uList.split('in');
+            var varName;
+            attrSplit.forEach(function(str, i) {attrSplit[i] = attrSplit[i].trim()});
+            if (attrSplit.length === 2) {
+                varName = attrSplit[0];
+            }
+            if (attrSplit.length < 2 || !varName.length) {
+                varName = 'item';
+            }
+            var coll = scope.$eval(attrSplit[1]);
 
-          var coll = scope.$eval(attrs.vizData);
           if ('start' in attrs && 'end' in attrs) {
             coll = coll.slice(parseInt(attrs.start), parseInt(attrs.end))
           }
+          console.log(coll)
+          if (!coll) {
+            console.log(scope.data)
+            scope.$watch(attrSplit[1], function(value) {
+                console.log(value)
+            })
+          } else {
+                    var children = [];
+
+                    coll.forEach(function(each, i) {
+                        transclude(function(transEl, transScope) {
+                        transScope[varName] = each;
+                        transScope['index'] = i + 1;
+                        transEl[0].removeAttribute('u-list');
+
+                        // for (attr in attrs) {
+                        //     if (attr.charAt(0) === 'u') {
+                        //         var varName = attr.substring(1, attr.length)
+                        //         varName = varName[0].toLowerCase() + varName.substring(1, varName.length)
+                        //         console.log('setting', varName, $parse(attrs[attr])($parse))
+                        //         transScope[varName] = scope.$eval(attrs[attr])
+                        //     }
 
 
-          coll.forEach(function(each) {
-            transclude(function(transEl, transScope) {
-              transScope.sample = each;
-                for (attr in attrs) {
-                    if (attr.charAt(0) === 'u') {
-                        var varName = attr.substring(1, attr.length)
-                        varName = varName[0].toLowerCase() + varName.substring(1, varName.length)
-                        console.log('setting', varName, $parse(attrs[attr])($parse))
-                        transScope[varName] = scope.$eval(attrs[attr])
-                    }
+                        // }
+
+                      // for (attr in el.attributes) {
+
+                      // }
+                        $compile(transEl)(transScope)
+                        el.parent().append(transEl)
+
+                        });
+                     });
+                    el.replaceWith(el.contents())
+          }
 
 
-                }
-
-              // for (attr in el.attributes) {
-
-              // }
-              el.parent().append(transEl);
-            });
-          });
         }
       };
     }])

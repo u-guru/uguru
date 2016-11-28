@@ -6,15 +6,14 @@
     </div>
     <div wrap>
         <div u-list="person in ['sam', 'nate', 'mary', 'kate']">
-            {{$index+1}}. {{person}}
+            {{index}}. {{person}}
         </div>
     </div>
+
     <div wrap>
         <div u-list="rgba_item in [{rgb:'(255, 255, 255)', opacity: 0.5}]">
             {{rgba_item.rgb}}, {{rgba_item.opacity}}
         </div>
-        {{content.examples[0]}}
-
     </div>
 
 
