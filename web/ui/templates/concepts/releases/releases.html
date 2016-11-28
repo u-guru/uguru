@@ -1,0 +1,22 @@
+<view link-data="ui/templates/concepts/releases/releases.app.json"  width="100" height="100" let="content=data.content" render-after-ext-scripts x='center' y='center' abs wrap column>
+    <div wrap>
+        <div u-list="num in [1,2,3,4,5]">
+            {{num}}
+        </div>
+    </div>
+    <div wrap>
+        <div u-list="person in ['sam', 'nate', 'mary', 'kate']">
+            {{$index+1}}. {{person}}
+        </div>
+    </div>
+    <div wrap>
+        <div u-list="rgba_item in [{rgb:'(255, 255, 255)', opacity: 0.5}]">
+            {{rgba_item.rgb}}, {{rgba_item.opacity}}
+        </div>
+        {{content.examples[0]}}
+
+    </div>
+
+
+
+</view>
