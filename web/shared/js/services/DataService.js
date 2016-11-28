@@ -17,6 +17,7 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
     scripts: []
   };
   var dataMappings = {};
+  var componentModule = baseCompModule;
   var dataCache = {views: {}}
   return {
     parseAppDataJson: parseAppDataJson,
@@ -334,6 +335,7 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
       executeExternalScripts(data_scope);
     }
     if ('components' in data_scope) {
+      compileComponentsIntoDirectives(data_scope.components)
       if (!$rootScope.components) {
         $rootScope.components = {};
       }
@@ -341,8 +343,135 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
         $rootScope.components[compName] = data_scope.components[compName]
       }
     }
+  }
+
+  function compileComponentsIntoDirectives(comp_dict) {
+
+    for (key in comp_dict) {
+      var dirInfo = {
+        name: key.replace(/-(\w)/g, function(match) {
+          return match[1].toUpperCase();
+          }),
+        templateUrl: 'template_url' in comp_dict[key] && comp_dict[key]['template_url'],
+        scope: compileComponentVars(comp_dict[key]['data']),
+        config: 'config' in comp_dict[key] && comp_dict[key]['config']
+      };
+      if (dirInfo.name && dirInfo.templateUrl) {
+        registerOneDirective(dirInfo)
+      }
+    }
+    // baseCompModule.directive('vizBar', ['$rootScope',function($rootScope) {
+    //   return {
+    //     restrict: 'E',
+    //     replace:true,
+    //     scope: {
+    //         'animationType': '=animationType'
+    //     },
+    //     templateUrl: function(element, attr) {
+    //         return $rootScope.components[element[0].nodeName.toLowerCase()]['template_url']
+    //     }
+    //   }
+    // }])
+  }
+
+  //todo eventually: variable service
+  function compileComponentVars(vars) {
+      if (!vars) return false;
+      if (!('external' in vars)) return;
+      var resultScope = {};
+      vars.external = parseScopeVarsByType(vars.external)
+      for (var_name in vars.external) {
+        if (['dict'].indexOf(vars.external[var_name]) > -1) {
+          resultScope[var_name] =  '<' + var_name;
+        }
+        else if (vars.external[var_name] === 'scope') {
+          resultScope[var_name] = '=' + var_name;
+        } else {
+          resultScope[var_name] = '@' + var_name;
+        }
+
+      }
+      if (!Object.keys(resultScope).length) return false;
+
+      return resultScope;
+  }
+
+  function parseScopeVarsByType(var_dict) {
+    for (_var_name in var_dict) {
+      var value = var_dict[_var_name];
+      console.log(value)
+    }
+    return var_dict;
 
 
+  }
+
+  function registerOneDirective(dir_info) {
+    console.log(dir_info.scope, dir_info.templateUrl)
+    componentModule.directive(dir_info.name, [function() {
+      var dirObj = {
+        restrict: 'E',
+        transclude:'element',
+        replace:true,
+        scope: dir_info.scope,
+        templateUrl: function(element, attr) {
+            return dir_info.templateUrl
+        },
+        link: function(scope, element, attr, ctrl, transclude) {
+            processScopeVars(scope, attr);
+            // element.append()
+            // var e = transclude(scope, function(transEl, transScope) {
+            //   console.log(transEl)
+            // })
+            // $compile(e.contents())(scope)
+            // element.append(e)
+
+          }
+      }
+      return dirObj
+    }])
+  }
+
+  function processScopeVars(scope, attr) {
+    for (attr_name in attr.$attr) {
+      if (attr_name in scope) {
+        if (typeof scope[attr_name] === 'function') {
+          scope[attr_name] = scope[attr_name]()
+        }
+        detectScopeType(scope[attr_name])
+      }
+    }
+  }
+
+  function detectScopeType(var_data) {
+    if (isArray(var_data)) {
+
+    } else
+    if (isObject(var_data)) {
+
+      var_data.titles = [];
+      var_data.arr = [];
+      for (key in var_data) {
+        if (['titles', 'arr'].indexOf(key) > -1) continue;
+        var innerObj = {}
+        innerObj.name = key;
+        innerObj.contents = var_data[key];
+        var_data.arr.push(innerObj)
+        var_data.titles.push(key + "")
+      }
+
+      // var_data.titles =  titles.slice()
+      // var_data.arr = innerObjects.slice()
+
+      return var_data
+    }
+    function isObject ( obj ) {
+       return obj && (typeof obj  === "object");
+    }
+
+    function isArray ( obj ) {
+      return isObject(obj) && (obj instanceof Array);
+    }
   }
 
 

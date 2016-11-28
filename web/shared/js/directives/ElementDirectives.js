@@ -315,13 +315,77 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
+.directive('loader', ['$rootScope', 'LoaderService', function($rootScope, LoaderService) {
+  return {
+    restrict: 'E',
+    templateUrl: function(element, attr) {
+      return attr.url || 'ui/templates/components/base/loader.tpl'
+    },
+    transclude: true,
+    controllerAs: 'loader',
+    replace:true,
+    scope: false,
+    compile: function(element, attr, transclude) {
 
-.directive('linkData', ['XHRService', '$compile', '$timeout', '$rootScope', '$parse', function(XHRService, $compile, $timeout, $rootScope, $parse) {
+
+      return function(scope, elem, attrs, ctrl, tr) {
+
+        elem.css('opacity', 0);
+        ctrl.watchers.infoHeight = scope.$watch('loader.info.height', function(val){
+          if (val) {
+
+
+            ctrl.watchers.parentHeight();
+            ctrl.watchers.infoHeight();
+            ctrl.info.opacity = 1;
+            console.log(ctrl.info.height, ctrl.info.width)
+            LoaderService.setInheritedCSS(elem, ctrl.info)
+
+          }
+        })
+
+      }
+    },
+    controller: function($scope, $element, $attrs, $transclude) {
+      var loader = this;
+      loader.info = {width: 0, height: 0};
+
+      loader.attr = LoaderService.renderLoaderAttrs($scope, $attrs, loader.info);
+      loader.duration = loader.attr.minMs || 1000;
+
+      if (!('bg' in $attrs)) {
+        loader.info['background-color'] = LoaderService.getParentBgColor($element, $attrs);
+      }
+
+      loader.watchers = {parentHeight: 0};
+      var loaderParent = $element.parent()[0] || $element[0].parentNode;
+      console.log(loaderParent)
+      var loaderParentCoords;
+
+        loader.watchers.parentHeight = $scope.$watch(function() {
+          loaderParentCoords = loaderParent && 'getBoundingClientRect' in loaderParent && loaderParent.getBoundingClientRect() || {};
+
+          return loaderParentCoords.height
+        }, function(value) {
+          if (value > 0) {
+            loader.info.height = value;
+            loader.info.width = loaderParentCoords.width;
+
+          }
+        })
+
+    }
+  }
+}])
+.directive('linkData', ['XHRService', '$compile', '$timeout', '$rootScope', '$parse', 'CompService', function(XHRService, $compile, $timeout, $rootScope, $parse, CompService) {
   return {
     restrict: 'A',
-    replace: true,
+
     scope: false,
     transclude: true,
+    controller: function($scope) {
+      $scope.view = {loader: {}};
+    },
     compile: function compile(element, attr, transclude) {
       var scopeRef = null;
       if ('renderAfterExtScripts' in attr) {
@@ -331,6 +395,30 @@ angular.module('uguru.shared.directives')
         var letSplit = attr.let.split('=');
         $rootScope.dataMappings[letSplit[0]] = {name: letSplit[1], view: attr.linkData};
       }
+      var innerElems = {};
+      innerElems.elements = transclude($rootScope, function(transElem, transScope) {
+        innerElems.clone = transElem;
+        innerElems.scope = transScope;
+      });
+      var preTranscludeElems = CompService.doesElemHaveLoader(innerElems.elements);
+
+
+      if (preTranscludeElems.loader) {
+
+        innerElems.loader = preTranscludeElems.loader
+        innerElems.loader.setAttribute('loader', '')
+
+        innerElems.timer = new Date().getTime();
+        element.append(innerElems.loader);
+
+        // console.log(preTranscludeElems.remaining.forEach(function( item, i) {
+        //   if ('innerHTML' in item) {
+        //     item.style.opacity = 0;
+        //   }
+        // }))
+
+      }
+
       XHRService.getJSONFile(
             'GET',
         attr.linkData,
@@ -350,25 +438,90 @@ angular.module('uguru.shared.directives')
       return {
         pre: function(scope, p_element, p_attr) {
           scopeRef = scope;
+
+
           if ('renderAfterExtScripts' in attr) {
             scope.$watch('data.config.processed.scriptStatus.complete', function(value) {
               if (value) {
+
                   if (!$rootScope.activeView) {
                     $rootScope.activeView = {name: attr.linkDataName, data: scope.data};
                     // scope.$watch(attr.linkDataName + '.data', function(value) {
                         // if (value) {
 
-                            transclude(scope, function(clone, innerScope) {
-                                if (attr.let && attr.let.length) {
-                                  var letAttrSplit = attr.let.split('=');
-                                  innerScope[letAttrSplit[0]] = $parse(letAttrSplit[1])(scope)
-                                }
-                                $compile(clone)(innerScope);
+                          // element.after(preTranscludeElems.remaining)
 
-                                element.append(clone);
-                                p_element[0].style.opacity = 1;
+                              if (!preTranscludeElems.loader) {
+                                transclude(scope, function(clone, innerScope) {
+                                  if (attr.let && attr.let.length) {
+                                    var letAttrSplit = attr.let.split('=');
+                                    innerScope[letAttrSplit[0]] = $parse(letAttrSplit[1])(scope)
+                                  }
+                                  $compile(clone)(innerScope);
 
-                            })
+                                  element.append(clone);
+
+                                })
+                              }
+                              else {
+                                innerElems.loaderInfo = innerElems.scope.loader.info;
+                                console.log()
+                                var timeNow = new Date().getTime();
+
+                                var maxLoadTime = innerElems.scope.loader.info.minMs || 1000;
+                                var ttl_loader_complete = maxLoadTime - (timeNow - innerElems.timer);
+                                console.log(ttl_loader_complete);
+                                $timeout(function() {
+                                  innerElems.clone.empty();
+                                  p_element.empty();
+
+                                  transclude(scope, function(clone, innerScope) {
+                                    if (attr.let && attr.let.length) {
+                                      var letAttrSplit = attr.let.split('=');
+                                      innerScope[letAttrSplit[0]] = $parse(letAttrSplit[1])(scope)
+                                    }
+                                    for (var i = 0; i < clone.length; i++) {
+
+                                      if (i !== preTranscludeElems.loaderIndex) {
+                                        $compile(clone[i])(innerScope);
+                                        element.append(clone[i]);
+                                      }
+                                    }
+                                    console.log(clone)
+
+
+
+
+
+                                  })
+
+
+                                }, ttl_loader_complete)
+
+
+                                // var clone = preTranscludeElems.remaining;
+                                // if (attr.let && attr.let.length) {
+                                //     var letAttrSplit = attr.let.split('=');
+                                //     scope[letAttrSplit[1]] = $parse(letAttrSplit[1])(scope)
+                                // };
+
+                                // transclude(scope, function(clone, innerScope) {
+                                //   console.log(clone)
+                                // })
+
+                                //   // if (attr.let && attr.let.length) {
+                                //   //   var letAttrSplit = attr.let.split('=');
+                                //   //   innerScope[letAttrSplit[0]] = $parse(letAttrSplit[1])(scope)
+                                //   // }
+                                //   // $compile(clone)(scope);
+
+                                //   element.append($compile(preTranscludeElems.remaining)(scope));
+                                // // })
+
+
+                              }
+
+                            p_element[0].style.opacity = 1;
                         // }
                     // })
                 }
@@ -754,12 +907,11 @@ angular.module('uguru.shared.directives')
           restrict: 'A',
           replace: false,
           priority:1000000,
-          scope:true,
+          scope:false,
           compile: function(element, attr, transclude) {
             // attr.$set('public', 'public');
             // attr.$set('root', 'root');
             var elemName = element[0].nodeName.toLowerCase();
-
 
             var hasInitAfter = false;
               if (attr.initAfter && attr.initAfter.length) {
@@ -886,10 +1038,10 @@ angular.module('uguru.shared.directives')
                           //   SendService.prepareToSendMessage(msgNameCamel, message_str, scope);
                           // })
                           // }
-                          if (state.name.indexOf('init') > -1) {
-                            postStates.push(state);
-                            return;
-                          }
+                          // if (state.name.indexOf('init') > -1) {
+                          //   postStates.push(state);
+                          //   return;
+                          // }
                           if (state.actions.debug) {
                             ElementService.launchExternalWindow(state.actions.debug, element);
                           }
@@ -936,23 +1088,6 @@ angular.module('uguru.shared.directives')
 
 
 
-                  },
-                  post: function(scope, p_element, attr) {
-
-                    scope.states = states
-                    if (postStates.length) {
-                      postStates.forEach(function(state, i) {
-                      if (state.name.indexOf('init') > -1 && !scope.hasInitAfter) {
-                          state.exec(p_element, scope, attr);
-
-                            if (state.name.indexOf('debug') > -1) {
-                              ElementService.launchExternalWindow(state.actions.anim.parsed, p_element);
-                            }
-                        }
-                      });
-                    } else {
-                      return angular.noop;
-                    }
                   }
               }
           }

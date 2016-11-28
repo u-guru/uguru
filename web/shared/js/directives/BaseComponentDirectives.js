@@ -1,5 +1,6 @@
-angular.module('uguru.shared.directives.base.components', []);
-var ptr = angular.module('uguru.shared.directives.base.components')
+var baseCompModule = angular.module('uguru.shared.directives.base.components', []);
+
+ angular.module('uguru.shared.directives.base.components')
     .directive("letter", ["CompService", "$compile", function(CompService, $compile) {
         return {
             restrict: 'E',
@@ -1406,8 +1407,8 @@ var ptr = angular.module('uguru.shared.directives.base.components')
     .directive("view", ["CompService", "$compile", "$rootScope", "$parse", function(CompService, $compile, $rootScope, $parse) {
         return {
             restrict: 'E',
-            replace:true,
             priority: 100,
+            replace:true,
             compile: function(element, attr, transclude) {
                 CompService.renderAllStyleAttributes(element, attr);
                 element.addClass('flex absolute full-xy');
@@ -1941,23 +1942,36 @@ var ptr = angular.module('uguru.shared.directives.base.components')
     //     }
     //   }
     // }])
-    angular.module('uguru.shared.directives.base.components').directive('vizBar', ['$rootScope',function($rootScope) {
-      return {
-        restrict: 'E',
-        replace:true,
-        templateUrl: function(element, attr) {
-            return $rootScope.components[element[0].nodeName.toLowerCase()]['template_url']
-        }
-      }
-    }])
-    .directive('vizData', ['$rootScope', '$compile', function($rootScope, $compile) {
+
+    .directive('vizData', ['$rootScope', '$compile', '$parse', function($rootScope, $compile, $parse) {
       return {
         transclude: 'element',
         link: function(scope, el, attrs, ctrl, transclude) {
+
+
           var coll = scope.$eval(attrs.vizData);
+          if ('start' in attrs && 'end' in attrs) {
+            coll = coll.slice(parseInt(attrs.start), parseInt(attrs.end))
+          }
+
+
           coll.forEach(function(each) {
             transclude(function(transEl, transScope) {
               transScope.sample = each;
+                for (attr in attrs) {
+                    if (attr.charAt(0) === 'u') {
+                        var varName = attr.substring(1, attr.length)
+                        varName = varName[0].toLowerCase() + varName.substring(1, varName.length)
+                        console.log('setting', varName, $parse(attrs[attr])($parse))
+                        transScope[varName] = scope.$eval(attrs[attr])
+                    }
+
+
+                }
+
+              // for (attr in el.attributes) {
+
+              // }
               el.parent().append(transEl);
             });
           });
@@ -1986,7 +2000,12 @@ var ptr = angular.module('uguru.shared.directives.base.components')
         }
 
       }
-    }])
+    }]).config(function($controllerProvider, $provide, $compileProvider) {
+        baseCompModule.directive = function(name, factory) {
+            $compileProvider.directive(name, factory);
+            return (this);
+        }
+    });
 
     var propDirectives = [
         'width',
@@ -2149,9 +2168,11 @@ var ptr = angular.module('uguru.shared.directives.base.components')
             modulePointer = modulePointer.directive(propName, ['CompService', function(CompService) {
               return {
                 restrict: 'A',
-                compile: function(element, attr) {
+                priority: 0,
+                link: function preLink(scope, element, attr) {
                     var options = {
-                        propName: propName
+                        propName: propName,
+                        scope: scope
                     }
                     if (!(propNameRender in CompService.css.render)) {
                         propNameRender = 'general'
