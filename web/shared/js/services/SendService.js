@@ -39,10 +39,10 @@ function SendService($timeout, $parse, RootService, TweenService) {
       scope.public.customStates.when[stateName].elements.push(futureExecDict)
     }
 
-    else if (state.nameCamel in scope.root.scope.public.customStates.when) {
+    else if (scope.root && state.nameCamel in scope.root.scope.public.customStates.when) {
 
       scope.root.scope.public.customStates.when[state.nameCamel].elements.push(futureExecDict)
-    } else {
+    } else if (scope.root) {
       scope.root.scope.public.customStates.when[state.nameCamel] = {elements: [], depth: -1}
       scope.root.scope.public.customStates.when[state.nameCamel].elements.push(futureExecDict);
     }
@@ -301,7 +301,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
 
       scope.public = {customStates: {when: {}}};
     // }
-    if (scope.$parent.public && scope.$parent.public.customStates.when ) {
+    if (scope.$parent && scope.$parent.public && scope.$parent.public.customStates.when ) {
 
 
       scope.parentInherited = true;

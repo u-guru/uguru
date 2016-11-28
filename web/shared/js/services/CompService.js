@@ -36,7 +36,31 @@ function CompService($timeout, $compile, $parse, $rootScope) {
     renderAllStyleAttributes: renderAllStyleAttributes,
     initializeModalAttr: initializeModalAttr,
     globals: globals,
-    css: css
+    css: css,
+    doesElemHaveLoader: doesElemHaveLoader,
+    getParentBackgroundColor: getParentBackgroundColor
+  }
+
+  function doesElemHaveLoader(child_arr) {
+    var childResults = {loader:null, remaining:[]}
+    for (var i = 0; i < child_arr.length; i++) {
+      if (child_arr[i].nodeName.toLowerCase() === 'loader') {
+        childResults.loader = child_arr[i];
+        childResults.loaderIndex = i
+      } else {
+        childResults.remaining.push(child_arr[i])
+      }
+    }
+    return childResults
+  }
+
+  function getParentBackgroundColor(elem) {
+    console.log(elem[0].getBoundingClientRect())
+    var elemParentStyle = window.getComputedStyle(elem[0].parentNode);
+    if ('background' in elemParentStyle) {
+      return elemParentStyle;
+    }
+    return  window.getComputedStyle(document.body)['background']
   }
 
   function isSVGElement(name) {
@@ -348,6 +372,9 @@ function CompService($timeout, $compile, $parse, $rootScope) {
 
   function renderGeneralFunc(elem, value, options) {
     var svgOnlyProps = ['x', 'y', 'width', 'height'];
+    if (value.indexOf('{{') > -1) {
+      value = $parse(value)(options.scope)
+    }
     if (options.propName && options.propName in cssDirectiveShortcuts) {
       var propNames = cssDirectiveShortcuts[options.propName];
       if (svgOnlyProps.indexOf(options.propName.toLowerCase()) > -1 && isSVGElement(elem[0].nodeName)) {
@@ -376,9 +403,10 @@ function CompService($timeout, $compile, $parse, $rootScope) {
 
     if (value && !isSVGElement(elem[0].nodeName.toLowerCase())) {
         if (value.indexOf('%') === -1 && value.indexOf('px') === -1) {
-            elem.css('height', value + '%')
+          css.apply(elem, 'height', value + '%');
+            // elem.css('height', value + '%')
         } else {
-            elem.css('height', value)
+          css.apply(elem, 'height', value);
         }
     }
   }
@@ -386,9 +414,9 @@ function CompService($timeout, $compile, $parse, $rootScope) {
   function renderWidthFunc(elem, value, scope) {
     if (value && !isSVGElement(elem[0].nodeName.toLowerCase())) {
       if (value.indexOf('%') === -1 && value.indexOf('px') === -1) {
-          elem.css('width', value + '%')
+          css.apply(elem, 'width', value + '%');
       } else {
-          elem.css('width', value)
+        css.apply(elem, 'width', value);
       }
     }
     //ideal
