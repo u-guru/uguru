@@ -2,14 +2,15 @@
 
 
     <!-- Newest concept, try this after verifying animation time-->
-    <loader min-ms="2500" url="ui/templates/samples/visualizer/components/viz-view-loader.html">
+    <loader min-ms="3300" url="ui/templates/samples/visualizer/components/viz-view-loader.html">
     </loader>
 
     <div width="100" height="100" y-center scroll-x  left='0'
 		x='end'>
 
-        <viz-bar ng-repeat="sample in ::data.content.viz.samples |limitTo:200 track by $index" sample="::sample"> </viz-bar>
+        <!-- <viz-bar ng-repeat="sample in ::data.content.viz.samples |limitTo:200 track by $index" sample="::sample"> </viz-bar> -->
 
+        <viz-bar ng-repeat="sample in ::data.content.viz.samples |limitTo:1000 track by $index" sample="::sample"> </viz-bar>
 
 
         <div width="25%" column x='end' height="5px" bg="sienna" u init-with="p:[transform:scaleX(4),tro:100% 0]" on-init="a:[scaleX:4:1:250:easeOutBounce:0:1:f]">

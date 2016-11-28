@@ -1942,8 +1942,32 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
     //     }
     //   }
     // }])
+    .directive('uList', [function() {
+        return {
+            restrict: 'A',
+            priority: 100000,
+            compile: function(element, attr) {
 
-    .directive('vizData', ['$rootScope', '$compile', '$parse', function($rootScope, $compile, $parse) {
+                if (!attr.uList || !attr.uList.length) return;
+
+                var listParams = attr.uList + ' track by $index';
+                if (listParams.indexOf('in') === -1 && listParams.charAt(0) === '[' && listParams.charAt(listParams.length - 1) === ']') {
+                    var e = angular.element(element[0].outerHTML)
+                    listParams = 'item in ' + listParams;
+
+                    e[0].setAttribute('ng-repeat', listParams);
+                    e[0].removeAttribute('u-list')
+                    element.replaceWith(e);
+                } else {
+                    element[0].setAttribute('ng-repeat', listParams);
+                }
+                console.log(listParams)
+
+
+            }
+        }
+    }])
+    .directive('listData', ['$rootScope', '$compile', '$parse', function($rootScope, $compile, $parse) {
       return {
         transclude: 'element',
         link: function(scope, el, attrs, ctrl, transclude) {

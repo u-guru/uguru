@@ -96,6 +96,16 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp', 'u
     controller: 'SingleViewController',
     controllerAs: 'docs'
   })
+  .state('root.ui-concepts', {
+    name: 'root.ui-concepts',
+    parent: 'root',
+    url:'/ui/concepts/{folder}/{prefix}/*path',
+    templateUrl: function templateProvider($stateParams) {
+      return 'ui/templates/concepts/' + $stateParams.folder + '/' + $stateParams.prefix  + '.html'
+    },
+    controller: 'SingleViewController',
+    controllerAs: 'docs'
+  })
   .state('root.ui.scene', {
     name: 'root.ui',
     parent: 'root',
