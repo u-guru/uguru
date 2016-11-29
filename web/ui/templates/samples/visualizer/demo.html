@@ -1,29 +1,34 @@
-<view link-data="ui/templates/samples/visualizer/viz.json" render-after-ext-scripts width="100" height="100" let="content=data.content">
+<view link-data="ui/templates/samples/visualizer/viz.json" render-after-ext-scripts width="100" height="100">
+	<loader min-ms="5000" url="ui/templates/samples/visualizer/components/viz-loader.html"></loader>
 	<div width="100" height="100">
 		<hr relative z="100" m="0" width="100%" height="5px" bg="sienna" border="0"/>
 	    <div relative height='calc(100% - 5px)' width='100' bg="charcoal">
-			<div x-start y-end abs z="0" top="0" left="0" width="100" height="100" hide-x hide-y>
-				<!-- u on-init="s:[viz-play:public]" -->
-				<div absolute top="0" left="0" width='calc(150% + 180px)' height='100' z='0' bg-image="content.track.artwork_url|top left|cover|repeat"></div>
-				<!-- u init-with="p:[tr:none]"
-				when-viz-play="a:[translateX:0%:-39%:50000:linear:0:1:f]" -->
-				<!-- <img absolute top="0" left="0" z="0" width='100' ng-src="{{content.track.artwork_url}}"/> -->
-	            <div relative z="1">
-					<!-- u init-with="p:[tr:none]"
-					when-viz-play="a:[translateX:0%:-39%:50000:linear:0:1:f]" -->
+			<div x-start y-end abs z="0" top="0" left="0" width="100" height="100" hide-x hide-y
+				u on-init="s:[viz-play:public:6000]">
+				<div absolute top="0" left="0" width='calc(150% + 180px)' height='100' z='0'
+					bg-image="{{data.content.track.artwork_url}}|top left|cover|repeat"
+					u init-with="p:[op:0, tr:none]"
+					on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f]"
+					when-viz-play="a:[translateX:0%:-39%:50000:linear:0:1:f]">
+					<!-- <img absolute top="0" left="0" z="0" width='100' ng-src="{{content.track.artwork_url}}"/> -->
+				</div>
+	            <div relative z="1"
+					u init-with="p:[tr:none]"
+					when-viz-play="a:[translateX:0%:-39%:50000:linear:0:1:f]">
 					<div row y-end relative m-left="100px">
 						<!-- u when-viz-play="s:[bar-play:public:linear-500000]" -->
-						<viz-bar u-list="sample in ::data.content.viz.samples.slice(0, 100)" sample="::sample"></viz-bar>
+						<viz-bar u-list="sample in ::data.content.viz.samples.slice(0, 300)" sample="::sample"></viz-bar>
 					</div>
 					<div row y-start m-left="100px">
-						<!-- u on-init="p:[tro:top left, tr:scaleY(0.5), op:0.3]"
-						when-viz-play="s:[bar-play-2:public:linear-500000]" -->
-						<viz-bar u-list="sample in ::data.content.viz.samples.slice(0, 100)" sample="::sample"></viz-bar>
+						<viz-bar-alt u-list="sample in ::data.content.viz.samples.slice(0, 300)" sample="::sample"></viz-bar-alt>
 					</div>
 				</div>
-				<footer s-b y-center fixed z="100" bottom="0" left="0" width="100%">
+				<footer s-b y-center fixed z="100" bottom="0" left="0" width="100%"
+					u on-init="s:[viz-btn:children:linear-2000]:delay-1000">
 					<ul row p="13px">
-						<li p="1px">
+						<li p="1px"
+							u init-with="p:[op:0]"
+							when-viz-btn="a:[slideInUp-subtle:1000:linear:0:1:f]">
 							<a flex y-center rad="2px" p="2px 5px" bg="charcoal-90p" class="svg-24 svg-white svg-stroke-6">
 								<!-- u on-click="s:[heart-it:public]" -->
 								<!-- <graphic url='shared/templates/components/svg/main/heart.html'
@@ -35,7 +40,9 @@
 								<!-- <span f-s="16" f-w="600" m-left="2px">{{content.track.likes_count}}</span> -->
 							</a>
 						</li>
-						<li p="1px">
+						<li p="1px"
+							u init-with="p:[op:0]"
+							when-viz-btn="a:[slideInUp-subtle:1000:linear:0:1:f]">
 							<a flex y-center rad="2px" p="2px 5px" bg="charcoal-90p" class="svg-24 svg-white svg-stroke-6">
 								<!-- <graphic url="shared/templates/components/svg/main/share.html"> </graphic> -->
 								<svg viewBox="0 0 100 100">
@@ -43,7 +50,9 @@
 								</svg>
 							</a>
 						</li>
-						<li p="1px">
+						<li p="1px"
+							u init-with="p:[op:0]"
+							when-viz-btn="a:[slideInUp-subtle:1000:linear:0:1:f]">
 							<a flex y-center rad="2px" p="2px 5px" bg="charcoal-90p" class="svg-24 svg-white svg-stroke-6">
 								<!-- <graphic url='shared/templates/components/svg/main/more.html'> </graphic> -->
 								<svg viewBox="0 0 100 100">
@@ -56,7 +65,9 @@
 							</a>
 						</li>
 					</ul>
-					<a flex f-s="16px" f-w="600" m-right="15px">Hide</a>
+					<a flex f-s="16px" f-w="600" m-right="15px"
+						u init-with="p:[op:0]"
+						when-viz-btn="a:[slideInUp-subtle:1000:linear:0:1:f]">Hide</a>
 				</footer>
 	        </div>
 
