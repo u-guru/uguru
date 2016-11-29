@@ -7,7 +7,11 @@
             "list": [
                 {
                     "title": "List o' numbers",
-                    "html": "<div u-list='num in [1,2,3,4,5]' x-center y-center w='48px' h='48px' m='6px' bg='sienna' border='2px solid white' rad='2px' f-s='24px' f-w='600'>{{num}}</div>"
+                    "html": "<orange-box u-list='num in [1,2,3,4,5]' contents='num'></orange-box>"
+                },
+                {
+                    "title": "List o' reversed numbers",
+                    "html": "<orange-box u-list='num in [1,2,3,4,5]:reverse' contents='num'></orange-box>"
                 },
                 {
                     "title": "List o' strings",
@@ -16,6 +20,34 @@
                 {
                     "title": "List o' dictionaries",
                     "html": "<div u-list='rgba_item in [{rgb:\"255, 255, 255\", opacity: 0.5}, {rgb:\"0, 0, 0\", opacity: 0.8}]' row y-center h='48px' p='12px' m='6px' bg='sienna' border='2px solid white' rad='2px' f-s='24px' f-w='600' width='100'><div class='width-24 height-24 radius-2' style='background-color:rgba({{rgba_item.rgb}},{{rgba_item.opacity}})'></div><div width='calc(100% - 48px)' m-left='12px' f-s='14px' f-w='600'>rgb({{rgba_item.rgb}}), opacity: {{rgba_item.opacity}}</div></div>"
+                },
+                {
+                    "title": "Nested List - 4×3 grid",
+                    "html": "<div row><div u-list='y in [1,2,3,4]'><orange-box u-list='x in [1,2,3,4]' contents='y + \",\" + x'></orange-box></div></div>"
+                },
+                {
+                    "title": "Extra Index Variable",
+                    "html": "<div f-w='600' u-list='num in [10,9,8,7,6,5,4,3,2,1]'>{{$index}},</div>"
+                },
+                {
+                    "title": "Random",
+                    "html": "<example/>"
+                },
+                {
+                    "title": "Lorem Ipsum",
+                    "html": "<example/>"
+                },
+                {
+                    "title": "Alphabet",
+                    "html": "<example/>"
+                },
+                {
+                    "title": "Filter",
+                    "html": "<example/>"
+                },
+                {
+                    "title": "Order",
+                    "html": "<example/>"
                 }
 
             ]
@@ -60,6 +92,14 @@
                 }]
     },
     "components": {
+        "orange-box": {
+            "template_url": "./ui/templates/concepts/list/components/orange-box.tpl",
+            "data": {
+                "external": {
+                    "contents": "var"
+                }
+            }
+        },
         "list-item-example-one": {
             "template_url": "./ui/templates/concepts/list/components/list-item-example.tpl",
             "data": {

@@ -26,8 +26,33 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
     registerDirectives: registerDirectives,
     detectDataType: detectDataType,
     dataMappings: dataMappings,
-    dataCache: dataCache
+    dataCache: dataCache,
+    applyListParams: getApplyListParamsFunc($rootScope)
+  }
 
+  function getApplyListParamsFunc(root) {
+    instantiateRootListFunctions(root);
+    return function(list_str, root) {
+
+      var resultStr = '';
+      var listVarSplit = list_str.split(' in ');
+      var list = {};
+      list.var = listVarSplit[0];
+      list.arr = listVarSplit[1]
+      if (list_str.indexOf(':reverse') > -1) {
+        list.arr = list.arr.replace(':reverse', '') + '.reverse()';
+      }
+
+
+      return [list.var, list.arr].join(' in ') + ' track by ($index + 1)';
+    }
+  }
+
+  function instantiateRootListFunctions(root) {
+    if (!('list' in root)) root.list = {};
+    root.list.incrementIndexByOne = function($index) {
+      return $index + 1;
+    }
   }
 
   function detectDataType(element, data_attr) {
@@ -419,6 +444,7 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
         },
         link: function(scope, element, attr, ctrl, transclude) {
             processScopeVars(scope, attr);
+
             // element.append()
             // var e = transclude(scope, function(transEl, transScope) {
             //   console.log(transEl)
@@ -433,6 +459,7 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
   }
 
   function processScopeVars(scope, attr) {
+
     for (attr_name in attr.$attr) {
       if (attr_name in scope) {
         if (typeof scope[attr_name] === 'function') {
