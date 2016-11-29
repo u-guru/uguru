@@ -24,7 +24,7 @@
 					</div>
 				</div>
 				<footer s-b y-center fixed z="100" bottom="0" left="0" width="100%"
-					u on-init="s:[viz-btn:children:linear-2000]:delay-1000">
+					u on-init="s:[viz-btn:children:linear-600]:delay-4000">
 					<ul row p="13px">
 						<li p="1px"
 							u init-with="p:[op:0]"
@@ -71,16 +71,21 @@
 				</footer>
 	        </div>
 
-	        <ul relative z="1" p="10px">
-				<li p="5px">
+	        <ul relative z="1" p="10px"
+				u on-init="s:[viz-title:children:linear-400]:delay-4600">
+				<li p="5px"
+					u init-with="p:[op:0]"
+					when-viz-title="a:[slideInDown-subtle:1000:linear:0:1:f]">
 					<h2 bg="charcoal" z="1" f-s="18px" rad="2px" p="2px 5px" class='inline-block'>
-		                <!-- {{content.track.publisher_metadata.artist}} -->
+		                {{data.content.track.publisher_metadata.artist}}
 		            </h2>
 				</li>
-	            <li p="5px">
+	            <li p="5px"
+					u init-with="p:[op:0]"
+					when-viz-title="a:[slideInDown-subtle:1000:linear:0:1:f]">
 					<h1 bg="charcoal" z="1" f-s="28px" rad="2px" p="2px 5px" class='inline-block'>
 		                <!-- {{content.track.title}} -->
-						<!-- <a href="{{content.track.permalink_url}}">{{content.track.title}}</a> -->
+						<a href="{{data.content.track.permalink_url}}">{{data.content.track.title}}</a>
 		            </h1>
 				</li>
 	        </ul>
