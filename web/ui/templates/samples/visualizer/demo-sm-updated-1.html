@@ -5,11 +5,11 @@
 
     <div width="100" height="100" y-center scroll-x>
 
-        <viz-bar ng-repeat="sample in ::data.content.viz.samples |limitTo:300 track by $index" sample="::sample"> </viz-bar>
+        <viz-bar ng-repeat="sample in ::data.content.viz.samples |limitTo:200 track by $index" sample="::sample"> </viz-bar>
         <!-- <viz-bar u-list="sample in ::data.content.viz.samples |limitTo:200" sample="::sample"> </viz-bar> -->
         <!-- <viz-bar ng-repeat="sample in ::data.content.viz.samples |limitTo:200 track by $index" sample="::sample"> </viz-bar> -->
 
-        <div width="25%" column x='end' height="5px" bg="sienna"
+        <div width="25%" height="5px" bg="sienna"
 			u init-with="p:[transform:scaleX(4),tro:100% 0]" on-init="a:[scaleX:4:1:250:easeOutBounce:0:1:f]"></div>
 
     </div>
