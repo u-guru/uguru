@@ -1979,7 +1979,7 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             replace:true,
             template: function(element, attr) {
                 element[0].removeAttribute('u-list');
-                element[0].setAttribute('ng-repeat', attr.uList)
+                element[0].setAttribute('ng-repeat', attr.uList + ' track by $index');
                 return element[0].outerHTML;
             }
             // compile: function(element, attr) {

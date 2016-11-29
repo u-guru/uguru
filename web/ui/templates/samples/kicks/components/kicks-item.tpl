@@ -1,26 +1,26 @@
 <div rad="2px" hide-x hide-y>
 	<div rel>
 		<div rel z="0">
-			<h1 height="56px" p="6px" y-center x-center bg="white-25p" f-s="16px" f-w="600" color="white" caps t-a="center" class="caps txt-white txt-center">{{shoes.shoe_name}}</h1>
+			<h1 height="56px" p="6px" y-center x-center bg="white-25p" f-s="16px" f-w="600" color="white" caps t-a="center" class="caps txt-white txt-center">{{shoe.shoe_name}}</h1>
 			<div bg="white">
 				<figure>
-					<img w="100%" ng-src="{{shoes.shoe_img_url || 'https://s3.amazonaws.com/images.kicksfinder.com/products/thumbs/fa18a2cd21293cabfaf5764061c9557b_1479326228.jpg'}}"/>
+					<img w="100%" ng-src="{{shoe.shoe_img_url || 'http://cdn.sneakernews.com/wp-content/themes/sneakernews/images/sneakernews-p2/release-page-image.jpg'}}"/>
 				</figure>
 				<ul y-center p="6px" f-s="14px" f-w="600">
 					<li p="6px">
-						<div p="3px 6px" bg="sienna" rad="2px">${{shoes.shoe_price}}</div>
+						<div p="3px 6px" bg="sienna" rad="2px">${{shoe.shoe_price || '0+'}}</div>
 					</li>
 					<li p="6px 0" w="100%">
-						<rating-stars custom data-rating="{{shoes.shoe_rating || '4.2'}}"></rating-stars>
+						<rating-stars data-rating="{{shoe.shoe_rating || '0'}}"></rating-stars>
 					</li>
 					<li p="6px">
-						<div p="3px 6px" bg="stone" rad="2px">{{shoes.release_month}}&middot;{{shoes.release_day}}&middot;{{shoes.release_year}}</div>
+						<div p="3px 6px" bg="stone" rad="2px">{{shoe.release_month || '01'}}&middot;{{shoe.release_day || '01'}}&middot;{{shoe.release_year || '16'}}</div>
 					</li>
 				</ul>
 			</div>
 		</div>
 		<a abs z="10" top="0" left="0" width="100" height="100" bg="stone-90p"
-			href="{{shoes.shoe_url || 'http://sneakernews.com/2016/11/01/nike-kobe-ad-release-date-and-price/'}}"
+			href="{{shoe.shoe_url}}" target="_blank"
 			u init-with="p:[op:0]"
 			on-mouseenter="p:[op:1]"
 			on-mouseover="p:[op:1]"

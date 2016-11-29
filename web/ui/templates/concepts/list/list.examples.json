@@ -1,0 +1,81 @@
+{
+    "vars": {
+        "components": {
+            "columns": ["Html", "output"]
+        },
+        "examples": {
+            "list": [
+                {
+                    "title": "Base List",
+                    "html": "<div u-list='num in [1,2,3,4,5]' x-center y-center w='48px' h='48px' m='6px' bg='sienna' border='2px solid white' rad='2px' f-s='24px' f-w='600'>{{num}}</div>"
+                },
+                {
+                    "title": "Example #2",
+                    "html": "<div u-list=\"person in ['sam', 'nate', 'mary', 'kate']\" x-center y-center p-x='12px' h='48px' m='6px' bg='sienna' border='2px solid white' rad='2px' f-s='24px' f-w='600'>{{person}}</div>"
+                },
+                {
+                    "title": "Example #2",
+                    "html": "<div u-list='rgba_item in [{rgb:\"(255, 255, 255)\", opacity: 0.5}]' x-center y-center h='48px' p-x='12px' m='6px' bg='sienna' border='2px solid white' rad='2px' f-s='24px' f-w='600'>{{rgba_item.rgb}}, {{rgba_item.opacity}} </div>"
+                }
+
+            ]
+        }
+    },
+    "config": {
+        "pathParams": {},
+        "base_url": "^",
+        "parse": {
+            "float": ["content.track.duration"]
+        },
+        "scripts": {
+            "base": "https://",
+            "queue": [
+                {
+                    "path": "s3-us-west-1.amazonaws.com/ui-guru/samples/soundcloud.json",
+                    "mappings": [
+                    {
+                        "from": "collection[1].track",
+                        "to":"content.track"
+                    }
+                    ]
+                },
+                {
+                    "path": "wis.sndcdn.com/xeXS8StuaDqa_m.json",
+                    "mappings": [
+                        {
+                            "to":"content.viz"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "content": {
+        "client": {
+            "setup": {},
+            "components": {}
+        },
+        "examples": [{
+                    "html": "<div u-list='rgba_item in [{rgb:(255, 255, 255), opacity: 0.5}]>"
+                }]
+    },
+    "components": {
+        "list-item-example-one": {
+            "template_url": "./ui/templates/concepts/list/components/list-item-example.tpl",
+            "data": {
+                "external": {
+                    "example": "var"
+                }
+            }
+        },
+        "list-item-example-two": {
+            "template_url": "./ui/templates/concepts/list/components/list-item-example.tpl",
+            "data": {
+                "external": {
+                    "html": "var",
+                    "title": "var"
+                }
+            }
+        }
+    }
+}

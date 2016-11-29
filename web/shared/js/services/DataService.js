@@ -384,7 +384,7 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
         if (['dict'].indexOf(vars.external[var_name]) > -1) {
           resultScope[var_name] =  '<' + var_name;
         }
-        else if (vars.external[var_name] === 'scope') {
+        else if (vars.external[var_name] === 'var') {
           resultScope[var_name] = '=' + var_name;
         } else {
           resultScope[var_name] = '@' + var_name;
