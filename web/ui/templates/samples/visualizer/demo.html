@@ -78,15 +78,13 @@
 			            </h1>
 					</li>
 		        </ul>
-				<ul p="10px">
-					<li p="5px"
-						u init-with="p:[op:0]"
-						on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f]">
-						<div bg="sienna" padding="2px" rad="2px">
-							<img width='100px' height="100px" rad="1px" ng-src="{{data.content.track.artwork_url}}"/>
-						</div>
-					</li>
-				</ul>
+				<div p="15px"
+					u init-with="p:[op:0]"
+					when-viz-title="a:[slideInDown-subtle:1000:linear:200:1:f]">
+					<div bg="sienna" padding="2px" rad="2px">
+						<img width='100px' height="100px" rad="1px" ng-src="{{data.content.track.artwork_url}}"/>
+					</div>
+				</div>
 			</header>
 	    </div>
 	</div>
