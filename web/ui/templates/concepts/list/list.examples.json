@@ -15,7 +15,7 @@
                 },
                 {
                     "title": "List o' dictionaries",
-                    "html": "<div u-list='rgba_item in [{rgb:\"255, 255, 255\", opacity: 0.5}, {rgb:\"0, 0, 0\", opacity: 0.8}]' x-center y-center h='48px' p-x='12px' m='6px' bg='sienna' border='2px solid white' rad='2px' f-s='24px' f-w='600'  y='center' width='100'> <div stretch  grow='3' width='50px' style='background-color:rgba({{rgba_item.rgb}},{{rgba_item.opacity}})'>&nbsp;&nbsp;&nbsp;&nbsp;</div><div width='75%' p='6px' f-s='12px'>rgb: {{rgba_item.rgb}}, <br>opacity: {{rgba_item.opacity}}</div></div>"
+                    "html": "<div u-list='rgba_item in [{rgb:\"255, 255, 255\", opacity: 0.5}, {rgb:\"0, 0, 0\", opacity: 0.8}]' row y-center h='48px' p='12px' m='6px' bg='sienna' border='2px solid white' rad='2px' f-s='24px' f-w='600' width='100'><div class='width-24 height-24 radius-2' style='background-color:rgba({{rgba_item.rgb}},{{rgba_item.opacity}})'></div><div width='calc(100% - 48px)' m-left='12px' f-s='14px' f-w='600'>rgb({{rgba_item.rgb}}), opacity: {{rgba_item.opacity}}</div></div>"
                 }
 
             ]

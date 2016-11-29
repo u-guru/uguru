@@ -2069,7 +2069,7 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
                 var language = attr.language || 'markup';
 
                 var elem = Prism.highlight(scope.html, Prism.languages[language]);
-                var codeElem = angular.element('<code class="language-' + language + '"></code>');
+                var codeElem = angular.element('<pre class="formatted language-' + language + '"></pre>');
                 codeElem.append(angular.element(elem));
                 element.replaceWith(codeElem);
 

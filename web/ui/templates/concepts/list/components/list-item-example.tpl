@@ -9,11 +9,7 @@
             <header bg="stone" border-bottom="2px solid white" class="border-2-bottom">
                 <h1 p="10px" f-s="18px" f-w="600" bg="white-10p">HTML</h1>
             </header>
-            <div p='6px' f-s="12px" wrap>
-                <html-snippet language="markup" html='example.html'></html-snippet>
-
-            </div>
-
+            <html-snippet language="markup" html='example.html'></html-snippet>
         </div>
         <div width="50" border="1px solid white" bg="charcoal-25p">
             <header bg="stone" border-bottom="2px solid white" class="border-2-bottom">
