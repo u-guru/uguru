@@ -9,10 +9,10 @@
         "base_url": "^",
         "parse": {},
         "scripts": {
-            "base": "http://",
+            "base": "./ui/templates/samples/kicks/",
             "queue": [
                 {
-                    "path": "192.168.20.165:5000/static/shoes.json",
+                    "path": "shoes.json",
                     "mappings": [
 						{
 							"to":"content.shoes"
