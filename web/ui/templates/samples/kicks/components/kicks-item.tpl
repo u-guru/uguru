@@ -14,7 +14,7 @@
 						<rating-stars data-rating="{{shoe.shoe_rating || '0'}}"></rating-stars>
 					</li>
 					<li p="6px">
-						<div p="3px 6px" bg="stone" rad="2px">{{shoe.release_month || '01'}}&middot;{{shoe.release_day || '01'}}&middot;{{shoe.release_year || '16'}}</div>
+						<div p="3px 6px" bg="stone" rad="2px" data-month="{{shoe.release_month || '00'}}">{{shoe.release_month || '00'}}&middot;{{shoe.release_day || '00'}}&middot;{{shoe.release_year || '00'}}</div>
 					</li>
 				</ul>
 			</div>
