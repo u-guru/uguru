@@ -609,12 +609,12 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
                             post_element.removeAttr('ngInclude')
                             post_element.removeAttr('url')
                             $compile(post_element)(post_scope)
-                            // if (post_attr.ngInclude) {
-                            //     if (post_element[0].outerHTML) {
-                            //         post_element.removeAttr('ngInclude')
-                            //     }
+                            if (post_attr.ngInclude) {
+                                if (post_element[0].outerHTML) {
+                                    post_element.removeAttr('ngInclude')
+                                }
 
-                            // }
+                            }
 
                             // console.log(url, post_element[0])
                         }
