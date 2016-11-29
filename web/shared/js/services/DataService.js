@@ -35,16 +35,53 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
     return function(list_str, root) {
 
       var resultStr = '';
-      var listVarSplit = list_str.split(' in ');
+      var listVarSplit = list_str.split(' in ::');
       var list = {};
       list.var = listVarSplit[0];
-      list.arr = listVarSplit[1]
-      if (list_str.indexOf(':reverse') > -1) {
-        list.arr = list.arr.replace(':reverse', '') + '.reverse()';
+      list.arr = listVarSplit[1];
+
+      if (list.arr.indexOf(':') > -1) {
+
+        var fullListArgsSplit = list.arr.split(']:');
+
+        if (fullListArgsSplit.length > 1) {
+          var fullListArgs = fullListArgsSplit[1].split(':');
+          fullListArgs.length && fullListArgs.forEach(function(arg, i) {
+            list.arr = processListArg(list, arg, i)
+          })
+        } else if (list.arr.split("':").length > 1) {
+          var fullListArgsSplit = list.arr.split("':");
+          var fullListArgs = fullListArgsSplit[1].split(':');
+          fullListArgs.length && fullListArgs.forEach(function(arg, i) {
+            list.arr = processListArg(list, arg, i)
+          })
+        }
+
       }
 
 
-      return [list.var, list.arr].join(' in ') + ' track by ($index + 1)';
+      function processListArg(list, list_str, i) {
+        var list_arr = list.arr
+        if (list_str.indexOf('reverse') > -1) {
+          list_arr = list_arr.replace(':reverse', '') + '|'
+        }
+        if (list_str.indexOf('filter') > -1) {
+          list_arr = list_arr.replace(':filter', '')
+        }
+        if (list_str.indexOf('up') > -1) {
+          list_arr = list_arr.replace(':up', '');
+          list_arr = list_arr + ' | orderBy '
+        }
+        if (list_str.indexOf('down') > -1) {
+          list_arr = list_arr.replace(':down', '');
+          list_arr = list_arr + ' | orderBy:reverse:true'
+        }
+
+        return list_arr;
+      }
+
+      console.log([list.var, list.arr].join(' in ::') + ' track by $index')
+      return [list.var, list.arr].join(' in ::').replace(']|',']') + ' track by $index';
     }
   }
 
@@ -509,5 +546,19 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
 
 
   }
-
 }
+
+function generateDataSet(type, length, min, max) {
+
+
+  function generateRandomDataSet() {
+
+  }
+
+  function generateLoremIpsumDataSet() {
+
+  }
+}
+
+
+
