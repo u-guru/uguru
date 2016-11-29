@@ -6,16 +6,16 @@
         "examples": {
             "list": [
                 {
-                    "title": "Base List",
+                    "title": "List o' numbers",
                     "html": "<div u-list='num in [1,2,3,4,5]' x-center y-center w='48px' h='48px' m='6px' bg='sienna' border='2px solid white' rad='2px' f-s='24px' f-w='600'>{{num}}</div>"
                 },
                 {
-                    "title": "Example #2",
+                    "title": "List o' strings",
                     "html": "<div u-list=\"person in ['sam', 'nate', 'mary', 'kate']\" x-center y-center p-x='12px' h='48px' m='6px' bg='sienna' border='2px solid white' rad='2px' f-s='24px' f-w='600'>{{person}}</div>"
                 },
                 {
-                    "title": "Example #2",
-                    "html": "<div u-list='rgba_item in [{rgb:\"(255, 255, 255)\", opacity: 0.5}]' x-center y-center h='48px' p-x='12px' m='6px' bg='sienna' border='2px solid white' rad='2px' f-s='24px' f-w='600'>{{rgba_item.rgb}}, {{rgba_item.opacity}} </div>"
+                    "title": "List o' dictionaries",
+                    "html": "<div u-list='rgba_item in [{rgb:\"255, 255, 255\", opacity: 0.5}, {rgb:\"0, 0, 0\", opacity: 0.8}]' x-center y-center h='48px' p-x='12px' m='6px' bg='sienna' border='2px solid white' rad='2px' f-s='24px' f-w='600'  y='center' width='100'> <div stretch  grow='3' width='50px' style='background-color:rgba({{rgba_item.rgb}},{{rgba_item.opacity}})'>&nbsp;&nbsp;&nbsp;&nbsp;</div><div width='75%' p='6px' f-s='12px'>rgb: {{rgba_item.rgb}}, <br>opacity: {{rgba_item.opacity}}</div></div>"
                 }
 
             ]

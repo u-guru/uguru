@@ -2057,7 +2057,28 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
     //     }
     //   };
     // }])
+
     .directive('htmlSnippet', ['$compile',function($compile) {
+        return {
+            restrict: 'E',
+            scope: {html: '=html'},
+            replace: true,
+            link: function(scope, element, attr, ctrl, transclude) {
+
+
+                var language = attr.language || 'markup';
+
+                var elem = Prism.highlight(scope.html, Prism.languages[language]);
+                var codeElem = angular.element('<code class="language-' + language + '"></code>');
+                codeElem.append(angular.element(elem));
+                element.replaceWith(codeElem);
+
+                // element.contents()
+                // var html =
+            }
+        }
+    }])
+    .directive('htmlRender', ['$compile',function($compile) {
       return {
         restrict: 'E',
         scope: {html: '=html'},
