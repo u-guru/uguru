@@ -8,7 +8,7 @@
 				</figure>
 				<ul y-center p="6px" f-s="14px" f-w="600">
 					<li p="6px">
-						<div p="3px 6px" bg="sienna" rad="2px">${{shoe.shoe_price || '100+'}}</div>
+						<div p="3px 6px" bg="sienna" rad="2px">${{shoe.shoe_price || '0+'}}</div>
 					</li>
 					<li p="6px 0" w="100%">
 						<rating-stars data-rating="{{shoe.shoe_rating || '0'}}"></rating-stars>
