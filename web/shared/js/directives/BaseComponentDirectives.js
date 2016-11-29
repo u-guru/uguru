@@ -1983,18 +1983,6 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
 
                 return element[0].outerHTML;
             }
-
-            // compile: function(element, attr) {
-
-
-
-            //         attr.$set('ngRepeat',   attr.uList + " track by $index");
-
-            //         return function(scope, elem, attr, ctrl, trans) {
-            //             $compile(elem.contents())(scope)
-            //         }
-            // }
-
         }
     }])
     // .directive('uList', ['$rootScope', '$compile', '$parse', function($rootScope, $compile, $parse) {
