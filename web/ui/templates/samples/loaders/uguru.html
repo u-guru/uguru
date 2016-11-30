@@ -1,8 +1,8 @@
 <view link-data="ui/templates/samples/loaders/uguru.json" bg="slate">
 	<div class="loader-portal-outer"
-		u on-init='s:[loader-init:public:1000]'>
+		u on-init='s:[loader-begin:public:1000]'>
 		<div class="loader-portal states"
-			u when-loader-init="s:[portal-open:public]">
+			u when-loader-begin="s:[portal-open:public]">
 			<div class="loader-portal-inside"
 				u init-with="p:[tr:scale(0), tro:50% 90%]"
 				when-portal-open="a:[scale:0:1:250:easeInOutBack:100:1:f]">
