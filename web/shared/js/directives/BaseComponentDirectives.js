@@ -1979,7 +1979,9 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             replace:true,
             template: function(element, attr) {
                 element[0].removeAttribute('u-list');
-                element[0].setAttribute('ng-repeat', DataService.applyListParams(attr.uList.replace('in ', 'in ::')));
+                var uListAttr = attr.uList.replace('in ', 'in ::');
+
+                element[0].setAttribute('ng-repeat', DataService.applyListParams(uListAttr));
 
                 return element[0].outerHTML;
             }
