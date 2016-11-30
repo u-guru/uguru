@@ -1,5 +1,5 @@
 <div class="pf-tile-container"
-	u init-with-disable="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
+	u init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 	on-init="s:[household-cardlet-init:self, hh-bot:depth(>1):250, household-ribbon:depth(2):500]"
 	when-household-cardlet-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f,  translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
 	when-household-cardlet-exit="p:[tro:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]">
@@ -24,7 +24,7 @@
 		on-mousedown="s:[corner-hhd-down:public]"
 		on-mouseup="s:[corner-hhd-up:public]"></a>
 	<div class="pf-cardlet highlight bg-household"
-		u init-with-disable="p:[tro:center center, tr:none]"
+		u init-with="p:[tro:center center, tr:none]"
 		when-corner-hhd-leave="p:[tro:center center, tr:none]"
 		when-corner-hhd-1-enter="p:[t:all 500ms ease-out, tro:bottom right, tr:rotateX(5deg) rotateY(-5deg)]"
 		when-corner-hhd-2-enter="p:[t:all 500ms ease-out, tro:bottom left, tr:rotateX(5deg) rotateY(5deg)]"
@@ -50,7 +50,7 @@
 			</div>
 		</div>
 		<div class="pf-cardlet-back-container"
-			u init-with-disable="p:[tr:translateX(-7.5px) translateY(-7.5px)]"
+			u init-with="p:[tr:translateX(-7.5px) translateY(-7.5px)]"
 			when-household-cardlet-init="a:[translateX:-7.5px:0px:450:easeOutSine:500:1:f, translateY:-7.5px:0px:450:easeOutSine:500:1:f]">
 			<div class="pf-cardlet-back"
 				u when-corner-hhd-leave="p:[tr:none]"
@@ -60,7 +60,7 @@
 			<div class="pf-cardlet-bottom"
 				u when-corner-hhd-enter="p:[t:all 500ms ease-out, tr:translateZ(10px)]"
 				when-corner-hhd-leave="p:[tr:none]">
-				<h1 u init-with-disable="p:[op:0]"
+				<h1 u init-with="p:[op:0]"
 					when-hh-bot="a:[zoom-enter:800:linear:250:1:f]"
 					when-corner-hhd-leave="p:[tr:none]"
 					when-corner-hhd-enter="p:[t:all 500ms ease-out, tr:translateZ(10px)]"
@@ -68,11 +68,11 @@
 					when-corner-hhd-up="p:[t:all 500ms ease-out, tr:translateZ(10px)]">How to Make Your Plants Live Longer</h1>
 				<div>
 					<div class="pf-cardlet-border"
-						u init-with-disable="p:[tr:scale(0), tro:right bottom]"
+						u init-with="p:[tr:scale(0), tro:right bottom]"
 						when-hh-bot="a:[scale:0:1:1000:easeOutBack:0:1:f]">
 						<div></div><div></div><div></div><div></div>
 					</div>
-					<h2 u init-with-disable="p:[op:0]"
+					<h2 u init-with="p:[op:0]"
 						when-hh-bot="a:[opacity:0:1:250:linear:0:1:f]"
 						when-corner-hhd-enter="p:[t:all 500ms ease-out, tr:translateZ(10px)]"
 						when-corner-hhd-leave="p:[tr:none]"
@@ -82,7 +82,7 @@
 			</div>
 		</div>
 		<div class="pf-cardlet-ribbon-container"
-			u init-with-disable="p:[op:0, tr:translateX(-10px)]"
+			u init-with="p:[op:0, tr:translateX(-10px)]"
 			when-household-ribbon="a:[opacity:0:1:250:easeOutSine:0:1:f, translateX:-10px:0px:900:easeOutQuad:500:1:f]">
 			<div class="pf-cardlet-ribbon"
 				u when-corner-hhd-leave="p:[tr:none]"
@@ -91,7 +91,7 @@
 			</div>
 		</div>
 		<div class="pf-cardlet-ribbon-edge-container"
-			u init-with-disable="p:[op:0, tr:translateY(-10px)]"
+			u init-with="p:[op:0, tr:translateY(-10px)]"
 			when-household-ribbon="a:[opacity:0:1:450:linear:800:1:f, translateY:-10px:0px:500:easeOutQuad:1000:1:f]">
 			<div class="pf-cardlet-ribbon-edge"
 				u when-corner-hhd-leave="p:[tr:rotate(45deg)]"
