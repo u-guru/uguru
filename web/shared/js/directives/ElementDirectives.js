@@ -1022,11 +1022,12 @@ angular.module('uguru.shared.directives')
                     // scope.public = scope._public
                     element.ready(function() {
                       console.log('compiling send states for', element)
-                      postStates.forEach(function(state) {
-                        state.exec(lElem, scope, lAttr);
-                      })
-                      SendService.precompileSendActionArgs(states, scope, lElem, lAttr)
+                      // postStates.forEach(function(state) {
+                      //   state.exec(lElem, scope, lAttr);
+                      // })
+
                     })
+
 
                     scope.whenCallbacks = {};
 
@@ -1042,10 +1043,10 @@ angular.module('uguru.shared.directives')
                           //   SendService.prepareToSendMessage(msgNameCamel, message_str, scope);
                           // })
                           // }
-                          if (state.name.indexOf('init') > -1) {
-                            postStates.push(state);
-                            return;
-                          }
+                          // if (state.name.indexOf('init') > -1) {
+                          //   postStates.push(state);
+                          //   return;
+                          // }
                           if (state.actions.debug) {
                             ElementService.launchExternalWindow(state.actions.debug, element);
                           }
@@ -1080,7 +1081,7 @@ angular.module('uguru.shared.directives')
 
 
 
-
+                      SendService.precompileSendActionArgs(states, scope, lElem, lAttr)
 
 
 
