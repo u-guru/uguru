@@ -598,31 +598,31 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             templateUrl: function(element, attr) {
                 return attr.url
             },
-            compile: function compile(element, attr, transclude)  {
+            // compile: function compile(element, attr, transclude)  {
 
-                // CompService.renderAllStyleAttributes(element, attr);
-                var url = attr.url;
-                console.log('it gets here', 2)
-                return {
-                    pre: function(post_scope, post_element, post_attr) {
-                        if (url && url.indexOf('/') > -1 && post_element[0].outerHTML) {
-                            post_element.removeAttr('ngInclude')
-                            post_element.removeAttr('url')
-                            $compile(post_element)(post_scope)
-                            if (post_attr.ngInclude) {
-                                if (post_element[0].outerHTML) {
-                                    post_element.removeAttr('ngInclude')
-                                }
+            //     // CompService.renderAllStyleAttributes(element, attr);
+            //     var url = attr.url;
+            //     console.log('it gets here', 2)
+            //     return {
+            //         pre: function(post_scope, post_element, post_attr) {
+            //             if (url && url.indexOf('/') > -1 && post_element[0].outerHTML) {
+            //                 post_element.removeAttr('ngInclude')
+            //                 post_element.removeAttr('url')
+            //                 // $compile(post_element)(post_scope)
+            //                 // if (post_attr.ngInclude) {
+            //                 //     if (post_element[0].outerHTML) {
+            //                 //         post_element.removeAttr('ngInclude')
+            //                 //     }
 
-                            }
+            //                 // }
 
-                            // console.log(url, post_element[0])
-                        }
-                        if (post_scope.chart) post_scope.chart.elem = post_element;
+            //                 // console.log(url, post_element[0])
+            //             }
+            //             if (post_scope.chart) post_scope.chart.elem = post_element;
 
-                    }
-                }
-            }
+            //         }
+            //     }
+            // }
         }
     }])
 
@@ -1407,8 +1407,9 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
     .directive("view", ["CompService", "$compile", "$rootScope", "$parse", function(CompService, $compile, $rootScope, $parse) {
         return {
             restrict: 'E',
-            priority: 100,
+            priority: 100000,
             replace:true,
+
             compile: function(element, attr, transclude) {
                 CompService.renderAllStyleAttributes(element, attr);
                 element.addClass('flex absolute full-xy');

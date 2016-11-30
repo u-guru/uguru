@@ -907,7 +907,7 @@ angular.module('uguru.shared.directives')
           restrict: 'A',
           replace: false,
           priority:1000000,
-          scope:false,
+          scope:true,
           compile: function(element, attr, transclude) {
             // attr.$set('public', 'public');
             // attr.$set('root', 'root');
@@ -984,7 +984,7 @@ angular.module('uguru.shared.directives')
                         if (state.name === 'init' && state.type === 'on') {
                           states.on.push(state);
                         } else if (state.exec ) {
-                          // console.log('executing', state.actions.prop, state.exec)
+
                           state.exec(element, null, attr)
                         }
                       })
@@ -1021,6 +1021,10 @@ angular.module('uguru.shared.directives')
                     scope.inheritedFromParent = [];
                     // scope.public = scope._public
                     element.ready(function() {
+                      console.log('compiling send states for', element)
+                      postStates.forEach(function(state) {
+                        state.exec(lElem, scope, lAttr);
+                      })
                       SendService.precompileSendActionArgs(states, scope, lElem, lAttr)
                     })
 
@@ -1038,13 +1042,14 @@ angular.module('uguru.shared.directives')
                           //   SendService.prepareToSendMessage(msgNameCamel, message_str, scope);
                           // })
                           // }
-                          // if (state.name.indexOf('init') > -1) {
-                          //   postStates.push(state);
-                          //   return;
-                          // }
+                          if (state.name.indexOf('init') > -1) {
+                            postStates.push(state);
+                            return;
+                          }
                           if (state.actions.debug) {
                             ElementService.launchExternalWindow(state.actions.debug, element);
                           }
+                          console.log('initializing', state.name)
                           state.exec(lElem, scope, lAttr);
                           if (state.name.indexOf('debug') > -1) {
                             ElementService.launchExternalWindow(state.actions.anim.parsed, element);
