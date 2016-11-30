@@ -1409,6 +1409,7 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             restrict: 'E',
             priority: 100000,
             replace:true,
+
             compile: function(element, attr, transclude) {
                 CompService.renderAllStyleAttributes(element, attr);
                 element.addClass('flex absolute full-xy');
