@@ -1,0 +1,30 @@
+{
+    "vars": {},
+    "config": {
+        "pathParams": {},
+        "base_url": "^",
+        "parse": {},
+        "scripts": {
+            "base": "./ui/templates/samples/cards/",
+            "queue": [
+                {
+                    "path": "cardlet.json",
+                    "mappings": [
+						{
+							"to":"content.cardlets"
+						}
+					]
+                }
+            ]
+        }
+    },
+    "content": {},
+    "components": {
+		"rating-stars": {
+            "template_url": "./ui/templates/samples/kicks/components/rating.tpl"
+        },
+		"pf-cardlet-def": {
+            "template_url": "./ui/templates/samples/cards/components/profile-cardlet/default.tpl"
+        }
+	}
+}
