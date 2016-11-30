@@ -1,7 +1,7 @@
 <div class="pf-tile-container"
 	u init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-	on-init="s:[baking-cardlet-init:self, baking-ribbon:depth(2):500]"
-	when-baking-cardlet-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f,  translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
+	on-init="s:[baking-cardlet-init:self]"
+	when-baking-cardlet-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f,  translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f] | s:[baking-ribbon:depth(2):500]"
 	when-baking-cardlet-exit="p:[tro:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]"
 	on-mouse-enter="s:[baking-cardlet-hover:public]"
 	on-mouse-leave="s:[baking-cardlet-leave:public]">
@@ -45,7 +45,8 @@
 		</div>
 		<div class="pf-cardlet-back-container"
 			u init-with="p:[op:0, tr:center center]"
-			when-baking-cardlet-init="a:[baking-cardlet-scaleX-enter:2000:linear:600:1:f]">
+			when-baking-cardlet-init="a:[baking-cardlet-scaleX-enter:2000:linear:600:1:f] | s:[baking-cardlet-fix:self:2350]"
+			when-baking-cardlet-fix="p:[t:all 250ms ease-out, tr:none]">
 			<div class="pf-cardlet-back" bg-image="http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg"
 				u when-corner-bkg-leave="p:[tr:none]"
 				when-corner-bkg-enter="p:[t:all 500ms ease-out, tr:translateZ(-10px)]"></div>

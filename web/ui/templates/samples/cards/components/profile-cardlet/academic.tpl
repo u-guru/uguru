@@ -1,7 +1,7 @@
 <div class="pf-tile-container"
 	u init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-	on-init="s:[academic-cardlet-init:public, academic-ribbon:depth(2):500, aca-cardlet-back:depth(2):500, aca-front:depth(2):750]"
-	when-academic-cardlet-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f,  translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
+	on-init="s:[academic-cardlet-init:self]"
+	when-academic-cardlet-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f,  translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f] | s:[academic-ribbon:depth(2):500, aca-cardlet-back:depth(2):500, aca-front:depth(2):750]"
 	when-academic-cardlet-exit="p:[tro:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]">
 	<a u on-mouseenter="s:[corner-aca-enter:public, corner-aca-1-enter:public]"
 		on-mouseover="s:[corner-aca-enter:public, corner-aca-1-enter:public]"
