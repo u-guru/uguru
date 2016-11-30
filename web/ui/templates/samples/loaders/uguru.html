@@ -1,6 +1,6 @@
 <view link-data="ui/templates/samples/loaders/uguru.json" bg="slate">
 	<div class="loader-portal-outer"
-		u on-init='s:[loader-init:public]'>
+		u on-init='s:[loader-init:public:1000]'>
 		<div class="loader-portal states"
 			u when-loader-init="s:[portal-open:public]">
 			<div class="loader-portal-inside"
@@ -13,8 +13,9 @@
 	                    <svg width="200px" height="200px" viewBox="0 0 400 400">
 	                        <circle cx="200" cy="200" r="192"
 	                            stroke-width="16" fill="#2B3234" stroke-linecap="round" stroke-linejoin="round"
-								u init-with="p:[s:rgba(246,198,78,1), sda:1206.38, sdo:1206.38]"
-	                            when-portal-hover="a:[stroke-dashoffset:1206.38:0:2000:linear:0:1:f, stroke:rgba(246,198,78,1):rgba(105,179,165,1):2000:linear:0:1:f] | s:[portal-complete:public:2000, portal-transform:public:4000]">
+								u init-with="p:[s:rgba(105,179,165,1), sda:1206.38, sdo:1206.38]"
+	                            when-portal-hover="a:[stroke-dashoffset:1206.38:0:2000:linear:0:1:f] | s:[portal-complete:public:2000, portal-transform:public:4000]">
+								<!-- stroke:rgba(246,198,78,1):rgba(105,179,165,1):2000:linear:0:1:f -->
 	                        </circle>
 	                    </svg>
 	                </div>
