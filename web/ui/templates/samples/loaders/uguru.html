@@ -12,16 +12,28 @@
 	                <div>
 	                    <svg width="200px" height="200px" viewBox="0 0 400 400">
 	                        <circle cx="200" cy="200" r="192"
-	                            stroke="#55A4B7" stroke-width="16" fill="#2B3234" stroke-linecap="round" stroke-linejoin="round"
-								u init-with="p:[s:#55A4B7, sda:1206.38, sdo:1206.38]"
-	                            when-portal-hover="a:[portal-progress-color:2000:linear:0:1:f, stroke-dashoffset:1206.38:0:2000:linear:0:1:f] | s:[portal-complete:public:2000, portal-transform:public:4000]">
+	                            stroke-width="16" fill="#2B3234" stroke-linecap="round" stroke-linejoin="round"
+								u init-with="p:[s:rgba(246,198,78,1), sda:1206.38, sdo:1206.38]"
+	                            when-portal-hover="a:[stroke-dashoffset:1206.38:0:2000:linear:0:1:f, stroke:rgba(246,198,78,1):rgba(105,179,165,1):2000:linear:0:1:f] | s:[portal-complete:public:2000, portal-transform:public:4000]">
 	                        </circle>
 	                    </svg>
 	                </div>
 	                <div class="mask"></div>
 	            </div>
-				<loader-logo custom data="{}"></loader-logo>
-				<loader-guru custom data="{}"></loader-guru>
+				<div class="logo"
+					u init-with="p:[tr:translateY(350px) scale(0.5), tro:center center]"
+					when-portal-open="a:[translateY:350px:0px:500:easeOutExpo:0:1:f, scale:0.5:1:500:easeInOutBack:0:1:f]:delay-500"
+					when-portal-complete="a:[translateY:0px:350px:150:easeInOutBack:1000:1:f]">
+					<graphic url="ui/templates/samples/loaders/components/logo-default.html"></graphic>
+				</div>
+				<div class="guru"
+					u init-with="p:[tr:translateY(400px) scale(0.8), tro:center top]"
+					when-portal-open="a:[translateY:400px:45px:500:easeOutBack:0:1:f, scale:0.8:1:500:easeOutBack:0:1:f]:delay-900 | s:[portal-hover:public:950]"
+					when-portal-complete="a:[translateY:45px:400px:200:easeInBack:750:1:f]">
+					<div u init-with="p:[tr:none]" when-portal-hover="a:[l-head-hover:800:linear:0:3:f]">
+						<graphic url="ui/templates/samples/loaders/components/guru-default.html"></graphic>
+					</div>
+				</div>
 			</div>
 		</div>
 
