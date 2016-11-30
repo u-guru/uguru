@@ -36,7 +36,7 @@
 		<!-- ng-if="splash.state.sidebar" -->
 
 		<!-- Madlib -->
-		<warp-madlib custom></warp-madlib>
+		<warp-madlib></warp-madlib>
 		<!-- when-search-university-clicked="p:[opacity:1:0.5:600:easeInOutSine]"
 		when-close-search-university="p:[opacity:0.5:1:600:easeInOutSine]" -->
 
