@@ -115,6 +115,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
     return msgResultArr;
 
     function calcTotalDelay(send_obj, msg) {
+      if (!send_obj.delays.internal) send_obj.delays.internal = {};
       return send_obj.delays.external + (msg in send_obj.delays.internal && send_obj.delays.internal[msg] ||0)
     }
 

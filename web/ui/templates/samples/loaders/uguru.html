@@ -1,4 +1,4 @@
-<view link-data="ui/templates/samples/loaders/uguru.json" bg="slate">
+<view link-data="ui/templates/samples/loaders/uguru.json" render-after-ext-scripts let="vars=data.vars" bg="slate">
 	<div class="loader-portal-outer"
 		u on-init='s:[portal-open:public:1000]'>
 		<div class="loader-portal states">
@@ -48,7 +48,7 @@
 				when-warp-open="a:[-webkit-clip-path:circle(90px at 50% 50%):circle(1500px at 50% 50%):750:(1,0,1,0):0:1:f]"
 				when-warp-transition="p:[-webkit-clip-path:none]">
 				<warp-tunnel></warp-tunnel>
-				<!-- <warp-items></warp-items> -->
+				<warp-items></warp-items>
 			</div>
 		</div>
 	</div>
