@@ -398,7 +398,7 @@
 			on-mouseup="s:[corner-up:public]"></a>
 		<div class="pf-cardlet highlight bg-household">
 			<div class="pf-cardlet-front-container">
-				<div class="pf-cardlet-front" bg-image="http://www.pistilsnursery.com/wp-content/uploads/2014/01/mercantile.jpg">
+				<div class="pf-cardlet-front" bg-image="http://pistilsnursery.com/wp-content/uploads/2016/02/succulents-and-cacti-pistils-nursery.jpg">
 					<div></div><div></div><div></div><div></div>
 					<div class="pf-cardlet-overlay"
 						u when-corner-enter="p:[t:all 500ms ease-out, op:0.2]"
