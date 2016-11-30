@@ -9,19 +9,19 @@
     "content": {},
     "components": {
 		"warp-tunnel": {
-            "template_url": "./ui/templates/samples/uguru/components/warp-tunnel.tpl"
+            "template_url": "./ui/templates/samples/loaders/components/warp-tunnel.tpl"
         },
 		"warp-objects": {
-            "template_url": "./ui/templates/samples/uguru/components/warp-objects.tpl"
+            "template_url": "./ui/templates/samples/loaders/components/warp-objects.tpl"
         },
 		"warp-page": {
-            "template_url": "./ui/templates/samples/uguru/components/warp-page.tpl"
+            "template_url": "./ui/templates/samples/loaders/components/warp-page.tpl"
         },
 		"warp-madlib": {
-            "template_url": "./ui/templates/samples/uguru/components/warp-madlib.tpl"
+            "template_url": "./ui/templates/samples/loaders/components/warp-madlib.tpl"
         },
 		"guru-head": {
-            "template_url": "./ui/templates/samples/uguru/components/guru-head.tpl"
+            "template_url": "./ui/templates/samples/loaders/components/guru-head.tpl"
         }
 	}
 }

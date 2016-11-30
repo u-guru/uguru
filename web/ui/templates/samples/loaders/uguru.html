@@ -1,14 +1,13 @@
 <view link-data="ui/templates/samples/loaders/uguru.json" bg="slate">
 	<div class="loader-portal-outer"
-		u on-init='s:[loader-begin:public:1000]'>
-		<div class="loader-portal states"
-			u when-loader-begin="s:[portal-open:public]">
+		u on-init='s:[portal-open:public:1000]'>
+		<div class="loader-portal states">
 			<div class="loader-portal-inside"
 				u init-with="p:[tr:scale(0), tro:50% 90%]"
 				when-portal-open="a:[scale:0:1:250:easeInOutBack:100:1:f]">
 				<div class="portal"
 	                u init-with="p:[tr:translateY(74px) translateZ(25px) rotateX(75deg)]"
-					when-portal-transform="p:[t:all 650ms cubic-bezier(0.19,1,0.22,1), tr:translateY(-75px) translateZ(0px) rotateX(0deg)]">
+					when-portal-transform="p:[t:all 650ms ease-out, tr:translateY(-75px) translateZ(0px) rotateX(0deg)]">
 	                <!-- when-portal-transform="a:[translateY:74px:-75px:650:easeOutCirc:0:1:f, translateZ:25px:0px:650:easeOutCubic:0:1:f, rotateX:75deg:0deg:650:easeOutSine:0:1:f]"> -->
 	                <!-- when-portal-transform="a:[translateY:74px:-75px:650:linear:0:1:f, translateZ:25px:0px:650:linear:0:1:f, rotateX:75deg:0deg:650:linear:0:1:f]"> -->
 	                <div>
@@ -40,7 +39,7 @@
 			</div>
 		</div>
 
-		<!-- <div class="portal-transition-container"
+		<div class="portal-transition-container"
 			u init-with="p:[width:200px, height:200px, left:50%, top:50%, margin-left:-100px, margin-top:-100px, border-radius:100%, op:0, tr:translateY(20.5%) translateZ(25px) rotateX(84deg)]"
 			when-portal-transform="a:[opacity:0:1:250:easeOutSine:750:1:f, translateY:71.5%:0%:650:easeOutCirc:0:1:f, rotateX:84deg:0deg:650:easeOutSine:0:1:f] | s:[warp-open:public:500]"
 			when-warp-open="p:[width:100%, height:100%, left:0, top:0, margin-left:0, margin-top:0, border-radius:0]">
@@ -49,9 +48,9 @@
 				when-warp-open="a:[-webkit-clip-path:circle(90px at 50% 50%):circle(1500px at 50% 50%):750:(1,0,1,0):0:1:f]"
 				when-warp-transition="p:[-webkit-clip-path:none]">
 				<warp-tunnel custom></warp-tunnel>
-				<warp-items custom></warp-items>
+				<!-- <warp-items custom></warp-items> -->
 			</div>
-		</div> -->
+		</div>
 	</div>
 
 	<!-- <div class="portal-page"

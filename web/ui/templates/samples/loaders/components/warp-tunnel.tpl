@@ -1,4 +1,5 @@
-<div u when-warp-open="s:[warp-transition:public:1000]"
+<div u on-init="s:[warp-open:self]"
+	when-warp-open="s:[warp-transition:public:1000]"
 	when-warp-transition="s:[warp-end:public:700]"
 	when-warp-end="s:[transition-start:public:500]">
 	<div class="warp" style="background: #16293A;">
