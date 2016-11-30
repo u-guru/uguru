@@ -531,6 +531,7 @@ angular.module('uguru.shared.directives')
             if (!$rootScope.activeView) {
                     $rootScope.activeView = {name: attr.linkDataName, data: scope.data};
             }
+
             transclude(scope, function(clone, innerScope) {
 
                 $compile(clone)(innerScope);
@@ -1051,7 +1052,7 @@ angular.module('uguru.shared.directives')
                           if (state.actions.debug) {
                             ElementService.launchExternalWindow(state.actions.debug, element);
                           }
-                          console.log('initializing', state.name)
+
                           state.exec(lElem, scope, lAttr);
                           if (state.name.indexOf('debug') > -1) {
                             ElementService.launchExternalWindow(state.actions.anim.parsed, element);
@@ -1081,8 +1082,13 @@ angular.module('uguru.shared.directives')
                       }
 
 
+                      if (!('root' in scope) && !('root' in scope.$parent)) {
+                        scope.root = {scope: $rootScope};
+                      }
+                      lElem.ready(function() {
+                        SendService.precompileSendActionArgs(states, scope, lElem, lAttr)
+                      })
 
-                      SendService.precompileSendActionArgs(states, scope, lElem, lAttr)
 
 
 

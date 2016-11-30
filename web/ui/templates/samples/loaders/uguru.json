@@ -4,30 +4,42 @@
         "pathParams": {},
         "base_url": "^",
         "parse": {},
-        "scripts": {}
+        "scripts": {
+            "base": "./ui/templates/samples/kicks/",
+            "queue": [
+                {
+                    "path": "shoes.json",
+                    "mappings": [
+                        {
+                            "to":"content.shoes"
+                        }
+                    ]
+                }
+            ]
+        }
 	},
     "content": {},
     "components": {
 		"loader-logo": {
-            "template_url": "./ui/templates/samples/uguru/components/logo.tpl"
+            "template_url": "./ui/templates/samples/uguru/loaders/components/logo.tpl"
         },
 		"loader-guru": {
-            "template_url": "./ui/templates/samples/uguru/components/guru.tpl"
+            "template_url": "./ui/templates/samples/uguru/loaders/components/guru.tpl"
         },
 		"warp-tunnel": {
-            "template_url": "./ui/templates/samples/uguru/components/warp-tunnel.tpl"
+            "template_url": "./ui/templates/samples/uguru/loaders/components/warp-tunnel.tpl"
         },
 		"warp-objects": {
-            "template_url": "./ui/templates/samples/uguru/components/warp-objects.tpl"
+            "template_url": "./ui/templates/samples/uguru/loaders/components/warp-objects.tpl"
         },
 		"warp-page": {
-            "template_url": "./ui/templates/samples/uguru/components/warp-page.tpl"
+            "template_url": "./ui/templates/samples/uguru/loaders/components/warp-page.tpl"
         },
 		"warp-madlib": {
-            "template_url": "./ui/templates/samples/uguru/components/warp-madlib.tpl"
+            "template_url": "./ui/templates/samples/uguru/loaders/components/warp-madlib.tpl"
         },
 		"guru-head": {
-            "template_url": "./ui/templates/samples/uguru/components/guru-head.tpl"
+            "template_url": "./ui/templates/samples/uguru/loaders/components/guru-head.tpl"
         }
 	}
 }
