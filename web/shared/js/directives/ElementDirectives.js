@@ -906,8 +906,9 @@ angular.module('uguru.shared.directives')
       return {
           restrict: 'A',
           replace: false,
-          priority:1000000,
+          priority:100,
           scope:true,
+          require: '?ngInclude',
           compile: function(element, attr, transclude) {
             // attr.$set('public', 'public');
             // attr.$set('root', 'root');

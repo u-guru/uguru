@@ -423,6 +423,12 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function applyAnimArgs(element, scope, animations, context, debug) {
+        if (element[0].nodeName === '#comment') {
+          console.log(scope.elem, element.after(), element.parent().children())
+          return;
+        } else {
+          console.log(element[0])
+        }
         debug = debug || false;
         var stateName = context.type + '-' + context.name;
         var defaults = {"kf":60,"autoPlay":false,"toolbar":{},"hidePlot":false}
@@ -455,6 +461,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         // animations = '[' + animations + ']'
         // console.log('pre condense', animations)
         // animations = condenseAnimationsAndShortcuts(scope, animations);
+
         var state = AnimationFrameService.init.state('', animations, element[0], defaults);
         // console.log(state.props.counter[0])
         // console.log(state)

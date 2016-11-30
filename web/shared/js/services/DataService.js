@@ -500,10 +500,11 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
         replace:true,
         scope: dir_info.scope,
         templateUrl: function(element, attr) {
-          console.log(attr)
+
             return dir_info.templateUrl
         },
         link: function(scope, element, attr, ctrl, transclude) {
+            console.log(dir_info.scope)
             processScopeVars(scope, attr);
 
             // element.append()
