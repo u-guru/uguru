@@ -1976,7 +1976,7 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
     .directive('uList', ['$compile', 'DataService', function($compile, DataService) {
         return {
             restrict: 'A',
-            priority: 10000,
+            priority: 100000000,
             replace:true,
             template: function(element, attr) {
                 element[0].removeAttribute('u-list');
@@ -1985,6 +1985,9 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
                 element[0].setAttribute('ng-repeat', DataService.applyListParams(uListAttr));
 
                 return element[0].outerHTML;
+            },
+            link: function(scope, element, attr) {
+                console.log('yo')
             }
         }
     }])
