@@ -63,7 +63,8 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
       function processListArg(list, list_str, i) {
         var list_arr = list.arr
         if (list_str.indexOf('reverse') > -1) {
-          list_arr = list_arr.replace(':reverse', '') + '|'
+          list_arr = list_arr.replace(':reverse', '');
+          list_arr = list_arr + ' | orderBy:reverse:true'
         }
         if (list_str.indexOf('filter') > -1) {
           list_arr = list_arr.replace(':filter', '')
@@ -76,12 +77,34 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
           list_arr = list_arr.replace(':down', '');
           list_arr = list_arr + ' | orderBy:reverse:true'
         }
+        if (list_str.indexOf('trim') > -1) {
+          var sliceSplit = list_arr.split('trim(')
+          var sliceStr = '';
+          if (sliceSplit.length) {
+            var slicePortion = sliceSplit[1].split(')')[0];
+
+            var sliceStr = ':trim('  + slicePortion + ')';
+            list_arr = list_arr.replace(sliceStr, '');;
+            slicePortion = slicePortion.replace(', ', ',');
+            var sliceParams = slicePortion.split(',');;
+            sliceParams.length && sliceParams.forEach(function(slice_param, i) {
+              sliceParams[i] = parseInt(slice_param);
+            })
+            if (sliceParams.length === 1) {
+              list_arr = list_arr + '| limitTo:' + sliceParams[0];
+            } else {
+              list_arr = list_arr + '.slice(' + sliceParams[0] +  ',' + sliceParams[1] +  ')';
+            }
+          }
+
+          // list_arr = list_arr + ' | orderBy:reverse:true'
+        }
 
         return list_arr;
       }
 
       console.log([list.var, list.arr].join(' in ::') + ' track by $index')
-      return [list.var, list.arr].join(' in ::').replace(']|',']') + ' track by $index';
+      return [list.var, list.arr].join(' in ::') + ' track by $index';
     }
   }
 
