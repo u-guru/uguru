@@ -1,7 +1,4 @@
-<div u on-init="s:[warp-speed:children]"
-	when-warp-open="s:[warp-transition:public:1000]"
-	when-warp-transition="s:[warp-end:public:700]"
-	when-warp-end="s:[transition-start:public:500]">
+<div u on-init="s:[warp-speed:public:2000]">
 	<div class="warp" bg="#16293A">
 		<div class="wrap"
 			u init-with="p:[tr:translateZ(-500px)]"

@@ -23,8 +23,8 @@
 		"warp-tunnel": {
             "template_url": "./ui/templates/samples/loaders/components/warp-tunnel.tpl"
         },
-		"warp-objects": {
-            "template_url": "./ui/templates/samples/loaders/components/warp-objects.tpl"
+		"warp-items": {
+            "template_url": "./ui/templates/samples/loaders/components/warp-items.tpl"
         },
 		"warp-page": {
             "template_url": "./ui/templates/samples/loaders/components/warp-page.tpl"
@@ -34,6 +34,9 @@
         },
 		"guru-head": {
             "template_url": "./ui/templates/samples/loaders/components/guru-head.tpl"
+        },
+		"category-tile": {
+            "template_url": "./ui/templates/samples/loaders/components/category-tile.tpl"
         }
 	}
 }

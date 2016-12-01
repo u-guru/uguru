@@ -47,8 +47,12 @@
 				u init-with="p:[-webkit-clip-path:circle(90px at 50% 50%)]"
 				when-warp-open="a:[-webkit-clip-path:circle(90px at 50% 50%):circle(1500px at 50% 50%):750:(1,0,1,0):0:1:f]"
 				when-warp-transition="p:[-webkit-clip-path:none]">
+				<div u when-warp-open="s:[warp-transition:public:1000]"
+					when-warp-transition="s:[warp-end:public:700]"
+					when-warp-end="s:[transition-start:public:500]">
+				</div>
 				<warp-tunnel></warp-tunnel>
-				<!-- <warp-items></warp-items> -->
+				<warp-items></warp-items>
 			</div>
 		</div>
 	</div>
