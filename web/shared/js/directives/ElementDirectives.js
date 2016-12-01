@@ -1085,8 +1085,12 @@ angular.module('uguru.shared.directives')
                       if (!('root' in scope) && !('root' in scope.$parent)) {
                         scope.root = {scope: $rootScope};
                       }
-
+                      element.ready(function() {
                         SendService.precompileSendActionArgs(states, scope, lElem, lAttr)
+                      })
+
+
+
 
 
 

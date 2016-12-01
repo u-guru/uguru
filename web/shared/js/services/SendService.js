@@ -322,6 +322,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
     scope.outgoing_parsed = [];
     //outgoing step #1
 
+
     msgStates.outgoing.forEach(function(o_state) {
       o_state.parsedMsgArr = parseStateMsgContents(o_state.actions.send);
       o_state.parsedMsgArr.forEach(function(msg_obj, i) {
@@ -332,9 +333,9 @@ function SendService($timeout, $parse, RootService, TweenService) {
       });
     })
 
-    element.ready(function() {
-      msgStates.incoming.forEach(function(i_state) {
-      // console.log(i_state)
+
+        msgStates.incoming.forEach(function(i_state) {
+        // console.log(i_state)
         if (i_state.actions.send && !i_state.parsedObj) {
           i_state.parsedObj = parseStateMsgContents(i_state.actions.send)
         }
@@ -349,7 +350,6 @@ function SendService($timeout, $parse, RootService, TweenService) {
 
 
       })
-    })
 
     return
 
