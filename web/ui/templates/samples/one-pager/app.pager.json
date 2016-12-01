@@ -1,29 +1,30 @@
 {
     "vars": {
+
         "editable": {
             "defaults": {
-                "font": {},
+                "text": {
+                    "color": "charcoal"
+                },
                 "animations": {}
             },
             "nav": {
                 "header": {
-                    "tabs": ["tab 1", "tab 2", "tab 3", "tab 4"],
-                    "menu_url": "ui/templates/one-pager/static/icons/menu.tpl"
+                    "logo": {"text":
+                        {"initial": "SM",
+                        "text": "agency"}
+                    },
+                    "tabs": ["tab 1", "tab 2", "tab 3", "tab 4", "tab 5", "tab6"],
+                    "menu_url": "ui/templates/samples/one-pager/static/icons/menu.tpl",
+                    "cta_button": "Action Button"
                 },
                 "footer": {
                     "about": {
                         "image_url": "",
-                        "name": "Tracy Picardo",
+                        "name": "Your Name",
                         "role": "your profession",
                         "header": null
                     },
-                    "quick_links": [
-                        {"title": "success stories", "url": "http://google.com"},
-                        {"title": "life coaching", "url": "http://google.com"},
-                        {"title": "wife coaching", "url": "http://google.com"},
-                        {"title": "knife coaching", "url": "http://google.com"},
-                        {"title": "i coach all", "url": "http://google.com"}
-                    ],
                     "connect": {
                         "title": null,
                         "icons": [
@@ -39,6 +40,14 @@
                 }
             },
             "sections": {
+                "splash": {
+                    "title": {
+                        "header": "this is a header",
+                        "subheader": "this is a subheader"
+                    }
+                },
+                "lead_gen": {},
+                "programs": {},
                 "testimonials": {},
                 "timeline": {}
             },
@@ -53,6 +62,7 @@
         }
     },
     "config": {
+        "todo": ["item 1", "item 2", "item 3", "item 4"],
         "pathParams": {},
         "base_url": "^",
         "parse": {},
@@ -76,17 +86,34 @@
             "template_url": "./ui/templates/samples/one-pager/components/loader.tpl"
         },
         "header": {
-            "headerData": "var",
+            "data": {
+                "external": {
+                    "header": "var"
+                }
+            },
             "template_url": "./ui/templates/samples/one-pager/containers/header.tpl"
         },
-        "tab": {
-            "tab": "var",
-            "template_url": "./ui/templates/samples/one-pager/components/tab.tpl"
+        "tab-links": {
+            "data": {
+                "external": {
+                    "tabInfo": "var",
+                    "activeTab": "var"
+                }
+            },
+            "template_url": "./ui/templates/samples/one-pager/containers/tab-links.tpl"
+        },
+        "todo-list": {
+            "data": {
+                "external": {
+                    "items": "var"
+                }
+            },
+            "template_url": "./ui/templates/samples/one-pager/components/todo-list.tpl"
         },
         "icon": {
             "data": {
                 "external": {
-                    "iconSrc": "var"
+                    "nav": "var"
                 }
             },
             "template_url": "./ui/templates/samples/one-pager/components/icon.tpl"
@@ -95,7 +122,8 @@
         {
             "data": {
                 "external": {
-                    "text": "string"
+                    "text": "string",
+                    "activeTab": "var"
                 }
             },
             "template_url": "./ui/templates/samples/one-pager/components/logo.tpl"

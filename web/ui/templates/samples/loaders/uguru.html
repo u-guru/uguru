@@ -1,13 +1,14 @@
 <view link-data="ui/templates/samples/loaders/uguru.json" render-after-ext-scripts let="vars=data.vars" bg="slate">
 	<div class="loader-portal-outer"
-		u on-init='s:[portal-open:public:1000]'>
+		u on-init='s:[portal-open:public:2000]'>
 		<div class="loader-portal states">
 			<div class="loader-portal-inside"
 				u init-with="p:[tr:scale(0), tro:50% 90%]"
 				when-portal-open="a:[scale:0:1:250:easeInOutBack:100:1:f]">
 				<div class="portal"
 	                u init-with="p:[tr:translateY(74px) translateZ(25px) rotateX(75deg)]"
-					when-portal-transform="p:[t:all 650ms ease-out, tr:translateY(-75px) translateZ(0px) rotateX(0deg)]">
+	                when-portal-transform="a:[translateY:37%:-37.5%:650:easeOutCirc:0:1:f, translateZ:25px:0px:650:easeOutCubic:0:1:f, rotateX:75deg:0deg:650:easeOutSine:0:1:f]">
+
 	                <!-- when-portal-transform="a:[translateY:74px:-75px:650:easeOutCirc:0:1:f, translateZ:25px:0px:650:easeOutCubic:0:1:f, rotateX:75deg:0deg:650:easeOutSine:0:1:f]"> -->
 	                <!-- when-portal-transform="a:[translateY:74px:-75px:650:linear:0:1:f, translateZ:25px:0px:650:linear:0:1:f, rotateX:75deg:0deg:650:linear:0:1:f]"> -->
 	                <div>
@@ -15,7 +16,7 @@
 	                        <circle cx="200" cy="200" r="192"
 	                            stroke-width="16" fill="#2B3234" stroke-linecap="round" stroke-linejoin="round"
 								u init-with="p:[s:rgba(105,179,165,1), sda:1206.38, sdo:1206.38]"
-	                            when-portal-hover="a:[stroke-dashoffset:1206.38:0:2000:linear:0:1:f] | s:[portal-complete:public:2000, portal-transform:public:4000]">
+	                            when-portal-hover="a:[portal-progress-color:2000:linear:0:1:f, stroke-dashoffset:1206.38:0:2000:linear:0:1:f] | s:[portal-complete:public:2000, portal-transform:public:4000]">
 								<!-- stroke:rgba(246,198,78,1):rgba(105,179,165,1):2000:linear:0:1:f -->
 	                        </circle>
 	                    </svg>
@@ -45,6 +46,8 @@
 			when-warp-open="p:[width:100%, height:100%, left:0, top:0, margin-left:0, margin-top:0, border-radius:0]">
 			<div class="portal-transition" bg="#16293A"
 				u init-with="p:[-webkit-clip-path:circle(90px at 50% 50%)]"
+
+
 				when-warp-open="a:[-webkit-clip-path:circle(90px at 50% 50%):circle(1500px at 50% 50%):750:(1,0,1,0):0:1:f] | s:[warp-transition:public:1000]"
 				when-warp-transition="p:[-webkit-clip-path:none] | s:[transition-start:public:1200]">
 				<warp-tunnel></warp-tunnel>
@@ -75,5 +78,4 @@
 			</div>
 		</div>
 	</div>
-
 </view>

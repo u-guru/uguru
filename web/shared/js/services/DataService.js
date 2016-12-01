@@ -103,7 +103,7 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
         return list_arr;
       }
 
-      console.log([list.var, list.arr].join(' in ::') + ' track by $index')
+      // console.log([list.var, list.arr].join(' in ::') + ' track by $index')
       return [list.var, list.arr].join(' in ::') + ' track by $index';
     }
   }
@@ -484,7 +484,6 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
   function parseScopeVarsByType(var_dict) {
     for (_var_name in var_dict) {
       var value = var_dict[_var_name];
-      console.log(value)
     }
     return var_dict;
 
@@ -492,26 +491,28 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
   }
 
   function registerOneDirective(dir_info) {
-    console.log(dir_info.scope, dir_info.templateUrl)
+    // console.log(dir_info.scope, dir_info.templateUrl)
     componentModule.directive(dir_info.name, [function() {
       var dirObj = {
         restrict: 'E',
-        transclude:'element',
+        transclude: 'element',
         replace:true,
         scope: dir_info.scope,
         templateUrl: function(element, attr) {
-
             return dir_info.templateUrl
         },
-        link: function(scope, element, attr, ctrl, transclude) {
-            console.log(dir_info.scope)
+        link: function preLink(scope, element, attr, ctrl, transclude) {
+          scope.root = scope.$parent.root
+          scope.public = scope.$parent.public;
             processScopeVars(scope, attr);
+
+            // scope.activeTab = scope.$parent.activeTab;
 
             // element.append()
             // var e = transclude(scope, function(transEl, transScope) {
             //   console.log(transEl)
             // })
-            // $compile(e.contents())(scope)
+            // $compile(contents())(scope)
             // element.append(e)
 
           }

@@ -1,1 +1,0 @@
-<tabs layer='5' fixed init-with="p:[opacity:0]" u when-init-view-1="a:[fadeInDown:1250:easeOutCirc:500:1:f]" height='10' import="shared/templates/components/base/tabs.tpl" on-click='s:[modal-lead-init-requested:depth(2)]'> </tabs>
