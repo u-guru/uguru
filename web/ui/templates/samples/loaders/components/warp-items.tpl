@@ -42,105 +42,105 @@
 
 	<div class="warp-object"
 		u init-with="p:[width:240px, height:150px, top:calc(50% - 75px), left:calc(50% - 120px), tr:translateZ(-2000px) rotateZ(135deg) rotateY(40deg) translateX(0px) scale(0.25)]"
-		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:200+500:f, rotateZ:134deg:135deg:750:easeOutCirc:0:200+500:f, rotateY:39deg:40deg:750:easeOutCirc:0:200+500:f, translateX:0px:-1500px:750:easeOutCirc:0:200+500:f, scale:0.25:1:750:easeOutCirc:0:200+500:f]:delay-3000">
+		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:1:f, rotateZ:134deg:135deg:750:easeOutCirc:0:1:f, rotateY:39deg:40deg:750:easeOutCirc:0:1:f, translateX:0px:-1500px:750:easeOutCirc:0:1:f, scale:0.25:1:750:easeOutCirc:0:1:f]:delay-3000">
 		<category-tile></category-tile>
 	</div>
 
 	<div class="warp-object" width="128px" height="128px"
 		u init-with="p:[top:calc(50% - 64px), left:calc(50% - 64px), tr:translateZ(-2000px) rotateZ(90deg) rotateY(40deg) scale(0.25)]"
-		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:200+500:f, rotateZ:89deg:90deg:750:easeOutCirc:0:200+500:f, rotateY:39deg:40deg:750:easeOutCirc:0:200+500:f, translateX:0px:-1500px:750:easeOutCirc:0:200+500:f, scale:0.25:1:750:easeOutCirc:0:200+500:f]:delay-3270">
+		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:1:f, rotateZ:89deg:90deg:750:easeOutCirc:0:1:f, rotateY:39deg:40deg:750:easeOutCirc:0:1:f, translateX:0px:-1500px:750:easeOutCirc:0:1:f, scale:0.25:1:750:easeOutCirc:0:1:f]:delay-3270">
 		<profile-thumb></profile-thumb>
 	</div>
 
 	<div class="warp-object"
 		u init-with="p:[width:240px, height:150px, top:calc(50% - 75px), left:calc(50% - 120px), tr:translateZ(-2000px) rotateZ(45deg) rotateY(40deg) translateX(0px) scale(0.25)]"
-		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:200+500:f, rotateZ:44deg:45deg:750:easeOutCirc:0:200+500:f, rotateY:39deg:40deg:750:easeOutCirc:0:200+500:f, translateX:0px:-1500px:750:easeOutCirc:0:200+500:f scale:0.25:1:750:easeOutCirc:0:200+500:f]:delay-4060">
+		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:1:f, rotateZ:44deg:45deg:750:easeOutCirc:0:1:f, rotateY:39deg:40deg:750:easeOutCirc:0:1:f, translateX:0px:-1500px:750:easeOutCirc:0:1:f scale:0.25:1:750:easeOutCirc:0:1:f]:delay-4060">
 		<student-card></student-card>
 	</div>
 
 	<div class="warp-object"
 		u init-with="p:[width:240px, height:288px, top:calc(50% - 144px), left:calc(50% - 120px), tr:translateZ(-2000px) rotateZ(320deg) rotateY(40deg) scale(0.25)]"
-		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:200+500:f, rotateZ:319deg:320deg:750:easeOutCirc:0:200+500:f, rotateY:39deg:40deg:750:easeOutCirc:0:200+500:f, translateX:0px:-1500px:750:easeOutCirc:0:200+500:f, scale:0.25:1:750:easeOutCirc:0:200+500:f]:delay-3010">
+		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:1:f, rotateZ:319deg:320deg:750:easeOutCirc:0:1:f, rotateY:39deg:40deg:750:easeOutCirc:0:1:f, translateX:0px:-1500px:750:easeOutCirc:0:1:f, scale:0.25:1:750:easeOutCirc:0:1:f]:delay-3010">
 		<pricing-tile></pricing-tile>
 	</div>
 
 	<div class="warp-object"
 		u init-with="p:[width:240px, height:150px, top:calc(50% - 75px), left:calc(50% - 120px), tr:translateZ(-2000px) rotateZ(180deg) rotateY(40deg) scale(0.25)]"
-		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:200+500:f, rotateZ:179deg:180deg:750:easeOutCirc:0:200+500:f, rotateY:39deg:40deg:750:easeOutCirc:0:200+500:f, translateX:0px:-1500px:750:easeOutCirc:0:200+500:f, scale:0.25:1:750:easeOutCirc:0:200+500:f]:delay-2420">
+		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:1:f, rotateZ:179deg:180deg:750:easeOutCirc:0:1:f, rotateY:39deg:40deg:750:easeOutCirc:0:1:f, translateX:0px:-1500px:750:easeOutCirc:0:1:f, scale:0.25:1:750:easeOutCirc:0:1:f]:delay-2420">
 		<credit-card></credit-card>
 	</div>
 
 	<div class="warp-object warp-person"
 		u init-with="p:[tr:translateZ(-2000px) rotateZ(192deg) rotateY(40deg) scale(0.25)]"
-		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:200+500:f, rotateZ:191deg:192deg:750:easeOutCirc:0:200+500:f, rotateY:39deg:40deg:750:easeOutCirc:0:200+500:f, translateX:0px:-1500px:750:easeOutCirc:0:200+500:f, scale:0.25:1:750:easeOutCirc:0:200+500:f]:delay-1805">
+		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:1:f, rotateZ:191deg:192deg:750:easeOutCirc:0:1:f, rotateY:39deg:40deg:750:easeOutCirc:0:1:f, translateX:0px:-1500px:750:easeOutCirc:0:1:f, scale:0.25:1:750:easeOutCirc:0:1:f]:delay-1805">
 		<graphic url="ui/templates/samples/loaders/components/ppl-gabri.html"></graphic>
 	</div>
 
 	<div class="warp-object warp-person"
 		u init-with="p:[tr:translateZ(-2000px) rotateZ(103deg) rotateY(40deg) scale(0.25)]"
-		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:200+500:f, rotateZ:102deg:103deg:750:easeOutCirc:0:200+500:f, rotateY:39deg:40deg:750:easeOutCirc:0:200+500:f, translateX:0px:-1500px:750:easeOutCirc:0:200+500:f, scale:0.25:1:750:easeOutCirc:0:200+500:f]:delay-2044">
+		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:1:f, rotateZ:102deg:103deg:750:easeOutCirc:0:1:f, rotateY:39deg:40deg:750:easeOutCirc:0:1:f, translateX:0px:-1500px:750:easeOutCirc:0:1:f, scale:0.25:1:750:easeOutCirc:0:1:f]:delay-2044">
 		<graphic url="ui/templates/samples/loaders/components/ppl-jeselle.html"></graphic>
 	</div>
 
 	<div class="warp-object warp-person"
 		u init-with="p:[tr:translateZ(-2000px) rotateZ(275deg) rotateY(40deg) scale(0.25)]"
-		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:200+500:f, rotateZ:274deg:275deg:750:easeOutCirc:0:200+500:f, rotateY:39deg:40deg:750:easeOutCirc:0:200+500:f, translateX:0px:-1500px:750:easeOutCirc:0:200+500:f, scale:0.25:1:750:easeOutCirc:0:200+500:f]:delay-3047">
+		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:1:f, rotateZ:274deg:275deg:750:easeOutCirc:0:1:f, rotateY:39deg:40deg:750:easeOutCirc:0:1:f, translateX:0px:-1500px:750:easeOutCirc:0:1:f, scale:0.25:1:750:easeOutCirc:0:1:f]:delay-3047">
 		<graphic url="ui/templates/samples/loaders/components/ppl-music.html"></graphic>
 	</div>
 
 	<div class="warp-object warp-person"
 		u init-with="p:[tr:translateZ(-2000px) rotateZ(352deg) rotateY(40deg) scale(0.25)]"
-		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:200+500:f, rotateZ:351deg:352deg:750:easeOutCirc:0:200+500:f, rotateY:39deg:40deg:750:easeOutCirc:0:200+500:f, translateX:0px:-1500px:750:easeOutCirc:0:200+500:f, scale:0.25:1:750:easeOutCirc:0:200+500:f]:delay-2743">
+		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:1:f, rotateZ:351deg:352deg:750:easeOutCirc:0:1:f, rotateY:39deg:40deg:750:easeOutCirc:0:1:f, translateX:0px:-1500px:750:easeOutCirc:0:1:f, scale:0.25:1:750:easeOutCirc:0:1:f]:delay-2743">
 		<graphic url="ui/templates/samples/loaders/components/ppl-fans.html"></graphic>
 	</div>
 
 	<div class="warp-object warp-person"
 		u init-with="p:[tr:translateZ(-2000px) rotateZ(304deg) rotateY(40deg) scale(0.25)]"
-		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:200+500:f, rotateZ:303deg:304deg:750:easeOutCirc:0:200+500:f, rotateY:39deg:40deg:750:easeOutCirc:0:200+500:f, translateX:0px:-1500px:750:easeOutCirc:0:200+500:f, scale:0.25:1:750:easeOutCirc:0:200+500:f]:delay-1249">
+		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:1:f, rotateZ:303deg:304deg:750:easeOutCirc:0:1:f, rotateY:39deg:40deg:750:easeOutCirc:0:1:f, translateX:0px:-1500px:750:easeOutCirc:0:1:f, scale:0.25:1:750:easeOutCirc:0:1:f]:delay-1249">
 		<graphic url="ui/templates/samples/loaders/components/ppl-dress.html"></graphic>
 	</div>
 
 	<div class="warp-object warp-person"
 		u init-with="p:[tr:translateZ(-2000px) rotateZ(18deg) rotateY(40deg) scale(0.25)]"
-		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:200+500:f, rotateZ:17deg:18deg:750:easeOutCirc:0:200+500:f, rotateY:39deg:40deg:750:easeOutCirc:0:200+500:f, translateX:0px:-1500px:750:easeOutCirc:0:200+500:f, scale:0.25:1:750:easeOutCirc:0:200+500:f]:delay-3045">
+		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:1:f, rotateZ:17deg:18deg:750:easeOutCirc:0:1:f, rotateY:39deg:40deg:750:easeOutCirc:0:1:f, translateX:0px:-1500px:750:easeOutCirc:0:1:f, scale:0.25:1:750:easeOutCirc:0:1:f]:delay-3045">
 		<graphic url="ui/templates/samples/loaders/components/ppl-bald.html"></graphic>
 	</div>
 
 	<div class="warp-object warp-person"
 		u init-with="p:[tr:translateZ(-2000px) rotateZ(204deg) rotateY(40deg) scale(0.25)]"
-		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:200+500:f, rotateZ:203deg:204deg:750:easeOutCirc:0:200+500:f, rotateY:39deg:40deg:750:easeOutCirc:0:200+500:f, translateX:0px:-1500px:750:easeOutCirc:0:200+500:f, scale:0.25:1:750:easeOutCirc:0:200+500:f]:delay-2004">
+		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:1:f, rotateZ:203deg:204deg:750:easeOutCirc:0:1:f, rotateY:39deg:40deg:750:easeOutCirc:0:1:f, translateX:0px:-1500px:750:easeOutCirc:0:1:f, scale:0.25:1:750:easeOutCirc:0:1:f]:delay-2004">
 		<graphic url="ui/templates/samples/loaders/components/ppl-blonde.html"></graphic>
 	</div>
 
 	<div class="warp-object warp-person"
 		u init-with="p:[tr:translateZ(-2000px) rotateZ(199deg) rotateY(40deg) scale(0.25)]"
-		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:200+500:f, rotateZ:198deg:199deg:750:easeOutCirc:0:200+500:f, rotateY:39deg:40deg:750:easeOutCirc:0:200+500:f, translateX:0px:-1500px:750:easeOutCirc:0:200+500:f, scale:0.25:1:750:easeOutCirc:0:200+500:f]:delay-1056">
+		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:1:f, rotateZ:198deg:199deg:750:easeOutCirc:0:1:f, rotateY:39deg:40deg:750:easeOutCirc:0:1:f, translateX:0px:-1500px:750:easeOutCirc:0:1:f, scale:0.25:1:750:easeOutCirc:0:1:f]:delay-1056">
 		<graphic url="ui/templates/samples/loaders/components/ppl-chubby.html"></graphic>
 	</div>
 
 	<div class="warp-vehicle truck-vehicle"
 		u init-with="p:[transform:rotate(-45deg) translateX(-500px)]"
-		when-warp-vehicles-start="a:[translateZ:0px:-1000px:750:easeOutCirc:0:200+500:f, rotate:-44deg:-45deg:750:easeOutCirc:0:200+500:f, translateX:-500px:-50px:750:easeOutCirc:0:200+500:f, scale:1:0:750:easeOutCirc:0:200+500:f]">
+		when-warp-vehicles-start="a:[translateZ:0px:-1000px:750:easeOutCirc:0:1:f, rotate:-44deg:-45deg:750:easeOutCirc:0:1:f, translateX:-500px:-50px:750:easeOutCirc:0:1:f, scale:1:0:750:easeOutCirc:0:1:f]">
 		<div u init-with="p:[tro:center center]"
-			when-warp-vehicles-start="a:[travel-shake:150:linear:0:200:f]">
+			when-warp-vehicles-start="a:[travel-shake:150:linear:0:1:f]">
 			<graphic url="ui/templates/samples/loaders/components/car-truck.html"></graphic>
 		</div>
 	</div>
 
 	<div class="warp-vehicle pew-vehicle"
 		u init-with="p:[transform:rotate(50deg) translateX(500px)]"
-		when-warp-vehicles-init="a:[translateZ:0px:-1000px:950:easeOutCirc:0:200+700:f, rotate:50deg:40deg:950:easeOutCirc:0:200+700:f, translateX:500px:50px:950:easeOutCirc:0:200+700:f, scale:1:0:950:easeOutCirc:0:200+700:f]">
+		when-warp-vehicles-start="a:[translateZ:0px:-1000px:950:easeOutCirc:0:1:f, rotate:50deg:40deg:950:easeOutCirc:0:1:f, translateX:500px:50px:950:easeOutCirc:0:1:f, scale:1:0:950:easeOutCirc:0:1:f]">
 		<div u init-with="p:[tro:center center]"
-			when-warp-vehicles-start="a:[travel-shake:150:linear:0:200:f]">
+			when-warp-vehicles-start="a:[travel-shake:150:linear:0:1:f]">
 			<graphic url="ui/templates/samples/loaders/components/car-pew.html"></graphic>
 		</div>
 	</div>
 
 	<div class="warp-vehicle rocket-vehicle"
 		u init-with="p:[transform:translateX(300px) translateY(-200px) rotate(-120deg)]"
-		when-warp-vehicles-init="a:[translateZ:0px:-1000px:1250:easeOutCirc:0:200+900:f, translateX:300px:0px:1250:easeOutCirc:0:200+900:f, translateY:-200px:0px:1250:easeOutExpo:0:200+900:f, rotate:-119deg:-120deg:1250:easeOutCirc:0:200+900:f, scale:1:0:1250:easeOutCirc:0:200+900:f]">
+		when-warp-vehicles-start="a:[translateZ:0px:-1000px:1250:easeOutCirc:0:1:f, translateX:300px:0px:1250:easeOutCirc:0:1:f, translateY:-200px:0px:1250:easeOutExpo:0:1:f, rotate:-119deg:-120deg:1250:easeOutCirc:0:1:f, scale:1:0:1250:easeOutCirc:0:1:f]">
 		<div u init-with="p:[tro:center center]"
-			when-warp-vehicles-start="a:[travel-shake:150:linear:0:200:f]">
+			when-warp-vehicles-start="a:[travel-shake:150:linear:0:1:f]">
 			<graphic url="ui/templates/samples/loaders/components/car-rocket.html"></graphic>
 		</div>
 	</div>
