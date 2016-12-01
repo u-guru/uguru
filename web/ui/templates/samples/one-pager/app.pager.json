@@ -1,0 +1,104 @@
+{
+    "vars": {
+        "editable": {
+            "defaults": {
+                "font": {},
+                "animations": {}
+            },
+            "nav": {
+                "header": {
+                    "tabs": ["tab 1", "tab 2", "tab 3", "tab 4"],
+                    "menu_url": "ui/templates/one-pager/static/icons/menu.tpl"
+                },
+                "footer": {
+                    "about": {
+                        "image_url": "",
+                        "name": "Tracy Picardo",
+                        "role": "your profession",
+                        "header": null
+                    },
+                    "quick_links": [
+                        {"title": "success stories", "url": "http://google.com"},
+                        {"title": "life coaching", "url": "http://google.com"},
+                        {"title": "wife coaching", "url": "http://google.com"},
+                        {"title": "knife coaching", "url": "http://google.com"},
+                        {"title": "i coach all", "url": "http://google.com"}
+                    ],
+                    "connect": {
+                        "title": null,
+                        "icons": [
+                            {"graphic": "ui/templates/one-pager/static/icons/facebook.tpl", "url": "http://google.com"},
+                            {"graphic": "ui/templates/one-pager/static/icons/linked_in.tpl", "url": "http://google.com"},
+                            {"graphic": "ui/templates/one-pager/static/icons/instagram.tpl", "url": "http://google.com"},
+                            {"graphic": "ui/templates/one-pager/static/icons/twitter.tpl", "url": "http://google.com"}
+                        ]
+                    }
+                },
+                "sidebar": {
+                    "links": ["Link 1", "Link 2", "Link 3", "Link 4"]
+                }
+            },
+            "sections": {
+                "testimonials": {},
+                "timeline": {}
+            },
+            "modals": {
+                "booking": {
+                    "my_availability": [
+                        {"day": 30, "month": "11", "hour_ranges": [15, 17]}
+                    ]
+                }
+            }
+
+        }
+    },
+    "config": {
+        "pathParams": {},
+        "base_url": "^",
+        "parse": {},
+        "scripts": {
+            "base": "./ui/templates/samples/kicks/",
+            "queue": [
+                {
+                    "path": "shoes.json",
+                    "mappings": [
+                        {
+                            "to":"content.shoes"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "content": {},
+    "components": {
+        "loader": {
+            "template_url": "./ui/templates/samples/one-pager/components/loader.tpl"
+        },
+        "header": {
+            "headerData": "var",
+            "template_url": "./ui/templates/samples/one-pager/containers/header.tpl"
+        },
+        "tab": {
+            "tab": "var",
+            "template_url": "./ui/templates/samples/one-pager/components/tab.tpl"
+        },
+        "icon": {
+            "data": {
+                "external": {
+                    "iconSrc": "var"
+                }
+            },
+            "template_url": "./ui/templates/samples/one-pager/components/icon.tpl"
+        },
+        "logo":
+        {
+            "data": {
+                "external": {
+                    "text": "string"
+                }
+            },
+            "template_url": "./ui/templates/samples/one-pager/components/logo.tpl"
+        }
+    }
+}

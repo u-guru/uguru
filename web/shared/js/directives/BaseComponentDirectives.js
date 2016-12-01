@@ -597,7 +597,7 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             replace:true,
             templateUrl: function(element, attr) {
                 return attr.url
-            }
+            },
             // compile: function compile(element, attr, transclude)  {
 
             //     // CompService.renderAllStyleAttributes(element, attr);
@@ -608,7 +608,7 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             //             if (url && url.indexOf('/') > -1 && post_element[0].outerHTML) {
             //                 post_element.removeAttr('ngInclude')
             //                 post_element.removeAttr('url')
-            //                 $compile(post_element)(post_scope)
+            //                 // $compile(post_element)(post_scope)
             //                 // if (post_attr.ngInclude) {
             //                 //     if (post_element[0].outerHTML) {
             //                 //         post_element.removeAttr('ngInclude')
@@ -1407,8 +1407,9 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
     .directive("view", ["CompService", "$compile", "$rootScope", "$parse", function(CompService, $compile, $rootScope, $parse) {
         return {
             restrict: 'E',
-            priority: 100,
+            priority: 100000,
             replace:true,
+
             compile: function(element, attr, transclude) {
                 CompService.renderAllStyleAttributes(element, attr);
                 element.addClass('flex absolute full-xy');
@@ -1972,27 +1973,22 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
     //         }
     //     }
     // }])
-    .directive('uList', ['$compile',function($compile) {
+    .directive('uList', ['$compile', 'DataService', function($compile, DataService) {
         return {
             restrict: 'A',
-            priority: 10000,
+            priority: 100000000,
             replace:true,
             template: function(element, attr) {
                 element[0].removeAttribute('u-list');
-                element[0].setAttribute('ng-repeat', attr.uList + ' track by $index');
+                var uListAttr = attr.uList.replace('in ', 'in ::');
+
+                element[0].setAttribute('ng-repeat', DataService.applyListParams(uListAttr));
+
                 return element[0].outerHTML;
+            },
+            link: function(scope, element, attr) {
+                console.log('yo')
             }
-            // compile: function(element, attr) {
-
-
-
-            //         attr.$set('ngRepeat',   attr.uList + " track by $index");
-
-            //         return function(scope, elem, attr, ctrl, trans) {
-            //             $compile(elem.contents())(scope)
-            //         }
-            // }
-
         }
     }])
     // .directive('uList', ['$rootScope', '$compile', '$parse', function($rootScope, $compile, $parse) {
@@ -2057,7 +2053,28 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
     //     }
     //   };
     // }])
+
     .directive('htmlSnippet', ['$compile',function($compile) {
+        return {
+            restrict: 'E',
+            scope: {html: '=html'},
+            replace: true,
+            link: function(scope, element, attr, ctrl, transclude) {
+
+
+                var language = attr.language || 'markup';
+
+                var elem = Prism.highlight(scope.html, Prism.languages[language]);
+                var codeElem = angular.element('<pre class="formatted language-' + language + '"></pre>');
+                codeElem.append(angular.element(elem));
+                element.replaceWith(codeElem);
+
+                // element.contents()
+                // var html =
+            }
+        }
+    }])
+    .directive('htmlRender', ['$compile',function($compile) {
       return {
         restrict: 'E',
         scope: {html: '=html'},

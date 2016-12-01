@@ -1,11 +1,31 @@
 @import 'partials/mixin';
 
+// div[data-month="00"] {
+// 	display: none;
+// }
+
 .gradient-sienna-stone {
 	background: $stone;
 	background: -moz-linear-gradient(top, rgba($sienna,1) 0%, rgba($stone,1) 100%);
 	background: -webkit-linear-gradient(top, rgba($sienna,1) 0%,rgba($stone,1) 100%);
 	background: linear-gradient(to bottom, rgba($sienna,1) 0%,rgba($stone,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$sienna', endColorstr='$stone',GradientType=0 );
+}
+
+.gradient-campus-slate {
+	background: $slate;
+	background: -moz-linear-gradient(top, rgba($campus,1) 0%, rgba($slate,1) 100%);
+	background: -webkit-linear-gradient(top, rgba($campus,1) 0%,rgba($slate,1) 100%);
+	background: linear-gradient(to bottom, rgba($campus,1) 0%,rgba($slate,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$campus', endColorstr='$slate',GradientType=0 );
+}
+
+.gradient-taupe-charcoal {
+	background: $charcoal;
+	background: -moz-linear-gradient(top, rgba($taupe,1) 0%, rgba($charcoal,1) 100%);
+	background: -webkit-linear-gradient(top, rgba($taupe,1) 0%,rgba($charcoal,1) 100%);
+	background: linear-gradient(to bottom, rgba($taupe,1) 0%,rgba($charcoal,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$taupe', endColorstr='$charcoal',GradientType=0 );
 }
 
 .placeholder-stone-white {

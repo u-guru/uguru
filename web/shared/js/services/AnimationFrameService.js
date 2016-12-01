@@ -1060,7 +1060,9 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       }
 
       function initStateObj(stateName, str, elem, debug) {
-
+        if (elem.nodeName === '#comment') {
+          console.log('is comment')
+        }
         kf = debug && debug.kf || 60
         str = str && UtilitiesService.replaceAll(str, ', ', ',') || '';
         var cbArr = [];
@@ -1142,6 +1144,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                 transformExists = true;
               }
             }
+
 
             var result = {
               duration: iPropObj.duration,
@@ -1293,6 +1296,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       }
 
       function getApplyPropertyFunc(elem, prop, debug) {
+
         return function(value) {
 
           if (value === null) return;

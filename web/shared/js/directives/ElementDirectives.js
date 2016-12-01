@@ -531,6 +531,7 @@ angular.module('uguru.shared.directives')
             if (!$rootScope.activeView) {
                     $rootScope.activeView = {name: attr.linkDataName, data: scope.data};
             }
+
             transclude(scope, function(clone, innerScope) {
 
                 $compile(clone)(innerScope);
@@ -906,8 +907,9 @@ angular.module('uguru.shared.directives')
       return {
           restrict: 'A',
           replace: false,
-          priority:1000000,
-          scope:false,
+          priority:100,
+          scope:true,
+          require: '?ngInclude',
           compile: function(element, attr, transclude) {
             // attr.$set('public', 'public');
             // attr.$set('root', 'root');
@@ -984,7 +986,7 @@ angular.module('uguru.shared.directives')
                         if (state.name === 'init' && state.type === 'on') {
                           states.on.push(state);
                         } else if (state.exec ) {
-                          // console.log('executing', state.actions.prop, state.exec)
+
                           state.exec(element, null, attr)
                         }
                       })
@@ -1021,8 +1023,13 @@ angular.module('uguru.shared.directives')
                     scope.inheritedFromParent = [];
                     // scope.public = scope._public
                     element.ready(function() {
-                      SendService.precompileSendActionArgs(states, scope, lElem, lAttr)
+                      console.log('compiling send states for', element)
+                      // postStates.forEach(function(state) {
+                      //   state.exec(lElem, scope, lAttr);
+                      // })
+
                     })
+
 
                     scope.whenCallbacks = {};
 
@@ -1045,6 +1052,7 @@ angular.module('uguru.shared.directives')
                           if (state.actions.debug) {
                             ElementService.launchExternalWindow(state.actions.debug, element);
                           }
+
                           state.exec(lElem, scope, lAttr);
                           if (state.name.indexOf('debug') > -1) {
                             ElementService.launchExternalWindow(state.actions.anim.parsed, element);
@@ -1074,8 +1082,10 @@ angular.module('uguru.shared.directives')
                       }
 
 
-
-
+                      if (!('root' in scope) && !('root' in scope.$parent)) {
+                        scope.root = {scope: $rootScope};
+                      }
+                      SendService.precompileSendActionArgs(states, scope, lElem, lAttr)
 
 
 

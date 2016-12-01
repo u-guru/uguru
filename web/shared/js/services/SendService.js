@@ -115,6 +115,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
     return msgResultArr;
 
     function calcTotalDelay(send_obj, msg) {
+      if (!send_obj.delays.internal) send_obj.delays.internal = {};
       return send_obj.delays.external + (msg in send_obj.delays.internal && send_obj.delays.internal[msg] ||0)
     }
 
@@ -161,7 +162,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
       // console.log(scope.public.customStates.when)
 
     }
-    else if ((msg_obj.nameCamel) in scope.root.scope.public.customStates.when) {
+    else if ('root' in scope && (msg_obj.nameCamel) in scope.root.scope.public.customStates.when) {
 
 
       if (!scope.root.scope.public.customStates.when[msg_obj.nameCamel].options) {
@@ -174,6 +175,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
         scope.root.scope.public.customStates.when[msg_obj.nameCamel] = {elements:[], depth: depth}
       }
       else {
+        console.log(msg_obj)
         scope.public.customStates.when[msg_obj.nameCamel] = {elements:[], depth: depth}
         scope.$parent.public.customStates.when[msg_obj.nameCamel] = scope.public.customStates.when[msg_obj.nameCamel]
       }
@@ -190,6 +192,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
       depthScope = depthScope.$parent;
     }
     var msgName = msg_obj.type;
+
     if (msg_obj.type in depthScope.states) {
       var typeStates = depthScope.states[msg_obj.type];
       if (typeStates.length) {
