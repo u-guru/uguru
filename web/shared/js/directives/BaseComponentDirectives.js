@@ -576,7 +576,7 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             scope:false,
             priority: 10000,
             compile: function(element, attr) {
-
+                console.log(element[0])
                 if (element[0].nodeName.toLowerCase() !== 'graphic') {
                     return;
                 }
@@ -595,9 +595,12 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             restrict: 'E',
             scope:false,
             replace:true,
+            priority: 10001,
             templateUrl: function(element, attr) {
-                return attr.url
-            },
+                var url = attr.url;
+                attr.$set('url', '');
+                return url
+            }
             // compile: function compile(element, attr, transclude)  {
 
             //     // CompService.renderAllStyleAttributes(element, attr);

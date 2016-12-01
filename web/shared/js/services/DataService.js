@@ -492,18 +492,18 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
   }
 
   function registerOneDirective(dir_info) {
-    console.log(dir_info.scope, dir_info.templateUrl)
+    // console.log(dir_info.scope, dir_info.templateUrl)
     componentModule.directive(dir_info.name, [function() {
       var dirObj = {
         restrict: 'E',
-        transclude:'element',
+
         replace:true,
         scope: dir_info.scope,
         templateUrl: function(element, attr) {
 
             return dir_info.templateUrl
         },
-        link: function(scope, element, attr, ctrl, transclude) {
+        link: function preLink(scope, element, attr, ctrl, transclude) {
             console.log(dir_info.scope)
             processScopeVars(scope, attr);
 

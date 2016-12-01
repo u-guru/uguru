@@ -423,12 +423,10 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function applyAnimArgs(element, scope, animations, context, debug) {
-        if (element[0].nodeName === '#comment') {
-          console.log(scope.elem, element.after(), element.parent().children())
-          return;
-        } else {
-          console.log(element[0])
-        }
+        // if (element[0].nodeName === '#comment') {
+        //   console.log(scope.elem, element.after(), element.parent().children())
+        //   return;
+
         debug = debug || false;
         var stateName = context.type + '-' + context.name;
         var defaults = {"kf":60,"autoPlay":false,"toolbar":{},"hidePlot":false}

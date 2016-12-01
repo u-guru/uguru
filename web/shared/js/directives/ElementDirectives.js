@@ -1022,13 +1022,13 @@ angular.module('uguru.shared.directives')
                     scope.parentCompiled = false;
                     scope.inheritedFromParent = [];
                     // scope.public = scope._public
-                    element.ready(function() {
-                      console.log('compiling send states for', element)
-                      // postStates.forEach(function(state) {
-                      //   state.exec(lElem, scope, lAttr);
-                      // })
+                    // element.ready(function() {
+                    //   console.log('compiling send states for', element)
+                    //   // postStates.forEach(function(state) {
+                    //   //   state.exec(lElem, scope, lAttr);
+                    //   // })
 
-                    })
+                    // })
 
 
                     scope.whenCallbacks = {};

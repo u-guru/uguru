@@ -2,8 +2,9 @@
 
     <ul width='100' x='center' y='center' nowrap>
 
-        <logo text="this is a logo">
+        <logo text="gabrielle is a designer">
         </logo>
+
 
         <tab u-list="tab in vars.editable.nav.header.tabs" tab-data="tab">
         </tab>
