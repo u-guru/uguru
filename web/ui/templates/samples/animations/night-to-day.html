@@ -21,9 +21,8 @@
 			</clipPath>
 		</defs>
 	</svg>
-	<svg ng-if="false" class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #BBF2FE;"
-		u error-children error-depth on-init="a:[opacity:0:1:3000:easeInOutSine:0:1:f]:delay-3000 | s:[day-transition:public:1000, tree-shake:c:4000]:+2500">
-		 <!-- on-init="a:[opacity:0:1:3000:easeInOutSine:0:1:f]:delay-3000 | s:[day-transition:children:1000, tree-shake:c:9500]:+2500" -->
+	<svg class="absolute top-0 left-0 full-xy" width="800px" height="600px" viewBox="0 0 800 600" style="background: #BBF2FE;"
+		u on-init="a:[opacity:0:1:3000:easeInOutSine:0:1:f]:delay-3000 | s:[day-transition:children:1000, tree-shake:c:4000]:+2500">
 		<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 			<g class="left-tree">
 				<rect class="l-canopy" fill="#B4CB5D" x="221" y="364" width="43" height="86" rx="21.5"
@@ -284,7 +283,7 @@
 	</svg>
 	<svg abs top="0" left="0" w="100%" h="100%" bg="#092D4B" viewBox="0 0 800 600"
 		u init-with="p:[op:1]"
-		on-init="s:[foliage:depth(>1):500, branch:children:650, canopy:children:800]">
+		on-init="a:[opacity:1:0:3000:easeInOutSine:0:1:f]:delay-3000 | s:[foliage:depth(>1):500, branch:children:650, canopy:children:800]">
 		<!-- on-init="a:[opacity:1:0:3000:easeInOutSine:0:1:f]:delay-3000 | s:[foliage:depth(>1):500, branch:children:650, canopy:children:800]" -->
 	    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 	        <g class="blue-tree">
@@ -407,9 +406,10 @@
 				</g>
 	        </g>
 	        <g class="house">
+				<g u on-init="s:[build-house:children:500]">
 	            <rect class="house-foundation" fill="#AADFFF" x="307" y="285" width="187" height="204"
 					u init-with="p:[tr:scaleY(0), tro:center bottom]"
-					on-init="a:[scaleY:0:1:1000:easeOutBounce:0:1:f] | s:[build-house:siblings:500]"></rect>
+					when-build-house="a:[scaleY:0:1:1000:easeOutBounce:0:1:f]"></rect>
 	            <rect class="house-casing" fill="#FFFFFF" x="301" y="485" width="199" height="19"
 					u init-with="p:[tro:center bottom, tr:scaleY(0)]"
 					when-build-house="a:[scaleY:0:1:500:easeOutBounce:0:1:f]"></rect>
@@ -422,6 +422,7 @@
 	            <rect class="roof-top" fill="#FFFFFF" x="296" y="258" width="209" height="7"
 					u init-with="p:[tro:center bottom, tr:scaleY(0)]"
 					when-build-house="a:[scaleY:0:1:750:easeOutBounce:0:1:f]"></rect>
+				</g>
 				<g class="windows"
 					u on-init="s:[w1:children]">
 					<g class="w5"
