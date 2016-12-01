@@ -570,6 +570,29 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             }
         }
     }])
+    .directive('replace', ['$compile', function($compile) {
+        return {
+            restrict: 'E',
+            transclude: 'element',
+            replace:true,
+            priority:100,
+            scope: false,
+            link: {pre: function preLink(scope, element, attr, ctrl, transclude) {
+
+                var urlElem = "<graphic " + " url='" + attr.with + "'></graphic>"
+
+                    e = angular.element(urlElem)
+                    for (key in attr.$attr) {
+                        e.attr(key, attr[key])
+                    }
+
+                    $compile(e)(scope)
+                    element.after(e)
+
+                }
+            }
+        }
+    }])
     .directive('url', [function() {
         return {
             restrict: 'A',
@@ -577,16 +600,21 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             priority: 10000,
             compile: function(element, attr) {
 
-                if (element[0].nodeName.toLowerCase() !== 'graphic') {
+                if (element[0].nodeName.toLowerCase() === 'graphic') {
                     return;
                 }
+
                 if (attr.url.indexOf('/') === -1) {
-                    element.removeAttr('url');
+
                     attr.$set('ngInclude', attr.url);
+                    element.removeAttr('url');
                 } else {
                     attr.$set('ngInclude', "'" +  attr.url + "'");
                 }
 
+            },
+            link: function(scope, elem, attr) {
+                console.log('ay', scope.nav)
             }
         }
     }])
@@ -595,9 +623,12 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             restrict: 'E',
             scope:false,
             replace:true,
+            priority: 10001,
             templateUrl: function(element, attr) {
-                return attr.url
-            },
+                var url = attr.url;
+                attr.$set('url', '');
+                return url
+            }
             // compile: function compile(element, attr, transclude)  {
 
             //     // CompService.renderAllStyleAttributes(element, attr);
@@ -1978,16 +2009,15 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             restrict: 'A',
             priority: 100000000,
             replace:true,
+            scope: false,
             template: function(element, attr) {
+
                 element[0].removeAttribute('u-list');
                 var uListAttr = attr.uList.replace('in ', 'in ::');
 
                 element[0].setAttribute('ng-repeat', DataService.applyListParams(uListAttr));
 
                 return element[0].outerHTML;
-            },
-            link: function(scope, element, attr) {
-                console.log('yo')
             }
         }
     }])
@@ -2228,7 +2258,9 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
         "lineHeight",
         "lH",
         "lS",
-        "letterSpacing"
+        "letterSpacing",
+        "pointer",
+        "point"
         ]
 
     var modulePointer = angular.module('uguru.shared.directives.base.components');

@@ -67,7 +67,7 @@ function TweenService() {
     }
 
     function preComputeValues(property, duration, start, end, ease, result_arr) {
-        console.log(property, ease)
+        // console.log(property, ease)
         duration = parseFloat(duration)
         result_arr.cache = [];
 

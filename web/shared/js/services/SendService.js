@@ -321,6 +321,8 @@ function SendService($timeout, $parse, RootService, TweenService) {
     var msgStates = parseStatesForSending(states_dict, scope);
     scope.outgoing_parsed = [];
     //outgoing step #1
+
+    // element.ready(function() {
     msgStates.outgoing.forEach(function(o_state) {
       o_state.parsedMsgArr = parseStateMsgContents(o_state.actions.send);
       o_state.parsedMsgArr.forEach(function(msg_obj, i) {
@@ -330,24 +332,27 @@ function SendService($timeout, $parse, RootService, TweenService) {
 
       });
     })
+  // })
 
 
-    msgStates.incoming.forEach(function(i_state) {
-      // console.log(i_state)
-      if (i_state.actions.send && !i_state.parsedObj) {
-        i_state.parsedObj = parseStateMsgContents(i_state.actions.send)
-      }
-      var expectedDepth;
-      if (i_state.parsedObj) {
-        expectedDepth = parseDepthString(i_state.parsedObj[0].sendScope);
-      }
-      if (i_state.nameCamel in scope.$parent.public.customStates.when && scope.$parent.public.customStates.when[i_state.nameCamel].siblings) {
-        parseMessageAndStoreToExecuteLater(scope, i_state, scope.$parent.public.customStates.when[i_state.nameCamel].depth - 0.5, element, elem_attr)
-      }
-      parseMessageAndStoreToExecuteLater(scope, i_state, expectedDepth, element, elem_attr)
+        msgStates.incoming.forEach(function(i_state) {
+          if (i_state.name.split('-')[0] === 'var') return;
+        // console.log(i_state)
+        if (i_state.actions.send && !i_state.parsedObj) {
+          i_state.parsedObj = parseStateMsgContents(i_state.actions.send)
+        }
+        var expectedDepth;
+        if (i_state.parsedObj) {
+          expectedDepth = parseDepthString(i_state.parsedObj[0].sendScope);
+        }
+        if (i_state.nameCamel in scope.$parent.public.customStates.when && scope.$parent.public.customStates.when[i_state.nameCamel].siblings) {
+          parseMessageAndStoreToExecuteLater(scope, i_state, scope.$parent.public.customStates.when[i_state.nameCamel].depth - 0.5, element, elem_attr)
+        }
+        parseMessageAndStoreToExecuteLater(scope, i_state, expectedDepth, element, elem_attr)
 
 
-    })
+      })
+
     return
 
   }
