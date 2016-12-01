@@ -208,7 +208,7 @@
 	}
 }
 .warp-items {
-	> div {
+	> div:not(.warp-letters) {
 		width: 100%;
 		height: 100%;
 	}

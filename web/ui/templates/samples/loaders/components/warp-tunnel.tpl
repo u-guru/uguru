@@ -1,8 +1,5 @@
-<div u on-init="s:[warp-open:self]"
-	when-warp-open="s:[warp-transition:public:1000]"
-	when-warp-transition="s:[warp-end:public:700]"
-	when-warp-end="s:[transition-start:public:500]">
-	<div class="warp" style="background: #16293A;">
+<div u on-init="s:[warp-speed:public:2000]">
+	<div class="warp" bg="#16293A">
 		<div class="wrap"
 			u init-with="p:[tr:translateZ(-500px)]"
 			when-warp-speed="s:[warp-zoom-2:public:6000]"
@@ -10,23 +7,23 @@
 			when-warp-fade-in-2="s:[warp-fade-out-2:public:3000]"
 			when-warp-fade-out-2="s:[warp-fade-in-2:public:4500]">
 			<div class="wall wall-right"
-				style="background-image: url('/preapp/images/stars.svg')"
+				bg-image="/preapp/images/stars.svg"
 				u when-warp-fade-in-2="a:[opacity:0:1:3000:linear:0:1:f]"
 				when-warp-fade-out-2="a:[opacity:1:0:3000:linear:0:1:f]"></div>
 			<div class="wall wall-left"
-				style="background-image: url('/preapp/images/stars.svg')"
+				bg-image="/preapp/images/stars.svg"
 				u when-warp-fade-in-2="a:[opacity:0:1:3000:linear:0:1:f]"
 				when-warp-fade-out-2="a:[opacity:1:0:3000:linear:0:1:f]"></div>
 			<div class="wall wall-top"
-				style="background-image: url('/preapp/images/stars.svg')"
+				bg-image="/preapp/images/stars.svg"
 				u when-warp-fade-in-2="a:[opacity:0:1:3000:linear:0:1:f]"
 				when-warp-fade-out-2="a:[opacity:1:0:3000:linear:0:1:f]"></div>
 			<div class="wall wall-bottom"
-				style="background-image: url('/preapp/images/stars.svg')"
+				bg-image="/preapp/images/stars.svg"
 				u when-warp-fade-in-2="a:[opacity:0:1:3000:linear:0:1:f]"
 				when-warp-fade-out-2="a:[opacity:1:0:3000:linear:0:1:f]"></div>
 			<div class="wall wall-back"
-				style="background-image: url('/preapp/images/stars.svg')"
+				bg-image="/preapp/images/stars.svg"
 				u when-warp-fade-in-2="a:[opacity:0:1:3000:linear:0:1:f]"
 				when-warp-fade-out-2="a:[opacity:1:0:3000:linear:0:1:f]"></div>
 		</div>
@@ -37,23 +34,23 @@
 			when-warp-fade-in="s:[warp-fade-out:public:3000]"
 			when-warp-fade-out="s:[warp-fade-in:public:4500]">
 			<div class="wall wall-right"
-				style="background-image: url('/preapp/images/stars.svg')"
+				bg-image="/preapp/images/stars.svg"
 				u when-warp-fade-in="a:[opacity:0:1:3000:linear:0:1:f]"
 				when-warp-fade-out="a:[opacity:1:0:3000:linear:0:1:f]"></div>
 			<div class="wall wall-left"
-				style="background-image: url('/preapp/images/stars.svg')"
+				bg-image="/preapp/images/stars.svg"
 				u when-warp-fade-in="a:[opacity:0:1:3000:linear:0:1:f]"
 				when-warp-fade-out="a:[opacity:1:0:3000:linear:0:1:f]"></div>
 			<div class="wall wall-top"
-				style="background-image: url('/preapp/images/stars.svg')"
+				bg-image="/preapp/images/stars.svg"
 				u when-warp-fade-in="a:[opacity:0:1:3000:linear:0:1:f]"
 				when-warp-fade-out="a:[opacity:1:0:3000:linear:0:1:f]"></div>
 			<div class="wall wall-bottom"
-				style="background-image: url('/preapp/images/stars.svg')"
+				bg-image="/preapp/images/stars.svg"
 				u when-warp-fade-in="a:[opacity:0:1:3000:linear:0:1:f]"
 				when-warp-fade-out="a:[opacity:1:0:3000:linear:0:1:f]"></div>
 			<div class="wall wall-back"
-				style="background-image: url('/preapp/images/stars.svg')"
+				bg-image="/preapp/images/stars.svg"
 				u when-warp-fade-in="a:[opacity:0:1:3000:linear:0:1:f]"
 				when-warp-fade-out="a:[opacity:1:0:3000:linear:0:1:f]"></div>
 		</div>
