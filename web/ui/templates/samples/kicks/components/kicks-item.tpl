@@ -3,8 +3,11 @@
 		<div rel z="0">
 			<h1 height="56px" p="6px" y-center x-center bg="white-25p" f-s="16px" f-w="600" color="white" caps t-a="center" class="caps txt-white txt-center">{{shoe.shoe_name}}</h1>
 			<div bg="white">
-				<figure>
-					<img w="100%" ng-src="{{shoe.shoe_img_url || 'http://cdn.sneakernews.com/wp-content/themes/sneakernews/images/sneakernews-p2/release-page-image.jpg'}}"/>
+				<figure rel>
+					<svg width="100%" viewBox="0 0 240 160">
+						<rect x="0" y="0" width="240" height="160" fill="none"></rect>
+					</svg>
+					<div abs top="0" left="0" w="100%" h="100%" bg-image="{{shoe.shoe_img_url || 'http://cdn.sneakernews.com/wp-content/themes/sneakernews/images/sneakernews-p2/release-page-image.jpg'}}|center center|cover"></div>
 				</figure>
 				<ul y-center p="6px" f-s="14px" f-w="600">
 					<li p="6px">
