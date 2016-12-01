@@ -116,10 +116,10 @@
 	</div>
 
 	<!-- WITHOUT init-after -->
-	<div ng-if="true" u on-init="s:[walk-1:public]:delay-1000"
-		when-walk-1="s:[walk-2:public]:delay-100"
-		when-walk-2="s:[walk-3:public]:delay-100"
-		when-walk-3="s:[walk-4:public]:delay-100">
+	<div ng-if="true" u on-init="s:[walk-1:public:1000]"
+		when-walk-1="s:[walk-2:public:100]"
+		when-walk-2="s:[walk-3:public:100]"
+		when-walk-3="s:[walk-4:public:100]">
 		<svg class="bg-slate-25p" width="1600px" height="800px" viewBox="0 0 400 200">
 		    <g fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke="#696269" fill="#C8BBC9">
 				<g class="left-arm" stroke="#40484B" fill="#757575"

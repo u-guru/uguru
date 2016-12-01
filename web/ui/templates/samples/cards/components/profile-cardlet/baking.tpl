@@ -43,10 +43,14 @@
 				<!-- mix($gold, white, 60%) -->
 			</div>
 		</div>
+		<!--
+		[the workaround]
+		when-baking-cardlet-fix="p:[t:all 250ms ease-out, tr:none]">
+		-->
 		<div class="pf-cardlet-back-container"
 			u init-with="p:[op:0, tr:center center]"
 			when-baking-cardlet-init="a:[baking-cardlet-scaleX-enter:2000:linear:600:1:f] | s:[baking-cardlet-fix:self:2350]"
-			when-baking-cardlet-fix="p:[t:all 250ms ease-out, tr:none]">
+			>
 			<div class="pf-cardlet-back" bg-image="http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg"
 				u when-corner-bkg-leave="p:[tr:none]"
 				when-corner-bkg-enter="p:[t:all 500ms ease-out, tr:translateZ(-10px)]"></div>

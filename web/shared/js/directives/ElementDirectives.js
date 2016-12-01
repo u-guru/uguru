@@ -280,7 +280,7 @@ angular.module('uguru.shared.directives')
       var limitTo = attr.listLimit && parseInt(attr.listLimit) || dataObj.data.length;
 
       element.removeAttr('listData')
-      attr.$set('ngRepeat', attr.listItem + ' in ::' +  dataObj.name + ' track by $index');
+      attr.$set('ngRepeat', attr.listItem + ' in ' +  dataObj.name + ' track by $index');
       attr.$set('ngInclude', '"' +  $rootScope.components[element[0].nodeName.toLowerCase()].template_url + '"');
 
 
@@ -554,35 +554,54 @@ angular.module('uguru.shared.directives')
 }])
 .directive('set', ['$parse', '$rootScope', function($parse, $rootScope) {
   return {
-    restrict: 'A',
-    replace:true,
-    scope: false,
-    compile: function(elem, attr) {
-      var setVars = attr.set && attr.set.length && attr.set.split('=');
-      varName = setVars[0].trim();
-      varVal = setVars[1].trim();
-      if (!('set' in $rootScope.ui.data)) {
-
-            $rootScope.ui.data.set = {};
-        }
-      $rootScope.ui.data.set[varName] = varVal
-      // console.log($rootScope.ui.data)
-    },
+    restrict: 'EA',
+    priority: 100000,
+    scope:false,
     link: function preLink(scope, element, attr) {
+      if (!scope.vars) {
+        scope.vars = {};
+      }
 
-      console.log('var', varName)
+      if ('set' in attr && attr.set.indexOf('=') > -1) {
 
+        scope.$eval(attr['set']);
+        scope.vars[attr['set'].split('=')[0].trim()] = attr['set'].split('=')[1].trim()
 
+      } else {
 
-        if (setVars && setVars.length > 1 && setVars[0].length > 1) {
-
-          scope[varName] = $parse(varVal)(scope)
-          // console.log(setVars[0].trim(),
-
-
-
-
+        for (key in attr.$attr) {
+          var valueSplit = attr[key].split('|');
+          var value;
+          if (valueSplit.length === 2) {
+            if (valueSplit[1] === 'num') {
+              value = parseInt(value);
+            }
+          } else {
+            value = valueSplit[0];
+          }
+          scope.$eval(key +'=' + value);
         }
+      }
+
+
+
+
+
+
+      // scope.$eval(attr.set);
+
+
+
+
+        // if (setVars && setVars.length > 1 && setVars[0].length > 1) {
+
+        //   scope[varName] = $parse(varVal)(scope)
+        //   // console.log(setVars[0].trim(),
+
+
+
+
+        // }
     }
 
   }
@@ -913,6 +932,7 @@ angular.module('uguru.shared.directives')
           compile: function(element, attr, transclude) {
             // attr.$set('public', 'public');
             // attr.$set('root', 'root');
+
             var elemName = element[0].nodeName.toLowerCase();
 
             var hasInitAfter = false;
@@ -995,6 +1015,9 @@ angular.module('uguru.shared.directives')
               var postStates = [];
               return {
                   pre: function (scope, lElem, lAttr) {
+                    if ('$index' in scope) {
+                      scope.index = scope.$index + 1;
+                    }
                     if (attr.data) {
                       var attrData = attr.data;
 
@@ -1017,10 +1040,17 @@ angular.module('uguru.shared.directives')
 
 
                     scope.states = states || {};
+
                     scope.hasInitAfter = hasInitAfter;
                     scope.elem = lElem;
                     scope.parentCompiled = false;
                     scope.inheritedFromParent = [];
+
+                    var varStates = ElementService.filterVarStates(scope.states.when);
+                    if (varStates.length) {
+                      ElementService.registerVarStates(scope, lElem, lAttr, varStates);
+                    }
+
                     // scope.public = scope._public
                     // element.ready(function() {
                     //   console.log('compiling send states for', element)
@@ -1031,7 +1061,7 @@ angular.module('uguru.shared.directives')
                     // })
 
 
-                    scope.whenCallbacks = {};
+
 
 
                       if (states.on) {
@@ -1085,9 +1115,10 @@ angular.module('uguru.shared.directives')
                       if (!('root' in scope) && !('root' in scope.$parent)) {
                         scope.root = {scope: $rootScope};
                       }
-                      element.ready(function() {
+                      // element.ready(function() {
+
                         SendService.precompileSendActionArgs(states, scope, lElem, lAttr)
-                      })
+                      // })
 
 
 

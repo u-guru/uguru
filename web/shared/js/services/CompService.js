@@ -126,7 +126,9 @@ function CompService($timeout, $compile, $parse, $rootScope) {
       "hideY": "hidden",
       "overflow": "visible",
       "oFlow": "visible",
-      "scroll": "visible"
+      "scroll": "visible",
+      "pointer": "pointer",
+      "point": "pointer"
     }
     prefixes.forEach(function(p) {
       var basePropKeys = Object.keys(baseProps);
@@ -292,7 +294,9 @@ function CompService($timeout, $compile, $parse, $rootScope) {
         "lineHeight": "line-height",
         "lH": "line-height",
         "lS": "letter-spacing",
-        "letterSpacing": "letter-spacing"
+        "letterSpacing": "letter-spacing",
+        "pointer": "cursor",
+        "point": "cursor"
 
     }
     prefixes.forEach(function(p) {
@@ -321,7 +325,7 @@ function CompService($timeout, $compile, $parse, $rootScope) {
     browserPlatform = browser.engine.replace('blink', 'webkit');
 
     return function(element, prop, value) {
-      // console.log(prop, value)
+
       if (prop in cssPrefixedProperties) {
         prop = formatPrefixedCSSByEngine(prop, browserPlatform);
       } else
@@ -332,8 +336,10 @@ function CompService($timeout, $compile, $parse, $rootScope) {
         }
       }
 
-      prop = camelCase(prop);
 
+      prop = camelCase(prop);
+      if (prop === 'fontWeight') value = parseInt(value)
+        // console.log(element, prop, value)
       element[0].style[prop] = value;
 
     }
@@ -393,6 +399,7 @@ function CompService($timeout, $compile, $parse, $rootScope) {
         if (property in platformSpecificProperties) {
           property = getPlatformSpecificPropName(property);
         }
+
 
         css.apply(elem, property, currentValue);
       })

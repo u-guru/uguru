@@ -322,7 +322,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
     scope.outgoing_parsed = [];
     //outgoing step #1
 
-
+    // element.ready(function() {
     msgStates.outgoing.forEach(function(o_state) {
       o_state.parsedMsgArr = parseStateMsgContents(o_state.actions.send);
       o_state.parsedMsgArr.forEach(function(msg_obj, i) {
@@ -332,6 +332,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
 
       });
     })
+  // })
 
 
         msgStates.incoming.forEach(function(i_state) {

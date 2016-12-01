@@ -1,10 +1,10 @@
-<li grow='2'>
+<li grow='2' y='center' row padding-left='20' point>
 
-    <div u-list="line_number in [0,1,2,3]">
-        <span u-list="letter in 'gabrielle is a designer':trim({{line_number * 8}},{{(line_number + 1)*8}})" on-init="s:[start-anim:children]" u>
-            <span u init-with='p:[opacity:0]' when-start-anim="a:[opacity:0:1:1000:easeOutCirc:{{index * 1000}}:0:1:f]">
-            {{letter}}
 
+        <span u-list="letter in text">
+
+            <span u init-with='p:[opacity:0]' l-s="0.2em" class='uppercase' on-init="a:[opacity:0:1:1000:easeOutCirc:0:1:f]">
+                {{letter}}
             </span>
 
         </span>

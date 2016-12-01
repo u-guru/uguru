@@ -1988,9 +1988,6 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
                 element[0].setAttribute('ng-repeat', DataService.applyListParams(uListAttr));
 
                 return element[0].outerHTML;
-            },
-            link: function(scope, element, attr) {
-                console.log('yo')
             }
         }
     }])
@@ -2231,7 +2228,9 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
         "lineHeight",
         "lH",
         "lS",
-        "letterSpacing"
+        "letterSpacing",
+        "pointer",
+        "point"
         ]
 
     var modulePointer = angular.module('uguru.shared.directives.base.components');

@@ -1,19 +1,19 @@
 <div row x='center' y='center' width='100' height='10'>
 
-    <ul width='100' x='center' y='center' nowrap>
+    <!-- <set active-tab="true" active-index="1|num"> </set> -->
+    <ul width='100' set="activeTab=0" x='center' y='center' nowrap>
 
-        <logo text="gabrielle is a designer">
+        <logo text="tracy&nbsp;logo">
         </logo>
 
-
-        <tab u-list="tab in vars.editable.nav.header.tabs" tab-data="tab">
+        {{headerData}}
+        <tab u-list="tab in headerData.tabs" tab-data="tab" active-tab="vars.activeTab">
         </tab>
 
 
-        <li grow='2'  x='end'  y='center'>
-            <icon icon-src="vars.editable.nav.header.menu_url">
-            </icon>
+        <!-- <li grow='2'  x='end'  y='center'>
 
-        </li>
+            <graphic url="vars.editable.nav.header.menu_url"/></graphic>
+        </li> -->
     </ul>
 </div>

@@ -1,5 +1,7 @@
 <div u on-init="s:[warp-speed:public:2000]">
 	<div class="warp" bg="#16293A">
+		<!-- when-warp-zoom-2="a:[translateZ:-500px:500px:12000:linear:2000:i:f, rotate:180deg:0deg:12000:linear:2000:i:f] | s:[warp-fade-in-2:public:3000]" -->
+		<!-- when-warp-fade-in-2 -->
 		<div class="wrap"
 			u init-with="p:[tr:translateZ(-500px)]"
 			when-warp-speed="s:[warp-zoom-2:public:6000]"

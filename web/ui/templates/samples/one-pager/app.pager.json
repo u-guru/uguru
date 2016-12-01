@@ -1,5 +1,6 @@
 {
     "vars": {
+        "todo": ["app unique components", "filler-data", "functionality", "mobile"],
         "editable": {
             "defaults": {
                 "font": {},
@@ -8,7 +9,7 @@
             "nav": {
                 "header": {
                     "tabs": ["tab 1", "tab 2", "tab 3", "tab 4"],
-                    "menu_url": "ui/templates/one-pager/static/icons/menu.tpl"
+                    "menu_url": "ui/templates/samples/one-pager/static/icons/menu.tpl"
                 },
                 "footer": {
                     "about": {
@@ -39,6 +40,14 @@
                 }
             },
             "sections": {
+                "splash": {
+                    "title": {
+                        "header": "this is a header",
+                        "subheader": "this is a subheader"
+                    }
+                },
+                "lead_gen": {},
+                "programs": {},
                 "testimonials": {},
                 "timeline": {}
             },
@@ -76,17 +85,22 @@
             "template_url": "./ui/templates/samples/one-pager/components/loader.tpl"
         },
         "header": {
-            "headerData": "var",
+            "data": {
+                "external": {
+                    "headerData": "var"
+                }
+            },
             "template_url": "./ui/templates/samples/one-pager/containers/header.tpl"
         },
         "tab": {
             "tab": "var",
+            "activeTab": "var",
             "template_url": "./ui/templates/samples/one-pager/components/tab.tpl"
         },
-        "icon": {
+        "nav-icon": {
             "data": {
                 "external": {
-                    "iconSrc": "var"
+                    "text": "string"
                 }
             },
             "template_url": "./ui/templates/samples/one-pager/components/icon.tpl"
@@ -95,7 +109,8 @@
         {
             "data": {
                 "external": {
-                    "text": "string"
+                    "text": "string",
+                    "activeTab": "var"
                 }
             },
             "template_url": "./ui/templates/samples/one-pager/components/logo.tpl"

@@ -103,8 +103,8 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
         return list_arr;
       }
 
-      console.log([list.var, list.arr].join(' in ::') + ' track by $index')
-      return [list.var, list.arr].join(' in ::') + ' track by $index';
+      // console.log([list.var, list.arr].join(' in ::') + ' track by $index')
+      return [list.var, list.arr].join(' in ') + ' track by $index';
     }
   }
 
@@ -470,6 +470,7 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
           resultScope[var_name] =  '<' + var_name;
         }
         else if (vars.external[var_name] === 'var') {
+
           resultScope[var_name] = '=' + var_name;
         } else {
           resultScope[var_name] = '@' + var_name;
@@ -477,14 +478,13 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
 
       }
       if (!Object.keys(resultScope).length) return false;
-
+      console.log(resultScope)
       return resultScope;
   }
 
   function parseScopeVarsByType(var_dict) {
     for (_var_name in var_dict) {
       var value = var_dict[_var_name];
-      console.log(value)
     }
     return var_dict;
 
@@ -503,9 +503,10 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
 
             return dir_info.templateUrl
         },
-        link: function preLink(scope, element, attr, ctrl, transclude) {
-            console.log(dir_info.scope)
+        link: function (scope, element, attr, ctrl, transclude) {
             processScopeVars(scope, attr);
+
+            // scope.activeTab = scope.$parent.activeTab;
 
             // element.append()
             // var e = transclude(scope, function(transEl, transScope) {

@@ -1,7 +1,7 @@
 <view link-data="ui/templates/samples/loaders/uguru.json" render-after-ext-scripts let="vars=data.vars" bg="slate">
 	<div class="loader-portal-outer"
-		u on-init='s:[loader-init:depth(1):500]'>
-		<div class="loader-portal states" u on-init='s:[portal-open:public]'>
+		u on-init='s:[portal-open:public:2000]'>
+		<div class="loader-portal states">
 			<div class="loader-portal-inside"
 				u init-with="p:[tr:scale(0), tro:50% 90%]"
 				when-portal-open="a:[scale:0:1:250:easeInOutBack:100:1:f]">
@@ -46,19 +46,17 @@
 			when-warp-open="p:[width:100%, height:100%, left:0, top:0, margin-left:0, margin-top:0, border-radius:0]">
 			<div class="portal-transition" bg="#16293A"
 				u init-with="p:[-webkit-clip-path:circle(90px at 50% 50%)]"
-				when-warp-open="a:[-webkit-clip-path:circle(90px at 50% 50%):circle(1500px at 50% 50%):750:(1,0,1,0):0:1:f]"
-				when-warp-transition="p:[-webkit-clip-path:none]">
-				<div u when-warp-open="s:[warp-transition:public:1000]"
-					when-warp-transition="s:[warp-end:public:700]"
-					when-warp-end="s:[transition-start:public:500]">
-				</div>
-				<!-- <warp-tunnel></warp-tunnel>
-				<warp-objects></warp-objects> -->
+
+
+				when-warp-open="a:[-webkit-clip-path:circle(90px at 50% 50%):circle(1500px at 50% 50%):750:(1,0,1,0):0:1:f] | s:[warp-transition:public:1000]"
+				when-warp-transition="p:[-webkit-clip-path:none] | s:[transition-start:public:1200]">
+				<warp-tunnel></warp-tunnel>
+				<warp-items></warp-items>
 			</div>
 		</div>
 	</div>
 
-	<!-- <div class="portal-page"
+	<div class="portal-page"
 		u init-with="p:[op:0]"
 		when-warp-open="a:[opacity:0:1:250:easeOutSine:300:1:f]">
 		<div class="portal-page-round"
@@ -67,10 +65,17 @@
 			when-transition-end="p:[-webkit-clip-path:none]">
 			<div class="portal-page-splash"
 				u init-with="p:[op:0]"
-				when-transition-start="a:[opacity:0:1:500:easeOutSine]:0:1:f">
-				<warp-page custom></warp-page>
+				when-transition-start="a:[opacity:0:1:500:easeOutSine:0:1:f] | s:[head-squash:public:600]">
+				<!-- <warp-page custom></warp-page> -->
+				<main class='splash-landing'
+					u init-with="p:[tro:center center, tr:scale(0.2) translateZ(0px)]"
+					when-head-squash="a:[scale:0.2:1:750:easeOutExpo:0:1:f]">
+					<section id='splash-home' class='splash-hero'
+						u init-with="p:[bg:#FFFFFF]"
+						when-head-squash="a:[background:rgba(255,255,255,1):rgba(64,72,75,1):750:easeOutSine:0:1:f]">
+					</section>
+				</main>
 			</div>
 		</div>
-	</div> -->
-
+	</div>
 </view>
