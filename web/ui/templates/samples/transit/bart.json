@@ -20,8 +20,14 @@
     },
     "content": {},
     "components": {
+
 		"train-arrival": {
-            "template_url": "./ui/templates/samples/transit/components/train-arrival.tpl"
+            "template_url": "./ui/templates/samples/transit/components/train-arrival.tpl",
+            "data": {
+                "external": {
+                    "station": "var"
+                }
+            }
         }
 	}
 }

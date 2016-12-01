@@ -3,11 +3,11 @@
 	<div x-center y-center width="100" height="100">
 		<div rel rad="2px" class="overflow-hidden"
 			u init-with="p:[op:0]"
-			on-init="a:[opacity:0:1:500:linear:0:1:f]">
-			<graphic url="ui/templates/samples/transit/components/bart-map.html"></graphic>
+			on-init="a:[opacity:0:1:500:linear:0:1:f]" width='100'>
+			<replace width='100%' z='0' height='100%' grow='1' with="ui/templates/samples/transit/components/bart-map.html"></replace>
 			<div abs top="0" left="0" w="100%" h="100%">
 				<!-- <div bg="white" class="txt-slate">{{data.content.bart.station}}</div> -->
-				<!-- <train-arrival u-list="dir in data.content.bart.station" sample="sample"></train-arrival> -->
+				<train-arrival u-list="station in data.content.bart.station" station="station"></train-arrival>
 			</div>
 		</div>
 	</div>
