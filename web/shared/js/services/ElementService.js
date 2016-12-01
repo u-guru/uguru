@@ -57,6 +57,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (varNameSplit.length > 1) {
             var isIndex = varNameSplit.indexOf('is');
             var isntIndex = varNameSplit.indexOf('isnt');
+            var changesIndex = varNameSplit.indexOf('changes');
 
 
 
@@ -66,38 +67,51 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               varNameLeft = camelCase(varNameSplit.slice(0, isIndex).join("-")).toLowerCase();
             } else if (isntIndex > -1) {
               varNameLeft = camelCase(varNameSplit.slice(0, isntIndex).join("-")).toLowerCase();
+            } else if (changesIndex > -1) {
+              varNameLeft = camelCase(varNameSplit.slice(0, changesIndex).join("-")).toLowerCase();
             }
 
 
               if (!(varNameLeft in scope.watchers)) {
 
                 scope.watchers[varNameLeft] = {
-                  values: {is: [], isnt: []},
+                  values: {is: [], isnt: [], changes: []},
                   watcher: null
                 }
 
               }
               if (isIndex > -1) {
                 var varNameRight = varNameSplit.slice(isIndex + 1, varNameSplit.length).join('-').toLowerCase()
+                var value = varNameRight in scope && scope[varNameRight] || varNameRight;
                 scope.watchers[varNameLeft].values.is.push(
                 {
-                  value: varNameRight in scope && scope[varNameRight] || varNameRight,
+                  value: value,
                   state: state
                 })
               }
               if (isntIndex > -1) {
                 var varNameRight = varNameSplit.slice(isntIndex + 1, varNameSplit.length).join('-').toLowerCase()
+                var value = varNameRight in scope && scope[varNameRight] || varNameRight;
                 scope.watchers[varNameLeft].values.isnt.push(
+                {
+                  value: value,
+                  state: state
+                })
+              }
+              if (changesIndex > -1) {
+
+                var varNameRight = varNameSplit.slice(changesIndex + 1, varNameSplit.length).join('-').toLowerCase()
+                scope.watchers[varNameLeft].values.changes.push(
                 {
                   value: varNameRight in scope && scope[varNameRight] || varNameRight,
                   state: state
                 })
               }
               if (!scope.watchers[varNameLeft].watcherName) {
-                console.log('it gets here', varNameLeft)
+                // console.log('it gets here', varNameLeft)
                 scope.watchers[varNameLeft].watcherName = "vars.activeTab"
                 scope.watchers[varNameLeft].watcher = scope.$watch((scope.watchers[varNameLeft].watcherName + ''), function(value) {
-                  console.log(value, scope.watchers[varNameLeft].values)
+                  // console.log(value, scope.watchers[varNameLeft].values)
                   scope.watchers[varNameLeft].values.is && scope.watchers[varNameLeft].values.is.forEach(function(is_obj, i) {
 
                     if (is_obj.value === value) {
@@ -110,6 +124,45 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                     if (isnt_obj.value !== value) {
                       applySendAnimProp(scope, elem, isnt_obj.state.actions);
                     }
+                  })
+                  scope.watchers[varNameLeft].values.changes && scope.watchers[varNameLeft].values.changes.forEach(function(c_obj, i) {
+                      var actionCopy = {}
+                      for (key in c_obj.state.actions) {
+                        console.log('setting key' + key, {})
+                        actionCopy[key] = {}
+                        for (nested_key in c_obj.state.actions[key]) {
+                          if (nested_key === 'delays') {
+                            actionCopy[key]['delays'] = c_obj.state.actions[key][nested_key]
+                            continue;
+                          }
+                          console.log('parsing key/nestedkey[', key, '|', nested_key, c_obj.state.actions[key][nested_key])
+
+                          if (c_obj.state.actions[key][nested_key].indexOf('{{') > -1) {
+                            var splitActionArgs = c_obj.state.actions[key][nested_key].split('{{');
+                            var resultStr = ''
+
+                            splitActionArgs.forEach(function(compile_str, i) {
+                              if (compile_str.indexOf('}}') > -1) {
+                                var compiledStrSplit = compile_str.split('}}');
+                                console.log(compiledStrSplit[0]);
+                                compiledStr = $parse(compiledStrSplit[0])(scope);
+                                resultStr += compiledStr + (compiledStrSplit.length > 1 && compiledStrSplit[1] || '');
+                              } else {
+                                resultStr += compile_str
+                              }
+                            })
+
+                            actionCopy[key][nested_key] = resultStr;
+                          } else {
+                            actionCopy[key][nested_key] = c_obj.state.actions[key][nested_key]
+                          }
+                          console.log(actionCopy)
+
+                        }
+                      }
+                      console.log(actionCopy)
+                      applySendAnimProp(scope, elem, actionCopy);
+
                   })
 
                 })
@@ -699,7 +752,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (specialProps && kv.value.indexOf('|') > -1) {
             kv.value = kv.value.split('|').join(',');
           }
-          console.log(elem, kv.key, kv.value)
+          // console.log(elem, kv.key, kv.value)
           CompService.css.apply(elem, kv.key, kv.value);
           // elem.css(kv.key, kv.value);
         })

@@ -570,23 +570,51 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             }
         }
     }])
+    .directive('replace', ['$compile', function($compile) {
+        return {
+            restrict: 'E',
+            transclude: 'element',
+            replace:true,
+            priority:100,
+            scope: false,
+            link: {pre: function preLink(scope, element, attr, ctrl, transclude) {
+
+                var urlElem = "<graphic " + " url='" + attr.with + "'></graphic>"
+
+                    e = angular.element(urlElem)
+                    for (key in attr.$attr) {
+                        e.attr(key, attr[key])
+                    }
+
+                    $compile(e)(scope)
+                    element.after(e)
+
+                }
+            }
+        }
+    }])
     .directive('url', [function() {
         return {
             restrict: 'A',
             scope:false,
             priority: 10000,
             compile: function(element, attr) {
-                console.log(element[0])
-                if (element[0].nodeName.toLowerCase() !== 'graphic') {
+
+                if (element[0].nodeName.toLowerCase() === 'graphic') {
                     return;
                 }
+
                 if (attr.url.indexOf('/') === -1) {
-                    element.removeAttr('url');
+
                     attr.$set('ngInclude', attr.url);
+                    element.removeAttr('url');
                 } else {
                     attr.$set('ngInclude', "'" +  attr.url + "'");
                 }
 
+            },
+            link: function(scope, elem, attr) {
+                console.log('ay', scope.nav)
             }
         }
     }])
@@ -1981,7 +2009,9 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             restrict: 'A',
             priority: 100000000,
             replace:true,
+            scope: false,
             template: function(element, attr) {
+
                 element[0].removeAttribute('u-list');
                 var uListAttr = attr.uList.replace('in ', 'in ::');
 

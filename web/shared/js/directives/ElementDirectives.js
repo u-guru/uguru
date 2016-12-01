@@ -280,7 +280,7 @@ angular.module('uguru.shared.directives')
       var limitTo = attr.listLimit && parseInt(attr.listLimit) || dataObj.data.length;
 
       element.removeAttr('listData')
-      attr.$set('ngRepeat', attr.listItem + ' in ' +  dataObj.name + ' track by $index');
+      attr.$set('ngRepeat', attr.listItem + ' in ::' +  dataObj.name + ' track by $index');
       attr.$set('ngInclude', '"' +  $rootScope.components[element[0].nodeName.toLowerCase()].template_url + '"');
 
 
@@ -574,12 +574,13 @@ angular.module('uguru.shared.directives')
           var value;
           if (valueSplit.length === 2) {
             if (valueSplit[1] === 'num') {
-              value = parseInt(value);
+              value = parseInt(valueSplit[0]);
             }
           } else {
             value = valueSplit[0];
           }
           scope.$eval(key +'=' + value);
+          scope.vars[key] = value;
         }
       }
 
@@ -1047,6 +1048,7 @@ angular.module('uguru.shared.directives')
                     scope.inheritedFromParent = [];
 
                     var varStates = ElementService.filterVarStates(scope.states.when);
+
                     if (varStates.length) {
                       ElementService.registerVarStates(scope, lElem, lAttr, varStates);
                     }
@@ -1117,7 +1119,7 @@ angular.module('uguru.shared.directives')
                       }
                       // element.ready(function() {
 
-                        SendService.precompileSendActionArgs(states, scope, lElem, lAttr)
+                      SendService.precompileSendActionArgs(states, scope, lElem, lAttr)
                       // })
 
 

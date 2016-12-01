@@ -336,6 +336,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
 
 
         msgStates.incoming.forEach(function(i_state) {
+          if (i_state.name.split('-')[0] === 'var') return;
         // console.log(i_state)
         if (i_state.actions.send && !i_state.parsedObj) {
           i_state.parsedObj = parseStateMsgContents(i_state.actions.send)

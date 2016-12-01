@@ -104,7 +104,7 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
       }
 
       // console.log([list.var, list.arr].join(' in ::') + ' track by $index')
-      return [list.var, list.arr].join(' in ') + ' track by $index';
+      return [list.var, list.arr].join(' in ::') + ' track by $index';
     }
   }
 
@@ -470,7 +470,6 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
           resultScope[var_name] =  '<' + var_name;
         }
         else if (vars.external[var_name] === 'var') {
-
           resultScope[var_name] = '=' + var_name;
         } else {
           resultScope[var_name] = '@' + var_name;
@@ -478,7 +477,7 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
 
       }
       if (!Object.keys(resultScope).length) return false;
-      console.log(resultScope)
+
       return resultScope;
   }
 
@@ -496,14 +495,15 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
     componentModule.directive(dir_info.name, [function() {
       var dirObj = {
         restrict: 'E',
-
+        transclude: 'element',
         replace:true,
         scope: dir_info.scope,
         templateUrl: function(element, attr) {
-
             return dir_info.templateUrl
         },
-        link: function (scope, element, attr, ctrl, transclude) {
+        link: function preLink(scope, element, attr, ctrl, transclude) {
+          scope.root = scope.$parent.root
+          scope.public = scope.$parent.public;
             processScopeVars(scope, attr);
 
             // scope.activeTab = scope.$parent.activeTab;
@@ -512,7 +512,7 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
             // var e = transclude(scope, function(transEl, transScope) {
             //   console.log(transEl)
             // })
-            // $compile(e.contents())(scope)
+            // $compile(contents())(scope)
             // element.append(e)
 
           }
