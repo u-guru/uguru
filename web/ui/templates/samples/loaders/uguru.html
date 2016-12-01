@@ -1,7 +1,7 @@
 <view link-data="ui/templates/samples/loaders/uguru.json" render-after-ext-scripts let="vars=data.vars" bg="slate">
 	<div class="loader-portal-outer"
-		u on-init='s:[portal-open:public:1000]'>
-		<div class="loader-portal states">
+		u on-init='s:[loader-init:depth(1):200]'>
+		<div class="loader-portal states" u on-init='s:[portal-open:public]'>
 			<div class="loader-portal-inside"
 				u init-with="p:[tr:scale(0), tro:50% 90%]"
 				when-portal-open="a:[scale:0:1:250:easeInOutBack:100:1:f]">
@@ -16,7 +16,7 @@
 	                        <circle cx="200" cy="200" r="192"
 	                            stroke-width="16" fill="#2B3234" stroke-linecap="round" stroke-linejoin="round"
 								u init-with="p:[s:rgba(105,179,165,1), sda:1206.38, sdo:1206.38]"
-	                            when-portal-hover="a:[stroke-dashoffset:1206.38:0:2000:linear:0:1:f] | s:[portal-complete:public:2000, portal-transform:public:4000]">
+	                            when-portal-hover="a:[portal-progress-color:2000:linear:0:1:f, stroke-dashoffset:1206.38:0:2000:linear:0:1:f] | s:[portal-complete:public:2000, portal-transform:public:4000]">
 								<!-- stroke:rgba(246,198,78,1):rgba(105,179,165,1):2000:linear:0:1:f -->
 	                        </circle>
 	                    </svg>
@@ -52,8 +52,8 @@
 					when-warp-transition="s:[warp-end:public:700]"
 					when-warp-end="s:[transition-start:public:500]">
 				</div>
-				<warp-tunnel></warp-tunnel>
-				<warp-objects></warp-objects>
+				<!-- <warp-tunnel></warp-tunnel>
+				<warp-objects></warp-objects> -->
 			</div>
 		</div>
 	</div>
