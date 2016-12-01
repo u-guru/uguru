@@ -407,9 +407,10 @@
 				</g>
 	        </g>
 	        <g class="house">
+				<g u on-init="s:[build-house:children:500]">
 	            <rect class="house-foundation" fill="#AADFFF" x="307" y="285" width="187" height="204"
 					u init-with="p:[tr:scaleY(0), tro:center bottom]"
-					on-init="a:[scaleY:0:1:1000:easeOutBounce:0:1:f] | s:[build-house:siblings:500]"></rect>
+					when-build-house="a:[scaleY:0:1:1000:easeOutBounce:0:1:f]"></rect>
 	            <rect class="house-casing" fill="#FFFFFF" x="301" y="485" width="199" height="19"
 					u init-with="p:[tro:center bottom, tr:scaleY(0)]"
 					when-build-house="a:[scaleY:0:1:500:easeOutBounce:0:1:f]"></rect>
@@ -422,6 +423,7 @@
 	            <rect class="roof-top" fill="#FFFFFF" x="296" y="258" width="209" height="7"
 					u init-with="p:[tro:center bottom, tr:scaleY(0)]"
 					when-build-house="a:[scaleY:0:1:750:easeOutBounce:0:1:f]"></rect>
+				</g>
 				<g class="windows"
 					u on-init="s:[w1:children]">
 					<g class="w5"
