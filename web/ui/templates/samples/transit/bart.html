@@ -15,7 +15,9 @@
 					<!-- @samir duration is too fast with easings
 					when-expand-train="a:[max-height:225px:900px:500:easeOutSine:0:1:f]"-->
 					<!--position station here -->
-					<h1 p="5px 10px" bg="aero" f-s="16px" f-w="600" class="caps">Arriving</h1>
+					<h1 p="5px 10px" bg="aero" f-s="16px" f-w="600" class="caps">Arriving at Montgomery
+					<!-- Arriving at {{station.stop}} -->
+				</h1>
 					<train-arrival u-list="station in data.content.bart.station" station="station"></train-arrival>
 					<button abs bottom="0" width="360px" height="40px" bg="stone" class="svg-36"
 						u on-click="s:[expand-train:public]">
