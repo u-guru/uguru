@@ -2,13 +2,25 @@
 	bg="#151515">
 	<main w="100%" h="100%">
 		<main-header header="data.vars.editable.nav.header"></main-header>
-		<section h="calc(100% - 168px)" class="overflow-auto">
-			<ul wrap x-center p="6px">
-				<li u-list="char in data.content.char"
-					p="6px">
-					<people-card></people-card>
-				</li>
-			</ul>
-		</section>
+		<div rel h="calc(100% - 168px)">
+			<section abs top="0" left="0" w="100%" h="100%" class="overflow-auto"
+				u init-with="p:[op:1, z-index:1]"
+				when-active-tab-planets="p:[op:0, z-index:-1]">
+				<ul wrap x-center p="6px">
+					<li u-list="char in data.content.char" p="6px">
+						<people-card></people-card>
+					</li>
+				</ul>
+			</section>
+			<section abs top="0" left="0" w="100%" h="100%" class="overflow-auto"
+				u init-with="p:[op:0, z-index:-1]"
+				when-active-tab-planets="p:[op:1, z-index:1]">
+				<ul wrap x-center p="6px">
+					<li u-list="planet in data.content.planets" p="6px">
+						<planet-card></planet-card>
+					</li>
+				</ul>
+			</section>
+		</div>
 	</main>
 </view>

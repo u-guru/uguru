@@ -29,7 +29,7 @@
 			<li w="150px" u-list="tab in tabInfo">
 				<a rel x-center w="100%" p="24px" f-s="16px" l-s="1px" class="caps star-wars-border"
 					u when-var-active-tab-is-index="s:[active-tab-{{tab}}:public]"
-					when-var-active-tab-isnt-index="p:[]"
+					when-var-active-tab-isnt-index=""
 					ng-click="vars.activeTab=index">
 					<div abs top="0" left="0" w="100%" h="100%"
 						u init-with="p:[t:all 150ms ease-out, bg:#E15021, op:0]"

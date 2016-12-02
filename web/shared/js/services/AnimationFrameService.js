@@ -1035,6 +1035,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
               if (end.indexOf(tr_arg) === -1) {
                 var tr_arg_units = (origStart).split('(')[1];
+                console.log(str)
                 if (tr_arg_units.indexOf('px') > -1) {
                   tr_arg_units = 'px';
                 }
