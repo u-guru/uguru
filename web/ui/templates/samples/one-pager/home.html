@@ -1,21 +1,14 @@
-<view link-data="ui/templates/samples/one-pager/app.pager.json" render-after-ext-scripts let="vars=data.vars" y='center' width='100' scroll-y x='center' wrap bg='white' class='txt-charcoal overflow-auto'>
-
-    <div scroll-y width='100' height='100' top='0' left='0'>
-
-        <header header="vars.editable.nav.header" width='100'>
-        </header>
-
-
+<view link-data="ui/templates/samples/one-pager/app.pager.json" render-after-ext-scripts let="vars=data.vars"
+	bg='white' class='txt-charcoal'>
+    <main width='100' height='100' scroll-y class="overflow-auto">
+        <header header="vars.editable.nav.header" width='100'></header>
 
         <section section-data="vars.editable.splash" width='100'>
-            <image bg-image="vars.editable.sections.splash|no-repeat|100%"></image>
+            <image bg-image="vars.editable.sections.splash|no-repeat|cover"></image>
         </section>
 
-        <footer footer-data="vars.editable.nav.footer">
-        </footer>
+        <footer footer-data="vars.editable.nav.footer"></footer>
 
-
-        <todo-list items="data.config.todo"> </todo-list>
-
-    </div>
+        <todo-list items="data.config.todo"></todo-list>
+    </main>
 </view>
