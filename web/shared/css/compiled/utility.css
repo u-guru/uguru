@@ -175,6 +175,9 @@ button, input, textarea {
   right: auto !important;
   bottom: auto !important; }
 
+.backface-hidden {
+  backface-visibility: hidden; }
+
 .no-scrollbar::-webkit-scrollbar {
   display: none; }
 .no-scrollbar::-moz-scrollbar {

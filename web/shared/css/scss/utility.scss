@@ -218,6 +218,10 @@ button, input, textarea {
 	}
 }
 
+.backface-hidden {
+	backface-visibility: hidden;
+}
+
 .no-scrollbar {
 	&::-webkit-scrollbar {
 		display: none;

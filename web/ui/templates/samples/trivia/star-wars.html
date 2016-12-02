@@ -1,10 +1,14 @@
-<view link-data="ui/templates/samples/trivia/star-wars.json" render-after-ext-scripts let="vars=data.vars" bg="#151515">
-	<main-header header="vars.editable.nav.header"></main-header>
-	<main>
-		<ul>
-			<li>
-				<people-card></people-card>
-			</li>
-		</ul>
+<view link-data="ui/templates/samples/trivia/star-wars.json" render-after-ext-scripts
+	bg="#151515">
+	<main w="100%" h="100%">
+		<main-header header="data.vars.editable.nav.header"></main-header>
+		<section h="calc(100% - 168px)" class="overflow-auto">
+			<ul wrap x-center p="6px">
+				<li u-list="char in data.content.char"
+					p="6px">
+					<people-card></people-card>
+				</li>
+			</ul>
+		</section>
 	</main>
 </view>
