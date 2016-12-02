@@ -762,14 +762,14 @@
     opacity: 1; } }
 @keyframes pf-photo-enter {
   0% {
-    -webkit-clip-path: circle(0px at 50% 50%);
+
     clip-path: circle(0px at 50% 50%);
     opacity: 0; }
   99% {
-    -webkit-clip-path: circle(400px at 50% 50%);
+
     clip-path: circle(400px at 50% 50%); }
   100% {
-    -webkit-clip-path: none;
+
     clip-path: none;
     opacity: 1; } }
 /*  http://goo.gl/k7gdRm */

@@ -7,7 +7,7 @@ angular
     ]);
 
 function LoaderService($rootScope, CompService) {
-    var loaderAttrs = ['min-ms'];
+    var loaderAttrs = ['min-ms', 'enter-ms', 'exit-ms'];
     return {
         getDefaultLoader: getDefaultLoader,
         getParentBgColor: getParentBgColor,
@@ -32,6 +32,13 @@ function LoaderService($rootScope, CompService) {
         }
         if (attrDict.minMs) {
             attrDict.minMs = parseInt(attrDict.minMs);
+        }
+
+        if (attrDict.exitMs) {
+            attrDict.exitMs = parseInt(attrDict.exitMs);
+        }
+        if (attrDict.enterMs) {
+            attrDict.enterMs = parseInt(attrDict.enterMs);
         }
 
 

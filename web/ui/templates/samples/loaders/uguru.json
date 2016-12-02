@@ -3,20 +3,7 @@
     "config": {
         "pathParams": {},
         "base_url": "^",
-        "parse": {},
-        "scripts": {
-            "base": "./ui/templates/samples/kicks/",
-            "queue": [
-                {
-                    "path": "shoes.json",
-                    "mappings": [
-                        {
-                            "to":"content.shoes"
-                        }
-                    ]
-                }
-            ]
-        }
+        "parse": {}
 	},
     "content": {},
     "components": {
