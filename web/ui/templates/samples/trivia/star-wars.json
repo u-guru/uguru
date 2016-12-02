@@ -1,0 +1,31 @@
+{
+    "vars": {},
+    "config": {
+        "pathParams": {},
+        "base_url": "^",
+        "parse": {},
+        "scripts": {
+            "base": "./ui/templates/samples/trivia/",
+            "queue": [
+                {
+                    "path": "star-wars-char.json",
+                    "mappings": [
+	                    {
+	                        "to":"content.char"
+	                    }
+                    ]
+                },
+				{
+                    "path": "star-wars-planets.json",
+                    "mappings": [
+	                    {
+	                        "to":"content.planets"
+	                    }
+                    ]
+                }
+            ]
+        }
+    },
+    "content": {},
+    "components": {}
+}
