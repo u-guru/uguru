@@ -97,6 +97,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
     var msgResultArr = [];
     var msgArr = state.parsed.split(',');
     msgArr.forEach(function(msg, i) {
+
       msgObj = {raw: msg.trim()}
       msgSplit = msgObj.raw.split(':');
       msgObj.name = msgSplit[0];
@@ -175,9 +176,16 @@ function SendService($timeout, $parse, RootService, TweenService) {
         scope.root.scope.public.customStates.when[msg_obj.nameCamel] = {elements:[], depth: depth}
       }
       else {
-        console.log(msg_obj)
         scope.public.customStates.when[msg_obj.nameCamel] = {elements:[], depth: depth}
-        scope.$parent.public.customStates.when[msg_obj.nameCamel] = scope.public.customStates.when[msg_obj.nameCamel]
+        if (scope.$parent && scope.$parent.public) {
+            scope.$parent.public.customStates.when[msg_obj.nameCamel] = scope.public.customStates.when[msg_obj.nameCamel]
+        } else {
+            $timeout(function() {
+              if (scope.$parent) {
+                scope.$parent.public.customStates.when[msg_obj.nameCamel] = scope.public.customStates.when[msg_obj.nameCamel]
+              }
+            })
+        }
       }
       // console.log('registered', msg_obj.nameCamel, depth);
     }
@@ -345,7 +353,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
         if (i_state.parsedObj) {
           expectedDepth = parseDepthString(i_state.parsedObj[0].sendScope);
         }
-        if (i_state.nameCamel in scope.$parent.public.customStates.when && scope.$parent.public.customStates.when[i_state.nameCamel].siblings) {
+        if (scope.$parent && i_state.nameCamel in scope.$parent.public.customStates.when && scope.$parent.public.customStates.when[i_state.nameCamel].siblings) {
           parseMessageAndStoreToExecuteLater(scope, i_state, scope.$parent.public.customStates.when[i_state.nameCamel].depth - 0.5, element, elem_attr)
         }
         parseMessageAndStoreToExecuteLater(scope, i_state, expectedDepth, element, elem_attr)
@@ -469,7 +477,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
               }
           } else {
 
-              var currentMsgContext = scope.public.customStates.when[msg_info.nameCamel] || scope.$parent.public.customStates.when[msg_info.nameCamel];
+              var currentMsgContext = scope.public.customStates.when[msg_info.nameCamel] || (scope.$parent && scope.$parent.public.customStates.when[msg_info.nameCamel])
               // console.log('entering local scope', currentMsgContext)
               //if elements exists
               if (currentMsgContext && currentMsgContext.elements) {

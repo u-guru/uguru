@@ -48,7 +48,17 @@
                 },
                 "lead_gen": {},
                 "programs": {},
-                "testimonials": {},
+                "testimonials": {
+                    "header": "These are my testimonials",
+                    "reviews": [
+                        {"name": "Asif D.", "image_url": "ui/templates/samples/one-pager/static/avatars/1.tpl", "desc": "Skate ipsum dolor sit amet, grind mini ramp betty skate key hip Mark Gonzales. Heel flip casper Pushead casper slide transfer aerial. Lip John Cardiel frigid air betty masonite shinner. Rail slide cess slide stalefish..."},
+                        {"name": "Anita J.", "image_url": "ui/templates/samples/one-pager/static/avatars/2.tpl", "desc": "Skate ipsum dolor sit amet, grind mini ramp betty skate key hip Mark Gonzales. Heel flip casper Pushead casper slide transfer aerial. Lip John Cardiel frigid air betty masonite shinner. Rail slide cess slide stalefish...."},
+                        {"name": "Jay Zong.", "image_url": "ui/templates/samples/one-pager/static/avatars/3.tpl", "desc": "Skate ipsum dolor sit amet, grind mini ramp betty skate key hip Mark Gonzales. Heel flip casper Pushead casper slide transfer aerial. Lip John Cardiel frigid air betty masonite shinner. Rail slide cess slide stalefish...."},
+                        {"name": "Ashley S.", "image_url": "ui/templates/samples/one-pager/static/avatars/4.tpl", "desc": "Skate ipsum dolor sit amet, grind mini ramp betty skate key hip Mark Gonzales. Heel flip casper Pushead casper slide transfer aerial. Lip John Cardiel frigid air betty masonite shinner. Rail slide cess slide stalefish...."},
+                        {"name": "Mary k.", "image_url": "ui/templates/samples/one-pager/static/avatars/5.tpl", "desc": "Skate ipsum dolor sit amet, grind mini ramp betty skate key hip Mark Gonzales. Heel flip casper Pushead casper slide transfer aerial. Lip John Cardiel frigid air betty masonite shinner. Rail slide cess slide stalefish...."},
+                        {"name": "Lil b", "image_url": "ui/templates/samples/one-pager/static/avatars/6.tpl", "desc": "Skate ipsum dolor sit amet, grind mini ramp betty skate key hip Mark Gonzales. Heel flip casper Pushead casper slide transfer aerial. Lip John Cardiel frigid air betty masonite shinner. Rail slide cess slide stalefish...."}
+                    ]
+                },
                 "timeline": {}
             },
             "modals": {
@@ -110,6 +120,30 @@
             },
             "template_url": "./ui/templates/samples/one-pager/components/todo-list.tpl"
         },
+        "testimonials-section": {
+            "data": {
+                "external": {
+                    "info":"var"
+                }
+            },
+            "template_url": "./ui/templates/samples/one-pager/sections/testimonials.html"
+        },
+        "splash-section": {
+            "data": {
+                "external": {
+                    "splash":"var"
+                }
+            },
+            "template_url": "./ui/templates/samples/one-pager/sections/splash.html"
+        },
+        "testimonial": {
+            "data": {
+                "external": {
+                    "t":"var"
+                }
+            },
+            "template_url": "./ui/templates/samples/one-pager/components/testimonial.tpl"
+        },
         "icon": {
             "data": {
                 "external": {
@@ -127,6 +161,15 @@
                 }
             },
             "template_url": "./ui/templates/samples/one-pager/components/logo.tpl"
+        },
+
+        "section": {
+            "data": {
+                "external": {
+                    "info": "var"
+                }
+            },
+            "template_url": "./ui/templates/samples/one-pager/containers/section.tpl"
         }
     }
 }

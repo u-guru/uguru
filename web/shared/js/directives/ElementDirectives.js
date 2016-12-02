@@ -315,11 +315,11 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
-.directive('loader', ['$rootScope', 'LoaderService', function($rootScope, LoaderService) {
+.directive('loader', ['$rootScope', 'LoaderService', '$compile', function($rootScope, LoaderService, $compile) {
   return {
     restrict: 'E',
     templateUrl: function(element, attr) {
-      return attr.url || 'ui/templates/components/base/loader.tpl'
+      return ('import' in attr && attr.import) || 'ui/templates/components/base/loader.tpl'
     },
     transclude: true,
     controllerAs: 'loader',
@@ -335,7 +335,7 @@ angular.module('uguru.shared.directives')
           if (val) {
 
 
-            ctrl.watchers.parentHeight();
+            // ctrl.watchers.parentHeight();
             ctrl.watchers.infoHeight();
             ctrl.info.opacity = 1;
             console.log(ctrl.info.height, ctrl.info.width)
@@ -347,11 +347,15 @@ angular.module('uguru.shared.directives')
       }
     },
     controller: function($scope, $element, $attrs, $transclude) {
+      $scope.root = {scope: $rootScope};
+      $scope.public = {customStates: {when:{}}}
       var loader = this;
       loader.info = {width: 0, height: 0};
 
       loader.attr = LoaderService.renderLoaderAttrs($scope, $attrs, loader.info);
       loader.duration = loader.attr.minMs || 1000;
+      loader.exitMs = loader.attr.exitMs || 500;
+
 
       if (!('bg' in $attrs)) {
         loader.info['background-color'] = LoaderService.getParentBgColor($element, $attrs);
@@ -359,20 +363,12 @@ angular.module('uguru.shared.directives')
 
       loader.watchers = {parentHeight: 0};
       var loaderParent = $element.parent()[0] || $element[0].parentNode;
-      console.log(loaderParent)
+
       var loaderParentCoords;
+      loaderParentCoords = loaderParent && 'getBoundingClientRect' in loaderParent && loaderParent.getBoundingClientRect() || {};
 
-        loader.watchers.parentHeight = $scope.$watch(function() {
-          loaderParentCoords = loaderParent && 'getBoundingClientRect' in loaderParent && loaderParent.getBoundingClientRect() || {};
-
-          return loaderParentCoords.height
-        }, function(value) {
-          if (value > 0) {
-            loader.info.height = value;
-            loader.info.width = loaderParentCoords.width;
-
-          }
-        })
+      loader.info.height = loaderParentCoords.height || '100%';
+      loader.info.width = loaderParentCoords.width || '100%';
 
     }
   }
@@ -472,31 +468,34 @@ angular.module('uguru.shared.directives')
                                 var ttl_loader_complete = maxLoadTime - (timeNow - innerElems.timer);
                                 console.log(ttl_loader_complete);
                                 $timeout(function() {
-                                  innerElems.clone.empty();
-                                  p_element.empty();
 
-                                  transclude(scope, function(clone, innerScope) {
+                                  console.log(preTranscludeElems.loader, preTranscludeElems.loader.parent())
+                                  preTranscludeElems.loader[0].outerHTML = '';
+                                }, ttl_loader_complete)
+                                  // transclude(scope, function(clone, innerScope) {
                                     if (attr.let && attr.let.length) {
                                       var letAttrSplit = attr.let.split('=');
-                                      innerScope[letAttrSplit[0]] = $parse(letAttrSplit[1])(scope)
+                                      scope[letAttrSplit[0]] = $parse(letAttrSplit[1])(scope)
                                     }
-                                    for (var i = 0; i < clone.length; i++) {
 
+                                    for (var i = 0; i < preTranscludeElems.remaining.length; i++) {
+                                      console.log(preTranscludeElems.remaining[i])
                                       if (i !== preTranscludeElems.loaderIndex) {
-                                        $compile(clone[i])(innerScope);
-                                        element.append(clone[i]);
+                                        // if (preTranscludeElems.remaining[i].style) {
+                                        //   preTranscludeElems.remaining[i].style.opacity = 0;
+                                        // }
+                                        $compile(preTranscludeElems.remaining[i])(scope);
                                       }
                                     }
-                                    console.log(clone)
+                                    preTranscludeElems.loader = p_element.children();
+
+                                    p_element.append(preTranscludeElems.remaining)
+
+
+                                  // })
 
 
 
-
-
-                                  })
-
-
-                                }, ttl_loader_complete)
 
 
                                 // var clone = preTranscludeElems.remaining;
@@ -532,14 +531,7 @@ angular.module('uguru.shared.directives')
                     $rootScope.activeView = {name: attr.linkDataName, data: scope.data};
             }
 
-            transclude(scope, function(clone, innerScope) {
-
-                $compile(clone)(innerScope);
-
-                element.append(clone);
-                p_element[0].style.opacity = 1;
-
-            })
+            element.append(transclude(scope))
           }
             // if ('linkData' in attr && 'linkDataName' in attr) {
 
@@ -1114,7 +1106,7 @@ angular.module('uguru.shared.directives')
                       }
 
 
-                      if (!('root' in scope) && !('root' in scope.$parent)) {
+                      if (!('root' in scope) && scope.$parent && !('root' in scope.$parent)) {
                         scope.root = {scope: $rootScope};
                       }
                       // element.ready(function() {

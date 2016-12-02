@@ -1,15 +1,17 @@
 <view link-data="ui/templates/samples/one-pager/app.pager.json" render-after-ext-scripts let="vars=data.vars" y='center' width='100' scroll-y x='center' wrap bg='white' class='txt-charcoal overflow-auto'>
+    <!-- must use no variables since that is what is being loaded at this time.-->
+    <loader min-ms="3000"  import="ui/templates/samples/one-pager/containers/loader.tpl"> </loader>
+    <div overflow-hidden width='100' height='100' top='0' left='0' relative>
 
-    <div scroll-y width='100' height='100' top='0' left='0'>
-
-        <header header="vars.editable.nav.header" width='100'>
+        <header  header="vars.editable.nav.header" width='100' fixed z='10' bg='smoke-20p' class='txt-azure'>
         </header>
 
 
 
-        <section section-data="vars.editable.splash" width='100'>
-            <image bg-image="vars.editable.sections.splash|no-repeat|100%"></image>
-        </section>
+        <main abs column top='10%' height='100%' scroll-y width='100' left='0'>
+            <testimonials-section info="vars.editable.sections.testimonials" bg-smoke column height="90" width='100'>
+            </testimonials-section>
+        </main>
 
         <footer footer-data="vars.editable.nav.footer">
         </footer>

@@ -14,8 +14,9 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
   var initConfigDict = {
     vars: {},
     base_url: "",
-    scripts: []
+    scripts: [],
   };
+  var lib = {random: getRandomDataFuncs()}
   var dataMappings = {};
   var componentModule = baseCompModule;
   var dataCache = {views: {}}
@@ -564,6 +565,16 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
     }
   }
 
+  function getRandomDataFuncs() {
+    return {
+      lorem:generateRandomLoremIpsum
+    }
+
+    function generateRandomLoremIpsum(word_length) {
+      return loremChunk.split(' ').slice(0, word_length).join(" ");
+    }
+  }
+
 
   function mapDataFromOneSourceToMain(data_scope) {
 
@@ -588,3 +599,5 @@ function generateDataSet(type, length, min, max) {
 
 
 
+
+var loremChunk = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eaedem res maneant alio modo. Ut optime, secundum naturam affectum esse possit. Disserendi artem nullam habuit. Apud imperitos tum illa dicta sunt, aliquid etiam coronae datum; Quorum altera prosunt, nocent altera. Videamus animi partes, quarum est conspectus illustrior; Ex ea difficultate illae fallaciloquae, ut ait Accius, malitiae natae sunt. Quae cum dixisset paulumque institisset, Quid est? Nunc agendum est subtilius. Aperiendum est igitur, quid sit voluptas; Quis est tam dissimile homini. Inde sermone vario sex illa a Dipylo stadia confecimus. Verum tamen cum de rebus grandioribus dicas, ipsae res verba rapiunt; Ex ea difficultate illae fallaciloquae, ut ait Accius, malitiae natae sunt. Sed vos squalidius, illorum vides quam niteat oratio. Non dolere, inquam, istud quam vim habeat postea videro; In schola desinis. Qui est in parvis malis. Nondum autem explanatum satis, erat, quid maxime natura vellet. Et ille ridens: Video, inquit, quid agas; Miserum hominem! Si dolor summum malum est, dici aliter non potest. An vero, inquit, quisquam potest probare, quod perceptfum, quod. Quae qui non vident, nihil umquam magnum ac cognitione dignum amaverunt. Incommoda autem et commoda-ita enim estmata et dustmata appello-communia esse voluerunt, paria noluerunt. Dic in quovis conventu te omnia facere, ne doleas. Habent enim et bene longam et satis litigiosam disputationem. Non dolere, inquam, istud quam vim habeat postea videro; Nec vero alia sunt quaerenda contra Carneadeam illam sententiam. Duo Reges: constructio interrete. At modo dixeras nihil in istis rebus esse, quod interesset. Nam ista vestra: Si gravis, brevis; Ergo, si semel tristior effectus est, hilara vita amissa est? Aliter homines, aliter philosophos loqui putas oportere? Atqui iste locus est, Piso, tibi etiam atque etiam confirmandus, inquam; Etenim semper illud extra est, quod arte comprehenditur. Etenim semper illud extra est, quod arte comprehenditur. Quae diligentissime contra Aristonem dicuntur a Chryippo."
