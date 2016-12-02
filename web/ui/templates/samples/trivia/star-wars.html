@@ -1,3 +1,10 @@
-<view link-data="ui/templates/samples/trivia/star-wars.json" render-after-ext-scripts bg="white">
+<view link-data="ui/templates/samples/trivia/star-wars.json" render-after-ext-scripts bg="#282727">
+	<header>
+		<logo></logo>
 
+	    <tab-links grow='{{header.tabs.length}}' tab-info="header.tabs"></tab-links>
+	</header>
+	<main>
+		<people-item></people-item>
+	</main>
 </view>
