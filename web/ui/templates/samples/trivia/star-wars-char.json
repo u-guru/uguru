@@ -69,7 +69,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ],
         "vehicles":[
             "http://swapi.co/api/vehicles/14/",
@@ -159,7 +170,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/2/"
+            {
+                "name":"Droid",
+                "classification":"artificial",
+                "designation":"sentient",
+                "average_height":"n/a",
+                "skin_colors":"n/a",
+                "hair_colors":"n/a",
+                "eye_colors":"n/a",
+                "average_lifespan":"indefinite",
+                "homeworld":null,
+                "language":"n/a"
+            }
         ]
     },
     {
@@ -250,7 +272,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/2/"
+            {
+                "name":"Droid",
+                "classification":"artificial",
+                "designation":"sentient",
+                "average_height":"n/a",
+                "skin_colors":"n/a",
+                "hair_colors":"n/a",
+                "eye_colors":"n/a",
+                "average_lifespan":"indefinite",
+                "homeworld":null,
+                "language":"n/a"
+            }
         ]
     },
     {
@@ -314,7 +347,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ],
         "starships":[
             "http://swapi.co/api/starships/13/"
@@ -390,7 +434,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ],
         "vehicles":[
             "http://swapi.co/api/vehicles/30/"
@@ -446,7 +501,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ]
     },
     {
@@ -499,7 +565,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ]
     },
     {
@@ -534,7 +611,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/2/"
+            {
+                "name":"Droid",
+                "classification":"artificial",
+                "designation":"sentient",
+                "average_height":"n/a",
+                "skin_colors":"n/a",
+                "hair_colors":"n/a",
+                "eye_colors":"n/a",
+                "average_lifespan":"indefinite",
+                "homeworld":null,
+                "language":"n/a"
+            }
         ]
     },
     {
@@ -569,7 +657,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ],
         "starships":[
             "http://swapi.co/api/starships/12/"
@@ -652,7 +751,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ],
         "vehicles":[
             "http://swapi.co/api/vehicles/38/"
@@ -715,7 +825,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ],
         "vehicles":[
             "http://swapi.co/api/vehicles/44/",
@@ -768,7 +889,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ]
     },
     {
@@ -839,7 +971,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/3/"
+            {
+                "name":"Wookiee",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"210",
+                "skin_colors":"gray",
+                "hair_colors":"black, brown",
+                "eye_colors":"blue, green, yellow, brown, golden, red",
+                "average_lifespan":"400",
+                "homeworld":"http://swapi.co/api/planets/14/",
+                "language":"Shyriiwook"
+            }
         ],
         "vehicles":[
             "http://swapi.co/api/vehicles/19/"
@@ -908,7 +1051,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ],
         "starships":[
             "http://swapi.co/api/starships/10/",
@@ -947,7 +1101,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/4/"
+            {
+                "name":"Rodian",
+                "classification":"sentient",
+                "designation":"reptilian",
+                "average_height":"170",
+                "skin_colors":"green, blue",
+                "hair_colors":"n/a",
+                "eye_colors":"black",
+                "average_lifespan":"unknown",
+                "homeworld":"http://swapi.co/api/planets/23/",
+                "language":"Galactic Basic"
+            }
         ]
     },
     {
@@ -990,7 +1155,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/5/"
+            {
+                "name":"Hutt",
+                "classification":"gastropod",
+                "designation":"sentient",
+                "average_height":"300",
+                "skin_colors":"green, brown, tan",
+                "hair_colors":"n/a",
+                "eye_colors":"yellow, red",
+                "average_lifespan":"1000",
+                "homeworld":"http://swapi.co/api/planets/24/",
+                "language":"Huttese"
+            }
         ]
     },
     {
@@ -1043,7 +1219,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ],
         "vehicles":[
             "http://swapi.co/api/vehicles/14/"
@@ -1074,7 +1261,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ],
         "starships":[
             "http://swapi.co/api/starships/12/"
@@ -1209,7 +1407,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ]
     },
     {
@@ -1262,7 +1471,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ],
         "starships":[
             "http://swapi.co/api/starships/21/"
@@ -1290,7 +1510,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/2/"
+            {
+                "name":"Droid",
+                "classification":"artificial",
+                "designation":"sentient",
+                "average_height":"n/a",
+                "skin_colors":"n/a",
+                "hair_colors":"n/a",
+                "eye_colors":"n/a",
+                "average_lifespan":"indefinite",
+                "homeworld":null,
+                "language":"n/a"
+            }
         ]
     },
     {
@@ -1349,7 +1580,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ],
         "starships":[
             "http://swapi.co/api/starships/10/"
@@ -1387,7 +1629,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ]
     },
     {
@@ -1446,7 +1699,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ]
     },
     {
@@ -1471,7 +1735,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ],
         "starships":[
             "http://swapi.co/api/starships/28/"
@@ -1562,7 +1837,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ],
         "vehicles":[
             "http://swapi.co/api/vehicles/38/"
@@ -1653,7 +1939,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ]
     },
     {
@@ -1943,7 +2240,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ]
     },
     {
@@ -2160,7 +2468,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ]
     },
     {
@@ -2498,7 +2817,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ],
         "starships":[
             "http://swapi.co/api/starships/39/"
@@ -2536,7 +2866,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ]
     },
     {
@@ -2571,7 +2912,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ]
     },
     {
@@ -2709,7 +3061,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ]
     },
     {
@@ -2743,7 +3106,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ],
         "vehicles":[
             "http://swapi.co/api/vehicles/55/"
@@ -2790,7 +3164,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ]
     },
     {
@@ -2815,7 +3200,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ]
     },
     {
@@ -2973,7 +3369,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ]
     },
     {
@@ -3182,7 +3589,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/3/"
+            {
+                "name":"Wookiee",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"210",
+                "skin_colors":"gray",
+                "hair_colors":"black, brown",
+                "eye_colors":"blue, green, yellow, brown, golden, red",
+                "average_lifespan":"400",
+                "homeworld":"http://swapi.co/api/planets/14/",
+                "language":"Shyriiwook"
+            }
         ]
     },
     {
@@ -3226,7 +3644,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ]
     },
     {
@@ -3317,7 +3746,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ]
     },
     {
@@ -3342,7 +3782,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ]
     },
     {
@@ -3367,7 +3818,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ],
         "starships":[
             "http://swapi.co/api/starships/77/"
@@ -3395,7 +3857,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/2/"
+            {
+                "name":"Droid",
+                "classification":"artificial",
+                "designation":"sentient",
+                "average_height":"n/a",
+                "skin_colors":"n/a",
+                "hair_colors":"n/a",
+                "eye_colors":"n/a",
+                "average_lifespan":"indefinite",
+                "homeworld":null,
+                "language":"n/a"
+            }
         ]
     },
     {
@@ -3470,7 +3943,18 @@
             }
         ],
         "species":[
-            "http://swapi.co/api/species/1/"
+            {
+                "name":"Human",
+                "classification":"mammal",
+                "designation":"sentient",
+                "average_height":"180",
+                "skin_colors":"caucasian, black, asian, hispanic",
+                "hair_colors":"blonde, brown, black, red",
+                "eye_colors":"brown, blue, green, hazel, grey, amber",
+                "average_lifespan":"120",
+                "homeworld":"http://swapi.co/api/planets/9/",
+                "language":"Galactic Basic"
+            }
         ],
         "starships":[
             "http://swapi.co/api/starships/49/",
