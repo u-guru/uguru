@@ -4,6 +4,11 @@
 // 	display: none;
 // }
 
+.star-wars-border {
+	border-left: 0.5px solid mix(white, #282727, 5%);
+	border-right: 0.5px solid mix(white, #282727, 5%);
+}
+
 .gradient-sienna-stone {
 	background: $stone;
 	background: -moz-linear-gradient(top, rgba($sienna,1) 0%, rgba($stone,1) 100%);

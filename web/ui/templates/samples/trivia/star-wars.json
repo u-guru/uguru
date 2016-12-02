@@ -1,5 +1,14 @@
 {
-    "vars": {},
+    "vars": {
+		"editable": {
+			"nav": {
+				"header": {
+					"test": "test",
+					"tabs": ["people", "species", "planets", "starships", "films"]
+				}
+			}
+		}
+	},
     "config": {
         "pathParams": {},
         "base_url": "^",
@@ -27,5 +36,29 @@
         }
     },
     "content": {},
-    "components": {}
+    "components": {
+		"logo": {
+            "template_url": "./ui/templates/samples/trivia/components/star-wars/logo.tpl"
+        },
+		"people-card": {
+            "template_url": "./ui/templates/samples/trivia/components/star-wars/people-card.tpl"
+        },
+		"main-header": {
+            "template_url": "./ui/templates/samples/trivia/components/star-wars/header.tpl",
+            "data": {
+                "external": {
+                    "header": "var"
+                }
+            }
+        },
+        "nav-bar": {
+            "data": {
+                "external": {
+                    "tabInfo": "var",
+                    "activeTab": "var"
+                }
+            },
+            "template_url": "./ui/templates/samples/trivia/components/star-wars/nav.tpl"
+        }
+	}
 }
