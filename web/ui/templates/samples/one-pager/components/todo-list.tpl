@@ -1,5 +1,5 @@
-<ul fixed bottom='0' height='10%' bg='smoke' left='0' width='100' x='center' y='stretch'  row>
-    <li class='weight-900' column x='center' bg='auburn' grow='1' u-list="item in items">
-        {{$index + 1}}.{{item}}
+<ul row fixed left='0' bottom='0' width='100'>
+    <li u-list="item in items" grow='1'>
+        <div x-center y-center width="100" p="15px" bg='auburn' f-w="900">{{$index + 1}}.{{item}}</div>
     </li>
 </ul>
