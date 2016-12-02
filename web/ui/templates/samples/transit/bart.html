@@ -7,7 +7,10 @@
 			<replace with="ui/templates/samples/transit/components/bart-map.html"></replace>
 			<div abs top="0" left="0" w="100%" h="100%">
 				<!-- <div bg="white" class="txt-slate">{{data.content.bart.station}}</div> -->
-				<train-arrival u-list="station in data.content.bart.station" station="station"></train-arrival>
+				<div bg="white" rad="2" border="1px solid #9cbdbe" class="txt-slate"> <!-- position station here -->
+					<h1 p="5px 10px" bg="aero" f-s="16px" f-w="600" class="caps">Arriving</h1>
+					<train-arrival u-list="station in data.content.bart.station" station="station"></train-arrival>
+				</div>
 			</div>
 		</div>
 	</div>
