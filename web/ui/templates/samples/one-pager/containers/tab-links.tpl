@@ -1,20 +1,13 @@
 <li column x='stretch' y='center' padding='20px' f-s="16px" class="uppercase">
     <set active-tab="1|num"> </set>
     <ul width='100%' x='stretch' y='center' row relative>
-
-        <span u-list="tab in tabInfo" grow='1' x='center' y='center' u when-var-active-tab-is-index="prop:[font-weight:900]" when-var-active-tab-isnt-index="prop:[font-weight:400]" ng-click="vars.activeTab=index">
+        <li grow='1' x='center' y='center'
+            u-list="tab in tabInfo"
+            u when-var-active-tab-is-index="prop:[font-weight:900]" when-var-active-tab-isnt-index="prop:[font-weight:400]" ng-click="vars.activeTab=index">
             {{tab}}
-        </span>
-        <div height='10px' left='0'
-            u
-            init-with="p:[t:left 250ms ease-out]"
-            when-var-active-tab-changes="p:[left:{{100/tabInfo.length * (vars.activeTab-1)}}%]"
-            bottom='-20px'
-            abs
-            column
-            width='{{100/tabInfo.length}}' bg='azure'>
-        </div>
+        </li>
+        <hr abs l='0' b='-20px' h='5px' border="0" m="0" w='{{100/tabInfo.length}}%' bg='azure'
+            u init-with="p:[t:all 150ms ease-out]"
+            when-var-active-tab-changes="p:[transform:translateX({{(vars.activeTab-1)*100}}%)]"/>
     </ul>
-
-
 </li>
