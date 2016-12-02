@@ -8,9 +8,11 @@
         </li>
     </li> -->
 	<li row y-center p="5px" f-s="14px">
-		<h2 f-w="600">{{station.destination}}&nbsp;</h2>
-		<span u-list='estimate in station.estimation'>
-			<span style='background-color:{{estimate.hexcolor}}'>{{estimate.minutes}} minutes</span>
-		</span>
+		<h2 f-w="600" class="txt-slate">{{station.destination}}&nbsp;</h2>
+		<ul row p="0px 5px">
+			<li u-list='estimate in station.estimation' p="2px">
+				<span style='padding:2px 5px; border-radius:1px; background-color:{{estimate.hexcolor}}' class="txt-white semibold block">{{estimate.minutes}} min</span>
+			</li>
+		</ul>
 	</li>
 </ul>
