@@ -1,5 +1,7 @@
 <div abs x-center y-center top="0" left="0" width="100%" height="100%"
-	u init-with="p:[op:1, z-index:10]">
+	u init-with="p:[tro:center bottom, tr:scale(0)]"
+	when-switch-vibes="a:[scale:0:1:800:easeOutBack:0:1:f] | p:[z-index:10]"
+	when-exit-vibes="a:[scale:1:0:200:easeInBack:0:1:f]">
 	<!-- u init-with="p:[tro:center bottom, tr:scale(0)]"
 	when-switch-vibes="s:[playlist:depth(>1):800] | a:[scale:0:1:800:easeOutBack:0:1:f]"
 	when-exit-vibes="a:[scale:1:0:200:easeInBack:0:1:f]" -->
@@ -11,10 +13,11 @@
 		</a>
 		<div flex p="15px">
 			<ul p="15px"
-				u when-playlist="s:[playlist-enter-left:children:linear-1000]:+400">
+				error u when-switch-vibes="s:[playlist-enter-left:children:linear-1000]:+400">
+
 				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-right"
-					u init-with="p-op"
-					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
+					error u init-with="p:[op:0]"
+					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:800:1:f]"
 					on-mouseenter="s:[av-scale:children]"
 					on-mouseleave="s:[av-shrink:children]">
 					<a flex relative>
@@ -26,32 +29,34 @@
 					</a>
 				</li>
 				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-right"
-					u init-with="p-op"
-					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
+					error u init-with="p:[op:0]"
+					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:800:1:f]"
 					on-mouseenter="s:[sd-scale:children]"
 					on-mouseleave="s:[sd-shrink:children]">
-					Sad Drake
-					<item class="absolute bottom-0" style="border-bottom:solid 3px white;" width="100"
-						u init-with="p:[tr:scaleX(0), tro:right center]"
-						when-sd-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
-						when-sd-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
-					</item>
+					<a flex relative>
+						Sad Drake
+						<hr abs bottom="0" left="0" width="100" height="2px" m="0" rad="4px" border="0" bg="white"
+							u init-with="p:[tr:scaleX(0), tro:right center]"
+							when-sd-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
+							when-sd-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]"/>
+					</a>
 				</li>
-				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-right"
-					u init-with="p-op"
-					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
+				<li rel p-y="10px"
+					u init-with="p:[op:0]"
+					when-switch-vibes="a:[fadeInDown:850:easeOutExpo:800:1:f]"
 					on-mouseenter="s:[h-scale:children]"
 					on-mouseleave="s:[h-shrink:children]">
-					Hustlin'
-					<item class="absolute bottom-0" style="border-bottom:solid 3px white;" width="100"
-						u init-with="p:[tr:scaleX(0), tro:right center]"
-						when-h-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
-						when-h-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
-					</item>
+					<a font-size="48px" line-height="1.2" f-w="700" class="caps block txt-right">
+						<span>Hustlin'</span>
+						<hr abs bottom="0" left="0" width="100" height="2px" m="0" rad="4px" border="0" bg="white"
+							u init-with="p:[tr:scaleX(0), tro:right center, op:0]"
+							when-h-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
+							when-h-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f, opacity:1:0:100:linear:200:1:f]"/>
+					</a>
 				</li>
 				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-right"
-					u init-with="p-op"
-					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
+					u init-with="p:[op:0]"
+					when-switch-vibes="a:[fadeInDown:850:easeOutExpo:800:1:f]"
 					on-mouseenter="s:[tn-scale:children]"
 					on-mouseleave="s:[tn-shrink:children]"
 					on-click="p:[launch:ui.guru/#/]">
@@ -63,8 +68,8 @@
 					</item>
 				</li>
 				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-right"
-					u init-with="p-op"
-					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
+					u init-with="p:[op:0]"
+					when-switch-vibes="a:[fadeInDown:850:easeOutExpo:800:1:f]"
 					on-mouseenter="s:[co-scale:children]"
 					on-mouseleave="s:[co-shrink:children]">
 					Chillout
@@ -75,11 +80,11 @@
 					</item>
 				</li>
 			</ul>
-			<ul p="15px"
-				u when-playlist="s:[playlist-enter-right:children:linear-1000]:+300">
+			<ul p="15px">
+					<!-- u when-playlist="s:[playlist-enter-right:children:linear-1000]:+300" -->
 				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-left"
 					u init-with="p:[op:0]"
-					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
+					when-switch-vibes="a:[fadeInDown:850:easeOutExpo:700:1:f]"
 					on-mouseenter="s:[sg-scale:children]"
 					on-mouseleave="s:[sg-shrink:children]">
 					Summer Groovin'
@@ -90,8 +95,8 @@
 					</item>
 				</li>
 				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-left"
-					u init-with="p-op"
-					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
+					u init-with="p:[op:0]"
+					when-switch-vibes="a:[fadeInDown:850:easeOutExpo:700:1:f]"
 					on-mouseenter="s:[gu-scale:children]"
 					on-mouseleave="s:[gu-shrink:children]">
 					Get on Up
@@ -102,8 +107,8 @@
 					</item>
 				</li>
 				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-left"
-					u init-with="p-op"
-					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
+					u init-with="p:[op:0]"
+					when-switch-vibes="a:[fadeInDown:850:easeOutExpo:700:1:f]"
 					on-mouseenter="s:[wl-scale:children]"
 					on-mouseleave="s:[wl-shrink:children]">
 					What's Luv?
@@ -114,8 +119,8 @@
 					</item>
 				</li>
 				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-left"
-					u init-with="p-op"
-					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
+					u init-with="p:[op:0]"
+					when-switch-vibes="a:[fadeInDown:850:easeOutExpo:700:1:f]"
 					on-mouseenter="s:[an-scale:children]"
 					on-mouseleave="s:[an-shrink:children]">
 					All Night
@@ -126,8 +131,8 @@
 					</item>
 				</li>
 				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-left"
-					u init-with="p-op"
-					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
+					u init-with="p:[op:0]"
+					when-switch-vibes="a:[fadeInDown:850:easeOutExpo:700:1:f]"
 					on-mouseenter="s:[gh-scale:children]"
 					on-mouseleave="s:[gh-shrink:children]">
 					Go Hard
