@@ -1,6 +1,6 @@
 <li>
 	<div rel w="320px" h="475px" class="perspective-container"
-		u on-click="s:[flip-enter:children]">
+		u on-click="s:[flip-enter:children]" u on-init="p:[opacity:{{$index/100.0}}]">
 		<div class="back backface-none" abs w="100%" h="100%" bg="sienna" rad="2px" bg-image="{{char.photo_url}}|{{char.photo_pos}}|cover"
 			u init-with="p:[tr:rotateY(-180deg), op:0]"
 			when-flip-enter="a:[rotateY:-180deg:0deg:250:linear:0:1:f, opacity:0:1:10:linear:0:1:f]"
@@ -12,7 +12,7 @@
 			<header y-center wrap p="16px">
 				<div class="user-icon-28" bg-image="{{char.photo_url || '/ui/templates/samples/trivia/components/star-wars/avatar.svg'}}"></div>
 				<h1 m-left="16px" f-s="24px" f-w="600">
-					<span>{{char.name}} {{$index}} {{index}}</span>
+					<span>{{char.name}}</span>
 					<span op="0.5" ng-if="char.gender=='male'">&#9794;</span>
 					<span op="0.5" ng-if="char.gender=='female'">&#9792;</span>
 				</h1>

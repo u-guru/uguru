@@ -335,7 +335,6 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                 rShortcuts.args = RootService.animations.customShortcuts.args;
               } else if (!rShortcuts.animations.customShortcuts) {
                 $timeout(function() {
-
                   getStateFunc(type, name, actions);
                   // scope.$apply();
                 });
@@ -501,12 +500,13 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
       }
 
       function applySendAnimPropEval(scope, element, actions, attr, context, cb) {
-
-          actions = EvalService.renderActionExpressions(scope, attr, actions);
-
+          if (!actions) return;
           if (actions.eval) {
             EvalService.parseAndRenderExpressions(element, scope, attr, actions.eval, context);
           }
+          actions = EvalService.renderActionExpressions(scope, attr, actions);
+
+
           if (actions.prop) {
             if ('prop' in actions.prop.delays) {
               $timeout(function() {
