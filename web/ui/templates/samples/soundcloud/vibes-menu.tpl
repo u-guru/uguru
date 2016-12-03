@@ -33,24 +33,26 @@
 					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:800:1:f]"
 					on-mouseenter="s:[sd-scale:children]"
 					on-mouseleave="s:[sd-shrink:children]">
-					Sad Drake
-					<item class="absolute bottom-0" style="border-bottom:solid 3px white;" width="100"
-						u init-with="p:[tr:scaleX(0), tro:right center]"
-						when-sd-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
-						when-sd-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
-					</item>
+					<a flex relative>
+						Sad Drake
+						<hr abs bottom="0" left="0" width="100" height="2px" m="0" rad="4px" border="0" bg="white"
+							u init-with="p:[tr:scaleX(0), tro:right center]"
+							when-sd-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
+							when-sd-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]"/>
+					</a>
 				</li>
-				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-right"
+				<li rel p-y="10px"
 					u init-with="p:[op:0]"
 					when-switch-vibes="a:[fadeInDown:850:easeOutExpo:800:1:f]"
 					on-mouseenter="s:[h-scale:children]"
 					on-mouseleave="s:[h-shrink:children]">
-					Hustlin'
-					<item class="absolute bottom-0" style="border-bottom:solid 3px white;" width="100"
-						u init-with="p:[tr:scaleX(0), tro:right center]"
-						when-h-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
-						when-h-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
-					</item>
+					<a font-size="48px" line-height="1.2" f-w="700" class="caps block txt-right">
+						<span>Hustlin'</span>
+						<hr abs bottom="0" left="0" width="100" height="2px" m="0" rad="4px" border="0" bg="white"
+							u init-with="p:[tr:scaleX(0), tro:right center, op:0]"
+							when-h-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
+							when-h-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f, opacity:1:0:100:linear:200:1:f]"/>
+					</a>
 				</li>
 				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-right"
 					u init-with="p:[op:0]"
