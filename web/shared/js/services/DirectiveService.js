@@ -604,6 +604,11 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       }
     }
 
+
+    function evalArgsWithScope(arg_dict, scope, elem) {
+      console.log(arg_dict, scope, elem)
+    }
+
     function evalTransformArgs(arg_dict, scope, elem) {
       var transformArr = arg_dict.transforms;
       var resultArr = [];
