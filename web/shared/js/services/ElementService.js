@@ -502,7 +502,12 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
       function applySendAnimPropEval(scope, element, actions, attr, context, cb) {
 
-          actions = EvalService.renderActionExpressions(scope, attr, actions);
+          // response = EvalService.renderActionExpressions(scope, attr, angular.copy(actions));
+
+          // if (response) {
+
+          //   actions = response
+          // }
 
           if (actions.eval) {
             EvalService.parseAndRenderExpressions(element, scope, attr, actions.eval, context);

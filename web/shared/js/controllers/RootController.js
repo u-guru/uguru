@@ -99,6 +99,7 @@ angular.module('uguru.shared.controllers', [])
         var dataSets = ['api'];
         var callback = function(data) {root.data = {animations: {}}; root.data.animations = data;};
         XHRService.getJSONFile('get', 'admin/spec/animations.json', callback);
+        // XHRService.getJSONFile('get', 'http://api.stahk.photos/unsplash/random', function(data) {console.log(data)});
       }
     }
 
