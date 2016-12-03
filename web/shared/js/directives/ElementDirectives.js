@@ -936,7 +936,7 @@ angular.module('uguru.shared.directives')
                       ElementService.applySendAnimPropEval($scope, $element, state.actions, $attrs);
                     })
                   }
-                  listener();
+                  // listener();
                 })
             }
 
