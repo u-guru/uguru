@@ -2009,7 +2009,6 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             restrict: 'A',
             priority: 100000000,
             replace:true,
-            scope: false,
             template: function(element, attr) {
 
                 element[0].removeAttribute('u-list');
@@ -2019,6 +2018,7 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
 
                 return element[0].outerHTML;
             }
+
         }
     }])
     // .directive('uList', ['$rootScope', '$compile', '$parse', function($rootScope, $compile, $parse) {
