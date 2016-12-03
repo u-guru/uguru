@@ -12,7 +12,7 @@
 			<header y-center wrap p="16px">
 				<div class="user-icon-28" bg-image="{{char.photo_url || '/ui/templates/samples/trivia/components/star-wars/avatar.svg'}}"></div>
 				<h1 m-left="16px" f-s="24px" f-w="600">
-					<span>{{char.name}}</span>
+					<span>{{char.name}} {{$index}} {{index}}</span>
 					<span op="0.5" ng-if="char.gender=='male'">&#9794;</span>
 					<span op="0.5" ng-if="char.gender=='female'">&#9792;</span>
 				</h1>
