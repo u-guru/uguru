@@ -4,7 +4,7 @@
         <li grow='1' x='center' y='center'
             u-list="tab in tabInfo"
             pointer
-            u init-with="p:[opacity:{{0.2 + vars.tabIndex * 0.2}}]" on-init="p:[font-weight:{{$index * 200 + 300}}]" when-var-tab-index-is-index="prop:[font-weight:900]" when-var-tab-index-isnt-index="prop:[font-weight:400]"  ng-click="vars.tabIndex=index">
+            u init-with="p:[opacity:{{0.2 + $index * 0.2}}]" on-init="p:[font-weight:{{index * 200 + 300}}]" when-var-tab-index-is-index="prop:[font-weight:900]"  ng-click="vars.tabIndex=index">
             {{index}}
         </li>
         <hr abs l='0' b='-20px' h='5px' border="0" m="0" w='{{100/tabInfo.length}}%' bg='azure'
