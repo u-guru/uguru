@@ -379,8 +379,31 @@ angular.module('uguru.shared.directives')
 
     scope: false,
     transclude: true,
-    controller: function($scope) {
+    controller: function($scope, $transclude, $element) {
       $scope.view = {loader: {}};
+      $scope.innerElems = {};
+      $scope.innerElems.elements = $transclude($scope, function(transElem, transScope) {
+        $scope.innerElems.clone = transElem;
+        $scope.innerElems.scope = transScope;
+      });
+      $scope.preTranscludeElems = CompService.doesElemHaveLoader($scope.innerElems.elements);
+
+
+      if ($scope.preTranscludeElems.loader) {
+
+        $scope.innerElems.loader = $scope.preTranscludeElems.loader
+        $scope.innerElems.loader.setAttribute('loader', '')
+
+        $scope.innerElems.timer = new Date().getTime();
+        $element.append($scope.innerElems.loader);
+
+        // console.log(preTranscludeElems.remaining.forEach(function( item, i) {
+        //   if ('innerHTML' in item) {
+        //     item.style.opacity = 0;
+        //   }
+        // }))
+
+      }
     },
     compile: function compile(element, attr, transclude) {
       var scopeRef = null;
@@ -391,29 +414,7 @@ angular.module('uguru.shared.directives')
         var letSplit = attr.let.split('=');
         $rootScope.dataMappings[letSplit[0]] = {name: letSplit[1], view: attr.linkData};
       }
-      var innerElems = {};
-      innerElems.elements = transclude($rootScope, function(transElem, transScope) {
-        innerElems.clone = transElem;
-        innerElems.scope = transScope;
-      });
-      var preTranscludeElems = CompService.doesElemHaveLoader(innerElems.elements);
 
-
-      if (preTranscludeElems.loader) {
-
-        innerElems.loader = preTranscludeElems.loader
-        innerElems.loader.setAttribute('loader', '')
-
-        innerElems.timer = new Date().getTime();
-        element.append(innerElems.loader);
-
-        // console.log(preTranscludeElems.remaining.forEach(function( item, i) {
-        //   if ('innerHTML' in item) {
-        //     item.style.opacity = 0;
-        //   }
-        // }))
-
-      }
 
       XHRService.getJSONFile(
             'GET',
@@ -434,8 +435,8 @@ angular.module('uguru.shared.directives')
       return {
         pre: function(scope, p_element, p_attr) {
           scopeRef = scope;
-
-
+          var preTranscludeElems = scope.preTranscludeElems
+          var innerElems = scope.innerElems;
           if ('renderAfterExtScripts' in attr) {
             scope.$watch('data.config.processed.scriptStatus.complete', function(value) {
               if (value) {
