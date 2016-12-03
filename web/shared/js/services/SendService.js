@@ -353,7 +353,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
         if (i_state.parsedObj) {
           expectedDepth = parseDepthString(i_state.parsedObj[0].sendScope);
         }
-        if (scope.$parent && i_state.nameCamel in scope.$parent.public.customStates.when && scope.$parent.public.customStates.when[i_state.nameCamel].siblings) {
+        if (scope.$parent && scope.$parent.public && i_state.nameCamel in scope.$parent.public.customStates.when && scope.$parent.public.customStates.when[i_state.nameCamel].siblings) {
           parseMessageAndStoreToExecuteLater(scope, i_state, scope.$parent.public.customStates.when[i_state.nameCamel].depth - 0.5, element, elem_attr)
         }
         parseMessageAndStoreToExecuteLater(scope, i_state, expectedDepth, element, elem_attr)
