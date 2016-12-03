@@ -14,10 +14,11 @@ angular.module('uguru.shared.services')
     '$compile',
     'CompService',
     'KeyboardService',
+    'EvalService',
     ElementService
         ]);
 
-function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window, RootService, SVGService, $parse, SendService, TweenService, $compile, CompService, KeyboardService) {
+function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window, RootService, SVGService, $parse, SendService, TweenService, $compile, CompService, KeyboardService, EvalService) {
       var rShortcuts = {special: getSpecialAnimShortcuts(), animations:null, propValues: {}, props: {}, values:{}};
       var stateShortcuts = {};
       var rAnimations;
@@ -38,9 +39,10 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         renderAnimationStr: applyAnimArgs,
         constructImportUrlFromObj: UtilitiesService.constructImportUrlFromObj,
         initGraphicElement: initElement,
-        applySendAnimProp: applySendAnimProp,
+        applySendAnimPropEval: applySendAnimPropEval,
         filterVarStates: filterVarStates,
-        registerVarStates: registerVarStates
+        registerVarStates: registerVarStates,
+        getInternalDelay: getInternalDelay
       }
 
       function registerVarStates(scope, elem, attr, state_arr) {
@@ -64,11 +66,11 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
             if (isIndex > -1) {
 
-              varNameLeft = camelCase(varNameSplit.slice(0, isIndex).join("-")).toLowerCase();
+              varNameLeft = camelCase(varNameSplit.slice(0, isIndex).join("-").toLowerCase());
             } else if (isntIndex > -1) {
-              varNameLeft = camelCase(varNameSplit.slice(0, isntIndex).join("-")).toLowerCase();
+              varNameLeft = camelCase(varNameSplit.slice(0, isntIndex).join("-").toLowerCase());
             } else if (changesIndex > -1) {
-              varNameLeft = camelCase(varNameSplit.slice(0, changesIndex).join("-")).toLowerCase();
+              varNameLeft = camelCase(varNameSplit.slice(0, changesIndex).join("-").toLowerCase());
             }
 
 
@@ -109,34 +111,32 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               }
               if (!scope.watchers[varNameLeft].watcherName) {
                 // console.log('it gets here', varNameLeft)
-                scope.watchers[varNameLeft].watcherName = "vars.activeTab"
+                scope.watchers[varNameLeft].watcherName = 'vars.' + varNameLeft.trim()
+                console.log(scope.watchers[varNameLeft].watcherName)
                 scope.watchers[varNameLeft].watcher = scope.$watch((scope.watchers[varNameLeft].watcherName + ''), function(value) {
                   // console.log(value, scope.watchers[varNameLeft].values)
                   scope.watchers[varNameLeft].values.is && scope.watchers[varNameLeft].values.is.forEach(function(is_obj, i) {
 
                     if (is_obj.value === value) {
 
-                      applySendAnimProp(scope, elem, is_obj.state.actions);
+                      applySendAnimPropEval(scope, elem, is_obj.state.actions, attr);
                       // is_obj.state.exec(scope, elem, );
                     }
                   })
                   scope.watchers[varNameLeft].values.isnt && scope.watchers[varNameLeft].values.isnt.forEach(function(isnt_obj, i) {
                     if (isnt_obj.value !== value) {
-                      applySendAnimProp(scope, elem, isnt_obj.state.actions);
+                      applySendAnimPropEval(scope, elem, isnt_obj.state.actions, attr);
                     }
                   })
                   scope.watchers[varNameLeft].values.changes && scope.watchers[varNameLeft].values.changes.forEach(function(c_obj, i) {
                       var actionCopy = {}
                       for (key in c_obj.state.actions) {
-                        console.log('setting key' + key, {})
                         actionCopy[key] = {}
                         for (nested_key in c_obj.state.actions[key]) {
                           if (nested_key === 'delays') {
                             actionCopy[key]['delays'] = c_obj.state.actions[key][nested_key]
                             continue;
                           }
-                          console.log('parsing key/nestedkey[', key, '|', nested_key, c_obj.state.actions[key][nested_key])
-
                           if (c_obj.state.actions[key][nested_key].indexOf('{{') > -1) {
                             var splitActionArgs = c_obj.state.actions[key][nested_key].split('{{');
                             var resultStr = ''
@@ -156,12 +156,9 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                           } else {
                             actionCopy[key][nested_key] = c_obj.state.actions[key][nested_key]
                           }
-                          console.log(actionCopy)
-
                         }
                       }
-                      console.log(actionCopy)
-                      applySendAnimProp(scope, elem, actionCopy);
+                      applySendAnimPropEval(scope, elem, actionCopy, attr);
 
                   })
 
@@ -344,7 +341,8 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                 });
               }
               // registerAnimationListeners(scope, element, attr, actions, context);
-              applySendAnimProp(scope, element, actions, context);
+
+              applySendAnimPropEval(scope, element, actions, attr, context);
               // applyPropsToElement(element, actions.prop, rShortcuts);
             }
           }
@@ -359,7 +357,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (type === 'when') {
 
             return function(element, scope, attr, updated_actions) {
-              applySendAnimProp(scope, element, updated_actions || actions, context);
+              applySendAnimPropEval(scope, element, updated_actions || actions, attr, context);
             }
           }
       }
@@ -386,6 +384,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
       function getInternalDelay(key, int_str, delay_match_strs) {
           //to refactor
+
           if (!rShortcuts || !rShortcuts.cmds) {
             var animStatus = loadAnimations();
             if (!rShortcuts || !rShortcuts.cmds || !animStatus) {
@@ -470,7 +469,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
           element.ready(function(e) {
 
-            applySendAnimProp(scope, element, actions, context);
+            applySendAnimPropEval(scope, element, actions, attr, context);
           })
         }
 
@@ -482,28 +481,32 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           var specialKeys = {'space': 32}
           //keyboardservice
           scope.$on('key' + name[1], function(onEvent, keypressEvent) {
-
             var charPressed = KeyboardService.keyMap.toChar[keypressEvent.which];
             charPressed = charPressed && charPressed.toLowerCase() || '';
             if (scope.validKeys.indexOf(charPressed) > -1 ) {
               console.log('sending...')
-              applySendAnimProp(scope, element, actions, context);
+              applySendAnimPropEval(scope, element, actions, attr, context);
             }
           });
         }
-
         else {
           // registerAnimationListeners(scope, element, attr, actions, context)
-
           element.on(name,function(e) {
             // delete actions['send']
-              applySendAnimProp(scope, element, actions, context)
+
+
+              applySendAnimPropEval(scope, element, actions, context)
           })
         }
       }
 
-      function applySendAnimProp(scope, element, actions, context, cb) {
+      function applySendAnimPropEval(scope, element, actions, attr, context, cb) {
 
+          actions = EvalService.renderActionExpressions(scope, attr, actions);
+
+          if (actions.eval) {
+            EvalService.parseAndRenderExpressions(element, scope, attr, actions.eval, context);
+          }
           if (actions.prop) {
             if ('prop' in actions.prop.delays) {
               $timeout(function() {
@@ -1121,14 +1124,9 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           var percentEnd = parseInt(formatted.split(':')[2].replace('%', ''))/100.0;
           var pathLengthStart = percentStart * pathLength;
           var pathLengthEnd = percentEnd * pathLength;
-          console.log(pathLengthStart, pathLengthEnd)
           elem.css('stroke-dasharray', pathLength);
           var remainderAnim = formatted.split(':').slice(3).join(":");
-          // if (pathLengthEnd !== pathLength) {
-            result = "stroke-dashoffset:" + (pathLength - pathLengthStart) + ':' + (pathLength - pathLengthEnd) + ':' + remainderAnim;
-          // } else {
-          //   result = "stroke-dashoffset:" + pathLengthStart + ':' + pathLength + ':' + remainderAnim;
-          // }
+          result = "stroke-dashoffset:" + (pathLength - pathLengthStart) + ':' + (pathLength - pathLengthEnd) + ':' + remainderAnim;
           console.log(result)
           return result;
         }

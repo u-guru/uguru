@@ -59,6 +59,8 @@ function UtilitiesService($rootScope, $compile, $timeout) {
           return resultArr
     }
 
+
+
     function constructImportUrlFromObj(str, type) {
         type = 'components'
         ending = str.indexOf('.tpl') > -1 && '.tpl' || '.html';

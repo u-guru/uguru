@@ -554,11 +554,13 @@ angular.module('uguru.shared.directives')
       if (!scope.vars) {
         scope.vars = {};
       }
+      console.log(scope)
 
       if ('set' in attr && attr.set.indexOf('=') > -1) {
 
         scope.$eval(attr['set']);
         scope.vars[attr['set'].split('=')[0].trim()] = attr['set'].split('=')[1].trim()
+        scope[attr['set'].split('=')[0].trim()] = attr['set'].split('=')[1].trim()
 
       } else {
 
@@ -572,8 +574,9 @@ angular.module('uguru.shared.directives')
           } else {
             value = valueSplit[0];
           }
-          scope.$eval(key +'=' + value);
+          scope.$parent.$eval(key +'=' + value);
           scope.vars[key] = value;
+          // scope[key] = value;
         }
       }
 
@@ -916,13 +919,30 @@ angular.module('uguru.shared.directives')
 }])
 
 
-.directive("u", ["$compile", "ElementService", "$timeout", "$rootScope", "SendService", "CompService", "$parse", "$rootScope", function($compile, ElementService, $timeout, $rootScope, SendService, CompService, $parse, $rootScope) {
+.directive("u", ["$compile", "ElementService", "$timeout", "$rootScope", "SendService", "CompService", "$parse", "EvalService", function($compile, ElementService, $timeout, $rootScope, SendService, CompService, $parse, EvalService) {
       return {
           restrict: 'A',
           replace: false,
-          priority:100,
+          priority:99,
           scope:true,
           require: '?ngInclude',
+          controller: function($scope, $attrs, $element, $transclude) {
+
+            if ('interpolate' in $attrs || 'evalAgain' in $attrs) {
+
+                var listener = $scope.$watch('states', function(states) {
+                  if (states.init) {
+                    states.init.forEach(function(state) {
+                      ElementService.applySendAnimPropEval($scope, $element, state.actions, $attrs);
+                    })
+                  }
+                  listener();
+                })
+            }
+
+
+
+          },
           compile: function(element, attr, transclude) {
             // attr.$set('public', 'public');
             // attr.$set('root', 'root');
@@ -990,12 +1010,6 @@ angular.module('uguru.shared.directives')
 
                   if (states.init) {
                       states.init.forEach(function(state, i) {
-                        // if (state.actions.send) {
-                        //   state.actions.send.parsed.split(',').forEach(function(message_str, i) {
-                        //     var msgNameCamel = ElementService.toCamelCaseBridge(message_str.split(':')[0]);
-                        //     SendService.prepareToSendMessage(msgNameCamel, message_str, scope);
-                        //   })
-                        // }
 
                         if (state.name === 'init' && state.type === 'on') {
                           states.on.push(state);
@@ -1009,9 +1023,11 @@ angular.module('uguru.shared.directives')
               var postStates = [];
               return {
                   pre: function (scope, lElem, lAttr) {
+
                     if ('$index' in scope) {
                       scope.index = scope.$index + 1;
                     }
+
                     if (attr.data) {
                       var attrData = attr.data;
 
@@ -1093,13 +1109,7 @@ angular.module('uguru.shared.directives')
                             w_state.exec = function(a1, a2, a3, a4) {
                               transclude(scope, function(clone, innerScope) {
                                     $compile(clone)(innerScope)
-
                                     lElem.append(clone);
-                                    // $compile(clone)(scope)
-                                    // $compile(lElem.contents())(scope);
-
-
-
                               });
                             }
                           }
@@ -1110,24 +1120,8 @@ angular.module('uguru.shared.directives')
                       if (!('root' in scope) && scope.$parent && !('root' in scope.$parent)) {
                         scope.root = {scope: $rootScope};
                       }
-                      // element.ready(function() {
 
                       SendService.precompileSendActionArgs(states, scope, lElem, lAttr)
-                      // })
-
-
-
-
-
-
-
-
-                      // });
-                      // if (attr.data) {
-                      //   console.log('yo')
-                      //   scope.data = $parse(attr.data)(scope);
-                      //   $compile(lElem.html())(scope);
-                      // }
 
 
 
@@ -1405,26 +1399,7 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
-.directive('onClick', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
-  return {
-    restrict: 'A',
-    link: {
-      pre: function(scope, element, attr) {
-        scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
-        var elemArgs = DirectiveService.parseArgs(attr.onClick, 'on-click', element);
-        var supportedCommands = DirectiveService.supportedCommands;
-        element.on('click', function () {
-          console.log('click activated');
-            for (key in elemArgs) {
-              if (supportedCommands.indexOf(key) > -1) {
-                DirectiveService.activateArg(key, elemArgs[key], scope, element);
-              }
-            }
-        });
-      }
-    }
-  }
-}])
+
 .directive('onBlur', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
   return {
     restrict: 'A',
