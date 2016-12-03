@@ -2260,7 +2260,8 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
         "lS",
         "letterSpacing",
         "pointer",
-        "point"
+        "point",
+        "content"
         ]
 
     var modulePointer = angular.module('uguru.shared.directives.base.components');

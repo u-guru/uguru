@@ -929,14 +929,14 @@ angular.module('uguru.shared.directives')
           controller: function($scope, $attrs, $element, $transclude) {
 
             if ('interpolate' in $attrs || 'evalAgain' in $attrs) {
-
+              console.log('evalAgain' in $attrs, 'interpolate' in $attrs)
                 var listener = $scope.$watch('states', function(states) {
                   if (states.init) {
                     states.init.forEach(function(state) {
-                      ElementService.applySendAnimPropEval($scope, $element, state.actions, $attrs);
+                      ElementService.applySendAnimPropEval($element.scope(), $element, state.actions, $attrs);
                     })
                   }
-                  // listener();
+                  listener();
                 })
             }
 
