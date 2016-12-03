@@ -41,7 +41,12 @@
             "template_url": "./ui/templates/samples/trivia/components/star-wars/logo.tpl"
         },
 		"people-card": {
-            "template_url": "./ui/templates/samples/trivia/components/star-wars/people-card.tpl"
+            "template_url": "./ui/templates/samples/trivia/components/star-wars/people-card.tpl",
+			"data": {
+                "external": {
+                    "char": "var"
+                }
+            }
         },
 		"planet-card": {
             "template_url": "./ui/templates/samples/trivia/components/star-wars/planet-card.tpl"
