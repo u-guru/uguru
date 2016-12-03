@@ -6,7 +6,9 @@
 	<div x-center y-center relative width="calc(100% - 60px)" height="calc(100% - 60px)" rad="2px" bg="rose">
 		<a abs flex top="0" right="0" width="64px" height="64px"
 			u on-click="s:[exit-vibes:public]">
-			<graphic class='svg-64 svg-stroke-5 stroke-white' url='shared/templates/components/svg/main/times.html'></graphic>
+			<span class='svg-64 svg-stroke-5 stroke-white'>
+				<replace with='shared/templates/components/svg/main/times.html'></replace>
+			<span>
 		</a>
 		<div flex p="15px">
 			<ul p="15px"
