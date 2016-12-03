@@ -54,12 +54,29 @@ function EvalService($compile, $parse, $interpolate, $rootScope) {
             scope.vars = {};
         }
 
-            var evalString = 'vars.' + eval_dict.varName + '=' + eval_dict.value.current;
+
+            var evalString = 'vars.' + eval_dict.varName + '=' + autoDetectValueType(eval_dict.value.current, eval_dict);
+            console.log(evalString);
             scope.$eval(evalString);
 
-
-
         return;
+    }
+
+    function autoDetectValueType(current, dict) {
+        var parsedResult = current;
+        if (!dict.type) {
+            var parseNum = parseFloat(current)
+            if (parseNum === NaN) {
+                dict.type = 'string';
+            } else {
+                dict.type = 'num';
+            }
+        }
+        if (dict.type === 'num') {
+            parsedResult = parseFloat(current)
+        }
+
+        return parsedResult
     }
 
     function getEvalArgs(eval_str) {
@@ -87,8 +104,13 @@ function EvalService($compile, $parse, $interpolate, $rootScope) {
         return evalDict;
 
         function parseEvalValue(str) {
+            var strSplit = str.split('|');
+            var type = 'num';
+            if (strSplit.length > 1) {
+                type = strSplit[1];
+            }
             return {
-
+                    type: type,
                     original: str,
                     current: str,
                     interpolate: str.indexOf('{{'),

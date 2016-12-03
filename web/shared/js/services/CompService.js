@@ -296,7 +296,8 @@ function CompService($timeout, $compile, $parse, $rootScope) {
         "lS": "letter-spacing",
         "letterSpacing": "letter-spacing",
         "pointer": "cursor",
-        "point": "cursor"
+        "point": "cursor",
+        "content": "content"
 
     }
     prefixes.forEach(function(p) {
