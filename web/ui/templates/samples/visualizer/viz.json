@@ -1,9 +1,5 @@
 {
-    "vars": {
-        "vizBar": {
-                "text": ""
-            }
-    },
+    "vars": {},
     "config": {
         "pathParams": {},
         "base_url": "^",
@@ -36,10 +32,22 @@
     "content": {},
     "components": {
         "viz-bar": {
-            "template_url": "./ui/templates/samples/visualizer/components/viz-bar.html"
+            "template_url": "./ui/templates/samples/visualizer/components/viz-bar.html",
+            "data": {
+                "external": {
+                    "sample": "var"
+                }
+            },
+            "replace": false
         },
         "viz-bar-alt": {
-            "template_url": "./ui/templates/samples/visualizer/components/viz-bar-alt.html"
+            "template_url": "./ui/templates/samples/visualizer/components/viz-bar-alt.html",
+            "data": {
+                "external": {
+                    "sample": "var"
+                }
+            },
+            "replace": false
         },
         "viz-timer": {
             "template_url": "./ui/templates/samples/visualizer/components/viz-timer.html"

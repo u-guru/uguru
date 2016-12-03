@@ -1,6 +1,6 @@
-<view link-data="ui/templates/samples/visualizer/viz.json" render-after-ext-scripts width="100" height="100">
-	<loader min-ms="5000" url="ui/templates/samples/visualizer/components/viz-loader.html"></loader>
-	<div width="100" height="100">
+<view link-data="ui/templates/samples/visualizer/viz.json" render-after-ext-scripts>
+	<loader min-ms="1000" import="ui/templates/samples/visualizer/components/viz-loader.tpl"></loader>
+	<div abs top="0" left="0" width="100" height="100">
 		<hr relative z="100" m="0" width="100%" height="5px" bg="sienna" border="0"/>
 	    <div relative height='calc(100% - 5px)' width='100' bg="charcoal">
 			<div x-start y-end abs z="0" top="0" left="0" width="100" height="100" hide-x hide-y
@@ -16,10 +16,10 @@
 					u init-with="p:[tr:none]"
 					when-viz-play="a:[translateX:0%:-39%:50000:linear:0:1:f]">
 					<div row y-end relative m-left="100px">
-						<viz-bar u-list="sample in ::data.content.viz.samples.slice(0, 350)" sample="::sample"></viz-bar>
+						<viz-bar u-list="sample in data.content.viz.samples.slice(0, 350)" sample="sample"></viz-bar>
 					</div>
 					<div row y-start m-left="100px">
-						<viz-bar-alt u-list="sample in ::data.content.viz.samples.slice(0, 350)" sample="::sample"></viz-bar-alt>
+						<viz-bar-alt u-list="sample in data.content.viz.samples.slice(0, 350)" sample="sample"></viz-bar-alt>
 					</div>
 				</div>
 				<footer s-b y-center fixed z="100" bottom="0" left="0" width="100%"
@@ -43,14 +43,14 @@
 							u init-with="p:[op:0]"
 							when-viz-btn="a:[slideInUp-subtle:1000:linear:0:1:f]">
 							<a flex y-center rad="2px" p="2px 5px" bg="charcoal-90p" class="svg-24 svg-white svg-stroke-6">
-								<graphic url="shared/templates/components/svg/main/share.html"> </graphic>
+								<replace with="shared/templates/components/svg/main/share.html"> </replace>
 							</a>
 						</li>
 						<li p="1px"
 							u init-with="p:[op:0]"
 							when-viz-btn="a:[slideInUp-subtle:1000:linear:0:1:f]">
 							<a flex y-center rad="2px" p="2px 5px" bg="charcoal-90p" class="svg-24 svg-white svg-stroke-6">
-								<graphic url='shared/templates/components/svg/main/more.html'> </graphic>
+								<replace with='shared/templates/components/svg/main/more.html'> </replace>
 							</a>
 						</li>
 					</ul>

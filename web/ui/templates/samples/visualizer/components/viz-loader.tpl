@@ -1,4 +1,4 @@
-<div x-center y-center w="100" h="100" z='1000' bg='sienna'
+<div abs top="0" left-"0" x-center y-center w="100" h="100" z='1000' bg='sienna'
 	u init-with="p:[tro:top center]"
 	on-init="a:[scaleY:1:0.0075:500:easeOutSine:4000:1:f]">
 	<div u init-with="p:[tro:center center]"

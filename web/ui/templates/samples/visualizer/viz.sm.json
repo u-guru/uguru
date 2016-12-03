@@ -1,15 +1,5 @@
 {
-    "vars": {
-        "vizTypes": {
-            "topCenter": {
-                "animation":"a:[scale:1:2:1000:linear:0:1:5]"
-            },
-            "bottomCenter": {
-                "animation":"a:[scale:1:1.5:1000:linear:0:1:5]"
-            }
-        },
-        "sampleVizData": []
-    },
+    "vars": {},
     "config": {
         "pathParams": {},
         "base_url": "^",
