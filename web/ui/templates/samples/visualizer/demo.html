@@ -30,23 +30,24 @@
 				</div>
 			</header>
 			<div x-start y-end abs z="0" top="0" left="0" width="100" height="100" hide-x hide-y
-				u on-init="s:[viz-play:public:6000]">
+				u on-init="s:[viz-play:public:7000]">
 				<div absolute top="0" left="0" width='calc(150% + 180px)' height='100' z='0'
 					bg-image="{{data.content.track.artwork_url}}|top left|cover|repeat"
 					u init-with="p:[op:0, tr:none]"
 					on-init="a:[opacity:0:1:1000:easeOutSine:0:1:f]"
 					when-viz-play="a:[translateX:0%:-39%:50000:linear:0:1:f]">
-					<!-- bg-image is only rendering part of the time. This is a temporary workaround -->
-					<div class="full-xy" style="background:url('{{data.content.track.artwork_url}}') left top / cover">
+					<!-- @samir bg-image is only rendering part of the time. This is a temporary workaround -->
+					<div class="full-xy" style="background:url('{{data.content.track.artwork_url}}') left top / cover"></div>
 				</div>
-	            <div relative z="1"
+	            <div relative z="10"
 					u init-with="p:[tr:none]"
 					when-viz-play="a:[translateX:0%:-39%:50000:linear:0:1:f]">
 					<div row y-end relative m-left="100px">
-						<viz-bar u-list="sample in data.content.viz.samples.slice(0, 50)" sample="sample"></viz-bar>
+						<!-- @samir slow when over 100 -->
+						<viz-bar u-list="sample in data.content.viz.samples.slice(0,350)" sample="sample"> </viz-bar>
 					</div>
 					<div row y-start m-left="100px">
-						<viz-bar-alt u-list="sample in data.content.viz.samples.slice(0, 50)" sample="sample"></viz-bar-alt>
+						<viz-bar-alt u-list="sample in data.content.viz.samples.slice(0,350)" sample="sample"> </viz-bar-alt>
 					</div>
 				</div>
 	        </div>
