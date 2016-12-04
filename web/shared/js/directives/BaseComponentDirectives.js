@@ -2021,6 +2021,28 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
 
         }
     }])
+    .directive('initIf', ['$compile', 'DataService', function($compile, DataService) {
+        return {
+            restrict: 'A',
+            transclude:'element',
+            replace:true,
+            scope:false,
+            priority: 10000,
+            controller: function($scope, $element, $transclude, $attrs) {
+                var transEl;
+                $transclude($scope, function(transEl, scope) {
+                    transEl = transEl;
+                });
+                $scope.$watch($attrs.initIf, function(value) {
+                    console.log(value)
+                    if (value) {
+                        $element.append(transEl);
+                    }
+                });
+            }
+
+        }
+    }])
     // .directive('uList', ['$rootScope', '$compile', '$parse', function($rootScope, $compile, $parse) {
     //   return {
     //     transclude: 'element',

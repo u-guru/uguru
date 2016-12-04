@@ -55,25 +55,33 @@ function EvalService($compile, $parse, $interpolate, $rootScope) {
         }
 
 
-            var evalString = 'vars.' + eval_dict.varName + '=' + autoDetectValueType(eval_dict.value.current, eval_dict);
-            console.log(evalString);
+            var evalString =  eval_dict.varName + '=' + autoDetectValueType(eval_dict.value.current, eval_dict);
+            if (evalString.indexOf('vars') === -1) {
+                evalString = 'vars.' + evalString
+            }
             scope.$eval(evalString);
+            console.log(evalString)
 
         return;
     }
 
     function autoDetectValueType(current, dict) {
         var parsedResult = current;
+        console.log(current);
         if (!dict.type) {
-            var parseNum = parseFloat(current)
-            if (parseNum === NaN) {
-                dict.type = 'string';
-            } else {
+            if (["true", "false"].indexOf(current) > -1) {
+                dict.type = 'bool';
+            } else if (parseFloat(current) !== NaN) {
                 dict.type = 'num';
+            } else {
+                dict.type = 'string';
             }
         }
         if (dict.type === 'num') {
             parsedResult = parseFloat(current)
+        }
+        if (dict.type === 'bool') {
+            parsedResult = (current === 'true')
         }
 
         return parsedResult

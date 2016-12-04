@@ -57,6 +57,14 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
             list.arr = processListArg(list, arg, i)
           })
         }
+        else {
+          var listSplit = list.arr.split(':');
+          var listName = listSplit[0];
+          var fullListArgs = listSplit.splice(1);
+          fullListArgs.length && fullListArgs.forEach(function(arg, i) {
+            list.arr = processListArg(list, arg, i)
+          })
+        }
 
       }
 

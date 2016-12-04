@@ -410,7 +410,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
     return resultDict;
   }
 
-  function execSingleMsgArg(scope, element_arr, options, depth) {
+  function execSingleMsgArg(element, scope, element_arr, options, depth) {
 
     var depthMappings = {'depth(*)': -1}
     var total_delay = options.delay || 0
@@ -421,8 +421,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
       if (options.stagger && options.stagger.delays.length) {
         stagger_delay = options.stagger.delays[i]
       }
-
-      state_ref.func(state_ref.actions, scope, total_delay + stagger_delay, final_depth);
+      state_ref.func(state_ref.actions, element.scope(), total_delay + stagger_delay, final_depth);
     })
 
   }
@@ -473,7 +472,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
 
               if (currentMsgContext.elements.length) {
 
-                execSingleMsgArg(scope, currentMsgContext.elements, msg_info)
+                execSingleMsgArg(element, scope, currentMsgContext.elements, msg_info)
               }
           } else {
 
@@ -494,7 +493,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
                   if (depthParsed === 'self') {
                     if (currentMsgContext.elements && currentMsgContext.elements.length) {
                       currentMsgContext.depth = 'self';
-                      execSingleMsgArg(scope, currentMsgContext.elements, msg_info)
+                      execSingleMsgArg(element, scope, currentMsgContext.elements, msg_info)
                     }
                   }
 
@@ -528,7 +527,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
                         msg_info.stagger = delay_dict.internal.stagger[msg_info.name]
                       }
                     }
-                    execSingleMsgArg(scope, currentMsgContext.elements, msg_info)
+                    execSingleMsgArg(element, scope, currentMsgContext.elements, msg_info)
                   }
 
                 //depthNum > 0
@@ -568,7 +567,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
 
                   }
 
-                  execSingleMsgArg(scope, currentMsgContext.elements, msg_info)
+                  execSingleMsgArg(element, scope, currentMsgContext.elements, msg_info)
               } else if (typeof depthNum === "number" && depthNum < 0) {
                 var depthScope = scope;
                 for (var i = depthNum; i < 0; i++) {
@@ -587,7 +586,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
                     currentMsgContext = {elements: elements, depth: depthNum, options:currentMsgContext.options};
                   }
 
-                  execSingleMsgArg(depthScope, currentMsgContext.elements, msg_info)
+                  execSingleMsgArg(element, depthScope, currentMsgContext.elements, msg_info)
                   // console.log(dept)
                 }
 
@@ -603,7 +602,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
                 //   }
                 // }
 
-                // execSingleMsgArg(scope, currentMsgContext.elements, msg_info)
+                // execSingleMsgArg(element, scope, currentMsgContext.elements, msg_info)
               }
 
             }
