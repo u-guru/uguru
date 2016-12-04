@@ -16,7 +16,7 @@
 			 	u init-with="p:[op:0, tr:scaleY(1), tro:center bottom]"
 				on-init="a:[opacity:0:1:300:linear:0:1:f]"
 				when-kicks-counter="a:[counter:1980:2016:1500:easeInCirc:0:1:f]"
-				when-kicks-counter-end="a:[scaleY:1:0:500:bouncePast:200:1:f]">1980</div>
+				when-kicks-counter-end="a:[scaleY:1:0:500:bouncePast:100:1:f]">1980</div>
 			<div abs font-size="60px" f-w="900" letter-spacing='0.3em' line-height='1.2' class="txt-center"
 				u init-with="p:[tr:scaleY(0), tro:center bottom]"
 				when-kicks-counter-end="a:[scaleY:0:1:500:easeOutBack:700:1:f]">
