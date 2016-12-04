@@ -60,6 +60,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             var isIndex = varNameSplit.indexOf('is');
             var isntIndex = varNameSplit.indexOf('isnt');
             var changesIndex = varNameSplit.indexOf('changes');
+            var trueIndex = varNameSplit.indexOf('true');
 
 
 
@@ -71,20 +72,30 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               varNameLeft = camelCase(varNameSplit.slice(0, isntIndex).join("-").toLowerCase());
             } else if (changesIndex > -1) {
               varNameLeft = camelCase(varNameSplit.slice(0, changesIndex).join("-").toLowerCase());
+            } else if(trueIndex > -1) {
+              varNameLeft = camelCase(varNameSplit.slice(0, changesIndex).join("-").toLowerCase());
             }
 
 
               if (!(varNameLeft in scope.watchers)) {
 
                 scope.watchers[varNameLeft] = {
-                  values: {is: [], isnt: [], changes: []},
+                  values: {is: [], isnt: [], changes: [], isTrue: false, isFalse: false},
                   watcher: null
                 }
-
+              }
+              if (trueIndex) {
+                scope.watchers[varNameLeft].values.isTrue = true;
               }
               if (isIndex > -1) {
                 var varNameRight = varNameSplit.slice(isIndex + 1, varNameSplit.length).join('-').toLowerCase()
                 var value = varNameRight in scope && scope[varNameRight] || varNameRight;
+                if (varNameRight === 'true') {
+                  value = true;
+                }
+                if (varNameLeft === 'false') {
+                  value = false;
+                }
                 scope.watchers[varNameLeft].values.is.push(
                 {
                   value: value,
@@ -100,6 +111,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                   state: state
                 })
               }
+
               if (changesIndex > -1) {
 
                 var varNameRight = varNameSplit.slice(changesIndex + 1, varNameSplit.length).join('-').toLowerCase()
@@ -111,9 +123,18 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
               }
               if (!scope.watchers[varNameLeft].watcherName) {
                 // console.log('it gets here', varNameLeft)
-                scope.watchers[varNameLeft].watcherName = 'vars.' + varNameLeft.trim()
-                console.log(scope.watchers[varNameLeft].watcherName)
+
+                if ('vars' in scope && (varNameLeft in scope.vars) || (scope.$parent && 'vars' in scope.$parent && varNameLeft in scope.$parent.vars)) {
+                  scope.watchers[varNameLeft].watcherName =  'vars.' + varNameLeft.trim()
+                } else {
+                  scope.watchers[varNameLeft].watcherName =  varNameLeft.trim()
+                }
+
+
                 scope.watchers[varNameLeft].watcher = scope.$watch((scope.watchers[varNameLeft].watcherName + ''), function(value) {
+                  if (value === true) {
+                    console.log(value)
+                  }
                   // console.log(value, scope.watchers[varNameLeft].values)
                   scope.watchers[varNameLeft].values.is && scope.watchers[varNameLeft].values.is.forEach(function(is_obj, i) {
 
@@ -129,6 +150,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                     }
                   })
                   scope.watchers[varNameLeft].values.changes && scope.watchers[varNameLeft].values.changes.forEach(function(c_obj, i) {
+
                       var actionCopy = {}
                       for (key in c_obj.state.actions) {
                         actionCopy[key] = {}
@@ -356,7 +378,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (type === 'when') {
 
             return function(element, scope, attr, updated_actions) {
-              applySendAnimPropEval(scope, element, updated_actions || actions, attr, context);
+              applySendAnimPropEval(element.scope(), element, updated_actions || actions, attr, context);
             }
           }
       }

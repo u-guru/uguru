@@ -18,8 +18,8 @@
                     "html": "<div u init-with='eval:[set:opacityVal:0.5]|p:[opacity:{{vars.opacityVal}}]' when-opacity-val-changes='p:[opacity:{{vars.opacityVal}}]' pointer on-click='eval:[set:opacityVal:1]'>{{vars.opacityVal}}</div>"
                 },
                 {
-                    "title": "Filter",
-                    "html": "<example/>"
+                    "title": "Indexed list with start & end",
+                    "html": "init-with='eval:[set:opacityVal:0.5]|p:[opacity:{{vars.opacityVal}}]' when-opacity-val-changes='p:[opacity:{{vars.opacityVal}}]' pointer on-click='eval:[set:opacityVal:1]'>{{vars.opacityVal}}</div>"
                 },
                 {
                     "title": "Order",
