@@ -1,6 +1,6 @@
 <div class="pf-tile-container"
 	u init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-	on-init="s:[default-cardlet-init:self]"
+	when-cardlet="s:[default-cardlet-init:self]"
 	when-default-cardlet-init="a:[rotateX:30deg:0deg:1000:easeOutCubic:0:1:f, rotateY:30deg:0deg:1000:easeOutCubic:0:1:f,  translateY:300px:0px:1000:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f] | s:[default-ribbon:depth(2):500, default-cardlet-back:depth(2):500]"
 	when-default-cardlet-exit="p:[tro:left bottom] | a:[opacity:1:0:500:easeOutSine:750:1:f, rotateX:0deg:-45deg:1000:easeOutCubic:250:1:f, rotateY:0deg:30deg:1000:easeOutCubic:250:1:f, translateY:0px:-300px:1000:easeOutCubic:250:1:f]">
 	<!-- on-init="s:[default-cardlet-init:self, default-ribbon:children:500, default-cardlet-back:children:500]" -->

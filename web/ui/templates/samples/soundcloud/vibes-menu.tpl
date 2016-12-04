@@ -2,14 +2,13 @@
 	u init-with="p:[tro:center bottom, tr:scale(0)]"
 	when-switch-vibes="a:[scale:0:1:800:easeOutBack:0:1:f] | p:[z-index:10]"
 	when-exit-vibes="a:[scale:1:0:200:easeInBack:0:1:f]">
-	<!-- u init-with="p:[tro:center bottom, tr:scale(0)]"
-	when-switch-vibes="s:[playlist:depth(>1):800] | a:[scale:0:1:800:easeOutBack:0:1:f]"
-	when-exit-vibes="a:[scale:1:0:200:easeInBack:0:1:f]" -->
 
 	<div x-center y-center relative width="calc(100% - 60px)" height="calc(100% - 60px)" rad="2px" bg="rose">
 		<a abs flex top="0" right="0" width="64px" height="64px"
 			u on-click="s:[exit-vibes:public]">
-			<graphic class='svg-64 svg-stroke-5 stroke-white' url='shared/templates/components/svg/main/times.html'></graphic>
+			<span class='svg-64 svg-stroke-5 stroke-white'>
+				<replace with='shared/templates/components/svg/main/times.html'></replace>
+			<span>
 		</a>
 		<div flex p="15px">
 			<ul p="15px"
@@ -38,7 +37,7 @@
 						<span>All the Vibes</span>
 						<hr abs bottom="0" left="0" width="100" height="2px" m="0" rad="4px" border="0" bg="white"
 							u init-with="p:[tr:scaleX(0), tro:right center, op:0]"
-							when-avscale="a:[scaleX:0:1:200:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
+							when-av-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
 							when-av-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f, opacity:1:0:100:linear:200:1:f]"/>
 					</a>
 				</li>
@@ -68,30 +67,31 @@
 							when-h-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f, opacity:1:0:100:linear:200:1:f]"/>
 					</a>
 				</li>
-				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-right"
+				<li p-y="10px" class="txt-right"
 					u init-with="p:[op:0]"
 					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 					on-mouseenter="s:[tn-scale:children]"
-					on-mouseleave="s:[tn-shrink:children]"
-					on-click="p:[launch:ui.guru/#/]">
-					The Nicest
-					<item class="absolute bottom-0" style="border-bottom:solid 3px white;" width="100"
-						u init-with="p:[tr:scaleX(0), tro:right center]"
-						when-tn-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
-						when-tn-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
-					</item>
+					on-mouseleave="s:[tn-shrink:children]">
+					<a rel font-size="48px" line-height="1.2" f-w="700" class="caps inline-block txt-right">
+						<span>The Nicest</span>
+						<hr abs bottom="0" left="0" width="100" height="2px" m="0" rad="4px" border="0" bg="white"
+							u init-with="p:[tr:scaleX(0), tro:right center, op:0]"
+							when-tn-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
+							when-tn-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f, opacity:1:0:100:linear:200:1:f]"/>
+					</a>
 				</li>
-				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-right"
+				<li p-y="10px" class="txt-right"
 					u init-with="p:[op:0]"
 					when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 					on-mouseenter="s:[co-scale:children]"
 					on-mouseleave="s:[co-shrink:children]">
-					Chillout
-					<item class="absolute bottom-0" style="border-bottom:solid 3px white;" width="100"
-						u init-with="p:[tr:scaleX(0), tro:right center]"
-						when-co-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
-						when-co-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
-					</item>
+					<a rel font-size="48px" line-height="1.2" f-w="700" class="caps inline-block txt-right">
+						<span>Chillout</span>
+						<hr abs bottom="0" left="0" width="100" height="2px" m="0" rad="4px" border="0" bg="white"
+							u init-with="p:[tr:scaleX(0), tro:right center, op:0]"
+							when-co-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f, opacity:0:1:10:linear:0:1:f]"
+							when-co-shrink="a:[scaleX:1:0:200:linear:0:1:f, opacity:1:0:100:linear:200:1:f]"/>
+					</a>
 				</li>
 			</ul>
 			<ul p="15px"
@@ -110,66 +110,70 @@
 							when-h-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f, opacity:1:0:100:linear:200:1:f]"/>
 					</a>
 				</li> -->
-
-				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-left"
+				<li p-y="10px" class="txt-left"
 					u init-with="p:[op:0]"
 					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 					on-mouseenter="s:[sg-scale:children]"
 					on-mouseleave="s:[sg-shrink:children]">
-					Summer Groovin'
-					<item class="absolute bottom-0" style="border-bottom:solid 3px white;" width="100"
-						u init-with="p:[tr:scaleX(0), tro:left center]"
-						when-sg-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
-						when-sg-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
-					</item>
+					<a rel font-size="48px" line-height="1.2" f-w="700" class="caps inline-block txt-left">
+						<span>Summer Groovin'</span>
+						<hr abs bottom="0" left="0" width="100" height="2px" m="0" rad="4px" border="0" bg="white"
+							u init-with="p:[tr:scaleX(0), tro:left center]"
+							when-sg-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
+							when-sg-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
+					</a>
 				</li>
-				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-left"
+				<li p-y="10px" class="txt-left"
 					u init-with="p:[op:0]"
 					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 					on-mouseenter="s:[gu-scale:children]"
 					on-mouseleave="s:[gu-shrink:children]">
-					Get on Up
-					<item class="absolute bottom-0" style="border-bottom:solid 3px white;" width="100"
-						u init-with="p:[tr:scaleX(0), tro:left center]"
-						when-gu-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
-						when-gu-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
-					</item>
+					<a rel font-size="48px" line-height="1.2" f-w="700" class="caps inline-block txt-left">
+						<span>Get on Up</span>
+						<hr abs bottom="0" left="0" width="100" height="2px" m="0" rad="4px" border="0" bg="white"
+							u init-with="p:[tr:scaleX(0), tro:left center]"
+							when-gu-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
+							when-gu-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
+					</a>
 				</li>
-				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-left"
+				<li p-y="10px" class="txt-left"
 					u init-with="p:[op:0]"
 					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 					on-mouseenter="s:[wl-scale:children]"
 					on-mouseleave="s:[wl-shrink:children]">
-					What's Luv?
-					<item class="absolute bottom-0" style="border-bottom:solid 3px white;" width="100"
-						u init-with="p:[tr:scaleX(0), tro:left center]"
-						when-wl-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
-						when-wl-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
-					</item>
+					<a rel font-size="48px" line-height="1.2" f-w="700" class="caps inline-block txt-left">
+						<span>What's Luv?</span>
+						<hr abs bottom="0" left="0" width="100" height="2px" m="0" rad="4px" border="0" bg="white"
+							u init-with="p:[tr:scaleX(0), tro:left center]"
+							when-wl-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
+							when-wl-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
+					</a>
 				</li>
-				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-left"
+				<li p-y="10px" class="txt-left"
 					u init-with="p:[op:0]"
 					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 					on-mouseenter="s:[an-scale:children]"
 					on-mouseleave="s:[an-shrink:children]">
-					All Night
-					<item class="absolute bottom-0" style="border-bottom:solid 3px white;" width="100"
-						u init-with="p:[tr:scaleX(0), tro:left center]"
-						when-an-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
-						when-an-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
-					</item>
+					<a rel font-size="48px" line-height="1.2" f-w="700" class="caps inline-block txt-left">
+						<span>All Night</span>
+						<hr abs bottom="0" left="0" width="100" height="2px" m="0" rad="4px" border="0" bg="white"
+							u init-with="p:[tr:scaleX(0), tro:left center]"
+							when-an-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
+							when-an-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
+					</a>
 				</li>
-				<li p-y="10px" font-size="48px" line-height="1.2" f-w="700" class="caps txt-left"
+				<li p-y="10px" class="txt-left"
 					u init-with="p:[op:0]"
 					when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 					on-mouseenter="s:[gh-scale:children]"
 					on-mouseleave="s:[gh-shrink:children]">
-					Go Hard
-					<item class="absolute bottom-0" style="border-bottom:solid 3px white;" width="100"
-						u init-with="p:[tr:scaleX(0), tro:left center]"
-						when-gh-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
-						when-gh-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
-					</item>
+					<a rel font-size="48px" line-height="1.2" f-w="700" class="caps inline-block txt-left">
+						<span>Go Hard</span>
+						<hr abs bottom="0" left="0" width="100" height="2px" m="0" rad="4px" border="0" bg="white"
+							u init-with="p:[tr:scaleX(0), tro:left center]"
+							when-gh-scale="a:[scaleX:0:1:200:easeOutCubic:0:1:f]"
+							when-gh-shrink="a:[scaleX:1:0:200:easeInSine:0:1:f]">
+					</a>
 				</li>
 			</ul>
 		</div>
