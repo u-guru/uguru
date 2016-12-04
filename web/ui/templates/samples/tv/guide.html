@@ -1,6 +1,7 @@
 <view link-data="ui/templates/samples/tv/guide.json" render-after-ext-scripts bg="slate">
 	<!-- {{data.content.guide}} -->
-	<div w="100%" h="100%" p="12px" class="overflow-auto">
+	<!-- <loader min-ms="5000"></loader> -->
+	<main abs top="0" left="0" w="100%" h="100%" p="12px" class="overflow-auto">
 		<ul w="100%" border="1px solid white" rad="2px" class="overflow-hidden">
 			<li row stretch u-list="channel in data.content.guide" channel="channel">
 				<h1 y-center w="120px" p="12px" border="1px solid white" rad="1px" f-s="18px" f-w="600">{{channel.Channel.Name}}</h1>
@@ -25,5 +26,5 @@
 				</ul>
 			</li>
 		</ul>
-	</div>
+	</main>
 </view>
