@@ -1,7 +1,7 @@
-<div w="100%" h="100%" x='center' y='center' wrap z='1000' bg='charcoal'
-	u init-with="p:[op:0]"
-	on-init="a:[opacity:0:1:500:linear:0:1:f]">
-    <div width="100" x-center>
+<div w="100%" h="100%" x='center' y='center' wrap z='1000' bg='charcoal'>
+    <div width="100" x-center
+		u init-with="p:[op:0]"
+		on-init="a:[opacity:0:1:500:linear:0:1:f]">
 		<h1 f-s="36px" f-w="600" row
 			u on-init="s:[dot-1:public:250]"
 			when-dot-1="s:[dot-2:public:250]"
