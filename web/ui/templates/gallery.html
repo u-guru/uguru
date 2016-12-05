@@ -1,19 +1,12 @@
-<view class="top-0 left-0 ui-gallery" layer="2" type='row' bg="cream" set="gallery = ui.app.views.gallery">
-	<!--top-0, left-0 must be declared in safari-->
-
+<view abs top="0" left="0" class="ui-gallery" layer="2" type='row' bg="cream"
+	link-data="ui/static/data/gallery.json" render-after-ext-scripts let="content=data.content">
 	<!-- u on-init="s:[login-modal-requested:public:1000]" -->
 	<!-- u on-init="s:[sidebar-modal-requested:public:1000]" -->
 	<!-- u on-init="s:[popup-open:public:1000]" -->
 
-	<!-- @gabrielle self-note, check these when samir pushes just in case -->
-	<!-- modified:   web/shared/js/directives/BaseComponentDirectives.js
-	modified:   web/shared/js/directives/ElementDirectives.js
-	modified:   web/shared/js/services/SendService.js -->
-
 	<!-- {{gallery}} -->
-	<item width="100" height="100" class="overflow-auto">
-		<!-- @gabrielle notice I set gallery=ui.app.views.gallery above & check the modified json file-->
-		<import url="gallery.components.nav.url" class="gradient-cream-top"></import>
+	<main width="100" height="100" class="overflow-auto">
+		<replace with="ui/templates/components/nav/switch.html" class="gradient-cream-top"></replace>
 
 		<nav class="ui-gallery-filter-bar" style="margin-top:-15px;"
 			u init-with="p:[op:0]"
@@ -24,14 +17,14 @@
 					<h3 class="ui-gallery-filter-header">Filters:</h3>
 				</li>
 
-				<filter-tag custom data="gallery.data.filterTags[0]"> </filter-tag>
+				<!-- <filter-tag custom data="gallery.data.filterTags[0]"> </filter-tag>
 				<filter-tag custom data="gallery.data.filterTags[1]"> </filter-tag>
 				<filter-tag custom data="gallery.data.filterTags[2]"> </filter-tag>
 				<filter-tag custom data="gallery.data.filterTags[3]"> </filter-tag>
 				<filter-tag custom data="gallery.data.filterTags[4]"> </filter-tag>
 				<filter-tag custom data="gallery.data.filterTags[5]"> </filter-tag>
 				<filter-tag custom data="gallery.data.filterTags[6]"> </filter-tag>
-				<filter-tag custom data="gallery.data.filterTags[7]"> </filter-tag>
+				<filter-tag custom data="gallery.data.filterTags[7]"> </filter-tag> -->
 			</ul>
 		</nav>
 
@@ -94,13 +87,13 @@
 		</main>
 
 		<footer class="ui-gradient-footer gradient-cream-bottom"></footer>
-	</item>
+	</main>
 
-	<import url="gallery.components.login.url"></import>
+	<!-- <import url="gallery.components.login.url"></import> -->
 
-	<import url="gallery.components.sidebar.url"></import>
+	<!-- <import url="gallery.components.sidebar.url"></import> -->
 
-	<modal fixed name='popup' scale-to='#profile-tile-id' class='ui-gallery-single top-0 left-0 full-xy perspective-container' bg='glacier'
+	<modal fixed name='popup' scale-to='#profile-tile-id' class='ui-gallery-single top-0 left-0 full-xy perspective-container' bg='glacier' ng-if="false"
 		u init-with="p:[op:0, tro:center center, tr:scale(0)]"
 		when-popup-open="a:[scale:0:1:500:easeOutSine:0:1:f, z-index:-1:100:50:linear:0:1:f] | p:[op:1] | s:[popup-enter:public:1000]"
 		when-popup-closed="a:[opacity:1:0:500:easeOutExpo:0:1:f, z-index:100:-1:50:linear:450:1:f]">
