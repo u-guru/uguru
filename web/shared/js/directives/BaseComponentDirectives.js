@@ -1435,42 +1435,91 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             }
         }
     }])
+    .directive("debug", ['$compile', function($compile) {
+        return {
+            restrict: 'E',
+            priority: 100000,
+            transclude: 'element',
+            templateUrl: 'shared/templates/debug.tpl',
+            controller: function($element, $transclude) {
+                console.log($element)
+                // $element.append($transclude());
+            },
+            link: function(scope, elem, attr, ctrl, transclude) {
+                var e = (transclude(scope, function(clone, _scope) {
+                    elem.append(clone)
+                }))
+            }
+        }
+    }])
+    .directive('logic', ['$compile', function($compile) {
+        return {
+            restrict: 'E',
+            transclude: 'element',
+            template: '<!-- -->',
+            controller: function($scope, $transclude, $element) {
+                $element.parent().replaceWith($element);
+                // console.log()
+
+                // var afterTemplReplace = $transclude(function(elem, scope) {
+                //     originElem = $compile(elem)(scope);
+                // })
+                // console.log(originElem[0], afterTemplReplace)
+                // $element.append(afterTemplReplace);
+                console.log($element, $transclude())
+            },
+            compile: function(element, attr){
+
+                return function preLink(scope, elem, attr, ctrl, transclude) {
+                    e = transclude(function(inner_elem, inner_scope) {
+                        console.log(inner_elem[0])
+                    })
+                    console.log(elem)
+                }
+
+
+            }
+        }
+    }])
+    .directive('main', function() {
+        return {
+            restrict: 'E',
+            template: '<div> main </div>'
+        }
+    })
     .directive("view", ["CompService", "$compile", "$rootScope", "$parse", function(CompService, $compile, $rootScope, $parse) {
         return {
             restrict: 'E',
             priority: 100000,
-            replace:true,
+            templateUrl: 'shared/templates/view.tpl',
+            transclude: {
+                logic: 'logic'
+            },
+            controller: function($element, $scope, $transclude) {
 
-            compile: function(element, attr, transclude) {
-                CompService.renderAllStyleAttributes(element, attr);
-                element.addClass('flex absolute full-xy');
-                if (attr.type && attr.type === 'column') {
-                    element.addClass('flex-vertical-center')
+                $scope.view = {logic: {}, loader: {}, content: {}};
+                // $element.append($transclude($scope));
+            },
+            compile: function(element, attr) {
+                return {
+                    pre: function preLink(scope, elem, attr, ctrl, transclude) {
+                        // var e = (transclude(scope, function(clone, _scope) {
+
+                        // }))
+                        CompService.renderAllStyleAttributes(elem, attr);
+
+                        // transclude(function(inner_elems, inner_scope) {
+                        //     console.log(elem)
+                        // })
+                        // console.log('it gets here')
+                        // console.log(elem)
+
+                        // elem.append(e)
+                    },
+                    post: function postLink(post_scope, post_elem, post_attr) {
+                        console.log(post_elem[0])
+                    }
                 }
-                if (attr.type && attr.type === 'row') {
-                    element.addClass('flex flex-wrap');
-                }
-
-
-
-                    // pre: function preLink(lScope, lElem, lAttr, transcludeFn) {
-
-                //     //     lScope.isView = true;
-                //     //     lScope.viewType = attr.type;
-                //     //         transclude(lScope, function(clone, innerScope) {
-                //     //             // $compile(clone)(innerScope)
-                //     //             // var cloneChildren = clone.contents()
-                //     //             // console.log(clone)
-                //     //             for (var i = 0; i < clone.length; i++) {
-                //     //                 clone
-                //     //             }
-                //     //             // .forEach(function(elem, i) {
-                //     //             //     console.log(elem)
-                //     //             // })
-                //     //             lElem.append(clone)
-                //     //         })
-                //     // }
-                // }
             }
         }
     }])
