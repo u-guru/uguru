@@ -40,7 +40,7 @@
 		</div>
 	</div>
 
-	<div class="warp-object"
+	<!-- <div class="warp-object"
 		u init-with="p:[width:240px, height:150px, top:calc(50% - 75px), left:calc(50% - 120px), tr:translateZ(-2000px) rotateZ(135deg) rotateY(40deg) translateX(0px) scale(0.25)]"
 		when-warp-objects-start="a:[translateZ:-1000px:0px:750:easeOutCirc:0:200:f, rotateZ:134deg:135deg:750:easeOutCirc:0:200:f, rotateY:39deg:40deg:750:easeOutCirc:0:200:f, translateX:0px:-1500px:750:easeOutCirc:0:200:f, scale:0.25:1:750:easeOutCirc:0:200:f]:delay-3000">
 		<category-tile></category-tile>
@@ -121,7 +121,6 @@
 	<div class="warp-vehicle truck-vehicle"
 		u init-with="p:[transform:rotate(-45deg) translateX(-500px)]"
 		when-warp-vehicles-start="a:[translateZ:0px:-1000px:750:easeOutCirc:0:200:f, rotate:-44deg:-45deg:750:easeOutCirc:0:200:f, translateX:-500px:-50px:750:easeOutCirc:0:200:f, scale:1:0:750:easeOutCirc:0:200:f]">
-		<!-- 200+500 -->
 		<div u init-with="p:[tro:center center]"
 			when-warp-vehicles-start="a:[travel-shake:150:linear:0:200:f]">
 			<graphic url="ui/templates/samples/loaders/components/car-truck.html"></graphic>
@@ -131,7 +130,6 @@
 	<div class="warp-vehicle pew-vehicle"
 		u init-with="p:[transform:rotate(50deg) translateX(500px)]"
 		when-warp-vehicles-start="a:[translateZ:0px:-1000px:950:easeOutCirc:0:200:f, rotate:50deg:40deg:950:easeOutCirc:0:200:f, translateX:500px:50px:950:easeOutCirc:0:200:f, scale:1:0:950:easeOutCirc:0:200:f]">
-		<!-- 200+600 -->
 		<div u init-with="p:[tro:center center]"
 			when-warp-vehicles-start="a:[travel-shake:150:linear:0:200:f]">
 			<graphic url="ui/templates/samples/loaders/components/car-pew.html"></graphic>
@@ -141,10 +139,9 @@
 	<div class="warp-vehicle rocket-vehicle"
 		u init-with="p:[transform:translateX(300px) translateY(-200px) rotate(-120deg)]"
 		when-warp-vehicles-start="a:[translateZ:0px:-1000px:1250:easeOutCirc:0:200:f, translateX:300px:0px:1250:easeOutCirc:0:200:f, translateY:-200px:0px:1250:easeOutExpo:0:200:f, rotate:-119deg:-120deg:1250:easeOutCirc:0:200:f, scale:1:0:1250:easeOutCirc:0:200:f]">
-		<!-- 200+700 -->
 		<div u init-with="p:[tro:center center]"
 			when-warp-vehicles-start="a:[travel-shake:150:linear:0:200:f]">
 			<graphic url="ui/templates/samples/loaders/components/car-rocket.html"></graphic>
 		</div>
-	</div>
+	</div> -->
 </div>
