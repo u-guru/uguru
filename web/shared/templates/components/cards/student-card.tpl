@@ -1,7 +1,7 @@
 <div class="perspective-container full-xy flex-center p15xy" types='flip, short, link' default-type="flip">
 
 	<div class="student-card" ng-if='activeType === "flip"'
-		u init-with="p-op"
+		u init-with="p:[op:0]"
 		on-init="s:[student-card-init:>children] | a:[scoop-enter:800:(0,0.2,0.3,1):0:1:f]"
 		on-mouseenter="s:[flip-enter:children]"
 		on-mouseleave="s:[flip-leave:children]">
@@ -23,18 +23,18 @@
 					<h1 class='lettercase'
 						u init-with="p:[op:0, tro:center top]"
 						when-student-card-init="a:[bounceIn-subtle:1000:linear:150:1:f]">Marco Polo</h1>
-					<h2 u init-with="p-op"
+					<h2 u init-with="p:[op:0]"
 						when-student-card-init="a:[opacity:0:1:800:easeInSine:0:1:f]:delay-150">UC Berkeley</h2>
-					<h2 u init-with="p-op"
+					<h2 u init-with="p:[op:0]"
 						when-student-card-init="a:[opacity:0:1:800:easeInSine:0:1:f]:delay-150">Freshman</h2>
 				</div>
 				<h3 class="school-id-courses">
-					<span u init-with="p-op"
+					<span u init-with="p:[op:0]"
 						when-student-card-init="a:[opacity:0:1:800:easeInSine:0:1:f]:delay-150">SELECTED COURSES</span>
 					<span style="background: #003262;"
 						u init-with="p:[op:0, tro:left center]"
 						when-student-card-init="a:[bounceIn-rotate-subtle:1000:linear:350:1:f]">9</span>
-					<a u init-with="p-op"
+					<a u init-with="p:[op:0]"
 						when-student-card-init="a:[opacity:0:1:800:easeInSine:0:1:f]:delay-150"><span>Edit</span></a>
 				</h3>
 			</div>
@@ -167,7 +167,7 @@
 	</div>
 
 	<a class="student-card with-hover" ng-if='activeType === "link"'
-		u init-with="p-op"
+		u init-with="p:[op:0]"
 		on-init="s:[student-card-init:>children:350, student-link:self]"
 		when-student-link="a:[scoop-enter:1000:linear:0:1:f]">
 
@@ -186,10 +186,10 @@
 						u init-with="p:[op:0, tro:center top]"
 						when-student-card-init="a:[bounceIn-subtle:1000:linear:150:1:f]">Marco Polo</h1>
 					<h2 style="color: #003262;"
-						u init-with="p-op"
+						u init-with="p:[op:0]"
 						when-student-card-init="a:[opacity:0:1:800:easeInSine:0:1:f]:delay-150">Cal Freshman</h2>
 					<h2 style="color: #003262;"
-						u init-with="p-op"
+						u init-with="p:[op:0]"
 						when-student-card-init="a:[opacity:0:1:800:easeInSine:0:1:f]:delay-150">email@school.edu</h2>
 				</div>
 			</div>

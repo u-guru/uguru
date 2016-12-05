@@ -11,7 +11,7 @@
 					<circle class="border" cx="12" cy="12" r="9.5"
 						u init-with="p:[sda:59.7, op:0]"
 						when-radio-load="a:[stroke-dashoffset:59.7:0:250:easeOutSine:0:1:f, opacity:0:1:250:easeOutSine:0:1:f]"></circle>
-					<g u init-with="p-op"
+					<g u init-with="p:[op:0]"
 						when-radio-enter="a:[opacity:0:1:250:easeOutSine:0:1:f]">
 						<circle class="bg" cx="12" cy="12" r="9"></circle>
 					</g>
@@ -19,7 +19,7 @@
 				</svg>
 			</span>
 		</div>
-		<label for="radio-item" u init-with="p-op"
+		<label for="radio-item" u init-with="p:[op:0]"
 			when-radio-enter="a:[bounceInRight-subtle:1000:linear:0:1:f]">Radio Item</label>
 	</div>
 </div>

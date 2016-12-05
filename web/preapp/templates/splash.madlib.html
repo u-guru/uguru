@@ -18,7 +18,7 @@
     	<!-- parallax-parent-ref="p1" parallax-child="0.4" -->
 
         <!-- <svg class="coach-help coach-help-desktop" viewBox="0 0 340 205"
-			init-with="p-op">
+			init-with="p:[op:0]">
             <g fill="none">
                 <path d="M197.223004,186.289595 C230.124127,175.599372 259.195925,160.754252 282.227028,143.962428 C294.858905,154.565768 305.000002,166.999998 337.99999,161.000007 C324.999989,152 314.999992,138.000007 315.855826,113.112054 C334.099853,91.2130052 341.862051,68.3669818 335.358834,48.3521367 C320.254948,1.86715683 233.921194,-11.7431829 142.526996,17.9525921 C51.1327982,47.648367 -10.7127194,109.405071 4.39116616,155.890051 C19.4950517,202.375031 105.828806,215.98537 197.223004,186.289595 L197.223004,186.289595 Z" fill="#40484b" fill-opacity="0.5" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
                 <text transform="translate(173.347656, 110.679688) rotate(-19.000000) translate(-173.347656, -110.679688) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
@@ -28,7 +28,7 @@
             </g>
         </svg> -->
         <!-- <svg class="coach-help coach-help-mobile" viewBox="0 0 229 196"
-			init-with="p-op">
+			init-with="p:[op:0]">
             <g fill="none">
                 <path d="M180.350646,159.695545 C180.350646,159.695544 181.232899,177.999995 205.232902,189.000001 C165.52585,201.901604 151.232897,186.999998 142.038937,178.7445 C81.8973532,198.285685 20.829672,176.230522 5.64045374,129.482915 C-9.5487645,82.7353086 26.8923282,28.9976249 87.0339124,9.45643967 C147.175497,-10.0847456 208.243178,11.9704169 223.432396,58.7180238 C235.030692,94.4139086 216.525122,134.185468 180.350646,159.695545 L180.350646,159.695545 L180.350646,159.695545 L180.350646,159.695545 Z" fill="#40484b" fill-opacity="0.5" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
                 <text transform="translate(113.624918, 91.749311) rotate(-21) translate(-113.624918, -91.749311) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
@@ -57,12 +57,12 @@
         </svg>
     </div>
     <div class="splash-adlib"
-		u init-with="p-op"
+		u init-with="p:[op:0]"
 		when-transition-start="a:[opacity:0:1:250:easeOutSine:0:1:f]:delay-500">
 		<!-- eval-on-activate="activateMap()" -->
         <div class="splash-adlib-inside">
             <div class="adlib-header-container relative"
-                u init-with="p-op"
+                u init-with="p:[op:0]"
 				when-madlib-init="a:[adlib-header-smash:800:linear:0:1:f]">
                 <h1 class="adlib-header desktop">
                     <span u init-with="p:[tr:translateX(40px) translateZ(0px)]"
@@ -144,7 +144,7 @@
             </div>
             <ul u when-madlib-init="s:[madlib-tag-enter:public:1000]">
 				<li class='adlib-tag adlib-tag-1'
-                    u init-with="p-op"
+                    u init-with="p:[op:0]"
                     when-madlib-tag-enter="a:[portal-tag-1:2000:(1,0,.5,1):0:1:f]">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}">
@@ -168,7 +168,7 @@
 	            </li>
 
 				<li class='adlib-tag adlib-tag-2'
-                    u init-with="p-op"
+                    u init-with="p:[op:0]"
                     when-madlib-tag-enter="a:[portal-tag-2:2000:(1,0,.5,1):250:1:f]">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}">
@@ -192,7 +192,7 @@
 	            </li>
 
 				<li class='adlib-tag adlib-tag-3'
-                    u init-with="p-op"
+                    u init-with="p:[op:0]"
                     when-madlib-tag-enter="a:[portal-tag-3:2000:(1,0,.5,1):450:1:f]">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}">
@@ -216,7 +216,7 @@
 	            </li>
 
 				<li class='adlib-tag adlib-tag-4'
-                    u init-with="p-op"
+                    u init-with="p:[op:0]"
                     when-madlib-tag-enter="a:[portal-tag-4:2000:(1,0,.5,1):600:1:f]">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}">
@@ -240,7 +240,7 @@
 	            </li>
 
 				<li class='adlib-tag adlib-tag-5'
-                    u init-with="p-op"
+                    u init-with="p:[op:0]"
                     when-madlib-tag-enter="a:[portal-tag-5:2000:(1,0,.5,1):900:1:f]">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}">
@@ -264,7 +264,7 @@
 	            </li>
 
 				<li class='adlib-tag adlib-tag-6'
-                    u init-with="p-op"
+                    u init-with="p:[op:0]"
                     when-madlib-tag-enter="a:[portal-tag-6:2000:(1,0,.5,1):1250:1:f]">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}">
@@ -288,7 +288,7 @@
 	            </li>
 
 				<li class='adlib-tag adlib-tag-7'
-                    u init-with="p-op"
+                    u init-with="p:[op:0]"
                     when-madlib-tag-enter="a:[portal-tag-7:2000:(1,0,.5,1):1750:1:f]">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}">
@@ -312,7 +312,7 @@
 	            </li>
 
 				<li class='adlib-tag adlib-tag-8'
-                    u init-with="p-op"
+                    u init-with="p:[op:0]"
                     when-madlib-tag-enter="a:[portal-tag-8:2000:(1,0,.5,1):2000:1:f]">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}">

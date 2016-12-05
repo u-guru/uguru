@@ -49,7 +49,7 @@
 		<li class="p15xy">
 			<div class="width-128 height-128">
 				<svg viewBox="0 0 128 128"
-					init-with="p-op"
+					init-with="p:[op:0]"
 					on-init="c:[demo:add:delay-500]">
 					<rect x="2" y="2" width="124" height="124" stroke="#40484b" stroke-width="4" fill="white" rx="10"></rect>
 				</svg>

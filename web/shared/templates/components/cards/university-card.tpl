@@ -2,7 +2,7 @@
 
 	<div class="card-container" ng-if='activeType === "checkbox"'>
 		<div class="university-card"
-			u init-with="p-op"
+			u init-with="p:[op:0]"
 			error on-init="s:[university-card-init:children:150] | a:[zoom-enter:800:(0,0.2,0.3,1):0:1:f]">
 			<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 				<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -66,7 +66,7 @@
 
 	<div class="card-container" ng-if='activeType === "mini"'>
 		<div class="university-card mini"
-			u init-with="p-op"
+			u init-with="p:[op:0]"
 			on-init="s:[university-card-init:children:150] |a:[zoom-enter:800:(0,0.2,0.3,1):0:1:f]">
 			<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 				<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -103,7 +103,7 @@
 	</div>
 
 	<a class="university-card with-hover" ng-if='activeType === "link"'
-		u init-with="p-op"
+		u init-with="p:[op:0]"
 		error on-init="s:[university-card-init:children:150] |a:[zoom-enter:800:(0,0.2,0.3,1):0:1:f]">
 		<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>

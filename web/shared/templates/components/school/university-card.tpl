@@ -1,6 +1,6 @@
 <div class="perspective-container full-xy flex-center p15xy" types='uc-berkeley, boston-college, manhattan-college, university-of-chicago, williams-college, case-western' default-type="uc-berkeley">
 	<div class="university-card" ng-if='activeType === "uc-berkeley"'
-		init-with="p-op"
+		init-with="p:[op:0]"
 		on-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
 		<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -10,7 +10,7 @@
 			<div class="school-card-border" style="border-color: #FDB515;"></div>
 			<div class="school-card-top" style="background-color: #003262;">
 				<span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg'); border-color: #003262;"
-					init-with="p-op"
+					init-with="p:[op:0]"
 					on-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]">
 					<span class="school-card-icon-bg" style="background-color: #003262;"></span>
 					<span class="school-card-state">
@@ -43,7 +43,7 @@
 	</div>
 
 	<div class="university-card" ng-if='activeType === "boston-college"'
-		init-with="p-op"
+		init-with="p:[op:0]"
 		on-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
 		<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -53,7 +53,7 @@
 			<div class="school-card-border" style="border-color: #B38F59;"></div>
 			<div class="school-card-top" style="background-color: #910039;">
 				<span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/5/5b/Boston_College_Seal.svg'); border-color: #910039;"
-					init-with="p-op"
+					init-with="p:[op:0]"
 					on-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]">
 					<span class="school-card-icon-bg" style="background-color: #910039;"></span>
 					<span class="school-card-state">
@@ -86,7 +86,7 @@
 	</div>
 
 	<div class="university-card" ng-if='activeType === "manhattan-college"'
-		init-with="p-op"
+		init-with="p:[op:0]"
 		on-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
 		<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -96,7 +96,7 @@
 			<div class="school-card-border" style="border-color: #FFFFFF;"></div>
 			<div class="school-card-top" style="background-color: #006838;">
 				<span class="school-card-icon" style="background-image: url('http://recruit-match.ncsasports.org/fasttrack/clientimages/14813college.jpg'); border-color: #006838;"
-					init-with="p-op"
+					init-with="p:[op:0]"
 					on-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]">
 					<span class="school-card-icon-bg" style="background-color: #006838;"></span>
 					<span class="school-card-state">
@@ -129,7 +129,7 @@
 	</div>
 
 	<div class="university-card" ng-if='activeType === "university-of-chicago"'
-		init-with="p-op"
+		init-with="p:[op:0]"
 		on-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
 		<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -139,7 +139,7 @@
 			<div class="school-card-border" style="border-color: #000000;"></div>
 			<div class="school-card-top" style="background-color: #DE0A2A;">
 				<span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/0/0d/UChicago_presidential_seal.svg'); border-color: #DE0A2A;"
-					init-with="p-op"
+					init-with="p:[op:0]"
 					on-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]">
 					<span class="school-card-icon-bg" style="background-color: #DE0A2A;"></span>
 					<span class="school-card-state">
@@ -172,7 +172,7 @@
 	</div>
 
 	<div class="university-card" ng-if='activeType === "williams-college"'
-		init-with="p-op"
+		init-with="p:[op:0]"
 		on-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
 		<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -182,7 +182,7 @@
 			<div class="school-card-border" style="border-color: #FFD700;"></div>
 			<div class="school-card-top" style="background-color: #330067;">
 				<span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/1/19/Williams_College_Seal.svg'); border-color: #330067;"
-					init-with="p-op"
+					init-with="p:[op:0]"
 					on-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]">
 					<span class="school-card-icon-bg" style="background-color: #330067;"></span>
 					<span class="school-card-state">
@@ -215,7 +215,7 @@
 	</div>
 
 	<div class="university-card" ng-if='activeType === "case-western"'
-		init-with="p-op"
+		init-with="p:[op:0]"
 		on-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
 		<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -225,7 +225,7 @@
 			<div class="school-card-border" style="border-color: #FFFFFF;"></div>
 			<div class="school-card-top" style="background-color: #184c8c;">
 				<span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/0/08/Case_Western_Reserve_University_seal.svg'); border-color: #184c8c;"
-					init-with="p-op"
+					init-with="p:[op:0]"
 					on-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]">
 					<span class="school-card-icon-bg" style="background-color: #184c8c;"></span>
 					<span class="school-card-state">

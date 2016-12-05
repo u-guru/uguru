@@ -75,7 +75,7 @@
 				</svg>
 				<span class="label">Border light</span>
 				<span class="input"
-					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+					init-with="p:[op:0]">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div class="underline">
 					<div></div>
 					<div></div>
@@ -183,7 +183,7 @@
 				</svg>
 				<span class="label">Border dark</span>
 				<span class="input"
-					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+					init-with="p:[op:0]">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div class="borders">
 					<div>
 						<div init-default
@@ -287,7 +287,7 @@
 				</svg>
 				<span class="label">Large border light</span>
 				<span class="input"
-					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+					init-with="p:[op:0]">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div class="borders">
 					<div>
 						<div init-default
@@ -391,7 +391,7 @@
 				</svg>
 				<span class="label">Large border light</span>
 				<span class="input"
-					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+					init-with="p:[op:0]">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div class="borders">
 					<div>
 						<div init-default
@@ -466,7 +466,7 @@
 				</svg>
 				<span class="label">Border light search</span>
 				<span class="input"
-					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+					init-with="p:[op:0]">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div class="borders">
 					<div><div></div><div></div></div>
 					<div><div></div><div></div></div>
@@ -506,7 +506,7 @@
 				</svg>
 				<span class="label">Border dark search</span>
 				<span class="input"
-					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+					init-with="p:[op:0]">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div class="borders">
 					<div><div></div><div></div></div>
 					<div><div></div><div></div></div>
@@ -546,7 +546,7 @@
 				</svg>
 				<span class="label">Border light large search</span>
 				<span class="input"
-					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+					init-with="p:[op:0]">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div class="borders">
 					<div><div></div><div></div></div>
 					<div><div></div><div></div></div>
@@ -586,7 +586,7 @@
 				</svg>
 				<span class="label">Border dark large search</span>
 				<span class="input"
-					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+					init-with="p:[op:0]">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div class="borders">
 					<div><div></div><div></div></div>
 					<div><div></div><div></div></div>

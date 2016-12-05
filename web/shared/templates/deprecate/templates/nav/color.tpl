@@ -29,12 +29,12 @@
 			when-dropdown-init="t:[on-enter]"
 			on-enter="p:[op:1]"></div>
         <span ng-if='!dropdown.key'
-			init-with="p-op"
+			init-with="p:[op:0]"
 			when-dropdown-init="t:[on-enter]"
 			on-enter="p:[op:1, t:all 250ms ease-out 750ms]"
 			ng-mouseover="hover($event, 'send', prefix + '-dropdown-hover', dropdown.selectedIndex)">{{dropdown.options[dropdown.selectedIndex]}}</span>
         <span ng-if='dropdown.key'
-			init-with="p-op"
+			init-with="p:[op:0]"
 			when-dropdown-init="t:[on-enter]"
 			on-enter="p:[op:1, t:all 250ms ease-out 750ms]"
             ng-mouseover="hover($event, 'send', prefix + '-dropdown-hover', dropdown.selectedIndex)">{{dropdown.options[dropdown.selectedIndex][dropdown.key]}}</span>

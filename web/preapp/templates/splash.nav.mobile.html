@@ -20,7 +20,7 @@
                         <dropdown
                             ng-model='nav.categoriesDropdown' color-key="hex_color" type="color"
                             prefix="category"
-                            init-with="p-op"
+                            init-with="p:[op:0]"
                             when-nav-init="p:[op:1] | send:[dropdown-init:children:delay-750]"
                             states="[hover, mouse-enter, mouse-leave, toggle-on, toggle-off, click]"
                             hover-data="name, hex_color"
@@ -34,7 +34,7 @@
                             when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
                             when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]">
                         </dropdown>
-                        <h2 init-with="p-op"
+                        <h2 init-with="p:[op:0]"
                             when-nav-init="t-enter"
                             on-enter="p:[op:1, t:all 1000ms ease-out]:delay-1000"
                             when-category-dropdown-mouse-enter="p:[op:0.25:delay-50, t:all 250ms ease-in-out]"
@@ -45,7 +45,7 @@
                             when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]">@</h2>
                         <dropdown type="color" ng-model="nav.universitiesDropdown" color-key='["school_color_dark", "school_color_one"]'
                             prefix="university"
-                            init-with="p-op"
+                            init-with="p:[op:0]"
                             when-nav-init="p:[o-1] | send:[dropdown-init:children:delay-1250]"
                             states="[hover, mouse-enter, mouse-leave, toggle-on, toggle-off, click]"
                             hover-data="name, school_color_dark"
@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="splash-hero-nav mobile" mobile
-                    init-with="p-op"
+                    init-with="p:[op:0]"
                     when-nav-init="t-enter"
 
                     on-enter="p:[op:1, t:all 1000ms ease-out]:delay-1500">
@@ -204,12 +204,12 @@
                 <a class="flex-center svg-white svg-32 svg-stroke-8 close-icon" ng-include="root.base_url + 'shared/templates/components/svg/main/plus.html'"></a>
             </div>
             <div class="splash-hero-nav-category full-x">
-                <h1 init-with="p-op"
+                <h1 init-with="p:[op:0]"
                     when-mobile-sw-init="t-enter"
                     on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">Category</h1>
                 <ul>
                     <li ng-repeat='category in nav.categoriesDropdown.options'
-                        init-with="p-op"
+                        init-with="p:[op:0]"
                         when-mobile-sw-init="t-enter"
                         on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">
                         <a class="bg-{{category.bg_hex_color}}"
@@ -222,12 +222,12 @@
                 </ul>
             </div>
             <div class="splash-hero-nav-school full-x">
-                <h1 init-with="p-op"
+                <h1 init-with="p:[op:0]"
                     when-mobile-sw-init="t-enter"
                     on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">University</h1>
                 <ul>
                     <li ng-repeat='university in nav.universitiesDropdown.options' class='txt-white weight-600'
-                        init-with="p-op"
+                        init-with="p:[op:0]"
                         when-mobile-sw-init="t-enter"
                         on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">
                         <a ng-class="{'active':university.id == selectedUniversity.id}"

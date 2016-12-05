@@ -1,5 +1,5 @@
 <div class='full-xy absolute top-0 left-0'
-	init-with="p-op"
+	init-with="p:[op:0]"
 	on-enter="p:[t:all 1000ms ease, op:1, z-index:10000]"
 	when-sound-triggered="t-enter | s:[sound-landing-enter:public]:delay-2000"
 	when-close-sound="p:[op:0, tr:translateY(-100%), z-index:default:delay-1000]">
@@ -15,17 +15,17 @@
 				<div ng-include="root.base_url + 'preapp/templates/components/powerups/sound-card.html'"></div>
 			</div>
 			<h1 class="powerup-header"
-				init-with="p-op"
+				init-with="p:[op:0]"
 				on-enter="a:[gpa-enter:set:(dur:800ms#func:linear):delay-250:in]"
 				when-sound-landing-enter="t-enter">Sound Guru</h1>
 			<h2 class="powerup-subheader"
-				init-with="p-op"
+				init-with="p:[op:0]"
 				on-enter="a:[gpa-enter:set:(dur:800ms#func:linear):delay-500:in]"
 				when-sound-landing-enter="t-enter">Curated mixtapes for a focused study session.</h2>
 		</div>
 		<div class="landing-demo z-index-3">
 			<svg viewBox="0 0 318 651"
-				init-with="p-op"
+				init-with="p:[op:0]"
 				on-enter="a:[gpa-enter:set:(dur:1200ms#func:ease-out):delay-750:in]"
 				when-sound-landing-enter="t-enter">
 				<rect x="1.5" y="1.5" width="315" height="648" rx="40"></rect>
@@ -37,11 +37,11 @@
 			</div>
 		</div>
 		<div class="landing-content z-index-1"
-			init-with="p-op"
+			init-with="p:[op:0]"
 			on-enter="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in]"
 			when-sound-landing-enter="t-enter">
 			<h1
-				init-with="p-op"
+				init-with="p:[op:0]"
 				on-enter="a:[gpa-enter:set:(dur:1000ms#func:linear):delay-1500:in]"
 				when-sound-landing-enter="t-enter">Preview the App</h1>
 			<ul class="sound-record-list"
@@ -102,17 +102,17 @@
 								<div init-with="p:[tr:scaleY(0), t:all 250ms cubic-bezier(1#0#1#0)]"
 									when-record-tile-init="p:[tr:scaleY(1)]"></div>
 								<div class="record-art"
-									init-with="p-op"
+									init-with="p:[op:0]"
 									when-record-tile-init="p:[op:1:delay-250, tr:all 250ms ease-out]"></div>
 								<h1 class="record-label"
-									init-with="p-op"
+									init-with="p:[op:0]"
 									when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1000]">Top 40</h1>
 							</div>
 						</div>
 						<div class="record-info">
-							<h3 init-with="p-op"
+							<h3 init-with="p:[op:0]"
 								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1250]">Top 40 - 2016</h3>
-							<button init-with="p-op"
+							<button init-with="p:[op:0]"
 								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1500]">
 								<span></span><span></span><span></span><span></span>
 								<span>Listen Now</span>
@@ -175,17 +175,17 @@
 								<div init-with="p:[tr:scaleY(0), t:all 250ms cubic-bezier(1#0#1#0)]"
 									when-record-tile-init="p:[tr:scaleY(1)]"></div>
 								<div class="record-art"
-									init-with="p-op"
+									init-with="p:[op:0]"
 									when-record-tile-init="p:[op:1:delay-250, tr:all 250ms ease-out]"></div>
 								<h1 class="record-label"
-									init-with="p-op"
+									init-with="p:[op:0]"
 									when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1000]">Chill Out</h1>
 							</div>
 						</div>
 						<div class="record-info">
-							<h3 init-with="p-op"
+							<h3 init-with="p:[op:0]"
 								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1250]">Chill Out</h3>
-							<button init-with="p-op"
+							<button init-with="p:[op:0]"
 								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1500]">
 								<span></span><span></span><span></span><span></span>
 								<span>Listen Now</span>
@@ -248,17 +248,17 @@
 								<div init-with="p:[tr:scaleY(0), t:all 250ms cubic-bezier(1#0#1#0)]"
 									when-record-tile-init="p:[tr:scaleY(1)]"></div>
 								<div class="record-art"
-									init-with="p-op"
+									init-with="p:[op:0]"
 									when-record-tile-init="p:[op:1:delay-250, tr:all 250ms ease-out]"></div>
 								<h1 class="record-label"
-									init-with="p-op"
+									init-with="p:[op:0]"
 									when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1000]">Upbeat EDM</h1>
 							</div>
 						</div>
 						<div class="record-info">
-							<h3 init-with="p-op"
+							<h3 init-with="p:[op:0]"
 								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1250]">Upbeat EDM</h3>
-							<button init-with="p-op"
+							<button init-with="p:[op:0]"
 								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1500]">
 								<span></span><span></span><span></span><span></span>
 								<span>Listen Now</span>
@@ -321,17 +321,17 @@
 								<div init-with="p:[tr:scaleY(0), t:all 250ms cubic-bezier(1#0#1#0)]"
 									when-record-tile-init="p:[tr:scaleY(1)]"></div>
 								<div class="record-art"
-									init-with="p-op"
+									init-with="p:[op:0]"
 									when-record-tile-init="p:[op:1:delay-250, tr:all 250ms ease-out]"></div>
 								<h1 class="record-label"
-									init-with="p-op"
+									init-with="p:[op:0]"
 									when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1000]">Guitar Melodies</h1>
 							</div>
 						</div>
 						<div class="record-info">
-							<h3 init-with="p-op"
+							<h3 init-with="p:[op:0]"
 								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1250]">Guitar Melodies</h3>
-							<button init-with="p-op"
+							<button init-with="p:[op:0]"
 								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1500]">
 								<span></span><span></span><span></span><span></span>
 								<span>Listen Now</span>
@@ -492,13 +492,13 @@
 					when-sound-landing-enter="t-enter">Try It Now on Desktop</button>
 				<ul class="landing-platforms p15-grid full-x line-height-1-2">
 					<li class="txt-24 semibold"
-						init-with="p-op"
+						init-with="p:[op:0]"
 						on-enter="p:[op:1, t:all 750 ease-out]:delay-2150"
 						when-sound-landing-enter="t-enter">
 						Android<br/>Play Store
 					</li>
 					<li class="txt-24 semibold"
-						init-with="p-op"
+						init-with="p:[op:0]"
 						on-enter="p:[op:1, t:all 750 ease-out]:delay-2150"
 						when-sound-landing-enter="t-enter">
 						iOS<br/>Coming Soon

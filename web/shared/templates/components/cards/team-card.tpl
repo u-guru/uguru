@@ -58,7 +58,7 @@
 						</svg>
 					</div>
 					<h1 class="team-name"
-						u init-with="p-op"
+						u init-with="p:[op:0]"
 						when-gabrie-enter="a:[opacity:0:1:500:easeOutSine:0:1:f]:delay-1000">Gabrielle Wee</h1>
 	            </div>
 				<div class="team-ribbon"
@@ -152,7 +152,7 @@
 						</svg>
 					</div>
 					<h1 class="team-name"
-						u init-with="p-op"
+						u init-with="p:[op:0]"
 						when-jeselle-icon-enter="a:[opacity:0:1:500:easeOutSine:0:1:f]:delay-200">Jeselle Obina</h1>
 	            </div>
 				<div class="team-ribbon" u on-init="s:[jeselle-ribbon-expand:depth(>1):1800]">
@@ -205,7 +205,7 @@
 				when-jason-enter="p:[op:1] | a:[scale:0.5:1:800:easeOutBack:0:1:f, rotateX:70deg:0deg:800:easeOutBack:0:1:f, rotateY:-15deg:0deg:800:easeOutBack:0:1:f, translateY:-1000px:0px:800:easeOutBack:0:1:f]"></div>
 			<div u on-init="s:[jason-icon-enter:depth(>1):800]">
 	            <div class="team-link"
-					u init-with="p-op"
+					u init-with="p:[op:0]"
 					when-jason-icon-enter="a:[scaleInX-subtle:1000:linear:0:1:f]">
 					<div class="team-icon"
 						u init-with="p:[tr:scale(0), tro:center center]"
@@ -235,7 +235,7 @@
 						</svg>
 					</div>
 					<h1 class="team-name"
-						u init-with="p-op"
+						u init-with="p:[op:0]"
 						when-jason-icon-enter="a:[opacity:0:1:500:easeOutSine:0:1:f]:delay-200">Jason Huang</h1>
 	            </div>
 				<div class="team-ribbon"
@@ -289,7 +289,7 @@
 				when-samir-enter="p:[op:1] | a:[scale:0.5:1:800:easeOutBack:0:1:f, rotateX:70deg:0deg:800:easeOutBack:0:1:f, rotateY:-15deg:0deg:800:easeOutBack:0:1:f, translateY:-1000px:0px:800:easeOutBack:0:1:f]"></div>
 			<div u on-init="s:[samir-icon-enter:depth(>1):800, samir-team-info:children:500]">
 	            <div class="team-link"
-					u init-with="p-op"
+					u init-with="p:[op:0]"
 					when-samir-icon-enter="a:[scaleInX-subtle:1000:linear:0:1:f]">
 					<div class="team-icon"
 						u init-with="p:[tro:center center, tr:scale(0)]"
@@ -317,7 +317,7 @@
 						</svg>
 					</div>
 					<h1 class="team-name"
-						u init-with="p-op"
+						u init-with="p:[op:0]"
 						when-samir-icon-enter="a:[opacity:0:1:500:easeOutSine:200:1:f]">Samir Makhani</h1>
 	            </div>
 				<div class="team-ribbon"

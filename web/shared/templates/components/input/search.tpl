@@ -19,7 +19,7 @@
             </label>
 
             <input id="search-bar" placeholder="Filter" value=""
-                u init-with="p-op"
+                u init-with="p:[op:0]"
                 when-search-bar-icon="p:[opacity:0:1:250:easeOutSine:0:1:f]"/>
         </div>
     </fieldset>

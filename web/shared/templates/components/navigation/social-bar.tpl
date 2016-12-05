@@ -16,7 +16,7 @@
 			</li>
 			<li>
 				<a class="bg-tw"
-					u init-with="p-op"
+					u init-with="p:[op:0]"
 					when-social-bar-init="a:[bounceIn-rotate-subtle:1000:linear:100:1:f]"
 					on-mouse-enter="a:[rotate:0deg:-10deg:100:easeInSine:1100:1:f, wiggle-subtle:1000:linear:100:1:f]">
 					<svg viewBox="0 0 100 100"
@@ -28,7 +28,7 @@
 			</li>
 			<li>
 				<a class="bg-li"
-					u init-with="p-op"
+					u init-with="p:[op:0]"
 					when-social-bar-init="a:[bounceIn-rotate-subtle:1000:linear:200:1:f]"
 					on-mouse-enter="a:[rotate:0deg:-10deg:100:easeInSine:1100:1:f, wiggle-subtle:1000:linear:100:1:f]">
 					<svg viewBox="0 0 100 100"
@@ -40,7 +40,7 @@
 			</li>
 			<li>
 				<a class="bg-in"
-					u init-with="p-op"
+					u init-with="p:[op:0]"
 					when-social-bar-init="a:[bounceIn-rotate-subtle:1000:linear:300:1:f]"
 					on-mouse-enter="a:[rotate:0deg:-10deg:100:easeInSine:1100:1:f, wiggle-subtle:1000:linear:100:1:f]">
 					<svg viewBox="0 0 100 100"
@@ -53,7 +53,7 @@
 			</li>
 			<li>
 				<a class="auto" style="background: #e5753c"
-					u init-with="p-op"
+					u init-with="p:[op:0]"
 					when-social-bar-init="a:[bounceIn-rotate-subtle:1000:linear:400:1:f]"
 					on-mouse-enter="a:[rotate:0deg:-10deg:100:easeInSine:1100:1:f, wiggle-subtle:1000:linear:100:1:f]">
 					<span u init-with="p:[op:0.25]"

@@ -1,5 +1,5 @@
 <div class="projector-container">
-	<!-- init-with="p-op"
+	<!-- init-with="p:[op:0]"
 	on-init="a:[bounceInDown-subtle:set:(dur:1000ms#func:ease-out):in:delay-250]" -->
 	<div class="projector-slide">
 		<!-- init-default

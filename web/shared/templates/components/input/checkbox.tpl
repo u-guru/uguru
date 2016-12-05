@@ -23,14 +23,14 @@
 						when-line-draw="a:[stroke-dashoffset:29.5:0:250:easeOutSine:0:1:f]:delay-450"/>
 					<circle cx="12.3901367" cy="22.03125" r="32"></circle>
 					<polyline class="check-under" points="7.24 17.0305882 12.3929412 22.1835294 24.76 9.81647059"
-						u init-with="p-op"
+						u init-with="p:[op:0]"
 						when-checkbox-enter="p:[opacity:0:1:250:easeOutSine]"></polyline>
 					<polyline class="check-stroke" points="7.24 17.0305882 12.3929412 22.1835294 24.76 9.81647059"></polyline>
 				</svg>
 				<span></span>
 			</span>
 		</div>
-		<label for="checkbox-item" u init-with="p-op"
+		<label for="checkbox-item" u init-with="p:[op:0]"
 			when-checkbox-enter="a:[bounceInRight-subtle:1000:linear:1:f]">Checkbox Item</label>
 	</div>
 </div>

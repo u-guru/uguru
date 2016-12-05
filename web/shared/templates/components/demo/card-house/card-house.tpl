@@ -73,7 +73,7 @@
 					<div class="front"></div>
 					<div class="back"></div>
 				</div>
-				<div class="team-card" init-with="p-op"
+				<div class="team-card" init-with="p:[op:0]"
 					when-house-rotate="p:[opacity:0:1:50:easeOutSine] | s:[gabrie-enter:public:delay-1000]">
 					<div class="team-border">
 						<div init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
@@ -88,10 +88,10 @@
 					<div class="team-photo" style="background-image: url('https://raw.githubusercontent.com/Uguru/uguru/gabri-dev/web/shared/images/gabrielle.jpg?token=AAm4HoXDx19Lb58LPkLHAOTjJNakVVRIks5XvJnLwA%3D%3D')"></div>
 					<div>
 						<div class="team-link"
-							init-with="p-op"
+							init-with="p:[op:0]"
 							when-gabrie-enter="a:[scaleInX-subtle-half:set:(dur:1000ms#func:linear):in:delay-800] | s:[gabrie-ribbon-expand:public:delay-1000]">
 							<div class="team-icon"
-								init-with="p-op"
+								init-with="p:[op:0]"
 								when-gabrie-enter="a:[icon-enter:set:(dur:1000ms#func:linear):in:delay-1300]">
 								<svg class="gabrie-back" viewBox="0 0 200 200">
 								    <g class="gabrie-guru" fill="none" fill-rule="evenodd">
@@ -126,7 +126,7 @@
 								</svg>
 							</div>
 							<h1 class="team-name"
-								init-with="p-op"
+								init-with="p:[op:0]"
 								when-gabrie-enter="p:[op:1:delay-1000]">Gabrielle Wee</h1>
 			            </div>
 						<div class="team-ribbon">
@@ -175,7 +175,7 @@
 					<div class="front"></div>
 					<div class="back"></div>
 				</div>
-				<div class="team-card" init-with="p-op"
+				<div class="team-card" init-with="p:[op:0]"
 					when-house-rotate="p:[opacity:0:1:50:easeOutSine]:delay-150 | s:[jeselle-enter:public:delay-1000]:delay-150">
 					<div class="team-border">
 						<div init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
@@ -190,10 +190,10 @@
 					<div class="team-photo" style="background-image: url('https://raw.githubusercontent.com/Uguru/uguru/gabri-dev/web/shared/images/jeselle.jpg?token=AAm4HhGSrc-7t6S6vyNQMpDZ3DbSndC1ks5XvJozwA%3D%3D')"></div>
 					<div>
 						<div class="team-link"
-							init-with="p-op"
+							init-with="p:[op:0]"
 							when-jeselle-enter="a:[scaleInX-subtle-half:set:(dur:1000ms#func:linear):in:delay-800] | s:[jeselle-ribbon-expand:public:delay-1000]">
 							<div class="team-icon"
-								init-with="p-op"
+								init-with="p:[op:0]"
 								when-jeselle-enter="a:[icon-enter:set:(dur:1000ms#func:linear):in:delay-1300]">
 								<svg class="jeselle-back" viewBox="0 0 200 200">
 									<g class="jeselle-guru" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -234,7 +234,7 @@
 								</svg>
 							</div>
 							<h1 class="team-name"
-								init-with="p-op"
+								init-with="p:[op:0]"
 								when-jeselle-enter="p:[op:1:delay-1000]">Jeselle Obina</h1>
 						</div>
 						<div class="team-ribbon">
@@ -283,7 +283,7 @@
 					<div class="front"></div>
 					<div class="back"></div>
 				</div>
-				<div class="team-card" init-with="p-op"
+				<div class="team-card" init-with="p:[op:0]"
 					when-house-rotate="p:[opacity:0:1:50:easeOutSine]:delay-300 | s:[jason-enter:public:delay-1000]:delay-300">
 					<div class="team-border">
 						<div init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
@@ -298,10 +298,10 @@
 					<div class="team-photo" style="background-image: url('https://raw.githubusercontent.com/Uguru/uguru/gabri-dev/web/shared/images/jason.jpg?token=AAm4HmSt9nEW3q8WZCb7eWtoqE76eqcnks5XvJoKwA%3D%3D')"></div>
 					<div>
 						<div class="team-link"
-							init-with="p-op"
+							init-with="p:[op:0]"
 							when-jason-enter="a:[scaleInX-subtle-half:set:(dur:1000ms#func:linear):in:delay-800] | s:[jason-ribbon-expand:public:delay-1000]">
 							<div class="team-icon"
-								init-with="p-op"
+								init-with="p:[op:0]"
 								when-jason-enter="a:[icon-enter:set:(dur:1000ms#func:linear):in:delay-1300]">
 								<svg class="jason-back" viewBox="0 0 200 200">
 									<g class="jason-guru" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
@@ -329,7 +329,7 @@
 								</svg>
 							</div>
 							<h1 class="team-name"
-								init-with="p-op"
+								init-with="p:[op:0]"
 								when-jason-enter="p:[op:1:delay-1000]">Jason Huang</h1>
 						</div>
 						<div class="team-ribbon">
@@ -378,7 +378,7 @@
 					<div class="front"></div>
 					<div class="back"></div>
 				</div>
-				<div class="team-card" init-with="p-op"
+				<div class="team-card" init-with="p:[op:0]"
 					when-house-rotate="p:[opacity:0:1:50:easeOutSine]:delay-450 | s:[samir-enter:public:delay-1000]:delay-450">
 					<div class="team-border">
 						<div init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
@@ -393,10 +393,10 @@
 					<div class="team-photo" style="background-image: url('https://raw.githubusercontent.com/Uguru/uguru/gabri-dev/web/shared/images/samir.jpg?token=AAm4HqfZg6AkFGFO4M623SOvqBUV0NgTks5XvJpOwA%3D%3D')"></div>
 					<div>
 						<div class="team-link"
-							init-with="p-op"
+							init-with="p:[op:0]"
 							when-samir-enter="a:[scaleInX-subtle-half:set:(dur:1000ms#func:linear):in:delay-800] | s:[samir-ribbon-expand:public:delay-1000]">
 							<div class="team-icon"
-								init-with="p-op"
+								init-with="p:[op:0]"
 								when-samir-enter="a:[icon-enter:set:(dur:1000ms#func:linear):in:delay-1300]">
 								<svg class="samir-back" viewBox="0 0 200 200">
 								    <g class="samir-guru" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
@@ -421,7 +421,7 @@
 								</svg>
 							</div>
 							<h1 class="team-name"
-								init-with="p-op"
+								init-with="p:[op:0]"
 								when-samir-enter="p:[op:1:delay-1000]">Samir Makhani</h1>
 						</div>
 						<div class="team-ribbon">
@@ -456,7 +456,7 @@
 		</li>
 
 		<li style="position:absolute;"
-			init-with="p-op"
+			init-with="p:[op:0]"
 			when-house-stack="p:[z-index:auto, opacity:0:1:50:linear]:delay-600"
 			when-house-build="p:[z-index:auto]"
 			when-house-return="p:[z-index:-100:delay-1000]">

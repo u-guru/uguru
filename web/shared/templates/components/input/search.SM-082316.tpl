@@ -22,7 +22,7 @@
             </label>
 
             <input id="search-bar" placeholder="Filter" value=""
-                init-with="p-op"
+                init-with="p:[op:0]"
                 when-search-bar-clicked="p:[opacity:0:1:250:easeOutSine]:delay-250"/>
         </div>
     </fieldset>

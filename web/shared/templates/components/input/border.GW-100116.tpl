@@ -59,7 +59,7 @@
 					init-with="p:[transform:rotateX(90deg)]"
 					on-init="a:[rotateX:90deg:0deg:1000:easeOutExpo:0:1:f]">Border light</span>
 				<span class="input"
-					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+					init-with="p:[op:0]">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div class="underline" u
 					init-with="p:[transform:translateY(100px)]"
 					on-init="a:[translateY:100px:0px:2500:easeOutExpo:250:1:f]"
@@ -177,7 +177,7 @@
 					init-with="p:[op:0, tr:rotateX(90deg), tro:bottom center]"
 					when-input-border-enter="p:[opacity:0:1:250:easeOutExpo, transform:rotateX(90deg):rotateX(0deg):250:easeOutExpo]:delay-200">Border dark</span>
 				<span class="input"
-					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+					init-with="p:[op:0]">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div class="underline">
 					<div init-with="p:[tr:scaleX(0)]"
 						when-input-border-enter="p:[transform:scaleX(0):scaleX(1):250:easeOutExpo]"></div>
@@ -291,7 +291,7 @@
 					init-with="p:[op:0, tr:rotateX(90deg), tro:bottom center]"
 					when-input-border-enter="p:[opacity:0:1:250:easeOutExpo, transform:rotateX(90deg):rotateX(0deg):250:easeOutExpo]:delay-200">Large border light</span>
 				<span class="input"
-					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+					init-with="p:[op:0]">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div class="underline">
 					<div init-with="p:[tr:scaleX(0)]"
 						when-input-border-enter="p:[transform:scaleX(0):scaleX(1):250:easeOutExpo]"></div>
@@ -405,7 +405,7 @@
 					init-with="p:[op:0, tr:rotateX(90deg), tro:bottom center]"
 					when-input-border-enter="p:[opacity:0:1:250:easeOutExpo, transform:rotateX(90deg):rotateX(0deg):250:easeOutExpo]:delay-200">Large border light</span>
 				<span class="input"
-					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+					init-with="p:[op:0]">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div class="underline">
 					<div init-with="p:[tr:scaleX(0)]"
 						when-input-border-enter="p:[transform:scaleX(0):scaleX(1):250:easeOutExpo]"></div>
@@ -493,7 +493,7 @@
 					init-with="p:[op:0, tr:rotateX(90deg), tro:bottom center]"
 					when-input-border-enter="p:[opacity:0:1:250:easeOutExpo, transform:rotateX(90deg):rotateX(0deg):250:easeOutExpo]:delay-200">Border light search</span>
 				<span class="input"
-					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+					init-with="p:[op:0]">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div class="underline">
 					<div init-with="p:[tr:scaleX(0)]"
 						when-input-border-enter="p:[transform:scaleX(0):scaleX(1):250:easeOutExpo]"></div>
@@ -545,7 +545,7 @@
 					init-with="p:[op:0, tr:rotateX(90deg), tro:bottom center]"
 					when-input-border-enter="p:[opacity:0:1:250:easeOutExpo, transform:rotateX(90deg):rotateX(0deg):250:easeOutExpo]:delay-200">Border dark search</span>
 				<span class="input"
-					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+					init-with="p:[op:0]">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div class="underline">
 					<div init-with="p:[tr:scaleX(0)]"
 						when-input-border-enter="p:[transform:scaleX(0):scaleX(1):250:easeOutExpo]"></div>
@@ -594,7 +594,7 @@
 					init-with="p:[op:0, tr:rotateX(90deg), tro:bottom center]"
 					when-input-border-enter="p:[opacity:0:1:250:easeOutExpo, transform:rotateX(90deg):rotateX(0deg):250:easeOutExpo]:delay-200">Border light large search</span>
 				<span class="input"
-					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+					init-with="p:[op:0]">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div class="underline">
 					<div init-with="p:[tr:scaleX(0)]"
 						when-input-border-enter="p:[transform:scaleX(0):scaleX(1):250:easeOutExpo]"></div>
@@ -643,7 +643,7 @@
 					init-with="p:[op:0, tr:rotateX(90deg), tro:bottom center]"
 					when-input-border-enter="p:[opacity:0:1:250:easeOutExpo, transform:rotateX(90deg):rotateX(0deg):250:easeOutExpo]:delay-200">Border dark large search</span>
 				<span class="input"
-					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+					init-with="p:[op:0]">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div class="underline">
 					<div init-with="p:[tr:scaleX(0)]"
 						when-input-border-enter="p:[transform:scaleX(0):scaleX(1):250:easeOutExpo]"></div>

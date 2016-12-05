@@ -16,7 +16,7 @@
         <div class='full-xy flex-vertical-center relative'>
 
             <!-- style='height:calc(85%/{{admin.sections}});' -->
-            <h1 class='absolute weight-600 full-x bg-gold-20p p15x-p10y top-0' init-with="p-op" when-ease-swapped="p:[transform:translateX(-200%):translateX(16%):250ms:easeInOutQuint, opacity:0:1:250ms:@]"> Use Cases </h1>
+            <h1 class='absolute weight-600 full-x bg-gold-20p p15x-p10y top-0' init-with="p:[op:0]" when-ease-swapped="p:[transform:translateX(-200%):translateX(16%):250ms:easeInOutQuint, opacity:0:1:250ms:@]"> Use Cases </h1>
             <div class="full-xy flex-end">
                 <aside class='bg-campus-10p full-y weight-500 txt-24 text-center relative overflow-auto no-scrollbar' style='min-width:15%;'>
                     <h1 class='weight-600 full-x bg-gold p15x-p10y'> Use Cases </h1>
@@ -109,12 +109,12 @@
 
                             <!-- @jeselle You can change the values of these below however you like. The stagger.json only impacts the stagger-children on-enter state. -->
                             <!-- Feel free to uncomment and it should still work -->
-                            <!-- <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[op:1, transform:translateX(-500px):translateX(0px):1000:easeInOutQuad]" inspector-elem="on-enter" init-with="p-op">S</div> -->
-                            <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[op:1, transform:translateX(500px):translateX(0px):1000:easeInOutQuad]" init-with="p-op">S</div>
-                            <div class='m10x' on-init="trigger:[on-enter:self]" on-enter="p:[op:1, transform:translateX(500px):translateX(0px):1000:easeInOutQuad]" init-with="p-op">A</div>
-                            <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[op:1, transform:translateX(500px):translateX(0px):1000:easeInOutQuad]" init-with="p-op">M</div>
-                            <div class='m10x' on-init="trigger:[on-enter:self]" on-enter="p:[op:1, transform:translateX(500px):translateX(0px):1000:easeInOutQuad]" init-with="p-op">I</div>
-                            <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[op:1, transform:translateX(500px):translateX(0px):1000:easeInOutQuad]" init-with="p-op">R</div>
+                            <!-- <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[op:1, transform:translateX(-500px):translateX(0px):1000:easeInOutQuad]" inspector-elem="on-enter" init-with="p:[op:0]">S</div> -->
+                            <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[op:1, transform:translateX(500px):translateX(0px):1000:easeInOutQuad]" init-with="p:[op:0]">S</div>
+                            <div class='m10x' on-init="trigger:[on-enter:self]" on-enter="p:[op:1, transform:translateX(500px):translateX(0px):1000:easeInOutQuad]" init-with="p:[op:0]">A</div>
+                            <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[op:1, transform:translateX(500px):translateX(0px):1000:easeInOutQuad]" init-with="p:[op:0]">M</div>
+                            <div class='m10x' on-init="trigger:[on-enter:self]" on-enter="p:[op:1, transform:translateX(500px):translateX(0px):1000:easeInOutQuad]" init-with="p:[op:0]">I</div>
+                            <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[op:1, transform:translateX(500px):translateX(0px):1000:easeInOutQuad]" init-with="p:[op:0]">R</div>
 
 							<!-- </stagger-children> -->
                             <!-- <svg  viewBox="0 0 100 100">

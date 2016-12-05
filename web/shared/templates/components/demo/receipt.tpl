@@ -8,7 +8,7 @@
 	    </item>
 
 		<item width='100' align='center top'
-			u init-with="p-op"
+			u init-with="p:[op:0]"
 			when-header-enter="a:[scoop-enter:1000:linear:0:1:f]">
             <txt class='weight-700 margin-0 txt-center' font-size="60px" line-height='1.2'>
                 Thank you for your order!
@@ -17,7 +17,7 @@
 
 		<!-- <item width='50' height="55" align='center top' class="p30xy absolute" style="bottom:14%;" bg="smoke"
 			init-after="details-enter"
-			init-with="p-op"
+			init-with="p:[op:0]"
 			on-init="s:[receipt-fade:self, request-enter:depth(1)]"
 			when-receipt-fade="a:[bounceIn-subtle:1000:linear:0:1:f]">
 			<item width="100" height="5" class="absolute" style="top:5%" >
@@ -36,25 +36,25 @@
 			<item height="10" width="100" align="center bottom" class="absolute p15x" style="bottom:35%;" >
 				<div class="perspective-container full-xy flex-center p15xy" width="50">
 					<a class="request-card bg-household complete"
-						u init-with="p-op"
+						u init-with="p:[op:0]"
 						when-request-enter="s:[request-card-1:self, request-card-init-1:>children:350]"
 						when-request-card-1="a:[bounceIn-subtle:1000:linear:0:1:f]">
 						<div class="map">
 							<div class="map-marker" style="bottom: 15px; left: 50%; margin-left: -6px;">
 								<div>
-									<div u init-with="p-op"
+									<div u init-with="p:[op:0]"
 										when-request-card-init-1="a:[bounceIn-subtle:1000:linear:400:1:f] | p:[tro:center bottom]">
-										<span u init-with="p-op"
+										<span u init-with="p:[op:0]"
 											when-request-card-init-1="a:[opacity:0:1:1000:easeOutSine:650:0:1:f]">
 											<svg viewBox="0 0 100 100">
 												<path d="M24.2857143,39.7142857 C24.2085714,25.5128 35.7985143,14 50,14 C64.2014857,14 75.7914286,25.5128 75.7142857,39.7142857 C75.6001143,60.8658286 50,86 50,86 C50,86 24.4009143,60.8658286 24.2857143,39.7142857 Z M50,50 C55.6806431,50 60.2857143,45.3949289 60.2857143,39.7142857 C60.2857143,34.0336426 55.6806431,29.4285714 50,29.4285714 C44.3193569,29.4285714 39.7142857,34.0336426 39.7142857,39.7142857 C39.7142857,45.3949289 44.3193569,50 50,50 Z" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
 											</svg>
 										</span>
-										<span u init-with="p-op"
+										<span u init-with="p:[op:0]"
 											when-request-card-init-1="a:[opacity:0:1:1000:easeOutSine:650:0:1:f]">Philz Coffee</span>
 									</div>
 								</div>
-								<span u init-with="p-op"
+								<span u init-with="p:[op:0]"
 									when-request-card-init-1="a:[bounceIn-subtle:1000:easeOutSine:150:1:f]"></span>
 							</div>
 						</div>
@@ -67,7 +67,7 @@
 									when-request-card-info="a:[icon-enter:900:linear:0:1:f]">
 									<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=800);"></span>
 								</li>
-								<li u init-with="p-op"
+								<li u init-with="p:[op:0]"
 									when-request-card-info="a:[opacity:0:1:500:easeOutSine:0:1:f]">
 									<h2>Academic Request</h2>
 									<h1>In Person Tutoring</h1>
@@ -75,7 +75,7 @@
 								</li>
 							</ul>
 							<ul class="ugrid-3"
-								u init-with="p-op"
+								u init-with="p:[op:0]"
 								when-request-card-init-1="a:[opacity:0:1:500:easeOutSine:0:1:f] |s:[request-card-status:children:150]">
 								<li>
 									<h4>Date Created</h4>
@@ -85,7 +85,7 @@
 									<h4>Time Needed</h4>
 									<h3>1h 30m</h3>
 								</li>
-								<li u init-with="p-op"
+								<li u init-with="p:[op:0]"
 									when-request-card-status="a:[bounceIn-subtle:1000:easeOutSine:0:1:f]">
 									<span class="chip">Completed</span>
 								</li>
@@ -95,25 +95,25 @@
 				</div>
 				<div class="perspective-container full-xy flex-center p15xy" width="50">
 					<a class="request-card bg-household complete"
-						u init-with="p-op"
+						u init-with="p:[op:0]"
 						when-request-enter="s:[request-card-2:self, request-card-init-2:>children:350]:delay-500"
 						when-request-card-2="a:[bounceIn-subtle:1000:linear:0:1:f]">
 						<div class="map">
 							<div class="map-marker" style="bottom: 15px; left: 50%; margin-left: -6px;">
 								<div>
-									<div u init-with="p-op"
+									<div u init-with="p:[op:0]"
 										when-request-card-init-2="a:[bounceIn-subtle:1000:linear:400:1:f] | p:[tro:center bottom]">
-										<span u init-with="p-op"
+										<span u init-with="p:[op:0]"
 											when-request-card-init-2="a:[opacity:0:1:1000:easeOutSine:650:0:1:f]">
 											<svg viewBox="0 0 100 100">
 												<path d="M24.2857143,39.7142857 C24.2085714,25.5128 35.7985143,14 50,14 C64.2014857,14 75.7914286,25.5128 75.7142857,39.7142857 C75.6001143,60.8658286 50,86 50,86 C50,86 24.4009143,60.8658286 24.2857143,39.7142857 Z M50,50 C55.6806431,50 60.2857143,45.3949289 60.2857143,39.7142857 C60.2857143,34.0336426 55.6806431,29.4285714 50,29.4285714 C44.3193569,29.4285714 39.7142857,34.0336426 39.7142857,39.7142857 C39.7142857,45.3949289 44.3193569,50 50,50 Z" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
 											</svg>
 										</span>
-										<span u init-with="p-op"
+										<span u init-with="p:[op:0]"
 											when-request-card-init-2="a:[opacity:0:1:1000:easeOutSine:650:0:1:f]">Philz Coffee</span>
 									</div>
 								</div>
-								<span u init-with="p-op"
+								<span u init-with="p:[op:0]"
 									when-request-card-init-2="a:[bounceIn-subtle:1000:easeOutSine:150:1:f]"></span>
 							</div>
 						</div>
@@ -126,7 +126,7 @@
 									when-request-card-info="a:[icon-enter:900:linear:0:1:f]">
 									<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=800);"></span>
 								</li>
-								<li u init-with="p-op"
+								<li u init-with="p:[op:0]"
 									when-request-card-info="a:[opacity:0:1:500:easeOutSine:0:1:f]">
 									<h2>Academic Request</h2>
 									<h1>In Person Tutoring</h1>
@@ -134,7 +134,7 @@
 								</li>
 							</ul>
 							<ul class="ugrid-3"
-								u init-with="p-op"
+								u init-with="p:[op:0]"
 								when-request-card-init-2="a:[opacity:0:1:500:easeOutSine:0:1:f] |s:[request-card-status:children:150]">
 								<li>
 									<h4>Date Created</h4>
@@ -144,7 +144,7 @@
 									<h4>Time Needed</h4>
 									<h3>1h 30m</h3>
 								</li>
-								<li u init-with="p-op"
+								<li u init-with="p:[op:0]"
 									when-request-card-status="a:[bounceIn-subtle:1000:easeOutSine:0:1:f]">
 									<span class="chip">Completed</span>
 								</li>
@@ -278,7 +278,7 @@
 		</item>
 
 		<!-- <item height="5" class="absolute p15xy" style="bottom:9%;"
-			u init-with="p-op"
+			u init-with="p:[op:0]"
 			when-receipt-enter="a:[bounceIn-subtle:800:linear:0:1:f]"
 			on-click="s:[receipt-exit:depth(0), details-enter:public:2000]">
 			<button class="btn-default bg-cerise radius-2 p30x">
@@ -321,25 +321,25 @@
 			<item height="10" width="100" align="center bottom" class="absolute p15x" style="bottom:35%;">
 				<div class="perspective-container full-xy flex-center p15xy" width="50">
 					<a class="request-card bg-household complete"
-						u init-with="p-op"
+						u init-with="p:[op:0]"
 						on-init="s:[request-card-1:self, request-card-init-1:>children:350]"
 						when-request-card-1="a:[bounceIn-subtle:1000:linear:0:1:f]">
 						<div class="map">
 							<div class="map-marker" style="bottom: 15px; left: 50%; margin-left: -6px;">
 								<div>
-									<div u init-with="p-op"
+									<div u init-with="p:[op:0]"
 										when-request-card-init-1="a:[bounceIn-subtle:1000:linear:400:1:f] | p:[tro:center bottom]">
-										<span u init-with="p-op"
+										<span u init-with="p:[op:0]"
 											when-request-card-init-1="a:[opacity:0:1:1000:easeOutSine:650:0:1:f]">
 											<svg viewBox="0 0 100 100">
 												<path d="M24.2857143,39.7142857 C24.2085714,25.5128 35.7985143,14 50,14 C64.2014857,14 75.7914286,25.5128 75.7142857,39.7142857 C75.6001143,60.8658286 50,86 50,86 C50,86 24.4009143,60.8658286 24.2857143,39.7142857 Z M50,50 C55.6806431,50 60.2857143,45.3949289 60.2857143,39.7142857 C60.2857143,34.0336426 55.6806431,29.4285714 50,29.4285714 C44.3193569,29.4285714 39.7142857,34.0336426 39.7142857,39.7142857 C39.7142857,45.3949289 44.3193569,50 50,50 Z" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
 											</svg>
 										</span>
-										<span u init-with="p-op"
+										<span u init-with="p:[op:0]"
 											when-request-card-init-1="a:[opacity:0:1:1000:easeOutSine:650:0:1:f]">Philz Coffee</span>
 									</div>
 								</div>
-								<span u init-with="p-op"
+								<span u init-with="p:[op:0]"
 									when-request-card-init-1="a:[bounceIn-subtle:1000:easeOutSine:150:1:f]"></span>
 							</div>
 						</div>
@@ -352,7 +352,7 @@
 									when-request-card-info="a:[icon-enter:900:linear:0:1:f]">
 									<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=800);"></span>
 								</li>
-								<li u init-with="p-op"
+								<li u init-with="p:[op:0]"
 									when-request-card-info="a:[opacity:0:1:500:easeOutSine:0:1:f]">
 									<h2>Academic Request</h2>
 									<h1>In Person Tutoring</h1>
@@ -360,7 +360,7 @@
 								</li>
 							</ul>
 							<ul class="ugrid-3"
-								u init-with="p-op"
+								u init-with="p:[op:0]"
 								when-request-card-init-1="a:[opacity:0:1:500:easeOutSine:0:1:f] |s:[request-card-status:children:150]">
 								<li>
 									<h4>Date Created</h4>
@@ -370,7 +370,7 @@
 									<h4>Time Needed</h4>
 									<h3>1h 30m</h3>
 								</li>
-								<li u init-with="p-op"
+								<li u init-with="p:[op:0]"
 									when-request-card-status="a:[bounceIn-subtle:1000:easeOutSine:0:1:f]">
 									<span class="chip">Completed</span>
 								</li>
@@ -380,25 +380,25 @@
 				</div>
 				<div class="perspective-container full-xy flex-center p15xy" width="50">
 					<a class="request-card bg-household complete"
-						u init-with="p-op"
+						u init-with="p:[op:0]"
 						on-init="s:[request-card-2:self, request-card-init-2:>children:350]:delay-500"
 						when-request-card-2="a:[bounceIn-subtle:1000:linear:0:1:f]">
 						<div class="map">
 							<div class="map-marker" style="bottom: 15px; left: 50%; margin-left: -6px;">
 								<div>
-									<div u init-with="p-op"
+									<div u init-with="p:[op:0]"
 										when-request-card-init-2="a:[bounceIn-subtle:1000:linear:400:1:f] | p:[tro:center bottom]">
-										<span u init-with="p-op"
+										<span u init-with="p:[op:0]"
 											when-request-card-init-2="a:[opacity:0:1:1000:easeOutSine:650:0:1:f]">
 											<svg viewBox="0 0 100 100">
 												<path d="M24.2857143,39.7142857 C24.2085714,25.5128 35.7985143,14 50,14 C64.2014857,14 75.7914286,25.5128 75.7142857,39.7142857 C75.6001143,60.8658286 50,86 50,86 C50,86 24.4009143,60.8658286 24.2857143,39.7142857 Z M50,50 C55.6806431,50 60.2857143,45.3949289 60.2857143,39.7142857 C60.2857143,34.0336426 55.6806431,29.4285714 50,29.4285714 C44.3193569,29.4285714 39.7142857,34.0336426 39.7142857,39.7142857 C39.7142857,45.3949289 44.3193569,50 50,50 Z" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
 											</svg>
 										</span>
-										<span u init-with="p-op"
+										<span u init-with="p:[op:0]"
 											when-request-card-init-2="a:[opacity:0:1:1000:easeOutSine:650:0:1:f]">Philz Coffee</span>
 									</div>
 								</div>
-								<span u init-with="p-op"
+								<span u init-with="p:[op:0]"
 									when-request-card-init-2="a:[bounceIn-subtle:1000:easeOutSine:150:1:f]"></span>
 							</div>
 						</div>
@@ -411,7 +411,7 @@
 									when-request-card-info="a:[icon-enter:900:linear:0:1:f]">
 									<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=800);"></span>
 								</li>
-								<li u init-with="p-op"
+								<li u init-with="p:[op:0]"
 									when-request-card-info="a:[opacity:0:1:500:easeOutSine:0:1:f]">
 									<h2>Academic Request</h2>
 									<h1>In Person Tutoring</h1>
@@ -419,7 +419,7 @@
 								</li>
 							</ul>
 							<ul class="ugrid-3"
-								u init-with="p-op"
+								u init-with="p:[op:0]"
 								when-request-card-init-2="a:[opacity:0:1:500:easeOutSine:0:1:f] |s:[request-card-status:children:150]">
 								<li>
 									<h4>Date Created</h4>
@@ -429,7 +429,7 @@
 									<h4>Time Needed</h4>
 									<h3>1h 30m</h3>
 								</li>
-								<li u init-with="p-op"
+								<li u init-with="p:[op:0]"
 									when-request-card-status="a:[bounceIn-subtle:1000:easeOutSine:0:1:f]">
 									<span class="chip">Completed</span>
 								</li>

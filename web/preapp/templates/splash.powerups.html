@@ -17,12 +17,12 @@
         <header class="flex-center-wrap p15xy relative z-index-0">
             <span id="powerup-all-icon" class="svg-128" ng-include="root.base_url + 'shared/templates/components/svg/main/lightning-circle.html'"></span>
             <h1 class="txt-48 semibold full-x txt-center"
-				init-with="p-op"
+				init-with="p:[op:0]"
 				when-powerups-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in]">Powerups</h1>
         </header>
         <div class="flex-center-wrap z-index-2">
             <ul class="powerup-icons flex-center-wrap">
-                <li init-with="p-op"
+                <li init-with="p:[op:0]"
 					when-powerups-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-1000] | s:[powerup-icon-gpa-init:public:delay-1000]">
                     <a id="powerup-gpa-container" class="block relative high-z-index"
 						init-default
@@ -37,12 +37,12 @@
 							on-exit="p:[op:0:delay-1000, t:all 1000ms ease-out, display:none:delay-2000]"></span>
                         <div id="powerup-gpa-icon" class="block loader-powerup-gpa" ng-include="root.base_url + 'preapp/templates/components/powerups/gpa-card.html'"></div>
                         <div id="powerup-gpa-label" class="powerup-icon-tag block lowercase txt-center txt-28 semibold"
-							init-with="p-op"
+							init-with="p:[op:0]"
 							when-powerup-icon-gpa-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-250]"
 							when-gpa-on-click="a:[slideOutDown-subtle:set:(dur:1000ms#func:linear):out]">Lorem Ipsum</div>
                     </a>
                 </li>
-                <li init-with="p-op"
+                <li init-with="p:[op:0]"
 					when-powerups-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-1500] | s:[powerup-icon-munchies-init:public:delay-1500]"
 					when-gpa-on-click="a:[slideOutRight:set:(dur:1000ms#func:ease-in-out):out:delay-500]">
                     <a id="powerup-munchies-container" class="block relative"
@@ -53,11 +53,11 @@
 						<span class="powerups-bg"></span>
                         <div id="powerup-munchies-icon" class="block loader-powerup-munchies" ng-include="root.base_url + 'preapp/templates/components/powerups/munchies-card.html'"></div>
                         <div id="powerup-munchies-label" class="powerup-icon-tag block lowercase txt-center txt-28 semibold"
-							init-with="p-op"
+							init-with="p:[op:0]"
 							when-powerup-icon-munchies-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-250]">Lorem Ipsum</div>
                     </a>
                 </li>
-                <li init-with="p-op"
+                <li init-with="p:[op:0]"
 					when-powerups-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-1750] | s:[powerup-icon-sound-init:public:delay-1750]"
 					when-gpa-on-click="a:[slideOutRight:set:(dur:1000ms#func:ease-in-out):out:delay-500]">
                     <a id="powerup-sound-container" class="block relative"
@@ -68,11 +68,11 @@
 						<span class="powerups-bg"></span>
                         <div id="powerup-sound-icon" class="block loader-powerup-sound" ng-include="root.base_url + 'preapp/templates/components/powerups/sound-card.html'"></div>
                         <div id="powerup-sound-label" class="powerup-icon-tag block lowercase txt-center txt-28 semibold"
-							init-with="p-op"
+							init-with="p:[op:0]"
 							when-powerup-icon-sound-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-250]">Lorem Ipsum</div>
                     </a>
                 </li>
-                <li init-with="p-op"
+                <li init-with="p:[op:0]"
 					when-powerups-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-2000] | s:[powerup-icon-transit-init:public:delay-2000]"
 					when-gpa-on-click="a:[slideOutRight:set:(dur:1000ms#func:ease-in-out):out:delay-500]">
                     <a id="powerup-transit-container" class="block relative"
@@ -83,7 +83,7 @@
 						<span class="powerups-bg"></span>
                         <div id="powerup-transit-icon" class="block loader-powerup-transit" ng-include="root.base_url + 'preapp/templates/components/powerups/transit-card.html'"></div>
                         <div id="powerup-transit-label" class="powerup-icon-tag block lowercase txt-center txt-28 semibold"
-							init-with="p-op"
+							init-with="p:[op:0]"
 							when-powerup-icon-transit-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-250]">Lorem Ipsum</div>
                     </a>
                 </li>

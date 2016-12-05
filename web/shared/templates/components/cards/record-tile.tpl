@@ -10,7 +10,7 @@
 				when-record-tile-init="a:[translateX:-7.5%:0%:1000:easeOutSine:0:1:f]:delay-500">
 				<div u init-with="p:[tro:center center, tr:rotate(0)]"
 					when-record-tile-init="a:[rotate:0deg:40deg:1000:easeOutBack:0:1:f]:delay-1500">
-					<svg viewBox="0 0 320 320" u init-with="p-op"
+					<svg viewBox="0 0 320 320" u init-with="p:[op:0]"
 						when-record-tile-init="a:[opacity:0:1:500:easeOutQuint:0:1:f]">
 						<defs>
 							<filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="vinyl-shine">
@@ -39,7 +39,7 @@
 				u init-with="p:[tr:translateX(7.5%)]"
 				when-record-tile-init="a:[translateX:7.5%:0%:1000:easeOutSine:0:1:f]:delay-750">
 				<div class="record-tile-bg"
-					u init-with="p-op"
+					u init-with="p:[op:0]"
 					when-record-tile-init="a:[opacity:0:1:250:easeOutSine:0:1:f]:delay-50"></div>
 				<div class="record-tile-border">
 					<div u init-with="p:[tr:scaleX(0)]"
@@ -53,15 +53,15 @@
 				</div>
 				<div class="record-art"
 					style="background-image:url(https://consequenceofsound.files.wordpress.com/2016/08/blonde-alternative.jpg?w=806&h=806);"
-					u init-with="p-op"
+					u init-with="p:[op:0]"
 					when-record-tile-init="a:[opacity:0:0.5:250:easeOutSine:0:1:f]:delay-250"></div>
 				<h1 class="record-label"
-					u init-with="p-op"
+					u init-with="p:[op:0]"
 					when-record-tile-init="a:[slideInUp-subtle:1000:linear:1000:1:f]">Top 40</h1>
 			</div>
 		</a>
 		<div class="record-info">
-			<h3 u init-with="p-op"
+			<h3 u init-with="p:[op:0]"
 				when-record-tile-init="a:[slideInUp-subtle:1000:linear:1000:1:f]">Top 40 - 2016</h3>
 		</div>
 	</div>

@@ -19,9 +19,9 @@
 				when-dropdown-draw="a:[scaleY:0:1:250:easeOutCubic:0:1:f]"
 				when-dropdown-load-end="a:[scaleY:1:0:500:easeOutCubic:0:1:f]"></div>
 			<span class="txt-20"
-				u init-with="p-op"
+				u init-with="p:[op:0]"
 				when-dropdown-draw="a:[opacity:0:1:500:easeOutSine:0:1:f]">Photography</span>
-			<a init-with="p-op"
+			<a init-with="p:[op:0]"
 				u when-dropdown-draw="a:[opacity:0:1:500:easeOutSine:0:1:f]"
 				on-click="s:[dropdown-open:public]">
 				<svg viewBox="0 0 100 100">
@@ -82,9 +82,9 @@
 				u init-with="p:[tr:scaleY(0)]"
 				when-dropdown-info-draw="a:[scaleY:0:1:250:easeOutCubic:0:1:f]"
 				when-dropdown-load-end="a:[scaleY:1:0:500:easeOutCubic:0:1:f]"></div>
-			<span u init-with="p-op"
+			<span u init-with="p:[op:0]"
 				when-dropdown-info-draw="a:[opacity:0:1:500:easeOutSine:0:1:f]">Photography</span>
-			<a u init-with="p-op"
+			<a u init-with="p:[op:0]"
 				when-dropdown-info-draw="a:[opacity:0:1:700:easeOutSine:0:1:f]"
 				on-click="s:[dropdown-open:public]">
 				<svg viewBox="0 0 100 100">
@@ -156,7 +156,7 @@
 	</div>
 
 	<div class="dropdown-color" ng-if='activeType === "color"'
-		u init-with="p-op"
+		u init-with="p:[op:0]"
 		on-init="s:[dropdown-color-card:depth(0), dropdown-color-init:depth(>1)] |a:[opacity:0:1:250:easeOutSine:0:1:f]">
 
 		<a class="bg-robin"
@@ -170,7 +170,7 @@
 				when-dropdown-color-init="a:[scaleX:0:1:250:easeOutCubic:0:1:f]"></div>
 			<div u init-with="p:[tr:scaleY(0)]"
 				when-dropdown-color-init="a:[scaleY:0:1:250:easeOutCubic:0:1:f]"></div>
-			<span u init-with="p-op"
+			<span u init-with="p:[op:0]"
 				when-dropdown-color-init="a:[opacity:0:1:500:easeOutSine:0:1:f]">Color&nbsp;Dropdown</span>
 			<svg viewBox="0 0 100 100">
 				<path d="M14,32 L50,68 L86,32"
@@ -185,13 +185,13 @@
 			when-dropdown-color-close="p:[visibility:hidden, z-index:-1]:delay-400">
 			<!-- when-dropdown-color-prompt="s:[dropdown-color-items:children:linear-750]" -->
 			<svg viewBox="0 0 396 38"
-				u init-with="p-op"
+				u init-with="p:[op:0]"
 				when-dropdown-color-open="a:[opacity:0:1:250:easeOutSine:0:1:f]:delay-200"
 				when-dropdown-color-close="a:[opacity:1:0:250:easeOutSine:0:1:f]:delay-300">
 				<path d="M2,36 L2,34 C2,32.8954305 2.8931253,32 4.0093292,32 L168,32 L198,2 L228,32 L391.990671,32 C393.100393,32 394,32.8877296 394,34 L394,36" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
 			</svg>
 			<ul>
-				<li u init-with="p-op"
+				<li u init-with="p:[op:0]"
 					when-dropdown-color-items="a:[opacity:0:1:250:easeOutSine:0:1:f]:delay-100"
 					when-dropdown-color-close="a:[opacity:1:0:250:easeOutSine:0:1:f]:delay-300">
 					<div></div><div></div>

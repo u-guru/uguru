@@ -3,7 +3,7 @@
 		init-default
 		on-init="s:[portal-open:public]"
 		when-portal-open="s:[warp-objects-container-init:public, warp-objects-init:public:delay-500]"
-		when-transition-end="p-op">
+		when-transition-end="p:[op:0]">
 		<div class="loader-portal-inside"
 			init-with="p:[tr:scale(0), tro:50% 90%]"
 			when-portal-open="p:[transform:scale(0):scale(1):250:easeInOutBack]:delay-100">
@@ -42,7 +42,7 @@
 
 	<div class="portal-transition-container"
 		when-warp-objects-container-init="t:[init:self]"
-		init-with="p-op"
+		init-with="p:[op:0]"
 		on-init="p:[opacity:0:1:250:easeOutSine]"
 		when-transition-end="p:[opacity:1:0:250:easeOutSine]:delay-2000"
 		init-later>
@@ -76,14 +76,14 @@
 
 <div class="portal-page"
 	when-page-init="t:[init:self]"
-	init-with="p-op"
+	init-with="p:[op:0]"
 	on-init="p:[opacity:0:1:250:easeOutSine]"
 	init-later>
 	<div init-with="p:[-webkit-clip-path:circle(8px at 50% 50%), tr:translateY(2px), t:all 750ms cubic-bezier(1#0#1#0), overflow:hidden]"
 		when-transition-start="p:[-webkit-clip-path:circle(1500px at 50% 50%), tr:translateY(0px)]"
 		when-transition-end="p:[-webkit-clip-path:none]:delay-1000">
 		<div ng-include="'preapp/templates/splash.html'"
-			init-with="p-op"
+			init-with="p:[op:0]"
 			when-transition-start="p:[opacity:0:1:500:easeOutSine]"></div>
 	</div>
 </div>

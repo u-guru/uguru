@@ -1,6 +1,6 @@
 <div class="full-xy flex-center">
 	<div class="overflow-hidden relative"
-		u init-with="p-op"
+		u init-with="p:[op:0]"
 		on-init="send:[window-small-init:depth(>1)]|a:[bounceInDown-subtle:1000:linear:0:1:f]">
 		<div class="absolute z-index-1 bottom-0"
 			u init-with="p:[tr:translateY(150px) translateX(110px)]"
@@ -56,7 +56,7 @@
 		</svg>
 	</div>
 	<div class="m15x overflow-hidden relative"
-		u init-with="p-op"
+		u init-with="p:[op:0]"
 		on-init="send:[window-small-init:depth(>2):150] |a:[bounceInDown-subtle:1000:linear:100:1:f]">
 		<div class="absolute z-index-1 bottom-0"
 				u init-with="p:[tr:translateY(200px) translateX(110px)]"
@@ -111,7 +111,7 @@
 		</svg>
 	</div>
 	<div class="overflow-hidden relative"
-		u init-with="p-op"
+		u init-with="p:[op:0]"
 		on-init="send:[window-small-init:depth(>2):300] |a:[bounceInDown-subtle:1000:linear:0:1:f]:delay-200">
 		<div class="absolute z-index-1 bottom-0"
 				u init-with="p:[tr:translateY(-250px) translateX(110px)]"

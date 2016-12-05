@@ -3,7 +3,7 @@
     <!-- <custom-states when="nav-init, powerups-clicked"></custom-states> -->
 	<header class='splash-header'>
 		<a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"
-			init-with="p-op"
+			init-with="p:[op:0]"
 			when-nav-init="p:[opacity:0:1:250:easeOutSine]">
 			<!-- init-default
 
@@ -23,7 +23,7 @@
 			<div class="splash-hero-nav desktop m15right">
 				<div class="splash-hero-nav-container">
 					<div class="dropdown-color"
-						init-with="p-op"
+						init-with="p:[op:0]"
 						when-nav-init="s:[dropdown-category-init:public:delay-100]"
 						when-dropdown-category-init="p:[opacity:0:1:250:easeOutSine]">
 						<a class="bg-robin"
@@ -36,7 +36,7 @@
 								when-dropdown-category-init="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]:delay-300"></div>
 							<div init-with="p:[tr:scaleY(0)]"
 								when-dropdown-category-init="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]:delay-450"></div>
-							<span init-with="p-op"
+							<span init-with="p:[op:0]"
 								when-dropdown-category-init="p:[opacity:0:1:500:easeOutSine]:delay-700">Category</span>
 							<svg viewBox="0 0 100 100">
 								<path d="M14,32 L50,68 L86,32"
@@ -50,7 +50,7 @@
 					<!-- <dropdown
 						ng-model='splash.nav.categoriesDropdown' color-key="hex_color" type="color"
 						prefix="category"
-						init-with="p-op"
+						init-with="p:[op:0]"
 						when-nav-init="p:[op:1] | s:[dropdown-init:children:delay-750]"
 						states="[hover, mouse-enter, mouse-leave, toggle-on, toggle-off, click]"
 
@@ -78,7 +78,7 @@
 						when-category-dropdown-mouse-enter="p:[op:1, t:all 250ms ease-in-out]"
 						when-category-dropdown-toggle-on="p:[op:1, t:all 250ms ease-in-out]">
 					</dropdown> -->
-					<h2 init-with="p-op"
+					<h2 init-with="p:[op:0]"
 						when-nav-init="p:[opacity:0:1:250:easeOutSine]:delay-200">
 						@
 						<!-- when-category-dropdown-mouse-enter="p:[op:0.25:delay-50, t:all 250ms ease-in-out]"
@@ -94,7 +94,7 @@
 						when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]" -->
 					</h2>
 					<div class="dropdown-color"
-						init-with="p-op"
+						init-with="p:[op:0]"
 						when-nav-init="s:[dropdown-school-init:public:delay-300]"
 						when-dropdown-school-init="p:[opacity:0:1:250:easeOutSine]">
 						<a class="bg-robin"
@@ -107,7 +107,7 @@
 								when-dropdown-school-init="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]:delay-300"></div>
 							<div init-with="p:[tr:scaleY(0)]"
 								when-dropdown-school-init="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]:delay-450"></div>
-							<span init-with="p-op"
+							<span init-with="p:[op:0]"
 								when-dropdown-school-init="p:[opacity:0:1:500:easeOutSine]:delay-700">School</span>
 							<svg viewBox="0 0 100 100">
 								<path d="M14,32 L50,68 L86,32"
@@ -120,7 +120,7 @@
 					</div>
 					<!-- <dropdown type="color" ng-model="splash.nav.universitiesDropdown" color-key='["school_color_dark", "school_color_one"]'
 						prefix="university"
-						init-with="p-op"
+						init-with="p:[op:0]"
 						when-nav-init="p:[o-1] | s:[dropdown-init:children:delay-1250]"
 						states="[hover, mouse-enter, mouse-leave, toggle-on, toggle-off, click]"
 
@@ -150,7 +150,7 @@
 				</div>
 			</div>
 			<a class="powerups-link icon-round-stroke desktop"
-				init-with="p-op"
+				init-with="p:[op:0]"
 				when-nav-init="p:[opacity:0:1:250:easeOutSine]:delay-400 | s:[powerups-link-init:public]"
 				on-click="s:[powerups-clicked] | class:[powerups-link:add]">
 				<!-- init-default
@@ -183,7 +183,7 @@
 				<!-- translate-on-click scale-x-on-click="3.0476" scale-y-on-click="3.0476" translate-x-offset="42" translate-y-offset="42" translate-to-elem="#powerup-all-icon" -->
 			</a>
 			<a class="sidebar-link icon-round-stroke desktop"
-				init-with="p-op"
+				init-with="p:[op:0]"
 				when-nav-init="p:[opacity:0:1:250:easeOutSine]:delay-500 | s:[sidebar-link-init:public]"
 				on-click="s:[sidebar-icon-clicked:public]">
 				<!-- init-default
@@ -221,7 +221,7 @@
 
 
 			<div class="splash-hero-nav mobile"
-				init-with="p-op"
+				init-with="p:[op:0]"
 				when-nav-init="p:[opacity:0:1:250:easeOutSine]:delay-1500">
 				<div class="splash-hero-nav-container">
 					<a init-default
@@ -296,13 +296,13 @@
 				on-click="s:[mobile-switch-exit]"></a>
 		</div>
 		<div class="splash-hero-nav-category full-x">
-			<h1 init-with="p-op"
+			<h1 init-with="p:[op:0]"
 				when-mobile-switch-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500"
 				when-mobile-switch-exit="p:[op:0, t:all 500ms ease-out]">Category</h1>
 			<ul>
 				<li
 					ng-repeat='category in splash.nav.categoriesDropdown.options'
-					init-with="p-op"
+					init-with="p:[op:0]"
 					ng-class="{'delay-450': category.id === splash.category.id}"
 					when-mobile-switch-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-1500"
 					when-mobile-switch-exit="a:[slideOutDown-subtle:set:(dur:450ms#func:ease-in-out):out]">
@@ -319,13 +319,13 @@
 			</ul>
 		</div>
 		<div class="splash-hero-nav-school full-x">
-			<h1 init-with="p-op"
+			<h1 init-with="p:[op:0]"
 				when-mobile-switch-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500"
 				when-mobile-switch-exit="p:[op:0, t:all 500ms ease-out]:delay-250 | s:[mobile-bg-exit:public:delay-1000]">University</h1>
 			<ul>
 				<li ng-repeat='university in splash.nav.universitiesDropdown.options' class='txt-white weight-600'
 					ng-class="{'delay-450':university.id === splash.university.id}"
-					init-with="p-op"
+					init-with="p:[op:0]"
 					when-mobile-switch-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500"
 					when-mobile-switch-exit="a:[slideOutDown-subtle:set:(dur:450ms#func:ease-in-out):out]">
 					<a ng-class="{'active':university.id === splash.university.id}"
@@ -367,8 +367,8 @@
 	    <path d="M0,7 L0,48 L6.261,46.7 L6.261,8.321 L0,7 L0,7 Z" id="border" fill="#2B3234"></path>
 	    <text fill="#FFFFFF" font-family="Source Sans Pro" font-size="12.7286934" font-weight="bold"
 			init-default
-			when-university-dropdown-hover="p-op"
-			when-mobile-switch-init="p-op"
+			when-university-dropdown-hover="p:[op:0]"
+			when-mobile-switch-init="p:[op:0]"
 			when-university-dropdown-toggle-off="p:[opacity:0:1:250:easeOutSine]:delay-500"
 			when-mobile-school-exit="p:[opacity:0:1:250:easeOutSine]:delay-750">
 	        <tspan x="10" y="32" fill="#FFFFFF">{{splash.university.school_tiny_name || "Cal"}}</tspan>

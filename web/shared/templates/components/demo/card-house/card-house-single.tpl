@@ -11,7 +11,7 @@
 		<div class="front">front</div>
 		<div class="back">back</div>
 	</div>
-	<div class="team-card" init-with="p-op">
+	<div class="team-card" init-with="p:[op:0]">
 		<div class="team-border">
 			<div></div><div></div><div></div><div></div>
 		</div>

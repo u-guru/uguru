@@ -4,7 +4,7 @@
 		<div class="toggle normal">
 			<input type="checkbox" checked/>
 			<label>
-				<div u init-with="p-op"
+				<div u init-with="p:[op:0]"
 					when-toggle-enter="a:[opacity:0:1:400:easeOutCubic:200:1:f] | s:[fill-toggle:children:400]"></div>
 				<svg class="square" viewBox="0 0 26 26">
 					<rect x="2" y="2" width="22" height="22"
@@ -39,7 +39,7 @@
 		<div class="toggle am-pm">
 			<input type="checkbox"/>
 			<label>
-				<div u init-with="p-op"
+				<div u init-with="p:[op:0]"
 					when-input-enter="a:[opacity:0:1:400:easeOutCubic:200:1:f]"></div>
 				<svg class="square" viewBox="0 0 26 26">
 					<rect x="2" y="2" width="22" height="22"
@@ -50,7 +50,7 @@
 				<svg class="square" viewBox="0 0 26 26">
 					<rect x="2" y="2" width="22" height="22"></rect>
 				</svg>
-				<span u init-with="p-op"
+				<span u init-with="p:[op:0]"
 					when-input-enter="a:[opacity:0:1:750:easeOutSine:0:1:f]:delay-600">
 					<span class="am">AM</span>
 					<span class="pm">PM</span>
@@ -76,7 +76,7 @@
 		<div class="toggle round">
 			<input type="checkbox" checked />
 			<label>
-				<div u init-with="p-op"
+				<div u init-with="p:[op:0]"
 					when-round-enter="a:[opacity:0:1:750:easeOutQuad:400:1:f]"></div>
 				<svg class="square" viewBox="0 0 26 26">
 					<circle cx="13" cy="13" r="13"
@@ -103,7 +103,7 @@
 		<div class="toggle white-round">
 			<input type="checkbox" checked />
 			<label>
-				<div u init-with="p-op"
+				<div u init-with="p:[op:0]"
 					when-round-enter="a:[opacity:0:1:550:easeInOutCubic:0:1:f]"></div>
 				<svg class="square" viewBox="0 0 26 26">
 					<circle cx="13" cy="13" r="13"

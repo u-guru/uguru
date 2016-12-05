@@ -36,7 +36,7 @@
 						<div init-with="p:[tr:scaleX(0)]"
 							when-academic-cardlet-init="p:[tr:scaleX(1), t:transform 1450ms ease-out, t:all 500ms ease-out:delay-1500]"></div>
 					</div>
-					<h1 init-with="p-op"
+					<h1 init-with="p:[op:0]"
 						when-academic-cardlet-init="a:[zoomIn:set:(dur:400ms#func:cubic-bezier(.8#.1#.41#.91)):in:delay-450] | p:[tr:translateZ(20px):delay-850]">Master the Cerebral Cortex</h1>
 					<div>
 						<div init-with="p:[op:0, tr:scaleY(0), t:all 400ms cubic-bezier(.8#.1#.41#.91)]"
@@ -57,7 +57,7 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-ribbon-edge-container"
-				init-with="p-op"
+				init-with="p:[op:0]"
 				on-init="a:[fadeIn:set:(dur:250ms#func:ease-in):in:delay-650]">
 				<div class="pf-cardlet-ribbon-edge"
 					init-with="p:[tr:translate3d(2px#-2px#10px) rotate(45deg)]"></div>

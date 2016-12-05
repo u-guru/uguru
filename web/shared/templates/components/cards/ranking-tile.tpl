@@ -2,9 +2,9 @@
 	<ul class="ranking-container">
 		<li>
 			<div class="ranking-tile large"
-				u init-with="p-op"
+				u init-with="p:[op:0]"
 				on-init="s:[ranking-tile-init-1:children]|a:[fadeInUp:450:(.63,.01,1,.53):0:1:f]">
-				<header u init-with="p-op"
+				<header u init-with="p:[op:0]"
 					when-ranking-tile-init-1="a:[bounceInUp-subtle:1000:linear:0:1:f]">
 					<h2>Ranking at UIUC</h2>
 				</header>
@@ -17,7 +17,7 @@
 				            <tspan x="200" y="147">TH</tspan>
 				        </text>
 				        <path d="M243.338095,263 C294.887302,211.528137 294.887302,128.07576 243.338095,76.6038969 C191.788889,25.1320344 108.211111,25.1320344 56.6619049,76.6038969 C5.11269837,128.07576 5.11269837,211.528137 56.6619049,263" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.5"
-							u init-with="p-op"
+							u init-with="p:[op:0]"
 							when-ranking-tile-init-1="a:[opacity:0:1:250:easeOutSine:0:1:f]"></path>
 				        <path d="M23.4095869,207.735743 C29.444425,228.149159 40.528531,247.390832 56.6619049,263.5" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"
 							u init-with="p:[sdo:-66, sda:66]"
@@ -28,9 +28,9 @@
 		</li>
 		<li>
 			<div class="ranking-tile small no-icon"
-				u init-with="p-op"
+				u init-with="p:[op:0]"
 				on-init="s:[ranking-tile-init-2:depth(>1):100] |a:[fadeInUp:250:(0,.35,.77,1):100:1:f]">
-				<header u init-with="p-op"
+				<header u init-with="p:[op:0]"
 					when-ranking-tile-init-2="a:[bounceInUp-subtle:1000:linear:0:1:f]">
 					<h3>Big 10 Academic Ratings</h3>
 				</header>
@@ -43,16 +43,16 @@
 								u init-with="p:[op:0, sdo:315, sda:315]"
 								when-ranking-tile-init-2="a:[opacity:0:1:550:easeOutSine:0:1:f, stroke-dashoffset:315:0:550:easeOutSine:0:1:f]"></path>
 					        <circle fill="#50A5DD" cx="281" cy="7" r="5"
-								u init-with="p-op"
+								u init-with="p:[op:0]"
 								when-ranking-tile-init-2="a:[opacity:0:1:450:easeInSine:0:1:f]:delay-550"></circle>
 					    </g>
 					</svg>
 				</div>
 			</div>
 			<div class="ranking-tile small with-icon tile-shamrock"
-				u init-with="p-op"
+				u init-with="p:[op:0]"
 				on-init="s:[ranking-tile-init-3:depth(>1):200] |a:[fadeInUp:450:(0,.35,.77,1):350:1:f]">
-				<header u init-with="p-op"
+				<header u init-with="p:[op:0]"
 					when-ranking-tile-init-3="a:[bounceInUp-subtle:1000:linear:0:1:f]">
 					<div class="ranking-tile-icon" ng-include="root.base_url + 'shared/templates/components/svg/main/user.html'"></div>
 					<div>
@@ -69,7 +69,7 @@
 								u init-with="p:[op:0, sdo:315, sda:315]"
 								when-ranking-tile-init-3="a:[opacity:0:1:550:easeOutSine:0:1:f,  stroke-dashoffset:315:0:550:easeOutSine:0:1:f]"></path>
 					        <circle fill="#50A5DD" cx="281" cy="7" r="5"
-								u init-with="p-op"
+								u init-with="p:[op:0]"
 								when-ranking-tile-init-3="a:[opacity:0:1:450:easeInSine:0:1:f]:delay-550"></circle>
 						</g>
 					</svg>
@@ -78,9 +78,9 @@
 		</li>
 		<li>
 			<div class="ranking-tile small with-icon tile-lake"
-				u init-with="p-op"
+				u init-with="p:[op:0]"
 				on-init="s:[ranking-tile-init-4:depth(>1):300] |a:[fadeInUp:250:(0,.35,.77,1):300:1:f]">
-				<header u init-with="p-op"
+				<header u init-with="p:[op:0]"
 					when-ranking-tile-init-4="a:[bounceInUp-subtle:1000:linear:0:1:f]">
 					<div class="ranking-tile-icon" ng-include="root.base_url + 'shared/templates/components/svg/main/user.html'"></div>
 					<div>
@@ -97,16 +97,16 @@
 								u init-with="p:[op:0, sdo:315, sda:315]"
 								when-ranking-tile-init-4="a:[opacity:0:1:550:easeOutSine:0:1:f, stroke-dashoffset:315:0:550:easeOutSine:0:1:f]"></path>
 							<circle fill="#50A5DD" cx="281" cy="7" r="5"
-								u init-with="p-op"
+								u init-with="p:[op:0]"
 								when-ranking-tile-init-4="a:[opacity:0:1:450:easeInSine:0:1:f]:delay-550"></circle>
 						</g>
 					</svg>
 				</div>
 			</div>
 			<div class="ranking-tile small with-icon tile-auburn"
-				u init-with="p-op"
+				u init-with="p:[op:0]"
 				on-init="s:[ranking-tile-init-5:depth(>1):400] |a:[fadeInUp:450:(0,.35,.77,1):550:1:f]">
-				<header u init-with="p-op"
+				<header u init-with="p:[op:0]"
 					when-ranking-tile-init-5="a:[bounceInUp-subtle:1000:linear:0:1:f]">
 					<div class="ranking-tile-icon" ng-include="root.base_url + 'shared/templates/components/svg/main/user.html'"></div>
 					<div>
@@ -123,7 +123,7 @@
 								u init-with="p:[op:0, sdo:315, sda:315]"
 								when-ranking-tile-init-5="a:[opacity:0:1:550:easeOutSine:0:1:f, stroke-dashoffset:315:0:550:easeOutSine:0:1:f]"></path>
 							<circle fill="#50A5DD" cx="281" cy="7" r="5"
-								u init-with="p-op"
+								u init-with="p:[op:0]"
 								when-ranking-tile-init-5="a:[opacity:0:1:450:easeInSine:0:1:f]:delay-550"></circle>
 						</g>
 					</svg>

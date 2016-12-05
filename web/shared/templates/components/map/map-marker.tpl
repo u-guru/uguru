@@ -1,7 +1,7 @@
 <div class="perspective-container full-xy flex-center p15xy">
 	<div class="place-marker bg-household">
 		<div class="marker-normal"
-			u init-with="p-op"
+			u init-with="p:[op:0]"
 			when-marker-init="a:[bounceIn-rotate-subtle:1000:linear:500:1:f]">
 			<svg class="marker-normal-window" width="92px" height="89px" viewBox="0 0 184 178">
 				<path d="M172.009493,2 C177.527924,2 182,6.47590822 182,11.9972208 L182,136.002779 C182,141.532461 177.518876,146 171.991129,146 L122,146 L92,176 L62,146 L12.0088711,146 C6.48112423,146 2,141.532461 2,136.002779 L2,11.9972208 C2,6.47590822 6.47207592,2 11.9905068,2 L172.009493,2 Z" fill="#003262" fill-opacity="0.25"
@@ -109,13 +109,13 @@
 				</g>
 			</svg>
 			<div class="marker-expanded-content"
-				u init-with="p-op"
+				u init-with="p:[op:0]"
 				when-window-open="a:[opacity:0:1:150:easeOutSine:350:1:f]"
 				when-window-close="a:[opacity:1:0:150:easeOutSine:0:1:f]">
 				<div class="marker-expanded-icon"
 					u on-click="s:[window-close:public, window-content:>children:150]">
 					<svg viewBox="0 0 100 100"
-						u init-with="p-op"
+						u init-with="p:[op:0]"
 						when-window-open="a:[bounceIn-subtle:750:linear:450:1:f]"
 						when-window-content="p:[op:0]">
 						<path d="M69.7423747,43.7777778 L70.9810759,33.2165522 C71.0454426,32.667759 70.6517105,32.2222222 70.1015564,32.2222222 L30.1208189,32.2222222 C29.5676537,32.2222222 29.1768904,32.6673989 29.2412993,33.2165522 L30.4800005,43.7777778 L69.7423747,43.7777778 Z M66.8232158,68.6666667 L65.3760032,81.00567 C65.3115943,81.5548233 64.8075957,82 64.2513656,82 L35.9710096,82 C35.4142983,82 34.9107387,81.5544633 34.846372,81.00567 L33.3991595,68.6666667 L66.8232158,68.6666667 Z M25.0204167,23.4177221 C25.1554325,22.8801957 25.7197841,22.4444444 26.2683259,22.4444444 L73.3810662,22.4444444 C73.9352516,22.4444444 74.493207,22.8771997 74.6289754,23.4177221 L76.596021,31.2489446 C76.7310368,31.786471 76.3896116,32.2222222 75.8330941,32.2222222 L23.8162979,32.2222222 C23.2599292,32.2222222 22.9176027,31.789467 23.0533711,31.2489446 L25.0204167,23.4177221 Z M32.0394423,18.9425524 C32.2321699,18.4219951 32.8379488,18 33.3853073,18 L65.9466044,18 C66.4971775,18 67.1012808,18.426152 67.2924694,18.9425524 L68.2400219,21.5018921 C68.4327495,22.0224494 68.1375919,22.4444444 67.5961491,22.4444444 L31.7357626,22.4444444 C31.1874338,22.4444444 30.9007012,22.0182924 31.0918897,21.5018921 L32.0394423,18.9425524 Z M28.3485134,44.7688106 C28.2930377,44.2214783 28.6950797,43.7777778 29.2434991,43.7777778 L70.9785758,43.7777778 C71.5283385,43.7777778 71.9280703,44.2310173 71.8735615,44.7688106 L69.5518056,67.6756339 C69.4963299,68.2229662 69.0035795,68.6666667 68.456331,68.6666667 L31.7657433,68.6666667 C31.2162051,68.6666667 30.7247776,68.2134272 30.6702688,67.6756339 L28.3485134,44.7688106 Z" fill="#003262" fill-opacity="0.75"></path>
@@ -123,29 +123,29 @@
 				</div>
 				<div class="overflow-hidden">
 					<div class="marker-location">
-						<h1 u init-with="p-op"
+						<h1 u init-with="p:[op:0]"
 							when-window-open="a:[bounceInUp-subtle:750:linear:450:1:f]"
 							when-window-content="p:[op:0]">Philz Coffee</h1>
-						<h4 u init-with="p-op"
+						<h4 u init-with="p:[op:0]"
 							when-window-open="a:[bounceInUp-subtle:750:linear:550:1:f]"
 							when-window-content="p:[op:0]">open now &middot; 2.4 miles</h4>
 					</div>
 					<a class="marker-guru"
-						u init-with="p-op"
+						u init-with="p:[op:0]"
 						when-window-open="a:[bounceInUp-subtle:750:linear:650:1:f]"
 						when-window-content="p:[op:1]">
 						<span class="user-icon relative z-index-2" style="background-image: url('http://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=256')"
-							u init-with="p-op"
+							u init-with="p:[op:0]"
 							when-window-open="a:[bounceInUp-rotate-subtle:750:linear:850:1:f]"
 							when-window-content="p:[op:1]"></span>
 						<div class="relative z-index-1">
-							<h1 u init-with="p-op"
+							<h1 u init-with="p:[op:0]"
 								when-window-open="a:[bounceInLeft-subtle:750:linear:950:1:f]"
 								when-window-content="p:[op:1]">Gabrielle W</h1>
-							<h3 u init-with="p-op"
+							<h3 u init-with="p:[op:0]"
 								when-window-open="a:[bounceInLeft-subtle:750:linear:1050:1:f]"
 								when-window-content="p:[op:1]">Active 10 min ago</h3>
-							<svg viewBox="0 0 100 100" u init-with="p-op"
+							<svg viewBox="0 0 100 100" u init-with="p:[op:0]"
 								when-window-open="a:[bounceInLeft-subtle:750:linear:1150:1:f]"
 								when-window-content="p:[op:1]">
 								<path d="M32,86 L68,50 L32,14"></path>
@@ -153,7 +153,7 @@
 						</div>
 					</a>
 					<div class="marker-message"
-						u init-with="p-op"
+						u init-with="p:[op:0]"
 						when-window-open="a:[bounceInUp-subtle:750:linear:750:1:f]"
 						when-window-content="p:[op:1]">
 						<p>Hey there,<br/>I can tutor you in any bio class. We’ll get you to an A in no time!</p>
@@ -163,7 +163,7 @@
 		</div>
 		<div class="marker-circle">
 			<div style="background: #003262!important"
-				u init-with="p-op"
+				u init-with="p:[op:0]"
 				on-init="a:[bounceIn-subtle:1000:linear:0:1:f] | s:[marker-init:siblings]"></div>
 		</div>
 	</div>

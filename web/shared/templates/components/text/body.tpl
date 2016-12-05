@@ -21,11 +21,11 @@
 					when-body-text-init="a:[scaleX:0:1:450:easeOutSine:0:1:f]"></span>
 			</span>
 		</div>
-		<span u init-with="p-op"
+		<span u init-with="p:[op:0]"
 			 when-body-letters="a:[opacity:0:1:150:easeOutSine:0:1:f]">Lorem ipsum dolor sit amet.</span>
-		<span u init-with="p-op"
+		<span u init-with="p:[op:0]"
 			 when-body-letters="a:[opacity:0:1:150:easeOutSine:0:1:f]">Consectetuer adipiscing elit eget nisl.</span>
-		<span u init-with="p-op"
+		<span u init-with="p:[op:0]"
 			 when-body-letters="a:[opacity:0:1:150:easeOutSine:0:1:f]">Nam at tortor quis ipsum tempor.</span>
 	</div>
 

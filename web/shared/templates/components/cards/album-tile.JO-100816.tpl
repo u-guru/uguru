@@ -9,7 +9,7 @@
 			<div style="background: #020c39;"></div>
 		</div>
 		<div class="album-art"
-			init-with="p-op"
+			init-with="p:[op:0]"
 			when-album-tile-init="a:[bounceIn-subtle:set:(dur:1000ms#func:easeOutSine):in]">
 			<svg class="square" viewBox="0 0 100 100">
 				<rect x="0" y="0" width="100" height="100" fill="none"></rect>

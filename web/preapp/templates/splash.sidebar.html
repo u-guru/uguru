@@ -1,6 +1,6 @@
 <div ng-controller='SplashSidebarController as sidebar' class="splash-sidebar-container"
 	when-sidebar-init="t:[init:self]"
-	init-with="p-op"
+	init-with="p:[op:0]"
 	on-init="p:[opacity:0:1:250:easeOutSine]"
 	when-sidebar-icon-clicked="p-o-1"
 	when-sidebar-close-clicked="p:[opacity:1:0:1000:easeOutSine]:delay-1000"
@@ -26,7 +26,7 @@
 		when-sidebar-col-close-clicked="p:[opacity:1:0:100:easeOutSine:500, transform:translateX(0px) translateZ(0px):translateX(-300px) translateZ(0px):400:easeOutBack easeOutBack]">
 		<header>
 			<a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"
-				init-with="p-op"
+				init-with="p:[op:0]"
 				when-sidebar-icon-clicked="p:[opacity:0:1:350:easeOutSine]:delay-500"
 				when-sidebar-link-clicked="p:[opacity:1:0:250:easeOutExpo, transform:translateY(0%) translateZ(0px):translateY(-100%) translateZ(0px):250:easeOutExpo easeOutExpo]"
 				when-modal-close="p:[opacity:0:1:250:easeInExpo, transform:translateY(-100%) translateZ(0px):translateY(0%) translateZ(0px):250:easeInExpo easeInExpo]:delay-500"
@@ -393,17 +393,17 @@
 									when-student-id-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-600]"
 									when-sidebar-close-clicked="p:[op:0]:delay-1000"
 									when-sidebar-col-close-clicked="p:[op:0]:delay-1000">Marco Polo</h1>
-								<h2 init-with="p-op"
+								<h2 init-with="p:[op:0]"
 									when-student-card-enter="p:[opacity:0:1:800:easeInSine]:delay-750"
 									when-sidebar-close-clicked="p:[op:0]:delay-1000"
 									when-sidebar-col-close-clicked="p:[op:0]:delay-1000">UC Berkeley</h2>
-								<h2 init-with="p-op"
+								<h2 init-with="p:[op:0]"
 									when-student-card-enter="p:[opacity:0:1:700:easeInSine]:delay-900"
 									when-sidebar-close-clicked="p:[op:0]:delay-1000"
 									when-sidebar-col-close-clicked="p:[op:0]:delay-1000">Freshman</h2>
 							</div>
 							<h3 class="school-id-courses">
-								<span init-with="p-op"
+								<span init-with="p:[op:0]"
 									when-student-id-enter="p:[opacity:0:1:800:easeInSine]:delay-150"
 									when-sidebar-close-clicked="p:[op:0]:delay-1000"
 									when-sidebar-col-close-clicked="p:[op:0]:delay-1000">SELECTED COURSES</span>
@@ -412,7 +412,7 @@
 									when-student-id-enter="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-350]"
 									when-sidebar-close-clicked="p:[op:0]:delay-1000"
 									when-sidebar-col-close-clicked="p:[op:0]:delay-1000">9</span>
-								<a init-with="p-op"
+								<a init-with="p:[op:0]"
 									when-student-id-enter="p:[opacity:0:1:800:easeInSine]:delay-150"
 									when-sidebar-close-clicked="p:[op:0]:delay-1000"
 									when-sidebar-col-close-clicked="p:[op:0]:delay-1000"><span>Edit</span></a>
@@ -624,11 +624,11 @@
 				<div class="school-id-inside">
 					<div class="school-id-top" style="background: #003262;">
 						<span class="user-icon" ng-include="root.base_url + 'shared/templates/components/svg/logo/guru-head.html'"
-							init-with="p-op"
+							init-with="p:[op:0]"
 							when-student-card-enter="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]"></span>
 						<!-- if no photo exists yet -->
 						<!-- <span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/marcogomes/128.jpg');"
-							init-with="p-op"
+							init-with="p:[op:0]"
 							when-student-card-enter="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]"></span> -->
 					</div>
 					<div class="school-id-bottom">
@@ -636,18 +636,18 @@
 							<h1 class='lettercase'
 								init-with="p:[op:0, tro:center top]"
 								when-student-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-600]">Marco Polo</h1>
-							<h2 init-with="p-op"
+							<h2 init-with="p:[op:0]"
 								when-student-card-enter="p:[opacity:0:1:800:easeInSine]:delay-750">UC Berkeley</h2>
-							<h2 init-with="p-op"
+							<h2 init-with="p:[op:0]"
 								when-student-card-enter="p:[opacity:0:1:800:easeInSine]:delay-900">Freshman</h2>
 						</div>
 						<h3>
-							<span init-with="p-op"
+							<span init-with="p:[op:0]"
 								when-student-card-enter="p:[opacity:0:1:800:easeInSine]:delay-150">SELECTED COURSES</span>
 							<span style="background: #003262;"
 								init-with="p:[op:0, tro:left center]"
 								when-student-card-enter="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-350]">9</span>
-							<a init-with="p-op"
+							<a init-with="p:[op:0]"
 								when-student-card-enter="p:[opacity:0:1:800:easeInSine]:delay-150"><span>Edit</span></a>
 						</h3>
 					</div>
@@ -753,12 +753,12 @@
 			when-modal-close="p:[transform:translateX(0px) translateZ(0px):translateX(252px) translateZ(0px):500:easeInExpo easeInExpo]"
 			when-sidebar-close-clicked="p:[transform:translateX(252px) translateZ(0px) scaleY(1):translateX(252px) translateZ(0px) scaleY(0):350:easeOutExpo easeOutExpo easeOutBack]"
 			when-sidebar-col-close-clicked="p:[transform:translateX(0px) translateZ(0px) scaleY(1):translateX(0px) translateZ(0px) scaleY(0):350:easeOutExpo easeOutExpo easeOutBack]:delay-200">
-			<hr init-with="p-op"
+			<hr init-with="p:[op:0]"
 				when-sidebar-link-clicked="p:[op:1, background-position-y:-100%:-200%:500:easeOutCirc:^:2+0:a] | s:[gradient-border-fade:public:delay-1000]"
 				when-gradient-border-fade="p:[opacity:1:0:250:easeOutSine] | s:[gradient-border-end:public:delay-250]"
 				when-gradient-border-end="p:[background-position-y:-100%]"
-				when-sidebar-close-clicked="p-op"
-				when-sidebar-col-close-clicked="p-op"/>
+				when-sidebar-close-clicked="p:[op:0]"
+				when-sidebar-col-close-clicked="p:[op:0]"/>
 		</div>
 		<ul init-with="p:[z-index:-1]"
 			when-sidebar-icon-clicked="p:[op:1, tr:none]"
@@ -768,7 +768,7 @@
 			when-sidebar-col-close-clicked="p:[z-index:-1:delay-1000, opacity:1:0:100:easeOutSine:500, transform:translateX(0px) translateZ(0px):translateX(-300px) translateZ(0px):400:easeOutBack easeOutBack]">
 			<li>
 				<div>
-					<hr init-with="p-op"
+					<hr init-with="p:[op:0]"
 						when-faq-link-clicked="t-enter"
 						when-pricing-link-clicked="t-exit"
 						when-team-link-clicked="t-exit"
@@ -777,12 +777,12 @@
 						on-enter="p:[op:1, bg:white]"
 						on-exit="p:[op:0, bg:rgba(255#255#255#.5)]"
 						when-modal-close="p:[op:0, bg:rgba(255#255#255#.5)]:delay-250"
-						when-sidebar-col-close-clicked="p-op"/>
+						when-sidebar-col-close-clicked="p:[op:0]"/>
 				</div>
 			</li>
 			<li>
 				<div>
-					<hr init-with="p-op"
+					<hr init-with="p:[op:0]"
 						when-faq-link-clicked="t-exit"
 						when-pricing-link-clicked="t-enter"
 						when-team-link-clicked="t-exit"
@@ -791,12 +791,12 @@
 						on-enter="p:[op:1, bg:white]"
 						on-exit="p:[op:0, bg:rgba(255#255#255#.5)]"
 						when-modal-close="p:[op:0, bg:rgba(255#255#255#.5)]:delay-250"
-						when-sidebar-col-close-clicked="p-op"/>
+						when-sidebar-col-close-clicked="p:[op:0]"/>
 				</div>
 			</li>
 			<li>
 				<div>
-					<hr init-with="p-op"
+					<hr init-with="p:[op:0]"
 						when-faq-link-clicked="t-exit"
 						when-pricing-link-clicked="t-exit"
 						when-team-link-clicked="t-enter"
@@ -805,12 +805,12 @@
 						on-enter="p:[op:1, bg:white]"
 						on-exit="p:[op:0, bg:rgba(255#255#255#.5)]"
 						when-modal-close="p:[op:0, bg:rgba(255#255#255#.5)]:delay-250"
-						when-sidebar-col-close-clicked="p-op"/>
+						when-sidebar-col-close-clicked="p:[op:0]"/>
 				</div>
 			</li>
 			<li>
 				<div>
-					<hr init-with="p-op"
+					<hr init-with="p:[op:0]"
 						when-faq-link-clicked="t-exit"
 						when-pricing-link-clicked="t-exit"
 						when-team-link-clicked="t-exit"
@@ -819,12 +819,12 @@
 						on-enter="p:[op:1, bg:white]"
 						on-exit="p:[op:0, bg:rgba(255#255#255#.5)]"
 						when-modal-close="p:[op:0, bg:rgba(255#255#255#.5)]:delay-250"
-						when-sidebar-col-close-clicked="p-op"/>
+						when-sidebar-col-close-clicked="p:[op:0]"/>
 				</div>
 			</li>
 			<li>
 				<div>
-					<hr init-with="p-op"
+					<hr init-with="p:[op:0]"
 						when-faq-link-clicked="t-exit"
 						when-pricing-link-clicked="t-exit"
 						when-team-link-clicked="t-exit"
@@ -833,7 +833,7 @@
 						on-enter="p:[op:1, bg:white]"
 						on-exit="p:[op:0, bg:rgba(255#255#255#.5)]"
 						when-modal-close="p:[op:0, bg:rgba(255#255#255#.5)]:delay-250"
-						when-sidebar-col-close-clicked="p-op"/>
+						when-sidebar-col-close-clicked="p:[op:0]"/>
 				</div>
 			</li>
 		</ul>

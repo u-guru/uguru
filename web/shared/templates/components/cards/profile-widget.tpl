@@ -23,7 +23,7 @@
 			when-pf-widget-info="a:[icon-enter:1000:easeOutSine:0:1:f]"></span>
 		<div>
 			<h1 class="pf-name verified"
-				u init-with="p-op"
+				u init-with="p:[op:0]"
 				when-pf-widget-info="a:[opacity:0:1:1000:(0.8,0.1,1,0.05):150:1:f]">
 				<span>Gabrielle Wee</span>
 				<span>
@@ -34,39 +34,39 @@
 				</span>
 			</h1>
 			<h2 class="pf-school-name"
-				u init-with="p-op"
+				u init-with="p:[op:0]"
 				when-pf-widget-info="a:[opacity:0:1:1000:(0.8,0.1,1,0.05):150:1:f]">Ex'pression College for Digital Arts</h2>
 			<ul class="pf-rating rating-stars" data-rating="4" data-half="true"
 				u on-init="s:[pf-star:children:linear-800]">
-				<li u init-with="p-op"
+				<li u init-with="p:[op:0]"
 					when-pf-star="a:[bounceIn-rotate-subtle:500:easeOutSine:0:1:f]">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 					</svg>
 				</li>
-				<li u init-with="p-op"
+				<li u init-with="p:[op:0]"
 					when-pf-star="a:[bounceIn-rotate-subtle:500:easeOutSine:0:1:f]">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 					</svg>
 				</li>
-				<li u init-with="p-op"
+				<li u init-with="p:[op:0]"
 					when-pf-star="a:[bounceIn-rotate-subtle:500:easeOutSine:0:1:f]">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 					</svg>
 				</li>
-				<li u init-with="p-op"
+				<li u init-with="p:[op:0]"
 					when-pf-star="a:[bounceIn-rotate-subtle:500:easeOutSine:0:1:f]">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 					</svg>
 				</li>
-				<li u init-with="p-op"
+				<li u init-with="p:[op:0]"
 					when-pf-star="a:[bounceIn-rotate-subtle:500:easeOutSine:0:1:f]">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
@@ -75,13 +75,13 @@
 				</li>
 			</ul>
 			<h3 class="pf-reviews"
-				u init-with="p-op"
+				u init-with="p:[op:0]"
 				when-pf-widget-info="a:[opacity:0:1:450:(0.8,0.1,1,0.05):1100:1:f]"><span>72</span> reviews</h3>
 		</div>
 		<div u init-with="p:[transform:scaleX(0), tro:center center]"
 			when-pf-widget-info="a:[split-button:1200:linear:500:1:f]">
 			<button class="bg-moola normal">
-				<span u init-with="p-op"
+				<span u init-with="p:[op:0]"
 					when-pf-widget-info="a:[opacity:0:1:500:easeInOutSine:700:1:f]">Contact Guru</span>
 			</button>
 		</div>

@@ -20,7 +20,7 @@
 
 	    <item class='bg-robin p30y' width='100' height='15' align='center top'>
 	        <item width='100' align='center center'
-	            u init-with="p-op"
+	            u init-with="p:[op:0]"
 	            when-load-enter="a:[fadeInUp:500:linear:0:1:f]">
 	            <txt font-size="28px" letter-spacing='0.3em' width='100' weight='500' line-height="1.2" class='flex-vertical-center'>
 	                Ready for all the vibes?
@@ -102,7 +102,7 @@
 					u
 					when-playlist="s:[playlist-enter-left:children:linear-1000]:+400">
 					<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'
-						u init-with="p-op"
+						u init-with="p:[op:0]"
 						when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 						on-mouseenter="s:[av-scale:children]"
 						on-mouseleave="s:[av-shrink:children]">
@@ -114,7 +114,7 @@
 						</item>
 					</txt>
 					<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'
-						u init-with="p-op"
+						u init-with="p:[op:0]"
 						when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 						on-mouseenter="s:[sd-scale:children]"
 						on-mouseleave="s:[sd-shrink:children]">
@@ -126,7 +126,7 @@
 						</item>
 					</txt>
 					<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'
-						u init-with="p-op"
+						u init-with="p:[op:0]"
 						when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 						on-mouseenter="s:[h-scale:children]"
 						on-mouseleave="s:[h-shrink:children]">
@@ -138,7 +138,7 @@
 						</item>
 					</txt>
 					<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'
-						u init-with="p-op"
+						u init-with="p:[op:0]"
 						when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 						on-mouseenter="s:[tn-scale:children]"
 						on-mouseleave="s:[tn-shrink:children]"
@@ -151,7 +151,7 @@
 						</item>
 					</txt>
 					<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-right p10y'
-						u init-with="p-op"
+						u init-with="p:[op:0]"
 						when-playlist-enter-left="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 						on-mouseenter="s:[co-scale:children]"
 						on-mouseleave="s:[co-shrink:children]">
@@ -178,7 +178,7 @@
 						</item>
 					</txt>
 					<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'
-						u init-with="p-op"
+						u init-with="p:[op:0]"
 						when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 						on-mouseenter="s:[gu-scale:children]"
 						on-mouseleave="s:[gu-shrink:children]">
@@ -190,7 +190,7 @@
 						</item>
 					</txt>
 					<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'
-						u init-with="p-op"
+						u init-with="p:[op:0]"
 						when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 						on-mouseenter="s:[wl-scale:children]"
 						on-mouseleave="s:[wl-shrink:children]">
@@ -202,7 +202,7 @@
 						</item>
 					</txt>
 					<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'
-						u init-with="p-op"
+						u init-with="p:[op:0]"
 						when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 						on-mouseenter="s:[an-scale:children]"
 						on-mouseleave="s:[an-shrink:children]">
@@ -214,7 +214,7 @@
 						</item>
 					</txt>
 					<txt font-size="48px" width='100' line-height="1.2" class='weight-700 uppercase txt-left p10y'
-						u init-with="p-op"
+						u init-with="p:[op:0]"
 						when-playlist-enter-right="a:[fadeInDown:850:easeOutExpo:0:1:f]"
 						on-mouseenter="s:[gh-scale:children]"
 						on-mouseleave="s:[gh-shrink:children]">

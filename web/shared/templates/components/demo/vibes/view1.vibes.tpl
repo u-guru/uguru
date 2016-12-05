@@ -18,7 +18,7 @@
 
     <item class='bg-robin p30y' width='100' height='15' align='center top'>
         <item width='100' align='center center'
-            u init-with="p-op"
+            u init-with="p:[op:0]"
             when-load-enter="a:[fadeInUp:500:linear:0:1:f]">
             <txt font-size="28px" letter-spacing='0.3em' width='100' weight='500' line-height="1.2" class='flex-vertical-center'>
                 Ready for all the vibes?

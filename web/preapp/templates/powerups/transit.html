@@ -1,5 +1,5 @@
 <div class='full-xy absolute left-0 flex-wrap-center'
-	init-with="p-op"
+	init-with="p:[op:0]"
 	on-enter="p:[t:all 1000ms ease, op:1, z-index:10000]"
 	when-transit-triggered="t-enter | s:[transit-landing-enter:public]:delay-2000"
 	when-close-transit="p:[op:0, tr:translateY(-100%), z-index:default:delay-1000]">
@@ -11,16 +11,16 @@
 			<div ng-include="root.base_url + 'preapp/templates/components/powerups/transit-card.html'"></div>
 		</div>
 		<h1 class="powerup-header"
-			init-with="p-op"
+			init-with="p:[op:0]"
 			on-enter="a:[gpa-enter:set:(dur:800ms#func:linear):delay-250:in]"
 			when-transit-landing-enter="t-enter">Transit Guru</h1>
 		<h2 class="powerup-subheader"
-			init-with="p-op"
+			init-with="p:[op:0]"
 			on-enter="a:[gpa-enter:set:(dur:800ms#func:linear):delay-500:in]"
 			when-transit-landing-enter="t-enter">Lorem ipsum dolor sit amet consectetur.</h2>
 		<div class="landing-demo z-index-3">
 			<svg viewBox="0 0 318 651"
-				init-with="p-op"
+				init-with="p:[op:0]"
 				on-enter="a:[gpa-enter:set:(dur:1200ms#func:ease-out):delay-750:in]"
 				when-transit-landing-enter="t-enter">
 				<rect x="1.5" y="1.5" width="315" height="648" rx="40"></rect>
@@ -32,11 +32,11 @@
 			</div>
 		</div>
 		<div class="landing-content z-index-1"
-			init-with="p-op"
+			init-with="p:[op:0]"
 			on-enter="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in]"
 			when-transit-landing-enter="t-enter">
 			<h1
-				init-with="p-op"
+				init-with="p:[op:0]"
 				on-enter="a:[gpa-enter:set:(dur:1000ms#func:linear):delay-1500:in]"
 				when-transit-landing-enter="t-enter">Preview the App</h1>
 		</div>

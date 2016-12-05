@@ -12,7 +12,7 @@ Gabrielle
 		when-pf-aside-content-init="s:[pf-aside-bg-init:public:delay-1500, pf-widget-init:public, pf-cta-init:public:delay-500]"
 		when-pf-exit="p:[opacity:1:0:1000:easeOutSine]:delay-1000">
 		<div class="pf-aside-bg-container"
-			init-with="p-op"
+			init-with="p:[op:0]"
 			when-pf-aside-bg-init="p:[opacity:0:1:1000:easeOutSine]">
 			<div class="pf-aside-bg" style="background-image: url('https://c1.staticflickr.com/7/6129/5916495923_43a93ef193_o.jpg');"></div>
 		</div>
@@ -33,11 +33,11 @@ Gabrielle
 				init-with="p:[tr:scale(0), tro:right center]"
 				when-pf-widget-init="p:[transform:scale(0):scale(1):500:easeOutQuart]:delay-750"></div>
 			<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=256');"
-				init-with="p-op"
+				init-with="p:[op:0]"
 				when-pf-widget-init="p:[tro:center center] | a:[icon-enter-rotate:set:(dur:1000ms#func:ease-out):in]"></span>
 			<div>
 				<h1 class="pf-name verified"
-					init-with="p-op"
+					init-with="p:[op:0]"
 					when-pf-widget-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]:delay-150">
 					<span>Gabrielle Wee</span>
 					<span>
@@ -48,38 +48,38 @@ Gabrielle
 					</span>
 				</h1>
 				<h2 class="pf-school-name"
-					init-with="p-op"
+					init-with="p:[op:0]"
 					when-pf-widget-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-150]">Ex'pression College for Digital Arts</h2>
 				<ul class="pf-rating rating-stars" data-rating="4" data-half="true">
-					<li init-with="p-op"
+					<li init-with="p:[op:0]"
 						when-pf-widget-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-800]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
-					<li init-with="p-op"
+					<li init-with="p:[op:0]"
 						when-pf-widget-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-900]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
-					<li init-with="p-op"
+					<li init-with="p:[op:0]"
 						when-pf-widget-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-1000]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
-					<li init-with="p-op"
+					<li init-with="p:[op:0]"
 						when-pf-widget-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-1100]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
-					<li init-with="p-op"
+					<li init-with="p:[op:0]"
 						when-pf-widget-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-1200]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
@@ -88,13 +88,13 @@ Gabrielle
 					</li>
 				</ul>
 				<h3 class="pf-reviews"
-					init-with="p-op"
+					init-with="p:[op:0]"
 					when-pf-widget-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-1100]"><span>72</span> reviews</h3>
 			</div>
 			<div init-with="p:[op:0, tro:center center]"
 				when-pf-widget-init="a:[split-button:set:(dur:1200ms#func:linear):in:delay-500]">
 				<button class="bg-moola normal">
-					<span init-with="p-op"
+					<span init-with="p:[op:0]"
 						when-pf-widget-init="p:[opacity:0:1:500:easeInOutSine:delay-700]">Contact Guru</span>
 				</button>
 			</div>
@@ -102,7 +102,7 @@ Gabrielle
 		<div class="pf-aside-desc"
 			init-with="p:[op:0, tro:left top]"
 			when-pf-aside-desc-init="a:[pf-slideLeft-scaleIn:set:(dur:1000ms#func:linear):in] | t:[on-enter:children]">
-			<span init-with="p-op"
+			<span init-with="p:[op:0]"
 				on-enter="p:[opacity:0:1:1000:easeOutSine]:delay-1000">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
 		</div>
 		<div class="pf-aside-mobile">
@@ -159,7 +159,7 @@ Gabrielle
 		</div>
 	</aside>
 	<div class="pf-rest perspective-container"
-		init-with="p-op"
+		init-with="p:[op:0]"
 		when-pf-rest-init="a:[pf-bounceUp:set:(dur:2000ms#func:linear):in] | s:[pf-tabs-init:public:delay-500, pf-mn-init:public:delay-2250]"
 		when-pf-exit="p:[opacity:1:0:1000:easeOutSine]:delay-1000">
 		<nav class="pf-tabs tab-bar slide">
@@ -168,29 +168,29 @@ Gabrielle
 				<a class="pf-profile-section-link pf-main-link pf-enter"
 					ng-click='guru.section_index = 0;'
 					ng-class="{'active': !guru.section_index}"
-					init-with="p-op"
+					init-with="p:[op:0]"
 					when-pf-tabs-init="p:[transform:translateX(150px):translateX(0px):500:easeOutCubic, opacity:0:1:500:easeInBack]:delay-500"
 					on-click="s:[pf-mn-init:public]">Profile</a>
 				<a class="pf-portfolio-section-link pf-main-link pf-enter"
 					ng-click='guru.section_index = 1;'
 					ng-class="{'active': guru.section_index === 1}"
-					init-with="p-op"
+					init-with="p:[op:0]"
 					when-pf-tabs-init="p:[transform:translateX(150px):translateX(0px):500:easeOutCubic, opacity:0:1:500:easeInBack]:delay-700"
 					on-click="s:[pf-sv-init:public]">Services</a>
 				<a class="pf-about-section-link pf-main-link pf-enter"
 					ng-click='guru.section_index = 2;'
 					ng-class="{'active': guru.section_index === 2}"
-					init-with="p-op"
+					init-with="p:[op:0]"
 					when-pf-tabs-init="p:[transform:translateX(150px):translateX(0px):500:easeOutCubic, opacity:0:1:500:easeInBack]:delay-900"
 					on-click="s:[pf-ab-init:public]">About</a>
 				<a class="pf-resources-section-link pf-main-link pf-enter"
 					ng-click='guru.section_index = 3;'
 					ng-class="{'active': guru.section_index === 3}"
-					init-with="p-op"
+					init-with="p:[op:0]"
 					when-pf-tabs-init="p:[transform:translateX(150px):translateX(0px):500:easeOutCubic, opacity:0:1:500:easeInBack]:delay-1000"
 					on-click="s:[pf-rs-init:public]">Resources</a>
 				<hr class="pf-enter"
-					init-with="p-op"
+					init-with="p:[op:0]"
 					when-pf-tabs-init="p:[opacity:0:1:1000:easeOutSine]:delay-1200">
 			</div>
 		</nav>
@@ -198,17 +198,17 @@ Gabrielle
 			<!-- ng-init="guru.section_index = 2;" -->
 			<div class="pf-profile pf-main-section" ng-class="{'active': !guru.section_index}">
 				<div class="pf-main-header overflow-hidden">
-					<h1 init-with="p-op"
+					<h1 init-with="p:[op:0]"
 						when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]:delay-900">The Golden Bear Tutor</h1>
-					<p init-with="p-op"
+					<p init-with="p:[op:0]"
 						when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]:delay-1000">Fusce vehicula dolor arcu, sit amet blandit dolor nec. Donec viverra.<p>
 				</div>
 				<div class="pf-main-subheader">
-					<h2 init-with="p-op"
+					<h2 init-with="p:[op:0]"
 						when-pf-mn-init="p:[transform:translateY(50px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]">Services</h2>
-					<a init-with="p-op"
+					<a init-with="p:[op:0]"
 						when-pf-mn-init="p:[transform:translateY(50px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]"><span>see more</span></a>
-					<hr init-with="p-op"
+					<hr init-with="p:[op:0]"
 						when-pf-mn-init="p:[transform:translateY(50px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]"/>
 				</div>
 				<ul class="pf-items">
@@ -221,7 +221,7 @@ Gabrielle
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p-op"
+									init-with="p:[op:0]"
 									when-photo-tile-init-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 									when-photo-tile-exit-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
@@ -230,38 +230,38 @@ Gabrielle
 									</div>
 								</div>
 								<div class="pf-tile-bottom">
-									<h1 init-with="p-op"
+									<h1 init-with="p:[op:0]"
 										when-photo-tile-init="p:[opacity:0:1:250:easeOutSine]:delay-1000">Professional Headshots</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
-										<li init-with="p-op"
+										<li init-with="p:[op:0]"
 											when-photo-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
-										<li init-with="p-op"
+										<li init-with="p:[op:0]"
 											when-photo-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
-										<li init-with="p-op"
+										<li init-with="p:[op:0]"
 											when-photo-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
-										<li init-with="p-op"
+										<li init-with="p:[op:0]"
 											when-photo-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
-										<li init-with="p-op"
+										<li init-with="p:[op:0]"
 											when-photo-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
@@ -305,7 +305,7 @@ Gabrielle
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p-op"
+									init-with="p:[op:0]"
 									when-photo-tile-init-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 									when-photo-tile-exit-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
@@ -317,35 +317,35 @@ Gabrielle
 									<h1 init-with="p:[op:0, t:all 250ms ease-out]"
 										when-photo-tile-init-2="p:[op:1:delay-1000]">Professional Headshots</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
-										<li init-with="p-op"
+										<li init-with="p:[op:0]"
 											when-photo-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
-										<li init-with="p-op"
+										<li init-with="p:[op:0]"
 											when-photo-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
-										<li init-with="p-op"
+										<li init-with="p:[op:0]"
 											when-photo-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
-										<li init-with="p-op"
+										<li init-with="p:[op:0]"
 											when-photo-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
-										<li init-with="p-op"
+										<li init-with="p:[op:0]"
 											when-photo-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
@@ -382,11 +382,11 @@ Gabrielle
 					</li>
 				</ul>
 				<div class="pf-main-subheader">
-					<h2 init-with="p-op"
+					<h2 init-with="p:[op:0]"
 						when-pf-mn-init="p:[transform:translateY(50px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]:delay-750">Resources</h2>
-					<a init-with="p-op"
+					<a init-with="p:[op:0]"
 						when-pf-mn-init="p:[transform:translateY(50px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]:delay-750"><span>see more</span></a>
-					<hr init-with="p-op"
+					<hr init-with="p:[op:0]"
 						when-pf-mn-init="p:[transform:translateY(50px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]:delay-750"/>
 				</div>
 				<ul class="pf-items">
@@ -402,7 +402,7 @@ Gabrielle
 									<div class="pf-cardlet-front">
 										<div></div><div></div><div></div>
 										<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
-											init-with="p-op"
+											init-with="p:[op:0]"
 											when-photo-cardlet-init-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 											when-photo-cardlet-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]">&nbsp;</div>
 										<div class="pf-cardlet-overlay"></div>
@@ -446,7 +446,7 @@ Gabrielle
 									<div class="pf-cardlet-front">
 										<div></div><div></div><div></div>
 										<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
-											init-with="p-op"
+											init-with="p:[op:0]"
 											when-photo-cardlet-init-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 											when-photo-cardlet-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]">&nbsp;</div>
 										<div class="pf-cardlet-overlay"></div>
@@ -482,9 +482,9 @@ Gabrielle
 			</div>
 			<div class="pf-portfolio pf-main-section" ng-class="{'active': guru.section_index === 1}">
 				<div class="pf-main-header overflow-hidden">
-					<h1 init-with="p-op"
+					<h1 init-with="p:[op:0]"
 						when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]:delay-900">The Golden Bear Tutor</h1>
-					<p init-with="p-op"
+					<p init-with="p:[op:0]"
 						when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]:delay-1000">Fusce vehicula dolor arcu, sit amet blandit dolor nec. Donec viverra.<p>
 				</div>
 				<ul class="pf-items">
@@ -497,7 +497,7 @@ Gabrielle
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p-op"
+									init-with="p:[op:0]"
 									when-photo-tile-init-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 									when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
@@ -506,38 +506,38 @@ Gabrielle
 									</div>
 								</div>
 								<div class="pf-tile-bottom">
-									<h1 init-with="p-op"
+									<h1 init-with="p:[op:0]"
 										when-photo-tile-init-1="p:[opacity:0:1:250:easeOutSine]:delay-1000">Professional Headshots</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
-										<li init-with="p-op"
+										<li init-with="p:[op:0]"
 											when-photo-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
-										<li init-with="p-op"
+										<li init-with="p:[op:0]"
 											when-photo-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
-										<li init-with="p-op"
+										<li init-with="p:[op:0]"
 											when-photo-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
-										<li init-with="p-op"
+										<li init-with="p:[op:0]"
 											when-photo-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
-										<li init-with="p-op"
+										<li init-with="p:[op:0]"
 											when-photo-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
@@ -581,7 +581,7 @@ Gabrielle
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p-op"
+									init-with="p:[op:0]"
 									when-photo-tile-init-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 									when-photo-tile-exit-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
@@ -590,38 +590,38 @@ Gabrielle
 									</div>
 								</div>
 								<div class="pf-tile-bottom">
-									<h1 init-with="p-op"
+									<h1 init-with="p:[op:0]"
 										when-photo-tile-init-2="p:[opacity:0:1:250:easeOutSine]:delay-1000">Professional Headshots</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
-										<li init-with="p-op"
+										<li init-with="p:[op:0]"
 											when-photo-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
-										<li init-with="p-op"
+										<li init-with="p:[op:0]"
 											when-photo-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
-										<li init-with="p-op"
+										<li init-with="p:[op:0]"
 											when-photo-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
-										<li init-with="p-op"
+										<li init-with="p:[op:0]"
 											when-photo-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
-										<li init-with="p-op"
+										<li init-with="p:[op:0]"
 											when-photo-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
@@ -662,9 +662,9 @@ Gabrielle
 				<div class="pf-main-header overflow-hidden"
 					init-default
 					when-pf-ab-init="send:[ab-sect-init:public]">
-				 <h1 init-with="p-op"
+				 <h1 init-with="p:[op:0]"
 					 when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]:delay-900">The Golden Bear Tutor</h1>
-				 <p init-with="p-op"
+				 <p init-with="p:[op:0]"
 					 when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]:delay-1000">Fusce vehicula dolor arcu, sit amet blandit dolor nec. Donec viverra.<p>
 			 	 </div>
 				<div class="pf-about-section"
@@ -686,7 +686,7 @@ Gabrielle
 						<div class="social-bar fill">
 							<ul>
 								<li class="pf-ab-where-anim"
-									init-with="p-op"
+									init-with="p:[op:0]"
 									when-social-sect-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in]">
 									<a class="bg-fb">
 										<svg viewBox="0 0 100 100">
@@ -695,7 +695,7 @@ Gabrielle
 									</a>
 								</li>
 								<li class="pf-ab-where-anim"
-									init-with="p-op"
+									init-with="p:[op:0]"
 									when-social-sect-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in]:delay-150">
 									<a class="bg-tw">
 										<svg viewBox="0 0 100 100">
@@ -704,7 +704,7 @@ Gabrielle
 									</a>
 								</li>
 								<li class="pf-ab-where-anim"
-									init-with="p-op"
+									init-with="p:[op:0]"
 									when-social-sect-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in]:delay-300">
 									<a class="bg-li">
 										<svg viewBox="0 0 100 100">
@@ -713,7 +713,7 @@ Gabrielle
 									</a>
 								</li>
 								<li class="pf-ab-where-anim"
-									init-with="p-op"
+									init-with="p:[op:0]"
 									when-social-sect-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in]:delay-450">
 									<a class="bg-in">
 										<svg viewBox="0 0 100 100">
@@ -919,9 +919,9 @@ Gabrielle
 			</div>
 			<div class="pf-resources pf-main-section" ng-class="{'active': guru.section_index === 3}">
 				<div class="pf-main-header overflow-hidden">
-					<h1 init-with="p-op"
+					<h1 init-with="p:[op:0]"
 						when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]:delay-900">The Golden Bear Tutor</h1>
-					<p init-with="p-op"
+					<p init-with="p:[op:0]"
 						when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]:delay-1000">Fusce vehicula dolor arcu, sit amet blandit dolor nec. Donec viverra.<p>
 				</div>
 				<ul class="pf-items">
@@ -937,7 +937,7 @@ Gabrielle
 									<div class="pf-cardlet-front">
 										<div></div><div></div><div></div>
 										<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
-											init-with="p-op"
+											init-with="p:[op:0]"
 											when-photo-cardlet-init-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 											when-photo-cardlet-exit-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]">&nbsp;</div>
 										<div class="pf-cardlet-overlay"></div>
@@ -981,7 +981,7 @@ Gabrielle
 									<div class="pf-cardlet-front">
 										<div></div><div></div><div></div>
 										<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
-											init-with="p-op"
+											init-with="p:[op:0]"
 											when-photo-cardlet-init-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 											when-photo-cardlet-exit-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]">&nbsp;</div>
 										<div class="pf-cardlet-overlay"></div>
@@ -1018,7 +1018,7 @@ Gabrielle
 		</main>
 	</div>
 	<button class="pf-mobile-cta"
-		init-with="p-op"
+		init-with="p:[op:0]"
 		when-pf-cta-init="a:[bounceInUp-subtle:set:(dur:800ms#func:linear):in]">Contact Guru</button>
 	<!--
 		init-with="p:[transform:translateY(150px)]"

@@ -4,7 +4,7 @@
 		<ul>
 			<!-- @samir - <li> elements are being staggered in intervals of 100ms -->
 			<!-- lines: 7, 18, 29, 40 -->
-			<li u init-with="p-op"
+			<li u init-with="p:[op:0]"
 				when-course-init="a:[bounceInUp-subtle:1000:linear:0:1:f]"
 				on-exit="a:[opacity:1:0:1000:easeInOutSine:0:1:f]">
 				<a class="course-list-item">
@@ -17,7 +17,7 @@
 					<h2>Vibration, Waves, and Optics</h2>
 				</a>
 			</li>
-			<li u init-with="p-op"
+			<li u init-with="p:[op:0]"
 				when-course-init="a:[bounceInUp-subtle:1000:linear:0:1:f]"
 				on-exit="a:[opacity:1:0:1000:easeInOutSine:0:1:f]">
 				<a class="course-list-item">
@@ -30,7 +30,7 @@
 					<h2>Vibration, Waves, and Optics</h2>
 				</a>
 			</li>
-			<li u init-with="p-op"
+			<li u init-with="p:[op:0]"
 				when-course-init="a:[bounceInUp-subtle:1000:linear:0:1:f]"
 				on-exit="a:[opacity:1:0:1000:easeInOutSine:0:1:f]">
 				<a class="course-list-item">
@@ -43,7 +43,7 @@
 					<h2>Vibration, Waves, and Optics</h2>
 				</a>
 			</li>
-			<li u init-with="p-op"
+			<li u init-with="p:[op:0]"
 				when-course-init="a:[bounceInUp-subtle:1000:linear:0:1:f]"
 				on-exit="a:[opacity:1:0:1000:easeInOutSine:0:1:f]">
 				<a class="course-list-item">

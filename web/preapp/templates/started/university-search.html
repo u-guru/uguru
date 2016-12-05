@@ -7,7 +7,7 @@
 		<header class="projector-splash-header">
 			<a class="projector-splash-back icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/left-circle.html'"></a>
 			<h1 class="desktop"
-				init-with="p-op"
+				init-with="p:[op:0]"
 				when-map-switch="p-o-1">Search Universities</h1>
 			<h1 class="mobile">Search Universities</h1>
 			<a class="projector-splash-next icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/right-circle.html'"></a>
@@ -58,7 +58,7 @@
 		</div>
 
 		<div class="projector-school-container"
-			init-with="p-op"
+			init-with="p:[op:0]"
 			when-search-school-complete="p:[opacity:0:1:500:easeInSine]:delay-2500"
 			when-map-switch="p:[z-index:-1]">
 			<div class="projector-school-search"
@@ -91,7 +91,7 @@
 								init-with="p:[op:0, tr:rotateX(90deg), tro:bottom center]"
 								when-input-border-enter="p:[opacity:0:1:250:easeOutExpo, transform:rotateX(90deg):rotateX(0deg):250:easeOutExpo]:delay-200">Search 300 schools</span>
 							<span class="input"
-								init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+								init-with="p:[op:0]">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 							<div class="underline">
 								<div init-with="p:[tr:scaleX(0)]"
 									when-input-border-enter="p:[transform:scaleX(0):scaleX(1):250:easeOutExpo]"></div>
@@ -133,7 +133,7 @@
 								init-with="p:[opacity:0]"
 								on-init="a:[scoop-enter:800:linear:200:1:f]">
 								<!-- <div class="university-card mini"
-									init-with="p-op"
+									init-with="p:[op:0]"
 									when-university-card-init="a:[scoop-enter:set:(dur:800ms#func:linear):in:delay-200]"> -->
 								<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 									<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -145,7 +145,7 @@
 									<div class="school-card-border" style="border-color: #FDB515;"></div>
 									<div class="school-card-top" style="background-color: #003262;">
 										<span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg'); border-color: #003262;"
-											init-with="p-op"
+											init-with="p:[op:0]"
 											when-university-card-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]">
 											<span class="school-card-icon-bg" style="background-color: #003262;"></span>
 											<span class="school-card-state">
@@ -195,7 +195,7 @@
 									<div class="school-card-border" style="border-color: #FDB515;"></div>
 									<div class="school-card-top" style="background-color: #003262;">
 										<span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg'); border-color: #003262;"
-											init-with="p-op"
+											init-with="p:[op:0]"
 											when-university-card-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]">
 											<span class="school-card-icon-bg" style="background-color: #003262;"></span>
 											<span class="school-card-state">
@@ -231,7 +231,7 @@
 							init-with="p:[tro:center center]"
 							when-school-3-select="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-300px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
 							<div class="university-card mini"
-								init-with="p-op"
+								init-with="p:[op:0]"
 								when-university-card-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-600]">
 								<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 									<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -242,7 +242,7 @@
 									<div class="school-card-border" style="border-color: #FDB515;"></div>
 									<div class="school-card-top" style="background-color: #003262;">
 										<span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg'); border-color: #003262;"
-											init-with="p-op"
+											init-with="p:[op:0]"
 											when-university-card-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]">
 											<span class="school-card-icon-bg" style="background-color: #003262;"></span>
 											<span class="school-card-state">
@@ -278,7 +278,7 @@
 							init-with="p:[tro:center center]"
 							when-school-4-select="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-600px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
 							<div class="university-card mini"
-								init-with="p-op"
+								init-with="p:[op:0]"
 								when-university-card-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-750]">
 								<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 									<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -289,7 +289,7 @@
 									<div class="school-card-border" style="border-color: #FDB515;"></div>
 									<div class="school-card-top" style="background-color: #003262;">
 										<span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg'); border-color: #003262;"
-											init-with="p-op"
+											init-with="p:[op:0]"
 											when-university-card-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]">
 											<span class="school-card-icon-bg" style="background-color: #003262;"></span>
 											<span class="school-card-state">
@@ -325,7 +325,7 @@
 							init-with="p:[tro:center center]"
 							when-school-4-select="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-600px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
 							<div class="university-card mini"
-								init-with="p-op"
+								init-with="p:[op:0]"
 								when-university-card-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-750]">
 								<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 									<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -336,7 +336,7 @@
 									<div class="school-card-border" style="border-color: #FDB515;"></div>
 									<div class="school-card-top" style="background-color: #003262;">
 										<span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg'); border-color: #003262;"
-											init-with="p-op"
+											init-with="p:[op:0]"
 											when-university-card-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]">
 											<span class="school-card-icon-bg" style="background-color: #003262;"></span>
 											<span class="school-card-state">
@@ -372,7 +372,7 @@
 							init-with="p:[tro:center center]"
 							when-school-4-select="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-600px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
 							<div class="university-card mini"
-								init-with="p-op"
+								init-with="p:[op:0]"
 								when-university-card-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-750]">
 								<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 									<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -383,7 +383,7 @@
 									<div class="school-card-border" style="border-color: #FDB515;"></div>
 									<div class="school-card-top" style="background-color: #003262;">
 										<span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg'); border-color: #003262;"
-											init-with="p-op"
+											init-with="p:[op:0]"
 											when-university-card-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]">
 											<span class="school-card-icon-bg" style="background-color: #003262;"></span>
 											<span class="school-card-state">
@@ -419,7 +419,7 @@
 					<li>
 						<div class="card-container">
 							<div class="university-card mini"
-								init-with="p-op"
+								init-with="p:[op:0]"
 								when-university-card-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
 								<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 									<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -429,7 +429,7 @@
 									<div class="school-card-border" style="border-color: #FDB515;"></div>
 									<div class="school-card-top" style="background-color: #003262;">
 										<span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg'); border-color: #003262;"
-											init-with="p-op"
+											init-with="p:[op:0]"
 											when-university-card-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]">
 											<span class="school-card-icon-bg" style="background-color: #003262;"></span>
 											<span class="school-card-state">
@@ -459,7 +459,7 @@
 					<li>
 						<div class="card-container">
 							<div class="university-card mini"
-								init-with="p-op"
+								init-with="p:[op:0]"
 								when-university-card-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
 								<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 									<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -469,7 +469,7 @@
 									<div class="school-card-border" style="border-color: #FDB515;"></div>
 									<div class="school-card-top" style="background-color: #003262;">
 										<span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg'); border-color: #003262;"
-											init-with="p-op"
+											init-with="p:[op:0]"
 											when-university-card-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]">
 											<span class="school-card-icon-bg" style="background-color: #003262;"></span>
 											<span class="school-card-state">
@@ -499,7 +499,7 @@
 					<li>
 						<div class="card-container">
 							<div class="university-card mini"
-								init-with="p-op"
+								init-with="p:[op:0]"
 								when-university-card-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
 								<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 									<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -509,7 +509,7 @@
 									<div class="school-card-border" style="border-color: #FDB515;"></div>
 									<div class="school-card-top" style="background-color: #003262;">
 										<span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg'); border-color: #003262;"
-											init-with="p-op"
+											init-with="p:[op:0]"
 											when-university-card-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]">
 											<span class="school-card-icon-bg" style="background-color: #003262;"></span>
 											<span class="school-card-state">
@@ -539,7 +539,7 @@
 					<li>
 						<div class="card-container">
 							<div class="university-card mini"
-								init-with="p-op"
+								init-with="p:[op:0]"
 								when-university-card-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
 								<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 									<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -549,7 +549,7 @@
 									<div class="school-card-border" style="border-color: #FDB515;"></div>
 									<div class="school-card-top" style="background-color: #003262;">
 										<span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg'); border-color: #003262;"
-											init-with="p-op"
+											init-with="p:[op:0]"
 											when-university-card-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]">
 											<span class="school-card-icon-bg" style="background-color: #003262;"></span>
 											<span class="school-card-state">
@@ -579,7 +579,7 @@
 					<li>
 						<div class="card-container">
 							<div class="university-card mini"
-								init-with="p-op"
+								init-with="p:[op:0]"
 								when-university-card-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
 								<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 									<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -589,7 +589,7 @@
 									<div class="school-card-border" style="border-color: #FDB515;"></div>
 									<div class="school-card-top" style="background-color: #003262;">
 										<span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg'); border-color: #003262;"
-											init-with="p-op"
+											init-with="p:[op:0]"
 											when-university-card-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]">
 											<span class="school-card-icon-bg" style="background-color: #003262;"></span>
 											<span class="school-card-state">
@@ -619,7 +619,7 @@
 					<li>
 						<div class="card-container">
 							<div class="university-card mini"
-								init-with="p-op"
+								init-with="p:[op:0]"
 								when-university-card-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
 								<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 									<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -629,7 +629,7 @@
 									<div class="school-card-border" style="border-color: #FDB515;"></div>
 									<div class="school-card-top" style="background-color: #003262;">
 										<span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg'); border-color: #003262;"
-											init-with="p-op"
+											init-with="p:[op:0]"
 											when-university-card-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]">
 											<span class="school-card-icon-bg" style="background-color: #003262;"></span>
 											<span class="school-card-state">
@@ -784,7 +784,7 @@
 						init-default
 						on-click="s:[map-switch:public]"/>
 					<label>
-						<div init-with="p-op"
+						<div init-with="p:[op:0]"
 							when-round-enter="p:[opacity:0:1:750:easeOutSine]:delay-500"></div>
 						<svg class="square" viewBox="0 0 26 26">
 							<circle cx="13" cy="13" r="13"
@@ -805,8 +805,8 @@
 			</div>
 			<div class="projector-school-toggle-label">
 				<h3 init-default
-					when-map-switch="p-op">Switch to map search</h3>
-				<h3 init-with="p-op"
+					when-map-switch="p:[op:0]">Switch to map search</h3>
+				<h3 init-with="p:[op:0]"
 					when-map-switch="p:[op:1]">Switch to list search</h3>
 			</div>
 		</div>

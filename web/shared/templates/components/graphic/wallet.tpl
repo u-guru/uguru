@@ -25,9 +25,9 @@
 			</g>
 		</svg>
 		<div>
-			<h1 u init-with="p-op"
+			<h1 u init-with="p:[op:0]"
 				when-wallet-enter="a:[opacity:0:1:800:(0.8,0.1,1,0.05):0:1:f]:delay-450">My Wallet</h1>
-			<button u init-with="p-op"
+			<button u init-with="p:[op:0]"
 				when-wallet-enter="a:[bounceIn-subtle:1000:linear:450:1:f]">Add&nbsp;Card</button>
 		</div>
 	</div>

@@ -10,7 +10,7 @@
 			when-promo-header="s:[promo-input-enter:public]:delay-500">
 			<header class="projector-splash-header">
 				<a class="projector-splash-back icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/left-circle.html'"></a>
-				<h1 init-with="p-op"
+				<h1 init-with="p:[op:0]"
 					when-promo-header="a:[bounceInDown-subtle:set:(dur:1000ms#func:linear):in]">Access</h1>
 				<a class="projector-splash-next icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/right-circle.html'"></a>
 			</header>
@@ -77,13 +77,13 @@
 
 				<ul init-with="p:[tr:translateY(-30px)]"
 					when-promo-input-form="p:[transform:translateY(-30px):translateY(0px):250:easeOutSine]">
-					<li init-with="p-op"
+					<li init-with="p:[op:0]"
 						when-promo-input-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-450">
 						<button class="btn-ghost-round"
 							init-default
 							on-click="s:[promo-activate:public]">Activate</button>
 					</li>
-					<li init-with="p-op"
+					<li init-with="p:[op:0]"
 						when-promo-input-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-900">
 						<button class="btn-ghost-round opacity-50p">Skip</button>
 					</li>

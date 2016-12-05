@@ -9,7 +9,7 @@
 			on-enter="p:[op:1, tr:rotateZ(0deg) rotateY(0deg)]">
             <!-- http://codepen.io/teamuguru/pen/3f4edcf309f72f85bb19f7a780aef8bd?editors=0100 -->
 			<!-- <svg class="iphone-center" viewBox="0 0 318 651"
-				init-with="p-op"
+				init-with="p:[op:0]"
 				when-university-dropdown-mouse-leave="p:[op:0.2:delay-50, t:all 250ms ease-in-out]"
 				when-university-dropdown-toggle-on="p:[op:1:delay-50, t:all 250ms ease-in-out]"
 				when-university-dropdown-toggle-off="p:[op:0.2:delay-50, t:all 250ms ease-in-out]">
@@ -33,7 +33,7 @@
 						when-device-init="t-enter"
 						on-enter="p:[sop:1, sdo:0]:delay-1900"
 						when-university-dropdown-hover="p:[fill:^school_color_dark:delay-150, t:all 250ms ease-out]"></path>
-					<path d="M159.5,2 L41.9985987,2 C19.9079826,2 2,19.9012788 2,42.0005693 L2,609.999431 C2,632.091135 19.9162684,650 41.9985987,650 L159.5,650" class="default-color" init-with="p-op"></path>
+					<path d="M159.5,2 L41.9985987,2 C19.9079826,2 2,19.9012788 2,42.0005693 L2,609.999431 C2,632.091135 19.9162684,650 41.9985987,650 L159.5,650" class="default-color" init-with="p:[op:0]"></path>
 					<polyline class="screen-left" points="159 80 21 80 21 573 159 573"
 						init-with="p:[sda:789, sdo:879, sop:0, t:stroke-dashoffset 750ms cubic-bezier(.89#.01#1#.12)]"
 						when-device-init="t-enter"
@@ -56,7 +56,7 @@
 						when-device-init="t-enter"
 						on-enter="p:[sop:1, sdo:0]:delay-1900"
 						when-university-dropdown-hover="p:[fill:^school_color_dark:delay-150, t:all 250ms ease-out]"></path>
-					<path d="M0,2 L117.501401,2 C139.592017,2 157.5,19.9012788 157.5,42.0005693 L157.5,609.999431 C157.5,632.091135 139.583732,650 117.501401,650 L0,650" class="default-color" init-with="p-op"></path>
+					<path d="M0,2 L117.501401,2 C139.592017,2 157.5,19.9012788 157.5,42.0005693 L157.5,609.999431 C157.5,632.091135 139.583732,650 117.501401,650 L0,650" class="default-color" init-with="p:[op:0]"></path>
 					<polyline class="screen-right" points="0 80 138 80 138 573 0 573"
 						init-with="p:[sda:789, sdo:879, sop:0, t:stroke-dashoffset 750ms cubic-bezier(.89#.01#1#.12)]"
 						when-device-init="t-enter"
@@ -183,7 +183,7 @@
                     </ul>
                 </div>
             </div>
-            <svg class="coach-click" viewBox="0 0 212 75" init-with="p-op">
+            <svg class="coach-click" viewBox="0 0 212 75" init-with="p:[op:0]">
                 <!-- class="parallax-auto" parallax-parent-ref="p1" parallax-child="0.2" -->
                 <g fill="none">
                     <path class="coach-click-path-1" d="M126.402476,42.2902799 C126.402476,42.2902799 41.4492178,9.17968707 3.56286124,70.6500409" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -196,7 +196,7 @@
                     </g>
                 </g>
             </svg>
-            <div class="splash-device-button" init-with="p-op">
+            <div class="splash-device-button" init-with="p:[op:0]">
                 <button id='desktop-find-guru-button' class="button-find-guru splash-desktop-cta">Find My Guru</button>
             </div>
         </div>

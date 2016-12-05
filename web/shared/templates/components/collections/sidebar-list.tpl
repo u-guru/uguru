@@ -1,16 +1,16 @@
 <div class="perspective-container full-xy flex" types='email, payment, message' default-type="email">
 
 	<aside class="sidebar-list bg-lake" ng-if='activeType === "email"'
-		u init-with="p-op"
+		u init-with="p:[op:0]"
 		on-init="s:[sidebar-list-init-1:children] |a:[opacity:0:1:250:easeOutSine:0:1:f, translateX:-100%:0%:250:easeOutQuint:0:1:f]"
 		on-exit="a:[opacity:1:0:450:easeOutSine:0:1:f]">
 		<header class="sidebar-list-header bg-white-90p"
-			u init-with="p-op"
+			u init-with="p:[op:0]"
 			when-sidebar-list-init-1="a:[translateY:-100%:0%:250:easeOutQuint:0:1:f, opacity:0:1:250:easeOutQuint:0:1:f]">
 			<h2 class="txt-charcoal">Ways to Super Student&nbsp;Stardom</h2>
 		</header>
 		<ul u on-init="s:[list-1-init:children:linear-450]">
-			<li u init-with="p-op"
+			<li u init-with="p:[op:0]"
 				when-list-1-init="a:[bounceInUp-subtle:1000:linear:0:1:f]">
 				<a class="flex-center-vertical-space-between p15xy height-96 bg-slate-75p"
 					u on-mouse-enter="a:[background:rgba(64,72,75,0.75):rgba(255,255,255,0.75):150:easeOutSine:0:1:f] | send:[email-mouse-enter:public]"
@@ -32,7 +32,7 @@
 					</div>
 				</a>
 			</li>
-			<li u init-with="p-op"
+			<li u init-with="p:[op:0]"
 				when-list-1-init="a:[bounceInUp-subtle:1000:linear:0:1:f]">
 				<a class="flex-center-vertical-space-between p15xy height-96 bg-slate-50p"
 					u on-mouse-enter="a:[background:rgba(64,72,75,0.75):rgba(255,255,255,0.75):150:easeOutSine:0:1:f] | send:[email-mouse-enter-2:public]"
@@ -54,7 +54,7 @@
 					</div>
 				</a>
 			</li>
-			<li u init-with="p-op"
+			<li u init-with="p:[op:0]"
 				when-list-1-init="a:[bounceInUp-subtle:1000:linear:0:1:f]">
 				<a class="flex-center-vertical-space-between p15xy height-96 bg-slate-25p"
 					u on-mouse-enter="a:[background:rgba(64,72,75,0.75):rgba(255,255,255,0.75):150:easeOutSine:0:1:f] | send:[email-mouse-enter-3:public]"
@@ -80,17 +80,17 @@
 	</aside>
 
 	<aside class="sidebar-list bg-moxie" ng-if='activeType === "payment"'
-		u init-with="p-op"
+		u init-with="p:[op:0]"
 		on-init="s:[sidebar-list-init-2:children] |a:[opacity:0:1:250:easeOutSine:0:1:f, translateX:-100%:0%:250:easeOutQuint:0:1:f]"
 		on-exit="a:[opacity:1:0:450:easeOutSine:0:1:f]">
 		<header class="sidebar-list-header bg-charcoal-25p"
-			u init-with="p-op"
+			u init-with="p:[op:0]"
 			when-sidebar-list-init-2="a:[translateY:-100%:0%:250:easeOutQuint:0:1:f, opacity:0:1:250:easeOutQuint:0:1:f]">
 			<h2>Payment History</h2>
 		</header>
 		<ul class="sidebar-list-dividers" u on-init="s:[list-2-init:children:linear-450]">
 			<li class="flex-center-vertical-space-between"
-				u init-with="p-op"
+				u init-with="p:[op:0]"
 				when-list-2-init="a:[bounceIn-subtle:1000:linear:0:1:f]">
 				<div>
 					<h3 class="txt-20 semibold">You cashed out to <b class="black">**0092</b></h3>
@@ -102,7 +102,7 @@
 				<hr/>
 			</li>
 			<li class="flex-center-vertical-space-between"
-				u init-with="p-op"
+				u init-with="p:[op:0]"
 				when-list-2-init="a:[bounceIn-subtle:1000:linear:0:1:f]">
 				<div>
 					<h3 class="txt-20 semibold"><b class="black">CS10</b> Session with <b class="black">Amrita</b></h3>
@@ -114,7 +114,7 @@
 				<hr/>
 			</li>
 			<li class="flex-center-vertical-space-between"
-				u init-with="p-op"
+				u init-with="p:[op:0]"
 				when-list-2-init="a:[bounceIn-subtle:1000:linear:0:1:f]">
 				<div>
 					<h3 class="txt-20 semibold">You cashed out to <b class="black">**0092</b></h3>
@@ -129,18 +129,18 @@
 	</aside>
 
 	<aside class="sidebar-list bg-lake" ng-if='activeType === "message"'
-		u init-with="p-op"
+		u init-with="p:[op:0]"
 		on-init="s:[sidebar-list-init-3:depth(1)] |a:[opacity:0:1:250:easeOutSine:0:1:f, translateX:-100%:0%:250:easeOutQuint:0:1:f]"
 		on-exit="a:[opacity:1:0:450:easeOutSine:0:1:f]">
 		<header class="sidebar-list-header bg-slate-50p"
-			u init-with="p-op"
+			u init-with="p:[op:0]"
 			when-sidebar-list-init-3="a:[translateY:-100%:0%:250:easeOutQuint:0:1:f, opacity:0:1:250:easeOutQuint:0:1:f]">
 			<h2 class="txt-left">My Gurus</h2>
 		</header>
 		<ul class="sidebar-list-messaging"
 			u on-init="s:[list-3-init:children:linear-750]">
 			<li class="relative overflow-hidden"
-				u init-with="p-op"
+				u init-with="p:[op:0]"
 				when-list-3-init="a:[bounceInUp-subtle:1000:linear:0:1:f]"
 				on-mouse-enter="send:[brian-mouse-enter:public]"
 				on-mouse-leave="send:[brian-mouse-leave:public]"
@@ -167,7 +167,7 @@
 				</a>
 			</li>
 			<li class="relative overflow-hidden"
-				u init-with="p-op"
+				u init-with="p:[op:0]"
 				when-list-3-init="a:[bounceInUp-subtle:1000:linear:0:1:f]"
 				on-mouse-enter="send:[brian-mouse-enter-2:public]"
 				on-mouse-leave="send:[brian-mouse-leave-2:public]"
@@ -194,7 +194,7 @@
 				</a>
 			</li>
 			<li class="relative overflow-hidden"
-				u init-with="p-op"
+				u init-with="p:[op:0]"
 				when-list-3-init="a:[bounceInUp-subtle:1000:linear:0:1:f]"
 				on-mouse-enter="send:[brian-mouse-enter-3:public]"
 				on-mouse-leave="send:[brian-mouse-leave-3:public]"
