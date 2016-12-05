@@ -1443,11 +1443,11 @@
   animation: fadeIn 250ms cubic-bezier(0, 0.09, 0, 1) forwards; }
 
 .loader-portal-container.tech {
-  background: #aad2db; }
+  background: #b68cbe; }
   .loader-portal-container.tech .tech-props-container {
     display: block !important; }
   .loader-portal-container.tech .logo svg path {
-    fill: #55A4B7; }
+    fill: #6D187C; }
 
 .guru.tech {
   left: calc(50% - 66px);
@@ -2247,7 +2247,7 @@
   10% {
     stroke: #2BB3B8; }
   20% {
-    stroke: #55A4B7; }
+    stroke: #6D187C; }
   30% {
     stroke: #50A5DD; }
   40% {
@@ -2271,7 +2271,7 @@
   10% {
     stroke: #2BB3B8; }
   20% {
-    stroke: #55A4B7; }
+    stroke: #6D187C; }
   30% {
     stroke: #50A5DD; }
   40% {
