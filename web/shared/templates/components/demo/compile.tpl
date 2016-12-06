@@ -12,7 +12,7 @@
     <main grow='1' size='100' column wrap loader="" min-ms="2500">
 
         <header grow='1' x='center' y='center' bg='charcoal'>
-            Main Header
+            {{user.name}} <img src="{{user.profile}}"> </img>
         </header>
         <!-- u-list this to get several one pagers-->
         <content bg='slate' grow='8' x='center' y='center'>

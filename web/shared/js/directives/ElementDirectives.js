@@ -456,7 +456,7 @@ angular.module('uguru.shared.directives')
       element.attr('logic', 'logic');
       console.log(transclude($rootScope))
       return function(scope, elem, attrs, ctrl, tr) {
-        console.log(elem)
+        elem.append($compile(transclude(scope))(scope));
 
 
       }
