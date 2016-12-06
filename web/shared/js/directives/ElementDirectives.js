@@ -68,7 +68,16 @@ angular.module('uguru.shared.directives')
   }
 }])
 
-
+// .directive('import', function() {
+//   return {
+//     restrict: 'A',
+//     priority: 100000,
+//     replace:true,
+//     templateUrl: function(element, attr) {
+//       return attr.import;
+//     }
+//   }
+// })
 .directive('import', ['$parse', '$compile', '$timeout', '$rootScope', function($parse, $compile, $timeout, $rootScope) {
   return {
     restrict: 'E',
@@ -87,7 +96,7 @@ angular.module('uguru.shared.directives')
       }
 
 
-      var urlSplit = attrUrl.split('.').splice(1)
+      var urlSplit = attrUrl.split('.').splice(1);
 
       if (urlSplit.length === 2) {
         return attr.url
@@ -315,53 +324,78 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
-.directive('loader', ['$rootScope', 'LoaderService', '$compile', function($rootScope, LoaderService, $compile) {
+.directive('main', ['$rootScope', 'LoaderService', '$compile', function($rootScope, LoaderService, $compile) {
   return {
     restrict: 'E',
-    templateUrl: function(element, attr) {
-      return ('import' in attr && attr.import) || 'ui/templates/components/base/loader.tpl'
-    },
-    transclude: true,
-    controllerAs: 'loader',
-    replace:true,
-    scope: false,
+    transclude:true,
+    controllerAs: 'main',
     compile: function(element, attr, transclude) {
+      element.attr('view', 'view');
+      // element.attr('logic', 'logic');
 
 
       return function(scope, elem, attrs, ctrl, tr) {
+        console.log(scope);
+      }
+    },
+    controller: function($element, $scope, $transclude) {
+      // $element.parent().replaceWith($element);
+      console.log($scope.view)
 
-        elem.css('opacity', 0);
-        ctrl.watchers.infoHeight = scope.$watch('loader.info.height', function(val){
-          if (val) {
+      $scope.$watch('view.loader.complete', function(value) {
+        if (value) {
+          $transclude($scope, function(transEl, transScope) {
+            $element.append($compile(transEl)(transScope))
+          })
+        }
 
+      })
+    }
+    }
+}])
+.directive('loader', ['$rootScope', 'LoaderService', '$compile', '$timeout', function($rootScope, LoaderService, $compile, $timeout) {
+  return {
+    restrict: 'E',
+    replace: true,
+    transclude:true,
+    controllerAs: 'loader',
+    templateUrl: function(element, attr) {
 
-            // ctrl.watchers.parentHeight();
-            ctrl.watchers.infoHeight();
-            ctrl.info.opacity = 1;
-            console.log(ctrl.info.height, ctrl.info.width)
-            LoaderService.setInheritedCSS(elem, ctrl.info)
+      return ('import' in attr && attr.import) || 'ui/templates/components/base/loader.tpl'
+    },
+    compile: function(element, attr, transclude) {
+      element.attr('view', 'view');
+      element.attr('logic', 'logic');
 
-          }
-        })
+      return function(scope, elem, attrs, ctrl, tr) {
+        console.log(elem)
+
 
       }
     },
-    controller: function($scope, $element, $attrs, $transclude) {
+    controller: function($scope, $element, $attrs, $transclude, $parse) {
+      // var this = scope;
       $scope.root = {scope: $rootScope};
       $scope.public = {customStates: {when:{}}}
+
       var loader = this;
       loader.info = {width: 0, height: 0};
+
+      // $transclude($scope, function(elem, inner_scope) {
+      //   $element.append(elem)
+      // })
+    console.log($element)
 
       loader.attr = LoaderService.renderLoaderAttrs($scope, $attrs, loader.info);
       loader.duration = loader.attr.minMs || 1000;
       loader.exitMs = loader.attr.exitMs || 500;
 
 
-      if (!('bg' in $attrs)) {
-        loader.info['background-color'] = LoaderService.getParentBgColor($element, $attrs);
-      }
+      // if (!('bg' in $attrs)) {
+      //   loader.info['background-color'] = LoaderService.getParentBgColor($element, $attrs);
+      // }
 
-      loader.watchers = {parentHeight: 0};
+
       var loaderParent = $element.parent()[0] || $element[0].parentNode;
 
       var loaderParentCoords;
@@ -369,7 +403,31 @@ angular.module('uguru.shared.directives')
 
       loader.info.height = loaderParentCoords.height || '100%';
       loader.info.width = loaderParentCoords.width || '100%';
+      $scope.view.loader.started = true;
+      $element.ready(function() {
+        $timeout(function() {
+          $scope.view.loader.complete = true;
+        }, loader.duration + loader.exitMs);
+      });
 
+
+      // loader.watchers = {parentHeight: 0};
+      // loader.watchers.infoHeight = $scope.$watch('loader.info.height', function(val) {
+      //   if (val) {
+
+
+      //     // ctrl.watchers.parentHeight();
+      //     loader.watchers.infoHeight();
+      //     this.info.opacity = 1;
+
+      //     LoaderService.setInheritedCSS(elem, this.info)
+      //     if (scope.loader.info.minMs) {
+      //       $timeout(function() {
+      //         $element.parent().replaceWith(angular.element("<!-- -->"));
+      //       }, scope.loader.info.minMs || 1000 +  scope.loader.info.minMs || 500)
+      //     }
+      //   }
+      // })
     }
   }
 }])
@@ -2292,18 +2350,20 @@ directive("evalOnReady", ["$timeout", '$parse', function($timeout, $parse) {
       }
     }
 }])
-.directive('bgImage', ['$parse',function($parse){
+.directive('bgImage', ['$parse', '$compile', function($parse, $compile){
     return function(scope, element, attrs){
         attrs.$observe('bgImage', function(value) {
             var bgAttrValues = value.split('|');
 
             element.css({
                 'background-image': 'url(' + bgAttrValues[0]  +')',
-                'background-position': bgAttrValues[1],
-                'background-size' : bgAttrValues[2],
+                'background-position': bgAttrValues[1] || 'center center',
+                'background-size' : bgAttrValues[2] || 'cover',
                 'background-repeat': bgAttrValues.length > 3 && bgAttrValues[3] || 'no-repeat',
                 'background-color': bgAttrValues.length > 4 && bgAttrValues[4] || 'none',
             });
+            element[0].removeAttribute('bg-image');
+            $compile(element)(scope);
 
         });
     };

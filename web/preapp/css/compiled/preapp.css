@@ -2324,10 +2324,10 @@
       #splash-hero-nav-mobile .splash-hero-nav-category ul li a.bg-photography:hover span svg, #splash-hero-nav-mobile .splash-hero-nav-category ul li a.bg-photography:focus span svg, #splash-hero-nav-mobile .splash-hero-nav-category ul li a.bg-photography.active span svg {
         background: #81B566; }
       #splash-hero-nav-mobile .splash-hero-nav-category ul li a.bg-tech span svg {
-        background: #4b7681;
-        border: 2px solid #55A4B7; }
+        background: #573064;
+        border: 2px solid #6D187C; }
       #splash-hero-nav-mobile .splash-hero-nav-category ul li a.bg-tech:hover span svg, #splash-hero-nav-mobile .splash-hero-nav-category ul li a.bg-tech:focus span svg, #splash-hero-nav-mobile .splash-hero-nav-category ul li a.bg-tech.active span svg {
-        background: #55A4B7; }
+        background: #6D187C; }
       #splash-hero-nav-mobile .splash-hero-nav-category ul li a.bg-household span svg {
         background: #5c5d97;
         border: 2px solid #7872e3; }
@@ -2703,9 +2703,9 @@
             .splash-sidebar nav ul li a hr:nth-of-type(2) {
               transition: none !important;
               background: white;
-              background: -moz-linear-gradient(left, #e6389b 0%, #F6C64E 10%, #81B566 20%, #55A4B7 30%, #7872e3 40%, #ffffff 50%);
-              background: -webkit-linear-gradient(left, #e6389b 0%, #F6C64E 10%, #81B566 20%, #55A4B7 30%, #7872e3 40%, #ffffff 50%);
-              background: linear-gradient(to right, #e6389b 0%, #F6C64E 10%, #81B566 20%, #55A4B7 30%, #7872e3 40%, #ffffff 50%);
+              background: -moz-linear-gradient(left, #e6389b 0%, #F6C64E 10%, #81B566 20%, #6D187C 30%, #7872e3 40%, #ffffff 50%);
+              background: -webkit-linear-gradient(left, #e6389b 0%, #F6C64E 10%, #81B566 20%, #6D187C 30%, #7872e3 40%, #ffffff 50%);
+              background: linear-gradient(to right, #e6389b 0%, #F6C64E 10%, #81B566 20%, #6D187C 30%, #7872e3 40%, #ffffff 50%);
               filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6389b', endColorstr='#ffffff',GradientType=1 );
               background-size: 200%;
               background-position-x: -100%;
@@ -2797,9 +2797,9 @@
       height: 100%;
       width: 2px;
       background: white;
-      background: -moz-linear-gradient(top, #e6389b 0%, #F6C64E 10%, #81B566 20%, #55A4B7 30%, #7872e3 40%, #ffffff 50%);
-      background: -webkit-linear-gradient(top, #e6389b 0%, #F6C64E 10%, #81B566 20%, #55A4B7 30%, #7872e3 40%, #ffffff 50%);
-      background: linear-gradient(to bottom, #e6389b 0%, #F6C64E 10%, #81B566 20%, #55A4B7 30%, #7872e3 40%, #ffffff 50%);
+      background: -moz-linear-gradient(top, #e6389b 0%, #F6C64E 10%, #81B566 20%, #6D187C 30%, #7872e3 40%, #ffffff 50%);
+      background: -webkit-linear-gradient(top, #e6389b 0%, #F6C64E 10%, #81B566 20%, #6D187C 30%, #7872e3 40%, #ffffff 50%);
+      background: linear-gradient(to bottom, #e6389b 0%, #F6C64E 10%, #81B566 20%, #6D187C 30%, #7872e3 40%, #ffffff 50%);
       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$cerise', endColorstr='#ffffff',GradientType=0 );
       background-size: 200%;
       background-position-x: 0%;
@@ -3116,9 +3116,9 @@
             .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-photography:hover, .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-photography:focus {
               background: #81B566; }
           .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-tech {
-            background: rgba(85, 164, 183, 0.3); }
+            background: rgba(109, 24, 124, 0.3); }
             .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-tech:hover, .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-tech:focus {
-              background: #55A4B7; }
+              background: #6D187C; }
           .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-household {
             background: rgba(120, 114, 227, 0.3); }
             .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-household:hover, .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-household:focus {
@@ -3178,7 +3178,7 @@
             .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-photography {
               background: rgba(129, 181, 102, 0.25); }
             .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-tech {
-              background: rgba(85, 164, 183, 0.25); }
+              background: rgba(109, 24, 124, 0.25); }
             .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-household {
               background: rgba(120, 114, 227, 0.25); }
             .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-athletic {

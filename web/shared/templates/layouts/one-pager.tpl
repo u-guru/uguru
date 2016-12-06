@@ -1,5 +1,6 @@
 <main-view class='full-xy block overflow-auto absolute top-0 left-0 flex-wrap-center no-scrollbar flex-wrap bg-smoke' u link-data access-code='71ab4' on-init='s:[init-view-1:depth(>1):2500]'>
-
+    {{bgColor = "rgba(108,24,124,0.5)"}}
+    {{bgColor}}
 
     <view layer="3" type='row' bg="smoke" width='100' height='100' align='center center' when-fade-out-loader="a:[slideOutDown-subtle:2000:linear:0:1:f]" on-init='s:[fade-out-loader:self:2000]' u>
         <item width='100' height='50' align='bottom center'>

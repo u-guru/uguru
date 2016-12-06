@@ -362,7 +362,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                 });
               }
               // registerAnimationListeners(scope, element, attr, actions, context);
-              console.log(console.log(actions.eval))
+              // console.log(console.log(actions.eval))
               applySendAnimPropEval(scope, element, actions, attr, context);
               // applyPropsToElement(element, actions.prop, rShortcuts);
             }
