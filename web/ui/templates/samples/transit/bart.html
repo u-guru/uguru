@@ -1,11 +1,13 @@
 <view link-data="ui/templates/samples/transit/bart.json" render-after-ext-scripts bg="smoke">
-	<!-- <loader min-ms="2500" url="ui/templates/samples/transit/components/bart-loader.html"></loader> -->
+	<loader min-ms="2500" import="ui/templates/samples/transit/components/bart-loader.html"></loader>
 	<div x-center y-center width="100" height="100">
 		<div rel rad="2px" class="overflow-hidden"
 			u init-with="p:[op:0]"
+			width='100'
+			height='100'
 			on-init="a:[opacity:0:1:500:linear:0:1:f]"
 			on-click="s:[tooltip-enter:public]">
-			<replace with="ui/templates/samples/transit/components/bart-map.html"></replace>
+			<div bg-image="ui/templates/samples/transit/components/bart-map.html"></div>
 			<div abs top="0" left="0" w="100%" h="100%">
 				<!-- <div bg="white" class="txt-slate">{{data.content.bart.station}}</div> -->
 				<div rel top="90px" left="90px" padding-bot="40px" width="360px" bg="white" rad="2" border="1px solid #9cbdbe" class="overflow-hidden"

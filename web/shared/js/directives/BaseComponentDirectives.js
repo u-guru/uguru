@@ -494,34 +494,29 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
     .directive('size', ['$compile', function($compile) {
         return {
             restrict: 'A',
-            scope:false,
-            replace:false,
-            transclude:true,
+            priority: 10000,
             compile: function(element, attr, transclude) {
-
-                if (!attr.size.length || element[0].nodeName.toLowerCase() !== 'svg') return;
-                var units = ['px', '%'];
-                var sizeSplit = attr.size.split(' ')
-                if (sizeSplit.length === 1) {
-                    sizeSplit.push(sizeSplit[0]);
-                }
-                sizeSplit.forEach(function(size_str, i) {
-                    if (size_str.indexOf(units[0]) === -1 && size_str.indexOf(units[1]) === -1) {
-                        sizeSplit[i] = sizeSplit[i] + 'px';
+                var sizeAttr = attr.size;
+                var dim = {};
+                if (sizeAttr.length) {
+                    var sizeAttrSplit = sizeAttr.split(' ');
+                    if (sizeAttrSplit.length === 2)  {
+                        dim.width = sizeAttrSplit[0];
+                        dim.height = sizeAttrSplit[1];
+                    } else {
+                        dim.width = sizeAttrSplit[0];
+                        dim.height = sizeAttrSplit[0];
                     }
-                })
-                var size = {height: sizeSplit[0], width: sizeSplit[1]};
-
-                var e = angular.element('<div style="height:' + size.height + ';width:' + size.width + ';">', '</div>')
-                element.replaceWith(e);
-                element.removeAttr('size');
-                e.append(element)
-                return function(scope, _element, attr) {
-                    transclude(scope, function(clone, inner_scope) {
-                        $compile(clone)(inner_scope)
-                        element.append(clone)
-                    })
                 }
+                if (dim.width.indexOf('%') === -1 && dim.width.indexOf('px') === -1) {
+                    extension = '%';
+                }
+                if (dim.height.indexOf('%') === -1 && dim.height.indexOf('px') === -1) {
+                    extension = '%';
+                }
+                element.css('height', 100 + extension);
+                element.css('width', 100 + extension);
+                element.removeAttr('size');
                 // e.append(element)
             }
         }
@@ -593,41 +588,46 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             }
         }
     }])
-    .directive('url', [function() {
-        return {
-            restrict: 'A',
-            scope:false,
-            priority: 10000,
-            compile: function(element, attr) {
+    // .directive('url', [function() {
+    //     return {
+    //         restrict: 'A',
+    //         scope:false,
+    //         priority: 10000,
+    //         compile: function(element, attr) {
 
-                if (element[0].nodeName.toLowerCase() === 'graphic') {
-                    return;
-                }
+    //             if (element[0].nodeName.toLowerCase() === 'graphic') {
+    //                 return;
+    //             }
 
-                if (attr.url.indexOf('/') === -1) {
+    //             if (attr.url.indexOf('/') === -1) {
 
-                    attr.$set('ngInclude', attr.url);
-                    element.removeAttr('url');
-                } else {
-                    attr.$set('ngInclude', "'" +  attr.url + "'");
-                }
+    //                 attr.$set('ngInclude', attr.url);
+    //                 element.removeAttr('url');
+    //             } else {
+    //                 attr.$set('ngInclude', "'" +  attr.url + "'");
+    //             }
 
-            },
-            link: function(scope, elem, attr) {
-                console.log('ay', scope.nav)
-            }
-        }
-    }])
+    //         },
+    //         link: function(scope, elem, attr) {
+    //             console.log('ay', scope.nav)
+    //         }
+    //     }
+    // }])
     .directive('graphic', ['$compile', 'CompService',  function($compile, CompService) {
         return {
             restrict: 'E',
-            scope:false,
-            replace:true,
             priority: 10001,
+            transclude: true,
             templateUrl: function(element, attr) {
-                var url = attr.url;
-                attr.$set('url', '');
-                return url
+                return attr.url
+            },
+            controller: function($scope,$transclude, $element, $attrs) {
+
+                $scope.$watch('url', function(value){
+                    if (value) {
+                        console.log(value)
+                    }
+                })
             }
             // compile: function compile(element, attr, transclude)  {
 
@@ -1314,13 +1314,7 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             replace:true,
             priority: 1000,
             templateUrl: function(element, attr) {
-                return attr.src;
-            },
-            link: {
-                pre:
-                    function preLink(scope, p_element, attr) {
-                       $compile(p_element)(scope)
-                }
+                return attr.url;
             }
         }
     }])
@@ -1452,6 +1446,7 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             }
         }
     }])
+
     .directive('logic', ['$compile', function($compile) {
         return {
             restrict: 'E',
@@ -1481,33 +1476,63 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             }
         }
     }])
-    .directive('main', function() {
+    .directive('mainView', ['$compile', function($compile) {
         return {
-            restrict: 'E',
-            template: '<div> main </div>'
+            template: '<ui-view height="100" width="100"></ui-view>',
+            priority: 1000000
         }
-    })
+    }])
     .directive("view", ["CompService", "$compile", "$rootScope", "$parse", function(CompService, $compile, $rootScope, $parse) {
         return {
             restrict: 'E',
             priority: 100000,
             templateUrl: 'shared/templates/view.tpl',
             transclude: {
-                logic: 'logic'
+                loader: '?loader',
+                main: '?main',
+                logic:'?logic',
+                external: "?external"
             },
+            replace:true,
+            controllerAs: 'view',
             controller: function($element, $scope, $transclude) {
+                var view = this;
+                view.logic = {}
+                view.loader = {}
+                view.content = {}
+                view.inner = {};
 
-                $scope.view = {logic: {}, loader: {}, content: {}};
-                // $element.append($transclude($scope));
+                view.inner.elems = $transclude($scope, function(transElem, transScope) {
+                    view.inner.originElems = transElem;
+
+                    view.inner.scope = transScope;
+                });
+
+
+                var hasLoader = CompService.doesElemHaveLoader(view.inner.elems);
+                view.inner.loader = hasLoader.loader;
+                console.log(view.inner.elems)
+
+
+              //   // console.log(preTranscludeElems.remaining.forEach(function( item, i) {
+              //   //   if ('innerHTML' in item) {
+              //   //     item.style.opacity = 0;
+              //   //   }
+              //   // }))
+
+              // }
+              //   // $element.append($transclude($scope));
+              //   console.log($transclude(function(elem, scope) {
+              //       console.log(elem)
+              //   }))
             },
             compile: function(element, attr) {
                 return {
                     pre: function preLink(scope, elem, attr, ctrl, transclude) {
-                        // var e = (transclude(scope, function(clone, _scope) {
+                        // var e = (transclude(scope, function(clone, _scope) {}));
 
-                        // }))
-                        CompService.renderAllStyleAttributes(elem, attr);
-
+                        // CompService.renderAllStyleAttributes(elem, attr);
+                        // console.log(transclude())
                         // transclude(function(inner_elems, inner_scope) {
                         //     console.log(elem)
                         // })
