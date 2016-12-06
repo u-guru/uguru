@@ -1,4 +1,3 @@
-
 <view size='100' render-after-ext-scripts>
     <!-- <main-view size='100' abs> -->
     <loader height='100' width='100' min-ms="3000" import='ui/templates/loader.html'> </loader>
@@ -19,7 +18,7 @@
         </header>
         <content>
         </content>
-        <nav class="ui-gallery-filter-bar" style="margin-top:-15px;"
+        <nav class="ui-gallery-filter-bar" m-top="-15px"
             u init-with="p:[op:0]"
             on-init="p:[op:1]:delay-100">
         </nav>
