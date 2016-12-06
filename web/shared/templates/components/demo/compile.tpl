@@ -1,36 +1,42 @@
 
 <view size='100' render-after-ext-scripts>
-    <!-- <main-view size='100' abs> -->
-    <loader height='100' width='100' min-ms="3000" import='ui/templates/loader.html'> </loader>
-    <logic>
-        <!-- import scripts -->
-        <!-- <data import="random">
-        </data> -->
-        <components>
-            <component name="visualizer" points="list|random.list(100)">
-            </component>
-        </components>
-    </logic>
+    <!-- uncomment this below to get loader -->
 
-    <main abs width='100' height='100' z='10'>
+    <!-- <loader height='100' width='100' min-ms="3000" url='ui/templates/loader.html'> </loader> -->
 
-        <header>
-            {{view}}
+    <!-- main has a full page loader as well, not sure if its needed..  it imports from     ui/templates/components/base/main.tpl or you can provide your own view.
+
+    Think of the loader use case for the main element to be the "entrance" && assume that the loader='' imported URL could be the same size
+
+    -->
+    <main grow='1' size='100' column wrap loader="" min-ms="2500">
+
+        <header grow='1' x='center' y='center' bg='charcoal'>
+            Main Header
         </header>
-        <content>
+        <!-- u-list this to get several one pagers-->
+        <content bg='slate' grow='8' x='center' y='center'>
+            Main content
         </content>
-        <nav class="ui-gallery-filter-bar" style="margin-top:-15px;"
-            u init-with="p:[op:0]"
-            on-init="p:[op:1]:delay-100">
-        </nav>
-        <footer></footer>
+        <footer bg='charcoal' grow='1'>
+            Footer
+        </footer>
+        <!-- -->
+        <!-- optional but ideall these should be internal to main because it should correlate to appearance to viewport? debatable, just a new proposal-->
+        <fixed>
+            <f-header> </f-header>
+            <f-sidebar/></f-sidebar>
+            <f-icon/></f-icon>
+        </fixed>
+        <modals>
+            <modal with-size="#elem-ref"> </modal>
+            <modal with-size="#elem-ref"> </modal>
+            <modal with-size="#elem-ref"> </modal>
+        </modals>
     </main>
-
-    <external>
-        <sidebar>
-        </sidebar>
-        <!-- <view>
-        </view> -->
+    <!-- -->
+    <external grow='1'>
+        <!-- <view url='' loader ='' browser-url = ''>-->
     </external>
 
 </view>

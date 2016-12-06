@@ -1429,14 +1429,15 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             }
         }
     }])
-    .directive("debug", ['$compile', function($compile) {
+    .directive("replaceMe", ['$compile', function($compile) {
         return {
-            restrict: 'E',
+            restrict: 'A',
             priority: 100000,
+            replace:true,
             transclude: 'element',
             templateUrl: 'shared/templates/debug.tpl',
             controller: function($element, $transclude) {
-                console.log($element)
+                // console.log($element)
                 // $element.append($transclude());
             },
             link: function(scope, elem, attr, ctrl, transclude) {
@@ -1490,45 +1491,17 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             transclude: {
                 loader: '?loader',
                 main: '?main',
-                logic:'?logic',
-                external: "?external"
+                external: "?external",
+                debug: "?debug"
             },
             replace:true,
             controllerAs: 'view',
-            controller: function($element, $scope, $transclude) {
-                var view = this;
-                view.logic = {}
-                view.loader = {}
-                view.content = {}
-                view.inner = {};
+            compile: function(elem, attr, transclude) {
+                var test = 'test';
 
-                view.inner.elems = $transclude($scope, function(transElem, transScope) {
-                    view.inner.originElems = transElem;
-
-                    view.inner.scope = transScope;
-                });
-
-
-                var hasLoader = CompService.doesElemHaveLoader(view.inner.elems);
-                view.inner.loader = hasLoader.loader;
-                console.log(view.inner.elems)
-
-
-              //   // console.log(preTranscludeElems.remaining.forEach(function( item, i) {
-              //   //   if ('innerHTML' in item) {
-              //   //     item.style.opacity = 0;
-              //   //   }
-              //   // }))
-
-              // }
-              //   // $element.append($transclude($scope));
-              //   console.log($transclude(function(elem, scope) {
-              //       console.log(elem)
-              //   }))
-            },
-            compile: function(element, attr) {
                 return {
                     pre: function preLink(scope, elem, attr, ctrl, transclude) {
+
                         // var e = (transclude(scope, function(clone, _scope) {}));
 
                         // CompService.renderAllStyleAttributes(elem, attr);
@@ -1545,6 +1518,33 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
                         console.log(post_elem[0])
                     }
                 }
+            },
+            controller: function($element, $attrs, $scope, $transclude) {
+                console.log($attrs)
+                var view = this;
+                view.logic = {}
+                view.loader = {}
+                view.content = {}
+                view.inner = {elems: {pre: {}, post:{}}, loader: {}};
+                view.inner.elems.post = $transclude($scope, function(transElem, transScope) {
+                    view.inner.elems.pre = transElem;
+                    view.inner.scope = transScope;
+                });
+
+                var hasLoader = CompService.doesElemHaveLoader(view.inner.elems);
+                view.inner.loader = hasLoader.loader;
+
+              //   // console.log(preTranscludeElems.remaining.forEach(function( item, i) {
+              //   //   if ('innerHTML' in item) {
+              //   //     item.style.opacity = 0;
+              //   //   }
+              //   // }))
+
+              // }
+              //   // $element.append($transclude($scope));
+              //   console.log($transclude(function(elem, scope) {
+              //       console.log(elem)
+              //   }))
             }
         }
     }])
