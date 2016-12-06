@@ -324,11 +324,99 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
-.directive('main', ['$rootScope', 'LoaderService', '$compile', function($rootScope, LoaderService, $compile) {
+.directive('main', ['$rootScope', 'LoaderService', '$compile', '$timeout', function($rootScope, LoaderService, $compile, $timeout) {
   return {
     restrict: 'E',
     transclude:true,
     controllerAs: 'main',
+    require: '^?view',
+
+    templateUrl: function(element, attr) {
+      return ('loader' in attr && attr.import) || ('url' in attr && attr.url) || 'ui/templates/components/base/main.tpl'
+    },
+    controllerAs:'main',
+    controller: function main($element, $scope, $transclude) {
+      // $element.parent().replaceWith($element);
+      var main = this;
+      main.elems = {pre: null, post: null};
+      main.loader = $scope.view && $scope.view.loader;
+      main.elems.post = $transclude($scope, function(transEl, transScope) {
+        main.elems.pre = transEl;
+        // console.log($compile(transEl)(transScope))
+        main.elems.scope = transScope;
+      })
+      console.log(main.elems.pre[0], main.elems.pre[0], main.elems.post[0]);
+      $scope.view.main = main;
+      main.loader = $scope.view.loader;
+      if ($scope.view.loader.exists) {
+        $scope.$watch('view.loader.complete', function(value) {
+          if (value) {
+
+          }
+
+        })
+      }
+      else {
+        // $element.append(main.elems.pre);
+        // main.elems.post =  $compile(transEl)(transScope);
+      }
+    },
+    link:  {
+      pre:
+        function preLink(scope, elem, attr, ctrl, tr) {
+          if (attr.minMs) {
+            ctrl.main.loader = {watcher: null};
+            ctrl.main.loader.timer = parseInt(attr.minMs);
+            elem.css('-webkit-transition', 'flex-grow 1000ms ease');
+            ctrl.main.loader  = $timeout(function() {
+
+              elem.empty();
+              elem.append($compile(ctrl.main.elems.post)(scope));
+
+            }, ctrl.main.loader.timer);
+          } else {
+
+            elem.empty();
+            elem.append($compile(ctrl.main.elems.post)(scope));
+          }
+
+          // ctrl.main.elems.scope.$destroy();
+          // elem.append(ctrl.main.elems.post);
+          // console.log(elem[0], )
+          // elem.replaceWith(ctrl.main.elems.post)
+        },
+      post:
+        function postLink(scope) {
+          console.log(scope)
+        }
+      }
+    }
+}])
+.directive('replaceMe', function() {
+  return {
+    transclude: 'E',
+    template: function(elem, attr) {
+      return '<ng-transclude ng-transclude-slot="' + attr.with + '"></ng-transclude>'
+    },
+    link: function(scope, elem, attr, ctrl, tr) {
+      elem.append(tr(scope));
+    }
+    // link: function(scope, elem, attr, ctrl, tr) {
+    //   console.log('template', elem[0])
+    //   elem.append(tr());
+    //   // console.log($element, )
+    // }
+  }
+})
+
+.directive('external', ['$rootScope', 'LoaderService', '$compile', function($rootScope, LoaderService, $compile) {
+  return {
+    restrict: 'E',
+    transclude:true,
+    controllerAs: 'external',
+    templateUrl: function(element, attr) {
+      return ('import' in attr && attr.import) || ('url' in attr && attr.url) || 'ui/templates/components/base/external.tpl'
+    },
     compile: function(element, attr, transclude) {
       element.attr('view', 'view');
       // element.attr('logic', 'logic');
@@ -356,17 +444,17 @@ angular.module('uguru.shared.directives')
 .directive('loader', ['$rootScope', 'LoaderService', '$compile', '$timeout', function($rootScope, LoaderService, $compile, $timeout) {
   return {
     restrict: 'E',
-    replace: true,
     transclude:true,
     controllerAs: 'loader',
     templateUrl: function(element, attr) {
 
-      return ('import' in attr && attr.import) || 'ui/templates/components/base/loader.tpl'
+      return ('import' in attr && attr.import) || ('url' in attr && attr.url) || 'ui/templates/components/base/loader.tpl'
     },
     compile: function(element, attr, transclude) {
+      element.attr('loader');
       element.attr('view', 'view');
       element.attr('logic', 'logic');
-
+      console.log(transclude($rootScope))
       return function(scope, elem, attrs, ctrl, tr) {
         console.log(elem)
 
