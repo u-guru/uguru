@@ -69,10 +69,8 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp', 'u
   .state('root.ui-single', {
     name: 'root.ui-single',
     parent: 'root',
-    url:'/ui/:viewName',
-    template: function templateProvider($stateParams) {
-      return "<div class='ui-guru-loader loader-portal-outer flex-vertical-center absolute flex-wrap top-0 left-0' link-src-data='ui/static/data/ui.json' link-data-name='ui'><import url='ui.app.views." + $stateParams.viewName + ".url' ng-if='ui.app.views." + $stateParams.viewName + "'></import></div>"
-    }
+    url:'/ui/gallery',
+    templateUrl: 'ui/templates/gallery.html'
   })
 
 

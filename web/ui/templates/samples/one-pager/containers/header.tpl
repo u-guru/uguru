@@ -1,12 +1,13 @@
 <ul width='100' s-b y='center'>
-    <logo grow='1' text="{{header.logo.text.initial}}&nbsp;{{header.logo.text.text}}"></logo>
+    <set sidebar-active="false"/></set>
+    <logo></logo>
 
     <tab-links grow='{{header.tabs.length}}' tab-info="header.tabs"></tab-links>
 
     <li grow='1' p-y="10px">
-        <button height="48px" f-s="18px" bg="white" border="3px solid #55A4B7" class="txt-azure">{{header.cta_button}}</button>
+        <button height="48px" op='0.8' f-s="18px" bg="white" class='txt-azure border-3 border-solid border-azure' class="txt-azure">{{header.cta_button}}</button>
     </li>
-    <li grow='0.2' x='end' padding-right='15px' pointer>
+    <li grow='0.2' x='end' padding-right='15px' pointer ng-click="vars.sidebar=true">
         <replace with="{{header.menu_url}}" width='48px' height='48px'></replace>
     </li>
 </ul>
