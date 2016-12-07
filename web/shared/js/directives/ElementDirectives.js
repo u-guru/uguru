@@ -332,22 +332,22 @@ angular.module('uguru.shared.directives')
     require: '^?view',
 
     templateUrl: function(element, attr) {
-      return ('loader' in attr && attr.import) || ('url' in attr && attr.url) || 'ui/templates/components/base/main.tpl'
+      return ('loader' in attr && attr.loader) || ('url' in attr && attr.url) || 'ui/templates/components/base/main.tpl'
     },
     controllerAs:'main',
-    controller: function main($element, $scope, $transclude) {
+    controller: function main($element, $scope, $attrs, $transclude) {
       // $element.parent().replaceWith($element);
       var main = this;
       main.elems = {pre: null, post: null};
       main.loader = $scope.view && $scope.view.loader;
-      main.elems.post = $transclude($scope, function(transEl, transScope) {
+      main.elems.post = $transclude(function(transEl, transScope) {
         main.elems.pre = transEl;
-        // console.log($compile(transEl)(transScope))
+        console.log($compile(transEl)(transScope))
         main.elems.scope = transScope;
       })
-      console.log(main.elems.pre[0], main.elems.pre[0], main.elems.post[0]);
       $scope.view.main = main;
       main.loader = $scope.view.loader;
+
       if ($scope.view.loader.exists) {
         $scope.$watch('view.loader.complete', function(value) {
           if (value) {
@@ -356,29 +356,48 @@ angular.module('uguru.shared.directives')
 
         })
       }
-      else {
-        // $element.append(main.elems.pre);
-        // main.elems.post =  $compile(transEl)(transScope);
+      // else {
+
+
+        // console.log(main.elems.post);
+
+      // }
+      if (!$attrs.loader) {
+        $element.empty();
+        console.log($element[0])
       }
+
     },
     link:  {
       pre:
         function preLink(scope, elem, attr, ctrl, tr) {
           if (attr.minMs) {
+
             ctrl.main.loader = {watcher: null};
             ctrl.main.loader.timer = parseInt(attr.minMs);
-            elem.css('-webkit-transition', 'flex-grow 1000ms ease');
             ctrl.main.loader  = $timeout(function() {
 
               elem.empty();
+
               elem.append($compile(ctrl.main.elems.post)(scope));
 
             }, ctrl.main.loader.timer);
-          } else {
-
-            elem.empty();
-            elem.append($compile(ctrl.main.elems.post)(scope));
+          } else if (!attr.minMs && !attr.loader) {
+            // elem.empty();
+            var innerElem = $compile(ctrl.main.elems.post)(ctrl.main.elems.scope);
+            var watcher = scope.$watch('view.loader.complete', function(value) {
+              if (value) {
+                elem.empty();
+                // var innerElem = tr(scope, function(transEl, transScope) {
+                // })
+                elem.append(innerElem)
+                watcher();
+              }
+            } )
+            // view.loader.complete
           }
+
+
 
           // ctrl.main.elems.scope.$destroy();
           // elem.append(ctrl.main.elems.post);
@@ -472,11 +491,11 @@ angular.module('uguru.shared.directives')
       // $transclude($scope, function(elem, inner_scope) {
       //   $element.append(elem)
       // })
-    console.log($element)
+    console.log($element[0])
 
       loader.attr = LoaderService.renderLoaderAttrs($scope, $attrs, loader.info);
-      loader.duration = loader.attr.minMs || 1000;
-      loader.exitMs = loader.attr.exitMs || 500;
+      loader.duration = $attrs.ms && parseInt($attrs.ms) || 1000;
+
 
 
       // if (!('bg' in $attrs)) {
@@ -492,10 +511,13 @@ angular.module('uguru.shared.directives')
       loader.info.height = loaderParentCoords.height || '100%';
       loader.info.width = loaderParentCoords.width || '100%';
       $scope.view.loader.started = true;
+
       $element.ready(function() {
         $timeout(function() {
           $scope.view.loader.complete = true;
-        }, loader.duration + loader.exitMs);
+          $element.parent().empty();
+
+        }, loader.duration);
       });
 
 
@@ -1096,17 +1118,17 @@ angular.module('uguru.shared.directives')
             var elemName = element[0].nodeName.toLowerCase();
 
             var hasInitAfter = false;
-              if (attr.initAfter && attr.initAfter.length) {
-                hasInitAfter = ElementService.toCamelCaseBridge(attr.initAfter)
-                var hasInitAfterCamel = ElementService.toCamelCaseBridge('when-' + attr.initAfter);
-                attr.$set(hasInitAfterCamel, attr.onInit);
-                element[0].removeAttribute('init-after');
-                element[0].removeAttribute('on-init')
-                delete attr['initAfter']
-                delete attr['onInit']
-                delete attr.$attr['on-init']
-                // attr.$set();
-              }
+              // if (attr.initAfter && attr.initAfter.length) {
+              //   hasInitAfter = ElementService.toCamelCaseBridge(attr.initAfter)
+              //   var hasInitAfterCamel = ElementService.toCamelCaseBridge('when-' + attr.initAfter);
+              //   attr.$set(hasInitAfterCamel, attr.onInit);
+              //   element[0].removeAttribute('init-after');
+              //   element[0].removeAttribute('on-init')
+              //   delete attr['initAfter']
+              //   delete attr['onInit']
+              //   delete attr.$attr['on-init']
+              //   // attr.$set();
+              // }
 
               this.states = ElementService.renderElementStates(element, attr);
               // console.log(element, this.states)
@@ -1159,7 +1181,7 @@ angular.module('uguru.shared.directives')
 
                         if (state.name === 'init' && state.type === 'on') {
                           states.on.push(state);
-                        } else if (state.exec ) {
+                        } else if (state.exec && state.name !== 'after') {
 
                           state.exec(element, null, attr)
                         }

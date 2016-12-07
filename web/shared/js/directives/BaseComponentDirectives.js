@@ -1483,7 +1483,7 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             priority: 1000000
         }
     }])
-    .directive("view", ["CompService", "$compile", "$rootScope", "$parse", function(CompService, $compile, $rootScope, $parse) {
+    .directive("view", ["CompService", "$compile", "$rootScope", "$parse", "DataService", function(CompService, $compile, $rootScope, $parse, DataService) {
         return {
             restrict: 'E',
             priority: 100000,
@@ -1497,7 +1497,7 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             replace:true,
             controllerAs: 'view',
             compile: function(elem, attr, transclude) {
-                var test = 'test';
+
 
                 return {
                     pre: function preLink(scope, elem, attr, ctrl, transclude) {
@@ -1520,16 +1520,34 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
                 }
             },
             controller: function($element, $attrs, $scope, $transclude) {
-                console.log($attrs)
                 var view = this;
                 view.logic = {}
                 view.loader = {}
                 view.content = {}
+                view.components = {rendered:false};
                 view.inner = {elems: {pre: {}, post:{}}, loader: {}};
                 view.inner.elems.post = $transclude($scope, function(transElem, transScope) {
+
+
                     view.inner.elems.pre = transElem;
                     view.inner.scope = transScope;
                 });
+                var numChildren = view.inner.elems.post.length;
+                for (var i = 0; i < numChildren; i++) {
+                    var child = view.inner.elems.post[i];
+                    if (child && child.outerHTML && child.nodeName) {
+
+                        if (child.nodeName.toLowerCase() === 'components') {
+
+                            DataService.initComponent(child);
+                        }
+                    }
+                }
+                console.log('components are rendered')
+                view.components.rendered = true;
+
+
+
 
                 var hasLoader = CompService.doesElemHaveLoader(view.inner.elems);
                 view.inner.loader = hasLoader.loader;
@@ -2403,7 +2421,7 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
                     if (!(propNameRender in CompService.css.render)) {
                         propNameRender = 'general'
                     }
-                    if (element[0].nodeType === 1) {
+                    if (element[0] && element[0].nodeType === 1) {
                         CompService.css.render[propNameRender](element, attr[propName], options);
                     }
                 }

@@ -6,11 +6,12 @@ angular
     '$parse',
     '$rootScope',
     '$stateParams',
+    '$interpolate',
     'XHRService',
     DataService
     ]);
 
-function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRService) {
+function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRService, $interpolate) {
   var initConfigDict = {
     vars: {},
     base_url: "",
@@ -28,7 +29,8 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
     detectDataType: detectDataType,
     dataMappings: dataMappings,
     dataCache: dataCache,
-    applyListParams: getApplyListParamsFunc($rootScope)
+    applyListParams: getApplyListParamsFunc($rootScope),
+    initComponent: registerDOMCustomComponents
   }
 
   function getApplyListParamsFunc(root) {
@@ -167,6 +169,43 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
         });
   }
 
+  function registerDOMCustomComponents(component_arr) {
+    var componentLength = component_arr.children.length;
+    for (var i = 0; i < componentLength; i++) {
+      var component = component_arr.children[i];
+      if (!component.nodeName) continue;
+      var compDict = {
+        name: camelCase(component.nodeName.toLowerCase()),
+
+      }
+
+      if ('attributes' in component) {
+        var attributes = component.attributes;
+        compDict.fields = getFieldsFromAttributes(attributes);
+      }
+      if (Object.keys(compDict.fields ).length) {
+        compDict.scope = compileComponentVars({external: compDict.fields});
+        console.log(compDict.fields)
+      }
+      compDict.template = component.innerHTML
+      console.log(compDict)
+      registerOneDirective(compDict)
+      console.log('registering.. complete')
+    }
+
+    function getFieldsFromAttributes(attr_dict) {
+      var _dict = {};
+      console.log(attr_dict)
+      for (attr_name in attr_dict) {
+
+        var kv = attr_dict[attr_name]
+        _dict[kv.name] = kv.value;
+      }
+
+      return _dict;
+    }
+  }
+
   function registerDirectives(component_dict) {
 
     for (component in component_dict) {
@@ -180,21 +219,24 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
 
   }
 
-  function registerOneDirective(name, scope, template_url) {
-    console.log('registering', name, scope, template_url)
-     angular.module('uguru.shared.directives').directive(name, ['$compile', function($compile) {
-      return {
-        restrict: 'E',
-        templateUrl: template_url,
-        scope: _scope,
-        replace: true,
-        link: function(scope, element, attr) {
-          console.log(elemento)
-        }
-      }
-    }])
+  // function registerOneDirective(name, scope, template_url, template) {
+  //   console.log()
+  //    angular.module('uguru.shared.directives').directive(name, ['$compile', function($compile) {
+  //     return {
+  //       restrict: 'E',
+  //       templateUrl: template_url || null,
+  //       template: template || null,
+  //       scope: _scope,
+  //       replace: true,
+  //       link: function(scope, element, attr) {
+  //         console.log(element)
+  //         // console.log(elemento)
+  //       }
+  //     }
+  //   }])
 
-  }
+
+  // }
 
   function registerMappingFunc(root_scope) {
 
@@ -500,16 +542,17 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
   }
 
   function registerOneDirective(dir_info) {
-    // console.log(dir_info.scope, dir_info.templateUrl)
+    console.log(dir_info.scope, dir_info.name)
     componentModule.directive(dir_info.name, [function() {
       var dirObj = {
         restrict: 'E',
         transclude: 'element',
         replace:true,
         scope: dir_info.scope,
-        templateUrl: function(element, attr) {
+        templateUrl: dir_info.template_url && function(element, attr) {
             return dir_info.templateUrl
         },
+        template: dir_info.template,
         link: function preLink(scope, element, attr, ctrl, transclude) {
           scope.root = scope.$parent.root
           scope.public = scope.$parent.public;
