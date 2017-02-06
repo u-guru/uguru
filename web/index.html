@@ -9,8 +9,9 @@
                initTime: new Date().getTime()
            };
        </script>
+       <base href='/'> </base>
    </head>
-   <body  onload="timer.body = new Date().getTime()" ng-app="uguru" keypress-events>
+   <body onload="timer.body = new Date().getTime()" ng-app="uguru" keypress-events>
        <div class="loader-portal default">
 		   <!-- <div class="loader-portal-inside"
 		   	init-with="p-op"
@@ -120,17 +121,20 @@
                'shared/js/lib/bowser.min.js',
                'shared/js/lib/snap.svg.min.js',
                'shared/js/lib/ionic.bundle.min.js',
+               'shared/js/lib/ng.upload.min.js',
                'shared/js/lib/restangular.min.js',
                'shared/js/lib/lodash.min.js',
                'shared/js/lib/prism.min.js',
                'shared/js/lib/shifty.min.js',
                'shared/js/lib/swiper.min.js',
                'ui/js/controllers/UIMainController.js',
+
                'shared/js/directives/AnimationDirectives.js',
                'shared/js/directives/CalendarDirectives.js',
                'shared/js/directives/ElementDirectives.js',
                'shared/js/directives/ComponentDirectives.js',
                'shared/js/controllers/RootController.js',
+               'shared/js/controllers/AttachFileContainerController.js',
                'shared/js/directives/BaseComponentDirectives.js',
                'shared/js/services/LocalStorageService.js',
                'shared/js/services/LoaderService.js',
@@ -159,6 +163,7 @@
                'shared/js/services/SendService.js',
                'shared/js/services/PropertyService.js',
                'shared/js/services/CompService.js',
+               'shared/js/services/ViewService.js',
                'shared/js/services/EvalService.js',
                'shared/js/services/DataService.js',
                'shared/js/services/ElementService.js',
@@ -212,7 +217,9 @@
                'preapp/js/started/SplashAccountController.js',
                'preapp/js/started/SplashCourseController.js',
                'preapp/js/started/SplashDemographicsController.js',
-              'preapp/js/SplashTransitionsController.js'
+              'preapp/js/SplashTransitionsController.js',
+
+
            ];
            var fileInitCB = {
                'shared/js/lib/snap.svg.min.js': initSnapLoadedEvent
@@ -266,6 +273,8 @@
                newEvent.initEvent(event_name, true, true);
                return newEvent;
            }
+
+
 
 
 

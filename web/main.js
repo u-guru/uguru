@@ -1,8 +1,8 @@
 var LOCAL = true; _startpage = 'calendar'; var FIRST_PAGE='^.' + _startpage; var img_base = ''; if (LOCAL) {BASE = 'remote/';REST_URL = "http://localhost:5000";}
 
-angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp', 'uguru.ui',
+angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'ngFileUpload', 'uguru.preApp', 'uguru.ui',
   'uguru.shared.directives', 'uguru.shared.services',
-  'uguru.shared.directives.components', 'uguru.shared.directives.base.components', 'uguru.shared.controllers', 'uguru.admin'])
+  'uguru.shared.directives.components', 'uguru.shared.directives.base.components', 'uguru.shared.controllers', 'uguru.admin', 'ngSanitize'])
 
 .run(function($ionicPlatform,
   $state, $ionicHistory, $rootScope,
@@ -14,19 +14,27 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp', 'u
 
 .config(function($stateProvider, $urlRouterProvider, RestangularProvider,
   $ionicConfigProvider, $compileProvider, $provide, $locationProvider, $httpProvider,$sceDelegateProvider) {
-   // $locationProvider.html5Mode({enabled: true, base:''});
+
    $sceDelegateProvider.resourceUrlWhitelist([
     'self',
     'https://uguru.me/static/**',
     'https://docs.google.com/**',
     'http://bouncejs.com/**',
     'http://cubic-bezier.com/**',
-    'http://codepen.io/**'
+    'http://codepen.io/**',
+    'http://**.s3-website-us-west-1.amazonaws.com/',
+    'https://s3-us-west-1.amazonaws.com/**'
   ]);
 
-  $httpProvider.useApplyAsync(true);
-
-  RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
+  // $httpProvider.useApplyAsync(true);
+  // $httpProvider.defaults.headers.common = {};
+  // $httpProvider.defaults.headers.post = {};
+  // $httpProvider.defaults.headers.put = {};
+  // $httpProvider.defaults.headers.patch = {};
+  // $httpProvider.defaults.headers.options = {};
+  // if (!document.getElementsByTagName('head')[0].querySelector('base')) {
+  //   document.getElementsByTagName('head')[0].appendChild(angular.element('<base href="/"></base>')[0])
+  // }
 
   if ($ionicConfigProvider){$ionicConfigProvider.views.swipeBackEnabled(false);}
 
@@ -89,7 +97,16 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp', 'u
     parent: 'root',
     url:'/ui/samples/{folder}/{prefix}/*path',
     templateUrl: function templateProvider($stateParams) {
-      return 'ui/templates/samples/' + $stateParams.folder + '/' + $stateParams.prefix  + '.html'
+      var prefix = $stateParams.prefix
+      var ext;
+      if ($stateParams.path) {
+        prefix = prefix + '/' + $stateParams.path;
+        ext = $stateParams.path.split('.')[1];
+        if (['tpl', 'html'].indexOf(ext) > -1) {
+          prefix = prefix.replace(ext, '')
+        }
+      }
+      return 'ui/templates/samples/' + $stateParams.folder + '/' + prefix  + (ext || '.html')
     },
     controller: 'SingleViewController',
     controllerAs: 'docs'
@@ -595,8 +612,12 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp', 'u
   })
 
 
+
+
   $urlRouterProvider.when("/admin/api/list", "/admin/api");
+
   $urlRouterProvider.otherwise('/');
+
 
 
 });

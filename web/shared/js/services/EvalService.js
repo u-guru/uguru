@@ -50,24 +50,22 @@ function EvalService($compile, $parse, $interpolate, $rootScope) {
             }, eval_dict.delay + 0)
             return;
         }
-        if (!('vars' in scope)) {
-            scope.vars = {};
-        }
+        // if (!('vars' in scope)) {
+        //     scope.vars = {};
+        // }
 
+            // console.log($interpolate(eval_dict.value.current)(scope))
+            var evalString =  eval_dict.varName + '=' + autoDetectValueType($interpolate(eval_dict.value.current)(scope), eval_dict);
 
-            var evalString =  eval_dict.varName + '=' + autoDetectValueType(eval_dict.value.current, eval_dict);
-            if (evalString.indexOf('vars') === -1) {
-                evalString = 'vars.' + evalString
-            }
-            scope.$eval(evalString);
-            console.log(evalString)
-
+            scope.$parent.$eval(evalString);
+            // console.log(evalString)
+            // console.log(scope.$parent.view.data.tabIndex)
         return;
     }
 
     function autoDetectValueType(current, dict) {
         var parsedResult = current;
-        console.log(current);
+        // console.log(current);
         if (!dict.type) {
             if (["true", "false"].indexOf(current) > -1) {
                 dict.type = 'bool';

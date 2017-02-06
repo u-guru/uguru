@@ -1,16 +1,17 @@
+<view w='100' h='100' abs render-after-ext-scripts>
 
-<view w='100' h='100' absw render-after-ext-scripts>
 
-
-    <loader grow='1' width='100%' height='100%' z='1' abs ms="2500" import='./ui/templates/samples/visualizer/components/viz-loader.tpl'> </loader>
+    <!-- <loader  grow='1' width='100%' height='100%' z='1' abs ms="5000" import='./ui/templates/samples/visualizer/components/viz-loader.tpl'> </loader> -->
 
     <!-- main has a full page loader as well, not sure if its needed..  it imports from     ui/templates/components/base/main.tpl or you can provide your own view.
 
     Think of the loader use case for the main element to be the "entrance" && assume that the loader='' imported URL could be the same size
     -->
 
+    <variables>
+    </variables>
 
-    <components >
+    <components url='./ui/templates/samples/visualizer/components/viz-bar-components.tpl'>
         <viz-bar sample="sample" easing="easing">
             <div w='12px' p-x="2px" grow='1'>
                 <div w="8px" h="{{::sample}}px" bg='white' rad="16px" p="2px"
@@ -22,15 +23,20 @@
                 </div>
             </div>
         </viz-bar>
+        <visualizer list='list'>
+
+                <viz-bar u-list='sample in {{list}}'  sample="{{sample}}" easing="easeOutElastic" u-list> </viz-bar>
+        </visualizer>
     </components>
 
-    <main grow='1' size='100' column>
+    <main size='100' column>
 
         <header grow='1' x='center' y='center' bg='charcoal'>
             Samir's ViZ App
         </header>
         <!-- u-list this to get several one pagers-->
         <content bg='slate' grow='1' x='center' y='center' ng-if='view.loader.complete' row>
+            <visualizer list='[15, 20, 10, 13, 18, 19, 20, 13, 12, 9, 23, 20, 10, 13, 18, 19, 20, 13, 12, 9, 23, 15, 20, 10, 13, 18, 19, 20, 13, 12, 9, 23, 20, 10, 13, 18, 19, 20, 13, 12, 9, 23, 15, 20, 10, 13, 18, 19, 20, 13, 12, 9, 23, 20, 10, 13, 18, 19, 20, 13, 12, 9, 23]'> </visualizer>
             <div grow='1' row>
                 <viz-bar u-list="sample in [15, 20, 10, 13, 18, 19, 20, 13, 12, 9, 23, 20, 10, 13, 18, 19, 20, 13, 12, 9, 23]" sample="{{sample}}" easing="bouncePast"> </viz-bar>
             </div>

@@ -24,10 +24,15 @@ angular.module('uguru.shared.controllers', [])
     root.window.browser = _browser;
     root.window.tablet = root.window.browser.size.tablet
     root.mainViews = [];
+    root.math = Math;
     root.customComponents = [];
     root.linkElemCache = {};
     _window = root.window;
-
+    var rand = 1;
+    $scope.randInt = getRandomInt;
+    $scope.randDecimal = function getRandomArbitrary(min, max) {
+      return Math.random() * (max - min) + min;
+    }
 
     root.window.elemInfo = getElemWindowInfo(root.window);
     root.base_url = RootService.getBaseUrl();
@@ -66,7 +71,48 @@ angular.module('uguru.shared.controllers', [])
 
     // })
 
+    root.list = {
+      ofSize: function(size) {
+        return new Array(parseInt(size))
+      },
+      ofSizeRandInt: function(size, min, max) {
+        var arr = new Array(parseInt(size))
+        arr.forEach(function(item, i) {
+          arr[i] = getRandomInt(parseInt(min), parseInt(max))
+        })
 
+        return arr;
+      }
+    }
+    root.random = {
+      int: getRandomInt
+    }
+    $scope.list = {
+      ofSize: function(size) {
+        return new Array(parseInt(size))
+      },
+      ofSizeWithObj: function(size, obj) {
+        console.log(size, obj)
+        var list = [];
+        size = size || 1;
+        size = parseInt(size);
+        for (var i = 0; i < size; i++) {
+          result = angular.copy(obj);
+          result.id = i + 1;
+          list.push(result)
+        }
+        return list;
+      }
+    }
+
+
+    function getRandomInt(min, max) {
+      // console.log(min, max)
+      min = Math.ceil(parseInt(min));
+      max = Math.floor(parseInt(max));
+      var result = Math.floor(Math.random() * (max - min)) + min;
+      return result
+    }
 
     // XHRService.updateJSONFile()
 
@@ -105,7 +151,30 @@ angular.module('uguru.shared.controllers', [])
 
 
   }
-]);
+]).filter('distinctify', function() {
+    return function(array, base) {
+
+      var arr = [ ];
+      array.forEach(function(item, i) {
+        item = angular.copy(item);
+        item.id = i;
+
+        arr.push(item.push);
+      })
+
+      return array.slice();
+    }
+  }).filter('randomize', function() {
+
+    return function(array, fields) {
+      array.forEach(function(item, i) {
+        item.id = i;
+      })
+      console.log(array)
+      return array;
+    }
+
+  })
 
 function pushElemPlayer(r_inspector) {
   return function(elem) {

@@ -15,10 +15,11 @@ angular.module('uguru.shared.services')
     'CompService',
     'KeyboardService',
     'EvalService',
+    'ScrollService',
     ElementService
         ]);
 
-function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window, RootService, SVGService, $parse, SendService, TweenService, $compile, CompService, KeyboardService, EvalService) {
+function ElementService($timeout, $state, UtilitiesService, DirectiveService, AnimationFrameService, $window, RootService, SVGService, $parse, SendService, TweenService, $compile, CompService, KeyboardService, EvalService, ScrollService) {
       var rShortcuts = {special: getSpecialAnimShortcuts(), animations:null, propValues: {}, props: {}, values:{}};
       var stateShortcuts = {};
       var rAnimations;
@@ -42,8 +43,71 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         applySendAnimPropEval: applySendAnimPropEval,
         filterVarStates: filterVarStates,
         registerVarStates: registerVarStates,
-        getInternalDelay: getInternalDelay
+        getInternalDelay: getInternalDelay,
+        checkAndReplaceSpecialProperties: checkAndReplaceSpecialProperties,
+        findElementInContainerQueue: findElementInScrollContainerQueue
       }
+
+      function findElementInScrollContainerQueue($scope, $element, $attrs) {
+              for (container_name in ScrollService.scroll.contained) {
+                var container = ScrollService.scroll.contained[container_name];
+                if ('postDictQueue' in container && container.postDictQueue.length) {
+                  container.postDictQueue.forEach(function(arg_dict, i) {
+                    if($element[0].outerHTML === arg_dict.element[0].outerHTML && !arg_dict.processed && ($element[0].clientWidth || $element[0].clientHeight)) {
+
+                      var results = {pos: {}, neg: {}};
+                      var scrollObj = arg_dict.scrollInfo;
+                      if (scrollObj.percent in container.posDict) {
+                        var percentObj = container.posDict[scrollObj.percent];
+                        if (scrollObj.axis in percentObj) {
+                          var axisDetails = percentObj[scrollObj.axis];
+                          if (scrollObj.pos) {
+                            var axisElemObj;
+                            if (!axisDetails.pos.functions || !axisDetails.pos.functions.length) {
+                              axisDetails.pos.functions = [];
+                            }
+
+                            var posFilteredActions = ScrollService.getPositiveScrollActions(arg_dict.elem_info.actions, checkAndReplaceSpecialProperties);
+                            if (Object.keys(posFilteredActions).length) {
+
+
+                              axisDetails.pos.functions.push({
+                                element: $element,
+                                scope: $scope,
+                                attr: $attrs,
+                                actions: posFilteredActions,
+                                context: arg_dict.elem_info.context,
+                                function: arg_dict.elem_info.callback
+                              })
+                            }
+                          }
+                          if (scrollObj.neg) {
+                            if (!axisDetails.neg.functions) {
+                              axisDetails.neg.functions = [];
+                            }
+                            var negFilteredActions = ScrollService.getNegativeScrollActions(arg_dict.elem_info.actions, checkAndReplaceSpecialProperties)
+                            if (Object.keys(negFilteredActions).length) {
+                              axisDetails.neg.functions.push({
+                                element: $element,
+                                scope: $scope,
+                                attr: $attrs,
+                                context: arg_dict.elem_info.context,
+                                actions:negFilteredActions,
+                                function: arg_dict.elem_info.callback
+                              })
+                            }
+                          }
+                        }
+                      }
+                    }
+                    // console.log(arg_dict.element[0].outerHTML === )
+                  })
+                }
+              }
+            }
+
+
+
 
       function registerVarStates(scope, elem, attr, state_arr) {
 
@@ -321,7 +385,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         state.actions = parsedArgs.actions;
 
         state.nameCamel = parsedArgs.fullNameCamel;
-        state.exec = getStateFunc(state.type, state.name, parsedArgs.actions, rShortcuts);
+        state.exec = getStateFunc(elem, state.type, state.name, parsedArgs.actions, rShortcuts);
         return state;
       }
 
@@ -342,7 +406,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         }
       }
 
-      function getStateFunc(type, name, actions, shortcuts) {
+      function getStateFunc(element, type, name, actions, shortcuts) {
         var context = {name: name, type: type}
         // console.log(shortcuts)
           if (type === 'init' && name == 'with') {
@@ -357,7 +421,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                 rShortcuts.args = RootService.animations.customShortcuts.args;
               } else if (!rShortcuts.animations.customShortcuts) {
                 $timeout(function() {
-                  getStateFunc(type, name, actions);
+                  getStateFunc(element, type, name, actions);
                   // scope.$apply();
                 });
               }
@@ -370,15 +434,31 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (type === 'on') {
 
             return function(element, scope, attr) {
+              if (name && name[0] === 'scroll' && actions.anim) {
+                if (name.length > 1) {
+                  context.streamOnly = true;
+                  var stream = applyAnimArgs(element, scope, actions.anim.parsed, context);
+                  var args = name.length > 2 && name.slice(2);
 
+                  ScrollService.linkScrollStateToContainer(name[1], element, stream, args);
+                }
+              }
 
               applyOnToElement(scope, element, attr, actions, context);
             }
           }
           if (type === 'when') {
 
+            var scrollObj = (name.indexOf('scroll') > -1 && ScrollService.detectScrollWhenState(name)) || {};
+            // console.log(scrollObj)
+            if (scrollObj.name && scrollObj.axis && scrollObj.name in ScrollService.scroll.contained) {
+
+              ScrollService.insertElementActionsIntoContainer(scrollObj, {callback: applySendAnimPropEval, type: type, context:context, name: name, actions: actions, element: element, scope:element.scope()})
+            }
             return function(element, scope, attr, updated_actions) {
-              applySendAnimPropEval(element.scope(), element, updated_actions || actions, attr, context);
+              // console.log(element.scope())
+
+              applySendAnimPropEval(element.scope(), element, actions||updatedActions, attr, context);
             }
           }
       }
@@ -403,9 +483,8 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
 
       }
 
-      function getInternalDelay(key, int_str, delay_match_strs) {
+      function getInternalDelay(key, int_str, delay_match_strs, type) {
           //to refactor
-
           if (!rShortcuts || !rShortcuts.cmds) {
             var animStatus = loadAnimations();
             if (!rShortcuts || !rShortcuts.cmds || !animStatus) {
@@ -425,6 +504,41 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           var argTypeStr = {'a': 'anim', 's': 'send', 'p': 'prop', 'e': 'eval'};
           if (key.length === 1) {
             key = argTypeStr[key]
+          }
+          if (key === 'prop' || argTypeStr[key] === 'prop') {
+
+            var properties = checkAndReplaceSpecialProperties(int_str);
+
+            properties.replace(', ', ',').split(',').forEach(function(prop_set, i) {
+
+              if (prop_set.split(':').length > 2) {
+                var propName = prop_set.split(':')[0];
+                // console.log(propName)
+                if (!(propName in result)) {
+                  result[propName] = {};
+                }
+                var delayNum = prop_set.split(':')[2];
+
+                if (delayNum.indexOf('%') > -1) {
+                  if (!result[propName].percent) {
+                    result[propName].percent = true;
+                  }
+                  delayNum = delayNum.replace('%', '');
+
+                  if (delayNum.indexOf('-') > -1) {
+                    result[propName].neg = true;
+                  }
+                }
+                if (!('delay' in result[propName])) {
+                  result[propName]['delay'] = [parseFloat(delayNum)];
+                } else
+                {
+                  result[propName]['delay'].push(parseFloat(delayNum));
+                }
+
+              }
+            })
+            return result;
           }
           if (key === 'send' || argTypeStr[key] === 'send') {
 
@@ -501,35 +615,76 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           scope.validKeys = attr.acceptKeys || 'abcdefghijklmnopqrstuvwxyz';
           var specialKeys = {'space': 32}
           //keyboardservice
-          scope.$on('key' + name[1], function(onEvent, keypressEvent) {
-            var charPressed = KeyboardService.keyMap.toChar[keypressEvent.which];
+          if (scope.keyboardInitListenerCancel) return;
+          scope.keyboardInitListenerCancel = scope.$on('key' + name[1], function(onEvent, keypressEvent) {
+
+            var charPressed = KeyboardService.keyMaps.toChar[keypressEvent.which];
             charPressed = charPressed && charPressed.toLowerCase() || '';
-            if (scope.validKeys.indexOf(charPressed) > -1 ) {
-              console.log('sending...')
+            if (!scope.recentKeys) {
+              scope.recentKeys = [];
+            }
+
+            if (scope.validKeys.indexOf(charPressed) > -1 && (scope.recentKeys.indexOf(charPressed) === -1)) {
+              console.log('sending...', scope.validKeys.indexOf(charPressed) > -1, (scope.recentKeys.indexOf(charPressed) === -1));
               applySendAnimPropEval(scope, element, actions, attr, context);
+              scope.recentKeys.push(charPressed);
+              removeRecentKeyAfterDelay(scope.recentKeys, charPressed);
+
+
+            }
+
+            function removeRecentKeyAfterDelay(keys, char_pressed, delay) {
+              delay = delay || 100
+              $timeout(function() {
+                keys.slice().forEach(function(key_char, i) {
+                  if (key_char === charPressed) {
+                    keys.splice(i, i+1);
+                  }
+                })
+              }, delay)
             }
           });
         }
         else {
-          // registerAnimationListeners(scope, element, attr, actions, context)
-          element.on(name,function(e) {
+          if (name && name[0] === 'scroll' && actions.anim) {
+            if (name.length > 1) {
+              context.streamOnly = true;
+              var stream = applyAnimArgs(element, scope, actions.anim.parsed, context);
+              var args = name.length > 2 && name.slice(2);
+
+              ScrollService.linkScrollStateToContainer(name[1], element, stream, args);
+            }
+          } else {
+
+            element.on(name,function(e) {
+              console.log(context)
             // delete actions['send']
-
-
-              applySendAnimPropEval(scope, element, actions, context)
-          })
+              applySendAnimPropEval(scope, element, actions, attr, context)
+            })
+          }
+          // registerAnimationListeners(scope, element, attr, actions, context)
         }
       }
 
       function applySendAnimPropEval(scope, element, actions, attr, context, cb) {
+
           if (!actions) return;
+
+          // console.log(actions.prop)
           if (actions.eval) {
             EvalService.parseAndRenderExpressions(element, scope, attr, actions.eval, context);
           }
+          // console.log(actions.anim, scope)
           actions = EvalService.renderActionExpressions(scope, attr, actions);
 
 
+
+
           if (actions.prop) {
+            if (actions.prop.parsed.indexOf(']') > -1) {
+              actions.prop.parsed = actions.prop.parsed.replace(']', '');
+            }
+
             if ('prop' in actions.prop.delays) {
               $timeout(function() {
                 applyPropsToElement(element, actions.prop.parsed, actions.prop.delays);
@@ -555,9 +710,10 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
                 })
                 actions.anim.parsed = animArr.join(",")
             }
-            $timeout(function() {
+            // $timeout(function() {
+              // console.log(element, scope, actions)
               applyAnimArgs(element, scope, actions.anim.parsed, context);
-            })
+            // })
           }
 
           if (actions.send) {
@@ -605,12 +761,52 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
         // if (element[0].nodeName === '#comment') {
         //   console.log(scope.elem, element.after(), element.parent().children())
         //   return;
-
+        // console.log(animations)
         debug = debug || false;
+
         var stateName = context.type + '-' + context.name;
         var defaults = {"kf":60,"autoPlay":false,"toolbar":{},"hidePlot":false}
         var animDelay = 0;
         // var animationSplitIndex = animations.indexOf(':delay-');
+        var animArr = resolveAnimationDelays(animations);
+
+        animations = animArr.join(",");
+
+        // animations = '[' + animations + ']'
+        // console.log('pre condense', animations)
+        // animations = condenseAnimationsAndShortcuts(scope, animations);
+
+        var state = AnimationFrameService.init.state('', animations, element[0], defaults);
+        // console.log(state.props.counter[0])
+        // console.log(state)
+        if (!player) {
+
+          player = AnimationFrameService.getPlayer();
+        }
+
+        animDelay = animDelay || 0;
+
+        player.scheduleStream(player, state, animDelay, debug);
+        if (!scope || (context && context.streamOnly)) {
+
+          return {player: player, stream:state, delay: animDelay}
+        }
+        //TODO, inject global offset here
+        // if (animDelay && animDelay>0) {
+        //   $timeout(function() {
+        //     if (!player.active) {
+        //       player.play(player);
+        //     }
+        //  }, animDelay)
+        // }
+        // else {
+
+          if (!player.active) {
+              player.play(player);
+          }
+      }
+
+      function resolveAnimationDelays(animations, element) {
         var animArr = [];
         //resolve delays
         animations.split(',').forEach(function(animation, i) {
@@ -632,44 +828,8 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           finalAnim = checkAndReplaceSpecialArgs(element, finalAnim);
           animArr.push(finalAnim);
         })
-
-        animations = animArr.join(",");
-
-        // animations = '[' + animations + ']'
-        // console.log('pre condense', animations)
-        // animations = condenseAnimationsAndShortcuts(scope, animations);
-
-        var state = AnimationFrameService.init.state('', animations, element[0], defaults);
-        // console.log(state.props.counter[0])
-        // console.log(state)
-        if (!player) {
-
-          player = AnimationFrameService.getPlayer();
-        }
-
-        animDelay = animDelay || 0;
-
-        player.scheduleStream(player, state, animDelay, debug);
-        if (!scope) {
-
-          return {player: player, stream:state, delay: animDelay}
-        }
-        //TODO, inject global offset here
-        // if (animDelay && animDelay>0) {
-        //   $timeout(function() {
-        //     if (!player.active) {
-        //       player.play(player);
-        //     }
-        //  }, animDelay)
-        // }
-        // else {
-
-          if (!player.active) {
-              player.play(player);
-          }
+        return animArr;
       }
-
-
 
       function checkShortcuts(str, arg) {
 
@@ -709,6 +869,25 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           })
 
           return propObjArr
+      }
+
+      function checkAndReplaceSpecialProperties(properties) {
+        if (properties.indexOf('rgba') > -1) {
+          specialProps = true;
+          var propSplit = properties.split('rgba(');
+          var propStrArr = [];
+          propSplit.forEach(function(rgba_string) {
+            if (rgba_string.indexOf(')') > -1) {
+              var endParenthical = rgba_string.split(')');
+              endParenthical[0] = endParenthical[0].split(',').join('|');
+              rgba_string = endParenthical.join(")")
+            }
+            propStrArr.push(rgba_string)
+          })
+          properties = propStrArr.join('rgba(');
+        }
+
+        return properties;
       }
 
 
@@ -759,7 +938,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             return;
           }
           var iPropSplit = prop.split(':');
-
+          // console.log()
           if (iPropSplit.length >= 2) {
             var propKey = iPropSplit[0].trim();
             var propValue = iPropSplit[1].trim();
@@ -777,9 +956,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           if (specialProps && kv.value.indexOf('|') > -1) {
             kv.value = kv.value.split('|').join(',');
           }
-          // console.log(elem, kv.key, kv.value)
           CompService.css.apply(elem, kv.key, kv.value);
-          // elem.css(kv.key, kv.value);
         })
       }
 
@@ -873,7 +1050,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
             rShortcuts.args = RootService.animations.customShortcuts.args;
           }
 
-          if (stream && stream.length && stream in rShortcuts.cmds) {
+          if (stream && stream.length && rShortcuts.cmds && stream in rShortcuts.cmds) {
             stream = rShortcuts.cmds[stream];
           }
 
@@ -1149,7 +1326,7 @@ function ElementService($timeout, $state, UtilitiesService, DirectiveService, An
           elem.css('stroke-dasharray', pathLength);
           var remainderAnim = formatted.split(':').slice(3).join(":");
           result = "stroke-dashoffset:" + (pathLength - pathLengthStart) + ':' + (pathLength - pathLengthEnd) + ':' + remainderAnim;
-          console.log(result)
+          // console.log(result)
           return result;
         }
         return 'strokeDashoffset:' + (elem[0].getTotalLength() * percentDraw).toFixed(4);

@@ -77,9 +77,9 @@ function XHRService($timeout) {
       }
       getJSONFile('PUT', test_url, callback, JSON.stringify(data), true)
   }
-  function getJSONFile(request_type, url, callback, params, skip_parse) {
+  function getJSONFile(request_type, url, callback, params, skip_parse, options) {
     skip_parse = skip_parse || false;
-
+    options = options || {};
     var xhr = new XMLHttpRequest();
     XHRQueue.push({xhrObj: xhr, type: request_type, url:url, func: callback, params: params});
     var frontQueue = XHRQueue.splice(0, 1)[0];
@@ -95,6 +95,9 @@ function XHRService($timeout) {
             callback && callback(frontQueue.xhrObj);
           }
       };
+      if (options.gzip) {
+        // xhr.setRequestHeader('Accept-Encoding', 'deflate');
+      }
       ['POST', 'PUT'].indexOf(request_type) > -1 && xhr.setRequestHeader("Content-type", "application/json");
       // console.log('sending', frontQueue.type, frontQueue.url, request_type)
       xhr.send(params);

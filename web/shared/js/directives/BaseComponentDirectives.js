@@ -2,6 +2,9 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
 
  angular.module('uguru.shared.directives.base.components')
     .directive("letter", ["CompService", "$compile", function(CompService, $compile) {
+
+    }])
+    .directive("letter", ["CompService", "$compile", function(CompService, $compile) {
         return {
             restrict: 'E',
             replace: true,
@@ -24,7 +27,14 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             }
         }
     }])
-
+    .directive('attachContainer', [function() {
+        return {
+            restrict: 'AE',
+            templateUrl: 'shared/templates/attach.container.tpl',
+            controller: 'AttachFileContainerController',
+            controllerAs: 'files'
+        }
+    }])
     .directive('list', ['$compile', '$rootScope', '$parse',  function($compile, $rootScope, $parse) {
         return {
             restrict: 'A',
@@ -419,6 +429,155 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             }
         }
     }])
+    .directive('scrollRef', ['ScrollService', '$timeout', '$interpolate', function(ScrollService, $timeout, $interpolate) {
+        return {
+            restrict: 'A',
+            terminal: true,
+            controller: function($attrs, $scope) {
+                if ($attrs.scrollRef.indexOf('{{') > -1) {
+                    $scope.scrollRef = $attrs.scrollRef;
+                }
+
+            },
+            link: {post: function postLink(scope, element, attr) {
+
+                // $timeout(function() {
+//
+                    // scope.$watch(function() {
+                    //     var mainScrollContainerElem = ScrollService.scroll.current;
+                    //     return mainScrollContainerElem
+                    // }, function(value) {
+                        // if (value && 'nodeName' in value) {
+                            // var scrollFunc = ScrollService.getScrollFunction(value, attr.scrollRef)
+                            // CONSOLE.LOG(ELEMENT)
+                            // element.ready(function() {
+
+
+                                var cancelWatcher = scope.$watch(function() {
+                                    var scrollTop = element[0].offsetTop;
+                                    return scrollTop;
+                                }, function(offset_top_value) {
+
+                                    if (offset_top_value > 0 && attr.scrollRef && attr.scrollRef.length && attr.scrollRef !== '#') {
+                                        var elemToScroll = document.querySelector(attr.scrollRef);
+                                        console.log(elemToScroll)
+                                    }
+                                })
+                                // })
+
+
+                            // })
+                            element.on('click', function(e) {
+                                var scrollToId = scope.scrollRef && $interpolate(scope.scrollRef)(scope) || attr.scrollRef;
+                                var elemToScrollTo = document.querySelector(scrollToId);
+                                var currentTop = elemToScrollTo.offsetTop - ScrollService.scroll.currentTop;
+                                if (Math.floor(currentTop)) {
+                                    ScrollService.scrollToY(ScrollService.scroll.current[0], currentTop,  500, 'easeInOutQuint');
+                                }
+                                // document.querySelector('[scrollable]').scrollTop = 500
+
+                            })
+                        // }
+                    // })
+
+
+                // })
+            }
+                    // })
+                // }
+
+            }
+        }
+    }])
+    .directive('scrollable', ['ScrollService', '$timeout', function(ScrollService, $timeout) {
+
+        return {
+            restrict: 'A',
+            compile: function(element, attr) {
+                var scrollName = ScrollService.initScrollContainer(element, attr);
+                var rect;
+                return function postLink(scope, elem) {
+                    // elem.ready(function() {
+
+                    //     // ScrollService.scroll.contained[scrollName].info.element = elem;
+                    //     // if (!ScrollService.scroll.current) {
+
+                    //     // }
+                    //     for (container_name in ScrollService.scroll.contained) {
+                    //         var container = ScrollService.scroll.contained[container_name]
+                    //         if ('info' in container && container['info'].element) {
+                    //             if (container.info.element[0].outerHTML === elem[0].outerHTML) {
+                    //                 if (ScrollService.scroll.current[0].scrollHeight) {
+                    //                     ScrollService.scrollToY(ScrollService.scroll.current[0], 500, 500, 'easeInOutSine')
+                    //                 }
+                    //             }
+                    //         }
+                    //     }
+                    // })
+
+                    var pos = {};
+                    var cancelWatcher = scope.$watch(function() {
+                        pos.rect = elem[0].getBoundingClientRect();
+                        return pos.rect.height
+
+                    }, function(value) {
+
+                        if (value && parseInt(value) && value > 0) {
+
+                            for (key in ScrollService.scroll.contained) {
+                                if (scrollName === key && 'info' in ScrollService.scroll.contained[scrollName]) {
+                                    if (pos.rect) {
+                                        // console.log(rect.height, rect.width);
+                                        ScrollService.scroll.contained[scrollName].info.height = pos.rect.height;
+                                        ScrollService.scroll.contained[scrollName].info.width = pos.rect.width;
+                                        ScrollService.scroll.contained[scrollName].info.top = pos.rect.top;
+                                        ScrollService.scroll.contained[scrollName].info.left = pos.rect.left;
+                                        ScrollService.scroll.contained[scrollName].info.rect = pos.rect;
+                                        ScrollService.scroll.contained[scrollName].info.posY = elem[0].scrollTop;
+                                        ScrollService.scroll.contained[scrollName].info.posX = elem[0].scrollLeft;
+                                        ScrollService.scroll.contained[scrollName].info.scrollWidth = elem[0].scrollWidth;
+                                        ScrollService.scroll.contained[scrollName].info.scrollHeight = elem[0].scrollHeight;
+                                        var scrollPos = {};
+                                        var _elem;
+                                        scope.$watch(function() {
+                                            _elem = elem;
+                                            return _elem[0].scrollTop
+
+                                        }, function(value) {
+                                            if ((value || _elem[0].scrollHeight) && _elem[0].scrollHeight > pos.rect.height) {
+                                                console.log('scrollHeight detected', pos.rect.height)
+                                                ScrollService.scroll.contained[scrollName].info.posY = value;
+                                                ScrollService.scroll.contained[scrollName].info.top = pos.rect.top;
+                                                ScrollService.scroll.contained[scrollName].info.element = _elem;
+                                                ScrollService.scroll.current = _elem;
+                                                ScrollService.scroll.currentTop = _elem[0].getBoundingClientRect().top;
+                                            }
+                                            if ((value || _elem[0].scrollWidth)&& _elem[0].scrollWidth > pos.rect.width) {
+                                                ScrollService.scroll.contained[scrollName].info.posX = value;
+                                                ScrollService.scroll.contained[scrollName].info.left = pos.rect.left;
+                                                ScrollService.scroll.contained[scrollName].info.element = _elem;
+                                                ScrollService.scroll.current = _elem;
+                                                ScrollService.scroll.currentLeft = pos.rect.left;
+                                            }
+
+
+                                        })
+                                        cancelWatcher();
+                                    }
+
+                                }
+                                // ScrollService.scroll.contained[scrollName].info.element = elem;
+
+                            }
+                        }
+                        // console.log(value)
+                    })
+
+                }
+            },
+
+        }
+    }])
     .directive('keypressEvents', [
       '$document',
       '$rootScope',
@@ -432,9 +591,14 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
               $rootScope.$broadcast('keydown', e);
 
               $rootScope.$broadcast('keydown:' + e.which || e.keyCode, e);
+              if (document.activeElement && document.activeElement.nodeName.toLowerCase() === 'input') {
+                    return;
+                }
             });
             $document.bind('keyup', function(e) {
-
+                if (document.activeElement && document.activeElement.nodeName.toLowerCase() === 'input') {
+                    return;
+                }
               $rootScope.$broadcast('keyup', e);
               $rootScope.$broadcast('keyup:' + e.which || e.keyCode, e);
             });
@@ -508,14 +672,16 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
                         dim.height = sizeAttrSplit[0];
                     }
                 }
+                var extension = '';
                 if (dim.width.indexOf('%') === -1 && dim.width.indexOf('px') === -1) {
                     extension = '%';
                 }
                 if (dim.height.indexOf('%') === -1 && dim.height.indexOf('px') === -1) {
                     extension = '%';
                 }
-                element.css('height', 100 + extension);
-                element.css('width', 100 + extension);
+
+                element.css('height', dim.width + extension);
+                element.css('width', dim.height + extension);
                 element.removeAttr('size');
                 // e.append(element)
             }
@@ -613,6 +779,115 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
     //         }
     //     }
     // }])
+    .directive('modal', ['$compile', function($compile) {
+        return {
+            restrict: 'E',
+            transclude:'element',
+            template: '<ui-view ng-transclude></ui-view>',
+            controller: function($scope, $attrs, $transclude) {
+                console.log($transclude());
+            }
+        }
+    }])
+    .directive('resize', ['$compile', '$parse', function($compile, $parse) {
+        return {
+            restrict: 'A',
+            terminal: true,
+            controller: function($scope, $attrs, $element) {
+
+                var value = $attrs.resize;
+
+                if (value.length && value.indexOf('.') === -1) {
+                    var cancelAfter = $attrs.$observe('resize', function(value) {
+                        findAndResizeElement($scope.view.main.element, $element, value)
+                        cancelAfter();
+                    })
+                }
+                else if ($scope.view.main && $scope.view.main.element){
+                    findAndResizeElement($scope.view.main.element, $element, $attrs.resize)
+                }
+                else if (!$scope.view.main) {
+                    var watcherMain = $scope.$watch(function(value) {
+                        if ('element' in value) {
+                            watcherMain();
+                            findAndResizeElement($scope.view.main.element, $element, $attrs.resize)
+                        }
+                    })
+                }
+
+                function findAndResizeElement(main_elem, elem, resize_elem) {
+                    main_elem.ready(function() {
+                        if (resize_elem.split('select').length > 1) {
+
+
+                                // elem.ready(function() {
+                            var elemRef = resize_elem.split('select:')[1];
+                            var params = [];
+                            var paramsMap = {'w': 'width', 'h':'height', 'l':'left', 'r': 'right', 't': 'top', 'b': 'bottom'}
+                            if (elemRef.split(':').length > 1) {
+                                params = elemRef.split(':')[1].split(',');
+                                elemRef  = elemRef.split(':')[0];
+
+
+                            }
+                            elem.ready(function() {
+
+
+                                var searchedElem = main_elem[0].querySelector(elemRef);
+                                if (searchedElem) {
+                                    var bounds = searchedElem.getBoundingClientRect();
+                                    if (params.length) {
+                                        $scope.resize = {};
+                                        params.forEach(function(param, i) {
+                                            param = param.replace('[', '').replace(']', '');
+
+                                            var multiplier = ['*','+','-', '/'].filter(function(oper, i) {return param.indexOf(oper) > -1});
+                                            if (multiplier.length) {
+                                                multiplier.forEach(function(oper, i){
+
+                                                    multiplier[i] = {num: parseFloat(param.split(oper)[1]), oper: oper}
+                                                    if (i === 0) {
+                                                        param = param.split(oper)[0];
+                                                    }
+                                                })
+                                            }
+
+                                            if (param in paramsMap) {
+                                                var prop = paramsMap[param];
+                                                var value = bounds[prop]
+                                                if (multiplier.length) {
+                                                    var valuestr = value;
+                                                    multiplier.forEach(function(obj, i) {
+                                                        valuestr += obj.oper + obj.num
+                                                    })
+                                                    value = $parse(valuestr)($scope)
+
+
+                                                }
+                                                $scope.resize[prop] = value + 'px';
+                                                elem.css(prop, value + 'px');
+                                            }
+
+                                            // elem.css('width', bounds.width + 'px');
+                                            // elem.css('left', bounds.left + 'px');
+                                        })
+                                    } else {
+
+                                    }
+
+                                }
+
+                            })
+
+
+                        }
+
+                    })
+
+                }
+            }
+        }
+    }])
     .directive('graphic', ['$compile', 'CompService',  function($compile, CompService) {
         return {
             restrict: 'E',
@@ -1118,20 +1393,6 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             }
         }
     }])
-    .directive("tabs", ["CompService", function(CompService) {
-        return {
-            restrict: 'E',
-            scope: false,
-            replace:true,
-            templateUrl: function(element, attr) {
-
-                return attr.import;
-            },
-            compile: function(element, attr) {
-                CompService.renderAllStyleAttributes(element, attr);
-            }
-        }
-    }])
     .directive("uInput", ["CompService", function(CompService) {
         return {
             restrict: 'E',
@@ -1143,6 +1404,26 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
                  return {
                     pre: function preLink(scope, elem, attr) {
                         scope.type = attr.type || 'light';
+                    }
+                }
+            }
+        }
+    }])
+    .directive("attrValueSet", ["DataService", function(DataService) {
+        return {
+            restrict: 'E',
+            scope: false,
+            replace:true,
+            compile: function(element, attr) {
+                for (attr_name in attr.$attr) {
+                    if (attr_name.indexOf('$') === -1 && attr[attr_name].split(' as ').length === 2) {
+                        var attr_d = {};
+                        var attrNameSplit = attr[attr_name].split(' as ');
+                        attr_d.pre = attr_name;
+                        attr_d.postdash = attrNameSplit[1].trim();
+                        attr_d.value = attrNameSplit[0];
+                        console.log(attr_d)
+                        DataService.initNewAttrDirective(attr_d);
                     }
                 }
             }
@@ -1171,19 +1452,37 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             }
         }
     }])
-    .directive("image", [function() {
-        return {
-            restrict: 'E',
-            scope: false,
-            replace:true,
-            templateUrl: 'shared/templates/components/base/image.tpl',
-            compile: function(element, attr) {
-                CompService.renderAllStyleAttributes(element, attr);
-                 return {
-                    pre: function preLink(scope, elem, attr) {
+    // .directive("image", [function() {
+    //     return {
+    //         restrict: 'E',
+    //         scope: false,
+    //         replace:true,
+    //         templateUrl: 'shared/templates/components/base/image.tpl',
+    //         compile: function(element, attr) {
+    //             CompService.renderAllStyleAttributes(element, attr);
+    //              return {
+    //                 pre: function preLink(scope, elem, attr) {
 
-                    },
-                    post: angular.noop
+    //                 },
+    //                 post: angular.noop
+    //             }
+    //         }
+    //     }
+    // }])
+    .directive("if", [function() {
+        return {
+            restrict: 'A',
+            priority:1000000,
+            template: function(element, attr) {
+                attr.$set('ngIf', attr.if);
+                element.removeAttr('attr');
+                console.log(element)
+                return '<!--' + attr.if + '-->'
+            },
+            link: {
+                pre: angular.noop,
+                post: function postLink(element, attr) {
+                    console.log(element);
                 }
             }
         }
@@ -1337,8 +1636,6 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             restrict: 'E',
             priority: 100000,
             scope: false,
-            // transclude:true,
-            // terminal:true,
             replace:true,
             compile: function(elem, attr) {
                 CompService.renderAllStyleAttributes(elem, attr);
@@ -1483,74 +1780,299 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             priority: 1000000
         }
     }])
-    .directive("view", ["CompService", "$compile", "$rootScope", "$parse", "DataService", function(CompService, $compile, $rootScope, $parse, DataService) {
+    .directive("bindings", [function() {
         return {
             restrict: 'E',
-            priority: 100000,
-            templateUrl: 'shared/templates/view.tpl',
-            transclude: {
-                loader: '?loader',
-                main: '?main',
-                external: "?external",
-                debug: "?debug"
-            },
-            replace:true,
+            transclude: true,
             controllerAs: 'view',
-            compile: function(elem, attr, transclude) {
+            template: '<ng-transclude></ng-transclude>',
+            link: function(scope, elem, attr, ctrl, transclude) {
+                var queue  = [];
+                var children = transclude(scope);
+                for (var i = 0; i < children.length; i++) {
 
+                    // console.log(children[i])
+                    // if (children[i].innerHTML) {
+                    //     console.log(children[i])
+                    // }
+                }
 
-                return {
-                    pre: function preLink(scope, elem, attr, ctrl, transclude) {
-
-                        // var e = (transclude(scope, function(clone, _scope) {}));
-
-                        // CompService.renderAllStyleAttributes(elem, attr);
-                        // console.log(transclude())
-                        // transclude(function(inner_elems, inner_scope) {
-                        //     console.log(elem)
-                        // })
-                        // console.log('it gets here')
-                        // console.log(elem)
-
-                        // elem.append(e)
-                    },
-                    post: function postLink(post_scope, post_elem, post_attr) {
-                        console.log(post_elem[0])
-                    }
+            }
+        }
+    }])
+    .directive("utility", [function() {
+        return {
+            restrict: 'E',
+            terminal:true,
+            replace:true,
+            transclude:true,
+            require:'?view',
+            template: function(element, attr) {
+                if (attr.type === 'footer') {
+                    return '<div fixed z-index="100" bg="charcoal-20p" ng-transclude> </div>'
                 }
             },
-            controller: function($element, $attrs, $scope, $transclude) {
+            controller: function($scope, $element, $attrs) {
+
+            },
+            link: function(scope, elem, attr, ctrl, transclude) {
+                var queue  = [];
+                var children = transclude(scope);
+                // elem.after(children);
+            }
+        }
+    }])
+    .directive("importDict", ['$parse', '$timeout', 'XHRService', function($parse, $timeout, XHRService) {
+        return {
+            restrict: 'E',
+            require: '?view',
+            transclude: 'element',
+            scope: false,
+            link: function(scope, element, attr, ctrl, tr) {
+                var dataName = ('as' in attr && attr.as) || 'key' in attr && attr.key;
+
+                var indexNum = scope.view.activeImports.length;
+
+                if (attr.url && attr.url.length) {
+                    scope.view.activeImports+= 1;
+
+                    XHRService.getJSONFile('GET', attr.url, function(data) {
+                        if (!('data' in scope.view)) scope.view.data = {};
+                        if (dataName) {
+                            scope.view.activeImports-= 1;
+                            // scope.view.activeImports.pop(0);
+
+                            if (!scope.view.activeImports.length) {
+                                console.log(scope.view.activeImports)
+                                // $timeout(function(){
+                                //     scope.$apply();
+                                // })
+                            }
+                            // addDataToViewDict(dataName, dict)
+                            if (attr.key) {
+                                scope.view.data[dataName] = data[dataName];
+                            } else {
+                                scope.view.data[dataName] = data;
+                            }
+
+                        }
+                    })
+                } else {
+                    var innerDict = tr()[0].innerHTML;
+                    var dict = $parse(innerDict)(scope);
+                    // if (!scope.view.data) scope.view.data = {};
+                    // console.log(scope.view.data, scope.$parent.view.data)
+                    if (dataName) {
+                        scope.view.data[dataName] = dict;
+                        console.log(scope.view.data)
+
+                    } else {
+                        scope.view.data = dict;
+                    }
+                }
+
+                // scope.$watch('view.data' , function(value) {
+
+
+
+                //     for (key in dict) {
+                //         value[key] = dict;
+                //     }
+                // })
+            }
+        }
+    }])
+    .directive("importFont", ['$timeout', function($timeout) {
+        return {
+            restrict: 'E',
+            require: '?view',
+            replace:false,
+            template: function(element, attr) {
+                if (attr.fF && attr.url && attr.ext) {
+                    var font = {};
+                    font.family = attr.fF;
+                    font.url = 'https://' + attr.url;
+                    var extSplit = attr.ext.split(',');
+                    extSplit.forEach(function(ext, i) {
+                        var formatSplit = ext.split('|');
+                        var format;
+                        if (formatSplit.length >1) {
+                            format = formatSplit[1];
+                        } else {
+                            format = ext
+                        }
+
+                        extSplit[i] = {
+                            url:[font.url,ext].join("."),
+                            format:format
+                        }
+                    });
+                    font.ext = extSplit;
+                    var links = [createLinkElement([font.url,'?family=',font.family].join(""), 'stylesheet', 'text/css'), createFontStyleElement(font)]
+                    var header =  document.head || document.getElementsByTagName('head')[0];
+                    // links.forEach(function(link, i) {
+                    //     if (link.styleSheet) {
+                    //         style.styleSheet.cssText = link.innerHTML
+                    //     }
+                    //     header.appendChild(link);
+                    // })
+                    function createLinkElement(href, rel, type) {
+                        var linkE = document.createElement('link');
+                        linkE.setAttribute('href', href)
+                        linkE.setAttribute('rel', rel)
+                        linkE.setAttribute('type', type)
+                        return linkE
+                    }
+                    function createFontStyleElement(font_str) {
+                        var importUrl = ['\@import url(', font.url, '?family=', font.family, ');'].join("")
+                        var fontFaceCSS = ['{\@font-face \{font-family: "', font.family, '";\n', "\}\}"].join("");
+                        font.ext.forEach(function(ext_dict, i) {
+                            fontFaceCSS += ['src: url("', ext_dict.url, '") format("', ext_dict.format, '");'].join("") + "\n";
+                        })
+
+                        var linkE = document.createElement('style');
+                        linkE.appendChild(document.createTextNode(font_str))
+                        return linkE
+                    }
+                    console.log(font.url)
+                    var fontStr = "<style> @font-face { font-family: " + font.family + "; src: url('" + font.url + "') format('woff'); }main{font-family:'" + font.family + "';}"
+                    var link =  createFontStyleElement(fontStr);
+                    header.appendChild(link);
+                    return "<style> @font-face { font-family: " + font.family + "; src: url('" + font.url + "') format('woff'), url('" + font.url.replace('.woff2', '') + ".woff2') format('woff2'), url('" + font.url.replace('woff', '') + ".ttf') format('truetype'); }main{font-family:'" + font.family + "';}"
+                }
+                return null
+            }
+        }
+    }])
+    .directive("view", ["CompService", "$compile", "$rootScope", "$parse", "DataService", "ViewService", "$timeout", function(CompService, $compile, $rootScope, $parse, DataService, ViewService, $timeout) {
+        return {
+            restrict: 'E',
+            // templateUrl: 'shared/templates/view.tpl',
+            template: "<div  width='100%' height='100%' abs top='0' left='0' class='view'> <div ng-transclude='imports'> </div><div ng-transclude='loader'></div> <div size='100%' ng-transclude ng-transclude-slot='main'></div> <div ng-transclude='hidden'></div> <div ng-transclude='utility'></div></div>",
+            transclude: {
+                imports: '?imports',
+                loader: '?loader',
+                main: '?main',
+                hidden: "?hidden",
+                utility: "?utility"
+            },
+            controllerAs: 'view',
+            bindToController:true,
+            controller: ["$element", "$attrs", "$scope", "$transclude", function($element, $attrs, $scope, $transclude) {
                 var view = this;
                 view.logic = {}
                 view.loader = {}
-                view.content = {}
+                view.content = {};
+                view.activeImports = 0;
+                view.data = {};
+                // view.data = {};
                 view.components = {rendered:false};
                 view.inner = {elems: {pre: {}, post:{}}, loader: {}};
+                view.main = {ready:false};
                 view.inner.elems.post = $transclude($scope, function(transElem, transScope) {
-
-
                     view.inner.elems.pre = transElem;
                     view.inner.scope = transScope;
                 });
+                view.refreshLock = false;
+                // view.refresh = function(view_data) {
+                //     view.main.refresh = true;
+                //     console.log(view_data)
+                //     // view.data.components.wind = view_data;
+
+                //     $timeout(function() {
+                //         // $scope.$apply();
+                //         view.main.refresh = false;
+                //     })
+                // }
                 var numChildren = view.inner.elems.post.length;
+
                 for (var i = 0; i < numChildren; i++) {
                     var child = view.inner.elems.post[i];
+
                     if (child && child.outerHTML && child.nodeName) {
 
                         if (child.nodeName.toLowerCase() === 'components') {
-
                             DataService.initComponent(child);
                         }
                     }
                 }
-                console.log('components are rendered')
+                // console.log('components are rendered')
                 view.components.rendered = true;
+                if (!('immediate' in $attrs)) {
+
+                    var watcher = $scope.$watch('view.activeImports', function(value) {
+                        console.log('view update for activeImports', value);
+                        if (value === 0) {
+
+                            $scope.view.main.ready = true;
+                            watcher();
+
+                        }
+
+                        // $scope.view.data
+                    })
+                }
+            }]
+                // archive
+                // var view = this;
+                // view.logic = {}
+                // view.loader = {}
+                // view.content = {};
+                // $scope.view.activeImports = 0;
+                // $scope.view.data = {};
+                // view.components = {rendered:false};
+                // view.inner = {elems: {pre: {}, post:{}}, loader: {}};
+                // $scope.view.main = {ready:false};
+                // view.inner.elems.post = $transclude($scope, function(transElem, transScope) {
+                //     view.inner.elems.pre = transElem;
+                //     view.inner.scope = transScope;
+                // });
+                // view.refreshLock = false;
+                // view.refresh = function(view_data) {
+                //     view.main.refresh = true;
+                //     console.log(view_data)
+                //     // view.data.components.wind = view_data;
+
+                //     $timeout(function() {
+                //         $scope.$apply();
+                //         view.main.refresh = false;
+                //     })
+                // }
+                // var numChildren = view.inner.elems.post.length;
+                // for (var i = 0; i < numChildren; i++) {
+                //     var child = view.inner.elems.post[i];
+
+                //     if (child && child.outerHTML && child.nodeName) {
+
+                //         if (child.nodeName.toLowerCase() === 'components') {
+                //             DataService.initComponent(child);
+                //         }
+                //     }
+                // }
+                // // console.log('components are rendered')
+                // view.components.rendered = true;
+
+                // if (!('immediate' in $attrs)) {
+
+                //     $scope.$watch('view.activeImports', function(value) {
+                //         if (value === 0) {
+                //             console.log('we can compile main');
+                //             $scope.view.main.ready = true;
+
+                //         }
+
+                //         // $scope.view.data
+                //     })
+                // }
 
 
 
 
-                var hasLoader = CompService.doesElemHaveLoader(view.inner.elems);
-                view.inner.loader = hasLoader.loader;
+
+                // var hasLoader = CompService.doesElemHaveLoader(view.inner.elems);
+                // view.inner.loader = hasLoader.loader;
+
+
 
               //   // console.log(preTranscludeElems.remaining.forEach(function( item, i) {
               //   //   if ('innerHTML' in item) {
@@ -1563,7 +2085,7 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
               //   console.log($transclude(function(elem, scope) {
               //       console.log(elem)
               //   }))
-            }
+
         }
     }])
     .directive("grid", ["CompService", "$compile", function(CompService, $compile) {
@@ -1690,17 +2212,6 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             }
         }
     }])
-    .directive("uButton", ["RootService", function(RootService) {
-        return {
-            templateUrl: RootService.getBaseUrl() + 'shared/templates/components/base/button.tpl',
-            restrict: 'E',
-            link: {
-                pre: function(scope, element, attr) {
-                    return
-                }
-            }
-        }
-    }])
     .directive("uBody", ["RootService", function(RootService) {
         return {
             templateUrl: RootService.getBaseUrl() + 'shared/templates/components/base/body.tpl',
@@ -1779,48 +2290,51 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
             }
         }
     }])
-    .directive('x', ['CompService', function(CompService) {
-      return {
-        restrict: 'A',
-        compile: function(element, attr) {
-            if (element[0].nodeName.toLowerCase() === 'SVG' || element[0].ownerSVGElement) return;
-            var mappings = {
-                'center': 'center',
-                'end': 'flex-end',
-                'space-between': 'space-between',
-                'sb': 'space-between',
-                'sa': 'space-around',
-                'space-around': 'space-around',
-                'top': 'flex-start'
-            }
-            var value = (attr.x && attr.x.length && attr.x in mappings && mappings[attr.x]) || 'center'
-          element.css('justify-content', value);
-          element.css('align-items', value);
-        }
-      }
-    }])
-    .directive('y', ['CompService', function(CompService) {
-      return {
-        restrict: 'A',
-        compile: function(element, attr) {
-            if (element[0].nodeName.toLowerCase() === 'SVG' || element[0].ownerSVGElement) return;
-            var mappings = {
-                'center': 'center',
-                'end': 'flex-end',
-                'space-between': 'space-between',
-                'sb': 'space-between',
-                'sa': 'space-around',
-                'space-around': 'space-around',
-                'top': 'flex-start'
-            }
-            var value = (attr.y && attr.y.length && attr.y in mappings && mappings[attr.y]) || 'center'
-          element.css('align-content', value);
-          if (['space-between', 'space-around'].indexOf(value) === -1) {
-            element.css('align-items', value);
-          }
-        }
-      }
-    }])
+    // .directive('x', ['CompService', function(CompService) {
+    //   return {
+    //     restrict: 'A',
+    //     compile: function(element, attr) {
+    //         if (element[0].nodeName.toLowerCase() === 'SVG' || element[0].ownerSVGElement) return;
+    //         var mappings = {
+    //             'center': 'center',
+    //             'end': 'flex-end',
+    //             'space-between': 'space-between',
+    //             'sb': 'space-between',
+    //             'sa': 'space-around',
+    //             'space-around': 'space-around',
+    //             'top': 'flex-start'
+    //         }
+    //         var value = (attr.x && attr.x.length && attr.x in mappings && mappings[attr.x]) || 'center'
+    //       element.css('justify-content', value);
+    //       element.css('align-items', value);
+    //     }
+    //   }
+    // }])
+    // .directive('y', ['CompService', function(CompService) {
+    //   return {
+    //     restrict: 'A',
+    //     compile: function(element, attr) {
+    //         var nodeName = element[0].nodeName.toLowerCase();
+    //         var restrictedNodes = ['SVG', 'svg', '#comment'];
+    //         if (restrictedNodes.indexOf(nodeName) > -1 || element[0].ownerSVGElement) return;
+    //         var mappings = {
+    //             'center': 'center',
+    //             'end': 'flex-end',
+    //             'space-between': 'space-between',
+    //             'sb': 'space-between',
+    //             'sa': 'space-around',
+    //             'space-around': 'space-around',
+    //             'top': 'flex-start'
+    //         }
+    //         var value = (attr.y && attr.y.length && attr.y in mappings && mappings[attr.y]) || 'center'
+
+    //       element.css('align-content', value);
+    //       if (['space-between', 'space-around'].indexOf(value) === -1) {
+    //         element.css('align-items', value);
+    //       }
+    //     }
+    //   }
+    // }])
     // .directive('end', [function() {
     //   return {
     //     restrict: 'A',
@@ -2096,15 +2610,14 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
     //         }
     //     }
     // }])
-    .directive('uList', ['$compile', 'DataService', function($compile, DataService) {
+    .directive('uList', ['$compile', '$rootScope', 'DataService', function($compile, $rootScope, DataService) {
         return {
             restrict: 'A',
             priority: 100000000,
             replace:true,
             template: function(element, attr) {
-
                 element[0].removeAttribute('u-list');
-                var uListAttr = attr.uList.replace('in ', 'in ::');
+                var uListAttr = attr.uList.replace('in ', 'in ');
 
                 element[0].setAttribute('ng-repeat', DataService.applyListParams(uListAttr));
 
@@ -2375,13 +2888,24 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
         "letterSpacing",
         "pointer",
         "point",
-        "content"
+        "content",
+        "inherit",
+        "fF",
+        "noOverflow",
+        "inheritHW",
+        "inheritH",
+        "inheritW",
+        "inheritWH",
+        "inheritSize",
+        "inherit",
+        "alignSelf",
+        "alignItems"
         ]
 
     var modulePointer = angular.module('uguru.shared.directives.base.components');
+
     if (_browser.size.tablet) {
         renderPropDirectives(propDirectives, 't');
-
     }
     if (_browser.size.mobile) {
         renderPropDirectives(propDirectives, 'm');
@@ -2401,29 +2925,128 @@ var baseCompModule = angular.module('uguru.shared.directives.base.components', [
       }
 
     function renderPropDirectives(props, prefix) {
-        propDirectives.forEach(function(propName) {
+
+        props.forEach(function(prop) {
+            // console.log(prop)
+            var propName = prop;
             if (prefix) {
-                propName = camelCase((prefix + '-' + propName.replace(/\W+/g, '-')
+
+                propName = camelCase((prefix + '-' + prop.replace(/\W+/g, '-')
                 .replace(/([a-z\d])([A-Z])/g, '$1-$2').toLowerCase()).toLowerCase());
+
             }
 
-        var propNameRender = propName
-            modulePointer = modulePointer.directive(propName, ['CompService', function(CompService) {
+
+        var propNameRender = prop
+            modulePointer.directive(propName, ['CompService','$parse', function(CompService, $parse) {
               return {
                 restrict: 'A',
                 templateNamespace: 'html',
-                priority: 0,
-                link: function(scope, element, attr) {
-                    var options = {
-                        propName: propName,
-                        scope: scope
+                priority: 100000,
+                replace:true,
+                compile: function(element, attr) {
+                    if (element[0].nodeName === '#comment') return;
+                    var ignoreCompile = false;
+                    var unPrefix = false;
+                    var renderLater = false;
+                    var prefixedProp = '';
+                    if (propName in attr && attr[propName].indexOf('}}') > -1) {
+                        element[0].setAttribute(propName,attr[propName].replace('}}', '').replace('{{', ''))
+                        attr.$set(propName,attr[propName].replace('}}', '').replace('{{', ''))
+                        renderLater = true;
                     }
+                    // if (propName.toLowerCase().indexOf('width') > -1) {
+                        ['t', 'm', 'l', 'p'].forEach(function(p) {
+                            prefixedProp = p + propName.charAt(0).toUpperCase() + propName.substring(1);
+                            if (prefixedProp in attr && _browser.size.mobile) {
+                                if (propName !== prefixedProp) {
+
+                                    ignoreCompile=true;
+                                } else {
+
+                                    unPrefix = true;
+                                }
+                            }
+                        })
+
+                    if (propName === 'mWidth' && 'width' in attr) {
+                        if (_browser.size.mobile) {
+                            element.css('width', attr.mWidth);
+                            return;
+                        } else  if (_browser.size.desktop){
+                            return;
+                        }
+                    }
+
+                    if (propName === 'mHeight' && 'height' in attr) {
+                        if (_browser.size.mobile) {
+                            element.css('height', attr.mHeight);
+                            return;
+                        } else  if (_browser.size.desktop){
+                            return;
+                        }
+                    }
+
                     if (!(propNameRender in CompService.css.render)) {
                         propNameRender = 'general'
                     }
-                    if (element[0] && element[0].nodeType === 1) {
-                        CompService.css.render[propNameRender](element, attr[propName], options);
+
+                    var options = {
+                        propName: propName,
+                        attr: attr
+                        // scope: scope
                     }
+                    if (ignoreCompile && _browser.size.desktop) return;
+                    if (element[0] && element[0].nodeType === 1 && !renderLater) {
+
+                        // if (propName === 'mWidth') {
+                        //     console.log('yo', propNameRender, propName)
+                        // }
+                        CompService.css.render[propNameRender](element, attr[propName], options);
+
+                    }
+
+                    return {
+                        pre: function preLink(scope, pre_elem, pre_attr) {
+
+                            if (propName in pre_attr) {
+                                if (pre_attr[propName].split('.').length > 1) {
+                                    return;
+                                }
+                            }
+                            // if (!scope.html || !scope.html.length || scope.html.indexOf('>') === -1) return;
+                            // var e = $compile(scope.html)(scope)
+
+                            // pre_elem.replaceWith(angular.element(e));
+                            // pre_attr.compile && transclude(scope, function(clone, innerScope) {
+
+                            // })
+                        }
+                    }
+                    // {
+                    //     pre: function preLink(scope, pre_element, pre_attr) {
+
+                    //         var isVarSplitStr = attr[propName].split('.');
+                    //         if (isVarSplitStr.length > 1) {
+
+                    //             attr[propName] = $parse(attr[propName])(scope);
+                    //             CompService.css.render[propNameRender](pre_element, value, options);
+                    //         } else {
+                    //             var cancelWatcher = scope.$watch(attr[propName], function(value) {
+
+                    //                 if (value && value.split('.').length < isVarSplitStr.length) {
+                    //                     console.log(pre_attr[propName], propNameRender)
+                    //                     var options = {
+                    //                         propName: propName,
+                    //                         attr: pre_attr
+                    //                     }
+                    //                     CompService.css.render[propNameRender](pre_element, value, options);
+                    //                 }
+                    //                 cancelWatcher();
+                    //             })
+                    //         }
+                    //     }
+                    // }
                 }
               }
             }])

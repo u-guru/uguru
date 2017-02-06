@@ -1,42 +1,95 @@
-
-<view size='100' render-after-ext-scripts>
+<view size='100'>
     <!-- uncomment this below to get loader -->
 
-    <!-- <loader height='100' width='100' min-ms="3000" url='ui/templates/loader.html'> </loader> -->
+
 
     <!-- main has a full page loader as well, not sure if its needed..  it imports from     ui/templates/components/base/main.tpl or you can provide your own view.
 
     Think of the loader use case for the main element to be the "entrance" && assume that the loader='' imported URL could be the same size
-
     -->
-    <main grow='1' size='100' column wrap loader="" min-ms="2500">
+    <!-- url='./ui/templates/samples/visualizer/components/viz-bar-components.tpl' -->
+    <imports>
+      <!-- <import-dict as="tree">
+        {
+          "computers": {
+            "laptops": {
+              "ultrabooks": {},
+              "macbooks": {},
+            },
+            "desktops": {
+              "imac": {}
+            },
+            "tablets": {
+              "pro": {},
+              "mini": {}
+            }
+          },
+          "printers": {
+          }
+        }
+      </import-dict> -->
+        <import-dict>
+        {"categories": [
+          {
+            "title": "Computers",
+            categories: [
+              {
+                "title": "Laptops",
+                categories: [
+                  {
+                    "title": "Ultrabooks"
+                  },
+                  {
+                    "title": "Macbooks"
+                  }
+                ]
+              },
 
-        <header grow='1' x='center' y='center' bg='charcoal'>
-            {{user.name}} <img src="{{user.profile}}"> </img>
-        </header>
-        <!-- u-list this to get several one pagers-->
+              {
+                "title": "Desktops"
+              },
+
+              {
+                "title": "Tablets",
+                categories: [
+                  {
+                    "title": "Apple"
+                  },
+                  {
+                    "title": "Android"
+                  }
+                ]
+              }
+            ]
+          },
+
+              {
+                "title": "Printers"
+              }
+
+        ]
+    }
+        </import-dict>
+    </import>
+    <components>
+        <filter-tag name="name|var">
+            <li init-with="p:[opacity:0]"
+                when-filter-enter="a:[bounceIn-subtle:1000:linear:0:1:f]">
+                <button class="ui-gallery-filter-btn">{{name}}</button>
+            </li>
+        </filter-tag>
+    </components>
+    <main grow='1' size='100' column wrap>
+
+
         <content bg='slate' grow='8' x='center' y='center'>
-            Main content
+            <!-- <tree-elem tree-data='view.data.categories'> </tree-elem> -->
         </content>
-        <footer bg='charcoal' grow='1'>
-            Footer
-        </footer>
-        <!-- -->
-        <!-- optional but ideall these should be internal to main because it should correlate to appearance to viewport? debatable, just a new proposal-->
-        <fixed>
-            <f-header> </f-header>
-            <f-sidebar/></f-sidebar>
-            <f-icon/></f-icon>
-        </fixed>
-        <modals>
-            <modal with-size="#elem-ref"> </modal>
-            <modal with-size="#elem-ref"> </modal>
-            <modal with-size="#elem-ref"> </modal>
-        </modals>
+
+
     </main>
-    <!-- -->
-    <external grow='1'>
-        <!-- <view url='' loader ='' browser-url = ''>-->
-    </external>
+    <!-- <external grow='1'>
+
+    </external> -->
 
 </view>

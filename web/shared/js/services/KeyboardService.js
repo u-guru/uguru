@@ -155,7 +155,8 @@ function KeyboardService(Utilities, $timeout) {
         initCopyPasteFunctionCallbacks: initCopyPasteFunctionCallbacks,
         initKeyboardKeydownFunc: initKeyboardKeydownFunc,
         keyMaps: keyMappings,
-        record: insertKeyEventToCache
+        record: insertKeyEventToCache,
+        cache: keyCache
     }
 };
 

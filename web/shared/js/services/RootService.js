@@ -80,6 +80,10 @@ function RootService($timeout, $state) {
         var ss = document.styleSheets;
 
         for (var i = 0; i < ss.length; ++i) {
+          if (!ss[i].cssRules ) {
+            console.log('preventing disaster')
+            continue;
+          }
           for (var j = 0; j < ss[i].cssRules.length; ++j) {
               if (ss[i].cssRules[j].type == window.CSSRule.WEBKIT_KEYFRAMES_RULE) {
 

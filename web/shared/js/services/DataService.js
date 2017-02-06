@@ -8,10 +8,11 @@ angular
     '$stateParams',
     '$interpolate',
     'XHRService',
+    'SendService',
     DataService
     ]);
 
-function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRService, $interpolate) {
+function DataService($timeout, $compile, $parse, $rootScope, $stateParams, $interpolate, XHRService, SendService) {
   var initConfigDict = {
     vars: {},
     base_url: "",
@@ -20,6 +21,7 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
   var lib = {random: getRandomDataFuncs()}
   var dataMappings = {};
   var componentModule = baseCompModule;
+  var registeredComponents = [];
   var dataCache = {views: {}}
   return {
     parseAppDataJson: parseAppDataJson,
@@ -30,7 +32,8 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
     dataMappings: dataMappings,
     dataCache: dataCache,
     applyListParams: getApplyListParamsFunc($rootScope),
-    initComponent: registerDOMCustomComponents
+    initComponent: registerDOMCustomComponents,
+    initNewAttrDirective: initNewAttrDirective
   }
 
   function getApplyListParamsFunc(root) {
@@ -38,7 +41,7 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
     return function(list_str, root) {
 
       var resultStr = '';
-      var listVarSplit = list_str.split(' in ::');
+      var listVarSplit = list_str.split(' in ');
       var list = {};
       list.var = listVarSplit[0];
       list.arr = listVarSplit[1];
@@ -110,12 +113,10 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
 
           // list_arr = list_arr + ' | orderBy:reverse:true'
         }
-
         return list_arr;
       }
-
       // console.log([list.var, list.arr].join(' in ::') + ' track by $index')
-      return [list.var, list.arr].join(' in ::') + ' track by $index';
+      return [list.var, list.arr].join(' in ') + ' track by $index';
     }
   }
 
@@ -181,25 +182,38 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
 
       if ('attributes' in component) {
         var attributes = component.attributes;
+
         compDict.fields = getFieldsFromAttributes(attributes);
+
       }
-      if (Object.keys(compDict.fields ).length) {
+      if ('scope' in compDict.fields) {
+        compDict.scope = false;
+      }
+      else if (Object.keys(compDict.fields ).length) {
         compDict.scope = compileComponentVars({external: compDict.fields});
-        console.log(compDict.fields)
       }
       compDict.template = component.innerHTML
-      console.log(compDict)
+
       registerOneDirective(compDict)
-      console.log('registering.. complete')
+
     }
 
     function getFieldsFromAttributes(attr_dict) {
       var _dict = {};
-      console.log(attr_dict)
+      var no_value_fields = ['no-scope'];
       for (attr_name in attr_dict) {
 
-        var kv = attr_dict[attr_name]
-        _dict[kv.name] = kv.value;
+        var kv = attr_dict[attr_name];
+        if (kv.name === 'no-scope' && (!kv.value || !kv.value.length)) {
+            _dict['scope'] = false;
+        } else if (kv.name === 'preprocess') {
+          delete _dict['preprocess']
+        }
+        else if  (kv.value) {
+          var elemType = kv.value;
+          _dict[kv.name] = kv.value
+        }
+
       }
 
       return _dict;
@@ -208,14 +222,17 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
 
   function registerDirectives(component_dict) {
 
-    for (component in component_dict) {
+    // for (component in component_dict) {
       var compSpec = component_dict[component];
       var templateUrl = 'template_url' in compSpec && compSpec['template_url']
+
       var scope = 'fields' in compSpec || {};
+
       var camelName = camelCase(component.toLowerCase());
 
-        registerOneDirective(camelName, scope, templateUrl)
-    }
+      registerOneDirective(camelName, scope, templateUrl);
+
+    // }
 
   }
 
@@ -493,6 +510,7 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
         config: 'config' in comp_dict[key] && comp_dict[key]['config']
       };
       if (dirInfo.name && dirInfo.templateUrl) {
+
         registerOneDirective(dirInfo)
       }
     }
@@ -516,16 +534,25 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
       if (!('external' in vars)) return;
       var resultScope = {};
       vars.external = parseScopeVarsByType(vars.external)
+
       for (var_name in vars.external) {
+        if (var_name.indexOf('-') > -1) {
+          var temp = vars.external[var_name];
+          var_name = camelCase(var_name);
+          delete vars.external[var_name]
+          vars.external[var_name] = temp;
+        }
         if (['dict'].indexOf(vars.external[var_name]) > -1) {
           resultScope[var_name] =  '<' + var_name;
+        }
+        if (['string'].indexOf(vars.external[var_name]) > -1) {
+          resultScope[var_name] =  '&' + var_name;
         }
         else if (vars.external[var_name] === 'var') {
           resultScope[var_name] = '=' + var_name;
         } else {
           resultScope[var_name] = '@' + var_name;
         }
-
       }
       if (!Object.keys(resultScope).length) return false;
 
@@ -542,34 +569,242 @@ function DataService($timeout, $compile, $parse, $rootScope, $stateParams, XHRSe
   }
 
   function registerOneDirective(dir_info) {
-    console.log(dir_info.scope, dir_info.name)
-    componentModule.directive(dir_info.name, [function() {
+    if (registeredComponents.indexOf(dir_info.name) === -1) {
+      console.log('registering..', dir_info.name, registeredComponents);
+      registeredComponents.push(dir_info.name)
+    } else {
+      console.log('already registered', dir_info.name, registeredComponents);
+      return;
+    }
+    if ('url' in dir_info.fields && dir_info.fields.url.length) {
+      dir_info.template_url = dir_info.fields.url;
+
+      delete dir_info.fields.url
+    }
+    componentModule.directive(dir_info.name, ['ElementService', function(ElementService) {
       var dirObj = {
         restrict: 'E',
-        transclude: 'element',
-        replace:true,
         scope: dir_info.scope,
-        templateUrl: dir_info.template_url && function(element, attr) {
-            return dir_info.templateUrl
-        },
-        template: dir_info.template,
-        link: function preLink(scope, element, attr, ctrl, transclude) {
-          scope.root = scope.$parent.root
-          scope.public = scope.$parent.public;
-            processScopeVars(scope, attr);
-
-            // scope.activeTab = scope.$parent.activeTab;
-
-            // element.append()
-            // var e = transclude(scope, function(transEl, transScope) {
-            //   console.log(transEl)
-            // })
-            // $compile(contents())(scope)
-            // element.append(e)
-
+        replace:true,
+        transclude:true,
+        priority:100,
+        templateUrl: dir_info.template_url,
+        controllerAs:'comp',
+        bindToController:true,
+        template: !dir_info.template_url && function(element, attr) {
+          var e = angular.element(dir_info.template);
+          if (e[0].outerHTML) {
+            e.removeAttr('u');
+          // e.removeAttr('ngRepeat');
+            attr.$set('u', '');
+            return e[0].outerHTML
+          } else {
+            element[0].removeAttribute('u')
+            element.removeAttr('u');
+            // attr.$set('u', '');
+            return element[0].outerHTML
           }
+
+          console.log(dir_info.template);
+
+        },
+        controller: function($element, $transclude, $scope, $attrs) {
+
+
+
+          var comp = this;
+          // comp.globals = $scope.view.data.components.wind.globals;
+          // console.log($scope.comp.offsetX);
+          // if ($scope.wind_svg) {
+
+          //   // $scope.wind_svg = angular.copy($scope.wind_svg);
+          //     // $scope.window[$scope.$index].position.offset.top = $scope.randInt(0, comp.globals.offset.ymax);
+          //     // $scope.window[$scope.$index].position.offset.bottom = $scope.randInt(comp.globals.offset.ymin, 0);
+          //     $scope.window[$scope.$index].position.offset.left = $scope.randInt(parseInt(comp.globals.offset.xmax)*-1, parseInt(comp.globals.offset.xmax)) * $scope.randInt(-2, 2);
+          //     $scope.window[$scope.$index].position.offset.top = $scope.randInt(parseInt(comp.globals.offset.ymax)*-1, parseInt(comp.globals.offset.ymax)) * $scope.randInt(-2, 2);
+          //     // $scope.wind_svg.position.offset.left = $scope.randInt(comp.globals.offset.xmin, comp.globals.offset.xmax) * $scope.randInt(-2, 2);
+          //     // $scope.wind_svg.position.offset.top = $scope.randInt(comp.globals.offset.xmin, comp.globals.offset.xmax) * $scope.randInt(-2, 2);
+          //     comp.wind_svg = $scope.window[$scope.$index]
+          //     $scope.wind_svg = comp.wind_svg;
+          //     // console.log($scope.wind_svg.id, $scope.wind_svg.position.offset.left, comp.wind_svg.position.offset.top)
+          //     // $scope.wind_svg = comp.wind_svg
+          //   // $compile($element.children())($scope)
+          //   // $element.children($transclude($scope))
+          //   // $element.empty();
+          // }
+
+
+          // $element.css('top', $scope.wind_svg.position.offset.top + '%');
+          // comp.randInt = function(min, max) {
+          //   console.log('running', min, max)
+          //   min = Math.ceil(min);
+          //   max = Math.floor(max);
+          //   var result = Math.floor(Math.random() * (max - min)) + min;
+          //   return result
+          // }
+          $scope.public = $scope.$parent.public;
+          $scope.root = $scope.$parent.root;
+
+
+          // $element[0].setAttribute('u', '')
+          $scope.watcherIsCanceled = false;
+          var whenStatesToRecompile = [];
+          var elemAttr = $element[0].attributes;
+          for (key in dir_info.scope) {
+            if (dir_info.scope[key].charAt(0) === '&') {
+              $scope.comp[key] = $scope.comp[key]()
+            }
+          }
+          for (var i = 0; i < elemAttr.length; i++) {
+            if (elemAttr[i].name.indexOf('when') > -1) {
+              console.log($attrs[$attrs.$normalize(elemAttr[i].name)])
+              var camelAttr = $attrs.$normalize(elemAttr[i].name);
+              var interpolatedValue = $interpolate(elemAttr[i].value)($scope);
+              // console.log(camelAttr,interpolatedValue);
+              $attrs.$set(camelAttr, interpolatedValue);
+              $element.attr(elemAttr[i].name, interpolatedValue)
+
+            }
+          }
+
+          var watcher = $scope.$parent.$watch('view.main.ready', function(value) {
+
+            if (value) {
+
+
+
+
+
+
+              comp.states = ElementService.renderElementStates($element, $attrs);
+
+              if (comp.states.init) {
+                comp.states.init.forEach(function(state, i) {
+                  if (state.name === 'init' && state.type === 'on') {
+                    comp.states.on.push(state);
+                  } else if (state.exec && state.name !== 'after') {
+                    // console.log(state.name)
+                    state.exec($element, null, $attrs)
+                  }
+                })
+              }
+              if (comp.states.on) {
+                comp.states.on.forEach(function(state, i) {
+                  state.exec($element, $scope, $attrs);
+                })
+              }
+              SendService.precompileSendActionArgs(comp.states, $scope, $element, $attrs)
+
+
+              $scope.watcherIsCanceled = true;
+
+              watcher();
+            }
+            // var e = $transclude($scope);
+            // console.log($element[0].outerHTML)
+            // console.log($element[0]);
+
+            // console.log('main status from defined component', value);
+
+            // // $scope.wind_svg = $scope.$parent.wind_svg
+            // // console.log($attrs.whenTabIndexChanged)
+
+          })
+
+
+
+
+
+
+
+          // console.log($scope.wind_svg.position.offset)
+
+          // this.innerElem = $transclude($scope);
+          // console.log($transclude(function(elem, scope) {
+          //   console.log(elem[0])
+          // }))
+          // console.log($attrs)
+          // $attrs.$set('u', '');
+          // var e = $compile($element)($scope);
+
+
+
+          // console.log(e)
+          // $element.css('display', 'initial');
+          // $element.replaceWith(e)
+
+          // console.log(e[0])
+
+
+
+          // console.log($transclude(function(element, scope) {console.log(element[0])}).contents())
+        },
+        link: {pre: function prelink(scope, element, attr, ctrl, tr) {
+          // if (scope.watcherIsCanceled) {
+          //   console.log('it is canceled')
+          // } else {
+          //   var cancelWatcher = scope.$watch('watcherIsCanceled', function(value) {
+          //     if (value) {
+          //       console.log('watcher is now canceled')
+          //       cancelWatcher();
+          //     }
+          //   })
+          //   console.log('it is NOT canceled')
+          // }
+          // function renderWhenStates() {
+          //   if (ctrl.states && ctrl.states.when.length) {
+          //     var varStates = ElementService.filterVarStates(comp.states.when);
+          //     if (varStates.length) {
+          //       ElementService.registerVarStates(scope, element, attr, varStates);
+          //     }
+          //   }
+          // }
+
+          // if (!scope.watcherIsCanceled) {
+          //   scope.watcherIsCanceled = scope.$watch('' function() {
+
+          //   });
+          // }
+          // ElementService.renderElementStates(element,attr);
+          // console.log(element[0])
+          }
+        }
       }
       return dirObj
+    }])
+  }
+
+  function initNewAttrDirective(options) {
+    var dirName = camelCase(options.pre + '-' + options.postdash);
+    var valueSplit = options.value.indexOf(';') > -1 && options.value.split(';') || options.value.split(':');
+    var cssArr = [];
+
+    if (valueSplit.length > 1) {
+      valueSplit.forEach(function(val) {
+        var css = {};
+        var valSplit = val.split(':')
+        css.key = valSplit[0];
+        css.value = valSplit[1];
+        cssArr.push(css);
+      })
+
+
+    }
+    // console.log(valueSplit, dirName)
+      componentModule.directive(dirName, ['ElementService', function(ElementService) {
+      var dirObj = {
+        restrict: 'A',
+        scope: false,
+        replace:true,
+        priority:100,
+        compile: function(element, attr) {
+          cssArr && cssArr.forEach(function(css) {
+            element.css(css.key, css.value);
+          })
+
+        }
+      }
+      return dirObj;
     }])
   }
 

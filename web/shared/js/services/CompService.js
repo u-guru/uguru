@@ -1,5 +1,4 @@
-angular
-    .module('uguru.shared.services')
+angular.module('uguru.shared.services')
     .factory('CompService', [
     '$timeout',
     '$compile',
@@ -120,6 +119,7 @@ function CompService($timeout, $compile, $parse, $rootScope) {
       "fix": "fixed",
       "fixed": "fixed",
       "scrollX": "auto",
+      "scrollY": "auto",
       "scrollXy": "auto",
       "noScroll": "hidden",
       "hideX": "hidden",
@@ -128,7 +128,18 @@ function CompService($timeout, $compile, $parse, $rootScope) {
       "oFlow": "visible",
       "scroll": "visible",
       "pointer": "pointer",
-      "point": "pointer"
+      "point": "pointer",
+      "hide-scroll": "visible",
+      "xStretch": "stretch",
+      "uppercase": "uppercase",
+      "upper": "uppercase",
+      "capital": "capitalize",
+      "inheritH": "inherit",
+      "inheritW": "inherit",
+      "inheritHW": "inherit",
+      "noOverflow": "hidden",
+      "inherit": "inherit",
+      "asStretch": "stretch"
     }
     prefixes.forEach(function(p) {
       var basePropKeys = Object.keys(baseProps);
@@ -178,6 +189,10 @@ function CompService($timeout, $compile, $parse, $rootScope) {
         'mBot': 'margin-bottom',
         'mBottom': 'margin-bottom',
         'mLeft': 'margin-left',
+        'width': 'width',
+        'height': 'height',
+        'mWidth': 'width',
+        'mHeight': 'height',
         'mRight': 'margin-right',
         "marginX": "margin-left margin-right",
         "marginY": "margin-top margin-bottom",
@@ -297,7 +312,24 @@ function CompService($timeout, $compile, $parse, $rootScope) {
         "letterSpacing": "letter-spacing",
         "pointer": "cursor",
         "point": "cursor",
-        "content": "content"
+        "content": "content",
+        "alignItems": "align-items",
+        "xStretch": "align-items",
+        "uppercase": "text-transform",
+        "upper": "text-transform",
+        "capital": "text-transform",
+        "lowercase": "text-transform",
+        "lower": "text-transform",
+        "inheritH": "height",
+        "inheritW": "width",
+        "inheritWH": "height width",
+        "inheritHW": "height width",
+        "inheritSize": "height width",
+        "inherit": "height width",
+        "fF": "font-family",
+        "noOverflow": "overflow",
+        "alignSelf": "align-self",
+        "alSelf":"align-self"
 
     }
     prefixes.forEach(function(p) {
@@ -316,11 +348,20 @@ function CompService($timeout, $compile, $parse, $rootScope) {
       render: {
         width: renderWidthFunc,
         height: renderHeightFunc,
+        // stretch: renderStretchFunc,
         general: renderGeneralFunc
       },
       apply: applyCrossPlatformCSSFunc(_browser)
     }
   }
+
+  // function renderStretchFunc(elem, value, options) {
+  //   var attr = options.attr;
+
+  //   if (!value.length) {
+  //     if ()
+  //   }
+  // }
 
   function applyCrossPlatformCSSFunc(browser) {
     browserPlatform = browser.engine.replace('blink', 'webkit');
@@ -341,6 +382,7 @@ function CompService($timeout, $compile, $parse, $rootScope) {
       prop = camelCase(prop);
       if (prop === 'fontWeight') value = parseInt(value)
         // console.log(element, prop, value)
+
       element[0].style[prop] = value;
 
     }
@@ -394,6 +436,7 @@ function CompService($timeout, $compile, $parse, $rootScope) {
           currentValue = cssDefaultPropValues[options.propName];
         }
         if (property in specialProperties) {
+
           currentValue = specialProperties[property]
         }
 

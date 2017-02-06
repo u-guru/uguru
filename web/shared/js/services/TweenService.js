@@ -67,7 +67,20 @@ function TweenService() {
     }
 
     function preComputeValues(property, duration, start, end, ease, result_arr) {
-        // console.log(property, ease)
+        var attrs = [property||null, duration||null, start||null, end||null,ease||null];
+        var empty = [];
+        var props = ['property', 'duration', 'start', 'end', 'ease']
+        attrs.forEach(function(item, i) {
+            if (!item) {
+                empty.push([props[i]])
+            }
+        })
+        if (empty.length > 0) {
+
+            console.log("WARNING: Animation cant be rendered since:", empty.join(",") ,"are empty");
+            result_arr = [];
+            // return result_arr
+        }
         duration = parseFloat(duration)
         result_arr.cache = [];
 

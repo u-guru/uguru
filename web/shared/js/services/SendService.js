@@ -444,7 +444,7 @@ function SendService($timeout, $parse, RootService, TweenService) {
 
 
         var msgArr = parseStateMsgContents({parsed:messages, delays:delay_dict}) || [];
-
+        // console.log(msgArr)
         msgArr.forEach(function(msg_info, i) {
           var staggerExists = false;
 
