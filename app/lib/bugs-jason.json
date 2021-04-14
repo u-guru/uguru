@@ -1,0 +1,349 @@
+{
+    "bugs": [
+        {
+            "impact_file": [
+                "templates/profile.public.html", 
+                "templates/guru.credibility.html", 
+                "templates/referrals.html", 
+                "templates/billing.html", 
+                "templates/balance.html", 
+                "templates/guru.ranking.html"
+            ], 
+            "notes": "unable to contiune the test since CTA screensize is not correct", 
+            "platforms": [
+                "Chrome"
+            ], 
+            "priority": true, 
+            "rank": 10000000, 
+            "screenshot": "https://teamuguru.slack.com/files/jason/F119LP9TL/chrome.png", 
+            "tag": [
+                "css", 
+                "guru-dashboard", 
+                "desktop"
+            ], 
+            "title": "CTA screensize is incorrect"
+        }, 
+        {
+            "impact_file": [
+                "templates/templates/desktop.settings.html"
+            ], 
+            "notes": "search University with key word won't filter out the university list", 
+            "platforms": [
+                "Chrome", 
+                "Firefox", 
+                "Safari"
+            ], 
+            "priority": true, 
+            "rank": 9999999, 
+            "tag": [
+                "function", 
+                "guru-account", 
+                "desktop-m", 
+                "mobile-m"
+            ], 
+            "title": "Guru account University Search"
+        }, 
+        {
+            "impact_file": [
+                "templates/templates/desktop.settings.html", 
+                "templates/components.side-menu.html"
+            ], 
+            "notes": "Caps and Lowcaser email should be the same, always lowercase,", 
+            "platforms": [
+                "Chrome", 
+                "Firefox", 
+                "Safari"
+            ], 
+            "priority": true, 
+            "rank": 9999998, 
+            "tag": [
+                "function", 
+                "guru-account", 
+                "desktop", 
+                "mobile"
+            ], 
+            "title": "Guru account Email Inputs"
+        }, 
+        {
+            "difficulty": 10, 
+            "element: ": "[name='alumni-dropdown']", 
+            "impact_file": [
+                "templates/profile.public.html:"
+            ], 
+            "notes": "looking at droppdown does not feel it is a droppdown", 
+            "platforms": [
+                "Chrome", 
+                "Firefox", 
+                "Safari"
+            ], 
+            "priority": true, 
+            "rank": 9999997, 
+            "screenshot": "https://teamuguru.slack.com/files/jason/F117T7VK5/2016-04-16_11_28_04.png", 
+            "tag": [
+                "css", 
+                "droppdown", 
+                "mobile-m"
+            ], 
+            "title": "Profile droppdown"
+        }, 
+        {
+            "impact_file": [
+                "templates/templates/desktop.settings.html"
+            ], 
+            "notes": "1st character of each word from the name should be caps,ex: enter 'jason huang' should convert 'Jason Huang' right away", 
+            "platforms": [
+                "Chrome", 
+                "Firefox", 
+                "Safari"
+            ], 
+            "priority": true, 
+            "rank": 9999996, 
+            "tag": [
+                "function", 
+                "guru-account", 
+                "desktop", 
+                "mobile"
+            ], 
+            "title": "Guru account Name Inputs"
+        }, 
+        {
+            "impact_file": [
+                "templates/templates/desktop.settings.html"
+            ], 
+            "notes": "university input is incorrect", 
+            "platforms": [
+                "Chrome", 
+                "Firefox", 
+                "Safari"
+            ], 
+            "priority": false, 
+            "rank": 9990000, 
+            "screenshot": "https://teamuguru.slack.com/files/jason/F118YUAA0/university.png", 
+            "tag": [
+                "css", 
+                "guru-account", 
+                "desktop"
+            ], 
+            "title": "Guru account University Input"
+        }, 
+        {
+            "impact_file": [
+                "templates/profile.public.html"
+            ], 
+            "notes": "empty public link -> no error msg , using the same public link:jason-> error link exist msg & new link -> no checkmark shown", 
+            "priority": false, 
+            "rank": 9990000, 
+            "tag": [
+                "function", 
+                "profile", 
+                "mobile-m"
+            ], 
+            "title": "Guru add/edit their public link"
+        }, 
+        {
+            "impact_file": [
+                "templates/profile.public.html"
+            ], 
+            "notes": "empty public link -> no error msg , using the same public link:jason-> error link exist msg & new link -> no checkmark shown", 
+            "priority": false, 
+            "rank": 9990000, 
+            "tag": [
+                "function", 
+                "profile", 
+                "mobile-m"
+            ], 
+            "title": "Guru add/edit their public link"
+        }, 
+        {
+            "impact_file": [
+                "templates/profile.public.html"
+            ], 
+            "notes": "empty public link -> no error msg , using the same public link:jason-> error link exist msg", 
+            "priority": false, 
+            "rank": 9990000, 
+            "tag": [
+                "function", 
+                "profile", 
+                "desktop-m"
+            ], 
+            "title": "Guru add/edit their public link"
+        }, 
+        {
+            "element: ": [
+                "[name='notifi-modal']"
+            ], 
+            "error_msg": "unknown error:  Element( notifications-circle ng-class:{'active':user.email_notifications} active ) is still  active", 
+            "impact_file": [
+                "templates/components.side-menu.html"
+            ], 
+            "notes": "unable to open setting action sheet without refresh the browser after login", 
+            "priority": false, 
+            "rank": 9900000, 
+            "tag": [
+                "function", 
+                "notification", 
+                "mobile-m"
+            ], 
+            "title": "guru setting action sheet"
+        }, 
+        {
+            "element: ": [
+                "[name='notifi-modal']"
+            ], 
+            "error_msg": "unknown error:  Element( notifications-circle ng-class:{'active':user.email_notifications} active ) is still  active", 
+            "impact_file": [
+                "templates/notifications.modal.html:"
+            ], 
+            "notes": "second time click the same notifications; if it is active then it will deactive -> active-> and then deactive  ", 
+            "platforms": [
+                "Chrome", 
+                "Firefox", 
+                "Safari"
+            ], 
+            "priority": false, 
+            "rank": 9300000, 
+            "tag": [
+                "function", 
+                "notification", 
+                "mobile-m"
+            ], 
+            "title": "notification checkmark issue"
+        }, 
+        {
+            "impact_file": [
+                "templates/templates/desktop.settings.html"
+            ], 
+            "notes": "buttons is not at correct location", 
+            "platforms": [
+                "Chrome", 
+                "Firefox", 
+                "Safari"
+            ], 
+            "priority": true, 
+            "rank": 9000000, 
+            "screenshot": "https://teamuguru.slack.com/files/jason/F119L89BL/accountmain.png", 
+            "tag": [
+                "css", 
+                "guru-account", 
+                "desktop"
+            ], 
+            "title": "Guru account setting button incorrect  qlocation"
+        }, 
+        {
+            "notes": "not sure which file name we using", 
+            "platforms": [
+                "Chrome", 
+                "Firefox", 
+                "Safari"
+            ], 
+            "priority": false, 
+            "rank": 80000, 
+            "tag": [
+                "missing files", 
+                "guru-credibility", 
+                "no idea", 
+                "desktop"
+            ], 
+            "title": "CTA Credibility file name"
+        }, 
+        {
+            "impact_file": [
+                "templates/templates/desktop.settings.html"
+            ], 
+            "notes": "go back to guru/student home page after it is saved?", 
+            "platforms": [
+                "Chrome", 
+                "Firefox", 
+                "Safari"
+            ], 
+            "priority": false, 
+            "rank": 10, 
+            "tag": [
+                "no idea", 
+                "css", 
+                "guru-account", 
+                "desktop"
+            ], 
+            "title": "Guru account save button"
+        }, 
+        {
+            "element: ": [
+                "[name ='guru.edit.intro']", 
+                "[name ='guru.mobile.edit.intro']"
+            ], 
+            "impact_file": [
+                "templates/profile.public.html"
+            ], 
+            "notes": "missing a checkmark for guru profile description", 
+            "priority": false, 
+            "rank": 5, 
+            "tag": [
+                "css", 
+                "profile", 
+                "mobile-m", 
+                "desktop-m"
+            ], 
+            "title": "missing profile description checkmark"
+        }, 
+        {
+            "element: ": [
+                "[name='notifi-modal']"
+            ], 
+            "error_msg": "unknown error: Element is not clickable at point (232, 305). Other element would receive the click: <a>...</a>\n", 
+            "impact_file": [
+                "templates/components.side-menu.html"
+            ], 
+            "notes": "with mobile-m screen screensize unable to close the popup", 
+            "platforms": [
+                "Chrome", 
+                "Firefox", 
+                "Safari"
+            ], 
+            "priority": false, 
+            "rank": 2, 
+            "screenshot": "https://teamuguru.slack.com/files/jason/F119EALKB/2016-04-15_17_07_41.png", 
+            "tag": [
+                "css", 
+                "sidebar", 
+                "mobile-m"
+            ], 
+            "title": "Unable to closing password popup"
+        }, 
+        {
+            "impact_file": [
+                "templates/templates/desktop.settings.html"
+            ], 
+            "notes": "go back to guru/student home page after it is saved?", 
+            "platforms": [
+                "Chrome", 
+                "Firefox", 
+                "Safari"
+            ], 
+            "priority": false, 
+            "rank": 1, 
+            "tag": [
+                "no idea", 
+                "css", 
+                "guru-account", 
+                "desktop"
+            ], 
+            "title": "Sidebar setting account save button"
+        }
+    ], 
+    "help": {
+        "difficulty": 10, 
+        "element": "element cause this", 
+        "error_msg": "error_msg from test", 
+        "file_names": "Name of the file", 
+        "file_type": "Name of the file", 
+        "impact_file": "arr[String] which files is impacted follow by order", 
+        "notes": "Anything extra to help clarify", 
+        "platforms": "Which platforms does it work on? Clarify and make sure you check all first.", 
+        "priority": "[Bool], let's keep it simple. Priority should be anything that gets in the way of significant testing, or doesn't work for the user.", 
+        "rank": " 0 to 10,000,000, the more number it has the more improtant", 
+        "resolved": false, 
+        "screenshot": "[String] A link to the screenshot", 
+        "tags": "arr[String] Try your best to tag each bugs with key words like 'controller', 'css', 'no idea'. Anything that gives me more of an idea", 
+        "title": "Less than 5 words example of the bug"
+    }
+}

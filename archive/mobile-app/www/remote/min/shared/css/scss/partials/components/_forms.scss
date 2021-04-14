@@ -1,0 +1,1863 @@
+@import '../mixin';
+
+/* ---------- CHECKBOXES & RADIO */
+// checkbox inputs
+.checkbox-container:not(.old) {
+	@include flex;
+	@include flex-center-vertical;
+	background: none!important;
+	div {
+		position: relative;
+		> span {
+			display: block;
+			background: $slate;
+			border-radius: 3px;
+			width: 32px;
+			height: 32px;
+			overflow: hidden;
+		}
+		svg {
+			position: relative;
+			z-index: 10;
+			fill: none;
+			width: 100%;
+			height: 100%;
+			circle {
+				fill: $shamrock;
+				transform-origin: center center;
+				transform: scale(0) translateZ(0);
+				transition: transform 250ms cubic-bezier(0.8, 0.1, 1, 0.05);
+			}
+			path, .check-under {
+				@include svg-stroke(lighten($slate, 20%), 2.5);
+			}
+			.check-under, .check-stroke {
+				stroke-dasharray: 24.8;
+			}
+			.check-stroke {
+				@include svg-stroke(white, 2.5);
+				stroke-dashoffset: 24.8;
+				transition: stroke-dashoffset 500ms ease-out;
+			}
+			line {
+				@include svg-stroke($slate, 2.5);
+			}
+		}
+		input {
+			@include opacity(0);
+			position: absolute;
+			z-index: 12;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			cursor: pointer;
+			&:hover {
+				+ span {
+					svg {
+						.check-under {
+							@include svg-stroke(rgba(white, .5), 2.5);
+						}
+					}
+				}
+			}
+			&:active {
+				+ span {
+					svg {
+						circle {
+							transform: scale(1) translateZ(0);
+						}
+					}
+				}
+			}
+			&:checked {
+				+ span {
+					svg {
+						circle {
+							transform: scale(1) translateZ(0);
+						}
+						.check-stroke {
+							stroke-dashoffset: 0;
+						}
+					}
+				}
+				&:active {
+					+ span {
+						svg {
+							circle {
+								fill-opacity: 0.75;
+							}
+							.check-stroke {
+								stroke-opacity: 0.75;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	label {
+		padding-left: 15px;
+		color: white;
+		font-size: 20px;
+		font-weight: 600;
+	}
+	&.bg-shamrock {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $shamrock;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $shamrock, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-robin {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $robin;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $robin, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-lake {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $lake;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $lake, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-moxie {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $moxie;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $moxie, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-crimson {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $crimson;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $crimson, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-auburn, &.bg-deilvery {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $auburn;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $auburn, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-orange, &.bg-freelancing {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $orange;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $orange, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-gold, &.bg-baking {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $gold;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $gold, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-moola, &.bg-photography {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $moola;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $moola, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-azure, &.bg-tech {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $azure;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $azure, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-cobalt, &.bg-household {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $cobalt;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $cobalt, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-eggplant, &.bg-athletic {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $eggplant;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $eggplant, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-cerise, &.bg-academic {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $cerise;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $cerise, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// radio inputs
+.radio-container:not(.old) {
+	@include flex;
+	@include flex-center-vertical;
+	background: none!important;
+	div {
+		position: relative;
+		span {
+			@include round;
+			display: block;
+			background: $slate;
+			width: 24px;
+			height: 24px;
+		}
+		svg {
+			@include round;
+			display: block;
+			width: 100%;
+			height: 100%;
+			.border {
+				@include svg-stroke($slate, 2.5);
+				transform-origin: center center;
+				transform: rotate(-90deg);
+			}
+			.bg {
+				fill: lighten($slate, 10%);
+				transform-origin: center center;
+			}
+			.check {
+				fill: $shamrock;
+				transform-origin: center center;
+				transform: scale(0) translateZ(0);
+				transition: all 250ms cubic-bezier(0.8, 0.1, 1, 0.05);
+			}
+		}
+		input {
+			opacity: 0;
+			position: absolute;
+			z-index: 12;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			cursor: pointer;
+			&:hover {
+				+ span {
+					svg {
+						.bg {
+							fill: lighten($slate, 15%);
+						}
+					}
+				}
+			}
+			&:checked, &:active {
+				+ span {
+					svg {
+						.check {
+							transform: scale(1) translateZ(0);
+						}
+					}
+				}
+			}
+		}
+	}
+	label {
+		padding-left: 15px;
+		color: white;
+		font-size: 20px;
+		font-weight: 600;
+	}
+	&.bg-shamrock {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $shamrock;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $shamrock, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-robin {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $robin;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $robin, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-lake {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $lake;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $lake, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-moxie {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $moxie;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $moxie, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-crimson {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $crimson;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $crimson, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-auburn, &.bg-deilvery {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $auburn;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $auburn, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-orange, &.bg-freelancing {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $orange;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $orange, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-gold, &.bg-baking {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $gold;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $gold, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-moola, &.bg-photography {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $moola;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $moola, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-azure, &.bg-tech {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $azure;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $azure, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-cobalt, &.bg-household {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $cobalt;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $cobalt, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-eggplant, &.bg-athletic {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $eggplant;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $eggplant, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-cerise, &.bg-academic {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $cerise;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $cerise, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.toggle-container {
+	@include flex;
+	@include flex-center-vertical;
+	.toggle-label {
+		padding-left: 15px;
+		color: white;
+		font-size: 20px;
+		font-weight: 600;
+	}
+}
+
+.toggle:not(.old) {
+	position: relative;
+	display: block;
+	pointer-events: auto;
+	margin: 0;
+	padding: 0;
+	input {
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 5;
+	}
+	label {
+		@include flex;
+		@include flex-center;
+		position: relative;
+		height: 36px;
+		width: 72px;
+		color: white;
+		font-size: 18px;
+		font-weight: 600;
+		padding: 5px;
+		> div:empty {
+			position: absolute;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: $slate;
+			border-radius: 2px;
+		}
+		* {
+			transition: all 150ms ease-in-out;
+		}
+		span {
+			position: relative;
+			z-index: 2;
+			padding: 0 5px;
+		}
+		.square {
+			position: relative;
+			z-index: 2;
+			display: block;
+			height: 100%;
+			border-radius: 2px;
+			overflow: hidden;
+			* {
+				fill: none;
+			}
+			&:first-of-type {
+				position: absolute;
+				top: 5px;
+				left: 5px;
+				height: calc(100% - 10px);
+				* {
+					fill: white;
+					stroke: white;
+					stroke-width: 2px;
+					stroke-linejoin: round;
+					stroke-linecap: round;
+				}
+			}
+		}
+	}
+	input:checked + label {
+		> div:empty {
+			background: $moxie;
+		}
+		span {
+			transform: translateX(-26px);
+		}
+		.square:first-of-type {
+			transform: translateX(36px);
+		}
+	}
+	&.normal, &.am-pm {
+		label {
+			> div:not(:empty) {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				div {
+					position: absolute;
+					border-radius: 1000px;
+					&:nth-child(1) {
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 2px;
+						transform-origin: left center;
+					}
+					&:nth-child(2) {
+						top: 0;
+						right: 0;
+						width: 2px;
+						height: 100%;
+						transform-origin: center top;
+					}
+					&:nth-child(3) {
+						bottom: 0;
+						right: 0;
+						width: 100%;
+						height: 2px;
+						transform-origin: right center;
+					}
+					&:nth-child(4) {
+						bottom: 0;
+						left: 0;
+						width: 2px;
+						height: 100%;
+						transform-origin: center bottom;
+					}
+				}
+			}
+		}
+	}
+	&.normal {
+		> div:not(:empty) {
+			div {
+				background: $moxie;
+			}
+		}
+	}
+	&.am-pm {
+		input + label {
+			> div:empty {
+				background: mix($lake, $slate, 30%);
+			}
+			> div:not(:empty) {
+				div {
+					background: mix($lake, $slate, 30%);
+				}
+			}
+			> span {
+				display: block;
+				position: relative;
+				height: 100%;
+				width: 50%;
+				padding: 0;
+				text-align: center;
+				> span {
+					transform: translate(0)!important;
+					position: absolute;
+					display: block;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					text-align: center;
+					padding: 0;
+				}
+			}
+			.am {
+				opacity: 0;
+			}
+			.pm {
+				opacity: 1;
+			}
+		}
+		input:checked + label {
+			div:empty {
+				background: $gold;
+			}
+			.am {
+				opacity: 1;
+			}
+			.pm {
+				opacity: 0;
+			}
+		}
+	}
+	&.white-round {
+		label {
+			div:empty {
+				@include round;
+				background: rgba(white, .5);
+			}
+			.square {
+				@include round;
+				&:first-child {
+					position: absolute;
+					top: 0;
+					left: 0;
+					height: 100%;
+					* {
+						fill: white;
+					}
+				}
+			}
+			.bg {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				rect {
+					@include svg-stroke(white, 2);
+				}
+			}
+		}
+		input:checked + label {
+			div:empty {
+				background: rgba(white, .5);
+			}
+		}
+	}
+	&.round {
+		label {
+			div:empty {
+				@include round;
+			}
+			.square {
+				@include round;
+			}
+			.bg {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				rect {
+					@include svg-stroke($moxie, 2);
+				}
+			}
+		}
+	}
+}
+
+/* ---------- CHECKBOXES & RADIO [deprecate] */
+.checkbox-container.old, .radio-container.old {
+	@include flex;
+	@include flex-center;
+	div {
+		position: relative;
+		input:not([text]) {
+			@include opacity(0);
+			position: absolute;
+			z-index: 12;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+		span {
+			display: block;
+			background: $slate;
+		}
+	}
+	label {
+		padding-left: 15px;
+		color: white;
+		font-size: 20px;
+		font-weight: 600;
+	}
+}
+// checkbox inputs
+.checkbox-container.old {
+	div {
+		span {
+			border-radius: 3px;
+			width: 32px;
+			height: 32px;
+			svg {
+				@include svg-stroke(lighten($slate, 20%), 10);
+				padding: 4px;
+				width: 100%;
+				height: 100%;
+			}
+		}
+		input:checked + span {
+			background: $shamrock;
+			svg {
+				stroke: white;
+			}
+		}
+	}
+	&.small {
+		div {
+			span {
+				width: 20px;
+				height: 20px;
+			}
+		}
+		label {
+			font-size: 16px;
+		}
+	}
+}
+.small .checkbox-container.old {
+	div {
+		span {
+			width: 20px;
+			height: 20px;
+		}
+	}
+	label {
+		font-size: 16px;
+	}
+}
+.old.checkbox-shamrock, .checkbox-shamrock {
+	.old input:checked + span, input:checked + span {
+		background: $shamrock!important;
+	}
+}
+.old.checkbox-robin, .checkbox-robin {
+	.old input:checked + span, input:checked + span {
+		background: $robin!important;
+	}
+}
+.old.checkbox-lake, .checkbox-lake {
+	.old input:checked + span, input:checked + span {
+		background: $lake!important;
+	}
+}
+.old.checkbox-moxie, .checkbox-moxie {
+	.old input:checked + span, input:checked + span {
+		background: $moxie!important;
+	}
+}
+.old.checkbox-crimson, .checkbox-crimson {
+	.old input:checked + span, input:checked + span {
+		background: $crimson!important;
+	}
+}
+.old.checkbox-auburn, .old.checkbox-delivery, .checkbox-auburn, .checkbox-delivery {
+	.old input:checked + span, input:checked + span {
+		background: $auburn!important;
+	}
+}
+.old.checkbox-orange, .old.checkbox-freelancing, .checkbox-orange, .checkbox-freelancing {
+	.old input:checked + span, input:checked + span {
+		background: $orange!important;
+	}
+}
+.old.checkbox-gold, .old.checkbox-baking, .checkbox-gold, .checkbox-baking {
+	.old input:checked + span, input:checked + span {
+		background: $gold!important;
+	}
+}
+.old.checkbox-moola, .old.checkbox-photography, .checkbox-moola, .checkbox-photography {
+	.old input:checked + span, input:checked + span {
+		background: $moola!important;
+	}
+}
+.old.checkbox-azure, .old.checkbox-tech, .checkbox-azure, .checkbox-tech {
+	.old input:checked + span, input:checked + span {
+		background: $azure!important;
+	}
+}
+.old.checkbox-cobalt, .old.checkbox-household, .checkbox-cobalt, .checkbox-household {
+	.old input:checked + span, input:checked + span {
+		background: $cobalt!important;
+	}
+}
+.old.checkbox-eggplant, .old.checkbox-athletic, .checkbox-eggplant, .checkbox-athletic {
+	.old input:checked + span, input:checked + span {
+		background: $eggplant!important;
+	}
+}
+.old.checkbox-cerise, .old.checkbox-academic, .checkbox-cerise, .checkbox-academic {
+	.old input:checked + span, input:checked + span {
+		background: $cerise!important;
+	}
+}
+
+// radio inputs
+.radio-container.old {
+	div {
+		span {
+			@include round;
+			width: 24px;
+			height: 24px;
+			padding: 3px;
+			svg {
+				@include round;
+				background: lighten($slate, 10%);
+				path {
+					display: none;
+				}
+			}
+		}
+		input:checked + span {
+			svg {
+				background: $shamrock;
+			}
+		}
+	}
+}
+.old.radio-shamrock, .radio-shamrock {
+	.old input:checked + span svg, input:checked + span svg {
+		background: $shamrock!important;
+	}
+}
+.old.radio-robin, .radio-robin {
+	.old input:checked + span svg, input:checked + span svg {
+		background: $robin!important;
+	}
+}
+.old.radio-lake, .radio-lake {
+	.old input:checked + span svg, input:checked + span svg {
+		background: $lake!important;
+	}
+}
+.old.radio-moxie, .radio-moxie {
+	.old input:checked + span svg, input:checked + span svg {
+		background: $moxie!important;
+	}
+}
+.old.radio-crimson, .radio-crimson {
+	.old input:checked + span svg, input:checked + span svg {
+		background: $crimson!important;
+	}
+}
+.old.radio-auburn, .old.radio-delivery, .radio-auburn, .radio-delivery {
+	.old input:checked + span svg, input:checked + span svg {
+		background: $auburn!important;
+	}
+}
+.old.radio-orange, .old.radio-freelancing, .radio-orange, .radio-freelancing {
+	.old input:checked + span svg, input:checked + span svg {
+		background: $orange!important;
+	}
+}
+.old.radio-gold, .old.radio-baking, .radio-gold, .radio-baking {
+	.old input:checked + span svg, input:checked + span svg {
+		background: $gold!important;
+	}
+}
+.old.radio-moola, .old.radio-photography, .radio-moola, .radio-photography {
+	.old input:checked + span svg, input:checked + span svg {
+		background: $moola!important;
+	}
+}
+.old.radio-azure, .old.radio-tech, .radio-azure, .radio-tech {
+	.old input:checked + span svg, input:checked + span svg {
+		background: $azure!important;
+	}
+}
+.old.radio-cobalt, .old.radio-household, .radio-cobalt, .radio-household {
+	.old input:checked + span svg, input:checked + span svg {
+		background: $cobalt!important;
+	}
+}
+.old.radio-eggplant, .old.radio-athletic, .radio-eggplant, .radio-athletic {
+	.old input:checked + span svg, input:checked + span svg {
+		background: $eggplant!important;
+	}
+}
+.old.radio-cerise, .old.radio-academic, .radio-cerise, .radio-academic {
+	.old input:checked + span svg, input:checked + span svg {
+		background: $cerise!important;
+	}
+}
+
+// both
+.txt-slate {
+	.checkbox-container, .radio-container {
+		label {
+			color: $slate!important;
+		}
+	}
+}
+
+// toggles
+.toggle.old {
+	position: relative;
+	display: block;
+    pointer-events: auto;
+    margin: 0;
+    padding: 0;
+	input {
+		@include opacity(0);
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 5;
+	}
+	label {
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		@include flex;
+		@include flex-center;
+		position: relative;
+		background: $slate;
+		padding: 5px;
+		height: 36px;
+		width: 72px;
+		border-radius: 2px;
+		color: white;
+		font-size: 18px;
+		font-weight: 600;
+		* {
+			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		}
+		span {
+			padding: 0 5px;
+		}
+		svg {
+			display: block;
+			height: 100%;
+			border-radius: 2px;
+			overflow: hidden;
+			* {
+				fill: none;
+			}
+			&:first-child {
+				position: absolute;
+				top: 5px;
+				left: 5px;
+				height: calc(100% - 10px);
+				* {
+					fill: white;
+				}
+			}
+		}
+	}
+	input:checked + label {
+		background: $moxie;
+		span {
+			@include prefix(transform, translateX(-26px), webkit moz ms o);
+		}
+		svg:first-child {
+			@include prefix(transform, translateX(36px), webkit moz ms o);
+		}
+	}
+	&.small {
+		label {
+			padding: 3px;
+			height: 24px;
+			width: 48px;
+			span {
+				padding: 0 3px;
+			}
+			svg {
+				&:first-child {
+					top: 3px;
+					left: 3px;
+					height: calc(100% - 6px);
+				}
+			}
+		}
+		input:checked + label {
+			span {
+				@include prefix(transform, translateX(-18px), webkit moz ms o);
+			}
+			svg:first-child {
+				@include prefix(transform, translateX(24px), webkit moz ms o);
+			}
+		}
+	}
+	&.white-round {
+		label {
+			@include round;
+			background: rgba(white, .5);
+			border: 2px solid white;
+			svg {
+				@include round;
+				&:first-child {
+					position: absolute;
+					top: 0;
+					left: 0;
+					height: 100%;
+					* {
+						fill: white;
+					}
+				}
+			}
+		}
+		input:checked + label {
+			background: rgba(white, .5);
+		}
+	}
+	&.round {
+		label {
+			@include round;
+			svg {
+				@include round;
+			}
+		}
+	}
+	&.am-pm {
+		input + label {
+			background: mix($lake, $slate, 30%);
+			> span {
+				display: block;
+				position: relative;
+				height: 100%;
+				width: 50%;
+				padding: 0;
+				text-align: center;
+				> span {
+					@include prefix(transform, translate(0)!important, webkit moz ms o);
+					position: absolute;
+					display: block;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					text-align: center;
+					padding: 0;
+				}
+			}
+			.am {
+				@include opacity(0);
+			}
+			.pm {
+				@include opacity(1);
+			}
+		}
+		input:checked + label {
+			background: $gold;
+			.am {
+				@include opacity(1);
+			}
+			.pm {
+				@include opacity(0);
+			}
+		}
+	}
+}
+
+/* ---------- FORM POPUP */
+.form-popup-container {
+	@include flex;
+	@include flex-center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(lighten($slate, 30%), .95);
+}
+.form-popup {
+	background: white;
+	border-radius: 2px;
+	padding: 15px;
+	width: 100%;
+	max-width: 500px;
+	h1 {
+		color: $slate;
+		font-size: 28px;
+		font-weight: 600;
+		text-align: center;
+		padding: 15px 15px 0;
+	}
+	form {
+		padding: 7.5px;
+		fieldset {
+			padding: 7.5px;
+			border: 0;
+			margin: 0;
+			label {
+				color: $robin;
+				font-size: 20px;
+				font-weight: 600;
+			}
+			label + * {
+				margin-top: 5px;
+			}
+			input {
+				font-size: 18px;
+				font-weight: 600;
+				width: 100%;
+				padding: 10px 15px;
+				background: rgba($taupe, .1);
+				color: $slate;
+				@include placeholder {
+					color: rgba($slate, .5);
+				}
+			}
+			.dropdown {
+				> div {
+					span {
+						@include prefix(justify-content, flex-start, webkit);
+						background: rgba($taupe, .1);
+						color: rgba($slate, .5);
+						font-size: 16px;
+						padding-left: 15px;
+						padding-right: 15px;
+					}
+					a {
+						svg {
+							background: $robin;
+						}
+						&:hover, &:focus {
+							svg {
+								background: lighten($robin, 10%);
+							}
+						}
+						&:active {
+							svg {
+								background: darken($robin, 10%);
+							}
+						}
+					}
+				}
+				> ul {
+					li {
+						@include prefix(justify-content, flex-start, webkit);
+						text-align: left;
+						background: rgba($smoke, .9);
+						color: rgba($slate, .5);
+						font-size: 16px;
+						font-weight: 600;
+						padding-left: 15px!important;
+						padding-right: 15px!important;
+						&:hover, &:focus {
+							background: rgba($robin,.9);
+							color: white;
+						}
+						&:active {
+							background: rgba(lighten($robin, 10%),.9);
+							color: white;
+						}
+					}
+				}
+			}
+			button {
+				width: 100%;
+				text-transform: none;
+				letter-spacing: 0;
+				&:not([class*="ghost"]) {
+					margin-top: 15px;
+					background: $robin;
+					font-weight: 600;
+					&:hover, &:focus {
+						background: mix($robin, white);
+						color: mix($robin, $slate);
+					}
+					&:active {
+						background: mix($robin, $slate);
+						color: white;
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- COLOR PICKER */
+.color-picker {
+	background: white;
+	width: 100%;
+	max-width: 400px;
+	button {
+		height: 52px;
+		font-weight: 600;
+		&:active,
+		&.activated {
+			@include opacity(.3);
+		}
+	}
+	ul {
+		@include listless;
+		padding: 5px;
+		&:nth-child(1) {
+			@include flex;
+			overflow: auto;
+			li {
+				padding: 5px;
+				min-width: 46px;
+				a {
+					@include round;
+					@include flex;
+					@include flex-center;
+					width: 36px;
+					height: 36px;
+					padding: 2px;
+					&.active {
+						&:after {
+							@include round;
+							content: "";
+							display: block;
+							width: 28px;
+							height: 28px;
+							border: 2px solid white;
+						}
+					}
+				}
+			}
+		}
+		&:nth-child(2) {
+			@include flex;
+			@include flex-wrap;
+			background: none!important;
+			li {
+				width: calc(100% / 3);
+				padding: 5px;
+				span {
+					@include transition(.15s ease-in-out);
+					display: block;
+					width: 100%;
+					height: 36px;
+				}
+			}
+			&.bg-auburn {
+				li {
+					&:nth-child(1) span {
+						background: lighten($auburn, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($auburn, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($auburn, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($auburn, 5%);
+					}
+					&:nth-child(5) span {
+						background: $auburn;
+					}
+					&:nth-child(6) span {
+						background: darken($auburn, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($auburn, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($auburn, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($auburn, 20%);
+					}
+				}
+			}
+			&.bg-orange {
+				li {
+					&:nth-child(1) span {
+						background: lighten($orange, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($orange, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($orange, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($orange, 5%);
+					}
+					&:nth-child(5) span {
+						background: $orange;
+					}
+					&:nth-child(6) span {
+						background: darken($orange, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($orange, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($orange, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($orange, 20%);
+					}
+				}
+			}
+			&.bg-gold {
+				li {
+					&:nth-child(1) span {
+						background: lighten($gold, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($gold, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($gold, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($gold, 5%);
+					}
+					&:nth-child(5) span {
+						background: $gold;
+					}
+					&:nth-child(6) span {
+						background: darken($gold, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($gold, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($gold, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($gold, 20%);
+					}
+				}
+			}
+			&.bg-moola {
+				li {
+					&:nth-child(1) span {
+						background: lighten($moola, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($moola, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($moola, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($moola, 5%);
+					}
+					&:nth-child(5) span {
+						background: $moola;
+					}
+					&:nth-child(6) span {
+						background: darken($moola, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($moola, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($moola, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($moola, 20%);
+					}
+				}
+			}
+			&.bg-shamrock {
+				li {
+					&:nth-child(1) span {
+						background: lighten($shamrock, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($shamrock, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($shamrock, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($shamrock, 5%);
+					}
+					&:nth-child(5) span {
+						background: $shamrock;
+					}
+					&:nth-child(6) span {
+						background: darken($shamrock, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($shamrock, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($shamrock, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($shamrock, 20%);
+					}
+				}
+			}
+			&.bg-azure {
+				li {
+					&:nth-child(1) span {
+						background: lighten($azure, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($azure, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($azure, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($azure, 5%);
+					}
+					&:nth-child(5) span {
+						background: $azure;
+					}
+					&:nth-child(6) span {
+						background: darken($azure, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($azure, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($azure, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($azure, 20%);
+					}
+				}
+			}
+			&.bg-lake {
+				li {
+					&:nth-child(1) span {
+						background: lighten($lake, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($lake, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($lake, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($lake, 5%);
+					}
+					&:nth-child(5) span {
+						background: $lake;
+					}
+					&:nth-child(6) span {
+						background: darken($lake, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($lake, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($lake, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($lake, 20%);
+					}
+				}
+			}
+			&.bg-cobalt {
+				li {
+					&:nth-child(1) span {
+						background: lighten($cobalt, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($cobalt, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($cobalt, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($cobalt, 5%);
+					}
+					&:nth-child(5) span {
+						background: $cobalt;
+					}
+					&:nth-child(6) span {
+						background: darken($cobalt, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($cobalt, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($cobalt, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($cobalt, 20%);
+					}
+				}
+			}
+			&.bg-eggplant {
+				li {
+					&:nth-child(1) span {
+						background: lighten($eggplant, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($eggplant, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($eggplant, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($eggplant, 5%);
+					}
+					&:nth-child(5) span {
+						background: $eggplant;
+					}
+					&:nth-child(6) span {
+						background: darken($eggplant, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($eggplant, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($eggplant, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($eggplant, 20%);
+					}
+				}
+			}
+			&.bg-campus {
+				li {
+					&:nth-child(1) span {
+						background: lighten($campus, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($campus, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($campus, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($campus, 5%);
+					}
+					&:nth-child(5) span {
+						background: $campus;
+					}
+					&:nth-child(6) span {
+						background: darken($campus, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($campus, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($campus, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($campus, 20%);
+					}
+				}
+			}
+			&.bg-taupe {
+				li {
+					&:nth-child(1) span {
+						background: lighten($taupe, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($taupe, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($taupe, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($taupe, 5%);
+					}
+					&:nth-child(5) span {
+						background: $taupe;
+					}
+					&:nth-child(6) span {
+						background: darken($taupe, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($taupe, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($taupe, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($taupe, 20%);
+					}
+				}
+			}
+			&.bg-slate {
+				li {
+					&:nth-child(1) span {
+						background: lighten($slate, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($slate, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($slate, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($slate, 5%);
+					}
+					&:nth-child(5) span {
+						background: $slate;
+					}
+					&:nth-child(6) span {
+						background: darken($slate, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($slate, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($slate, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($slate, 20%);
+					}
+				}
+			}
+			&.bg-charcoal {
+				li {
+					&:nth-child(1) span {
+						background: lighten($charcoal, 20%);
+					}
+					&:nth-child(2) span {
+						background: lighten($charcoal, 15%);
+					}
+					&:nth-child(3) span {
+						background: lighten($charcoal, 10%);
+					}
+					&:nth-child(4) span {
+						background: lighten($charcoal, 5%);
+					}
+					&:nth-child(5) span {
+						background: $charcoal;
+					}
+					&:nth-child(6) span {
+						background: darken($charcoal, 5%);
+					}
+					&:nth-child(7) span {
+						background: darken($charcoal, 10%);
+					}
+					&:nth-child(8) span {
+						background: darken($charcoal, 15%);
+					}
+					&:nth-child(9) span {
+						background: darken($charcoal, 20%);
+					}
+				}
+			}
+		}
+	}
+}

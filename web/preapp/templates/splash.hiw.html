@@ -1,0 +1,124 @@
+<ion-view id="demo" class="flex-center">
+	<swiper width="100%" height="100%" class='flex-center'>
+		<slide class="full-xy flex-center">
+		    <div id="projector-hiw-map" class="projector-slide" u on-init="s:[hiw-enter:public, cloud-sky:public, time-shift:public]">
+				<svg class="projector-line" width="2px" height="196px" viewBox="0 0 4 392">
+					<path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
+				</svg>
+				<div class="projector-top"></div>
+				<div class="projector-content overflow-hidden"
+					when-hiw-enter="s:[time-shift:public:1000]">
+					<svg id="hiw-clock-tower" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMid slice"
+						ng-include="root.base_url + 'preapp/templates/hiw/clock-tower.html'"
+						init-with="p:[op:0, z-index:-1]"
+						when-open-clock-tower="p:[op:1, z-index:4]"></svg>
+					<svg id="hiw-dorm" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMid slice"
+						ng-include="root.base_url + 'preapp/templates/hiw/dorm.html'"
+						init-with="p:[op:0, z-index:-1]"
+						when-open-dorm="p:[op:1, z-index:4]"></svg>
+					<div id="hiw-library"
+						ng-include="root.base_url + 'preapp/templates/hiw/library.html'"
+						init-with="p:[op:0, z-index:-1]"
+						when-open-library="p:[op:1, z-index:4]"></div>
+					<svg id="hiw-map" class="hiw-svg"  width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMin"
+						ng-include="root.base_url + 'preapp/templates/hiw/map.html'"></svg>
+					<svg id="hiw-stadium" class="hiw-svg"  width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMin"
+						ng-include="root.base_url + 'preapp/templates/hiw/stadium.html'"
+						init-with="p:[op:0, z-index:-1]"
+						when-open-stadium="p:[z-index:1, op:1]"
+						when-crowd-cheer="t-enter"></svg>
+					<svg id="hiw-stadium-balloons" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMin"
+						ng-include="root.base_url + 'preapp/templates/hiw/stadium-balloons.html'"
+						init-with="p:[op:0, z-index:-1]"
+						when-balloon-enter="p:[z-index:2, opacity:0:1:500:easeOutSine]"></svg>
+					<svg id="hiw-sky-clouds" class="hiw-svg" width="864px"  height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMin"
+						ng-include="root.base_url + 'preapp/templates/hiw/sky-clouds.html'"
+						init-with="p:[op:0, z-index:-1]"
+						when-balloon-select="p:[z-index:3, opacity:0:1:500:easeOutSine]:delay-1200"></svg>
+					<svg id="hiw-sky-balloon" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMin"
+						ng-include="root.base_url + 'preapp/templates/hiw/sky-balloon.html'"
+						init-with="p:[op:0, z-index:-1]"
+						when-balloon-select="p:[z-index:3, opacity:0:1:500:easeOutSine]:delay-2000"></svg>
+					<svg id="hiw-day" class="hiw-svg absolute top-0 left-0" width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMin"
+						ng-include="root.base_url + 'preapp/templates/hiw/day.html'"
+						init-with="p:[op:0, z-index:-1]"
+						when-open-library="p:[op:1, z-index:3]"
+						when-open-dorm="p:[op:1, z-index:3]"
+						when-open-clock-tower="p:[op:1, z-index:3]"
+						when-open-stadium="p:[op:1, z-index:0]"></svg>
+				</div>
+				<svg class="projector-handle" width="61px" height="24px" viewBox="0 0 122 48">
+					<path d="M116.813759,2 L119.407837,16.1511345 C121.400182,27.0197169 114.265024,37.7105153 103.431627,39.9081948 C103.431627,39.9081948 77.5373297,46 60.9999232,46 C44.4625167,46 18.5495835,39.9045365 18.5495835,39.9045365 C7.74411375,37.6544772 0.597741646,27.0302069 2.59200971,16.1511345 L5.18608711,2" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
+				</svg>
+			</div>
+		</slide>
+
+		<slide class="full-xy flex-center">
+			<div class="projector-slide">
+			    <svg class="projector-line" width="2px" height="196px" viewBox="0 0 4 392">
+			        <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
+			    </svg>
+			    <div class="projector-top"></div>
+			    <div class="projector-content"></div>
+				<svg class="projector-handle" width="61px" height="24px" viewBox="0 0 122 48">
+					<path d="M116.813759,2 L119.407837,16.1511345 C121.400182,27.0197169 114.265024,37.7105153 103.431627,39.9081948 C103.431627,39.9081948 77.5373297,46 60.9999232,46 C44.4625167,46 18.5495835,39.9045365 18.5495835,39.9045365 C7.74411375,37.6544772 0.597741646,27.0302069 2.59200971,16.1511345 L5.18608711,2" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
+				</svg>
+			</div>
+		</slide>
+
+		<slide class="full-xy flex-center">
+			<div class="projector-slide">
+			    <svg class="projector-line" width="2px" height="196px" viewBox="0 0 4 392">
+			        <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
+			    </svg>
+			    <div class="projector-top"></div>
+			    <div class="projector-content"></div>
+				<svg class="projector-handle" width="61px" height="24px" viewBox="0 0 122 48">
+					<path d="M116.813759,2 L119.407837,16.1511345 C121.400182,27.0197169 114.265024,37.7105153 103.431627,39.9081948 C103.431627,39.9081948 77.5373297,46 60.9999232,46 C44.4625167,46 18.5495835,39.9045365 18.5495835,39.9045365 C7.74411375,37.6544772 0.597741646,27.0302069 2.59200971,16.1511345 L5.18608711,2" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
+				</svg>
+			</div>
+		</slide>
+	</swiper>
+</ion-view>
+
+
+<!-- <script>
+	$(".map-stadium-container").click(function(){
+		$("#hiw-map").addClass("active-stadium");
+		$("#hiw-stadium").addClass("active");
+	});
+
+	$(".avg-sign-away").click(function(){
+		$("#hiw-stadium").addClass("wild");
+	});
+
+	$(".avg-sign-cal").click(function(){
+		$(".hiw-stadium-container").addClass("active");
+		$("#hiw-stadium-balloons").addClass("active");
+		$(".hiw-helicopter").addClass("active");
+		$(".hiw-balloon-group").addClass("move");
+	});
+
+	$(".hiw-balloon").each(function() {
+		$(this).click(function(){
+			$(this).addClass("active");
+			$(".hiw-stadium-balloons-container").addClass("clear");
+			$(".hiw-helicopter").addClass("clear");
+			$(".hiw-balloon").not(this).addClass("hiw-balloon-static").addClass("clear");
+			$("#hiw-sky-balloon").addClass("active");
+			$("#hiw-sky-balloon-gradient").addClass("active");
+			$("#hiw-sky-clouds").addClass("active");
+			if ($(this).is( "#hiw-balloon-academic" )) {
+				$("#hiw-sky-balloon-academic").addClass("active");
+			} else if ($(this).is( "#hiw-balloon-baking" )) {
+				$("#hiw-sky-balloon-baking").addClass("active");
+			} else if ($(this).is( "#hiw-balloon-hh" )) {
+				$("#hiw-sky-balloon-hh").addClass("active");
+			} else if ($(this).is( "#hiw-balloon-tech" )) {
+				$("#hiw-sky-balloon-tech").addClass("active");
+			} else if ($(this).is( "#hiw-balloon-photo" )) {
+				$("#hiw-sky-balloon-photo").addClass("active");
+			}
+		});
+	});
+</script> -->

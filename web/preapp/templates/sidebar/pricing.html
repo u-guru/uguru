@@ -1,0 +1,61 @@
+<section class="splash-pricing splash-modal">
+	<header>
+		<div ng-include="root.base_url + 'preapp/templates/components/graphic/pricing.html'"></div>
+		<a class="splash-exit mobile" ng-include="root.base_url + 'shared/templates/components/svg/main/down.html'"
+			init-default
+			on-click="s:[modal-close:public, pricing-modal-close:public]"></a>
+		<a class="splash-exit desktop icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/left-circle.html'"
+			init-default
+			on-click="s:[modal-close:public, pricing-modal-close:public]"></a>
+		<h1 class="flex"><word type='scoopEnter' delay="50">Pricing</word></h1>
+	</header>
+	<div>
+		<ul class='splash-pricing-props'>
+			<li>
+				<div class="pricing-tile">
+					<h3>Our Fees</h3>
+					<h2>&le; 5%</h2>
+					<span>Guaranteed Lowest</span>
+					<svg viewBox="0 0 150 200" preserveAspectRatio="none">
+						<path d="M0,0 L150,0 L150,50 L0,150 L0,0 Z"></path>
+					</svg>
+				</div>
+			</li>
+			<li>
+				<div class="pricing-tile">
+					<h3>Our Students Pay</h3>
+					<h2>$13/hr</h2>
+					<span>On Average</span>
+					<svg viewBox="0 0 150 200" preserveAspectRatio="none">
+						<path d="M0,0 L150,0 L150,50 L0,150 L0,0 Z"></path>
+					</svg>
+				</div>
+			</li>
+			<li>
+				<div class="pricing-tile">
+					<h3>College Guru Avg</h3>
+					<h2>$14/hr</h2>
+					<span>Open Market</span>
+					<svg viewBox="0 0 150 200" preserveAspectRatio="none">
+						<path d="M0,0 L150,0 L150,50 L0,150 L0,0 Z"></path>
+					</svg>
+				</div>
+			</li>
+		</ul>
+
+		<div class="p15-grid txt-18">
+			<dl>
+				<dt>Minimal Fees and Maximum Affordability</dt>
+				<dd>One of our core missions with Uguru is to make in-person tutoring affordable and accessible to all demographics.</dd>
+			</dl>
+			<dl>
+				<dt>Let the Market Decide Pricing</dt>
+				<dd>Since we take less than <b><u>5 percent </u></b> transaction fees (from Gurus only), we've noticed a sharp decrease in overall pricing.</dd>
+			</dl>
+			<dl>
+				<dt>Students Propose Ideal Price</dt>
+				<dd>Affordability varies from student to student. With Uguru, students can propose a price or suggest an exchange of services or items. </dd>
+			</dl>
+		</div>
+	</div>
+</section>

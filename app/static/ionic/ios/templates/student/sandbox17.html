@@ -1,0 +1,39 @@
+<ion-view view-title="find a guru">
+<div class="bar bar-subheader">
+  <div class="row center">
+    <div class="col border-bottom">MY CLASSES</div>
+    <div class="col">PREVIOUS SESSIONS</div>
+  </div>
+</div>
+
+
+<ion-nav-buttons side="secondary">
+  <button ng-click="submitSupport()" ng-disabled="!support.message" class="button button-clear button-positive">save</button>
+</ion-nav-buttons>
+<ion-content>
+  <div class="add-class margin-top-40">
+    <div class="lg-box">
+      <div class="course-name-box">
+        <div class="text">
+          BIO 101
+        </div>
+      </div>
+    </div>
+    <div class="lg-box">
+      <div class="green-box"><span class="icon ion-plus"></span></div>
+      <div class="md-box">
+        <div class="text">
+          Add a class ...
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+  <div class="bar bar-footer uguru-footer">
+    <div class="row">
+      <div class="col center border-bottom"><img src='./img/glass.png' class='width'></div>
+      <div class="col center"><img src='./img/book.png' class='width'></div>
+      <div class="col center"><img src='./img/setting.png' class='width'></div>
+    </div>
+  </div>
+</ion-view>

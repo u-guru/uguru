@@ -1,0 +1,67 @@
+<style>.helicopter-container {
+      animation: bob 0.5s infinite;
+    }
+    .helicopter-container svg {
+      animation: swing 1.5s infinite;
+    }
+ /*   #GuruCopter path:nth-of-type(5) {
+      animation: spin 1.5s infinite;
+    }
+*/
+    @keyframes spin {
+      0% {
+        transform: translate(-50px, 0);
+        animation-timing-function: ease-in-out;
+      }
+      50% {
+        transform: translate(100px, 0);
+        animation-timing-function: ease-in-out;
+      }
+      100% {
+        transform: translate(50px, 0);
+        animation-timing-function: ease-in-out;
+      }
+    }
+
+    @keyframes bob {
+      0% {
+        transform: translate(0, 0);
+        animation-timing-function: ease-in-out;
+      }
+      50% {
+        transform: translate(0, 30px);
+        animation-timing-function: ease-in-out;
+      }
+      100% {
+        transform: translate(0, 0);
+        animation-timing-function: ease-in-out;
+      }
+    }
+
+    @keyframes swing {
+      0% {
+        transform: rotate(0deg);
+        transform-origin: 50% 85%;
+        animation-timing-function: ease-in-out;
+      }
+      25% {
+        transform: rotate(-20deg);
+        transform-origin: 50% 85%;
+        animation-timing-function: ease-in-out;
+      }
+      50% {
+        transform: rotate(0deg);
+        transform-origin: 50% 85%;
+        animation-timing-function: ease-in-out;
+      }
+      75% {
+        transform: rotate(20deg);
+        transform-origin: 50% 85%;
+        animation-timing-function: ease-in-out;
+      }
+      100% {
+        transform: rotate(0deg);
+        transform-origin: 50% 85%;
+        animation-timing-function: ease-in-out;
+      }
+    }</style><div class="full-xy bg-smoke flex-center-wrap" class="ng-class:{'fx-zoom-normal fx-dur-1000 fx-ease-cubic':page.status.exitLoader}"><div class="full-x txt-charcoal"><h1 class="text-center">Redirecting you to your university..</h1></div><div class="container"><div ng-fx-speed="slow" ngfx-bounce-in-up="true" class="helicopter-container" ng-include="img_base + BASE + 'templates/svg/gurucopter.html'"></div></div><div class="full-x txt-charcoal footer-text full-x text-center txt-slate"><p class="text-center weight-900" id="loading-counter"></p></div></div>

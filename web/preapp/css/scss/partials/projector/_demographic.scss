@@ -1,0 +1,75 @@
+@import '../../../../../shared/css/scss/partials/mixin';
+
+.projector-demo {
+	text-align: center;
+}
+
+.projector-demo-grids {
+	@include flex-center;
+	position: relative;
+	width: 100%;
+	&.desktop {
+		display: none;
+	}
+	&.mobile {
+		@include flex;
+	}
+}
+
+.projector-demo-grid {
+	@include flex;
+	@include flex-center;
+	@include flex-wrap;
+	max-width: 600px;
+	padding: 7.5px;
+	margin-top: -10px;
+	li {
+		padding: 7.5px;
+		width: 50%;
+		.demographic-tile {
+			> div {
+				> div:not(.borders) {
+					width: 100%;
+					> div {
+						padding-right: 0;
+					}
+				}
+			}
+		}
+	}
+	+ ul {
+		position: absolute;
+	}
+}
+
+@media screen and (min-height: 530px) {
+	.projector-demo-grid {
+		li {
+			width: auto;
+			.demographic-tile {
+				> div {
+					> div:not(.borders) {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+}
+
+ @media screen and (min-height: 580px) {
+	 .projector-demo-grid {
+ 		margin-top: 0;
+ 	}
+ }
+
+ @media screen and (min-width: 768px) {
+	 .projector-demo-grids {
+	 	&.desktop {
+	 		@include flex;
+	 	}
+	 	&.mobile {
+			display: none;
+	 	}
+	 }
+ }

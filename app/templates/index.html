@@ -1,0 +1,795 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1"/>    
+        <meta name="google-site-verification" content="VedYsRZwfb8cgFav7a8007dC1zMR-vjIKoqBH1Fv9N4" />
+        <link href="/static/css/bootstrap.css" rel="stylesheet">
+        <link href="/static/css/app.css" rel="stylesheet">
+        <link href="/static/css/phone-mobile.css" rel="stylesheet">
+        <link href="/static/css/tablet-mobile.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Roboto:300, 400,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,400,300, 100' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+        
+        <!-- Include scripts -->
+        {% include 'scripts.html' %}
+        {% block scripts %}
+        {% endblock %}
+
+    </head>
+    <body>
+    <div id='main'>
+        <div id='home' >
+            <div id='banner'>
+                <nav class="navbar navbar-default" role="navigation">
+                  <div class="container-fluid">
+                    <!-- Logo and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                      <a class="navbar-brand" href="#">
+                        <img src='/static/img/guru-new.svg' height='60px'>
+                        <span class='logo-text'> &nbsp;uguru.me </span>
+                      </a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      <ul class="nav navbar-nav" id='powered-by-cal-ul'>
+                        <li><a href="#" id='powered-by-cal'>by Cal bears, for Cal bears</a></li>
+                      </ul>
+                      <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a id='apply-nav'href="/apply/">Apply</a>
+                        </li>
+                        <li>
+                            <a href='/welcome/'>Log in</a>
+                        </li>
+                        <li>
+                            <a id='become-guru-nav' style='text-decoration:underline' href="/welcome/">Become a Guru</a>
+                        </li>
+                        <li>
+                            <a id='signup-nav' href="/welcome/">
+                                <span style='padding:8px 26px;' id='get-started-button' class='blue-btn'> Get Started </span>
+                            </a>
+                        </li>
+                      </ul>
+                    </div><!-- /.navbar-collapse -->
+                  </div><!-- /.container-fluid -->
+                </nav> 
+                <div id='main-container' class='container center'>
+                    <div id='main-banner-header'class='white-text'>
+                        Study <del>Harder</del> Smarter
+                    </div>
+                    <h3 id='main-banner-subheader' class='white-text'>
+                        Get A Peer Tutor To Help You Ace It In Minutes
+                    </h3>
+                    <div id='home-search-class-container'class='row-fluid'>
+                        <div class='search-class-container'>
+                            <input id='course-input' class='typeahead' placeholder='Someone help me in...(CS10)'type='text'></input>
+                            <a href='javascript:void(0);' id='home-course-submit'>
+                                <span id='home-course-submit-btn' class='blue-btn'> Ace It! </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class='container-fluid' id='tutor-banner-background'>
+                </div>
+                <div id='tutor-banner-content'>
+                    <div class='container-fluid'>
+                        <div class='row-fluid'>
+                            <div id='tutor-preview-1' class='col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-1 col-md-5 mobile-tutor-content'>
+                                <div class='tutor-preview'>
+                                    <div class='tutor-preview-img-container'>
+                                        <img class='tutor-preview-img' src='/static/img/nadir.png' height='90px' width='90px'>
+                                        <div class='tutor-preview-content'>
+                                            <div class='tutor-preview-content-details'>
+                                                <span class='font-16 bold'> Nadir B. </span> &nbsp;&nbsp;
+                                                <span class='ratings font-16'> 
+                                                    <span class="star-icon-feed full">☆</span>
+                                                    <span class="star-icon-feed full">☆</span>
+                                                    <span class="star-icon-feed full">☆</span>
+                                                    <span class="star-icon-feed full">☆</span>
+                                                    <span class="star-icon-feed half">☆</span>
+                                                    <span id='tutor-demo-num-ratings-1'class='font-16'>&nbsp;(5)&nbsp;&nbsp;</span>
+                                                </span>
+                                                <div class='tutor-preview-content-tags'>
+                                                    <span class='tutor-exp-tag'>
+                                                        GSI
+                                                    </span>
+                                                    <span class='tutor-exp-tag'>
+                                                        SLC Tutor
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class='tutor-preview-content-major'>
+                                                <p><b>MCB: Neurobiology, Class of 2014</b></p>
+                                            </div>
+                                            <div class='tutor-preview-content-description'>
+                                                <p id='tutor-preview-content-description-1'>
+                                                    "I have 6 years of experience tutoring general chemistry. At Cal, I've been a Chem1A SLC drop-in tutor for 3 years and a Chem1A group leader..."
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Margin is temporary -->
+                            <div id='tutor-preview-2' class='col-xs-12 col-sm-6 col-md-5' style='margin-left:30px'>
+                                <div class='tutor-preview'>
+                                    <div class='tutor-preview-img-container'>
+                                        <img class='tutor-preview-img' src='/static/img/sean.png' height='90px' width='90px'>
+                                        <div class='tutor-preview-content'>
+                                            <div class='tutor-preview-content-details'>
+                                                <span class='font-16 bold'> Sean Z. </span> &nbsp;&nbsp;
+                                                <span class='ratings font-16'> 
+                                                    <span class="star-icon-feed full">☆</span>
+                                                    <span class="star-icon-feed full">☆</span>
+                                                    <span class="star-icon-feed full">☆</span>
+                                                    <span class="star-icon-feed full">☆</span>
+                                                    <span class="star-icon-feed full">☆</span>
+                                                    <span class='font-16'>&nbsp;(1)&nbsp;&nbsp;</span>
+                                                </span>
+                                                <div class='tutor-preview-content-tags'>
+                                                    <span class='tutor-exp-tag'>
+                                                        Lab Assistant
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class='tutor-preview-content-major'>
+                                                <p><b>Computer Science, Class of 2016</b></p>
+                                            </div>
+                                            <div class='tutor-preview-content-description'>
+                                                <p>
+                                                    "I have 8 years of programming experience. I started in middle school when I learned Python by hacking on an old Nokia 3650..."
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id='how-it-works-home white-text'>
+                <div class='row-fluid text-banner how-it-works-text-banner'>
+                    <img src='/static/img/pencil-banner.svg' id='shield-banner'>
+                    <b>How It Works</b>
+                </div>
+                <div id='how-it-works-banner'>
+                    <div class='container'>
+                        <div class='row-fluid'>
+                            <div id='testimonial-1' class='col-xs-12 col-sm-4 col-md-4'>
+                                <div class='testimonial-section margin-top-20'>
+                                    <img src='/static/img/icon1.png' height='35px'> 
+                                        <div class='margin-bottom-20 white-text font-32 margin-top-20 how-it-works-header'>Request Help</div>
+                                        <p>
+                                            <span class='white-text font-18'>
+                                            Fill out a request form, and tell our Gurus what you need help with, and how much you would like to pay.
+                                            </span>
+                                        </p>
+                                </div>
+                            </div>
+                            <div id='testimonial-2' class='col-xs-12 col-sm-4 col-md-4'>
+                                <div class='testimonial-section margin-top-20 '>
+                                    <img src='/static/img/icon2.png' height='35px'> 
+                                        <div class='margin-bottom-20 white-text font-32 margin-top-20 how-it-works-header'>Pick A Guru</div>
+                                        <p>
+                                            <span class='white-text font-18'>
+                                            Up to 3 Gurus will respond to your request within minutes. Pick the one you like best based on their profiles and reviews.
+                                            </span>
+                                        </p>
+                                </div>
+                            </div>
+                            <div id='testimonial-3' class='col-xs-12 col-sm-4 col-md-4'>
+                                <div class='testimonial-section margin-top-20'>
+                                    <img src='/static/img/icon3.png' height='35px'> 
+                                        <div class='margin-bottom-20 white-text font-32 margin-top-20 how-it-works-header'>Meet Up</div>
+                                        <p>
+                                            <span class='white-text font-18'>
+                                            Meet up around campus at the scheduled time and location. Skip the ATM, we take care of all your payments.
+                                            </span>
+                                        </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id='testimonials'>
+                <div class='row-fluid text-banner how-it-works-text-banner bold'>
+                    Testimonials
+                </div>
+                <div class='container'>
+                    <div class='row-fluid'>
+                        <div id='testimonial-1' class='col-xs-12 col-sm-4 col-md-4'>
+                            <div class='testimonial-section'>
+                                    <div class='margin-bottom-20 normal-text font-32 margin-top-20 testimonial-header'>Right People</div>
+                                    <p>
+                                        <span class='dark-grey-text font-18'>
+                                        "Finding a Guru who has taken the exact same class by the same professors  was very helpful for Hilfinger's CS61A. 
+                                        </span>
+                                    </p>
+                                    <div class='margin-top-20 relative'>
+                                        <img src='/static/img/face1.png' class='absolute testimonial-face' height='50px' style='left:5px; top:-3px'> 
+                                        <div class='dark-grey-text font-18 testimonial-section-author'> - Jenny L. ECON <br> Class of 2016 </div>
+                                    </div>
+                                    <br>
+                            </div>
+                        </div>
+                        <div id='testimonial-2' class='col-xs-12 col-sm-4 col-md-4'>
+                            <div class='testimonial-section'>
+                                    <div class='margin-bottom-20 normal-text font-32 margin-top-20 testimonial-header'>Right Time</div>
+                                    <p>
+                                        <span class='dark-grey-text font-18'>
+                                            "My Guru met me at Moffit in 20 mins, and clarified everything I was stuck with for Math 54. I should've done that earlier!""
+                                        <span class='dark-grey-text font-18'>
+                                    </p>
+                                    <div class='margin-top-20 relative'>
+                                        <img src='/static/img/face2.png' class='absolute testimonial-face' height='50px' style='left:5px; top:-3px'> 
+                                        <div class='dark-grey-text font-18 testimonial-section-author'> - Mark K. EECS <br> Class of 2017 </div>
+                                    </div>
+                                    <br>
+                            </div>
+                        </div>
+                        <div id='testimonial-3' class='col-xs-12 col-sm-4 col-md-4'>
+                            <div class='testimonial-section'>
+                                <div class='margin-bottom-20 normal-text font-32 margin-top-20 testimonial-header'>Right Price</div>
+                                    <p>
+                                        <span class='dark-grey-text font-18'>
+                                            "Private tutoring normally cost about $40/hr. For $15/hr, it was totally worth it to get help to save my Chem 3A exams."
+                                        <span class='dark-grey-text font-18 '>
+                                    </p>
+                                    <div class='margin-top-20 relative'>
+                                        <img src='/static/img/face3.png' class='absolute testimonial-face' height='50px' style='left:5px; top:-3px'> 
+                                        <div class='dark-grey-text font-18 testimonial-section-author'> - Eric C. MCB <br> Class of 2015 </div>
+                                    </div>
+                                    <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id='signup-now'>
+            <div class='row-fluid text-banner' id='referral-banner' style='height:350px'>
+                <img src='/static/img/guru-sliced.png' id='guru-banner'>
+                <div class='margin-top-30 margin-bottom-20 reg-text align-left'>
+                    <div class='white-text col-xs-offset-3 col-xs-9 col-sm-offset-4 col-sm-8 col-md-offset-4 col-md-8'>
+                        <div id='guru-banner-header' class='white-text'>
+                            Give $5, Get $5
+                        </div>
+                        <div id='guru-banner-subheader' >
+                            Help friends study smarter.
+                            <br>
+                            Get $10 for every friend that tries it.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id='guarantee'>
+            <div class='row-fluid text-banner'>
+                <img src='/static/img/shield-banner.svg' id='shield-banner'>
+                <b>Guarantee</b>
+            </div>
+            <div class='container center'>
+                <div class='row-fluid'>
+                    <div class='guarantee-container'>
+                        <h1 class='extra-margin-bottom dark-grey-text'><b>100% Satisfaction Guaranteed</b></h1>
+                        <div class='guarantee-text-container'>
+                            <p>
+                            Quality is our top priority. Our average tutor rating is currently a <b>4.7</b>. In rare cases where you are not satisfied, please let us know and we will give you a full refund.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of main -->
+    
+    <!-- Tutor Application Form -->
+    <div id='tutor-application-form' style='display:none'>
+        <nav class="navbar navbar-default navbar-main" role="navigation">
+          <div class="container-fluid">
+            <!-- Logo and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">
+                <img src='/static/img/guru-new.svg' height='60px'>
+                <span class='logo-text blue-text'> &nbsp;uguru.me </span>
+              </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li><a class='reg-text' href="#">by Cal bears, for Cal bears</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right navbar-right-main">
+                <li><a id='become-guru-tutor' href="/welcome/">Become a Guru</a></li>
+                <li><a data-toggle='modal'  href='/welcome/'><u>Log in</u></a></li>
+                <li><a id='signup-nav-tutor' href="javascript:void(0);">
+                        <span class='blue-btn'> Sign up </span>
+                    </a>
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+        <div class='guru-app-container container-fluid'>
+            <div class='row'>
+                <div class='col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4'>
+                    <h1 class='reg-text center bold extra-margin-bottom'>
+                        Guru Application
+                    </h1>
+                    <div class='request-form-container'>
+                        
+                        <div id='tutor-app-alert' class='row-fluid red-text center normal-text no-padding'>
+                            Please fill in all fields
+                        </div>
+                        <div class='tutor-app-photo-container margin-top-30 margin-bottom-15'>
+                            <img id='tutor-app-photo' src='/static/img/default-photo.jpg' height='80px'> 
+                            <a id='upload-photo-link' href='javascript:void(0);'>
+                                <span class='photo-upload-btn blue-btn'> Upload </span>
+                            </a>
+                        </div>
+                        <input id="upload-photo" type="file"/>
+
+                        <label for='request-class'>School Email</label>
+                        <input type='text' id='tutor-app-school-email' placeholder='@berkeley.edu'class='form-control standard-input'>
+                        
+                        <label for='request-class'>School Year</label>
+                        <div class="dropdown">
+                          <button class="btn btn-default dropdown-toggle" type="button" id="tutor-app-year" data-toggle="dropdown">
+                            &nbsp;
+                            <span class="caret"></span>
+                          </button>
+                          <ul id='tutor-app-dropdown' class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Freshman</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sophomore</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Junior</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Senior</a></li>
+                            <li role="presentation" class="divider"></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Grad Student</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Ph.D Student</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Alumni</a></li>
+                          </ul>
+                        </div>
+
+                        <label for='request-class'>Your Major(s) </label>
+                        <input type='text' id='tutor-app-major' class='form-control standard-input'>
+
+                        <label for='request-class'>Courses You Want To Tutor </label>
+                        <div class='guru-form-course-container row-fluid'>
+                            <input type='text' placeholder='Bio 1A' id='courses-tutor-input' class='typeahead form-control standard-input'>
+                            &nbsp;&nbsp;
+                            <a href='javascript:void(0);' id='tutor-app-add-course-btn'>
+                                <span class='glyphicon glyphicon-plus green-text' id='add-course-btn-span'></span>
+                            </a>
+                        </div>
+                        <div class='courses-add-container row-fluid'>
+                        </div>
+
+
+                        <label> Select Relevant Experience </label>
+                        <div class='row-fluid margin-top-10' >
+                            <input id='tutor-slc-check' type='checkbox' class='uguru-checkbox' 
+                            ></input>
+                            <span class='reg-text'>
+                                SLC Tutor
+                            </span>
+                        </div>
+                        <div class='row-fluid margin-top-10' >
+                            <input id='tutor-res-check' type='checkbox' class='uguru-checkbox'></input>
+                            <span class='reg-text'>
+                                Residential Hall Tutor
+                            </span>
+                        </div>
+                        <div class='row-fluid margin-top-10'>
+                            <input id='tutor-gsi-check' type='checkbox' class='uguru-checkbox'></input>
+                            <span class='reg-text'>
+                                GSI
+                            </span>
+                        </div>
+                        <div class='row-fluid margin-top-10'>
+                            <input id='tutor-la-check' type='checkbox' class='uguru-checkbox'></input>
+                            <span class='reg-text'>
+                                Lab Assistant
+                            </span>
+                        </div>
+                        <div class='row-fluid margin-top-10'>
+                            <input id='tutor-cal-check' type='checkbox' class='uguru-checkbox'></input>
+                            <span class='reg-text'>
+                                I've tutored at Cal
+                            </span>
+                        </div>
+                        <label for='request-class'>Your Bio / Relevant Experience </label>
+                        <textarea id='tutor-app-experience' class='form-control standard-textarea guru-app-textarea'> </textarea>
+                        <div class='row-fluid margin-top-20'>
+                            <a href='javascript:void(0);' id='tutor-app-submit'>
+                                <span class='blue-btn blue-btn-full' style='width:100%'>
+                                    Submit
+                                </span>
+                            </a>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Student Request Form -->
+    <div id='request-form'>
+        <nav class="navbar navbar-default navbar-main" role="navigation">
+          <div class="container-fluid">
+            <!-- Logo and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">
+                <img src='/static/img/guru-new.svg' height='60px'>
+                <span class='logo-text blue-text'> &nbsp;uguru.me </span>
+              </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li><a class='reg-text' href="#">by Cal bears, for Cal bears</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right navbar-right-main">
+                <li><a id='become-guru-nav-request' href="javascript:void(0);">Become a Guru</a></li>
+                <li><a data-toggle='modal'  data-target='#login-modal' href='#'><u>Log in</u></a></li>
+                <li><a id='signup-nav-request' href="javascript:void(0);">
+                        <span class='blue-btn'> Sign up </span>
+                    </a>
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+        {% include 'request-form-container.html' %}
+    </div>
+
+
+        <div id='login-modal' data-keyboard='True' class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body relative">
+                <a href='javascript:void(0)' class='modal-close-now'>
+                    <span class='glyphicon glyphicon-remove grey-text modal-close-button' ></span>
+                </a>
+                
+                <div id='login-modal-container' class='container-fluid center'>
+                    {% if modal_flag == 'login' %}
+                        <div class='center font-18 light-grey-text margin-bottom-20'>
+                            You will be redirected to your destination after logging in.
+                        </div>
+                    {% endif %}
+                    <!-- <h1 class='extra-margin-bottom dark-grey-text'><b>LOGIN</b></h1> -->
+
+                    <a id='fb-login-btn' onclick='fb_login()' href='#'>
+                        <img src='/static/img/login-fb.png'>
+                    </a>
+                    <div class='or-text relative'>
+                        <span style='width:20px; border-top:1px solid grey'> </span> Or <span style='border-top: 1px solid grey;'> 
+                        </span>
+                    </div>
+                    <div class='login-input-container'>
+                        <div id='alert-fields-login-2'>
+                            Please fill in all fields.
+                        </div>
+                        <div id='alert-fields-login'>
+                            Please fill in all fields.
+                        </div>
+                        <label for="exampleInputEmail1">Email</label>
+                        <input name='login-email' type="email"  class="form-control" id="login-email" >
+                        <label style='margin-top:10px' for="exampleInputPassword1">Password</label>
+                        <input name='login-password' type="password" class="form-control" id="login-password" >
+                    </div>
+                    <div class='login-btn-container relative'>
+                        <a href='javascript:void(0)' id='login-submit-link'>
+                            <span class='blue-btn login-padding'>
+                                <span style='top:3px'class='glyphicon glyphicon-envelope absolute'></span>  
+                                <span style='margin-left:25px;' >Log in with your Cal Mail</span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class='center row font-14 margin-top-20'>
+                        <u><a href='javascript:void(0);' class='blue-text'id='forgot-password-link'> Forgot your password? </a></u>
+                    </div>
+                    <div class='center row font-14 margin-top-30'>
+                        <u><a href='javascript:void(0);' class='blue-text' id='login-to-signup-modal'> Don't have an account? Sign up here </a></u>
+                    </div>
+                </div>
+
+                <div id='forgot-password-modal-container' class='container-fluid center'>
+                    <div id='alert-fields-forgot-password' class='red-text normal-text' style='display:none'>
+                        Please fill in all fields.
+                    </div>
+                    <div class='row font-16 normal-text reg-text'>
+                        Please enter your email and we will send you a generated password to change.
+                    </div>
+                    <div class='password-input-container'>
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input name='password-email' type="email" class="form-control" id="password-email" >
+                    </div>
+                    <div class='login-btn-container'>
+                        <a href='javascript:void(0)' id='password-submit-link'>
+                            <span class='blue-btn'>
+                                Reset
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div>
+
+        <div id='signup-modal' data-keyboard='True' class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body relative">
+                <a href='javascript:void(0)' class='modal-close-now'>
+                    <span class='glyphicon glyphicon-remove grey-text modal-close-button' ></span>
+                </a>
+                <div id='login-modal-container' class='container-fluid center'>
+                    <h1 id='become-guru-text' style='margin-top:-10px; margin-bottom:30px'> Become a Guru </h1>
+                    <div id='alert-fields-student-signup-top'>
+                        Please fill in all fields.
+                    </div>
+                    <a id='fb-signup-btn' onclick='fb_login()' href='#'>
+                        <img src='/static/img/signup-fb.png'>
+                    </a>
+                    <div class='never-post'>
+                        We will NEVER post on your Facebook
+                    </div>
+                    <div class='or-text'>
+                        Or
+                    </div>
+                    <div class='login-input-container'>
+                        <div id='alert-fields-student-signup'>
+                            Please fill in all fields.
+                        </div>
+                        <label for="exampleInputPassword1">Name</label>
+                        <input name='student-name' placeholder='Full Name'  id='student-signup-name' class="form-control" >
+                        
+                        <label style='margin-top:10px' for="exampleInputEmail1">Email address</label>
+                        <input name='student-email' placeholder='you@berkeley.edu' id='student-signup-email'  type="email" class="form-control">
+                        
+                        <label style='margin-top:10px' for="exampleInputPassword1">Create a Password</label>
+                        <input name='student-password' id='student-signup-password' type="password" class="form-control" >
+                    </div>
+                    <div class='login-btn-container relative' >
+                        <a id='student-next-link' href='javascript:void(0);'style='display:none'>
+                            <span class='blue-btn signup-padding'>
+                                <span style='top:3px' class='glyphicon glyphicon-user absolute'></span>  
+                                <span style='margin-left:25px;' >Get an Account</span>
+                            </span>
+                        </a>
+                        <a id='tutor-next-link' href='javascript:void(0);' style='display:none'>
+                            <span class='blue-btn'>
+                                Next
+                            </span>
+                        </a>
+                        <a id='tutor-next-link-instant' href='javascript:void(0);' style='display:none'>
+                            <span class='blue-btn'>
+                                Submit
+                            </span>
+                        </a>
+                        <div id='post-signup-span' style ='display:none'class='row green-text font-24'>
+                            <span id='post-signup-span-awesome'>
+                            <span class='green-text glyphicon glyphicon-ok'> </span> You're all set! (and Awesome!)
+                            </span>
+                             <br>
+                            <span id='post-signup-span-thankyou'class='reg-text font-14'> Thank You for Signing Up! :) </span>
+                        </div>
+                    </div>
+                    <div class='center row font-14 margin-top-30'>
+                        <u><a href='javascript:void(0);' class='blue-text' id='signup-to-login-modal'> Have an account? Login in here </a></u>
+                    </div>
+                </div>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div>
+    </body>
+    <footer>
+        <div class='footer'>
+            <div class ='container'>
+                <div class='row-fluid'>
+                    <div class='col-xs-12 col-sm-12 col-md-offset-3 col-md-6'>
+                        <div class='footer-link'>
+                            <a target='_blank'  href='http://tinyurl.com/uguru-q-a'> FAQ </a>
+                        </div>
+                        <div class='footer-link'>
+                            <a target='_blank'  href='/tos/'> Terms of Use </a>
+                        </div>
+                        <div class='footer-link'>
+                            <a target='_blank' href='/tos/'> Privacy Policy </a>
+                        </div>
+                        <div class='footer-link'>
+                            <a target='_blank' href='/apply/'> Careers </a>
+                        </div>
+                        <div class='footer-link'>
+                            <a href="javascript:void(0)" onclick="olark('api.box.expand')" target='_top'> Contact Us </a>
+                        </div>
+                        <br><br>
+                        <div>
+                            <a target="_blank" href="https://mixpanel.com/f/partner">
+                                <img src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>window.jQuery || document.write('<script src="/static/js/jquery-1.11.1.min "><\/script>')</script>
+        <script src="/static/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+        <script src="/static/js/snippets/scroll.js"></script>
+        <script src="/static/js/mobile.js"></script>
+        <script>
+
+        $(document).ready(function() {
+            mixpanel.track("Loaded Landing Page");
+
+            $('#become-guru-nav').click(function() {
+                $('#signup-modal').modal();
+                $('#tutor-next-link-instant').show();
+                $('#student-next-link').hide();
+                $('#become-guru-text').show();
+            });
+            
+            {% if modal_flag == 'login' %}
+
+            $('#login-modal').modal('show');
+
+            {% elif modal_flag == 'signup'%}
+
+            $('#signup-modal').modal();
+            $('#tutor-next-link').hide();
+            $('#student-next-link').show();
+            
+            {% elif modal_flag == 'guru'%}  
+            
+            $('#signup-modal').modal();
+            $('#student-next-link').hide();
+            $('#tutor-next-link').show();
+            
+            {% elif modal_flag == 'instant'%}
+
+            $('#fb-signup-btn').hide();
+            $('.never-post').hide();
+            $('.or-text').hide();
+            $('#student-next-link').off();
+            $('#student-next-link').addClass('student-next-link-instant');
+            $('.student-next-link-instant').click(function() {
+                if (!$('#student-signup-name').val() || !$('#student-signup-email').val() || !$('#student-signup-password').val()) {
+                    $('#alert-fields-student-signup').show()
+                } else {
+                    var data_dict = {
+                        'student-signup': true,        
+                        'name': $('input[name="student-name"]').val(),
+                        'email': $('input[name="student-email"]').val(),
+                        'phone': '',
+                        'password': $('input[name="student-password"]').val(),
+                        'instant': true
+                    }
+                    $.ajax({
+                        type: "POST",
+                        contentType: 'application/json;charset=UTF-8',
+                        url: '/validation/' ,
+                        data: JSON.stringify(data_dict), 
+                        dataType: "json",
+                        success: function(result) {
+                            if (result.dict['account-exists']) {
+                              $('#signup-modal').modal('hide');
+                              $('#login-modal').modal('show');
+                              $('#alert-fields-login').text($('#student-signup-email').val() + ' already has an account! Please log in.')
+                              $('#alert-fields-login').show();
+                              return;
+                          }
+
+                          if (request_form_complete) {
+                              submit_request_form_to_server();
+                          }
+
+                          if (!$('#request-skill').val()) {
+                              $('#student-next-link').hide();
+                              $('input[name="student-name"]').val('');
+                              $('input[name="student-email"]').val('');
+                              $('input[name="student-password"]').val('');
+                              $('input[name="student-name"]').css('border-color','grey');
+                              $('input[name="student-email"]').css('border-color','grey');
+                              $('input[name="student-password"]').css('border-color','grey');
+                              $('#post-signup-span').show();
+                              $('#post-signup-span').delay(2500).fadeOut('slow', function() {
+                                $('#student-next-link').show();
+                            });
+                              return;
+                          }
+                        }
+                    });
+                }
+            });
+
+            $('#tutor-next-link-instant').click(function(){
+                if (!$('#student-signup-name').val() || !$('#student-signup-email').val() || !$('#student-signup-password').val()) {
+                    $('#alert-fields-student-signup').show()
+                } else if ($('#student-signup-email').val().toLowerCase().indexOf('@berkeley.edu') == -1) {
+                    $('#alert-fields-student-signup').text('Please enter an @berkeley.edu address.');
+                    $('#alert-fields-student-signup').show()
+                } else {
+                    var data_dict = {
+                        'student-signup': true,
+                        'tutor-signup': true,
+                        'name': $('input[name="student-name"]').val(),
+                        'email': $('input[name="student-email"]').val(),
+                        'phone': '',
+                        'password': $('input[name="student-password"]').val(),
+                        'instant': true
+                    }
+                    $.ajax({
+                        type: "POST",
+                        contentType: 'application/json;charset=UTF-8',
+                        url: '/validation/' ,
+                        data: JSON.stringify(data_dict), 
+                        dataType: "json",
+                        success: function(result) {
+                            if (result.dict['account-exists']) {
+                              guru_signup_clicked = true;
+                              $('#signup-modal').modal('hide');
+                              $('#login-modal').modal('show');
+                              $('#alert-fields-login').text($('#student-signup-email').val() + ' already has an account! Please Log In.')
+                              $('#alert-fields-login').show();
+                              return;
+                          }
+                          $('#tutor-next-link-instant').hide();
+                          $('input[name="student-name"]').val('');
+                          $('input[name="student-email"]').val('');
+                          $('input[name="student-password"]').val('');
+                          $('input[name="student-name"]').css('border-color','grey');
+                          $('input[name="student-email"]').css('border-color','grey');
+                          $('input[name="student-password"]').css('border-color','grey');
+                          $('#post-signup-span').show();
+                          $('#post-signup-span').delay(2500).fadeOut('slow', function() {
+                            $('#tutor-next-link-instant').show();
+                        });
+                      }
+                  });
+                }
+            });
+            
+            {% else %} 
+            
+            $('#become-guru-nav').click(function() {
+                $('#signup-modal').modal();
+                $('#tutor-next-link').show();
+                $('#tutor-next-link-instant').hide();
+                $('#student-next-link').hide();
+                $('#become-guru-text').show();
+            });
+            {% endif %}    
+        });
+        </script>
+    </footer>
+</html>

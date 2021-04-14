@@ -1,0 +1,1032 @@
+@import '../mixin';
+
+// default
+.bg {
+	svg {
+		* {
+			stroke: white;
+		}
+	}
+}
+button {
+	cursor: pointer;
+	width: 100%;
+	height: 64px;
+	border: 0;
+	color: white;
+	font-size: 24px;
+	font-weight: 600;
+	padding-left: 15px;
+	padding-right: 15px;
+	background: $shamrock;
+	svg {
+		* {
+			stroke: white;
+		}
+	}
+	&.normal {
+		width: auto;
+	}
+	&.width-300 {
+		width: 300px;
+	}
+	&.width-400 {
+		width: 400px;
+	}
+	&.height-54 {
+		height: 54px
+	}
+	&.height-48 {
+		height: 48px
+	}
+	&.height-36 {
+		height: 36px
+	}
+	&:hover, &:focus {
+		background: mix($shamrock, white);
+		color: mix($shamrock, $slate);
+		svg {
+			* {
+				stroke: mix($shamrock, $slate);
+			}
+		}
+	}
+	&:active {
+		background: mix($shamrock, $slate);
+		color: white;
+		svg {
+			* {
+				stroke: white;
+			}
+		}
+	}
+}
+button.disabled {
+	@include opacity(.7);
+}
+.bg, button {
+	&.bg-charcoal {
+		background: $charcoal;
+		&.reverse {
+			background: white;
+			color: $charcoal;
+			svg {
+				* {
+					stroke: $charcoal;
+				}
+			}
+		}
+		&:hover, &:focus {
+			background: mix($charcoal, white);
+			color: $charcoal;
+			svg {
+				* {
+					stroke: $charcoal;
+				}
+			}
+		}
+		&:active {
+			background: mix($charcoal, white, 75%);
+			color: white;
+			svg {
+				* {
+					stroke: white;
+				}
+			}
+		}
+	}
+	&.bg-slate {
+		background: $slate;
+		&.reverse {
+			background: white;
+			color: $slate;
+			svg {
+				* {
+					stroke: $slate;
+				}
+			}
+		}
+		&:hover, &:focus {
+			background: mix($slate, white);
+			color: $slate;
+			svg {
+				* {
+					stroke: $slate;
+				}
+			}
+		}
+		&:active {
+			background: mix($slate, white, 75%);
+			color: white;
+			svg {
+				* {
+					stroke: white;
+				}
+			}
+		}
+	}
+	&.bg-taupe {
+		background: $taupe;
+		&.reverse {
+			background: white;
+			color: $taupe;
+			svg {
+				* {
+					stroke: $taupe;
+				}
+			}
+		}
+		&:hover, &:focus {
+			background: mix($taupe, white);
+			color: $taupe;
+			svg {
+				* {
+					stroke: $taupe;
+				}
+			}
+		}
+		&:active {
+			background: mix($taupe, white, 75%);
+			color: white;
+			svg {
+				* {
+					stroke: white;
+				}
+			}
+		}
+	}
+	&.bg-campus {
+		background: $campus;
+		&.reverse {
+			background: white;
+			color: $campus;
+			svg {
+				* {
+					stroke: $campus;
+				}
+			}
+		}
+		&:hover, &:focus {
+			background: mix($campus, white);
+			color: mix($campus, $slate);
+			svg {
+				* {
+					stroke: mix($campus, $slate);
+				}
+			}
+		}
+		&:active {
+			background: mix($campus, $slate);
+			color: white;
+			svg {
+				* {
+					stroke: white;
+				}
+			}
+		}
+	}
+	&.bg-rocket {
+		background: $rocket;
+		&.reverse {
+			background: white;
+			color: $rocket;
+			svg {
+				* {
+					stroke: $rocket;
+				}
+			}
+		}
+		&:hover, &:focus {
+			background: mix($rocket, white);
+			color: mix($rocket, $slate);
+			svg {
+				* {
+					stroke: mix($rocket, $slate);
+				}
+			}
+		}
+		&:active {
+			background: mix($rocket, $slate);
+			color: white;
+			svg {
+				* {
+					stroke: white;
+				}
+			}
+		}
+	}
+	&.bg-shamrock {
+		background: $shamrock;
+		&.reverse {
+			background: white;
+			color: $shamrock;
+			svg {
+				* {
+					stroke: $shamrock;
+				}
+			}
+		}
+		&:hover, &:focus {
+			background: mix($shamrock, white);
+			color: mix($shamrock, $slate);
+			svg {
+				* {
+					stroke: mix($shamrock, $slate);
+				}
+			}
+		}
+		&:active {
+			background: mix($shamrock, $slate);
+			color: white;
+			svg {
+				* {
+					stroke: white;
+				}
+			}
+		}
+	}
+	&.bg-robin {
+		background: $robin;
+		&.reverse {
+			background: white;
+			color: $robin;
+			svg {
+				* {
+					stroke: $robin;
+				}
+			}
+		}
+		&:hover, &:focus {
+			background: mix($robin, white);
+			color: mix($robin, $slate);
+			svg {
+				* {
+					stroke: mix($robin, $slate);
+				}
+			}
+		}
+		&:active {
+			background: mix($robin, $slate);
+			color: white;
+			svg {
+				* {
+					stroke: white;
+				}
+			}
+		}
+	}
+	&.bg-lake {
+		background: $lake;
+		&.reverse {
+			background: white;
+			color: $lake;
+			svg {
+				* {
+					stroke: $lake;
+				}
+			}
+		}
+		&:hover, &:focus {
+			background: mix($lake, white);
+			color: mix($lake, $slate);
+			svg {
+				* {
+					stroke: mix($lake, $slate);
+				}
+			}
+		}
+		&:active {
+			background: mix($lake, $slate);
+			color: white;
+			svg {
+				* {
+					stroke: white;
+				}
+			}
+		}
+	}
+	&.bg-moxie {
+		background: $moxie;
+		&.reverse {
+			background: white;
+			color: $moxie;
+			svg {
+				* {
+					stroke: $moxie;
+				}
+			}
+		}
+		&:hover, &:focus {
+			background: mix($moxie, white);
+			color: mix($moxie, $slate);
+			svg {
+				* {
+					stroke: mix($moxie, $slate);
+				}
+			}
+		}
+		&:active {
+			background: mix($moxie, $slate);
+			color: white;
+			svg {
+				* {
+					stroke: white;
+				}
+			}
+		}
+	}
+	&.bg-crimson {
+		background: $crimson;
+		&.reverse {
+			background: white;
+			color: $crimson;
+			svg {
+				* {
+					stroke: $crimson;
+				}
+			}
+		}
+		&:hover, &:focus {
+			background: mix($crimson, white);
+			color: mix($crimson, $slate);
+			svg {
+				* {
+					stroke: mix($crimson, $slate);
+				}
+			}
+		}
+		&:active {
+			background: mix($crimson, $slate);
+			color: white;
+			svg {
+				* {
+					stroke: white;
+				}
+			}
+		}
+	}
+	&.bg-auburn, &.bg-delivery {
+		background: $auburn;
+		&.reverse {
+			background: white;
+			color: $auburn;
+		}
+		&:hover, &:focus {
+			background: mix($auburn, white);
+			color: mix($auburn, $slate);
+		}
+		&:active {
+			background: mix($auburn, $slate);
+			color: white;
+		}
+	}
+	&.bg-orange, &.bg-freelancing {
+		background: $orange;
+		&.reverse {
+			background: white;
+			color: $orange;
+		}
+		&:hover, &:focus {
+			background: mix($orange, white);
+			color: mix($orange, $slate);
+		}
+		&:active {
+			background: mix($orange, $slate);
+			color: white;
+		}
+	}
+	&.bg-gold, &.bg-baking {
+		background: $gold;
+		&.reverse {
+			background: white;
+			color: $gold;
+		}
+		&:hover, &:focus {
+			background: mix($gold, white);
+			color: mix($gold, $slate);
+		}
+		&:active {
+			background: mix($gold, $slate);
+			color: white;
+		}
+	}
+	&.bg-moola, &.bg-photography {
+		background: $moola;
+		&.reverse {
+			background: white;
+			color: $moola;
+		}
+		&:hover, &:focus {
+			background: mix($moola, white);
+			color: mix($moola, $slate);
+		}
+		&:active {
+			background: mix($moola, $slate);
+			color: white;
+		}
+	}
+	&.bg-azure, &.bg-tech {
+		background: $azure;
+		&.reverse {
+			background: white;
+			color: $azure;
+		}
+		&:hover, &:focus {
+			background: mix($azure, white);
+			color: mix($azure, $slate);
+		}
+		&:active {
+			background: mix($azure, $slate);
+			color: white;
+		}
+	}
+	&.bg-cobalt, &.bg-household {
+		background: $cobalt;
+		&.reverse {
+			background: white;
+			color: $cobalt;
+		}
+		&:hover, &:focus {
+			background: mix($cobalt, white);
+			color: mix($cobalt, $slate);
+		}
+		&:active {
+			background: mix($cobalt, $slate);
+			color: white;
+		}
+	}
+	&.bg-eggplant, &.bg-athletic {
+		background: $eggplant;
+		&.reverse {
+			background: white;
+			color: $eggplant;
+		}
+		&:hover, &:focus {
+			background: mix($eggplant, white);
+			color: mix($eggplant, $slate);
+		}
+		&:active {
+			background: mix($eggplant, $slate);
+			color: white;
+		}
+	}
+	&.bg-cerise, &.bg-academic {
+		background: $cerise;
+		&.reverse {
+			background: white;
+			color: $cerise;
+		}
+		&:hover, &:focus {
+			background: mix($cerise, white);
+			color: mix($cerise, $slate);
+		}
+		&:active {
+			background: mix($cerise, $slate);
+			color: white;
+		}
+	}
+	&.bg-fb {
+		background: $facebook;
+		&.reverse {
+			background: white;
+			color: $facebook;
+		}
+		&:hover, &:focus {
+			background: mix($facebook, white);
+			color: mix($facebook, $slate);
+		}
+		&:active {
+			background: mix($facebook, $slate);
+			color: white;
+		}
+	}
+}
+
+// ghost buttons
+[class*="btn-ghost"] {
+	@include round;
+	width: auto;
+	height: auto;
+	background: transparent;
+	padding: 10px 30px;
+	border: 2px solid;
+	color: white;
+	font-size: 18px;
+	font-weight: 600;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	&:hover, &:focus {
+		background: white;
+		color: $charcoal;
+	}
+	&:active {
+		border-color: lighten($slate, 15%);
+		background: lighten($slate, 15%);
+		color: white;
+	}
+	&[class*="btn-ghost-charcoal"] {
+		color: $charcoal;
+		border-color: $charcoal;
+		&:hover, &:focus {
+			border-color: $charcoal;
+			background: $charcoal;
+			color: white;
+		}
+		&:active {
+			border-color: mix($charcoal, white);
+			background: mix($charcoal, white);
+			color: $charcoal;
+		}
+	}
+	&[class*="btn-ghost-slate"] {
+		color: $slate;
+		border-color: $slate;
+		&:hover, &:focus {
+			border-color: $slate;
+			background: $slate;
+			color: white;
+		}
+		&:active {
+			border-color: mix($slate, white);
+			background: mix($slate, white);
+			color: $slate;
+		}
+	}
+	&[class*="btn-ghost-taupe"] {
+		color: $taupe;
+		border-color: $taupe;
+		&:hover, &:focus {
+			border-color: $taupe;
+			background: $taupe;
+			color: white;
+		}
+		&:active {
+			border-color: mix($taupe, white);
+			background: mix($taupe, white);
+			color: $taupe;
+		}
+	}
+	&[class*="btn-ghost-campus"] {
+		color: $campus;
+		border-color: $campus;
+		&:hover, &:focus {
+			border-color: $campus;
+			background: $campus;
+			color: white;
+		}
+		&:active {
+			border-color: mix($campus, white);
+			background: mix($campus, white);
+			color: mix($campus, $slate);
+		}
+	}
+	&[class*="btn-ghost-smoke"] {
+		color: $smoke;
+		border-color: $smoke;
+		&:hover, &:focus {
+			border-color: $smoke;
+			background: $smoke;
+			color: white;
+		}
+		&:active {
+			border-color: lighten($slate, 15%);
+			background: lighten($slate, 15%);
+			color: white;
+		}
+	}
+	&[class*="btn-ghost-white"] {
+		color: white;
+		border-color: white;
+		&:hover, &:focus {
+			border-color: white;
+			background: white;
+			color: $charcoal;
+		}
+		&:active {
+			border-color: lighten($slate, 15%);
+			background: lighten($slate, 15%);
+			color: white;
+		}
+	}
+	&[class*="btn-ghost-rocket"] {
+		color: $rocket;
+		border-color: $rocket;
+		&:hover, &:focus {
+			border-color: $rocket;
+			background: $rocket;
+			color: white;
+		}
+		&:active {
+			border-color: mix($rocket, white);
+			background: mix($rocket, white);
+			color: mix($rocket, $slate);
+		}
+	}
+	&[class*="btn-ghost-shamrock"] {
+		color: $shamrock;
+		border-color: $shamrock;
+		&:hover, &:focus {
+			border-color: $shamrock;
+			background: $shamrock;
+			color: white;
+		}
+		&:active {
+			border-color: mix($shamrock, white);
+			background: mix($shamrock, white);
+			color: mix($shamrock, $slate);
+		}
+	}
+	&[class*="btn-ghost-robin"] {
+		color: $robin;
+		border-color: $robin;
+		&:hover, &:focus {
+			border-color: $robin;
+			background: $robin;
+			color: white;
+		}
+		&:active {
+			border-color: mix($robin, white);
+			background: mix($robin, white);
+			color: mix($robin, $slate);
+		}
+	}
+	&[class*="btn-ghost-lake"] {
+		color: $lake;
+		border-color: $lake;
+		&:hover, &:focus {
+			border-color: $lake;
+			background: $lake;
+			color: white;
+		}
+		&:active {
+			border-color: mix($lake, white);
+			background: mix($lake, white);
+			color: mix($lake, $slate);
+		}
+	}
+	&[class*="btn-ghost-moxie"] {
+		color: $moxie;
+		border-color: $moxie;
+		&:hover, &:focus {
+			border-color: $moxie;
+			background: $moxie;
+			color: white;
+		}
+		&:active {
+			border-color: mix($moxie, white);
+			background: mix($moxie, white);
+			color: mix($moxie, $slate);
+		}
+	}
+	&[class*="btn-ghost-crimson"] {
+		color: $crimson;
+		border-color: $crimson;
+		&:hover, &:focus {
+			border-color: $crimson;
+			background: $crimson;
+			color: white;
+		}
+		&:active {
+			border-color: mix($crimson, white);
+			background: mix($crimson, white);
+			color: mix($crimson, $slate);
+		}
+	}
+	&[class*="btn-ghost-auburn"], &[class*="btn-ghost-delivery"] {
+		color: $auburn;
+		border-color: $auburn;
+		&:hover, &:focus {
+			border-color: $auburn;
+			background: $auburn;
+			color: white;
+		}
+		&:active {
+			border-color: mix($auburn, white);
+			background: mix($auburn, white);
+			color: mix($auburn, $slate);
+		}
+	}
+	&[class*="btn-ghost-orange"], &[class*="btn-ghost-freelancing"] {
+		color: $orange;
+		border-color: $orange;
+		&:hover, &:focus {
+			border-color: $orange;
+			background: $orange;
+			color: white;
+		}
+		&:active {
+			border-color: mix($orange, white);
+			background: mix($orange, white);
+			color: mix($orange, $slate);
+		}
+	}
+	&[class*="btn-ghost-gold"], &[class*="btn-ghost-baking"] {
+		color: $gold;
+		border-color: $gold;
+		&:hover, &:focus {
+			border-color: $gold;
+			background: $gold;
+			color: white;
+		}
+		&:active {
+			border-color: mix($gold, white);
+			background: mix($gold, white);
+			color: mix($gold, $slate);
+		}
+	}
+	&[class*="btn-ghost-moola"], &[class*="btn-ghost-photography"] {
+		color: $moola;
+		border-color: $moola;
+		&:hover, &:focus {
+			border-color: $moola;
+			background: $moola;
+			color: white;
+		}
+		&:active {
+			border-color: mix($moola, white);
+			background: mix($moola, white);
+			color: mix($moola, $slate);
+		}
+	}
+	&[class*="btn-ghost-azure"], &[class*="btn-ghost-tech"] {
+		color: $azure;
+		border-color: $azure;
+		&:hover, &:focus {
+			border-color: $azure;
+			background: $azure;
+			color: white;
+		}
+		&:active {
+			border-color: mix($azure, white);
+			background: mix($azure, white);
+			color: mix($azure, $slate);
+		}
+	}
+	&[class*="btn-ghost-cobalt"], &[class*="btn-ghost-cobalt"] {
+		color: $cobalt;
+		border-color: $cobalt;
+		&:hover, &:focus {
+			border-color: $cobalt;
+			background: $cobalt;
+			color: white;
+		}
+		&:active {
+			border-color: mix($cobalt, white);
+			background: mix($cobalt, white);
+			color: mix($cobalt, $slate);
+		}
+	}
+	&[class*="btn-ghost-eggplant"], &[class*="btn-ghost-athletic"] {
+		color: $eggplant;
+		border-color: $eggplant;
+		&:hover, &:focus {
+			border-color: $eggplant;
+			background: $eggplant;
+			color: white;
+		}
+		&:active {
+			border-color: mix($eggplant, white);
+			background: mix($eggplant, white);
+			color: mix($eggplant, $slate);
+		}
+	}
+	&[class*="btn-ghost-cerise"], &[class*="btn-ghost-academic"] {
+		color: $cerise;
+		border-color: $cerise;
+		&:hover, &:focus {
+			border-color: $cerise;
+			background: $cerise;
+			color: white;
+		}
+		&:active {
+			border-color: mix($cerise, white);
+			background: mix($cerise, white);
+			color: mix($cerise, $slate);
+		}
+	}
+	&[class*="btn-ghost-fb"] {
+		color: $facebook;
+		border-color: $facebook;
+		&:hover, &:focus {
+			border-color: $facebook;
+			background: $facebook;
+			color: white;
+		}
+		&:active {
+			border-color: mix($facebook, white);
+			background: mix($facebook, white);
+			color: mix($facebook, $slate);
+		}
+	}
+}
+
+// split buttons
+[class*="btn-split"] {
+	@include flex;
+	@include flex-center;
+	padding: 0;
+	width: auto;
+	height: auto;
+	background: none;
+	&:hover, &:focus, &:active {
+		background: none;
+	}
+	span {
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		display: block;
+		background: $charcoal;
+		padding: 15px;
+		color: white;
+		font-size: 20px;
+		&:first-child {
+			padding-left: 30px;
+			border-radius: 1000px 0 0 1000px;
+			margin-right: 1px;
+			font-weight: 600;
+		}
+		&:last-child {
+			padding-right: 30px;
+			border-radius: 0 1000px 1000px 0;
+			margin-left: 1px;
+			font-weight: 900;
+		}
+	}
+	&:hover, &:focus {
+		span {
+			background: white;
+			color: $slate;
+		}
+	}
+	&:active {
+		span {
+			background: $slate;
+			color: white;
+		}
+	}
+	&.btn-split-charcoal {
+		span {
+			background: $charcoal;
+			color: white;
+		}
+		&:hover, &:focus {
+			span {
+				background: white;
+				color: $slate;
+			}
+		}
+		&:active {
+			span {
+				background: $slate;
+				color: white;
+			}
+		}
+	}
+	&.btn-split-slate {
+		span {
+			background: $slate;
+			color: white;
+		}
+		&:hover, &:focus {
+			span {
+				background: white;
+				color: $slate;
+			}
+		}
+		&:active {
+			span {
+				background: lighten($slate, 15%);
+				color: white;
+			}
+		}
+	}
+	&.btn-split-white {
+		span {
+			background: white;
+			color: $slate;
+		}
+		&:hover, &:focus {
+			span {
+				background: $slate;
+				color: white;
+			}
+		}
+		&:active {
+			span {
+				background: lighten($slate, 15%);
+				color: white;
+			}
+		}
+	}
+	&.hvr-rocket {
+		&:active {
+			span {
+				background: $rocket;
+				color: white;
+			}
+		}
+	}
+	&.hvr-shamrock {
+		&:active {
+			span {
+				background: $shamrock;
+				color: white;
+			}
+		}
+	}
+	&.hvr-robin {
+		&:active {
+			span {
+				background: $robin;
+				color: white;
+			}
+		}
+	}
+	&.hvr-lake {
+		&:active {
+			span {
+				background: $lake;
+				color: white;
+			}
+		}
+	}
+	&.hvr-moxie {
+		&:active {
+			span {
+				background: $moxie;
+				color: white;
+			}
+		}
+	}
+	&.hvr-crimson {
+		&:active {
+			span {
+				background: $crimson;
+				color: white;
+			}
+		}
+	}
+	&.hvr-auburn {
+		&:active {
+			span {
+				background: $auburn;
+				color: white;
+			}
+		}
+	}
+	&.hvr-orange {
+		&:active {
+			span {
+				background: $orange;
+				color: white;
+			}
+		}
+	}
+	&.hvr-gold {
+		&:active {
+			span {
+				background: $gold;
+				color: white;
+			}
+		}
+	}
+	&.hvr-moola {
+		&:active {
+			span {
+				background: $moola;
+				color: white;
+			}
+		}
+	}
+	&.hvr-azure {
+		&:active {
+			span {
+				background: $azure;
+				color: white;
+			}
+		}
+	}
+	&.hvr-cobalt {
+		&:active {
+			span {
+				background: $cobalt;
+				color: white;
+			}
+		}
+	}
+	&.hvr-eggplant {
+		&:active {
+			span {
+				background: $eggplant;
+				color: white;
+			}
+		}
+	}
+	&.hvr-cerise {
+		&:active {
+			span {
+				background: $cerise;
+				color: white;
+			}
+		}
+	}
+}

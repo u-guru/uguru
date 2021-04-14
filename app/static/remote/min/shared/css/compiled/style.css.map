@@ -1,1 +1,7 @@
-{"version":3,"mappings":"AAIE,iEAAsB;EACrB,UAAU,EAAE,wBAAc;AAE3B,mCAAY;EACV,UAAU,EAAE,wBAAe;AAE7B,qEAAsB;EACrB,UAAU,EAAE,wBAAc;AAE3B,iFAAkC;EAChC,UAAU,EAAE,wBAAe;;AAK/B,OAAQ;EACP,MAAM,EAAE,IAAI;;AAEb,eAAgB;EACf,QAAQ,EAAE,OAAO;;;AAKjB,aAAE;EACD,WAAW,EAAE,sIAAe;AAE7B,oCAAoC;EACnC,gBAAK;IACJ,SAAS,EAAE,IAAI","sources":["../../../../../../../../../../../../www/remote/min/shared/css/scss/style.scss"],"names":[],"file":"style.css","sourceRoot":"/source/","sourcesContent":["@import 'partials/mixin';\n\nbody.platform-ios {\n\tul li {\n\t\t&.active, &.activated {\n\t\t\tbackground: rgba(white,.2);\n\t\t}\n\t\t::selection {\n\t\t\t background: rgba(white, .1);\n\t\t}\n\t\ta.active, a.activated {\n\t\t\tbackground: rgba(white,.2);\n\t\t}\n\t\ta:hover, .list .list-item a:hover {\n\t\t\t background: rgba(white, .1);\n\t\t}\n\t}\n}\n\nsection {\n\theight: 100%;\n}\n.view-container {\n\tposition: inherit;\n}\n\n/* ---------- MISCELLANEOUS */\n.uguru-view {\n\t* {\n\t\tfont-family: $font!important;\n\t}\n\t@media screen and (max-width:320px) {\n\t\tbody {\n\t\t\tfont-size: 20px;\n\t\t}\n\t}\n}\n"]}
+{
+"version": 3,
+"mappings": "AAIE,iEAAsB;EACrB,UAAU,EAAE,wBAAc;AAE3B,mCAAY;EACV,UAAU,EAAE,wBAAe;AAE7B,qEAAsB;EACrB,UAAU,EAAE,wBAAc;AAE3B,iFAAkC;EAChC,UAAU,EAAE,wBAAe;;AAK/B,OAAQ;EACP,MAAM,EAAE,IAAI;;AAEb,eAAgB;EACf,QAAQ,EAAE,OAAO;;;AAKjB,aAAE;EACD,WAAW,EAAE,sIAAe;AAE7B,oCAAoC;EACnC,gBAAK;IACJ,SAAS,EAAE,IAAI",
+"sources": ["../scss/style.scss"],
+"names": [],
+"file": "style.css"
+}

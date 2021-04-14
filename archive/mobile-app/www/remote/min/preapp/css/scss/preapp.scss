@@ -1,0 +1,27 @@
+@import '../../../shared/css/scss/partials/mixin';
+@import 'partials/animation';
+@import 'partials/shared';
+
+@import 'partials/adlib/adlib';
+
+@import 'partials/splash/headers';
+@import 'partials/splash/sidebar';
+@import 'partials/splash/powerups';
+@import 'partials/splash/maps';
+
+@import 'partials/device';
+
+@import 'partials/hiw';
+
+@import 'partials/projector/access';
+@import 'partials/projector/demographic';
+@import 'partials/projector/account';
+@import 'partials/projector/school';
+@import 'partials/projector/courses';
+
+@import 'partials/pages/faq';
+@import 'partials/pages/pricing';
+@import 'partials/pages/team';
+
+@import 'partials/powerups/powerups';
+@import 'partials/powerups/animation';

@@ -1,0 +1,116 @@
+<div class="admin-states-header full-x text-center p20xy text-36 flex-wrap-center bg-azure weight-900 txt-white absolute top-0 left-0" style="width:66.6% !important; height:5%">
+    <div ng-if="statePlatforms && !platformList">{{selected_test_scene.tests.length}} {{statePlatforms.length}} total</div>
+    <div ng-if="!statePlatforms && platformList">Select the plaformts</div>
+
+    <a class="absolute top-0 left-0 bg-charcoal p20xy" ng-click="closePlatform()"> Close </a>
+</div>
+<div class="admin-states-container no-scrollbar full-xy flex-wrap flex-wrap-center absolute left-0 flex-stretch" style="height:95% !important; top:7.5%">
+    <!-- <div>
+        <span>fail : -1;</span>
+        <span>haven't test : 0;</span>
+        <span>passed: 1;</span>
+    </div> -->
+    <div ng-if="statePlatforms">
+        <div class="bg-slate-50p" ng-click="switchSates(autoReport)">
+            <a>Auto Bug Status</a>
+        </div>
+
+        <div class="bg-slate-50p" ng-click="switchSates(manualFound)">
+            <a>Manual Bugs Status</a>
+        </div>
+        <dropdown class="height-32 full-x" ng-model="availableState" selected-index="0"> </dropdown>
+
+        <div ng-if="true">
+            <!-- <span>{{manualBugs[availableState.selectedIndex].title}}</span> -->
+            <ul class="full-x ugrid-6 relative flex-wrap-center flex-stretch" style="width:66.6% !important">
+                <li class="full-x mtop20 p10xy" style="width:calc(100%/8) !important" ng-repeat="platform in statePlatforms[availableState.selectedIndex].platforms">
+                    <div class="checkbox-container {{platform.test_status || 'unsure'}}" style="width: auto !important">
+                        <div class="relative full-x text-center flex-wrap-center">
+                            <div class="text-5 txt-white full-x uppercase weight-600 p05xy" style="font-size:14px; margin-left:-7px">
+                                 {{platform.name}}<br>{{platform.device}}<br>{{platform.screenSize[0]}}
+                            </div>
+                           <span ng-if="!isAutoState" ng-click="updateStatus($index)">
+                                <svg viewBox="0 0 100 100" ng-if="platform.isPassed == -1">
+                                    <path d="M14,0 L86,75"></path>
+                                    <path d="M14,75 L86,0"></path>
+                                </svg>
+                                <svg viewBox="0 0 100 100" ng-if="platform.isPassed == 0">
+                                     <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                                </svg>
+                                <svg viewBox="0 0 100 100" ng-if="platform.isPassed == 1">
+                                    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                </svg>
+                            </span> 
+                            <span ng-if="isAutoState">
+                                <svg viewBox="0 0 100 100" ng-if="platform.isPassed == -1">
+                                    <path d="M14,0 L86,75"></path>
+                                    <path d="M14,75 L86,0"></path>
+                                </svg>
+                                <svg viewBox="0 0 100 100" ng-if="platform.isPassed == 0">
+                                     <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                                </svg>
+                                <svg viewBox="0 0 100 100" ng-if="platform.isPassed == 1">
+                                    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                </svg>
+                            </span> 
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <ul class="full-xy relative" ng-if="!statePlatforms && platformList">
+        <div>
+            <ul class="full-x ugrid-6 relative flex-wrap-center flex-stretch" style="width:66.6% !important">
+                <li class="full-x mtop20 p10xy" style="width:calc(100%/8) !important" ng-repeat="platform in platformList">
+                    <div class="checkbox-container {{platform.test_status || 'unsure'}}" style="width: auto !important">
+                        <div class="relative full-x text-center flex-wrap-center">
+                            <input type="checkbox" ng-true-value="-1" ng-false-value="0" ng-checked="checkbox == -1" ng-model="platform.isPassed" ng-change="updateStatus()">
+                            <span>
+                                <svg viewBox="0 0 100 100" ng-if="platform.isPassed == 0">
+                                    <!-- <path d="M14,50 L86,50"></path> -->
+                                    <path d="M14,0 L86,75"></path>
+                                    <path d="M14,75 L86,0"></path>
+
+                                </svg>
+                                <svg viewBox="0 0 100 100" ng-if="platform.isPassed == -1">
+                                    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                </svg>
+                            </span>
+                            <div class="text-5 txt-white full-x uppercase weight-600 p05xy" style="font-size:14px; margin-left:-7px">
+                                 {{platform.name}}<br>{{platform.device}}<br>{{platform.screenSize[0]}}
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+       <!--  <li class='full-x' >
+            <ul class='full-x ugrid-6 relative flex-wrap-center flex-stretch' style='width:66.6% !important;'>
+                <li class='full-x mtop20 p10xy' style='width:calc(100%/5) !important;' ng-repeat="platform in currentStatePlatforms">
+                    <div class="checkbox-container {{platform.test_status || 'unsure'}}" style='width: auto !important;'>
+                        <div class='relative full-x text-center flex-wrap-center'>
+                            <div class='text-5 txt-white full-x uppercase weight-600 p05xy' style='font-size:14px; margin-left:-7px;'>
+                                 {{platform.name}}<br>{{platform.device}}<br>{{platform.screenSize[0]}}
+                            </div>
+                            <span>
+                                <svg viewBox="0 0 100 100" ng-if="platform.isPassed == -1">
+                                    <path d="M14,50 L86,50"></path>
+                                </svg>
+                                <svg viewBox="0 0 100 100" ng-if="platform.isPassed == 0">
+                                    <path d="M14,50 L86,50"></path>
+                                </svg>
+                                <svg viewBox="0 0 100 100" ng-if="platform.isPassed == 1">
+                                    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                </svg>
+
+                            </span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li> -->
+    </ul>
+</div>

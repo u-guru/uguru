@@ -1,0 +1,841 @@
+<div ng-controller='SplashSidebarController as sidebar' class="splash-sidebar-container"
+	when-sidebar-init="t:[init:self]"
+	init-with="p-op"
+	on-init="p:[opacity:0:1:250:easeOutSine]"
+	when-sidebar-icon-clicked="p-o-1"
+	when-sidebar-close-clicked="p:[opacity:1:0:1000:easeOutSine]:delay-1000"
+	when-sidebar-col-close-clicked="p:[opacity:1:0:1000:easeOutSine]:delay-1000"
+	init-later>
+	<!-- faq-link-clicked:public:delay-5000 -->
+	<div class="splash-sidebar-bg"
+		init-with="p:[op:0, tr:translateX(-100%) translateZ(0px)]"
+		when-sidebar-icon-clicked="p:[op:1, transform:translateX(-100%) translateZ(0px):translateX(0%) translateZ(0px):800:easeOutSine easeOutSine]:delay-250"
+		when-sidebar-close-clicked="p:[opacity:1:0:100:easeOutSine, transform:translateX(0%) translateZ(0px):translateX(-100%) translateZ(0px):400:easeOutBounce easeInOutBounce]:delay-450"
+		when-sidebar-col-close-clicked="p:[op:0, tr:translateX(-100%) translateZ(0px)]:delay-1000">
+		<div class="splash-sidebar-round">
+			<svg viewBox="0 0 50 100" preserveAspectRatio="none">
+				<circle cx="0" cy="50" r="50" fill="#363d40" fill-opacity="0.95"></circle>
+			</svg>
+		</div>
+	</div>
+
+	<aside class="splash-sidebar desktop"
+		init-with="p:[tr:translateX(-350px) translateZ(0px)]"
+		when-sidebar-icon-clicked="p:[transform:translateX(-350px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]"
+		when-sidebar-close-clicked="p:[opacity:1:0:100:easeOutSine:500, transform:translateX(0%) translateZ(0px):translateX(-100%) translateZ(0px):400:easeOutBounce easeInOutBounce]:delay-750"
+		when-sidebar-col-close-clicked="p:[opacity:1:0:100:easeOutSine:500, transform:translateX(0px) translateZ(0px):translateX(-300px) translateZ(0px):400:easeOutBack easeOutBack]">
+		<header>
+			<a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"
+				init-with="p-op"
+				when-sidebar-icon-clicked="p:[opacity:0:1:350:easeOutSine]:delay-500"
+				when-sidebar-link-clicked="p:[opacity:1:0:250:easeOutExpo, transform:translateY(0%) translateZ(0px):translateY(-100%) translateZ(0px):250:easeOutExpo easeOutExpo]"
+				when-modal-close="p:[opacity:0:1:250:easeInExpo, transform:translateY(-100%) translateZ(0px):translateY(0%) translateZ(0px):250:easeInExpo easeInExpo]:delay-500"
+				when-sidebar-close-clicked="p:[op:0]:delay-1000"
+				when-sidebar-col-close-clicked="p:[tr:none]:delay-1000"></a>
+			<a class="icon-round-stroke close"
+				init-with="p:[op:0, tr:rotate(-180deg), tro:center center]"
+				when-sidebar-icon-clicked="p:[opacity:0:1:350:easeOutSine, transform:rotate(-180deg):rotate(0deg):350:easeInOutExpo]:delay-500"
+				on-click="s:[sidebar-close-clicked:public]"
+				when-sidebar-close-clicked="p:[op:0]:delay-1000">
+				<svg viewBox="0 0 100 100"
+					init-default
+					when-sidebar-link-clicked="p:[op:0]:delay-500"
+					when-modal-close="p-o-1"
+					when-sidebar-col-close-clicked="p:[op:1]:delay-1000">
+					<circle cx="50" cy="50" r="36"></circle>
+					<g>
+						<path d="M62.7279221,37.2720779 L37.2720779,62.7279221"></path>
+				        <path d="M37.2720779,37.2720779 L62.7279221,62.7279221"></path>
+					</g>
+				</svg>
+			</a>
+			<a class="icon-round-stroke home no-rotate"
+				ng-include="root.base_url + 'shared/templates/components/svg/sidebar/home.html'"
+				init-with="p:[op:0, z-index:-1]"
+				on-click="s:[sidebar-col-close-clicked:public]"
+				when-sidebar-link-clicked="p:[z-index:1, op:1, transform:translateX(0px) translateZ(0px):translateX(-249px) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-500"
+				when-modal-close="p:[z-index:-1:delay-500, opacity:1:0:500:easeOutSine, transform:translateX(-249px) translateZ(0px):translateX(0px) translateZ(0px):500:easeInExpo easeInExpo]"
+				when-sidebar-close-clicked="t-exit"
+				when-sidebar-col-close-clicked="t-exit"
+				on-exit="p:[z-index:-1:delay-250, opacity:1:0:250:easeOutSine]:delay-1000">
+			</a>
+		</header>
+		<nav>
+			<ul init-default
+				when-sidebar-icon-clicked="s:[sidebar-link-enter:public]:delay-750">
+				<li init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
+					when-sidebar-link-enter="p:[opacity:0:1:350:easeOutExpo, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):200:easeInOutCubic easeInOutCubic]"
+					when-sidebar-close-clicked="t-exit"
+					when-sidebar-col-close-clicked="t-exit"
+					on-exit="p:[op:0]:delay-1000">
+					<a init-default
+						on-click="s:[faq-link-clicked:public, sidebar-link-clicked:public]">
+						<span init-default
+							when-sidebar-expand="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-250"
+							when-modal-close="p:[color:white:delay-250, op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-250"
+							when-sidebar-collapse="p:[op:0:delay-200, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
+							when-sidebar-link-clicked="p:[op:0:delay-200, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
+							when-faq-link-clicked="t-enter"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-start-link-clicked="t-exit"
+							on-enter="p:[color:#69b3a5]"
+							on-exit="p:[color:rgba(255#255#255#.5)]"
+							when-sidebar-closed-clicked="p:[color:white]:delay-1000"
+							when-sidebar-col-close-clicked="p:[op:1, tr:none, color:white]:delay-1000"></span>
+						<span class="splash-sidebar-link-icon" ng-include="root.base_url + 'shared/templates/components/svg/sidebar/faq.html'"
+							init-with="p:[op:0, tr:translateX(-200%) translateZ(0px)]"
+							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-100"
+							when-sidebar-expand="t-exit"
+							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-250"
+							when-modal-close="t-exit"
+							on-exit="p:[op:0:delay-500, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
+							when-sidebar-col-close-clicked="p:[op:0, tr:translateX(-200%) translateZ(0px)]:delay-1000"></span>
+						<span class="splash-sidebar-link-text"
+							init-default
+							when-faq-link-clicked="t-enter"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-start-link-clicked="t-exit"
+							on-enter="p:[color:#69b3a5]"
+							on-exit="p:[color:rgba(255#255#255#.5)]"
+							when-modal-close="p:[color:white]:delay-500"
+							when-sidebar-closed-clicked="p:[color:white]:delay-1000"
+							when-sidebar-col-close-clicked="p:[op:1, tr:none, color:white]:delay-1000">FAQ</span>
+						<hr init-default
+							when-faq-link-clicked="t-enter"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-start-link-clicked="t-exit"
+							on-enter="p:[tr:scaleX(1), bg:white]"
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255#.5)]"
+							when-sidebar-col-close-clicked="p:[tr:scaleX(0)]:delay-1000"
+							when-modal-close="p:[tr:scaleX(0)]:delay-500"/>
+						<span init-with="p:[z-index:-1, display:none]"
+							when-sidebar-link-clicked="p:[z-index:10, display:block]"
+							on-mouse-enter="s:[sidebar-expand:public]"
+							on-mouse-leave="s:[sidebar-collapse:public:delay-250]"
+							when-modal-close="p:[z-index:-1, display:none]:delay-500"
+							when-sidebar-col-close-clicked="p:[z-index:-1, display:none]:delay-1000"></span>
+					</a>
+				</li>
+				<li init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
+					when-sidebar-link-enter="p:[opacity:0:1:350:easeOutExpo, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):200:easeInOutCubic easeInOutCubic]:delay-120"
+					when-sidebar-close-clicked="t-exit"
+					when-sidebar-col-close-clicked="t-exit"
+					on-exit="p:[op:0]:delay-1000">
+					<a init-default
+						on-click="s:[pricing-link-clicked:public, sidebar-link-clicked:public]">
+						<span init-default
+							when-sidebar-expand="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-250"
+							when-modal-close="p:[color:white:delay-250, op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-250"
+							when-sidebar-collapse="p:[op:0:delay-200, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
+							when-sidebar-link-clicked="p:[op:0:delay-200, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]:delay-120"
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-enter"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-start-link-clicked="t-exit"
+							on-enter="p:[color:#69b3a5]"
+							on-exit="p:[color:rgba(255#255#255#.5)]"
+							when-sidebar-closed-clicked="p:[color:white]:delay-1000"
+							when-sidebar-col-close-clicked="p:[op:1, tr:none, color:white]:delay-1000"></span>
+						<span class="splash-sidebar-link-icon" ng-include="root.base_url + 'shared/templates/components/svg/sidebar/pricing.html'"
+							init-with="p:[op:0, tr:translateX(-200%) translateZ(0px)]"
+							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-320"
+							when-sidebar-expand="t-exit"
+							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-250"
+							when-modal-close="t-exit"
+							on-exit="p:[op:0:delay-500, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
+							when-sidebar-col-close-clicked="p:[op:0, tr:translateX(-200%) translateZ(0px)]:delay-1000"></span>
+						<span class="splash-sidebar-link-text"
+							init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-enter"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-start-link-clicked="t-exit"
+							on-enter="p:[color:#69b3a5]"
+							on-exit="p:[color:rgba(255#255#255#.5)]"
+							when-modal-close="p:[color:white]:delay-500"
+							when-sidebar-closed-clicked="p:[color:white]:delay-1000"
+							when-sidebar-col-close-clicked="p:[op:1, tr:none, color:white]:delay-1000">Pricing</span>
+						<hr init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-enter"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-start-link-clicked="t-exit"
+							on-enter="p:[tr:scaleX(1), bg:white]"
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255#.5)]"
+							when-sidebar-col-close-clicked="p:[tr:scaleX(0)]:delay-1000"
+							when-modal-close="p:[tr:scaleX(0)]:delay-500"/>
+						<span init-with="p:[z-index:-1, display:none]"
+							when-sidebar-link-clicked="p:[z-index:10, display:block]"
+							on-mouse-enter="s:[sidebar-expand:public]"
+							on-mouse-leave="s:[sidebar-collapse:public]"
+							when-modal-close="p:[z-index:-1, display:none]:delay-500"
+							when-sidebar-col-close-clicked="p:[z-index:-1, display:none]:delay-1000"></span>
+					</a>
+				</li>
+				<li	init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
+					when-sidebar-link-enter="p:[opacity:0:1:350:easeOutExpo, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):200:easeInOutCubic easeInOutCubic]:delay-240"
+					when-sidebar-close-clicked="t-exit"
+					when-sidebar-col-close-clicked="t-exit"
+					on-exit="p:[op:0]:delay-1000">
+					<a init-default
+						on-click="s:[team-link-clicked:public, sidebar-link-clicked:public]">
+						<span init-default
+							when-sidebar-expand="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-250"
+							when-modal-close="p:[color:white:delay-250, op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-250"
+							when-sidebar-collapse="p:[op:0:delay-200, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
+							when-sidebar-link-clicked="p:[op:0:delay-200, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]:delay-240"
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-enter"
+							when-support-link-clicked="t-exit"
+							when-start-link-clicked="t-exit"
+							on-enter="p:[color:#69b3a5]"
+							on-exit="p:[color:rgba(255#255#255#.5)]"
+							when-sidebar-closed-clicked="p:[color:white]:delay-1000"
+							when-sidebar-col-close-clicked="p:[op:1, tr:none, color:white]:delay-1000"></span>
+						<span class="splash-sidebar-link-icon" ng-include="root.base_url + 'shared/templates/components/svg/sidebar/team.html'"
+							init-with="p:[op:0, tr:translateX(-200%) translateZ(0px)]"
+							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-440"
+							when-sidebar-expand="t-exit"
+							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-250"
+							when-modal-close="t-exit"
+							on-exit="p:[op:0:delay-500, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
+							when-sidebar-col-close-clicked="p:[op:0, tr:translateX(-200%) translateZ(0px)]:delay-1000"></span>
+						<span class="splash-sidebar-link-text"
+							init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-enter"
+							when-support-link-clicked="t-exit"
+							when-start-link-clicked="t-exit"
+							on-enter="p:[color:#69b3a5]"
+							on-exit="p:[color:rgba(255#255#255#.5)]"
+							when-modal-close="p:[color:white]:delay-500"
+							when-sidebar-closed-clicked="p:[color:white]:delay-1000"
+							when-sidebar-col-close-clicked="p:[op:1, tr:none, color:white]:delay-1000">Team</span>
+						<hr init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-enter"
+							when-support-link-clicked="t-exit"
+							when-start-link-clicked="t-exit"
+							on-enter="p:[tr:scaleX(1), bg:white]"
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255#.5)]"
+							when-sidebar-col-close-clicked="p:[tr:scaleX(0)]:delay-1000"
+							when-modal-close="p:[tr:scaleX(0)]:delay-500"/>
+						<span init-with="p:[z-index:-1, display:none]"
+							when-sidebar-link-clicked="p:[z-index:10, display:block]"
+							on-mouse-enter="s:[sidebar-expand:public]"
+							on-mouse-leave="s:[sidebar-collapse:public]"
+							when-modal-close="p:[z-index:-1, display:none]:delay-500"
+							when-sidebar-col-close-clicked="p:[z-index:-1, display:none]:delay-1000"></span>
+					</a>
+				</li>
+				<li	init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
+					when-sidebar-link-enter="p:[opacity:0:1:350:easeOutExpo, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):200:easeInOutCubic easeInOutCubic]:delay-350"
+					when-sidebar-close-clicked="t-exit"
+					when-sidebar-col-close-clicked="t-exit"
+					on-exit="p:[op:0]:delay-1000">
+					<a init-default
+						on-click="s:[support-link-clicked:public, sidebar-link-clicked:public]">
+						<span init-default
+							when-sidebar-expand="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-250"
+							when-modal-close="p:[color:white:delay-250, op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-250"
+							when-sidebar-collapse="p:[op:0:delay-200, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
+							when-sidebar-link-clicked="p:[op:0:delay-200, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]:delay-350"
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-enter"
+							when-start-link-clicked="t-exit"
+							on-enter="p:[color:#69b3a5]"
+							on-exit="p:[color:rgba(255#255#255#.5)]"
+							when-sidebar-closed-clicked="p:[color:white]:delay-1000"
+							when-sidebar-col-close-clicked="p:[op:1, tr:none, color:white]:delay-1000"></span>
+						<span class="splash-sidebar-link-icon" ng-include="root.base_url + 'shared/templates/components/svg/sidebar/support.html'"
+							init-with="p:[op:0, tr:translateX(-200%) translateZ(0px)]"
+							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-550"
+							when-sidebar-expand="t-exit"
+							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-250"
+							when-modal-close="t-exit"
+							on-exit="p:[op:0:delay-500, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
+							when-sidebar-col-close-clicked="p:[op:0, tr:translateX(-200%) translateZ(0px)]:delay-1000"></span>
+						<span class="splash-sidebar-link-text"
+							init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-enter"
+							when-start-link-clicked="t-exit"
+							on-enter="p:[color:#69b3a5]"
+							on-exit="p:[color:rgba(255#255#255#.5)]"
+							when-modal-close="p:[color:white]:delay-500"
+							when-sidebar-closed-clicked="p:[color:white]:delay-1000"
+							when-sidebar-col-close-clicked="p:[op:1, tr:none, color:white]:delay-1000">Support</span>
+						<hr init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-enter"
+							when-start-link-clicked="t-exit"
+							on-enter="p:[tr:scaleX(1), bg:white]"
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255#.5)]"
+							when-sidebar-col-close-clicked="p:[tr:scaleX(0)]:delay-1000"
+							when-modal-close="p:[tr:scaleX(0)]:delay-500"/>
+						<span init-with="p:[z-index:-1, display:none]"
+							when-sidebar-link-clicked="p:[z-index:10, display:block]"
+							on-mouse-enter="s:[sidebar-expand:public]"
+							on-mouse-leave="s:[sidebar-collapse:public]"
+							when-modal-close="p:[z-index:-1, display:none]:delay-500"
+							when-sidebar-col-close-clicked="p:[z-index:-1, display:none]:delay-1000"></span>
+					</a>
+				</li>
+				<li init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
+					when-sidebar-link-enter="p:[opacity:0:1:350:easeOutExpo, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):200:easeInOutCubic easeInOutCubic]:delay-600"
+					when-sidebar-close-clicked="t-exit"
+					when-sidebar-col-close-clicked="t-exit"
+					on-exit="p:[op:0]:delay-1000">
+					<a init-default
+						on-click="s:[start-link-clicked:public]">
+						<span init-default
+							when-sidebar-expand="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-250"
+							when-modal-close="p:[color:white:delay-250, op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-250"
+							when-sidebar-collapse="p:[op:0:delay-200, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
+							when-sidebar-link-clicked="p:[op:0:delay-200, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]:delay-600"
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-start-link-clicked="t-enter"
+							on-enter="p:[color:#69b3a5]"
+							on-exit="p:[color:rgba(255#255#255#.5)]"
+							when-sidebar-closed-clicked="p:[color:white]:delay-1000"
+							when-sidebar-col-close-clicked="p:[op:1, tr:none, color:white]:delay-1000"></span>
+						<span class="splash-sidebar-link-icon" ng-include="root.base_url + 'shared/templates/components/svg/sidebar/get-started.html'"
+							init-with="p:[op:0, tr:translateX(-200%) translateZ(0px)]"
+							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-800"
+							when-sidebar-expand="t-exit"
+							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-250"
+							when-modal-close="t-exit"
+							on-exit="p:[op:0:delay-500, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
+							when-sidebar-col-close-clicked="p:[op:0, tr:translateX(-200%) translateZ(0px)]:delay-1000"></span>
+						<span class="splash-sidebar-link-text"
+							init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-start-link-clicked="t-enter"
+							on-enter="p:[color:#69b3a5]"
+							on-exit="p:[color:rgba(255#255#255#.5)]"
+							when-modal-close="p:[color:white]:delay-500"
+							when-sidebar-closed-clicked="p:[color:white]:delay-1000"
+							when-sidebar-col-close-clicked="p:[op:1, tr:none, color:white]:delay-1000">Get Started</span>
+						<hr init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-start-link-clicked="t-enter"
+							on-enter="p:[tr:scaleX(1), bg:white]"
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255#.5)]"
+							when-sidebar-col-close-clicked="p:[tr:scaleX(0)]:delay-1000"
+							when-modal-close="p:[tr:scaleX(0)]:delay-500"/>
+						<span init-with="p:[z-index:-1, display:none]"
+							when-sidebar-link-clicked="p:[z-index:10, display:block]"
+							on-mouse-enter="s:[sidebar-expand:public]"
+							on-mouse-leave="s:[sidebar-collapse:public]"
+							when-modal-close="p:[z-index:-1, display:none]:delay-500"
+							when-sidebar-col-close-clicked="p:[z-index:-1, display:none]:delay-1000"></span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<footer init-default
+			when-sidebar-link-enter="s:[student-id-enter:public]:delay-800">
+			<div init-default
+				when-sidebar-expand="p:[transform:translateX(-100%) translateZ(0px):translateX(0%) translateZ(0px):250:easeOutSine easeOutSine]:delay-450"
+				when-sidebar-collapse="p:[transform:translateX(0%) translateZ(0px):translateX(-100%) translateZ(0px):250:easeOutSine easeOutSine]"
+				when-sidebar-link-clicked="p:[transform:translateX(0%) translateZ(0px):translateX(-100%) translateZ(0px):250:easeOutSine easeOutSine]"
+				when-modal-close="p:[transform:translateX(-100%) translateZ(0px):translateX(0%) translateZ(0px):250:easeInSine easeInSine]:delay-250"
+				when-sidebar-col-close-clicked="p:[tr:none]:delay-1000">
+				<div class="student-card"
+					init-with="p:[tr:translateY(30px) scaleX(0)]"
+					when-student-id-enter="p:[tro:center center, transform:translateY(30px) scaleX(0):translateY(0px) scaleX(1):450:easeOutQuad easeOutBounce]"
+					when-sidebar-close-clicked="p:[tr:translateY(30px) scaleX(0)]:delay-1500"
+					when-sidebar-col-close-clicked="p:[tr:translateY(30px) scaleX(0)]:delay-1500">
+					<div class="school-id-inside">
+						<div class="school-id-bg" style="background-image: url('/shared/images/uc-berkeley.svg')"></div>
+						<div class="school-id-top" style="background: #003262;">
+							<span class="user-icon" ng-include="root.base_url + 'shared/templates/components/svg/logo/guru-head.html'"
+								init-with="p:[op:0, tro:center center]"
+								when-student-id-enter="a:[icon-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-550]"
+								when-sidebar-close-clicked="p:[op:0]:delay-1000"
+								when-sidebar-col-close-clicked="p:[op:0]:delay-1000"></span>
+							<!-- if no photo exists yet -->
+							<!-- <span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/marcogomes/128.jpg');"
+								init-with="p:[op:0, tro:center center]"
+								when-student-id-enter="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-550]"></span> -->
+						</div>
+						<div class="school-id-bottom">
+							<div class="school-id-details">
+								<h1 class='lettercase'
+									init-with="p:[op:0, tro:center top]"
+									when-student-id-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-600]"
+									when-sidebar-close-clicked="p:[op:0]:delay-1000"
+									when-sidebar-col-close-clicked="p:[op:0]:delay-1000">Marco Polo</h1>
+								<h2 init-with="p-op"
+									when-student-card-enter="p:[opacity:0:1:800:easeInSine]:delay-750"
+									when-sidebar-close-clicked="p:[op:0]:delay-1000"
+									when-sidebar-col-close-clicked="p:[op:0]:delay-1000">UC Berkeley</h2>
+								<h2 init-with="p-op"
+									when-student-card-enter="p:[opacity:0:1:700:easeInSine]:delay-900"
+									when-sidebar-close-clicked="p:[op:0]:delay-1000"
+									when-sidebar-col-close-clicked="p:[op:0]:delay-1000">Freshman</h2>
+							</div>
+							<h3 class="school-id-courses">
+								<span init-with="p-op"
+									when-student-id-enter="p:[opacity:0:1:800:easeInSine]:delay-150"
+									when-sidebar-close-clicked="p:[op:0]:delay-1000"
+									when-sidebar-col-close-clicked="p:[op:0]:delay-1000">SELECTED COURSES</span>
+								<span style="background: #003262;"
+									init-with="p:[op:0, tro:left center]"
+									when-student-id-enter="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-350]"
+									when-sidebar-close-clicked="p:[op:0]:delay-1000"
+									when-sidebar-col-close-clicked="p:[op:0]:delay-1000">9</span>
+								<a init-with="p-op"
+									when-student-id-enter="p:[opacity:0:1:800:easeInSine]:delay-150"
+									when-sidebar-close-clicked="p:[op:0]:delay-1000"
+									when-sidebar-col-close-clicked="p:[op:0]:delay-1000"><span>Edit</span></a>
+							</h3>
+						</div>
+					</div>
+				</div>
+				<button class="height-48 bg-shamrock txt-18"
+					init-with="p:[op:0, tr:translateY(30px)]"
+					when-student-id-enter="p:[opacity:0:1:200:easeOutSine, transform:translateY(30px):translateY(0px):200:easeInOutBack]:delay-200"
+					when-sidebar-close-clicked="p:[op:0]:delay-1000"
+					when-sidebar-col-close-clicked="p:[op:0]:delay-1000">Sign up/Login</button>
+			</div>
+			<div class="collapsed"
+				init-with="p:[op:0, tr:rotate(-90deg) scaleY(0) translateZ(0px)]"
+				when-sidebar-expand="p:[op:0:delay-450, transform:rotate(-90deg) translateY(0%) translateZ(0px):rotate(-90deg) translateY(-100%) translateZ(0px):450:easeInSine easeInBack easeInSine]"
+				when-sidebar-collapse="p:[op:1, transform:rotate(-90deg) scaleY(0) translateZ(0px):rotate(-90deg) scaleY(1) translateZ(0px):450:easeOutSine easeOutBack easeOutSine]:delay-450"
+				when-sidebar-link-clicked="p:[op:1, transform:rotate(-90deg) scaleY(0) translateZ(0px):rotate(-90deg) scaleY(1) translateZ(0px):450:easeOutSine easeOutBack easeOutSine]:delay-450"
+				when-modal-close="p:[op:0:delay-500, transform:rotate(-90deg) scaleY(1) translateZ(0px):rotate(-90deg) scaleY(0) translateZ(0px):500:easeInSine easeInBack easeInSine]"
+				when-sidebar-col-close-clicked="p:[op:0, tr:rotate(-90deg) scaleY(0) translateZ(0px)]:delay-1000">
+				<button class="height-48 bg-shamrock txt-18">Sign up/Login</button>
+				<div class="guru-head" ng-include="root.base_url + 'shared/templates/components/svg/logo/guru-head.html'"
+					init-with="p:[op:0, tr:translateX(-20px)]"
+					when-sidebar-link-clicked="p:[op:1, transform:translateX(-20px):translateX(0px):250:easeOutBack]:delay-650"
+					when-modal-close="p:[op:0]:delay-500"
+					when-sidebar-close-clicked="p:[op:0]:delay-1000"
+					when-sidebar-col-close-clicked="p:[op:0]:delay-1000"></div>
+			</div>
+		</footer>
+
+		<div class="splash-sidebar-round"
+			init-with="p:[tro:left center, tr:scaleX(0.5)]"
+			when-sidebar-icon-clicked="p:[transform:scaleX(0.5) translateZ(0px):scaleX(0) translateZ(0px):1000:easeOutBack easeOutBack]:delay-400"
+			when-sidebar-close-clicked="p:[transform:scaleX(0) translateZ(0px):scaleX(0.5) translateZ(0px):1000:easeOutBack easeOutBack]:delay-500">
+			<svg viewBox="0 0 50 100" preserveAspectRatio="none">
+			    <circle cx="0" cy="50" r="50" fill="#2B3234"></circle>
+			</svg>
+		</div>
+	</aside>
+
+	<aside class="splash-sidebar mobile"
+		init-with="p:[op:0, tr:translateY(-100%) translateZ(0px)]"
+		when-sidebar-icon-clicked="p:[opacity:0:1:500:easeOutSine, transform:translateY(-100%) translateZ(0px):translateY(0%) translateZ(0px):250:easeOutSine easeOutSine]:delay-250"
+		when-sidebar-close-clicked="p:[opacity:1:0:400:easeOutSine, transform:translateY(0px):translateY(-30px):800:easeOutCirc]">
+		<header>
+			<a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"></a>
+			<a class="icon-round-stroke close"
+				on-click="s:[sidebar-close-clicked:public]">
+				<svg viewBox="0 0 100 100">
+					<circle cx="50" cy="50" r="36"></circle>
+					<g>
+						<path d="M50,32 L50,68"></path>
+						<path d="M32,50 L68,50"></path>
+					</g>
+				</svg>
+			</a>
+		</header>
+		<nav>
+			<ul init-default
+				when-sidebar-icon-clicked="s:[sidebar-link-enter:public]:delay-750">
+				<li init-with="p:[op:0, tr:translateY(-10px)]"
+					when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]"
+					when-sidebar-close-clicked="p:[opacity:1:0:200:easeOutSine, transform:translateY(0px):translateY(-30px):400:easeOutCirc]:delay-500">
+					<a init-default
+						on-click="s:[faq-link-clicked:public, sidebar-link-clicked:public]">
+						<span></span>
+						<span>FAQ</span>
+						<hr init-default
+							when-faq-link-clicked="t-enter"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-start-link-clicked="t-exit"
+							when-modal-close="p:[tr:scaleX(0):delay-500, bg:rgba(255#255#255#.5):delay-1000]"
+							on-enter="p:[tr:scaleX(1), bg:white]"
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255#.5)]"/>
+						<hr init-default
+							when-faq-link-clicked="t-enter"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-start-link-clicked="t-exit"
+							when-modal-close="p:[tr:scaleX(0), background-position-x:-200%]:delay-500"
+							on-enter="p:[tr:scaleX(1), background-position-x:-100%:-200%:500:easeOutCirc] | s:[gradient-anim-end:public:delay-750]"
+							when-gradient-anim-end="p:[opacity:1:0:250:easeOutSine]"
+							on-exit="p:[tr:scaleX(0), background-position-x:-200%]"/>
+					</a>
+				</li>
+				<li init-with="p:[op:0, tr:translateY(-10px)]"
+					when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-150"
+					when-sidebar-close-clicked="p:[opacity:1:0:200:easeOutSine, transform:translateY(0px):translateY(-30px):400:easeOutCirc]:delay-450">
+					<a init-default
+						on-click="s:[pricing-link-clicked:public, sidebar-link-clicked:public]">
+						<span></span>
+						<span>Pricing</span>
+						<hr init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-enter"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-start-link-clicked="t-exit"
+							when-modal-close="p:[tr:scaleX(0):delay-500, bg:rgba(255#255#255#.5):delay-1000]"
+							on-enter="p:[tr:scaleX(1), bg:white]"
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255#.5)]"/>
+						<hr init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-enter"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-start-link-clicked="t-exit"
+							when-modal-close="p:[tr:scaleX(0), background-position-x:-200%]:delay-500"
+							on-enter="p:[tr:scaleX(1), background-position-x:-100%:-200%:500:easeOutCirc] | s:[gradient-anim-end:public:delay-750]"
+							when-gradient-anim-end="p:[opacity:1:0:250:easeOutSine]"
+							on-exit="p:[tr:scaleX(0), background-position-x:-200%]"/>
+					</a>
+				</li>
+				<li init-with="p:[op:0, tr:translateY(-10px)]"
+					when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-240"
+					when-sidebar-close-clicked="p:[opacity:1:0:200:easeOutSine, transform:translateY(0px):translateY(-30px):400:easeOutCirc]:delay-400">
+					<a init-default
+						on-click="s:[team-link-clicked:public, sidebar-link-clicked:public]">
+						<span></span>
+						<span>Team</span>
+						<hr init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-enter"
+							when-support-link-clicked="t-exit"
+							when-start-link-clicked="t-exit"
+							when-modal-close="p:[tr:scaleX(0):delay-500, bg:rgba(255#255#255#.5):delay-1000]"
+							on-enter="p:[tr:scaleX(1), bg:white]"
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255#.5)]"/>
+						<hr init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-enter"
+							when-support-link-clicked="t-exit"
+							when-start-link-clicked="t-exit"
+							when-modal-close="p:[tr:scaleX(0), background-position-x:-200%]:delay-500"
+							on-enter="p:[tr:scaleX(1), background-position-x:-100%:-200%:500:easeOutCirc] | s:[gradient-anim-end:public:delay-750]"
+							when-gradient-anim-end="p:[opacity:1:0:250:easeOutSine]"
+							on-exit="p:[tr:scaleX(0), background-position-x:-200%]"/>
+					</a>
+				</li>
+				<li init-with="p:[op:0, tr:translateY(-10px)]"
+					when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-450"
+					when-sidebar-close-clicked="p:[opacity:1:0:200:easeOutSine, transform:translateY(0px):translateY(-30px):400:easeOutCirc]:delay-300">
+					<a init-default
+						on-click="s:[support-link-clicked:public, sidebar-link-clicked:public]">
+						<span></span>
+						<span>Support</span>
+						<hr init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-enter"
+							when-start-link-clicked="t-exit"
+							when-modal-close="p:[tr:scaleX(0):delay-500, bg:rgba(255#255#255#.5):delay-1000]"
+							on-enter="p:[tr:scaleX(1), bg:white]"
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255#.5)]"/>
+						<hr init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-enter"
+							when-start-link-clicked="t-exit"
+							when-modal-close="p:[tr:scaleX(0), background-position-x:-200%]:delay-500"
+							on-enter="p:[tr:scaleX(1), background-position-x:-100%:-200%:500:easeOutCirc] | s:[gradient-anim-end:public:delay-750]"
+							when-gradient-anim-end="p:[opacity:1:0:250:easeOutSine]"
+							on-exit="p:[tr:scaleX(0), background-position-x:-200%]"/>
+					</a>
+				</li>
+				<li init-with="p:[op:0, tr:translateY(-10px)]"
+					when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-600"
+					when-sidebar-close-clicked="p:[opacity:1:0:200:easeOutSine, transform:translateY(0px):translateY(-30px):400:easeOutCirc]:delay-150">
+					<a init-default
+						on-click="s:[start-link-clicked:public]">
+						<span></span>
+						<span>Get Started</span>
+						<hr init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-start-link-clicked="t-enter"
+							when-modal-close="p:[tr:scaleX(0):delay-500, bg:rgba(255#255#255#.5):delay-1000]"
+							on-enter="p:[tr:scaleX(1), bg:white]"
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255#.5)]"/>
+						<hr init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-start-link-clicked="t-enter"
+							when-modal-close="p:[tr:scaleX(0), background-position-x:-200%]:delay-500"
+							on-enter="p:[tr:scaleX(1), background-position-x:-100%:-200%:500:easeOutCirc] | s:[gradient-anim-end:public:delay-750]"
+							when-gradient-anim-end="p:[opacity:1:0:250:easeOutSine]"
+							on-exit="p:[tr:scaleX(0), background-position-x:-200%]"/>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<footer init-default
+			when-sidebar-link-enter="s:[student-card-enter:public]:delay-1000">
+			<div class="student-card"
+				init-with="p:[op:0, tr:translateY(30px) scaleX(0.2)]"
+				when-student-card-enter="p:[opacity:0:1:500:easeOutSine, transform:translateY(30px) scaleX(0.2):translateY(0px) scaleX(1):800:easeOutElastic easeInOutBack]"
+				when-sidebar-close-clicked="p:[tro:center center, opacity:1:0:500:easeOutSine, transform:translateY(0px) scaleX(1):translateY(-30px) scaleX(0.2):800:easeOutCirc easeInOutBack]">
+				<div class="school-id-inside">
+					<div class="school-id-top" style="background: #003262;">
+						<span class="user-icon" ng-include="root.base_url + 'shared/templates/components/svg/logo/guru-head.html'"
+							init-with="p-op"
+							when-student-card-enter="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]"></span>
+						<!-- if no photo exists yet -->
+						<!-- <span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/marcogomes/128.jpg');"
+							init-with="p-op"
+							when-student-card-enter="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]"></span> -->
+					</div>
+					<div class="school-id-bottom">
+						<div>
+							<h1 class='lettercase'
+								init-with="p:[op:0, tro:center top]"
+								when-student-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-600]">Marco Polo</h1>
+							<h2 init-with="p-op"
+								when-student-card-enter="p:[opacity:0:1:800:easeInSine]:delay-750">UC Berkeley</h2>
+							<h2 init-with="p-op"
+								when-student-card-enter="p:[opacity:0:1:800:easeInSine]:delay-900">Freshman</h2>
+						</div>
+						<h3>
+							<span init-with="p-op"
+								when-student-card-enter="p:[opacity:0:1:800:easeInSine]:delay-150">SELECTED COURSES</span>
+							<span style="background: #003262;"
+								init-with="p:[op:0, tro:left center]"
+								when-student-card-enter="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-350]">9</span>
+							<a init-with="p-op"
+								when-student-card-enter="p:[opacity:0:1:800:easeInSine]:delay-150"><span>Edit</span></a>
+						</h3>
+					</div>
+				</div>
+			</div>
+			<button class="height-48 bg-shamrock txt-18"
+				init-with="p:[op:0, tr:translateY(30px)]"
+				when-student-card-enter="p:[opacity:0:1:200:easeOutSine, transform:translateY(30px):translateY(0px):200:easeOutBack]:delay-200"
+				when-sidebar-close-clicked="p:[tro:30% 50%, opacity:1:0:500:easeOutSine, transform:translateY(0px) scaleX(1):translateY(-30px) scaleX(0.2):800:easeOutCirc easeInOutBack]">Sign up/Login</button>
+		</footer>
+	</aside>
+
+	<section class="splash-sidebar-content desktop"
+		init-with="p:[z-index:-1]"
+		when-sidebar-link-clicked="p:[z-index:10]"
+		when-modal-close="p:[z-index:-1]:delay-500"
+	 	when-sidebar-col-close-clicked="p:[z-index:-1:delay-1000, opacity:1:0:100:easeOutSine, transform:translateX(0px):translateX(-200px):450:easeInOutSine]:delay-500"
+		when-sidebar-icon-clicked="p:[op:1, tr:none]">
+		<div ng-include="root.base_url + 'preapp/templates/sidebar/faq.html'"
+			init-with="p:[op:0, tr:translateX(252px) translateZ(0px)]"
+			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-sidebar-expand="p:[transform:translateX(0px) translateZ(0px):translateX(252px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-faq-link-clicked="t-enter"
+			when-pricing-link-clicked="t-exit"
+			when-support-link-clicked="t-exit"
+			when-team-link-clicked="t-exit"
+			when-faq-modal-close="t-exit"
+			on-exit="p:[z-index:1, op:0:delay-500, transform:translateX(0px) translateZ(0px):translateX(252px) translateZ(0px):500:easeInExpo easeInExpo]"
+			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-sidebar-close-clicked="p:[op:0, tr:translateX(252px) translateZ(0px)]:delay-1000"
+			when-sidebar-col-close-clicked="p:[op:0, tr:translateX(252px) translateZ(0px)]:delay-1000"></div>
+		<div ng-include="root.base_url + 'preapp/templates/sidebar/pricing.html'"
+			init-with="p:[op:0, tr:translateX(252px) translateZ(0px)]"
+			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-sidebar-expand="p:[transform:translateX(0px) translateZ(0px):translateX(252px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-faq-link-clicked="t-exit"
+			when-pricing-link-clicked="t-enter"
+			when-support-link-clicked="t-exit"
+			when-team-link-clicked="t-exit"
+			when-pricing-modal-close="t-exit"
+			on-exit="p:[z-index:1, op:0:delay-500, transform:translateX(0px) translateZ(0px):translateX(252px) translateZ(0px):500:easeInExpo easeInExpo]"
+			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-sidebar-close-clicked="p:[op:0, tr:translateX(252px) translateZ(0px)]:delay-1000"
+			when-sidebar-col-close-clicked="p:[op:0, tr:translateX(252px) translateZ(0px)]:delay-1000"></div>
+		<div ng-include="root.base_url + 'preapp/templates/sidebar/team.html'"
+			init-with="p:[op:0, tr:translateX(252px) translateZ(0px)]"
+			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-sidebar-expand="p:[transform:translateX(0px) translateZ(0px):translateX(252px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-faq-link-clicked="t-exit"
+			when-pricing-link-clicked="t-exit"
+			when-support-link-clicked="t-exit"
+			when-team-link-clicked="t-enter"
+			when-team-modal-close="t-exit"
+			on-exit="p:[z-index:1, op:0:delay-500, transform:translateX(0px) translateZ(0px):translateX(252px) translateZ(0px):500:easeInExpo easeInExpo]"
+			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-sidebar-close-clicked="p:[op:0, tr:translateX(252px) translateZ(0px)]:delay-1000"
+			when-sidebar-col-close-clicked="p:[op:0, tr:translateX(252px) translateZ(0px)]:delay-1000"></div>
+		<div class="bg-campus"
+			init-with="p:[op:0, tr:translateX(252px) translateZ(0px)]"
+			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-sidebar-expand="p:[transform:translateX(0px) translateZ(0px):translateX(252px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-faq-link-clicked="t-exit"
+			when-pricing-link-clicked="t-exit"
+			when-support-link-clicked="t-enter"
+			when-team-link-clicked="t-exit"
+			when-support-modal-close="t-exit"
+			on-exit="p:[z-index:1, op:0:delay-500, transform:translateX(0px) translateZ(0px):translateX(252px) translateZ(0px):500:easeInExpo easeInExpo]"
+			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-sidebar-close-clicked="p:[op:0, tr:translateX(252px) translateZ(0px)]:delay-1000"
+			when-sidebar-col-close-clicked="p:[op:0, tr:translateX(252px) translateZ(0px)]:delay-1000"></div>
+			<!-- when-sidebar-col-close-clicked="p:[opacity:1:0:100:easeOutSine, transform:translateX(0px):translateX(-200px):1000:easeOutSine]:delay-500"-->
+	</section>
+
+	<section class="splash-sidebar-content mobile"
+		init-with="p:[z-index:-1]"
+		when-sidebar-link-clicked="p:[z-index:10]"
+		when-modal-close="p:[z-index:-1]:delay-500">
+		<div ng-include="root.base_url + 'preapp/templates/sidebar/faq.html'"
+			init-with="p:[op:0, tr:translateY(100%) translateZ(0px)]"
+			when-faq-link-clicked="p:[op:1, transform:translateY(100%) translateZ(0px):translateY(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-450"
+			when-faq-modal-close="p:[op:0:delay-500, transform:translateY(0%) translateZ(0px):translateY(100%) translateZ(0px):500:easeOutExpo easeOutExpo]"></div>
+		<div ng-include="root.base_url + 'preapp/templates/sidebar/pricing.html'"
+			init-with="p:[op:0, tr:translateY(100%) translateZ(0px)]"
+			when-pricing-link-clicked="t-enter"
+			on-enter="p:[op:1, transform:translateY(100%) translateZ(0px):translateY(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-450"
+			when-pricing-modal-close="p:[op:0:delay-500, transform:translateY(0%) translateZ(0px):translateY(100%) translateZ(0px):500:easeOutExpo easeOutExpo]"></div>
+		<div ng-include="root.base_url + 'preapp/templates/sidebar/team.html'"
+			init-with="p:[op:0, tr:translateY(100%) translateZ(0px)]"
+			when-team-link-clicked="p:[op:1, transform:translateY(100%) translateZ(0px):translateY(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-450"
+			when-team-modal-close="p:[op:0:delay-500, transform:translateY(0%) translateZ(0px):translateY(100%) translateZ(0px):500:easeOutExpo easeOutExpo]"></div>
+		<div class="bg-campus"
+			init-with="p:[op:0, tr:translateY(100%) translateZ(0px)]"
+			when-support-link-clicked="p:[op:1, transform:translateY(100%) translateZ(0px):translateY(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-450"
+			when-support-modal-close="p:[op:0:delay-500, transform:translateY(0%) translateZ(0px):translateY(100%) translateZ(0px):500:easeOutExpo easeOutExpo]"></div>
+	</section>
+
+	<div class="splash-sidebar-borders">
+		<div init-with="p:[op:0, tr:translateX(252px) translateZ(0px) scaleY(0), tro:center top]"
+			when-sidebar-icon-clicked="p:[op:1, transform:translateX(252px) translateZ(0px) scaleY(0):translateX(252px) translateZ(0px) scaleY(1):500:easeOutExpo easeOutExpo easeOutExpo]:delay-500"
+			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-sidebar-expand="p:[transform:translateX(0px) translateZ(0px):translateX(252px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-sidebar-link-clicked="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-modal-close="p:[transform:translateX(0px) translateZ(0px):translateX(252px) translateZ(0px):500:easeInExpo easeInExpo]"
+			when-sidebar-close-clicked="p:[transform:translateX(252px) translateZ(0px) scaleY(1):translateX(252px) translateZ(0px) scaleY(0):350:easeOutExpo easeOutExpo easeOutBack]"
+			when-sidebar-col-close-clicked="p:[transform:translateX(0px) translateZ(0px) scaleY(1):translateX(0px) translateZ(0px) scaleY(0):350:easeOutExpo easeOutExpo easeOutBack]:delay-200">
+			<hr init-with="p-op"
+				when-sidebar-link-clicked="p:[op:1, background-position-y:-100%:-200%:500:easeOutCirc:^:2+0:a] | s:[gradient-border-fade:public:delay-1000]"
+				when-gradient-border-fade="p:[opacity:1:0:250:easeOutSine] | s:[gradient-border-end:public:delay-250]"
+				when-gradient-border-end="p:[background-position-y:-100%]"
+				when-sidebar-close-clicked="p-op"
+				when-sidebar-col-close-clicked="p-op"/>
+		</div>
+		<ul init-with="p:[z-index:-1]"
+			when-sidebar-icon-clicked="p:[op:1, tr:none]"
+			when-sidebar-link-clicked="p:[z-index:11]"
+			when-modal-close="p:[z-index:-1]:delay-500"
+			when-sidebar-close-clicked="p:[z-index:-1]:delay-1000"
+			when-sidebar-col-close-clicked="p:[z-index:-1:delay-1000, opacity:1:0:100:easeOutSine:500, transform:translateX(0px) translateZ(0px):translateX(-300px) translateZ(0px):400:easeOutBack easeOutBack]">
+			<li>
+				<div>
+					<hr init-with="p-op"
+						when-faq-link-clicked="t-enter"
+						when-pricing-link-clicked="t-exit"
+						when-team-link-clicked="t-exit"
+						when-support-link-clicked="t-exit"
+						when-start-link-clicked="t-exit"
+						on-enter="p:[op:1, bg:white]"
+						on-exit="p:[op:0, bg:rgba(255#255#255#.5)]"
+						when-modal-close="p:[op:0, bg:rgba(255#255#255#.5)]:delay-250"
+						when-sidebar-col-close-clicked="p-op"/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<hr init-with="p-op"
+						when-faq-link-clicked="t-exit"
+						when-pricing-link-clicked="t-enter"
+						when-team-link-clicked="t-exit"
+						when-support-link-clicked="t-exit"
+						when-start-link-clicked="t-exit"
+						on-enter="p:[op:1, bg:white]"
+						on-exit="p:[op:0, bg:rgba(255#255#255#.5)]"
+						when-modal-close="p:[op:0, bg:rgba(255#255#255#.5)]:delay-250"
+						when-sidebar-col-close-clicked="p-op"/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<hr init-with="p-op"
+						when-faq-link-clicked="t-exit"
+						when-pricing-link-clicked="t-exit"
+						when-team-link-clicked="t-enter"
+						when-support-link-clicked="t-exit"
+						when-start-link-clicked="t-exit"
+						on-enter="p:[op:1, bg:white]"
+						on-exit="p:[op:0, bg:rgba(255#255#255#.5)]"
+						when-modal-close="p:[op:0, bg:rgba(255#255#255#.5)]:delay-250"
+						when-sidebar-col-close-clicked="p-op"/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<hr init-with="p-op"
+						when-faq-link-clicked="t-exit"
+						when-pricing-link-clicked="t-exit"
+						when-team-link-clicked="t-exit"
+						when-support-link-clicked="t-enter"
+						when-start-link-clicked="t-exit"
+						on-enter="p:[op:1, bg:white]"
+						on-exit="p:[op:0, bg:rgba(255#255#255#.5)]"
+						when-modal-close="p:[op:0, bg:rgba(255#255#255#.5)]:delay-250"
+						when-sidebar-col-close-clicked="p-op"/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<hr init-with="p-op"
+						when-faq-link-clicked="t-exit"
+						when-pricing-link-clicked="t-exit"
+						when-team-link-clicked="t-exit"
+						when-support-link-clicked="t-exit"
+						when-start-link-clicked="t-enter"
+						on-enter="p:[op:1, bg:white]"
+						on-exit="p:[op:0, bg:rgba(255#255#255#.5)]"
+						when-modal-close="p:[op:0, bg:rgba(255#255#255#.5)]:delay-250"
+						when-sidebar-col-close-clicked="p-op"/>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>

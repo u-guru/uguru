@@ -1,0 +1,1828 @@
+{
+    "description": "Components",
+    "base_url": "shared/templates/components",
+    "dir": {
+        "cards": {
+            "course-card": {
+                "filename": "course-card.tpl",
+                "types": ["svg", "default", "link", "overlay", "checkbox", "badge"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [
+						{
+							"bug": "Checkbox missing opacity on uncheck, no longer fixed",
+							"fixed": true
+						}
+					],
+					"stagger": [],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "short name",
+							"type": "letter",
+							"description": "fadeIn or bounceInUp",
+							"complete": false
+						},
+						{
+							"element": "course name",
+							"type": "line",
+							"description": "fadeInUp",
+							"complete": false
+						}
+					]
+                }
+            },
+            "credit-card": {
+                "filename": "credit-card.tpl",
+                "types": ["flip", "edit", "short", "mini"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+					"bugs": [
+						{
+							"bug": "Try putting translateZ into :active in CSS vs. states",
+							"fixed": true
+						}
+					],
+					"stagger": [
+						{
+							"element": "Numbers, is there a way to automate?",
+							"complete": true
+						}
+					],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "card number and bullets",
+							"type": "letter",
+							"description": "stamp effect",
+							"complete": false
+						},
+						{
+							"element": "valid thru date",
+							"type": "letter",
+							"description": "stamp effect",
+							"complete": false
+						}
+					]
+                }
+            },
+			"faq-card": {
+                "filename": "faq-card.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [
+						{
+							"bug": "@samir Check about toggling from the same element",
+							"fixed": false
+						}
+					],
+					"stagger": [],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "text",
+							"type": "line",
+							"description": "fadeInUp",
+							"complete": false
+						}
+					]
+                }
+            },
+            "profile-card": {
+                "filename": "profile-card.tpl",
+                "types": ["single", "stack"],
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [
+						{
+							"element": "rating",
+							"complete": true
+						}
+					],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "Name and school",
+							"type": "line",
+							"description": "Stagger",
+							"complete": false
+						}
+					]
+                }
+            },
+            "profile-thumb": {
+                "filename": "profile-thumb.tpl",
+                "types": ["36", "48", "64", "72", "96", "128"],
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [],
+					"draw": [],
+					"lettering": []
+                }
+            },
+			"profile-widget": {
+                "filename": "profile-widget.tpl",
+				"versions": ["stagger", "SM-090916"],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": "rating",
+					"draw": [],
+					"lettering": [
+						{
+							"element": "text",
+							"type": "line",
+							"description": "stagger",
+							"complete": false
+						}
+					]
+                }
+            },
+            "student-card": {
+                "filename": "student-card.tpl",
+                "types": ["edit", "link"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [
+						{
+							"bug": "Hover should be in static css for edit",
+							"fixed": true
+						}
+					],
+					"stagger": [],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "text",
+							"type": "line",
+							"description": "stagger",
+							"complete": false
+						},
+						{
+							"element": "'Content can go here.'",
+							"type": "line",
+							"description": "stagger",
+							"complete": false
+						}
+					]
+                }
+            },
+			"team-card": {
+                "filename": "team-card.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [
+						{
+							"bug": "Ribbon opacity. Could be enhanced with delay",
+							"fixed": "true"
+						}
+					],
+					"stagger": [],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "name",
+							"type": "letter",
+							"description": "fadeIn stagger",
+							"complete": false
+						},
+						{
+							"element": "line",
+							"type": "line",
+							"description": "stagger",
+							"complete": false
+						}
+					]
+                }
+            },
+			"timeline-card": {
+                "filename": "timeline-card.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": false,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "note": {
+						"JO": "Altered transform origin based off of the tip's direction. In the example, left top."
+					},
+					"stagger": [
+						{
+							"element": "attachment-list",
+							"complete": true
+						},
+						{
+							"element": "tag-list",
+							"complete": true
+						}
+					],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "header",
+							"type": "letter",
+							"description": "Slide in direction dependent",
+							"complete": false
+						},
+						{
+							"element": "description",
+							"type": "paragraph",
+							"description": "fadeInUp",
+							"complete": false
+						},
+						{
+							"element": "attribution",
+							"type": "line",
+							"description": "stagger",
+							"complete": false
+						}
+					]
+                }
+            },
+            "university-card": {
+                "filename": "university-card.tpl",
+                "types": ["checkbox", "link"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [
+						{
+							"bug": "Link isn't showing up",
+							"fixed": true
+						},
+						{
+							"bug": "Missing hover",
+							"fixed": true
+						}
+					],
+					"stagger": [],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "text",
+							"type": "line",
+							"description": "stagger",
+							"complete": true
+						}
+					]
+                }
+            },
+			"album-tile": {
+                "filename": "album-tile.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+					"note": {
+						    "GW": "Try swingout for genre container"
+					},
+                    "bugs": [
+						{
+							"bug": "Change translate down to swing like the dropdown",
+							"fixed": true
+						}
+					],
+					"stagger": [
+						{
+							"element": "info sections",
+							"complete": true
+						}
+					],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "platlist name",
+							"type": "letter",
+							"description": "down",
+							"complete": false
+						}
+					]
+                }
+            },
+			"calendar-tile": {
+                "filename": "calendar-tile.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "text",
+							"type": "line",
+							"description": "stagger",
+							"complete": true
+						}
+					]
+                }
+            },
+            "category-tile": {
+                "filename": "category-tile.tpl",
+                "types": ["link-no-photo", "photo", "photo-price", "photo-price-moxie", "photo-price-crimson", "link-color", "link-square", "check-square"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [
+						{
+							"bug": "@samir Switcher is not working for this page only: onexits are being triggered, key being the first type.",
+							"fixed": true
+						},
+						{
+							"bug": "Convert on-inits to a single state",
+							"fixed": true
+						}
+					],
+					"stagger": [],
+					"draw": [
+						{
+							"element": "icon",
+							"complete": false
+						}
+					],
+					"lettering": []
+                }
+            },
+			"credit-tile": {
+                "filename": "credit-tile.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "note": {
+						"GW": "CTA needs a longer ease-out"
+					},
+					"stagger": [],
+					"draw": [
+						{
+							"element": "icon",
+							"complete": false
+						}
+					],
+					"lettering": [
+						{
+							"element": "package",
+							"type": "letter",
+							"description": "",
+							"complete": false
+						},
+						{
+							"element": "credits",
+							"type": "letter",
+							"description": "",
+							"complete": false
+						}
+					]
+                }
+            },
+			"feature-tile": {
+                "filename": "feature-tile.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "header",
+							"type": "letter",
+							"description": "",
+							"complete": false
+						},
+						{
+							"element": "description",
+							"type": "line",
+							"description": "",
+							"complete": false
+						}
+					]
+                }
+            },
+            "money-tile": {
+                "filename": "money-tile.tpl",
+                "types": ["fixed", "add"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"description": "",
+							"complete": false
+						}
+					]
+                }
+            },
+            "pricing-tile": {
+                "filename": "pricing-tile.tpl",
+				"types": ["default", "alert"],
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [
+						{
+							"bug": "Check for flicker",
+							"fixed": true
+						}
+					],
+					"stagger": [],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "Number in circle",
+							"type": "letter",
+							"description": "Countup",
+							"complete": false
+						}
+					]
+                }
+            },
+            "profile-cardlet": {
+                "filename": "profile-cardlet.tpl",
+				"types": ["default", "academic", "baking", "photo", "tech", "household"],
+				"versions": ["mobile"],
+				"versionVars": {
+                    "mobile": {"mobile": true}
+                },
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [
+						{
+							"bug": "@samir Mobile has JSON error",
+							"fixed": false
+						},
+						{
+							"bug": "Tech borders are not applying easings",
+							"fixed": true
+						}
+					],
+					"stagger": [],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "Animated titles",
+							"type": "line",
+							"description": "Category specific",
+							"complete": false
+						}
+					]
+                }
+            },
+			"profile-tile": {
+				"filename": "profile-tile.tpl",
+				"types": ["academic", "baking", "photo", "tech", "household"],
+				"versions": ["mobile"],
+				"versionVars": {
+                    "mobile": {"mobile": true}
+                },
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+					"bugs": [
+						{
+							"bug": "@samir Mobile has JSON error",
+							"fixed": false
+						},
+						{
+							"bug": "Academic could use opacity delay for icon-enter",
+							"fixed": true
+						},
+						{
+							"bug": "Add final four and have all of the tiles match to the profile external animations",
+							"fixed": true
+						},
+						{
+							"bug": "Tech - Revisit translateZ on borders onmouseente",
+							"fixed": true
+						}
+					],
+					"note": {
+						"GW": "When given the cycles, should go back to animate indiv hh bubbles"
+					},
+					"stagger": [
+						{
+							"element": "rating",
+							"complete": false
+						}
+					],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "Animated titles",
+							"type": "line",
+							"description": "Category specific",
+							"complete": false
+						}
+					]
+                }
+            },
+			"ranking-tile": {
+                "filename": "ranking-tile.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [
+						{
+							"element": "cards",
+							"complete": false
+						}
+					],
+					"draw": [
+						{
+							"element": "arrows",
+							"complete": false
+						},
+						{
+							"element": "icons",
+							"complete": false
+						}
+					],
+					"lettering": [
+						{
+							"element": "Stats",
+							"type": "letter",
+							"description": "Countup",
+							"complete": false
+						},
+						{
+							"element": "titles",
+							"type": "word",
+							"description": "upward",
+							"complete": false
+						}
+					]
+                }
+            },
+			"record-tile": {
+                "filename": "record-tile.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "playlist name",
+							"type": "line",
+							"description": "bounceInUp",
+							"complete": true
+						}
+					]
+                }
+            }
+        },
+        "collections": {
+			"course-list": {
+                "filename": "course-list.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [
+						{
+							"element": "items",
+							"complete": false
+						}
+					],
+					"draw": [],
+					"lettering": []
+                }
+            },
+			"numbered-list": {
+                "filename": "numbered-list.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [
+						{
+							"element": "items",
+							"complete": false
+						}
+					],
+					"draw": [],
+					"lettering": []
+                }
+            },
+			"sidebar-list": {
+                "filename": "sidebar-list.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [
+						{
+							"element": "items",
+							"complete": false
+						}
+					],
+					"draw": [],
+					"lettering": []
+                }
+            }
+        },
+        "containers": {
+            "message-bubble": {
+                "filename": "message-bubble.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "note": "Upward motion enhancement",
+					"stagger": "bubbles",
+					"draw": [],
+					"lettering": []
+                }
+            },
+			"projector": {
+                "filename": "projector.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "note": "Revisit animation",
+					"stagger": [],
+					"draw": [],
+					"lettering": []
+                }
+            },
+            "ticket": {
+                "filename": "ticket.tpl",
+                "types": ["guru", "student"],
+				"versions": ["JO-082516"],
+                "versionVars": {
+                    "JO-082516": { "ticket-slider-container" : {"initWith": "p:[opacity:0, transform:translateX(-50%) skewX(-15deg), tro:right center]"}}
+                },
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"description": "",
+							"complete": false
+						}
+					]
+                }
+            }
+        },
+        "graphic": {
+            "image": {
+                "filename": "image.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [
+						{
+							"bug": "Check to see if draw is working",
+							"fixed": true
+						}
+					],
+					"stagger": [],
+					"draw": [
+						{
+							"element": "icon",
+							"complete": false
+						}
+					],
+					"lettering": []
+                }
+            },
+			"timeline-icon": {
+                "filename": "timeline-icon.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+					"bugs": [
+						{
+							"bug": "Change onClick to onMouseEnter",
+							"fixed": true
+						},
+						{
+							"bug": "Possible enhancement by adding bounce and spacing",
+							"fixed": true
+						}
+					],
+					"stagger": [],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "text",
+							"type": "letter",
+							"description": "bounce out direction dependent",
+							"complete": false
+						}
+					]
+                }
+            },
+			"user-icon": {
+				"filename": "user-icon.tpl",
+				"types": ["24", "32", "36", "48", "64", "72", "84", "96", "128", "default"],
+				"versions": [],
+				"contact": "GW",
+				"status": {
+					"static": true,
+					"responsive": true,
+					"animated": true,
+					"cross-platform": false,
+					"complete" : false,
+					"performance": false
+				},
+				"notes": {
+					"bugs": [],
+					"stagger": [],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"description": "",
+							"complete": false
+						}
+					]
+				}
+			},
+			"wallet": {
+                "filename": "wallet.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "note": {
+						"JO": "Check for flash. Possibly convert on-inits to states"
+					},
+					"stagger": [],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "titles",
+							"type": "letter",
+							"description": "stagger in left",
+							"complete": false
+						}
+					]
+                }
+            },
+			"window-small": {
+                "filename": "window-small.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [
+						{
+							"element": "windows",
+							"complete": false
+						}
+					],
+					"draw": [],
+					"lettering": []
+                }
+            },
+			"window": {
+                "filename": "window.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [],
+					"draw": [],
+					"lettering": []
+                }
+            }
+        },
+        "input": {
+            "basic": {
+                "filename": "basic.tpl",
+                "types": ["light", "dark"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "focused text",
+							"type": "letter",
+							"description": "typing with cursor",
+							"complete": false
+						}
+					]
+                }
+			},
+			"border": {
+                "filename": "border.tpl",
+                "types": ["light", "dark", "search-light", "search-dark", "large-light", "large-dark", "search-large-light", "search-large-dark"],
+				"versions": ["SM-093016"],
+                "contact": "GW",
+                "status": {
+                    "static": false,
+                    "responsive": false,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [
+						{
+							"bug": "@samir Needs binding for fake input + letter animation",
+							"fixed": false
+						}
+					],
+					"stagger": [
+						{
+							"element": "character counter",
+							"fixed": false
+						}
+					],
+					"draw":  [
+						{
+							"element": "border",
+							"fixed": true
+						}
+					],
+					"lettering": [
+						{
+							"element": "focused text",
+							"type": "letter",
+							"description": "typing with cursor",
+							"complete": false
+						}
+					]
+                }
+			},
+			"button": {
+                "filename": "button.tpl",
+                "types": ["default", "ghost-round", "ghost-square", "split"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [
+						{
+							"element": "borders",
+							"fixed": false
+						}
+					],
+					"draw": [],
+					"lettering": []
+                }
+			},
+			"checkbox": {
+                "filename": "checkbox.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [
+						{
+							"element": "borders",
+							"fixed": false
+						}
+					],
+					"draw": [
+						{
+							"element": "checkmark",
+							"fixed": false
+						}
+					],
+					"lettering": []
+                }
+			},
+			"number": {
+                "filename": "number.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [],
+					"draw": [],
+					"lettering": []
+                }
+			},
+			"radio": {
+                "filename": "radio.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [],
+					"draw": [
+						{
+							"element": "circle",
+							"fixed": false
+						}
+					],
+					"lettering": []
+                }
+			},
+            "search": {
+                "filename": "search.tpl",
+                "versions": ["SM-082316", "mobile", "scale"],
+                "versionVars": {
+                    "scale": { "circle" : {"initWith": "p:[transform:scale(0) rotate(-1080deg):scale(2) rotate(0deg):2500:linear easeInQuint]"}},
+                    "mobile": {"mobile": true}
+                },
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete": true,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [
+						{
+							"bug": "@samir Clicking multiple times shouldn't retrigger opening",
+							"fixed": false
+						}
+					],
+					"stagger": [],
+					"draw": [
+						{
+							"element": "icon",
+							"complete": false
+						}
+					],
+					"lettering": [
+						{
+							"element": "focused text",
+							"type": "letter",
+							"description": "typing with cursor",
+							"complete": false
+						}
+					]
+                }
+            },
+			"toggle": {
+				"filename": "toggle.tpl",
+				"types": ["default", "time-period", "round", "white-round"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": "Could use retiming with delays",
+					"stagger": [
+						{
+							"element": "borders",
+							"fixed": false
+						}
+					],
+					"draw": [
+						{
+							"element": "borders",
+							"fixed": false
+						}
+					],
+					"lettering": []
+                }
+			},
+			"chip": {
+				"filename": "chip.tpl",
+				"types": ["span", "link", "image", "input"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [],
+					"draw": [],
+					"lettering": []
+                }
+			},
+			"ghost-tag": {
+				"filename": "ghost.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [],
+					"draw": [
+						{
+							"element": "borders",
+							"fixed": false
+						}
+					],
+					"lettering": []
+                }
+			}
+        },
+		"map": {
+			"map-marker": {
+				"filename": "map-marker.tpl",
+				"versions": [],
+				"contact": "GW",
+				"status": {
+					"static": true,
+					"responsive": true,
+					"animated": true,
+					"cross-platform": false,
+					"complete" : false,
+					"performance": false
+				},
+				"notes": {
+					"bugs": [
+						{
+							"bug": "Check about toggling from the same element",
+							"fixed": false
+						},
+						{
+							"bug": "Animations missing updates",
+							"fixed": true
+						}
+					],
+					"stagger": [
+						{
+							"element": "window contents",
+							"complete": false
+						}
+					],
+					"draw": [
+						{
+							"element": "window borders",
+							"complete": false
+						}
+					],
+					"lettering": [
+						{
+							"element": "message",
+							"type": "line",
+							"description": "stagger up",
+							"complete": false
+						}
+					]
+				}
+			},
+			"request-card": {
+                "filename": "request-card.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "request type and title",
+							"type": "line",
+							"description": "stagger upwards",
+							"complete": false
+						},
+						{
+							"element": "Info and stat",
+							"type": "paragraph",
+							"description": "",
+							"complete": false
+						}
+					]
+                }
+            }
+		},
+		"media": {
+            "attachment-list": {
+                "filename": "attachment-list.tpl",
+				"types": ["student", "guru", "no-padding", "large-icons"],
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "note": {
+						"GW": "Loading bar is only onclick for demo purposes"
+					},
+					"stagger": [
+						{
+							"element": "items",
+							"complete": false
+						}
+					],
+					"draw": [
+						{
+							"element": "icons",
+							"complete": false
+						}
+					],
+					"lettering": []
+                }
+            },
+			"attachment-tile": {
+                "filename": "attachment-tile.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [
+						{
+							"bug": "Combine doc outline into single simple path (instead of combined path)",
+							"fixed": false
+						}
+					],
+					"stagger": [],
+					"draw": [
+						{
+							"element": "icon (see attachment list)",
+							"complete": false
+						}
+					],
+					"lettering": [
+						{
+							"element": "title",
+							"type": "line",
+							"description": "",
+							"complete": false
+						},
+						{
+							"element": "description",
+							"type": "paragraph",
+							"description": "",
+							"complete": false
+						}
+					]
+                }
+            }
+		},
+        "navigation": {
+            "dropdown": {
+                "filename": "dropdown.tpl",
+				"types": ["default", "info", "color"],
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [
+						{
+							"bug": "Color dropdown main link needs hover and static fixed",
+							"fixed": true
+						}
+					],
+					"stagger": [
+						{
+							"element": "borders",
+							"complete": false
+						},
+						{
+							"element": "items",
+							"complete": false
+						}
+					],
+					"draw": [
+						{
+							"element": "icon",
+							"complete": false
+						}
+					],
+					"lettering": []
+                }
+            },
+			"social-bar": {
+                "filename": "social-bar.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": "links",
+					"draw": [],
+					"lettering": []
+                }
+            },
+            "tile-group": {
+                "filename": "tile-group.tpl",
+				"types": ["link", "default", "2x3"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": "borders, items",
+					"draw": [],
+					"lettering": []
+                }
+            }
+        },
+		"notifications": {
+			"badge": {
+				"filename": "badge.tpl",
+				"types": ["left-hover", "bottom-hover", "top-default", "right-default"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [],
+					"draw": [],
+					"lettering": []
+                }
+			},
+			"popup": {
+				"filename": "popup.tpl",
+				"types": ["default", "separate-header", "tour-guru"],
+				"versions": ["JO-082916"],
+                "versionVars": {
+                    "JO-082916": { "h2" : {"initWith": "p:[letter-spacing:15px]"},"popup-tour-guru" : {"initWith": "p:[transform:rotate(215deg) scale(0), tro:left bottom]"}}
+                },
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [],
+					"draw": "circle",
+					"lettering": [
+						{
+							"element": "Guru header",
+							"type": "letter",
+							"description": "",
+							"complete": false
+						}
+					]
+                }
+			},
+			"toast": {
+				"filename": "toast.tpl",
+				"types": ["mobile", "icon-hover", "icon-input", "icon-input-button", "cta", "cta-icon"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "note": "Toast with any action should have a confirmation/success state",
+					"stagger": [],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "text",
+							"type": "line",
+							"description": "fadeIn direction dependent",
+							"complete": false
+						}
+					]
+                }
+			},
+			"tooltip": {
+				"filename": "tooltip.tpl",
+				"types": ["top", "bottom", "left", "right", "line-top", "line-bottom", "line-left", "line-right"],
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "note": "Revisit when there is custom timing. Easings available are too snappy/stiff. Trying to find timing similar to cubic-bezier(.71,.06,.47,.63)",
+					"stagger": "borders",
+					"draw": [],
+					"lettering": []
+                }
+			}
+		},
+		"progress": {
+			"meter": {
+				"filename": "meter.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "note": "",
+					"stagger": [],
+					"draw": "indicator (must be able to use decimals)",
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"description": "",
+							"complete": false
+						}
+					]
+                }
+			},
+			"numerical-progress": {
+				"filename": "numerical-progress.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "note": {
+						"GW": "@samir Should be binding so that it goes step to step in one direction."
+					},
+					"stagger": "steps",
+					"draw": "progress completion",
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"description": "",
+							"complete": false
+						}
+					]
+                }
+			},
+			"rating": {
+				"filename": "rating.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [
+						{
+							"element": "rating",
+							"complete": true
+						}
+					],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"description": "",
+							"complete": false
+						}
+					]
+                }
+			}
+		},
+		"text": {
+			"body": {
+				"filename": "body.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "Three lines or less",
+							"type": "line",
+							"description": "",
+							"complete": false
+						},
+						{
+							"element": "four lines or more",
+							"type": "paragraph",
+							"description": "",
+							"complete": false
+						}
+					]
+                }
+			},
+			"header": {
+				"filename": "header.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": [],
+					"stagger": [
+						{
+							"element": "letters",
+							"complete": true
+						}
+					],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "header",
+							"type": "letter",
+							"description": "",
+							"complete": false
+						}
+					]
+                }
+			}
+		}
+    }
+}

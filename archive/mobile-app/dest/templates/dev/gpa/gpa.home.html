@@ -1,0 +1,110 @@
+<ion-view class="uguru-view home-view"><section id="gpa-home" class="desktop-mode desktop-home"><nav class="main-nav" ng-include="img_base + BASE + 'templates/dev/gpa/desktop.nav.html'"></nav><header class="mobile-only"><div class="header-nav"><a class="header-nav-back" ng-click="toggleLeftSideMenu()"><svg viewBox="0 0 100 100"><path d="M77.7071855,34.003249 C72.1666671,24.4442603 61.8219498,18.0006703 50,18.0000001 L50,8 L50,18 L49.9981554,18 C38.1779324,18 27.8332606,24.4437373 22.2927152,34.0031916 L22.2927152,34.0031916 L13.626933,29 L22.2927152,34.0031916 C19.5635175,38.7120495 17.9999998,44.1769094 17.9999998,50 C17.9999998,55.8230906 19.5635175,61.2879505 22.2927152,65.9968084 L13.626933,71 L22.2927152,65.9968084 C27.8332606,75.5562627 38.1779324,82 49.9981554,82 L50,92 L50,82 C61.8219498,81.9993298 72.1666671,75.5557397 77.7071855,65.996751 L86.373067,71 L77.7071855,65.996751 C80.4364952,61.2879061 82.0000002,55.823067 82.0000002,50 C82.0000002,44.176933 80.4364952,38.7120939 77.7071855,34.003249 L86.373067,29 L77.7071855,34.003249 Z M49.9989624,68 C40.0749409,68 31.9999999,59.925059 31.9999999,50 C31.9999999,40.074941 40.0749409,32 49.9989624,32 C59.9250591,32 68.0000001,40.074941 68.0000001,50 C68.0000001,59.925059 59.9250591,68 49.9989624,68 L49.9989624,68 L49.9989624,68 Z"></path></svg> </a><a class="header-nav-next" thr-click="openModal('course');verifyInputs();" ng-if="overall.averageGPA"><svg viewBox="0 0 100 100"><path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path></svg></a></div><h1 class="text-center">GPA Calculator</h1></header><div id="home-container" class="text-center"><div id="home-gpa" class="gpa-container"><div class="opacity-0" class-on-load="u-bounceInUp-subtle-2:anim"><h1 id="home-overall-gpa" class="gpa">{{overall.averageGPA | number: 2}}</h1><h2 ng-if="!overall.semesterArr.length">Add some courses to get&nbsp;started!<h2 ng-if="overall.semesterArr.length">{{slogan()}}</h2></h2></div><nav id="semester-slider" class="tab-bar slide"><div class="opacity-0" class-on-load="fadeIn:anim" class-on-load-delay="2500" ng-init="start = 0; isMax=false; currentIndex = -1; emptyCounts= 0" ng-if="overall.semesterArr.length"><a name="arrowL" class="nav semester-slider-nav" ng-if="start != 0" ng-click="preList(4)"><svg viewBox="0 0 100 100"><path d="M68,86 L32,50 L68,14"></path></svg> </a><a class="semester-slider-active" ng-click="currentIndex = -1" class-on-click="semester-slider-active:unique"><span>Cumulative<br>GPA</span> </a><a ng-click="getSemester($index+start)" class-on-click="semester-slider-active:unique" ng-repeat="semester in overall.semesterArr  | limitTo:4:start track by $index"><span>{{semester.semester}}<br>{{semester.year}}</span> </a><a name="arrowR" class="nav semester-slider-nav" ng-if="overall.semesterArr.length > 4 && overall.semesterArr.length && !isMax" ng-click="nextList(4)"><svg class="nav" viewBox="0 0 100 100"><path d="M32,86 L68,50 L32,14"></path></svg></a><hr></div></nav></div><div id="home-courses"><div id="home-add" ng-if="!overall.semesterArr.length"><button thr-click="openModal('course');verifyInputs();"><svg viewBox="0 0 100 100"><path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path></svg></button> <span>Add Courses</span></div><ul class="semester-list"><li class="semester-item semester-overall-item active opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000" ng-repeat="semester in overall.semesterArr" ng-if="currentIndex < 0"><div><div class="semester-item-course"><h1>{{semester.semester}} {{semester.year}}</h1><h3>{{semester.total_points}} Units</h3></div><div class="semester-item-grade"><svg viewBox="0 0 100 100"><rect fill="none" x="0" y="0" width="100" height="100"></rect></svg><div><h2>{{semester.gpa | number:2}}</h2></div></div></div></li><li class="semester-item active opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1000" ng-repeat="course in overall.semesterArr[currentIndex].courses" ng-if="currentIndex >= 0"><div><div class="semester-item-course"><h1>{{course.name}}</h1><h3 ng-if="course.title">{{course.title}}</h3></div><div class="semester-item-grade"><svg viewBox="0 0 100 100"><rect fill="none" x="0" y="0" width="100" height="100"></rect></svg><div><h2>{{course.grade}}</h2><span>{{course.units}} Cred</span></div></div></div></li><!--<li class="semester-item active opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1250">
+						<div>
+							<div class="semester-item-course">
+								<h1>CIV 123</h1>
+								<h3>U.S. History / Civics / American Government</h3>
+							</div>
+							<div class="semester-item-grade">
+								<svg viewBox="0 0 100 100">
+									<rect fill="none" x="0" y="0" width="100" height="100"></rect>
+								</svg>
+								<div>
+									<h2>A+</h2>
+									<span>3 Cred</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="semester-item active opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1500">
+						<div>
+							<div class="semester-item-course">
+								<h1>CIV 123</h1>
+								<h3>U.S. History / Civics / American Government</h3>
+							</div>
+							<div class="semester-item-grade">
+								<svg viewBox="0 0 100 100">
+									<rect fill="none" x="0" y="0" width="100" height="100"></rect>
+								</svg>
+								<div>
+									<h2>A+</h2>
+									<span>3 Cred</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="semester-item active small opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="1750">
+						<div>
+							<div class="semester-item-course">
+								<h1>CIV 123</h1>
+							</div>
+							<div class="semester-item-grade">
+								<svg viewBox="0 0 100 100">
+									<rect fill="none" x="0" y="0" width="100" height="100"></rect>
+								</svg>
+								<div>
+									<h2>A+</h2>
+									<span>3 Cred</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="semester-item active small opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="2000">
+						<div>
+							<div class="semester-item-course">
+								<h1>CIV 123</h1>
+							</div>
+							<div class="semester-item-grade">
+								<svg viewBox="0 0 100 100">
+									<rect fill="none" x="0" y="0" width="100" height="100"></rect>
+								</svg>
+								<div>
+									<h2>A+</h2>
+									<span>3 Cred</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="semester-item active small opacity-0" class-on-load="u-slideInLeft" class-on-load-delay="2250">
+						<div>
+							<div class="semester-item-course">
+								<h1>CIV 123</h1>
+							</div>
+							<div class="semester-item-grade">
+								<svg viewBox="0 0 100 100">
+									<rect fill="none" x="0" y="0" width="100" height="100"></rect>
+								</svg>
+								<div>
+									<h2>A+</h2>
+									<span>3 Cred</span>
+								</div>
+							</div>
+						</div>
+					</li> --><!-- <li class="semester-item ng-class:{'active':$index == data.headerActive, 'selected': $index == data.headerSelected}" ng-repeat='semester in overall.semesterArr'>
+						<div>
+							<h2 ng-click='toggleHeader($index)' class="section-header">
+								<span>{{semester.semester + ' ' + semester.year}}</span>
+								<a class="header-close" ng-click='toggleHeader($index);'>
+									<svg viewBox="0 0 100 100">
+									    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+									</svg>
+								</a>
+							</h2>
+							<div class="gpa-container">
+								<div>
+									<h1 class="gpa">{{semester.gpa}}</h2>
+									<h2>{{semester.total_points}} units</h2>
+								</div>
+							</div>
+							<ul>
+								<li ng-click='openModal("course", grade)' ng-repeat='grade in semester.grades track by $index '>
+									<h3>{{grade.name}}</h3>
+									<span class="desktop-only">{{grade.units}} Units</span>
+									<div class="desktop-only">{{grade.grade}}</div>
+									<span class="mobile-only">
+										<span class="semester-course-grade">{{grade.grade}}</span>
+										<span class="semester-course-credits">{{grade.units}} Units</span>
+									</span>
+								</li>
+							</ul>
+						</div>
+					</li> --></ul></div></div></section><!-- Make this into a directive --><!-- <div class='uguru-popup' id='gpa-home-popup' ng-include="img_base + 'templates/dev/gpa/welcome.gpa.html'"> </div> --></ion-view>

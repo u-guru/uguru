@@ -1,0 +1,11 @@
+<div class="txt-white flex-wrap full-xy p15-grid">
+    <header class='bg-azure full-x flex-wrap-center'>
+        <h1 class="flex-stretch">{{component.name}}</h1>
+    </header>
+    <div ng-include="component.templateUrl" class='full-x' style='height:80%'>
+    </div>
+    <footer style='height:10%'>
+        <span ng-repeat='option in options'>
+        </span>
+    </footer>
+</div>

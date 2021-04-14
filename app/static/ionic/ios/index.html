@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <!-- compiled css output -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/ionic.app.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- compiled css libraries -->
+    <link href="lib/angular-loading-bar/angular-loading-bar.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/angular-ui-custom/ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
+    <script src="lib/lodash/dist/lodash.js"></script>
+    <script src="lib/restangular/dist/restangular.js"></script>
+    <script src="lib/angular-local-storage/angular-local-storage.js"></script>
+    <script src="lib/angular-loading-bar/angular-loading-bar.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/angular-payments/angular-payments.js"></script>
+
+    <script src="lib/stripe/stripe.js"></script>
+    <script>
+      Stripe.setPublishableKey('pk_live_HgcccaWXL0sUpCRW86OzEcDi');
+    </script>
+
+    <!-- Facebook Plugin for web-development -->
+    <div id="fb-root"></div>
+    <script>
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1416375518604557',
+          cookie     : true,
+          xfbml      : true,
+          version    : 'v2.2'
+        });
+      }
+  </script>
+
+
+    <script type="text/javascript" src="lib/facebook/facebookConnectPlugin.js"></script>
+    
+
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    
+    <!-- cordova script (this will be a 404 during development) -->
+    
+
+
+    <!--<script src="lib/ngCordova/dist/cordova.js"></script>
+    <script src="lib/ngCordova/dist/cordova_plugins.js"></script> -->
+
+    <!-- uguru app main js -->
+    <script src="js/main.js"></script>
+
+    <!-- uguru app directives -->
+    <script type="text/javascript" src="js/directives/angularFastMatcher.js"></script>
+    <script type="text/javascript" src="js/directives/customDirectives.js"></script>
+
+    <!-- uguru app factories -->
+    <script type="text/javascript" src="js/factories/Session.js"></script>
+    <script type="text/javascript" src="js/factories/User.js"></script>
+    <script type="text/javascript" src="js/factories/University.js"></script>
+    <script type="text/javascript" src="js/factories/Major.js"></script>
+    <script type="text/javascript" src="js/factories/Phone.js"></script>
+    <script type="text/javascript" src="js/factories/Support.js"></script>
+    <script type="text/javascript" src="js/factories/Course.js"></script>
+    <script type="text/javascript" src="js/factories/Static.js"></script>
+    <script type="text/javascript" src="js/factories/LocalStorage.js"></script>
+
+    <script type="text/javascript" src="js/controllers/facebook.ctrl.js"></script>
+    <script type="text/javascript" src="js/controllers/courses.ctrl.js"></script>
+    <script type="text/javascript" src="js/controllers/bio.ctrl.js"></script>
+    <script type="text/javascript" src="js/controllers/majors.ctrl.js"></script>
+    <script src="js/controllers.js"></script>
+    
+    <!-- uguru app services -->
+    <script type="text/javascript" src="js/services/AuthService.js"></script>
+
+  </head> 
+  <body ng-app="uguru" animation="slide-left-right-ios7" class="platform-ios platform-cordova platform-webview">
+    <!--
+      The nav bar that will be updated as we navigate between views.
+    -->
+             
+    <ion-nav-view>
+    </ion-nav-view>
+
+    <ion-nav-bar class="bar-dark nav-bar-text bold-font">
+        <ion-nav-back-button class="button-clear" style="width:75px;">
+          <img src="img/left-chevron.png" class='uguru-back-button'/>
+        </ion-nav-back-button>
+    </ion-nav-bar>
+
+    <script id="templates/signup.html" type="text/ng-template">
+      <ion-view hide-nav-bar="true">
+        <ion-content class="padding" scroll="false">
+        
+        <div class='row absolute absolute-center bottom-30-percent'> 
+          <div class="col col-offset-25 col-50 padding" style="padding:1.5em">
+            <img src='./img/uguru_home.png' class='inherit-width'>
+          </div>
+        </div>
+
+        <div class='row fixed fixed-center bottom-0'>
+          <div class="col">
+            <button onlogin="beginFbConnect()" ng-click="fbConnect()" class="button button-block reg-font icon-left ion-social-facebook fb-button">
+                Connect with Facebook
+            </button>
+            <p class="reg-font center grey-uguru font-14"> Uguru will NEVER post to your Facebook.</p>
+          </div>
+        </div>
+        <span style="font-size:8px;position:absolute; auto;bottom:0px; right:46.5%; color:rgba(0,0,0,0.4)">{{currentVersion}}</span>
+        </ion-content>
+      </ion-view>
+    </script>
+
+    <script id="templates/root.html" type="text/ng-template">
+      <ion-nav-view animation="slide-left-right">
+      </ion-nav-view>
+    </script>
+    <script id="templates/student-root.html" type="text/ng-template">
+      <ion-nav-view animation="slide-left-right">
+      </ion-nav-view>
+    </script>
+
+    <script id="templates/wizard-root.html" type="text/ng-template">
+      <ion-nav-view animation="slide-left-right">
+      </ion-nav-view>
+    </script>
+
+    <script id="templates/guru-root.html" type="text/ng-template">
+      <ion-nav-view animation="slide-left-right">
+      </ion-nav-view>
+    </script>
+
+
+    <!--
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+  </body>
+</html>

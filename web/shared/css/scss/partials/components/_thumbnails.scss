@@ -1,0 +1,345 @@
+@import '../mixin';
+
+/* ---------- USER ICONS */
+[class*="user-icon"] {
+	@include round;
+	display: block;
+	background-position: center;
+	background-size: cover;
+	background-color: #E3E3E3;
+	border-style: solid;
+	border-color: white;
+}
+.user-icon, .user-icon-128 {
+	width: 128px;
+	height: 128px;
+	border-width: 5px;
+}
+.user-icon-96 {
+	width: 96px;
+	height: 96px;
+	border-width: 4px;
+}
+.user-icon-84 {
+	width: 84px;
+	height: 84px;
+	border-width: 3px;
+}
+.user-icon-72 {
+	width: 72px;
+	height: 72px;
+	border-width: 3px;
+}
+.user-icon-64 {
+	width: 64px;
+	height: 64px;
+	border-width: 3px;
+}
+.user-icon-48 {
+	width: 48px;
+	height: 48px;
+	border-width: 3px;
+}
+.user-icon-36 {
+	width: 36px;
+	height: 36px;
+	border-width: 2px;
+}
+.user-icon-32 {
+	width: 32px;
+	height: 32px;
+	border-width: 2px;
+}
+.user-icon-28 {
+	width: 28px;
+	height: 28px;
+	border-width: 2px;
+}
+.user-icon-24 {
+	width: 24px;
+	height: 24px;
+	border-width: 2px;
+}
+.user-icon-container {
+	display: block;
+	position: relative;
+	.user-icon {
+		@include opacity(.5);
+	}
+	.user-icon-edit {
+		@include center-xy;
+		font-size: 20px;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+	&.border-charcoal {
+		[class*="user-icon"] {
+			border-color: $charcoal!important;
+		}
+	}
+	&.border-slate {
+		[class*="user-icon"] {
+			border-color: $slate!important;
+		}
+	}
+	&.border-taupe {
+		[class*="user-icon"] {
+			border-color: $taupe!important;
+		}
+	}
+	&.border-campus {
+		[class*="user-icon"] {
+			border-color: $campus!important;
+		}
+	}
+	&.border-smoke {
+		[class*="user-icon"] {
+			border-color: $smoke!important;
+		}
+	}
+	&.border-white {
+		[class*="user-icon"] {
+			border-color: white!important;
+		}
+	}
+	&.border-rocket {
+		[class*="user-icon"] {
+			border-color: $rocket!important;
+		}
+	}
+	&.border-shamrock {
+		[class*="user-icon"] {
+			border-color: $shamrock!important;
+		}
+	}
+	&.border-robin {
+		[class*="user-icon"] {
+			border-color: $robin!important;
+		}
+	}
+	&.border-lake {
+		[class*="user-icon"] {
+			border-color: $lake!important;
+		}
+	}
+	&.border-moxie {
+		[class*="user-icon"] {
+			border-color: $moxie!important;
+		}
+	}
+	&.border-crimson {
+		[class*="user-icon"] {
+			border-color: $crimson!important;
+		}
+	}
+	&.border-auburn,
+	&.border-delivery {
+		[class*="user-icon"] {
+			border-color: $auburn!important;
+		}
+	}
+	&.border-freelacing,
+	&.border-orange {
+		[class*="user-icon"] {
+			border-color: $orange!important;
+		}
+	}
+	&.border-baking,
+	&.border-gold {
+		[class*="user-icon"] {
+			border-color: $gold!important;
+		}
+	}
+	&.border-moola,
+	&.border-photography {
+		[class*="user-icon"] {
+			border-color: $moola!important;
+		}
+	}
+	&.border-azure,
+	&.border-tech {
+		[class*="user-icon"] {
+			border-color: $azure!important;
+		}
+	}
+	&.border-cobalt,
+	&.border-household {
+		[class*="user-icon"] {
+			border-color: $cobalt!important;
+		}
+	}
+	&.border-athletic,
+	&.border-eggplant {
+		[class*="user-icon"] {
+			border-color: $eggplant!important;
+		}
+	}
+	&.border-academic,
+	&.border-cerise {
+		[class*="user-icon"] {
+			border-color: $cerise!important;
+		}
+	}
+}
+
+// profile thumb
+[class*="pf-thumb"] {
+	@include flex;
+	@include flex-center;
+	position: relative;
+	border-radius: 2px;
+	background: white;
+	overflow: hidden;
+	.top {
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: calc(100% / 3);
+		background: $shamrock;
+	}
+	.user-icon {
+		position: relative;
+		z-index: 2;
+	}
+	&.pf-thumb-36 {
+		width: 36px;
+		height: 36px;
+		.user-icon {
+			width: 24px;
+			height: 24px;
+			border-width: 2px;
+		}
+	}
+	&.pf-thumb-48 {
+		width: 48px;
+		height: 48px;
+		.user-icon {
+			width: 32px;
+			height: 32px;
+			border-width: 2px;
+		}
+	}
+	&.pf-thumb-64 {
+		width: 64px;
+		height: 64px;
+		.user-icon {
+			width: 44px;
+			height: 44px;
+			border-width: 2px;
+		}
+	}
+	&.pf-thumb-72 {
+		width: 72px;
+		height: 72px;
+		.user-icon {
+			width: 48px;
+			height: 48px;
+			border-width: 2px;
+		}
+	}
+	&.pf-thumb-96 {
+		width: 96px;
+		height: 96px;
+		.user-icon {
+			width: 72px;
+			height: 72px;
+			border-width: 3px;
+		}
+	}
+	&.pf-thumb-128 {
+		width: 128px;
+		height: 128px;
+		.user-icon {
+			width: 96px;
+			height: 96px;
+			border-width: 3px;
+		}
+	}
+	&.pf-charcoal {
+		.top {
+			background: $charcoal;
+		}
+	}
+	&.pf-slate {
+		.top {
+			background: $slate;
+		}
+	}
+	&.pf-taupe {
+		.top {
+			background: $taupe;
+		}
+	}
+	&.pf-campus {
+		.top {
+			background: $campus;
+		}
+	}
+	&.pf-shamrock {
+		.top {
+			background: $shamrock;
+		}
+	}
+	&.pf-robin {
+		.top {
+			background: $robin;
+		}
+	}
+	&.pf-lake {
+		.top {
+			background: $lake;
+		}
+	}
+	&.pf-moxie {
+		.top {
+			background: $moxie;
+		}
+	}
+	&.pf-crimson {
+		.top {
+			background: $crimson;
+		}
+	}
+	&.pf-auburn, &.pf-delivery {
+		.top {
+			background: $auburn;
+		}
+	}
+	&.pf-orange, &.pf-freelancing {
+		.top {
+			background: $orange;
+		}
+	}
+	&.pf-gold, &.pf-baking {
+		.top {
+			background: $gold;
+		}
+	}
+	&.pf-moola, &.pf-photography {
+		.top {
+			background: $moola;
+		}
+	}
+	&.pf-azure, &.pf-tech {
+		.top {
+			background: $azure;
+		}
+	}
+	&.pf-cobalt, &.pf-household {
+		.top {
+			background: $cobalt;
+		}
+	}
+	&.pf-eggplant, &.pf-athletic {
+		.top {
+			background: $eggplant;
+		}
+	}
+	&.pf-cerise, &.pf-academic {
+		.top {
+			background: $cerise;
+		}
+	}
+}

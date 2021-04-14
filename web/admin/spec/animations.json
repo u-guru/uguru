@@ -1,0 +1,66 @@
+{
+    "title": "uguru animations api",
+    "description": "Animation properties/specs",
+    "base_url": "admin/spec/api",
+    "sections":{
+        "shortcuts": {
+            "hide": true,
+            "types": {
+                "defaults": {
+                    "start": {
+                        "default": 0,
+                        "0p": ["translateX", "translateY", "translateZ"],
+                        "0deg": ["rotate", "rotate3d", "rotateX", "rotateY", "rotateZ"]
+                    },
+                    "end": {
+                        "default": 1,
+                        "100p": ["translateX", "translateY", "translateZ"],
+                        "180deg": ["rotate", "rotate3d", "rotateX", "rotateY", "rotateZ"]
+                    },
+                    "duration": {
+                        "default": 1000
+                    },
+                    "easingFunc": {
+                        "default": "easeInCirc",
+                        "bouncePast": ["translateX", "translateY"]
+                    },
+                    "delay": {
+                        "default": 0
+                    },
+                    "iter": {
+                        "default": 1
+                    },
+                    "direction": {
+                        "default": "f"
+                    }
+                },
+                "animations": {}
+            }
+        },
+        "defaults": {
+            "properties": {
+                "tr:translateX": "50%",
+                "tr:translateY": {"value": "50%", "easingFunc": "bouncePast"},
+                "tr:scaleY": {"value": 1, "easingFunc": "easeInCirc"},
+                "opacity": {"value": 0, "end": 0.8, "easingFunc": "easeInOutElastic", "iter": 3}
+            }
+        },
+        "property options": {
+            "hide": true,
+            "all": ["name", "start", "end", "easing func", "delay", "iterations", "direction"],
+            "special":{
+                "all": ["reverse", "at t=X"]
+            }
+        },
+        "built-in easing": {
+            "all": ["easeInQuad", "linear", "easeOutQuad", "easeInOutQuad", "easeInCubic", "easeOutCubic", "easeInOutCubic", "easeInQuart", "easeOutQuart", "easeInOutQuart", "easeInQuint", "easeOutQuint", "easeInOutQuint", "easeInSine", "easeOutSine", "easeInOutSine", "easeInExpo", "easeOutExpo", "easeInOutExpo", "easeInCirc", "easeOutCirc", "easeInOutCirc", "easeInBack", "easeOutBack", "easeInOutBack", "easeInOutBounce", "easeInBounce", "easeOutBounce", "easeInElastic", "easeOutElastic", "easeInOutElastic", "elastic", "bounce", "bouncePast", "swingFromTo", "swingFrom", "swingTo", "easeFromTo", "easeFrom", "easeTo" ]
+        },
+        "custom easing": {
+            "all": []
+        },
+        "animatable properties": {
+            "all": ["tr:translateX", "tr:translateY", "tr:translateZ", "tr:scaleX", "tr:scaleY", "tr:scaleZ", "tr:skewX", "tr:skewY", "tr:rotateX", "tr:rotateY", "tr:rotateZ", "tr:rotate", "-webkit-text-fill-color","-webkit-text-stroke","-webkit-text-stroke-color","-webkit-touch-callout","all","appearance","backdrop-filter","background","background-color","background-position","background-size","border","border-bottom","border-bottom-color","border-bottom-left-radius","border-bottom-right-radius","border-bottom-width","border-color","border-left","border-left-color","border-left-width","border-radius","border-right","border-right-color","border-right-width","border-top","border-top-color","border-top-left-radius","border-top-right-radius","border-top-width","border-width","bottom","box-shadow","clip","clip-path","color","column-count","column-gap","column-rule","column-rule-color","column-rule-width","column-width","columns","contain","filter","flex","flex-basis","flex-grow","flex-shrink","font","font-size","font-size-adjust","font-stretch","font-weight","grid-column-gap","grid-gap","grid-row-gap","height","left","letter-spacing","line-height","margin","margin-bottom","margin-left","margin-right","margin-top","mask","mask-position","mask-size","max-height","max-width","min-height","min-width","motion-offset","motion-rotation","object-position","opacity","order","outline","outline-color","outline-offset","outline-width","padding","padding-bottom","padding-left","padding-right","padding-top","perspective","perspective-origin","right","scroll-snap-coordinate","scroll-snap-destination","shape-image-threshold","shape-margin","shape-outside","text-decoration","text-decoration-color","text-emphasis","text-emphasis-color","text-indent","text-shadow","top","transform","transform-origin","vertical-align","visibility","width","word-spacing","z-index","-moz-outline-radius","-moz-outline-radius-bottomleft","-moz-outline-radius-bottomright","-moz-outline-radius-topleft","-moz-outline-radius-topright"]
+        }
+    }
+}
+

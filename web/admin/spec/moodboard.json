@@ -1,0 +1,1464 @@
+{
+   "description":"Moodboards",
+   "dir":{
+      "text effects":{
+         "examples":[
+            {
+               "title":"CSS animated Neon Sign",
+               "url":"http://codepen.io/nodws/pen/bdjwn",
+               "source":"codepen",
+               "description":"Glowing effect",
+               "date":"09/12/16"
+            },
+            {
+               "title":"Text Blend over Video",
+               "url":"http://codepen.io/alexboffey/pen/pEjZWb",
+               "source":"codepen",
+               "description":"Transparent text with solid background over video",
+               "date":"09/12/16"
+            },
+            {
+               "title":"CHROMATIC ABERRATION - text effect",
+               "url":"http://codepen.io/thorthor/pen/Wxaprz",
+               "source":"codepen",
+               "description":"Old 3d blue/red effect with jitter",
+               "date":"09/12/16"
+            },
+            {
+               "title":"Join the Club!",
+               "url":"https://dribbble.com/shots/2957083-Join-the-Club",
+               "source":"dribbble",
+               "description":"Landing page with gradients on text",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/255/screenshots/2957083/st-club.png",
+               "date":"09/12/16"
+            },
+            {
+               "title":"Converse 'Diamonds'",
+               "url":"http://counterclimate.converse.com",
+               "source":"awwwards",
+               "description":"Animated header text",
+               "image":"http://www.awwwards.com/awards/sites_of_the_day/2016/08/awwwards-sotd-converse-diamonds-1.jpg",
+               "date":"09/12/16"
+            },
+            {
+               "title":"Staggered Text Lines",
+               "url":"http://codepen.io/InsideDown/pen/qadrQQ",
+               "source":"codepen",
+               "description":"randomizing baseline height per character",
+               "date":"09/13/16"
+            },
+            {
+               "title":"Chordsurfer",
+               "url":"http://chordsurfer.redbull.com/",
+               "source":"awwwards",
+               "description":"Title stretches and moves like a wave",
+               "date":"09/19/16"
+            },
+            {
+               "title":"Monsieur Caillou",
+               "url":"http://www.monsieurcaillou.com/#!/",
+               "source":"awwwards",
+               "description":"Header text transform on scroll and onclick",
+               "date":"09/19/16"
+            },
+            {
+               "title":"Hashiconf",
+               "url":"https://www.hashiconf.com/?ref=lapaninja",
+               "source":"lapa",
+               "description":"Gradient motif for shading",
+               "date":"09/20/16"
+            },
+            {
+               "title":"Ghost Dev Studio",
+               "url":"http://ghostdev.ca/#ghost-slide",
+               "source":"odepen",
+               "date":"09/20/16"
+            },
+            {
+               "url":"https://sentry.io/welcome/"
+            },
+            {
+               "url":"http://pixudio.com/?ref=lapaninja"
+            },
+            {
+               "title":"Startup Lab",
+               "url":"http://startuplab.no/",
+               "source":"awwwards",
+               "description":"onMouse translates for text cutout",
+               "date":"10/31/16"
+            }
+         ]
+      },
+      "stories":{
+         "examples":[
+            {
+               "title":"Snapchat",
+               "url":"https://itunes.apple.com/us/app/snapchat/id447188370?mt=8",
+               "source":"app store",
+               "image":"http://a5.mzstatic.com/us/r30/Purple60/v4/b4/61/03/b461032e-6ea4-dcf7-f218-0a6ff976f542/screen696x696.jpeg",
+               "mobile":true,
+               "date":"09/13/16"
+            },
+            {
+               "title":"Instagram",
+               "url":"https://itunes.apple.com/us/app/instagram/id389801252?mt=8",
+               "source":"app store",
+               "image":"http://a4.mzstatic.com/us/r30/Purple20/v4/39/64/e9/3964e9bf-f423-9380-2e03-b5c16de0b3d7/screen696x696.jpeg",
+               "mobile":true,
+               "date":"09/13/16"
+            }
+         ]
+      },
+      "airbrushing photo editors":{
+         "examples":[
+            {
+               "title":"Facetune",
+               "url":"https://itunes.apple.com/us/app/facetune/id606310581?mt=8",
+               "source":"app store",
+               "image":"http://a5.mzstatic.com/us/r30/Purple4/v4/ac/29/9e/ac299e60-01eb-dcbc-575b-c5a8c2070a72/screen696x696.jpeg",
+               "mobile":true,
+               "date":"09/13/16",
+               "notes":"#3 in app store"
+            },
+            {
+               "title":"Facie",
+               "url":"https://itunes.apple.com/us/app/facie/id726895069?mt=8",
+               "source":"app store",
+               "image":"http://a1.mzstatic.com/us/r30/Purple20/v4/36/aa/d1/36aad14d-b599-bed2-48cd-cda59ee4433d/screen696x696.jpeg",
+               "mobile":true,
+               "date":"09/13/16"
+            },
+            {
+               "title":"Relook",
+               "url":"https://itunes.apple.com/us/app/relook/id990928352?mt=8",
+               "source":"app store",
+               "image":"http://a3.mzstatic.com/us/r30/Purple6/v4/58/48/a8/5848a806-721c-c9f4-20bc-a95485d379d5/screen696x696.jpeg",
+               "mobile":true,
+               "date":"09/13/16"
+            },
+            {
+               "title":"POCO",
+               "url":"https://play.google.com/store/apps/details?id=my.beautyCamera&hl=en",
+               "source":"google play",
+               "image":"https://lh3.googleusercontent.com/9rAwOM2DbeGDfHRF4zT7dZubIig_03XeOzvuxxSqT1Q7ROSvOxjPNiOReKZ80VY7Y6sQ=h900",
+               "mobile":true,
+               "date":"09/13/16"
+            }
+         ]
+      },
+      "custom emojis":{
+         "eamples":[
+            {
+               "title":"Moji Maker",
+               "url":"https://itunes.apple.com/us/app/moji-maker/id1121463708?mt=8",
+               "source":"app store",
+               "image":"http://a4.mzstatic.com/us/r30/Purple71/v4/a4/f6/e2/a4f6e2c3-d22c-734c-7563-2d7e9724bc76/screen696x696.jpeg",
+               "mobile":true,
+               "date":"09/13/16",
+               "notes":"#2 in app store paid"
+            },
+            {
+               "title":"Bitmoji",
+               "url":"https://itunes.apple.com/us/app/bitmoji-your-personal-emoji/id868077558?mt=8",
+               "source":"app store",
+               "image":"http://a5.mzstatic.com/us/r30/Purple71/v4/c4/49/bd/c449bdf2-975b-27a0-98fe-b8833453a3e9/screen696x696.jpeg",
+               "mobile":true,
+               "date":"09/13/16",
+               "notes":"#2 in app store free"
+            },
+            {
+               "title":"Stephmoji",
+               "url":"https://itunes.apple.com/us/app/stephmoji-by-steph-curry/id1114234507?mt=8",
+               "source":"app store",
+               "image":"http://a2.mzstatic.com/us/r30/Purple60/v4/65/e1/fc/65e1fc6d-f36c-4e72-aafe-a1921cf69785/screen696x696.jpeg",
+               "mobile":true,
+               "date":"09/13/16"
+            },
+            {
+               "title":"Kimoji",
+               "url":"https://itunes.apple.com/us/app/kimoji/id1068019093?mt=8",
+               "source":"app store",
+               "image":"http://a1.mzstatic.com/us/r30/Purple60/v4/83/6e/84/836e84a0-adc7-a9ce-7b36-6fa92bea1a55/screen696x696.jpeg",
+               "mobile":true,
+               "date":"09/13/16"
+            }
+         ]
+      },
+      "photo prop distribution":{
+         "examples":[
+            {
+               "title":"Landing page exploration",
+               "url":"https://dribbble.com/shots/2956649-Landing-page-exploration",
+               "source":"dribbble",
+               "description":"Blue and green gradient hero with objects representing brands",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/64779/screenshots/2956649/dribbble.png",
+               "date":"09/12/16"
+            },
+            {
+               "title":"Greengage Liqueur",
+               "url":"https://dribbble.com/shots/2956307-Greengage-Liqueur",
+               "source":"dribbble",
+               "description":"Liquer website mock with bottle and cups distributed",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/688527/screenshots/2956307/greengage_dribbble.jpg",
+               "date":"09/12/16"
+            },
+            {
+               "title":"Designed By Few",
+               "url":"http://www.designedbyfew.com",
+               "source":"awwwards",
+               "description":"Hero image of desk items strewn around",
+               "image":"http://www.awwwards.com/awards/submissions/2016/08/57bda3533321a.jpeg",
+               "date":"09/12/16"
+            },
+            {
+               "title":"Trinipedia",
+               "url":"http://trinipedia.com",
+               "source":"one page love",
+               "description":"Phone with shadow",
+               "image":"https://onepagelove.com/wp-content/uploads/2016/09/opl-big-10.jpg",
+               "date":"09/12/16"
+            },
+            {
+               "title":"Made By Me",
+               "url":"https://dribbble.com/shots/2713136-Power-Mark-5",
+               "source":"awwwards",
+               "description":"Subjects made by engineers",
+               "date":"09/19/16"
+            }
+         ]
+      },
+      "isometric illustration":{
+         "examples":[
+            {
+               "title":"Summer Holidays",
+               "url":"https://dribbble.com/shots/2871708-Summer-Holidays",
+               "source":"dribbble",
+               "description":"swimming pool with props",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/50886/screenshots/2871708/waaark---summer-holidays.gif",
+               "date":"09/12/16"
+            },
+            {
+               "title":"Smart Home Landing Page",
+               "url":"https://dribbble.com/shots/2953904-Smart-Home-Landing-page",
+               "source":"dribbble",
+               "description":"Living room scene",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/63407/screenshots/2953904/dribbble_automation1.png",
+               "date":"09/12/16"
+            },
+            {
+               "title":"Drones",
+               "url":"https://dribbble.com/shots/2949358-Drones",
+               "source":"dribbble",
+               "description":"Blue and pink cityscape",
+               "image":"https://dribbble.com/shots/2949358-Drones",
+               "date":"09/12/16"
+            },
+            {
+               "title":"Morgan Sindall Site Set-Up Guide Illustration - JV Site",
+               "url":"https://dribbble.com/shots/2949805-Morgan-Sindall-Site-Set-Up-Guide-Illustration-JV-Site",
+               "source":"dribbble",
+               "description":"Isometric building layout",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/319907/screenshots/2949805/section_1_-_morgan_sindall_sites-800px.jpg",
+               "date":"09/12/16"
+            },
+            {
+               "title":"Rollpark: The Green Alternative to Asphalt and Concrete",
+               "url":"http://rollpark.us",
+               "source":"awwwards",
+               "description":"isometric hero image of parking lot",
+               "image":"http://www.awwwards.com/awards/sites_of_the_day/2016/09/awwwards-sotd-Rollpark-1.jpg",
+               "date":"09/12/16"
+            },
+            {
+               "title":"Sound City",
+               "url":"http://codepen.io/tomvanglabeke/full/zKVQZJ/",
+               "source":"codepen",
+               "description":"Navigating with mouse through a city that animates to he music",
+               "date":"10/31/16"
+            }
+         ]
+      },
+      "gradients":{
+         "examples":[
+            {
+               "title":"Spotify OOO",
+               "url":"https://spotify.ooo/#!/",
+               "source":"awwwards",
+               "description":"gradients used for text and full-width headers"
+            },
+            {
+               "title":"Dubai Burj Al Arab",
+               "url":"https://dribbble.com/shots/2943588-Dubai-Burj-Al-Arab",
+               "source":"dribbble",
+               "description":"Banded skin-tone sky gradient",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/458522/screenshots/2943588/dubai_burj_al_arab_rgb_dribbbler_4.jpg",
+               "date":"09/12/16"
+            },
+            {
+               "title":"Virgin #1",
+               "url":"https://dribbble.com/shots/2956596-Virgin-1",
+               "source":"dribbble",
+               "description":"Red and purple background gradient",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/739565/screenshots/2956596/virginy.png",
+               "mobile":true,
+               "date":"09/12/16"
+            },
+            {
+               "title":"Join the Club!",
+               "url":"https://dribbble.com/shots/2957083-Join-the-Club",
+               "source":"dribbble",
+               "description":"Landing page with gradients on text, logo, button, and border",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/255/screenshots/2957083/st-club.png",
+               "date":"09/12/16"
+            },
+            {
+               "title":"Converse 'Diamonds'",
+               "url":"http://counterclimate.converse.com",
+               "source":"awwwards",
+               "description":"Gradient loader",
+               "image":"http://www.awwwards.com/awards/sites_of_the_day/2016/08/awwwards-sotd-converse-diamonds-1.jpg",
+               "date":"09/12/16"
+            },
+            {
+               "title":"VR Sessions",
+               "url":"http://www.vr-sessions.com",
+               "source":"awwwards",
+               "description":"gradient overlays on top of images",
+               "image":"http://www.awwwards.com/awards/sites_of_the_day/2016/07/awwwards-sotd-vr-sessions-3-1.jpg",
+               "date":"09/12/16"
+            },
+            {
+               "title":"Grade.js",
+               "url":"https://www.product hunt.com/tech/grade",
+               "source":"product hunt",
+               "description":"Complementary gradients generated from images",
+               "date":"09/12/16"
+            },
+            {
+               "title":"Clock Interface",
+               "url":"https://dribbble.com/shots/2955297-Clock-Interface",
+               "source":"dribbble",
+               "description":"Pink and purple background gradient",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/1278378/screenshots/2955297/____2__.png",
+               "mobile":true,
+               "date":"09/13/16"
+            },
+            {
+               "title":"Contacts Interface Concept",
+               "url":"https://dribbble.com/shots/2930183-Contacts-Interface-Concept",
+               "source":"collect ui",
+               "description":"Purple and blue background gradient",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/313019/screenshots/2930183/contacts.jpg",
+               "mobile":true,
+               "date":"09/13/16"
+            },
+            {
+               "title":"Cloud Inventory App",
+               "url":"https://dribbble.com/shots/2941122-Cloud-Inventory-App",
+               "source":"dribbble",
+               "description":"Red and orange gradient overlay onHover",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/1150783/screenshots/2941122/dashboard_mobile_2.png",
+               "mobile":true,
+               "date":"09/13/16"
+            }
+         ]
+      },
+      "dark graph dashboards":{
+         "examples":[
+            {
+               "title":"Energy infographic ideas for Smart Home Product",
+               "url":"https://ios.uplabs.com/posts/energy-infographic-ideas-for-smart-home-product",
+               "source":"collect ui",
+               "description":"App that shows energy use throughout home",
+               "image":"https://drc8llcc7rqy7.cloudfront.net/shots/2703984/energy-infographic-ideas-for-smart-home-product-large",
+               "mobile":true,
+               "date":"09/13/16"
+            },
+            {
+               "title":"Heart Beat exploration for medical product by gleb",
+               "url":"https://dribbble.com/shots/2959048-Heart-Beat-exploration-for-medical-product-by-gleb",
+               "source":"dribbble",
+               "description":"pulsing heart rate animation",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/32512/screenshots/2959048/heart_beat.gif",
+               "mobile":true,
+               "date":"09/13/16"
+            },
+            {
+               "title":"Home Monitor App",
+               "url":"https://dribbble.com/shots/2919166-Home-Monitor-App",
+               "source":"dribbble",
+               "description":"Thermostat monitoring app concept",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/738044/screenshots/2919166/home_monitor_app_2.png",
+               "mobile":true,
+               "date":"09/13/16"
+            },
+            {
+               "title":"Dashboard",
+               "url":"https://dribbble.com/shots/1850768-Dashboard",
+               "source":"dribbble",
+               "description":"App concept for life information",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/228368/screenshots/1850768/dashboard.gif",
+               "mobile":true,
+               "date":"09/13/16"
+            },
+            {
+               "title":"Now playing this song",
+               "url":"https://dribbble.com/shots/2955174-Now-playing-this-song",
+               "source":"dribbble",
+               "description":"Music visualizer",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/73241/screenshots/2955174/transmusic.gif",
+               "mobile":true,
+               "date":"09/13/16"
+            },
+            {
+               "title":"Electric Vehicle Engine",
+               "url":"https://dribbble.com/shots/3051532-Electric-vehicle-engine-experimental-for-Fantasy",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/32512/screenshots/3051532/car_design_eploration_by_fantasy.gif",
+               "date":"10/31/16"
+            }
+         ]
+      },
+      "trump":{
+         "examples":[
+            {
+               "title":"Trump Cushion → Put Your Rump on Trump",
+               "url":"https://trumpcushion.com",
+               "source":"one page love",
+               "description":"Trump whoopie cushion",
+               "image":"https://onepagelove.com/wp-content/uploads/2016/08/opl-big-5.jpg",
+               "date":"09/12/16"
+            },
+            {
+               "title":"Topple Trump! It's The Game You'll Love To Hate",
+               "url":"https://toppletrump.com",
+               "source":"awwwards",
+               "description":"Trump-themed web game",
+               "image":"http://www.awwwards.com/awards/sites_of_the_day/2016/09/awwwards-sotd-Topple-Trump-1.jpg",
+               "date":"09/12/16"
+            },
+            {
+               "title":"Tyrannasaurus Trump",
+               "url":"https://dribbble.com/shots/2939162-Tyrannasaurus-Trump",
+               "source":"dribbble",
+               "description":"Animated dinasaur dressed like Trump",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/971626/screenshots/2939162/_main.gif",
+               "date":"09/12/16"
+            },
+            {
+               "title":"BB-TRUMP",
+               "url":"https://dribbble.com/shots/2526064-BB-TRUMP",
+               "source":"dribbble",
+               "description":"Animated Trump shaped like BB-8 from Star Wars",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/634508/screenshots/2526064/bb_trump_dribbble.gif",
+               "date":"09/12/16"
+            },
+            {
+               "title":"Facebook Politics Playing Cards",
+               "url":"https://dribbble.com/shots/2959723-Facebook-Politics-Playing-Cards",
+               "source":"dribbble",
+               "description":"Playing cards featuring politicians, with Trump in front",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/1081265/screenshots/2959723/47_-_facebook_politics_playing_cards2.jpg",
+               "date":"09/12/16"
+            }
+         ]
+      },
+      "pokemon":{
+         "examples":[
+            {
+               "title":"Pokébiome 001: Bulbasaur",
+               "url":"https://dribbble.com/shots/2072868-Pok-biome-001-Bulbasaur",
+               "source":"dribbble",
+               "description":"Pokeball animation",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/4874/screenshots/2072868/pokebiome001_dribbble.gif",
+               "date":"09/13/16"
+            },
+            {
+               "title":"Rogémon",
+               "url":"https://dribbble.com/shots/2848799-Rog-mon",
+               "source":"dribbble",
+               "description":"Character illustration with Pokemon hat",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/255/screenshots/2848799/avatar-rogemon.png",
+               "date":"09/13/16"
+            },
+            {
+               "title":"Pokemap App Concept",
+               "url":"https://dribbble.com/shots/2958878-Pokemap-App-Concept",
+               "source":"dribbble",
+               "description":"App concept for searching for Pokemon in a given area",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/589349/screenshots/2958878/pokemap.gif",
+               "mobile":true,
+               "date":"09/13/16"
+            },
+            {
+               "title":"Pokemon Go - Zing Touch x Anime.js",
+               "url":"http://codepen.io/zingchart/pen/BzmdwQ",
+               "source":"codepen",
+               "description":"Pokemon Go capture recreation",
+               "mobile":"true",
+               "date":"09/13/16"
+            },
+            {
+               "title":"Pokemon Palettes",
+               "url":"http://pokepalettes.com",
+               "source":"one page love",
+               "description":"Color palettes based on original Pokemon sprites",
+               "image":"https://onepagelove.com/wp-content/uploads/2016/04/opl-big-11.jpg",
+               "date":"09/13/16"
+            },
+            {
+               "title":"Pokeweak",
+               "url":"http://www.pokeweak.com/",
+               "source":"awwwards",
+               "description":"Pokemon statistics",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Pokemon Jump",
+               "url":"https://dribbble.com/shots/2962978-Pokemon-Jump",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/1041921/screenshots/2962978/ronaldoserrano_art_pokemon_dribble.gif",
+               "date":"09/19/16"
+            }
+         ]
+      },
+      "glitchy static":{
+         "examples":[
+            {
+               "title":"Jason Bourne - Remember Everything",
+               "url":"http://www.remembereverything.com/en/",
+               "source":"awwwards",
+               "description":"glitchy animated logo",
+               "image":"http://www.awwwards.com/awards/sites_of_the_day/2016/09/awwwards-sotd-The-Jason-Bourne-1.jpg",
+               "date":"09/12/16"
+            },
+            {
+               "title":"KIKK Festival",
+               "url":"http://www.kikk.be/2016/",
+               "source":"codrops collective",
+               "description":"glitchy animated effect onHover images",
+               "image":"http://codropspz.tympanus.netdna-cdn.com/codrops/wp-content/uploads/2016/09/Collective245_WOTW.jpg",
+               "date":"09/12/16"
+            },
+            {
+               "title":"CHROMATIC ABERRATION - text effect",
+               "url":"http://codepen.io/thorthor/pen/Wxaprz",
+               "source":"codepen",
+               "description":"Old 3d blue/red effect with jitter",
+               "date":"09/12/16"
+            },
+            {
+               "title":"Animated Conversable Logo",
+               "url":"https://dribbble.com/shots/2927405-Animated-Conversable-Logo",
+               "source":"dribbble",
+               "description":"animated glitchy gif",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/747415/screenshots/2927405/conversable.gif",
+               "date":"09/12/16"
+            },
+            {
+               "title":"Involve Digital",
+               "url":"http://www.involvedigital.com/",
+               "source":"awwwards",
+               "description":"animated static background",
+               "date":"09/12/16"
+            },
+            {
+               "title":"Rootstock Republic",
+               "url":"http://rootstockrepublic.com/",
+               "source":"awwwards",
+               "description":"Headers styled with 3d coloration over black and white photos",
+               "date":"09/19/16"
+            },
+            {
+               "title":"Portfolio Preview",
+               "url":"https://dribbble.com/shots/2970453-Portfolio-preview",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/762028/screenshots/2970453/portfolio_preview.gif",
+               "date":"09/19/16"
+            },
+            {
+               "title":"Fuel Your Titan",
+               "url":"https://www.dewanddoritos.com/",
+               "source":"awwwards",
+               "description":"Landing for Titan Fall w/ glitch effects",
+               "date":"10/31/16"
+            }
+         ]
+      },
+      "Scroll Trigger Website Animations":{
+         "examples":[
+            {
+               "title":"In Space We Trust",
+               "url":"http://inspacewetrust.org/en/",
+               "source":"awwwards",
+               "description":"Timeline props triggered by a boy walking past it via scroll",
+               "image":"http://www.awwwards.com/awards/sites_of_the_day/2016/03/awwwards-sotd-In-Space-We-Trust-1.jpg",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Aiia",
+               "url":"http://divenamicone.enjoy-aiia.com/#",
+               "source":"awwwards",
+               "description":"Bluetooth speaker unfolds as you scroll",
+               "image":"http://www.awwwards.com/awards/sites_of_the_day/2016/08/awwwards-sotd-Divenamic-1.jpg",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Serio Verify",
+               "url":"https://serioverify.com/",
+               "source":"awwwards",
+               "description":"scrolling animations draw a system",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Kikk Festival",
+               "url":"http://www.kikk.be/2016/",
+               "source":"Codrops Collective",
+               "description":"Bubble grows, pictures glitch",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Nicer Studio",
+               "url":"http://nicer.io/",
+               "source":"One Page Love",
+               "description":"Parallax effect + Color change",
+               "date":"09/19/16"
+            },
+            {
+               "title":"Waaark Vision",
+               "url":"http://waaark.com/vision/",
+               "source":"awwwards",
+               "description":"Scroll snap to trigger value prop animation",
+               "date":"09/27/16"
+            },
+            {
+               "title":"Getty Endless",
+               "url":"http://www.gettyendless.com/",
+               "source":"awwwards",
+               "description":"Scroll to assemble pictures into a familiar face",
+               "date":"09/27/16"
+            },
+            {
+               "title":"Shane Sigler",
+               "url":"http://shanesigler.com/work",
+               "source":"httpster",
+               "description":"VERY subtle effect of using perspective to make scroll feel like a film reel",
+               "date":"09/27/16"
+            },
+            {
+               "title":"Wang",
+               "url":"http://joycewang.com/",
+               "source":"httpster",
+               "description":"Similar to the Balmain website where the text changes at different points as you scroll. Pleasant addition of the background and text color changing accordingly",
+               "date":"09/27/16"
+            },
+            {
+               "title":"Whitelist",
+               "url":"http://whitelist.tv/work",
+               "source":"httpster",
+               "description":"When you scroll fast the grid curves in 'reaction'",
+               "date":"09/27/16"
+            }
+         ]
+      },
+      "Abstract Animations":{
+         "examples":[
+            {
+               "title":"Blend Character",
+               "url":"https://dribbble.com/shots/2962259-Blend-Character",
+               "source":"dribbble",
+               "description":"Shapes land on triangle and rotate",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/439816/screenshots/2962259/blend_dribbble.gif",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Aiia",
+               "url":"https://dribbble.com/shots/2957298-BLEND",
+               "source":"dribbble",
+               "description":"Circles scale/bounce out to be oblongs",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/218750/screenshots/2957298/character-_-linn.gif",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Power Mark 5",
+               "url":"https://dribbble.com/shots/2713136-Power-Mark-5",
+               "source":"dribbble",
+               "description":"Circle lowers and out comes a cone",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/439816/screenshots/2713136/5.gif",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Made By Me",
+               "url":"https://dribbble.com/shots/2713136-Power-Mark-5",
+               "source":"awwwards",
+               "description":"onHover polygon float",
+               "date":"09/19/16"
+            },
+            {
+               "title":"Adobe Max",
+               "url":"https://dribbble.com/shots/3060409-Adobe-MAX",
+               "source":"dribbble",
+               "description":"Swimming transparent bean",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/131684/screenshots/3060409/ezgif-1116723910.gif",
+               "date":"10/31/16"
+            }
+         ]
+      },
+      "Environment":{
+         "examples":[
+            {
+               "title":"Freedom City",
+               "url":"https://dribbble.com/shots/2958656-Freedom-City",
+               "source":"dribbble",
+               "description":"Houses grow out fo triangle",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/1158015/screenshots/2958656/___-4.gif",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Ruwer Landing Page",
+               "url":"https://dribbble.com/shots/2956530-RUWER-landing-page-video",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/774689/screenshots/2956530/jars-dribb.gif",
+               "date":"09/14/16"
+            },
+            {
+               "title":"UFO outline illustration",
+               "url":"https://dribbble.com/shots/2958860-UFO-outline-illustration-animated-version",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/623359/screenshots/2958860/ufo.gif",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Sensay Situations",
+               "url":"https://dribbble.com/shots/2959211-Sensay-Situations",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/398490/screenshots/2959211/scene_morph.gif",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Maintenance",
+               "url":"https://dribbble.com/shots/2947743-maintenance-gif",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/34767/screenshots/2947743/maintenance.gif",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Homepage Animation Concept",
+               "url":"http://chordsurfer.redbull.com/",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/491599/screenshots/2158133/homepage.gif",
+               "date":"09/19/16"
+            },
+            {
+               "title":"Outpost",
+               "url":"http://discoveroutpost.com/",
+               "source":"CSS Design Awards",
+               "date":"10/31/16"
+            },
+            {
+               "title":"League of Legends History",
+               "url":"http://promo.lolesports.com/en_US/worlds/history",
+               "source":"Awwards",
+               "date":"10/31/16"
+            }
+         ]
+      },
+      "Character Animations":{
+         "examples":[
+            {
+               "title":"Pokemon",
+               "url":"https://dribbble.com/shots/2961996-Pokemon",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/256781/screenshots/2961996/pokemon.gif",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Robot Rave",
+               "url":"https://dribbble.com/shots/2956412-Robot-Rave",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/244516/screenshots/2956412/drummer_shade_.gif",
+               "date":"09/14/16"
+            },
+            {
+               "title":"GIF Teaser",
+               "url":"https://dribbble.com/shots/2876118-GIF-Teaser",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/244516/screenshots/2876118/tease___.gif",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Maintenance",
+               "url":"https://dribbble.com/shots/2947743-maintenance-gif",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/34767/screenshots/2947743/maintenance.gif",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Banner for Femsplain",
+               "url":"https://dribbble.com/shots/1764066-GIF-Banner-for-Femsplain",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/90216/screenshots/1764066/1-cindysuen-femsplain.gif",
+               "date":"09/19/16"
+            },
+            {
+               "title":"SHOCKED",
+               "url":"https://dribbble.com/shots/2966419-SHOCKED",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/400493/screenshots/2966419/final_large_1.gif",
+               "date":"09/19/16"
+            }
+         ]
+      },
+      "Typography Animations":{
+         "examples":[
+            {
+               "title":"After Effects Template - Storyboard Typography",
+               "url":"https://vimeo.com/181504258",
+               "source":"vimeo",
+               "description":"Video of typographic compositions animated",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Waaark",
+               "url":"http://waaark.com/",
+               "source":"awwwards",
+               "description":"W loader",
+               "date":"09/14/16"
+            },
+            {
+               "title":"the identity",
+               "url":"https://vimeo.com/178888200",
+               "source":"vimeo",
+               "description":"logos that have type design",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Hunter Trac",
+               "url":"http://dev.weareglow.com/syfy_hunters/",
+               "source":"awwwards",
+               "description":"Typing animations",
+               "date":"09/14/16"
+            }
+         ]
+      },
+      "Web Graphic Animations":{
+         "examples":[
+            {
+               "title":"NewActon",
+               "url":"http://newacton.com.au/",
+               "source":"awwwards",
+               "description":"Splash objects dancing",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Waaark",
+               "url":"http://waaark.com/",
+               "source":"awwwards",
+               "description":"Illustrations animated",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Bilan",
+               "url":"http://bilan-trends2016.heed.agency/#",
+               "source":"awwwards",
+               "description":"onEnter illustrations and water colors layered",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Serio Verify",
+               "url":"https://serioverify.com/",
+               "source":"awwwards",
+               "description":"scrolling animations draw a system",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Icon for Target Practice",
+               "url":"https://dribbble.com/shots/2956790-Icon-for-Targetprocess",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/605899/screenshots/2956790/1.gif",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Sound City",
+               "url":"http://codepen.io/tomvanglabeke/full/zKVQZJ/",
+               "source":"codepen",
+               "description":"Navigating with mouse through a city that animates to he music",
+               "date":"10/31/16"
+            }
+         ]
+      },
+      "Mobile UI Animations":{
+         "examples":[
+            {
+               "title":"Splash Screen",
+               "url":"https://dribbble.com/shots/2953107-Splash-screen",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/4859/screenshots/2953107/viv_dr.gif",
+               "date":"09/14/16"
+            },
+            {
+               "title":"5.2 Filters",
+               "url":"https://dribbble.com/shots/2955092--5-2-Filters",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/467044/screenshots/2955092/last-f.gif",
+               "date":"09/14/16"
+            },
+            {
+               "title":"MyPinyon",
+               "url":"https://dribbble.com/shots/2878868-MyPinyon-Voting-Mobile-App",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/170729/screenshots/2878868/mypinyon-gif__1_.gif",
+               "date":"09/14/16"
+            }
+         ]
+      },
+      "Looped BG Animations":{
+         "examples":[
+            {
+               "title":"Indopholio",
+               "url":"http://www.indofolio.com",
+               "source":"one page love",
+               "description":"parallax scrolling landscape",
+               "date":"09/20/16"
+            },
+            {
+               "title":"Where's Lolly",
+               "url":"https://www.icelolly.com/wheres-lolly/",
+               "source":"awwwards",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Mosser Studio",
+               "url":"http://www.mossterstudio.com/",
+               "source":"awwwards",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Panera",
+               "url":"https://paneralandofclean.com/",
+               "source":"awwwards",
+               "date":"09/14/16"
+            },
+            {
+               "title":"Camper",
+               "url":"https://www.camper.com/en_--/content/fall-winter-16/armours/wilma-extreme",
+               "source":"awwwards",
+               "date":"10/31/16"
+            }
+         ]
+      },
+      "Drawing Animations":{
+         "examples":[
+            {
+               "title":"Fancy SVG Letter Animation",
+               "url":"http://tympanus.net/Development/FancyLetterAnimation/",
+               "source":"codrops",
+               "description":"Letter layers drawing in",
+               "date":"09/15/16"
+            },
+            {
+               "title":"Draft",
+               "url":"https://draft.co.jp/en",
+               "source":"awwwards",
+               "description":"Logo and loader",
+               "date":"09/15/16"
+            },
+            {
+               "title":"FPG",
+               "url":"http://www.frontlinepg.com/",
+               "source":"awwwards",
+               "description":"Line drawing motif throughout site, especially loader",
+               "date":"09/15/16"
+            },
+            {
+               "title":"Serio Verify",
+               "url":"https://serioverify.com/",
+               "source":"awwwards",
+               "description":"scrolling animations draw a system",
+               "date":"09/14/16"
+            },
+            {
+               "title":"London",
+               "url":"https://dribbble.com/shots/2960256-London",
+               "source":"dribbble",
+               "description":"London skyline drawing in and growing",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/486050/screenshots/2960256/london.gif",
+               "date":"09/15/16"
+            },
+            {
+               "title":"Tape Liquid",
+               "url":"https://dribbble.com/shots/2106646-TAPE-liquid",
+               "source":"dribbble",
+               "description":"'TAPE' is written with liquid texture flourishes",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/490754/screenshots/2106646/tape-liquid_02.gif",
+               "date":"09/15/16"
+            },
+            {
+               "title":"Customer Search",
+               "url":"https://dribbble.com/shots/1563998-Customer-search",
+               "source":"dribbble",
+               "description":"A line traces out a customer engagement system",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/6063/screenshots/1563998/bond_01.gif",
+               "date":"09/15/16"
+            },
+            {
+               "title":"9 Squares & One Dot Zero",
+               "url":"https://dribbble.com/shots/2266143-9-Squares-One-Dot-Zero",
+               "source":"dribbble",
+               "description":"Simple lines drawing in a coordinated pattern with circles expanding",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/55063/screenshots/2266143/9_squares_dot.gif",
+               "date":"09/15/16"
+            },
+            {
+               "title":"Molly and Ray",
+               "url":"https://dribbble.com/shots/1118181-Molly-And-Ray-GIF",
+               "source":"dribbble",
+               "description":"Characters drawn from above",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/200605/screenshots/1118181/molly_and_ray.gif",
+               "date":"09/15/16"
+            },
+            {
+               "title":"Pen Tool Icon",
+               "url":"https://dribbble.com/shots/2655844-Pen-Tool-Icon",
+               "source":"dribbble",
+               "description":"Line animation imitating Sketch or Illustrator",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/1007228/screenshots/2655844/zefr_gif_design3.gif",
+               "date":"09/15/16"
+            },
+            {
+               "title":"Hong Kong",
+               "url":"https://dribbble.com/shots/2228341-Hong-Kong",
+               "source":"dribbble",
+               "description":"Draw used in conjunction with rotate",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/70808/screenshots/2228341/piclab_v02.gif",
+               "date":"09/15/16"
+            },
+            {
+               "title":"CodePen Logo Drawing Animation",
+               "url":"http://codepen.io/smalinux/pen/bZjjdZ",
+               "source":"codepen",
+               "description":"Logo animation using hand and pen to draw",
+               "date":"09/15/16"
+            },
+            {
+               "title":"Onboarding Nav - Line Animation",
+               "url":"http://codepen.io/Zaku/pen/YqLOOp",
+               "source":"codepen",
+               "description":"Breadcrumb line draws to next circle",
+               "date":"09/15/16"
+            },
+            {
+               "title":"Scroll controlled SVG animation",
+               "url":"http://codepen.io/paintbycode/pen/JDbcF",
+               "source":"codepen",
+               "description":"Iron Man draw tied to scroll",
+               "date":"09/15/16"
+            },
+            {
+               "title":"SVG Masking Path Animation",
+               "url":"http://codepen.io/diagramatics/pen/yeJwVb",
+               "source":"codepen",
+               "description":"Textured text animation",
+               "date":"09/15/16"
+            },
+            {
+               "title":"Converse 'Diamonds'",
+               "url":"http://counterclimate.converse.com",
+               "source":"awwwards",
+               "description":"Animated header text",
+               "image":"http://www.awwwards.com/awards/sites_of_the_day/2016/08/awwwards-sotd-converse-diamonds-1.jpg",
+               "date":"09/15/16"
+            },
+            {
+               "title":"It's Monday",
+               "url":"https://dribbble.com/shots/2971080-It-s-Monday",
+               "source":"dribbble",
+               "description":"Finger print draws as thumb is pulled",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/4228/screenshots/2971080/monday.gif",
+               "date":"09/15/16"
+            }
+         ]
+      },
+      "Headers":{
+         "examples":[
+            {
+               "title":"Open Source Hub",
+               "url":"https://dribbble.com/shots/2412252-Open-Source-Hub",
+               "source":"dribbble",
+               "description":"contruction site",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/256257/screenshots/2412252/open-source.gif",
+               "date":"09/20/16"
+            },
+            {
+               "title":"IBMblr Patents header",
+               "url":"https://dribbble.com/shots/1903530-IBMblr-Patents-header",
+               "source":"dribbble",
+               "description":"contructing text",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/345283/screenshots/1903530/ibmblr_patents_header_800x600.gif",
+               "date":"09/20/16"
+            },
+            {
+               "title":"Unity Website",
+               "url":"https://dribbble.com/shots/2202478-Unity-Website",
+               "source":"dribbble",
+               "description":"Starscape header",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/780072/screenshots/2202478/unity_preview.jpg",
+               "date":"09/19/16"
+            },
+            {
+               "title":"Peppers Header Animation",
+               "url":"https://dribbble.com/shots/2569502-Peppers-Header-Animation",
+               "source":"dribbble",
+               "description":"Particles and typing",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/31630/screenshots/2569502/untitled-2.gif",
+               "date":"09/19/16"
+            },
+            {
+               "title":"Verb Studio Case Study",
+               "url":"https://www.verb.studio/case-studies/vestige-story/",
+               "source":"awwwards",
+               "description":"Crosshair scroll hint",
+               "date":"09/19/16"
+            },
+            {
+               "title":"Henge",
+               "url":"http://www.henge07.com/type_moods/reportage-2015/",
+               "source":"awwwards",
+               "description":"Headers onEnter split in",
+               "date":"09/19/16"
+            },
+            {
+               "title":"Hashiconf",
+               "url":"https://www.hashiconf.com/?ref=lapaninja",
+               "source":"lapaninja",
+               "description":"Isometric bg",
+               "date":"09/20/16"
+            },
+            {
+               "title":"Statsbot",
+               "url":"https://statsbot.co/?ref=lapaninja",
+               "source":"lapaninja",
+               "description":"Icon Pattern",
+               "date":"09/20/16"
+            },
+            {
+               "title":"Webflow",
+               "url":"https://webflow.com/feature/interactions-v2?ref=lapaninja",
+               "source":"lapaninja",
+               "description":"Animate up onenter",
+               "date":"09/20/16",
+               "misc":"https://flexbox.webflow.com/"
+            }
+         ]
+      },
+      "Bridge Animations":{
+         "examples":[
+            {
+               "title":"Tower Bridge - London",
+               "url":"https://dribbble.com/shots/2729904-Tower-Bridge-London",
+               "source":"dribbble",
+               "description":"cars and double decker buses driving over London Bridge",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/231590/screenshots/2729904/tower_bridge_1.gif",
+               "date":"09/23/16"
+            },
+            {
+               "title":"Bridge",
+               "url":"https://dribbble.com/shots/2941111-Bridge",
+               "source":"dribbble",
+               "description":"Line drawing of bridge with big rig driving over",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/925704/screenshots/2941111/bridge.gif",
+               "date":"09/23/16"
+            },
+            {
+               "title":"waves",
+               "url":"https://dribbble.com/shots/2878684-waves",
+               "source":"dribbble",
+               "description":"waves and tree sway looped animation for Golden Gate Bridge",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/338452/screenshots/2878684/for_dribbble.gif",
+               "date":"09/23/16"
+            },
+            {
+               "title":"Hello San Francisco",
+               "url":"https://dribbble.com/shots/2161556-Hello-San-Francisco",
+               "source":"dribbble",
+               "description":"Line drawing onEnter animation for Golden Gate and Bay Bridge",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/136988/screenshots/2161556/goldengatebaybridge_v2.gif",
+               "date":"09/23/16"
+            },
+            {
+               "title":"The Golden Gate Bridge",
+               "url":"https://dribbble.com/shots/2890732-The-Golden-Gate-Bridge",
+               "source":"dribbble",
+               "description":"Line drawing onEnter animation for Golden Gate Bridge",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/966681/screenshots/2890732/dribbble17.gif",
+               "date":"09/23/16"
+            },
+            {
+               "title":"Golden Gate Bridge",
+               "url":"http://codepen.io/johan-tirholm/pen/yNeJXm",
+               "source":"codepen",
+               "description":"turntable of bridge created with CSS and 3d transforms",
+               "date":"09/23/16"
+            },
+            {
+               "title":"CodePenSF Hype!",
+               "url":"http://codepen.io/alexzaworski/pen/GZEGQM",
+               "source":"codepen",
+               "description":"draggable stretchy bridge",
+               "date":"09/23/16"
+            },
+            {
+               "title":"San Francisco Badge – Animated",
+               "url":"https://dribbble.com/shots/2638408-San-Francisco-Badge-Animated",
+               "source":"dribbble",
+               "description":"golden gate badge",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/327674/screenshots/2638408/sanfranbadge.gif",
+               "date":"09/23/16"
+            },
+            {
+               "title":"Bristol by Night",
+               "url":"https://dribbble.com/shots/1984553-Bristol-by-Night",
+               "source":"dribbble",
+               "description":"Bristol's Clifton Bridge at Night",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/672882/screenshots/1984553/bristol.gif",
+               "date":"09/23/16"
+            },
+            {
+               "title":"Uptown Bloom",
+               "url":"https://dribbble.com/shots/2234833-Uptown-Bloom",
+               "source":"dribbble",
+               "description":"Night",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/6084/screenshots/2234833/uptownbloom.png",
+               "date":"09/23/16"
+            }
+         ]
+      },
+      "Collections UI":{
+         "examples":[
+            {
+               "title":"Taco Bell",
+               "url":"https://www.tacobell.com/",
+               "source":"Beautiful Stores",
+               "description":"Landing is food menu with a card colleciton of menu categories",
+               "date":"11/03/16"
+            },
+            {
+               "title":"HTTPSTER",
+               "url":"http://httpster.net/",
+               "source":"httpster",
+               "description":"Depth 1 is a two category split b/w Type and Style. Depth 2 is the website feature, link, related tags, and the next website",
+               "date":"11/03/16"
+            },
+            {
+               "title":"AYR",
+               "url":"https://www.ayr.com/",
+               "source":"httpster",
+               "description":"Okay site. I really like the onmouseenter previews of the categories.",
+               "date":"11/03/16"
+            },
+            {
+               "title":"ETQ",
+               "url":"https://www.etq-amsterdam.com/",
+               "source":"httpster",
+               "description":"Products are on the same plane, I like the indepth product nav",
+               "date":"11/03/16"
+            },
+            {
+               "title":"Adult Swim Singles 2016",
+               "url":"http://www.adultswim.com/music/singles-2016/",
+               "source":"awwwards",
+               "description":"3d box collection of different singles",
+               "date":"11/03/16"
+            },
+            {
+               "title":"Ville de Val-d'Or",
+               "url":"http://ville.valdor.qc.ca/",
+               "source":"awwwards",
+               "description":"Fixed sidebar",
+               "date":"11/03/16"
+            },
+            {
+               "title":"The Age of Aerospace",
+               "url":"http://theageofaerospace.com/discovery/home",
+               "source":"awwwards",
+               "description":"Movie tabs",
+               "date":"11/03/16"
+            },
+            {
+               "title":"CPJ",
+               "url":"https://www.cpj.co.uk/products#/category/juices",
+               "source":"awwwards",
+               "description":"Fixed tabs. I like animation b/w navigating",
+               "date":"11/03/16"
+            }
+         ]
+      },
+      "Visual Charts":{
+         "examples":[
+            {
+               "title":"i.ngen.io",
+               "url":"http://i.ngen.io/",
+               "source":"awwwards",
+               "description":"Landing for data visualization company",
+               "date":"11/10/16"
+            },
+            {
+               "title":"amcharts",
+               "url":"https://www.amcharts.com/",
+               "source":"awwwards",
+               "description":"Chart on landing",
+               "date":"11/10/16"
+            },
+            {
+               "title":"amcharts",
+               "url":"https://www.amcharts.com/",
+               "source":"awwwards",
+               "description":"Chart on landing",
+               "date":"11/10/16"
+            },
+            {
+               "title":"Analytics",
+               "url":"https://dribbble.com/shots/2348140-Analytics",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/825808/screenshots/2348140/anallytics.jpg",
+               "date":"11/10/16"
+            },
+            {
+               "title":"Currency Status",
+               "url":"https://dribbble.com/shots/2501120-Daily-UI-6-Currency-Status",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/1011457/screenshots/2501120/6_currency_status.png",
+               "date":"11/10/16"
+            },
+            {
+               "title":"Starbreeze Studios",
+               "url":"https://dribbble.com/shots/2691673-Daily-UI-018",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/601076/screenshots/2691673/daily_ui__018.jpg",
+               "date":"11/10/16"
+            },
+            {
+               "title":"Analytics Chart",
+               "url":"https://dribbble.com/shots/2504659-Dailyui-018-Analytics-Chart-revised",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/918632/screenshots/2504659/dailyui_018_analytics_chart_revised3.gif",
+               "date":"11/10/16"
+            },
+            {
+               "title":"US Job Market",
+               "url":"https://dribbble.com/shots/2537954-Analytics",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/368582/screenshots/2537954/18_analytics.png",
+               "date":"11/10/16"
+            },
+            {
+               "title":"Line Chart Tooltip",
+               "url":"https://dribbble.com/shots/1309667-Line-Chart-Tooltip",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/114491/screenshots/1309667/tooltip2.gif",
+               "date":"11/10/16"
+            },
+            {
+               "title":"Chart Animation",
+               "url":"https://dribbble.com/shots/2934656-Chart-Animation",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/958543/screenshots/2934656/chart_b_.gif",
+               "date":"11/10/16"
+            },
+            {
+               "title":"Electric Vehicle Engine",
+               "url":"https://dribbble.com/shots/3051532-Electric-vehicle-engine-experimental-for-Fantasy",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/32512/screenshots/3051532/car_design_eploration_by_fantasy.gif",
+               "date":"10/31/16"
+            },
+            {
+               "title":"Weather Landscape & Portrait View",
+               "url":"https://dribbble.com/shots/2013151-Weather-Landscape-Portrait-View",
+               "source":"dribbble",
+               "description":"colored graph line fills for compare and contrast",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/224485/screenshots/2013151/weather-dashboard.gif",
+               "date":"11/10/16"
+            },
+            {
+               "title":"Analytics animation",
+               "url":"https://dribbble.com/shots/1729415-Analytics-animation",
+               "source":"dribbble",
+               "description":"Graph line with label animation",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/130881/screenshots/1729415/sans-titre---6.gif",
+               "date":"11/10/16"
+            },
+            {
+               "title":"Spring Curve Editor",
+               "url":"https://dribbble.com/shots/3023412-Spring-Curve-Editor",
+               "source":"dribbble",
+               "description":"Animation graph editor with range inputs",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/4381/screenshots/3023412/spring.gif",
+               "date":"11/10/16"
+            },
+            {
+               "title":"Custom Timing Function UI",
+               "url":"https://dribbble.com/shots/1994836-Custom-Timing-Function-UI/attachments/350177",
+               "source":"dribbble",
+               "description":"Editor for timing functions with multiple curves",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/261568/screenshots/1994836/attachments/350177/timing-function-details.jpg",
+               "date":"11/10/16"
+            }
+         ]
+      },
+      "Animation Easing Charts":{
+         "examples":[
+            {
+               "title":"Oak",
+               "url":"http://oak.is/thinking/animated-svgs/",
+               "source":"Google",
+               "description":"Demo gifs/svgs of animation charts",
+               "date":"11/09/16"
+            },
+            {
+               "title":"Animate Plus Easing Functions Visualizer",
+               "url":"http://animateplus.com/easing-visualizer/",
+               "source":"Google",
+               "description":"Ball demo of robert penner's easings",
+               "date":"11/09/16"
+            },
+            {
+               "title":"Cubic Bezier Tool",
+               "url":"https://dribbble.com/shots/2937073-Cubic-Bezier-Tool",
+               "source":"dribbble",
+               "image":"https://d13yacurqjgara.cloudfront.net/users/11528/screenshots/2937073/cubic_bezier.png",
+               "description":"Mockup of cubic bezier tool",
+               "date":"11/09/16"
+            },
+            {
+               "title":"Eezee",
+               "url":"https://tools.mikedeleon.me/eezee/",
+               "source":"github",
+               "description":"Robert penner easings for scss",
+               "date":"11/09/16"
+            },
+            {
+               "title":"Ceaser",
+               "url":"https://matthewlein.com/ceaser/",
+               "source":"google",
+               "description":"Robert penner easings demo with custom drag handles",
+               "date":"11/09/16"
+            },
+            {
+               "title":"Cubic Bezier",
+               "url":"http://cubic-bezier.com/#.17,.67,.83,.67",
+               "source":"github",
+               "description":"Go-to tool for custom cubic-bezier easings",
+               "date":"11/09/16"
+            },
+            {
+               "title":"Webflow Easing Editor",
+               "url":"https://webflow.com/feature/more-powerful-bezier-curve-controls-for-css-transitions",
+               "source":"dribbble",
+               "description":"Easing feature in animation tool",
+               "date":"11/09/16"
+            }
+         ]
+      }
+   }
+}

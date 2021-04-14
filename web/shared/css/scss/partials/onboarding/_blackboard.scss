@@ -1,0 +1,42 @@
+@import '../mixin';
+
+.chalkboard-onboarding {
+	.chalkboard-onboarding-header {
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		width: 100%;
+		text-align: center;
+		min-height: 50px;
+		// background: rgba(white, .1);
+		h1 {
+			font-size: 20px;
+			font-weight: 700;
+		}
+		.chalkboard-onboarding-back {
+			position: absolute;
+			top: 4px;
+			left: 4px;
+		}
+		.chalkboard-onboarding-next {
+			position: absolute;
+			top: 4px;
+			right: 4px;
+		}
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.chalkboard-onboarding {
+		.chalkboard-content {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+		}
+		.chalkboard-onboarding-header {
+			h1 {
+				font-size: 48px;
+			}
+		}
+	}
+}

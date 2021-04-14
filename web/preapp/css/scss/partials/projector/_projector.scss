@@ -1,0 +1,185 @@
+@import '../../../../../shared/css/scss/partials/mixin';
+
+.onboarding-projector {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.onboarding-tracker {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 30px;
+	> div {
+		margin: 0 auto;
+		max-width: 750px;
+		@media screen and (min-height: 750px) {
+			max-width: 900px;
+		}
+		@media screen and (min-height: 900px) {
+			max-width: 1080px;
+		}
+	}
+	.numerical-bar {
+		margin: 0 auto;
+		max-width: 96%;
+		> ul {
+			> li {
+				> div {
+					span {
+						display: block;
+						width: 100%;
+						height: 100%;
+						padding: 10px;
+						svg {
+							display: block;
+							width: 100%;
+							height: 100%;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.projector-splash {
+	.btn-ghost-round {
+		letter-spacing: 0;
+	}
+	.projector-content {
+		@include flex;
+		@include flex-wrap;
+		justify-content: center;
+	}
+	.projector-splash-container {
+		@include flex;
+		@include flex-wrap;
+		align-content: flex-start;
+		align-items: flex-start;
+		justify-content: center;
+		height: 100%;
+		width: 100%;
+	}
+	.projector-splash-header {
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		width: 100%;
+		text-align: center;
+		min-height: 50px;
+		// background: rgba(white, .1);
+		h1 {
+			font-size: 20px;
+			font-weight: 700;
+		}
+		.projector-splash-back {
+			position: absolute;
+			top: 4px;
+			left: 4px;
+		}
+		.projector-splash-next {
+			position: absolute;
+			top: 4px;
+			right: 4px;
+		}
+	}
+	.student-card-mobile {
+		@include flex;
+		@include flex-center;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		z-index: 100;
+		width: 100%;
+		padding: 15px;
+	}
+}
+
+.projector-guru-body-container {
+	display: none;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	@media screen and (orientation:landscape) and (min-height: 560px) {
+		padding-top: 50px;
+	}
+	@media screen and (min-width: 768px) {
+		@include flex;
+	}
+	> div {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		max-width: 750px;
+		@media screen and (min-height: 560px) {
+			height: 95%;
+		}
+		@media screen and (orientation:landscape) and (min-height: 560px) {
+			max-height: 500px;
+		}
+		@media screen and (orientation:landscape) and (min-height: 750px) {
+			max-height: 600px;
+		}
+		@media screen and (orientation:landscape) and (min-height: 900px) {
+			max-height: 720px;
+		}
+		@media screen and (min-height: 750px) {
+			max-width: 900px;
+		}
+		@media screen and (min-height: 900px) {
+			max-width: 1080px;
+		}
+	}
+}
+
+.projector-guru-body {
+	position: absolute;
+	top: 50%;
+	margin-top: -200px;
+	left: -127px;
+	z-index: 100;
+	width: 300px;
+	height: 450px;
+	.card-container {
+		position: absolute;
+		bottom: 103px;
+		left: 50%;
+		margin-left: -120px;
+	}
+	.guru-hands {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.projector-splash {
+		.projector-content, .projector-splash-container {
+			@include flex-center;
+		}
+		.projector-splash-header {
+			h1 {
+				font-size: 48px;
+			}
+		}
+		.student-card-mobile {
+			display: none;
+		}
+	}
+	.projector-mobile-header {
+		.projector-splash-header {
+			min-height: auto;
+			h1 {
+				display: none;
+			}
+		}
+	}
+}

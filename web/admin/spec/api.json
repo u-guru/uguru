@@ -1,0 +1,92 @@
+{
+    "title": "uguru api",
+    "description": "A collection of all custom items to be used within Uguru",
+    "base_url": "admin/spec/api",
+    "sections":{
+        "animations": {
+            "all": ["property", "special"],
+            "sections": {
+                "special":{
+                    "all": ["draw"]
+                }
+            }
+        },
+        "messages": {
+            "all": ["internal", "external"],
+            "special":{
+                "all": ["reverse", "at t=X"]
+            }
+        },
+        "directives": {
+            "all": ["interpolate", "init-later", "destroy"]
+        },
+        "components": {
+            "all": ["map", "file", "card", "svg", "img", "input", "progress", "list", "text", "tab", "tooltip", "modal", "grid", "slider"],
+            "attr": "",
+            "components": {
+                "file": {},
+                "card": {},
+                "svg": {},
+                "img": {},
+                "input": {},
+                "progress": {},
+                "list": {},
+                "text": {
+                    "letter": {
+                            "shortcuts": ["l"]
+                    },
+                    "word": {
+                            "shortcuts": ["w"],
+                            "options": {
+                                "keep": "keep the <word> container versus placing the children under its parents",
+                                "delay": "stagger the type letter",
+                                "type": "include these types of letters"
+                            }
+                    }
+                },
+                "item": {
+                    "complete": true,
+                    "demos": "api/components/item",
+                    "types": ["svg", "div", "span"]
+                },
+                "tooltip": {},
+                "modal": {},
+                "grid": {},
+                "control": {},
+                "slider": {}
+            }
+        },
+        "states": {
+            "event-based": {
+                "definition": "a configurable action that an HTML element performs based on incoming signals from the surrounding environment",
+                "characteristics": {
+                    "duration": {
+                        "instant": ["messages"],
+                        "duration": "properties"
+                    }
+                },
+                "value_types": {
+                    "properties": "",
+                    "messages": ""
+                },
+                "types": {
+                    "when-": "for cases when the element reacts to an action based on an external signal broadcasted by another element",
+                    "as-*": "when one state (regardless of internal or extenal) performs at the same time and duration of another state.",
+                    "on-*": "aka response states. for cases when the element reacts to an event directed at the element itself."
+                },
+                "special": {
+                    "on-init-50": "when the on-init-state is 50% in"
+                }
+            },
+            "render-based": {
+                "viewport-specific": ["desktop", "mobile"]
+            },
+            "terms": {
+                "stream": "a state when compiled outputs a stream, which can be played by a player",
+                "player": "takes one to many streams",
+                "stateGroup": "A group of states"
+            }
+        }
+    }
+}
+

@@ -1,0 +1,26 @@
+<ion-modal-view ng-controller="AddNoteController"><ion-header-bar class="bar-dark nav-bar-text bold-font" style="background-color: rgb(43,50,52)"><button ng-click="hideAddNoteModal()" class="button button-clear"><i class="icon ion-ios7-close-empty"></i></button><h1 class="title">Additional Details</h1><button ng-click="saveNote()" class="button button-clear button-positive">Save</button></ion-header-bar><!-- <ion-content class="lightest-grey" scroll="false" style="font-size:1em; line-height:1em;">
+    <div style="height:100%">
+      <div style="height:20%; display:table;" class="width-100">
+        <p class="font-bold mid-grey center" style="font-size:160%; line-height:150%; display:table-cell; vertical-align:middle; align:center">
+        Is there anything else your <br>
+        guru shoud know?
+      </p>
+      </div>
+      <div style="height:55%" class="extra-padding no-padding-top no-padding-bottom">
+        <div class="container extra-padding" style="background-color:white; width:100%; height:100%; border-radius:16px;">
+          <a ng-click="toggleShowTextArea()" href="#" ng-show="!showAddNoteTextArea">
+            <span class="positive font-bold" style="font-size:130%;"> <i class="icon ion-plus positive"></i> &nbsp;Add a note
+          </a>
+          <textarea name="note-input" ng-model="request.note"ng-show="showAddNoteTextArea" class="font-regular" style="font-size:120%;"></textarea>
+
+        </div>
+      </div>
+      <div style="height:25%;" class="padding">
+        <div style="margin: 7% 0%;  font-size:150%;" class="center font-bold mid-grey">
+          or
+        </div>
+        <div style="width:100%;">
+          <button ng-click="takePhoto()"class="button button-positive button-full"> Add a photo </button>
+        </div>
+      </div>
+    </div> --><ion-content scroll="false"><div class="list"><div class="item bio-list-item" style="border:0px; padding: 20% 10%; z-index:10" ng-hide="request.note" ng-click="root.keyboard.show('note-input')"><p class="center" style="color:rgba(255, 255, 255, 0.8); line-height: 1.4em; font-size:100%"><span style="white-space:normal">What do you need help in? The more descriptive, the better!</span></p></div><div ng-show="!request.note" class="item item-icon-right bio-list-item" style="border:0px; border-top:1px solid rgba(255,255,255, 0.1); color:rgba(255, 255, 255, 0.6)" ng-click="takePhoto()"><div ng-show="!request.photo">Add a photo <i class="icon ion-ios7-camera-outline"></i></div><div ng-show="request.photo"><img id="requestPhotoImg" style="width:30px; height:30px">1 Attachment <i class="icon ion-edit"></i></div></div><div ng-show="request.photo && !root.keyboard.isVisible() && !request.note"><img id="requestPhotoImg" style="width:100%"></div><div class="item bio-list-item" style="border:0px;padding-left:10px"><textarea style="resize:none;width:100%; padding: 20% 10%; color:rgba(255, 255, 255, 0.8); line-height: 1.4em; font-size:100%; white-space:normal; background-color: #363C3E !important" name="note-input" ng-model="request.note"></textarea></div><div ng-show="request.note" class="item item-icon-right bio-list-item" style="border:0px; border-top:1px solid rgba(255,255,255, 0.1); color:rgba(255, 255, 255, 0.6)" ng-click="takePhoto()"><div ng-show="!request.photo">Add a photo <i class="icon ion-ios7-camera-outline"></i></div><div ng-show="request.photo"><img id="requestPhotoImgNoteExists" style="width:30px; height:30px">1 Attachment <i class="icon ion-edit"></i></div></div><!-- </div> --></div></ion-content></ion-modal-view>

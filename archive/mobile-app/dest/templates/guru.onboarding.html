@@ -1,0 +1,24 @@
+<ion-view hide-nav-bar="true" class="guru-onboarding"><ion-header-bar class="header-bar dark-header"><a class="button button-clear button-white button-back positive" nav-direction="back" href="#/home">Back</a><h5 class="title">Become a Guru</h5></ion-header-bar><!-- <ion-nav-bar class="bar-dark nav-bar-text bold-font" animation="slide-left-right">
+            <ion-nav-buttons side="primary">
+                <button ui-sref="^.^.student.home" animation="false" style="width:75px;" class="button-clear">
+                    <img src="img/left-chevron.png" class="uguru-back-button" style="bottom:11px;top:auto !important;"/>
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar> --><!-- <ion-header-bar class="bar-dark bar-subheader padding black-subheader" style="padding-left:16px; padding-right:16px;">
+            <p class="subheader-text"> Steps to become a guru <span class="counters-text">({{progressValue}}/{{progressMax}})</span></p>
+            <progressbar class="progress-striped active" animate="true"
+            max="progressMax" value="progressValue" style="height:0.5em; margin-top:-0.5em">
+            </progressbar>
+        </ion-header-bar> --><ion-content><div class="list list-inset"><a class="item item-button-right" ng-click="addUniversityModal.show()"><span ng-show="!user.university_id">What university are you attending? </span><span class="list-text" ng-show="user.university_id">Attending <span class="sans-bold">{{user.university.title}}</span> </span><button ng-click="addUniversityModal.show()" ng-show="user.university_id" class="button button-clear button-positive list-edit">edit</button> </a><a class="item item-button-right" ng-click="addMajorModal.show()"><span ng-show="!user.majors[0].id">What's your major? </span><span class="list-text" ng-show="user.majors[0].id">Studying <span class="sans-bold">{{user.majors[0].name}}<span ng-show="user.majors.length > 1">...</span> </span></span><button ng-click="addMajorModal.show()" ng-show="user.majors.length > 0" class="button button-clear button-positive list-edit">edit</button> </a><a class="item item-button-right no-margin-bottom" ng-click="addCourseModal.show()"><span>What courses have you aced? </span><button ng-click="addCourseModal.show()" ng-show="user.guru_courses.length > 0" class="button button-clear edit-guru-course-button button-positive list-edit">edit</button> </a><a ng-show="user.guru_courses.length > 0" class="item no-margin-top" ng-click="addCourseModal.show()"><span class="course-tag" ng-repeat="course in user.guru_courses.slice(0, 2)">{{course.short_name}} </span><span ng-show="user.guru_courses.length >= 3" class="course-tag">+ {{user.guru_courses.length - 2}} more</span></a><ion-toggle ng-model="user.uber_friendly" class="item" ng-change="uberFriendlyChange()" toggle-class="toggle-positive"><img class="uber-logo" src="{{img_base}}./img/uber_logo.svg"><div class="avatar-text">I'm cool with <span class="sans-bold">Uber</span> driving<br>me to student sessions.</div></ion-toggle><ion-toggle ng-model="user.summer_15" ng-change="summer15Change()" toggle-class="toggle-positive">I'm around school during Summer 2015</ion-toggle><ion-toggle ng-model="user.outside_university" ng-change="outsideSchoolChange()" toggle-class="toggle-positive">I'm interested tutoring outside of school (SAT, MCAT, etc).</ion-toggle><!-- <a class="item item-icon-right item-thumbnail-right"  ng-click="addGuruIntroModal.show()">
+
+                <div ng-show="!user.guru_introduction" class="regular-text">
+                Edit your Guru bio
+                </div>
+
+                <div ng-show="user.guru_introduction" class="regular-text">
+                Bio <stro>edited</strong>. Looking good.
+                </div>
+                <i class='icon ion-chevron-right'></i>
+            </a> --></div></ion-content><ion-footer-bar style="height:auto; background-image:none; background-color:transparent;margin-bottom:-10px;padding:10px 16px" class="padding"><!-- <button ng-click="submitGuruOnboarding()" class="button button-full button-positive padding wizard-footer" ng-disabled="false!(user.guru_introduction && user.guru_courses.length > 0 && user.majors.length > 0 && user.university_id)" style="height:3.5em;">
+            Finish
+        </button> --> <button ng-click="submitGuruOnboarding()" class="button button-full button-positive padding wizard-footer" ng-disabled="false" style="height:3.5em">Finish</button></ion-footer-bar></ion-view>

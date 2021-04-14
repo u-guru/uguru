@@ -1,0 +1,1085 @@
+@import '../mixin';
+
+// copy url
+.copy-url {
+	@include flex;
+	@include flex-center;
+	width: 100%;
+	max-width: 400px;
+	input {
+		@include flex;
+		@include flex-center-vertical;
+		width: 100%;
+		padding: 10px 15px;
+		font-size: 18px;
+		height: 48px;
+	}
+	label {
+		display: block;
+		width: 48px;
+		height: 48px;
+		svg {
+			width: 48px;
+			height: 48px;
+			background: $shamrock;
+			padding: 6px;
+			* {
+				@include svg-stroke(white, 6);
+			}
+		}
+	}
+}
+
+// fieldset
+fieldset {
+	@include flex;
+	position: relative;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 18px;
+	font-weight: 400;
+	width: 100%;
+	min-height: 30px;
+	&.full-x {
+		max-width: none;
+	}
+	* {
+		transition: all 150ms ease-in-out;
+		font-weight: 400;
+		@include placeholder {
+			transition: all 150ms ease-in-out;
+		}
+	}
+}
+
+// materialize and basic inputs
+fieldset {
+	input {
+		display: block;
+		width: 100%;
+		font-size: 16px;
+		@include placeholder {
+			transition: all 150ms ease-in-out;
+			font-weight: 400;
+			font-size: 16px;
+		}
+	}
+	&.input-basic {
+		label:first-child {
+			display: block;
+			font-size: 14px;
+			margin-bottom: 5px;
+		}
+		input {
+			@include flex;
+			@include flex-center-vertical;
+			height: 36px;
+			padding: 0 10px;
+			border-radius: 2px;
+			background: rgba(white, .8);
+			@include placeholder {
+				color: rgba($slate, .2);
+			}
+			&:hover, &:focus {
+				background: white;
+			}
+			&:focus {
+				@include placeholder {
+					color: rgba($slate, .4);
+				}
+			}
+			&.dark {
+				background: rgba($slate, .8);
+				color: white;
+				@include placeholder {
+					color: rgba(white, .2);
+				}
+				&:hover, &:focus {
+					background: $slate;
+				}
+				&:focus {
+					@include placeholder {
+						color: rgba(white, .4);
+					}
+				}
+			}
+		}
+		&.with-button {
+			label {
+				width: 100%;
+			}
+			div {
+				@include flex;
+				@include flex-center-vertical;
+			}
+			input {
+				padding-right: 46px;
+				+ div {
+					@include opacity(0);
+					position: absolute;
+					right: 0;
+					bottom: 0;
+				}
+				&:hover, &:focus {
+					+ div {
+						@include opacity(1);
+					}
+				}
+			}
+			a {
+				@include flex;
+				@include flex-center;
+				margin: 0!important;
+				width: 36px;
+				height: 36px;
+				svg {
+					display: block;
+					width: 24px;
+					height: 24px;
+					* {
+						@include svg-stroke(white, 8);
+					}
+				}
+				&:last-child {
+					border-top-right-radius: 2px;
+					border-bottom-right-radius: 2px;
+				}
+			}
+		}
+		&.two-buttons {
+			input {
+				padding-right: 82px;
+			}
+		}
+		&.no-border {
+			* {
+				border-radius: 0!important;
+			}
+		}
+	}
+}
+input.input-border {
+	position: relative;
+	z-index: 9;
+	background: none;
+	border-bottom: 1px solid!important;
+	width: 100%;
+	padding: 10px 0;
+	+ label:empty {
+		@include prefix(transform, scaleX(0) translateZ(0), webkit moz ms o);
+		@include prefix(transform-origin, 0% 50%, webkit moz ms o);
+		display: block;
+		position: absolute;
+		bottom: -1px;
+		left: 0;
+		z-index: 10;
+		width: 100%;
+		height: 2px;
+	}
+	&:focus {
+		+ label:empty {
+			@include prefix(transform, scaleX(1) translateZ(0), webkit moz ms o);
+		}
+	}
+	&.light {
+		color: white;
+		border-bottom-color: rgba(white, .2)!important;
+		@include placeholder {
+			color: rgba(white, .2);
+		}
+		&:focus {
+			@include placeholder {
+				color: white;
+			}
+		}
+		+ label:empty {
+			background: white;
+		}
+		&:hover, &:focus {
+			border-bottom-color: rgba(white, .4)!important;
+			@include placeholder {
+				color: rgba(white, .4);
+			}
+		}
+	}
+	&.dark {
+		color: $slate;
+		border-bottom-color: rgba($slate, .2)!important;
+		@include placeholder {
+			color: rgba($slate, .2);
+		}
+		&:focus {
+			@include placeholder {
+				color: $slate;
+			}
+		}
+		+ label:empty {
+			background: $slate;
+		}
+		&:hover, &:focus {
+			border-bottom-color: rgba($slate, .4)!important;
+			@include placeholder {
+				color: rgba($slate, .4);
+			}
+		}
+	}
+	&.bg-moxie {
+		color: $moxie;
+		&:focus {
+			@include placeholder {
+				color: $moxie;
+			}
+		}
+		+ label:empty {
+			background: $moxie;
+		}
+	}
+	&.bg-crimson {
+		color: $crimson;
+		&:focus {
+			@include placeholder {
+				color: $crimson;
+			}
+		}
+		+ label:empty {
+			background: $crimson;
+		}
+	}
+}
+fieldset {
+	&.with-icon {
+		.input-icon {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 30px;
+			height: 30px;
+			svg {
+				display: block;
+				width: 100%;
+				height: 100%;
+				* {
+					stroke-width: 6px;
+					stroke-linecap: round;
+					stroke-linejoin: round;
+					fill: none;
+				}
+			}
+		}
+		input {
+			margin-left: 34px;
+			width: calc(100% - 34px);
+			+ label {
+				width: calc(100% - 34px)!important;
+				left: 34px!important;
+			}
+			&.light {
+				~ .input-icon {
+					svg {
+						g {
+							stroke: rgba(white, .2);
+						}
+					}
+				}
+				&:hover {
+					~ .input-icon {
+						svg {
+							g {
+								stroke: rgba(white, .4);
+							}
+						}
+					}
+				}
+				&:focus {
+					~ .input-icon {
+						svg {
+							g {
+								stroke: white;
+							}
+						}
+					}
+				}
+			}
+			&.dark {
+				~ .input-icon {
+					svg {
+						g {
+							stroke: rgba($slate, .2);
+						}
+					}
+				}
+				&:hover {
+					~ .input-icon {
+						svg {
+							g {
+								stroke: rgba($slate, .4);
+							}
+						}
+					}
+				}
+				&:focus {
+					~ .input-icon {
+						svg {
+							g {
+								stroke: $slate;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	@media screen and (min-width: 768px) {
+		&.large {
+			min-height: 64px;
+			max-width: none;
+			.input-border {
+				font-size: 36px;
+				border-bottom-width: 2px!important;
+				@include placeholder {
+					font-size: 36px;
+				}
+			}
+			&.with-icon {
+				.input-icon {
+					width: 58px;
+					height: 58px;
+					svg {
+						* {
+							stroke-width: 4px;
+						}
+					}
+				}
+				input {
+					margin-left: 68px;
+					width: calc(100% - 68px);
+					+ label {
+						width: calc(100% - 68px)!important;
+						left: 68px!important;
+					}
+				}
+			}
+		}
+	}
+}
+
+div.input-border {
+	@include flex;
+	position: relative;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 18px;
+	font-weight: 400;
+	width: 100%;
+	// max-width: 400px;
+	min-height: 50px;
+	-webkit-perspective: 1000;
+	perspective: 1000;
+	*:not(input > *) {
+		transition: all 150ms ease-in-out;
+	}
+	input.input-border {
+		display: block;
+		font-size: 16px;
+		position: relative;
+		z-index: 9;
+		background: none;
+		width: calc(100% - 52px);
+		padding: 15px 0 15px 52px;
+		// transition: all 300ms linear;
+		border: none!important;
+		font-weight: 600;
+		@include placeholder {
+			// transition: all 150ms ease-in-out;
+			font-weight: 400;
+			font-size: 16px;
+		}
+		+ label:not(:empty) {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			.underline {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				div {
+					display: block;
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					height: 2px;
+					border-radius: 1000px;
+					transform-origin: left center;
+					transition: all 300ms ease-in-out;
+					&:last-child {
+						transform: scaleX(0);
+					}
+				}
+			}
+			.input-icon {
+				width: 24px;
+				height: 24px;
+				position: absolute;
+				z-index: 3;
+				top: 13px;
+				left: 13px;
+				* {
+					stroke-width: 8px;
+				}
+				.template {
+					stroke-dasharray: 220.3;
+				}
+				.success-1 {
+					stroke-dasharray: 19.9;
+					transition: stroke-dashoffset 125ms ease-out, stroke 125ms ease-out;
+				}
+				.success-2 {
+					stroke-dasharray: 50.3;
+					transition: stroke-dashoffset 250ms cubic-bezier(.17,.67,.78,1.37), stroke 125ms ease-out;
+				}
+				.error-1, .error-2 {
+					stroke-dasharray: 39.6;
+					transition: stroke-dashoffset 175ms ease-out, stroke 125ms ease-out;
+				}
+				.email {
+					transform-origin: center center;
+					stroke-dasharray: 365.6;
+					transition: stroke-dashoffset 500ms ease-out, transform 250ms ease-out, stroke 125ms ease-out;
+				}
+				.name {
+					transform-origin: center center;
+					stroke-dasharray: 365.6;
+					transition: stroke-dashoffset 500ms ease-out, transform 250ms ease-out, stroke 125ms ease-out;
+				}
+				&.email-icon {
+					.name {
+						opacity: 0;
+					}
+				}
+				&.name-icon {
+					.email {
+						opacity: 0;
+					}
+				}
+			}
+			> span {
+				position: absolute;
+				top: 15px;
+				display: block;
+				font-size: 16px;
+				// transition: all 250ms ease-out 300ms;
+				padding-left: 52px;
+				padding-right: 15px;
+			}
+			.input {
+				z-index: 5;
+				display: flex;
+				span {
+					display: block;
+					position: relative;
+					&:after {
+						content: "";
+						display: block;
+						position: absolute;
+						bottom: -15px;
+						left: -1px;
+						width: calc(100% + 2px);
+						height: 2px;
+						border-radius: 1000px;
+					}
+				}
+				span:last-child {
+					margin-left: 2px;
+					// animation: opacity 1000ms infinite alternate;
+					&:after {
+						display: none!important;
+					}
+				}
+			}
+			a {
+				opacity: 0;
+				transition: all 150ms ease-in-out;
+				transform-origin: center center;
+				display: block;
+				width: 24px;
+				height: 24px;
+				position: absolute;
+				z-index: 4;
+				top: 13px;
+				right: 13px;
+				cursor: pointer;
+				svg {
+					transform-origin: center center;
+					transform: rotate(-45deg);
+					display: block;
+					width: 100%;
+					height: 100%;
+					* {
+						stroke-width: 8px;
+					}
+				}
+				&:hover, &:focus {
+					opacity: 1!important;
+				}
+			}
+			.borders {
+				position: absolute;
+				z-index: 2;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				border-radius: 2px;
+				transform: rotateX(90deg);
+				transition: all 300ms linear;
+				transform-origin: center bottom;
+				opacity: 0;
+				> div, > div div:nth-child(1), > div div:nth-child(2) {
+					position: absolute;
+				}
+				> div {
+					div:nth-child(1), div:nth-child(2) {
+						@include round;
+						content: "";
+						display: block;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						opacity: 0;
+						transform: scaleX(0);
+					}
+					&:nth-child(1) {
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 2px;
+					}
+					&:nth-child(1) div:nth-child(1), &:nth-child(1) div:nth-child(2) {
+						transform-origin: right center;
+						transition: all 300ms ease-in-out 750ms;
+					}
+					&:nth-child(2) {
+						top: 0;
+						right: 0;
+						width: 2px;
+						height: 100%;
+					}
+					&:nth-child(2) div:nth-child(1), &:nth-child(2) div:nth-child(2) {
+						transform-origin: center bottom;
+						transition: all 100ms ease-in-out 650ms;
+					}
+					&:nth-child(3) {
+						bottom: 0;
+						right: 0;
+						width: 100%;
+						height: 2px;
+					}
+					&:nth-child(3) div:nth-child(1), &:nth-child(3) div:nth-child(2) {
+						transform-origin: left center;
+						transition: all 300ms ease-in-out 500ms;
+					}
+					&:nth-child(4) {
+						bottom: 0;
+						left: 0;
+						width: 2px;
+						height: 100%;
+					}
+					&:nth-child(4) div:nth-child(1), &:nth-child(4) div:nth-child(2) {
+						transform-origin: center top;
+						transition: all 100ms ease-in-out 400ms;
+					}
+				}
+			}
+		}
+		&.light {
+			color: white;
+			@include placeholder {
+				color: rgba(white, .2);
+			}
+			+ label:not(:empty) {
+				.underline {
+					div {
+						background: rgba(white, .2);
+					}
+				}
+				.label {
+					color: white;
+				}
+				.input {
+					span {
+						&:after {
+							background: white;
+						}
+					}
+				}
+				.input-icon {
+					g {
+						stroke: rgba(white, .2);
+					}
+				}
+				a {
+					svg {
+						circle {
+							stroke: white;
+							fill: white;
+						}
+						path {
+							stroke: $slate;
+						}
+					}
+					&:active {
+						svg {
+							circle {
+								fill: rgba(white, .2);
+							}
+							path {
+								stroke: white;
+							}
+						}
+					}
+				}
+				.borders {
+					background: rgba(white, .2);
+					> div {
+						div:nth-child(1), div:nth-child(2) {
+							background: white;
+						}
+					}
+				}
+			}
+			&:hover {
+				+ label:not(:empty) {
+					.input-icon {
+						g {
+							stroke: rgba(white, .5);
+						}
+					}
+				}
+			}
+			&:focus {
+				@include placeholder {
+					color: white;
+				}
+				&::selection {
+					background: white;
+					color: $slate;
+				}
+				&::-moz-selection {
+					background: white;
+					color: $slate;
+				}
+				+ label:not(:empty) {
+					.input-icon {
+						g {
+							stroke: white;
+						}
+					}
+				}
+			}
+		}
+		&.dark {
+			color: $slate;
+			@include placeholder {
+				color: rgba($slate, .2);
+			}
+			+ label:not(:empty) {
+				.underline {
+					div {
+						background: rgba($slate, .2);
+					}
+				}
+				&:before {
+					transform: scaleX(0);
+				}
+				.label {
+					color: $slate;
+				}
+				.input {
+					span {
+						&:after {
+							background: $slate;
+						}
+					}
+				}
+				.input-icon {
+					g {
+						stroke: rgba($slate, .2);
+					}
+				}
+				a {
+					svg {
+						circle {
+							stroke: $slate;
+							fill: $slate;
+						}
+						path {
+							stroke: white;
+						}
+					}
+					&:active {
+						svg {
+							circle {
+								fill: rgba($slate, .2);
+							}
+							path {
+								stroke: $slate;
+							}
+						}
+					}
+				}
+				.borders {
+					background: rgba($slate, .2);
+					> div {
+						div:nth-child(1), div:nth-child(2) {
+							background: $slate;
+						}
+					}
+				}
+			}
+			&:hover {
+				+ label:not(:empty) {
+					.input-icon {
+						g {
+							stroke: $light-slate;
+						}
+					}
+				}
+			}
+			&:focus {
+				@include placeholder {
+					color: $slate;
+				}
+				&::selection {
+					background: $slate;
+					color: white;
+				}
+				&::-moz-selection {
+					background: $slate;
+					color: white;
+				}
+				+ label:not(:empty) {
+					.input-icon {
+						g {
+							stroke: $slate;
+						}
+					}
+				}
+			}
+		}
+		&:hover {
+			+ label:not(:empty) {
+				.underline {
+					div:last-child {
+						transform: none;
+					}
+				}
+				a {
+					opacity: 0.75;
+					svg {
+						transform: none;
+					}
+				}
+			}
+		}
+		&:focus {
+			+ label:not(:empty) {
+				.underline {
+					div:last-child {
+						transform: none;
+					}
+				}
+				.label {
+					transform: translateY(-36px)!important;
+					font-size: 12px;
+				}
+				a {
+					opacity: 0.75;
+					svg {
+						transform: none;
+					}
+				}
+				.borders {
+					transform: rotateX(0);
+					opacity: 1;
+					> div {
+						div:nth-child(1) {
+							opacity: 1;
+							transform: scaleX(1);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.no-label {
+		input.input-border {
+			&:focus {
+				+ label:not(:empty) {
+					.label {
+						opacity: 0!important;
+					}
+				}
+			}
+		}
+	}
+	@media screen and (min-width: 768px) {
+		&.no-label {
+			input.input-border:focus {
+				+ label:not(:empty) {
+					.label {
+						opacity: 0;
+					}
+				}
+			}
+		}
+		&.large {
+			min-height: 70px;
+			max-width: 800px;
+			input.input-border {
+				font-size: 32px;
+				padding: 15px 0 15px 70px;
+				+ label:not(:empty) {
+					.input-icon {
+						width: 48px;
+						height: 48px;
+						top: 11px;
+						left: 11px;
+						* {
+							stroke-width: 5px;
+						}
+					}
+					> span {
+						font-size: 32px;
+						padding-left: 70px;
+						padding-right: 15px;
+					}
+					a {
+						width: 36px;
+						height: 36px;
+						top: 17px;
+						right: 17px;
+						svg {
+							* {
+								stroke-width: 6px;
+							}
+						}
+					}
+				}
+				&:focus {
+					+ label:not(:empty) {
+						.label {
+							opacity: 0!important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (max-height: 480px) {
+	div.input-border {
+		min-height: 35px;
+		input.input-border {
+			padding-top: 5px;
+			padding-bottom: 15px;
+			+ label:not(:empty) {
+				> span {
+					top: 5px;
+				}
+				.input-icon, a {
+					top: 5px;
+				}
+				.borders {
+					display: none;
+				}
+			}
+			&:focus {
+				+ label:not(:empty) {
+					.label {
+						opacity: 0!important;
+					}
+				}
+			}
+		}
+	}
+}
+
+// search bar
+fieldset.search-bar {
+	@include round;
+	height: 48px;
+	background: white;
+	overflow: hidden;
+	position: relative;
+	div {
+		@include flex;
+		@include flex-wrap;
+	}
+	label {
+		position: relative;
+		z-index: 10;
+		@include flex;
+		@include flex-center;
+		width: 48px;
+		height: 48px;
+		cursor: pointer;
+		svg {
+			width: 24px;
+			height: 24px;
+			cursor: pointer;
+			* {
+				fill: none;
+				stroke: rgba($slate, .5);
+				stroke-width: 6px;
+				stroke-linecap: round;
+				stroke-linejoin: round;
+			}
+		}
+	}
+	input {
+		@include flex;
+		@include flex-center-vertical;
+		width: calc(100% - 48px);
+		height: 48px;
+		padding-right: 15px;
+		background: none;
+	}
+}
+
+// number input
+.number-input {
+	@include flex;
+	@include flex-center-vertical;
+	height: 48px;
+	div {
+		position: relative;
+		z-index: 2;
+		overflow: hidden;
+		width: 48px;
+		height: 48px;
+		border-radius: 2px;
+		background: $light-slate;
+		input {
+			width: 100%;
+			height: 100%;
+			background: none;
+			border-radius: 2px;
+			font-size: 28px;
+			font-weight: 900!important;
+			text-align: center;
+			color: white;
+			// transition: all 150ms ease-out;
+			&:focus {
+				background: rgba(white, .2);
+			}
+		}
+	}
+	label {
+		position: relative;
+		z-index: 1;
+		margin-left: 10px;
+		font-size: 24px;
+		font-weight: 600!important;
+	}
+}
+
+// textarea
+fieldset {
+	textarea {
+		resize: none;
+		width: 100%;
+		min-height: 75px;
+		border-radius: 2px;
+		font-size: 16px;
+		padding: 10px 15px;
+		background: $smoke;
+		&:not(.no-border) {
+			border: 2px solid $light-slate;
+			border-bottom-width: 5px;
+		}
+		@include placeholder {
+			color: rgba($slate, .2);
+		}
+		&:hover, &:focus {
+			background: white;
+		}
+		&:focus {
+			border-color: $shamrock;
+			&::selection {
+				background: $slate;
+				color: white;
+			}
+			&::-moz-selection {
+				background: $slate;
+				color: white;
+			}
+			@include placeholder {
+				color: rgba($slate, .4);
+			}
+		}
+	}
+	&.with-button {
+		position: relative;
+		div {
+			@include opacity(0);
+			@include flex;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			span {
+				@include flex;
+				@include flex-center;
+				@include opacity(.5);
+				padding-right: 10px;
+				color: $slate;
+				font-size: 14px;
+				text-align: center;
+			}
+			a {
+				@include flex;
+				@include flex-center;
+				margin: 0!important;
+				width: 24px;
+				height: 24px;
+				svg {
+					display: block;
+					width: 18px;
+					height: 18px;
+					* {
+						@include svg-stroke(white, 12);
+					}
+				}
+				&:first-child {
+					border-top-left-radius: 2px;
+					border-bottom-left-radius: 2px;
+				}
+				&:last-child {
+					border-top-right-radius: 2px;
+					border-bottom-right-radius: 2px;
+				}
+			}
+		}
+		textarea {
+			height: 150px;
+			padding-bottom: 34px;
+			&:hover, &:focus {
+				+ div {
+					@include opacity(1);
+				}
+			}
+		}
+	}
+	&.no-border {
+		* {
+			border-radius: 0!important;
+		}
+	}
+}

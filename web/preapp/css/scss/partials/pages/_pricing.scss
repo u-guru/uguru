@@ -1,0 +1,23 @@
+@import '../../../../../shared/css/scss/partials/mixin';
+
+.splash-pricing-props {
+	padding: 7.5px;
+	li {
+		@include flex;
+		@include flex-center;
+		padding: 7.5px;
+		.pricing-tile {
+			width: 240px;
+			&:not(.alert) {
+				border: 10px solid $charcoal;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 780px) {
+	.splash-pricing-props {
+		@include flex;
+		@include flex-center;
+	}
+}

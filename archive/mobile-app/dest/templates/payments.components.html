@@ -1,0 +1,26 @@
+<section class="full-xy bg-charcoal mobile-mode absolute"><header class="bg-slate flex-center-wrap"><h1 class="bg-charcoal full-x text-center">My Cards</h1><div class="header-nav full-x"><a class="header-close cta-modal-close" ng-click="paymentsModal.hide()"><svg viewBox="0 0 100 100"><path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path></svg></a></div></header><div class="main bg-charcoal full-y"><div class="bg-slate"><ul class="bg-slate mobile-cards-container"><!-- <li ng-click='setCardMobileToEdit(card)' ng-repeat='card in user.transfer_cards' ng-if='card.is_transfer_card || card.is_bank_account' class='p15xy'>
+          <a class='credit-card-wrapper' ng-click='editPaymentMobile(card)'>
+
+            <div class="credit-card cf" style='min-height:150px;'>
+
+                <h4 style='font-size:12px;' class='uppercase absolute top-0 left-0 m10xy' ng-if='card.is_default_transfer'><strong>Default</strong></h4>
+
+                <img src="http://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" width="80" id="visa">
+                <img class='card-chip' src="http://alfoart.com/images/golden_credit_card/chip.png" id="chip">
+                <div class="card-number">
+                  **** **** **** {{card.card_last4}}
+                </div>
+                <div class="card-name">
+                  {{user.name}}
+                </div>
+                <div class="valid">
+                  <div class="group">
+                    Valid<br>
+                    Thru
+                  </div>
+                  <div class="expiry">**/**
+                  </div>
+                </div>
+              </div>
+          </a>
+        </li> --><li name="cards" ng-repeat="card in user.transfer_cards" ng-if="card.is_transfer_card || card.is_bank_account"><a class="credit-card-wrapper" ng-click="editPaymentMobile(card)"><!-- BIND --><div id="credit-card-visa" class="credit-card cf"><!-- BIND --> <span ng-if="(card.is_payment_card || card.is_transfer_card) && card.card_type" class="card-type" ng-include="img_base + BASE + 'templates/cards/' + card.card_type + '.html'"></span> <span ng-if="(card.is_payment_card || card.is_transfer_card) && !card.card_type" class="card-type">Debit Card</span> <span ng-if="card.is_bank_account" class="card-type bg-slate txt-smoke p05xy" style="font-size:16px">Bank Account</span><div class="card-number">**** **** **** {{card.card_last4}}</div><div class="card-name">{{user.name}}</div><div class="valid"><div class="group">Valid<br>Thru</div><div class="expiry">**/**</div></div></div></a><div class="text-center" ng-if="card.is_default_transfer"><h3 class="p10xy"><strong class="uppercase txt-shamrock">Default</strong></h3></div></li></ul><button name="add_card_modal-btn" class="bg-moola semibold absolute bottom-0" ng-click="addCardModal.show()">Add Card</button></div></div></section>

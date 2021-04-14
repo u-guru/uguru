@@ -1,0 +1,1822 @@
+@import '../mixin';
+
+/* ---------- POPUPS */
+// regular popup
+.popup {
+	width: 100%;
+	max-width: 400px;
+	> div {
+		background: white;
+		border-radius: 2px;
+		color: $slate;
+		overflow: hidden;
+		header {
+			padding: 15px 15px 0;
+			text-align: center;
+			h2 {
+				font-size: 24px;
+				font-weight: 600;
+			}
+		}
+		> div {
+			padding: 5px 15px 0;
+			p {
+				margin: 0;
+				font-size: 16px;
+			}
+			.input-basic {
+				input {
+					background: $smoke;
+				}
+			}
+			&:first-child {
+				padding: 15px 15px 0;
+			}
+			&:nth-child(2):last-child {
+				padding: 5px 15px 0;
+			}
+			&:only-child {
+				padding: 15px;
+			}
+		}
+	}
+	&.with-header {
+		> div {
+			header {
+				padding: 15px;
+			}
+			> div {
+				padding: 15px 15px 0;
+				&:only-child {
+					padding: 15px;
+				}
+			}
+		}
+	}
+}
+.button-group {
+	@include flex;
+	padding: 7.5px;
+	li {
+		padding: 7.5px;
+		width: 50%;
+		button {
+			width: 100%;
+			border-radius: 2px;
+			font-size: 18px;
+			height: auto;
+			padding: 10px 15px;
+		}
+	}
+}
+
+// tour guru popup
+.popup-tour {
+	@include flex;
+	@include flex-wrap;
+	@include flex-center;
+	position: relative;
+	width: 100%;
+	max-width: 400px;
+	header {
+		@include flex;
+		@include flex-center;
+		@include round;
+		width: 150px;
+		height: 150px;
+		position: relative;
+		z-index: 1;
+		.popup-tour-guru {
+			position: relative;
+			width: 100px;
+			height: 100px;
+			z-index: 1;
+		}
+		.popup-bg-circle {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 0;
+			transform-origin: center center;
+			circle {
+				fill: $slate;
+			}
+		}
+	}
+	> div {
+		position: relative;
+		z-index: 0;
+		margin-top: -75px;
+		padding: 90px 15px 15px;
+		width: 100%;
+		background: white;
+		border-radius: 2px 2px 0 0;
+		color: $slate;
+		text-align: center;
+		h1 {
+			font-size: 24px;
+			font-weight: 600;
+		}
+		p {
+			margin: 0;
+			font-size: 16px;
+		}
+	}
+	> button {
+		width: 100%;
+		border-radius: 0 0 2px 2px;
+		height: auto;
+		padding: 10px 15px;
+		font-size: 18px;
+	}
+}
+
+/* ---------- TOOLTIPS */
+// line tooltips
+.tooltip-line {
+	display: flex;
+	position: relative;
+	z-index: 99;
+	width: 300px;
+	height: 210px;
+	> span {
+		position: relative;
+		display: block;
+		width: 10px;
+		height: 10px;
+		border-radius: 100%;
+		background: $moxie;
+		&:after {
+			content: "";
+			display: block;
+			position: absolute;
+			background: $moxie;
+			border-radius: 1000px;
+		}
+	}
+	&.tooltip-top, &.tooltip-bot {
+		justify-content: center;
+		> span {
+			&:after {
+				left: 50%;
+				margin-left: -1px;
+				width: 2px;
+				height: 100px;
+			}
+		}
+		> div {
+			left: 50%;
+			margin-left: -100px;
+		}
+	}
+	&.tooltip-top {
+		> span {
+			align-self: flex-start;
+			&:after {
+				top: 0;
+			}
+		}
+		> div {
+			top: 100px;
+		}
+	}
+	&.tooltip-bot {
+		> span {
+			align-self: flex-end;
+			&:after {
+				bottom: 0;
+			}
+		}
+		> div {
+			bottom: 100px;
+		}
+	}
+	&.tooltip-left, &.tooltip-right {
+		align-items: center;
+		align-content: center;
+		> span {
+			&:after {
+				top: 50%;
+				margin-top: -1px;
+				width: 100px;
+				height: 2px;
+			}
+		}
+		> div {
+			top: 50%;
+			margin-top: -57px;
+		}
+	}
+	&.tooltip-left {
+		justify-content: flex-start;
+		> span {
+			&:after {
+				left: 0;
+			}
+		}
+		> div {
+			left: 100px;
+		}
+	}
+	&.tooltip-right {
+		justify-content: flex-end;
+		> span {
+			&:after {
+				right: 0;
+			}
+		}
+		> div {
+			right: 100px;
+		}
+	}
+	> div {
+		position: absolute;
+		width: 200px;
+		height: 100px;
+		background: rgba(white,.9);
+		border-radius: 2px;
+		color: $slate;
+		font-size: 18px;
+		font-weight: 600;
+		overflow: hidden;
+		> span {
+			display: block;
+			padding: 10px 15px;
+		}
+		> div {
+			position: absolute;
+			background: $moxie;
+			border-radius: 1000px;
+			&:nth-child(1) {
+				top: 0;
+				left: 0;
+				width: 50%;
+				height: 2px;
+				border-radius: 1000px 0 0 1000px;
+			}
+			&:nth-child(2) {
+				top: 0;
+				right: 0;
+				width: 50%;
+				height: 2px;
+				border-radius: 0 1000px 1000px 0;
+			}
+			&:nth-child(3) {
+				top: 0;
+				right: 0;
+				width: 2px;
+				height: 50%;
+				border-radius: 1000px 1000px 0 0;
+			}
+			&:nth-child(4) {
+				bottom: 0;
+				right: 0;
+				width: 2px;
+				height: 50%;
+				border-radius: 0 0 1000px 1000px;
+			}
+			&:nth-child(5) {
+				bottom: 0;
+				right: 0;
+				width: 50%;
+				height: 2px;
+				border-radius: 0 1000px 1000px 0;
+			}
+			&:nth-child(6) {
+				bottom: 0;
+				left: 0;
+				width: 50%;
+				height: 2px;
+				border-radius: 1000px 0 0 1000px;
+			}
+			&:nth-child(7) {
+				bottom: 0;
+				left: 0;
+				width: 2px;
+				height: 50%;
+				border-radius: 1000px 1000px 0 0;
+			}
+			&:nth-child(8) {
+				top: 0;
+				left: 0;
+				width: 2px;
+				height: 50%;
+				border-radius: 0 0 1000px 1000px;
+			}
+		}
+	}
+	button {
+		height: auto;
+		padding: 10px 15px;
+		font-size: 18px;
+		border-bottom-left-radius: 2px;
+		border-bottom-right-radius: 2px;
+		line-height: 1;
+	}
+	&.tooltip-top {
+		> div {
+			> div {
+				&:nth-child(1) {
+					transform-origin: right center;
+				}
+				&:nth-child(2) {
+					transform-origin: left center;
+				}
+				&:nth-child(3) {
+					transform-origin: center top;
+				}
+				&:nth-child(4) {
+					transform-origin: center top;
+				}
+				&:nth-child(5) {
+					transform-origin: right center;
+				}
+				&:nth-child(6) {
+					transform-origin: left center;
+				}
+				&:nth-child(7) {
+					transform-origin: center top;
+				}
+				&:nth-child(8) {
+					transform-origin: center top;
+				}
+			}
+		}
+	}
+	&.tooltip-right {
+		> div {
+			> div {
+				&:nth-child(1) {
+					transform-origin: right center;
+				}
+				&:nth-child(2) {
+					transform-origin: right center;
+				}
+				&:nth-child(3) {
+					transform-origin: center bottom;
+				}
+				&:nth-child(4) {
+					transform-origin: center top;
+				}
+				&:nth-child(5) {
+					transform-origin: right center;
+				}
+				&:nth-child(6) {
+					transform-origin: right center;
+				}
+				&:nth-child(7) {
+					transform-origin: center bottom;
+				}
+				&:nth-child(8) {
+					transform-origin: center top;
+				}
+			}
+		}
+	}
+	&.tooltip-left {
+		> div {
+			> div {
+				&:nth-child(1) {
+					transform-origin: left center;
+				}
+				&:nth-child(2) {
+					transform-origin: left center;
+				}
+				&:nth-child(3) {
+					transform-origin: center top;
+				}
+				&:nth-child(4) {
+					transform-origin: center bottom;
+				}
+				&:nth-child(5) {
+					transform-origin: left center;
+				}
+				&:nth-child(6) {
+					transform-origin: left center;
+				}
+				&:nth-child(7) {
+					transform-origin: center top;
+				}
+				&:nth-child(8) {
+					transform-origin: center bottom;
+				}
+			}
+		}
+	}
+	&.tooltip-bot {
+		> div {
+			> div {
+				&:nth-child(1) {
+					transform-origin: left center;
+				}
+				&:nth-child(2) {
+					transform-origin: right center;
+				}
+				&:nth-child(3) {
+					transform-origin: center bottom;
+				}
+				&:nth-child(4) {
+					transform-origin: center bottom;
+				}
+				&:nth-child(5) {
+					transform-origin: left center;
+				}
+				&:nth-child(6) {
+					transform-origin: right center;
+				}
+				&:nth-child(7) {
+					transform-origin: center bottom;
+				}
+				&:nth-child(8) {
+					transform-origin: center bottom;
+				}
+			}
+		}
+	}
+}
+
+// regular tooltips
+.tooltip {
+	padding: 0 15px;
+	min-width: 200px;
+	div {
+		position: relative;
+		background: rgba(white,.9);
+		padding: 10px 15px;
+		border-radius: 2px;
+		color: $slate;
+		font-size: 18px;
+		font-weight: 600;
+		&:after {
+			content: "";
+			bottom: 0;
+			width: 0;
+			height: 0;
+			border: 10px solid transparent;
+		}
+	}
+	&.tooltip-top {
+		div {
+			&:after {
+				position: absolute;
+				left: 50%;
+				margin-left: -10px;
+				top: -20px;
+				border-bottom-color: rgba(white,.9);
+			}
+		}
+	}
+	&.tooltip-bot {
+		div {
+			&:after {
+				position: absolute;
+				left: 50%;
+				margin-left: -10px;
+				bottom: -20px;
+				border-top-color: rgba(white,.9);
+			}
+		}
+	}
+	&.tooltip-left {
+		div {
+			&:after {
+				position: absolute;
+				top: 50%;
+				margin-top: -10px;
+				left: -20px;
+				border-right-color: rgba(white,.9);
+			}
+		}
+	}
+	&.tooltip-right {
+		div {
+			&:after {
+				position: absolute;
+				top: 50%;
+				margin-top: -10px;
+				right: -20px;
+				border-left-color: rgba(white,.9);
+			}
+		}
+	}
+}
+
+/* ---------- TOASTS */
+.toast {
+	@include flex;
+	@include flex-wrap;
+	@include flex-center-vertical;
+	position: relative;
+	height: 76px;
+	min-width: 400px;
+	max-width: 400px;
+	border-radius: 2px;
+	padding: 0 15px;
+	color: white;
+	font-size: 18px;
+	font-weight: 600;
+	overflow: hidden;
+	border-left: 5px solid white;
+	p, q {
+		width: 100%;
+		line-height: 1.3!important;
+	}
+	p {
+		margin: 0;
+	}
+	q {
+		font-style: italic;
+		&:before {
+			content: open-quote;
+		}
+		&:after {
+			content: close-quote;
+		}
+	}
+	input {
+		display: block;
+		margin-top: 5px;
+		height: 32px;
+		padding: 0 10px;
+		border-radius: 2px;
+		color: $slate;
+		width: 100%;
+		font-size: 16px;
+		@include placeholder {
+			color: rgba($slate, .5);
+		}
+		&:focus {
+			@include placeholder {
+				color: rgba($slate, .75);
+			}
+		}
+	}
+	button {
+		background: rgba(white, .3);
+		&:hover, &:focus {
+			background: white;
+			color: lighten($slate, 15%);
+		}
+		&:active {
+			background: $charcoal!important;
+			color: white!important;
+		}
+	}
+	> button {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		border-bottom-right-radius: 2px;
+		border-top-left-radius: 2px;
+		width: 120px;
+		height: 32px;
+		padding: 0;
+		font-size: 18px;
+	}
+	.toast-overlay {
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		@include opacity(0);
+		@include flex;
+		@include flex-center;
+		visibility: hidden;
+		position: absolute;
+		z-index: 10;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		ul {
+			@include flex;
+			@include flex-center;
+			padding: 7.5px;
+			li {
+				padding: 7.5px;
+			}
+		}
+		button {
+			width: auto;
+			padding: 0 10px;
+			height: 32px;
+			font-size: 16px;
+			border-radius: 2px;
+		}
+	}
+	.close-icon {
+		@include opacity(.5);
+		@include flex;
+		@include flex-center;
+		position: absolute;
+		z-index: 11;
+		top: 0;
+		right: 0;
+		padding: 6px;
+		svg {
+			@include prefix(transform, rotate(45deg), webkit moz ms o);
+			display: block;
+			width: 16px;
+			height: 16px;
+			* {
+				@include svg-stroke(white, 10);
+			}
+		}
+		&:hover, &:focus {
+			@include opacity(.75);
+		}
+		&:active {
+			@include opacity(1);
+		}
+	}
+	.input-button {
+		@include flex;
+		margin-top: 5px;
+		input {
+			margin-top: 0;
+			width: calc(100% - 72px - 15px);
+		}
+		button {
+			display: block;
+			height: 32px;
+			width: 72px;
+			margin-left: 15px;
+			padding: 0 10px;
+			font-size: 16px;
+			border-radius: 2px;
+		}
+	}
+	.toast-svg {
+		@include round;
+		display: block;
+		margin: 0;
+		width: 46px;
+		height: 46px;
+		margin-right: 15px;
+		&[class*="user-icon"] {
+			border-width: 2px;
+		}
+		&:not([class*="user-icon"]) {
+			background-color: white;
+			padding: 5px;
+			svg {
+				* {
+					@include svg-stroke(lighten($slate, 15%), 5);
+				}
+			}
+		}
+	}
+	&:hover, &:focus {
+		.toast-overlay {
+			@include opacity(1);
+			visibility: visible;
+		}
+	}
+	&.toast-cta {
+		p, q {
+			width: calc(100% - 120px);
+		}
+	}
+	&.toast-input {
+		p {
+			font-size: 14px;
+			line-height: 1!important;
+		}
+	}
+	&.toast-icon {
+		.toast-svg + * {
+			width: calc(100% - 46px - 15px);
+		}
+	}
+	&:not(.toast-mobile) {
+		@include prefix(animation, notify-bounceInRight 1000ms ease-in-out forwards, webkit moz ms o);
+	}
+	&.toast-mobile {
+		@include prefix(animation, notify-bounceInDown 1000ms ease-in-out forwards, webkit moz ms o);
+		border-radius: 0;
+		border-width: 0;
+		width: 100%;
+		min-width: 0;
+		max-width: none;
+		height: 84px;
+		padding-bottom: 8px;
+		&:after {
+			@include opacity(.3);
+			content: "tap to reveal options";
+			display: block;
+			position: absolute;
+			bottom: 5px;
+			left: 0;
+			width: 100%;
+			font-size: 10px;
+			line-height: 1;
+			text-align: center;
+			white-space: nowrap;
+		}
+	}
+	&.bg-slate {
+		.toast-overlay {
+			background: rgba($slate, .95);
+		}
+	}
+	&.bg-smoke {
+		color: $slate;
+		border-color: $slate;
+		.toast-overlay {
+			background: rgba($smoke, .95);
+		}
+		button {
+			background: $slate;
+			&:hover, &:focus {
+				background: lighten($slate, 25%);
+				color: white;
+			}
+			&:active {
+				background: $charcoal;
+			}
+		}
+		.close-icon {
+			svg {
+				* {
+					stroke: $slate;
+				}
+			}
+		}
+	}
+	&.bg-shamrock {
+		.toast-overlay {
+			background: rgba($shamrock, .95);
+		}
+		button {
+			&:hover, &:focus {
+				color: $shamrock;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $shamrock;
+				}
+			}
+		}
+	}
+	&.txt-shamrock, &.border-shamrock {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($shamrock, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $shamrock;
+			&:hover, &:focus {
+				background: mix($shamrock, white);
+				color: mix($shamrock, $slate);
+			}
+			&:active {
+				background: mix($shamrock, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-shamrock {
+		color: $shamrock;
+		.close-icon {
+			svg {
+				* {
+					stroke: $shamrock;
+				}
+			}
+		}
+	}
+	&.bg-robin {
+		.toast-overlay {
+			background: rgba($robin, .95);
+		}
+		button {
+			&:hover, &:focus {
+				color: $robin;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $robin;
+				}
+			}
+		}
+	}
+	&.txt-robin, &.border-robin {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($robin, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $robin;
+			&:hover, &:focus {
+				background: mix($robin, white);
+				color: mix($robin, $slate);
+			}
+			&:active {
+				background: mix($robin, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-robin {
+		color: $robin;
+		.close-icon {
+			svg {
+				* {
+					stroke: $robin;
+				}
+			}
+		}
+	}
+	&.bg-lake {
+		.toast-overlay {
+			background: rgba($lake, .95);
+		}
+		button {
+			&:hover, &:focus {
+				color: $lake;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $lake;
+				}
+			}
+		}
+	}
+	&.txt-lake, &.border-lake {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($lake, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $lake;
+			&:hover, &:focus {
+				background: mix($lake, white);
+				color: mix($lake, $slate);
+			}
+			&:active {
+				background: mix($lake, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-lake {
+		color: $lake;
+		.close-icon {
+			svg {
+				* {
+					stroke: $lake;
+				}
+			}
+		}
+	}
+	&.bg-moxie {
+		.toast-overlay {
+			background: rgba($moxie, .95);
+		}
+		button {
+			&:hover, &:focus {
+				color: $moxie;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $moxie;
+				}
+			}
+		}
+	}
+	&.txt-moxie, &.border-moxie {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($moxie, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $moxie;
+			&:hover, &:focus {
+				background: mix($moxie, white);
+				color: mix($moxie, $slate);
+			}
+			&:active {
+				background: mix($moxie, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-moxie {
+		color: $moxie;
+		.close-icon {
+			svg {
+				* {
+					stroke: $moxie;
+				}
+			}
+		}
+	}
+	&.bg-crimson {
+		.toast-overlay {
+			background: rgba($crimson, .95);
+		}
+		button {
+			&:hover, &:focus {
+				color: $crimson;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $crimson;
+				}
+			}
+		}
+	}
+	&.txt-crimson, &.border-crimson {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($crimson, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $crimson;
+			&:hover, &:focus {
+				background: mix($crimson, white);
+				color: mix($crimson, $slate);
+			}
+			&:active {
+				background: mix($crimson, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-crimson {
+		color: $crimson;
+		.close-icon {
+			svg {
+				* {
+					stroke: $crimson;
+				}
+			}
+		}
+	}
+	&.bg-auburn, &.bg-delivery {
+		background: $auburn;
+		.toast-overlay {
+			background: rgba($auburn, .95);
+		}
+		button {
+			&:hover, &:focus {
+				color: $auburn;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $auburn;
+				}
+			}
+		}
+	}
+	&.txt-auburn, &.border-auburn, &.txt-delivery, &.border-delivery {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($auburn, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $auburn;
+			&:hover, &:focus {
+				background: mix($auburn, white);
+				color: mix($auburn, $slate);
+			}
+			&:active {
+				background: mix($auburn, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-auburn, &.txt-delivery {
+		color: $auburn;
+		.close-icon {
+			svg {
+				* {
+					stroke: $auburn;
+				}
+			}
+		}
+	}
+	&.bg-orange, &.bg-freelancing {
+		background: $orange;
+		.toast-overlay {
+			background: rgba($orange, .95);
+		}
+		button {
+			&:hover, &:focus {
+				color: $orange;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $orange;
+				}
+			}
+		}
+	}
+	&.txt-orange, &.border-orange, &.txt-freelancing, &.border-freelancing {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($orange, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $orange;
+			&:hover, &:focus {
+				background: mix($orange, white);
+				color: mix($orange, $slate);
+			}
+			&:active {
+				background: mix($orange, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-orange, &.txt-freelancing {
+		color: $orange;
+		.close-icon {
+			svg {
+				* {
+					stroke: $orange;
+				}
+			}
+		}
+	}
+	&.bg-gold, &.bg-baking {
+		background: $gold;
+		.toast-overlay {
+			background: rgba($gold, .95);
+		}
+		button {
+			&:hover, &:focus {
+				color: $gold;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $gold;
+				}
+			}
+		}
+	}
+	&.txt-gold, &.border-gold, &.txt-baking, &.border-baking {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($gold, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $gold;
+			&:hover, &:focus {
+				background: mix($gold, white);
+				color: mix($gold, $slate);
+			}
+			&:active {
+				background: mix($gold, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-gold, &.txt-baking {
+		color: $gold;
+		.close-icon {
+			svg {
+				* {
+					stroke: $gold;
+				}
+			}
+		}
+	}
+	&.bg-moola, &.bg-photography {
+		background: $moola;
+		.toast-overlay {
+			background: rgba($moola, .95);
+		}
+		button {
+			&:hover, &:focus {
+				color: $moola;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $moola;
+				}
+			}
+		}
+	}
+	&.txt-moola, &.border-moola, &.txt-photography, &.border-photography {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($moola, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $moola;
+			&:hover, &:focus {
+				background: mix($moola, white);
+				color: mix($moola, $slate);
+			}
+			&:active {
+				background: mix($moola, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-moola, &.txt-photogrpahy {
+		color: $moola;
+		.close-icon {
+			svg {
+				* {
+					stroke: $moola;
+				}
+			}
+		}
+	}
+	&.bg-azure, &.bg-tech {
+		background: $azure;
+		.toast-overlay {
+			background: rgba($azure, .95);
+		}
+		button {
+			&:hover, &:focus {
+				color: $azure;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $azure;
+				}
+			}
+		}
+	}
+	&.txt-azure, &.border-azure, &.txt-tech, &.border-tech {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($azure, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $azure;
+			&:hover, &:focus {
+				background: mix($azure, white);
+				color: mix($azure, $slate);
+			}
+			&:active {
+				background: mix($azure, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-azure, &.txt-tech {
+		color: $azure;
+		.close-icon {
+			svg {
+				* {
+					stroke: $azure;
+				}
+			}
+		}
+	}
+	&.bg-cobalt, &.bg-household {
+		background: $cobalt;
+		.toast-overlay {
+			background: rgba($cobalt, .95);
+		}
+		button {
+			&:hover, &:focus {
+				color: $cobalt;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $cobalt;
+				}
+			}
+		}
+	}
+	&.txt-cobalt, &.border-cobalt, &.txt-household, &.border-household {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($cobalt, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $cobalt;
+			&:hover, &:focus {
+				background: mix($cobalt, white);
+				color: mix($cobalt, $slate);
+			}
+			&:active {
+				background: mix($cobalt, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-cobalt, &.txt-household {
+		color: $cobalt;
+		.close-icon {
+			svg {
+				* {
+					stroke: $cobalt;
+				}
+			}
+		}
+	}
+	&.bg-eggplant, &.bg-athletic {
+		background: $eggplant;
+		.toast-overlay {
+			background: rgba($eggplant, .95);
+		}
+		button {
+			&:hover, &:focus {
+				color: $eggplant;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $eggplant;
+				}
+			}
+		}
+	}
+	&.txt-eggplant, &.border-eggplant, &.txt-athletic, &.border-athletic {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($eggplant, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $eggplant;
+			&:hover, &:focus {
+				background: mix($eggplant, white);
+				color: mix($eggplant, $slate);
+			}
+			&:active {
+				background: mix($eggplant, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-eggplant, &.txt-athletic {
+		color: $eggplant;
+		.close-icon {
+			svg {
+				* {
+					stroke: $eggplant;
+				}
+			}
+		}
+	}
+	&.bg-cerise, &.bg-academic {
+		background: $cerise;
+		.toast-overlay {
+			background: rgba($cerise, .95);
+		}
+		button {
+			&:hover, &:focus {
+				color: $cerise;
+			}
+		}
+		.toast-svg {
+			svg {
+				* {
+					stroke: $cerise;
+				}
+			}
+		}
+	}
+	&.txt-cerise, &.border-cerise, &.txt-academic, &.border-academic {
+		.toast-svg {
+			&:not([class*="user-icon"]) {
+				svg {
+					* {
+						@include svg-stroke($cerise, 5);
+					}
+				}
+			}
+		}
+		button {
+			background: $cerise;
+			&:hover, &:focus {
+				background: mix($cerise, white);
+				color: mix($cerise, $slate);
+			}
+			&:active {
+				background: mix($cerise, $slate)!important;
+				color: white;
+			}
+		}
+	}
+	&.txt-cerise, &.txt-academic {
+		color: $cerise;
+		.close-icon {
+			svg {
+				* {
+					stroke: $cerise;
+				}
+			}
+		}
+	}
+}
+
+/* ---------- BADGES */
+.badge-container {
+	@include flex;
+	@include flex-center;
+	position: relative;
+	font-size: 18px;
+	font-weight: 600;
+	[class*="badge"] {
+		@include flex;
+		@include flex-center;
+		position: relative;
+		top: auto;
+		left: auto;
+		right: auto;
+		border-radius: 2px;
+		min-width: 0;
+		width: 36px;
+		height: 32px;
+		color: white;
+		font-size: 18px;
+		font-weight: 600;
+		&:after {
+			content: "";
+			display: block;
+			position: absolute;
+			height: 0;
+			width: 0;
+			border: 6px solid transparent;
+		}
+		&.badge-top {
+			position: absolute;
+			left: 50%;
+			margin-left: -18px;
+			top: -40px;
+			&:after {
+				bottom: -12px;
+				left: 50%;
+				margin-left: -6px;
+				border-bottom-color: transparent!important;
+				border-left-color: transparent!important;
+				border-right-color: transparent!important;
+			}
+		}
+		&.badge-bottom {
+			position: absolute;
+			left: 50%;
+			margin-left: -18px;
+			bottom: -40px;
+			&:after {
+				top: -12px;
+				left: 50%;
+				margin-left: -6px;
+				border-top-color: transparent!important;
+				border-left-color: transparent!important;
+				border-right-color: transparent!important;
+			}
+		}
+		&.badge-left {
+			margin-right: 12px;
+			&:after {
+				top: 50%;
+				margin-top: -6px;
+				right: -12px;
+				border-top-color: transparent!important;
+				border-bottom-color: transparent!important;
+				border-right-color: transparent!important;
+			}
+		}
+		&.badge-right {
+			margin-left: 12px;
+			&:after {
+				top: 50%;
+				margin-top: -6px;
+				left: -12px;
+				border-top-color: transparent!important;
+				border-bottom-color: transparent!important;
+				border-left-color: transparent!important;
+			}
+		}
+		&.bg-charcoal {
+			background: $charcoal;
+			&:after {
+				border-color: $charcoal;
+			}
+		}
+		&.bg-slate {
+			background: $slate;
+			&:after {
+				border-color: $slate;
+			}
+		}
+		&.bg-taupe {
+			background: $taupe;
+			&:after {
+				border-color: $taupe;
+			}
+		}
+		&.bg-campus {
+			background: $campus;
+			&:after {
+				border-color: $campus;
+			}
+		}
+		&.bg-shamrock {
+			background: $shamrock;
+			&:after {
+				border-color: $shamrock;
+			}
+		}
+		&.bg-robin {
+			background: $robin;
+			&:after {
+				border-color: $robin;
+			}
+		}
+		&.bg-lake {
+			background: $lake;
+			&:after {
+				border-color: $lake;
+			}
+		}
+		&.bg-moxie {
+			background: $moxie;
+			&:after {
+				border-color: $moxie;
+			}
+		}
+		&.bg-crimson {
+			background: $crimson;
+			&:after {
+				border-color: $crimson;
+			}
+		}
+		&.bg-auburn, &.bg-delivery {
+			background: $auburn;
+			&:after {
+				border-color: $auburn;
+			}
+		}
+		&.bg-orange, &.bg-freelancing {
+			background: $orange;
+			&:after {
+				border-color: $orange;
+			}
+		}
+		&.bg-gold, &.bg-baking {
+			background: $gold;
+			&:after {
+				border-color: $gold;
+			}
+		}
+		&.bg-moola, &.bg-photography {
+			background: $moola;
+			&:after {
+				border-color: $moola;
+			}
+		}
+		&.bg-azure, &.bg-tech {
+			background: $azure;
+			&:after {
+				border-color: $azure;
+			}
+		}
+		&.bg-cobalt, &.bg-household {
+			background: $cobalt;
+			&:after {
+				border-color: $cobalt;
+			}
+		}
+		&.bg-eggplant, &.bg-athletic {
+			background: $eggplant;
+			&:after {
+				border-color: $eggplant;
+			}
+		}
+		&.bg-cerise, &.bg-academic {
+			background: $cerise;
+			&:after {
+				border-color: $cerise;
+			}
+		}
+	}
+	&[class*="click"] {
+		&:hover, &:focus {
+			[class*="badge"] {
+				&.bg-charcoal {
+					background: mix($charcoal, white);
+					color: $charcoal;
+					&:after {
+						border-color: mix($charcoal, white);
+					}
+				}
+				&.bg-slate {
+					background: mix($slate, white);
+					color: $slate;
+					&:after {
+						border-color: mix($slate, white);
+					}
+				}
+				&.bg-taupe {
+					background: mix($taupe, white);
+					color: mix($taupe, $slate);
+					&:after {
+						border-color: mix($taupe, white);
+					}
+				}
+				&.bg-campus {
+					background: mix($campus, white);
+					color: mix($campus, $slate);
+					&:after {
+						border-color: mix($campus, white);
+					}
+				}
+				&.bg-shamrock {
+					background: mix($shamrock, white);
+					color: mix($shamrock, $slate);
+					&:after {
+						border-color: mix($shamrock, white);
+					}
+				}
+				&.bg-robin {
+					background: mix($robin, white);
+					color: mix($robin, $slate);
+					&:after {
+						border-color: mix($robin, white);
+					}
+				}
+				&.bg-lake {
+					background: mix($lake, white);
+					color: mix($lake, $slate);
+					&:after {
+						border-color: mix($lake, white);
+					}
+				}
+				&.bg-moxie {
+					background: mix($moxie, white);
+					color: mix($moxie, $slate);
+					&:after {
+						border-color: mix($moxie, white);
+					}
+				}
+				&.bg-crimson {
+					background: mix($crimson, white);
+					color: mix($crimson, $slate);
+					&:after {
+						border-color: mix($crimson, white);
+					}
+				}
+				&.bg-auburn, &.bg-delivery {
+					background: mix($auburn, white);
+					color: mix($auburn, $slate);
+					&:after {
+						border-color: mix($auburn, white);
+					}
+				}
+				&.bg-orange, &.bg-freelancing {
+					background: mix($orange, white);
+					color: mix($orange, $slate);
+					&:after {
+						border-color: mix($orange, white);
+					}
+				}
+				&.bg-gold, &.bg-baking {
+					background: mix($gold, white);
+					color: mix($gold, $slate);
+					&:after {
+						border-color: mix($gold, white);
+					}
+				}
+				&.bg-moola, &.bg-photography {
+					background: mix($moola, white);
+					color: mix($moola, $slate);
+					&:after {
+						border-color: mix($moola, white);
+					}
+				}
+				&.bg-azure, &.bg-tech {
+					background: mix($azure, white);
+					color: mix($azure, $slate);
+					&:after {
+						border-color: mix($azure, white);
+					}
+				}
+				&.bg-cobalt, &.bg-household {
+					background: mix($cobalt, white);
+					color: mix($cobalt, $slate);
+					&:after {
+						border-color: mix($cobalt, white);
+					}
+				}
+				&.bg-eggplant, &.bg-athletic {
+					background: mix($eggplant, white);
+					color: mix($eggplant, $slate);
+					&:after {
+						border-color: mix($eggplant, white);
+					}
+				}
+				&.bg-cerise, &.bg-academic {
+					background: mix($cerise, white);
+					color: mix($cerise, $slate);
+					&:after {
+						border-color: mix($cerise, white);
+					}
+				}
+			}
+		}
+		&:active {
+			[class*="badge"] {
+				&.bg-charcoal {
+					background: mix($slate, white, 75%);
+					color: white;
+					&:after {
+						border-color: mix($slate, white, 75%);
+					}
+				}
+				&.bg-slate {
+					background: mix($slate, white, 70%);
+					color: white;
+					&:after {
+						border-color: mix($slate, white, 70%);
+					}
+				}
+				&.bg-taupe {
+					background: mix($taupe, white, 75%);
+					color: white;
+					&:after {
+						border-color: mix($taupe, white, 75%);
+					}
+				}
+				&.bg-campus {
+					background: mix($campus, $slate);
+					color: white;
+					&:after {
+						border-color: mix($campus, $slate);
+					}
+				}
+				&.bg-shamrock {
+					background: mix($shamrock, $slate);
+					color: white;
+					&:after {
+						border-color: mix($shamrock, $slate);
+					}
+				}
+				&.bg-robin {
+					background: mix($robin, $slate);
+					color: white;
+					&:after {
+						border-color: mix($robin, $slate);
+					}
+				}
+				&.bg-lake {
+					background: mix($lake, $slate);
+					color: white;
+					&:after {
+						border-color: mix($lake, $slate);
+					}
+				}
+				&.bg-moxie {
+					background: mix($moxie, $slate);
+					color: white;
+					&:after {
+						border-color: mix($moxie, $slate);
+					}
+				}
+				&.bg-crimson {
+					background: mix($crimson, $slate);
+					color: white;
+					&:after {
+						border-color: mix($crimson, $slate);
+					}
+				}
+				&.bg-auburn, &.bg-delivery {
+					background: mix($auburn, $slate);
+					color: white;
+					&:after {
+						border-color: mix($auburn, $slate);
+					}
+				}
+				&.bg-orange, &.bg-freelancing {
+					background: mix($orange, $slate);
+					color: white;
+					&:after {
+						border-color: mix($orange, $slate);
+					}
+				}
+				&.bg-gold, &.bg-baking {
+					background: mix($gold, $slate);
+					color: white;
+					&:after {
+						border-color: mix($gold, $slate);
+					}
+				}
+				&.bg-moola, &.bg-photography {
+					background: mix($moola, $slate);
+					color: white;
+					&:after {
+						border-color: mix($moola, $slate);
+					}
+				}
+				&.bg-azure, &.bg-tech {
+					background: mix($azure, $slate);
+					color: white;
+					&:after {
+						border-color: mix($azure, $slate);
+					}
+				}
+				&.bg-cobalt, &.bg-household {
+					background: mix($cobalt, $slate);
+					color: white;
+					&:after {
+						border-color: mix($cobalt, $slate);
+					}
+				}
+				&.bg-eggplant, &.bg-athletic {
+					background: mix($eggplant, $slate);
+					color: white;
+					&:after {
+						border-color: mix($eggplant, $slate);
+					}
+				}
+				&.bg-cerise, &.bg-academic {
+					background: mix($cerise, $slate);
+					color: white;
+					&:after {
+						border-color: mix($cerise, $slate);
+					}
+				}
+			}
+		}
+	}
+}

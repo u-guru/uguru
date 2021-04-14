@@ -1,0 +1,1 @@
+<input id="range" class="range-price" type="range" min="5" max="25" value="15">

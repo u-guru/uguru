@@ -1,0 +1,84 @@
+<div class='bg-cerise txt-white full-xy'>
+
+	<main class='absolute top-0 left-0 flex-wrap-center flex-stretch relative full-xy bg-charcoal-50p' style='height:90%'>
+		<header class='p15xy full-x flex-vertical-center' style='height:10%'>
+			<h1 class='text-center txt-24'> Switches Playground <br> <span class='weight-600 txt-48'>Example #{{activeExample.id}}</span>
+      </h1>
+		</header>
+		<main class='bg-charcoal full-x flex-wrap-center' style='height:90%'>
+			<div ng-if='activeExample.id === 1'>
+				<div class='flex-wrap-center full-x flex-vertical-center'>
+					<div>
+						<div class='border-dashed border-2 bg-azure border-white opacity-50' style="width:200px; height:200px;"
+							on-mouse-enter="trigger:[switch:self]"
+							on-mouse-leave="trigger:[switch:self]"
+							switch
+							switch-on="p:[op:1]"
+							switch-off="p:[op:0.5]">
+						</div>
+					</div>
+					<div>
+						<div on-click="send:[toggle-square-switch:public]" class='bg-slate p15-grid m10xy'> Brighten lights by hovering </div>
+						<div class='opacity-50 txt-smoke txt-1 txt-center'> And inspect the code of course </div>
+					</div>
+				</div>
+			</div>
+			<div ng-if='activeExample.id === 2'>
+				<div class='flex-wrap-center'>
+					<square class='opacity-50'
+						when-toggle-square-switch="trigger:[switch:self]"
+						init-with='p-op|trigger:[switch:self]'
+						switch
+						switch-on="p:[op:1]"
+						switch-off="p-op">
+					</square>
+					<a on-click="send:[toggle-square-switch:public]" class='bg-moxie p15-grid m10xy'> External Switch </a>
+				</div>
+			</div>
+			<div ng-if='activeExample.id === 3'>
+				<div class='opacity-50 animated bg-cerise' style='width:100px; height:100px;'
+					init-default
+					switches="[bounce, lightSpeed, fade, test]"
+
+					switch-test-on="t:[switch:fade]"
+					switch-test-off="t:[switch:fade]"
+
+					switch-bounce-on="anim:[bounceInDown:set:(animation-duration:1s):in]"
+					switch-bounce-off="anim:[bounceOutUp:set:(animation-duration:1s):out]"
+					switch-fade-on="anim:[fadeInDown:set:(animation-duration:1s):in]"
+					switch-fade-off="anim:[fadeOutUp:set:(animation-duration:1s):in]" switch-lightspeed-on="anim:[lightSpeedIn:set:(animation-duration:1s):in]" switch-lightspeed-off="anim:[fadeOutUp:set:(animation-duration:1s):in]"
+
+					when-test-clicked="t:[switch:test]"
+					when-fade-btn-clicked="trigger:[switch:fade]"
+					when-lightspeed-btn-clicked="trigger:[switch:lightSpeed]"
+					when-bounce-btn-clicked="trigger:[switch:bounce]">
+				</div>
+				<a on-click="send:[bounce-btn-clicked:public]" class='bg-moxie p15-grid m10xy'>Trigger bounce</a>
+				<a on-click="send:[lightspeed-btn-clicked:public]" class='bg-moxie p15-grid m10xy'>Trigger LightSpeed</a>
+				<a on-click="send:[fade-btn-clicked:public]" class='bg-moxie p15-grid m10xy'>Trigger fade</a>
+				<a on-click="s:[test-clicked:public]">test</a>
+			</div>
+			<div ng-if='activeExample.id === 4'>
+			</div>
+			<div ng-if='activeExample.id === 5'>
+			</div>
+		</main>
+
+	</main>
+	<div class='absolute bottom-0 left-0 flex bg-slate txt-white full-x p15-grid' ng-if='examples.length'>
+		<ul class="flex-center-vertical p15-grid overflow-x no-scrollbar" style="width: calc(100%)">
+			<li>
+				<a class='block bg-slate border-dashed border-2 border-cerise bg-charcoal p10xy m05x txt-white p10xy' target='_blank' href='{{swiperOptions.ref}}'>
+					<h1 class='full-x txt-4 weight-600'> Docs</h1>
+				</a>
+			</li>
+			<li ng-repeat='ex in examples' ng-class='{"bg-azure": $index === activeExample.id-1}'>
+				<a ng-click='setActiveExample($index)' class='block p10xy border-slate border-1 bg-charcoal txt-white'>Example #{{ex.id}}</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+
+<!-- Best practice: no defaults! -->
+<!-- Best practice:  -->

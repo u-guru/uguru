@@ -1,0 +1,554 @@
+<div class="chalkboard-container chalkboard-onboarding chalkboard-courses">
+	<div class="chalkboard-slide">
+	    <div class="chalkboard-border">
+			<div class="chalkboard-content">
+				<div class"chalkboard-onboarding-container">
+					<!-- <div class="chalkboard-onboarding-header">
+						<h1>Courses</h1>
+					</div> -->
+					<div class="chalkboard-onboarding-search">
+						<form>
+							<div class="input-border large no-label"
+								u on-click="s:[input-border-enter:public]">
+								<input class="input-border light" type="search" required placeholder=""
+									u on-focus="s:[input-focus:public]"
+									on-blur="s:[input-blur:public]"
+									on-mouse-enter="s:[input-hover:public]"
+									on-mouse-leave="s:[input-leave:public]"/>
+								<label>
+									<svg class="input-icon" viewBox="0 0 100 100">
+										<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+											<path d="M62.994485,62.994485 L85.6624699,85.6624699"
+												u init-with="p:[sda:32.1, sdo:32.1]"
+												when-input-border-enter="a:[stroke-dashoffset:32.1:0:75:easeOutExpo:150:1:f]"></path>
+												<!-- on-init="a:[stroke-dashoffset:32.1:0:75:easeOutExpo:150:1:f]" -->
+											<circle cx="42.5" cy="42.5" r="28.5"
+												u init-with="p:[sda:179.1, sdo:179.1]"
+												on-init="a:[stroke-dashoffset:179.1:0:250:easeInExpo:100:1:f]"></circle>
+										</g>
+									</svg>
+									<span class="label"
+										u init-with="p:[opacity:0, transform:rotateX(90deg), transform-origin:bottom center]"
+										on-init="a:[opacity:0:1:250:easeOutExpo:200:1:f, rotateX:90deg:0deg:250:easeOutExpo:300:1:f]">Search for courses</span>
+									<span class="input"
+										u init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+									<div class="underline">
+										<div u init-with="p:[transform:scaleX(90deg), transform-origin:left center]"
+											on-init="a:[scaleX:0:1:250:easeOutExpo:100:1:f]"></div>
+										<div></div>
+									</div>
+									<div class="borders">
+										<div><div></div><div></div></div>
+										<div><div></div><div></div></div>
+										<div><div></div><div></div></div>
+										<div><div></div><div></div></div>
+									</div>
+									<a>
+										<svg viewBox="0 0 100 100">
+											<circle cx="50" cy="50" r="36"></circle>
+											<path d="M62.7279221,37.2720779 L37.2720779,62.7279221"></path>
+											<path d="M37.2720779,37.2720779 L62.7279221,62.7279221"></path>
+										</svg>
+									</a>
+								</label>
+							</div>
+						</form>
+
+						<!-- desktop -->
+						<ul class="desktop">
+							<li class="perspective-container">
+								<div class="course-card mini"
+									u init-with="p:[op:0]"
+									on-click="s:[course-card-init:public] | a:[scoop-enter:800:(0,0.2,0.3,1):0:1:f]">
+									<svg width="240px" height="150px" viewBox="0 0 240 150">
+										<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+									</svg>
+									<input type="checkbox" checked/>
+									<div class="course-card-inside"
+										u init-with="p:[op:0]"
+										on-init="a:[bounceInUp-subtle:1000:linear:150:1:f]">
+										<!-- u init-with="p:[op:0]"
+										when-course-card-init="a:[bounceInUp-subtle:1000:linear:150:1:f]" -->
+										<h2 style="color: #003262;">BIO 1A</h2>
+										<h1 style="color: #003262;">Introduction to Biology</h1>
+									</div>
+									<div class="course-card-border" style="background: #003262;"></div>
+									<div class="course-card-count-container" u init-with="p:[op:0, transform-origin:right top]"
+										on-init="a:[bounceInUp-subtle:1000:linear:250:1:f]">
+										<span class="course-card-count">
+											<span style="background: #003262;"></span>
+											<svg viewBox="0 0 100 100">
+												<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+											</svg>
+										</span>
+									</div>
+								</div>
+							</li>
+							<li class="perspective-container">
+								<div class="course-card mini"
+									u init-with="p:[op:0]"
+									when-course-card-init="a:[scoop-enter:800:(0,0.2,0.3,1):100:1:f]">
+									<svg width="240px" height="150px" viewBox="0 0 240 150">
+										<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+									</svg>
+									<input type="checkbox" checked/>
+									<div class="course-card-inside"
+										u init-with="p:[op:0]"
+										when-course-card-init="a:[bounceInUp-subtle:1000:linear:250:1:f]">
+										<!-- u init-with="p:[op:0]"
+										when-course-card-init="a:[bounceInUp-subtle:1000:linear:150:1:f]" -->
+										<h2 style="color: #003262;">BIO 1A</h2>
+										<h1 style="color: #003262;">Introduction to Biology</h1>
+									</div>
+									<div class="course-card-border" style="background: #003262;"></div>
+									<div class="course-card-count-container" u init-with="p:[op:0, transform-origin:right top]"
+										when-course-card-init="a:[bounceInUp-subtle:1000:linear:350:1:f]">
+										<span class="course-card-count">
+											<span style="background: #003262;"></span>
+											<svg viewBox="0 0 100 100">
+												<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+											</svg>
+										</span>
+									</div>
+								</div>
+							</li>
+							<li class="perspective-container">
+								<div class="course-card mini"
+									u init-with="p:[op:0]"
+									on-init="a:[scoop-enter:800:easeOutQuad:200:1:f]">
+									<svg width="240px" height="150px" viewBox="0 0 240 150">
+										<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+									</svg>
+									<input type="checkbox" checked/>
+									<div class="course-card-inside"
+										u init-with="p:[op:0]"
+										on-init="a:[bounceInUp-subtle:1000:linear:350:1:f]">
+										<!-- u init-with="p:[op:0]"
+										when-course-card-init="a:[bounceInUp-subtle:1000:linear:150:1:f]" -->
+										<h2 style="color: #003262;">BIO 1A</h2>
+										<h1 style="color: #003262;">Introduction to Biology</h1>
+									</div>
+									<div class="course-card-border" style="background: #003262;"></div>
+									<div class="course-card-count-container" u init-with="p:[op:0, transform-origin:right top]"
+										on-init="a:[bounceInUp-subtle:1000:linear:450:1:f]">
+										<span class="course-card-count">
+											<span style="background: #003262;"></span>
+											<svg viewBox="0 0 100 100">
+												<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+											</svg>
+										</span>
+									</div>
+								</div>
+							</li>
+							<li class="perspective-container">
+								<div class="course-card mini"
+									u init-with="p:[op:0]"
+									on-init="a:[scoop-enter:800:(0,0.2,0.3,1):300:1:f]">
+									<svg width="240px" height="150px" viewBox="0 0 240 150">
+										<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+									</svg>
+									<input type="checkbox" checked/>
+									<div class="course-card-inside"
+										u init-with="p:[op:0]"
+										on-init="a:[bounceInUp-subtle:1000:linear:450:1:f]">
+										<!-- u init-with="p:[op:0]"
+										when-course-card-init="a:[bounceInUp-subtle:1000:linear:150:1:f]" -->
+										<h2 style="color: #003262;">BIO 1A</h2>
+										<h1 style="color: #003262;">Introduction to Biology</h1>
+									</div>
+									<div class="course-card-border" style="background: #003262;"></div>
+									<div class="course-card-count-container" u init-with="p:[op:0, transform-origin:right top]"
+										on-init="a:[bounceInUp-subtle:1000:linear:550:1:f]">
+										<span class="course-card-count">
+											<span style="background: #003262;"></span>
+											<svg viewBox="0 0 100 100">
+												<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+											</svg>
+										</span>
+									</div>
+								</div>
+							</li>
+							<li class="perspective-container">
+								<div class="course-card mini"
+									u init-with="p:[op:0]"
+									on-init="a:[scoop-enter:800:(0,0.2,0.3,1):500:1:f]">
+									<svg width="240px" height="150px" viewBox="0 0 240 150">
+										<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+									</svg>
+									<input type="checkbox" checked/>
+									<div class="course-card-inside"
+										u init-with="p:[op:0]"
+										on-init="a:[bounceInUp-subtle:1000:linear:650:1:f]">
+										<!-- u init-with="p:[op:0]"
+										when-course-card-init="a:[bounceInUp-subtle:1000:linear:150:1:f]" -->
+										<h2 style="color: #003262;">BIO 1A</h2>
+										<h1 style="color: #003262;">Introduction to Biology</h1>
+									</div>
+									<div class="course-card-border" style="background: #003262;"></div>
+									<div class="course-card-count-container" u init-with="p:[op:0, transform-origin:right top]"
+										on-init="a:[bounceInUp-subtle:1000:linear:750:1:f]">
+										<span class="course-card-count">
+											<span style="background: #003262;"></span>
+											<svg viewBox="0 0 100 100">
+												<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+											</svg>
+										</span>
+									</div>
+								</div>
+							</li>
+							<li class="perspective-container">
+								<div class="course-card mini"
+									u init-with="p:[op:0]"
+									on-init="a:[scoop-enter:800:(0,0.2,0.3,1):600:1:f]">
+									<svg width="240px" height="150px" viewBox="0 0 240 150">
+										<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+									</svg>
+									<input type="checkbox" checked/>
+									<div class="course-card-inside"
+										u init-with="p:[op:0]"
+										on-init="a:[bounceInUp-subtle:1000:linear:750:1:f]">
+										<!-- u init-with="p:[op:0]"
+										when-course-card-init="a:[bounceInUp-subtle:1000:linear:150:1:f]" -->
+										<h2 style="color: #003262;">BIO 1A</h2>
+										<h1 style="color: #003262;">Introduction to Biology</h1>
+									</div>
+									<div class="course-card-border" style="background: #003262;"></div>
+									<div class="course-card-count-container" u init-with="p:[op:0, transform-origin:right top]"
+										on-init="a:[bounceInUp-subtle:1000:linear:850:1:f]">
+										<span class="course-card-count">
+											<span style="background: #003262;"></span>
+											<svg viewBox="0 0 100 100">
+												<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+											</svg>
+										</span>
+									</div>
+								</div>
+							</li>
+						</ul>
+
+						<!-- large mobile -->
+						<ul class="large">
+							<li class="perspective-container">
+								<div class="course-card mini"
+									init-with="p-op"
+									on-init="s:[course-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
+									<svg width="240px" height="150px" viewBox="0 0 240 150">
+										<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+									</svg>
+									<input type="checkbox" checked/>
+									<div class="course-card-inside"
+										init-with="p-op"
+										when-course-card-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-150]">
+										<h2 style="color: #003262;">BIO 1A</h2>
+										<h1 style="color: #003262;">Introduction to Biology</h1>
+									</div>
+									<div class="course-card-border" style="background: #003262;"></div>
+									<div class="course-card-count-container" init-with="p:[op:0, tro:right top]"
+										when-course-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-250]">
+										<span class="course-card-count">
+											<span style="background: #003262;"></span>
+											<svg viewBox="0 0 100 100">
+												<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+											</svg>
+										</span>
+									</div>
+								</div>
+							</li>
+							<li class="perspective-container">
+								<div class="course-card mini"
+									init-with="p-op"
+									on-init="s:[course-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
+									<svg width="240px" height="150px" viewBox="0 0 240 150">
+										<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+									</svg>
+									<input type="checkbox" checked/>
+									<div class="course-card-inside"
+										init-with="p-op"
+										when-course-card-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-150]">
+										<h2 style="color: #003262;">BIO 1A</h2>
+										<h1 style="color: #003262;">Introduction to Biology</h1>
+									</div>
+									<div class="course-card-border" style="background: #003262;"></div>
+									<div class="course-card-count-container" init-with="p:[op:0, tro:right top]"
+										when-course-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-250]">
+										<span class="course-card-count">
+											<span style="background: #003262;"></span>
+											<svg viewBox="0 0 100 100">
+												<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+											</svg>
+										</span>
+									</div>
+								</div>
+							</li>
+							<li class="perspective-container">
+								<div class="course-card mini"
+									init-with="p-op"
+									on-init="s:[course-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
+									<svg width="240px" height="150px" viewBox="0 0 240 150">
+										<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+									</svg>
+									<input type="checkbox" checked/>
+									<div class="course-card-inside"
+										init-with="p-op"
+										when-course-card-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-150]">
+										<h2 style="color: #003262;">BIO 1A</h2>
+										<h1 style="color: #003262;">Introduction to Biology</h1>
+									</div>
+									<div class="course-card-border" style="background: #003262;"></div>
+									<div class="course-card-count-container" init-with="p:[op:0, tro:right top]"
+										when-course-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-250]">
+										<span class="course-card-count">
+											<span style="background: #003262;"></span>
+											<svg viewBox="0 0 100 100">
+												<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+											</svg>
+										</span>
+									</div>
+								</div>
+							</li>
+							<li class="perspective-container">
+								<div class="course-card mini"
+									init-with="p-op"
+									on-init="s:[course-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
+									<svg width="240px" height="150px" viewBox="0 0 240 150">
+										<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+									</svg>
+									<input type="checkbox" checked/>
+									<div class="course-card-inside"
+										init-with="p-op"
+										when-course-card-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-150]">
+										<h2 style="color: #003262;">BIO 1A</h2>
+										<h1 style="color: #003262;">Introduction to Biology</h1>
+									</div>
+									<div class="course-card-border" style="background: #003262;"></div>
+									<div class="course-card-count-container" init-with="p:[op:0, tro:right top]"
+										when-course-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-250]">
+										<span class="course-card-count">
+											<span style="background: #003262;"></span>
+											<svg viewBox="0 0 100 100">
+												<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+											</svg>
+										</span>
+									</div>
+								</div>
+							</li>
+							<li class="perspective-container">
+								<div class="course-card mini"
+									init-with="p-op"
+									on-init="s:[course-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
+									<svg width="240px" height="150px" viewBox="0 0 240 150">
+										<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+									</svg>
+									<input type="checkbox" checked/>
+									<div class="course-card-inside"
+										init-with="p-op"
+										when-course-card-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-150]">
+										<h2 style="color: #003262;">BIO 1A</h2>
+										<h1 style="color: #003262;">Introduction to Biology</h1>
+									</div>
+									<div class="course-card-border" style="background: #003262;"></div>
+									<div class="course-card-count-container" init-with="p:[op:0, tro:right top]"
+										when-course-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-250]">
+										<span class="course-card-count">
+											<span style="background: #003262;"></span>
+											<svg viewBox="0 0 100 100">
+												<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+											</svg>
+										</span>
+									</div>
+								</div>
+							</li>
+							<li class="perspective-container">
+								<div class="course-card mini"
+									init-with="p-op"
+									on-init="s:[course-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
+									<svg width="240px" height="150px" viewBox="0 0 240 150">
+										<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+									</svg>
+									<input type="checkbox" checked/>
+									<div class="course-card-inside"
+										init-with="p-op"
+										when-course-card-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-150]">
+										<h2 style="color: #003262;">BIO 1A</h2>
+										<h1 style="color: #003262;">Introduction to Biology</h1>
+									</div>
+									<div class="course-card-border" style="background: #003262;"></div>
+									<div class="course-card-count-container" init-with="p:[op:0, tro:right top]"
+										when-course-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-250]">
+										<span class="course-card-count">
+											<span style="background: #003262;"></span>
+											<svg viewBox="0 0 100 100">
+												<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+											</svg>
+										</span>
+									</div>
+								</div>
+							</li>
+						</ul>
+
+						<!-- mobile -->
+						<ul class="mobile">
+							<li class="perspective-container">
+								<div class="course-card short"
+									init-with="p-op"
+									on-init="s:[course-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
+									<svg width="240px" height="50px" viewBox="0 0 240 50">
+										<rect x="0" y="0" width="240" height="50" fill="none"></rect>
+									</svg>
+									<input type="checkbox" checked/>
+									<div class="course-card-inside"
+										init-with="p-op"
+										when-course-card-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-150]">
+										<h2 style="color: #003262;">BIO 1A</h2>
+										<h1 style="color: #003262;">Introduction to Biology</h1>
+									</div>
+									<div class="course-card-border" style="background: #003262;"></div>
+									<div class="course-card-count-container" init-with="p:[op:0, tro:right top]"
+										when-course-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-250]">
+										<span class="course-card-count">
+											<span style="background: #003262;"></span>
+											<svg viewBox="0 0 100 100">
+												<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+											</svg>
+										</span>
+									</div>
+								</div>
+							</li>
+							<li class="perspective-container">
+								<div class="course-card short"
+									init-with="p-op"
+									on-init="s:[course-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
+									<svg width="240px" height="50px" viewBox="0 0 240 50">
+										<rect x="0" y="0" width="240" height="50" fill="none"></rect>
+									</svg>
+									<input type="checkbox" checked/>
+									<div class="course-card-inside"
+										init-with="p-op"
+										when-course-card-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-150]">
+										<h2 style="color: #003262;">BIO 1A</h2>
+										<h1 style="color: #003262;">Introduction to Biology</h1>
+									</div>
+									<div class="course-card-border" style="background: #003262;"></div>
+									<div class="course-card-count-container" init-with="p:[op:0, tro:right top]"
+										when-course-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-250]">
+										<span class="course-card-count">
+											<span style="background: #003262;"></span>
+											<svg viewBox="0 0 100 100">
+												<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+											</svg>
+										</span>
+									</div>
+								</div>
+							</li>
+							<li class="perspective-container">
+								<div class="course-card short"
+									init-with="p-op"
+									on-init="s:[course-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
+									<svg width="240px" height="50px" viewBox="0 0 240 50">
+										<rect x="0" y="0" width="240" height="50" fill="none"></rect>
+									</svg>
+									<input type="checkbox" checked/>
+									<div class="course-card-inside"
+										init-with="p-op"
+										when-course-card-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-150]">
+										<h2 style="color: #003262;">BIO 1A</h2>
+										<h1 style="color: #003262;">Introduction to Biology</h1>
+									</div>
+									<div class="course-card-border" style="background: #003262;"></div>
+									<div class="course-card-count-container" init-with="p:[op:0, tro:right top]"
+										when-course-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-250]">
+										<span class="course-card-count">
+											<span style="background: #003262;"></span>
+											<svg viewBox="0 0 100 100">
+												<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+											</svg>
+										</span>
+									</div>
+								</div>
+							</li>
+							<li class="perspective-container">
+								<div class="course-card short"
+									init-with="p-op"
+									on-init="s:[course-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
+									<svg width="240px" height="50px" viewBox="0 0 240 50">
+										<rect x="0" y="0" width="240" height="50" fill="none"></rect>
+									</svg>
+									<input type="checkbox" checked/>
+									<div class="course-card-inside"
+										init-with="p-op"
+										when-course-card-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-150]">
+										<h2 style="color: #003262;">BIO 1A</h2>
+										<h1 style="color: #003262;">Introduction to Biology</h1>
+									</div>
+									<div class="course-card-border" style="background: #003262;"></div>
+									<div class="course-card-count-container" init-with="p:[op:0, tro:right top]"
+										when-course-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-250]">
+										<span class="course-card-count">
+											<span style="background: #003262;"></span>
+											<svg viewBox="0 0 100 100">
+												<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+											</svg>
+										</span>
+									</div>
+								</div>
+							</li>
+							<li class="perspective-container">
+								<div class="course-card short"
+									init-with="p-op"
+									on-init="s:[course-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
+									<svg width="240px" height="50px" viewBox="0 0 240 50">
+										<rect x="0" y="0" width="240" height="50" fill="none"></rect>
+									</svg>
+									<input type="checkbox" checked/>
+									<div class="course-card-inside"
+										init-with="p-op"
+										when-course-card-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-150]">
+										<h2 style="color: #003262;">BIO 1A</h2>
+										<h1 style="color: #003262;">Introduction to Biology</h1>
+									</div>
+									<div class="course-card-border" style="background: #003262;"></div>
+									<div class="course-card-count-container" init-with="p:[op:0, tro:right top]"
+										when-course-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-250]">
+										<span class="course-card-count">
+											<span style="background: #003262;"></span>
+											<svg viewBox="0 0 100 100">
+												<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+											</svg>
+										</span>
+									</div>
+								</div>
+							</li>
+							<li class="perspective-container">
+								<div class="course-card short"
+									init-with="p-op"
+									on-init="s:[course-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
+									<svg width="240px" height="50px" viewBox="0 0 240 50">
+										<rect x="0" y="0" width="240" height="50" fill="none"></rect>
+									</svg>
+									<input type="checkbox" checked/>
+									<div class="course-card-inside"
+										init-with="p-op"
+										when-course-card-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-150]">
+										<h2 style="color: #003262;">BIO 1A</h2>
+										<h1 style="color: #003262;">Introduction to Biology</h1>
+									</div>
+									<div class="course-card-border" style="background: #003262;"></div>
+									<div class="course-card-count-container" init-with="p:[op:0, tro:right top]"
+										when-course-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-250]">
+										<span class="course-card-count">
+											<span style="background: #003262;"></span>
+											<svg viewBox="0 0 100 100">
+												<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+											</svg>
+										</span>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	    <div class="chalkboard-bottom"></div>
+	</div>
+</div>

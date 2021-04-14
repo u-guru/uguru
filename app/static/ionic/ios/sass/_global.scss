@@ -1,0 +1,1596 @@
+
+/**
+ * Global Components
+ * --------------------------------------------------
+ */
+
+@font-face {
+  font-family: "OpenSans-Bold";
+  src: url("../fonts/OpenSans-Bold.ttf");
+  font-weight: normal;
+  font-style: normal; 
+}
+
+@font-face {
+  font-family: "OpenSans-Regular";
+  src: url("../fonts/OpenSans-Regular.ttf");
+  font-weight: normal;
+  font-style: normal; 
+}
+
+@font-face {
+  font-family: "OpenSans-Semibold";
+  src: url("../fonts/OpenSans-Semibold.ttf");
+  font-weight: normal;
+  font-style: normal; 
+}
+
+@font-face {
+  font-family: "OpenSans-Light";
+  src: url("../fonts/OpenSans-Light.ttf");
+  font-weight: normal;
+  font-style: normal; 
+}
+
+p {
+  font-family: "OpenSans-Regular";
+  color:rgba(0,0,0,0.6);
+  font-size:13px;
+}
+
+.font-15 {
+  font-size:15px;
+}
+
+.font-24 {
+  font-size:24px; 
+}
+
+.line-height-120 {
+  line-height: 120%;
+}
+
+.margin-top-5 {
+  margin-top:5px;
+}
+
+.margin-top-15 {
+  margin-top:15%;
+}
+
+.osreg-font {
+  font-family: "OpenSans-Regular";
+}
+
+.reg-font {
+  font-family: "OpenSans-Regular";
+}
+
+.bold-font {
+  font-family: $bold-font;
+}
+
+.semi-font {
+  font-family: "OpenSans-Semibold";
+}
+
+.inherit-width {
+  width:inherit;
+}
+
+.absolute {
+  position:absolute;
+}
+
+.absolute-center, .fixed-center {
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fixed {
+  position:fixed;
+}
+
+.bottom-0 {
+  bottom:0px;
+}
+
+.bottom-15-percent {
+  bottom:15%;
+}
+
+.bottom-25-percent {
+  bottom:25%;
+}
+
+.bottom-30-percent {
+  bottom:30%;
+}
+
+.bottom-35-percent {
+  bottom:35%;
+}
+
+.bottom-40-percent {
+  bottom:40%;
+}
+
+.auto-height-footer {
+  height:auto;
+}
+
+.no-top-border {
+  border-top-width:0;
+  background-image:none;
+}
+
+.fb-button  {
+  border-color: #38548c;
+  background-color: #38548c;
+  color: #fff;
+  font-size:1.2em !important;
+  font-weight:700 !important;
+  height:60px;
+  text-transform: inherit;
+  width: 95% !important;
+  margin: 10px auto;
+  font-family: "OpenSans-Regular";
+}
+
+.fb-button:hover {
+  text-decoration:none;
+  color:white;
+}
+
+.fb-button.active, .fb-button.activated {
+  border-color: #38548C;
+  background-color: #38548C;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.title {
+  font-size:14px !important;
+}
+
+.button.fb-button.icon-left:before {
+  font-size:35px;
+  padding-left:16px;
+}
+
+.center {
+  text-align:center;
+}
+
+.grey-uguru {
+  color:rgb(0,0,0);
+  opacity:0.6;
+}
+
+.grey-font {
+  color:$gray-3;
+  opacity:0.7;
+}
+
+.nav-bar-text {
+  text-transform: uppercase;
+}
+
+.uguru-back-button {
+  height: 20px;
+  position: absolute;
+  left: 15px;
+  top: 6px
+}
+
+.uguru-front-button {
+  height: 20px;
+}
+
+[nav-bar-transition="ios"] [nav-bar="active"] .bar, 
+[nav-bar-transition="ios"] [nav-bar="entering"] .bar,
+[nav-bar-transition="android"] [nav-bar="active"] .bar, 
+[nav-bar-transition="android"] [nav-bar="entering"] .bar
+{
+  background-color: rgb(43,50,52);
+}
+
+[nav-bar-transition="android"] .title, [nav-bar-transition="android"] .buttons
+{
+  padding-left:15px;
+}
+
+.icon.ion-ios7-arrow-back, .back-text, 
+.icon.ion-arrow-left-c {
+  display:none !important;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.checkbox-password {
+  padding:0px;
+  float:right;
+}
+.checkbox-password input{
+  height:22px;
+  width:22px;
+  border-color: rgba(0,0,0,0.6);
+}
+
+.checkbox-password input:before {
+  display: table;
+  width: 100%;
+  height: 100%;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0px;
+  background: #fff;
+  content: ' ';
+  -webkit-transition: background-color 20ms ease-in-out;
+  transition: background-color 20ms ease-in-out;
+}
+
+.has-header {
+  background-color: rgba(0,0,0,0.04); 
+}
+
+.nav-bar-text button {
+  font-size:14px !important;
+}
+
+.progress-bar {
+  background-color: rgba(105, 179, 165, 1);
+}
+
+.font-15 {
+  font-size:15px;
+}
+
+.button-course {
+  margin:5px 5px 5px 5px;
+  padding:8px;
+  font-size:14px;
+  border-radius:0px;
+  min-height:0px;
+  line-height:1em;
+}
+
+.guru-wizard-course-list-item {
+  margin-top: -11px !important;
+  padding: 5px 10px;
+}
+
+.footer-button {
+  height:4em;
+}
+
+.black-subheader {
+  background-color:rgba(0,0,0,0.05);
+}
+
+// Popup
+
+.popup-uguru {
+  height:auto;
+}
+
+/*Popup container*/
+.popup-uguru .popup {
+  top:0px;
+  height:auto;
+  background-color:white;
+  width: 90%;
+  border-radius: 12px;
+  margin-top: 40px;
+  .uguru_glass {
+    background: #9bcbc1;
+    border-radius: 150px;
+    padding: 20px;
+    border: solid 4px #ffffff;
+  }
+  .popup-body {
+    margin-top: -70px;
+  }
+
+  .popup-container .popup {
+    width: 90%;
+    border-radius: 12px;
+    background-color: white;
+  }
+
+  .popup-head {
+    border-bottom: 0px;
+  }
+
+  .title-bar {
+    font-family: $bold-font;
+    text-transform: uppercase;
+    color: black;
+  }
+
+  .sub-header {
+    font-family: $bold-font;
+    text-transform: uppercase;
+    color: $gray-7;
+  }
+
+  .counter {
+    font-family: $semibold-font;
+    text-transform: uppercase;
+    color: $gray-7;
+  }
+
+  .edit-button {
+    font-family: $bold-font;
+    text-transform: uppercase;
+    color: $green;
+  }
+}
+
+/*Popup container, IMPT DO NOT CHANGE*/
+.popup-uguru .popup .popup-head {
+  display:none;
+}
+
+/*Customize this!
+.popup-uguru .popup .popup-body {
+  
+}*/
+
+/* Popup button containers. Customize this!
+.popup-uguru .popup .popup-buttons {
+  height:100px;
+}
+*/
+
+/* Popup NO button. Customize this!
+.popup-uguru .popup .popup-buttons .button-default{
+  height:25px;
+}
+
+.popup-uguru .popup .popup-buttons .button-positive{
+  height:50px;
+}
+*/
+
+/*.uguru_glass {
+  background: #9bcbc1;
+  border-radius: 150px;
+  padding: 20px;
+  border: solid 4px #ffffff;
+}
+
+.popup-body {
+  margin-top: -100px;
+}
+
+.popup-container .popup {
+  width: 90%;
+  border-radius: 12px;
+  background-color: white;
+}
+
+.popup-head {
+  border-bottom: 0px;
+}
+
+.title-bar {
+  font-family: $bold-font;
+  text-transform: uppercase;
+  color: black;
+}
+
+.sub-header {
+  font-family: $bold-font;
+  text-transform: uppercase;
+  color: $gray-7;
+}
+
+.counter {
+  font-family: $semibold-font;
+  text-transform: uppercase;
+  color: $gray-7;
+}
+
+.edit-button {
+  font-family: $bold-font;
+  text-transform: uppercase;
+  color: $green;
+}*/
+
+// sandbox1
+
+.background-white {
+  background-color: #f2f2f2;
+}
+
+.button.button-full.button-outline.button-positive.footer-button {
+  border: 2px solid #69afa5;
+}
+
+.padding-0 {
+  padding: 0px;
+}
+
+.padding-0-9 {
+  padding: 0px 9px;
+}
+
+.padding-10-14 {
+  padding: 10px 14px;
+}
+
+.padding-10-16 {
+  padding: 10px 16px;
+}
+
+.padding-20-15 {
+  padding: 20px 15px;
+}
+
+.no-border {
+  border: 0px;
+}
+
+.font-green {
+  color: $green;
+}
+
+.item.padding-20-15.border-top-bottom {
+  border: 1px solid $gray-4;
+  border-left: 0px;
+  border-right: 0px;
+  margin: 0px 12px;
+  padding: 20px 3px;
+}
+
+.relative {
+  position: relative;
+}
+
+.item {
+
+  background-color: #f2f2f2;
+
+  .course {
+    border: 1px solid $gray-4;
+    border-radius: 4px;
+    border-left: 6px solid $green;
+    position: relative;
+
+    .name {
+      font-size: 36px;
+      font-family: $bold-font;
+      line-height: 1;
+    }
+
+    .gurus {
+      font-size: 12px;
+      font-family: $reg-font;
+      vertical-align: middle;
+      text-transform: uppercase;
+      position: absolute;
+      top: 28px;
+      right: 14px;
+    }
+    .session {
+      text-transform: uppercase;
+      font-family: $semibold-font;
+      font-size: 18px;
+    }
+  }
+
+  .message {
+    font-family: $reg-font;
+    font-size: 18px;
+  }
+
+  .button.button-positive-half {
+    background-color: rgba(105, 179, 165, 1);
+    border: 0px;
+    color: #fff;
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .button.button-outline-half {
+    background-color: #f2f2f2;
+    border: 1px solid $gray-4;
+    color: rgba(105, 179, 165, 1);
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+  }
+
+  .absolute {
+    top: 3px;
+    left: 20px;
+  }
+}
+
+.col.col-25.relative {
+  position: relative;
+}
+
+hr {
+  border-color: #3d494c;
+  border-width: 2px 0px 0px 0px;
+  width: 75%;
+  position: relative;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.ion-checkmark-circled {
+  position: absolute;
+  font-size: 34px;
+  left: 0px;
+  width: 100%;
+  text-align: center;
+  bottom: -37px;
+  z-index: 6;
+  color: $green;
+  border-radius: 25px;
+}
+
+.ion-record {
+  position: absolute;
+  font-size: 13px;
+  left: 0px;
+  width: 100%;
+  text-align: center;
+  bottom: -32px;
+  z-index: 5;
+  color: #3d494c;
+}
+
+.font-size-10 {
+  font-size: 10px;
+  font-family: $reg-font;
+}
+
+.font-size-16 {
+  font-size: 16px;
+  font-family: $reg-font;
+}
+
+.font-size-18 {
+  font-size: 18px;
+  font-family: $reg-font;
+}
+
+
+.gray-2 {
+  color: $gray-2;
+}
+.gray-3 {
+  color: $gray-3;
+}
+.gray-4 {
+  color: $gray-4;
+}
+.gray-5 {
+  color: $gray-5;
+}
+.gray-6 {
+  color: $gray-6;
+}
+.gray-7 {
+  color: $gray-7;
+}
+.gray-8 {
+  color: $gray-8;
+}
+.gray-9 {
+  color: $gray-9;
+}
+.green {
+  color: $green;
+}
+
+.margin-bottom-10 {
+  margin-bottom: 10px;
+}
+
+
+// bottom line (fix later)
+
+.row.bottom.center {
+  bottom: -136px;
+  font-color: $green;
+  font-size: 14px;
+}
+
+.font-size-18 {
+  font-size: 18px;
+  font-family: $reg-font;
+}
+
+
+.icon.ion-navigate {
+  color: $green;
+  margin: 0px 8px;
+}
+
+.button-positive{
+  .icon.ion-navigate {
+    color: white;
+    margin: 0px 8px;
+  }
+}
+
+.button-green-outline {
+  border: 1px solid $green;
+  color: $green;
+}
+
+// sandbox2
+
+.search{
+  .item {
+    background-color: white;
+    .icon.ion-search.placeholder-icon.font-size {
+      font-size: 24px;
+    }
+    .search-box {
+      border-left: 1px solid $gray-3;
+      padding: 3px 0px 3px 14px;
+      font-size: 16px;
+    }
+  }
+  .item.item-input.margin-0 {
+    margin: 0px;
+    border: 0px;
+  }
+}
+
+// sandbox3
+
+.account{
+  .account-box {
+    margin: 80px 20px 10px 20px;
+  }
+  .item {
+    background-color: white;
+    .tag {
+      margin-right: 75px;
+      margin-bottom: 1px;
+      text-transform: uppercase;
+      font-family: $reg-font;
+      font-size: 12px;
+      width: 40px;
+    }  
+  }
+  .item.item-input {
+    height: 50px;
+  }
+
+  .horizon {
+    height: 1px;
+    background-color: $gray-3;
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    .box {
+      background-color: #f4f4f4;
+      position: relative;
+      top: -1em;
+      color: $gray-3;
+      padding: 0px 10px;
+      text-transform: uppercase;
+      font-size: 10.5px;
+      font-family: $reg-font;
+    }
+  }
+  .button.facebook-button.button-full {
+    border: 1px solid #38548c;
+    color: white;
+    background-color: #38548c;
+    font-family: "OpenSans-Regular";
+    font-size: 18px;
+    text-transform: none;
+  }
+  .button.facebook-button.icon-left:before {
+  font-size:32px;
+  padding-left:12px;
+  }
+  .message {
+    font-family: $reg-font;
+    font-size: 15px;
+    color: $gray-3;
+    margin-top: 16px;
+  }
+}
+
+// sandbox4
+
+.payment{
+  margin: 60px 15px 20px;
+  .list.list-inset {
+    border: 1px solid $gray-2;
+    margin: 0px 0px 10px;
+    .item {
+      background-color: white;
+      .icon.ion-card.placeholder-icon.font-size {
+        font-size: 28px;
+      }
+      .payment-box {
+        padding: 3px 0px 3px 14px;
+        font-size: 16px;
+      }
+    }
+    .item.item-input.margin-0 {
+      margin: 0px;
+      border: 0px;
+    }
+  }
+  .message.green {
+    font-size: 0.8em;
+    font: $reg-font;
+    text-transform: uppercase;
+  }
+  .message.center {
+    color: $gray-7;
+    font-family: $reg-font;
+    margin-top: 40px;
+  }
+}
+
+.success {
+  margin-top: 120px;
+  position: relative;
+  .message {
+    color: $green;
+  }
+  .bottom-35-percent {
+    bottom:35%;
+    .message {
+      font-size: 22px;
+      color: $gray-7;
+      font-family: $bold-font;
+    }
+  }
+  .bottom-35-percent {
+    bottom:-35%;
+    .message{
+      font-size: 18px;
+      color: $gray-6;
+      font-family: $reg-font;
+    }
+  }
+  .bottom-15-percent {
+    .message{
+      font-size: 18px;
+      color: $gray-6;
+      font-family: $reg-font;
+    }
+  }
+  .width {
+    width: 80%;
+  }
+  .margin-auto {
+    margin: auto;
+  }
+}
+
+// sandbox7
+.oh {
+  margin: 10px; 
+  padding-top: 80px;
+  .md-box-1 {
+    margin: 0px auto 40px;
+    border: 5px solid $green;
+    width: 200px;
+    height: 200px;
+    border-radius: 120px;
+    .sm-box-1 {
+      font-size: 30px;
+      font-family: $bold-font;
+      color: white;
+      margin: 58px 16px 20px;
+    }
+    .sm-box-2 {
+      font-size: 16px;
+      margin-bottom: 30px;
+      color: #a4a4a4;
+      .white {
+        color: white;
+        text-transform: uppercase;
+        font-family: $semibold-font;
+      }
+    }
+  }
+  .row.bottom.center {
+    color: white;
+  }
+  hr {
+    border-color: white;
+    border-width: 1px 0px 0px 0px;
+    width: 100%;
+    position: none;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+ .width {
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+ }
+  .list {
+    .item {
+      .icon {
+        float: left;
+        margin-right: 18px;
+      }
+      .box {
+        margin-top: 6px;
+        .name {
+          font-size: 0.9em;
+          color: $gray-7;
+        }
+        .stars {
+          font-size: 0.9em;
+          color: $green;
+          .icon.ion-star {
+          margin-right: 5px;
+          }
+        }
+        .profile {
+        float: right;
+        color: $green;
+        text-transform: uppercase;
+        font-size: 0.9px;
+        }
+      }
+    }
+    .item.padding-10-14.border-bottom-2 {
+      border-bottom: 2px;
+    }
+  }  
+}
+
+.view-profile {
+  .space-1 {
+    padding-top: 40px;
+    background-color: $gray-8;
+    .icon {
+      .width {
+        border-radius: 120px;
+        width: 100px;
+        height: 100px;
+        border: 2px solid white;
+      }
+    }
+    .box {
+      margin-top: 6px;
+      .name {
+        font-size: 16px;
+        color: white;
+      }
+      .stars {
+        font-size: 16px;
+        color: $green;
+        padding-bottom: 20px;
+        .icon.ion-star {
+        margin-right: 3px;
+        }
+      }
+      .profile {
+      float: right;
+      color: $green;
+      text-transform: uppercase;
+      font-size: 0.9px;
+      }
+    }
+  }
+  .space-2 {
+    background-color: #f2f2f2;
+    padding: 10px;
+    .item {
+      border: 0px;
+      border-bottom: 2px solid #ddd;
+      .courses {
+        padding: 10px 0px;
+        .sm-box {
+          border: 1px solid $gray-4;
+          padding: 8px;
+          margin: 5px;
+          border-radius: 2px;
+          color: $gray-4;
+        }
+        .sm-box-orange {
+          border: 1px solid $orange;
+          padding: 8px;
+          margin: 5px;
+          border-radius: 2px;
+          background-color: $orange;
+          color: white;
+        }  
+      }
+      .sessions {
+        padding: 0px 50px;
+        .number {
+          font-size: 22px;
+          font-family: $bold-font
+        }
+        .detail {
+          font-size: 12px;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}
+
+.has-header.background-black {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.background-gray {
+  background-color: #f2f2f2;
+} 
+.background-black-7 {
+  background-color: #4c4c4c;
+}
+.background-black-7 {
+  background-color: #4c4c4c;
+}
+
+.padding-0-4 {
+  padding: 0px 4px;
+}
+.padding-2-14 {
+  padding: 2px 14px;
+}
+.padding-10-15 {
+  padding: 10px 15px;
+}
+.padding-6-15 {
+  padding: 6px 15px;
+}
+.padding-6-52 {
+  padding: 6px 52px;
+}
+
+// sandbox9
+
+.session-progress {
+  padding: 10px;
+  .item {
+    background-color: #f2f2f2;
+    border-radius: 2px;
+    border-left: 6px solid $green;
+    position: relative;
+    .course {
+      border-left: 0px;
+
+      .name {
+        font-size: 30px;
+        font-family: $bold-font;
+        line-height: 1;
+        margin-right: 5px;
+      }
+
+      .session {
+        font-size: 30px;
+        font-family: $reg-font;
+        text-transform: none;
+        color: $gray-3;
+      }
+      .message {
+        text-transform: uppercase;
+        font-family: $semibold-font;
+        font-size: 12px;
+        margin-top: 5px;
+      }
+    }
+    .icon {
+      float: left;
+      margin-right: 18px;
+      .width {
+        width: 45px;
+        height: 45px;
+        border-radius: 55px;
+      }
+    }
+    .box-2 {
+      margin-top: 6px;
+      .name {
+        font-size: 0.9em;
+        color: $gray-7;
+      }
+      .stars {
+        font-size: 0.9em;
+        color: $green;
+        .icon.ion-star {
+        margin-right: 5px;
+        }
+      }
+      .profile {
+      float: right;
+      color: $green;
+      text-transform: uppercase;
+      font-size: 0.9px;
+      }
+    }
+    .box-2.margin-top {
+      margin-top: 3px;
+    }
+  }
+  .bold {
+    font-family: $bold-font;
+  }
+  .location {
+    font-size: 14px;
+    .icon.ion-navigate {
+      font-size: 16px;
+      margin: 0px;
+      margin-right: 6px;
+    }
+  }
+  .tag {
+    font-size: 14px;
+    .icon.ion-pricetag {
+      font-size: 16px;
+      margin: 0px;
+      margin-right: 6px;
+      color: $green;
+    }
+  }
+}
+
+.bar-footer.uguru-footer {
+  padding: 0px;
+  background-color: #293132;
+  .row {
+    padding: 2px 0px 0px;
+    .col {
+      padding: 0px;
+      .width {
+        width: 40px;
+      }
+    }
+    .col.border-bottom {
+      border-bottom: 2px solid $green;
+    }
+  }
+}
+
+.complete{
+  .complete-box {
+    margin: 60px 20px 10px 20px;
+    .message {
+    font-size: 32px;
+    font-family: $bold-font;
+    color: white;
+    line-height: 1.1;
+    }
+  }
+  .item.padding-6-52 {
+    background-color: #4c4c4c;
+    border: 0px;
+  }
+  .item {
+    background-color: white;
+    .tag {
+      margin-right: 75px;
+      margin-bottom: 1px;
+      text-transform: uppercase;
+      font-family: $reg-font;
+      font-size: 12px;
+      width: 40px;
+    }
+    .icon {
+      float: left;
+      margin-right: 18px;
+      .width {
+        width: 45px;
+        height: 45px;
+        border-radius: 55px;
+      }
+    }
+    .box-2 {
+      margin-top: 6px;
+      text-align: left;
+      .name {
+        font-size: 0.9em;
+        color: white;
+      }
+      .course-name {
+        font-size: 0.9em;
+        color: gray;
+      }
+      .profile {
+      float: right;
+      color: $green;
+      text-transform: uppercase;
+      font-size: 0.9px;
+      }
+    }
+    .box-2.margin-top {
+      margin-top: 3px;
+      float: left;
+    }
+  }
+  .item.item-input {
+    height: 50px;
+  }
+
+  .horizon {
+    height: 1px;
+    background-color: $gray-3;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    .box {
+      background-color: #4c4c4c;
+      position: relative;
+      top: -1em;
+      color: $gray-3;
+      padding: 0px 10px;
+      text-transform: uppercase;
+      font-size: 10.5px;
+      font-family: $reg-font;
+    }
+  }
+  .button.facebook-button.button-full {
+    border: 1px solid #38548c;
+    color: white;
+    background-color: #38548c;
+    font-family: "OpenSans-Regular";
+    font-size: 18px;
+    text-transform: none;
+  }
+  .button.facebook-button.icon-left:before {
+  font-size:32px;
+  padding-left:12px;
+  }
+  .message {
+    font-family: $reg-font;
+    font-size: 15px;
+    color: $gray-3;
+    margin-top: 16px;
+  }
+  .money {
+    font-size: 52px;
+    color: white;
+    margin: 70px auto;
+    font-family: $bold-font;
+  }
+  
+  .row.center {
+    .icon.ion-star {
+      font-size: 42px;
+    }
+  }
+}
+
+.bar.bar-subheader {
+  padding: 0px;
+  .row {
+    padding: 0px;
+  }
+  .row.center {
+    font-size: 10px;
+    color: white;
+    background-color: #353d3e;
+    height: 44px;
+    padding-top: 7px;
+    .border-bottom {
+      border-bottom: 3px solid $green;
+    }
+  }
+}
+
+.guru-book {
+  padding: 10px;
+  .item {
+    background-color: #f2f2f2;
+    border-radius: 2px;
+    position: relative;
+    .course {
+      border-left: 0px;
+
+      .name {
+        font-size: 30px;
+        font-family: $bold-font;
+        line-height: 1;
+        margin-right: 5px;
+      }
+
+      .session {
+        font-size: 30px;
+        font-family: $reg-font;
+        text-transform: none;
+        color: $gray-3;
+      }
+      .message {
+        text-transform: uppercase;
+        font-family: $semibold-font;
+        font-size: 12px;
+        margin-top: 5px;
+      }
+    }
+    .icon {
+      float: left;
+      margin-right: 18px;
+      .width {
+        width: 45px;
+        height: 45px;
+        border-radius: 55px;
+      }
+    }
+    .box-2 {
+      margin-top: 6px;
+      .box-3 {
+        margin-top: 5px;
+        margin-top: 12px;
+      }
+      .name {
+        font-size: 0.9em;
+        color: $gray-7;
+        float: left;
+        font-family: $semibold-font;
+      }
+      .stars {
+        font-size: 0.9em;
+        color: $green;
+        float: right;
+        .icon.ion-star {
+        margin-right: 5px;
+        }
+      }
+      .profile {
+      float: right;
+      color: $green;
+      text-transform: uppercase;
+      font-size: 0.9px;
+      }
+    }
+    .box-2.margin-top {
+      margin-top: 3px;
+    }
+  }
+  .bold {
+    font-family: $bold-font;
+  }
+  .location {
+    font-size: 14px;
+    .icon.ion-navigate {
+      font-size: 16px;
+      margin: 0px;
+      margin-right: 6px;
+    }
+  }
+  .tag {
+    font-size: 14px;
+    .icon.ion-pricetag {
+      font-size: 16px;
+      margin: 0px;
+      margin-right: 6px;
+      color: $green;
+    }
+  }
+}
+
+.my-profile {
+  padding: 10px;
+  .item {
+    background-color: #f2f2f2;
+    border-radius: 2px;
+    position: relative;
+    .course {
+      border-left: 0px;
+
+      .name {
+        font-size: 30px;
+        font-family: $bold-font;
+        line-height: 1;
+        margin-right: 5px;
+      }
+
+      .session {
+        font-size: 30px;
+        font-family: $reg-font;
+        text-transform: none;
+        color: $gray-3;
+      }
+      .message {
+        text-transform: uppercase;
+        font-family: $semibold-font;
+        font-size: 12px;
+        margin-top: 5px;
+      }
+    }
+    .icon {
+      float: left;
+      margin-right: 18px;
+      .width {
+        width: 45px;
+        height: 45px;
+        border-radius: 55px;
+      }
+    }
+    .box-2 {
+      margin-top: 6px;
+      float: left;
+      .name {
+        font-size: 0.9em;
+        color: $gray-7;
+        font-family: $semibold-font;
+      }
+      .box-3-course {
+        color: $green;
+        font-size: 0.9em;
+      }
+      .date {
+        font-size: 12px;
+      }
+      .profile {
+      float: right;
+      color: $green;
+      text-transform: uppercase;
+      font-size: 0.9px;
+      }
+    }
+    .box-2.margin-top {
+      margin-top: 3px;
+    }
+    .box-4 {
+      margin-top: 14px;
+      .stars {
+        font-size: 1em;
+        color: $green;
+        float: right;
+        .icon.ion-star {
+        margin-right: 5px;
+        }
+      }
+    }
+  }
+  .bold {
+    font-family: $bold-font;
+  }
+  .location {
+    font-size: 14px;
+    .icon.ion-navigate {
+      font-size: 16px;
+      margin: 0px;
+      margin-right: 6px;
+    }
+  }
+  .tag {
+    font-size: 14px;
+    .icon.ion-pricetag {
+      font-size: 16px;
+      margin: 0px;
+      margin-right: 6px;
+      color: $green;
+    }
+  }
+}
+
+.setting {
+  hr {
+    border-color: gray;
+    border-width: 1px 0px 0px 0px;
+    width: 75%;
+    position: relative;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .space-1 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: $gray-8;
+    .message {
+      color: gray;
+    }
+    .item {
+      background-color: transparent;
+      border: 0px;
+      width: 60%;
+      margin: auto;
+    }
+    .icon {
+      float: left;
+      margin-right: 18px;
+      .width {
+        width: 45px;
+        height: 45px;
+        border-radius: 55px;
+      }
+    }
+    .box-2 {
+      margin-top: 6px;
+      text-align: left;
+      .name {
+        font-size: 0.9em;
+        color: white;
+      }
+      .course-name {
+        font-size: 0.9em;
+        color: gray;
+      }
+      .profile {
+      float: right;
+      color: $green;
+      text-transform: uppercase;
+      font-size: 0.9px;
+      }
+    }
+    .box-2.margin-top {
+      margin-top: 3px;
+      float: left;
+    }
+  }
+  .space-2 {
+    background-color: #f2f2f2;
+    .item.gray {
+      background-color: #e9e9e9;
+    }
+    .item {
+      border: 0px;
+      border-bottom: 2px solid #ddd;
+      .courses {
+        padding: 10px 0px;
+        .classes {
+          font-size: 12px;
+        }
+        .sm-box {
+          border: 1px solid $gray-4;
+          padding: 5px;
+          margin: 5px;
+          border-radius: 2px;
+          color: $gray-4;
+        }
+        .sm-box-orange {
+          border: 1px solid $orange;
+          padding: 5px;
+          margin: 5px;
+          border-radius: 2px;
+          background-color: $orange;
+          color: white;
+        }
+        .sm-box-green {
+          border: 1px solid $gray-4;
+          padding: 5px;
+          margin: 5px;
+          border-radius: 2px;
+          background-color: transparent;
+          color: $green;
+        }
+      }
+      .sessions {
+        padding: 0px 50px;
+        .number {
+          font-size: 22px;
+          font-family: $bold-font
+        }
+        .detail {
+          font-size: 12px;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}
+
+.add-class {
+  padding: 10px;
+  .bold {
+    font-family: $bold-font;
+  }
+  .lg-box {
+    margin-bottom: 10px;
+  }
+  .green-box {
+    float: left;
+    background-color: $green;
+    width: 60px;
+    height: 60px;
+    position: relative;
+    .ion-plus {
+      font-size: 26px;
+      color: white;
+      position: absolute;
+      left: 20px;
+      top: 17px;
+      font-family: $light-font;;
+    }
+  }
+  .md-box {
+    height: 60px;
+    font-size: 31px;
+    font-family: $light-font;
+    color: $gray-3;
+    padding: 0px 0px 0px 60px;
+    .text {
+      height: 60px;
+      padding: 18px 0px 0px 16px;
+      border: 1px solid $gray-1;
+      border-left: 0px;
+    }
+  }
+  .course-name-box {
+    height: 60px;
+    font-size: 31px;
+    font-family: $bold-font;
+    color: $gray-6;
+    padding: 0px 0px 0px 0px;
+    .text {
+      height: 60px;
+      padding: 18px 0px 0px 16px;
+      border: 1px solid $gray-1;
+      border-left: 4px solid $green;
+    }
+  }
+}
+
+.no-session {
+  h2 {
+    color: $gray-8;
+    font-family: $bold-font;
+  }
+  .gray {
+    margin-bottom: 10px;
+  }
+  .green {
+    text-transform: uppercase;
+    font-family: $bold-font;
+  }
+}
+
+.list-class {
+  .bold {
+    font-family: $bold-font;
+  }
+  .item {
+    .gray {
+      font-family: $light-font;
+      margin-left: 5px;
+    }
+    .green {
+      font-family: $reg-font;
+    }
+    padding: 10px;
+  }  
+  .item.item-input {
+    padding: 4px;
+    background-color: white;
+    .icon.ion-search.placeholder-icon.font-size {
+      font-size: 24px;
+      padding: 0px 8px;
+    }
+    .search-box {
+      border-left: 1px solid $gray-2;
+      padding: 3px 0px 3px 14px;
+      font-size: 16px;
+    }
+  }
+  .item.item-input.margin-0 {
+    margin: 0px;
+    border: 0px;
+  }
+}
+
+.margin-150-10 {
+  margin: 170px 10px 0px;  
+}
+
+.margin-top-40 {
+  margin-top: 44px;
+}
+
+.sand-master {
+  border: 0px;
+  background-color: $green;
+  color: white;
+}
+

@@ -1,0 +1,170 @@
+<ion-view class="bg-slate"><main id="desktop-guru-home" class="desktop-mode desktop-home" ng-if="desktopMode"><nav class="main-nav" ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav><div id="desktop-guru-home-main" class="main"><ion-pane id="cta-modal-credibility" class="full-xy hide-display cta-modal bg-charcoal" ng-controller="GuruProfileController" ng-include="img_base + BASE + 'templates/guru.credibility.html'"><!-- <div ></div> --></ion-pane><ion-pane id="cta-modal-profile" class="full-xy hide-display cta-modal bg-charcoal" ng-controller="GuruProfileController" ng-include="img_base + BASE + 'templates/profile.public.html'"><!-- <div ></div> --></ion-pane><ion-pane id="cta-modal-students" ng-controller="MessagesController" class="full-xy hide-display cta-modal bg-charcoal" ng-include="img_base + BASE + 'templates/messaging.html'"><!-- <div ></div> --></ion-pane><ion-pane id="cta-modal-balance" class="full-xy hide-display cta-modal bg-charcoal" ng-include="img_base + BASE + 'templates/balance.html'"><!-- <div ></div> --></ion-pane><ion-pane id="cta-modal-proposals" class="full-xy hide-display cta-modal bg-charcoal" ng-include="img_base + BASE + 'templates/guru.proposals.html'"><!-- <div ></div> --></ion-pane><ion-pane id="cta-modal-referrals" class="full-xy hide-display cta-modal bg-charcoal" ng-include="img_base + BASE + 'templates/referrals.html'"><!-- <div ></div> --></ion-pane><ion-pane id="cta-modal-rating" class="full-xy hide-display cta-modal bg-charcoal" ng-include="img_base + BASE + 'templates/guru.rating.html'"><!-- <div ></div> --></ion-pane><ion-pane id="cta-modal-ranking" class="full-xy hide-display cta-modal bg-charcoal" ng-include="img_base + BASE + 'templates/guru.ranking.html'"><!-- <div ></div> --></ion-pane><ion-pane id="cta-modal-content" class="full-xy hide-display cta-modal bg-charcoal" ng-include="img_base + BASE + 'templates/content.general.html'"><!-- <div ></div> --></ion-pane><ion-pane id="cta-modal-signup" class="full-xy hide-display cta-modal"><div class="full-xy absolute top-0 left-0 desktop-forms" ng-controller="SignupController"><div class="main" ng-include="img_base + BASE + 'templates/desktop.login.forms.container.html'"></div></div></ion-pane><ion-pane id="cta-modal-billing" class="full-xy hide-display cta-modal"><div class="full-xy absolute top-0 left-0 desktop-forms"><div class="main" ng-include="img_base + BASE + 'templates/billing.html'"></div></div></ion-pane><ion-pane id="cta-modal-tour" class="hide-display cta-modal bg-transparent"><!-- <div class='full-xy absolute top-0 left-0 desktop-forms'></div> --><div class="uguru-popup show" id="guru-uguru-popup" ng-include="img_base + BASE + 'templates/welcome.guru.popup.html'"></div></ion-pane><!-- <ion-pane id='cta-modal-support' class='full-xy hide-display cta-modal'>
+				<div class="profile-header">
+					<h1>Uguru Support</h1>
+					<a class="cta-modal-close close-button">
+						<svg viewBox="0 0 100 100">
+							<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+						</svg>
+					</a>
+				</div>
+				<iframe iframe-onload='closeLoader(2000)' class='full-xy' style='height:calc(100% - 100px); width:calc(100% - 100px);'name="Uguru FAQ" ng-src="https://www.uguru.me/support-only/"></iframe>
+			</ion-pane> --><nav class="home-tabs"><ul><li><a id="cta-box-billing" class="cta-box"><span class="notification">0</span> <span>Billing</span></a></li><li><a id="cta-box-students" class="cta-box"><span class="notification">{{user.student_relationships.length || 0}}</span> <span ng-click="messagesModal.show()">Students</span></a></li><li><a id="cta-box-rating" class="cta-box"><span class="notification">3</span> <span>Ratings</span></a></li></ul></nav><div class="home-main"><div class="home-tiles-top"><div class="home-tiles-guru" ng-include="img_base + BASE + 'templates/svg/tutor-guru.html'"></div><div class="home-tiles-daily"><div class="home-ticket"><div></div></div><ion-slide-box show-pager="false" class="home-ticket-content"><ion-slide class="home-ticket-inside"><div><h1>You have <u>2</u> Incoming Gurus for CS10.</h1><h2>See more request details about these gurus</h2></div><ul class="home-ticket-guru-bar"><li><div class="pf-card-mini large pf-card-mini-academic"><div class="pf-card-mini-banner"></div><!-- <span class="user-icon bg-cerise"></span> --><user-icon class="user-icon bg-cerise" size="small"></user-icon><span class="pf-name">Christopher W.</span><!-- <ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul> --><rating class="rating-stars" style="width:70px; height:14px" avg="4.5"></div></li><li><div class="pf-card-mini large pf-card-mini-academic"><div class="pf-card-mini-banner"></div><!-- <span class="user-icon bg-cerise"></span> --><user-icon class="user-icon bg-cerise" size="small"></user-icon><span class="pf-name">Christopher W.</span><!-- <ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul> --><rating class="rating-stars" style="width:70px; height:14px" avg="4.5"></div></li><li><div class="pf-card-mini large pf-card-mini-academic"><div class="pf-card-mini-banner"></div><!-- <span class="user-icon bg-cerise"></span> --><user-icon class="user-icon bg-cerise" size="small"></user-icon><span class="pf-name">Christopher W.</span><!-- <ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul> --><rating class="rating-stars" style="width:70px; height:14px" avg="4.5"></div></li></ul><button id="cta-box-proposals" class="bg-shamrock semibold cta-box">See Request Details</button></ion-slide><ion-slide class="home-ticket-inside"><div><h1>You created <u>3</u> Student Requests.</h1><h2>Check or edit the status of your requests</h2></div><ul class="home-ticket-icon-bar"><li class="academic"><span ng-include="img_base + BASE + 'templates/svg/academic-simple.html'"></span> <span>1-on-1 Help</span></li><li class="baking"><span ng-include="img_base + BASE + 'templates/svg/baking-simple.html'"></span> <span>Birthday Cake</span></li><li class="photography"><span ng-include="img_base + BASE + 'templates/svg/photography-simple.html'"></span> <span>Graduation</span></li></ul><button class="bg-shamrock semibold">Activate my Student Email</button></ion-slide><ion-slide class="home-ticket-inside"><div><h1>You are currently in demo mode.</h1><h2>Activate your UC Berkeley Email to create a real request</h2></div><ul class="home-ticket-icon-bar"><li class="academic" ng-include="img_base + BASE + 'templates/svg/academic-simple.html'"></li><li class="baking" ng-include="img_base + BASE + 'templates/svg/baking-simple.html'"></li><li class="photography" ng-include="img_base + BASE + 'templates/svg/photography-simple.html'"></li><li class="household" ng-include="img_base + BASE + 'templates/svg/household-simple.html'"></li><li class="tech" ng-include="img_base + BASE + 'templates/svg/tech-simple.html'"></li></ul><button class="bg-shamrock semibold">Activate my Student Email</button></ion-slide><ion-slide class="home-ticket-inside"><div><h1>You are currently in demo mode.</h1><h2>Activate your UC Berkeley Email to create a real request</h2></div><span class="home-ticket-icon" ng-include="img_base + BASE + 'templates/svg/main/email.html'"></span> <button class="bg-shamrock semibold">Activate my Student Email</button></ion-slide><ion-slide class="home-ticket-inside"><div><h1>Make a Referral</h1><h2>Skip the line by inviting a friend to Uguru</h2></div><span class="home-ticket-icon" ng-include="img_base + BASE + 'templates/svg/main/gift.html'"></span> <button id="cta-box-referrals" class="bg-shamrock semibold cta-box">Refer a Friend</button></ion-slide></ion-slide-box></div></div><div class="home-tiles-main home-tiles-container"><div class="home-tiles-main-inside"><a id="cta-box-profile" class="home-tile cta-box"><div class="home-tile-inside"><div><span ng-include="img_base + 'templates/svg/main/profile.html'"></span><h1>Your Profile</h1><h2>Edit and add<br>your shops</h2></div></div></a><a id="cta-box-balance" class="home-tile cta-box"><div class="home-tile-inside"><svg class="square" viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100"></rect></svg><div><span><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40"></circle></svg> <span>${{user.total_earned || 0}}</span></span><h1>Earnings</h1><h2>Lorem ipsum<br>dolor sit amet.</h2></div></div></a><a id="cta-box-credibility" class="home-tile cta-box"><div class="home-tile-inside"><div><span ng-include="img_base + 'templates/svg/main/shield-star.html'"></span><h1>Credibility</h1><h2>Lorem ipsum<br>dolor sit amet.</h2></div></div></a><a id="cta-box-ranking" class="home-tile cta-box"><div class="home-tile-inside"><div><span ng-include="img_base + 'templates/svg/main/stats.html'"></span><h1>Ranking</h1><h2>Lorem ipsum<br>dolor sit amet.</h2></div></div></a></div></div></div><!-- <div class="guru-home-greeting">
+				<div>
+					<h1>Hello {{user.first_name || 'Guru'}},<br/>how are you today?</h1>
+					<div class="guru-home-notifications">
+						<ul>
+							<li>
+								<a id='cta-box-billing' class='cta-box'>
+									<span class="notification-icon">
+										<svg viewBox="0 0 100 100" ng-include="img_base + BASE + 'templates/svg.icon.billing.html'">
+										</svg>
+										<span class="notification-number">0</span>
+									</span>
+									<span class="notification-type">Bill Student</span>
+								</a>
+							</li>
+							<li>
+								<a ng-if='false'>
+									<span class="notification-icon">
+										<svg viewBox="0 0 100 100" ng-include="img_base + BASE + 'templates/svg.icon.billing.html'">
+										</svg>
+										<span class="notification-number">5</span>
+									</span>
+									<span class="notification-type">Action Items</span>
+								</a>
+							</li>
+							<li>
+								<a id='cta-box-students' class='cta-box'>
+									<span class="notification-icon">
+										<svg viewBox="0 0 100 100" ng-include="img_base + BASE + 'templates/svg.icon.notification.html'">
+										</svg>
+										<span class="notification-number">{{user.student_relationships.length || 0}}</span>
+									</span>
+									<span class="notification-type cta-box bg-charcoal" id='cta-box-signup'>Messages</span>
+								</a>
+							</li>
+							<li ng-if='user.guru_proposals'>
+								<a id='cta-box-proposals' class='cta-box'>
+									<span class="notification-icon">
+										<svg class='bg-auburn' viewBox="0 0 100 100" ng-include="img_base + BASE + 'templates/svg.icon.notification.html'">
+										</svg>
+										<span class="notification-number bg-auburn">{{user.guru_proposals.length || 0}}</span>
+									</span>
+									<span class="notification-type cta-box bg-charcoal" id='cta-box-signup'>Proposals</span>
+								</a>
+							</li>
+							<li class='display-hide cta-box' id='cta-box-tour'>
+
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="guru-home-tiles">
+				<div class="home-tiles-top">
+					<div class="home-tiles-ranking">
+						<div>
+							<svg class="square" viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div>
+								<h2>Guru Ranking</h2>
+								<div id="guru-chart">
+									<div id='guru-ranking-progress-bar'>
+										<div id="percentile">
+											<div id="percentile-ranking">{{user.guru_ranking || 25}}</div>
+											<div id="percentile-label">Percentile</div>
+										</div>
+									</div>
+								</div>
+								<h3>Top 100 Students</h3>
+							</div>
+						</div>
+					</div>
+					<div class="home-tiles-rating">
+						<div>
+							<svg class="square" viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div>
+								<a>
+									<h3>Avg Rating</h3>
+									<h1 id='home-tiles-ranking'>{{user.guru_avg_rating || 0}}</h1>
+									<h5>{{user.guru_ratings.length}} reviews</h5>
+								</a>
+							</div>
+						</div>
+						<div>
+							<svg class="square" viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div id='cta-box-balance' class='cta-box'>
+								<a>
+									<h3>Total Earned</h3>
+									<h1 id="home-tiles-earnings"><span>$</span>{{user.total_earned || 0}}</h1>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="home-tiles-bottom">
+					<div class="home-tiles-stats">
+						<div>
+							<svg class="square" viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div id='cta-box-profile' class='cta-box'>
+								<div>
+									<span ng-if='!user.id || user.current_profile_percent < 80' class="guru-tiles-warning active">!</span>
+									<svg viewBox="0 0 100 100">
+										<path d="M50.0000186,14 C30.1802821,14 14.030417,30.1419103 14.0000373,49.9835145 C13.9861494,59.7785062 17.8513192,69.2750235 24.6069034,76.038418 C31.0239706,82.4616905 39.5485232,86 48.6120989,86 C49.0955707,86 49.5825143,85.9904558 50.072062,85.969632 C70.2181637,85.1444892 86,69.3383625 86,49.9861175 C86,30.142778 69.8510029,14 50.0000186,14 L50.0000186,14 Z M24.18272,74.5721092 C25.26272,65.2447492 30.77792,57.3967492 38.83328,53.6988292 C35.65568,50.7151492 33.65696,46.4911492 33.65696,41.7986692 C33.65696,32.7871492 40.98848,25.4556292 50,25.4556292 C59.01152,25.4556292 66.34304,32.7871492 66.34304,41.7986692 C66.34304,46.4911492 64.34432,50.7151492 61.16672,53.6988292 C69.22208,57.3967492 74.73728,65.2447492 75.81728,74.5721092"></path>
+									</svg>
+									<h3>
+										<span class='credibility-percent'>{{user.current_profile_percent || 40}}%</span>
+										<span>Profile</span>
+									</h3>
+									<progress class="white-round height-10" max="100" value="{{user.current_profile_percent || 40}}"></progress>
+								</div>
+							</div>
+						</div>
+						<div>
+							<svg class="square" viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div id='cta-box-credibility' class='cta-box'>
+								<div>
+									<span ng-if='!user.id || user.current_profile_percent < 80' class="guru-tiles-warning active">!</span>
+									<svg viewBox="0 0 100 100">
+										<path d="M50.0004009,87.5 L49.6435674,87.3885396 C49.3284312,87.2907111 41.8541713,84.8882991 34.3526478,75.7726048 C21.9604997,60.7142284 19.3592231,39.2272348 19.3592231,23.8521185 L19.3592231,22.6853931 L20.5259486,22.6493088 C20.7063701,22.6436957 38.7060173,21.9933765 49.2265933,13.1503191 L50.0004009,12.5 L50.7742086,13.1503191 C61.3084165,22.0054046 79.2936299,22.6444975 79.4740514,22.6493088 L80.6407769,22.6845912 L80.6407769,23.8521185 C80.6407769,39.2264329 78.0395003,60.7142284 65.6481541,75.7726048 C58.1466305,84.8882991 50.6723707,87.291513 50.3572345,87.3893415 L50.0004009,87.5 L50.0004009,87.5 Z M50,57.5 L41.1832212,62.1352549 L42.8670761,52.3176275 L35.7341523,45.3647451 L45.5916106,43.9323725 L50,35 L54.4083894,43.9323725 L64.2658477,45.3647451 L57.1329239,52.3176275 L58.8167788,62.1352549 L50,57.5 Z"></path>
+									</svg>
+									<h3>
+										<span class='credibility-percent'>{{user.current_credibility_percent || 5}}%</span>
+										<span>Credibility</span>
+									</h3>
+									<progress class="white-round height-10" max="100" value="{{user.current_credibility_percent || 5}}"></progress>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="home-tiles-upcoming">
+						<div>
+							<svg class="square" viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div>
+								<h2><strong><u>{{guruHomeTips.length}}</u></strong> Action Items</h2>
+								<ion-slide-box show-pager='true'>
+									<ion-slide ng-repeat='tip in guruHomeTips'>
+										<div class='card'>
+											<div>
+												<h1>{{tip.title}}</h1>
+												<p>{{tip.message}}</p>
+											</div>
+										</div>
+									</ion-slide>
+								</ion-slide-box>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> --></div></main></ion-view>

@@ -1,0 +1,164 @@
+<div id="landing-munchies" class='full-xy absolute top-0 left-0'
+	init-with="p-op"
+	on-enter="p:[t:all 1000ms ease, op:1, z-index:10000]"
+	when-munchies-triggered="t-enter | s:[munchies-landing-enter:public]:delay-2000"
+	when-close-munchies="p:[op:0, tr:translateY(-100%), z-index:default:delay-1000]">
+	<div class="landing-munchies landing-container">
+		<div class="landing-header">
+			<div class="powerup-icon"
+				init-with="p:[tr:matrix3d(1#0#0#0#0#1#0#0#0#0#1#0#0#300#0#1)]"
+				on-enter="a:[powerup-bounceInUp:set:(dur:1000ms#func:linear):delay-1500:in] | p:[tr:matrix3d(1#0#0#0#0#1#0#0#0#0#1#0#0#0#0#1)]:delay-2500"
+				when-munchies-triggered="t-enter">
+				<div ng-include="root.base_url + 'preapp/templates/components/powerups/munchies-card.html'"></div>
+			</div>
+			<h1 class="powerup-header"
+				init-with="p-op"
+				on-enter="a:[gpa-enter:set:(dur:800ms#func:linear):delay-250:in]"
+				when-munchies-landing-enter="t-enter">Munchies Guru</h1>
+			<h2 class="powerup-subheader"
+				init-with="p-op"
+				on-enter="a:[gpa-enter:set:(dur:800ms#func:linear):delay-500:in]"
+				when-munchies-landing-enter="t-enter">The answer to a hangry campus.</h2>
+		</div>
+		<div class="landing-content mobile">
+			<div class="landing-section">
+				<header class="landing-section-header">
+					<div class="svg-white flex-center svg-64 svg-stroke-4" ng-include="root.base_url + 'shared/templates/components/svg/main/pizza.html'"></div>
+					<h2 class="txt-white semibold txt-28">Find the Best Food on Campus</h2>
+				</header>
+				<div class="landing-section-demo">
+					<svg viewBox="0 0 318 651"
+						init-with="p-op"
+						on-enter="a:[gpa-enter:set:(dur:1200ms#func:ease-out):delay-750:in]"
+						when-munchies-landing-enter="t-enter">
+						<rect x="1.5" y="1.5" width="315" height="648" rx="40"></rect>
+						<circle cx="158.5" cy="610.5" r="25"></circle>
+						<rect x="21.5" y="79.5" width="276" height="493"></rect>
+					</svg>
+					<div>
+
+					</div>
+				</div>
+			</div>
+			<div class="landing-section">
+				<header class="landing-section-header">
+					<div class="svg-white flex-center svg-64 svg-stroke-4" ng-include="root.base_url + 'shared/templates/components/svg/main/coffee.html'"></div>
+					<h2 class="txt-white semibold txt-28">Filter Results at Your Leisure</h2>
+				</header>
+				<div class="landing-section-demo">
+					<svg viewBox="0 0 318 651"
+						init-with="p-op"
+						on-enter="a:[gpa-enter:set:(dur:1200ms#func:ease-out):delay-750:in]"
+						when-munchies-landing-enter="t-enter">
+						<rect x="1.5" y="1.5" width="315" height="648" rx="40"></rect>
+						<circle cx="158.5" cy="610.5" r="25"></circle>
+						<rect x="21.5" y="79.5" width="276" height="493"></rect>
+					</svg>
+					<div>
+
+					</div>
+				</div>
+			</div>
+			<div class="landing-section">
+				<header class="landing-section-header">
+					<div class="svg-white flex-center svg-64 svg-stroke-4" ng-include="root.base_url + 'shared/templates/components/svg/main/cupcake.html'"></div>
+					<h2 class="txt-white semibold txt-28">Get the Scoop on Your Next Meal</h2>
+				</header>
+				<div class="landing-section-demo">
+					<svg viewBox="0 0 318 651"
+						init-with="p-op"
+						on-enter="a:[gpa-enter:set:(dur:1200ms#func:ease-out):delay-750:in]"
+						when-munchies-landing-enter="t-enter">
+						<rect x="1.5" y="1.5" width="315" height="648" rx="40"></rect>
+						<circle cx="158.5" cy="610.5" r="25"></circle>
+						<rect x="21.5" y="79.5" width="276" height="493"></rect>
+					</svg>
+					<div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="landing-demo z-index-3">
+			<svg viewBox="0 0 318 651"
+				init-with="p-op"
+				on-enter="a:[gpa-enter:set:(dur:1200ms#func:ease-out):delay-750:in]"
+				when-munchies-landing-enter="t-enter">
+				<rect x="1.5" y="1.5" width="315" height="648" rx="40"></rect>
+				<circle cx="158.5" cy="610.5" r="25"></circle>
+				<rect x="21.5" y="79.5" width="276" height="493"></rect>
+			</svg>
+			<div>
+
+			</div>
+		</div>
+		<div class="landing-content desktop z-index-1 txt-white"
+			init-with="p-op"
+			on-enter="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in]"
+			when-munchies-landing-enter="t-enter">
+    		<div>
+                <div ng-include="root.base_url + 'preapp/templates/components/powerups/munchies/line-0.svg'"></div>
+                <div style="padding-left: 130px; margin-top: -20px;" ng-include="root.base_url + 'preapp/templates/components/powerups/munchies/oval.svg'"></div>
+                <div style="margin-top: 10px; padding-left: 200px;" ng-include="root.base_url + 'preapp/templates/components/powerups/munchies/line-1.svg'"></div>
+                <div class="p20top" ng-include="root.base_url + 'preapp/templates/components/powerups/munchies/rect.svg'"></div>
+                <div style="margin-top: 20px; padding-left: 350px;" ng-include="root.base_url + 'preapp/templates/components/powerups/munchies/line-2.svg'"></div>
+                <div style="padding-left: 600px;" ng-include="root.base_url + 'preapp/templates/components/powerups/munchies/line-3.svg'"></div>
+                <div style="padding-left: 360px; margin-top: -40px;" ng-include="root.base_url + 'preapp/templates/components/powerups/munchies/ice-cream.svg'"></div>
+                <div style="padding-left: 100px;" ng-include="root.base_url + 'preapp/templates/components/powerups/munchies/line-4.svg'"></div>
+                <div ng-include="root.base_url + 'preapp/templates/components/powerups/munchies/line-5.svg'"></div>
+                <div class="bg-charcoal-50p flex-center-wrap full-x p15xy radius-4-bottom">
+                    <button class="bg-auburn reverse normal m15top p30x radius-2">Try it Now on Desktop</button>
+                    <ul class="flex-center p15-grid full-x line-height-1-2">
+                        <li class="txt-24 semibold">
+                            Android<br/>Play Store
+                        </li>
+                        <li class="txt-24 semibold">
+                            iOS<br/>Coming Soon
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="absolute top-0 left-0 full-xy">
+                <div style="padding-left: 570px; margin-top: 100px;" ng-include="root.base_url + 'preapp/templates/components/powerups/munchies/phone-1.svg'"></div>
+                <div class="flex-right full-x" style="padding-right: 220px;">
+                    <span class="block landing-color p15xy txt-28 semibold line-height-1-2">
+                        Find the Best<br/>Food on<br/>Campus
+                    </span>
+                </div>
+                <div class="flex-left" style="padding-left: 130px;" ng-include="root.base_url + 'preapp/templates/components/powerups/munchies/phone-2.svg'"></div>
+                <div class="flex-right full-x" style="padding-right: 100px; margin-top: 150px;">
+                    <span class="block landing-color p15xy txt-28 semibold line-height-1-2">
+                        Filter Results at<br/>Your Convenience
+                    </span>
+                </div>
+                <div class="flex-right" style="padding-right: 50px; margin-top: 250px;" ng-include="root.base_url + 'preapp/templates/components/powerups/munchies/phone-3.svg'"></div>
+                <div class="flex-center full-x" style="margin-top: -300px;">
+                    <span class="block landing-color p15xy txt-28 semibold line-height-1-2">
+                        Get the Scoop on<br/>Your Next Meal
+                    </span>
+                </div>
+            </div>
+            <!-- <div class="absolute top-0 left-0 full-xy">
+                <div style='margin-top: 200px; padding-left: 50px;'>
+                    <div style='background: url("{{img_base}}./templates/elements/assets/powerups/munchies/pizza.png") no-repeat center center / cover; width: 400px; height: 400px;'></div>
+                </div>
+                <div class="flex-right" style="margin-top: 250px; padding-right: 50px;">
+                    <div style='background: url("{{img_base}}./templates/elements/assets/powerups/munchies/coffee.png") no-repeat center center / cover; width: 345px; height: 280px;'></div>
+                </div>
+                <div class="flex-left" style="margin-top: 180px; padding-left: 50px;">
+                    <div style='background: url("{{img_base}}./templates/elements/assets/powerups/munchies/sushi.png") no-repeat center center / cover; width: 490px; height: 460px;'></div>
+                </div>
+            </div> -->
+    	</div>
+		<button class="landing-try-button mobile"
+			init-with="p:[op:0, tro: center]"
+			on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):delay-2150:in]"
+			when-munchies-landing-enter="t-enter">Try It Now</button>
+	    <div class="splash-hero-skip absolute bottom-0 right-0 z-index-999"
+	        init-with="p:[op:0, tro:center center, tr:translateX(100%) rotate(180deg), t:all 1000ms cubic-bezier(.04#.75#.77#1.32)]"
+	        when-powerups-init="t-enter"
+	        on-enter="p:[op:1, tr:translateX(0) rotate(0)]:delay-3000">
+	       <button on-click="s:[close-munchies:public]">Back</button>
+	    </div>
+    </div>
+</div>

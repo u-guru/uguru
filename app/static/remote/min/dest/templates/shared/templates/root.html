@@ -1,1 +1,76 @@
-<ion-nav-view id="root-nav" animation="slide-left-right"></ion-nav-view>
+<!-- <animation-group animations="root.inspectAnimations"> </animation-group> -->
+<ion-nav-view id="root-nav" animation="slide-left-right">
+    <!-- Warnings: be careful with spaces, those are treated like characters
+            i.e. opacity: 0 !== opacity:0
+            (when it comes to shortcuts)
+    -->
+    <custom-shortcuts>
+    <!-- check splash.nav.html for shortcut examples -->
+        <!-- for prop, send, anim trigger-->
+        <arg-shortcut replace="prop" with="p">
+        <arg-shortcut replace="trigger" with="t">
+        <arg-shortcut replace="send" with="s">
+        <arg-shortcut replace="class" with="c">
+        <arg-shortcut replace="anim" with="a">
+        <arg-shortcut replace="eval" with="e">
+		<arg-shortcut replace="transform" with="tr">
+        <arg-shortcut replace="prop" with="set">
+
+        <!-- For css properties only -->
+        <prop-shortcut replace="opacity" with="op">
+        <prop-shortcut replace="transform" with="tr">
+        <prop-shortcut replace="transform-origin" with="tro">
+        <prop-shortcut replace="background" with="bg">
+        <prop-shortcut replace="transition" with="t">
+
+        <prop-shortcut replace="fill" with="f">
+        <prop-shortcut replace="fill-opacity" with="fop">
+        <prop-shortcut replace="stroke" with="s">
+        <prop-shortcut replace="stroke-opacity" with="sop">
+        <prop-shortcut replace="stroke-dashoffset" with="sdo">
+        <prop-shortcut replace="stroke-dasharray" with="sda">
+
+        <prop-shortcut replace="animation-duration" with="ad">
+        <prop-shortcut replace="animation-duration" with="dur">
+        <prop-shortcut replace="animation-timing-function" with="atf">
+        <prop-shortcut replace="animation-timing-function" with="func">
+        <prop-shortcut replace="animation-iteration-count" with="aic">
+        <prop-shortcut replace="animation-iteration-count" with="count">
+        <prop-shortcut replace="animation-direction" with="ad">
+        <prop-shortcut replace="animation-direction" with="dir">
+        <prop-shortcut replace="animation-play-state" with="aps">
+        <prop-shortcut replace="animation-play-state" with="play">
+        <prop-shortcut replace="animation-fill-mode" with="afm">
+        <prop-shortcut replace="animation-fill-mode" with="mode">
+        <prop-shortcut replace="animation-delay" with="ade">
+        <prop-shortcut replace="animation-delay" with="start">
+
+        <!--Most general-->
+        <!--
+			Since p -> prop is defined already (since rendered top-to-bottom), this would work too:
+        	<command-shortcut replace="p:[op:0, z-index:-1000]" with="backstage"/>
+        -->
+
+        <cmd-shortcut replace="prop:[op:0, z-index:-1000]" with="backstage">
+		<cmd-shortcut replace="prop:[op:0]" with="p-op">
+		<cmd-shortcut replace="prop:[op:0]" with="p-o-0">
+		<cmd-shortcut replace="prop:[op:1]" with="p-o-1">
+		<cmd-shortcut replace="trigger:[on-enter]" with="t-enter">
+		<cmd-shortcut replace="trigger:[on-enter:children]" with="t-enter-child">
+		<cmd-shortcut replace="trigger:[on-exit]" with="t-exit">
+		<cmd-shortcut replace="trigger:[on-exit:children]" with="t-exit-child">
+		<cmd-shortcut replace="prop:[op:1, t:all 500ms ease-in-out]" with="p-fadereturn">
+
+
+		<prop-value-shortcut replace="op:0" with="o-0">
+		<prop-value-shortcut replace="op:1" with="o-1">
+		<prop-value-shortcut replace="stroke-dashoffset:0" with="sdo-0">
+		<prop-value-shortcut replace="t:all 250ms ease-in-out" with="t-250-eio">
+		<prop-value-shortcut replace="t:all 250ms ease-in" with="t-250-ei">
+		<prop-value-shortcut replace="t:all 250ms ease-out" with="t-250-eo">
+		<prop-value-shortcut replace="t:all 150ms ease-in-out" with="t-150-eio">
+		<prop-value-shortcut replace="t:all 150ms ease-in" with="t-150-ei">
+		<prop-value-shortcut replace="t:all 150ms ease-out" with="t-150-eo">
+    </custom-shortcuts>
+    <root-animation off="true"> </root-animation>
+</ion-nav-view>

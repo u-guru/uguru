@@ -1,0 +1,906 @@
+@import '../../../../shared/css/scss/partials/mixin';
+
+.projector-slide .hiw-svg { width: 100%; height: 100% }
+
+.map-stadium,.map-library,.map-dorm,.map-clock-tower { cursor: pointer }
+
+// onEnter
+.map-stadium,.map-library,.map-dorm,.map-clock-tower,.map-student-union,.map-extra-dorm-1,.map-extra-dorm-2,.map-extra-dorm-3,.map-extra-dorm-4,.map-extra-dorm-5,.map-extra-dorm-6, .map-gym, .map-lab-maroon, .map-lab-teal, .map-lab-brown, .map-fountain {
+	transform-origin: center bottom;
+	transform: scaleY(0) translateZ(0);
+	animation: hiw-scaleUp 500ms cubic-bezier(.77,0,.05,1.27) forwards;
+}
+
+@for $i from 1 through 6 {
+	.map-extra-dorm-#{$i} {
+		animation-delay: #{($i*200)}ms;
+	}
+}
+
+.map-stadium { animation-delay: 500ms }
+.map-library { animation-delay: 200ms }
+.map-dorm { animation-delay: 1800ms }
+.map-student-union { animation-delay: 800ms }
+.map-clock-tower { animation-delay: 2500ms }
+.map-gym { animation-delay: 900ms }
+.map-lab-maroon { animation-delay: 200ms }
+.map-lab-teal { animation-delay: 400ms }
+.map-lab-brown { animation-delay: 600ms }
+
+// onEnter / infinite
+g[class*="ppl"], [class*="bush"], g[class*="pine"], g[class*="elm"], g[class*="tri"], g[class*="gate-back"] {
+	animation: fadeIn 1000ms ease-in-out forwards;
+}
+g[class*="pine"] {
+	polygon[class*="top-base"] {
+		transform-origin: top center;
+		animation: hiw-shake 2000ms linear infinite alternate;
+	}
+	polygon[class*="top-shadow"] {
+		transform-origin: top right;
+		animation: hiw-shake 2000ms linear infinite alternate;
+	}
+}
+polygon[class*="pine-front-1"] {
+	animation-delay: 4s;
+}
+polygon[class*="pine-front-2"] {
+	animation: none;
+}
+polygon[class*="pine-front-3"] {
+	animation-delay: 2340ms;
+}
+polygon[class*="pine-front-4"] {
+	animation-delay: 1460ms;
+}
+polygon[class*="pine-back"] {
+	animation: none;
+}
+
+[class*="bush"] {
+	transform-origin: center center;
+	animation: hiw-shake 2000ms linear infinite alternate;
+	&.map-student-union-bush-right { animation-delay: 3s }
+	&.map-student-union-bush-left { animation-delay: 8s }
+}
+.map-thumbnail-balloons {
+	g[class*="map-thumbnail-balloon-"] {
+		opacity: 0;
+		transform-origin: top center;
+	}
+	.map-thumbnail-balloon-baking {
+		animation: fadeIn 1s ease-out 3s forwards,hiw-sway 3s linear 500ms infinite alternate;
+		> g { animation: hiw-cloud-hover 1500ms linear 270ms infinite alternate }
+	}
+	.map-thumbnail-balloon-hh {
+		animation: fadeIn 1s ease-out 3500ms forwards,hiw-sway 3s linear 960ms infinite alternate;
+		> g {
+			opacity: 0.8;
+			animation: hiw-cloud-hover 1500ms linear 640ms infinite alternate;
+		}
+	}
+	.map-thumbnail-balloon-academic {
+		animation: fadeIn 1s ease-out 4s forwards,hiw-sway 3s linear 50ms infinite alternate;
+		> g {
+			opacity: 0.3;
+			animation: hiw-cloud-hover 1500ms linear 200ms infinite alternate;
+		}
+	}
+}
+
+.map-clouds {
+	g[class*="map-cloud-"] {
+		opacity: 0;
+		transform-origin: center center;
+		transform: matrix3d(0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1);
+		animation: 1s hiw-map-clouds 0ms linear forwards;
+	}
+	path[class*="-shape"],path[class*="-detail"] {
+		transform: translateZ(0);
+		animation: hiw-cloud-hover 1500ms linear infinite alternate;
+	}
+	@for $i from 1 through 4 {
+		g.map-cloud-#{$i} { animation-delay: #{(3000+($i*200))}ms }
+		path.map-cloud-#{$i}-shape,path.map-cloud-#{$i}-detail { animation-delay: #{($i*300)}ms }
+	}
+}
+
+.map-clock-tower-minute-hand {
+	transform-origin: bottom center;
+	animation: 2000ms hiw-minute-hand ease-in 500ms infinite forwards;
+}
+.map-clock-tower-hour-hand {
+	transform-origin: left center;
+	animation: 12000ms hiw-hour-hand 2000ms linear infinite forwards;
+}
+
+.map-enter {
+	transition: all 150ms ease-in-out;
+	opacity: 0;
+	transform-origin: center center;
+	transform: translate3d(0,100%,0) scaleX(0);
+}
+a[class*="-container"] {
+	.map-stadium-outside {
+		transition: all 150ms ease-in-out;
+		transform: scaleY(1) translateZ(0);
+		transform-origin: 50% 85%;
+	}
+	&:hover {
+		.map-enter {
+			opacity: 1;
+			transform: translate3d(0,0,0) scaleX(1);
+			g {
+				transform: translateZ(0);
+				animation: hiw-cloud-hover 1500ms linear 175ms infinite alternate;
+			}
+		}
+		.map-stadium-outside { transform: scaleY(0) translateZ(0) }
+	}
+}
+
+.ppl-wheelchair {
+	animation: fadeIn 1000ms ease-in-out forwards, ppl-wheelchair-move 10s ease-in-out 5s forwards;
+	g {
+		transform-origin: center bottom;
+		animation: ppl-wheelchair-rotate 10s linear 5s forwards;
+	}
+}
+
+.ppl-fan-2-wave {
+	animation: hiw-sway 500ms ease-in-out infinite alternate;
+	transform-origin: left bottom;
+}
+
+.ppl-fan-1-wave {
+	animation: hiw-sway 500ms ease-in-out infinite alternate;
+	transform-origin: right bottom;
+}
+
+.ppl-fan-1 {
+	animation: ppl-fan-cheer 500ms ease-in-out 3s 4 alternate-reverse,ppl-fan-2-push 500ms ease-in-out 5750ms 2 forwards,ppl-fan-1-push 500ms ease-in-out 6250ms 2 forwards,ppl-fan-cheer 500ms ease-in-out 8s infinite alternate;
+	transform-origin: right bottom;
+}
+
+.ppl-fan-2 {
+	animation: ppl-fan-cheer 500ms ease-in-out 3250ms 4 alternate-reverse,ppl-fan-2-push 500ms ease-in-out 5650ms 2 forwards,ppl-fan-1-push 500ms ease-in-out 6150ms 2 forwards,ppl-fan-cheer 500ms ease-in-out 8500ms infinite alternate;
+	transform-origin: right bottom;
+}
+
+.ppl-kite-fly {
+	animation: ppl-kite-fly 2000ms ease-in-out infinite alternate;
+	transform-origin: left bottom;
+}
+
+.ppl-kite-diamond {
+	animation: ppl-kite-diamond 1500ms ease-in-out infinite alternate;
+	transform-origin: center bottom;
+}
+
+.ppl-kite-arm-right {
+	animation: ppl-kite-fly 1500ms ease-in-out infinite alternate;
+	transform-origin: left top;
+}
+
+.ppl-eating-munching {
+	animation: ppl-eating-munching 2000ms linear 3500ms infinite alternate-reverse;
+	transform-origin: left bottom;
+}
+
+.ppl-eating-pizza-slice {
+	animation: ppl-eating-pizza-slice 6s ease-in infinite alternate;
+	transform-origin: center center;
+}
+
+.ppl-eating-torso {
+	animation: ppl-eating-shake 100ms linear infinite alternate;
+	transform-origin: center center;
+}
+
+.ppl-jeselle-arms {
+	animation: ppl-jeselle-dribble 300ms ease-in-out infinite alternate;
+	transform-origin: center center;
+}
+
+.ppl-jeselle-wilson {
+	animation: ppl-jeselle-wilson 300ms cubic-bezier(.63,.09,.75,.46) infinite alternate;
+	transform-origin: center center;
+}
+
+.ppl-musician {
+  animation: ppl-musician-rock 500ms linear infinite alternate;
+	transform-origin: center bottom;
+}
+
+.ppl-musician-arm-right {
+	animation: ppl-musician-strum 250ms ease-in-out infinite alternate;
+	transform-origin: right top;
+}
+
+.ppl-musician-mohawk {
+	transform-origin: center bottom;
+		animation: ppl-musician-strum 500ms ease-in-out infinite alternate;
+}
+
+.ppl-gabri {
+	animation: ppl-gabrielle-walk 3000ms steps(5,start) 2000ms forwards;
+}
+
+.ppl-gabri-purse-swing {
+	transform-origin: center top;
+	animation: ppl-musician-strum 500ms ease-in-out infinite alternate;
+}
+
+.ppl-bald {
+	animation: ppl-bald 5000ms ease-in-out 3 alternate-reverse;
+}
+
+.ppl-bald-wobble {
+	animation: ppl-musician-strum 300ms ease-in-out 30 alternate-reverse;
+	transform-origin: center center;
+}
+
+.fountain-water-drops-1{
+	animation: fountain-water-drops 500ms ease-in-out infinite normal;
+	transform-origin: center center;
+}
+
+.fountain-water-drops-5{
+	animation: fountain-water-drops-5 800ms ease-in-out infinite normal;
+	transform-origin: center center;
+}
+
+.fountain-water-drops-3,
+.fountain-water-drops-4,
+.fountain-water-drops-2 {
+	animation: fountain-water-drops-3 300ms ease-out infinite normal;
+}
+
+.fountain-water-drops-6 {
+	animation: fountain-water-drops-6 450ms ease-in-out infinite normal;
+	transform-origin: center center;
+}
+
+.fountain-water-burst-bottom {
+	transform-origin: center top;
+	animation: fountain-water-burst-bottom 1000ms ease-in-out infinite alternate;
+}
+
+.fountain-water-burst {
+	transform-origin: center center;
+	animation: fountain-water-burst 500ms ease-in-out infinite alternate-reverse;
+}
+
+.fountain-water-burst-top {
+	transform-origin: center center;
+	animation: fountain-water-burst-top 1500ms ease-in-out infinite alternate;
+}
+
+.map-student-union-flag {
+    animation: map-student-union-flag 750ms ease-out infinite alternate;
+	transform-origin: left center;
+}
+
+// map transition to stadium subscene 1
+#hiw-map {
+	> g {
+		transition: transform 1s ease-out;
+		transform-origin: 123px 210.5px;
+	}
+	&.active-stadium {
+		> g {
+			// transform: translate3d(35%,34.3%,0) scale(4.32);
+			transform: translate3d(34.2%,26.6%,0) scale(4.32);
+		}
+		a[class*="-container"] {
+			.map-enter {
+				opacity: 0!important;
+				transform: translate3d(0,100%,0) scaleX(0)!important;
+			}
+			.map-stadium-outside { transform: scaleY(0) translateZ(0) }
+		}
+	}
+}
+
+// stadium transitions
+#hiw-sky-balloon,#hiw-sky-gradient,#hiw-stadium,#hiw-stadium-balloons {
+	position: absolute;
+	top: 0; left: 0;
+	z-index: -1;
+	opacity: 0;
+	transition: all 500ms ease-out 1s;
+}
+
+#hiw-stadium {
+	cursor: pointer;
+	.stadium-screen-grid,.stadium-screen-display-container,.stadium-coach { transition: all 500ms cubic-bezier(.77,-0.22,.05,1) 4s }
+	.stadium-screen-grid,.stadium-screen-display-container,[class*="avg-sign-"],.cal-people,.away-people,.sub1-main-crowd,.fan-props-cal-main,.fan-props-away-main { opacity: 0 }
+	.fan-props-cal-small {
+		opacity: 0;
+		transform-origin: bottom center;
+	}
+	.fan-props-away-small { transform-origin: bottom center }
+	&.active {
+		z-index: 1;
+		opacity: 1;
+		// onEnter
+		.stadium-screen-grid,.stadium-screen-display-container { opacity: 1 }
+		.stadium-coach-group {
+			transform-origin: center center;
+			animation: hiw-tada 1s ease-in-out 1s 2.75 forwards;
+		}
+		.stadium-coach { opacity: 0 }
+		[class*="avg-sign-"] { animation: avg-slide-down 500ms cubic-bezier(.13,-0.5,.62,1.32) 1250ms forwards }
+		.cal-people { animation: cal-people 1s linear 1500ms both }
+		.fan-props-cal-small {
+			animation: fan-props-cal-small 2000ms linear 1750ms both;
+		}
+		.away-people {
+			animation: away-people 1s linear 1500ms both;
+		}
+		.fan-props-away-small {
+			animation: fan-props-away-small 2000ms linear 1750ms both;
+		}
+		.sub1-main-crowd {
+			animation: sub1-main-crowd 1s linear 1500ms both;
+		}
+		.fan-props-cal-main,.fan-props-away-main {
+			animation: hiw-slideUp 1s ease-in-out 1750ms forwards;
+		}
+		// main
+		.stadium-main-cal-flag-1 {
+			animation: flag-rotate-2 150ms linear 1600ms 30 alternate;
+			transform-origin: bottom right;
+		}
+		.stadium-main-cal-flag-2 {
+			animation: flag-rotate 250ms linear 1600ms 30 alternate;
+			transform-origin: bottom left;
+		}
+		.stadium-main-cal-flag-3 {
+			animation: flag-rotate 300ms linear 1600ms 20 alternate;
+			transform-origin: bottom left;
+		}
+		.stadium-small-cal-flag-11,
+		.stadium-small-cal-flag-1,
+		.stadium-small-cal-flag-2 {
+			 animation: flag-rotate 300ms linear 1600ms 30 alternate;
+			transform-origin: bottom left;
+		}
+		.stadium-small-cal-flag-3 {
+			animation: flag-rotate-2 500ms linear 1600ms 20 alternate;
+			transform-origin: bottom right;
+		}
+		.stadium-small-cal-flag-5 {
+			animation: flag-rotate-2 200ms linear 1600ms 30 alternate;
+			transform-origin: bottom left;
+		}
+		.stadium-small-cal-flag-6 {
+			animation: flag-rotate 150ms linear 1600ms 30 alternate-reverse;
+			transform-origin: bottom left;
+		}
+		.stadium-small-cal-flag-10 {
+			animation: flag-rotate 200ms linear 1600ms 30 alternate-reverse;
+			transform-origin: top left;
+		}
+		.stadium-small-cal-flag-4 {
+			animation: flag-rotate-2 250ms linear 1600ms 30 alternate;
+			transform-origin: top left;
+		}
+		.stadium-small-cal-flag-8 {
+			animation: flag-rotate-2 150ms linear 1600ms 30 alternate;
+			transform-origin: top right;
+		}
+		.stadium-small-cal-flag-9,
+		.stadium-small-cal-flag-7 {
+			animation: flag-rotate-2 450ms linear 1600ms 30 alternate;
+			transform-origin: center left;
+		}
+		.stadium-main-cal-sign-1 {
+			animation: sign-side-shake 500ms steps(9,start) 1600ms 15 alternate;
+			transform-origin: center center;
+		}
+		.stadium-main-cal-sign-3 {
+			animation: sign-side-shake 1s steps(9,start) 1600ms 15 alternate;
+			transform-origin: center center;
+		}
+		.stadium-main-cal-sign-2 {
+			animation: sign-vertical-shake 450ms steps(9,start) 1600ms 15 alternate;
+			transform-origin: center center;
+		}
+		.stadium-main-cal-sign-4 {
+			animation: sign-vertical-shake 550ms steps(9,start) 1600ms 15 alternate;
+			transform-origin: center center;
+		}
+		.stadium-small-cal-sign-5,
+		.stadium-small-cal-sign-1 {
+			animation: sign-vertical-shake 450ms steps(9,start) 1600ms 15 alternate;
+			transform-origin: center center;
+		}
+		.stadium-small-cal-sign-3 {
+			animation: sign-vertical-shake 750ms steps(9,start) 1600ms 15 alternate;
+			transform-origin: center center;
+		}
+		.stadium-small-cal-sign-4 {
+			animation: sign-side-shake 1s steps(9,start) 1600ms 15 alternate;
+			transform-origin: center center;
+		}
+		.stadium-small-cal-sign-2 {
+			animation: sign-side-shake 500ms steps(9,start) 1600ms 15 alternate;
+			transform-origin: center center;
+		}
+		.stadium-small-crowd-white-30-cal {
+			animation: fadeIn 0.25s steps(2,start) 1600ms 30 alternate;
+		}
+		.stadium-small-crowd-white-60-cal {
+			animation: fadeIn .5s steps(2,start) 1600ms 30 alternate;
+		}
+		.stadium-main-crowd-white-1,
+		.stadium-main-crowd-white-10,
+		.stadium-main-crowd-white-20,
+		.stadium-main-crowd-white-30,
+		.stadium-main-crowd-white-40,
+		.stadium-main-crowd-white-50,
+		.stadium-main-crowd-white-60,
+		.stadium-main-crowd-white-70 {
+			animation: crowd-rotate 0.25s steps(2,start) 1600ms 30 alternate;
+			transform-origin: bottom center;
+		}
+		.stadium-main-crowd-white-2,
+		.stadium-main-crowd-white-11,
+		.stadium-main-crowd-white-21,
+		.stadium-main-crowd-white-31,
+		.stadium-main-crowd-white-41,
+		.stadium-main-crowd-white-51,
+		.stadium-main-crowd-white-61,
+		.stadium-main-crowd-white-71 {
+			animation: crowd-side-shake 0.25s steps(2,start) 1600ms 30 alternate;
+			transform-origin: center center;
+		}
+		.stadium-main-crowd-white-3,
+		.stadium-main-crowd-white-12,
+		.stadium-main-crowd-white-22,
+		.stadium-main-crowd-white-32,
+		.stadium-main-crowd-white-42,
+		.stadium-main-crowd-white-52,
+		.stadium-main-crowd-white-62,
+		.stadium-main-crowd-white-72 {
+			animation: crowd-side-shake 0.5s ease 1600ms 30 alternate;
+			transform-origin: center center;
+		}
+		.stadium-main-crowd-white-23,
+		.stadium-main-crowd-white-33,
+		.stadium-main-crowd-white-53,
+		.stadium-main-crowd-white-63 {
+			animation: crowd-jump 0.25s steps(2,start) 1600ms 30 alternate;
+			transform-origin: center center;
+		}
+		.stadium-main-crowd-white-4,
+		.stadium-main-crowd-white-13,
+		.stadium-main-crowd-white-43,
+		.stadium-main-crowd-white-53,
+		.stadium-main-crowd-white-9 {
+			animation: crowd-jump 0.25s ease 1600ms 30 alternate;
+			transform-origin: center center;
+		}
+		.stadium-main-crowd-white-14,
+		.stadium-main-crowd-white-24,
+		.stadium-main-crowd-white-34,
+		.stadium-main-crowd-white-44,
+		.stadium-main-crowd-white-54,
+		.stadium-main-crowd-white-64 {
+			animation: crowd-side-shake 0.15s ease 1600ms 30 alternate;
+			transform-origin: center center;
+		}
+		.stadium-main-crowd-white-5,
+		.stadium-main-crowd-white-15,
+		.stadium-main-crowd-white-25,
+		.stadium-main-crowd-white-35,
+		.stadium-main-crowd-white-45,
+		.stadium-main-crowd-white-55,
+		.stadium-main-crowd-white-65 {
+			animation: crowd-side-wander 0.25s ease 1600ms 30 alternate;
+			transform-origin: center center;
+		}
+		.stadium-main-crowd-white-6,
+		.stadium-main-crowd-white-16,
+		.stadium-main-crowd-white-26,
+		.stadium-main-crowd-white-36,
+		.stadium-main-crowd-white-46,
+		.stadium-main-crowd-white-56,
+		.stadium-main-crowd-white-66 {
+			animation: crowd-side-wander 0.15s ease 1600ms 30 alternate-reverse;
+			transform-origin: center center;
+		}
+		.stadium-main-crowd-white-17 { animation: fadeIn .25s steps(2,start) 1600ms 30 alternate }
+		.stadium-main-crowd-white-27 { animation: fadeIn .15s steps(2,start) 1600ms 30 alternate }
+		.stadium-main-crowd-white-57 { animation: fadeIn .3s steps(2,start) 1600ms 30 alternate }
+		.stadium-main-crowd-white-47 { animation: fadeIn .5s steps(2,start) 1600ms 30 alternate }
+	}
+	&.wild {
+		.stadium-main-cal-sign-4,
+		.stadium-small-away-sign-4{
+			animation: sign-vertical-shake-wild 550ms steps(9,start) infinite alternate!important;
+			transform-origin: center center;
+		}
+		.stadium-small-cal-sign-5,
+		.stadium-small-cal-sign-1,
+		.stadium-small-away-sign-3{
+			animation: sign-vertical-shake-wild 450ms steps(9,start) infinite alternate!important;
+			transform-origin: center center;
+		}
+		.stadium-small-cal-sign-3,
+		.stadium-small-away-sign-2 {
+			animation: sign-vertical-shake-wild 750ms steps(9,start) infinite alternate!important;
+			transform-origin: center center;
+		}
+		.stadium-small-cal-sign-4,
+		.stadium-small-away-sign-1{
+			animation: sign-side-shake-wild 1s steps(9,start) infinite alternate!important;
+			transform-origin: center center;
+		}
+		.stadium-small-cal-sign-2,
+		.stadium-small-away-sign-5{
+			animation: sign-side-shake-wild 250ms steps(9,start) infinite alternate!important;
+			transform-origin: center center;
+		}
+		.stadium-main-cal-sign-1,
+		.stadium-main-cal-sign-2,
+		.stadium-main-away-sign-2{
+			animation: sign-vertical-shake-wild 250ms steps(9,start) infinite alternate!important;
+			transform-origin: center center;
+		}
+		.stadium-main-cal-sign-3 {
+			animation: sign-side-shake-wild 500ms ease-in-out infinite alternate!important;
+			transform-origin: center center;
+		}
+		.stadium-main-away-sign-1 {
+			animation: sign-side-shake-wild 750ms ease-in-out infinite alternate!important;
+			transform-origin: center center;
+		}
+		.stadium-main-cal-flag-1,
+		.stadium-main-away-flag-3{
+			animation: flag-rotate-2-wild 150ms linear infinite alternate!important;
+			transform-origin: bottom right;
+		}
+		.stadium-main-cal-flag-2 {
+			animation: flag-rotate-wild 50ms linear infinite alternate!important;
+			transform-origin: bottom left;
+		}
+		.stadium-main-away-flag-1,
+		.stadium-small-away-flag-1  {
+			animation: flag-rotate-wild 175ms linear infinite alternate!important;
+			transform-origin: bottom right;
+		}
+		.stadium-main-cal-flag-3,
+		.stadium-main-away-flag-2,
+		.stadium-small-away-flag-2  {
+			animation: flag-rotate-wild 150ms linear infinite alternate!important;
+			transform-origin: bottom left;
+		}
+		.stadium-small-cal-flag-11,
+		.stadium-small-cal-flag-1,
+		.stadium-small-cal-flag-2,
+		.stadium-small-away-flag-3  {
+			animation: flag-rotate-wild 200ms linear infinite alternate!important;
+			transform-origin: bottom left;
+		}
+		.stadium-small-cal-flag-3,
+		.stadium-small-away-flag-4  {
+			animation: flag-rotate-2-wild 250ms linear infinite alternate!important;
+			transform-origin: bottom right;
+		}
+		.stadium-small-cal-flag-5,
+		.stadium-small-away-flag-5  {
+			animation: flag-rotate-2-wild 100ms linear infinite alternate!important;
+			transform-origin: bottom left;
+		}
+		.stadium-small-cal-flag-6,
+		.stadium-small-away-flag-6  {
+			animation: flag-rotate-wild 50ms linear infinite alternate-reverse!important;
+			transform-origin: bottom left;
+		}
+		.stadium-small-cal-flag-10,
+		.stadium-small-away-flag-7  {
+			animation: flag-rotate-wild 100ms linear infinite alternate-reverse!important;
+			transform-origin: top left;
+		}
+		.stadium-small-cal-flag-4,
+		.stadium-small-away-flag-8  {
+			animation: flag-rotate-2-wild 150ms linear infinite alternate!important;
+			transform-origin: top left;
+		}
+		.stadium-small-cal-flag-8,
+		.stadium-small-away-flag-9 {
+			animation: flag-rotate-2-wild 100ms linear infinite alternate!important;
+			transform-origin: top right;
+		}
+		.stadium-small-cal-flag-9,
+		.stadium-small-cal-flag-7,
+		.stadium-small-away-flag-10 {
+			animation: flag-rotate-2-wild 250ms linear infinite alternate!important;
+			transform-origin: center left;
+		}
+		.stadium-small-crowd-white-30-cal,
+		.stadium-small-crowd-white-100-away {
+			animation: fadeIn 0.15s steps(2,start) infinite alternate!important;
+		}
+		.stadium-small-crowd-white-60-cal,
+		.stadium-small-crowd-white-60-away {
+			animation: fadeIn .05s steps(2,start) infinite alternate!important;
+		}
+		.stadium-main-crowd-white-1,
+		.stadium-main-crowd-white-10,
+		.stadium-main-crowd-white-20,
+		.stadium-main-crowd-white-30,
+		.stadium-main-crowd-white-40,
+		.stadium-main-crowd-white-50,
+		.stadium-main-crowd-white-60,
+		.stadium-main-crowd-white-70 {
+			animation: crowd-rotate 0.15s steps(2,start) infinite alternate!important;
+			transform-origin: bottom center;
+		}
+		.stadium-main-crowd-white-2,
+		.stadium-main-crowd-white-11,
+		.stadium-main-crowd-white-21,
+		.stadium-main-crowd-white-31,
+		.stadium-main-crowd-white-41,
+		.stadium-main-crowd-white-51,
+		.stadium-main-crowd-white-61,
+		.stadium-main-crowd-white-71 {
+			animation: crowd-side-shake 0.15s steps(2,start) infinite alternate!important;
+			transform-origin: center center;
+		}
+		.stadium-main-crowd-white-3,
+		.stadium-main-crowd-white-12,
+		.stadium-main-crowd-white-22,
+		.stadium-main-crowd-white-32,
+		.stadium-main-crowd-white-42,
+		.stadium-main-crowd-white-52,
+		.stadium-main-crowd-white-62,
+		.stadium-main-crowd-white-72 {
+			animation: crowd-side-shake 0.25s ease infinite alternate!important;
+			transform-origin: center center;
+		}
+		.stadium-main-crowd-white-23,
+		.stadium-main-crowd-white-33,
+		.stadium-main-crowd-white-53,
+		.stadium-main-crowd-white-63 {
+			animation: crowd-jump 0.15s steps(2,start) infinite alternate!important;
+			transform-origin: center center;
+		}
+		.stadium-main-crowd-white-4,
+		.stadium-main-crowd-white-13,
+		.stadium-main-crowd-white-43,
+		.stadium-main-crowd-white-53,
+		.stadium-main-crowd-white-9 {
+			animation: crowd-jump 0.15s ease infinite alternate!important;
+			transform-origin: center center;
+		}
+		.stadium-main-crowd-white-14,
+		.stadium-main-crowd-white-24,
+		.stadium-main-crowd-white-34,
+		.stadium-main-crowd-white-44,
+		.stadium-main-crowd-white-54,
+		.stadium-main-crowd-white-64 {
+			animation: crowd-side-shake 0.05s ease infinite alternate!important;
+			transform-origin: center center;
+		}
+		.stadium-main-crowd-white-5,
+		.stadium-main-crowd-white-15,
+		.stadium-main-crowd-white-25,
+		.stadium-main-crowd-white-35,
+		.stadium-main-crowd-white-45,
+		.stadium-main-crowd-white-55,
+		.stadium-main-crowd-white-65 {
+			animation: crowd-side-wander 0.15s ease infinite alternate!important;
+			transform-origin: center center;
+		}
+		.stadium-main-crowd-white-6,
+		.stadium-main-crowd-white-16,
+		.stadium-main-crowd-white-26,
+		.stadium-main-crowd-white-36,
+		.stadium-main-crowd-white-46,
+		.stadium-main-crowd-white-56,
+		.stadium-main-crowd-white-66 {
+			animation: crowd-side-wander 0.10s ease infinite alternate-reverse!important;
+			transform-origin: center center;
+		}
+		.stadium-main-crowd-white-17{
+			animation: fadeIn .15s steps(2,start) infinite alternate!important;
+		}
+		.stadium-main-crowd-white-27{
+			animation: fadeIn .10s steps(2,start) infinite alternate!important;
+		}
+		.stadium-main-crowd-white-57{
+			animation: fadeIn .15s steps(2,start) infinite alternate!important;
+		}
+		.stadium-main-crowd-white-47 {
+			animation: fadeIn .25s steps(2,start) infinite alternate!important;
+		}
+	}
+}
+
+.hiw-stadium-container {
+	transition: all 500ms ease-out 1s;
+	&.active { transform: translateY(20.2%) translateZ(0) }
+}
+
+#hiw-stadium-balloons {
+	transition-delay: 1500ms!important;
+	&.active {
+		z-index: 2;
+		opacity: 1;
+	}
+}
+
+// main
+[class*="stadium-light-"] { opacity: 0 }
+
+// helicopter
+.hiw-helicopter {
+	transform: translateZ(0);
+	&.active {
+		animation: hiw-helicopter-translate 4s ease-out 1s;
+	}
+}
+
+.hiw-helicopter-container {
+	animation: hiw-cloud-hover 1500ms linear infinite alternate;
+}
+
+.sub2-announcement {
+	transform-origin: right center;
+	transform: rotateZ(-0.5deg) translateZ(0);
+	animation: hiw-helicopter-rotate 1500ms linear infinite alternate;
+}
+
+.sub2-helicopter {
+	transform: translateZ(0);
+}
+
+.sub2-helicopter-wing-1 {
+	backface-visibility: hidden;
+	animation: hiw-helicopter-spin-1 150ms linear infinite forwards;
+	transform: rotateY(0) translateZ(0);
+	transform-origin: center center;
+}
+
+.sub2-helicopter-wing-2 {
+	backface-visibility: hidden;
+	animation: hiw-helicopter-spin-2 300ms linear infinite forwards;
+	transform: rotateY(1turn) translateZ(0);
+	transform-origin: center center;
+}
+
+// balloons
+.hiw-balloon {
+	cursor: pointer;
+	opacity: 1;
+	transform-origin: center center;
+	transition: transform 500ms ease-out 1500ms,opacity 0ms linear 2400ms;
+	&.active {
+		opacity: 0;
+		> g { animation: hiw-balloon-anticipation 150ms ease-in-out 0ms 1 forwards,hiw-balloon-anticipation-reverse 500ms ease-in-out 1s 1 forwards!important }
+	}
+	~ .hiw-balloon-hover {
+		transition: all 150ms ease-in-out;
+		opacity: 0;
+		transform-origin: center center;
+		transform: translate3d(0,100%,0) scaleX(0);
+	}
+	&:hover,&:focus {
+		~ .hiw-balloon-hover {
+			opacity: 1;
+			transform: translate3d(0,0,0) scaleX(1);
+			g {
+				transform: translateZ(0);
+				animation: hiw-cloud-hover 1500ms linear 175ms infinite alternate;
+			}
+		}
+	}
+	&.active {
+		~ .hiw-balloon-hover {
+			opacity: 0;
+			transform: translate3d(0,100%,0) scaleX(0);
+		}
+	}
+}
+.hiw-balloon-group { transform: translate3d(-520%,-100%,0) scale(0) }
+#hiw-balloon-group-baking.move { animation: hiw-balloon-move-baking 6s ease-in-out 2000ms forwards }
+#hiw-balloon-baking {
+	&.active { transform: translate3d(56%,-63%,0) scale(2.38) }
+	> g { animation: hiw-cloud-hover 1500ms linear 350ms infinite alternate }
+}
+#hiw-balloon-group-hh.move { animation: hiw-balloon-move-hh 6s ease-in-out 1500ms forwards }
+#hiw-balloon-hh {
+	&.active { transform: translate3d(-44%,-70%,0) scale(2.38) }
+	> g { animation: hiw-cloud-hover 1500ms linear 520ms infinite alternate }
+}
+#hiw-balloon-group-academic.move { animation: hiw-balloon-move-academic 6s ease-in-out 1s forwards }
+#hiw-balloon-academic {
+	&.active { transform: translate3d(-144%,-80%,0) scale(2.38) }
+	> g { animation: hiw-cloud-hover 1500ms linear 230ms infinite alternate }
+}
+#hiw-balloon-group-tech.move { animation: hiw-balloon-move-tech 6s ease-in-out 500ms forwards }
+#hiw-balloon-tech {
+	&.active { transform: translate3d(-244%,-70%,0) scale(2.38) }
+	> g { animation: hiw-cloud-hover 1500ms linear 100ms infinite alternate }
+}
+#hiw-balloon-group-photo.move { animation: hiw-balloon-move-photo 6s ease-in-out 0ms forwards }
+#hiw-balloon-photo {
+	&.active { transform: translate3d(-344%,-65%,0) scale(2.38) }
+	> g { animation: hiw-cloud-hover 1500ms linear 640ms infinite alternate }
+}
+
+.hiw-stadium-balloons-container,.hiw-helicopter {
+	transition: all 500ms ease-out 500ms;
+	&.clear { transform: translate3d(0,2000px,0)!important }
+}
+
+.hiw-balloon-static {
+	transition: all 1s ease-out 1500ms;
+	&.clear {
+		transform: translate3d(0,2000px,0);
+		&#hiw-balloon-baking { transition-delay: 1600ms!important }
+		&#hiw-balloon-hh { transition-delay: 1800ms!important }
+		&#hiw-balloon-academic { transition-delay: 1500ms!important }
+		&#hiw-balloon-tech { transition-delay: 1900ms!important }
+		&#hiw-balloon-photo { transition-delay: 1700ms!important }
+		> g { animation: hiw-balloon-anticipation 150ms ease-in-out 0ms 1 forwards!important }
+	}
+}
+
+#hiw-sky-balloon {
+	transition-delay: 2000ms!important;
+	&.active {
+		z-index: 3;
+		opacity: 1;
+	}
+}
+
+.hiw-sky-balloon {
+	opacity: 0!important;
+	transform-origin: center center;
+	&.active {
+		opacity: 1!important;
+		> g { animation: hiw-cloud-hover 1500ms linear 2600ms infinite alternate }
+	}
+}
+
+// sky
+#hiw-sky-gradient {
+	transition-delay: 1500ms!important;
+	&.active {
+		z-index: 3;
+		opacity: 1;
+	}
+}
+#hiw-sky-balloon-gradient {
+	opacity: 0;
+	&.active {
+		opacity: 1;
+		transform: translate3d(0,-100%,0);
+		animation: hiw-sky-balloon-gradient 1s ease-out 2500ms forwards;
+	}
+}
+#hiw-sky-clouds {
+	position: absolute;
+	top: 0; left: 0;
+	z-index: -1;
+	opacity: 0;
+	.hiw-sky-cloud { opacity: 0 }
+	&.active {
+		z-index: 3;
+		opacity: 1;
+		@for $i from 1 through 9 {
+			.hiw-sky-cloud-#{$i} {
+				animation: hiw-cloud-fall (#{($i*200)}ms) linear (#{(($i*200) + 1000)}ms) 2,hiw-cloud-fall-end (#{($i*200)}ms) ease-out (#{(($i*20) + 3000)}ms) forwards;
+			}
+		}
+		@for $i from 10 through 20 {
+			.hiw-sky-cloud-#{$i} {
+				animation: hiw-cloud-fall (#{($i*200)})ms linear (#{(($i/2*200) + 1000)})ms 2,hiw-cloud-fall-end (#{($i*200)})ms ease-out (#{(($i/2*20) + 3000)})ms forwards;
+			}
+		}
+	}
+}

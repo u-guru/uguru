@@ -1,0 +1,123 @@
+@import '../mixin';
+
+// body
+.body-text {
+	position: relative;
+	color: $slate;
+	font-size: 18px;
+	font-weight: 600;
+	width: 100%;
+	> span {
+		display: block;
+		width: 100%;
+	}
+	.body-text-loader {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		> span {
+			display: block;
+			width: 100%;
+			height: 18px;
+			margin-bottom: 4px;
+			background: lighten($slate, 65%);
+			border-radius: 2px;
+			overflow: hidden;
+			span {
+				transform-origin: left center;
+				display: block;
+				width: 100%;
+				height: 100%;
+				background: lighten($slate, 60%);
+			}
+		}
+	}
+	&[number="3"] {
+		.body-text-loader {
+			span {
+				&:nth-child(4), &:nth-child(5), &:nth-child(6),
+				&:nth-child(7), &:nth-child(8), &:nth-child(9), &:nth-child(10) {
+					display: none;
+				}
+			}
+		}
+	}
+	&[number="4"] {
+		.body-text-loader {
+			span {
+				&:nth-child(5), &:nth-child(6),
+				&:nth-child(7), &:nth-child(8), &:nth-child(9), &:nth-child(10) {
+					display: none;
+				}
+			}
+		}
+	}
+	&[number="5"] {
+		.body-text-loader {
+			span {
+				&:nth-child(6),
+				&:nth-child(7), &:nth-child(8), &:nth-child(9), &:nth-child(10) {
+					display: none;
+				}
+			}
+		}
+	}
+	&[number="6"] {
+		.body-text-loader {
+			span {
+				&:nth-child(7), &:nth-child(8), &:nth-child(9), &:nth-child(10) {
+					display: none;
+				}
+			}
+		}
+	}
+	&[number="7"] {
+		.body-text-loader {
+			span {
+				&:nth-child(8), &:nth-child(9), &:nth-child(10) {
+					display: none;
+				}
+			}
+		}
+	}
+	&[number="8"] {
+		.body-text-loader {
+			span {
+				&:nth-child(9), &:nth-child(10) {
+					display: none;
+				}
+			}
+		}
+	}
+	&[number="9"] {
+		.body-text-loader {
+			span {
+				&:nth-child(10) {
+					display: none;
+				}
+			}
+		}
+	}
+	&.short {
+		> span {
+			@include flex;
+		}
+	}
+}
+
+// header
+.header-text {
+	h1 {
+		margin: 0;
+		font-size: 36px;
+		font-weight: 900;
+		display: flex;
+		flex-flow: row wrap;
+		span {
+			display: block;
+			transform-origin: center bottom;
+		}
+	}
+}

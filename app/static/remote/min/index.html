@@ -90,29 +90,37 @@
                'shared/css/compiled/utility.css:async',
                'shared/css/compiled/components.css:async',
                'shared/css/compiled/animation.css:async',
+               'shared/css/compiled/profile.css:async',
                'preapp/css/compiled/preapp.css:async',
                'admin/css/compiled/admin.css:async',
-
+               'shared/css/lib/prism.css:async',
+               'shared/css/lib/swiper.css:async',
                'jeselle/css/compiled/style.css:async',
                'jeselle/css/compiled/utility.css:async',
-
                'gabrielle/css/compiled/style.css:async',
-
                'shared/js/lib/bowser.min.js:async',
                'shared/js/lib/snap.svg.min.js',
                'shared/js/lib/ionic.bundle.min.js',
                'shared/js/lib/restangular.min.js',
                'shared/js/lib/lodash.min.js',
+               'shared/js/lib/prism.min.js',
+               'shared/js/lib/swiper.min.js',
                'shared/js/directives/AnimationDirectives.js',
+               'shared/js/directives/CalendarDirectives.js',
                'shared/js/directives/ElementDirectives.js',
                'shared/js/directives/ComponentDirectives.js',
+               'shared/js/directives/BaseComponentDirectives.js',
                'shared/js/services/LocalStorageService.js',
                'shared/js/services/AnimationService.js',
+               'shared/js/services/DirectiveService.js',
+               'shared/js/services/SwitchService.js',
+               'shared/js/services/DateService.js',
                'shared/js/services/SVGService.js',
                'shared/js/services/RootService.js',
                'shared/js/services/CategoryService.js',
                'shared/js/services/UniversityService.js',
                'shared/js/services/GUtilService.js',
+               'shared/js/services/TransformService.js',
                'shared/js/services/ContentService.js',
                'shared/js/services/LoadingService.js',
                'shared/js/services/KeyboardService.js',
@@ -120,26 +128,47 @@
                'shared/js/services/ScrollService.js',
                'shared/js/services/FileService.js',
                'shared/js/services/CTAService.js',
-               'admin/js/AdminAnimToolService.js',
-               'admin/js/ReportService.js',
-               'admin/js/AdminBugsController.js',
-               'admin/js/SpecContentService.js',
-               'admin/js/AdminDirectives.js',
-               'admin/js/SpecService.js',
+               'admin/js/services/AdminAnimToolService.js',
+               'admin/js/services/ReportService.js',
+               'admin/js/controllers/AdminBugsController.js',
+               'admin/js/controllers/AdminComponentController.js',
+               'admin/js/services/SpecContentService.js',
+               'admin/js/services/AdminDirectives.js',
+               'admin/js/services/AdminDirectiveService.js',
+               'admin/js/services/AdminDebugService.js',
+               'admin/js/services/AdminWorkflowService.js',
+               'admin/js/services/SpecService.js',
+               'admin/js/services/AdminInspectService.js',
                'main.js',
                'shared/js/controllers/RootController.js',
-               'admin/js/AdminController.js',
-               'admin/js/AdminActionController.js',
-               'admin/js/AdminDemosController.js',
-               'admin/js/AdminDocsController.js',
+               'shared/js/controllers/GuruProfileController.js',
+               'shared/js/controllers/SwiperController.js',
+               'admin/js/controllers/AdminController.js',
+               'admin/js/controllers/AdminActionController.js',
+               'admin/js/controllers/AdminDemosController.js',
+               'admin/js/controllers/AdminPlaygroundController.js',
+               'admin/js/controllers/AdminDocsController.js',
+               'admin/js/controllers/AdminDocItemController.js',
+               'admin/js/controllers/AdminMilestoneController.js',
                'preapp/js/SplashController.js',
                'jeselle/js/JeselleCtrl.js',
                'gabrielle/js/GabrielleCtrl.js',
                'preapp/js/SplashMadlibController.js',
                'preapp/js/SplashDeviceController.js',
-               'preapp/js/SplashLoaderController.js',
-               'preapp/js/SplashStateTransitionController.js'
-
+               'preapp/js/SplashSidebarController.js',
+               'preapp/js/SplashNavController.js',
+               'preapp/js/SplashHiwController.js',
+               'preapp/js/SplashPowerupsController.js',
+               'preapp/js/SplashMapsController.js',
+               'preapp/js/SplashTransitionsController.js',
+               'preapp/js/menu/SplashFaqController.js',
+               'preapp/js/menu/SplashPricingController.js',
+               'preapp/js/menu/SplashTeamController.js',
+               'preapp/js/started/SplashAccessController.js',
+               'preapp/js/started/SplashAccountController.js',
+               'preapp/js/started/SplashCourseController.js',
+               'preapp/js/started/SplashDemographicsController.js',
+              'preapp/js/SplashTransitionsController.js'
            ];
            var fileInitCB = {
                'shared/js/lib/snap.svg.min.js': initSnapLoadedEvent
@@ -172,7 +201,7 @@
                var snapLoadedEvent = initEventFromName('shouldRenderSplashTransition');
                script_elem.onload = function(e) {
                    globalLoader = new SVGLoader(document.querySelector('#loader-wrapper .pageload-overlay'), {
-                       speedOut: 2000,
+                       speedOut: 300,
                        easingOut: mina.easeinout
                    });
                    globalLoader.show();
@@ -216,7 +245,7 @@
            }
 
            var lastCharacter = window.location.href.trim().split('/').join('').split('').reverse()[0];
-           if (lastCharacter !== '#') {
+           if (lastCharacter !== '#' && lastCharacter !== '0') {
              var loaderWrapper = document.querySelector('#loader-wrapper');
              if (loaderWrapper) {
                loaderWrapper.style.display = 'none';

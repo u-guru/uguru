@@ -1,0 +1,796 @@
+{
+    "name": "Preapp",
+    "description": "A splash-y first-time experience that informs college students of several u.guru value props over the course of the semester",
+    "views": {
+        "splashLoader": {
+            "rubric": {
+                "ui": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": false,
+                    "glitch-free": false,
+                    "cross-platform": false,
+                    "verified" : false,
+                    "analysis": false
+                },
+                "functional": {
+                    "animation": {
+                        "import": {"status": false},
+                        "export": {"status": false},
+                        "visual": {"status": false},
+                        "bounceJS + extended functionaility": {"status": false}
+                    },
+                    "HTML tools/API enhancements": {
+                        "components": ["svg", "letter/word"]
+                    },
+                    "production": {
+                        "platforms": ["chrome", "firefox", "safari"],
+                        "compressed": ["live url"]
+                    },
+                    "docs/analysis/next-time": {
+                        "docs": {
+                            "admin api docs": {
+                                "view all+overview": "api/animations",
+                                "inspect easing": "api/animations/<easings>",
+                                "inspect one animation": "api/animations/<animation_name>"
+                            }
+                        },
+                        "features": {
+                            "animation": "infinite",
+                            "user-story timeline": "dispatch events in the middle of a state",
+                            "interpolate": "Stagger anything"
+                        }
+                    }
+                },
+                "states": {
+                    "onEnter": {
+						"order": 1,
+						"animations": [
+							{
+								"description": {
+									"element": "portal",
+									"animation": "scaleXIn",
+									"easing": ""
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {}
+							},
+							{
+								"description": {
+									"element": "logo",
+									"animation": "bounceInUp",
+									"easing": "easeOutBack"
+								},
+								"timing": {
+									"order": 2,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": true,
+									"complete": false
+								},
+								"notes": {}
+							},
+							{
+								"description": {
+									"element": "guru",
+									"animation": "bounceInUp",
+									"easing": "easeOutBack"
+								},
+								"timing": {
+									"order": 3,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": true,
+									"complete": false
+								},
+								"notes": {}
+							}
+						]
+					},
+                    "onProgressStart": {
+						"order": 2,
+						"animations": [
+							{
+								"description": {
+									"element": "ring",
+									"animation": ["drawIn", "category color transition"],
+									"easing": "linear"
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"GW": "May require a state for each color",
+									"JO": ""
+								}
+							},
+							{
+								"description": {
+									"element": "guru",
+									"animation": "bounce 3x",
+									"easing": ""
+								},
+								"timing": {
+									"order": 2,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"GW": "May require 3+ states -or- alternate, but check alternate first",
+									"JO": ""
+								}
+							}
+						]
+					},
+					"onProgressEnd": {
+						"order": 3,
+						"animations": [
+							{
+								"description": {
+									"element": "guru",
+									"animation": "bounceOutDown",
+									"easing": "easeInBack"
+								},
+								"timing": {
+									"order": 2,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": true,
+									"complete": false
+								},
+								"notes": {}
+							},
+							{
+								"description": {
+									"element": "logo",
+									"animation": "bounceOutDown",
+									"easing": "easeInBack"
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": true,
+									"complete": false
+								},
+								"notes": {}
+							},
+							{
+								"description": {
+									"element": "portal",
+									"animation": "flipOpen",
+									"easing": ["easeOutSine", "easeOutBack", "easeInBack"]
+								},
+								"timing": {
+									"order": 3,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": true,
+									"complete": false
+								},
+								"notes": {}
+							}
+						]
+					},
+					"onWarpTransitionStart": {
+						"order": 4,
+						"animations": [
+							{
+								"description": {
+									"element": "portal",
+									"animation": ["clipPathIn", "scaleInUp"],
+									"easing": ["easeInBack", "easeInExpo"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"GW": "scaleInUp in the case that clipPathIn isn't cross-platform. See codrops",
+									"JO": "Try easeInOutBack or some -InOut- for a gravitating ease"
+								}
+							},
+							{
+								"description": {
+									"element": "stars",
+									"animation": "translateZIn",
+									"easing": "linear"
+								},
+								"timing": {
+									"order": 2,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"GW": "Check whether prop or class would work better in this case (see HIW clouds)",
+									"JO": "Like the idea of them 'speeding up' as user goes through the portal. Would like a friction transform effect (ex.https://dribbble.com/shots/2535126-Light-Speed, https://dribbble.com/shots/2082444-Stone-Raiders-Light-Test) on either the stars or the chips/text flying through the stars"
+								},
+								"bugs": [
+									{
+										"bug": "Warp fadeIn/fadeOut not behaving as expected - fade is sometimes at the wrong times and you can see the edges",
+										"fixed": false
+									}
+								]
+							},
+							{
+								"description": {
+									"element": "Welcome to U.Guru message",
+									"animation": "translate into place",
+									"easing": "easeOutSine"
+								},
+								"timing": {
+									"order": 2.8,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"JO": "Letters enter from center"
+								},
+								"bugs": [
+									{
+										"bug": "Transform animating in conjuction with another propery, in this case opacity, is taking the duration of the first propery",
+										"context": [
+											{
+												"file": "warp-objects.html",
+												"line": 5,
+												"state": "when-letter-open",
+												"syntax": "p:[opacity:0:1:250:easeInSine, transform:translateZ(-4000px) rotate(-33deg) translateX(-180px) translateY(-239px):translateZ(0px) rotate(-33deg) translateX(-180px) translateY(-239px):500:easeInSine easeInSine easeInSine easeInSine]",
+												"note": "Further context commented out. For now, current workaround is adding a scale(0) on-init instead of opacity 0."
+											}
+										],
+										"fixed": false
+									}
+								]
+							}
+						]
+					},
+					"onWarpTransitionEnd": {
+						"order": 5
+					}
+                }
+            }
+        },
+		"splashHome": {
+			"rubric": {
+				"ui": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "glitch-free": false,
+                    "cross-platform": false,
+                    "verified" : false,
+                    "analysis": false
+                },
+				"bugs": [
+					{
+						"bug": "header doesn't show up at a certain height, check CSS",
+						"file": "splash.madlib.html",
+						"fixed": true
+					},
+					{
+						"bug": "animating multiple values of stroke-dasharray causes the animation to not render",
+						"file": "splash.madlib.html",
+						"line": 123,
+						"ideal": "p:[stroke-dashoffset:-701:0:750:easeOutExpo, stroke-dasharray:701#701:16#14:750:easeOutExpo]:delay-2000",
+						"workaround": "p:[stroke-dashoffset:0, stroke-dasharray:16#14, t:all 750ms cubic-bezier(.17#.67#.12#1)]:delay-2000",
+						"fixed": false
+					},
+					{
+						"bug": "****when-head-squash guru head animation head-return is blurry at scale(2)***",
+						"file": "splash.madlib.html",
+						"line": 14,
+						"fixed": false
+					}
+				],
+				"states": {
+					"when-head-squash": "custom bounce easing"
+				}
+			}
+		},
+		"splashSidebar": {
+			"rubric": {
+				"ui": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "glitch-free": false,
+                    "cross-platform": false,
+                    "verified" : false,
+                    "analysis": false
+                },
+				"states": {
+					"onEnter": {
+						"order": 1,
+						"animations": [
+							{
+								"description": {
+									"element": "sidebar background",
+									"animation": ["bounceInLeft"],
+									"easing": ["easeOutExpo", "easeOutElastic", "easeOutBack"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"GW": "Needs SVG",
+									"JO": "Bounces in with circle SVG reverberating"
+								}
+							},
+							{
+								"description": {
+									"element": "sidebar content background",
+									"animation": ["slideInLeft"],
+									"easing": ["easeOutExpo"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {}
+							},
+							{
+								"description": {
+									"element": "sidebar line separator",
+									"animation": ["drawIn"],
+									"easing": ["easeOutCubic"]
+								},
+								"timing": {
+									"order": 2,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"JO": "As soon as the reverberating settles, borderline on right draws downward"
+								}
+							},
+							{
+								"description": {
+									"element": "sidebar logo and links",
+									"animation": ["fadeInDown"],
+									"easing": ["easeOutSine"]
+								},
+								"timing": {
+									"order": 2.3,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"JO": "When the borderline begins to draw, the links fadeInDown"
+								}
+							},
+							{
+								"description": {
+									"element": "sidebar student card and getting started CTA",
+									"animation": ["bounceInDown stagger"],
+									"easing": ["easeOutSine"]
+								},
+								"timing": {
+									"order": 3,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {}
+							},
+							{
+								"description": {
+									"element": "sidebar current page link is highlighted",
+									"animation": ["drawIn, color change"],
+									"easing": ["easeOutCubic"]
+								},
+								"timing": {
+									"order": 3,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"JO": "drawIn left"
+								}
+							}
+						]
+					},
+					"onCollapse": {
+						"order": 2,
+						"notes": "Occurs when a page has been selected",
+						"animations": [
+							{
+								"description": {
+									"element": "sidebar",
+									"animation": ["bounceOutRight"],
+									"easing": ["easeOutExpo", "easeOutElastic", "easeOutBack"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"JO": "Collapses all except page numbers and exit icon. Current page underline is still visible."
+								},
+								"bugs": [
+									{
+										"bug": "After onclick, the icon and the text link cross paths. Needs to be retimed and/or faded out",
+										"contact": "JO",
+										"fixed": true
+									},
+									{
+										"bug": "Get Started link isn't triggering",
+										"contact": "SM",
+										"fixed": false
+									},
+									{
+										"bug": "Active underline is not going over modal",
+										"contact": "GW",
+										"fixed": true
+									},
+									{
+										"bug": "Home icon rotates onHover",
+										"contact": "GW",
+										"fixed": true
+									},
+									{
+										"bug": "Back button needs rotation and to align-bottom with home icon",
+										"contact": "GW",
+										"fixed": true
+									}
+								]
+							}
+						]
+					},
+					"onExpand": {
+						"order": 2.5,
+						"notes": "Return to full view after collapse",
+						"animations": [
+							{
+								"description": {
+									"element": "sidebar content",
+									"animation": ["translateX"],
+									"easing": ["easeOutExpo", "easeOutElastic", "easeOutBack"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"JO": "Components return from the way they left onCollapse"
+								},
+								"bugs": [
+									{
+										"bug": [
+											"Difficult to keep expanded based off of hovering over a link. Flickers and collapses back. Most apparent when trying to hover over multiple links",
+											"Expanding and collapsing causes both icons to disappear on collapse view",
+											"Mousing over from link to home button on expand causes both icons and numbers to disappear"
+										],
+										"contact": "SM",
+										"fixed": false
+									},
+									{
+										"bug": "Links aren't animating all the way through - first link on line 49 stops at translateY(-2.7906px)",
+										"contact": "SM",
+										"fixed": false
+									},
+									{
+										"bug": "Both home and close button present on expand",
+										"contact": "JO",
+										"note": "Remove close button when-sidebar-link-clicked, op:0",
+										"fixed": true
+									}
+								]
+							}
+						]
+					},
+					"onExit": {
+						"order": 3,
+						"notes": "Occurs when exiting from full view of sidebar",
+						"animations": [
+							{
+								"description": {
+									"element": "sidebar",
+									"animation": ["bounceOutRight"],
+									"easing": ["easeInExpo", "easeInElastic", "easeInBack"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"JO": "Anticipates with a circular stretch, then bounceOutRight with everything"
+								}
+							},
+							{
+								"description": {
+									"element": "content background",
+									"animation": ["fadeOut"],
+									"easing": ["linear"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {}
+							}
+						]
+					},
+					"onExitCollapsed": {
+						"order": 3,
+						"notes": "Occurs when exiting from collapsed view of sidebar",
+						"animations": [
+							{
+								"description": {
+									"element": "sidebar",
+									"animation": ["bounceOutRight"],
+									"easing": ["easeInExpo", "easeInElastic", "easeInBack"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"JO": "BounceOutRight with everything"
+								}
+							},
+							{
+								"description": {
+									"element": "content",
+									"animation": ["fadeOut"],
+									"easing": ["linear"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {}
+							}
+						]
+					},
+					"onMouseEnter links": {
+						"order": "n/a",
+						"animations": [
+							{
+								"description": {
+									"element": "text underline",
+									"animation": ["drawIn"],
+									"easing": ["easeOutQuad"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+								}
+							},
+							{
+								"description": {
+									"element": "text, underline",
+									"animation": ["translateX"],
+									"easing": ["easeOutQuad"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"JO": "the whole link shifts right"
+								}
+							}
+						]
+					},
+					"onClick links": {
+						"order": "n/a",
+						"animations": [
+							{
+								"description": {
+									"element": "activated link text, activated link underline",
+									"animation": ["fadeIn accent color change"],
+									"easing": ["linear"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {}
+							},
+							{
+								"description": {
+									"element": "deactivated link text",
+									"animation": ["fadeOut accent color change"],
+									"easing": ["linear"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {}
+							},
+							{
+								"description": {
+									"element": "deactivated link underline",
+									"animation": ["fadeOut"],
+									"easing": ["linear"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {}
+							}
+						]
+					}
+				}
+			}
+		},
+		"splashModal": {
+			"brainstorming": {
+				"animations": {
+					"onEnter": "top-down, begin header animation",
+					"whileHeaderAnimating": "content fadeInUp to half opacity",
+					"whenHeaderAnimated": "content fadeIn to 100%"
+				},
+				"headers": {
+					"faq": "classroom",
+					"pricing": "store with sale + 'make it rain'",
+					"team": "bridge with lights"
+				}
+			},
+			"rubric": {
+				"ui": {
+                    "static": false,
+                    "responsive": true,
+                    "animated": true,
+                    "glitch-free": false,
+                    "cross-platform": false,
+                    "verified" : false,
+                    "analysis": false
+                },
+				"states": {
+					"onEnter": {
+						"order": 1,
+						"animations": [
+							{
+								"description": {
+									"element": "",
+									"animation": [""],
+									"easing": [""]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"GW": "",
+									"JO": ""
+								}
+							}
+						]
+					},
+				}
+			}
+		}
+    }
+}

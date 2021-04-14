@@ -1,0 +1,529 @@
+@import 'mixin';
+
+.icon-container {
+	position: relative;
+	display: inline-block;
+	width: 75px;
+	height: 75px;
+	padding: 26px;
+	box-sizing: border-box;
+	border: solid 1px #ccc;
+	border-radius: 0;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	background: white;
+}
+
+.focus-uri {
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	top: calc(50% - 12px);
+	left: calc(50% - 12px);
+	background: url('data:image/svg+xml, %3Csvg%20width%3D%2224px%22%20height%3D%2224px%22%20viewBox%3D%220%200%2024%2024%22%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%3E%0A%20%20%20%20%3Cg%20stroke%3D%22%23000000%22%20stroke-width%3D%221%22%20fill%3D%22none%22%3E%0A%09%09%3Cpath%20d%3D%22M17%2C20%20L19.0010434%2C20%20C19.5527519%2C20%2020%2C19.5573397%2020%2C19.0010434%20L20%2C17%22%3E%3C/path%3E%0A%09%09%3Cpath%20d%3D%22M7%2C20%20L4.99895656%2C20%20C4.44724809%2C20%204%2C19.5573397%204%2C19.0010434%20L4%2C17%22%3E%3C/path%3E%0A%09%09%3Cpath%20d%3D%22M17%2C4%20L19.0010434%2C4%20C19.5527519%2C4%2020%2C4.44266033%2020%2C4.99895656%20L20%2C7%22%3E%3C/path%3E%0A%09%09%3Cpath%20d%3D%22M7%2C4%20L4.99895656%2C4%20C4.44724809%2C4%204%2C4.44266033%204%2C4.99895656%20L4%2C7%22%3E%3C/path%3E%0A%20%20%20%20%3C/g%3E%0A%3C/svg%3E') center center no-repeat;
+    transform-origin: center center;
+    animation: bounceIn-subtle 1000ms linear infinite forwards;
+}
+
+.focus.sample {
+  color: #000;
+  position: absolute;
+  margin-left: 2px;
+  margin-top: 2px;
+  width: 15px;
+  height: 15px;
+  border-radius: 1px;
+  border: solid 1px currentColor;
+  transform-origin: center center;
+  animation: bounceIn-subtle 1000ms linear infinite forwards;
+}
+
+.focus.sample:before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: -2px;
+  width: 9px;
+  height: 19px;
+  color: white;
+  background-color: currentColor;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+
+.focus.sample:after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: -2px;
+  width: 9px;
+  height: 19px;
+  color: white;
+  background-color: currentColor;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.guru-switch-container {
+	@include flex;
+	@include flex-center;
+	width: 100%;
+	height: 100%;
+	background: #aaa;
+}
+
+.guru-switch-controls {
+	ul {
+		padding: 6px;
+		list-style: none;
+		height: 624px;
+		width: 306px;
+		display: flex;
+		flex-flow: column wrap;
+		li {
+			padding: 6px;
+		}
+	}
+	.guru-switch-button {
+		@include flex;
+		@include flex-center;
+		position: relative;
+		width: 141px;
+		height: 141px;
+		border: 2px solid white;
+		border-radius: 2px;
+		nav {
+			@include flex;
+			@include flex-center-vertical;
+			justify-content: space-between;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 2;
+			width: 100%;
+			height: 100%;
+			padding: 3px;
+			div {
+				position: relative;
+				> button:not(:first-child) {
+					position: absolute;
+					top: 0;
+					left: 0;
+				}
+			}
+		}
+		h1 {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			font-size: 16px;
+			padding: 3px;
+			font-weight: 600;
+			text-align: center;
+		}
+		.thumbnail {
+			position: relative;
+			z-index: 1;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			div {
+				@include flex;
+				height: 100%;
+				svg {
+					min-width: 100%;
+					width: 100%;
+					padding: 10px;
+					height: auto;
+				}
+				span {
+					@include flex;
+					@include flex-center;
+					min-width: 100%;
+					width: 100%;
+					height: 100%;
+					font-size: 24px;
+					font-weight: 600;
+					opacity: 0.75;
+				}
+			}
+			&.hair, &.left-prop {
+				div svg {
+					padding: 15px;
+				}
+			}
+		}
+	}
+	button {
+		@include flex;
+		@include flex-center;
+		border: 0;
+		border-radius: 2px;
+		background: #aaa;
+		color: white;
+		font-weight: 600;
+		font-size: 20px;
+		padding: 0 2px!important;
+		height: 100%;
+		min-height: 100%;
+		width: auto;
+		min-width: auto;
+		line-height: 1.25;
+		&:hover, &:focus {
+			background: white;
+			color: #aaa;
+		}
+		&:active {
+			background: mix(white, #aaa);
+			color: #999;
+		}
+	}
+}
+
+.guru-switch-slider-container {
+	background: white;
+	border-radius: 2px;
+	width: 100%;
+	height: 100%;
+	max-width: 600px;
+	max-height: 600px;
+}
+.guru-switch-slider {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	.shadow {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	.move {
+		@include flex;
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		transition: all 300ms cubic-bezier(.17,.67,.83,.67);
+		svg {
+			min-width: 100%;
+			width: 100%;
+			height: auto;
+		}
+	}
+}
+
+#pyramid {
+	animation: rotate-infinite 6000ms linear infinite;
+	animation-play-state: paused;
+	position: absolute;
+	width: 600px;
+	height: 600px;
+	top: 50%;
+	left: 50%;
+	margin-left: -300px;
+	margin-top: -300px;
+	transform-style: preserve-3d;
+	* {
+		transform-style: preserve-3d;
+	}
+	.playing-card-container {
+		width: 100px;
+		height: 150px;
+		.playing-card {
+			width: 100px;
+			height: 150px;
+			> div {
+				@include flex;
+				@include flex-center;
+				overflow: hidden;
+				svg {
+					width: 100%!important;
+					height: auto!important;
+				}
+			}
+		}
+	}
+}
+
+.card-house {
+	// max-width: 777px;
+	max-height: 764px;
+	transform-style: preserve-3d;
+	* {
+		transform-style: preserve-3d;
+	}
+}
+
+.playing-card-container {
+	position: relative;
+	width: 125px;
+	height: 175px;
+	transform-origin: center center;
+	transform-style: preserve-3d;
+	.playing-card {
+		position: absolute;
+		top: 0;
+		left: 0;
+		.playing-card-back {
+			backface-visibility: hidden;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 1;
+			width: 100%;
+			height: 100%;
+			transform: rotateY(180deg) translateZ(0px);
+			border-radius: 10px;
+		}
+		.playing-card-front {
+			backface-visibility: hidden;
+			z-index: 2;
+		}
+		// &:nth-child(odd) {
+		// 	> div {
+		// 		background: $smoke;
+		// 	}
+		// }
+	}
+}
+.playing-card {
+	width: 125px;
+	height: 175px;
+	transform-origin: center center;
+	transform-style: preserve-3d;
+	* {
+		transform-origin: center center;
+		transform-style: preserve-3d;
+	}
+	> div:not(.playing-card-back) {
+		width: 100%;
+		height: 100%;
+		background: white;
+		border-radius: 10px;
+		transform-origin: bottom center;
+		svg {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+.play-heart {
+	.diamond, .spade, .club {
+		display: none;
+	}
+	text {
+		fill: $auburn;
+	}
+}
+.play-diamond {
+	.heart, .spade, .club {
+		display: none;
+	}
+	text {
+		fill: $auburn;
+	}
+}
+.play-spade {
+	.diamond, .heart, .club {
+		display: none;
+	}
+	text {
+		fill: $slate;
+	}
+}
+.play-club {
+	.diamond, .spade, .heart {
+		display: none;
+	}
+	text {
+		fill: $slate;
+	}
+}
+
+
+.playing-card-stack-enter {
+	animation: playing-card-stack-enter 6000ms linear;
+}
+
+.playing-card-stack-rotate {
+	animation: playing-card-stack-rotate 6000ms linear;
+}
+
+.playing-card-drop-1 {
+	animation: playing-card-drop-1 1000ms linear;
+}
+
+.playing-card-drop-2 {
+	animation: playing-card-drop-2 1000ms linear;
+}
+
+.playing-card-drop-3 {
+	animation: playing-card-drop-3 1000ms linear;
+}
+
+.playing-card-rotate {
+	animation: playing-card-rotate 300ms linear;
+}
+
+@keyframes playing-card-drop-3 {
+  0% { transform: translate3d(0px, 0px, 0px); }
+  3.33333% { transform: translate3d(0px, 19.5355px, 0px); }
+  6.66667% { transform: translate3d(0px, 38.4089px, 0px); }
+  10% { transform: translate3d(0px, 56.62px, 0px); }
+  13.3333% { transform: translate3d(0px, 74.1688px, 0px); }
+  16.6667% { transform: translate3d(0px, 91.0556px, 0px); }
+  20% { transform: translate3d(0px, 107.28px, 0px); }
+  23.3333% { transform: translate3d(0px, 122.842px, 0px); }
+  26.6667% { transform: translate3d(0px, 137.742px, 0px); }
+  30% { transform: translate3d(0px, 151.98px, 0px); }
+  33.3333% { transform: translate3d(0px, 165.555px, 0px); }
+  36.6667% { transform: translate3d(0px, 178.469px, 0px); }
+  40% { transform: translate3d(0px, 190.72px, 0px); }
+  43.3333% { transform: translate3d(0px, 202.309px, 0px); }
+  46.6667% { transform: translate3d(0px, 213.236px, 0px); }
+  50% { transform: translate3d(0px, 223.5px, 0px); }
+  53.3333% { transform: translate3d(0px, 233.102px, 0px); }
+  56.6667% { transform: translate3d(0px, 242.042px, 0px); }
+  60% { transform: translate3d(0px, 250.32px, 0px); }
+  63.3333% { transform: translate3d(0px, 257.935px, 0px); }
+  66.6667% { transform: translate3d(0px, 264.889px, 0px); }
+  70% { transform: translate3d(0px, 271.18px, 0px); }
+  73.3333% { transform: translate3d(0px, 276.809px, 0px); }
+  76.6667% { transform: translate3d(0px, 281.776px, 0px); }
+  80% { transform: translate3d(0px, 286.08px, 0px); }
+  83.3333% { transform: translate3d(0px, 289.722px, 0px); }
+  86.6667% { transform: translate3d(0px, 292.702px, 0px); }
+  90% { transform: translate3d(0px, 295.02px, 0px); }
+  93.3333% { transform: translate3d(0px, 296.676px, 0px); }
+  96.6667% { transform: translate3d(0px, 297.669px, 0px); }
+  100% { transform: translate3d(0px, 298px, 0px); }
+}
+
+@keyframes playing-card-drop-2 {
+  0% { transform: translate3d(0px, 0px, 0px); }
+  3.33333% { transform: translate3d(0px, 19.6011px, 0px); }
+  6.66667% { transform: translate3d(0px, 38.5378px, 0px); }
+  10% { transform: translate3d(0px, 56.81px, 0px); }
+  13.3333% { transform: translate3d(0px, 74.4177px, 0px); }
+  16.6667% { transform: translate3d(0px, 91.3612px, 0px); }
+  20% { transform: translate3d(0px, 107.64px, 0px); }
+  23.3333% { transform: translate3d(0px, 123.254px, 0px); }
+  26.6667% { transform: translate3d(0px, 138.204px, 0px); }
+  30% { transform: translate3d(0px, 152.49px, 0px); }
+  33.3333% { transform: translate3d(0px, 166.111px, 0px); }
+  36.6667% { transform: translate3d(0px, 179.068px, 0px); }
+  40% { transform: translate3d(0px, 191.36px, 0px); }
+  43.3333% { transform: translate3d(0px, 202.988px, 0px); }
+  46.6667% { transform: translate3d(0px, 213.951px, 0px); }
+  50% { transform: translate3d(0px, 224.25px, 0px); }
+  53.3333% { transform: translate3d(0px, 233.884px, 0px); }
+  56.6667% { transform: translate3d(0px, 242.855px, 0px); }
+  60% { transform: translate3d(0px, 251.16px, 0px); }
+  63.3333% { transform: translate3d(0px, 258.801px, 0px); }
+  66.6667% { transform: translate3d(0px, 265.778px, 0px); }
+  70% { transform: translate3d(0px, 272.09px, 0px); }
+  73.3333% { transform: translate3d(0px, 277.738px, 0px); }
+  76.6667% { transform: translate3d(0px, 282.721px, 0px); }
+  80% { transform: translate3d(0px, 287.04px, 0px); }
+  83.3333% { transform: translate3d(0px, 290.694px, 0px); }
+  86.6667% { transform: translate3d(0px, 293.685px, 0px); }
+  90% { transform: translate3d(0px, 296.01px, 0px); }
+  93.3333% { transform: translate3d(0px, 297.671px, 0px); }
+  96.6667% { transform: translate3d(0px, 298.668px, 0px); }
+  100% { transform: translate3d(0px, 299px, 0px); }
+}
+
+@keyframes playing-card-drop-1 {
+  0% { transform: translate3d(0px, 0px, 0px); }
+  3.33333% { transform: translate3d(0px, 19.6666px, 0px); }
+  6.66667% { transform: translate3d(0px, 38.6667px, 0px); }
+  10% { transform: translate3d(0px, 57px, 0px); }
+  13.3333% { transform: translate3d(0px, 74.6666px, 0px); }
+  16.6667% { transform: translate3d(0px, 91.6667px, 0px); }
+  20% { transform: translate3d(0px, 108px, 0px); }
+  23.3333% { transform: translate3d(0px, 123.667px, 0px); }
+  26.6667% { transform: translate3d(0px, 138.667px, 0px); }
+  30% { transform: translate3d(0px, 153px, 0px); }
+  33.3333% { transform: translate3d(0px, 166.667px, 0px); }
+  36.6667% { transform: translate3d(0px, 179.667px, 0px); }
+  40% { transform: translate3d(0px, 192px, 0px); }
+  43.3333% { transform: translate3d(0px, 203.667px, 0px); }
+  46.6667% { transform: translate3d(0px, 214.667px, 0px); }
+  50% { transform: translate3d(0px, 225px, 0px); }
+  53.3333% { transform: translate3d(0px, 234.667px, 0px); }
+  56.6667% { transform: translate3d(0px, 243.667px, 0px); }
+  60% { transform: translate3d(0px, 252px, 0px); }
+  63.3333% { transform: translate3d(0px, 259.667px, 0px); }
+  66.6667% { transform: translate3d(0px, 266.667px, 0px); }
+  70% { transform: translate3d(0px, 273px, 0px); }
+  73.3333% { transform: translate3d(0px, 278.667px, 0px); }
+  76.6667% { transform: translate3d(0px, 283.667px, 0px); }
+  80% { transform: translate3d(0px, 288px, 0px); }
+  83.3333% { transform: translate3d(0px, 291.667px, 0px); }
+  86.6667% { transform: translate3d(0px, 294.667px, 0px); }
+  90% { transform: translate3d(0px, 297px, 0px); }
+  93.3333% { transform: translate3d(0px, 298.667px, 0px); }
+  96.6667% { transform: translate3d(0px, 299.667px, 0px); }
+  100% { transform: translate3d(0px, 300px, 0px); }
+}
+
+@keyframes playing-card-rotate {
+  0% { transform: rotateX(0deg) rotateY(0deg); }
+  33.3333% { transform: rotateX(45.9deg) rotateY(2.55deg); }
+  66.6667% { transform: rotateX(75.6deg) rotateY(4.2deg); }
+  100% { transform: rotateX(90deg) rotateY(5deg); }
+}
+
+@keyframes playing-card-stack-enter {
+  0% { transform: translate3d(-600px, -300px, 0px); }
+  6.25% { transform: translate3d(-530.16px, -300px, 0px); }
+  12.5% { transform: translate3d(-464.64px, -300px, 0px); }
+  18.75% { transform: translate3d(-403.44px, -300px, 0px); }
+  25% { transform: translate3d(-346.56px, -300px, 0px); }
+  31.25% { transform: translate3d(-294px, -300px, 0px); }
+  37.5% { transform: translate3d(-245.76px, -300px, 0px); }
+  43.75% { transform: translate3d(-201.84px, -300px, 0px); }
+  50% { transform: translate3d(-162.24px, -300px, 0px); }
+  56.25% { transform: translate3d(-126.96px, -300px, 0px); }
+  62.5% { transform: translate3d(-96px, -300px, 0px); }
+  68.75% { transform: translate3d(-69.36px, -300px, 0px); }
+  75% { transform: translate3d(-47.04px, -300px, 0px); }
+  81.25% { transform: translate3d(-29.04px, -300px, 0px); }
+  87.5% { transform: translate3d(-15.36px, -300px, 0px); }
+  93.75% { transform: translate3d(-6px, -300px, 0px); }
+  100% { transform: translate3d(-0.96px, -300px, 0px); }
+}
+
+@keyframes playing-card-stack-rotate {
+  0% { transform: rotateY(-180deg); }
+  6.25% { transform: rotateY(-168.36deg); }
+  12.5% { transform: rotateY(-157.44deg); }
+  18.75% { transform: rotateY(-147.24deg); }
+  25% { transform: rotateY(-137.76deg); }
+  31.25% { transform: rotateY(-129deg); }
+  37.5% { transform: rotateY(-120.96deg); }
+  43.75% { transform: rotateY(-113.64deg); }
+  50% { transform: rotateY(-107.04deg); }
+  56.25% { transform: rotateY(-101.16deg); }
+  62.5% { transform: rotateY(-96deg); }
+  68.75% { transform: rotateY(-91.56deg); }
+  75% { transform: rotateY(-87.84deg); }
+  81.25% { transform: rotateY(-84.84deg); }
+  87.5% { transform: rotateY(-82.56deg); }
+  93.75% { transform: rotateY(-81deg); }
+  100% { transform: rotateY(-80deg); }
+}
+
+@keyframes rustle {
+	0% {transform:rotate(0deg);}
+	25% {transform:rotate(-8deg);}
+	50% {transform:rotate(8deg);}
+	100% {transform:rotate(0deg);}
+}

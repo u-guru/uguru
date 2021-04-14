@@ -1,0 +1,159 @@
+<section id="request-cta-details" class="request-slide request-time">
+    <header>
+		<h1>When?</h1>
+		<h2>This is filler header content.</h2>
+	</header>
+    <div class="max-830">
+        <div>
+            <h1>How long will you need?</h1>
+            <div class='request-form'>
+                <h2>I'll need&nbsp;&nbsp;</h2>
+                <div class="custom-dropdown request-hours">
+                    <div>
+                        <span>{{requestForm.time_estimate.hours || '0' }}</span>
+                        <a ng-click='requestForm.time_estimate.showHoursToggle(requestForm)'>
+                            <svg viewBox="0 0 100 100">
+                                <path d="M14,32 L50,68 L86,32"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <ul class="ng-class:{'active':requestForm.time_estimate.showHours}">
+                        <li ng-repeat="_ in maxHourArr" tabindex ng-click="requestForm.time_estimate.setHours(requestForm, $index + 1)">{{$index + 1}}</li>
+                    </ul>
+                    <div class="dropdown-overlay hide ng-class:{'show':requestForm.time_estimate.showHours}"></div>
+                </div>
+                <h2>&nbsp;&nbsp;hr and&nbsp;&nbsp;</h2>
+                <div class="custom-dropdown request-minutes">
+                    <div>
+                        <span>{{requestForm.time_estimate.minutes || '0'}}</span>
+                        <a ng-click='requestForm.time_estimate.showMinutesToggle(requestForm)'>
+                            <svg viewBox="0 0 100 100">
+                                <path d="M14,32 L50,68 L86,32"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <ul class="ng-class:{'active':requestForm.time_estimate.showMinutes}">
+                        <li tabindex ng-click='requestForm.time_estimate.setMinutes(requestForm, 15)'>15</li>
+                        <li tabindex ng-click='requestForm.time_estimate.setMinutes(requestForm, 30)'>30</li>
+                        <li tabindex ng-click='requestForm.time_estimate.setMinutes(requestForm, 45)'>45</li>
+                    </ul>
+                    <div class="dropdown-overlay" ng-click='requestForm.time_estimate.showMinutesToggle(requestForm)'></div>
+                </div>
+                <h2>&nbsp;&nbsp;min</h2>
+            </div>
+        </div>
+        <div class="request-when">
+            <h1>When do you need a guru?</h1>
+            <div class="checkbox-container old">
+    			<div>
+    				<input type="checkbox" id="checkbox-item"/>
+    				<span>
+    					<svg viewBox="0 0 100 100">
+    						<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+    					</svg>
+    				</span>
+    			</div>
+    			<label for="checkbox-item">I need a guru now</label>
+    		</div>
+            <ul>
+                <li>
+                    <a>
+                        <span>Tue 3/11</span>
+                        <span>4-6pm</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span>Tue 3/11</span>
+                        <span>4-6pm</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span>Tue 3/11</span>
+                        <span>4-6pm</span>
+                    </a>
+                </li>
+                <li>
+                    <button>Choose another time</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <button class="confirm">Next</button>
+</section>
+
+<!-- <section id="request-cta-calendar" class="request-slide text-center flex-wrap-center relative full-xy">
+    <div class="time-estimate-container">
+        <div class='full-x ugrid-3 p20xy'>
+            <div> </div>
+            <div class='relative request-time'>
+                <div class='full-x ugrid-4 request-form high-z-index'>
+                    <h2 class='text-right p10x p05y'>I think I will need&nbsp;&nbsp;</h2>
+                    <div class="custom-dropdown request-hours">
+                        <div>
+                            <span>{{requestForm.time_estimate.hours}}</span>
+                            <a ng-click='requestForm.time_estimate.showHoursToggle(requestForm)'>
+                                <svg viewBox="0 0 100 100">
+                                    <path d="M14,32 L50,68 L86,32"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        <ul class="ng-class:{'active':requestForm.time_estimate.showHours}">
+                            <li ng-repeat="_ in maxHourArr" tabindex ng-click="requestForm.time_estimate.setHours(requestForm, $index + 1)">{{$index + 1}}</li>
+                        </ul>
+                        <div class="dropdown-overlay hide ng-class:{'show':requestForm.time_estimate.showHours}"></div>
+                    </div>
+                    <h2 class='p15xy'>&nbsp;&nbsp;hr and&nbsp;&nbsp;</h2>
+                    <div class="custom-dropdown request-minutes">
+                        <div>
+                            <span>{{requestForm.time_estimate.minutes}}</span>
+                            <a ng-click='requestForm.time_estimate.showMinutesToggle(requestForm)'>
+                                <svg viewBox="0 0 100 100">
+                                    <path d="M14,32 L50,68 L86,32"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        <ul class="ng-class:{'active':requestForm.time_estimate.showMinutes}">
+                            <li tabindex ng-click='requestForm.time_estimate.setMinutes(requestForm, 15)'>15</li>
+                            <li tabindex ng-click='requestForm.time_estimate.setMinutes(requestForm, 30)'>30</li>
+                            <li tabindex ng-click='requestForm.time_estimate.setMinutes(requestForm, 45)'>45</li>
+                        </ul>
+                        <div class="dropdown-overlay" ng-click='requestForm.time_estimate.showMinutesToggle(requestForm)'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='calendar relative'>
+        <div class='calendar-container absolute top-0 left-0 full-xy'>
+            <div class='full-x p20xy uppercase bg-azure weight-600'>
+                {{requestForm.calendar[0].monthLong}}
+            </div>
+            <div class='week-view' style='padding-bottom:40px;'>
+                <div class='ugrid-7 full-x'>
+                    <div ng-repeat='day in ::requestForm.calendar' class='one-day p20x bg-charcoal full-y'>
+                        <div class='one-day-header full-x p05xy bg-slate-50p txt-smoke weight-600 full-x'>
+                            {{::day.dayLong}}, {{::day.monthShort}} {{::day.date}}
+                        </div>
+                        <div class='one-day-container full-xy'>
+                            <span ng-repeat='hour in ::day.hours' class='hour flex-wrap-center full-xy relative' style="min-height:50px;" ng-class="{'bg-smoke txt-slate': hour.already_past}">
+                                <span ng-if='hour.start_suffix !== hour.end_suffix' class='hour-range full-xy absolute top-0 left-0'>
+                                    {{hour.formatted_start_hour + hour.start_suffix + '-' + hour.formatted_end_hour + hour.end_suffix}}
+                                </span>
+                                <span ng-if='hour.start_suffix === hour.end_suffix' class='hour-range full-xy absolute top-0 left-0'>
+                                    {{hour.formatted_start_hour + '-' + hour.formatted_end_hour + hour.end_suffix}}
+                                </span>
+                                <div class='full-xy absolute top-0 left-0 high-z-index flex-wrap'>
+                                    <a class='full-x weight-400 hour-interval txt-charcoal' ng-class="{'bg-shamrock':interval.selected && !interval.already_past}" ng-repeat='interval in ::hour.intervals' ng-click='requestForm.select_calendar(interval, requestForm)'>
+                                        {{ hour.formatted_start_hour + ':' + interval.formatted_start_minute + '-' + ((!$index &&hour.formatted_start_hour) ||($index && hour.formatted_end_hour)) + ':' + interval.formatted_end_minute}}
+                                    </a>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->

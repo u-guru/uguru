@@ -1,0 +1,37 @@
+@import '../../../../shared/css/scss/partials/mixin';
+
+@media screen and (max-width: 768px) {
+	#dev-toolbar {
+		display: none;
+	}
+}
+
+#codepen-edit {
+	padding: 0!important;
+	position: absolute;
+	top: -24px;
+	right: 15px;
+	width: 48px;
+	height: 48px;
+	span {
+		transition: all 150ms ease-in-out;
+	}
+	#codepen-input {
+		&:hover + span, &:focus + span {
+			background: mix($moxie, white);
+			svg {
+				* {
+					stroke: mix($moxie, $slate)!important;
+				}
+			}
+		}
+		&:active + span {
+			background: mix($moxie, $slate);
+			svg {
+				* {
+					stroke: white!important;
+				}
+			}
+		}
+	}
+}

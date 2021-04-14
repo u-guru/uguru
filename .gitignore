@@ -13,11 +13,15 @@ celerybeat-schedule.*
 celerybeat-schedule
 flower
 *.db
+*.scssc
 .DS_Store
 sijax
 *.webassets-cache
-run.py
-
+plugins/*
+node_modules/*
+*archive/
+archive/*
+mobile-app/*
 
 ############################
 # WEB APP Python gitignore #
@@ -125,3 +129,8 @@ mobile-app/stable_plugins/*
 latest.dump
 mobile-app/dest/*
 app/lib/todo*/*
+mobile-app/www/remote/min/dest*/*
+node_modules/*
+migrations/*
+.sass-cache/*
+web/util/*

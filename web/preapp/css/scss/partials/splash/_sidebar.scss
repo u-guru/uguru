@@ -1,0 +1,445 @@
+@import '../../../../../shared/css/scss/partials/mixin';
+
+.splash-sidebar-container {
+	@include flex;
+	position: fixed;
+	z-index: 999;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	-webkit-perspective: 1000;
+	perspective: 1000;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+	&::-moz-scrollbar {
+		display: none;
+	}
+}
+
+.splash-sidebar-round {
+	position: absolute;
+	top: 0;
+	right: -50px;
+	width: 50px;
+	height: 100%;
+	svg {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.splash-sidebar-bg {
+	display: none;
+	position: absolute;
+	z-index: 0;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(mix($charcoal, $slate), .95);
+}
+
+.splash-sidebar {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	background: $charcoal;
+	&.desktop {
+		display: none;
+	}
+	header {
+		@include flex;
+		@include flex-center-vertical;
+		@include prefix(justify-content, space-between, webkit);
+		height: 50px;
+		width: 100%;
+		padding-right: 7px;
+		.splash-logo {
+			height: 50px!important;
+			margin: 5px;
+			width: inherit;
+			padding: 2px;
+		}
+		.home {
+			position: absolute;
+			right: 7.5px;
+			top: 19px;
+		}
+	}
+	nav {
+		position: relative;
+		width: 100%;
+		margin-top: -10px;
+		margin-bottom: 10px;
+		height: calc(100% - 248px);
+		ul {
+			@include flex;
+			@include flex-wrap;
+			counter-reset: li;
+			padding: 5px 7.5px;
+			li {
+				@include flex;
+				padding: 5px 7.5px;
+				width: 50%;
+				&:last-child {
+					width: 100%;
+				}
+				a {
+					@include flex;
+					@include flex-center-vertical;
+					position: relative;
+					font-size: 24px;
+					font-weight: 600;
+					line-height: 1.2;
+					padding-bottom: 5px;
+					span {
+						display: block;
+						&:first-child:empty {
+							min-width: 24px;
+							margin-right: 10px;
+							&:before {
+								content: "0" counter(li);
+								counter-increment: li;
+								font-size: 14px;
+							}
+						}
+						&:last-child:empty {
+							position: absolute;
+							top: 0;
+							left: -10px;
+							width: calc(100% + 10px);
+							height: 100%;
+						}
+						&.splash-sidebar-link-icon {
+							position: absolute;
+							top: 1px;
+							left: -12px;
+							width: 42px;
+							height: 42px;
+							svg {
+								* {
+									stroke: white;
+									stroke-width: 4px;
+								}
+							}
+						}
+					}
+					hr {
+						transform-origin: left center;
+						transform: scaleX(0);
+						transition: all 250ms ease-in-out;
+						position: absolute;
+						bottom: 0;
+						left: 0;
+						width: 100%;
+						height: 2px;
+						border: 0;
+						border-radius: 4px;
+						margin: 0;
+						padding: 0;
+						background: rgba(white, .5);
+						&:nth-of-type(2) {
+							transition: none!important;
+							background: white;
+							background: -moz-linear-gradient(left, $cerise 0%, $gold 10%, $moola 20%, $azure 30%, $cobalt 40%, #ffffff 50%);
+							background: -webkit-linear-gradient(left, $cerise 0%, $gold 10%, $moola 20%, $azure 30%, $cobalt 40%, #ffffff 50%);
+							background: linear-gradient(to right, $cerise 0%, $gold 10%, $moola 20%, $azure 30%, $cobalt 40%, #ffffff 50%);
+							filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6389b', endColorstr='#ffffff',GradientType=1 );
+							background-size: 200%;
+							background-position-x: -100%;
+							background-position-y: 0%;
+						}
+					}
+					&:hover, &:focus {
+						hr:first-of-type {
+							transform: scaleX(1)!important;
+						}
+					}
+				}
+			}
+		}
+	}
+	footer {
+		position: relative;
+		.student-card {
+			width: 100%;
+			max-width: 100%;
+			.school-id-inside {
+				position: static;
+				top: auto;
+				left: auto;
+				width: 100%;
+				max-width: 100%;
+				height: 150px;
+				.school-id-top, .school-id-bottom {
+					border-radius: 0!important;
+				}
+				.user-icon {
+					svg {
+						@include round;
+						background: mix($smoke, $campus);
+					}
+				}
+				.school-id-bottom {
+					background: white;
+				}
+			}
+		}
+		.collapsed {
+			@include flex;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			transform-origin: 24px 24px;
+			transform: rotate(-90deg) translateZ(0);
+			> div {
+				width: 48px;
+				height: 48px;
+				svg {
+					transform-origin: center center;
+					transform: rotate(90deg) translateZ(0);
+					display: block;
+					width: 100%;
+					height: 100%;
+				}
+			}
+			button {
+				width: 200px;
+			}
+		}
+	}
+}
+
+.splash-sidebar-content {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	> div:not(.splash-sidebar-round) {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+	}
+	&.desktop {
+		display: none;
+	}
+}
+
+.splash-sidebar-borders {
+	display: none;
+	hr {
+		position: absolute;
+		z-index: 11;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		background: white;
+	}
+	> div {
+		position: absolute;
+		z-index: 11;
+		top: 0;
+		left: 47px;
+		height: 100%;
+		width: 2px;
+		background: white;
+		hr {
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 2px;
+			background: white;
+			background: -moz-linear-gradient(top, $cerise 0%, $gold 10%, $moola 20%, $azure 30%, $cobalt 40%, #ffffff 50%);
+			background: -webkit-linear-gradient(top, $cerise 0%,$gold 10%,$moola 20%,$azure 30%,$cobalt 40%,#ffffff 50%);
+			background: linear-gradient(to bottom, $cerise 0%,$gold 10%,$moola 20%,$azure 30%,$cobalt 40%,#ffffff 50%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$cerise', endColorstr='#ffffff',GradientType=0 );
+			background-size: 200%;
+			background-position-x: 0%;
+			background-position-y: -100%;
+		}
+	}
+	> ul {
+		position: absolute;
+		top: 60px;
+		left: 47px;
+		padding: 7.5px 0;
+		li {
+			padding: 7.5px 0;
+			height: 43px;
+			width: 45px;
+			div {
+				position: relative;
+				height: 100%;
+			}
+			hr {
+				opacity: 0;
+				transition: all 250ms ease-in-out;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				border-radius: 0 4px 4px 0;
+			}
+			&.active {
+				hr {
+					opacity: 1;
+				}
+			}
+			// &:nth-child(2)
+		}
+	}
+}
+
+@media screen and (min-height: 460px) {
+	.splash-sidebar {
+		nav {
+			ul {
+				li {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-height: 600px) {
+	.splash-sidebar {
+		nav {
+			margin-top: 0;
+			margin-bottom: 0;
+			ul {
+				padding: 7.5px;
+				li {
+					padding: 7.5px;
+					a {
+						font-size: 28px;
+						span {
+							&:first-child:empty {
+								&:before {
+									font-size: 16px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.splash-sidebar-borders {
+		> ul {
+			top: 70px;
+			li {
+				height: 53px;
+			}
+		}
+	}
+}
+
+@media screen and (min-height: 680px) {
+	.splash-sidebar {
+		nav {
+			ul {
+				li {
+					a {
+						padding-bottom: 10px;
+						font-size: 36px;
+						&:hover, &:focus {
+							transform: translateX(10px);
+						}
+						span {
+							&:first-child:empty {
+								&:before {
+									font-size: 18px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.splash-sidebar-borders {
+		> ul {
+			li {
+				height: 68px;
+			}
+		}
+	}
+}
+
+@media screen and (orientation: landscape) {
+	.splash-sidebar-content {
+		width: calc(100% - 48px);
+		&.desktop {
+			display: block;
+		}
+		&.mobile {
+			display: none;
+		}
+	}
+	.splash-sidebar {
+		width: 300px;
+		height: 100%;
+		&.desktop {
+			display: block;
+		}
+		&.mobile {
+			display: none;
+		}
+		header, nav {
+			width: 300px;
+		}
+		nav {
+			height: calc(100% - 268px);
+			ul {
+				li {
+					a {
+						span {
+							&:first-child:empty {
+								margin-right: 15px;
+							}
+						}
+					}
+				}
+			}
+		}
+		footer {
+			width: 300px;
+			> div, button {
+				width: 300px;
+			}
+		}
+	}
+	.splash-sidebar-bg {
+		display: block;
+	}
+	.splash-sidebar-borders {
+		display: block;
+	}
+}
+
+@media screen and (min-width: 860px) {
+	.splash-sidebar {
+		header {
+			height: 70px;
+			.splash-logo {
+				padding: 0!important;
+				height: 100%!important;
+				margin: 0 15px!important;
+			}
+			.close, .home {
+				margin-top: -10px;
+			}
+		}
+	}
+}

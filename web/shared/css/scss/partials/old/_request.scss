@@ -1,0 +1,4477 @@
+@import '../mixin';
+
+/* ---------- RATING */
+#rating {
+	.rating-container {
+		> ul {
+			> li {
+				&.rating-charge {
+					position: relative;
+					&:after {
+						content: "";
+						display: block;
+						position: absolute;
+						bottom: -1px;
+						left: 15px;
+						width: calc(100% - 30px);
+						height: 2px;
+					}
+				}
+				.rating-stars {
+					max-width: 300px;
+				}
+			}
+		}
+	}
+	&.mobile-mode {
+		.rating-container {
+			> ul {
+				padding-bottom: calc(64px + 7.5px);
+			}
+		}
+	}
+	&.guru-mode {
+		&.mobile-mode {
+			.rating-container {
+				background: $light-slate;
+			}
+		}
+		.rating-container {
+			> ul {
+				background: $light-slate;
+				> li {
+					&.rating-charge {
+						&:after {
+							background: rgba(white, .2);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.student-mode {
+		.rating-container {
+			> ul {
+				background: white;
+				> li {
+					&.rating-charge {
+						&:after {
+							background: rgba($slate, .2);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- CONFIRM */
+#confirm {
+	.spacer {
+		padding-bottom: 64px;
+	}
+	.icon-overlap {
+		.user-icon {
+			margin: 0;
+			+ .user-icon {
+				margin-left: -30px;
+			}
+		}
+		.user-icon-72 {
+			margin: 0;
+			+ .user-icon-72 {
+				margin-left: -15px;
+			}
+		}
+	}
+	.confirm-location {
+		svg {
+			display: block;
+			height: 80px;
+			width: auto;
+		}
+		.location-info {
+			position: relative;
+			background: $smoke;
+			width: calc(100% - 80px - 15px);
+			padding: 10px 15px;
+			margin-left: 15px;
+			border-radius: 2px;
+			&:before {
+				@include center-y;
+				content: "";
+				width: 0;
+				height: 0;
+				left: -30px;
+				border: 15px solid transparent;
+				border-right-color: $smoke;
+			}
+		}
+	}
+	&.mobile-mode.student-mode {
+		background: white!important;
+	}
+	a.opacity-50 {
+		&:hover, &:focus {
+			@include opacity-important(.75);
+		}
+		&:active {
+			@include opacity-important(1);
+		}
+	}
+}
+
+/* ---------- REQUEST */
+#request {
+	height: 100%;
+	> header {
+		height: 65px;
+		.request-nav {
+			width: 100%;
+			> div {
+				width: 100%;
+				a {
+					width: calc(100% / 6);
+				}
+				> div {
+					width: calc(100% / 6);
+				}
+				a {
+					&:nth-child(1) {
+						&.active {
+							~ div {
+								&:before {
+									border-color: $lake;
+								}
+								&:after {
+									border-color: $light-slate;
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(2) {
+						&.active {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: $light-slate;
+								}
+								&:after {
+									border-color: $light-slate;
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(3) {
+						&.active {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: $light-slate;
+								}
+								&:after {
+									border-color: $light-slate;
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(4) {
+						&.active {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: $light-slate;
+								}
+								&:after {
+									border-color: $light-slate;
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(5) {
+						&.active {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: $light-slate;
+								}
+								&:after {
+									border-color: $light-slate;
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(6) {
+						&.active {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: $light-slate;
+								}
+								&:after {
+									border-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(1) {
+						&:hover, &:focus {
+							~ div {
+								&:before {
+									border-color: $lake;
+								}
+								&:after {
+									border-color: $light-slate;
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(2) {
+						&:hover, &:focus {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: $light-slate;
+								}
+								&:after {
+									border-color: $light-slate;
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(3) {
+						&:hover, &:focus {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: $light-slate;
+								}
+								&:after {
+									border-color: $light-slate;
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(4) {
+						&:hover, &:focus {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: $light-slate;
+								}
+								&:after {
+									border-color: $light-slate;
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(5) {
+						&:hover, &:focus {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: $light-slate;
+								}
+								&:after {
+									border-color: $light-slate;
+									border-left-color: $lake;
+								}
+							}
+						}
+					}
+					&:nth-child(6) {
+						&:hover, &:focus {
+							~ div {
+								&:before {
+									border-color: $lake;
+									border-left-color: $light-slate;
+								}
+								&:after {
+									border-color: $lake;
+								}
+							}
+						}
+					}
+				}
+				> div {
+					span {
+						background: $lake;
+					}
+					&:before {
+						border-color: $lake;
+						border-left-color: $light-slate;
+					}
+					&:after {
+						right: -15px;
+						border-color: $light-slate;
+						border-left-color: $lake;
+					}
+				}
+			}
+		}
+		progress, .progress {
+			margin: 0;
+			vertical-align: top;
+		}
+	}
+	main {
+		@include flex;
+		@include flex-wrap;
+		height: calc(100% - 65px);
+		background: $smoke;
+		.request-slide {
+			height: 100%;
+			overflow: auto;
+		}
+	}
+	&.bg-delivery {
+		> header {
+			.request-nav {
+				> div {
+					a {
+						&:nth-child(1) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $auburn;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(1) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $auburn;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $auburn;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $auburn;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $auburn;
+									}
+								}
+							}
+						}
+					}
+					> div {
+						span {
+							background: $auburn;
+						}
+						&:before {
+							border-color: $auburn;
+							border-left-color: $light-slate;
+						}
+						&:after {
+							border-color: $light-slate;
+							border-left-color: $auburn;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-freelancing {
+		> header {
+			.request-nav {
+				> div {
+					a {
+						&:nth-child(1) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $orange;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(1) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $orange;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $orange;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $orange;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $orange;
+									}
+								}
+							}
+						}
+					}
+					> div {
+						span {
+							background: $orange;
+						}
+						&:before {
+							border-color: $orange;
+							border-left-color: $light-slate;
+						}
+						&:after {
+							border-color: $light-slate;
+							border-left-color: $orange;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-baking {
+		> header {
+			.request-nav {
+				> div {
+					a {
+						&:nth-child(1) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $gold;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(1) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $gold;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $gold;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $gold;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $gold;
+									}
+								}
+							}
+						}
+					}
+					> div {
+						span {
+							background: $gold;
+						}
+						&:before {
+							border-color: $gold;
+							border-left-color: $light-slate;
+						}
+						&:after {
+							border-color: $light-slate;
+							border-left-color: $gold;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-photography {
+		> header {
+			.request-nav {
+				> div {
+					a {
+						&:nth-child(1) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $moola;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(1) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $moola;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $moola;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $moola;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $moola;
+									}
+								}
+							}
+						}
+					}
+					> div {
+						span {
+							background: $moola;
+						}
+						&:before {
+							border-color: $moola;
+							border-left-color: $light-slate;
+						}
+						&:after {
+							border-color: $light-slate;
+							border-left-color: $moola;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-tech {
+		> header {
+			.request-nav {
+				> div {
+					a {
+						&:nth-child(1) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $azure;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(1) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $azure;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $azure;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $azure;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $azure;
+									}
+								}
+							}
+						}
+					}
+					> div {
+						span {
+							background: $azure;
+						}
+						&:before {
+							border-color: $azure;
+							border-left-color: $light-slate;
+						}
+						&:after {
+							border-color: $light-slate;
+							border-left-color: $azure;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-household {
+		> header {
+			.request-nav {
+				> div {
+					a {
+						&:nth-child(1) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(1) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $cobalt;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cobalt;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $cobalt;
+									}
+								}
+							}
+						}
+					}
+					> div {
+						span {
+							background: $cobalt;
+						}
+						&:before {
+							border-color: $cobalt;
+							border-left-color: $light-slate;
+						}
+						&:after {
+							border-color: $light-slate;
+							border-left-color: $cobalt;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-athletic {
+		> header {
+			.request-nav {
+				> div {
+					a {
+						&:nth-child(1) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(1) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $eggplant;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $eggplant;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $eggplant;
+									}
+								}
+							}
+						}
+					}
+					> div {
+						span {
+							background: $eggplant;
+						}
+						&:before {
+							border-color: $eggplant;
+							border-left-color: $light-slate;
+						}
+						&:after {
+							border-color: $light-slate;
+							border-left-color: $eggplant;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-academic {
+		> header {
+			.request-nav {
+				> div {
+					a {
+						&:nth-child(1) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cerise;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $cerise;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cerise;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $cerise;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cerise;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $cerise;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cerise;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $cerise;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cerise;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $cerise;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&.active {
+								~ div {
+									&:before {
+										border-color: $cerise;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $cerise;
+									}
+								}
+							}
+						}
+						&:nth-child(1) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cerise;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $cerise;
+									}
+								}
+							}
+						}
+						&:nth-child(2) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cerise;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $cerise;
+									}
+								}
+							}
+						}
+						&:nth-child(3) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cerise;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $cerise;
+									}
+								}
+							}
+						}
+						&:nth-child(4) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cerise;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $cerise;
+									}
+								}
+							}
+						}
+						&:nth-child(5) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cerise;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $light-slate;
+										border-left-color: $cerise;
+									}
+								}
+							}
+						}
+						&:nth-child(6) {
+							&:hover, &:focus {
+								~ div {
+									&:before {
+										border-color: $cerise;
+										border-left-color: $light-slate;
+									}
+									&:after {
+										border-color: $cerise;
+									}
+								}
+							}
+						}
+					}
+					> div {
+						span {
+							background: $cerise;
+						}
+						&:before {
+							border-color: $cerise;
+							border-left-color: $light-slate;
+						}
+						&:after {
+							border-color: $light-slate;
+							border-left-color: $cerise;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.angular-google-map, .angular-google-map-container {
+	height: calc(100%)!important;
+	width: calc(100%)!important;
+}
+.map-box-container {
+	height: 400px;
+	position: relative;
+}
+.map-search {
+	position: relative;
+	background: rgba(white,.9);
+	input {
+		position: relative;
+		z-index: 5;
+		width: 100%;
+		padding: 10px 15px 10px 43px;
+		font-size: 18px;
+		color: $slate;
+		background: none;
+		border: 0;
+		&:focus, &:hover {
+			@include placeholder {
+				@include transition(.15s ease-in-out);
+				color: $taupe;
+			}
+		}
+	}
+	svg {
+		@include flex;
+		@include flex-center;
+		@include svg-stroke(darken($smoke, 20%), 6);
+		position: absolute;
+		z-index: 4;
+		top: 0;
+		left: 0;
+		width: auto;
+		height: 100%;
+		padding: 7px;
+	}
+	input:hover + svg {
+		stroke: darken($smoke, 25%)
+	}
+	input:focus + svg {
+		stroke: darken($smoke, 30%)
+	}
+}
+.map-results {
+	overflow: auto;
+	margin-top: 15px;
+	background: rgba(white,.9);
+	padding: 0 15px;
+	> li {
+		padding: 15px 0;
+		font-size: 16px;
+		line-height: 1.2;
+		&.has-image {
+			@include flex;
+			@include flex-center;
+		}
+		&:not(:last-child) {
+			border-bottom: 1px solid lighten($taupe, 40%);
+		}
+		.map-title {
+			@include flex;
+			-webkit-align-items: flex-start;
+			align-items: flex-start;
+			h3 {
+				width: calc(100% - 149px);
+				font-size: 18px;
+				font-weight: 600;
+			}
+			.map-rating {
+				@include flex;
+				@include flex-center-vertical;
+				margin-top: -3px;
+				width: 149px;
+				.rating-stars {
+					margin: 0 3px!important;
+				}
+				span {
+					@include flex;
+					@include flex-center-vertical;
+					color: $taupe;
+					font-weight: 600;
+					font-size: 14px;
+					line-height: 24px;
+				}
+			}
+		}
+		.map-address, .map-phone {
+			display: block;
+			color: $taupe;
+			font-size: 14px;
+			font-weight: 600;
+		}
+	}
+}
+.map-box {
+	position: absolute;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 385px;
+	padding: 15px;
+	@media screen and (min-width: 768px) {
+		max-width: 400px;
+	}
+	.map-results {
+		height: calc(100% - 43px);
+	}
+}
+.request-slide {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	header {
+		padding: 15px;
+		background: $charcoal;
+		h1 {
+			padding: 0;
+			font-size: 28px;
+			font-weight: 600;
+			text-transform: lowercase;
+		}
+		h2 {
+			margin-top: 5px!important;
+			font-size: 20px;
+			font-weight: 600;
+			text-transform: none;
+		}
+	}
+	button.confirm {
+		background: rgba($lake, .95);
+		color: white;
+		font-weight: 600;
+	}
+	&.request-categories {
+		position: relative;
+		overflow: hidden;
+		.request-category, .request-subcategory {
+			height: 100%;
+			background: $smoke;
+		}
+		.request-category {
+			overflow: hidden;
+			.request-category-tiles {
+				height: calc(100% - 87px);
+				&.mobile {
+					li {
+						height: calc(100% / 3);
+					}
+				}
+			}
+		}
+		.request-subcategory {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			&:not(.selected) {
+				@include opacity(0);
+				z-index: -10;
+			}
+			&.selected {
+				z-index: 10;
+			}
+			.request-category-tiles {
+				.card-icon, .category-tile-icon {
+					svg {
+						&:not(.normalized) {
+							@include round;
+							background: rgba(white, .5);
+							* {
+								@include opacity(0);
+							}
+						}
+					}
+				}
+				&.mobile {
+					@include prefix(align-content, flex-start, webkit);
+					height: calc(100% - 87px - 64px);
+					li {
+						height: 20%;
+						a {
+							.card-icon {
+								width: 50px;
+								height: 50px;
+								svg {
+									* {
+										stroke-width: 3px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		button {
+			&.bg-delivery {
+				background: mix($auburn, $slate, 90%);
+				&:hover, &:focus {
+					background: mix($auburn, white);
+					color: mix($auburn, $slate);
+				}
+				&:active {
+					background: mix($auburn, $slate);
+					color: white;
+				}
+			}
+			&.bg-freelancing {
+				background: mix($orange, $slate, 90%);
+				&:hover, &:focus {
+					background: mix($orange, white);
+					color: mix($orange, $slate);
+				}
+				&:active {
+					background: mix($orange, $slate);
+					color: white;
+				}
+			}
+			&.bg-baking {
+				background: mix($gold, $slate, 90%);
+				&:hover, &:focus {
+					background: mix($gold, white);
+					color: mix($gold, $slate);
+				}
+				&:active {
+					background: mix($gold, $slate);
+					color: white;
+				}
+			}
+			&.bg-photography {
+				background: mix($moola, $slate, 90%);
+				&:hover, &:focus {
+					background: mix($moola, white);
+					color: mix($moola, $slate);
+				}
+				&:active {
+					background: mix($moola, $slate);
+					color: white;
+				}
+			}
+			&.bg-tech {
+				background: mix($azure, $slate, 90%);
+				&:hover, &:focus {
+					background: mix($azure, white);
+					color: mix($azure, $slate);
+				}
+				&:active {
+					background: mix($azure, $slate);
+					color: white;
+				}
+			}
+			&.bg-household {
+				background: mix($cobalt, $slate, 90%);
+				&:hover, &:focus {
+					background: mix($cobalt, white);
+					color: mix($cobalt, $slate);
+				}
+				&:active {
+					background: mix($cobalt, $slate);
+					color: white;
+				}
+			}
+			&.bg-athletic {
+				background: mix($eggplant, $slate, 90%);
+				&:hover, &:focus {
+					background: mix($eggplant, white);
+					color: mix($eggplant, $slate);
+				}
+				&:active {
+					background: mix($eggplant, $slate);
+					color: white;
+				}
+			}
+			&.bg-academic {
+				background: mix($cerise, $slate, 90%);
+				&:hover, &:focus {
+					background: mix($cerise, white);
+					color: mix($cerise, $slate);
+				}
+				&:active {
+					background: mix($cerise, $slate);
+					color: white;
+				}
+			}
+		}
+		.request-category-tiles.mobile {
+			@include flex;
+			@include flex-wrap;
+			border: 1px solid $smoke;
+			li {
+				width: 50%;
+				border: 1px solid $smoke;
+				a {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					width: 100%;
+					height: 100%;
+					border-radius: 2px;
+					span {
+						display: block;
+						width: 100%;
+					}
+					.card-icon {
+						width: 100px;
+						height: 100px;
+						svg {
+							display: block;
+							width: 100%;
+							height: 100%;
+							* {
+								@include svg-stroke(white, 2);
+							}
+						}
+					}
+					.card-label {
+						font-size: 18px;
+						font-weight: 600;
+					}
+					&.bg-delivery {
+						background: $auburn;
+						&:hover, &:focus {
+							background: mix($auburn, white);
+							color: mix($auburn, $slate);
+							.card-icon {
+								svg {
+									* {
+										stroke: mix($auburn, $slate);
+									}
+								}
+							}
+						}
+						&:active {
+							background: mix($auburn, $slate);
+							color: white;
+							.card-icon {
+								svg {
+									* {
+										stroke: white;
+									}
+								}
+							}
+						}
+					}
+					&.bg-freelancing {
+						background: $orange;
+						&:hover, &:focus {
+							background: mix($orange, white);
+							color: mix($orange, $slate);
+							.card-icon {
+								svg {
+									* {
+										stroke: mix($orange, $slate);
+									}
+								}
+							}
+						}
+						&:active {
+							background: mix($orange, $slate);
+							color: white;
+							.card-icon {
+								svg {
+									* {
+										stroke: white;
+									}
+								}
+							}
+						}
+					}
+					&.bg-baking {
+						background: $gold;
+						&:hover, &:focus {
+							background: mix($gold, white);
+							color: mix($gold, $slate);
+							.card-icon {
+								svg {
+									* {
+										stroke: mix($gold, $slate);
+									}
+								}
+							}
+						}
+						&:active {
+							background: mix($gold, $slate);
+							color: white;
+							.card-icon {
+								svg {
+									* {
+										stroke: white;
+									}
+								}
+							}
+						}
+					}
+					&.bg-photography {
+						background: $moola;
+						&:hover, &:focus {
+							background: mix($moola, white);
+							color: mix($moola, $slate);
+							.card-icon {
+								svg {
+									* {
+										stroke: mix($moola, $slate);
+									}
+								}
+							}
+						}
+						&:active {
+							background: mix($moola, $slate);
+							color: white;
+							.card-icon {
+								svg {
+									* {
+										stroke: white;
+									}
+								}
+							}
+						}
+					}
+					&.bg-tech {
+						background: $azure;
+						&:hover, &:focus {
+							background: mix($azure, white);
+							color: mix($azure, $slate);
+							.card-icon {
+								svg {
+									* {
+										stroke: mix($azure, $slate);
+									}
+								}
+							}
+						}
+						&:active {
+							background: mix($azure, $slate);
+							color: white;
+							.card-icon {
+								svg {
+									* {
+										stroke: white;
+									}
+								}
+							}
+						}
+					}
+					&.bg-household {
+						background: $cobalt;
+						&:hover, &:focus {
+							background: mix($cobalt, white);
+							color: mix($cobalt, $slate);
+							.card-icon {
+								svg {
+									* {
+										stroke: mix($cobalt, $slate);
+									}
+								}
+							}
+						}
+						&:active {
+							background: mix($cobalt, $slate);
+							color: white;
+							.card-icon {
+								svg {
+									* {
+										stroke: white;
+									}
+								}
+							}
+						}
+					}
+					&.bg-athletic {
+						background: $eggplant;
+						&:hover, &:focus {
+							background: mix($eggplant, white);
+							color: mix($eggplant, $slate);
+							.card-icon {
+								svg {
+									* {
+										stroke: mix($eggplant, $slate);
+									}
+								}
+							}
+						}
+						&:active {
+							background: mix($eggplant, $slate);
+							color: white;
+							.card-icon {
+								svg {
+									* {
+										stroke: white;
+									}
+								}
+							}
+						}
+					}
+					&.bg-academic {
+						background: $cerise;
+						&:hover, &:focus {
+							background: mix($cerise, white);
+							color: mix($cerise, $slate);
+							.card-icon {
+								svg {
+									* {
+										stroke: mix($cerise, $slate);
+									}
+								}
+							}
+						}
+						&:active {
+							background: mix($cerise, $slate);
+							color: white;
+							.card-icon {
+								svg {
+									* {
+										stroke: white;
+									}
+								}
+							}
+						}
+					}
+					&.bg-more {
+						background: mix($slate, white);
+						color: white;
+					}
+				}
+			}
+		}
+	}
+	&.request-details {
+		> div {
+			padding-bottom: 64px;
+			> div {
+				> h1 {
+					padding: 15px 15px 0;
+					color: $slate;
+					font-size: 16px;
+					font-weight: 600;
+					text-transform: uppercase;
+					text-align: left;
+					@media screen and (min-width: 768px) {
+						font-size: 20px;
+					}
+				}
+				&.request-courses {
+					.request-course-list {
+						&.desktop {
+							li {
+								.course-card {
+									> svg {
+										width: 100%;
+									}
+								}
+							}
+						}
+						&.mobile {
+							@include flex;
+							@include flex-wrap;
+							padding: 14px;
+							margin-top: -5px;
+							li {
+								padding: 1px;
+								width: calc(100% / 3);
+								a {
+									display: block;
+									padding: 15px;
+									font-size: 18px;
+									font-weight: 600;
+									background: $lake;
+									border-radius: 2px;
+									border-bottom: 5px solid rgba(white, .3);
+									border-top: 5px solid transparent;
+									&:hover, &:focus {
+										background: mix($lake, white);
+										color: mix($lake, $slate);
+										border-bottom-color: rgba(mix($lake, $slate), .3);
+									}
+									&:active {
+										background: mix($lake, $slate);
+										color: white;
+										border-bottom-color: rgba(white, .3);
+									}
+								}
+							}
+						}
+					}
+				}
+				&.request-desc {
+					textarea {
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+						margin: 10px 15px 15px;
+						width: calc(100% - 30px);
+						min-height: 100px;
+						padding: 15px;
+						resize: none;
+						background: rgba(white,.2);
+						border: 2px solid lighten($slate, 40%);
+						border-bottom-width: 5px;
+						color: $slate;
+						font-size: 16px;
+						font-weight: 400;
+						@include placeholder {
+							color: lighten($slate, 30%);
+						}
+						&:hover {
+							background: rgba(white, .7);
+							border-color: $light-slate;
+							color: $slate;
+						}
+						&:focus, &.active {
+							background: white;
+							border-color: $lake;
+							color: $slate;
+						}
+					}
+				}
+				&.request-attachments {
+					.attachment-list {
+						position: relative;
+						margin: 10px 15px;
+						width: calc(100% - 30px);
+						height: 180px;
+						border: 2px dashed rgba($lake, .5);
+						border-radius: 5px;
+						ul {
+							height: 150px;
+						}
+						progress {
+							margin: 0 15px 15px;
+							width: calc(100% - 30px);
+						}
+						.instructions {
+							@include center-xy;
+							color: $lake;
+							font-size: 16px;
+							font-weight: 600;
+							width: 180px;
+							padding: 15px;
+						}
+					}
+					.uploaded {
+						display: block;
+						width: 100%;
+						padding: 0 15px 15px;
+						color: $lake;
+						font-size: 14px;
+						font-weight: 600;
+						text-align: center;
+					}
+				}
+			}
+		}
+		> button {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+	}
+	&.request-time {
+		> div {
+			height: calc(100% - 87px - 64px);
+			h1 {
+				padding: 15px 15px 0;
+				color: $slate;
+				font-size: 16px;
+				font-weight: 600;
+				text-transform: uppercase;
+				text-align: left;
+			}
+		}
+		.request-form {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center-vertical;
+			padding: 15px;
+			h2 {
+				@include flex;
+				@include flex-center-vertical;
+				margin-bottom: 15px;
+				height: 48px;
+				font-weight: 600;
+				color: $slate;
+			}
+			.custom-dropdown {
+				color: $slate;
+				margin-bottom: 15px;
+				> div {
+					span {
+						width: 84px;
+						background: white;
+						color: $slate;
+					}
+					a {
+						svg {
+							background: $lake;
+						}
+						&:hover, &:focus {
+							svg {
+								background: lighten($lake, 10%);
+							}
+						}
+						&:active {
+							svg {
+								background: darken($lake, 10%);
+							}
+						}
+					}
+				}
+				> ul {
+					@include transition(.15s ease-in-out);
+					@include flex;
+					@include flex-wrap;
+					@include translate(-50%, -50%);
+					top: 50%;
+					left: 50%;
+					li {
+						background: rgba(lighten($slate, 5%), .98);
+						font-weight: 600;
+						&:hover, &:focus {
+							background: rgba($lake,.98);
+						}
+						&:active {
+							background: rgba(lighten($lake, 10%),.98);
+						}
+					}
+				}
+				&.request-hours {
+					> ul {
+						li {
+							width: 50%;
+						}
+					}
+				}
+				&.request-minutes {
+					> ul {
+						left: calc(50% + 24px);
+						li {
+							width: 100%;
+						}
+					}
+				}
+			}
+		}
+		.request-when {
+			ul {
+				@include flex;
+				@include flex-wrap;
+				@include flex-center;
+				padding: 0 14px 15px;
+				li {
+					width: calc(100% / 3);
+					padding: 1px;
+					a {
+						display: block;
+						width: 100%;
+						background: white;
+						border: 2px solid $lake;
+						border-left-width: 5px;
+						border-radius: 2px;
+						padding: 10px 15px;
+						color: $light-slate;
+						font-weight: 600;
+						span {
+							display: block;
+							&:first-child {
+								font-size: 18px;
+								color: $lake;
+							}
+							&:last-child {
+								font-size: 14px;
+							}
+						}
+						&:hover, &:focus {
+							background: mix($lake, white);
+							span {
+								&:first-child {
+									color: mix($lake, $slate);
+								}
+								&:last-child {
+									color: $slate;
+								}
+							}
+						}
+						&:active {
+							background: mix($lake, $slate);
+							border-color: mix($lake, white);
+							span {
+								&:first-child {
+									color: mix($lake, white);
+								}
+								&:last-child {
+									color: white;
+								}
+							}
+						}
+					}
+					&:last-child {
+						width: 100%;
+						button {
+							background: $lake;
+							border-radius: 2px;
+							font-weight: 600;
+							&:hover, &:focus {
+								background: mix($lake, white);
+								color: mix($lake, $slate);
+							}
+							&:active {
+								background: mix($lake, $slate);
+								color: white;
+							}
+						}
+					}
+				}
+			}
+			@media screen and (min-width: 768px) {
+				ul {
+					margin-top: -15px;
+					padding: 7.5px;
+					li {
+						padding: 7.5px;
+						a {
+							padding: 30px;
+							span {
+								&:first-child {
+									font-size: 24px;
+									margin-bottom: 5px;
+								}
+								&:last-child {
+									font-size: 20px;
+								}
+							}
+						}
+					}
+				}
+			}
+			.checkbox-container {
+				@include prefix(justify-content, flex-start, webkit);
+				padding: 10px 15px 15px;
+				div {
+					span {
+						background: rgba($slate, .2);
+						svg {
+							stroke: rgba(white, .4);
+						}
+					}
+					input:checked + span {
+						background: $lake;
+						svg {
+							stroke: white;
+						}
+					}
+				}
+				label {
+					color: $slate;
+				}
+			}
+		}
+	}
+	&.request-map {
+		> div {
+			@include flex;
+			@include flex-wrap;
+			height: calc(100% - 87px - 64px);
+			.map-container {
+				height: calc(100% - 63px);
+			}
+			.input-field {
+				@include prefix(align-self, flex-end, webkit);
+				background: white;
+				width: 100%;
+				margin-top: 0;
+				padding-left: 15px;
+				padding-right: 15px;
+				input:focus {
+					border-bottom: 1px solid $lake;
+					box-shadow: 0 1px 0 0 $lake;
+				}
+				@media screen and (min-width: 768px) {
+					@include prefix(align-self, flex-start, webkit);
+				}
+			}
+		}
+	}
+	&.request-payment {
+		> button {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+		> div {
+			height: calc(100% - 87px);
+			padding-bottom: 64px;
+			.request-offer {
+				@include flex;
+				@include flex-center;
+				padding: 1px;
+				li {
+					position: relative;
+					padding: 1px;
+					width: 25%;
+					a {
+						position: relative;
+						display: block;
+						background: $lake;
+						border-radius: 2px;
+						span {
+							@include center-xy;
+							font-size: 28px;
+							font-weight: 600;
+						}
+						.add {
+							@include center-xy;
+							display: block;
+							width: 48px;
+							height: 48px;
+							* {
+								@include svg-stroke(white, 5);
+							}
+						}
+					}
+					input {
+						@include center-xy;
+						font-size: 28px;
+						font-weight: 600;
+						background: none;
+						border: 0;
+						width: 100%;
+						color: white;
+						text-align: center;
+						@include placeholder {
+							color: rgba(white, .5);
+						}
+					}
+				}
+			}
+			.request-cards {
+				.request-wallet {
+					position: relative;
+					button {
+						position: absolute;
+						z-index: 10;
+					    top: 55%;
+					    left: 28.5%;
+					    width: auto;
+					    padding-left: 15px;
+					    padding-right: 15px;
+					    height: 52px;
+					    border-radius: 2px;
+					    background: $smoke;
+					    font-weight: 600;
+					    color: $orange;
+					}
+				}
+				.wallet {
+					padding: 14px 15px 15px;
+					width: 100%;
+				}
+				ul {
+					padding: 7.5px;
+					li {
+						padding: 7.5px;
+						a {
+							@include flex;
+							@include flex-center-vertical;
+							@include prefix(justify-content, space-between, webkit);
+							background: $slate;
+							border-radius: 10px;
+							padding: 10px 15px;
+							height: 64px;
+							span {
+								font-size: 18px;
+								font-weight: 600;
+							}
+						}
+					}
+				}
+			}
+			@media screen and (min-width: 768px) {
+				.request-offer {
+					padding: 7.5px;
+					li {
+						padding: 7.5px;
+					}
+				}
+				.request-cards {
+					@include flex;
+					@include flex-center;
+					height: 250px;
+					.request-wallet {
+						height: 100%;
+						.wallet {
+							height: 100%;
+							width: auto;
+						}
+					}
+					ul {
+						@include flex;
+						@include flex-wrap;
+						@include flex-center;
+						height: 100%;
+					}
+				}
+			}
+		}
+	}
+	&.request-confirm {
+		> button {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+		> div {
+			padding-bottom: 64px;
+			a {
+				display: block;
+				background: white;
+				&:hover, &:focus {
+					background: rgba($lake, .2);
+				}
+			}
+			.confirm-course {
+				padding: 15px;
+				background: $lake;
+				h1 {
+					font-size: 20px;
+					font-weight: 600;
+				}
+				h2 {
+					@include opacity(.5);
+					margin-top: 0;
+					font-size: 16px;
+					font-weight: 600;
+				}
+				&:hover, &:focus {
+					background: mix($lake, white)!important;
+					color: $slate;
+				}
+			}
+			.confirm-info, .confirm-amount {
+				h1 {
+					padding: 15px 15px 0;
+					color: $lake;
+					font-size: 16px;
+					font-weight: 600;
+					text-transform: uppercase;
+					text-align: left;
+				}
+				p {
+					padding: 5px 15px 15px;
+					color: $slate;
+					font-size: 18px;
+					font-weight: 400;
+					text-align: left;
+				}
+			}
+			.confirm-time {
+				padding: 15px;
+				.time-tile {
+					border: 2px solid $lake;
+					border-left-width: 5px;
+					border-radius: 2px;
+					background: white;
+					padding: 15px;
+					h1 {
+						color: $lake;
+						font-size: 24px;
+						font-weight: 600;
+					}
+					h2 {
+						margin: 0!important;
+						color: $light-slate;
+						font-size: 20px;
+						font-weight: 600;
+					}
+				}
+			}
+			.confirm-location {
+				@include flex;
+				@include flex-center;
+				padding: 15px;
+				svg {
+					display: block;
+					height: 80px;
+					width: auto;
+				}
+				.location-info {
+					position: relative;
+					background: $smoke;
+					padding: 10px 15px;
+					margin-left: 15px;
+					width: calc(100% - 80px - 15px);
+					border-radius: 2px;
+					&:before {
+						@include center-y;
+						content: "";
+						width: 0;
+						height: 0;
+						left: -30px;
+						border: 15px solid transparent;
+						border-right-color: $smoke;
+					}
+					h1 {
+						color: $lake;
+						font-size: 24px;
+						font-weight: 600;
+					}
+					p {
+						color: $light-slate;
+						font-size: 18px;
+						font-weight: 400;
+					}
+				}
+			}
+			.confirm-card {
+				padding: 15px;
+			}
+			.confirm-amount {
+				h3 {
+					color: $slate;
+					font-size: 64px;
+					font-weight: 900;
+					padding-bottom: 15px;
+				}
+			}
+		}
+		@media screen and (min-width: 768px) {
+			.confirm-desc {
+				li {
+					a {
+						&:nth-child(1), &:nth-child(3) {
+							border-radius: 2px 2px 0 0;
+						}
+						&:nth-child(2), &:nth-child(4) {
+							border-radius: 0 0 2px 2px;
+						}
+						&:only-child {
+							border-radius: 2px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.bg-delivery {
+	.request-slide {
+		button.confirm {
+			background: rgba($auburn, .95);
+		}
+		&.request-details {
+			> div {
+				> div {
+					&.request-courses {
+						ul {
+							li {
+								a {
+									background: $auburn;
+									&:hover, &:focus {
+										background: mix($auburn, white);
+										color: mix($auburn, $slate);
+										border-bottom-color: rgba(mix($auburn, $slate), .3);
+									}
+									&:active {
+										background: mix($auburn, $slate);
+										color: white;
+										border-bottom-color: rgba(white, .3);
+									}
+								}
+							}
+						}
+					}
+					&.request-desc {
+						textarea {
+							&:focus, &.active {
+								border-color: $auburn;
+							}
+						}
+					}
+					&.request-attachments {
+						.attachment-list {
+							border-color:  rgba($auburn, .5);
+							.instructions {
+								color: $auburn;
+							}
+						}
+						.uploaded {
+							color: $auburn;
+						}
+					}
+				}
+			}
+		}
+		&.request-time {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $auburn;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($auburn, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($auburn, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($auburn,.98);
+							}
+							&:active {
+								background: rgba(lighten($auburn, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-when {
+				ul {
+					li {
+						a {
+							border: 2px solid $auburn;
+							span {
+								&:first-child {
+									color: $auburn;
+								}
+							}
+							&:hover, &:focus {
+								background: mix($auburn, white);
+								span {
+									&:first-child {
+										color: mix($auburn, $slate);
+									}
+								}
+							}
+							&:active {
+								background: mix($auburn, $slate);
+								border-color: mix($auburn, white);
+								span {
+									&:first-child {
+										color: mix($auburn, white);
+									}
+								}
+							}
+						}
+						&:last-child {
+							button {
+								background: $auburn;
+								&:hover, &:focus {
+									background: mix($auburn, white);
+									color: mix($auburn, $slate);
+								}
+								&:active {
+									background: mix($auburn, $slate);
+									color: white;
+								}
+							}
+						}
+					}
+				}
+				.checkbox-container {
+					div {
+						input:checked + span {
+							background: $auburn;
+						}
+					}
+				}
+			}
+		}
+		&.request-map {
+			> div {
+				.input-field {
+					input:focus {
+						border-bottom: 1px solid $auburn;
+						box-shadow: 0 1px 0 0 $auburn;
+					}
+				}
+			}
+		}
+		&.request-payment {
+			> div {
+				.request-offer {
+					li {
+						a {
+							background: $auburn;
+						}
+					}
+				}
+			}
+		}
+		&.request-confirm {
+			> div {
+				a:not(.confirm-course) {
+					&:hover, &:focus {
+						background: rgba($auburn, .2);
+					}
+				}
+				.chip {
+					background: $auburn!important;
+				}
+				.confirm-info, .confirm-amount {
+					h1 {
+						color: $auburn;
+					}
+				}
+				.confirm-time {
+					.time-tile {
+						border-color: $auburn;
+						h1 {
+							color: $auburn;
+						}
+					}
+				}
+				.confirm-location {
+					.location-info {
+						h1 {
+							color: $auburn;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.bg-freelancing {
+	.request-slide {
+		button.confirm {
+			background: rgba($orange, .95);
+		}
+		&.request-details {
+			> div {
+				> div {
+					&.request-courses {
+						ul {
+							li {
+								a {
+									background: $orange;
+									&:hover, &:focus {
+										background: mix($orange, white);
+										color: mix($orange, $slate);
+										border-bottom-color: rgba(mix($orange, $slate), .3);
+									}
+									&:active {
+										background: mix($orange, $slate);
+										color: white;
+										border-bottom-color: rgba(white, .3);
+									}
+								}
+							}
+						}
+					}
+					&.request-desc {
+						textarea {
+							&:focus, &.active {
+								border-color: $orange;
+							}
+						}
+					}
+					&.request-attachments {
+						.attachment-list {
+							border-color: rgba($orange, .5);
+							.instructions {
+								color: $orange;
+							}
+						}
+						.uploaded {
+							color: $orange;
+						}
+					}
+				}
+			}
+		}
+		&.request-time {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $orange;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($orange, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($orange, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($orange,.98);
+							}
+							&:active {
+								background: rgba(lighten($orange, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-when {
+				ul {
+					li {
+						a {
+							border: 2px solid $orange;
+							span {
+								&:first-child {
+									color: $orange;
+								}
+							}
+							&:hover, &:focus {
+								background: mix($orange, white);
+								span {
+									&:first-child {
+										color: mix($orange, $slate);
+									}
+								}
+							}
+							&:active {
+								background: mix($orange, $slate);
+								border-color: mix($orange, white);
+								span {
+									&:first-child {
+										color: mix($orange, white);
+									}
+								}
+							}
+						}
+						&:last-child {
+							button {
+								background: $orange;
+								&:hover, &:focus {
+									background: mix($orange, white);
+									color: mix($orange, $slate);
+								}
+								&:active {
+									background: mix($orange, $slate);
+									color: white;
+								}
+							}
+						}
+					}
+				}
+				.checkbox-container {
+					div {
+						input:checked + span {
+							background: $orange;
+						}
+					}
+				}
+			}
+		}
+		&.request-map {
+			> div {
+				.input-field {
+					input:focus {
+						border-bottom: 1px solid $orange;
+						box-shadow: 0 1px 0 0 $orange;
+					}
+				}
+			}
+		}
+		&.request-payment {
+			> div {
+				.request-offer {
+					li {
+						a {
+							background: $orange;
+						}
+					}
+				}
+			}
+		}
+		&.request-confirm {
+			> div {
+				a:not(.confirm-course) {
+					&:hover, &:focus {
+						background: rgba($orange, .2);
+					}
+				}
+				.chip {
+					background: $orange!important;
+				}
+				.confirm-info, .confirm-amount {
+					h1 {
+						color: $orange;
+					}
+				}
+				.confirm-time {
+					.time-tile {
+						border-color: $orange;
+						h1 {
+							color: $orange;
+						}
+					}
+				}
+				.confirm-location {
+					.location-info {
+						h1 {
+							color: $orange;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.bg-baking {
+	.request-slide {
+		button.confirm {
+			background: rgba($gold, .95);
+		}
+		&.request-details {
+			> div {
+				> div {
+					&.request-courses {
+						ul {
+							li {
+								a {
+									background: $gold;
+									&:hover, &:focus {
+										background: mix($gold, white);
+										color: mix($gold, $slate);
+										border-bottom-color: rgba(mix($gold, $slate), .3);
+									}
+									&:active {
+										background: mix($gold, $slate);
+										color: white;
+										border-bottom-color: rgba(white, .3);
+									}
+								}
+							}
+						}
+					}
+					&.request-desc {
+						textarea {
+							&:focus, &.active {
+								border-color: $gold;
+							}
+						}
+					}
+					&.request-attachments {
+						.attachment-list {
+							border-color: rgba($gold, .5);
+							.instructions {
+								color: $gold;
+							}
+						}
+						.uploaded {
+							color: $gold;
+						}
+					}
+				}
+			}
+		}
+		&.request-time {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $gold;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($gold, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($gold, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($gold,.98);
+							}
+							&:active {
+								background: rgba(lighten($gold, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-when {
+				ul {
+					li {
+						a {
+							border: 2px solid $gold;
+							span {
+								&:first-child {
+									color: $gold;
+								}
+							}
+							&:hover, &:focus {
+								background: mix($gold, white);
+								span {
+									&:first-child {
+										color: mix($gold, $slate);
+									}
+								}
+							}
+							&:active {
+								background: mix($gold, $slate);
+								border-color: mix($gold, white);
+								span {
+									&:first-child {
+										color: mix($gold, white);
+									}
+								}
+							}
+						}
+						&:last-child {
+							button {
+								background: $gold;
+								&:hover, &:focus {
+									background: mix($gold, white);
+									color: mix($gold, $slate);
+								}
+								&:active {
+									background: mix($gold, $slate);
+									color: white;
+								}
+							}
+						}
+					}
+				}
+				.checkbox-container {
+					div {
+						input:checked + span {
+							background: $gold;
+						}
+					}
+				}
+			}
+		}
+		&.request-map {
+			> div {
+				.input-field {
+					input:focus {
+						border-bottom: 1px solid $gold;
+						box-shadow: 0 1px 0 0 $gold;
+					}
+				}
+			}
+		}
+		&.request-payment {
+			> div {
+				.request-offer {
+					li {
+						a {
+							background: $gold;
+						}
+					}
+				}
+			}
+		}
+		&.request-confirm {
+			> div {
+				a:not(.confirm-course) {
+					&:hover, &:focus {
+						background: rgba($gold, .2);
+					}
+				}
+				.chip {
+					background: $gold!important;
+				}
+				.confirm-info, .confirm-amount {
+					h1 {
+						color: $gold;
+					}
+				}
+				.confirm-time {
+					.time-tile {
+						border-color: $gold;
+						h1 {
+							color: $gold;
+						}
+					}
+				}
+				.confirm-location {
+					.location-info {
+						h1 {
+							color: $gold;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.bg-photography {
+	.request-slide {
+		button.confirm {
+			background: rgba($moola, .95);
+		}
+		&.request-details {
+			> div {
+				> div {
+					&.request-courses {
+						ul {
+							li {
+								a {
+									background: $moola;
+									&:hover, &:focus {
+										background: mix($moola, white);
+										color: mix($moola, $slate);
+										border-bottom-color: rgba(mix($moola, $slate), .3);
+									}
+									&:active {
+										background: mix($moola, $slate);
+										color: white;
+										border-bottom-color: rgba(white, .3);
+									}
+								}
+							}
+						}
+					}
+					&.request-desc {
+						textarea {
+							&:focus, &.active {
+								border-color: $moola;
+							}
+						}
+					}
+					&.request-attachments {
+						.attachment-list {
+							border-color: rgba($moola, .5);
+							.instructions {
+								color: $moola;
+							}
+						}
+						.uploaded {
+							color: $moola;
+						}
+					}
+				}
+			}
+		}
+		&.request-time {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $moola;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($moola, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($moola, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($moola,.98);
+							}
+							&:active {
+								background: rgba(lighten($moola, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-when {
+				ul {
+					li {
+						a {
+							border: 2px solid $moola;
+							span {
+								&:first-child {
+									color: $moola;
+								}
+							}
+							&:hover, &:focus {
+								background: mix($moola, white);
+								span {
+									&:first-child {
+										color: mix($moola, $slate);
+									}
+								}
+							}
+							&:active {
+								background: mix($moola, $slate);
+								border-color: mix($moola, white);
+								span {
+									&:first-child {
+										color: mix($moola, white);
+									}
+								}
+							}
+						}
+						&:last-child {
+							button {
+								background: $moola;
+								&:hover, &:focus {
+									background: mix($moola, white);
+									color: mix($moola, $slate);
+								}
+								&:active {
+									background: mix($moola, $slate);
+									color: white;
+								}
+							}
+						}
+					}
+				}
+				.checkbox-container {
+					div {
+						input:checked + span {
+							background: $moola;
+						}
+					}
+				}
+			}
+		}
+		&.request-map {
+			> div {
+				.input-field {
+					input:focus {
+						border-bottom: 1px solid $moola;
+						box-shadow: 0 1px 0 0 $moola;
+					}
+				}
+			}
+		}
+		&.request-payment {
+			> div {
+				.request-offer {
+					li {
+						a {
+							background: $moola;
+						}
+					}
+				}
+			}
+		}
+		&.request-confirm {
+			> div {
+				a:not(.confirm-course) {
+					&:hover, &:focus {
+						background: rgba($moola, .2);
+					}
+				}
+				.chip {
+					background: $moola!important;
+				}
+				.confirm-info, .confirm-amount {
+					h1 {
+						color: $moola;
+					}
+				}
+				.confirm-time {
+					.time-tile {
+						border-color: $moola;
+						h1 {
+							color: $moola;
+						}
+					}
+				}
+				.confirm-location {
+					.location-info {
+						h1 {
+							color: $moola;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.bg-tech {
+	.request-slide {
+		button.confirm {
+			background: rgba($azure, .95);
+		}
+		&.request-details {
+			> div {
+				> div {
+					&.request-courses {
+						ul {
+							li {
+								a {
+									background: $azure;
+									&:hover, &:focus {
+										background: mix($azure, white);
+										color: mix($azure, $slate);
+										border-bottom-color: rgba(mix($azure, $slate), .3);
+									}
+									&:active {
+										background: mix($azure, $slate);
+										color: white;
+										border-bottom-color: rgba(white, .3);
+									}
+								}
+							}
+						}
+					}
+					&.request-desc {
+						textarea {
+							&:focus, &.active {
+								border-color: $azure;
+							}
+						}
+					}
+					&.request-attachments {
+						.attachment-list {
+							border-color: rgba($azure, .5);
+							.instructions {
+								color: $azure;
+							}
+						}
+						.uploaded {
+							color: $azure;
+						}
+					}
+				}
+			}
+		}
+		&.request-time {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $azure;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($azure, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($azure, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($azure,.98);
+							}
+							&:active {
+								background: rgba(lighten($azure, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-when {
+				ul {
+					li {
+						a {
+							border: 2px solid $azure;
+							span {
+								&:first-child {
+									color: $azure;
+								}
+							}
+							&:hover, &:focus {
+								background: mix($azure, white);
+								span {
+									&:first-child {
+										color: mix($azure, $slate);
+									}
+								}
+							}
+							&:active {
+								background: mix($azure, $slate);
+								border-color: mix($azure, white);
+								span {
+									&:first-child {
+										color: mix($azure, white);
+									}
+								}
+							}
+						}
+						&:last-child {
+							button {
+								background: $azure;
+								&:hover, &:focus {
+									background: mix($azure, white);
+									color: mix($azure, $slate);
+								}
+								&:active {
+									background: mix($azure, $slate);
+									color: white;
+								}
+							}
+						}
+					}
+				}
+				.checkbox-container {
+					div {
+						input:checked + span {
+							background: $azure;
+						}
+					}
+				}
+			}
+		}
+		&.request-map {
+			> div {
+				.input-field {
+					input:focus {
+						border-bottom: 1px solid $azure;
+						box-shadow: 0 1px 0 0 $azure;
+					}
+				}
+			}
+		}
+		&.request-payment {
+			> div {
+				.request-offer {
+					li {
+						a {
+							background: $azure;
+						}
+					}
+				}
+			}
+		}
+		&.request-confirm {
+			> div {
+				a:not(.confirm-course) {
+					&:hover, &:focus {
+						background: rgba($azure, .2);
+					}
+				}
+				.chip {
+					background: $azure!important;
+				}
+				.confirm-info, .confirm-amount {
+					h1 {
+						color: $azure;
+					}
+				}
+				.confirm-time {
+					.time-tile {
+						border-color: $azure;
+						h1 {
+							color: $azure;
+						}
+					}
+				}
+				.confirm-location {
+					.location-info {
+						h1 {
+							color: $azure;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.bg-household {
+	.request-slide {
+		button.confirm {
+			background: rgba($cobalt, .95);
+		}
+		&.request-details {
+			> div {
+				> div {
+					&.request-courses {
+						ul {
+							li {
+								a {
+									background: $cobalt;
+									&:hover, &:focus {
+										background: mix($cobalt, white);
+										color: mix($cobalt, $slate);
+										border-bottom-color: rgba(mix($cobalt, $slate), .3);
+									}
+									&:active {
+										background: mix($cobalt, $slate);
+										color: white;
+										border-bottom-color: rgba(white, .3);
+									}
+								}
+							}
+						}
+					}
+					&.request-desc {
+						textarea {
+							&:focus, &.active {
+								border-color: $cobalt;
+							}
+						}
+					}
+					&.request-attachments {
+						.attachment-list {
+							border-color: rgba($cobalt, .5);
+							.instructions {
+								color: $cobalt;
+							}
+						}
+						.uploaded {
+							color: $cobalt;
+						}
+					}
+				}
+			}
+		}
+		&.request-time {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $cobalt;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($cobalt, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($cobalt, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($cobalt,.98);
+							}
+							&:active {
+								background: rgba(lighten($cobalt, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-when {
+				ul {
+					li {
+						a {
+							border: 2px solid $cobalt;
+							span {
+								&:first-child {
+									color: $cobalt;
+								}
+							}
+							&:hover, &:focus {
+								background: mix($cobalt, white);
+								span {
+									&:first-child {
+										color: mix($cobalt, $slate);
+									}
+								}
+							}
+							&:active {
+								background: mix($cobalt, $slate);
+								border-color: mix($cobalt, white);
+								span {
+									&:first-child {
+										color: mix($cobalt, white);
+									}
+								}
+							}
+						}
+						&:last-child {
+							button {
+								background: $cobalt;
+								&:hover, &:focus {
+									background: mix($cobalt, white);
+									color: mix($cobalt, $slate);
+								}
+								&:active {
+									background: mix($cobalt, $slate);
+									color: white;
+								}
+							}
+						}
+					}
+				}
+				.checkbox-container {
+					div {
+						input:checked + span {
+							background: $cobalt;
+						}
+					}
+				}
+			}
+		}
+		&.request-map {
+			> div {
+				.input-field {
+					input:focus {
+						border-bottom: 1px solid $cobalt;
+						box-shadow: 0 1px 0 0 $cobalt;
+					}
+				}
+			}
+		}
+		&.request-payment {
+			> div {
+				.request-offer {
+					li {
+						a {
+							background: $cobalt;
+						}
+					}
+				}
+			}
+		}
+		&.request-confirm {
+			> div {
+				a:not(.confirm-course) {
+					&:hover, &:focus {
+						background: rgba($cobalt, .2);
+					}
+				}
+				.chip {
+					background: $cobalt!important;
+				}
+				.confirm-info, .confirm-amount {
+					h1 {
+						color: $cobalt;
+					}
+				}
+				.confirm-time {
+					.time-tile {
+						border-color: $cobalt;
+						h1 {
+							color: $cobalt;
+						}
+					}
+				}
+				.confirm-location {
+					.location-info {
+						h1 {
+							color: $cobalt;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.bg-athletic {
+	.request-slide {
+		button.confirm {
+			background: rgba($eggplant, .95);
+		}
+		&.request-details {
+			> div {
+				> div {
+					&.request-courses {
+						ul {
+							li {
+								a {
+									background: $eggplant;
+									&:hover, &:focus {
+										background: mix($eggplant, white);
+										color: mix($eggplant, $slate);
+										border-bottom-color: rgba(mix($eggplant, $slate), .3);
+									}
+									&:active {
+										background: mix($eggplant, $slate);
+										color: white;
+										border-bottom-color: rgba(white, .3);
+									}
+								}
+							}
+						}
+					}
+					&.request-desc {
+						textarea {
+							&:focus, &.active {
+								border-color: $eggplant;
+							}
+						}
+					}
+					&.request-attachments {
+						.attachment-list {
+							border-color: rgba($eggplant, .5);
+							.instructions {
+								color: $eggplant;
+							}
+						}
+						.uploaded {
+							color: $eggplant;
+						}
+					}
+				}
+			}
+		}
+		&.request-time {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $eggplant;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($eggplant, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($eggplant, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($eggplant,.98);
+							}
+							&:active {
+								background: rgba(lighten($eggplant, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-when {
+				ul {
+					li {
+						a {
+							border: 2px solid $eggplant;
+							span {
+								&:first-child {
+									color: $eggplant;
+								}
+							}
+							&:hover, &:focus {
+								background: mix($eggplant, white);
+								span {
+									&:first-child {
+										color: mix($eggplant, $slate);
+									}
+								}
+							}
+							&:active {
+								background: mix($eggplant, $slate);
+								border-color: mix($eggplant, white);
+								span {
+									&:first-child {
+										color: mix($eggplant, white);
+									}
+								}
+							}
+						}
+						&:last-child {
+							button {
+								background: $eggplant;
+								&:hover, &:focus {
+									background: mix($eggplant, white);
+									color: mix($eggplant, $slate);
+								}
+								&:active {
+									background: mix($eggplant, $slate);
+									color: white;
+								}
+							}
+						}
+					}
+				}
+				.checkbox-container {
+					div {
+						input:checked + span {
+							background: $eggplant;
+						}
+					}
+				}
+			}
+		}
+		&.request-map {
+			> div {
+				.input-field {
+					input:focus {
+						border-bottom: 1px solid $eggplant;
+						box-shadow: 0 1px 0 0 $eggplant;
+					}
+				}
+			}
+		}
+		&.request-payment {
+			> div {
+				.request-offer {
+					li {
+						a {
+							background: $eggplant;
+						}
+					}
+				}
+			}
+		}
+		&.request-confirm {
+			> div {
+				a:not(.confirm-course) {
+					&:hover, &:focus {
+						background: rgba($eggplant, .2);
+					}
+				}
+				.chip {
+					background: $eggplant!important;
+				}
+				.confirm-info, .confirm-amount {
+					h1 {
+						color: $eggplant;
+					}
+				}
+				.confirm-time {
+					.time-tile {
+						border-color: $eggplant;
+						h1 {
+							color: $eggplant;
+						}
+					}
+				}
+				.confirm-location {
+					.location-info {
+						h1 {
+							color: $eggplant;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.bg-academic {
+	.request-slide {
+		button.confirm {
+			background: rgba($cerise, .95);
+		}
+		&.request-details {
+			> div {
+				> div {
+					&.request-courses {
+						ul {
+							li {
+								a {
+									background: $cerise;
+									&:hover, &:focus {
+										background: mix($cerise, white);
+										color: mix($cerise, $slate);
+										border-bottom-color: rgba(mix($cerise, $slate), .3);
+									}
+									&:active {
+										background: mix($cerise, $slate);
+										color: white;
+										border-bottom-color: rgba(white, .3);
+									}
+								}
+							}
+						}
+					}
+					&.request-desc {
+						textarea {
+							&:focus, &.active {
+								border-color: $cerise;
+							}
+						}
+					}
+					&.request-attachments {
+						.attachment-list {
+							border-color: rgba($cerise, .5);
+							.instructions {
+								color: $cerise;
+							}
+						}
+						.uploaded {
+							color: $cerise;
+						}
+					}
+				}
+			}
+		}
+		&.request-time {
+			.request-form {
+				.custom-dropdown {
+					> div {
+						a {
+							svg {
+								background: $cerise;
+							}
+							&:hover, &:focus {
+								svg {
+									background: lighten($cerise, 10%);
+								}
+							}
+							&:active {
+								svg {
+									background: darken($cerise, 10%);
+								}
+							}
+						}
+					}
+					> ul {
+						li {
+							&:hover, &:focus {
+								background: rgba($cerise,.98);
+							}
+							&:active {
+								background: rgba(lighten($cerise, 10%),.98);
+							}
+						}
+					}
+				}
+			}
+			.request-when {
+				ul {
+					li {
+						a {
+							border: 2px solid $cerise;
+							span {
+								&:first-child {
+									color: $cerise;
+								}
+							}
+							&:hover, &:focus {
+								background: mix($cerise, white);
+								span {
+									&:first-child {
+										color: mix($cerise, $slate);
+									}
+								}
+							}
+							&:active {
+								background: mix($cerise, $slate);
+								border-color: mix($cerise, white);
+								span {
+									&:first-child {
+										color: mix($cerise, white);
+									}
+								}
+							}
+						}
+						&:last-child {
+							button {
+								background: $cerise;
+								&:hover, &:focus {
+									background: mix($cerise, white);
+									color: mix($cerise, $slate);
+								}
+								&:active {
+									background: mix($cerise, $slate);
+									color: white;
+								}
+							}
+						}
+					}
+				}
+				.checkbox-container {
+					div {
+						input:checked + span {
+							background: $cerise;
+						}
+					}
+				}
+			}
+		}
+		&.request-map {
+			> div {
+				.input-field {
+					input:focus {
+						border-bottom: 1px solid $cerise;
+						box-shadow: 0 1px 0 0 $cerise;
+					}
+				}
+			}
+		}
+		&.request-payment {
+			> div {
+				.request-offer {
+					li {
+						a {
+							background: $cerise;
+						}
+					}
+				}
+			}
+		}
+		&.request-confirm {
+			> div {
+				a:not(.confirm-course) {
+					&:hover, &:focus {
+						background: rgba($cerise, .2);
+					}
+				}
+				.chip {
+					background: $cerise!important;
+				}
+				.confirm-info, .confirm-amount {
+					h1 {
+						color: $cerise;
+					}
+				}
+				.confirm-time {
+					.time-tile {
+						border-color: $cerise;
+						h1 {
+							color: $cerise;
+						}
+					}
+				}
+				.confirm-location {
+					.location-info {
+						h1 {
+							color: $cerise;
+						}
+					}
+				}
+			}
+		}
+	}
+}

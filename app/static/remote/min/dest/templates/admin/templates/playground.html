@@ -1,0 +1,103 @@
+<div id="playground-view" ng-controller="AdminPlaygroundController as apc" class="bg-charcoal full-xy flex-wrap-start">
+    <header class="full-x flex-wrap-center p15xy border-2-bottom border-dashed border-moola" style="height:10%">
+        <h1 id="title" class="uppercase weight-600 flex-vertical-center">
+            <span class="opacity-50">Dev Playground:</span>
+            <span class="weight-900">&nbsp;{{name}} </span>
+        </h1>
+    </header>
+    <div class="absolute left-0 full-x flex-wrap-center bg-slate overflow-visible" style="height:75%; top:10%">
+        <div ng-if="apc.type" class="full-xy flex-center relative">
+            <div class="relative">
+                <animation size="100" oke="white" import="bounceInUp" duration="2000" iter="4" direction="reverse" play="true" fill="forwards" delay="0s" func="cb(0.68, -1, 0.265, 1.55)" template="shared/templates/components/svg/main/play.html">
+            </animation>
+            </div>
+            <div>
+              <animation size="100" stroke="white" import="bounceInDown" duration="2000" direction="reverse" play="true" iter="4" fill="forwards" delay="0s" func="cb(0.68, -1, 0.265, 1.55)" template="shared/templates/components/svg/main/play.html">
+              </animation>
+            </div>
+      <div class="relative">
+                <animation size="100" oke="white" import="bounceInUp" duration="2000" iter="4" direction="reverse" play="true" fill="forwards" delay="0s" func="cb(0.68, -1, 0.265, 1.55)" template="shared/templates/components/svg/main/play.html">
+            </animation>
+            </div>
+            <div>
+              <animation size="100" stroke="white" import="bounceInDown" duration="2000" direction="reverse" play="true" iter="4" fill="forwards" delay="0s" func="cb(0.68, -1, 0.265, 1.55)" template="shared/templates/components/svg/main/play.html">
+              </animation>
+            </div>
+      <div class="relative">
+                <animation size="100" oke="white" import="bounceInUp" duration="2000" iter="4" direction="reverse" play="true" fill="forwards" delay="0s" func="cb(0.68, -1, 0.265, 1.55)" template="shared/templates/components/svg/main/play.html">
+            </animation>
+            </div>
+            <div>
+              <animation size="100" stroke="white" import="bounceInDown" duration="2000" direction="reverse" play="true" iter="4" fill="forwards" delay="0s" func="cb(0.68, -1, 0.265, 1.55)" template="shared/templates/components/svg/main/play.html">
+              </animation>
+            </div>
+      <div class="relative">
+                <animation size="100" oke="white" import="bounceInUp" duration="2000" iter="4" direction="reverse" play="true" fill="forwards" delay="0s" func="cb(0.68, -1, 0.265, 1.55)" template="shared/templates/components/svg/main/play.html">
+            </animation>
+            </div>
+            <div>
+              <animation size="100" stroke="white" import="bounceInDown" duration="2000" direction="reverse" play="true" iter="4" fill="forwards" delay="0s" func="cb(0.68, -1, 0.265, 1.55)" template="shared/templates/components/svg/main/play.html">
+              </animation>
+            </div>
+      <div class="relative">
+                <animation size="100" oke="white" import="bounceInUp" duration="2000" iter="4" direction="reverse" play="true" fill="forwards" delay="0s" func="cb(0.68, -1, 0.265, 1.55)" template="shared/templates/components/svg/main/play.html">
+            </animation>
+            </div>
+            <div>
+              <animation size="100" stroke="white" import="bounceInDown" duration="2000" direction="reverse" play="true" iter="4" fill="forwards" delay="0s" func="cb(0.68, -1, 0.265, 1.55)" template="shared/templates/components/svg/main/play.html">
+              </animation>
+            </div>
+      <div class="relative">
+                <animation size="100" oke="white" import="bounceInUp" duration="2000" iter="4" direction="reverse" play="true" fill="forwards" delay="0s" func="cb(0.68, -1, 0.265, 1.55)" template="shared/templates/components/svg/main/play.html">
+            </animation>
+            </div>
+            <div>
+              <animation size="100" stroke="white" import="bounceInDown" duration="2000" direction="reverse" play="true" iter="4" fill="forwards" delay="0s" func="cb(0.68, -1, 0.265, 1.55)" template="shared/templates/components/svg/main/play.html">
+              </animation>
+            </div>
+        </div>
+        <!-- <square ng-if='apc.type && apc.type !== animation' class='inspect animated' on-click="anim:[bounceInDown:set(-webkit-animation-duration:20s)]" init-with="{{apc.example.str}}"> </square> -->
+        <!-- <square on-init="transform:[sc:(1.5, 1.9, 1.9)]"> </square> -->
+    </div>
+    <footer class="fixed bottom-0 left-0 full-x">
+        <div class="txt-white">
+            <ul class="flex-center-vertical full-x bg-campus p15-grid txt-3">
+                <li class="width-40p">
+                    <pre class="txt-16">{{apc.example.str}}</pre>
+                </li>
+                <li class="width-40p">
+                    <input class="input-border txt-white" ng-focus="apc.example.clear()" ng-model="apc.example.str" ng-keyup="$event.keyCode === 13 && apc.example.clear() && apc.example.play()" ng-blur="apc.example.play()">
+                    
+                </li>
+                <li class="width-20p flex-right">
+                    <div class="semibold txt-18" ng-click="apc.example.clear()" ng-show="apc.example.showReset">Clear</div>
+                    <div class="semibold txt-18" ng-click="apc.example.play()" ng-show="!apc.example.showReset">Play</div>
+                </li>
+            </ul>
+            <div class="flex-center-vertical-stretch full-x bg-cobalt-slate-campus-25p overflow-x no-scrollbar">
+                <h1 class="weight-800 p15xy">
+                    Examples
+                </h1>
+                <ul class="p15-grid flex-center">
+                    <li ng-repeat="ex in apc.options[name].examples">
+                        <div style="white-space: nowrap" class="bg-charcoal p15x-p10y radius-2 txt-20 semibold" ng-class="{'bg-charcoal-50p border-2-bottom border-white':apc.exampleIndex === $index}" ng-click="apc.exampleIndex = $index; apc.example = ex; apc.example.clear = ex.clear; apc.example.play = ex.play; apc.updateElement(ex.str, ex); apc.example.clear();">
+                            Ex #{{$index}}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="bg-cobalt-slate-campus-50p flex-center-vertical-stretch full-x overflow-x no-scrollbar">
+                <h1 class="weight-800 p15xy">
+                    Supported&nbsp;{{name}}&nbsp;Args
+                </h1>
+                <ul class="p15-grid flex-center">
+                    <li ng-repeat="option in apc.options[name].args">
+                        <div style="white-space: nowrap" class="bg-charcoal p15x-p10y radius-2 txt-20 semibold" ng-click="apc.selectOption(args, option)">
+                            {{option.name}}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</div>

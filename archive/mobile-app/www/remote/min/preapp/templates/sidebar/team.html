@@ -1,0 +1,104 @@
+<div ng-controller='SplashTeamController as team' id='splash-sidebar-team' init-with="prop:[opacity:0]" when-team-clicked="trigger:[on-enter] | send:[faq-closed, pricing-closed, about-closed]" when-team-closed="trigger:[on-exit]" on-exit="prop:[opacity:0]" on-enter="prop:[opacity:1]">
+    <main id="team" class="lyt-reduced-header">
+        <!-- class-on-activate="null:inject#team header h1|activate, null:inject#team .pf-card-group li .pf-card|activate" -->
+    	<header>
+    		<a id='guru-profile-cta-close' class='cta-modal-close close-button high-z-index absolute' ng-class='{"arrow": !desktopMode}' ng-click='!desktopMode && page.modals.team.hide()' class-on-click="null:inject#cta-modal-team|clear, null:inject.splash-sidebar-empty|activate, null:inject#team *|clear">
+    			<svg viewBox="0 0 100 100" ng-if='!desktopMode'>
+                	<path d="M14,32 L50,68 L86,32"></path>
+                </svg>
+                <svg viewBox="0 0 100 100" ng-if='desktopMode'>
+                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                </svg>
+    	    </a>
+    		<h1>Team Uguru</h1>
+            <!-- class="opacity-0" class-on-activate="bounceInDown:anim" -->
+    	</header>
+    	<section class="main">
+    		<ul class="pf-card-group">
+    			<li>
+    				<div class="pf-card-jeselle pf-card pf-card-photography">
+                        <!-- class-on-activate="bounceInLeft:anim, null:inject.pf-card-jeselle *|activate" -->
+    					<div class="pf-card-top">
+    						<span class="user-icon" style=""></span>
+                            <!-- class="opacity-0" class-on-activate="rotateIn:anim" class-on-activate-delay="500" -->
+    					</div>
+    					<div class="pf-card-main">
+                            <!-- class-on-activate="bounceInUp:anim" class-on-activate-delay="1000" -->
+    						<h1 class="verified">
+    							<span class="inline">Jeselle Obina</span>
+    							<span class="inline">
+    								<span ng-include="root.base_url + 'shared/templates/components/svg/verified.html'"></span>
+    							</span>
+    						</h1>
+    						<h2 class="pf-school">UIUC</h2>
+    						<h2 class="pf-school">UI/UX &amp; Graphic Designer</h2>
+    					</div>
+    				</div>
+    			</li>
+
+    			<li>
+    				<div class="pf-card-gabri pf-card pf-card-household">
+                        <!-- class-on-activate="bounceInDown:anim, null:inject.pf-card-gabri *|activate" -->
+    					<div class="pf-card-top">
+    						<span class="user-icon" style=""></span>
+                            <!-- class-on-activate="rotateIn:anim" class-on-activate-delay="500" -->
+    					</div>
+    					<div class="pf-card-main">
+                            <!-- class-on-activate="bounceInUp:anim" class-on-activate-delay="1000" -->
+    						<h1 class="verified">
+    							<span class="inline">Gabrielle Wee</span>
+    							<span class="inline">
+    								<span ng-include="root.base_url + 'shared/templates/components/svg/verified.html'"></span>
+    							</span>
+    						</h1>
+    						<h2 class="pf-school">Ex'pression College</h2>
+    						<h2 class="pf-school">UI/UX Designer &amp; Developer</h2>
+    					</div>
+    				</div>
+    			</li>
+
+    			<li>
+    				<div class="pf-card-jason pf-card pf-card-baking">
+                        <!-- class-on-activate="bounceInUp:anim, null:inject.pf-card-jason *|activate" -->
+    					<div class="pf-card-top">
+    						<span class="user-icon" style=""></span>
+                            <!-- class="opacity-0" class-on-activate="rotateIn:anim" class-on-activate-delay="500" -->
+    					</div>
+    					<div class="pf-card-main">
+                            <!-- class-on-activate="bounceInUp:anim" class-on-activate-delay="1000" -->
+    						<h1 class="verified">
+    							<span class="inline">Jason Huang</span>
+    							<span class="inline">
+    								<span ng-include="root.base_url + 'shared/templates/components/svg/verified.html'"></span>
+    							</span>
+    						</h1>
+    						<h2 class="pf-school">San Jose State University</h2>
+    						<h2 class="pf-school">QA &amp; Mobile UI Automation</h2>
+    					</div>
+    				</div>
+    			</li>
+
+    			<li>
+    				<div class="pf-card-samir pf-card pf-card-tech">
+                        <!-- class-on-activate="bounceInRight:anim, null:inject.pf-card-samir *|activate" -->
+    					<div class="pf-card-top">
+    						<span class="user-icon" style=""></span>
+                            <!-- class-on-activate="rotateIn:anim" class-on-activate-delay="500" -->
+    					</div>
+    					<div class="pf-card-main">
+                            <!-- class-on-activate="bounceInUp:anim" class-on-activate-delay="1000" -->
+    						<h1 class="verified">
+    							<span class="inline">Samir Makhani</span>
+    							<span class="inline">
+    								<span ng-include="root.base_url + 'shared/templates/components/svg/verified.html'"></span>
+    							</span>
+    						</h1>
+    						<h2 class="pf-school">UC Berkeley</h2>
+    						<h2 class="pf-school">Founder, Product, &amp; Dev</h2>
+    					</div>
+    				</div>
+    			</li>
+    		</ul>
+    	</section>
+    </main>
+</div>

@@ -1,0 +1,273 @@
+<ion-view class='uguru-view home-view'>
+    <section id="mobile-student-home" class="mobile-home">
+        <a id="nav-icon-burger" class="nav-icon-burger" ng-if='user || user.id' ng-click='toggleRightSideMenu()' ng-include="img_base + 'templates/svg/main/menu-circle.html'"></a>
+        <div class="home-top">
+            <div class="toggle old round" ng-if='!user || !user.id' ng-click='signupModal.show()'>
+                <input type="checkbox" checked />
+                <label>
+                    <svg class="square" viewBox="0 0 100 100">
+                        <rect x="0" y="0" width="100" height="100"></rect>
+                    </svg>
+                    <svg class="square" viewBox="0 0 100 100">
+                        <rect x="0" y="0" width="100" height="100"></rect>
+                    </svg>
+                    <span>Demo</span>
+                </label>
+            </div>
+            <ion-slide-box class="home-ticket-content">
+                <ion-slide class="home-ticket-inside">
+                    <div>
+                        <h1>You have <u>2</u> Incoming Gurus for CS10.</h1>
+                        <h2>See more request details about these gurus</h2>
+                    </div>
+                    <ul class="home-ticket-guru-bar">
+                       <li>
+                            <div class="pf-card-mini large pf-card-mini-academic">
+                                <div class="pf-card-mini-banner"></div>
+                                <!-- <span class="user-icon bg-cerise"></span> -->
+                                <user-icon size="small" > </user-icon>
+                                <span class="pf-name">Christopher W.</span>
+                                <!-- <ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul> -->
+                                <rating class="rating-stars" style="width:70px; height:14px;" avg="4"/>
+                            </div>
+
+                        </li>
+                        <li>
+                            <div class="pf-card-mini large pf-card-mini-academic">
+                                <div class="pf-card-mini-banner"></div>
+                                <!-- <span class="user-icon bg-cerise"></span> -->
+                                <user-icon size="small" > </user-icon>
+                                <span class="pf-name">Christopher W.</span>
+                                <!-- <ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul> -->
+                                <rating class="rating-stars" style="width:70px; height:14px;" avg="4.5"/>
+                            </div>
+
+                        </li>
+                        <li>
+                            <div class="pf-card-mini large pf-card-mini-academic">
+                                <div class="pf-card-mini-banner"></div>
+                                <!-- <span class="user-icon bg-cerise"></span> -->
+                                <user-icon size="small" > </user-icon>
+                                <span class="pf-name">Christopher W.</span>
+                                <!-- <ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul> -->
+                                <rating class="rating-stars" style="width:70px; height:14px;" avg="5"/>
+                            </div>
+
+                        </li>
+                    </ul>
+                </ion-slide>
+                <ion-slide class="home-ticket-inside">
+                    <div>
+                        <h1>You created <u>3</u> Student Requests.</h1>
+                        <h2>Check or edit the status of your requests</h2>
+                    </div>
+                    <ul class="home-ticket-icon-bar">
+                        <li class="academic">
+                            <span ng-include="img_base + BASE + 'templates/svg/academic-simple.html'"></span>
+                            <span>1-on-1 Help</span>
+                        </li>
+                        <li class="baking">
+                            <span ng-include="img_base + BASE + 'templates/svg/baking-simple.html'"></span>
+                            <span>Birthday Cake</span>
+                        </li>
+                        <li class="photography">
+                            <span ng-include="img_base + BASE + 'templates/svg/photography-simple.html'"></span>
+                            <span>Graduation</span>
+                        </li>
+                    </ul>
+                </ion-slide>
+                <ion-slide class="home-ticket-inside">
+                    <div>
+                        <h1>You are currently in demo mode.</h1>
+                        <h2>Activate your UC Berkeley Email to create a real request</h2>
+                    </div>
+                    <ul class="home-ticket-icon-bar">
+                        <li class="academic" ng-include="img_base + BASE + 'templates/svg/academic-simple.html'"></li>
+                        <li class="baking" ng-include="img_base + BASE + 'templates/svg/baking-simple.html'"></li>
+                        <li class="photography" ng-include="img_base + BASE + 'templates/svg/photography-simple.html'"></li>
+                        <li class="household" ng-include="img_base + BASE + 'templates/svg/household-simple.html'"></li>
+                        <li class="tech" ng-include="img_base + BASE + 'templates/svg/tech-simple.html'"></li>
+                    </ul>
+                </ion-slide>
+                <ion-slide class="home-ticket-inside">
+                    <div>
+                        <h1>You are currently in demo mode.</h1>
+                        <h2>Activate your UC Berkeley Email to create a real request</h2>
+                    </div>
+                    <span class="home-ticket-icon" ng-include="img_base + BASE + 'templates/svg/main/email.html'"></span>
+                </ion-slide>
+                <ion-slide class="home-ticket-inside">
+                    <div>
+                        <h1>Make a Referral</h1>
+                        <h2>Skip the line by inviting a friend to Uguru</h2>
+                    </div>
+                    <span class="home-ticket-icon" ng-include="img_base + BASE + 'templates/svg/main/gift.html'"></span>
+                </ion-slide>
+            </ion-slide-box>
+        </div>
+        <nav class="home-tabs">
+            <ul>
+                <li>
+                    <a>
+                        <span class="notification">0</span>
+                        <span>Billing</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span class="notification">{{user.student_relationships.length || 0}}</span>
+                        <span ng-click='messagesModal.show()'>Gurus</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span class="notification">0</span>
+                        <span>Requests</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="home-links">
+            <ul>
+                <li>
+                    <a ng-click='studentRequestModal.show()'>
+                        <span ng-include="img_base + 'templates/svg/main/calendar.html'"></span>
+                        <span>Request</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span ng-include="img_base + 'templates/svg/main/become.html'"></span>
+                        <span>Become Guru</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span ng-include="img_base + 'templates/svg/main/lightbulb.html'"></span>
+                        <span>Quick Solver</span>
+                    </a>
+                </li>
+                <li>
+                    <a ng-click='studentCoursesModal.show();'>
+                        <span ng-include="img_base + 'templates/svg/main/plus-circle.html'"></span>
+                        <span>Add Courses</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span ng-include="img_base + 'templates/svg/main/lightning.html'"></span>
+                        <span>Powerups</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span ng-include="img_base + 'templates/svg/main/more.html'"></span>
+                        <span>View More</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- <header>
+            <div class="header-nav" ng-if='user && user.id'>
+                <a></a>
+                <a class="header-nav-next" ng-if='!desktopMode' ng-click='toggleRightSideMenu()'>
+                    <svg viewBox="0 0 100 100">
+                        <path d="M77.7071855,34.003249 C72.1666671,24.4442603 61.8219498,18.0006703 50,18.0000001 L50,8 L50,18 L49.9981554,18 C38.1779324,18 27.8332606,24.4437373 22.2927152,34.0031916 L22.2927152,34.0031916 L13.626933,29 L22.2927152,34.0031916 C19.5635175,38.7120495 17.9999998,44.1769094 17.9999998,50 C17.9999998,55.8230906 19.5635175,61.2879505 22.2927152,65.9968084 L13.626933,71 L22.2927152,65.9968084 C27.8332606,75.5562627 38.1779324,82 49.9981554,82 L50,92 L50,82 C61.8219498,81.9993298 72.1666671,75.5557397 77.7071855,65.996751 L86.373067,71 L77.7071855,65.996751 C80.4364952,61.2879061 82.0000002,55.823067 82.0000002,50 C82.0000002,44.176933 80.4364952,38.7120939 77.7071855,34.003249 L86.373067,29 L77.7071855,34.003249 Z M49.9989624,68 C40.0749409,68 31.9999999,59.925059 31.9999999,50 C31.9999999,40.074941 40.0749409,32 49.9989624,32 C59.9250591,32 68.0000001,40.074941 68.0000001,50 C68.0000001,59.925059 59.9250591,68 49.9989624,68 L49.9989624,68 L49.9989624,68 Z"></path>
+                    </svg>
+                </a>
+            </div>
+            <div class='text-center full-x'>
+                <h1 class='show text-center' ng-if="user.first_name">Hello {{user.first_name}}!</h1>
+            </div>
+        </header>
+        <div class="main">
+            <div class="student-home-tiles">
+                <div class="home-tiles-row">
+					<div class="home-tiles-tile home-tiles-quick">
+						<div class="home-tiles-inside">
+							<div class="home-tiles-text">
+                                <h2>Quick Solver</h2>
+                                <h3>Take a photo or ask a question!</h3>
+                            </div>
+                            <svg viewBox="0 0 100 100">
+                                <path d="M24,40.2496104 C24,48.7111688 28.1017547,56.6966234 34.9784316,61.6174026 L35.3025611,61.8309091 C36.8998903,62.7714286 38.9130418,66.7337662 38.875732,67.2909091 L38.8679591,68.4955844 L38.8679591,77.1161039 C38.8679591,78.761039 38.8555361,80.2594805 40.3168396,81.0122078 L48.198565,85.5207792 C48.8203963,85.8394805 49.5013016,86 50.1822068,86 C50.8553392,86 51.5308035,85.8418182 52.1510802,85.5309091 L60.1338531,81.0192208 C61.6044841,80.2774026 61.6029432,78.7680519 61.6029432,77.1153247 L61.6029432,68.5485714 C61.6029432,64.2316883 66.0855423,60.934026 66.114302,60.9262338 L67.0789178,60.298961 C72.9824287,55.2916883 76.3636364,47.9888312 76.3636364,40.2488312 C76.3644137,25.7763636 64.6203523,14 50.1822068,14 C35.7487251,14 24,25.7763636 24,40.2496104 Z M39.4285714,69.6363636 L60,69.6363636 M40.3636364,75.2467532 L60.9350649,75.2467532 M55.7922078,22.4155844 C55.7922078,22.4155844 60.4675325,23.3506494 64.2077922,28.025974 C67.9480519,32.7012987 67.9480519,38.3116883 67.9480519,38.3116883"></path>
+                            </svg>
+						</div>
+					</div>
+				</div>
+                <div class="home-tiles-row">
+					<div class="home-tiles-tile home-tiles-request">
+						<div class="home-tiles-inside" ng-click='studentRequestModal.show()'>
+                            <svg viewBox="0 0 100 100">
+                                <path d="M33.7065758,31 L47.7855746,31 L47.7855746,40 L81.9774289,40 C81.9774289,40 79.3999665,37.906 79.3999665,30 C79.3999665,22.094 81.9774289,20 81.9774289,20 L28.6783619,20 C28.6783619,20 26.0677133,22.061 26.0677133,30 C26.0677133,37.939 28.6783619,40 28.6783619,40 L33.7065758,40 L33.7065758,31 L33.7065758,31 Z M80.4056093,70 C80.4056093,62.094 82.9830717,60 82.9830717,60 L26.6670764,60 C26.6670764,60 24.0564277,62.061 24.0564277,70 C24.0564277,77.939 26.6670764,80 26.6670764,80 L82.9830717,80 C82.9830717,80 80.4056093,77.906 80.4056093,70 L80.4056093,70 Z M75.3773954,50 C75.3773954,42.094 77.9548578,40 77.9548578,40 L47.7855746,40 L47.7855746,52 L40.6545617,47.25 L33.7065758,51.827 L33.7065758,40 L16.6106486,40 C16.6106486,40 14,42.061 14,50 C14,57.939 16.6106486,60 16.6106486,60 L77.9548578,60 C77.9548578,60 75.3773954,57.906 75.3773954,50 L75.3773954,50 Z M82.9830717,80 L86,80 L82.9830717,80 Z M84.9943572,20 L81.9774289,20 L84.9943572,20 Z M86,60 L82.9830717,60 L86,60 Z M81.9774289,40 L84.9943572,40 L81.9774289,40 Z M33.7065758,31 L33.7065758,51.827 L40.6545617,47.25 L47.7855746,52 L47.7855746,31 L33.7065758,31 L33.7065758,31 Z"></path>
+                            </svg>
+                            <div class="home-tiles-text">
+							    <h2>In-person Guru</h2>
+							    <h3>Your peers who aced your current courses!</h3>
+						    </div>
+                        </div>
+					</div>
+				</div>
+				<div class="home-tiles-row">
+                    <div class="home-tiles-tile home-tiles-become">
+						<div class="home-tiles-inside">
+                            <div class="home-tiles-text">
+    							<h2>Become a Guru</h2>
+    						</div>
+                            <svg viewBox="0 0 100 100">
+                            	<path d="M83.9989139,49.8772865 C81.8619607,47.6841857 81.3853223,44.3441348 82.8231576,41.6319185 C83.8498743,39.6980154 83.9204341,37.3904356 83.017557,35.395333 C82.1139599,33.3995105 80.3377256,31.9436832 78.2158925,31.4584074 C75.2401421,30.7787334 73.0491891,28.2285157 72.8051099,25.1627825 C72.6315905,22.9761616 71.4536743,20.9954589 69.6234402,19.8096292 C67.7924861,18.6237996 65.5187334,18.3667618 63.47394,19.1155553 C60.6054692,20.1653061 57.3957196,19.2141944 55.5467655,16.7683758 C54.2270098,15.024551 52.1750164,14 49.9999034,14 C47.8240704,14 45.772797,15.024551 44.4530413,16.7690958 C42.6040873,19.2141944 39.3928976,20.1653061 36.5265868,19.1155553 C34.4810734,18.3667618 32.2058808,18.6237996 30.3763667,19.8096292 C28.5454126,20.9954589 27.3682164,22.9754416 27.1939769,25.1627825 C26.9498977,28.2285157 24.7582248,30.7780134 21.7839144,31.4584074 C19.6613612,31.9436832 17.8851269,33.3995105 16.9815298,35.396053 C16.0772127,37.3911556 16.1492125,39.6980154 17.1759292,41.6326385 C18.6144845,44.3448548 18.1371261,47.6841857 15.999453,49.8780065 C14.4744979,51.4432728 13.7609802,53.6356536 14.0712992,55.8078747 C14.3808982,57.9793757 15.677614,59.8801591 17.5784079,60.9493497 C20.2423993,62.4469367 21.6327148,65.5155498 21.0106368,68.5258435 C20.5671183,70.6728648 21.1431164,72.9062853 22.5679918,74.5658708 C23.9928672,76.2240163 26.1039004,77.1168085 28.2761334,76.9792897 C31.3210036,76.7863313 34.1354745,78.6107954 35.225551,81.4835703 C36.0045885,83.5326724 37.6865031,85.0964987 39.7744964,85.7149733 C41.8617696,86.3334479 44.1168024,85.9331314 45.8699967,84.6335428 C48.3280688,82.8126787 51.674618,82.8126787 54.1312501,84.6335428 C55.8858845,85.9331314 58.1387572,86.3334479 60.2274705,85.7149733 C62.3147437,85.0964987 63.9973783,83.5326724 64.7756958,81.4835703 C65.8664923,78.6107954 68.6816832,76.7870513 71.7258334,76.9792897 C73.8973464,77.1168085 76.0076596,76.2240163 77.432535,74.5658708 C78.8581304,72.9062853 79.4334086,70.6735848 78.99061,68.5258435 C78.368532,65.5148298 79.7574075,62.4469367 82.4221189,60.9493497 C84.3236328,59.8808791 85.6210686,57.9793757 85.9292276,55.8078747 C86.2381066,53.6349337 85.5253089,51.4425528 83.9989139,49.8772865 L83.9989139,49.8772865 L83.9989139,49.8772865 Z M50.0000124,26 C36.7868547,26 26.020278,36.7612735 26.0000249,49.9890097 C25.9907663,56.5190041 28.5675461,62.8500157 33.0712689,67.3589453 C37.3493137,71.641127 43.0323488,74 49.0747326,74 C49.3970471,74 49.7216762,73.9936372 50.0480413,73.9797546 C63.4787758,73.4296594 74,62.8922417 74,49.990745 C74,36.761852 63.234002,26 50.0000124,26 L50.0000124,26 Z M34.875,68.0833333 C35.5024867,62.5761504 38.7068522,57.9424307 43.3870663,55.759056 C41.540861,53.9973923 40.3795923,51.5034025 40.3795923,48.7328066 C40.3795923,43.4121061 44.6392509,39.0833333 49.875,39.0833333 C55.1107491,39.0833333 59.3704077,43.4121061 59.3704077,48.7328066 C59.3704077,51.5034025 58.209139,53.9973923 56.3629337,55.759056 C61.0431478,57.9424307 64.2475133,62.5761504 64.875,68.0833333"></path>
+                            </svg>
+                        </div>
+					</div>
+					<div class="home-tiles-tile home-tiles-courses">
+						<div class="home-tiles-inside" ng-click='studentCoursesModal.show();'>
+                            <div class="home-tiles-text">
+    							<h2>Add your Courses</h2>
+    						</div>
+                            <svg viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="36"></circle>
+                                <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                            </svg>
+                        </div>
+					</div>
+				</div>
+				<div class="home-tiles-row">
+					<div class="home-tiles-tile home-tiles-apps">
+						<div class="home-tiles-inside">
+							<div class="home-tiles-text">
+                                <h2>Study Enhancers</h2>
+							</div>
+                            <ul class="ugrid-4">
+                                <li ng-include="img_base + BASE + 'templates/svg/gpa.html'"></li>
+                                <li ng-include="img_base + BASE + 'templates/svg/munchies.html'"></li>
+                                <li ng-include="img_base + BASE + 'templates/svg/sound.html'"></li>
+                                <li ng-include="img_base + BASE + 'templates/svg/transit.html'"></li>
+                            </ul>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+        <div ng-if='user && user.id' class="student-home-notifications">
+            <ul class='ugrid-2 text-center'>
+                <li>
+                    <a>
+                        <span class="notification-icon">
+                            <span class="notification-number">0</span>
+                        </span>
+                        <span class="notification-type">Billing</span>
+                    </a>
+                </li>
+                <li>
+                    <a ng-click='messagesModal.show()'>
+                        <span class="notification-icon">
+                            <span class="notification-number">{{user.student_relationships.length || 0}}</span>
+                        </span>
+                        <span class="notification-type">Messages</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <button ng-if='!user || !user.id' ng-click='signupModal.show()' class='bg-white txt-shamrock semibold'>Complete Account</button> -->
+    </section>
+</ion-view>

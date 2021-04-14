@@ -1,0 +1,159 @@
+{
+    "description": "Properties",
+    "propertyList": ["property", "start", "end", "duration", "ease", "delay", "iterations", "fill-mode","direction"],
+    "exampleIndex": 1,
+    "examples": [
+        {
+            "exampleName": "textShadow Demonstration",
+            "property": "text-shadow",
+            "start": "0px 0px 0px #000000",
+            "end": "100px 100px 100px #FFFFFF",
+
+            "duration": "2000",
+            "ease": "elastic",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
+        },
+        {
+            "exampleName": "boxShadow Demonstration",
+            "property": "box-shadow",
+            "start": "0px 100px 0px #FFFFFF",
+            "end": "100px 0px 100px #FFF000",
+            "duration": "2000",
+            "delay": "2000",
+            "ease": "bounce",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
+        },
+        {
+            "exampleName": "Background Size Demonstration",
+            "property": "background-size",
+            "start": "0px 100px",
+            "end": "0px 200px",
+            "duration": "1000",
+            "ease": "elastic",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
+        },
+        {
+            "initWith": "opacity:0",
+            "exampleName": "rotateSkew",
+            "properties": [
+                {
+                    "property": "transform",
+                    "start": "translateX(100px) translateY(-100px)",
+                    "end": "translateX(-100px) translateY(0px)",
+                    "duration": "500",
+                    "ease": "easeInExpo",
+                    "delay": "500"
+                },
+                {
+                    "property": "border-radius",
+                    "start": "0%",
+                    "end": "0%",
+                    "duration": "500",
+                    "ease": "bouncePast"
+                },
+                {
+                    "property": "opacity",
+                    "start": "0",
+                    "end": "1",
+                    "duration": "2000",
+                    "ease": "bouncePast"
+                }
+            ]
+        },
+        {
+            "exampleName": "transform - several easings",
+            "property": "transform",
+            "start": "translateX(0px) translateY(0px)",
+            "end": "translateX(100px) translateY(100px)",
+            "duration": "2500",
+            "ease": "bouncePast elastic",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
+        },
+
+        {
+            "exampleName": "translateZRotate",
+            "property": "transform",
+            "start": "translateY(200%) translateZ(-200px) rotateY(30deg) rotateX(60deg)",
+            "end": "translateY(0) translateZ(0) rotateY(0) rotateX(0)",
+            "duration": "2500",
+            "ease": "easeOutBounce",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
+        },
+        {
+            "exampleName": "clip-path",
+            "property": "-webkit-clip-path",
+            "start": "circle(0px at 50% 50%)",
+            "end": "circle(150px at 50% 50%)",
+            "duration": "2500",
+            "ease": "easeOutQuint",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
+        },
+        {
+            "exampleName": "glide",
+            "property": "transform",
+            "start": "scaleX(2) scaleY(0.1) translateX(-200px) rotateX(-90deg)",
+            "end": "scaleX(2) scaleY(1) translateX(200px) rotateX(195deg)",
+            "duration": "1500",
+            "ease": "easeOutQuart",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
+        },
+        {
+            "exampleName": "glide-2",
+            "property": "transform",
+            "start": "scaleY(2) scaleX(0.1) translateY(-300%) rotateY(-180deg)",
+            "end": "scaleY(1) scaleX(1) translateY(0) rotateY(0deg)",
+            "duration": "1500",
+            "ease": "easeOutCirc",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
+        },
+        {
+            "exampleName": "perspective",
+            "property": "-webkit-perspective",
+            "start": "10000",
+            "end": "100",
+            "duration": "1000ms",
+            "ease": "easeInQuart",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
+        },
+        {
+            "exampleName": "card-house-1",
+            "property": "transform",
+            "start": "translateX(-99%) translateY(-30%) translateZ(0px) rotateX(90deg) rotateY(0deg) rotateZ(90deg)",
+            "end": "translateX(-99%) translateY(30%) translateZ(0px) rotateX(90deg) rotateY(0deg) rotateZ(90deg)",
+            "duration": "1000",
+            "ease": "easeOutBounce",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
+        },
+        {
+            "exampleName": "border radius",
+            "property": "border-radius",
+            "start": "5px 5px 5px 5px",
+            "end": "15px 50px 30px 5px",
+            "duration": "1000",
+            "ease": "easeOutBounce",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
+        }
+    ]
+}

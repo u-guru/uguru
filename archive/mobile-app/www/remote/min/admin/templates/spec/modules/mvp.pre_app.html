@@ -1,0 +1,488 @@
+    <user-workflow name="Entire Pre-App Spec" type='func' priority="1" complete>
+        <user-stories>
+            <story name="Views > Directives" desc="For each view, create a list of directives/components necessary w/ priority given to modules" type='func' complete>
+                <ui-stream>
+                    <ui-state type="base components/directives" complete> </ui-state>
+                    <ui-state type="View-specific directives" complete> </ui-state>
+                </ui-stream>
+            </story>
+            <story name="Wrap-up" desc="Things to do after" type='func' complete>
+                <ui-stream>
+                    <ui-state name="Progress per story" priority="101" complete>
+                    </ui-state>
+                    <ui-state name="Create progress per story bars" complete priority="50">
+                    </ui-state>
+                    <ui-state name="Create workflow progress bars" complete>
+                    </ui-state>
+                    <ui-state name="Story > states view" complete>
+                    </ui-state>
+                </ui-stream>
+            </story>
+            <story name="List of all significant views" desc="Create a list of all views" type='func' complete>
+            </story>
+        </user-stories>
+    </user-workflow>
+    <user-workflow name="Data Models + spec out all server side" type='func' priority="2" complete>
+        <user-stories>
+            <story desc="Specing All Workflow Objects" type='func' complete>
+                <ui-stream>
+                    <ui-state name="String: email, username, password, photo, majors" complete>
+                    </ui-state>
+                    <ui-state name="Courses: Custom, Valid. Add, set, delete" complete>
+                    </ui-state>
+                    <ui-state name="University: Custom, Valid" complete>
+                    </ui-state>
+                    <ui-state name="Demographic-related: Survey" complete>
+                    </ui-state>
+                    <ui-state name="Cards" complete>
+                    </ui-state>
+                </ui-stream>
+            </story>
+            <story name="Rest Routes" desc="Define rest routes for http on local" type='func' complete>
+            </story>
+
+        </user-stories>
+    </user-workflow>
+    <user-workflow name="MVP GO HOME IN THE PAINT" type='func' priority="-2">
+        <user-stories>
+            <story name="Getting Started" type='func' priority="1">
+                <ui-stream name="Account Setup">
+                    <ui-state name="Swiper" type='func'>
+                    </ui-state>
+                    <ui-state name="Input">
+                    </ui-state>
+                    <ui-state name="University ID Card">
+                    </ui-state>
+                    <ui-state name="UserObject + ServerSide Communication">
+                    </ui-state>
+                </ui-stream>
+                <ui-stream name="Demographics">
+                    <ui-state name="">
+                    </ui-state>
+                </ui-stream>
+                <ui-stream name="Access">
+                    <ui-state name="Server side route">
+                    </ui-state>
+                </ui-stream>
+                <ui-stream name="University">
+                    <ui-state name="Server side route">
+                    </ui-state>
+                </ui-stream>
+                <ui-stream name="Courses">
+                    <ui-state name="Server side route">
+                    </ui-state>
+                </ui-stream>
+            </story>
+            <story name="Splash Madlib">
+                <ui-stream name="University">
+                </ui-stream>
+            </story>
+            <story name="Map">
+            </story>
+            <story name="Sidebar + About/Items">
+            </story>
+            <story name="Device">
+            </story>
+            <story name="Production + Presentation">
+            <story name="Wrapup + Scroll">
+                <ui-state name="Tween animation"/>
+                <ui-state name="Scroll"/>
+                <ui-state name="Admin Restructuring"/>
+            </story>
+            <story name="MVP Content">
+            </story>
+            <story name="Cleanup/Set up tomorrow">
+            </story>
+        </user-stories>
+    </user-workflow>
+    <user-workflow name="Server side implementation" type='func' priority="3">
+        <user-stories>
+            <story name="To learn/decide now" complete>
+                <ui-stream>
+                <ui-state name="Create time spec now" complete>
+                </ui-state>
+                <ui-state name="Quick 'state' of databases check [<5m]" complete>
+                </ui-state>
+                <ui-state name="Old Versus New Database Versus start fresh / right mentality [<10m" complete>
+                    <!-- <note>
+                        Stick with current plan and learn things properly this time
+                    </note> -->
+                </ui-state>
+                <ui-state desc="Determine Data Pipeline [<5]" type='func' complete>
+                    <!-- <note>
+                        types of storage
+                        - client: localstorage w/ dirty bits
+                        - server[s3]: static (most updated university/)
+                        - server[psql]: user_id related
+                    </note> -->
+                </ui-state>
+                <ui-state name="Mailgun versus sendgrid versus new [<5]" complete>
+                    <!-- <note>
+                        Setup both, mailgun for mass, sendgrid for transactional
+                    </note> -->
+                </ui-state>
+                <ui-state name="Modules/libraries/directory plan[<10min] [<5]" complete>
+                </ui-state>
+                <ui-stream>
+            </story>
+
+            <story name="Wrappers/Libraries">
+                <ui-state name="Some sort of testing">
+                </ui-state>
+                <ui-state name="User.update_field">
+                </ui-state>
+                <ui-state name="Sendgrid Transactional Setup">
+                </ui-state>
+                <ui-stream name ='Twilio'>
+                    <ui-state name="Send auth code">
+                    </ui-state>
+                    <ui-state name="Resend auth code">
+                    </ui-state>
+                </ui-stream>
+                <ui-state name="Direct s3 storing">
+                </ui-state>
+                <ui-state name="Mixpanel Related">
+                </ui-state>
+                <ui-state name="Stripe related">
+                </ui-state>
+                <ui-state name="Queueing">
+                </ui-state>
+                <ui-state name="New Course/New University request">
+                </ui-state>
+            </story>
+            <story name="Mini modules">
+                <ui-stream name="Nose">
+                    <ui-state name="Update">
+                    </ui-state>
+                    <ui-state name="Directory setup">
+                    </ui-state>
+                    <ui-state name="Send email auth">
+                    </ui-state>
+                    <ui-state name="Reset password: verify still works">
+                    </ui-state>
+                    <ui-state name="Email authentication">
+                    </ui-state>
+                </ui-stream>
+
+            </story>
+            <story name="Data Model/Object Creation">
+                <ui-stream name="Cleanup previous + setup">
+                    <ui-state name="Remove previous route">
+                    </ui-state>
+                    <ui-state name="Conduct a migration">
+                    </ui-state>
+                    <ui-state name="Setup a logger">
+                    </ui-state>
+                </ui-stream>
+                <ui-stream name="Define all objects + methods: Dynamic">
+                    <ui-state name="Courses" desc="onInputFocus, fetch university popular courses" type='func'>
+                    </ui-state>
+                    <ui-state name="University Courses" desc="Keep local" type='func'>
+                    </ui-state>
+                    <ui-state name="Categories" desc="Keep local" type='func'>
+                    </ui-state>
+                    <ui-state desc="Guru Profile Data" name="Fake data service"  type='func'>
+                    </ui-state>
+                    <ui-state name="Admin Hook to update + create"  type='func'>
+                    </ui-state>
+                    <ui-state name="Devices/IP/Origin"  type='func'>
+                    </ui-state>
+                    <ui-state name="Cards"  type='func'>
+                    </ui-state>
+                    <ui-state name="Surveys"  type='func'>
+                    </ui-state>
+                </ui-stream>
+            </story>
+            <story name="Rest API">
+                <ui-stream name="Module related (i.e. send email)">
+                </ui-stream>
+                <ui-stream name="Databse related (i.e. send email)">
+                </ui-stream>
+                <ui-stream name="Static related (i.e. send email)">
+                </ui-stream>
+                <ui-stream name="Admin related (i.e. send email)">
+                </ui-stream>
+            </story>
+            <story name="Admin portal hook">
+            </story>
+        </user-stories>
+    </user-workflow>
+    <user-workflow name="Client-server communication + execution" type='func' priority="4">
+    </user-workflow>
+    <user-workflow name="Client side implementation" type='func' priority="1">
+        <user-stories>
+                <story priority="1">
+                    <ui-stream>
+                        <ui-state name='Order amazon' priority="1">
+                        </ui-state>
+                        <ui-state name='Venmo cashout'>
+                        </ui-state>
+                        <ui-state name='Jeselle stuff'>
+                        </ui-state>
+                        <ui-state name='Engrain higher level goals'>
+                        </ui-state>
+                        <ui-state name='Prep for tomorrow'>
+                        </ui-state>
+                        <ui-state name='Prep for tomorrow'>
+                        </ui-state>
+                    </ui-stream>
+                </story>
+                <story name="Create all views & link to them">
+                    <ui-state name="Sidebar: Team Page">
+                    </ui-state>
+                    <ui-state name="Sidebar: Pricing">
+                    </ui-state>
+                    <ui-state name="Sidebar: Support">
+                    </ui-state>
+                </story>
+                <story name="Implement all base components w/ placehodlers">
+                    <ui-state name="Require on-enter, on-exit, on-load">
+                    </ui-state>
+                    <ui-state name="Base view">
+                    </ui-state>
+                    <ui-state name="Link to admin">
+                    </ui-state>
+                    <ui-state name="Loader" >
+                    </ui-state>
+                    <ui-state name="List Set">
+                    </ui-state>
+                    <ui-state name="Search" >
+                    </ui-state>
+                    <ui-state name="Tabs" >
+                    </ui-state>
+                    <ui-state name="Text" describe="w/ types: extended, title, default(short)" >
+                    </ui-state>
+                    <ui-state name="Input" describe="w/ types: select options, title, default(short)" >
+                    </ui-state>
+                    <ui-state name="Progress" describe="w/ types: defined, incremental(w/easing), property specific">
+                    </ui-state>
+                    <ui-state name="Scroll" >
+                    </ui-state>
+                    <ui-state name="Keyup" >
+                    </ui-state>
+                    <ui-state name="switch">
+                    </ui-state>
+                    <ui-state name="icon" >
+                    </ui-state>
+                    <ui-state name="mobile" >
+                    </ui-state>
+                    <ui-state name="Image upload">
+                    </ui-state>
+                    <ui-state name="tag">
+                    </ui-state>
+                </story>
+
+                <story name="Getting Started Components"/>
+                    <ui-stream name="Getting Started Setup + Base">
+                        <ui-state name="Send all model-related data to mixpanel">
+                        </ui-state>
+                        <ui-state name="Add courses -> model">
+                        </ui-state>
+                        <ui-state name="Add custom courses -> model">
+                        </ui-state>
+                    </ui-stream>
+                    <ui-stream name="Directives">
+                        <ui-state name="New Switcher Type: Demographic">
+                        </ui-state>
+                        <ui-state name="Pricing Card">
+                        </ui-state>
+                        <ui-state name="FAQ Item">
+                        </ui-state>
+                        <ui-state name="Account related">
+                        </ui-state>
+                        <ui-state name="Courses">
+                        </ui-state>
+                        <ui-state name="University">
+                        </ui-state>
+                        <ui-state name="Value Prop: Content Card">
+                        </ui-state>
+                        <ui-state name="Confirm">
+                        </ui-state>
+                        <ui-state name="Progress Module">
+                        </ui-state>
+                        <ui-state name="User ID Card">
+                        </ui-state>
+                        <ui-state name="Counter">
+                        </ui-state>
+                    </ui-stream>
+                    <ui-stream name="University ID Card (Progressive + All States)">
+                    </ui-stream>
+                </story>
+                <story name="Demographics">
+                    <ui-state name="Flesh out mvp versions of each">
+                    </ui-state>
+                    <ui-state name="Determine end point, should I create any options. Free to 'fiddle'">
+                    </ui-state>
+                    <ui-stream name="College student case">
+                    </ui-stream>
+                    <ui-state desc="Professional Case">
+                    </ui-state>
+                    <ui-state desc="High School Student Case">
+                    </ui-state>
+                </story>
+                <story name="How it works" priority="1"/>
+                </story>
+                <story name="Maps + Directives" priority="1"/>
+                    <ui-stream name="Setup">
+                        <ui-state name="Google Place Service">
+                        </ui-state>
+                        <ui-state name="Map Marker Directive">
+                        </ui-state>
+                    </ui-stream>
+                    <ui-stream name="Functional States">
+                        <ui-state name = 'initialize map state'>
+                        </ui-state>
+                        <ui-state name = 'On university change'>
+                        </ui-state>
+                    </ui-stream>
+                </story>
+                <story name="Device" />
+                    <ui-stream name='Counter'>
+                        <ui-state name='counter bubble directive'>
+                        </ui-state>
+                    </ui-stream>
+                </story>
+                <story name="Profiles" />
+                    <ui-state>
+                    </ui-state>
+                </story>
+                <story name="About Components"/>
+                    <ui-state name="Value Prop"> </ui-state>
+                </story>
+                <story name="Support" />
+                    <ui-state name="Spec out the rest. Intercom?">
+                    </ui-state>
+                    <ui-state name="Intercom">
+                    </ui-state>
+                </story>
+                <story name="Stay updated"/>
+                </story>
+                <story name="Login/University/Countdown Page"/>
+                </story>
+                <story name="Cleanup">
+                    <!-- <ui-state name="preapp.gulpfile">
+                    </ui-state>
+                    <ui-state name="All bugs">
+                    </ui-state> -->
+                </story>
+        </user-stories>
+    </user-workflow>
+    <user-workflow name="Cross Platform" type='func' priority="5">
+        <user-stories>
+        </user-stories>
+    </user-workflow>
+    <user-workflow  name="Server side enhance/polish/setup">
+        <user-stories>
+        <story desc="Server-side To setup/polish later">
+            <ui-stream>
+                <story name="Production related">
+                </story>
+                <story name="Build requirements">
+                </story>
+            </ui-stream>
+            <ui-stream name="Database maintenance">
+                <story name="Dynamic --> User">
+                </story>
+                <story name="Learn more about postgres/dyno terminology">
+                        <ui-state name="Persistent database connection">
+                        </ui-state>
+                </story>
+                <story name="Stick to popular courses">
+                </story>
+            </ui-stream>
+            <ui-stream name="Queueing System [later]">
+                    <ui-state name="Learn about efficiency">
+                    </ui-state>
+                    <ui-state name="Hourly batch jobs to pull data from mixpanel -> save to s3">
+                    </ui-state>
+                    <ui-state name="Resizing Image">
+                    </ui-state>
+                    <ui-state name="Maintain courses">
+                    </ui-state>
+                    <ui-state name="Send texts">
+                    </ui-state>
+                    <ui-state name="Redis best practices">
+                    </ui-state>
+                    <ui-state name="Check fb auth token validity">
+                    </ui-state>
+            </ui-stream>
+             <ui-stream name="Later: S3 related">
+                    <ui-state name="Create U.guru main folder">
+                    </ui-state>
+                    <ui-state name="Create folders to upload directly to amazon">
+                    </ui-state>
+                    <ui-state name="Research CDN/Resizing/etc for Amazon elastic">
+                    </ui-state>
+                    <ui-state name="Host all pre-app related static options">
+                    </ui-state>
+            </ui-stream>
+            <ui-stream name='Post MVP polishing'>
+                <ui-state name="Https/ssl" desc="later">
+                </ui-state>
+                <ui-state name="Secure password user auth w/ tokens" desc="later">
+                </ui-state>
+                <ui-state name="Research vulnerabilities" desc="later">
+                </ui-state>
+                <ui-state name="Setup + Learn" desc="later">
+                </ui-state>
+                <ui-state name="Proper email auth" desc="later">
+                </ui-state>
+            </ui-stream>
+            <ui-stream name='Post MVP execution (irrelevant to demo)'>
+                <ui-state name="Serialization/enveloping">
+                </ui-state>
+                <ui-state name="Https/ssl">
+                </ui-state>
+                <ui-state name="Admin dashboard service list">
+                </ui-state>
+                <ui-state name="Best practices for storing 3rd party unique ids">
+                </ui-state>
+                <ui-state name="Pay Heroku + Services">
+                </ui-state>
+                <ui-state name="Setup heroku">
+                </ui-state>
+                <ui-state name="Passwords/auth">
+                </ui-state>
+                <ui-state name="Stripe Re-read api">
+                </ui-state>
+                <ui-state name="Setup mailgun">
+                </ui-state>
+                <ui-state name="Setup Google Analytics">
+                </ui-state>
+                <ui-state name="Best practices storing s3 [<5]">
+                </ui-state>
+                <ui-state name="Upgrade modules if significant">
+                </ui-state>
+                <ui-state name="Flask Sessions + Auth token creation [<5]">
+                    <note>
+                    </note>
+                </ui-state>
+                <ui-state name="Password encryption/verify[<5]">
+                </ui-state>
+            </ui-stream>
+        </story>
+        </user-stories>
+    </user-workflow>
+    <user-workflow name="Cleanup/Server/Admin" type='func' priority="7">
+        <user-stories>
+            <story name="Pay these bills">
+            </story>
+            <story name="Third party tool setup">
+                <ui-state name="Google Analytics">
+                </ui-state>
+                <ui-state name="Mixpanel">
+                </ui-state>
+            </story>
+
+            <story name="Don't get too excited">
+                <ui-state name="Move on">
+                </ui-state>
+            </story>
+            <story name="Tell Dad">
+            </story>
+            <story name="Plan Become a Guru">
+            </story>
+        </user-stories>
+    </user-workflow>
+    <user-workflow name="Marketing + Execution" type='func' priority="8">
+    </user-workflow>

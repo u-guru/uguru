@@ -1,0 +1,38 @@
+<div class="pf-type pf-modal pf-type-{{user.academic_shop.category.hex_color}} bg-slate"><section><!-- @samir --><!-- This should be hidden if the item is an academic course WITHOUT photos --><header class="pf-item-header third flex-center"><div class="pf-header-bg"></div><div class="pf-header-info"><span class="pf-price pf-price-left">${{user.academic_shop.active_portfolio_item.hourly_price}}/hr</span><div class="pf-photo-nav"><span>1/6 Photos</span><ul class="pf-photo-breadcrumbs"><li><a class="active"></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li><li><a></a></li></ul></div></div></header><div class="pf-tab-container"><div class="pf-shop-desc pf-shop-item"><div class="pf-shop-item-header"><h1>{{user.academic_shop.active_portfolio_item.title}}</h1><!-- @samir --><!-- This is what you should use if the item is an academic course WITHOUT photos --><!-- <div>
+						<h2>Math 101</h2>
+						<h1>The Joy of Computing</h1>
+						<span class="pf-price pf-price-left">${{user.academic_shop.active_portfolio_item.hourly_price}}/hr</span>
+					</div> --><ul class="pf-rating" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul></div><p ng-bind-html="highlighted_item.description"></p><h3>Favorite Topics</h3><div class="pf-tags"><input ng-repeat="tag in user.academic_shop.active_portfolio_item.tags" class="chip" disabled="disabled" value="#{{tag.name}}" size="{{tag.name.length - 1}}"></div><h3>Attachments</h3><div class="pf-attachments"><ul><li ng-repeat="resource in user.academic_shop.active_portfolio_item.resources"><div><span class="pf-attach-icon pf-attach-img" ng-if='resource.file_type === "mp4" || resource.file_type === "jpg" || resource.file_type === "png" || resource.file_type === "jpeg" || resource.file_type === "ppt"'><svg class="square" viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100"></rect></svg> <span></span> </span><span class="pf-attach-icon pf-attach-doc" ng-if='resource.file_type === "doc" || resource.file_type === "docx"'><svg class="square" viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100"></rect></svg> <svg viewBox="0 0 75 75"><path d="M6.50001634,1.5 C3.73858357,1.5 1.5,3.73376942 1.5,6.50573628 L1.5,68.4942637 C1.5,71.2588555 3.73376942,73.5 6.50573628,73.5 L68.4942637,73.5 C71.2588555,73.5 73.5,71.2643283 73.5,68.5001225 L73.5,21.0605722 C73.5,19.9548035 72.8472697,18.4334881 72.0608909,17.6806226 L56.5991089,2.87777827 C55.8043109,2.11685234 54.2734003,1.5 53.1543987,1.5 L6.50001634,1.5 Z M55.5992131,2.46 C55.5992131,2.46 55.5992131,2.90396713 55.5992131,3.46092472 L55.5992131,14.0558242 C55.5992131,16.818671 57.8364841,19.0584009 60.6045233,19.0584009 L72.9848101,19.0584009"></path></svg> <span>doc</span> </span><span class="pf-attach-icon pf-attach-doc" ng-if='resource.file_type === "pdf"'><svg class="square" viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100"></rect></svg> <svg viewBox="0 0 75 75"><path d="M6.50001634,1.5 C3.73858357,1.5 1.5,3.73376942 1.5,6.50573628 L1.5,68.4942637 C1.5,71.2588555 3.73376942,73.5 6.50573628,73.5 L68.4942637,73.5 C71.2588555,73.5 73.5,71.2643283 73.5,68.5001225 L73.5,21.0605722 C73.5,19.9548035 72.8472697,18.4334881 72.0608909,17.6806226 L56.5991089,2.87777827 C55.8043109,2.11685234 54.2734003,1.5 53.1543987,1.5 L6.50001634,1.5 Z M55.5992131,2.46 C55.5992131,2.46 55.5992131,2.90396713 55.5992131,3.46092472 L55.5992131,14.0558242 C55.5992131,16.818671 57.8364841,19.0584009 60.6045233,19.0584009 L72.9848101,19.0584009"></path></svg> <span>pdf</span></span><div><h4>{{resource.title}}.{{resource.file_type}}</h4><p>{{resource.description}}</p></div></div></li><!-- <li>
+							<div>
+								<span class="pf-attach-icon pf-attach-doc">
+									<svg class="square" viewBox="0 0 100 100">
+										<rect x="0" y="0" width="100" height="100"></rect>
+									</svg>
+									<svg viewBox="0 0 75 75">
+									    <path d="M6.50001634,1.5 C3.73858357,1.5 1.5,3.73376942 1.5,6.50573628 L1.5,68.4942637 C1.5,71.2588555 3.73376942,73.5 6.50573628,73.5 L68.4942637,73.5 C71.2588555,73.5 73.5,71.2643283 73.5,68.5001225 L73.5,21.0605722 C73.5,19.9548035 72.8472697,18.4334881 72.0608909,17.6806226 L56.5991089,2.87777827 C55.8043109,2.11685234 54.2734003,1.5 53.1543987,1.5 L6.50001634,1.5 Z M55.5992131,2.46 C55.5992131,2.46 55.5992131,2.90396713 55.5992131,3.46092472 L55.5992131,14.0558242 C55.5992131,16.818671 57.8364841,19.0584009 60.6045233,19.0584009 L72.9848101,19.0584009"></path>
+									</svg>
+									<span>doc</span>
+								</span>
+								<div>
+									<h4>file.doc</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div>
+								<span class="pf-attach-icon pf-attach-pdf">
+									<svg class="square" viewBox="0 0 100 100">
+										<rect x="0" y="0" width="100" height="100"></rect>
+									</svg>
+									<svg viewBox="0 0 75 75">
+									    <path d="M6.50001634,1.5 C3.73858357,1.5 1.5,3.73376942 1.5,6.50573628 L1.5,68.4942637 C1.5,71.2588555 3.73376942,73.5 6.50573628,73.5 L68.4942637,73.5 C71.2588555,73.5 73.5,71.2643283 73.5,68.5001225 L73.5,21.0605722 C73.5,19.9548035 72.8472697,18.4334881 72.0608909,17.6806226 L56.5991089,2.87777827 C55.8043109,2.11685234 54.2734003,1.5 53.1543987,1.5 L6.50001634,1.5 Z M55.5992131,2.46 C55.5992131,2.46 55.5992131,2.90396713 55.5992131,3.46092472 L55.5992131,14.0558242 C55.5992131,16.818671 57.8364841,19.0584009 60.6045233,19.0584009 L72.9848101,19.0584009"></path>
+									</svg>
+									<span>pdf</span>
+								</span>
+								<div>
+									<h4>document.pdf</h4>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+								</div>
+							</div>
+						</li> --></ul></div></div><!-- BIND --><div class="pf-reviews pf-shop-item"><h2>3 Reviews</h2><ul><li><span class="user-icon"></span><div><h4>Reviewer Name</h4><ul class="pf-rating default" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p></div></li><li><span class="user-icon"></span><div><h4>Reviewer Name</h4><ul class="pf-rating default" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p></div></li><li><span class="user-icon"></span><div><h4>Reviewer Name</h4><ul class="pf-rating default" data-rating="4" data-half="true" ng-include="img_base + 'templates/svg/rating.html'"></ul><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p></div></li></ul></div></div></section></div>

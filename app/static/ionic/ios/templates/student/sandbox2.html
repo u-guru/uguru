@@ -1,0 +1,20 @@
+<ion-view view-title="Set A Location">
+  <ion-nav-buttons side="secondary">
+      <button ng-click="submitSupport()" ng-disabled="!support.message" class="button button-clear button-positive">cancel</button>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="search">
+      <div class="list list-inset">
+        <label class="item item-input margin-0">
+          <i class="icon ion-search placeholder-icon font-size"></i>
+          <input type="text" placeholder="Search" class="search-box">
+        </label>
+      </div>
+    </div>
+  </ion-content>
+
+  <ion-footer-bar style="height: auto; background-color:#f2f2f2;" class="extra-padding-sides">
+    <button ui-sref="^.sandbox" style="height:4em"class="button button-positive button-full button-positive"><span class="icon ion-navigate"></span>Set Location </button>
+  </ion-footer-bar>
+
+</ion-view>

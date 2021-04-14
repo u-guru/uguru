@@ -1,0 +1,58 @@
+<!-- <ion-modal-view ng-controller="RatingsController" hide-nav-bar ='true' class='ratings-modal ratings-background'>
+  <ion-content class='white-text' scroll='false' style='margin-top:20px;'>
+      <ion-scroll style='height:100%;'>
+      <div class='pure-g-c flex-column flex-space-between'>
+        <div class='padding-2em flex-item-c j-start center'>
+          <h1 class='sans-bold center'>
+            Session<br>Completed!
+          </h1>
+          <p>
+            {{pending_rating.session.time_completed}}
+          </p>
+        </div>
+        <div class='padding-2em flex-item-c center'>
+          <div class='pure-u-1'>
+              <h1 style='font-size:400%' class='white-text'><span class="bucks sans-light">$</span><span class='sans-bold'>{{pending_rating.session.guru.current_hourly * (pending_rating.session.hours + (pending_rating.session.minutes / 60.0))}} </span>
+              </h1>
+          </div>
+        </div>
+        <div class='padding-2em pure-g center'>
+          <div class='pure-u-1'>
+            <div class='pure-g'>
+              <div class='pure-u-1-8'>
+              </div>
+              <div class='pure-u-3-4 margin-1em'>
+
+                <div class='item item-avatar-left transparent-background no-border white-text align-left'>
+                  <img src='{{pending_rating.session.student.profile_url}}' class='pure-img'/>
+                  <span class='sans-regular'>
+                    {{pending_rating.session.student.name.split(" ")[0]}}
+                  </span>
+                  <p>{{pending_rating.session.request.course.short_name}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class='pure-u-1'>
+            <div class='pure-g'>
+              <div class="pure-u-1-5"><span ng-click="starClicked($event)" value="1" class="icon ion-star ion-star-rating" id="starOne"></span></div>
+              <div class="pure-u-1-5"><span ng-click="starClicked($event)" value="2"  class="icon ion-star ion-star-rating" id="starTwo"></span></div>
+              <div class="pure-u-1-5"><span ng-click="starClicked($event)" value="3"  class="icon ion-star ion-star-rating" id="starThree"></span></div>
+              <div class="pure-u-1-5"><span ng-click="starClicked($event)" value="4"  class="icon ion-star ion-star-rating" id="starFour"></span></div>
+              <div class="pure-u-1-5"><span ng-click="starClicked($event)" value="5" class="icon ion-star ion-star-rating" id="starFive"></span></div>
+            </div>
+          </div>
+          <div class='pure-u-1 padding-2em' ng-show='!starsSelected'> </div>
+          <div class='pure-u-1'>
+            <button class='button button-full button-positive-outline' style='width:100%;' ng-click='closeGuruRatingsModal()' ng-show='starsSelected'>
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </ion-scroll>
+    </ion-content>
+
+
+</ion-modal-view> --><ion-modal-view ng-controller="RatingsController" hide-nav-bar="true" class="ratings-modal ratings-background"><ion-content class="white-text" scroll="false"><ion-scroll style="height:100%"><div class="pure-g-c flex-column flex-space-between"><div class="padding-2em flex-item-c j-end center ratings-border-bottom"><div class="pure-g-c center"><div class="pure-u-1 padding-1em center"><img ng-src="{{img_base}}./img/verbs/{{pending_rating.session.request.verb_image}}" class="pure-img profile-img ratings-profile-img"></div></div><h3 class="light no-margin small-screen-extra-50-padding-top">Session Complete</h3><div class="pure-u-1 padding-1em"><p class="uppercase bold">NICE WORK!</p></div><div class="pure-u-1" style="margin-top:25%; font-size:125%"><div class="pure-g"><div class="pure-u-1-2"><p class="light opacity-1-2 align-right">You Just Made:</p></div><div class="pure-u-1-2"><p class="light opacity-1-2 align-right">${{pending_rating.session.guru.current_hourly * (pending_rating.session.hours + (pending_rating.session.minutes / 60.0))}}.00</p></div></div></div></div><div class="padding-2em pure-g center ratings-border-bottom small-screen-no-padding-top"><div class="pure-u-1 padding-1em"><div class="pure-g"><div class="pure-u-1"><p class="light opacity-1 padding-half" style="font-size:120%" ng-show="!starsSelected">Don't forget to leave a rating!</p><p class="light opacity-1 padding-half" style="font-size:120%" ng-show='starsSelected && starsSelected === "5"'>Amazing!</p><p class="light opacity-1 padding-half" style="font-size:120%" ng-show='starsSelected && starsSelected === "4"'>Great!</p><p class="light opacity-1 padding-half" style="font-size:120%" ng-show='starsSelected && starsSelected === "3"'>Could've been better</p><p class="light opacity-1 padding-half" style="font-size:120%" ng-show='starsSelected && starsSelected === "2"'>Not very good</p><p class="light opacity-1 padding-half" style="font-size:120%" ng-show='starsSelected && starsSelected === "1"'>The worst.</p><div ng-show='starsSelected && starsSelected === "1"' style="font-size:70%">(We'll contact you soon)</div><p></p></div></div><div class="pure-g"><div class="pure-u-1-5"><span ng-click="starClicked($event)" value="1" class="icon ion-star ion-star-rating" id="starOne"></span></div><div class="pure-u-1-5"><span ng-click="starClicked($event)" value="2" class="icon ion-star ion-star-rating" id="starTwo"></span></div><div class="pure-u-1-5"><span ng-click="starClicked($event)" value="3" class="icon ion-star ion-star-rating" id="starThree"></span></div><div class="pure-u-1-5"><span ng-click="starClicked($event)" value="4" class="icon ion-star ion-star-rating" id="starFour"></span></div><div class="pure-u-1-5"><span ng-click="starClicked($event)" value="5" class="icon ion-star ion-star-rating" id="starFive"></span></div></div></div></div><div class="pure-u-1 padding-1em"><button class="button button-full ratings-footer-button" style="margin:0; min-height:40px" ng-show="!starsSelected">Submit</button> <button class="button button-full button-blue button-bold" style="margin:0; min-height:40px; background-color:#68A7CF" ng-click="closeGuruRatingsModal()" ng-show="starsSelected">Submit</button></div></div></ion-scroll></ion-content></ion-modal-view>

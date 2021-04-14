@@ -1,0 +1,209 @@
+{
+    "name": "Onboarding",
+    "description": "",
+    "views": {
+		"general": {
+			"static": [
+				"On desktop, change guru head to tour guru w/body and move to left side of projector --> fit together",
+				"Adjust projector static to scale evenly",
+				"Resize projector to fit onboarding navigation underneath",
+				"Revamp student card, w/ spec animations",
+				"Mobile layout"
+			]
+		},
+		"universitySearch": {
+			"static": [
+				"Replace border inputs with updated",
+				"Adjust layout to current standards",
+				"Standardize university card small sizes"
+			],
+			"animations": {
+				"onEnter": [
+					"Projector bounceInDown",
+					"Bose loader counts up schools",
+					"Bose loader fadeOut and map fadeIn",
+					"Search input slideInDown and schools slideInDown or similar onEnter"
+				],
+				"onSearch": [
+					"Cards slideOut and more slideIn"
+				],
+				"onClick": [
+					"University cards slide into center to become one card",
+					"University card spins and becomes student card",
+					"Tour guru slides in",
+					"Student card jumps into tour guru's hands",
+					"Projector slideOutLeft"
+				]
+			}
+		},
+		"demographic": {
+			"static": [
+				"Replace circles with squares - icons and text",
+				"Grid-based, possibly 3x2 instead of 2x4",
+				"High school, college, alumni, parent, professor",
+                "College breaks down further to freshman, soph, junior, senior, grad school"
+			],
+			"animations": {
+				"onEnter": [
+					"Projector slideInleft",
+					"Demographic cards stagger bounceIn or similar onEnter",
+				],
+				"onClickFirst": [
+					"Demographic cards slide into center to become one card",
+					"Demographic cards slide out for the new options"
+				],
+				"onClickSecond": [
+					"Demographic cards slide into center to become one card",
+					"Card jumps and fadeOut to student card",
+					"Student card demographic slideIn or similar onEnter",
+					"Projector slideOutLeft"
+				]
+			}
+		},
+		"courseSearch": {
+			"static": [
+				"Use student card instead of backpack",
+				"Replace border inputs with updated",
+				"New condensed version of course cards"
+			],
+			"animations": {
+				"onEnter": [
+					"Projector slideInleft",
+					"Search input slideInDown",
+					"Course cards stagger bounceIn or similar onEnter",
+				],
+				"onSearch": [
+					"Cards slideOut and more slideIn"
+				],
+				"onClick": [
+					"Card jumps and fadeOut to student card",
+					"Student card course number countUp"
+				],
+				"onClickComplete": [
+					"Projector slideOutLeft"
+				]
+			}
+		},
+		"account": {
+			"static": [
+				"Two button layout for first view",
+				"Reformat inputs to make a one-at-a-time form",
+				"Reformat buttons with color, i.e. Fscebook blue"
+			],
+			"animations": {
+				"onEnterFromSearch": [
+					"Projector slideInleft",
+					"Signup button slideInDown or similar onEnter",
+					"Login button slideInUp or similar onEnter",
+					"Guru tosses card up",
+					"Card flips to back and falls back down into guru hands"
+				],
+				"onEnterFromAccess": [
+					"Projector slideInRight",
+					"Signup form onEnter, to be determined by layout"
+				],
+				"onClickSignup": [
+					"Projector slideOutLeft"
+				],
+				"onClickLogin": [
+					"Login form onEnter, to be determined by layout"
+				],
+				"onFormInput": [
+					"Typing in form results in information typed out on card back"
+				]
+			}
+		},
+        "access": {
+			"static": [
+				"Convert input to look more like our border inputs",
+				"Keep buttons on one line"
+			],
+			"animations": {
+				"onEnter": [
+					"Projector slideInleft",
+					"Access input slideInDown or similar onEnter based on layout",
+					"Text header bounceInDown. Speech bubble rotateInUp with the heart draw"
+				],
+				"onComplete": [
+					"Access code jumps and fadeOut to student card",
+					"Access code fadeIn on student card",
+					"Guru flips card out of one hand",
+					"Access input onExit based on layout",
+					"Card swiper bounceIn or similar onEnter"
+					"Card slides through swiper"
+				],
+				"onSuccess": [
+					"Card slides all the way through and the light turns green",
+					"Projector slideOutRight"
+				],
+				"onError": [
+					"Card slides but get stuck and tries a few more times and light turns red",
+					"Card jumps back to guru hands",
+					"Card swiper bounceOut or similar onExit",
+					"Access input onEnter"
+				]
+			}
+		}
+    },
+	"deliverables": {
+		"09/23/16": {
+			"Revamping layout": [
+				"Resize and position guru to hold card. 240x150",
+				"Placeholder guru to balance out layout"
+			],
+			"Revamp student card": [
+				"Default colors when school isn't selected",
+				"Rearrange info to correspond with views. Add access",
+				"Spec base animation, then view animations"
+			]
+		},
+		"09/26/16": {
+			"Revamp student card": [
+				"School logo overlay on front",
+				"Move email and password to card back",
+				"Put strip, barcode, and access on back",
+				"Separate demographic and school",
+				"Condense swipable mobile version similar to credit card"
+			],
+			"Revamp university card": [
+				"Small and/or responsive version",
+				"Make top border the same height as student card"
+			],
+			"Create demographic card": [
+				"Square with icon and text inside",
+				"Reference icons previously used for demographic"
+			],
+			"Re-layout updated desktop projector screens": "TBD, see static for more details",
+			"Re-layour mobile projector screens": "TBD, similar to desktop"
+		},
+		"Leftover": {
+			"Main page": [
+				"Navigation static (onboarding tracker)",
+				"Slider"
+			],
+			"University search": [
+				"Large mobile animations",
+				"Fix first university card jump (fixed)"
+			],
+			"Proof of concept": [
+				"All card jumps",
+				"Toggle for map",
+				"Map PNG",
+				"Information binding",
+				"Account icons"
+			]
+		}
+	},
+	"moodboard": {
+		"09/23/16": {
+			"animations": [
+				"https://onlycoin.com/",
+				"https://dribbble.com/shots/2416409-The-Santa-s-App-OnBoarding",
+				"https://dribbble.com/shots/2663323-Zing-Play-Onboarding-Screens-Animated-version",
+				"https://dribbble.com/shots/2801646-Onboarding-GIFs",
+				"https://dribbble.com/shots/2458194-Snapseed-RAW-Photo-Editing",
+				"https://dribbble.com/shots/2308138-Google-Keep-Warm-Welcome"
+			]
+		}
+	}
+}

@@ -1,0 +1,150 @@
+@import '../mixin';
+
+.pf-container.pf-tech {
+    .verified {
+        span svg {
+            path:first-child {
+                fill: $azure;
+            }
+        }
+    }
+    .tab-bar {
+        &.slide {
+            > div {
+                a {
+                    &:nth-child(1) {
+                        &.active {
+                            ~ hr {
+                                border-color: mix($azure, white);
+                            }
+                        }
+                    }
+                    &:nth-child(2) {
+                        &.active {
+                            ~ hr {
+                                border-color: mix($azure, white);
+                            }
+                        }
+                    }
+                    &:nth-child(3) {
+                        &.active {
+                            ~ hr {
+                                border-color: mix($azure, white);
+                            }
+                        }
+                    }
+                    &:nth-child(4) {
+                        &.active {
+                            ~ hr {
+                                border-color: mix($azure, white);
+                            }
+                        }
+                    }
+
+                    &:nth-child(1) {
+                        &:hover, &:focus {
+                            ~ hr {
+                                border-color: rgba(mix($azure, white), .7);
+                            }
+                        }
+                        &:active {
+                            ~ hr {
+                                border-color: mix($azure, white);
+                            }
+                        }
+                    }
+                    &:nth-child(2) {
+                        &:hover, &:focus {
+                            ~ hr {
+                                border-color: rgba(mix($azure, white), .7);
+                            }
+                        }
+                        &:active {
+                            ~ hr {
+                                border-color: mix($azure, white);
+                            }
+                        }
+                    }
+                    &:nth-child(3) {
+                        &:hover, &:focus {
+                            ~ hr {
+                                border-color: rgba(mix($azure, white), .7);
+                            }
+                        }
+                        &:active {
+                            ~ hr {
+                                border-color: mix($azure, white);
+                            }
+                        }
+                    }
+                    &:nth-child(4) {
+                        &:hover, &:focus {
+                            ~ hr {
+                                border-color: rgba(mix($azure, white), .7);
+                            }
+                        }
+                        &:active {
+                            ~ hr {
+                                border-color: mix($azure, white);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .pf-main {
+        > div {
+            .pf-main-subheader {
+                hr {
+                    background: rgba($azure, .2);
+                }
+            }
+            &.pf-about {
+                .pf-about-section {
+                    header {
+                        h2 {
+                            background: $azure;
+                        }
+                    }
+                    .pf-url {
+                        li {
+                            &:last-child {
+                                a {
+                                    background: $azure!important;
+                                    &:hover, &:focus {
+                                        background: mix($azure, white)!important;
+                                        svg {
+                                            * {
+                                                stroke: mix($azure, $slate);
+                                            }
+                                        }
+                                    }
+                                    &:active {
+                                        background: mix($azure, $slate)!important;
+                                        svg {
+                                            * {
+                                                stroke: white;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .pf-mobile-cta {
+        background: rgba($azure, .95);
+        &:hover, &:focus {
+            background: mix($azure, white);
+            color: mix($azure, $slate);
+        }
+        &:active {
+            background: mix($azure, $slate);
+            color: white;
+        }
+    }
+}

@@ -3,22 +3,105 @@ angular.module('uguru.shared.services')
     '$ionicViewSwitcher',
     '$timeout',
     '$state',
+    'RootService',
     AnimationService
         ]);
 
-function AnimationService($ionicViewSwitcher, $timeout, $state) {
+function AnimationService($ionicViewSwitcher, $timeout, $state, RootService) {
 
     return {
         // slide: slide,
         flip: flip,
         animateIn: animateIn,
         animate: animate,
+        initAnimationObj: initAnimationObj,
         animateOut: animateOut,
         applyAnimateInDirective: applyAnimateInDirective,
         applyAnimateOutDirective: applyAnimateOutDirective,
         initCSSAnimation: initCSSAnimation,
-        getCSSAnimationFromClassName: getCSSAnimationFromClassName
+        getCSSAnimationFromClassName: getCSSAnimationFromClassName,
+        getAnimationObjFromAnimationName: getAnimationObjFromAnimationName,
+        getAnimatableTemplateFunc: getAnimatableTemplateFunc,
+        injectAnimationWithPlayer: injectAnimationWithPlayer,
+        getStartListener: getStartListener,
+        getEndListener: getEndListener
+    }
 
+    function getAnimatableTemplateFunc(element, attr) {
+      var styleStr = '';
+      if (attr.size) {
+          styleStr += 'width:' + attr.size + 'px;'
+          styleStr += 'height:' + attr.size + 'px;'
+      }
+      if (attr.stroke) {
+          styleStr += 'stroke:' + attr.stroke + 'px;'
+          element.children().css('stroke', attr.stroke);
+      }
+      styleStr += RootService.formatBrowserCSSProperty('animation-name') +':{{anim.name}};'
+      styleStr += RootService.formatBrowserCSSProperty('animation-iteration-count') +':{{anim.iter}} !important;'
+      styleStr += RootService.formatBrowserCSSProperty('animation-fill-mode') +':{{anim.fill}} !important;'
+      styleStr += RootService.formatBrowserCSSProperty('animation-duration') +':{{anim.duration}}ms !important;'
+      styleStr += RootService.formatBrowserCSSProperty('animation-timing-function') +':{{anim.func}} !important;'
+      styleStr += RootService.formatBrowserCSSProperty('animation-delay') +':{{anim.delay}}ms !important;'
+      styleStr += RootService.formatBrowserCSSProperty('animation-play-state') +':{{anim.playState}}'
+      attr.$set('style', styleStr);
+      return attr.template
+    }
+
+    function getStartListener(anim, element) {
+      return function(cb) {
+        var browserPrefix = RootService.getBrowserPrefix();
+        var startAnimationEvent = 'animationStart';
+        if (browserPrefix && browserPrefix.length) {
+          startAnimationEvent = browserPrefix + 'AnimationStart';
+        }
+        return element.addEventListener(startAnimationEvent, function(e) {
+            cb && cb(e);
+        })
+      }
+    }
+
+    function getEndListener(anim, element) {
+
+      return function(cb) {
+        var browserPrefix = RootService.getBrowserPrefix();
+        var startAnimationEvent = 'animationEnd';
+        if (browserPrefix && browserPrefix.length) {
+          startAnimationEvent = browserPrefix + 'AnimationEnd';
+        }
+        return element.addEventListener(startAnimationEvent, function(e) {
+            cb && cb();
+
+            if (browserPrefix) {
+              console.log('pausing');
+              e.target.style[browserPrefix + 'AnimationPlayState'] = 'paused';
+            } else {
+              e.target.style['animationPlayState'] = 'paused';
+            }
+            e.target.style.offsetWidth = e.target.style.offsetWidth;
+            console.log('animation ending', e.target);
+        })
+      }
+
+    }
+
+    function initAnimationObj() {
+
+      return {
+        name: null,
+        template: null,
+        duration: null,
+        css: {
+          name: RootService.formatBrowserCSSProperty('animation-name'),
+          iter: RootService.formatBrowserCSSProperty('animation-iteration-count'),
+          fill: RootService.formatBrowserCSSProperty('animation-fill-mode'),
+          duration: RootService.formatBrowserCSSProperty('animation-duration'),
+          tf: RootService.formatBrowserCSSProperty('animation-timing-function'),
+          direction: RootService.formatBrowserCSSProperty('animation-direction'),
+          delay: RootService.formatBrowserCSSProperty('animation-delay'),
+          play: RootService.formatBrowserCSSProperty('animation-play-state')
+        }
+      }
     }
 
     function getBrowserPrefix() {
@@ -82,6 +165,15 @@ function AnimationService($ionicViewSwitcher, $timeout, $state) {
             }
           }
       }
+    }
+
+    function injectAnimationWithPlayer(anim_obj, elem, cb) {
+        div = document.createElement('div');
+        div.classList.add('relative', 'animated', 'slideInUp');
+        div.style.zIndex = 100000;
+        div.innerHTML = '<animation-player anim=anim></player>'
+        elem[0].parentNode.appendChild(div);
+        cb && cb(div);
     }
 
     function initCSSAnimation(anim_name, options) {
@@ -222,16 +314,20 @@ function AnimationService($ionicViewSwitcher, $timeout, $state) {
     function animate(elem, css_class, anim_obj, delay) {
       if (delay) {
         $timeout(function() {
+          console.log('DELAY: ' + delay + ' applying w/ delay', elem, css_class, anim_obj, 'n\n\n\n');
+          prefixedEventListener(elem,"AnimationStart", animationStartListener);
+          prefixedEventListener(elem,"AnimationEnd", animationEndListener);
           elem.classList.add('animated', css_class);
         }, delay)
       } else {
+        prefixedEventListener(elem,"AnimationStart", animationStartListener);
+        prefixedEventListener(elem,"AnimationEnd", animationEndListener);
         elem.classList.add('animated', css_class);
       }
-      prefixedEventListener(elem,"AnimationStart", animationStartListener);
-      prefixedEventListener(elem,"AnimationEnd", animationEndListener);
+
       function animationStartListener(e)
       {
-        console.log('animation has began');
+        // console.log('animation has began');
         var lastKFSorted = getLastKFsorted(anim_obj.cssRules)
         var formattedKFCssText = lastKFSorted.cssText.split('{')[1].replace('}', '').trim();
         elem.style.cssText +=formattedKFCssText;
@@ -257,7 +353,7 @@ function AnimationService($ionicViewSwitcher, $timeout, $state) {
         return parseFloat(kf_b.keyText.replace("%")) - parseFloat(kf_b.keyText.replace("%"))
       }).reverse()
       if (keyFrames.length) {
-        console.log('last keyframe', keyFrames[0]);
+        // console.log('last keyframe', keyFrames[0]);
         return keyFrames[0]
       }
     }

@@ -98,12 +98,17 @@ gulp.task('sass',function(done){
 gulp.task('compile-css', function(done) {
 
   var cssStream = gulp.src([
-      'shared/**/*.css',
-      'preapp/**/*.css',//,
-      '!preapp/**/loader.css',//,
-      'gabrielle/**/*.css',//,
-      'jeselle/**/*.css',
-      'admin/**/*.css'//,
+      'shared/css/ionic.app.min.css',
+      'shared/css/compiled/style.css',
+      'shared/css/compiled/utility.css',
+      'shared/css/compiled/components.css',
+      'shared/css/compiled/animation.css',
+      'shared/css/compiled/profile.css',
+      'preapp/css/compiled/preapp.css',
+      'admin/css/compiled/admin.css',
+      'shared/css/lib/prism.css',
+      'jeselle/css/compiled/*.css',
+      'gabrielle/css/compiled/*.css'
       // 'loader.css'
     ],{cwd: ''})
   .pipe(debug())
@@ -147,41 +152,69 @@ gulp.task('compile-base-js', function(done) {
   var scriptStream = gulp.src([
       // pretty much same as this 'shared/js/lib/*.js',
 
+      // 'shared/js/lib/bowser.min.js',
+      // 'shared/js/lib/snap.svg.min.js',
+      // 'shared/js/lib/ionic.bundle.min.js',
+      // 'shared/js/lib/restangular.min.js',
+      // 'shared/js/lib/lodash.min.js',
+
+
+      // //services
+      // 'shared/js/services/LocalStorageService.js',
+      // 'shared/js/services/*.js',
+
+      // //admin/service
+      // 'admin/js/AdminAnimToolService.js',
+      // 'admin/js/AdminWorkflowService.js',
+      // 'admin/js/SpecService.js',
+      // 'admin/js/SpecContentService.js',
+      // 'admin/js/AdminDirectives.js',
+      // 'admin/js/AdminActionController.js',
+
+      // //directive
+      // 'shared/js/directives/AnimationDirectives.js',
+      // 'shared/js/directives/*.js',
+
+      // 'util/base.main.js',
+      // 'templates.js',
+      // // 'templates.js',
+      // // 'util/base.main.js',
+      // // 'templates.js',
+      // // //prepapp ctrl
+      // 'preapp/js/SplashController.js',
+      // 'preapp/js/*.js'
+
+
+      // //shared ctrl
+      // // 'shared/js/controllers/RootController.js',
+      // // 'shared/js/controllers/*.js',
+
       'shared/js/lib/bowser.min.js',
       'shared/js/lib/snap.svg.min.js',
       'shared/js/lib/ionic.bundle.min.js',
       'shared/js/lib/restangular.min.js',
       'shared/js/lib/lodash.min.js',
-
-
+      //directive
+      'shared/js/AnimationDirectives.js',
+      'shared/js/directives/*.js',
       //services
       'shared/js/services/LocalStorageService.js',
       'shared/js/services/*.js',
-
-      //admin/service
-      'admin/js/AdminAnimToolService.js',
-      'admin/js/SpecService.js',
-      'admin/js/SpecContentService.js',
-      'admin/js/AdminDirectives.js',
-      'admin/js/AdminActionController.js',
-
-      //directive
-      'shared/js/directives/AnimationDirectives.js',
-      'shared/js/directives/*.js',
-
       'util/base.main.js',
       'templates.js',
-      // 'templates.js',
-      // 'util/base.main.js',
-      // 'templates.js',
-      // //prepapp ctrl
+      //prepapp ctrl
       'preapp/js/SplashController.js',
-      // 'preapp/js/*.js',
+      'preapp/js/*.js',
+      'jeselle/js/*.js',
+      'gabrielle/js/*.js',
 
-
+      //admin/service
+      'admin/js/services/AdminAnimToolService.js',
+      'admin/js/*.js',
+      'admin/js/**/*.js',
       //shared ctrl
-      // 'shared/js/controllers/RootController.js',
-      // 'shared/js/controllers/*.js',
+      'shared/js/controllers/RootController.js',
+      'shared/js/controllers/*.js'
     ]);
 
   return streamqueue({ objectMode: true }, scriptStream)
@@ -212,11 +245,13 @@ gulp.task('compile-js', function(done) {
       //prepapp ctrl
       'preapp/js/SplashController.js',
       'preapp/js/*.js',
+      'preapp/js/menu/*.js',
+      'preapp/js/started/*.js',
       'jeselle/js/*.js',
       'gabrielle/js/*.js',
 
       //admin/service
-      'admin/js/AdminAnimToolService.js',
+      'admin/js/services/AdminAnimToolService.js',
       'admin/js/*.js',
       'admin/js/**/*.js',
       //shared ctrl
@@ -267,15 +302,16 @@ gulp.task('compile-temp',function(done){
 });
 
 gulp.task('clean', function(done) {
-  del(['templates.js', 'dest/scripts/*', 'app.js','app.css', 'dest/templates/**'], done);
+    del(['templates.js', 'dest/scripts/*', 'app.js','app.css', 'dest/templates/**'], done);
 });
 
 gulp.task('templates', function() {
   //PART ONE, MOVE ALL TEMPLATES TO RIGHT FOLDER
   var templateLocations = ['admin/templates/**/**/**', 'shared/templates/**/**/**', 'preapp/templates/**/**/**', 'jeselle/templates/**/**/**', 'gabrielle/templates/**/**/**'];
   for (var i = 0; i < templateLocations.length; i++) {
+
     gulp.src([templateLocations[i]], { cwd: '' })
-    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(htmlmin())
     .pipe(gulp.dest(path.join(targetDir, 'templates/' + templateLocations[i].split('/**')[0])))
     .on('error', errorHandler);
   }
@@ -323,15 +359,15 @@ gulp.task('copy-prod', function(){
 
 gulp.task('default', function(done) {
   runSequence(
-    'clean',
+    // 'clean',
     'compile-css',
     'templates',
     'compile-temp',
     // // 'jsHint',
     'compile-js',
     'compile-base-js',
-    // 'copy-prod',
-    // 'clean'
+    'copy-prod',
+    // 'clean',
     // 'index',
     // build ? 'noop' : 'watchers',
     // build ? 'noop' : 'serve',

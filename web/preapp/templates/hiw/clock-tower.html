@@ -1,0 +1,51 @@
+<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"
+	u init-with="p:[tro:center center, tr:scale(0.37) translateY(3.5%)]"
+	when-hiw-enter="s:[time-shift:public:1000]"
+	when-open-clock-tower="p:[transform:scale(0.37) translateY(3.5%):scale(1) translateY(0%):1000:easeOutCirc]">
+	<g class="tower" stroke-width="3">
+		<polygon class="clock-tower-main" stroke="#CABEB2" fill="#FCEDDF" points="381 136 483 136 483 506 381 506"></polygon>
+		<g stroke="#947B62">
+			<path d="M222.5,507.5 L641.5,507.5" class="clock-tower-ground"
+				u init-with="p:[op:0, tro:center center, tr:scaleX(0)]"
+				when-open-clock-tower="a:[opacity:0:1:500:easeOutExpo:0:1:f, scaleX:0:1:500:easeOutExpo:0:1:f]"></path>
+			<polygon class="clock-tower-step-lower" fill="#CABEB2" points="355 482 509 482 509 506 355 506"></polygon>
+			<polygon class="clock-tower-step-upper" fill="#CABEB2" points="370 458 494 458 494 482 370 482"></polygon>
+		</g>
+		<g stroke="#647275">
+			<polygon class="clock-tower-roof-inner" fill="#B2DAE5" points="381 135 432 57 483 135"></polygon>
+			<polygon class="clock-tower-roof-outer" fill="#D5ECF1" points="399 135 432 57 465 135"></polygon>
+			<rect class="clock-tower-molding-upper" fill="#B2DAE5" x="390" y="111" width="84" height="13"></rect>
+			<rect class="clock-tower-top" fill="#D5ECF1" x="380" y="123" width="104" height="100"></rect>
+		</g>
+		<g class="windows" stroke="#425459" fill="#577078">
+			<path d="M448,158.999531 C448,154.581512 451.590712,151 456,151 C460.418278,151 464,154.59057 464,158.999531 L464,198 L448,198 L448,158.999531 L448,158.999531 Z" class="clock-tower-window-right"></path>
+			<path d="M424,158.999531 C424,154.581512 427.590712,151 432,151 C436.418278,151 440,154.59057 440,158.999531 L440,198 L424,198 L424,158.999531 L424,158.999531 Z" class="clock-tower-window-center"></path>
+			<path d="M400,158.999531 C400,154.581512 403.590712,151 408,151 C412.418278,151 416,154.59057 416,158.999531 L416,198 L400,198 L400,158.999531 L400,158.999531 Z" class="clock-tower-window-left"></path>
+		</g>
+		<g stroke="#CABEB2" fill="#FCEDDF">
+			<rect class="clock-tower-column-right" x="463" y="135" width="20" height="63"></rect>
+			<rect class="clock-tower-column-left" x="381" y="135" width="20" height="63"></rect>
+		</g>
+		<g stroke="#647275" fill="#B2DAE5">
+			<rect class="clock-tower-molding-main-upper" x="372" y="135" width="120" height="13" rx="1.8"></rect>
+			<rect class="clock-tower-molding-main-lower" x="372" y="198" width="120" height="13" rx="1.8"></rect>
+		</g>
+	</g>
+	<g class="clock">
+		<circle class="clock-tower-face" stroke="#2A4863" stroke-width="6" fill="#3A5E79" cx="432" cy="271" r="32"></circle>
+		<g stroke-width="3">
+			<path d="M449,273 L433,273" class="clock-tower-hour-hand" stroke="#D5ECF1"
+				u init-with="p:[tro:left center]"
+				when-hiw-enter="a:[hiw-hour-hand:12000:linear:0:i:f]:delay-2000"></path>
+			<path d="M433,273 L433,252" class="clock-tower-minute-hand" stroke="#D5ECF1"
+				u init-with="p:[tro:center bottom]"
+				when-hiw-enter="a:[hiw-minute-hand:2000:linear:0:i:f]:delay-500"></path>
+			<!-- <path d="M449,273 L433,273" class="clock-tower-hour-hand" stroke="#D5ECF1"
+				u init-with="p:[tro:left center]"
+				on-init="a:[hiw-hour-hand:12000:linear:0:i:f]:delay-2000"></path>
+			<path d="M433,273 L433,252" class="clock-tower-minute-hand" stroke="#D5ECF1"
+				u init-with="p:[tro:center bottom]"
+				on-init="a:[hiw-minute-hand:2000:linear:i:f]:delay-500"></path> -->
+		</g>
+	</g>
+</g>

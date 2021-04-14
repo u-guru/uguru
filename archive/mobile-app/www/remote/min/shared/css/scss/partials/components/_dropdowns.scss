@@ -1,0 +1,1073 @@
+@import '../mixin';
+
+/* ---------- DROPDOWNS */
+.dropdown {
+	position: relative;
+	width: 200px;
+	> div {
+		@include flex;
+		@include flex-center;
+		position: relative;
+		width: 100%;
+		div:empty {
+			position: absolute;
+			background: lighten($slate, 10%);
+			border-radius: 1000px;
+			&:nth-child(1) {
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				transform-origin: left center;
+			}
+			&:nth-child(2) {
+				top: 0;
+				right: 0;
+				width: 2px;
+				height: 100%;
+				transform-origin: center top;
+			}
+			&:nth-child(3) {
+				bottom: 0;
+				right: 0;
+				width: 100%;
+				height: 2px;
+				transform-origin: right center;
+			}
+			&:nth-child(4) {
+				bottom: 0;
+				left: 0;
+				width: 2px;
+				height: 100%;
+				transform-origin: center bottom;
+			}
+		}
+		span, input {
+			@include flex;
+			@include flex-center;
+			width: calc(100% - 48px);
+			height: 48px;
+			background: lighten($slate, 10%);
+			color: white;
+			font-size: 28px;
+			font-weight: 600;
+			text-align: center;
+		}
+		input {
+			&:hover, &:focus {
+				background: white;
+				color: $slate;
+			}
+		}
+		a {
+			display: block;
+			width: 48px;
+			height: 48px;
+			svg {
+				transition: all 150ms ease-in-out;
+				@include svg-stroke(white, 8);
+				background: $shamrock;
+				padding: 12px 10px 8px;
+				width: 48px;
+				height: 48px;
+				path {
+					transform-origin: 50% 50%;
+					transform: rotate(0deg);
+				}
+			}
+			&:hover, &:focus {
+				svg {
+					background: lighten($shamrock, 10%);
+				}
+			}
+			&:active {
+				svg {
+					background: darken($shamrock, 10%);
+				}
+			}
+			&.active {
+				svg {
+					path {
+						transform: rotate(180deg);
+					}
+				}
+			}
+		}
+	}
+	> ul {
+		transition: all 150ms ease-in-out;
+		@include listless;
+		position: absolute;
+		left: 0;
+		width: 100%;
+		text-align: center;
+		li {
+			transform-origin: center top;
+			width: calc(100% - 48px);
+			background: rgba(lighten($slate, 5%), .95);
+			padding: 15px 0 !important;
+			font-weight: 400;
+			&:hover, &:focus {
+				background: darken($shamrock, 10%);
+			}
+			&:active {
+				background: lighten($shamrock, 10%);
+			}
+		}
+	}
+	&.number {
+		width: 112px;
+	}
+	&.auto {
+		width: auto;
+		white-space: nowrap;
+		> div {
+			span, input {
+				padding: 0 15px;
+				font-size: 20px;
+			}
+		}
+		> ul {
+			> li {
+				text-align: center;
+				font-size: 20px;
+				font-weight: 600;
+			}
+		}
+	}
+	&.small {
+		width: 176px;
+		> div {
+			span {
+				height: 24px;
+				font-size: 16px;
+			}
+			a {
+				width: 24px;
+				height: 24px;
+				svg {
+					padding: 3px;
+					width: 24px;
+					height: 24px;
+				}
+			}
+		}
+		> ul {
+			li {
+				width: calc(100% - 24px);
+				padding: 5px 0 !important;
+				font-weight: 400;
+				font-size: 16px;
+			}
+		}
+		&.full-x {
+			> div {
+				span {
+					width: calc(100% - 24px);
+				}
+			}
+			> ul {
+				li {
+					width: calc(100% - 24px);
+				}
+			}
+		}
+	}
+	&.info {
+		overflow: visible;
+		width: 250px;
+		> div {
+			span, input {
+				justify-content: flex-start;
+				font-size: 20px;
+				text-align: left;
+			}
+		}
+		> ul {
+			overflow: visible;
+			> li {
+				@include flex;
+				@include flex-center-vertical;
+				justify-content: space-between;
+				width: 100%;
+				position: relative;
+				text-align: left;
+				height: 48px;
+				padding: 0 11px 0 15px!important;
+				font-size: 20px;
+				font-weight: 600;
+				.dropdown-popup {
+					display: block;
+					height: 100%;
+					width: 32px;
+					height: 32px;
+					svg {
+						display: block;
+						height: 100%;
+						* {
+							@include svg-stroke(white, 6);
+						}
+					}
+					&:hover, &:focus {
+						svg {
+							circle {
+								fill: white;
+							}
+							path {
+								stroke: $slate;
+							}
+						}
+					}
+				}
+				.dropdown-info {
+					transition: all 150ms ease-in-out 0ms;
+					transform: translateZ(0) scale(0);
+					transform-origin: 0% 24px;
+					z-index: -10;
+					position: absolute;
+					left: 250px;
+					width: 200px;
+					white-space: normal;
+					top: 0;
+					background: white;
+					color: lighten($slate, 15%);
+					&:before {
+						content: "";
+						display: block;
+						position: absolute;
+						top: 16px;
+						left: -16px;
+						width: 0;
+						height: 0;
+						border: 8px solid transparent;
+						border-right-color: white;
+					}
+					> div {
+						padding: 10px 15px;
+						font-size: 16px;
+						line-height: 1.2;
+					}
+					button {
+						height: 40px;
+						font-size: 20px;
+					}
+				}
+			}
+			li:hover .dropdown-info,
+			.dropdown-popup:hover + .dropdown-info,
+			.dropdown-popup:focus + .dropdown-info,
+			.dropdown-info:hover {
+				transition: all 150ms ease-in-out 600ms;
+				transform: translateZ(0) scale(1)!important;
+				z-index: auto!important;
+			}
+		}
+	}
+}
+.dropdown-moxie.dropdown-container .dropdown, .dropdown-moxie.dropdown {
+	> div {
+		a {
+			svg {
+				background: $moxie!important;
+			}
+			&:hover, &:focus {
+				svg {
+					background: lighten($moxie, 10%)!important;
+				}
+			}
+			&:active {
+				svg {
+					background: darken($moxie, 10%)!important;
+				}
+			}
+		}
+	}
+	> ul {
+		li {
+			&:hover, &:focus {
+				background: rgba(darken($moxie, 10%),.9)!important;
+			}
+			&:active {
+				background: rgba(lighten($moxie, 10%),.9)!important;
+			}
+		}
+	}
+}
+.dropdown-container.full-x {
+	.dropdown {
+		> div {
+			> span {
+				width: calc(100% - 48px);
+			}
+		}
+		> ul {
+			width: 100%;
+			li {
+				width: calc(100% - 48px);
+			}
+		}
+		&.small {
+			> div {
+				> span {
+					width: calc(100% - 24px);
+				}
+			}
+			> ul {
+				li {
+					width: calc(100% - 24px);
+				}
+			}
+		}
+	}
+}
+.dropdown-container {
+	&.hide-header {
+		h2 {
+			display: none!important;
+		}
+	}
+	&.double {
+		.dropdown {
+			> div {
+				> span {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center-vertical;
+					height: 32px;
+					font-size: 12px;
+					font-weight: 600;
+					line-height: 1.3;
+					> span {
+						display: block;
+						height: auto;
+						&:last-child {
+							font-size: 10px;
+							font-weight: 400;
+							line-height: 1;
+						}
+					}
+				}
+			}
+			> ul {
+				li {
+					font-size: 14px;
+					line-height: 1.3;
+					font-weight: 600;
+					> span {
+						font-weight: 400;
+						&:last-child {
+							font-size: 12px;
+							line-height: 1;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.no-header {
+		h2 {
+			display: none!important;
+		}
+	}
+	&.height-32 {
+		height: auto!important;
+		.dropdown {
+			> div {
+				> span {
+					height: 32px;
+					font-size: 18px;
+				}
+				a {
+					width: 32px;
+					height: 32px;
+					svg {
+						width: 32px;
+						height: 32px;
+						padding: 8px 6px 6px;
+					}
+				}
+			}
+			> ul {
+				width: 100%;
+				top: 32px;
+				li {
+					width: calc(100% - 32px);
+				}
+			}
+		}
+		&.reverse {
+			.dropdown {
+				> ul {
+					top: auto;
+					bottom: 32px;
+				}
+			}
+		}
+		&.full-x {
+			.dropdown {
+				width: 100%;
+				> div {
+					width: 100%;
+					> span {
+						width: calc(100% - 32px);
+					}
+				}
+			}
+		}
+	}
+	&.height-36 {
+		height: auto!important;
+		.dropdown {
+			> div {
+				> span {
+					height: 36px;
+				}
+				a {
+					width: 36px;
+					height: 36px;
+					svg {
+						width: 36px;
+						height: 36px;
+						padding: 8px 6px 6px;
+					}
+				}
+			}
+			> ul {
+				width: 100%;
+				top: 36px;
+				li {
+					width: calc(100% - 36px);
+				}
+			}
+		}
+		&.reverse {
+			.dropdown {
+				> ul {
+					top: auto;
+					bottom: 36px;
+				}
+			}
+		}
+		&.full-x {
+			.dropdown {
+				width: 100%;
+				> div {
+					width: 100%;
+					> span {
+						width: calc(100% - 36px);
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- COLOR DROPDOWNS */
+.dropdown-color {
+	@include flex;
+	position: relative;
+	&.old {
+		* {
+			transition: all 150ms ease-in-out;
+		}
+		> a {
+			&.active {
+				svg {
+					transform: rotate(180deg);
+				}
+			}
+		}
+		> div {
+			&:not(.visible) {
+				transform: translateY(-50%) translateZ(0) scaleY(0);
+				opacity: 0;
+				visibility: hidden;
+				z-index: -1;
+			}
+			&.visible {
+				transform: translateY(0) translateZ(0) scale(1);
+				opacity: 1;
+				visibility: visible;
+				z-index: 1;
+			}
+		}
+	}
+	&:after {
+		content: "";
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 48px;
+		background: $slate;
+		border-radius: 2px;
+		z-index: -1;
+	}
+	a, .dropdown-color-bg, .arrow {
+		transition: all 150ms ease-in-out;
+	}
+	> a {
+		display: block;
+		justify-content: space-between;
+		z-index: 1;
+		padding: 0 12px 0 15px;
+		position: relative;
+		border-radius: 2px;
+		svg {
+			@include svg-stroke(white, 10);
+			display: block;
+			margin-left: 5px;
+			width: 24px;
+			height: 24px;
+			stroke-dasharray: 103;
+		}
+		div:not(.dropdown-color-bg) {
+			position: absolute;
+			background: white;
+			border-radius: 1000px;
+			&:nth-child(1) {
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				transform-origin: left center;
+				// transform: scaleX(0);
+			}
+			&:nth-child(2) {
+				top: 0;
+				right: 0;
+				width: 2px;
+				height: 100%;
+				transform-origin: center top;
+				// transform: scaleY(0);
+			}
+			&:nth-child(3) {
+				bottom: 0;
+				right: 0;
+				width: 100%;
+				height: 2px;
+				transform-origin: right center;
+				// transform: scaleX(0);
+			}
+			&:nth-child(4) {
+				bottom: 0;
+				left: 0;
+				width: 2px;
+				height: 100%;
+				transform-origin: center bottom;
+				// transform: scaleY(0);
+			}
+		}
+	}
+	a {
+		@include flex;
+		@include flex-center-vertical;
+		position: relative;
+		padding: 0 10px;
+		height: 48px;
+		font-weight: 600;
+		font-size: 18px;
+		color: white;
+		cursor: pointer;
+		span {
+			&:first-letter {
+				text-transform: uppercase;
+			}
+		}
+		&.color {
+			.dropdown-color-bg {
+				opacity: 0.8;
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: -1;
+			}
+			+ .arrow {
+				opacity: 0.8;
+			}
+			&:hover, &:focus, &.active {
+				.dropdown-color-bg {
+					opacity: 1;
+				}
+				+ .arrow {
+					opacity: 1;
+				}
+			}
+			&.active {
+				&:hover, &:focus {
+					.dropdown-color-bg {
+						opacity: 0.8;
+					}
+					+ .arrow {
+						opacity: 0.8;
+					}
+				}
+			}
+			&:active {
+				.dropdown-color-bg {
+					background: lighten($slate, 20%)!important;
+				}
+				+ .arrow {
+					@include opacity(1);
+					path {
+						fill: lighten($slate, 20%)!important;
+					}
+				}
+			}
+		}
+		&.bg-charcoal {
+			background: rgba($charcoal, .8);
+			+ .arrow {
+				fill: rgba($charcoal, .8);
+			}
+			&:hover, &:focus {
+				background: $charcoal;
+				+ .arrow {
+					fill: $charcoal;
+				}
+			}
+			&:active {
+				background: mix($charcoal, white);
+				color: $charcoal;
+				+ .arrow {
+					fill: mix($charcoal, white);
+				}
+			}
+		}
+		&.bg-slate {
+			background: rgba($slate, .8);
+			+ .arrow {
+				fill: rgba($slate, .8);
+			}
+			&:hover, &:focus {
+				background: $slate;
+				+ .arrow {
+					fill: $slate;
+				}
+			}
+			&:active {
+				background: mix($slate, white);
+				color: $slate;
+				+ .arrow {
+					fill: mix($slate, white);
+				}
+			}
+		}
+		&.bg-taupe {
+			background: rgba($taupe, .8);
+			+ .arrow {
+				fill: rgba($taupe, .8);
+			}
+			&:hover, &:focus {
+				background: $taupe;
+				+ .arrow {
+					fill: $taupe;
+				}
+			}
+			&:active {
+				background: mix($taupe, white);
+				color: mix($taupe, $slate);
+				+ .arrow {
+					fill: mix($taupe, white);
+				}
+			}
+		}
+		&.bg-campus {
+			background: rgba($campus, .8);
+			+ .arrow {
+				fill: rgba($campus, .8);
+			}
+			&:hover, &:focus {
+				background: $campus;
+				+ .arrow {
+					fill: $campus;
+				}
+			}
+			&:active {
+				background: mix($campus, white);
+				color: mix($campus, $slate);
+				+ .arrow {
+					fill: mix($campus, white);
+				}
+			}
+		}
+		&.bg-rocket {
+			background: rgba($rocket, .8);
+			+ .arrow {
+				fill: rgba($rocket, .8);
+			}
+			&:hover, &:focus {
+				background: $rocket;
+				+ .arrow {
+					fill: $rocket;
+				}
+			}
+			&:active {
+				background: mix($rocket, white);
+				color: mix($rocket, $slate);
+				+ .arrow {
+					fill: mix($rocket, white);
+				}
+			}
+		}
+		&.bg-shamrock {
+			background: rgba($shamrock, .8);
+			+ .arrow {
+				fill: rgba($shamrock, .8);
+			}
+			&:hover, &:focus {
+				background: $shamrock;
+				+ .arrow {
+					fill: $shamrock;
+				}
+			}
+			&:active {
+				background: mix($shamrock, white);
+				color: mix($shamrock, $slate);
+				+ .arrow {
+					fill: mix($shamrock, white);
+				}
+			}
+		}
+		&.bg-robin {
+			background: rgba($robin, .8);
+			+ .arrow {
+				fill: rgba($robin, .8);
+			}
+			&:hover, &:focus {
+				background: $robin;
+				+ .arrow {
+					fill: $robin;
+				}
+			}
+			&:active {
+				background: mix($robin, white);
+				color: mix($robin, $slate);
+				+ .arrow {
+					fill: mix($robin, white);
+				}
+			}
+		}
+		&.bg-lake {
+			background: rgba($lake, .8);
+			+ .arrow {
+				fill: rgba($lake, .8);
+			}
+			&:hover, &:focus {
+				background: $lake;
+				+ .arrow {
+					fill: $lake;
+				}
+			}
+			&:active {
+				background: mix($lake, white);
+				color: mix($lake, $slate);
+				+ .arrow {
+					fill: mix($lake, white);
+				}
+			}
+		}
+		&.bg-moxie {
+			background: rgba($moxie, .8);
+			+ .arrow {
+				fill: rgba($moxie, .8);
+			}
+			&:hover, &:focus {
+				background: $moxie;
+				+ .arrow {
+					fill: $moxie;
+				}
+			}
+			&:active {
+				background: mix($moxie, white);
+				color: mix($moxie, $slate);
+				+ .arrow {
+					fill: mix($moxie, white);
+				}
+			}
+		}
+		&.bg-crimson {
+			background: rgba($crimson, .8);
+			+ .arrow {
+				fill: rgba($crimson, .8);
+			}
+			&:hover, &:focus {
+				background: $crimson;
+				+ .arrow {
+					fill: $crimson;
+				}
+			}
+			&:active {
+				background: mix($crimson, white);
+				color: mix($crimson, $slate);
+				+ .arrow {
+					fill: mix($crimson, white);
+				}
+			}
+		}
+		&.bg-auburn, &.bg-delivery {
+			background: rgba($auburn, .8);
+			+ .arrow {
+				fill: rgba($auburn, .8);
+			}
+			&:hover, &:focus {
+				background: $auburn;
+				+ .arrow {
+					fill: $auburn;
+				}
+			}
+			&:active {
+				background: mix($auburn, white);
+				color: mix($auburn, $slate);
+				+ .arrow {
+					fill: mix($auburn, white);
+				}
+			}
+		}
+		&.bg-orange, &.bg-freelancing {
+			background: rgba($orange, .8);
+			+ .arrow {
+				fill: rgba($orange, .8);
+			}
+			&:hover, &:focus {
+				background: $orange;
+				+ .arrow {
+					fill: $orange;
+				}
+			}
+			&:active {
+				background: mix($orange, white);
+				color: mix($orange, $slate);
+				+ .arrow {
+					fill: mix($orange, white);
+				}
+			}
+		}
+		&.bg-gold, &.bg-baking {
+			background: rgba($gold, .8);
+			+ .arrow {
+				fill: rgba($gold, .8);
+			}
+			&:hover, &:focus {
+				background: $gold;
+				+ .arrow {
+					fill: $gold;
+				}
+			}
+			&:active {
+				background: mix($gold, white);
+				color: mix($gold, $slate);
+				+ .arrow {
+					fill: mix($gold, white);
+				}
+			}
+		}
+		&.bg-moola, &.bg-photography {
+			background: rgba($moola, .8);
+			+ .arrow {
+				fill: rgba($moola, .8);
+			}
+			&:hover, &:focus {
+				background: $moola;
+				+ .arrow {
+					fill: $moola;
+				}
+			}
+			&:active {
+				background: mix($moola, white);
+				color: mix($moola, $slate);
+				+ .arrow {
+					fill: mix($moola, white);
+				}
+			}
+		}
+		&.bg-azure, &.bg-tech {
+			background: rgba($azure, .8);
+			+ .arrow {
+				fill: rgba($azure, .8);
+			}
+			&:hover, &:focus {
+				background: $azure;
+				+ .arrow {
+					fill: $azure;
+				}
+			}
+			&:active {
+				background: mix($azure, white);
+				color: mix($azure, $slate);
+				+ .arrow {
+					fill: mix($azure, white);
+				}
+			}
+		}
+		&.bg-cobalt, &.bg-household {
+			background: rgba($cobalt, .8);
+			+ .arrow {
+				fill: rgba($cobalt, .8);
+			}
+			&:hover, &:focus {
+				background: $cobalt;
+				+ .arrow {
+					fill: $cobalt;
+				}
+			}
+			&:active {
+				background: mix($cobalt, white);
+				color: mix($cobalt, $slate);
+				+ .arrow {
+					fill: mix($cobalt, white);
+				}
+			}
+		}
+		&.bg-eggplant, &.bg-athletic {
+			background: rgba($eggplant, .8);
+			+ .arrow {
+				fill: rgba($eggplant, .8);
+			}
+			&:hover, &:focus {
+				background: $eggplant;
+				+ .arrow {
+					fill: $eggplant;
+				}
+			}
+			&:active {
+				background: mix($eggplant, white);
+				color: mix($eggplant, $slate);
+				+ .arrow {
+					fill: mix($eggplant, white);
+				}
+			}
+		}
+		&.bg-cerise, &.bg-academic {
+			background: rgba($cerise, .8);
+			+ .arrow {
+				fill: rgba($cerise, .8);
+			}
+			&:hover, &:focus {
+				background: $cerise;
+				+ .arrow {
+					fill: $cerise;
+				}
+			}
+			&:active {
+				background: mix($cerise, white);
+				color: mix($cerise, $slate);
+				+ .arrow {
+					fill: mix($cerise, white);
+				}
+			}
+		}
+	}
+	> div {
+		transform-origin: top center;
+		position: absolute;
+		top: 58px;
+		width: 198px;
+		left: 50%;
+		margin-left: -99px;
+		&:empty {
+			transform: none;
+			position: absolute;
+			z-index: 0;
+			width: 100%;
+			height: 40px;
+			left: 0;
+			margin-left: 0;
+			top: 50px;
+			visibility: visible;
+		}
+		> svg {
+			display: block;
+			position: relative;
+			z-index: 5;
+			width: 100%;
+			height: auto;
+		}
+		ul {
+			@include listless;
+			position: relative;
+			z-index: 4;
+			margin-top: -4px;
+			li {
+				position: relative;
+				height: 48px;
+				// border: 2px solid white;
+				border-top: 0;
+				font-size: 18px;
+				font-weight: 600;
+				color: white;
+				&:not(:first-child) {
+					a + .arrow {
+						display: none;
+					}
+				}
+				&:first-child {
+					border-topleft-radius: 2px;
+					border-top-right-radius: 2px;
+				}
+				&:last-child {
+					border-bottom-left-radius: 2px;
+					border-bottom-right-radius: 2px;
+				}
+				> div {
+					position: absolute;
+					background: white;
+					border-radius: 1000px;
+					z-index: 10;
+					&:nth-child(1) {
+						top: 0;
+						right: 0;
+						width: 2px;
+						height: 100%;
+						transform-origin: center bottom;
+						// transform: scaleY(0);
+					}
+					&:nth-child(2) {
+						bottom: 0;
+						right: 0;
+						width: 100%;
+						height: 2px;
+						transform-origin: left center;
+						// transform: scaleX(0);
+					}
+					&:nth-child(3) {
+						bottom: 0;
+						left: 0;
+						width: 2px;
+						height: 100%;
+						transform-origin: center top;
+						// transform: scaleY(0);
+					}
+				}
+				a {
+					@include flex;
+					@include flex-center;
+					height: 100%;
+					width: 100%;
+					padding: 0 15px;
+					text-align: center;
+					svg {
+						@include svg-stroke(white, 10);
+						display: none;
+						margin-left: 5px;
+						width: 24px;
+						height: 24px;
+					}
+					+ .arrow {
+						position: absolute;
+						left: 50%;
+						margin-left: -15px;
+						display: block;
+						top: -13px;
+						width: 30px;
+						height: 15px;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,89 @@
+<div class="loader-portal-outer">
+	<div class="loader-portal states"
+		init-default
+		on-init="s:[portal-open:public]"
+		when-portal-open="s:[warp-objects-container-init:public, warp-objects-init:public:delay-500]"
+		when-transition-end="p-op">
+		<div class="loader-portal-inside"
+			init-with="p:[tr:scale(0), tro:50% 90%]"
+			when-portal-open="p:[transform:scale(0):scale(1):250:easeInOutBack]:delay-100">
+			<div class="portal"
+				init-with="p:[tr:translateY(37%) translateZ(25px) rotateX(75deg)]"
+				when-portal-complete="p:[transform:translateY(37%) translateZ(25px) rotateX(75deg):translateY(-37.5%) translateZ(0px) rotateX(0deg):650:easeOutCirc easeOutCubic easeOutSine]:delay-2000 | s:[page-init:public:delay-1000, warp-start:public:delay-2000]">
+				<div>
+					<svg width="200px" height="200px" viewBox="0 0 400 400">
+						<circle cx="200" cy="200" r="192" stroke="#55A4B7" stroke-width="16" fill="#2B3234" stroke-linecap="round" stroke-linejoin="round"
+							init-default
+							when-portal-hover="p:[portal-progress-color:0:1:2000:linear:0, stroke-dashoffset:1207:0:2000:linear:0]:delay-250 |  s:[portal-complete:public:delay-2000]">
+							<!-- p:[l-progress:0:1:5000:linear:0]:delay-250 | p:[stroke-dashoffset:1207:0:2000:linear:0]:delay-250 -->
+						</circle>
+					</svg>
+				</div>
+				<div class="mask"></div>
+			</div>
+			<div class="logo"
+				ng-include="'preapp/templates/loaders/logo/main.html'"
+				init-with="p:[tr:translateY(350px), tro:center center]"
+				when-portal-open="p:[transform:translateY(350px) scale(0.5):translateY(0px) scale(1):500:easeOutExpo easeOutBack]:delay-500"
+				when-portal-complete="p:[transform:translateY(0px):translateY(350px):150:easeInBack]:delay-1250">
+			</div>
+			<div class="guru"
+				init-with="p:[tr:translateY(400px), tro:center top]"
+				when-portal-open="p:[transform:translateY(400px) scale(0.8):translateY(45px) scale(1):500:easeOutBack easeOutBack]:delay-900"
+				when-portal-complete="p:[transform:translateY(0px):translateY(350px):200:easeInBack]:delay-900">
+				<div ng-include="'preapp/templates/loaders/guru/main.html'"
+					init-with="p:[tro:center top]"
+					when-portal-open="s:[portal-hover:public:delay-950]"
+					when-portal-hover="a:[l-head-hover:set:(dur:800ms#func:cubic-bezier(.88#.34#.05#.68)#count:3):in]:delay-1000 | s:[warp-vehicles-init:public]">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="portal-transition-container"
+		when-warp-objects-container-init="t:[init:self]"
+		init-with="p-op"
+		on-init="p:[opacity:0:1:250:easeOutSine]"
+		when-transition-end="p:[opacity:1:0:250:easeOutSine]:delay-2000"
+		init-later>
+		<div style="display:none"
+			init-default
+			when-warp-start="s:[warp-open:public:delay-1250]"
+			when-warp-open="s:[warp-transition:public:delay-1000]"
+			when-warp-transition="s:[warp-end:public:delay-700]"
+			when-warp-objects-init="s:[warp-speed:public:delay-1500]"
+			when-warp-end="s:[transition-start:public:delay-500]"
+			when-transition-start="s:[transition-end:public]">
+		</div>
+
+		<div class="portal-transition-container"
+			init-with="p:[width:200px, height:200px, left:50%, top:50%, margin-left:-100px, margin-top:-100px, border-radius:100%, op:0, tr:translateY(20.5%) translateZ(25px) rotateX(84deg)]"
+			when-warp-start="p:[opacity:0:1:250:easeOutSine]"
+			when-portal-complete="p:[transform:translateY(71.5%) translateZ(25px) rotateX(84deg):translateY(0%) translateZ(25px) rotateX(0deg):650:easeOutCirc easeOutCubic easeOutSine]:delay-2000"
+			when-warp-open="p:[width:100%, height:100%, left:0, top:0, margin-left:0, margin-top:0, border-radius:0]">
+			<div class="portal-transition"
+				init-with="p:[-webkit-clip-path:circle(90px at 50% 50%), t:all 750ms cubic-bezier(1#0#1#0)]"
+				when-warp-open="p:[-webkit-clip-path:circle(1500px at 50% 50%)]"
+				when-warp-transition="p:[-webkit-clip-path:none]">
+			    <div class="warp" ng-include="'preapp/templates/loaders/warp.html'" style="background: #16293A;"></div>
+				<div class="warp-items">
+					<div ng-include="'preapp/templates/loaders/props/warp-objects.html'"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="portal-page"
+	when-page-init="t:[init:self]"
+	init-with="p-op"
+	on-init="p:[opacity:0:1:250:easeOutSine]"
+	init-later>
+	<div init-with="p:[-webkit-clip-path:circle(8px at 50% 50%), tr:translateY(2px), t:all 750ms cubic-bezier(1#0#1#0), overflow:hidden]"
+		when-transition-start="p:[-webkit-clip-path:circle(1500px at 50% 50%), tr:translateY(0px)]"
+		when-transition-end="p:[-webkit-clip-path:none]:delay-1000">
+		<div ng-include="'preapp/templates/splash.html'"
+			init-with="p-op"
+			when-transition-start="p:[opacity:0:1:500:easeOutSine]"></div>
+	</div>
+</div>

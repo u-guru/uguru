@@ -1,0 +1,868 @@
+@import '../../mixin';
+
+.calendar-week {
+	width: 100%;
+	background: $slate;
+	color: white;
+	.cal-month {
+		margin: 0 0 2px;
+	}
+	.cal-week {
+		> div {
+			@include flex;
+			@include flex-wrap;
+			width: 100%;
+			.cal-month {
+				margin: 0 0 2px;
+				width: calc(100% + 4px);
+			}
+			.cal-time {
+				width: 80px;
+				padding-top: 76px;
+				> li {
+					position: relative;
+					height: 50px;
+					transform-origin: left center;
+					&:first-child {
+						height: 36px;
+					}
+					span {
+						display: block;
+						position: absolute;
+						top: -9px;
+						right: 15px;
+						font-size: 18px;
+						font-weight: 600;
+						line-height: 1;
+						text-align: right;
+					}
+				}
+			}
+			.cal-main {
+				width: calc(100% - 80px);
+				.cal-date {
+					@include flex;
+					width: 100%;
+					// min-width: 770px;
+					min-width: 720px;
+					height: 76px;
+					padding: 0 1px;
+					> li {
+						width: calc(100% / 7);
+						// min-width: 110px;
+						min-width: 102px;
+						font-size: 18px;
+						font-weight: 600;
+						text-align: center;
+						padding: 0 1px;
+						> span {
+							@include flex;
+							@include flex-wrap;
+							@include flex-center;
+							border-radius: 2px;
+							// height: 30px;
+							padding: 10px;
+							width: 100%;
+							background: lighten($slate, 15%);
+							.cal-date-num {
+								display: block;
+								width: 100%;
+								font-size: 36px;
+								line-height: 1;
+								font-weight: 900;
+							}
+						}
+						&.not-available {
+							> span {
+								background: $crimson;
+							}
+						}
+					}
+				}
+				.cal-events {
+					@include flex;
+					// min-width: 770px;
+					min-width: 720px;
+					padding: 1px;
+					.cal-day {
+						width: calc(100% / 7);
+						> li {
+							position: relative;
+							width: 100%;
+							// min-width: 110px;
+							min-width: 102px!important;
+							height: 50px;
+							padding: 1px;
+							&.hours-2 {
+								height: 100px;
+							}
+							&.hours-3 {
+								height: 150px;
+							}
+							&.hours-4 {
+								height: 200px;
+							}
+							&.hours-5 {
+								height: 250px;
+							}
+							&.hours-6 {
+								height: 300px;
+							}
+							&.hours-7 {
+								height: 350px;
+							}
+							&.hours-8 {
+								height: 400px;
+							}
+							> span, > a {
+								display: block;
+								width: 100%;
+								height: 100%;
+								border-radius: 2px;
+								padding: 5px;
+								background: lighten($slate, 10%);
+								font-size: 16px;
+								font-weight: 600;
+								text-align: left;
+								+ div:not(.cal-popup) {
+									display: none;
+								}
+								h1 {
+									font-weight: 600;
+									font-size: 16px;
+								}
+								span {
+									display: block;
+									font-size: 14px;
+									line-height: 1.1;
+									color: lighten($slate, 15%)!important;
+								}
+							}
+							> span {
+								a {
+									opacity: 0;
+									display: block;
+									position: absolute;
+									right: 5px;
+									svg {
+										width: 20px;
+										height: 20px;
+										* {
+											@include svg-stroke(rgba($slate, .3), 10);
+										}
+									}
+									&.close-icon {
+										top: 4px;
+									}
+									&.info-icon {
+										bottom: 2px;
+									}
+									&:hover, &:focus {
+										opacity: 1;
+										svg {
+											* {
+												stroke: rgba($slate, .4);
+											}
+										}
+									}
+									&:active {
+										opacity: 1;
+										svg {
+											* {
+												stroke: rgba($slate, .5);
+											}
+										}
+									}
+								}
+								&:hover {
+									a {
+										opacity: 1;
+									}
+								}
+							}
+							&:not(.has-event), &:not(.match), &:not(.guru-available), &:not(.student-available), &:not(.not-available) {
+								> a:empty {
+									position: relative;
+									z-index: 1;
+									+ div:not(.cal-popup) {
+										@include flex;
+										@include flex-center;
+										transform: all 150ms ease-in-out;
+										position: absolute;
+										z-index: 0;
+										top: 1px;
+										left: 1px;
+										width: calc(100% - 2px);
+										height: calc(100% - 2px);
+										background: rgba(lighten($slate, 15%), .95);
+										border-radius: 2px;
+										opacity: 0;
+										svg {
+											display: block;
+											width: 20px;
+											height: 20px;
+											* {
+												@include svg-stroke(mix($slate, $smoke), 8);
+											}
+										}
+										&:after {
+											content: "";
+											display: block;
+											position: absolute;
+											top: 5px;
+											left: 5px;
+											width: calc(100% - 10px);
+											height: calc(100% - 10px);
+											border: 2px dashed mix($slate, $smoke);
+										}
+									}
+									&:hover {
+										opacity: 0;
+										+ div:not(.cal-popup) {
+											opacity: 1;
+										}
+									}
+								}
+							}
+							&.match {
+								.event {
+									background: mix($lake, $shamrock)!important;
+									color: white!important;
+									span, h1 {
+										color: white!important;
+									}
+									> div {
+										@include flex;
+										@include flex-center-vertical;
+										height: 100%;
+										> div:first-child {
+											position: relative;
+											width: 38px;
+											height: 38px;
+											margin-right: 10px;
+											span {
+												position: absolute;
+												&:first-child {
+													top: 0;
+													left: 0;
+												}
+												&:last-child {
+													bottom: 0;
+													right: 0;
+												}
+											}
+										}
+									}
+								}
+							}
+							&.student-available {
+								.event {
+									background: $lake;
+									color: white!important;
+								}
+							}
+							&.guru-available {
+								.event {
+									background: $shamrock;
+									color: white!important;
+								}
+							}
+							&.not-available {
+								.event {
+									background: lighten($slate, 5%);
+								}
+							}
+							&.all-day {
+								@include flex;
+								@include flex-center-vertical;
+								height: 36px!important;
+							}
+							.event {
+								position: absolute;
+								top: 1px;
+								left: 1px;
+								width: calc(100% - 2px);
+								height: calc(100% - 2px);
+								padding-left: 10px;
+								padding-right: 10px;
+								div:empty {
+									position: absolute;
+									background: $shamrock;
+									border-radius: 2px;
+									&:nth-child(1) {
+										top: 0;
+										left: 0;
+										width: 100%;
+										height: 2px;
+										transform-origin: right center;
+									}
+									&:nth-child(2) {
+										top: 0;
+										right: 0;
+										width: 2px;
+										height: 100%;
+										transform-origin: center bottom;
+									}
+									&:nth-child(3) {
+										bottom: 0;
+										right: 0;
+										width: 100%;
+										height: 2px;
+										transform-origin: left center;
+									}
+									&:nth-child(4) {
+										bottom: 0;
+										left: 0;
+										width: 5px;
+										height: 100%;
+										transform-origin: center top;
+									}
+								}
+							}
+							&.tentative {
+								.event {
+									position: relative;
+									border-style: dashed!important;
+									border-left-style: solid!important;
+									&:after {
+										content: "";
+										display: block;
+										position: absolute;
+										top: -2px;
+										left: -5px;
+										width: 5px;
+										height: calc(100% + 4px);
+										border-top-left-radius: 2px;
+										border-top-right-radius: 2px;
+										background: $campus;
+									}
+								}
+							}
+							&.urgent {
+								.event {
+									background: mix($crimson, white, 10%)!important;
+									div:empty {
+										background: $crimson!important;
+									}
+									h1 {
+										color: $crimson!important;
+									}
+								}
+								&.all-day {
+									> span {
+										background: mix($crimson, white, 10%)!important;
+									}
+								}
+							}
+							&.event-academic {
+								.event {
+									div:empty {
+										background: $cerise;
+									}
+									h1 {
+										color: $cerise!important;
+									}
+								}
+								&.all-day {
+									.event {
+										background: mix($cerise, white, 10%);
+									}
+								}
+								&.tentative {
+									.event {
+										div:empty {
+											background: mix($cerise, white);
+										}
+										&:after {
+											background: mix($cerise, white);
+										}
+									}
+								}
+							}
+							&.event-baking {
+								.event {
+									div:empty {
+										background: $gold;
+									}
+									h1 {
+										color: $gold!important;
+									}
+								}
+								&.all-day {
+									.event {
+										background: mix($gold, white, 10%);
+									}
+								}
+								&.tentative {
+									.event {
+										div:empty {
+											background: mix($gold, white);
+										}
+										&:after {
+											background: mix($gold, white);
+										}
+									}
+								}
+							}
+							&.event-photography {
+								.event {
+									div:empty {
+										background: $moola;
+									}
+									h1 {
+										color: $moola!important;
+									}
+								}
+								&.all-day {
+									.event {
+										background: mix($moola, white, 10%);
+									}
+								}
+								&.tentative {
+									.event {
+										div:empty {
+											background: mix($moola, white);
+										}
+										&:after {
+											background: mix($moola, white);
+										}
+									}
+								}
+							}
+							&.event-household {
+								.event {
+									div:empty {
+										background: $cobalt;
+									}
+									h1 {
+										color: $cobalt!important;
+									}
+								}
+								&.all-day {
+									.event {
+										background: mix($cobalt, white, 10%);
+									}
+								}
+								&.tentative {
+									.event {
+										div:empty {
+											background: mix($cobalt, white);
+										}
+										&:after {
+											background: mix($cobalt, white);
+										}
+									}
+								}
+							}
+							&.event-delivery {
+								.event {
+									div:empty {
+										background: $auburn;
+									}
+									h1 {
+										color: $auburn!important;
+									}
+								}
+								&.all-day {
+									.event {
+										background: mix($auburn, white, 10%);
+									}
+								}
+								&.tentative {
+									.event {
+										div:empty {
+											background: mix($auburn, white);
+										}
+										&:after {
+											background: mix($auburn, white);
+										}
+									}
+								}
+							}
+							&.event-freelancing {
+								.event {
+									div:empty {
+										background: $orange;
+									}
+									h1 {
+										color: $orange!important;
+									}
+								}
+								&.all-day {
+									.event {
+										background: mix($orange, white, 10%);
+									}
+								}
+								&.tentative {
+									.event {
+										div:empty {
+											background: mix($orange, white);
+										}
+										&:after {
+											background: mix($orange, white);
+										}
+									}
+								}
+							}
+							&.event-athletic {
+								.event {
+									div:empty {
+										background: $eggplant;
+									}
+									h1 {
+										color: $eggplant!important;
+									}
+								}
+								&.all-day {
+									.event {
+										background: mix($eggplant, white, 10%);
+									}
+								}
+								&.tentative {
+									.event {
+										div:empty {
+											background: mix($eggplant, white);
+										}
+										&:after {
+											background: mix($eggplant, white);
+										}
+									}
+								}
+							}
+							&.event-tech {
+								.event {
+									div:empty {
+										background: $azure;
+									}
+									h1 {
+										color: $azure!important;
+									}
+								}
+								&.all-day {
+									.event {
+										background: mix($azure, white, 10%);
+									}
+								}
+								&.tentative {
+									.event {
+										div:empty {
+											background: mix($azure, white);
+										}
+										&:after {
+											background: mix($azure, white);
+										}
+									}
+								}
+							}
+						}
+						&.not-available {
+							li {
+								.event {
+									background: lighten($slate, 5%);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		@media screen and (max-width: 768px) {
+			.cal-month {
+				font-size: 20px;
+				font-weight: 600;
+			}
+			.cal-main {
+				overflow-x: auto;
+				.cal-events {
+					@include flex;
+					@include flex-center;
+					width: 100%;
+					overflow-x: auto;
+					.cal-day {
+						min-width: 102px;
+					}
+				}
+			}
+		}
+	}
+	&.student {
+		.cal-week {
+			background: $smoke;
+			> div {
+				.cal-month {
+					background: $lake;
+					&.has-link {
+						a {
+							background: $lake;
+							color: white;
+							&:hover, &:focus {
+								background: mix($lake, white);
+								color: mix($lake, $slate);
+							}
+							&:active, &.active {
+								background: mix($lake, $slate);
+								color: white;
+							}
+						}
+					}
+				}
+				.cal-time {
+					li {
+						span {
+							color: $slate;
+						}
+					}
+				}
+				.cal-main {
+					.cal-events {
+						.cal-day {
+							li {
+								> span, > a {
+									background: mix(white, $smoke, 70%);
+									color: lighten($slate, 15%)!important;
+								}
+								&:not(.has-event), &:not(.match), &:not(.guru-available), &:not(.student-available), &:not(.not-available) {
+									> a {
+										+ div {
+											background: mix(white, $smoke, 60%);
+											svg {
+												* {
+													@include svg-stroke(mix($slate, $smoke), 8);
+												}
+											}
+											&:after {
+												content: "";
+												display: block;
+												position: absolute;
+												top: 5px;
+												left: 5px;
+												width: calc(100% - 10px);
+												height: calc(100% - 10px);
+												border: 2px dashed mix($slate, $smoke);
+											}
+										}
+									}
+								}
+								&.match {
+									.event {
+										background: mix(mix($lake, $shamrock), white, 40%)!important;
+										color: $slate!important;
+										span, h1 {
+											color: $slate!important;
+										}
+									}
+								}
+								&.student-available {
+									.event {
+										background: mix($lake, $smoke, 20%);
+										color: $slate!important;
+									}
+								}
+								&.guru-available {
+									.event {
+										background: mix($shamrock, $smoke, 20%);
+										color: $slate!important;
+									}
+								}
+								&.not-available {
+									.event {
+										background: rgba($slate, .075);
+									}
+								}
+							}
+							&.not-available {
+								li > span, li > a {
+									background: rgba($slate, .075);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-delivery {
+		.cal-week {
+			> div {
+				.cal-month {
+					background: $auburn;
+					&.has-link {
+						a {
+							background: $auburn;
+							color: white;
+							&:hover, &:focus {
+								background: mix($auburn, white);
+								color: mix($auburn, $slate);
+							}
+							&:active, &.active {
+								background: mix($auburn, $slate);
+								color: white;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-freelancing {
+		.cal-week {
+			> div {
+				.cal-month {
+					background: $orange;
+					&.has-link {
+						a {
+							background: $orange;
+							color: white;
+							&:hover, &:focus {
+								background: mix($orange, white);
+								color: mix($orange, $slate);
+							}
+							&:active, &.active {
+								background: mix($orange, $slate);
+								color: white;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-baking {
+		.cal-week {
+			> div {
+				.cal-month {
+					background: $gold;
+					&.has-link {
+						a {
+							background: $gold;
+							color: white;
+							&:hover, &:focus {
+								background: mix($gold, white);
+								color: mix($gold, $slate);
+							}
+							&:active, &.active {
+								background: mix($gold, $slate);
+								color: white;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-photography {
+		.cal-week {
+			> div {
+				.cal-month {
+					background: $moola;
+					&.has-link {
+						a {
+							background: $moola;
+							color: white;
+							&:hover, &:focus {
+								background: mix($moola, white);
+								color: mix($moola, $slate);
+							}
+							&:active, &.active {
+								background: mix($moola, $slate);
+								color: white;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-tech {
+		.cal-week {
+			> div {
+				.cal-month {
+					background: $azure;
+					&.has-link {
+						a {
+							background: $azure;
+							color: white;
+							&:hover, &:focus {
+								background: mix($azure, white);
+								color: mix($azure, $slate);
+							}
+							&:active, &.active {
+								background: mix($azure, $slate);
+								color: white;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-household {
+		.cal-week {
+			> div {
+				.cal-month {
+					background: $cobalt;
+					&.has-link {
+						a {
+							background: $cobalt;
+							color: white;
+							&:hover, &:focus {
+								background: mix($cobalt, white);
+								color: mix($cobalt, $slate);
+							}
+							&:active, &.active {
+								background: mix($cobalt, $slate);
+								color: white;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-athletic {
+		.cal-week {
+			> div {
+				.cal-month {
+					background: $eggplant;
+					&.has-link {
+						a {
+							background: $eggplant;
+							color: white;
+							&:hover, &:focus {
+								background: mix($eggplant, white);
+								color: mix($eggplant, $slate);
+							}
+							&:active, &.active {
+								background: mix($eggplant, $slate);
+								color: white;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-academic {
+		.cal-week {
+			> div {
+				.cal-month {
+					background: $cerise;
+					&.has-link {
+						a {
+							background: $cerise;
+							color: white;
+							&:hover, &:focus {
+								background: mix($cerise, white);
+								color: mix($cerise, $slate);
+							}
+							&:active, &.active {
+								background: mix($cerise, $slate);
+								color: white;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,378 @@
+<ion-view class="flex-center">
+    <projector class="projector-account"
+		init-with="tr:[translateY:-200%] | p:[t:transform 250ms ease-in-out]"
+		on-init="tr:[translateY:0%]">
+        <div class="projector-guru">
+            <div class="guru-head" ng-include="root.base_url + 'shared/templates/components/svg/logo/guru-head.html'"></div>
+            <svg class="coach active" init-with="p-op" width="114px" height="98px" viewBox="0 0 228 196">
+                 <path d="M48.386161,159.590945 C48.3861609,159.590943 47.5065944,177.922187 23.5796634,188.938294 C63.1658208,201.858782 77.415256,186.935364 86.5812235,178.667782 C146.539697,198.23757 207.421447,176.150125 222.564419,129.334091 C237.707391,82.518058 201.37725,28.7017162 141.418777,9.13192771 C81.4603034,-10.4378608 20.578553,11.6495847 5.43558085,58.4656181 C-6.12740226,94.2137525 12.3218247,134.043527 48.386161,159.590945 L48.386161,159.590945 L48.386161,159.590945 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" fill="#40484B"></path>
+                <text transform="translate(116.193148, 94.776332) rotate(24.000000) translate(-116.193148, -94.776332) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF" ng-if='!user.demographic'>
+                    <tspan x="48.6931477" y="93.7763318">who are</tspan>
+                    <tspan x="76.2331477" y="133.776332">you?</tspan>
+                </text>
+            </svg>
+        </div>
+
+        <!-- signup -->
+        <div class="projector-account-content projector-signup absolute top-0 left-0 full-xy"
+			init-default
+			when-proj-login-init="p:[op:0, z-index:-1]"
+			when-proj-signup-init="p:[op:1, z-index:10]">
+            <!-- ng-class:{'active':!page.account.loginMode && !page.account.forgotPassword} -->
+            <div class="projector-account-switch-desktop absolute top-0 right-0 p15xy">
+                <button class="btn-ghost-white"
+					init-default
+					on-click="s:[proj-login-init:public]">Login</button>
+                <!-- class-on-activate="tada:anim" ng-click='page.account.loginMode = true' -->
+            </div>
+            <div class="projector-account-inside full-xy">
+                <div class="student-card">
+                    <svg viewBox="0 0 240 150">
+                        <rect x="0" y="0" width="240" height="150" fill="none"></rect>
+                    </svg>
+                    <div class="school-id-inside">
+                        <div class="school-id-top" style="background: #003262;">
+                            <span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800');"></span>
+                        </div>
+                        <div class="school-id-bottom">
+                            <div>
+                                <h1 class='lettercase' style="color: #003262;">Gabrielle Wee</h1>
+                                <h2 style="color: #003262;">Cal Freshman</h2>
+                                <h2 style="color: #003262;">email@school.edu</h2>
+                            </div>
+                            <h3>
+                                <span style="color: #003262;">SELECTED COURSES</span>
+                                <span style="background: #003262;">9</span>
+                                <a>Edit</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <form class="signup-form full-x">
+                    <ul class="p15-grid">
+                        <li>
+                            <fieldset class="large full-x">
+                				<input class="input-border light" type="text" placeholder="what's your name?"/>
+                                <!-- ng-focus="onSignupFormFocus('name', signupForm.name, signupForm)" ng-blur="updateUserIdCard('name', signupForm.full_name, signupForm)" ng-model='signupForm.full_name' autocomplete="off" ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && updateUserIdCard('name', signupForm.full_name, signupForm)" -->
+                				<label></label>
+                                <!-- <small class='form-error absolute txt-shamrock weight-400' ng-if='signupForm.focusedInput === "name" && signupForm.activateErrorMsg && signupForm.activateErrorMsg.length'>{{signupForm.activateErrorMsg}}</small>
+                                <a ng-if='!signupForm.activateErrorName && signupForm.focusedInput === "name"' class="active" ng-click='signupForm.full_name = "";'>
+                                    <svg class="clear" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="36"></circle>
+                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                    </svg>
+                                </a>
+                                <a class='active' ng-if='!signupForm.activateErrorName && signupForm.validateName'>
+                                    <svg class="verified" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="36"></circle>
+                                        <path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
+                                    </svg>
+                                </a>
+                                <a ng-if='signupForm.activateErrorName' class='active' ng-click='signupForm.full_name = "";'>
+                                    <svg class="error" viewBox="0 0 100 100" >
+                                        <circle cx="50" cy="50" r="36"></circle>
+                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                    </svg>
+                                </a>-->
+                			</fieldset>
+                        </li>
+                        <li>
+                            <fieldset class="large full-x">
+                                <!-- ng-class="{ 'active' : signupForm.activateEmail}" -->
+                				<input class="input-border light" type="email" placeholder="what's your email?"/>
+                                <!-- ng-focus="onSignupFormFocus('email', signupForm.email, signupForm)" ng-blur="updateUserIdCard('email', signupForm.email, signupForm)" placeholder="what's your email?" ng-model='signupForm.email' autocomplete="off" ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && updateUserIdCard('email', signupForm.email, signupForm)" -->
+                				<label></label>
+                                <!-- <small class='form-error absolute txt-shamrock weight-400' ng-if='signupForm.focusedInput === "email" && signupForm.activateErrorMsg && signupForm.activateErrorMsg.length'>{{signupForm.activateErrorMsg}}</small>
+                                <a ng-if='signupForm.focusedInput === "email"' class="active" ng-click='signupForm.email = "";'>
+                                    <svg class="clear" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="36"></circle>
+                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                    </svg>
+                                </a>
+                                <a ng-if='!signupForm.activateErrorEmail && signupForm.validateEmail' class='active'>
+                                    <svg class="verified" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="36"></circle>
+                                        <path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
+                                    </svg>
+                                </a>
+                                <a ng-if='signupForm.activateErrorEmail' class='active' ng-click='signupForm.email = "";'>
+                                    <svg class="error" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="36"></circle>
+                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                    </svg>
+                                </a> -->
+                			</fieldset>
+                        </li>
+                        <li>
+                            <fieldset class="large full-x">
+                                <!-- ng-class="{'active': signupForm.activatePassword}" -->
+                				<input class="input-border light" type="password" placeholder="enter a password"/>
+                                <!-- ng-blur="updateUserIdCard('password', signupForm.password, signupForm)"  ng-focus="onSignupFormFocus('password', signupForm.password, signupForm)" placeholder="enter a password" autocomplete="off" ng-keyup="(($event.keyCode == 13 || $event.keyCode == 9) && signupOnEnter()) || (signupForm.password.length > 5 && updateUserIdCard('password', signupForm.password, signupForm))" ng-model='signupForm.password' -->
+                				<label></label>
+                                <!-- <small class='form-error absolute txt-shamrock weight-400' ng-if='signupForm.focusedInput === "password" && signupForm.activateErrorMsg && signupForm.activateErrorMsg.length'>{{signupForm.activateErrorMsg}}</small>
+                                <a class='active' ng-if='signupForm.focusedInput === "password"' ng-click='signupForm.password = "";'>
+                                    <svg class="clear" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="36"></circle>
+                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                    </svg>
+                                </a>
+                                <a ng-if='!signupForm.activateErrorPassword && signupForm.validatePassword' class='active'>
+                                    <svg class="verified" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="36"></circle>
+                                        <path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
+                                    </svg>
+                                </a>
+                                <a ng-if='signupForm.activateErrorPassword' class='active' ng-click='signupForm.password = "";'>
+                                    <svg class="error" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="36"></circle>
+                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                    </svg>
+                                </a> -->
+                			</fieldset>
+                        </li>
+                    </ul>
+                </form>
+                <ul class="projector-account-buttons mobile full-x ugrid-2">
+                    <li class="full-x">
+                        <button class="bg-moxie txt-18">Continue with Email</button>
+                        <!-- ng-click='completeSignup()' -->
+                    </li>
+                    <li>
+                        <button class="bg-shamrock txt-18">Switch<br/>to Login</button>
+                        <!-- ng-click="switchToLogin()" -->
+                    </li>
+                    <li>
+                        <button class="bg-fb txt-18">Login with<br/>Facebook</button>
+                        <!-- ng-click='connectWithFacebook()' -->
+                    </li>
+                </ul>
+                <ul class='projector-account-buttons desktop p15-grid'>
+                    <!-- ng-class="{'visible animated bounceInUp': signupForm.validatePassword && signupForm.validateEmail && signupForm.validateName}" -->
+                    <li>
+                        <button class="btn-login-login btn-ghost-white">Continue with Email</button>
+                        <!-- ng-click='completeSignup()' -->
+                    </li>
+                    <li>
+                        <button class="btn-login-fb btn-ghost-white">Continue with Facebook</button>
+                        <!-- ng-click='connectWithFacebook()' -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- login -->
+        <div class="projector-account-content projector-login absolute top-0 left-0 full-xy"
+			init-with="p:[op:0, z-index:-1]"
+			when-proj-login-init="p:[op:1, z-index:10]"
+			when-proj-signup-init="p:[op:0, z-index:-1]">
+            <!-- ng-class:{'active':page.account.loginMode && !page.account.forgotPassword} -->
+            <div class="projector-account-switch-desktop absolute top-0 right-0 p15xy">
+                <button class="btn-splash-login btn-ghost-white"
+					init-default
+					on-click="s:[proj-signup-init:public]">Signup</button>
+                <!-- ng-click='switchToSignup()' -->
+            </div>
+            <div class="projector-account-inside full-xy">
+                <div class="student-card">
+                    <svg viewBox="0 0 240 150">
+                        <rect x="0" y="0" width="240" height="150" fill="none"></rect>
+                    </svg>
+                    <div class="school-id-inside">
+                        <div class="school-id-top" style="background: #003262;">
+                            <span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800');"></span>
+                        </div>
+                        <div class="school-id-bottom">
+                            <div>
+                                <h1 class='lettercase' style="color: #003262;">Gabrielle Wee</h1>
+                                <h2 style="color: #003262;">Cal Freshman</h2>
+                                <h2 style="color: #003262;">email@school.edu</h2>
+                            </div>
+                            <h3>
+                                <span style="color: #003262;">SELECTED COURSES</span>
+                                <span style="background: #003262;">9</span>
+                                <a>Edit</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <form class="login-form full-x">
+                    <ul class="p15-grid">
+                        <li>
+                            <fieldset class="large full-x">
+                				<input class="input-border light" type="email" placeholder="what's your email?"/>
+                                <!-- ng-model='signupForm.email' autocomplete="off" -->
+                				<label></label>
+                                <!-- <a>
+                                    <svg class="clear" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="36"></circle>
+                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                    </svg>
+                                </a>
+                                <a>
+                                    <svg class="verified" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="36"></circle>
+                                        <path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
+                                    </svg>
+                                </a>
+                                <a>
+                                    <svg class="error" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="36"></circle>
+                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                    </svg>
+                                </a> -->
+                			</fieldset>
+                        </li>
+                        <li>
+                            <fieldset class="large full-x">
+                				<input class="input-border light" type="password" placeholder="enter your secure password"/>
+                                <!-- ng-model="signupForm.password" ng-keyup="$event.keyCode == 13 && loginUser()" -->
+                				<label></label>
+                                <!-- <a>
+                                    <svg class="clear" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="36"></circle>
+                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                    </svg>
+                                </a>
+                                <a>
+                                    <svg class="verified" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="36"></circle>
+                                        <path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
+                                    </svg>
+                                </a>
+                                <a>
+                                    <svg class="error" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="36"></circle>
+                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                    </svg>
+                                </a> -->
+                			</fieldset>
+                        </li>
+                    </ul>
+                </form>
+                <ul class="projector-account-buttons mobile full-x ugrid-2">
+                    <li>
+                        <button class="bg-moxie txt-18">Login</button>
+                        <!-- ng-click='loginUser()' -->
+                    </li>
+                    <li>
+                        <button class="bg-fb txt-18">Login with<br/>Facebook</button>
+                        <!-- ng-click='connectWithFacebook()' -->
+                    </li>
+                    <li>
+                        <button class="bg-shamrock txt-18">Switch<br/>to Login</button>
+                        <!-- ng-click="switchToLogin()" -->
+                    </li>
+                    <li>
+                        <button class="bg-taupe txt-18">Forgot your<br/>password?</button>
+                        <!-- ng-click="switchToForgotPassword()" -->
+                    </li>
+                </ul>
+                <ul class='projector-account-buttons desktop p15-grid'>
+                    <li>
+                        <button class="btn-login-login btn-ghost-white">Login</button>
+                        <!-- ng-click='loginUser()' -->
+                    </li>
+                    <li>
+                        <button class="btn-login-fb btn-ghost-white">Continue with Facebook</button>
+                        <!-- ng-click='connectWithFacebook()' -->
+                    </li>
+                    <li>
+                        <button class="btn-forgot-pw btn-ghost-white">Forgot your password?</button>
+                        <!-- ng-click="switchToForgotPassword();" -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- forgot password -->
+        <div class="projector-account-content projector-forgot absolute top-0 left-0 full-xy"
+			init-with="p:[op:0, z-index:-1]"
+			when-proj-login-init="p:[op:0, z-index:-1]"
+			when-proj-signup-init="p:[op:0, z-index:-1]">
+            <!-- ng-class:{'active':page.account.forgotPassword} -->
+            <ul class="projector-account-switch-desktop absolute top-0 right-0 flex p15-grid">
+                <li>
+                    <button class="btn-splash-login btn-ghost-white">Signup</button>
+                    <!-- ng-click='switchToSignup()' -->
+                </li>
+                <li>
+                    <button class="btn-splash-login btn-ghost-white">Login</button>
+                    <!-- ng-click='switchToLogin()' -->
+                </li>
+            </ul>
+            <div class="projector-account-inside full-xy">
+                <div class="student-card">
+                    <svg viewBox="0 0 240 150">
+                        <rect x="0" y="0" width="240" height="150" fill="none"></rect>
+                    </svg>
+                    <div class="school-id-inside">
+                        <div class="school-id-top" style="background: #003262;">
+                            <span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800');"></span>
+                        </div>
+                        <div class="school-id-bottom">
+                            <div>
+                                <h1 class='lettercase' style="color: #003262;">Gabrielle Wee</h1>
+                                <h2 style="color: #003262;">Cal Freshman</h2>
+                                <h2 style="color: #003262;">email@school.edu</h2>
+                            </div>
+                            <h3>
+                                <span style="color: #003262;">SELECTED COURSES</span>
+                                <span style="background: #003262;">9</span>
+                                <a>Edit</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <form class="forgot-form full-x">
+                    <ul class="p15-grid">
+                        <li>
+                            <fieldset class="large full-x">
+                                <input class="input-border light" type="email" placeholder="what's your email?"/>
+                                <!-- ng-model='signupForm.email' autocomplete="off" -->
+                                <label></label>
+                                <!-- <a>
+                                    <svg class="clear" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="36"></circle>
+                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                    </svg>
+                                </a>
+                                <a>
+                                    <svg class="verified" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="36"></circle>
+                                        <path d="M31,52.6470588 L42.1764706,63.8235294 L69,37"></path>
+                                    </svg>
+                                </a>
+                                <a>
+                                    <svg class="error" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="36"></circle>
+                                        <path d="M50,50 L50,31.5643475 L50,50 L31.5643475,50 L50,50 Z M50,50 L50,68.4356525 L50,50 L68.4356525,50 L50,50 Z"></path>
+                                    </svg>
+                                </a> -->
+                            </fieldset>
+                        </li>
+                    </ul>
+                </form>
+                <ul class="projector-account-buttons mobile full-x ugrid-2">
+                    <li>
+                        <button class="bg-moxie txt-18">Submit</button>
+                        <!-- ng-click='attemptToResetPassword()' -->
+                    </li>
+                    <li>
+                        <button class="bg-taupe txt-18">Cancel</button>
+                        <!-- ng-click='switchToLogin()' -->
+                    </li>
+                </ul>
+                <ul class='projector-account-buttons desktop p15-grid'>
+                    <li>
+                        <button class="btn-login-login btn-ghost-white">Submit</button>
+                        <!-- ng-click='attemptToResetPassword()' -->
+                    </li>
+                    <li>
+                        <button class="btn-login-fb btn-ghost-white">Cancel</button>
+                        <!-- ng-click='switchToLogin()' -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </projector>
+</ion-view>

@@ -1,0 +1,40 @@
+<section id="request" class="desktop-request bg-academic" elem-ready><header><!-- {{requestForm.nav}} --><!-- <tabs class="txt-white" tabs="['1','2','3','4','5','6']" index="1"/> --><nav class="request-nav arrow-bar tab-bar slide">{{requestForm.nav}}<div><a ng-click="requestForm.nav.switchTo(0)" ng-class="{active:!requestForm.nav.index}"><span>1</span></a> <a ng-click="requestForm.nav.switchTo(1)" ng-class="{active:requestForm.nav.index === 1}"><span>2</span></a> <a ng-click="requestForm.nav.switchTo(2)" ng-class="{active:requestForm.nav.index === 2}"><span>3</span></a> <a ng-click="requestForm.nav.switchTo(3)" ng-class="{active:requestForm.nav.index === 3}"><span>4</span></a> <a ng-click="requestForm.nav.switchTo(4)" ng-class="{active:requestForm.nav.index === 4}"><span>5</span></a> <a ng-click="requestForm.nav.switchTo(5)" ng-class="{active:requestForm.nav.index === 5}"><span>6</span></a><div><span></span></div><div><span></span></div></div></nav><progress class="bg-slate txt-white" max="6" value="{{requestForm.validationIndex || 0}}" ng-if="requestForm.validationIndex"></progress></header><!-- <header class='bg-shamrock desktop-tab-header bg-{{requestForm.subcategory.hex_color}}' ng-class="{'bg-shamrock':!requestForm.subcategory.hex_color}">
+		<a id='guru-profile-cta-close' class='cta-modal-close close-button p15xy flex-right-center'>
+			<svg viewBox="0 0 100 100">
+				<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+			</svg>
+		</a>
+		<h1 ng-if='!requestForm.subcategory.name'>Request Form</h1>
+		<h1 ng-if='requestForm.subcategory.name'>{{requestForm.category.name}} Request Form
+			<small class='full-x p05xy'>{{requestForm.subcategory.name}}</small>
+		</h1>
+		<div class="tab-bar slide">
+			<div>
+				<a ng-click='requestForm.nav.switchTo(0)' ng-class='{active:!requestForm.nav.index}'>Type</a>
+				<a ng-click='requestForm.nav.switchTo(1)' ng-class='{active:requestForm.nav.index === 1}'>Detail</a>
+				<a ng-click='requestForm.nav.switchTo(2)' ng-class='{active:requestForm.nav.index === 2}'>When</a>
+				<a ng-click='requestForm.nav.switchTo(3)' ng-class='{active:requestForm.nav.index === 3}'>Where</a>
+				<a ng-click='requestForm.nav.switchTo(4)' ng-class='{active:requestForm.nav.index === 4}'>Pay</a>
+				<a ng-click='requestForm.nav.switchTo(5)' ng-class='{active:requestForm.nav.index === 5}'>Confirm</a>
+				<hr/>
+			</div>
+		</div>
+		<div class="onboarding-steps absolute left-0" id='request-form-progress' ng-if='requestForm.validationIndex'>
+			<progress class="white" max="6" value="{{requestForm.validationIndex || 0}}"></progress>
+		</div>
+	</header>
+	<header class="flex-center" ng-if='!desktopMode'>
+	    <div class="header-nav full-x">
+			<a class="header-close cta-modal-close" ng-click="studentRequestModal.hide()">
+				<svg viewBox="0 0 100 100">
+					<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a>
+		</div>
+	</header> --><main class="relative"><ion-slide-box id="request-form-slide-box" class="full-xy" ng-init="disableSwipe()" show-pager="false" can-swipe-back="false" delegate-handle="request-form" on-slide-changed="slideHasChanged($index)"><ion-slide class="full-y" ng-include="img_base + BASE + 'templates/request.slide.six.html'"></ion-slide><ion-slide class="full-y" ng-include="img_base + BASE + 'templates/request.slide.one.html'"></ion-slide><ion-slide class="full-y" ng-include="img_base + BASE + 'templates/request.slide.two.html'"></ion-slide><ion-slide class="full-y" ng-include="img_base + BASE + 'templates/request.slide.three.html'"></ion-slide><ion-slide class="full-y" ng-include="img_base + BASE + 'templates/request.slide.four.html'"></ion-slide><ion-slide class="full-y" ng-include="img_base + BASE + 'templates/request.slide.five.html'"></ion-slide><ion-slide class="full-y" ng-include="img_base + BASE + 'templates/request.slide.six.html'"></ion-slide><ion-slide class="full-y" ng-include="img_base + BASE + 'templates/request.slide.seven.html'"></ion-slide></ion-slide-box><!-- <div class='bg-smoke request-nav absolute bottom-0 p20xy high-z-index left-0 full-x ugrid-3' ng-class="{'ugrid-4': requestForm.nav.index > 0 && requestForm.nav.index < 6}">
+			<div></div>
+			<button ng-if='requestForm.nav.index > 0 && requestForm.nav.index < 6' anim-on-show-child anim-on-show-class='bounceInUp' anim-on-show-delay="2500" class="bg-charcoal-50p m05x how-it-works-button" ng-if='::desktopMode' ng-click='requestForm.nav.previous()'>Previous</button>
+			<button ng-if='requestForm.nav.index < 5' anim-on-show-child anim-on-show-class='bounceInUp' anim-on-show-delay="2500" class="bg-shamrock m05x how-it-works-button" ng-if='::desktopMode' ng-click='requestForm.nav.next()'>Next</button>
+			<button ng-if='requestForm.nav.index === 5' anim-on-show-child anim-on-show-class='bounceInUp' anim-on-show-delay="2500" class="bg-shamrock m05x how-it-works-button" ng-if='::desktopMode' ng-click='requestForm.confirm(requestForm)'>Confirm & Submit</button>
+			<button ng-if='requestForm.nav.index === 6' anim-on-show-child anim-on-show-class='bounceInUp' anim-on-show-delay="2500" class="bg-shamrock m05x how-it-works-button" ng-if='::desktopMode' ng-click='requestForm.cancel(requestForm)'>Cancel</button>
+		</div> --></main></section>

@@ -1,0 +1,45 @@
+@import '../../mixin';
+
+.calendar-container {
+	@include flex;
+	width: 100%;
+	background: $slate;
+	* {
+		transform-origin: center center;
+	}
+	.cal-day-container {
+		width: 100%;
+	}
+}
+
+.cal-month {
+	@include flex;
+	@include flex-center;
+	width: calc(100% + 4px);
+	background: $shamrock;
+	height: 64px;
+	padding: 15px;
+	font-size: 28px;
+	font-weight: 700;
+	text-align: center;
+	text-transform: none;
+	svg {
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		@include prefix(transform-origin, center, webkit moz ms o);
+		@include svg-stroke(white, 4);
+		display: block;
+		margin: 0 auto;
+		stroke-width: 8px;
+		width: 24px;
+		height: 24px;
+	}
+	> span:nth-child(2) {
+		display: block!important;
+	}
+	> span {
+		@include flex;
+		span {
+			display: block;
+		}
+	}
+}

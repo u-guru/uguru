@@ -1,0 +1,432 @@
+@import '../../../../shared/css/scss/partials/mixin';
+
+#keys-keyframe-attr {
+	height: calc(100% - 130px);
+	&.active {
+		height: calc(100% - 80px - 125px);
+	}
+}
+#keyframe-pointer {
+	width: 5px;
+	height: 36px;
+	top: -21px;
+	margin-left: 5px;
+}
+#stage-container {
+	position: relative!important;
+	.fixed {
+		position: absolute!important;
+	}
+	> div {
+		width: 100%;
+		height: 100%;
+	}
+}
+#keys {
+	.aside-anim-element-item {
+		> * {
+			position: relative!important;
+			min-width: 100%!important;
+			min-height: 100%!important;
+			max-width: 100%!important;
+			max-height: 100%!important;
+		}
+	}
+	#stage-elem-clone-container {
+		min-height: 200px;
+		> .absolute {
+			position: relative!important;
+		}
+	}
+	#import-button {
+		svg {
+			@include prefix(transform, rotate(180deg), webkit moz ms o);
+		}
+	}
+	#keys-aside-menu.tab-bar.slide {
+		> div {
+			width: 100%!important;
+		}
+		> div {
+			a, hr {
+				width: calc(100% / 3);
+			}
+		}
+		a {
+			font-size: 16px;
+			&:nth-child(1) {
+				&.active {
+					~ hr {
+						@include translate-x(0);
+					}
+				}
+			}
+			&:nth-child(2) {
+				&.active {
+					~ hr {
+						@include translate-x(100%);
+					}
+				}
+			}
+			&:nth-child(3) {
+				&.active {
+					~ hr {
+						@include translate-x(200%);
+					}
+				}
+			}
+			&:nth-child(4) {
+				&.active {
+					~ hr {
+						@include translate-x(300%);
+					}
+				}
+			}
+			&:nth-child(1) {
+				&:hover, &:focus {
+					~ hr {
+						@include translate-x(0);
+					}
+				}
+			}
+			&:nth-child(2) {
+				&:hover, &:focus {
+					~ hr {
+						@include translate-x(100%);
+					}
+				}
+			}
+			&:nth-child(3) {
+				&:hover, &:focus {
+					~ hr {
+						@include translate-x(200%);
+					}
+				}
+			}
+			&:nth-child(4) {
+				&:hover, &:focus {
+					~ hr {
+						@include translate-x(300%);
+					}
+				}
+			}
+		}
+	}
+	#keys-toolbar {
+		a {
+			color: white!important;
+			&:hover, &:focus {
+				background: $moxie;
+			}
+			&:active {
+				background: $robin;
+			}
+			+ div {
+				@include prefix(transition, all 300ms cubic-bezier(.77,0,.05,1)!important, webkit moz ms o);
+				@include prefix(transition, all 300ms cubic-bezier(.77,0,.05,1.27)!important, webkit moz ms o);
+				@include prefix(transform-origin, center top, webkit moz ms o);
+				@include prefix(transform, scaleY(0), webkit moz ms o);
+				@include opacity(0);
+				z-index: -1000;
+				&:hover, &.active {
+					@include opacity(1);
+					@include prefix(transform, scaleY(1), webkit moz ms o);
+					z-index: 100;
+				}
+			}
+			&:hover, &:focus, &.active {
+				+ div {
+					@include opacity(1);
+					@include prefix(transform, scaleY(1), webkit moz ms o);
+					z-index: 100;
+				}
+			}
+		}
+	}
+	#keys-select-components {
+		li {
+			svg {
+				display: block;
+				width: 100px;
+				height: 100px;
+				border-radius: 2px;
+				&:first-child {
+					background: black;
+					margin-right: 7.5px;
+				}
+				&:last-child {
+					margin-left: 7.5px;
+					background: white;
+				}
+			}
+			> a {
+				&:hover, &:focus {
+					background: rgba(white, .3);
+				}
+				&:active {
+					background: rgba(white, .5);
+				}
+				> div {
+					position: relative;
+					height: 115px;
+					> * {
+						min-width: none;
+						min-height: none;
+						max-height: 100px;
+					}
+				}
+			}
+		}
+	}
+	.dropdown-container {
+		h2 {
+			font-size: 14px;
+			font-weight: 600;
+			margin-bottom: 5px;
+		}
+		.dropdown.small {
+			> div {
+				> span {
+					width: 160px;
+				}
+			}
+		}
+	}
+	input[type=number]::-webkit-inner-spin-button,
+	input[type=number]::-webkit-outer-spin-button {
+		@include appearance;
+		margin: 0;
+	}
+	.size-150 {
+		width: 150px!important;
+		height: 150px!important;
+	}
+}
+.anim-timeline {
+	@include flex;
+	@include flex-wrap;
+	position: relative;
+	width: 100%;
+	height: calc(75px + 32px);
+	background: darken($slate, 3%);
+	.anim-player {
+		position: relative;
+		width: calc(100% - 15px);
+	}
+	[class*="anim-bound"] {
+		position: absolute;
+		top: 0;
+		z-index: 2;
+		height: 100%;
+		background: rgba($charcoal, .5);
+		&.anim-bound-left {
+			left: 0;
+		}
+		&.anim-bound-right {
+			right: 0;
+		}
+	}
+	[class*="anim-end"] {
+		position: absolute;
+		top: 0;
+		z-index: 3;
+		height: 100%;
+		width: 2px;
+		background: white;
+		cursor: pointer;
+		&:before, &:after {
+			content: "";
+			display: block;
+			position: absolute;
+			cursor: pointer;
+		}
+		&:before {
+			top: -15px;
+			left: 50%;
+			margin-left: -5px;
+			border-radius: 100%;
+			width: 10px;
+			height: 10px;
+			background: white;
+		}
+		&:after {
+			top: -8px;
+			left: 50%;
+			margin-left: -5px;
+			width: 0;
+			height: 0;
+			border: 5px solid transparent;
+			border-top-color: white;
+		}
+		&.anim-end-left {
+			margin-left: -1px;
+		}
+		&.anim-end-right {
+			margin-right: -1px;
+		}
+	}
+	ul {
+		&.anim-label {
+			width: 15px;
+			font-size: 12px;
+			li {
+				@include flex;
+				@include flex-center;
+				width: 15px;
+				&:nth-child(1) {
+					background: mix($slate, $auburn, 50%);
+				}
+				&:nth-child(2) {
+					background: mix($slate, $orange, 50%);
+				}
+				&:nth-child(3) {
+					background: mix($slate, $gold, 50%);
+				}
+				&:nth-child(4) {
+					background: mix($slate, $moola, 50%);
+				}
+				&:nth-child(5) {
+					background: mix($slate, $azure, 50%);
+				}
+			}
+		}
+		&.anim-border {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			li {
+				&:not(:first-child) {
+					border-top: 1px solid rgba(white, .1);
+				}
+				&:not(:last-child) {
+					border-bottom: 1px solid rgba(white, .1);
+				}
+			}
+		}
+		&.anim-track {
+			width: 100%;
+		}
+		li {
+			@include flex;
+			height: 15px;
+			div {
+				height: 100%;
+				border-radius: 2px;
+				border: 2px solid rgba($slate, .1);
+				cursor: pointer;
+				&.new {
+					position: relative;
+					&:before, &:after {
+						@include round;
+						content: "";
+						display: block;
+						position: absolute;
+						top: 50%;
+						margin-top: -4px;
+						height: 8px;
+						width: 4px;
+					}
+					&:before {
+						left: -3px;
+					}
+					&:after {
+						right: -3px;
+					}
+				}
+			}
+			&:nth-child(1) {
+				div {
+					background: $auburn;
+					&.new {
+						background: rgba($auburn, .2);
+						border-color: $auburn;
+						&:before, &:after {
+							background: $auburn;
+						}
+					}
+				}
+			}
+			&:nth-child(2) {
+				div {
+					background: $orange;
+					&.new {
+						background: rgba($orange, .2);
+						border-color: $orange;
+						&:before, &:after {
+							background: $orange;
+						}
+					}
+				}
+			}
+			&:nth-child(3) {
+				div {
+					background: $gold;
+					&.new {
+						background: rgba($gold, .2);
+						border-color: $gold;
+						&:before, &:after {
+							background: $gold;
+						}
+					}
+				}
+			}
+			&:nth-child(4) {
+				div {
+					background: $moola;
+					&.new {
+						background: rgba($moola, .2);
+						border-color: $moola;
+						&:before, &:after {
+							background: $moola;
+						}
+					}
+				}
+			}
+			&:nth-child(5) {
+				div {
+					background: $azure;
+					&.new {
+						background: rgba($azure, .2);
+						border-color: $azure;
+						&:before, &:after {
+							background: $azure;
+						}
+					}
+				}
+			}
+		}
+	}
+	.anim-controls {
+		@include flex;
+		@include prefix(justify-content, space-between, webkit);
+		width: 100%;
+		padding: 2px;
+		background: $light-slate;
+		> div {
+			padding: 2px;
+			button {
+				width: 24px;
+				height: 24px;
+				border-radius: 2px;
+				padding: 0;
+				font-size: 18px;
+				line-height: 1;
+			}
+			.checkbox-container {
+				span {
+					width: 24px;
+					height: 24px;
+				}
+				label {
+					padding-left: 5px;
+					font-size: 16px;
+				}
+				input:checked + span {
+					background: $moxie;
+				}
+			}
+		}
+	}
+}

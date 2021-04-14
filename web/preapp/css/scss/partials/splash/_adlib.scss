@@ -1,0 +1,320 @@
+@import '../../../../../shared/css/scss/partials/mixin';
+
+.adlib-header-container {
+	position: relative;
+	max-width: 500px;
+	margin: 0 auto;
+	.adlib-header {
+		position: relative;
+		* {
+			transform-origin: center center;
+		}
+	}
+}
+
+.tag-adlib:not(.blank):not(.ghost) {
+	i {
+		display: block;
+		font-style: normal;
+		transition: all 600ms cubic-bezier(.77,0,.05,1);
+		transition: all 600ms cubic-bezier(.77,-0.22,.05,1.27);
+	}
+	&:hover {
+		i {
+			transform: scale(1.05)!important;
+		}
+	}
+}
+
+.splash-hero-content {
+	@include flex;
+	@include flex-wrap;
+	@include flex-center;
+	position: relative;
+	z-index: 3;
+	width: 100%;
+	margin-top: -20px;
+	&.pane {
+		background: $slate;
+		margin-bottom: 0;
+		height: 100%;
+	}
+	&.active {
+		transition-duration: 1000ms;
+		transition-timing-function: ease-in-out;
+		transition-delay: 200ms;
+		transform: translateY(-55%) scale(.75);
+	}
+	.splash-adlib {
+		width: 100%;
+		margin-top: -10px;
+		h1 {
+			@include flex-wrap;
+			@include flex-center;
+			font-size: 24px;
+			font-weight: 600;
+			line-height: 1.75;
+			a {
+				margin: 0 15px;
+			}
+		}
+		.splash-mobile-cta {
+			margin: 0 15px;
+			background: $shamrock;
+			height: 54px;
+			width: calc(100% - 30px);
+			font-size: 20px;
+			font-weight: 600;
+			text-transform: uppercase;
+			&:not(.bounceInUp) {
+				visibility: hidden;
+			}
+		}
+		.tag-adlib {
+			@media screen and (min-width: 320px) {
+				width: 96px;
+				height: 28px;
+				font-size: 16px;
+			}
+		}
+		ul {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			flex-direction: column;
+			padding: 7.5px;
+			width: 100%;
+			height: 150px;
+			margin: -10px 0 5px;
+			li {
+				width: 111px;
+				padding: 7.5px;
+				&:nth-child(4), &:nth-child(8) {
+					display: none;
+				}
+				a[class*="translate-blank"] {
+					animation: none!important;
+				}
+			}
+		}
+	}
+}
+
+.splash-guru-head {
+	width: 100px;
+	position: relative;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	> svg {
+		position: absolute;
+	}
+	.splash-hero-guru {
+		position: relative;
+		width: 100px;
+		height: 100px;
+		margin-bottom: -5px;
+		.guru-head-switcher {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -60px;
+			margin-left: -60px;
+			width: 120px;
+			height: 120px;
+		}
+	}
+	.coach-help {
+		&.coach-help-desktop {
+			display: none;
+			top: -40px;
+			left: -160px;
+			width: 170px;
+		}
+		&.coach-help-mobile {
+			top: -10px;
+			left: -90px;
+			width: 114.5px;
+		}
+	}
+}
+
+.coach-fill {
+	top: 55px;
+	right: -80px;
+	width: 105px;
+	path {
+		&:nth-child(1) {
+			stroke-dasharray: 137;
+		}
+		&:nth-child(2) {
+			stroke-dasharray: 53;
+		}
+	}
+}
+
+@media screen and (min-height: 480px) {
+	.coach-fill {
+		top: 75px;
+	}
+	.splash-hero-content {
+		.splash-adlib {
+			ul {
+				height: 170px;
+			}
+		}
+	}
+	.splash-guru-head {
+		width: 120px;
+		.splash-hero-guru {
+			width: 120px;
+			height: 120px;
+			.guru-head-switcher {
+				margin-top: -80px;
+				margin-left: -80px;
+				width: 160px;
+				height: 160px;
+			}
+		}
+	}
+}
+
+@media screen and (min-height: 568px) {
+	.coach-fill {
+		top: 85px;
+	}
+	.splash-hero-content {
+		.splash-adlib {
+			margin-top: 0;
+			.tag-adlib {
+				width: 130px;
+				height: 38px;
+				font-size: 20px;
+			}
+			ul {
+				height: 250px;
+				li {
+					width: 143px;
+					&:nth-child(4), &:nth-child(8) {
+						display: block;
+					}
+				}
+			}
+		}
+		.splash-guru-head {
+			margin-bottom: 0;
+		}
+	}
+}
+
+@media screen and (min-height: 680px) {
+	.coach-fill {
+		right: -100px;
+		width: 140px;
+	}
+	.splash-guru-head {
+		margin-top: 0;
+		width: 150px;
+		.splash-hero-guru {
+			width: 150px;
+			height: 150px;
+			.guru-head-switcher {
+				margin-top: -100px;
+				margin-left: -100px;
+				width: 200px;
+				height: 200px;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 320px) {
+	.splash-hero-content {
+		.splash-adlib {
+			h1 {
+				line-height: 1.8;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 360px) {
+	.splash-hero-content {
+		.splash-adlib {
+			h1 {
+				line-height: 2;
+			}
+		}
+	}
+}
+
+.adlib-header {
+	&.mobile {
+		margin-top: 0;
+		@include flex;
+	}
+	&.desktop {
+		display: none;
+	}
+	@media screen and (min-width: 768px) {
+		&.mobile {
+			display: none;
+		}
+		&.desktop {
+			@include flex;
+		}
+	}
+}
+
+
+@media screen and (min-width: 768px) {
+	.splash-hero-content {
+		.coach-help {
+			&.coach-help-desktop {
+				display: block!important;
+				&.hide {
+					display: none!important;
+				}
+			}
+			&.coach-help-mobile {
+				display: none!important;
+			}
+		}
+		.splash-guru-head {
+			.coach-fill {
+				top: 80px;
+				right: -180px;
+			}
+		}
+		.splash-adlib {
+			h1 {
+				font-size: 40px;
+			}
+			.splash-mobile-cta {
+				display: none;
+			}
+			.tag-adlib {
+			    width: 142px!important;
+			    height: 44px!important;
+			    font-size: 24px!important;
+			}
+			ul {
+				max-width: calc(172px * 4 + 30px);
+				height: 136px;
+				padding: 15px;
+				margin: 0 auto 15px;
+				flex-direction: row;
+				li {
+					width: 25%;
+					max-width: 172px;
+					padding: 15px;
+					&:nth-child(7), &:nth-child(8) {
+						display: block;
+					}
+				}
+			}
+		}
+		.adlib-header-container {
+			max-width: none;
+		}
+	}
+}

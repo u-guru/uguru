@@ -1,0 +1,164 @@
+@import '../../../../../shared/css/scss/partials/mixin';
+
+.projector-account {
+	header {
+		button {
+			position: absolute;
+			top: 9px;
+			right: 9px;
+			font-size: 16px;
+			padding: 6px 20px;
+		}
+	}
+	.projector-splash-container, .desktop, .mobile {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	.desktop {
+		display: none;
+	}
+}
+
+.projector-account-form {
+	@include flex;
+	@include flex-wrap;
+	@include flex-center;
+	width: 100%;
+	max-width: 450px;
+	.projector-account-input {
+		margin-top: -15px;
+		width: 100%;
+		padding: 7.5px;
+		li {
+			padding: 7.5px;
+		}
+		p {
+			font-size: 18px;
+			font-weight: 600;
+			margin: 0;
+			line-height: 1.2;
+		}
+	}
+	.projector-account-btn {
+		width: 100%;
+		padding: 7.5px;
+		margin-top: -15px;
+		li {
+			padding: 7.5px;
+			text-align: center;
+		}
+		.btn-ghost-round {
+			font-size: 16px;
+			padding: 6px 20px;
+			&.fb {
+				color: mix($facebook, white, 70%);
+				border-color: mix($facebook, white, 70%);
+				&:hover, &:focus {
+					border-color: $facebook;
+					background: $facebook;
+					color: white;
+				}
+				&:active {
+					border-color: mix($facebook, white);
+					background: mix($facebook, white);
+					color: mix($facebook, $slate);
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-height: 480px) {
+	.projector-account-form {
+		.projector-account-input {
+			margin-top: 0;
+			padding: 0.5px 7.5px 2px;
+			li {
+				padding: 12.5px 7.5px;
+			}
+		}
+		.projector-account-btn {
+			margin-top: 0;
+		}
+	}
+}
+
+@media screen and (min-height: 560px) and (min-width: 350px) {
+	.projector-account-form {
+		.projector-account-btn {
+			.btn-ghost-round {
+				font-size: 18px;
+				padding: 10px 30px;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.projector-account {
+		.desktop {
+			display: block;
+		}
+		.mobile {
+			display: none;
+		}
+	}
+	.projector-account-form {
+		.projector-account-btn {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+		}
+	}
+}
+
+@media screen and (min-width: 768px) and (min-height: 900px) {
+	.projector-account-form {
+		max-width: 730px;
+		div.input-border {
+			min-height: 70px;
+			max-width: 800px;
+			input.input-border {
+				font-size: 32px;
+				padding: 15px 0 15px 70px;
+				+ label:not(:empty) {
+					.input-icon {
+						width: 48px;
+						height: 48px;
+						top: 11px;
+						left: 11px;
+						* {
+							stroke-width: 5px;
+						}
+					}
+					> span {
+						font-size: 32px;
+						padding-left: 70px;
+						padding-right: 15px;
+					}
+					a {
+						width: 36px;
+						height: 36px;
+						top: 17px;
+						right: 17px;
+						svg {
+							* {
+								stroke-width: 6px;
+							}
+						}
+					}
+				}
+				&:focus {
+					+ label:not(:empty) {
+						.label {
+							opacity: 0!important;
+						}
+					}
+				}
+			}
+		}
+	}
+}

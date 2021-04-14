@@ -1,0 +1,145 @@
+<div id="splash-nav-bar" ng-controller="SplashNavController as nav" init-with="backstage" on-init="p:[op:1, z-index:1000] | send:[nav-init:public]">
+	<!-- powerups-clicked:public, search-university-clicked:public, nav-init:public, mobile-switch-init:public, sidebar-icon-clicked:public -->
+    <custom-states when="nav-init, powerups-clicked"></custom-states>
+    <div id="splash-desktop-nav" class="full-x">
+        <header class="splash-header" on-init="t-enter">
+            <a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'" init-default when-category-dropdown-mouse-enter="p:[op:0.25:delay-400, t:all 250ms ease-in-out]" when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]" when-category-dropdown-toggle-on="p:[op:0.25:delay-400, t:all 250ms ease-in-out]" when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]" when-university-dropdown-mouse-enter="p:[op:0.1:delay-400, t:all 250ms ease-in-out]" when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]" when-university-dropdown-toggle-on="p:[op:0.1:delay-400, t:all 250ms ease-in-out]" when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"></a>
+            <div class="right">
+                <div class="splash-hero-nav desktop m15right" desktop>
+                    <div class="splash-hero-nav-container">
+                        <dropdown ng-model="nav.categoriesDropdown" color-key="hex_color" type="color" prefix="category" init-with="p-op" when-nav-init="p:[op:1] | send:[dropdown-init:children:delay-750]" states="[hover, mouse-enter, mouse-leave, toggle-on, toggle-off, click]" hover-data="name, hex_color" click-data="name, hex_color" mouse-enter-data="name, hex_color" mouse-enter-delay="500" mouse-over-delay="1000" mouse-over-data="name, hex_color" mouse-leave-delay="250" mouse-leave-data="name, hex_color" toggle-on-data="name, hex_color" toggle-off-data="name, hex_color" when-university-dropdown-mouse-enter="p:[op:0.1:delay-150, t:all 250ms ease-in-out]" when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]" when-university-dropdown-toggle-on="p:[op:0.1:delay-150, t:all 250ms ease-in-out]" when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]" when-category-dropdown-mouse-enter="p:[op:1, t:all 250ms ease-in-out]" when-category-dropdown-toggle-on="p:[op:1, t:all 250ms ease-in-out]">
+                        </dropdown>
+                        <h2 init-with="p-op" when-nav-init="t-enter" on-enter="p:[op:1, t:all 1000ms ease-out]:delay-1000" when-category-dropdown-mouse-enter="p:[op:0.25:delay-50, t:all 250ms ease-in-out]" when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]" when-category-dropdown-toggle-on="p:[op:0.25:delay-50, t:all 250ms ease-in-out]" when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]" when-university-dropdown-mouse-enter="p:[op:0.1:delay-50, t:all 250ms ease-in-out]" when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]" when-university-dropdown-toggle-on="p:[op:0.1:delay-50, t:all 250ms ease-in-out]" when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]">@</h2>
+                        <dropdown type="color" ng-model="nav.universitiesDropdown" color-key='["school_color_dark", "school_color_one"]' prefix="university" init-with="p-op" when-nav-init="p:[o-1] | send:[dropdown-init:children:delay-1250]" states="[hover, mouse-enter, mouse-leave, toggle-on, toggle-off, click]" hover-data="name, school_color_dark" click-data="name, school_color_dark" mouse-enter-data="name, school_color_dark" mouse-enter-delay="500" mouse-over-delay="1000" mouse-over-data="name, school_color_dark" mouse-leave-delay="250" mouse-leave-data="name, school_color_dark" toggle-on-data="name, school_color_dark" toggle-off-data="name, school_color_dark" when-category-dropdown-mouse-enter="p:[op:0.25:delay-100, t:all 250ms ease-in-out]" when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]" when-category-dropdown-toggle-on="p:[op:0.25:delay-100, t:all 250ms ease-in-out]" when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]" when-university-dropdown-mouse-enter="p:[op:1, t:all 250ms ease-in-out]" when-university-dropdown-toggle-on="p:[op:1, t:all 250ms ease-in-out]"> </dropdown>
+                    </div>
+                </div>
+				<div class="splash-hero-nav mobile" mobile init-with="p-op" when-nav-init="t-enter" on-enter="p:[op:1, t:all 1000ms ease-out]:delay-1500">
+                    <div class="splash-hero-nav-container">
+                        <a init-default debug-id="1:[trigger:click]" on-click="send:[mobile-switch-init:public]">
+                            <span style='background-color: {{selectedUniversity.school_color_dark || "#003057"}}'></span>
+                            <span>
+								<span>@</span>
+								<span>&nbsp;{{splash.university.school_tiny_name || "Cal"}}</span>
+							</span>
+                            <svg viewBox="0 0 100 100">
+                                <path d="M14,32 L50,68 L86,32"></path>
+                            </svg>
+                        </a>
+						<!-- debug-id="1:[trigger:click]" -->
+                    </div>
+                </div>
+                <a class="powerups-link icon-round-stroke mobile" mobile init-default on-click="send:[powerups-clicked] | class:[powerups-link:add]">
+                    <div class="full-xy flex-center relative">
+						<svg viewBox="0 0 100 100">
+							<circle cx="50" cy="50" r="36" init-with="p:[sda:226.2, sdo:226.2]" when-nav-init="t-enter" on-enter="p:[sdo:0]:delay-1500"></circle>
+							<path d="M56.3084499,25.2719891 L34.0938203,54.734855 C33.8309226,55.1111739 34.1593498,55.7098274 34.5985529,55.7098274 L47.6390638,55.7098274 L42.1080688,74.2068066 C42.0199162,74.4951345 42.1735982,74.8274579 42.4372761,74.9382324 C42.700954,75.0710046 43.0301614,74.9830135 43.2056866,74.7386812 L65.9032056,44.9874874 C66.1661034,44.6111685 65.8587392,44.0133006 65.3984731,44.0133006 L52.0076918,44.0133006 L57.4076279,25.8038637 C57.5379067,25.4047613 57.1431699,24.9396657 56.7476531,25.0064446 C56.5721278,25.0284424 56.3966026,25.1172191 56.3084499,25.2719891 Z" class="path" init-with="p:[fop:0, sda:145.2, sdo:145.2]" when-nav-init="t-enter" on-enter="p:[sdo:0:delay-1500, fop:1:delay-1750]"></path>
+						</svg>
+					</div>
+                    <!-- translate-on-click scale-x-on-click="3.0476" scale-y-on-click="3.0476" translate-x-offset="42" translate-y-offset="42" translate-to-elem="#powerup-all-icon" -->
+                </a>
+				<a class="powerups-link icon-round-stroke desktop" desktop init-default when-category-dropdown-mouse-enter="p:[op:0.25:delay-150, t:all 250ms ease-in-out]" when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]" when-category-dropdown-toggle-on="p:[op:0.25:delay-150, t:all 250ms ease-in-out]" when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]" when-university-dropdown-mouse-enter="p:[op:0.1:delay-50, t:all 250ms ease-in-out]" when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]" when-university-dropdown-toggle-on="p:[op:0.1:delay-50, t:all 250ms ease-in-out]" when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]" on-click="send:[powerups-clicked] | class:[powerups-link:add]">
+                    <div class="full-xy flex-center relative">
+						<svg viewBox="0 0 100 100">
+							<circle cx="50" cy="50" r="36" init-with="p:[sda:226.2, sdo:226.2]" when-nav-init="t-enter" on-enter="p:[sdo:0]:delay-1500"></circle>
+							<path d="M56.3084499,25.2719891 L34.0938203,54.734855 C33.8309226,55.1111739 34.1593498,55.7098274 34.5985529,55.7098274 L47.6390638,55.7098274 L42.1080688,74.2068066 C42.0199162,74.4951345 42.1735982,74.8274579 42.4372761,74.9382324 C42.700954,75.0710046 43.0301614,74.9830135 43.2056866,74.7386812 L65.9032056,44.9874874 C66.1661034,44.6111685 65.8587392,44.0133006 65.3984731,44.0133006 L52.0076918,44.0133006 L57.4076279,25.8038637 C57.5379067,25.4047613 57.1431699,24.9396657 56.7476531,25.0064446 C56.5721278,25.0284424 56.3966026,25.1172191 56.3084499,25.2719891 Z" class="path" init-with="p:[fop:0, sda:145.2, sdo:145.2]" when-nav-init="t-enter" on-enter="p:[sdo:0:delay-1500, fop:1:delay-1750]"></path>
+						</svg>
+					</div>
+                    <!-- translate-on-click scale-x-on-click="3.0476" scale-y-on-click="3.0476" translate-x-offset="42" translate-y-offset="42" translate-to-elem="#powerup-all-icon" -->
+                </a>
+                <a class="sidebar-link icon-round-stroke mobile" mobile init-default on-click="send:[sidebar-icon-clicked:public]">
+					<div class="full-xy flex-center relative">
+						<svg viewBox="0 0 100 100">
+							<circle cx="50" cy="50" r="36" init-with="p:[sda:226.2, sdo:226.2, t:all 150ms ease-in-out]" when-nav-init="t-enter" on-enter="p:[sdo:0]:delay-750"></circle>
+							<g class="path">
+								<path d="M31,35.5 L69,35.5" init-with="p:[sda:38, sdo:38]" when-nav-init="t-enter" on-enter="p:[sdo:0:delay-1000]"></path>
+								<path d="M31,50.5 L69,50.5" init-with="p:[sda:38, sdo:38]" when-nav-init="t-enter" on-enter="p:[sdo:0:delay-1050]"></path>
+								<path d="M31,65.5 L69,65.5" init-with="p:[sda:38, sdo:38]" when-nav-init="t-enter" on-enter="p:[sdo:0:delay-1100]"></path>
+							</g>
+						</svg>
+					</div>
+				</a>
+				<a class="sidebar-link icon-round-stroke desktop" desktop init-default when-category-dropdown-mouse-enter="p:[op:0.25:delay-200, t:all 250ms ease-in-out]" when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]" when-category-dropdown-toggle-on="p:[op:0.25:delay-200, t:all 250ms ease-in-out]" when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]" when-university-dropdown-mouse-enter="p:[op:0.1:delay-100, t:all 250ms ease-in-out]" when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]" when-university-dropdown-toggle-on="p:[op:0.1:delay-100, t:all 250ms ease-in-out]" when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]" on-click="send:[sidebar-icon-clicked:public]">
+					<div class="full-xy flex-center relative">
+						<svg viewBox="0 0 100 100">
+							<circle cx="50" cy="50" r="36" init-with="p:[sda:226.2, sdo:226.2, t:all 150ms ease-in-out]" when-nav-init="t-enter" on-enter="p:[sdo:0]:delay-1750"></circle>
+							<g class="path">
+								<path d="M31,35.5 L69,35.5" init-with="p:[sda:38, sdo:38]" when-nav-init="t-enter" on-enter="p:[sdo:0:delay-2000]"></path>
+								<path d="M31,50.5 L69,50.5" init-with="p:[sda:38, sdo:38]" when-nav-init="t-enter" on-enter="p:[sdo:0:delay-2050]"></path>
+								<path d="M31,65.5 L69,65.5" init-with="p:[sda:38, sdo:38]" when-nav-init="t-enter" on-enter="p:[sdo:0:delay-2100]"></path>
+							</g>
+						</svg>
+					</div>
+				</a>
+            </div>
+        </header>
+
+         <div mobile id="splash-hero-nav-mobile" class="no-scrollbar" mobile ng-class="'bg-' + splash.category.bg_hex_color + '-slate-95p'" init-with="p:[op:0, z-index:-1, t:all 250ms ease-in-out]" when-mobile-switch-init="p:[op:1, z-index:999]" when-mobile-bg-exit="p:[z-index:-1, op:0]:delay-500" ]>
+			<div class="absolute top-0 right-0 p10xy">
+				<a class="flex-center svg-white svg-32 svg-stroke-8 close-icon" ng-include="root.base_url + 'shared/templates/components/svg/main/plus.html'" init-default on-click="s:[mobile-switch-exit]"></a>
+			</div>
+            <div class="splash-hero-nav-category full-x">
+                <h1 init-with="p-op" when-mobile-switch-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500" when-mobile-switch-exit="p:[op:0, t:all 500ms ease-out]">Category</h1>
+                <ul>
+                    <li ng-repeat="category in nav.categoriesDropdown.options" init-with="p-op" ng-class="{'delay-450': category.id === splash.category.id}" when-mobile-switch-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-1500" when-mobile-switch-exit="a:[slideOutDown-subtle:set:(dur:450ms#func:ease-in-out):out]">
+                        <!-- debug-id="2:[trigger:click,select:.bg-baking]" -->
+                        <a class="bg-{{category.bg_hex_color}}" id="bg-{{category.bg_hex_color}}-category-link" ng-class="{'active':category.id == splash.category.id}" ng-click="nav.categoriesDropdown.onOptionClick(category, $index)" on-click="p:[background-color:{{category.bg_hex_color}}:delay-500] | s:[mobile-switch-exit:public, mobile-categories-exit:public:data:(category.rgb_color#category.bg_hex_color#category.name):delay-250]">
+                            <span ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"></span>
+                            <span>{{category.name}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="splash-hero-nav-school full-x">
+                <h1 init-with="p-op" when-mobile-switch-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500" when-mobile-switch-exit="p:[op:0, t:all 500ms ease-out]:delay-250 | s:[mobile-bg-exit:public:delay-1000]">University</h1>
+                <ul>
+                    <li ng-repeat="university in nav.universitiesDropdown.options" class="txt-white weight-600" ng-class="{'delay-450':university.id === splash.university.id}" init-with="p-op" when-mobile-switch-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500" when-mobile-switch-exit="a:[slideOutDown-subtle:set:(dur:450ms#func:ease-in-out):out]">
+                        <a ng-class="{'active':university.id === splash.university.id}" ng-click="nav.universitiesDropdown.onOptionClick(university, $index)" init-with="border-color: {{university.school_color_dark}}" style="border-color: {{university.school_color_dark}}" on-click="s:[mobile-switch-exit:public, mobile-school-exit:public:data:(university.school_color_dark#university.short_name):delay-250]">
+                            <span style="background: {{university.school_color_dark}}"></span>
+                            <span>{{university.short_name || university.name}}</span>
+                            <span ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- End Mobile Nav-->
+    </div>
+
+    <!--
+    ====implemented=====
+        [autoplay]: play onrefresh,
+        [delay-between = N]: gap time N milliseconds b/w sequential states
+        [hide]: remove this to show the bar
+        [pause-at = N]: play all states until state N (inclusive)
+        [speed]: a pseudonym for 'pause-at=250', more usage later later
+    ====coming soon (in order)=====
+        > onStateButtonClick: Reset if already active (turn white => into green)
+        > <debug disable> a better way to disable it
+        > onDebugElement=>Inspect specific properties like opacity and watch the dynamic values [read-only]
+        > record button (multi-animation player) with tween-ability property values
+        > docs button to access state arguments
+        > include transform functionality (90% complete)
+        > include draw functionality (70% complete)
+        > single animation player (isolate, inspect, tween a single animation)
+        > <debug [highlight = N]: aside from the elements specified with debug attributes, keep them at opacity = N
+        > onHover[start:end]: ability to specify different commands based on hoverAbility
+        > init-when: like init-with, but allows clarification to specify WHEN (i.e. one argument = N = levels of parents, grandparents must be completed first);
+    -->
+	<!-- <debug hide autoplay delay-btwn="1000" pause-at="3" speed='fast'/> -->
+    <!-- <debug delay-btwn="1000" pause-at="3" speed='fast'> </debug> -->
+</div>
+
+<div class="splash-hero-skip absolute bottom-0 right-0 z-index-99" init-with="prop:[op:0, tro:center center, tr:translateX(100%) rotate(180deg), t:all 1000ms cubic-bezier(.04#.75#.77#1.32)]" on-init="t-enter" on-enter="prop:[op:1, tr:translateX(0) rotate(0)]:delay-4000">
+   <button>Skip</button>
+</div>
+
+<div class="splash-hero-pennant absolute left-0 z-index-99 p15xy" style="bottom: -65px" init-with="p:[op:0, tro:left bottom, tr:translateY(50%) rotate(-90deg), t:all 500ms ease-out]" when-madlib-init="s:[pennant-enter:public]:delay-5500" on-enter="p:[op:1, tr:translateY(0) rotate(0)]" when-pennant-enter="p:[op:1, tr:translateY(0) rotate(0)]" when-pennant-exit="p:[op:0, tr:translateY(50%) rotate(-90deg)] | s:[pennant-enter:public]:delay-500" when-university-dropdown-hover="s:[pennant-exit:public]" when-mobile-school-exit="s:[pennant-exit:public:delay-250]">
+	<svg width="110px" height="137px" viewBox="0 0 73 91">
+	    <path d="M4.5,85.4013441 L4.5,5.59865586 C5.39670243,5.07993868 6,4.11042319 6,3 C6,1.34314575 4.65685425,0 3,0 C1.34314575,0 0,1.34314575 0,3 C0,4.11042319 0.60329757,5.07993868 1.49999916,5.59865293 L1.5,85.4013441 C0.60329757,85.9200613 0,86.8895768 0,88 C0,89.6568542 1.34314575,91 3,91 C4.65685425,91 6,89.6568542 6,88 C6,86.8895768 5.39670243,85.9200613 4.50000084,85.4013471 Z" id="pole" fill="#D8D8D8"></path>
+	    <path d="M63.071575,27.5 L72.2393802,32.9924931 L0,48 L1.42108547e-14,7 L71.7272013,22.1343641 L63.071575,27.5 Z" id="flag" opacity="0.9" style="fill:#003057" init-default when-university-dropdown-hover="p:[fill:^school_color_dark]:delay-500" when-mobile-school-exit="p:[fill:^university.school_color_dark]:delay-750"></path>
+	    <path d="M0,7 L0,48 L6.261,46.7 L6.261,8.321 L0,7 L0,7 Z" id="border" fill="#2B3234"></path>
+	    <text fill="#FFFFFF" font-family="Source Sans Pro" font-size="12.7286934" font-weight="bold" init-with="p:[t:all 250ms ease-out]" when-university-dropdown-hover="p:[op:0]" when-mobile-switch-init="p:[op:0]" when-university-dropdown-toggle-off="p:[op:1:delay-500]" when-mobile-school-exit="p:[op:1:delay-750]">
+	        <tspan x="10" y="32" fill="#FFFFFF">{{splash.university.school_tiny_name || "Cal"}}</tspan>
+	    </text>
+	</svg>
+</div>

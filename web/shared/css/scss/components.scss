@@ -1,0 +1,36 @@
+@import 'partials/mixin';
+@import 'partials/components/animation';
+@import 'partials/components/buttons';
+@import 'partials/components/input';
+@import 'partials/components/dropdowns';
+@import 'partials/components/cards';
+@import 'partials/components/tiles';
+@import 'partials/components/thumbnails';
+@import 'partials/components/tags';
+@import 'partials/components/forms';
+@import 'partials/components/bars';
+@import 'partials/components/notifications';
+@import 'partials/components/svg';
+@import 'partials/components/visual';
+@import 'partials/components/lists';
+@import 'partials/components/containers';
+@import 'partials/components/text';
+
+// guru head
+@import 'partials/guru-head';
+
+// calendar
+@import 'partials/components/calendar';
+@import 'partials/components/calendar/popup';
+@import 'partials/components/calendar/search';
+@import 'partials/components/calendar/calendar';
+@import 'partials/components/calendar/monthly';
+@import 'partials/components/calendar/weekly';
+
+// demo
+@import 'partials/demo';
+
+
+.test {
+	color: mix(white, $moola, 30%);
+}

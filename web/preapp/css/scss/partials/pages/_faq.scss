@@ -1,0 +1,143 @@
+@import '../../../../../shared/css/scss/partials/mixin';
+
+.splash-faq {
+	> ul {
+		@include flex;
+		@include flex-wrap;
+		padding: 7.5px;
+		li {
+			width: 100%;
+			padding: 7.5px;
+			.faq-card {
+				width: 100%;
+				max-width: 100%;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.splash-faq {
+		> ul {
+			li {
+				width: 50%;
+			}
+		}
+	}
+}
+
+// #faq {
+// 	.main {
+// 		@include flex;
+// 		@include flex-wrap;
+// 	}
+// 	dl {
+// 		width: 100%;
+// 		margin-bottom: 0!important;
+// 		dt {
+// 			@include flex;
+// 			@include flex-center-vertical;
+// 			background: $rocket;
+// 			border-radius: 2px 2px 0 0;
+// 			padding: 10px 15px;
+// 			font-size: 20px;
+// 			font-weight: 700;
+// 			.close-button {
+// 				display: block;
+// 				width: 40px;
+// 				height: 40px;
+// 				padding-left: 10px;
+// 				svg {
+// 					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+// 					width: 100%;
+// 					height: 100%;
+// 					* {
+// 						stroke-width: 7px;
+// 					}
+// 				}
+// 			}
+// 			&:not(.active) {
+// 				border-radius: 2px;
+// 				.close-button {
+// 					svg {
+// 						@include rotate(0);
+// 					}
+// 				}
+// 			}
+// 			span {
+// 				display: block;
+// 				width: calc(100% - 40px);
+// 			}
+// 		}
+// 		dd {
+// 			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+// 			@include prefix(transform-origin, top center, webkit moz ms o);
+// 			background: white;
+// 			border: 2px solid $rocket;
+// 			border-top: 0;
+// 			border-radius: 0 0 2px 2px;
+// 			padding: 10px 15px;
+// 			color: $slate;
+// 			font-size: 16px;
+// 			font-weight: 600;
+// 		}
+// 		a {
+// 			display: block;
+// 			&:hover, &:focus {
+// 				dt {
+// 					background: mix($rocket, white);
+// 					color: mix($rocket, $slate);
+// 					.close-button {
+// 						svg {
+// 							@include prefix(transform, rotate(90deg), webkit moz ms o);
+// 							* {
+// 								stroke: mix($rocket, $slate);
+// 							}
+// 						}
+// 					}
+// 					&.active {
+// 						.close-button {
+// 							svg {
+// 								@include prefix(transform, rotate(135deg), webkit moz ms o);
+// 							}
+// 						}
+// 					}
+// 				}
+// 				+ dd {
+// 					border-color: mix($rocket, white);
+// 				}
+// 			}
+// 			&:active {
+// 				dt {
+// 					background: mix($rocket, $slate);
+// 					color: white;
+// 					.close-button {
+// 						svg {
+// 							* {
+// 								stroke: white;
+// 							}
+// 						}
+// 					}
+// 				}
+// 				+ dd {
+// 					border-color: mix($rocket, $slate);
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+//
+// @media screen and (min-width: 768px) {
+// 	#faq {
+// 		.main {
+// 			flex-direction: column;
+// 			height: 100%;
+// 			width: 100%;
+// 			padding: 15px;
+// 		}
+// 		dl {
+// 			width: 50%;
+// 			padding: 15px;
+// 		}
+// 	}
+// }

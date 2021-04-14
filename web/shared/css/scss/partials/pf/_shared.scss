@@ -1,0 +1,803 @@
+@import '../mixin';
+
+.pf-aside {
+	transform-origin: right center;
+}
+.pf-rest {
+	transform-origin: center bottom;
+}
+
+.pf-container {
+    height: 100%;
+    width: 100%;
+    color: white;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+	&::-moz-scrollbar {
+		display: none;
+	}
+    .tab-bar {
+        &.slide {
+            width: 100%;
+            overflow: auto;
+            @media screen and (max-width:480px) {
+                @include prefix(justify-content, flex-start, webkit);
+            }
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            &::-moz-scrollbar {
+                display: none;
+            }
+            > div {
+                width: 100%;
+                max-width: 660px;
+                min-width: 480px;
+                a {
+                    width: 25%;
+                    &:nth-child(1) {
+                        &.active {
+                            ~ hr {
+                                @include prefix(transform, translateX(0) translateZ(0), webkit moz ms o);
+                            }
+                        }
+                    }
+                    &:nth-child(2) {
+                        &.active {
+                            ~ hr {
+                                @include prefix(transform, translateX(100%) translateZ(0), webkit moz ms o);
+                            }
+                        }
+                    }
+                    &:nth-child(3) {
+                        &.active {
+                            ~ hr {
+                                @include prefix(transform, translateX(200%) translateZ(0), webkit moz ms o);
+                            }
+                        }
+                    }
+                    &:nth-child(4) {
+                        &.active {
+                            ~ hr {
+                                @include prefix(transform, translateX(300%) translateZ(0), webkit moz ms o);
+                            }
+                        }
+                    }
+
+                    &:nth-child(1) {
+                        &:hover, &:focus {
+                            ~ hr {
+                                @include prefix(transform, translateX(0) translateZ(0), webkit moz ms o);
+                            }
+                        }
+                    }
+                    &:nth-child(2) {
+                        &:hover, &:focus {
+                            ~ hr {
+                                @include prefix(transform, translateX(100%) translateZ(0), webkit moz ms o);
+                            }
+                        }
+                    }
+                    &:nth-child(3) {
+                        &:hover, &:focus {
+                            ~ hr {
+                                @include prefix(transform, translateX(200%) translateZ(0), webkit moz ms o);
+                            }
+                        }
+                    }
+                    &:nth-child(4) {
+                        &:hover, &:focus {
+                            ~ hr {
+                                @include prefix(transform, translateX(300%) translateZ(0), webkit moz ms o);
+                            }
+                        }
+                    }
+                }
+                hr {
+                    width: 25%;
+                    border-top: 5px solid $moola;
+                }
+            }
+        }
+    }
+    .pf-aside {
+        @include flex;
+        @include flex-wrap;
+        @include flex-center;
+        position: relative;
+        background: $light-slate;
+        height: calc(100% / 3);
+        text-align: center;
+        .pf-aside-bg {
+            @include opacity(.3);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+        }
+        *:not([class*="aside-bg"]) {
+			position: relative;
+			z-index: 2;
+		}
+        .pf-aside-widget {
+            margin-top: 47px;
+			div:empty {
+				position: absolute!important;
+			}
+        }
+        .pf-aside-widget, .pf-aside-desc {
+            display: none;
+        }
+        .pf-aside-desc {
+            margin-top: 47px;
+            width: 100%;
+            max-width: 400px;
+            background: rgba($light-slate, .3);
+            border: 2px solid white;
+            border-radius: 2px;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.2;
+            @media screen and (min-width:1000px) {
+                width: calc(100% - 30px);
+            }
+        }
+        .pf-aside-mobile {
+            .pf-icon {
+                width: 64px;
+                height: 64px;
+                border-width: 2px;
+            }
+            .pf-name {
+                width: 100%;
+                font-size: 20px;
+                font-weight: 600;
+            }
+            .pf-school-name {
+				margin-top: 0!important;
+                width: 100%;
+                font-size: 16px;
+                font-weight: 400;
+            }
+            .pf-rating {
+                margin-top: 5px;
+            }
+            .pf-reviews {
+                width: 100%;
+                font-size: 14px;
+                font-weight: 400;
+                text-transform: uppercase;
+            }
+        }
+    }
+    .pf-rest {
+        height: calc(100% / 3 * 2);
+    }
+    .pf-main {
+        position: relative;
+        background: $slate;
+        height: calc(100% - 60px);
+        > div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+			&::-webkit-scrollbar {
+				display: none;
+			}
+			&::-moz-scrollbar {
+				display: none;
+			}
+            &:not(.active) {
+                @include opacity(0);
+                display: none;
+                z-index: -1;
+            }
+            .pf-main-header {
+                background: rgba(white, .1);
+                padding: 15px;
+                margin: 0!important;
+                h1 {
+                    font-size: 28px;
+                    font-weight: 600;
+                    text-align: center;
+                }
+                p {
+                    margin: 0;
+                    padding: 0 15px;
+                    font-size: 16px;
+                    font-weight: 400;
+                    text-align: center;
+                }
+            }
+            .pf-main-subheader {
+                @include flex;
+                @include flex-center-vertical;
+                @include prefix(justify-content, space-between, webkit);
+                position: relative;
+                max-width: 845px;
+                margin: 0 auto;
+                padding: 15px;
+                h2 {
+					display: block;
+                    font-size: 18px;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                }
+                a {
+					display: block;
+                    font-size: 16px;
+                    font-weight: 600;
+					span {
+						@include opacity(.5);
+					}
+                    &:hover, &:focus {
+                        span {
+							@include opacity(.75);
+						}
+                    }
+                    &:active {
+                        span {
+							@include opacity(1);
+						}
+                    }
+                }
+                hr {
+					@include round;
+					display: block;
+					position: absolute;
+					bottom: -1px;
+					left: 15px;
+					height: 2px;
+					width: calc(100% - 30px);
+					margin: 0;
+					background: rgba(white, .2);
+					border: 0!important;
+					transform-origin: left center;
+				}
+            }
+            .pf-items {
+                @include listless;
+                @include flex;
+                @include flex-wrap;
+                @include flex-center;
+                width: 100%;
+                max-width: 845px;
+                margin: 0 auto;
+                padding: 7.5px;
+                > li {
+                    @include flex;
+                    @include flex-center;
+                    padding: 7.5px;
+                    width: 100%;
+                    .pf-tile, .pf-cardlet {
+                        width: 100%;
+                        max-width: 400px;
+                    }
+                }
+            }
+            &.pf-about {
+                .pf-about-section {
+                    margin: 0 auto 15px;
+                    width: calc(100% - 30px);
+                    max-width: 815px;
+                    &:nth-child(2) {
+                        margin-top: 15px;
+                    }
+                    header {
+                        min-height: 0;
+                        h2 {
+                            background: $shamrock;
+                            width: 100%;
+                            padding: 5px 0;
+                            border-radius: 2px 2px 0 0;
+                            font-size: 16px;
+                            font-weight: 600;
+                            text-align: center;
+                            text-transform: uppercase;
+                        }
+                    }
+                    .social-bar {
+                        padding: 0!important;
+                    }
+                    > div:not(.social-bar) {
+                        padding: 15px;
+                        background: $light-slate;
+                        border-radius: 0 0 2px 2px;
+                        h1 {
+                            font-size: 24px;
+                            font-weight: 600;
+                            text-align: center;
+                        }
+                        h2 {
+                            font-size: 16px;
+                            font-weight: 400;
+                            text-align: center;
+                            max-width: 600px;
+                            margin-left: auto;
+                            margin-right: auto;
+                        }
+                        .pf-url {
+                            @include listless;
+                            @include flex;
+                            @include flex-center;
+                            li {
+                                padding: 0;
+                                background: none;
+                                &:first-child {
+                                    a {
+                                        display: block;
+                                        padding: 10px 15px;
+                                        background: rgba(white, .1);
+                                        font-size: 16px;
+                                        font-weight: 600;
+                                    }
+                                }
+                                &:last-child {
+                                    a {
+                                        display: block;
+                                        background: $shamrock;
+                                        padding: 0;
+                                        svg {
+                                            display: block;
+                                            height: 40px;
+                                            width: 40px;
+                                            padding: 8px;
+                                            * {
+                                                @include svg-stroke(white, 6);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .pf-about-shops {
+                            @include listless;
+                            @include flex;
+                            @include flex-wrap;
+                            @include flex-center;
+                            margin: -15px;
+                            padding: 7.5px;
+                            li {
+                                width: 20%;
+                                padding: 7.5px;
+                                a {
+                                    display: block;
+                                    border-radius: 2px;
+                                    svg {
+                                        * {
+                                            @include svg-stroke(white, 2);
+                                        }
+                                    }
+                                    &.pf-delivery {
+                                        background: $auburn;
+                                        &:hover, &:focus {
+                                            background: mix($auburn, white);
+                                            svg {
+                                                * {
+                                                    stroke: mix($auburn, $slate);
+                                                }
+                                            }
+                                        }
+                                        &:active {
+                                            background: mix($auburn, $slate);
+                                            svg {
+                                                * {
+                                                    stroke: white;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &.pf-freelancing {
+                                        background: $orange;
+                                        &:hover, &:focus {
+                                            background: mix($orange, white);
+                                            svg {
+                                                * {
+                                                    stroke: mix($orange, $slate);
+                                                }
+                                            }
+                                        }
+                                        &:active {
+                                            background: mix($orange, $slate);
+                                            svg {
+                                                * {
+                                                    stroke: white;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &.pf-baking {
+                                        background: $gold;
+                                        &:hover, &:focus {
+                                            background: mix($gold, white);
+                                            svg {
+                                                * {
+                                                    stroke: mix($gold, $slate);
+                                                }
+                                            }
+                                        }
+                                        &:active {
+                                            background: mix($gold, $slate);
+                                            svg {
+                                                * {
+                                                    stroke: white;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &.pf-photography {
+                                        background: $moola;
+                                        &:hover, &:focus {
+                                            background: mix($moola, white);
+                                            svg {
+                                                * {
+                                                    stroke: mix($moola, $slate);
+                                                }
+                                            }
+                                        }
+                                        &:active {
+                                            background: mix($moola, $slate);
+                                            svg {
+                                                * {
+                                                    stroke: white;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &.pf-household {
+                                        background: $cobalt;
+                                        &:hover, &:focus {
+                                            background: mix($cobalt, white);
+                                            svg {
+                                                * {
+                                                    stroke: mix($cobalt, $slate);
+                                                }
+                                            }
+                                        }
+                                        &:active {
+                                            background: mix($cobalt, $slate);
+                                            svg {
+                                                * {
+                                                    stroke: white;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &.pf-tech {
+                                        background: $azure;
+                                        &:hover, &:focus {
+                                            background: mix($azure, white);
+                                            svg {
+                                                * {
+                                                    stroke: mix($azure, $slate);
+                                                }
+                                            }
+                                        }
+                                        &:active {
+                                            background: mix($azure, $slate);
+                                            svg {
+                                                * {
+                                                    stroke: white;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &.pf-athletic {
+                                        background: $eggplant;
+                                        &:hover, &:focus {
+                                            background: mix($eggplant, white);
+                                            svg {
+                                                * {
+                                                    stroke: mix($eggplant, $slate);
+                                                }
+                                            }
+                                        }
+                                        &:active {
+                                            background: mix($eggplant, $slate);
+                                            svg {
+                                                * {
+                                                    stroke: white;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &.pf-academic {
+                                        background: $cerise;
+                                        &:hover, &:focus {
+                                            background: mix($cerise, white);
+                                            svg {
+                                                * {
+                                                    stroke: mix($cerise, $slate);
+                                                }
+                                            }
+                                        }
+                                        &:active {
+                                            background: mix($cerise, $slate);
+                                            svg {
+                                                * {
+                                                    stroke: white;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .pf-wwf {
+                    > div {
+                        padding: 0!important;
+                    }
+                    h1 {
+                        @include flex;
+                        @include flex-wrap;
+                        @include flex-center;
+                        padding: 7.5px;
+                        span {
+                            display: block;
+                            padding: 7.5px;
+                        }
+                        ul {
+                            @include flex;
+                            @include flex-wrap;
+                            padding: 0;
+                            li {
+                                padding: 7.5px;
+                                span {
+                                    display: block;
+                                    margin: 0 auto;
+                                    text-align: center;
+                                    &:first-child {
+                                        @include round;
+                                        background: rgba(white, .2);
+                                        width: 64px;
+                                        height: 64px;
+                                        padding: 8px;
+                                        svg {
+                                            * {
+                                                @include svg-stroke(white, 3);
+                                            }
+                                        }
+                                    }
+                                    &:last-child {
+                                        font-size: 12px;
+                                        font-weight: 600;
+                                        text-transform: uppercase;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .pf-exp {
+                    > div {
+                        padding: 0!important;
+                        ul {
+                            position: relative;
+                            padding: 7.5px;
+                            &:before {
+                                @include round;
+                                @include opacity(.5);
+                                content: "";
+                                display: none;
+                                position: absolute;
+                                top: 15px;
+                                left: 100px;
+                                width: 5px;
+                                height: calc(100% - 30px);
+                                background: white;
+                            }
+                            li {
+                                position: relative;
+                                padding: 7.5px;
+                                &:before {
+                                    @include round;
+                                    content: "";
+                                    display: none;
+                                    position: absolute;
+                                    top: 30px;
+                                    left: 87.5px;
+                                    width: 15px;
+                                    height: 15px;
+                                    background: white;
+                                }
+                                > div {
+                                    @include flex;
+                                    @include prefix(align-items, flex-start, webkit);
+                                    background: none;
+                                    text-align: left;
+                                    padding: 0!important;
+                                    .pf-exp-date {
+                                        display: none;
+                                        font-size: 16px;
+                                        font-weight: 600;
+                                        text-transform: uppercase;
+                                        width: 120px;
+                                        padding: 15px 0;
+                                        line-height: 28px;
+                                    }
+                                    > div {
+                                        position: relative;
+                                        width: 100%;
+                                        background: $slate;
+                                        border-radius: 2px;
+                                        padding: 15px;
+                                        &:after {
+                                            content: "";
+                                            display: none;
+                                            position: absolute;
+                                            top: 15px;
+                                            left: -30px;
+                                            width: 0;
+                                            height: 0;
+                                            border: 15px solid transparent;
+                                            border-right-color: $slate;
+                                        }
+                                        h1 {
+                                            text-align: left!important;
+											font-size: 20px!important;
+											padding-right: 100px;
+                                        }
+                                        p {
+                                            margin: 5px 0 0;
+                                            font-size: 16px;
+                                        }
+                                        .pf-exp-time {
+                                            position: absolute;
+                                            right: 0;
+                                            top: 10px;
+                                            background: lighten($slate, 25%)!important;
+                                            padding: 5px 10px 5px 0!important;
+                                            height: 30px;
+                                            font-size: 14px;
+                                            font-weight: 600;
+                                            &:before {
+                                                content: "";
+                                                display: block;
+                                                position: absolute;
+                                                top: 0;
+                                                left: -20px;
+                                                border: 15px solid lighten($slate, 25%);
+                                                border-left-color: transparent!important;
+                                                border-left-width: 10px;
+                                                border-right-width: 10px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .pf-mobile-cta {
+        position: fixed;
+        z-index: 100;
+        bottom: 0;
+        left: 0;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .pf-container {
+        overflow: auto;
+        background: $slate;
+        .pf-aside {
+            .pf-aside-mobile {
+                .pf-name {
+                    margin-top: 5px;
+                }
+            }
+        }
+        .pf-rest {
+            height: auto;
+        }
+        .pf-main {
+            > div {
+                height: auto;
+                overflow: visible;
+				padding-bottom: 64px;
+            }
+            .pf-main-subheader {
+                max-width: 430px;
+            }
+        }
+    }
+}
+@media screen and (min-width:414px) and (min-height:700px) {
+    .pf-container:not(.mobile) {
+        .pf-aside {
+            .pf-aside-mobile {
+                .user-icon {
+                    width: 96px;
+                    height: 96px;
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width:768px) {
+    .pf-container:not(.mobile) {
+        @include flex;
+        .pf-mobile-cta {
+            display: none;
+        }
+        .pf-aside {
+            height: 100%;
+            width: calc(100% / 3);
+            padding: 15px;
+            .pf-aside-mobile {
+                display: none;
+            }
+            .pf-aside-desc, .pf-aside-widget {
+                display: block;
+            }
+        }
+        .pf-rest {
+            height: 100%;
+            width: calc(100% / 3 * 2);
+        }
+        .pf-portfolio-items {
+            padding: 15px;
+            li {
+                width: calc(100% / 2)!important;
+                padding: 15px;
+                margin-bottom: 0!important;
+            }
+        }
+        .pf-main {
+            > div {
+                .pf-items {
+                    li {
+                        width: 50%;
+                    }
+                }
+                &.pf-about {
+                    .pf-about-links {
+                        > div {
+                            @include flex;
+                            @include flex-wrap;
+                            @include flex-center;
+                        }
+                    }
+                    .pf-exp {
+                        > div {
+                            ul {
+                                &:before {
+                                    display: block;
+                                }
+                                li {
+                                    &:before {
+                                        display: block;
+                                    }
+                                    > div {
+                                        .pf-exp-date {
+                                            display: block;
+                                        }
+                                        > div {
+                                            width: calc(100% - 120px);
+                                            &:after {
+                                                display: block;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

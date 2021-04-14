@@ -1,0 +1,256 @@
+@import '../../../../../shared/css/scss/partials/mixin';
+
+// SIDEBAR
+.splash-sidebar-full {
+	@include flex;
+	position: fixed;
+	z-index: 999;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba($slate, .95);
+	-webkit-perspective: 1000;
+	perspective: 1000;
+	.splash-sidebar-menu {
+		@include flex;
+		@include flex-wrap;
+		@include prefix(align-content, space-between, webkit);
+		height: 100%;
+		width: 100%;
+		background: rgba(lighten($slate, 15%), .2);
+		header {
+			@include flex;
+			@include flex-center-vertical;
+			@include prefix(justify-content, space-between, webkit);
+			height: 50px;
+			width: 100%;
+			padding-right: 7px;
+			.splash-logo {
+				height: 50px!important;
+				margin: 5px;
+				width: inherit;
+				padding: 2px;
+			}
+		}
+		div {
+			width: 100%;
+		}
+		ul {
+			width: 100%;
+			li {
+				a {
+					display: block;
+				}
+			}
+		}
+		button {
+			display: block;
+			margin: 15px auto;
+		}
+		.school-id-card {
+			margin: 15px auto;
+		}
+		.splash-sidebar-links {
+			padding: 7.5px;
+			li {
+				padding: 7.5px;
+				transform-origin: center top;
+				backface-visibility: hidden;
+				@include prefix(transform-style, preserve-3d, webkit);
+				a {
+					position: relative;
+					display: block;
+					background: white;
+					border-radius: 2px;
+					overflow: hidden;
+					> span {
+						display: block;
+						padding: 15px;
+						border-radius: 2px;
+						width: 100%;
+						font-size: 18px;
+						font-weight: 600;
+						span:not(:empty) {
+							position: relative;
+							z-index: 2;
+						}
+						span:empty {
+							content: "";
+							display: block;
+							position: absolute;
+							z-index: 1;
+							top: 50%;
+							left: 50%;
+							margin-top: -5px;
+							margin-left: -5px;
+							width: 10px;
+							height: 10px;
+							border-radius: 100%;
+						}
+					}
+				}
+				&:nth-child(1) {
+					a > span {
+						background: mix($moxie, $robin, 80%);
+						span:empty {
+							background: mix(mix($moxie, $robin, 80%), white);
+						}
+					}
+				}
+				&:nth-child(2) {
+					a > span {
+						background: mix($moxie, $robin, 60%);
+						span:empty {
+							background: mix(mix($moxie, $robin, 60%), white);
+						}
+					}
+				}
+				&:nth-child(3) {
+					a > span {
+						background: mix($moxie, $robin, 40%);
+						span:empty {
+							background: mix(mix($moxie, $robin, 40%), white);
+						}
+					}
+				}
+				&:nth-child(4) {
+					a > span {
+						background: mix($moxie, $robin, 20%);
+						span:empty {
+							background: mix(mix($moxie, $robin, 20%), white);
+						}
+					}
+				}
+				&:nth-child(5) {
+					a > span {
+						background: $robin;
+						span:empty {
+							background: mix($robin, white);
+						}
+					}
+				}
+			}
+		}
+		.splash-sidebar-platforms {
+			@include flex;
+			@include flex-center;
+			margin: 0 auto;
+			li {
+				a {
+					padding: 7px;
+					svg {
+						display: block;
+						width: 64px;
+						height: 64px;
+						* {
+							stroke: white;
+						}
+					}
+				}
+			}
+		}
+	}
+	.splash-sidebar-content {
+		@include flex-center;
+		display: none;
+		height: 100%;
+		width: calc(100% / 3 * 2);
+		overflow: hidden;
+		.splash-sidebar-empty {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			width: 100%;
+			position: relative;
+			.splash-sidebar-message {
+				width: 100%;
+				padding: 0 15px;
+				svg {
+					display: block;
+					margin: 0 auto;
+					width: 100%;
+					max-width: 642px;
+				}
+			}
+		}
+		#desktop-account {
+			aside, #cta-desktop-signup-back {
+				display:none;
+			}
+			.main {
+				width:100%;
+			}
+		}
+		#desktop-guru-onboarding {
+			.desktop-header {
+				display:none;
+			}
+		}
+	}
+}
+@media screen and (min-width: 860px) {
+	.splash-sidebar-full {
+		.splash-sidebar-menu {
+			header {
+				height: 70px;
+				.splash-logo {
+					padding: 0!important;
+					height: 100%!important;
+					margin: 0 15px!important;
+				}
+			}
+		}
+	}
+}
+#cta-modal-sidebar {
+	@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+	&:not(.show) {
+		@include opacity(0);
+		display: block!important;
+		z-index: -100;
+	}
+	&.show {
+		z-index: 1001;
+	}
+}
+.sidebar-modal {
+	&:not(.show-sidebar-cta) {
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		@include opacity(0);
+		display: block!important;
+		z-index: -1000;
+	}
+	&.show-sidebar-cta {
+		z-index: 1000;
+	}
+}
+
+@media screen and (min-width: 860px) {
+	.splash-sidebar-full {
+		.splash-sidebar-menu {
+			header {
+				height: 70px;
+				.splash-logo {
+					height: 100%!important;
+					margin: 0 15px!important;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.splash-sidebar-full {
+		.splash-sidebar-menu {
+			width: calc(100% / 3);
+			position: relative;
+			z-index: 10;
+		}
+		.splash-sidebar-content {
+			@include flex;
+			position: relative;
+			z-index: 9;
+		}
+	}
+}

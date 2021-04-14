@@ -1,0 +1,9 @@
+{
+    "components": "Anything with data that is dynamic some point in the app",
+    "assets": "Anything that remains the same through the app + svgs. Great for re-used static images etc.",
+    "containers": "Anything that contains a list/collection of components, a wrapper for more than one of our pre-defined components",
+    "layouts": "Takes over entire view on mobile/desktop, aside for nav-related (edge case)",
+    "custom": {
+        "animations": [{"flip-countdown": "http://codepen.io/ademilter/pen/czIGo"}]
+    }
+}

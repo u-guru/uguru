@@ -1,0 +1,27 @@
+<ion-view view-title="find a guru">
+<div class="bar bar-subheader">
+  <div class="row center">
+    <div class="col border-bottom">MY CLASSES</div>
+    <div class="col">PREVIOUS SESSIONS</div>
+  </div>
+</div>
+
+
+<ion-nav-buttons side="secondary">
+  <button ng-click="submitSupport()" ng-disabled="!support.message" class="button button-clear button-positive">save</button>
+</ion-nav-buttons>
+<ion-content>
+  <div class="no-session margin-150-10 center">
+    <h2>No sessions yet.</h2>
+    <div class="gray">Add a class to get started.</div>
+    <div class="green">+Add a class</div>
+  </div>
+</ion-content>
+  <div class="bar bar-footer uguru-footer">
+    <div class="row">
+      <div class="col center border-bottom"><img src='./img/glass.png' class='width'></div>
+      <div class="col center"><img src='./img/book.png' class='width'></div>
+      <div class="col center"><img src='./img/setting.png' class='width'></div>
+    </div>
+  </div>
+</ion-view>

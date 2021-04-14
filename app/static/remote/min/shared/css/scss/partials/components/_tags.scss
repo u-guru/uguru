@@ -1,0 +1,1443 @@
+@import '../mixin';
+
+/* ---------- TAGS */
+.chip {
+	display: inline-block;
+	position: relative;
+	height: 32px;
+	font-size: 13px;
+	font-weight: 600;
+	color: white;
+	line-height: 32px;
+	padding: 0 12px;
+	border-radius: 16px;
+	img {
+		float: left;
+		margin: 0 8px 0 -12px;
+		padding: 2px;
+		height: 32px;
+		width: 32px;
+		border-radius: 50%;
+	}
+	&[class*="arrow"] {
+		border-radius: 2px;
+		svg {
+			position: absolute;
+			width: 20px;
+			height: 10px;
+		}
+		&.arrow-up {
+			margin-top: 20px;
+			svg {
+				@include center-x;
+				top: -10px;
+			}
+		}
+		&.arrow-down {
+			margin-bottom: 20px;
+			svg {
+                position: absolute;
+				left: 50%;
+				transform: translateX(-50%) rotate(180deg);
+				transform-origin: center center;
+				bottom: -10px;
+			}
+		}
+		&.arrow-left {
+			margin-left: 20px;
+			svg {
+                position: absolute;
+                top: 50%;
+				transform: translateY(-50%) rotate(-90deg);
+				transform-origin: center center;
+				left: -15px;
+			}
+		}
+		&.arrow-right {
+			margin-right: 20px;
+			svg {
+                position: absolute;
+                top: 50%;
+				transform: translateY(-50%) rotate(90deg);
+				transform-origin: center center;
+				right: -15px;
+			}
+		}
+		&[class*="bg-white"] {
+			svg {
+				fill: white;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba(white, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba(white, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba(white, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba(white, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba(white, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba(white, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba(white, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba(white, .9);
+				}
+			}
+		}
+		&[class*="bg-charcoal"] {
+			svg {
+				fill: $charcoal;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($charcoal, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($charcoal, .1);
+				}
+			}
+			&[class*="-20p"] {
+				fill {
+					fill: rgba($charcoal, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($charcoal, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($charcoal, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($charcoal, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($charcoal, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($charcoal, .9);
+				}
+			}
+		}
+		&[class*="bg-slate"] {
+			svg {
+				fill: $slate;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($slate, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($slate, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($slate, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($slate, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($slate, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($slate, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($slate, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($slate, .9);
+				}
+			}
+		}
+		&[class*="bg-taupe"] {
+			svg {
+				fill: $taupe;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($taupe, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($taupe, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($taupe, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($taupe, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					svg: rgba($taupe, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($taupe, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($taupe, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($taupe, .9);
+				}
+			}
+		}
+		&[class*="bg-smoke"] {
+			svg {
+				fill: $smoke;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($smoke, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($smoke, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($smoke, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($smoke, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($smoke, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($smoke, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($smoke, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($smoke, .9);
+				}
+			}
+		}
+		&[class*="bg-campus"] {
+			svg {
+				fill: $campus;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($campus, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($campus, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($campus, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($campus, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($campus, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($campus, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($campus, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($campus, .9);
+				}
+			}
+		}
+		&[class*="bg-rocket"] {
+			svg {
+				fill: $rocket;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($rocket, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($rocket, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($rocket, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($rocket, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($rocket, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($rocket, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($rocket, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($rocket, .9);
+				}
+			}
+		}
+		&[class*="bg-shamrock"] {
+			svg {
+				fill: $shamrock;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($shamrock, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($shamrock, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($shamrock, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($shamrock, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($shamrock, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($shamrock, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($shamrock, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($shamrock, .9);
+				}
+			}
+		}
+		&[class*="bg-robin"] {
+			svg {
+				fill: $robin;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($robin, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($robin, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($robin, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($robin, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($robin, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($robin, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($robin, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($robin, .9);
+				}
+			}
+		}
+		&[class*="bg-lake"] {
+			svg {
+				fill: $lake;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($lake, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($lake, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($lake, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($lake, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($lake, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($lake, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($lake, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($lake, .9);
+				}
+			}
+		}
+		&[class*="bg-moxie"] {
+			svg {
+				fill: $moxie;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($moxie, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($moxie, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($moxie, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($moxie, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($moxie, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($moxie, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($moxie, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($moxie, .9);
+				}
+			}
+		}
+		&[class*="bg-crimson"] {
+			svg {
+				fill: $crimson;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($crimson, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($crimson, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($crimson, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($crimson, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($crimson, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($crimson, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($crimson, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($crimson, .9);
+				}
+			}
+		}
+		&[class*="bg-auburn"] {
+			svg {
+				fill: $auburn;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($auburn, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($auburn, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($auburn, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($auburn, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($auburn, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($auburn, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($auburn, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($auburn, .9);
+				}
+			}
+		}
+		&[class*="bg-orange"] {
+			svg {
+				fill: $orange;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($orange, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($orange, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($orange, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($orange, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($orange, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($orange, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($orange, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($orange, .9);
+				}
+			}
+		}
+		&[class*="bg-gold"] {
+			svg {
+				fill: $gold;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($gold, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($gold, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($gold, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($gold, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($gold, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($gold, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($gold, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($gold, .9);
+				}
+			}
+		}
+		&[class*="bg-moola"] {
+			svg {
+				fill: $moola;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($moola, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($moola, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($moola, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($moola, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($moola, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($moola, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($moola, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($moola, .9);
+				}
+			}
+		}
+		&[class*="bg-azure"] {
+			svg {
+				fill: $azure;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($azure, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($azure, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($azure, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($azure, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($azure, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($azure, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($azure, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($azure, .9);
+				}
+			}
+		}
+		&[class*="bg-eggplant"] {
+			svg {
+				fill: $eggplant;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($eggplant, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($eggplant, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($eggplant, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($eggplant, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($eggplant, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($eggplant, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($eggplant, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($eggplant, .9);
+				}
+			}
+		}
+		&[class*="bg-cerise"] {
+			svg {
+				fill: $cerise;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($cerise, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($cerise, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($cerise, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($cerise, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($cerise, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($cerise, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($cerise, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($cerise, .9);
+				}
+			}
+		}
+	}
+}
+input.chip:hover {
+	cursor: text;
+}
+
+/* ---------- ADLIB TAGS */
+.tag-adlib-container {
+	position: relative;
+}
+.tag-adlib {
+	@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+	@include flex;
+	@include flex-center;
+	position: relative;
+	width: 130px;
+	height: 38px;
+	padding: 0;
+	border-radius: 8px;
+	font-size: 20px;
+	font-weight: 600;
+	background: rgba($slate, .5);
+	@media screen and (max-width: 320px) {
+		width: 96px;
+		height: 28px;
+		font-size: 16px;
+	}
+	svg {
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		&.desktop {
+			display: none;
+		}
+		* {
+			@include svg-stroke(white, 4);
+		}
+	}
+	&.blank, &.ghost {
+		stroke-dasharray: 16, 14;
+	}
+	&.ghost {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		background: none!important;
+		svg {
+			@include opacity-important(.2);
+		}
+		&:not(.active-ghost) {
+			@include opacity(0);
+		}
+	}
+	&:not(.blank) {
+		&:hover, &:focus, &.active {
+			background: $shamrock;
+			svg {
+				@include opacity(0);
+			}
+		}
+		&:active {
+			background: mix($shamrock, white);
+			color: mix($shamrock, $slate);
+		}
+		&.active {
+			&:hover, &:focus {
+				background: mix($shamrock, white);
+				color: mix($shamrock, $slate);
+			}
+			&:active {
+				background: mix($shamrock, $slate);
+				color: white;
+			}
+		}
+		+ .ghost {
+			svg {
+				* {
+					fill: rgba($shamrock, .3);
+				}
+			}
+		}
+		&.tag-campus {
+			&:hover, &:focus, &.active {
+				background: $campus;
+			}
+			&:active {
+				background: mix($campus, white);
+				color: mix($campus, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($campus, white);
+					color: mix($campus, $slate);
+				}
+				&:active {
+					background: mix($campus, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($campus, .3);
+					}
+				}
+			}
+		}
+		&.tag-shamrock {
+			&:hover, &:focus, &.active {
+				background: $shamrock;
+			}
+			&:active {
+				background: mix($shamrock, white);
+				color: mix($shamrock, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($shamrock, white);
+					color: mix($shamrock, $slate);
+				}
+				&:active {
+					background: mix($shamrock, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($shamrock, .3);
+					}
+				}
+			}
+		}
+		&.tag-robin {
+			&:hover, &:focus, &.active {
+				background: $robin;
+			}
+			&:active {
+				background: mix($robin, white);
+				color: mix($shamrock, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($robin, white);
+					color: mix($robin, $slate);
+				}
+				&:active {
+					background: mix($robin, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($robin, .3);
+					}
+				}
+			}
+		}
+		&.tag-lake {
+			&:hover, &:focus, &.active {
+				background: $lake;
+			}
+			&:active {
+				background: mix($lake, white);
+				color: mix($lake, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($lake, white);
+					color: mix($lake, $slate);
+				}
+				&:active {
+					background: mix($lake, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($lake, .3);
+					}
+				}
+			}
+		}
+		&.tag-moxie {
+			&:hover, &:focus, &.active {
+				background: $moxie;
+			}
+			&:active {
+				background: mix($moxie, white);
+				color: mix($moxie, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($moxie, white);
+					color: mix($moxie, $slate);
+				}
+				&:active {
+					background: mix($moxie, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($moxie, .3);
+					}
+				}
+			}
+		}
+		&.tag-crimson {
+			&:hover, &:focus, &.active {
+				background: $crimson;
+			}
+			&:active {
+				background: mix($crimson, white);
+				color: mix($crimson, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($crimson, white);
+					color: mix($crimson, $slate);
+				}
+				&:active {
+					background: mix($crimson, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($crimson, .3);
+					}
+				}
+			}
+		}
+		&.tag-auburn, &.tag-delivery {
+			&:hover, &:focus, &.active {
+				background: $auburn;
+			}
+			&:active {
+				background: mix($auburn, white);
+				color: mix($auburn, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($auburn, white);
+					color: mix($auburn, $slate);
+				}
+				&:active {
+					background: mix($auburn, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($auburn, .3);
+					}
+				}
+			}
+		}
+		&.tag-orange, &.tag-freelancing {
+			&:hover, &:focus, &.active {
+				background: $orange;
+			}
+			&:active {
+				background: mix($orange, white);
+				color: mix($orange, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($orange, white);
+					color: mix($orange, $slate);
+				}
+				&:active {
+					background: mix($orange, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($orange, .3);
+					}
+				}
+			}
+		}
+		&.tag-gold, &.tag-baking {
+			&:hover, &:focus, &.active {
+				background: $gold;
+			}
+			&:active {
+				background: mix($gold, white);
+				color: mix($gold, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($gold, white);
+					color: mix($gold, $slate);
+				}
+				&:active {
+					background: mix($gold, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($gold, .3);
+					}
+				}
+			}
+		}
+		&.tag-moola, &.tag-photography {
+			&:hover, &:focus, &.active {
+				background: $moola;
+			}
+			&:active {
+				background: mix($moola, white);
+				color: mix($moola, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($moola, white);
+					color: mix($moola, $slate);
+				}
+				&:active {
+					background: mix($moola, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($moola, .3);
+					}
+				}
+			}
+		}
+		&.tag-azure, &.tag-tech {
+			&:hover, &:focus, &.active {
+				background: $azure;
+			}
+			&:active {
+				background: mix($azure, white);
+				color: mix($azure, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($azure, white);
+					color: mix($azure, $slate);
+				}
+				&:active {
+					background: mix($azure, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($azure, .3);
+					}
+				}
+			}
+		}
+		&.tag-cobalt, &.tag-household {
+			&:hover, &:focus, &.active {
+				background: $cobalt;
+			}
+			&:active {
+				background: mix($cobalt, white);
+				color: mix($cobalt, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($cobalt, white);
+					color: mix($cobalt, $slate);
+				}
+				&:active {
+					background: mix($cobalt, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($cobalt, .3);
+					}
+				}
+			}
+		}
+		&.tag-eggplant, &.tag-athletic {
+			&:hover, &:focus, &.active {
+				background: $eggplant;
+			}
+			&:active {
+				background: mix($eggplant, white);
+				color: mix($eggplant, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($eggplant, white);
+					color: mix($eggplant, $slate);
+				}
+				&:active {
+					background: mix($eggplant, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($eggplant, .3);
+					}
+				}
+			}
+		}
+		&.tag-cerise, &.tag-academic {
+			&:hover, &:focus, &.active {
+				background: $cerise;
+			}
+			&:active {
+				background: mix($cerise, white);
+				color: mix($cerise, $slate);
+			}
+			&.active {
+				&:hover, &:focus {
+					background: mix($cerise, white);
+					color: mix($cerise, $slate);
+				}
+				&:active {
+					background: mix($cerise, $slate);
+					color: white;
+				}
+			}
+			+ .ghost {
+				svg {
+					* {
+						fill: rgba($cerise, .3);
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width: 768px) {
+	.tag-adlib {
+		width: 142px;
+		height: 44px;
+		font-size: 24px;
+		svg {
+			&.mobile {
+				display: none;
+			}
+			&.desktop {
+				display: block;
+			}
+		}
+	}
+}
+
+/* ---------- TAG LISTS */
+.tag-list, .pf-tags {
+	@include flex;
+	@include flex-wrap;
+	width: 100%;
+	text-align: center;
+	.chip {
+		@include transition(.15s ease-in-out);
+		@include flex;
+		@include flex-center-vertical;
+		margin-right: 15px;
+		border: 0;
+		color: white!important;
+		&:not([class*="bg"]) {
+			background: lighten($slate, 10%);
+		}
+		svg {
+			@include svg-stroke(white, 10);
+			width: 12px;
+			height: 12px;
+			margin-right: 3px;
+		}
+		input {
+			background: transparent;
+			border: 0;
+			color: white!important;
+			@include placeholder {
+				color: white!important;
+			}
+		}
+	}
+	a.chip:hover {
+		background: lighten($slate, 15%);
+	}
+	ul {
+		@include flex;
+		@include flex-wrap;
+		width: 100%;
+		padding: 10px 10px 5px;
+		li {
+			padding: 0 5px 10px;
+			.chip {
+				margin-right: 0;
+			}
+		}
+	}
+	.error {
+		display: block;
+		width: 100%;
+		padding: 0 15px 15px;
+		color: $crimson;
+		font-size: 14px;
+		font-weight: 600;
+		text-align: center;
+	}
+}

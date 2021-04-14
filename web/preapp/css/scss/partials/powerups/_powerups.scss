@@ -1,0 +1,876 @@
+@import '../../../../../shared/css/scss/partials/mixin';
+
+#powerups {
+	overflow: auto;
+	header {
+		span {
+			svg {
+				circle {
+					fill: $gold;
+					stroke: $gold;
+				}
+				path {
+					fill: white;
+					stroke: white;
+				}
+			}
+		}
+		h1 {
+			margin-top: -15px;
+		}
+	}
+	ul {
+		width: 100%;
+		margin-top: -40px;
+		li {
+			width: 300px;
+			padding-bottom: 35px;
+			a {
+				position: relative;
+				.powerups-bg {
+					@include round;
+					display: block;
+					position: absolute;
+					z-index: 1;
+					top: 50%;
+					left: 50%;
+					margin-top: -26px;
+					margin-left: -50px;
+					width: 100px;
+					height: 100px;
+				}
+				> div {
+					position: relative;
+					z-index: 2;
+					width: 100%;
+					&:first-child {
+						position: relative;
+						height: 100%;
+						max-width: 300px;
+						max-height: 300px;
+					}
+					&.powerup-icon-tag {
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+						position: absolute;
+						bottom: -35px;
+					}
+				}
+				&#powerup-gpa-container {
+					.powerups-bg {
+						background: mix(white, $gpa, 30%);
+					}
+				}
+				&#powerup-munchies-container {
+					.powerups-bg {
+						background: mix(white, $munchies, 30%);
+					}
+				}
+				&#powerup-sound-container {
+					.powerups-bg {
+						background: mix(white, mix($eggplant, $cobalt), 30%);
+					}
+				}
+				&#powerup-transit-container {
+					.powerups-bg {
+						background: mix(white, mix($moxie, $moola), 30%);
+					}
+				}
+				&.active {
+					// svg {
+					// 	@include prefix(animation, powerup-scaleUp-subtle 250ms cubic-bezier(.77,0,.05,1) 3500ms forwards, webkit moz ms o);
+					// 	@include prefix(animation, powerup-scaleUp-subtle 250ms cubic-bezier(.77,-0.22,.05,1) 3500ms forwards, webkit moz ms o);
+					// }
+					&:before {
+						@include prefix(animation, powerup-before-scaleUp 1000ms ease-in-out 3500ms forwards, webkit moz ms o);
+					}
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 768px) {
+		header {
+			h1 {
+				font-size: 36px!important;
+			}
+		}
+	}
+	@media screen and (min-width: 768px) {
+		ul {
+			margin-top: 0;
+		}
+	}
+	.hanger {
+		opacity: 0;
+	}
+}
+
+// GENERAL
+.landing-container {
+	width: 100%;
+	height: 100%;
+	padding: 15px;
+	text-align: center;
+	overflow-y: auto;
+	overflow-x: hidden;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+	&::-moz-scrollbar {
+		display: none;
+	}
+	.splash-hero-skip {
+		display: none;
+	}
+	.landing-header {
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		height: 100%;
+	}
+	.powerup-icon {
+		width: 100%;
+		height: 100%;
+		max-width: 300px;
+		max-height: 300px;
+		margin: -75px auto 0;
+		.hanger {
+			display: none!important;
+		}
+		[class*="card-bg"] {
+			fill: none!important;
+		}
+	}
+	.powerup-header {
+		margin-top: -15px;
+		font-size: 36px;
+		font-weight: 900;
+		width: 100%;
+	}
+	.powerup-subheader {
+		font-size: 20px;
+		font-weight: 600;
+		margin-top: 0!important;
+		margin-bottom: 15px;
+		width: 100%;
+	}
+	.landing-demo {
+		display: none;
+		position: relative;
+		width: 318px;
+		margin: 30px auto 0;
+		> svg:not(.coach) {
+			width: 318px;
+			stroke-width: 3px;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+		}
+		.coach {
+			display: block;
+			right: -200px;
+			width: 170px!important;
+			top: -10px;
+		}
+		> div {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-left: -136px;
+			margin-top: -245.5px;
+			width: 273.5px;
+			height: 490px;
+		}
+	}
+	.landing-content {
+		position: relative;
+		border-radius: 2px;
+		background: white;
+		max-width: 1000px;
+		margin: 15px auto 64px;
+		color: $slate;
+		h1 {
+			padding: 15px;
+			font-size: 28px;
+			font-weight: 600;
+		}
+	}
+	.landing-try-button.mobile {
+		position: fixed;
+		display: block;
+		bottom: 0;
+		left: 0;
+		z-index: 99;
+	}
+	.landing-action {
+		color: white;
+		border-radius: 0 0 2px 2px;
+		ul {
+			margin-top: -15px;
+			padding: 7.5px;
+			li {
+				padding: 7.5px;
+				div {
+					@include flex;
+					@include flex-center;
+					@include flex-wrap;
+					background: rgba($smoke, .8);
+					border-radius: 2px;
+					padding: 15px;
+					svg {
+						width: 64px;
+						height: 64px;
+						circle {
+							fill: rgba(white, .5);
+						}
+					}
+					h2 {
+						color: $light-slate;
+						width: 100%;
+						font-size: 20px;
+						font-weight: 600;
+					}
+				}
+			}
+		}
+		.landing-try-button {
+			display: none;
+			position: static;
+			left: auto;
+			bottom: auto;
+			width: auto;
+			padding-left: 30px;
+			padding-right: 30px;
+			border-radius: 2px;
+			margin-bottom: 15px;
+		}
+		.landing-platforms {
+			display: none;
+		}
+	}
+	@media screen and (min-width: 768px) {
+		.landing-header {
+			display: block;
+			height: auto;
+		}
+		.splash-hero-skip, .landing-demo {
+			display: block;
+		}
+		.powerup-icon {
+			margin: -50px auto 0;
+		}
+		.powerup-header {
+			font-size: 48px;
+		}
+		.powerup-subheader {
+			font-size: 28px;
+			margin-bottom: 0;
+		}
+		.landing-try-button.mobile {
+			display: none;
+		}
+		.landing-content {
+			margin: -120px auto 0;
+			padding-top: 135px;
+			border-radius: 4px;
+			h1 {
+				font-size: 36px;
+			}
+		}
+		.landing-action {
+			padding: 15px;
+			border-radius: 0 0 4px 4px;
+			ul {
+				@include flex;
+				@include flex-center;
+				margin-top: 0;
+				margin-bottom: 15px;
+				li {
+					width: calc(100% / 3);
+					div {
+						border-radius: 4px;
+						svg {
+							width: 128px;
+							height: 128px;
+						}
+						h2 {
+							font-size: 28px;
+						}
+					}
+				}
+			}
+			.landing-try-button {
+				display: block;
+			}
+			.landing-platforms {
+				@include flex;
+				@include flex-center;
+			}
+		}
+	}
+}
+.landing-gpa {
+	background: mix(white, $gpa, 30%);
+	.landing-demo {
+		> svg:not(.coach) {
+			* {
+				stroke: $light-slate;
+			}
+			circle {
+				fill: mix(mix(white, $gpa, 30%), $light-slate, 40%);
+			}
+			rect {
+				&:first-child {
+					fill: mix(mix(white, $gpa, 30%), $light-slate, 70%);
+				}
+				&:last-child {
+					fill: white;
+				}
+			}
+		}
+	}
+	.gpa-landing-hands {
+		display: none;
+		position: absolute;
+		bottom: 0;
+		width: 2px;
+		margin-left: -1px;
+		left: 50%;
+		margin-bottom: 15px;
+		svg {
+			&:first-child {
+				left: 80px;
+			}
+			&:last-child {
+				right: 80px;
+				@include prefix(backface-visibility, visible, webkit moz ms o);
+				@include prefix(transform, rotateY(180deg), webkit moz ms o);
+				@include prefix(transform-origin, center, webkit moz ms o);
+			}
+		}
+		@media screen and (min-width: 768px) {
+			display: block;
+		}
+	}
+	.gpa-landing-preview {
+		@include flex;
+		@include flex-center;
+		padding: 7.5px;
+		@media screen and (min-width: 768px) {
+			margin-bottom: 15px;
+		}
+		li {
+			padding: 7.5px;
+			&:first-child, &:last-child {
+				@include opacity(0.75);
+				@include prefix(transition, all 600ms cubic-bezier(.77,0,.05,1)!important, webkit moz ms o);
+				@include prefix(transition, all 600ms cubic-bezier(.77,-0.22,.05,1.27)!important, webkit moz ms o);
+			}
+		}
+		svg {
+			width: calc(318px * 0.75);
+			height: calc(651px * 0.75);
+			* {
+				stroke: $light-slate;
+				stroke-width: 3px;
+			}
+			circle {
+				fill: mix(mix(white, $gpa, 30%), $light-slate, 40%);
+			}
+			rect {
+				&:first-child {
+					fill: mix(mix(white, $gpa, 30%), $light-slate, 70%);
+				}
+				&:last-child {
+					fill: white;
+				}
+			}
+		}
+	}
+	.landing-action {
+		background: mix(mix(white, $gpa, 30%), $light-slate, 40%);
+		ul {
+			li {
+				div {
+					h2 {
+						color: $gpa;
+					}
+				}
+			}
+		}
+	}
+	.landing-try-button {
+		background: rgba($gpa, .95);
+		color: white;
+		@media screen and (min-width: 768px) {
+			background: white;
+			color: $gpa;
+		}
+		&:hover, &:focus {
+			background: mix($gpa, white);
+			color: mix($gpa, $slate);
+		}
+		&:active {
+			background: mix($gpa, $slate);
+			color: white;
+		}
+	}
+}
+.landing-transit {
+	background: mix(white, $transit, 30%);
+	.landing-demo {
+		> svg:not(.coach) {
+			* {
+				stroke: $light-slate;
+			}
+			circle {
+				fill: mix(mix(white, $transit, 30%), $light-slate, 40%);
+			}
+			rect {
+				&:first-child {
+					fill: mix(mix(white, $transit, 30%), $light-slate, 70%);
+				}
+				&:last-child {
+					fill: white;
+				}
+			}
+		}
+	}
+	.landing-try-button {
+		background: rgba($transit, .95);
+		color: white;
+		@media screen and (min-width: 768px) {
+			background: $transit;
+			color: white;
+		}
+		&:hover, &:focus {
+			background: mix($transit, white);
+			color: mix($transit, $slate);
+		}
+		&:active {
+			background: mix($transit, $slate);
+			color: white;
+		}
+	}
+}
+#landing-munchies {
+	overflow-x: auto;
+	width: 100%;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+	&::-moz-scrollbar {
+		display: none;
+	}
+}
+.landing-munchies {
+	@include flex;
+	width: 400%;
+	overflow-y: hidden;
+	background: mix(white, $munchies, 30%);
+	padding: 0;
+	.landing-header {
+		width: 25%;
+	}
+	.landing-demo {
+		> svg:not(.coach) {
+			* {
+				stroke: white;
+			}
+			circle {
+				fill: mix(white, $munchies, 80%);
+			}
+			rect {
+				&:first-child {
+					fill: mix(white, $munchies, 50%);
+				}
+				&:last-child {
+					fill: white;
+				}
+			}
+		}
+	}
+	.landing-content {
+		background: #a68787;
+		.landing-color {
+			background: #a68787;
+		}
+		&.mobile {
+			@include flex;
+			margin: 0;
+			background: rgba($slate, .15);
+			width: 75%;
+			.landing-section {
+				width: calc(100% / 3);
+				padding: 15px;
+				.landing-section-header {
+					margin-bottom: 30px;
+				}
+				.landing-section-demo {
+					position: relative;
+					margin: 0 auto;
+					max-width: 75%;
+					svg {
+						* {
+							stroke: white;
+						}
+						circle {
+							fill: mix(white, $munchies, 80%);
+						}
+						rect {
+							&:first-child {
+								fill: mix(white, $munchies, 50%);
+							}
+							&:last-child {
+								fill: white;
+							}
+						}
+					}
+					div {
+						position: absolute;
+						top: 12.2%;
+						left: 6.5%;
+						width: 87%;
+						height: 75.6%;
+						background: $robin
+					}
+				}
+			}
+		}
+		&.desktop {
+			display: none;
+		}
+	}
+	.landing-try-button {
+		background: rgba($munchies, .95);
+		color: white;
+		@media screen and (min-width: 768px) {
+			background: $munchies;
+			color: white;
+		}
+		&:hover, &:focus {
+			background: mix($munchies, white);
+			color: mix($munchies, $slate);
+		}
+		&:active {
+			background: mix($munchies, $slate);
+			color: white;
+		}
+	}
+}
+@media screen and (min-width: 768px) {
+	#landing-munchies {
+		overflow-x: hidden;
+	}
+	.landing-munchies {
+		display: block;
+		width: 100%;
+		overflow-y: auto;
+		padding: 15px;
+		.landing-header {
+			width: auto;
+		}
+		.landing-content {
+			&.mobile {
+				display: none;
+			}
+			&.desktop {
+				display: block;
+			}
+		}
+	}
+}
+.landing-sound {
+	background: mix(white, $sound, 30%);
+	.landing-demo {
+		> svg:not(.coach) {
+			* {
+				stroke: $light-slate;
+			}
+			circle {
+				fill: mix(mix(white, $sound, 30%), $light-slate, 40%);
+			}
+			rect {
+				&:first-child {
+					fill: mix(mix(white, $sound, 30%), $light-slate, 70%);
+				}
+				&:last-child {
+					fill: white;
+				}
+			}
+		}
+	}
+	.landing-content {
+		background: $smoke;
+	}
+	.landing-action {
+		color: $sound;
+		.sound-equalizer {
+			position: relative;
+			margin-bottom: 15px;
+			height: 105px;
+			svg {
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 50%;
+				margin-left: -960px;
+			}
+		}
+	}
+	.sound-record-list {
+		@include flex;
+		@include flex-wrap;
+		padding: 7.5px;
+		li {
+			padding: 7.5px;
+			width: 100%;
+		}
+	}
+	.landing-try-button {
+		background: rgba($sound, .95);
+		color: white;
+		@media screen and (min-width: 768px) {
+			background: $sound;
+			color: white;
+		}
+		&:hover, &:focus {
+			background: mix($sound, white);
+			color: mix($sound, $slate);
+		}
+		&:active {
+			background: mix($sound, $slate);
+			color: white;
+		}
+	}
+	@media screen and (min-width: 768px) {
+		.sound-record-list {
+			padding: 15px;
+			li {
+				width: 50%;
+				padding: 15px;
+			}
+		}
+		.landing-action {
+			.sound-equalizer {
+				margin-bottom: 45px;
+			}
+		}
+	}
+}
+
+.powerup-title {
+	overflow: hidden!important;
+	.powerup-house {
+		&.active {
+			* {
+				transition: all 1000ms ease-in-out;
+				opacity: 0;
+			}
+		}
+		.powerup-house-svg {
+			display: block;
+			width: 100%;
+			max-width: 500px;
+			height: auto;
+			&.active {
+				@include prefix(transform-origin, 50% 300px, webkit moz ms o);
+				@include prefix(animation, powerup-house-scaleUp 3000ms ease-out forwards, webkit moz ms o);
+			}
+		}
+	}
+}
+
+.powerup-back {
+	span {
+		svg {
+			display: block;
+			width: 28px;
+			height: 28px;
+			margin-right: 5px;
+			* {
+				stroke-width: 9px;
+			}
+		}
+	}
+}
+
+[class*="powerup"] {
+	.tour-guru {
+		@include prefix(transform-origin, center center, webkit moz ms o);
+		.translate {
+			svg {
+				@include prefix(transform-origin, left top, webkit moz ms o);
+				@include prefix(transition, all 600ms cubic-bezier(.77,0,.05,1)!important, webkit moz ms o);
+				@include prefix(transition, all 600ms cubic-bezier(.77,-0.22,.05,1.27)!important, webkit moz ms o);
+				@include prefix(transform, scale(2), webkit moz ms o);
+			}
+		}
+		svg:first-child {
+			> g > ellipse {
+				@include prefix(transform-origin, center center, webkit moz ms o);
+			}
+		}
+		svg.absolute {
+			transform-origin: bottom left;
+		}
+		&.on-enter {
+			svg:first-child {
+				> g > ellipse {
+					animation: tour-shadow 500ms cubic-bezier(0,1.6,1,1.6) forwards;
+				}
+			}
+			svg.absolute {
+				animation: u-rotateScaleUpLeft 2000ms ease-in-out 2000ms forwards;
+				opacity: 0;
+			}
+		}
+		&.active {
+			svg:first-child {
+				display: block;
+				> g > ellipse {
+					@include prefix(animation, tour-guru-shadow-hover 1000ms linear infinite alternate, webkit moz ms o);
+				}
+				.guru-body {
+					@include prefix(animation, tour-guru-hover 1000ms linear infinite alternate, webkit moz ms o);
+				}
+			}
+		}
+	}
+}
+
+.powerup-demographic {
+	@include flex;
+	@include flex-wrap;
+	background: $smoke;
+	.tour-guru {
+		svg:first-child {
+			height: 200px;
+		}
+		svg.absolute {
+			@include prefix(animation, tour-guru-hover 1000ms linear infinite alternate, webkit moz ms o);
+			top: 0;
+			margin-left: -5px;
+		}
+	}
+	.demo-grid {
+		.demographic-z-index-1000 {
+			z-index: 1000!important;
+		}
+		ul {
+			@include flex;
+			@include flex-center;
+			@include flex-wrap;
+			width: 100%;
+			padding: 1px;
+			li {
+				transform-origin: center top;
+				position: relative;
+				height: 50%;
+				width: 50%;
+				font-weight: 600;
+				padding: 1px;
+				a {
+					position: relative;
+					width: 100%;
+					height: 100%;
+					border-radius: 2px;
+					font-size: 28px;
+					text-transform: lowercase;
+					> svg {
+						width: 100%;
+					}
+					> span {
+						@include flex;
+						@include flex-wrap;
+						@include flex-center;
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						text-align: center;
+						svg {
+							width: 100px;
+							height: 100px;
+							* {
+								@include svg-stroke(white, 3);
+							}
+						}
+						span {
+							display: block;
+							margin-bottom: 15px;
+							&:last-child {
+								width: 100%;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	@media screen and (max-width:768px) {
+		@include prefix(justify-content, center, webkit);
+		@include prefix(align-items, space-between, webkit);
+		@include prefix(align-content, space-between, webkit);
+	}
+	@media screen and (max-width:768px) {
+		.demo-header {
+			height: 40%;
+		}
+		.demo-grid {
+			height: 60%;
+		}
+		.tour-guru {
+			margin-top: 15px;
+			@include prefix(transform, scale(0.8), webkit moz ms o);
+		}
+		h1 {
+			margin-top: -45px;
+			margin-bottom: 30px;
+		}
+	}
+	@media screen and (min-width:768px) {
+		@include flex-center;
+	}
+	@media screen and (min-width:768px) {
+		h1 {
+			font-size: 48px;
+		}
+		.demo-grid {
+			height: auto;
+			margin: 0 auto;
+			max-width: 1060px;
+			ul {
+				padding: 15px;
+				li {
+					padding: 15px;
+					width: 25%;
+					a {
+						font-size: 36px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.powerup-welcome {
+	.tour-guru {
+		svg {
+			height: 400px;
+		}
+	}
+	button {
+		width: auto;
+		padding: 0 50px;
+		background: none;
+		border-radius: 2px;
+		border: 3px solid white;
+		&:hover, &:focus {
+			background: white;
+		}
+		&:active {
+			background: $light-slate;
+			border: $light-slate;
+		}
+	}
+}

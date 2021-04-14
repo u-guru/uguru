@@ -1,0 +1,107 @@
+{
+
+    "activeIndex": 3,
+    "use_cases": [
+        {
+            "name": "Most Minimal #1:Verbose",
+            "example": "[0, 50, 100, 150, 250]",
+            "description": "The most minimal case",
+            "impt": "No easing is needed here since the time is already clarified. No global delay in this example",
+            "complete": true,
+            "bug": true,
+            "bug_notes": "@samir: jeselle and I last saw this not working but this needs confirmation",
+			"bugs": {
+				"description": "",
+				"file": "",
+				"line": ""
+			}
+        },
+        {
+            "name": "Most Minimal #2",
+            "example": "*:[0, 50, 100, 150, 250]",
+            "description": "Same as previous example but you can put the matcher based on comfort",
+            "impt": "No easing is needed here since the time is already clarified. No global delay in this example",
+            "complete": true,
+            "bug": true,
+            "bug_notes": "@samir: jeselle and I last saw this not working but this needs confirmation"
+        },
+        {
+            "name": "Stagger selected via class",
+            "example": ".m10x.odd[class]:[1000, 1500, 2000]",
+            "description": "Select all children that have both classes m10x, odd and the attribute class",
+            "complete": true
+        },
+        {
+            "name": "Linear #1",
+            "example": "[odd]:250",
+            "description": "Select all children attribute [odd] and apply delays left-to-right",
+            "complete": true
+        },
+        {
+            "name": "Linear #1 + reverse",
+            "example": "[odd]:-250",
+            "description": "Select all children attribute [odd] and apply delays right-to-left",
+            "impt": "",
+            "complete": true
+        },
+        {
+            "name": "Easings #1",
+            "example": "*:1000:bouncePast",
+            "description": "An example of applying an easing with a defined definition",
+            "impt": "Duration + Time are Required for the easing to take effect",
+            "complete": true,
+			"bugs": {
+				"description": "Child elements flash in and then re-animate in, causing a flicker",
+				"file": "/progress/rating.tpl",
+				"line": "3"
+			}
+        },
+        {
+            "name": "Easings #1:negative",
+            "example": "*:1000:-bouncePast",
+            "description": "A backwards reversed",
+            "impt": "Duration + Time are Required for the easing to take effect",
+            "complete": true
+        },
+
+        {
+            "name": "9 Children, 2 delays",
+            "example": "-250",
+            "description": "The most minimal case",
+            "impt": "No easing is needed here since the time is already clarified. No global delay in this example"
+        },
+        {
+            "name": "Select All Except.."
+        },
+        {
+            "name": "Select with initial delay"
+        },
+        {
+            "name": "Set delay + Set duration"
+        },
+        {
+            "name": "Set delay+duration+easing"
+        },
+        {
+            "name": "zero delay, set interval right->left"
+        },
+        {
+            "name": "set interval left-right"
+        },
+        {
+            "name": "custom-order"
+        },
+        {
+            "name": "zero delay, duration, auto-linear"
+        },
+        {
+            "name": "advanced #1"
+        },
+        {
+            "name": "advanced #1"
+        },
+        {
+            "name": "Stagger + Child w/ Ng-repeat"
+        }
+    ]
+}

@@ -1,0 +1,343 @@
+<!-- FORM --><ion-modal-view class="request-modal bg-white" ng-controller="RequestController"><section id="request-modal" class="full-xy absolute"><header class="bg-lake"><div class="header-nav"><a class="header-down" ng-click="closeRequestModal()"><svg viewBox="0 0 100 100"><path d="M14,32 L50,68 L86,32"></path></svg></a></div><h1 class="text-center">Request</h1></header><div class="request-content txt-slate"><div class="request-course"><h1 class="section-header-light">Course</h1><input type="text" class="p15xy" placeholder="Enter a Course"></div><div class="request-loc"><h1 class="section-header-light">Location</h1><ul class="ugrid-2 text-center"><li><input type="radio" name="loc" class="use-location" checked="checked"><label>Use my location</label></li><li><input type="radio" name="loc" class="enter-address"><label>Enter address</label></li></ul><div class="request-address"><span class="request-address-icon"><svg viewBox="0 0 100 100"><path d="M24.2857143,39.7142857 C24.2085714,25.5128 35.7985143,14 50,14 C64.2014857,14 75.7914286,25.5128 75.7142857,39.7142857 C75.6001143,60.8658286 50,86 50,86 C50,86 24.4009143,60.8658286 24.2857143,39.7142857 Z M50,50 C55.6806431,50 60.2857143,45.3949289 60.2857143,39.7142857 C60.2857143,34.0336426 55.6806431,29.4285714 50,29.4285714 C44.3193569,29.4285714 39.7142857,34.0336426 39.7142857,39.7142857 C39.7142857,45.3949289 44.3193569,50 50,50 Z"></path></svg> </span><span class="request-address-st">55 Spear Street</span> <span><span class="request-address-city">San Francisco</span>, <span class="request-address-state">CA</span> <span class="request-address-zip">94105</span></span></div></div><div class="request-time"><h1 class="section-header-light">Time</h1><ul class="request-time-urgent checklist-orange"><li><span><label>Is this session urgent?</label><input type="checkbox"><span></span></span></li></ul><div class="request-time-needed"><div class="p15xy"><h2>How much time do you need?</h2></div><ul class="ugrid-5"><li><input type="radio" name="hours" value="1" checked="checked"><div><h1>1</h1><span>hour</span></div></li><li><input type="radio" name="hours" value="2"><div><h1>2</h1><span>hours</span></div></li><li><input type="radio" name="hours" value="3"><div><h1>3</h1><span>hours</span></div></li><li><input type="radio" name="hours" value="4"><div><h1>4</h1><span>hours</span></div></li><li><input type="radio" name="hours" value="5"><div><h1>5</h1><span>hours</span></div></li></ul></div><div class="request-time-avail"><div class="p15xy"><h2>When are you available?</h2></div><div class="picker picker-date"><ul class="picker-day"><li class="inactive-2">Sep 24</li><li class="inactive-1">Sep 25</li><li class="active">Today</li><li class="inactive-1">Sep 26</li><li class="inactive-2">Sep 27</li><li class="inactive-3">Sep 28</li><li class="inactive-4">Sep 29</li></ul><ul class="picker-at"><li class="inactive">&nbsp;</li><li class="inactive">&nbsp;</li><li class="active">at</li><li class="inactive">&nbsp;</li><li class="inactive">&nbsp;</li></ul><ul class="picker-hours"><li class="inactive-2">07</li><li class="inactive-1">08</li><li class="active">09</li><li class="inactive-1">10</li><li class="inactive-2">11</li><li class="inactive-3">12</li><li class="inactive-4">01</li></ul><ul class="picker-colon"><li class="inactive">&nbsp;</li><li class="inactive">&nbsp;</li><li class="active">:</li><li class="inactive">&nbsp;</li><li class="inactive">&nbsp;</li></ul><ul class="picker-minutes"><li class="inactive-2">05</li><li class="inactive-1">10</li><li class="active">15</li><li class="inactive-1">20</li><li class="inactive-2">25</li><li class="inactive-3">30</li><li class="inactive-4">35</li></ul><ul class="picker-ampm"><li class="inactive">&nbsp;</li><li class="inactive">&nbsp;</li><li class="active">AM</li><li class="inactive-1">PM</li><li class="inactive">&nbsp;</li><li class="inactive">&nbsp;</li></ul></div></div></div><div class="request-desc"><h1 class="section-header-light">Description</h1><textarea class="p15xy" placeholder="Describe your problem">
+		</div>
+	</div>
+	<button class="absolute bottom-0 full-x bg-orange semibold">Submit</button>
+</section>
+</ion-modal-view>
+
+<!-- SUBCATEGORIES -->
+<!--
+<ion-modal-view class='request-modal bg-white' ng-controller="RequestController">
+<section id='request-modal' class='full-xy absolute'>
+	<header class="bg-white">
+		<div class="header-nav">
+			<a class="header-nav-back" ng-click="closeRequestModal()">
+  		        <svg viewBox="0 0 100 100">
+  					<path d="M68,86 L32,50 L68,14"></path>
+  				</svg>
+  				<h1>&nbsp;</h1>
+			</a>
+		</div>
+		<h1 class="text-center">Request</h1>
+	</header>
+	<div id="request-subcategories">
+		<div class="request-category bg-cerise">
+			<span>
+				<span ng-include="img_base + 'templates/svg/academic-bottom.html'"></span>
+				<span>Academic</span>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+			</span>
+		</div>
+		<ul class="request-subcategories">
+			<li>
+				<a class="select-subcategory" href="#">
+					<span>Session</span>
+				</a>
+				<a class="follow-subcategory" href="#">
+					<svg viewBox="0 0 100 100">
+					    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+					</svg>
+				</a>
+			</li>
+			<li>
+				<a class="select-subcategory" href="#">
+					<span>Question</span>
+				</a>
+				<a class="follow-subcategory" href="#">
+					<svg viewBox="0 0 100 100">
+					    <path d="M14,50 L86,50"></path>
+					</svg>
+				</a>
+			</li>
+			<li>
+				<a class="select-subcategory" href="#">
+					<span>Homework</span>
+				</a>
+				<a class="follow-subcategory" href="#">
+					<svg viewBox="0 0 100 100">
+					    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+					</svg>
+				</a>
+			</li>
+			<li>
+				<a class="select-subcategory" href="#">
+					<span>Study Group</span>
+				</a>
+				<a class="follow-subcategory" href="#">
+					<svg viewBox="0 0 100 100">
+					    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+					</svg>
+				</a>
+			</li>
+		</ul>
+	</div>
+</section>
+</ion-modal-view>
+-->
+
+<!-- CATEGORIES -->
+<!--
+<ion-modal-view class='request-modal bg-white' ng-controller="RequestController">
+<section id='request-modal' class='full-xy absolute'>
+	<header class="bg-white">
+		<div class="header-nav">
+			<a class="header-nav-back" ng-click="closeRequestModal()">
+  		        <svg viewBox="0 0 100 100">
+  					<path d="M68,86 L32,50 L68,14"></path>
+  				</svg>
+  				<h1>&nbsp;</h1>
+			</a>
+		</div>
+		<h1 class="text-center">Request</h1>
+	</header>
+	<ul id="request-categories">
+		<li class="bg-cerise-80p">
+			<a class="select-category" href="#">
+				<span>
+					<span ng-include="img_base + 'templates/svg/academic-bottom.html'"></span>
+					<span>Academic</span>
+				</span>
+			</a>
+			<a class="follow-category bg-cerise" href="#">
+				<svg viewBox="0 0 100 100">
+				    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a>
+		</li>
+		<li class="bg-campus-80p">
+			<a class="select-category" href="#">
+				<span>
+					<span ng-include="img_base + 'templates/svg/delivery-bottom.html'"></span>
+					<span>Delivery</span>
+				</span>
+			</a>
+			<a class="follow-category bg-campus" href="#">
+				<svg viewBox="0 0 100 100">
+				    <path d="M14,50 L86,50"></path>
+				</svg>
+			</a>
+		</li>
+		<li class="bg-shamrock-80p">
+			<a class="select-category" href="#">
+				<span>
+					<span ng-include="img_base + 'templates/svg/household-bottom.html'"></span>
+					<span>Household</span>
+				</span>
+			</a>
+			<a class="follow-category bg-shamrock" href="#">
+				<svg viewBox="0 0 100 100">
+				    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a>
+		</li>
+		<li class="bg-gold-80p">
+			<a class="select-category" href="#">
+				<span>
+					<span ng-include="img_base + 'templates/svg/food-bottom.html'"></span>
+					<span>Food</span>
+				</span>
+			</a>
+			<a class="follow-category bg-gold" href="#">
+				<svg viewBox="0 0 100 100">
+				    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a>
+		</li>
+		<li class="bg-orange-80p">
+			<a class="select-category" href="#">
+				<span>
+					<span ng-include="img_base + 'templates/svg/freelancing-bottom.html'"></span>
+					<span>Freelancing</span>
+				</span>
+			</a>
+			<a class="follow-category bg-orange" href="#">
+				<svg viewBox="0 0 100 100">
+				    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a>
+		</li>
+		<li class="bg-eggplant-80p">
+			<a class="select-category" href="#">
+				<span>
+					<span ng-include="img_base + 'templates/svg/athletic-bottom.html'"></span>
+					<span>Athletic</span>
+				</span>
+			</a>
+			<a class="follow-category bg-eggplant" href="#">
+				<svg viewBox="0 0 100 100">
+				    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a>
+		</li>
+		<li class="bg-lake-80p">
+			<a class="select-category" href="#">
+				<span>
+					<span ng-include="img_base + 'templates/svg/tech-bottom.html'"></span>
+					<span>Tech</span>
+				</span>
+			</a>
+			<a class="follow-category bg-lake" href="#">
+				<svg viewBox="0 0 100 100">
+				    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a>
+		</li>
+	</ul>
+</section>
+</ion-modal-view>
+-->
+
+<!-- ORIGINAL --><!--
+<ion-modal-view class='request-modal' ng-controller="RequestController">
+
+	<ion-header-bar align-title="center" class='dark-bg-header mini-header'>
+		<div class="buttons">
+			<button class="button button-clear button-header-link cancel-button button-left" ng-click='closeRequestModal()'>Cancel</button>
+		</div>
+		<h1 class="title dont-modify-bounds">{{request_fields.title}}</h1>
+		<div class="buttons">
+			<button class="button button-clear button-header-link submit-button button-right" id='done-button' ng-click='submitRequest()'>
+				<span ng-show='!progress' class='ng-class:{"grey-text":!validateFormVanilla()}'>Done </span>
+				<span class='blue' ng-show='progress'>Okay</span>
+			</button>
+		</div>
+	</ion-header-bar>
+
+	<ion-content ng-class='rounded-corners'>
+		<ion-list class='standard-bg'>
+
+			<ion-item class='item-avatar-left item-mini course-input-item item-button-right' ng-click='focusCourseInput()'>
+				<img class='pure-img' ng-src='{{img_base}}./img/verbs/{{request_fields.img}}' class='' />
+				<input type='text' name="course-input" class='light input-lg course-input form-control' id='course-input' ng-click='focusCourseInput()' fast-matcher fast-matcher-source="root.vars.courses" fast-matcher-output="root.vars.matchingCourses" fast-matcher-properties="short_name, title" fast-matcher-any-word="true" fast-matcher-limit="5" fast-matcher-preserve-order="true" fast-matcher-case-insensitive="true" placeholder="{{request_fields.course_placeholder}}" ng-model="course_search_text" ng-change="updateProgress(course_search_text)" />
+				<a ng-click='toggleYourCourses()' class='button button-clear' style='top:20px; padding-left:50px;'>
+					<img ng-show='show_student_courses' class='icon ion-plus-custom blue custom-icon pure-img chevron-filled-down' ng-src='{{img_base}}./img/icons/chevron-filled-down.svg'>
+					<img ng-show='!show_student_courses && user.student_courses && user.student_courses.length > 0 && root.vars.last_verb_index_clicked !== 2' class='icon ion-plus-custom blue custom-icon pure-img chevron-filled-down' ng-src='{{img_base}}./img/icons/chevron-filled.svg'>
+				</a>
+			</ion-item>
+
+			<div class='autocomplete-wrapper' ng-show='progress && root.vars.matchingCourses.length > 0'>
+				<div class='item item-divider course-divider'>
+					<p class='uppercase opacity-3-4 micro-text'> Suggestions </p>
+				</div>
+				<ion-item class='course-item' ng-repeat='course in root.vars.matchingCourses' ng-click='addSelectedCourse(course, course_search_text)'>
+					<span class='course-name'> {{course.short_name}} </span> <span class='course-title'> {{course.title}} </span>
+				</ion-item>
+			</div>
+
+			<div class='your-courses-wrapper' ng-show='show_student_courses && user.student_courses.length > 0'>
+				<div class='item item-divider course-divider'>
+					<p class='uppercase opacity-3-4 micro-text'> Your Courses </p>
+				</div>
+				<ion-item class='course-item' ng-repeat='student_course in user.student_courses' ng-click='addSelectedStudentCourse(student_course)'>
+					<span class='course-name blue'> {{student_course.short_name}} </span> <span class='course-title'> {{student_course.title}} </span>
+				</ion-item>
+				<div class='item item-divider course-divider'>
+					<p class='micro-text'>&nbsp;</p>
+				</div>
+			</div>
+
+			<ion-item class='item-icon-right request-form-item' ng-click='launchLocationModal()' ng-hide='progress || request.address || !request_fields.show_location'>
+				<p> Location </p>
+			</ion-item>
+
+			<ion-item ng-show='request.address && !progress && request._type !== 1' class='item-button-right request-form-item' id='location-filled-item'>
+				<a class='request-location-wrapper-link' ng-click='clearLocationButton()'>
+					<p>{{request.address}}
+						<br>
+						<span class='nano-text'>
+                    {{request.city_info}}
+                  </span>
+					</p>
+				</a>
+				<button class='button button-clear' ng-click='resetLocation()' style='margin-right: -8px;'>
+					<img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' style='margin-top:-0.3em;' ng-src='{{img_base}}./img/icons/close_icon.svg'>
+				</button>
+			</ion-item>
+
+			<ion-toggle ng-hide='progress || !request_fields.show_urgency' ng-model='request.urgency' class='request-form-item' ng-click='availability_edit = false;'>
+				<p> Is this session urgent? </p>
+			</ion-toggle>
+
+			<div class='item item-divider' ng-hide='progress || !request_fields.show_divider_one' ng-click='!request.availability_edit || toggleAvailability()'>
+			</div>
+			<a ng-hide='progress || !request_fields.show_estimate' ng-blur='toggleAvailability()' ng-click='toggleAvailability()' class='item request-form-item'>
+				<p class='inline'> How much time do you need?
+				</p>
+				<p ng-show='request.time_estimate.hours && !request.time_estimate.minutes' class='align-right blue item-right-text'>{{request.time_estimate.hours}} hours <span ng-show='request.time_estimate.minutes > 0'>{{request.time_estimate.minutes}} min</span></p>
+
+				<p ng-show='request.time_estimate.hours && request.time_estimate.minutes' class='align-right blue item-right-text'>{{request.time_estimate.hours}}hr <span ng-show='request.time_estimate.minutes > 0'>{{request.time_estimate.minutes}}m</span></p>
+			</a>
+
+			<ion-item ng-show='request.availability_edit && !progress' class='scroll-availability-section relative item request-form-item' data-tap-disabled="true">
+				<div id='test' style='margin-top:238px; margin-left:27%; position:absolute; margin-bottom:-260px;'> </div>
+				<div class='pure-u-1 padding-2em'> </div>
+				<div class='pure-u-1 padding-2em'> </div>
+				<div class='pure-g'>
+					<div class='pure-u-3-5 i-think-text'>
+
+						I think I need...
+
+					</div>
+					<div class='pure-u-1-5'>
+
+					</div>
+					<div class='pure-u-1-5 i-think-text'>
+						Hours
+					</div>
+				</div>
+				<div class='pure-u-1 padding-2em'> </div>
+				<div class='pure-u-1 padding-2em'> </div>
+
+			</ion-item>
+
+			<ion-item ng-hide='progress || request.urgency || !request_fields.show_availability' ng-click='launchAvailabilityModal()' class='request-form-item'>
+				<a style='width:100%; height:100%;'>
+					<p class='inline'> When are you available? </p>
+					<p ng-show='!request.calendar.start_time.hours && !request.calendar.start_time.minutes' class='align-right blue item-right-text'>Pick a Time</p>
+					<p ng-show='request.calendar.start_time.hours || request.calendar.start_time.minutes' class='align-right blue item-right-text'>{{request.calendar.date.formatted_date}}, {{request.calendar.start_time.formatted}}-{{request.calendar.end_time.formatted}}</p>
+				</a>
+			</ion-item>
+
+			<div class='item item-divider' ng-hide='progress || !request_fields.show_divider_two' ng-click='!request.availability_edit || toggleAvailability()'>
+			</div>
+			<ion-item class='relative item-icon-right description-item request-form-item' ng-hide='progress' ng-click='launchDescriptionModal()'>
+				<div class='empty-description-wrapper' ng-hide='progress || request.description || request.files.length > 0'>
+					<img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' ng-src='{{img_base}}./img/icons/paperclip.svg' style='margin-right: 0.33em; margin-top:0.4em;'>
+					<span><p class='white-space-normal' style='padding-right:2em;'> {{request_fields.description_placeholder}}</p></span>
+					<div class='pure-u-1 padding-1em'>&nbsp;
+						<br>
+					</div>
+					<div class='pure-u-1 padding-1em'>&nbsp;
+						<br>
+					</div>
+				</div>
+
+				<div class='description-wrapper item-icon-right' ng-hide='progress || (!request.description && !request.files.length > 0)' style='margin-right: 0.33em;'>
+					<img class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon request-icon' ng-src='{{img_base}}./img/icons/paperclip.svg'>
+					<p class='black white-space-normal' ng-show='request.description'>
+						{{request.description}}
+					</p>
+
+				</div>
+
+
+				<div class='pure-g' ng-show='request.files && request.files.length > 0' ng-show='true || request && request.files && request.files.length > 0'>
+					<div class='pure-u-1' style='border-top: 1px solid rgba(0,0,0,0.1)'>
+						<div class='pure-u-1-4' ng-repeat='file in request.files track by $index' style='padding-top:12px;'>
+							<div class="attach-img pure-img padding-half auto-margin" style='background-image:url("{{file.url}}")'>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</ion-item>
+			<ion-item class='item-icon-left' ng-hide='progress' ng-click='launchTagsModal()'>
+				<img style='margin-top:0.4em;' class='icon ion-plus-custom blue custom-icon pure-img list-custom-icon' ng-src='{{img_base}}./img/icons/tags.svg'>
+				<p class='empty-tags-placeholder' ng-show='!request.tags || request.tags.length === 0'>Add some tags (optional)</p>
+				<p class='tags-wrapper'>&nbsp;<span class='blue request-tag' ng-repeat='tag in request.tags'>#{{tag}} </span> </p>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+
+</ion-modal-view>
+-->

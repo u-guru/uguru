@@ -1,0 +1,54 @@
+<div class="loader-portal-outside absolute full-xy top-0 left-0" id="splash-preapp-loader">
+    <div class="loader-portal-container activate" elem-states="[portal-academic, portal-baking, portal-photo, portal-tech, portal-household]" on-activate="null:inject.loader-portal|on-loader-begin-enter, null:inject.guru-tech|on-loader-tech-enter" on-portal-academic-enter="academic" on-portal-baking-enter="baking" on-portal-photo-enter="photo" on-portal-tech-enter="tech" on-portal-household-enter="household">
+        <div class="loader-portal on-loader-begin-enter" on-init="opacity:0" elem-states="[loader-begin]" on-loader-begin-enter="portal-fadeIn:animIn:delay-50, null:inject.portal-anim|on-portal-enter">
+			<div class="portal portal-end" elem-states="[portal]" on-portal-exit="portal-exit:anim:delay-500, null:inject.splash-adlib-container|on-splash-enter">
+				<div class="portal-anim" on-init="opacity:0" elem-states="[portal]" on-portal-enter="portal-open:animIn:delay-500">
+					<svg width="200px" height="200px" viewBox="0 0 400 400">
+						<circle cx="200" cy="200" r="192" stroke="#55A4B7" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" fill="#2B3234" class="portal-anim" on-init="stroke-dashoffset: 1207" elem-states="[portal]" on-portal-enter="portal-progress:anim:delay-2000"></circle>
+					</svg>
+				</div>
+ 				<div class="mask"></div>
+ 			</div>
+
+            <div class="logo portal-anim portal-end" ng-include="'preapp/templates/loaders/props/logo.html'" on-init="opacity:0" elem-states="[portal]" on-portal-enter="portal-logo-move-up:animIn:delay-1000" on-portal-exit="portal-logo-move-down:animOut"></div>
+
+            <!-- <div class="guru-academic"
+                elem-states="[loader-academic]"
+                on-loader-academic-enter="null:inject.loader-portal-container|on-portal-academic-enter"></div>
+            <div class="guru academic guru-academic" ng-include="'preapp/templates/loaders/guru/academic.html'"
+                elem-states="[loader-academic]"
+                on-loader-academic-enter="null:inject.academic-anim|on-loader-academic-anim-enter"></div>
+
+            <div class="guru-baking"
+                elem-states="[loader-baking]"
+                on-loader-baking-enter="null:inject.loader-portal-container|on-portal-baking-enter"></div>
+            <div class="guru baking guru-baking" ng-include="'preapp/templates/loaders/guru/baking.html'"
+                elem-states="[loader-baking]"
+                on-loader-baking-enter="null:inject.baking-anim|on-loader-baking-anim-enter"></div>
+
+            <div class="guru-photo"
+                elem-states="[loader-photo]"
+                on-loader-photo-enter="null:inject.loader-portal-container|on-portal-photo-enter"></div>
+            <div class="guru photo guru-photo" ng-include="'preapp/templates/loaders/guru/photo.html'"
+                elem-states="[loader-photo]"
+                on-loader-photo-enter="null:inject.photo-anim|on-loader-photo-anim-enter"></div> -->
+
+            <div class="guru-tech on-loader-tech-enter" elem-states="[loader-tech]" on-loader-tech-enter="null:inject.loader-portal-container|on-portal-tech-enter"></div>
+            <div class="guru tech guru-tech on-loader-tech-enter" ng-include="'preapp/templates/loaders/guru/tech.html'" elem-states="[loader-tech]" on-loader-tech-enter="null:inject.tech-anim|on-loader-tech-anim-enter"></div>
+
+            <!-- <div class="guru-household"
+                elem-states="[loader-household]"
+                on-loader-household-enter="null:inject.loader-portal-container|on-portal-household-enter"></div>
+            <div class="guru household guru-household" ng-include="'preapp/templates/loaders/guru/household.html'"
+                elem-states="[loader-household]"
+                on-loader-household-enter="null:inject.household-anim|on-loader-household-anim-enter"></div> -->
+        </div>
+        <!-- <div class="academic-props-container academic-anim" ng-include="'preapp/templates/loaders/props/academic.html'"
+            elem-states="[loader-academic-anim]"
+            on-loader-academic-anim-enter="show-anim:animIn"></div> -->
+        <div class="tech-props-container tech-anim" ng-include="'preapp/templates/loaders/props/tech.html'" elem-states="[loader-tech-anim]" on-loader-tech-anim-enter="loader-bob:delay-2500"></div>
+        <!-- <div class="household-props-container household-anim" ng-include="'preapp/templates/loaders/props/household.html'"
+            elem-states="[loader-household-anim]"
+            on-loader-household-anim-enter="fadeOut-quick:animOut:delay-8000, null:inject.portal-end|on-portal-exit"></div> -->
+    </div>
+</div>

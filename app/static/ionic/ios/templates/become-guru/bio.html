@@ -1,0 +1,46 @@
+<ion-view view-title="Guru Bio" name="bio">
+    
+    <ion-nav-buttons side="secondary">
+        <button ng-click='submitGuruBio()' ng-disabled="!user.guru_introduction" class="button button-clear button-positive">Save</button>
+    </ion-nav-buttons>
+
+  <ion-content style="background-color: #363C3E !important">
+
+    <div class="list">
+      <div class="item item-thumbnail-left bio-list-item first-item-bio">
+        <img src="{{user.profile_url}}" style="max-width:65px; max-height:65px; margin:5px; border-radius:4px;">
+        <div class="white-bio-name-text" ng-show="user.name">{{user.name}}
+          <span class="guru-tag">Guru</span>
+        </div>
+        <p class="grey-bio-major-text" ng-show="user.majors.length > 0">
+          <b>
+            {{user.university.title}}
+          </b> 
+          ({{user.majors[0].name}} major)
+        </p>
+      </div>
+
+      <div class="item bio-list-item" style="border:0px; border-top:1px solid rgba(255,255,255, 0.1); padding:10%; border-top: 1px solid rgba(255,255,255, 0.1); padding: 20% 10%;">
+        <p class="center" style="color:rgba(255, 255, 255, 0.8); line-height: 1.4em; font-size:100%"> 
+          <span ng-hide="user.guru_introduction" style="white-space:normal">
+            What should a student know about you?
+          </span>
+          <span ng-show="user.guru_introduction" style="color:rgba(255, 255, 255, 0.8); line-height: 1.4em; font-size:100%; white-space:normal">
+            {{user.guru_introduction}}
+          </span>
+      </div>
+
+
+
+    </div>
+
+  </ion-content> 
+
+    <ion-footer-bar class="bar-footer item-input-inset" style="z-index:30" keyboard-attach>
+        
+      <textarea style="resize:none;" type="search" placeholder="Got a perfect score on the final?" name="bio" ng-model="user.guru_introduction" ng-blur="setFocus(user.guru_introduction)"></textarea>
+
+
+  </ion-footer-bar>
+
+</ion-view>

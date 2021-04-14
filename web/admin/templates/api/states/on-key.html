@@ -1,0 +1,23 @@
+<div class='full-xy absolute top-0 left-0'>
+    <div class='full-x p15xy bg-azure'>
+        <h1 class='text-center weight-900'> On Key </h1>
+    </div>
+    <div>
+        <ul class='flex-center-vertical p15-grid full-x ugrid-2'>
+            <li class='text-right flex ugrid-2'>
+                <button class='flex p10xy radius-2 bg-moxie weight-900' on-click='send:[activate-one]'>
+                    Press A on Keyboard
+                </button>
+
+            </li>
+            <li class='text-left relative flex-vertical-center' >
+                <div>
+                    <div on-key="a,b,c" when-key-down-a="trigger:[self:init]" init-with="p:[opacity:0]" on-init="p:[transform:translateX(-1000px):translateX(200px):1000:bouncePast]" init-later>
+
+                        <div ng-include="'shared/templates/components/cards/profile-widget.tpl'"> </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

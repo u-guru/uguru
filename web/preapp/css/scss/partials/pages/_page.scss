@@ -1,0 +1,83 @@
+@import '../../../../../shared/css/scss/partials/mixin';
+
+.splash-modal {
+	background: $slate;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	header {
+		position: relative;
+		@include flex;
+		@include flex-center;
+		height: calc(100% / 3);
+		background: $charcoal;
+		padding: 15px;
+		div {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: auto;
+		}
+		h1 {
+			position: relative;
+			z-index: 10;
+			font-weight: 600;
+			font-size: 28px;
+			text-align: center;
+			text-transform: capitalize;
+		}
+		.splash-exit {
+			position: absolute;
+			svg {
+				transform-origin: center center;
+			}
+			&.desktop {
+				display: none;
+				width: 42px;
+				height: 42px;
+				top: 8px;
+				left: 8px;
+			}
+			&.mobile {
+				@include flex;
+				@include flex-center;
+				width: 50px;
+				height: 50px;
+				top: 0;
+				left: 0;
+				svg {
+					width: 36px;
+					height: 36px;
+					* {
+						stroke: white;
+						stroke-width: 6px;
+					}
+				}
+			}
+		}
+		+ * {
+			margin: 0 auto;
+			max-width: 1030px;
+		}
+	}
+}
+
+@media screen and (min-height: 680px) and (min-width: 768px) {
+	.splash-modal {
+		header {
+			height: 40%;
+			h1 {
+				font-size: 32px;
+			}
+			.splash-exit {
+				&.desktop {
+					display: block;
+				}
+				&.mobile {
+					display: none;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,69 @@
+<div class='flex-wrap-center bg-cerise txt-white full-xy absolute top-0 left-0'>
+	<!-- <projector></projector> -->
+	<swiper width="500px" height="300px" class='overflow'>
+		<swiper-controls>
+			<swipe-var key="speed" value='1000'/>
+			<swipe-var key="spaceBetween" value='250'/>
+			<!-- @samir not working with value array -->
+			<!-- <swipe-var key="coverflow" value='{"rotate":"1000", "stretch":"0","depth":"100","modifier":"1"}'/> -->
+			<swipe-var key="lazyLoading" value='true'/>
+			<swipe-var key="effect" value='coverflow'/>
+			<swipe-var key="resistance" value='true'/>
+			<swipe-var key="mousewheelControl" value='true'/>
+			<swipe-var key="mousewheelSensitivity" value='100'/>
+			<swipe-var key="coverflow" value='{"rotate":"10"}'/>
+
+		</swiper-controls>
+		<slide data="{name: 'Slide One'}">
+			<div class='txt-white bg-charcoal full-xy flex-wrap-center'>
+				{{data[0]}}
+			</div>
+		</slide>
+		<slide data="{name: 'Slide Two'}" height="300px" width="500px">
+			<div class='txt-white bg-charcoal full-xy flex-wrap-center'>
+				{{data[0]}}
+			</div>
+		</slide>
+		<slide data="{name: 'Slide Three'}" height="300px" width="500px">
+			<div class='txt-white bg-charcoal full-xy flex-wrap-center'>
+				{{data[0]}}
+			</div>
+		</slide>
+		<swiper-back>
+			<button class='bg-moxie txt-white weight-600'>&lt;</button>
+		</swiper-back>
+		<swiper-next>
+			<button class='bg-moxie txt-white weight-600'>&gt;</button>
+		</swiper-next>
+	</swiper>
+
+	<div class='absolute bottom-0 left-0 bg-campus-50p full-x' ng-if='swiperOptions'>
+		<!-- <div class='p15-grid full-x flex-wrap-center flex-stretch' ng-init="props=['progress', 'activeIndex', 'autoplaying', 'translate']">
+			<div class='p10xy m05x bg-slate border-slate border-1 bg-charcoal-50p p10xy' ng-repeat='prop in props'>
+				<h1 class='full-x txt-4 weight-600'>{{prop}}</h1>
+				<span class='txt-2'> {{swiper[prop]}}  </span>
+			</div>
+		</div> -->
+
+		<ul class="flex-center-vertical p15-grid overflow-auto no-scrollbar full-x">
+			<li>
+				<a class='block bg-charcoal txt-white p10xy' target='_blank' href='{{swiperOptions.ref}}'>
+					<h1 class='full-x txt-4 weight-600'>Docs</h1>
+				</a>
+			</li>
+			<li class='relative' ng-repeat='(key, value) in swiperOptions' ng-if='swiperOptions.modified.indexOf(key) > -1'>
+				<div class='text-center weight-700 uppercase txt-charcoal txt-1 full-x txt-white' style='margin-top:-20px;opacity:0.7'>Modified</div>
+				<a ng-click='activeIndex = $index' class="block p10xy border-slate border-1 bg-charcoal txt-cerise">
+					<h1 class='full-x txt-4 weight-600'>{{key}}</h1>
+					<span class='txt-2' style="white-space:nowrap">{{value}}</span>
+				</a>
+			</li>
+			<li ng-repeat='(key, value) in swiperOptions' ng-if='swiperOptions.modified.indexOf(key) === -1'>
+				<a ng-click='activeIndex = $index' class="block p10xy border-slate border-1 bg-charcoal-50p">
+					<h1 class='full-x txt-4 weight-600'>{{key}}</h1>
+					<span class='txt-2' style="white-space:nowrap">{{value}}</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,30 @@
+<section id="request-cta-map" class="request-slide request-map">
+    <header>
+        <h1>where?</h1>
+        <h2>{{requestForm.address || 'This is filler where the address will go'}}</h2>
+    </header>
+    <div>
+        <div class='map-container' style='height:calc(100% - 165px) !important; top:60px;' ng-if='requestForm.mapReady'>
+            <ui-gmap-google-map
+                class="full-xy absolute top-0 left-0"
+                center='requestForm.map.center'
+                control='requestForm.map.control'
+                zoom="requestForm.map.zoom"
+                pan="requestForm.map.pan"
+                options="requestForm.map.options">
+                <ui-gmap-marker
+                    idKey='requestForm.map.marker.idKey'
+                    coords='requestForm.map.marker.coords'
+                    click='requestForm.map.marker.onClick()'
+                    options='requestForm.map.marker.options'
+                    control='requestForm.map.marker.control'
+                    events='requestForm.map.marker.events'
+                ></ui-gmap-marker>
+            </ui-gmap-google-map>
+        </div>
+        <div class="input-field">
+            <input type="text" placeholder="Search"/>
+        </div>
+    </div>
+    <button class="confirm">Select this location</button>
+</section>

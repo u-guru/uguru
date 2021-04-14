@@ -1,0 +1,82 @@
+{
+    "8/22": {
+        "release": "preapp",
+        "daySections": [
+            {
+                "time_desc": "before 10:00am",
+                "name" : "Morning Skills",
+                "description": "Don't pull, choose one new property + document + record",
+                "items": ["one new property + document", "decide properties for the week", "animate /#/ admin for fun for fun"]
+            },
+            {
+                "name": "Revisit <br><br> Components",
+                "time_desc": "10-11am",
+                "description": "Discuss animation guide for already animated components + polish w/ Saturday's tool",
+                "items": ["discuss similarities, patterns for all base + custom components", "create rudimentary guide", "implement + go as far as you can until 11pm"]
+            },
+            {
+                "name": "Check-in",
+                "time_desc": "@11am",
+                "description": "Sync with Samir for the day"
+            },
+            {
+                "name": "TBD",
+                "time_desc": "Before 3pm + Checkin",
+                "description": "TBA (but definitely fun - the usual)"
+            },
+            {
+                "name": "TBD",
+                "time_desc": "Before 6pm",
+                "description": "TBA (but definitely fun - the usual)"
+            }
+        ]
+    },
+    "8/23": {
+        "release": "preapp",
+        "daySections": [
+            {
+                "time_desc": "before 1pm",
+                "name": "Components + <br><br>help debugging <br><br>tool",
+                "description": "Make sure things are stable"
+            },
+            {
+                "time_desc": "@1pm",
+                "name": "Check-in",
+                "description": "Discuss remaining day details + go over the admin format"
+            },
+            {
+                "time_desc": "Post Lunch (intermittent)",
+                "name": "Verify new <br><br> features + discuss<br><br>1st hifi workflows",
+                "description": "ordering is <b> not final </b> nor required to be synchronous",
+                "items": ["Feature: jump", "Feature: ease + constants", "Feature: single property switching", "Feature: insert at"]
+
+            },
+            {
+                "time_desc": "Before exit",
+                "name": "API Specs Overview",
+                "description": "Go over them + make sure they are accessible, comprehendable, interact-able",
+                "items": ["letter-specific: letters/words/sentences/paragraphs", "scroll", "draw"]
+
+            }
+        ]
+    },
+    "8/24": {
+        "release": "preapp",
+        "daySections": [
+            {
+                "time_desc": "before 10:30am",
+                "name": "Birthday Festivities"
+            },
+            {
+                "time_desc": "before 11:30am",
+                "name": "Box/Text Shadow properties",
+                "description": "Open /admin/api/property to see the first two options demonstrating that it works."
+            },
+            {
+                "time_desc": "Before noon",
+                "name": "Setup Versioning + update components.json",
+                "description": "Check /dev/components/input/search/v1"
+            }
+        ]
+    }
+}

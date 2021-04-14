@@ -1,0 +1,87 @@
+<ion-view view-title="Share and Earn">
+
+    <ion-nav-buttons side="secondary">
+        <button ng-click="turnCardFormOff()" ng-show="showCardForm" class="button button-clear button-positive">Cancel</button>
+    </ion-nav-buttons>
+
+  <ion-content scroll="false" style="background-color: rgba(0,0,0,0.04);">
+    <div class="list list-inset transparent-background" style="margin-top:20px">
+        <div ng-show="!user.year"class="item item-select share-list-item-text" ng-hide="showCardForm">
+            Select your school year
+            <p class="subheader-text">
+                <select style="top:3px; right:-30px; color:rgba(105, 179, 165, 1)" ng-model="selectValue" ng-change="changedValueSelect(selectValue)">
+                  <option selected>Choose One</option>
+                  <option>Freshman</option>
+                  <option>Sophomore</option>
+                  <option>Junior</option>
+                  <option>Senior</option>
+                  <option>Grad / Masters</option>
+                  <option>PhD</option>
+                  <option>Alumni</option>
+                </select>
+            </p>
+        </div>
+        <div ng-show="user.year && !showCardForm" class="item item-select share-list-item-text item-icon-right">
+            Select your school year
+            <p class="subheader-text">
+                {{user.year}}
+            </p>
+            <i class="icon ion-checkmark" style="color:rgba(105, 179, 165, 1)"></i>
+
+        </div>
+        <a class="item item-icon-right share-list-item-text" ng-hide="showCardForm" ng-click="togglePhoneMode()">
+            Confirm your phone number
+              <i ng-show="!phoneNumberConfirmed"class="icon ion-iphone" style="color:rgba(105, 179, 165, 1)"></i>
+              <i ng-show="phoneNumberConfirmed"class="icon ion-checkmark" style="color:rgba(105, 179, 165, 1)"></i>
+              <p ng-show="!user.phone_number"class="subheader-text" style="font-size:10px; white-space:normal; line-height:1.5em; margin-top:8px;">Your phone number will never be shared without your consent</p>
+              <p ng-show="user.phone_number"class="subheader-text" style="font-size:10px; white-space:normal; line-height:1.5em; margin-top:8px;">{{user.phone_number}}</p>
+        </a>
+        <a class="item item-icon-right share-list-item-text" ng-hide="showCardForm" ng-click="toggleAddCardMode()">
+            Enter Cash Out Information
+            <i class="icon ion-card" style="color:rgba(105, 179, 165, 1)"></i>
+            <p class="subheader-text" style="font-size:10px; white-space:normal; line-height:1.5em; margin-top:8px;">We transfer money to your bank after each session.</p>
+        </a>
+        <div ng-show="showCardForm">
+            <form stripe-form="handleStripe" name="myForm">
+                <p style="color:red;" class="center" ng-show="error_text">
+                    {{error_text}}
+                </p>
+                <p class="center subheader-text" style="color:rgba(0,0,0,0.8)" ng-show="!error_text">
+                    Please enter a DEBIT card.
+                </p>
+                <label class="item item-input">
+                    <span class="input-label" style="color:rgba(105, 179, 165, 1);"><i style="color:rgba(105, 179, 165, 1);" class="icon ion-card placeholder-icon"></i>Card</span>
+                    
+                    <input placeholder="•••• •••• •••• ••••" type="text" ng-model="number" payments-format="card" payments-validate="card" payments-format="card" payments-type-model="type" ng-class="myForm.number.$card.type"/>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label" style="color:rgba(105, 179, 165, 1); display:inline-block; width:auto;"><i style="color:rgba(105, 179, 165, 1);"  class="icon ion-calendar placeholder-icon"></i>Exp</span>
+                    <input type="text" ng-model="expiry" payments-validate="expiry" payments-format="expiry" placeholder="MM / YY" />
+                </label>
+                <label class="item item-input">
+                    <span class="input-label" style="color:rgba(105, 179, 165, 1); display:inline-block; width:auto;"><i style="color:rgba(105, 179, 165, 1);"  class="icon ion-lock placeholder-icon"></i>CVC</span>
+                    <input type="text" ng-model="cvc" payments-validate="cvc" payments-format="cvc" payments-type-model="type" placeholder="••••" />
+                </label>
+                <div class="container" style="margin-left:7px; margin-right:7px;">
+                    <button type="submit"class="button button-positive button-full">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </ion-content> 
+
+  <ion-footer-bar class="bar-footer item-input-inset" ng-show="showPhoneMode" style="z-index:30" keyboard-attach>
+        
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios7-phone placeholder-icon"></i>
+
+            <input type="text" name="prefix" ng-model="user.phone_number" class="form-control" placeholder="(510) 111 - 1111" ng-blur="closePhoneNumberDialog"
+            />
+        </label>
+
+        <button class="button button-clear button-positive" ng-model="user.phone_number" ng-click="submitPhoneNumber(user.phone_number)">
+            Submit
+        </button>  
+    </ion-footer-bar>
+
+</ion-view>

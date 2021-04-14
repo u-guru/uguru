@@ -1,0 +1,142 @@
+<!--
+Gameplan
+1. Progress bar functionality
+2. Request Service
+	- category type == 'academic'
+	- add course input w/ container show & hide
+	- empty request
+	## P.1 What do you need help in?
+	## your situation + store in default cache
+			- is urgent
+			- time estimate
+			- add availability
+			- ideal- location: map + find draggable codepen
+	## Compensation
+			- Paid / not paid ** encourage pay will get the gurus more likely to reply **
+			- add payment information
+	## Add-ons: the more detail the merrier
+			- ideal contact methods
+			- contact gurus outside of the university if the tags match
+			- in-person only, or remote is fine
+			- simultaneous contact
+			- extra details? textarea
+	## Receipt
+--><section id="request" class="request-essay"><header class="desktop-header" ng-if="desktopMode"><a></a> <a class='cta-modal-close desktop-header-next desktop-header-close hide ng-class:{"show":!activeSlideIndex}'><svg viewBox="0 0 100 100"><path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path></svg> </a><a class="right-0 absolute text-right header-nav-next hide ng-class:{'show':activeSlideIndex && activeSlideIndex < 3}" ng-click="nextSlide()"><svg viewBox="0 0 100 100"><path d="M32,86 L68,50 L32,14"></path></svg> </a><a class='desktop-header-back absolute left-0 hide ng-class:{"show":activeSlideIndex}' ng-click="previousSlide()"><svg viewBox="0 0 100 100"><path d="M68,86 L32,50 L68,14"></path></svg></a></header><header class="flex-center" ng-if="!desktopMode"><h1 class="full-x text-center">Instant Guru Request</h1><div class="header-nav full-x"><a class="header-close cta-modal-close" ng-click="studentRequestModal.hide()"><svg viewBox="0 0 100 100"><path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path></svg></a></div></header><main><div class="onboarding-steps absolute top-0 left-0"><progress class="white" max="6" value="{{requestProgress.value}}"></progress></div><ion-slide-box id="request-form-slide-box" can-swipe-back="false" on-slide-changed="slideHasChanged($index)" class="full-y"><!-- What do you need help in? --><ion-slide id="essay-student-request-form" ng-include="img_base + BASE + 'templates/essay.student.request.slide.one.html'"></ion-slide><!-- Payment options --><!-- <ion-slide ng-include="img_base + BASE + 'templates/essay.student.request.slide.two.html'"></ion-slide> --><!-- Honor Pledge --><ion-slide ng-include="img_base + BASE + 'templates/essay.student.request.slide.three.html'"></ion-slide><!-- Description + (FUTURE OPTIONS) submit --><ion-slide ng-include="img_base + BASE + 'templates/essay.student.request.slide.four.html'"></ion-slide></ion-slide-box></main><!--
+@gabrielle: old request form underneath (the one jeselle mocked)
+
+<main id='desktop-request' class="desktop-request desktop-mode">
+		<div class="main bg-cerise flex-center-wrap">
+			<header class='full-x'>
+				<h1 class="request-header">
+					<span class="request-category">Academic</span>
+					<span>
+						<svg viewBox="0 0 100 100">
+							<path d="M32,86 L68,50 L32,14"></path>
+						</svg>
+					</span>
+					<span class="request-type">Exam Request Review</span>
+				</h1>
+			</header>
+			<div class="request-form">
+				<div>
+					<div class="request-form-time">
+						<div>
+							<ul>
+								<li>Time needed:</li>
+								<li><span><input type="tel" placeholder="2"></span></li>
+								<li><span><input type="tel" placeholder="00"/></span></li>
+							</ul>
+						</div>
+					</div>
+					<div class="request-form-map">
+						<div>
+							<ul>
+								<li>
+									<h2><span class="request-form-site">Philz Coffee</span> on <span class="request-form-st">Berry Street</span></h2>
+								</li>
+								<li>
+									<span class="request-form-location">San Francisco, CA</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="request-form-date">
+						<div>
+							<ul>
+								<li>
+									<h2 class="request-form-day">Friday, 13 November</h2>
+								</li>
+								<li>
+									<span class="request-form-time">7:30PM - 9:30PM</span></li>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="request-form-desc">
+						<div>
+							<div class="input">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
+							</div>
+							<button>Edit Description</button>
+						</div>
+					</div>
+					<div class="request-form-upload">
+						<div>
+							<div class="input">
+								<ul>
+									<li class="upload-pdf">
+										<svg viewBox="0 0 75 75">
+										    <path d="M6.50001634,1.5 C3.73858357,1.5 1.5,3.73376942 1.5,6.50573628 L1.5,68.4942637 C1.5,71.2588555 3.73376942,73.5 6.50573628,73.5 L68.4942637,73.5 C71.2588555,73.5 73.5,71.2643283 73.5,68.5001225 L73.5,21.0605722 C73.5,19.9548035 72.8472697,18.4334881 72.0608909,17.6806226 L56.5991089,2.87777827 C55.8043109,2.11685234 54.2734003,1.5 53.1543987,1.5 L6.50001634,1.5 Z M55.5992131,2.46 C55.5992131,2.46 55.5992131,2.90396713 55.5992131,3.46092472 L55.5992131,14.0558242 C55.5992131,16.818671 57.8364841,19.0584009 60.6045233,19.0584009 L72.9848101,19.0584009"></path>
+										</svg>
+										<span>PDF</span>
+									</li>
+									<li class="upload-img">
+										<div style="background-image: url({{user.profile_url}})"></div>
+										<span>JPG</span>
+									</li>
+									<li class="upload-pdf">
+										<svg viewBox="0 0 75 75">
+										    <path d="M6.50001634,1.5 C3.73858357,1.5 1.5,3.73376942 1.5,6.50573628 L1.5,68.4942637 C1.5,71.2588555 3.73376942,73.5 6.50573628,73.5 L68.4942637,73.5 C71.2588555,73.5 73.5,71.2643283 73.5,68.5001225 L73.5,21.0605722 C73.5,19.9548035 72.8472697,18.4334881 72.0608909,17.6806226 L56.5991089,2.87777827 C55.8043109,2.11685234 54.2734003,1.5 53.1543987,1.5 L6.50001634,1.5 Z M55.5992131,2.46 C55.5992131,2.46 55.5992131,2.90396713 55.5992131,3.46092472 L55.5992131,14.0558242 C55.5992131,16.818671 57.8364841,19.0584009 60.6045233,19.0584009 L72.9848101,19.0584009"></path>
+										</svg>
+										<span>PDF</span>
+									</li>
+									<li class="upload-add">
+										<svg viewBox="0 0 75 75">
+										    <path d="M6.50001634,1.5 C3.73858357,1.5 1.5,3.73376942 1.5,6.50573628 L1.5,68.4942637 C1.5,71.2588555 3.73376942,73.5 6.50573628,73.5 L68.4942637,73.5 C71.2588555,73.5 73.5,71.2643283 73.5,68.5001225 L73.5,21.0605722 C73.5,19.9548035 72.8472697,18.4334881 72.0608909,17.6806226 L56.5991089,2.87777827 C55.8043109,2.11685234 54.2734003,1.5 53.1543987,1.5 L6.50001634,1.5 Z M55.5992131,2.46 C55.5992131,2.46 55.5992131,2.90396713 55.5992131,3.46092472 L55.5992131,14.0558242 C55.5992131,16.818671 57.8364841,19.0584009 60.6045233,19.0584009 L72.9848101,19.0584009"></path>
+										</svg>
+										<span>
+											<svg viewBox="0 0 100 100">
+											    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+											</svg>
+										</span>
+									</li>
+								</ul>
+							</div>
+							<button>Add Attachment</button>
+						</div>
+					</div>
+					<div class="request-form-submit">
+						<button>Save</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main> --><!-- <div id="request-calendar" ng-include="img_base + BASE + 'templates/request-calendar.html'"></div> --><!-- <div id="request-price" ng-include="img_base + BASE + 'templates/request-price.html'"></div> --></section><!--
+@gabrielle - old request form description plz delete if u dont need it
+
+<div class="request-form-desc">
+	<div>
+		<textarea placeholder="Optional Description"></textarea>
+		<progress max="100" value="76" class="height-10"></progress>
+		<button class="request-form-attach">
+			<svg viewBox="0 0 100 100">
+				<g stroke-width="2" stroke="#2B3234" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M88.6815147,29.3630109 C89.1285972,27.7034654 88.1370213,25.9972873 86.4750185,25.5543542 L54.7755622,17.1062709 C53.1098656,16.6623534 51.3965222,17.6500321 50.9500371,19.3073601 L39.6281139,61.33371 C39.1810313,62.9932555 40.1726072,64.6994336 41.83461,65.1423667 L73.5340663,73.59045 C75.199763,74.0343675 76.9131063,73.0466888 77.3595914,71.3893608 L88.6815147,29.3630109 L88.6815147,29.3630109 L88.6815147,29.3630109 Z M12.6355293,46.6260987 C11.7426529,45.0879231 12.2779333,43.1179601 13.8171013,42.2341086 L39.5972948,27.4300954 C41.1427355,26.5426418 43.1213723,27.0735849 44.0122585,28.6083319 L63.9665314,62.9839453 C64.8594079,64.5221209 64.3241275,66.4920839 62.7849595,67.3759354 L37.004766,82.1799486 C35.4593253,83.0674022 33.4806885,82.536459 32.5898023,81.001712 L12.6355293,46.6260987 L12.6355293,46.6260987 L12.6355293,46.6260987 Z" fill="#F1F1F1"></path>
+					<path d="M37.9607888,31 C36.8778751,31 36,31.8863075 36,32.9637743 L36,73.4062246 C36,74.4907872 36.882656,75.3699989 37.9693238,75.3699989 L69.0297926,75.3699989 C70.1174201,75.3699989 70.999128,74.4898725 70.9991424,73.3965696 L70.9995489,42.6165949 C70.9995547,42.1768489 70.7426398,41.5740357 70.4243898,41.2689049 L60.2891386,31.5514593 C59.9714812,31.2468968 59.3603422,31 58.9249629,31 L37.9607888,31 L37.9607888,31 Z M59.7139691,31.5916 L59.7139691,31.9800893 L59.7139691,39.8481556 C59.7139691,40.9373764 60.5894001,41.8203643 61.6760771,41.8203643 L70.4115874,41.8203643 M42.775,66 L64.2320496,66 M42.7779838,57.7502882 L64.2350334,57.7502882 M42.7779838,50 L64.2350334,50" fill="#FFFFFF"></path>
+				</g>
+			</svg>
+			<span>Add Attachment Files</span>
+		</button>
+	</div>
+</div>
+-->

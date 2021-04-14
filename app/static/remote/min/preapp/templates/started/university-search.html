@@ -1,0 +1,367 @@
+<div id='university-search' class="absolute full-xy top-0 left-0 flex-center bg-charcoal"
+	init-with="prop:[opacity:0, z-index:-1000, t:all 600ms ease-in-out]"
+	when-search-university-clicked="prop:[opacity:1:delay-600, z-index:1000] | send:[search-university-projector-init:public:delay-1600]"
+	when-close-search-university="prop:[opacity:0:delay-600, z-index:-1000]">
+	<!--  | send:[search-university-init:public:delay-1600] -->
+    <div class="projector-slide"
+		init-with="prop:[op:0, tro:center top]"
+		when-search-university-projector-init="anim:[projectorInDown:set:(dur:1000ms#func:linear):in:delay-250]">
+        <svg class="projector-line" width="2px" height="196px" viewBox="0 0 4 392">
+            <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
+        </svg>
+        <div class="projector-top"></div>
+        <div class="projector-content projector-school"
+			init-with="prop:[op:0, tro:center top]"
+			when-search-university-projector-init="anim:[projectorIn:set:(dur:2000ms#func:linear):in:delay-500]">
+            <div class="projector-school-loader absolute top-0 left-0 full-xy flex-center"
+				init-with="prop:[tro:center center]"
+				when-search-university-projector-init="prop:[op:1:delay-500, t:all 250ms ease-in-out] | trigger:[on-exit]"
+				on-exit="anim:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:delay-6500] | send:[search-university-init:public:delay-6500]">
+                <svg class="echo-loader" width="300px" height="300px" viewBox="0 0 300 300">
+                    <g fill="none">
+						<g init-with="prop:[tro:center center]"
+							when-search-university-projector-init="t-enter"
+							on-enter="anim:[ping:set:(dur:1500ms#func:ease-in-out#count:infinite):a:delay-1500]">
+	                        <circle class="echo-loader-echo" stroke="#69B3A5" fill-opacity="0.2" fill="#69B3A5" cx="150" cy="150" r="50"
+								init-default
+								when-search-university-projector-init="t-enter"
+								on-enter="anim:[echo-loader-main:set:(dur:5000ms#func:ease#count:infinite):a:delay-500]"></circle>
+						</g>
+                        <circle class="echo-loader-track" stroke-opacity="0.4" stroke="#FFFFFF" stroke-width="2" fill="#40484B" cx="150" cy="150" r="100"></circle>
+                        <path d="M150,250 C205.228475,250 250,205.228475 250,150 C250,94.771525 205.228475,50 150,50 C94.771525,50 50,94.771525 50,150 C50,205.228475 94.771525,250 150,250 L150,250 Z" class="echo-loader-main" stroke="#69B3A5" stroke-width="2"
+							init-with="prop:[sda:629, sdo:629]"
+							when-search-university-projector-init="t-enter"
+							on-enter="anim:[echo-loader-main:set:(dur:5000ms#func:ease#count:infinite):a:delay-1500]"></path>
+                        <text class="echo-loader-number" font-family="Source Sans Pro" font-size="48" font-weight="600" fill="#FFFFFF" text-anchor="middle">
+                            <tspan x="150" y="149">0</tspan>
+                        </text>
+                        <text class="echo-loader-label" font-family="Source Sans Pro" font-size="20" font-weight="normal" fill="#FFFFFF" text-anchor="middle">
+                            <tspan x="150" y="176">schools found</tspan>
+                        </text>
+                    </g>
+                </svg>
+            </div>
+
+            <div id='projector-university' class='projector-school-search absolute left-0 top-0 full-xy flex-wrap-center'
+				init-with="p-op"
+				when-search-university-init="t-enter"
+				on-enter="anim:[fadeIn:set:(dur:1000ms#func:ease-in-out):in]">
+                <!-- class-on-clear="slideOutUp:animOut" activate-on-class="show-projector-university" class-on-activate="opacity-1-impt:inject#projector-university [class-on-activate]|activate, opacity-1-impt:inject" class-on-activate-delay="1500" -->
+				<header class="p15xy semibold">
+					<h1>
+						<span>Search</span>
+						<span>Search</span>
+						<span>196 Supported Schools</span>
+					</h1>
+				</header>
+                <div class='projector-map bg-slate full-xy'>
+                    <!-- class="zoom-{{uniSearch.layout.map.zoom}}" style="height:calc(100%);" class-on-activate="fadeIn:anim" class-on-activate-delay="400" -->
+                    <!-- <ui-gmap-google-map id="projector-google-map" class='full-xy absolute top-0 left-0' center="uniSearch.layout.map.center" refresh='uniSearch.layout.map.refresh' bounds="mapBounds" bounces="uniSearch.layout.map.bounds" events="uniSearch.layout.map.events"
+                        options='uniSearch.layout.map.options' control="uniSearch.layout.map.control" pan="true" zoom="uniSearch.layout.map.zoom" class-on-activate="fadeIn:anim" class-on-activate-delay="550">
+                        <ui-gmap-markers models="uniSearch.layout.map.markers" coords="'self'" options="'options'" icon="'icon'" clusterOptions="uniSearch.layout.map.clusterOptions" clusterEvents="uniSearch.layout.map.clusterEvents" doCluster="true">
+                        </ui-gmap-markers>
+                    </ui-gmap-google-map> -->
+
+                    <!-- PLACEHOLDER -->
+                    <div class="full-xy" style="background: #40484b url('http://legato.travel/wp-content/uploads/2015/02/world-map-background-dark.jpg') center center / cover; background-blend-mode: screen;"></div>
+                </div>
+                <div class="projector-school-search-form">
+                    <!-- ng-controller="AddUniversityCtrl" -->
+                    <div class="p15xy max-1030">
+                        <!-- class-on-activate="u-slideInDown" class-on-activate-delay="8000" -->
+                        <form>
+                            <fieldset class="large with-icon full-x">
+                                <input class="input-border light" type="search" placeholder="search 300 supported schools"/>
+                                <!-- id='request-search-input' name='request-search-input' autocomplete="off" fast-matcher fast-matcher-source="universities" fast-matcher-output="filtered_universities" fast-matcher-properties="short_name, full_name, tiny_name, variations"
+                                ng-model="search_text.university" ng-focus='focusUniversitySearchInput' placeholder="search {{universities.length}} supported schools" -->
+                                <label></label>
+                                <span class="input-icon">
+                					<svg viewBox="0 0 100 100">
+                						<path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
+                					</svg>
+                				</span>
+                                <a class="side-icon desktop-input-close-icon activated" ng-click="search_text.university = '';" ng-if="search_text.university.trim().length > 0">
+                                    <i class="icon ion-close-circled txt-white"></i>
+                                </a>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <ul class="projector-school-desktop">
+                        <!-- class-on-activate="null:inject.projector-school-desktop li|activate" -->
+						<!-- ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 5 track by $index' class="matrix-0" class-on-activate="u-bounceIn-subtle" class-on-activate-delay="{{4800 + (150 * ($index + 1)) }}" -->
+						<!-- ng-click='uniSearch.selectUniversityFromSearch(university)' -->
+                        <li init-with="prop:[op:0]"
+							when-search-university-init="t-enter"
+							on-enter="anim:[projectorInDown:set:(dur:1250ms#func:linear):in:delay-1000] | prop:[op:1:delay-2250] | t-enter-child">
+                            <div class="university-card"
+								on-enter="t-enter-child">
+                                <svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
+                                    <rect x="0" y="0" width="240" height="150" fill="none"></rect>
+                                </svg>
+                                <input type="checkbox" type="radio" name="school-card"/>
+                                <div class="school-card-inside"
+									on-enter="t-enter-child">
+                                    <div class="school-card-border" style="border-color: #FDB515;"></div>
+                                    <div class="school-card-top" style="background-color: #003262;"
+										on-enter="t-enter-child">
+                                        <span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg'); border-color: #003262;"
+											init-with="p-op"
+											on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-250]">
+                                            <span class="school-card-icon-bg" style="background-color: #003262;"></span>
+                                            <span class="school-card-state">
+                                                <svg viewBox="0 0 100 100">
+                                                    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                                </svg>
+                                            </span>
+                                            <span class="school-card-state">
+                                                <svg viewBox="0 0 100 100">
+                                                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                                                </svg>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="school-card-main no-footer"
+										on-enter="t-enter-child">
+                                        <div class="school-card-map"></div>
+                                        <div class="school-card-color" style="background-color: #003262;"></div>
+                                        <div class="school-card-info" style="color: #003262;"
+											on-enter="t-enter-child">
+                                            <h1 style="color: #003262;"
+												init-with="p-op"
+												on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-350]">UC Berkeley</h1>
+                                            <h1 init-with="p-op"
+											on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-350]">UC Berkeley</h1>
+                                            <h2 style="color: #003262;"
+												init-with="p-op"
+												on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-450]">Berkeley, CA</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li init-with="prop:[op:0]"
+							when-search-university-init="t-enter"
+							on-enter="anim:[projectorInDown:set:(dur:1250ms#func:linear):in:delay-1500] | prop:[op:1:delay-2750] | trigger:[on-enter:children]:delay-1250">
+							<div class="university-card"
+								on-enter="t-enter-child">
+                                <svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
+                                    <rect x="0" y="0" width="240" height="150" fill="none"></rect>
+                                </svg>
+                                <input type="checkbox" type="radio" name="school-card"/>
+                                <div class="school-card-inside"
+									on-enter="t-enter-child">
+                                    <div class="school-card-border" style="border-color: #FDB515;"></div>
+                                    <div class="school-card-top" style="background-color: #003262;"
+										on-enter="t-enter-child">
+                                        <span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg'); border-color: #003262;"
+											init-with="p-op"
+											on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-250]">
+                                            <span class="school-card-icon-bg" style="background-color: #003262;"></span>
+                                            <span class="school-card-state">
+                                                <svg viewBox="0 0 100 100">
+                                                    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                                </svg>
+                                            </span>
+                                            <span class="school-card-state">
+                                                <svg viewBox="0 0 100 100">
+                                                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                                                </svg>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="school-card-main no-footer"
+										on-enter="t-enter-child">
+                                        <div class="school-card-map"></div>
+                                        <div class="school-card-color" style="background-color: #003262;"></div>
+                                        <div class="school-card-info" style="color: #003262;"
+											on-enter="t-enter-child">
+                                            <h1 style="color: #003262;"
+												init-with="p-op"
+												on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-350]">UC Berkeley</h1>
+                                            <h1 init-with="p-op"
+											on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-350]">UC Berkeley</h1>
+                                            <h2 style="color: #003262;"
+												init-with="p-op"
+												on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-450]">Berkeley, CA</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li init-with="prop:[op:0]"
+							when-search-university-init="t-enter"
+							on-enter="anim:[projectorInDown:set:(dur:1250ms#func:linear):in:delay-2000] | prop:[op:1:delay-3250] | trigger:[on-enter:children]:delay-1500">
+							<div class="university-card"
+								on-enter="t-enter-child">
+                                <svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
+                                    <rect x="0" y="0" width="240" height="150" fill="none"></rect>
+                                </svg>
+                                <input type="checkbox" type="radio" name="school-card"/>
+                                <div class="school-card-inside"
+									on-enter="t-enter-child">
+                                    <div class="school-card-border" style="border-color: #FDB515;"></div>
+                                    <div class="school-card-top" style="background-color: #003262;"
+										on-enter="t-enter-child">
+                                        <span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg'); border-color: #003262;"
+											init-with="p-op"
+											on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-250]">
+                                            <span class="school-card-icon-bg" style="background-color: #003262;"></span>
+                                            <span class="school-card-state">
+                                                <svg viewBox="0 0 100 100">
+                                                    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                                </svg>
+                                            </span>
+                                            <span class="school-card-state">
+                                                <svg viewBox="0 0 100 100">
+                                                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                                                </svg>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="school-card-main no-footer"
+										on-enter="t-enter-child">
+                                        <div class="school-card-map"></div>
+                                        <div class="school-card-color" style="background-color: #003262;"></div>
+                                        <div class="school-card-info" style="color: #003262;"
+											on-enter="t-enter-child">
+                                            <h1 style="color: #003262;"
+												init-with="p-op"
+												on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-350]">UC Berkeley</h1>
+                                            <h1 init-with="p-op"
+											on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-350]">UC Berkeley</h1>
+                                            <h2 style="color: #003262;"
+												init-with="p-op"
+												on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-450]">Berkeley, CA</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li init-with="prop:[op:0]"
+							when-search-university-init="t-enter"
+							on-enter="anim:[projectorInDown:set:(dur:1250ms#func:linear):in:delay-2500] | prop:[op:1:delay-3750] | trigger:[on-enter:children]:delay-1750">
+							<div class="university-card"
+								on-enter="t-enter-child">
+                                <svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
+                                    <rect x="0" y="0" width="240" height="150" fill="none"></rect>
+                                </svg>
+                                <input type="checkbox" type="radio" name="school-card"/>
+                                <div class="school-card-inside"
+									on-enter="t-enter-child">
+                                    <div class="school-card-border" style="border-color: #FDB515;"></div>
+                                    <div class="school-card-top" style="background-color: #003262;"
+										on-enter="t-enter-child">
+                                        <span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg'); border-color: #003262;"
+											init-with="p-op"
+											on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-250]">
+                                            <span class="school-card-icon-bg" style="background-color: #003262;"></span>
+                                            <span class="school-card-state">
+                                                <svg viewBox="0 0 100 100">
+                                                    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                                </svg>
+                                            </span>
+                                            <span class="school-card-state">
+                                                <svg viewBox="0 0 100 100">
+                                                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                                                </svg>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="school-card-main no-footer"
+										on-enter="t-enter-child">
+                                        <div class="school-card-map"></div>
+                                        <div class="school-card-color" style="background-color: #003262;"></div>
+                                        <div class="school-card-info" style="color: #003262;"
+											on-enter="t-enter-child">
+                                            <h1 style="color: #003262;"
+												init-with="p-op"
+												on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-350]">UC Berkeley</h1>
+                                            <h1 init-with="p-op"
+											on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-350]">UC Berkeley</h1>
+                                            <h2 style="color: #003262;"
+												init-with="p-op"
+												on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-450]">Berkeley, CA</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li init-with="prop:[op:0]"
+							when-search-university-init="t-enter"
+							on-enter="anim:[projectorInDown:set:(dur:1250ms#func:linear):in:delay-3000] | prop:[op:1:delay-4250]| trigger:[on-enter:children]:delay-2000">
+							<div class="university-card"
+								on-enter="t-enter-child">
+                                <svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
+                                    <rect x="0" y="0" width="240" height="150" fill="none"></rect>
+                                </svg>
+                                <input type="checkbox" type="radio" name="school-card"/>
+                                <div class="school-card-inside"
+									on-enter="t-enter-child">
+                                    <div class="school-card-border" style="border-color: #FDB515;"></div>
+                                    <div class="school-card-top" style="background-color: #003262;"
+										on-enter="t-enter-child">
+                                        <span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg'); border-color: #003262;"
+											init-with="p-op"
+											on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-250]">
+                                            <span class="school-card-icon-bg" style="background-color: #003262;"></span>
+                                            <span class="school-card-state">
+                                                <svg viewBox="0 0 100 100">
+                                                    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                                </svg>
+                                            </span>
+                                            <span class="school-card-state">
+                                                <svg viewBox="0 0 100 100">
+                                                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                                                </svg>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="school-card-main no-footer"
+										on-enter="t-enter-child">
+                                        <div class="school-card-map"></div>
+                                        <div class="school-card-color" style="background-color: #003262;"></div>
+                                        <div class="school-card-info" style="color: #003262;"
+											on-enter="t-enter-child">
+                                            <h1 style="color: #003262;"
+												init-with="p-op"
+												on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-350]">UC Berkeley</h1>
+                                            <h1 init-with="p-op"
+											on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-350]">UC Berkeley</h1>
+                                            <h2 style="color: #003262;"
+												init-with="p-op"
+												on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-450]">Berkeley, CA</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="projector-school-search-guru absolute z-index-1000">
+                <div class="guru-head" ng-include="root.base_url + 'shared/templates/components/guru-head/no-props.html'"
+					init-with="prop:[op:0, transform-origin:center center]"
+					when-search-university-init="t-enter"
+					on-enter="anim:[guru-proj-enter:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):delay-2000:in]"></div>
+				<svg class="coach-support" width="114px" height="98px" viewBox="0 0 228 196"
+					init-with="prop:[op:0, tr:scaleX(0) rotate(90deg), tro:left bottom, t:all 500ms ease-out]"
+					when-search-university-init="t-enter"
+					on-enter="prop:[op:1, tr:scaleX(1) rotate(0deg)]:delay-2750">
+				    <path d="M48.386161,159.590945 C48.3861609,159.590943 47.5065944,177.922187 23.5796634,188.938294 C63.1658208,201.858782 77.415256,186.935364 86.5812235,178.667782 C146.539697,198.23757 207.421447,176.150125 222.564419,129.334091 C237.707391,82.518058 201.37725,28.7017162 141.418777,9.13192771 C81.4603034,-10.4378608 20.578553,11.6495847 5.43558085,58.4656181 C-6.12740226,94.2137525 12.3218247,134.043527 48.386161,159.590945 L48.386161,159.590945 L48.386161,159.590945 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" fill="#40484B"></path>
+				    <text fill="#FFFFFF" transform="translate(115.939196, 95.775784) rotate(24.000000) translate(-115.939196, -95.775784) " font-family="Source Sans Pro" font-size="40" font-weight="normal">
+				        <tspan x="41.939196" y="84.7757845">tap map</tspan>
+				        <tspan x="41.939196" y="134.775784">to zoom!</tspan>
+				    </text>
+				</svg>
+
+            </div>
+        </div>
+    </div>
+	<div class="splash-hero-skip absolute bottom-0 right-0 z-index-999"
+		init-with="prop:[op:0, tro:center center, tr:translateX(100%) rotate(180deg), t:all 1000ms cubic-bezier(.04#.75#.77#1.32)]"
+		when-search-university-init="t-enter"
+		on-enter="prop:[op:1, tr:translateX(0) rotate(0)]:delay-500">
+       <button on-click="send:[close-search-university]">Back</button>
+    </div>
+</div>

@@ -1,0 +1,1 @@
+<div media-child class='absolute full-xy user-icon opacity-0' init-with="p:[transform:scale(0)]" on-init="p:[opacity:1:1200]|a:[scale:0:1:1500:easeOutElastic:1000:1:f]" ></div>
